@@ -1,0 +1,139 @@
+fileFormatVersion: 2
+guid: 36d309dafa347484c9830003976b48f9
+timeCreated: 1436422853
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: Asteroid_big_1
+    100002: Asteroid_big_2
+    100004: Asteroid_big_3
+    100006: Asteroid_big_3_MeshPart0
+    100008: Asteroid_big_3_MeshPart1
+    100010: Asteroid_big_4
+    100012: Asteroid_small_1
+    100014: Asteroid_small_2
+    100016: Meteoroid1_1
+    100018: Meteoroid1_2
+    100020: Meteoroid1_3
+    100022: Meteoroid2_1
+    100024: Meteoroid2_2
+    100026: Meteoroid2_3
+    100028: //RootNode
+    400000: Asteroid_big_1
+    400002: Asteroid_big_2
+    400004: Asteroid_big_3
+    400006: Asteroid_big_3_MeshPart0
+    400008: Asteroid_big_3_MeshPart1
+    400010: Asteroid_big_4
+    400012: Asteroid_small_1
+    400014: Asteroid_small_2
+    400016: Meteoroid1_1
+    400018: Meteoroid1_2
+    400020: Meteoroid1_3
+    400022: Meteoroid2_1
+    400024: Meteoroid2_2
+    400026: Meteoroid2_3
+    400028: //RootNode
+    2300000: Asteroid_big_1
+    2300002: Asteroid_big_2
+    2300004: Asteroid_big_3_MeshPart0
+    2300006: Asteroid_big_3_MeshPart1
+    2300008: Asteroid_big_4
+    2300010: Asteroid_small_1
+    2300012: Asteroid_small_2
+    2300014: Meteoroid1_1
+    2300016: Meteoroid1_2
+    2300018: Meteoroid1_3
+    2300020: Meteoroid2_1
+    2300022: Meteoroid2_2
+    2300024: Meteoroid2_3
+    3300000: Asteroid_big_1
+    3300002: Asteroid_big_2
+    3300004: Asteroid_big_3_MeshPart0
+    3300006: Asteroid_big_3_MeshPart1
+    3300008: Asteroid_big_4
+    3300010: Asteroid_small_1
+    3300012: Asteroid_small_2
+    3300014: Meteoroid1_1
+    3300016: Meteoroid1_2
+    3300018: Meteoroid1_3
+    3300020: Meteoroid2_1
+    3300022: Meteoroid2_2
+    3300024: Meteoroid2_3
+    4300000: Meteoroid2_1
+    4300002: Meteoroid2_2
+    4300004: Meteoroid2_3
+    4300006: Meteoroid1_3
+    4300008: Meteoroid1_2
+    4300010: Meteoroid1_1
+    4300012: Asteroid_small_1
+    4300014: Asteroid_small_2
+    4300016: Asteroid_big_4
+    4300018: Asteroid_big_3_MeshPart0
+    4300020: Asteroid_big_3_MeshPart1
+    4300022: Asteroid_big_1
+    4300024: Asteroid_big_2
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
