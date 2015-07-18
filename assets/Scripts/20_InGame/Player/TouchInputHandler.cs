@@ -8,6 +8,7 @@ public class TouchInputHandler : MonoBehaviour
 	public FieldObjectsManager fieldObjectsManager;
 	public GameObject barsCanvas;
 	public EnergyBar energyBar;
+	public ComboBar comboBar;
 	public ElapsedTime elapsedTime;
 	public GameObject idleUI;
 
@@ -33,7 +34,8 @@ public class TouchInputHandler : MonoBehaviour
 			Vector3 worldTouchPosition = Camera.main.ScreenToWorldPoint(touchPosition);
 			Vector3 heading = worldTouchPosition - player.transform.position;
 			Vector3 direction = heading / heading.magnitude;
-			player.energyBar.loseByShoot();
+			energyBar.loseByShoot();
+			comboBar.loseByShoot();
 			player.booster.Play();
 			player.booster.GetComponent<AudioSource>().Play();
 			player.setDirection(direction);

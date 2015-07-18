@@ -3,8 +3,8 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class PartsCount : MonoBehaviour {
-
   private int count = 0;
+  public ComboBar comboBar;
 
 	void Start () {
 	}
@@ -13,7 +13,7 @@ public class PartsCount : MonoBehaviour {
 	}
 
   public void addCount() {
-    count++;
+    count += comboBar.getComboRatio();
     GetComponent<Text>().text = count.ToString();
   }
 }

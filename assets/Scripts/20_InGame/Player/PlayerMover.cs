@@ -5,6 +5,7 @@ public class PlayerMover : MonoBehaviour {
 	public ParticleSystem getEnergy;
 	public ParticleSystem booster;
 	public EnergyBar energyBar;
+	public ComboBar comboBar;
 	public PartsCount partsCount;
 	public GameOver gameOver;
 
@@ -37,6 +38,8 @@ public class PlayerMover : MonoBehaviour {
 
 			energyBar.getHealthbyParts();
 			partsCount.addCount();
+
+			comboBar.addCombo();
 		}
 	}
 

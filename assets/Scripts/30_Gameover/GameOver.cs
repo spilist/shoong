@@ -7,6 +7,7 @@ public class GameOver : MonoBehaviour {
   public GameObject player;
   public GameObject barsCanvas;
   public ParticleSystem playerExplosion;
+  public ParticleSystem comboGlow;
   public ElapsedTime elapsedTime;
   public TouchInputHandler inputHandler;
 
@@ -27,8 +28,10 @@ public class GameOver : MonoBehaviour {
     elapsedTime.stopTime();
 
     playerExplosion.Play ();
+    comboGlow.Stop();
     player.GetComponent<MeshRenderer>().enabled = false;
     player.GetComponent<SphereCollider>().enabled = false;
+    player.GetComponent<TrailRenderer>().enabled = false;
     player.GetComponent<TrailRenderer>().enabled = false;
     barsCanvas.GetComponent<Canvas>().enabled = false;
     restartMessage.GetComponent<Text>().enabled = true;
