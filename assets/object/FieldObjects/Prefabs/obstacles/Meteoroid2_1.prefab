@@ -12,13 +12,13 @@ GameObject:
   - 23: {fileID: 2372954}
   - 54: {fileID: 5451284}
   - 135: {fileID: 13558480}
-  - 114: {fileID: 11459202}
   - 198: {fileID: 19803756}
   - 199: {fileID: 19932832}
   - 122: {fileID: 12242826}
+  - 114: {fileID: 11427046}
   m_Layer: 0
   m_Name: Meteoroid2_1
-  m_TagString: Obstacle_middle
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30,7 +30,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 121254}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -59, y: 0, z: -53}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -81,7 +81,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 4
   m_CollisionDetection: 0
---- !u!114 &11459202
+--- !u!114 &11427046
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -89,15 +89,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 121254}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11345097e1ccc9d4eb8aaec4095771fb, type: 3}
+  m_Script: {fileID: 11500000, guid: a03bc6f4050734c98a1a0624e79be0fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boosterPs: {fileID: 0}
-  firePs: {fileID: 0}
-  energyBar: {fileID: 0}
-  sphereMover: {fileID: 0}
-  rb: {fileID: 0}
-  speed: 30
 --- !u!122 &12242826
 Halo:
   m_ObjectHideFlags: 1
@@ -1230,7 +1224,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_TagString
-      value: Obstacle_middle
+      value: Obstacle
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Enabled
@@ -1427,6 +1421,18 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Color.rgba
       value: 4278190335
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: mover
+      value: 
+      objectReference: {fileID: 11427046}
+    - target: {fileID: 0}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalPosition.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

@@ -12,13 +12,13 @@ GameObject:
   - 23: {fileID: 2384226}
   - 54: {fileID: 5476624}
   - 135: {fileID: 13582670}
-  - 114: {fileID: 11408988}
   - 122: {fileID: 12298244}
   - 199: {fileID: 19973722}
   - 198: {fileID: 19897650}
+  - 114: {fileID: 11441570}
   m_Layer: 0
   m_Name: parts_battery_2
-  m_TagString: Energy
+  m_TagString: Part
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30,7 +30,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 113590}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 20, y: 0, z: -7}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -79,9 +79,9 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 4
+  m_Constraints: 8
   m_CollisionDetection: 0
---- !u!114 &11408988
+--- !u!114 &11441570
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -89,15 +89,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 113590}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ebf6308756b49e42ac53692926c3b06, type: 3}
+  m_Script: {fileID: 11500000, guid: a03bc6f4050734c98a1a0624e79be0fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boosterPs: {fileID: 0}
-  firePs: {fileID: 0}
-  energyBar: {fileID: 0}
-  sphereMover: {fileID: 0}
-  rb: {fileID: 0}
-  speed: 5
 --- !u!122 &12298244
 Halo:
   m_ObjectHideFlags: 1
@@ -1217,7 +1211,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Constraints
-      value: 4
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_AngularDrag
@@ -1229,7 +1223,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_TagString
-      value: Energy
+      value: Part
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: speed
@@ -1310,6 +1304,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: EmissionModule.rate.scalar
       value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalPosition.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

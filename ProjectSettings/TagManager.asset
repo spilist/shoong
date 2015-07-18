@@ -5,17 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Boundary
-  - BadObject
-  - GoodObject
-  - Wall
-  - Ground
-  - Spaceship
-  - Energy
-  - Obstacle_big
-  - Obstacle_middle
-  - Obstacle_small
   - Part
-  - Obstacle_smaller
+  - Obstacle
+  - Obstacle_small
   layers:
   - Default
   - TransparentFX
