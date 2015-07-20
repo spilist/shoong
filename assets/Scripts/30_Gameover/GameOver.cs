@@ -28,6 +28,7 @@ public class GameOver : MonoBehaviour {
     elapsedTime.stopTime();
 
     playerExplosion.Play ();
+	playerExplosion.GetComponent<AudioSource>().Play();
     comboGlow.Stop();
     player.GetComponent<MeshRenderer>().enabled = false;
     player.GetComponent<SphereCollider>().enabled = false;

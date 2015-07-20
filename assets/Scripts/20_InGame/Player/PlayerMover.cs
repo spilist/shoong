@@ -8,6 +8,7 @@ public class PlayerMover : MonoBehaviour {
 	public ComboBar comboBar;
 	public PartsCount partsCount;
 	public GameOver gameOver;
+	public Transform energyDestroy;
 
 	public float speed;
   public float tumble;
@@ -23,8 +24,13 @@ public class PlayerMover : MonoBehaviour {
     GetComponent<Rigidbody> ().velocity = direction * speed;
 	}
 
+	void Update () {
+		speed = comboBar.moverspeed;
+	}
+
 	void FixedUpdate () {
     GetComponent<Rigidbody> ().velocity = direction * speed;
+
 	}
 
 	void OnTriggerEnter(Collider other)
@@ -33,7 +39,9 @@ public class PlayerMover : MonoBehaviour {
 			gameOver.run();
 		} else if (other.tag == "Part") {
 			GetComponent<AudioSource>().Play ();
+			GetComponent<AudioSource>().Play ();
 			getEnergy.Play ();
+			Instantiate(energyDestroy, other.transform.position, other.transform.rotation);
 			Destroy (other.gameObject);
 
 			energyBar.getHealthbyParts();
