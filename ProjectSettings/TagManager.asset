@@ -8,6 +8,9 @@ TagManager:
   - Part
   - Obstacle
   - Obstacle_small
+  - Ground
+  - Spaceship
+  - SpecialPart
   layers:
   - Default
   - TransparentFX

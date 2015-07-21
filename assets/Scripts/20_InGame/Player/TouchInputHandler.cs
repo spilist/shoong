@@ -6,6 +6,7 @@ public class TouchInputHandler : MonoBehaviour
 {
 	public PlayerMover player;
 	public FieldObjectsManager fieldObjectsManager;
+	public SpecialObjectsManager specialObjectsManager;
 	public GameObject barsCanvas;
 	public EnergyBar energyBar;
 	public ComboBar comboBar;
@@ -23,6 +24,7 @@ public class TouchInputHandler : MonoBehaviour
 		if (react && Input.GetMouseButtonDown(0)) {
 			if (!gameStarted) {
 				fieldObjectsManager.run();
+				specialObjectsManager.run();
 				barsCanvas.GetComponent<Canvas>().enabled = true;
 				energyBar.startDecrease();
 				elapsedTime.startTime();

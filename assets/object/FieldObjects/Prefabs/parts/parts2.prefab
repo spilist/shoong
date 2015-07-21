@@ -10,7 +10,6 @@ GameObject:
   - 4: {fileID: 442486}
   - 33: {fileID: 3340582}
   - 23: {fileID: 2335210}
-  - 95: {fileID: 9578270}
   - 54: {fileID: 5476976}
   - 135: {fileID: 13586016}
   - 114: {fileID: 11411626}
@@ -80,23 +79,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 4
   m_CollisionDetection: 0
---- !u!95 &9578270
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 115318}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: ecfd616c47cb4d44d9d308d6126757c0, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &11411626
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -200,7 +182,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: EmissionModule.rate.scalar

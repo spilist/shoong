@@ -39,7 +39,6 @@ public class PlayerMover : MonoBehaviour {
 			gameOver.run();
 		} else if (other.tag == "Part") {
 			GetComponent<AudioSource>().Play ();
-			GetComponent<AudioSource>().Play ();
 			getEnergy.Play ();
 			Instantiate(energyDestroy, other.transform.position, other.transform.rotation);
 			Destroy (other.gameObject);
@@ -48,7 +47,22 @@ public class PlayerMover : MonoBehaviour {
 			partsCount.addCount();
 
 			comboBar.addCombo();
+		} else if (other.tag == "SpecialPart") {
+			other.gameObject.GetComponent<GenerateNextSpecial>().spawnNext();
+			partEncounter(other);
 		}
+	}
+
+	void partEncounter(Collider part) {
+		GetComponent<AudioSource>().Play ();
+		getEnergy.Play ();
+		Instantiate(energyDestroy, part.transform.position, part.transform.rotation);
+		Destroy (part.gameObject);
+
+		energyBar.getHealthbyParts();
+		partsCount.addCount();
+
+		comboBar.addCombo();
 	}
 
 	public void rotatePlayerBody() {

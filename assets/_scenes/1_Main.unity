@@ -603,7 +603,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85bd37e8eaf3c4f02a3d2a0f1a640b6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 91418582}
+  target: {fileID: 91418582}
 --- !u!114 &192454352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1300,7 +1300,6 @@ GameObject:
   - 4: {fileID: 892369442}
   - 33: {fileID: 892369441}
   - 65: {fileID: 892369440}
-  - 23: {fileID: 892369439}
   - 114: {fileID: 892369438}
   - 114: {fileID: 892369443}
   m_Layer: 8
@@ -1321,30 +1320,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed4ae3a4877af9b4dbe2b7d76edeb9ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!23 &892369439
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 892369437}
-  m_Enabled: 0
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 1
-  m_ReflectionProbeUsage: 1
-  m_ProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 1
-  m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
 --- !u!65 &892369440
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1387,7 +1362,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85bd37e8eaf3c4f02a3d2a0f1a640b6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 91418582}
+  target: {fileID: 91418582}
 --- !u!1001 &892795960
 Prefab:
   m_ObjectHideFlags: 0
@@ -2665,13 +2640,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c55c8e133eb0c47e28e0cc77e0aaaeb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  autoDecreaseRate: .100000001
+  autoDecreaseRate: 0
   getAmount: 60
   getAmountbyParts: 24
   getRate: 2
   loseAmount: -20
   loseRate: 1
-  shootAmount: -14
+  shootAmount: 0
   shootRate: 1
   gameOver: {fileID: 868146742}
 --- !u!114 &1593744719
@@ -2951,6 +2926,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 91418583}
   fieldObjectsManager: {fileID: 1991538105}
+  specialObjectsManager: {fileID: 1991538106}
   barsCanvas: {fileID: 1289803595}
   energyBar: {fileID: 1593744718}
   comboBar: {fileID: 1289803601}
@@ -3160,6 +3136,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1991538104}
   - 114: {fileID: 1991538105}
+  - 114: {fileID: 1991538106}
   m_Layer: 9
   m_Name: Field Objects
   m_TagString: Untagged
@@ -3202,14 +3179,33 @@ MonoBehaviour:
   - {fileID: 137376, guid: 687c694e3e0c84920afaa2510449ab32, type: 2}
   - {fileID: 178760, guid: 60ac4f8bf259148408f8d9e99bcb1ca2, type: 2}
   - {fileID: 103062, guid: b9e87ec91a93341948e088c253b40abc, type: 2}
-  max_obstacles: 6
-  max_parts: 40
+  max_obstacles: 0
+  max_parts: 0
   generateSpaceRadius: 1
   minimumGenerateDistance: 0
   speed_obstacles: 60
   speed_parts: 5
+  speed_special: 5
   tumble_obstacles: 1
   tumble_parts: 1
+  tumble_special: 5
+--- !u!114 &1991538106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1991538103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0505b83e2366e4c30bf4b87b9ac88aa0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  special: {fileID: 120344, guid: 54cea864d856c40859cc6c06841c2a80, type: 2}
+  special_next: {fileID: 106010, guid: 0c9f9410f926d487d8f749586b909967, type: 2}
+  special_line: {fileID: 160548, guid: ff79b10b6d1744e5f8e59299310d0ae0, type: 2}
+  fom: {fileID: 1991538105}
+  size: 1
+  radius: 50
 --- !u!1 &2114907097
 GameObject:
   m_ObjectHideFlags: 0

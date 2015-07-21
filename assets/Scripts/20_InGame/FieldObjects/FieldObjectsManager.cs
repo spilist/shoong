@@ -7,15 +7,18 @@ public class FieldObjectsManager : MonoBehaviour {
 
 	public int max_obstacles = 5;
 	public int max_parts = 50;
+
 	public float generateSpaceRadius = 5f;
 	public float minimumGenerateDistance = 0.5f;
 
 	public float speed_obstacles = 1;
 	public float speed_parts = 10;
+	public float speed_special = 5;
 	private Hashtable speed;
 
 	public float tumble_obstacles = 0.5f;
 	public float tumble_parts = 5f;
+	public float tumble_special = 5f;
 	private Hashtable tumble;
 
 	void Start () {
@@ -25,19 +28,18 @@ public class FieldObjectsManager : MonoBehaviour {
 		generateObjectsAtStart();
 		generateObjectValuesHashtable();
 		gameObject.SetActive(true);
-		foreach (Rigidbody fieldObjectRb in gameObject.GetComponentsInChildren<Rigidbody>()) {
-			fieldObjectRb.angularVelocity = Random.insideUnitSphere * (float) tumble[fieldObjectRb.tag];
-		}
 	}
 
 	void generateObjectValuesHashtable() {
 		speed = new Hashtable();
 		speed.Add("Obstacle", speed_obstacles);
 		speed.Add("Part", speed_parts);
+		speed.Add("SpecialPart", speed_special);
 
 		tumble = new Hashtable();
 		tumble.Add("Obstacle", tumble_obstacles);
 		tumble.Add("Part", tumble_parts);
+		tumble.Add("SpecialPart", tumble_special);
 	}
 
 	void generateObjectsAtStart() {
@@ -52,11 +54,15 @@ public class FieldObjectsManager : MonoBehaviour {
 
 	private void instantiateFieldObject(GameObject[] objects) {
 		GameObject target = objects[Random.Range(0, objects.Length)];
+		spawn(target);
+	}
 
+	public GameObject spawn(GameObject target) {
 		Vector3 spawnPosition = getSpawnPosition(target);
 		Quaternion spawnRotation = Quaternion.identity;
 		GameObject newInstance = (GameObject) Instantiate (target, spawnPosition, spawnRotation);
 		newInstance.transform.parent = gameObject.transform;
+		return newInstance;
 	}
 
 	private Vector3 getSpawnPosition(GameObject target) {

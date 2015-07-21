@@ -25,16 +25,17 @@ public class FieldObjectsMover : MonoBehaviour {
 
   void OnCollisionEnter(Collision collision)
   {
-    if (gameObject.tag == "Part") {
-      if (collision.collider.tag == "Part") {
-        processCollision(collision);
-      } else if (collision.collider.tag == "SpecialPart") {
+    string tag = gameObject.tag;
+    string colliderTag = collision.collider.tag;
+
+    if (tag == "Part") {
+      if (colliderTag == "Part" || colliderTag == "SpecialPart") {
         processCollision(collision);
       }
-    } else if (gameObject.tag == "Obstacle") {
-      if (collision.collider.tag == "Obstacle") {
+    } else if (tag == "Obstacle") {
+      if (colliderTag == "Obstacle") {
         processCollision(collision);
-      } else if (collision.collider.tag == "Part") {
+      } else if (colliderTag == "Part" || colliderTag == "SpecialPart") {
         Destroy(collision.collider.gameObject);
       }
     }
