@@ -4,11 +4,16 @@ using System.Collections;
 public class FieldObjectsMover : MonoBehaviour {
   private float speed;
   private float tumble;
+  private float unstoppableFollowSpeed;
   private Vector3 direction;
 
+  private bool isMagnetized = false;
+
   void Start () {
-    speed = GameObject.Find("Field Objects").GetComponent<FieldObjectsManager>().getSpeed(gameObject.tag);
-    tumble = GameObject.Find("Field Objects").GetComponent<FieldObjectsManager>().getTumble(gameObject.tag);
+    FieldObjectsManager fom = GameObject.Find("Field Objects").GetComponent<FieldObjectsManager>();
+    speed = fom.getSpeed(gameObject.tag);
+    tumble = fom.getTumble(gameObject.tag);
+    unstoppableFollowSpeed = fom.getUnstoppableFollowSpeed();
 
     GetComponent<Rigidbody>().angularVelocity = Random.onUnitSphere * tumble;
 
@@ -20,11 +25,19 @@ public class FieldObjectsMover : MonoBehaviour {
 	}
 
 	void FixedUpdate () {
-    GetComponent<Rigidbody> ().velocity = direction * speed;
+    if (isMagnetized) {
+      Vector3 heading =  GameObject.Find("Player").GetComponent<PlayerMover>().transform.position - transform.position;
+      GetComponent<Rigidbody> ().velocity = heading / heading.magnitude * GameObject.Find("Player").GetComponent<Rigidbody>().velocity.magnitude * unstoppableFollowSpeed;
+    }
+    else {
+      GetComponent<Rigidbody> ().velocity = direction * speed;
+    }
 	}
 
   void OnCollisionEnter(Collision collision)
   {
+    if (isMagnetized) return;
+
     string tag = gameObject.tag;
     string colliderTag = collision.collider.tag;
 
@@ -47,5 +60,9 @@ public class FieldObjectsMover : MonoBehaviour {
     Vector3 direction = Vector3.Reflect(direction, -normal).normalized;
     direction.y = 0;
     direction.Normalize();
+  }
+
+  public void setMagnetized() {
+    isMagnetized = true;
   }
 }

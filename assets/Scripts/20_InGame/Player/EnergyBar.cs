@@ -10,6 +10,7 @@ public class EnergyBar : MonoBehaviour {
   private bool isChanging;
   private bool isAuto;
   private bool gameStarted;
+  private bool unstoppable = false;
 
   public float autoDecreaseRate = 0.05f;
   public int getAmount = 20;
@@ -30,6 +31,8 @@ public class EnergyBar : MonoBehaviour {
 
 	void Update () {
     if (gameStarted) {
+      if (unstoppable) return;
+
       if (isAuto) {
         autoDecrease();
       }
@@ -92,6 +95,14 @@ public class EnergyBar : MonoBehaviour {
       changeTo = Mathf.Max(0, changeTo);
     }
     changeRate = Time.deltaTime * rate;
+  }
+
+  public void startUnstoppable() {
+    unstoppable = true;
+  }
+
+  public void stopUnstoppable() {
+    unstoppable = false;
   }
 }
 

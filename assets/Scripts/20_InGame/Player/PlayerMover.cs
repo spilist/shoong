@@ -4,16 +4,25 @@ using System.Collections;
 public class PlayerMover : MonoBehaviour {
 	public ParticleSystem getEnergy;
 	public ParticleSystem booster;
+	public ParticleSystem unstoppableEffect;
 	public EnergyBar energyBar;
 	public ComboBar comboBar;
 	public PartsCount partsCount;
 	public GameOver gameOver;
 	public Transform energyDestroy;
+	public GameObject obstacleDestroy;
+	public GameObject unstoppableSphere;
 
 	public float speed;
   public float tumble;
 
 	private Vector3 direction;
+	private bool unstoppable = false;
+	private float unstoppable_during = 0;
+	public int unstoppable_speed = 150;
+	public float unstoppable_time_scale = 1;
+
+	GameObject nextSpecialTry;
 
 	void Start () {
     GetComponent<Rigidbody>().angularVelocity = Random.onUnitSphere * tumble;
@@ -25,18 +34,28 @@ public class PlayerMover : MonoBehaviour {
 	}
 
 	void Update () {
-		speed = comboBar.moverspeed;
+		if (unstoppable) {
+			speed = unstoppable_speed;
+		}
+		else {
+			speed = comboBar.moverspeed;
+		}
 	}
 
 	void FixedUpdate () {
     GetComponent<Rigidbody> ().velocity = direction * speed;
-
 	}
 
 	void OnTriggerEnter(Collider other)
 	{
 		if (other.tag == "Obstacle") {
-			gameOver.run();
+			if (unstoppable) {
+				Instantiate(obstacleDestroy, other.transform.position, other.transform.rotation);
+				Destroy(other.gameObject);
+			}
+			else {
+				gameOver.run();
+			}
 		} else if (other.tag == "Part") {
 			GetComponent<AudioSource>().Play ();
 			getEnergy.Play ();
@@ -48,7 +67,7 @@ public class PlayerMover : MonoBehaviour {
 
 			comboBar.addCombo();
 		} else if (other.tag == "SpecialPart") {
-			other.gameObject.GetComponent<GenerateNextSpecial>().spawnNext();
+			nextSpecialTry = other.gameObject.GetComponent<GenerateNextSpecial>().spawnNext();
 			partEncounter(other);
 		}
 	}
@@ -71,5 +90,26 @@ public class PlayerMover : MonoBehaviour {
 
 	public void setDirection(Vector3 value) {
     direction = value;
+  }
+
+  public GameObject getNextSpecialTry() {
+  	return nextSpecialTry;
+  }
+
+  public void startUnstoppable(int comboCount) {
+  	unstoppable = true;
+  	unstoppable_during = comboCount * unstoppable_time_scale;
+  	unstoppableEffect.Play();
+  	energyBar.startUnstoppable();
+  	unstoppableSphere.SetActive(true);
+  	StartCoroutine("stopUnstoppable");
+  }
+
+  IEnumerator stopUnstoppable() {
+  	yield return new WaitForSeconds(unstoppable_during);
+  	unstoppable = false;
+  	unstoppableEffect.Stop();
+  	energyBar.stopUnstoppable();
+  	unstoppableSphere.SetActive(false);
   }
 }

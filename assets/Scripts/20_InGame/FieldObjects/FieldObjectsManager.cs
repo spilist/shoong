@@ -21,6 +21,8 @@ public class FieldObjectsManager : MonoBehaviour {
 	public float tumble_special = 5f;
 	private Hashtable tumble;
 
+	public float unstoppableFollowSpeed = 1.1f;
+
 	void Start () {
 	}
 
@@ -111,5 +113,9 @@ public class FieldObjectsManager : MonoBehaviour {
 		else {
 			return (float)tumble[tag];
 		}
+	}
+
+	public float getUnstoppableFollowSpeed() {
+		return unstoppableFollowSpeed;
 	}
 }

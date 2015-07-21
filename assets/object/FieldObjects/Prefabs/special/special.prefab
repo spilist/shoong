@@ -91,8 +91,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06ce81ab1afcd436691dd49ee4bb06c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  origin_prefab: {fileID: 120344}
   next_prefab: {fileID: 106010, guid: 0c9f9410f926d487d8f749586b909967, type: 2}
+  energyDestroy: {fileID: 158326, guid: 7a4903aebeaf1440d95d69b1daac37af, type: 2}
 --- !u!114 &11454344
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -113,7 +113,7 @@ Halo:
   m_Enabled: 1
   m_Color:
     serializedVersion: 2
-    rgba: 4285267712
+    rgba: 4278245631
   m_Size: 6.71000004
 --- !u!135 &13574360
 SphereCollider:
@@ -174,6 +174,14 @@ Prefab:
       propertyPath: origin_prefab
       value: 
       objectReference: {fileID: 120344}
+    - target: {fileID: 0}
+      propertyPath: energyDestroy
+      value: 
+      objectReference: {fileID: 158326, guid: 7a4903aebeaf1440d95d69b1daac37af, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_Color.rgba
+      value: 4278245631
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 120344}

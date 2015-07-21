@@ -41,6 +41,10 @@ public class TouchInputHandler : MonoBehaviour
 			player.booster.Play();
 			player.booster.GetComponent<AudioSource>().Play();
 			player.setDirection(direction);
+
+			if (player.getNextSpecialTry() != null ) {
+				player.getNextSpecialTry().GetComponent<GenerateNextSpecial>().tryGetSpecial();
+			}
 		}
 	}
 

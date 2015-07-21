@@ -258,6 +258,10 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: e326e2716b98bcf4eb9c273c7742b2b0, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 9500000, guid: e326e2716b98bcf4eb9c273c7742b2b0, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: e326e2716b98bcf4eb9c273c7742b2b0, type: 3}
@@ -283,13 +287,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   getEnergy: {fileID: 317572741}
   booster: {fileID: 131396333}
+  unstoppableEffect: {fileID: 621705455}
   energyBar: {fileID: 1593744718}
   comboBar: {fileID: 1289803601}
   partsCount: {fileID: 589887829}
   gameOver: {fileID: 868146742}
   energyDestroy: {fileID: 428390, guid: 7a4903aebeaf1440d95d69b1daac37af, type: 2}
+  obstacleDestroy: {fileID: 190966, guid: 06a9d910a6ef7477eb37b2d7cddcfa88, type: 2}
+  unstoppableSphere: {fileID: 851953042}
   speed: 45
   tumble: 4
+  unstoppable_speed: 150
+  unstoppable_time_scale: 100
 --- !u!96 &91418584
 TrailRenderer:
   m_ObjectHideFlags: 0
@@ -1002,6 +1011,121 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   comboBar: {fileID: 1289803601}
+--- !u!1001 &621705453
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 678200079}
+    m_Modifications:
+    - target: {fileID: 430524, guid: 6c2602de5f9174bcabba5071ac271d3d, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 3.07999945
+      objectReference: {fileID: 0}
+    - target: {fileID: 430524, guid: 6c2602de5f9174bcabba5071ac271d3d, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 430524, guid: 6c2602de5f9174bcabba5071ac271d3d, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 430524, guid: 6c2602de5f9174bcabba5071ac271d3d, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 430524, guid: 6c2602de5f9174bcabba5071ac271d3d, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 430524, guid: 6c2602de5f9174bcabba5071ac271d3d, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 430524, guid: 6c2602de5f9174bcabba5071ac271d3d, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 430524, guid: 6c2602de5f9174bcabba5071ac271d3d, type: 2}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8292350, guid: 6c2602de5f9174bcabba5071ac271d3d, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8292350, guid: 6c2602de5f9174bcabba5071ac271d3d, type: 2}
+      propertyPath: DopplerLevel
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8292350, guid: 6c2602de5f9174bcabba5071ac271d3d, type: 2}
+      propertyPath: MaxDistance
+      value: 1.00999999
+      objectReference: {fileID: 0}
+    - target: {fileID: 19828746, guid: 6c2602de5f9174bcabba5071ac271d3d, type: 2}
+      propertyPath: InitialModule.maxNumParticles
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 19828746, guid: 6c2602de5f9174bcabba5071ac271d3d, type: 2}
+      propertyPath: EmissionModule.rate.scalar
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 19828746, guid: 6c2602de5f9174bcabba5071ac271d3d, type: 2}
+      propertyPath: InitialModule.startSize.scalar
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 19998384, guid: 6c2602de5f9174bcabba5071ac271d3d, type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e9bf18843575d4c95ae631c75a3e0254, type: 2}
+    - target: {fileID: 19828746, guid: 6c2602de5f9174bcabba5071ac271d3d, type: 2}
+      propertyPath: InitialModule.startColor.minColor.rgba
+      value: 4278251757
+      objectReference: {fileID: 0}
+    - target: {fileID: 19828746, guid: 6c2602de5f9174bcabba5071ac271d3d, type: 2}
+      propertyPath: InitialModule.startColor.maxColor.rgba
+      value: 4279169111
+      objectReference: {fileID: 0}
+    - target: {fileID: 19828746, guid: 6c2602de5f9174bcabba5071ac271d3d, type: 2}
+      propertyPath: InitialModule.startLifetime.minCurve.m_Curve.Array.data[0].value
+      value: .400000006
+      objectReference: {fileID: 0}
+    - target: {fileID: 19828746, guid: 6c2602de5f9174bcabba5071ac271d3d, type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19828746, guid: 6c2602de5f9174bcabba5071ac271d3d, type: 2}
+      propertyPath: InitialModule.startLifetime.maxCurve.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 184848, guid: 6c2602de5f9174bcabba5071ac271d3d, type: 2}
+      propertyPath: m_Name
+      value: Unstoppable
+      objectReference: {fileID: 0}
+    - target: {fileID: 19828746, guid: 6c2602de5f9174bcabba5071ac271d3d, type: 2}
+      propertyPath: looping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19828746, guid: 6c2602de5f9174bcabba5071ac271d3d, type: 2}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 19828746, guid: 6c2602de5f9174bcabba5071ac271d3d, type: 2}
+      propertyPath: ShapeModule.type
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 6c2602de5f9174bcabba5071ac271d3d, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &621705454 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 430524, guid: 6c2602de5f9174bcabba5071ac271d3d, type: 2}
+  m_PrefabInternal: {fileID: 621705453}
+--- !u!198 &621705455 stripped
+ParticleSystem:
+  m_PrefabParentObject: {fileID: 19828746, guid: 6c2602de5f9174bcabba5071ac271d3d,
+    type: 2}
+  m_PrefabInternal: {fileID: 621705453}
 --- !u!1001 &635746624
 Prefab:
   m_ObjectHideFlags: 0
@@ -1113,6 +1237,7 @@ Transform:
   - {fileID: 1077419183}
   - {fileID: 1285032819}
   - {fileID: 1110869703}
+  - {fileID: 621705454}
   m_Father: {fileID: 91418581}
   m_RootOrder: 1
 --- !u!198 &787888476 stripped
@@ -1181,6 +1306,104 @@ RectTransform:
   m_AnchoredPosition: {x: -2.38742446e-12, y: -5.45696821e-12}
   m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: .5, y: .5}
+--- !u!1 &851953042
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 851953043}
+  - 33: {fileID: 851953046}
+  - 23: {fileID: 851953044}
+  - 135: {fileID: 851953045}
+  - 114: {fileID: 851953047}
+  - 114: {fileID: 851953048}
+  m_Layer: 11
+  m_Name: UnstoppableSphere
+  m_TagString: UnstoppableSphere
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &851953043
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 851953042}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 80, y: 80, z: 80}
+  m_Children: []
+  m_Father: {fileID: 1701025775}
+  m_RootOrder: 3
+--- !u!23 &851953044
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 851953042}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: fc8d84b8936ff4b7e8d424ba840ffe5b, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 1
+  m_ReflectionProbeUsage: 1
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_ImportantGI: 0
+  m_AutoUVMaxDistance: .5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+--- !u!135 &851953045
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 851953042}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: .5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!33 &851953046
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 851953042}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &851953047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 851953042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85bd37e8eaf3c4f02a3d2a0f1a640b6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 91418582}
+--- !u!114 &851953048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 851953042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2c9cf425be7e419bb201f9169f5881f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &868146740
 GameObject:
   m_ObjectHideFlags: 0
@@ -2646,7 +2869,7 @@ MonoBehaviour:
   getRate: 2
   loseAmount: -20
   loseRate: 1
-  shootAmount: 0
+  shootAmount: -5
   shootRate: 1
   gameOver: {fileID: 868146742}
 --- !u!114 &1593744719
@@ -2704,6 +2927,7 @@ Transform:
   - {fileID: 91418581}
   - {fileID: 1991538104}
   - {fileID: 892369442}
+  - {fileID: 851953043}
   m_Father: {fileID: 0}
   m_RootOrder: 3
 --- !u!1 &1731091593
@@ -2718,7 +2942,7 @@ GameObject:
   - 23: {fileID: 1731091596}
   - 114: {fileID: 1731091595}
   m_Layer: 0
-  m_Name: Energy Indicator
+  m_Name: SpecialPart Indicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3180,7 +3404,7 @@ MonoBehaviour:
   - {fileID: 178760, guid: 60ac4f8bf259148408f8d9e99bcb1ca2, type: 2}
   - {fileID: 103062, guid: b9e87ec91a93341948e088c253b40abc, type: 2}
   max_obstacles: 0
-  max_parts: 0
+  max_parts: 50
   generateSpaceRadius: 1
   minimumGenerateDistance: 0
   speed_obstacles: 60
@@ -3189,6 +3413,7 @@ MonoBehaviour:
   tumble_obstacles: 1
   tumble_parts: 1
   tumble_special: 5
+  unstoppableFollowSpeed: 1.5
 --- !u!114 &1991538106
 MonoBehaviour:
   m_ObjectHideFlags: 0
