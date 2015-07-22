@@ -5,6 +5,7 @@ public class PlayerMover : MonoBehaviour {
 	public ParticleSystem getEnergy;
 	public ParticleSystem booster;
 	public ParticleSystem unstoppableEffect;
+	public ParticleSystem unstoppableEffect_two;
 	public EnergyBar energyBar;
 	public ComboBar comboBar;
 	public PartsCount partsCount;
@@ -21,6 +22,7 @@ public class PlayerMover : MonoBehaviour {
 	private float unstoppable_during = 0;
 	public int unstoppable_speed = 150;
 	public float unstoppable_time_scale = 1;
+	public int max_unstoppable_combo = 10;
 
 	GameObject nextSpecialTry;
 
@@ -67,7 +69,13 @@ public class PlayerMover : MonoBehaviour {
 
 			comboBar.addCombo();
 		} else if (other.tag == "SpecialPart") {
-			nextSpecialTry = other.gameObject.GetComponent<GenerateNextSpecial>().spawnNext();
+			GenerateNextSpecial gns = other.gameObject.GetComponent<GenerateNextSpecial>();
+			if (gns.getComboCount() == max_unstoppable_combo) {
+				startUnstoppable(max_unstoppable_combo);
+			}
+			else {
+				nextSpecialTry = gns.spawnNext();
+			}
 			partEncounter(other);
 		}
 	}
@@ -100,6 +108,7 @@ public class PlayerMover : MonoBehaviour {
   	unstoppable = true;
   	unstoppable_during = comboCount * unstoppable_time_scale;
   	unstoppableEffect.Play();
+		unstoppableEffect_two.Play();
   	energyBar.startUnstoppable();
   	unstoppableSphere.SetActive(true);
   	StartCoroutine("stopUnstoppable");
@@ -109,7 +118,9 @@ public class PlayerMover : MonoBehaviour {
   	yield return new WaitForSeconds(unstoppable_during);
   	unstoppable = false;
   	unstoppableEffect.Stop();
+		unstoppableEffect_two.Stop();
   	energyBar.stopUnstoppable();
   	unstoppableSphere.SetActive(false);
+		GameObject.Find("Field Objects").GetComponent<SpecialObjectsManager>().run();
   }
 }

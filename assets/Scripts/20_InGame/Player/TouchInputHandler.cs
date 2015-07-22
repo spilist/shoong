@@ -23,8 +23,8 @@ public class TouchInputHandler : MonoBehaviour
 	void Update() {
 		if (react && Input.GetMouseButtonDown(0)) {
 			if (!gameStarted) {
-				fieldObjectsManager.run();
 				specialObjectsManager.run();
+				fieldObjectsManager.run();
 				barsCanvas.GetComponent<Canvas>().enabled = true;
 				energyBar.startDecrease();
 				elapsedTime.startTime();

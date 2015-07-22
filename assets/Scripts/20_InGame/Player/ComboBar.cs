@@ -72,7 +72,7 @@ public class ComboBar : MonoBehaviour {
     }
     inner.fillAmount += 0.25f;
 		fill = 1;
-		StopCoroutine(coroutine);
+		StopCoroutine(BlinkCombobar());
 		comboBarTintColor.a = 1.0f;
 		comboBar.GetComponent<Image>().material.SetColor("_TintColor",comboBarTintColor);
   }
@@ -81,7 +81,7 @@ public class ComboBar : MonoBehaviour {
     if (comboCount > 0) {
 			if (fill == 1) {
 				fill = 0;
-				coroutine = StartCoroutine(BlinkCombobar());
+				StartCoroutine(BlinkCombobar());
 			} else {
 				fill = 1;
 				inner.fillAmount = 0f;

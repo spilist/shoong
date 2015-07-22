@@ -21,16 +21,18 @@ public class GenerateNextSpecial : MonoBehaviour {
 
     GameObject newInstance = (GameObject) Instantiate (gameObject, currentPos, spawnRotation);
     newInstance.transform.parent = som.gameObject.transform;
-
-    Vector3 spawnPosition = getNextSpawnPosition(currentPos);
-    GameObject nextInstance = (GameObject) Instantiate (next_prefab, spawnPosition, spawnRotation);
-    nextInstance.transform.parent = som.gameObject.transform;
-    nextInstance.GetComponent<OffsetFixer>().setParent(newInstance);
-
-    newInstance.GetComponent<GenerateNextSpecial>().setNext(nextInstance);
     newInstance.GetComponent<GenerateNextSpecial>().setComboCount(comboCount + 1);
 
+    if (GameObject.Find("Player").GetComponent<PlayerMover>().max_unstoppable_combo > (comboCount + 1)) {
+      Vector3 spawnPosition = getNextSpawnPosition(currentPos);
+      GameObject nextInstance = (GameObject) Instantiate (next_prefab, spawnPosition, spawnRotation);
+      nextInstance.transform.parent = som.gameObject.transform;
+      nextInstance.GetComponent<OffsetFixer>().setParent(newInstance);
+      newInstance.GetComponent<GenerateNextSpecial>().setNext(nextInstance);
+    }
+
     Destroy(next);
+
     return newInstance;
   }
 
@@ -50,6 +52,10 @@ public class GenerateNextSpecial : MonoBehaviour {
 
   public void setNext(GameObject target) {
     next = target;
+  }
+
+  public GameObject getNext() {
+    return next;
   }
 
   public void tryGetSpecial() {

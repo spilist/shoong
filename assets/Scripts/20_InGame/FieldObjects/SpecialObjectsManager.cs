@@ -8,11 +8,11 @@ public class SpecialObjectsManager : MonoBehaviour {
 
   public FieldObjectsManager fom;
 
-  public int size = 1;
+  public int numSpecialPart = 1;
   public float radius = 20;
 
   public void run() {
-    for (int i = 0; i < size; i++) {
+    for (int i = 0; i < numSpecialPart; i++) {
       GameObject specialInstantiated = fom.spawn(special);
       spawnHint(specialInstantiated);
     }
@@ -32,7 +32,7 @@ public class SpecialObjectsManager : MonoBehaviour {
     specialNextInstance.GetComponent<OffsetFixer>().setParent(origin);
 
     origin.GetComponent<GenerateNextSpecial>().setNext(specialNextInstance);
-    origin.GetComponent<GenerateNextSpecial>().setComboCount(0);
+    origin.GetComponent<GenerateNextSpecial>().setComboCount(1);
 
     // Draw line between special and next
     // GameObject specialLineInstance = (GameObject) Instantiate (special_line, originV, spawnRotation);
