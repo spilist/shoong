@@ -28,7 +28,7 @@ public class SpecialObjectsManager : MonoBehaviour {
     specialNextInstance.GetComponent<OffsetFixer>().setParent(origin);
 
     origin.GetComponent<GenerateNextSpecial>().setNext(specialNextInstance);
-    origin.GetComponent<GenerateNextSpecial>().setComboCount(1);
+    origin.GetComponent<GenerateNextSpecial>().setComboCount(0);
 
     // Draw line between special and next
     // GameObject specialLineInstance = (GameObject) Instantiate (special_line, originV, spawnRotation);

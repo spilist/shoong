@@ -1,20 +1,20 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class ObstacleIndicator : MonoBehaviour {
-  public GameObject player;
-
   private bool isIndicating = false;
   private GameObject[] obstacles;
-  private GameObject nearest_obstacle;
-  private float near_distance;
+  private float screenWidth;
+  private float screenHeight;
 
-  private MeshRenderer indicatorRenderer;
-  private Vector3 indicatorPos;
+  public float widthOffset = 30;
+  public float heightOffset = 50;
 
 	void Start () {
-    indicatorRenderer = gameObject.GetComponent<MeshRenderer>();
-    indicatorRenderer.enabled = false;
+    gameObject.SetActive(false);
+    screenWidth = transform.parent.GetComponent<RectTransform>().rect.width;
+    screenHeight = transform.parent.GetComponent<RectTransform>().rect.height;
 	}
 
 	void Update () {
@@ -24,42 +24,36 @@ public class ObstacleIndicator : MonoBehaviour {
 	}
 
   void showIndicate() {
-    obstacles = GameObject.FindGameObjectsWithTag("Obstacle_smaller");
-    nearest_obstacle = obstacles[0];
-    near_distance = distance(nearest_obstacle);
+    obstacles = GameObject.FindGameObjectsWithTag("Obstacle");
 
     foreach (GameObject obstacle in obstacles) {
-      float this_distance = distance(obstacle);
-      if (near_distance > this_distance) {
-        nearest_obstacle = obstacle;
-        near_distance = this_distance;
+      Vector2 targetPos = Camera.main.WorldToViewportPoint(obstacle.transform.position);
+
+      if (targetPos.x >= 0.0f && targetPos.x <= 1.0f && targetPos.y >= 0.0f && targetPos.y <= 1.0f) {
+        continue;
       }
-    }
+      else {
+        gameObject.SetActive(true);
+        // Player와의 각도를 얻음
+        Vector2 direction = new Vector2(targetPos.x - 0.5f, targetPos.y - 0.5f);
+        float angle = Mathf.Atan2 (direction.x, direction.y);
+        transform.localEulerAngles = new Vector3(0, 0, -angle * Mathf.Rad2Deg);
 
-    indicatorPos = Camera.main.WorldToViewportPoint(nearest_obstacle.transform.position);
+        direction.x = Mathf.Sin (angle);
+        direction.y = Mathf.Cos (angle);
 
-    if (indicatorPos.x >= 0.0f && indicatorPos.x <= 1.0f && indicatorPos.y >= 0.0f && indicatorPos.y <= 1.0f) {
-      indicatorRenderer.enabled = false;
-      return;
-    }
-    else {
-      indicatorRenderer.enabled = true;
-      indicatorPos.x -= 0.5f;
-      indicatorPos.y -= 0.5f;
-      float angle = Mathf.Atan2 (indicatorPos.x, indicatorPos.y);
-      transform.localEulerAngles = new Vector3(90, angle * Mathf.Rad2Deg, 0);
-      indicatorPos.x = 0.5f * Mathf.Sin (angle) + 0.5f;
-      indicatorPos.y = 0.5f * Mathf.Cos (angle) + 0.5f;
-      indicatorPos.z = Camera.main.transform.position.y;
-      transform.position = Camera.main.ViewportToWorldPoint(indicatorPos);
+        GetComponent<RectTransform>().anchoredPosition = new Vector2(direction.x * (screenWidth - widthOffset) / 2, direction.y * (screenHeight - heightOffset) / 2);
+      }
     }
   }
 
   public void startIndicate() {
     isIndicating = true;
+    gameObject.SetActive(true);
   }
 
-  private float distance(GameObject obj) {
-    return Vector3.Distance(obj.transform.position, player.transform.position);
+  public void stopIndicate() {
+    isIndicating = false;
+    gameObject.SetActive(false);
   }
 }

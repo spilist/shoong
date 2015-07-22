@@ -17,7 +17,7 @@ public class ComboBar : MonoBehaviour {
 	private int fill = 1;
   private Color trailTintColor;
 	private Color comboBarTintColor;
-	public Coroutine coroutine;
+	private IEnumerator coroutine;
 	private Color energyDestroyColor;
   public GameObject comboBar;
 	public float blinkingSeconds = 0.4f;
@@ -28,6 +28,7 @@ public class ComboBar : MonoBehaviour {
 	void Start () {
 		comboBarTintColor =comboBar.GetComponent<Image> ().material.GetColor ("_TintColor");
 		energyDestroy.emissionRate = 20;
+    coroutine = BlinkCombobar ();
 	}
 
 	IEnumerator BlinkCombobar() {
@@ -72,7 +73,7 @@ public class ComboBar : MonoBehaviour {
     }
     inner.fillAmount += 0.25f;
 		fill = 1;
-		StopCoroutine(BlinkCombobar());
+		StopCoroutine(coroutine);
 		comboBarTintColor.a = 1.0f;
 		comboBar.GetComponent<Image>().material.SetColor("_TintColor",comboBarTintColor);
   }
@@ -81,7 +82,7 @@ public class ComboBar : MonoBehaviour {
     if (comboCount > 0) {
 			if (fill == 1) {
 				fill = 0;
-				StartCoroutine(BlinkCombobar());
+				StartCoroutine(coroutine);
 			} else {
 				fill = 1;
 				inner.fillAmount = 0f;

@@ -25,7 +25,7 @@ public class GenerateNextSpecial : MonoBehaviour {
     newInstance.transform.parent = som.gameObject.transform;
     newInstance.GetComponent<GenerateNextSpecial>().setComboCount(comboCount + 1);
 
-    if (!isLastSpecial()) {
+    if (maxcombo > comboCount) {
       Vector3 spawnPosition = getNextSpawnPosition(currentPos);
       GameObject nextInstance = (GameObject) Instantiate (next_prefab, spawnPosition, spawnRotation);
       nextInstance.transform.parent = som.gameObject.transform;
@@ -47,10 +47,6 @@ public class GenerateNextSpecial : MonoBehaviour {
     return new Vector3(pos.x + randomV.x * som.radius, 0, pos.z + randomV.y * som.radius);
   }
 
-  private bool isLastSpecial() {
-    return (maxcombo <= (comboCount + 1));
-  }
-
   public void setComboCount(int val) {
     comboCount = val;
   }
@@ -69,19 +65,30 @@ public class GenerateNextSpecial : MonoBehaviour {
 
   public void tryGetSpecial() {
     if (secondShot) {
-      if (!isLastSpecial()) {
-        Instantiate(energyDestroy, next.transform.position, next.transform.rotation);
-        Destroy(next);
-      }
-
-      Instantiate(energyDestroy, transform.position, transform.rotation);
-
-      GameObject.Find("Player").GetComponent<PlayerMover>().startUnstoppable(comboCount);
-
-      Destroy(gameObject);
+      destroySelf(true, true, false);
     }
     else {
       secondShot = true;
+    }
+  }
+
+  public void destroySelf(bool turnEffectON, bool unstoppable, bool createNew) {
+    if (turnEffectON) {
+      Instantiate(energyDestroy, transform.position, transform.rotation);
+      if (next != null) Instantiate(energyDestroy, next.transform.position, next.transform.rotation);
+    }
+
+    if (unstoppable) {
+      if (comboCount > 0) {
+        GameObject.Find("Player").GetComponent<PlayerMover>().startUnstoppable(comboCount);
+      }
+    }
+
+    Destroy (gameObject);
+    if (next != null) Destroy(next);
+
+    if (createNew) {
+      som.run();
     }
   }
 }

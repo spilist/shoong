@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
 using System;
 
@@ -12,7 +12,9 @@ public class TouchInputHandler : MonoBehaviour
 	public ComboBar comboBar;
 	public ElapsedTime elapsedTime;
 	public GameObject idleUI;
-	public SpecialPartsIndicator spIndicator;
+
+	public SpecialPartIndicator spIndicator;
+	public ObstacleIndicator obsIndicator;
 
 	private bool gameStarted = false;
 	private bool react = true;
@@ -27,6 +29,7 @@ public class TouchInputHandler : MonoBehaviour
 				specialObjectsManager.run();
 				fieldObjectsManager.run();
 				spIndicator.startIndicate();
+				// obsIndicator.startIndicate();
 				barsCanvas.GetComponent<Canvas>().enabled = true;
 				energyBar.startDecrease();
 				elapsedTime.startTime();
@@ -38,8 +41,12 @@ public class TouchInputHandler : MonoBehaviour
 			Vector3 worldTouchPosition = Camera.main.ScreenToWorldPoint(touchPosition);
 			Vector3 heading = worldTouchPosition - player.transform.position;
 			Vector3 direction = heading / heading.magnitude;
-			energyBar.loseByShoot();
-			comboBar.loseByShoot();
+
+			if (!player.isUnstoppable()) {
+				energyBar.loseByShoot();
+				comboBar.loseByShoot();
+			}
+
 			player.booster.Play();
 			player.booster.GetComponent<AudioSource>().Play();
 			player.setDirection(direction);

@@ -6,9 +6,7 @@ public class DestroybyBoundary : MonoBehaviour {
 
 	void OnTriggerExit(Collider other) {
     if (other.tag == "SpecialPart") {
-      Destroy(other.gameObject.GetComponent<GenerateNextSpecial>().getNext());
-      Destroy(other.gameObject);
-      som.run();
+      other.gameObject.GetComponent<GenerateNextSpecial>().destroySelf(false, false, true);
     }
     else {
       Destroy(other.gameObject);

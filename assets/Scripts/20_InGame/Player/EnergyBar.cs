@@ -6,38 +6,38 @@ public class EnergyBar : MonoBehaviour {
   private Image image;
   private float changeTo;
   private float changeRate;
+  private float restAmount;
+  private float restRate;
 
   private bool isChanging;
-  private bool isAuto;
+  private bool isChangingRest;
   private bool gameStarted;
   private bool unstoppable = false;
 
   public float autoDecreaseRate = 0.05f;
-  public int getAmount = 20;
-	public int getAmountbyParts = 10;
+  public int getAmountbyParts = 10;
   public float getRate = 2f;
-  public int loseAmount = -20;
-  public float loseRate = 0.5f;
   public int shootAmount = -10;
-  public float shootRate = 0.25f;
+  public float loseRate = 1;
   public GameOver gameOver;
 
   void Start () {
     image = GetComponent<Image>();
     isChanging = false;
-    isAuto = false;
+    isChangingRest = false;
     gameStarted = false;
+    changeTo = 0;
+    restAmount = 0;
 	}
 
 	void Update () {
     if (gameStarted) {
-      if (unstoppable) return;
-
-      if (isAuto) {
-        autoDecrease();
-      }
-      else if (isChanging) {
+      if (isChanging) {
         change();
+      } else if (isChangingRest) {
+        changeRest();
+      } else {
+        autoDecrease();
       }
 
       if (image.fillAmount == 0) {
@@ -48,6 +48,7 @@ public class EnergyBar : MonoBehaviour {
 	}
 
   void autoDecrease() {
+    if (unstoppable) return;
     image.fillAmount = Mathf.MoveTowards(image.fillAmount, 0, Time.deltaTime * autoDecreaseRate);
   }
 
@@ -56,45 +57,45 @@ public class EnergyBar : MonoBehaviour {
 
     if (image.fillAmount == changeTo) {
       isChanging = false;
-      isAuto = true;
+      isChangingRest = true;
+    }
+  }
+
+  void changeRest() {
+    if (restAmount != 0) {
+      image.fillAmount = Mathf.MoveTowards(image.fillAmount, image.fillAmount + restAmount, restRate);
+      restAmount = Mathf.MoveTowards(restAmount, 0, restRate);
+    } else {
+      isChangingRest = false;
     }
   }
 
   public void startDecrease() {
     gameStarted = true;
-    isAuto = true;
-  }
-
-  public void getHealth() {
-    changeHealth(getAmount, getRate);
-  }
-
-	public void getHealthbyParts() {
-		changeHealth(getAmountbyParts, getRate);
-	}
-
-  public void loseHealth() {
-    changeHealth(loseAmount, loseRate);
-  }
-
-  public void loseByShoot() {
-    changeHealth(shootAmount, shootRate);
   }
 
   void changeHealth (int amount, float rate) {
     if (!gameStarted)
       return;
 
+    // if it is the middle of change, save the rest amount and rate
+    if (isChanging) {
+      restAmount += changeTo - image.fillAmount + amount / 100f;
+      restRate = changeRate;
+    }
+
     isChanging = true;
-    isAuto = false;
     changeTo = image.fillAmount + amount / 100f;
-    if (amount > 0) {
-      changeTo = Mathf.Min(1f, changeTo);
-    }
-    else {
-      changeTo = Mathf.Max(0, changeTo);
-    }
+    changeTo = Mathf.Clamp(changeTo, 0, 1);
     changeRate = Time.deltaTime * rate;
+  }
+
+  public void getHealthbyParts() {
+    changeHealth(getAmountbyParts, getRate);
+  }
+
+  public void loseByShoot() {
+    changeHealth(shootAmount, loseRate);
   }
 
   public void startUnstoppable() {

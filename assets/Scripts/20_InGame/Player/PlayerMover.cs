@@ -54,43 +54,32 @@ public class PlayerMover : MonoBehaviour {
 			if (unstoppable) {
 				Instantiate(obstacleDestroy, other.transform.position, other.transform.rotation);
 				Destroy(other.gameObject);
-			}
-			else {
+			} else {
 				gameOver.run();
 			}
 		} else if (other.tag == "Part") {
-			GetComponent<AudioSource>().Play ();
-			getEnergy.Play ();
+			goodPartsEncounter();
 			Instantiate(energyDestroy, other.transform.position, other.transform.rotation);
 			Destroy (other.gameObject);
-
-			energyBar.getHealthbyParts();
-			partsCount.addCount();
-
-			comboBar.addCombo();
 		} else if (other.tag == "SpecialPart") {
 			GenerateNextSpecial gns = other.gameObject.GetComponent<GenerateNextSpecial>();
-			if (gns.getComboCount() == max_unstoppable_combo) {
+			if (gns.getComboCount() == (max_unstoppable_combo - 1)) {
 				startUnstoppable(max_unstoppable_combo);
-			}
-			else {
+			} else {
 				nextSpecialTry = gns.spawnNext();
 			}
-			partEncounter(other);
+			goodPartsEncounter();
+      gns.destroySelf(true, false, false);
 		}
 	}
 
-	void partEncounter(Collider part) {
-		GetComponent<AudioSource>().Play ();
-		getEnergy.Play ();
-		Instantiate(energyDestroy, part.transform.position, part.transform.rotation);
-		Destroy (part.gameObject);
-
-		energyBar.getHealthbyParts();
-		partsCount.addCount();
-
-		comboBar.addCombo();
-	}
+  private void goodPartsEncounter() {
+    GetComponent<AudioSource>().Play ();
+    getEnergy.Play ();
+    energyBar.getHealthbyParts();
+    partsCount.addCount();
+    comboBar.addCombo();
+  }
 
 	public void rotatePlayerBody() {
 		GetComponent<Rigidbody>().angularVelocity = Random.onUnitSphere * tumble;
@@ -122,5 +111,9 @@ public class PlayerMover : MonoBehaviour {
   	energyBar.stopUnstoppable();
   	unstoppableSphere.SetActive(false);
 		GameObject.Find("Field Objects").GetComponent<SpecialObjectsManager>().run();
+  }
+
+  public bool isUnstoppable() {
+    return unstoppable;
   }
 }

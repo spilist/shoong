@@ -48,8 +48,18 @@ public class FieldObjectsMover : MonoBehaviour {
     } else if (tag == "Obstacle") {
       if (colliderTag == "Obstacle") {
         processCollision(collision);
-      } else if (colliderTag == "Part" || colliderTag == "SpecialPart") {
+      } else if (colliderTag == "Part") {
         Destroy(collision.collider.gameObject);
+      } else if (colliderTag == "SpecialPart") {
+        GenerateNextSpecial gns = collision.collider.gameObject.GetComponent<GenerateNextSpecial>();
+
+        if (gns.getComboCount() > 0) {
+          // Player was trying to get it
+          gns.destroySelf(true, true, false);
+        } else {
+          // Destroyed somewhere
+          gns.destroySelf(true, false, true);
+        }
       }
     }
   }
