@@ -7,15 +7,11 @@ public class SpecialObjectsManager : MonoBehaviour {
   public GameObject special_line;
 
   public FieldObjectsManager fom;
-
-  public int numSpecialPart = 1;
   public float radius = 20;
 
   public void run() {
-    for (int i = 0; i < numSpecialPart; i++) {
-      GameObject specialInstantiated = fom.spawn(special);
+    GameObject specialInstantiated = fom.spawn(special);
       spawnHint(specialInstantiated);
-    }
   }
 
   void spawnHint(GameObject origin) {

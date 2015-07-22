@@ -12,6 +12,7 @@ public class TouchInputHandler : MonoBehaviour
 	public ComboBar comboBar;
 	public ElapsedTime elapsedTime;
 	public GameObject idleUI;
+	public SpecialPartsIndicator spIndicator;
 
 	private bool gameStarted = false;
 	private bool react = true;
@@ -25,6 +26,7 @@ public class TouchInputHandler : MonoBehaviour
 			if (!gameStarted) {
 				specialObjectsManager.run();
 				fieldObjectsManager.run();
+				spIndicator.startIndicate();
 				barsCanvas.GetComponent<Canvas>().enabled = true;
 				energyBar.startDecrease();
 				elapsedTime.startTime();
