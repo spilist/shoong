@@ -38,36 +38,17 @@ public class FieldObjectsMover : MonoBehaviour {
   {
     if (isMagnetized) return;
 
-    string tag = gameObject.tag;
     string colliderTag = collision.collider.tag;
 
-    if (tag == "Part") {
-      if (colliderTag == "Part" || colliderTag == "SpecialPart") {
-        processCollision(collision);
-      }
-    } else if (tag == "Obstacle") {
-      if (colliderTag == "Obstacle") {
-        processCollision(collision);
-      } else if (colliderTag == "Part") {
-        Destroy(collision.collider.gameObject);
-      } else if (colliderTag == "SpecialPart") {
-        GenerateNextSpecial gns = collision.collider.gameObject.GetComponent<GenerateNextSpecial>();
-
-        if (gns.getComboCount() > 0) {
-          // Player was trying to get it
-          gns.destroySelf(true, true, false);
-        } else {
-          // Destroyed somewhere
-          gns.destroySelf(true, false, true);
-        }
-      }
+    if (colliderTag == "Part" || colliderTag == "SpecialPart") {
+      processCollision(collision);
     }
   }
 
   public void processCollision(Collision collision) {
     ContactPoint contact = collision.contacts[0];
     Vector3 normal = contact.normal;
-    Vector3 direction = Vector3.Reflect(direction, -normal).normalized;
+    direction = Vector3.Reflect(direction, -normal).normalized;
     direction.y = 0;
     direction.Normalize();
   }

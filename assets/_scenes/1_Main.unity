@@ -3831,52 +3831,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1437578306}
---- !u!1 &1530097021
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 224: {fileID: 1530097022}
-  - 114: {fileID: 1530097023}
-  m_Layer: 5
-  m_Name: Obstacle Indicators
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1530097022
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1530097021}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2134279969}
-  m_RootOrder: 3
-  m_AnchorMin: {x: .5, y: .5}
-  m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: .5, y: .5}
---- !u!114 &1530097023
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1530097021}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50cfc00e5abd143c2b3a4152c52c276d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  widthOffset: 30
-  heightOffset: 50
 --- !u!1 &1593744716
 GameObject:
   m_ObjectHideFlags: 0
@@ -4141,7 +4095,7 @@ MonoBehaviour:
   elapsedTime: {fileID: 980455324}
   idleUI: {fileID: 1817731073}
   spIndicator: {fileID: 2131139023}
-  obsIndicator: {fileID: 1530097023}
+  obsIndicator: {fileID: 0}
 --- !u!64 &1801634120
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4426,6 +4380,7 @@ GameObject:
   - 4: {fileID: 1991538104}
   - 114: {fileID: 1991538105}
   - 114: {fileID: 1991538106}
+  - 114: {fileID: 1991538107}
   m_Layer: 9
   m_Name: Field Objects
   m_TagString: Untagged
@@ -4456,19 +4411,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e79a950af34ff99459a86f3608e9c01f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstacles:
-  - {fileID: 195472, guid: cfdf45a8ca588407d84475bccdb83b45, type: 2}
-  - {fileID: 119438, guid: 3d3b1ff59a5524adaa196a2a9a5dd4f8, type: 2}
-  - {fileID: 138192, guid: 39ae9325fc1bd4d13a70c089698899bd, type: 2}
-  - {fileID: 121254, guid: 2679d9d5cfcac4d17a30ffbf890b119b, type: 2}
-  - {fileID: 138142, guid: 5282d75336a9344948a3850d724a40a3, type: 2}
-  - {fileID: 155078, guid: e6c20ed1857a7484f93bdc922b3cf045, type: 2}
   parts:
   - {fileID: 121012, guid: 532f92fe8826d433c9465e8fc387f305, type: 2}
   - {fileID: 137376, guid: 687c694e3e0c84920afaa2510449ab32, type: 2}
   - {fileID: 178760, guid: 60ac4f8bf259148408f8d9e99bcb1ca2, type: 2}
   - {fileID: 103062, guid: b9e87ec91a93341948e088c253b40abc, type: 2}
-  max_obstacles: 0
   max_parts: 50
   generateSpaceRadius: 1
   generateOffset: .200000003
@@ -4476,10 +4423,8 @@ MonoBehaviour:
   fieldObjectsLayerMask:
     serializedVersion: 2
     m_Bits: 512
-  speed_obstacles: 60
   speed_parts: 5
   speed_special: 5
-  tumble_obstacles: 1
   tumble_parts: 1
   tumble_special: 5
   unstoppableFollowSpeed: 1.5
@@ -4499,6 +4444,31 @@ MonoBehaviour:
   special_line: {fileID: 160548, guid: ff79b10b6d1744e5f8e59299310d0ae0, type: 2}
   fom: {fileID: 1991538105}
   radius: 45
+--- !u!114 &1991538107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1991538103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a67c4dbdff88749fdb99622d14e4f2dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obstacles:
+  - {fileID: 195472, guid: cfdf45a8ca588407d84475bccdb83b45, type: 2}
+  - {fileID: 119438, guid: 3d3b1ff59a5524adaa196a2a9a5dd4f8, type: 2}
+  - {fileID: 138192, guid: 39ae9325fc1bd4d13a70c089698899bd, type: 2}
+  - {fileID: 121254, guid: 2679d9d5cfcac4d17a30ffbf890b119b, type: 2}
+  - {fileID: 138142, guid: 5282d75336a9344948a3850d724a40a3, type: 2}
+  - {fileID: 155078, guid: e6c20ed1857a7484f93bdc922b3cf045, type: 2}
+  speed: 200
+  tumble: 1
+  minSpawnInterval: .5
+  maxSpawnInterval: 5
+  warnPlayerDuring: 1
+  UICanvas: {fileID: 2134279972}
+  obsIndicatorPrefab: {fileID: 144306, guid: 825df36890cc14b58a88c21930d89f0d, type: 2}
 --- !u!1 &2114907097
 GameObject:
   m_ObjectHideFlags: 0
@@ -4672,7 +4642,6 @@ RectTransform:
   - {fileID: 980455323}
   - {fileID: 589887828}
   - {fileID: 2131139020}
-  - {fileID: 1530097022}
   m_Father: {fileID: 507386076}
   m_RootOrder: 1
   m_AnchorMin: {x: 0, y: 0}

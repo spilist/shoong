@@ -2,10 +2,8 @@
 using System.Collections;
 
 public class FieldObjectsManager : MonoBehaviour {
-	public GameObject[] obstacles;
 	public GameObject[] parts;
 
-	public int max_obstacles = 5;
 	public int max_parts = 50;
 
 	public float generateSpaceRadius = 5f;
@@ -13,12 +11,12 @@ public class FieldObjectsManager : MonoBehaviour {
 	public int partsMinDistance = 50;
  	public LayerMask fieldObjectsLayerMask;
 
-	public float speed_obstacles = 1;
+	// public float speed_obstacles = 1;
 	public float speed_parts = 10;
 	public float speed_special = 5;
 	private Hashtable speed;
 
-	public float tumble_obstacles = 0.5f;
+	// public float tumble_obstacles = 0.5f;
 	public float tumble_parts = 5f;
 	public float tumble_special = 5f;
 	private Hashtable tumble;
@@ -36,21 +34,17 @@ public class FieldObjectsManager : MonoBehaviour {
 
 	void generateObjectValuesHashtable() {
 		speed = new Hashtable();
-		speed.Add("Obstacle", speed_obstacles);
+		// speed.Add("Obstacle", speed_obstacles);
 		speed.Add("Part", speed_parts);
 		speed.Add("SpecialPart", speed_special);
 
 		tumble = new Hashtable();
-		tumble.Add("Obstacle", tumble_obstacles);
+		// tumble.Add("Obstacle", tumble_obstacles);
 		tumble.Add("Part", tumble_parts);
 		tumble.Add("SpecialPart", tumble_special);
 	}
 
 	void generateObjectsAtStart() {
-		for (int i = 0; i < max_obstacles; i++) {
-			instantiateFieldObject(obstacles);
-		}
-
 		for (int i = 0; i < max_parts; i++) {
 			instantiateFieldObject(parts);
 		}
@@ -88,10 +82,6 @@ public class FieldObjectsManager : MonoBehaviour {
 	}
 
 	void Update () {
-		if (GameObject.FindGameObjectsWithTag ("Obstacle").Length < max_obstacles) {
-			instantiateFieldObject(obstacles);
-		}
-
 		if (GameObject.FindGameObjectsWithTag ("Part").Length < max_parts) {
 			instantiateFieldObject(parts);
 		}

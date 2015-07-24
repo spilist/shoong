@@ -15,7 +15,7 @@ GameObject:
   - 198: {fileID: 19852762}
   - 199: {fileID: 19973364}
   - 122: {fileID: 12201466}
-  - 114: {fileID: 11489116}
+  - 114: {fileID: 11436260}
   m_Layer: 0
   m_Name: Meteoroid1_1
   m_TagString: Obstacle
@@ -81,7 +81,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 4
   m_CollisionDetection: 0
---- !u!114 &11489116
+--- !u!114 &11436260
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -89,7 +89,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 195472}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a03bc6f4050734c98a1a0624e79be0fc, type: 3}
+  m_Script: {fileID: 11500000, guid: 2968ff343918b42168230ef658afc639, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!122 &12201466
@@ -1445,7 +1445,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: mover
       value: 
-      objectReference: {fileID: 11489116}
+      objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_LocalPosition.x
       value: 0
