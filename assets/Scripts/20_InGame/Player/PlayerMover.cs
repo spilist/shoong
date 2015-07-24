@@ -1,25 +1,31 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class PlayerMover : MonoBehaviour {
-	public ParticleSystem getEnergy;
-	public ParticleSystem booster;
-	public ParticleSystem unstoppableEffect;
-	public ParticleSystem unstoppableEffect_two;
-	public EnergyBar energyBar;
-	public ComboBar comboBar;
 	public PartsCount partsCount;
-	public GameOver gameOver;
-	public Transform energyDestroy;
-	public GameObject obstacleDestroy;
-	public GameObject unstoppableSphere;
+  public GameOver gameOver;
+  public Transform energyDestroy;
+  public GameObject obstacleDestroy;
+  public GameObject unstoppableSphere;
 
 	public float speed;
   public float tumble;
-
 	private Vector3 direction;
+
+  private Canvas barsCanvas;
+  private EnergyBar energyBar;
+  private ComboBar comboBar;
+  public ParticleSystem booster;
+  public ParticleSystem getEnergy;
+  public ParticleSystem unstoppableEffect;
+  public ParticleSystem unstoppableEffect_two;
+
 	private bool unstoppable = false;
 	private float unstoppable_during = 0;
+  public float unstoppable_minbonus = 0.5f;
+  public float unstoppable_end_soon_during = 1;
+  public float unstoppable_blinkingSeconds = 0.2f;
 	public int unstoppable_speed = 150;
 	public float unstoppable_time_scale = 1;
 	public int max_unstoppable_combo = 10;
@@ -33,6 +39,10 @@ public class PlayerMover : MonoBehaviour {
     randomV.Normalize();
     direction = new Vector3(randomV.x, 0, randomV.y);
     GetComponent<Rigidbody> ().velocity = direction * speed;
+
+    barsCanvas = transform.Find("Bars Canvas").GetComponent<Canvas>();
+    energyBar = transform.Find("Bars Canvas/EnergyBar").GetComponent<EnergyBar>();
+    comboBar = transform.Find("Bars Canvas").GetComponent<ComboBar>();
 	}
 
 	void Update () {
@@ -95,7 +105,7 @@ public class PlayerMover : MonoBehaviour {
 
   public void startUnstoppable(int comboCount) {
   	unstoppable = true;
-  	unstoppable_during = comboCount * unstoppable_time_scale;
+  	unstoppable_during = comboCount * unstoppable_time_scale + unstoppable_minbonus;
   	unstoppableEffect.Play();
 		unstoppableEffect_two.Play();
   	energyBar.startUnstoppable();
@@ -104,8 +114,22 @@ public class PlayerMover : MonoBehaviour {
   }
 
   IEnumerator stopUnstoppable() {
-  	yield return new WaitForSeconds(unstoppable_during);
-  	unstoppable = false;
+    yield return new WaitForSeconds(unstoppable_during - unstoppable_end_soon_during);
+
+    float duration = unstoppable_end_soon_during;
+    while(duration > 0f) {
+      duration -= unstoppable_blinkingSeconds;
+      GetComponent<Renderer>().enabled = !GetComponent<Renderer>().enabled;
+      // GetComponent<TrailRenderer>().enabled = !GetComponent<TrailRenderer>().enabled;
+      barsCanvas.enabled = !barsCanvas.enabled;
+
+      yield return new WaitForSeconds(unstoppable_blinkingSeconds);
+    }
+    GetComponent<Renderer>().enabled = true;
+    // GetComponent<TrailRenderer>().enabled = true;
+    barsCanvas.enabled = true;
+
+    unstoppable = false;
   	unstoppableEffect.Stop();
 		unstoppableEffect_two.Stop();
   	energyBar.stopUnstoppable();

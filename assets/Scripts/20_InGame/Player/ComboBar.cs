@@ -4,14 +4,13 @@ using System.Collections;
 
 public class ComboBar : MonoBehaviour {
   public Image inner;
-  public Image outer;
   public Text[] comboRatio;
   public ParticleSystem comboGlow;
 	public ParticleSystem getEnergy;
 	public ParticleSystem energyDestroy;
   public GameObject player;
 
-   public float tintAmount = 0.02f;
+  public float tintAmount = 0.02f;
 
   private int comboCount = 0;
 	private int fill = 1;
@@ -19,14 +18,12 @@ public class ComboBar : MonoBehaviour {
 	private Color comboBarTintColor;
 	private IEnumerator coroutine;
 	private Color energyDestroyColor;
-  public GameObject comboBar;
-	public float blinkingSeconds = 0.4f;
 
-	public PlayerMover playerMover;
+	public float blinkingSeconds = 0.4f;
 	public float moverspeed;
 
 	void Start () {
-		comboBarTintColor =comboBar.GetComponent<Image> ().material.GetColor ("_TintColor");
+		comboBarTintColor = inner.material.GetColor ("_TintColor");
 		energyDestroy.emissionRate = 20;
     coroutine = BlinkCombobar ();
 	}
@@ -35,12 +32,12 @@ public class ComboBar : MonoBehaviour {
 		while (true) {
 
 			comboBarTintColor.a = 0.3f;
-			comboBar.GetComponent<Image> ().material.SetColor ("_TintColor", comboBarTintColor);
+			inner.material.SetColor ("_TintColor", comboBarTintColor);
 
 			yield return new WaitForSeconds (0.8f - blinkingSeconds);
 
 			comboBarTintColor.a = 1.0f;
-			comboBar.GetComponent<Image> ().material.SetColor ("_TintColor", comboBarTintColor);
+			inner.material.SetColor ("_TintColor", comboBarTintColor);
 
 			yield return new WaitForSeconds (blinkingSeconds);
 		}
@@ -51,9 +48,9 @@ public class ComboBar : MonoBehaviour {
       comboCount++;
 			getEnergy.emissionRate += 100;
       comboGlow.emissionRate += 	100;
-			comboBarTintColor =comboBar.GetComponent<Image> ().material.GetColor ("_TintColor");
+			comboBarTintColor = inner.material.GetColor ("_TintColor");
 				comboBarTintColor.a = 1.0f;
-				comboBar.GetComponent<Image>().material.SetColor("_TintColor",comboBarTintColor);
+				inner.material.SetColor("_TintColor",comboBarTintColor);
 
       hideComboRatios();
       comboRatio[comboCount-1].enabled = true;
@@ -75,7 +72,7 @@ public class ComboBar : MonoBehaviour {
 		fill = 1;
 		StopCoroutine(coroutine);
 		comboBarTintColor.a = 1.0f;
-		comboBar.GetComponent<Image>().material.SetColor("_TintColor",comboBarTintColor);
+		inner.material.SetColor("_TintColor",comboBarTintColor);
   }
 
   public void loseByShoot() {
@@ -89,7 +86,7 @@ public class ComboBar : MonoBehaviour {
 				hideComboRatios ();
 				StopCoroutine(coroutine);
 				comboBarTintColor.a = 1.0f;
-				comboBar.GetComponent<Image>().material.SetColor("_TintColor",comboBarTintColor);
+				inner.material.SetColor("_TintColor",comboBarTintColor);
 				if (comboCount > 0) {
 					//comboCount--;
 					comboCount = 0;

@@ -9,7 +9,9 @@ public class FieldObjectsManager : MonoBehaviour {
 	public int max_parts = 50;
 
 	public float generateSpaceRadius = 5f;
-	public float minimumGenerateDistance = 0.5f;
+	public float generateOffset = 0.2f;
+	public int partsMinDistance = 50;
+ 	public LayerMask fieldObjectsLayerMask;
 
 	public float speed_obstacles = 1;
 	public float speed_parts = 10;
@@ -27,9 +29,9 @@ public class FieldObjectsManager : MonoBehaviour {
 	}
 
 	public void run() {
+		gameObject.SetActive(true);
 		generateObjectsAtStart();
 		generateObjectValuesHashtable();
-		gameObject.SetActive(true);
 	}
 
 	void generateObjectValuesHashtable() {
@@ -60,28 +62,29 @@ public class FieldObjectsManager : MonoBehaviour {
 	}
 
 	public GameObject spawn(GameObject target) {
-		Vector3 spawnPosition = getSpawnPosition(target);
+		Vector3 spawnPosition = getSpawnPosition();
 		Quaternion spawnRotation = Quaternion.identity;
 		GameObject newInstance = (GameObject) Instantiate (target, spawnPosition, spawnRotation);
 		newInstance.transform.parent = gameObject.transform;
 		return newInstance;
 	}
 
-	private Vector3 getSpawnPosition(GameObject target) {
+	private Vector3 getSpawnPosition() {
 		float screenX, screenY;
-		screenX = Random.Range(0, minimumGenerateDistance + generateSpaceRadius * 2);
-		if (generateSpaceRadius < screenX && screenX <= generateSpaceRadius + 1 + minimumGenerateDistance)
-			screenX += generateSpaceRadius;
+		Vector3 spawnPosition;
+		int count = 0;
+		do {
+			do {
+				screenX = Random.Range(-generateSpaceRadius, 1 + generateSpaceRadius);
+				screenY = Random.Range(-generateSpaceRadius, 1 + generateSpaceRadius);
+			} while(-generateOffset < screenX && screenX < generateOffset + 1 && -generateOffset < screenY && screenY < generateOffset + 1);
 
-		screenY = Random.Range(0, minimumGenerateDistance + generateSpaceRadius * 2);
-		if (generateSpaceRadius < screenY && screenY <= generateSpaceRadius + 1 + minimumGenerateDistance)
-			screenY += generateSpaceRadius;
+			spawnPosition = Camera.main.ViewportToWorldPoint(new Vector3(screenX, screenY, Camera.main.transform.position.y));
+		} while(Physics.OverlapSphere(spawnPosition, partsMinDistance, fieldObjectsLayerMask).Length > 0 && count++ < 100);
 
-		screenX -= generateSpaceRadius;
-		screenY -= generateSpaceRadius;
+		if (count >= 100) Debug.Log(count);
 
-		Vector3 screenVector = new Vector3(screenX, screenY, Camera.main.transform.position.y);
-		return Camera.main.ViewportToWorldPoint(screenVector);
+		return spawnPosition;
 	}
 
 	void Update () {

@@ -62,10 +62,11 @@ public class EnergyBar : MonoBehaviour {
   }
 
   void changeRest() {
-    if (restAmount != 0) {
+    if (restAmount != 0 && image.fillAmount != 1) {
       image.fillAmount = Mathf.MoveTowards(image.fillAmount, image.fillAmount + restAmount, restRate);
       restAmount = Mathf.MoveTowards(restAmount, 0, restRate);
     } else {
+      restAmount = 0;
       isChangingRest = false;
     }
   }

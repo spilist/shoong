@@ -145,7 +145,7 @@ RectTransform:
   m_Children:
   - {fileID: 1313245750}
   m_Father: {fileID: 1289803596}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: -38, y: -5}
@@ -285,12 +285,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e43d260986d57a40b41b81b06bb0f7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  getEnergy: {fileID: 317572741}
-  booster: {fileID: 131396333}
-  unstoppableEffect: {fileID: 621705455}
-  unstoppableEffect_two: {fileID: 1934776454}
-  energyBar: {fileID: 1593744718}
-  comboBar: {fileID: 1289803601}
   partsCount: {fileID: 589887829}
   gameOver: {fileID: 868146742}
   energyDestroy: {fileID: 428390, guid: 7a4903aebeaf1440d95d69b1daac37af, type: 2}
@@ -298,6 +292,13 @@ MonoBehaviour:
   unstoppableSphere: {fileID: 851953042}
   speed: 45
   tumble: 4
+  booster: {fileID: 131396333}
+  getEnergy: {fileID: 317572741}
+  unstoppableEffect: {fileID: 621705455}
+  unstoppableEffect_two: {fileID: 1934776454}
+  unstoppable_minbonus: .5
+  unstoppable_end_soon_during: 1
+  unstoppable_blinkingSeconds: .200000003
   unstoppable_speed: 150
   unstoppable_time_scale: 1
   max_unstoppable_combo: 4
@@ -728,7 +729,7 @@ RectTransform:
   m_Children:
   - {fileID: 892795961}
   m_Father: {fileID: 1289803596}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 40, y: 5}
@@ -3426,7 +3427,6 @@ RectTransform:
   - {fileID: 1301094252}
   - {fileID: 803409798}
   - {fileID: 1388362258}
-  - {fileID: 1467460471}
   - {fileID: 194232395}
   - {fileID: 1340076212}
   - {fileID: 42567809}
@@ -3515,7 +3515,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inner: {fileID: 803409796}
-  outer: {fileID: 1467460473}
   comboRatio:
   - {fileID: 194232396}
   - {fileID: 1340076213}
@@ -3526,9 +3525,7 @@ MonoBehaviour:
   energyDestroy: {fileID: 19839298, guid: 7a4903aebeaf1440d95d69b1daac37af, type: 2}
   player: {fileID: 91418582}
   tintAmount: .0199999996
-  comboBar: {fileID: 803409794}
   blinkingSeconds: .600000024
-  playerMover: {fileID: 0}
   moverspeed: 45
 --- !u!1 &1301094251
 GameObject:
@@ -3666,7 +3663,7 @@ RectTransform:
   m_Children:
   - {fileID: 550175709}
   m_Father: {fileID: 1289803596}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 11, y: -34}
@@ -3834,67 +3831,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1437578306}
---- !u!1 &1467460470
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 224: {fileID: 1467460471}
-  - 222: {fileID: 1467460474}
-  - 114: {fileID: 1467460473}
-  m_Layer: 10
-  m_Name: ComboBarOuter
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1467460471
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1467460470}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1289803596}
-  m_RootOrder: 4
-  m_AnchorMin: {x: .5, y: .5}
-  m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: -2.38742446e-12, y: -5.45696821e-12}
-  m_SizeDelta: {x: 67, y: 67}
-  m_Pivot: {x: .5, y: .5}
---- !u!114 &1467460473
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1467460470}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 2100000, guid: 272ba847f100d4251bb8260575189042, type: 2}
-  m_Color: {r: 1, g: 1, b: 1, a: .0659999996}
-  m_Sprite: {fileID: 21300000, guid: d9b86b21d3a2644dc925d1ada431303c, type: 3}
-  m_Type: 3
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 0
-  m_FillClockwise: 1
-  m_FillOrigin: 2
---- !u!222 &1467460474
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1467460470}
 --- !u!1 &1530097021
 GameObject:
   m_ObjectHideFlags: 0
@@ -4438,7 +4374,7 @@ RectTransform:
   m_Children:
   - {fileID: 1079206761}
   m_Father: {fileID: 1289803596}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: -9, y: 35}
@@ -4535,7 +4471,11 @@ MonoBehaviour:
   max_obstacles: 0
   max_parts: 50
   generateSpaceRadius: 1
-  minimumGenerateDistance: 0
+  generateOffset: .200000003
+  partsMinDistance: 50
+  fieldObjectsLayerMask:
+    serializedVersion: 2
+    m_Bits: 512
   speed_obstacles: 60
   speed_parts: 5
   speed_special: 5
@@ -4558,7 +4498,7 @@ MonoBehaviour:
   special_next: {fileID: 106010, guid: 0c9f9410f926d487d8f749586b909967, type: 2}
   special_line: {fileID: 160548, guid: ff79b10b6d1744e5f8e59299310d0ae0, type: 2}
   fom: {fileID: 1991538105}
-  radius: 50
+  radius: 45
 --- !u!1 &2114907097
 GameObject:
   m_ObjectHideFlags: 0
