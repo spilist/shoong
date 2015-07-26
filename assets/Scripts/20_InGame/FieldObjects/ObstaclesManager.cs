@@ -9,22 +9,21 @@ public class ObstaclesManager : MonoBehaviour {
   public float minSpawnInterval = 0.5f;
   public float maxSpawnInterval = 5;
   public float warnPlayerDuring = 1;
+  public float obstacleCircleScale = 1.2f;
   public Canvas UICanvas;
 
   public GameObject obsIndicatorPrefab;
 
-  private float screenWidth;
-  private float screenHeight;
-
-	void Start () {
+  void Start () {
     StartCoroutine("spawnObstacle");
-	}
+  }
 
-	void Update () {
-	}
+  void Update () {
+  }
 
   IEnumerator spawnObstacle() {
     while(true) {
+      GameObject prefab = obstacles[Random.Range(0, obstacles.Length)];
       float interval = Random.Range(minSpawnInterval, maxSpawnInterval);
       yield return new WaitForSeconds(interval);
 
@@ -35,7 +34,9 @@ public class ObstaclesManager : MonoBehaviour {
       obsIndicator.GetComponent<ObstacleIndicator>().run(screenPos, warnPlayerDuring);
       yield return new WaitForSeconds(warnPlayerDuring);
 
-      GameObject prefab = obstacles[Random.Range(0, obstacles.Length)];
+      screenPos.x = (screenPos.x - 0.5f) * obstacleCircleScale + 0.5f;
+      screenPos.y = (screenPos.y - 0.5f) * obstacleCircleScale + 0.5f;
+
       Vector3 spawnPos = Camera.main.ViewportToWorldPoint(new Vector3(screenPos.x, screenPos.y, Camera.main.transform.position.y));
       GameObject obstacle = (GameObject) Instantiate(prefab, spawnPos, Quaternion.identity);
       obstacle.transform.parent = gameObject.transform;

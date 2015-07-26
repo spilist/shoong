@@ -14,7 +14,7 @@ public class GenerateNextSpecial : MonoBehaviour {
 
   void Start() {
     som = GameObject.Find("Field Objects").GetComponent<SpecialObjectsManager>();
-    maxcombo = GameObject.Find("Player").GetComponent<PlayerMover>().max_unstoppable_combo;
+    maxcombo = GameObject.Find("Player").GetComponent<PlayerMover>().max_unstoppable_combo - 1;
   }
 
   public GameObject spawnNext() {
@@ -25,11 +25,13 @@ public class GenerateNextSpecial : MonoBehaviour {
     newInstance.transform.parent = som.gameObject.transform;
     newInstance.GetComponent<GenerateNextSpecial>().setComboCount(comboCount + 1);
 
-    if (maxcombo > comboCount) {
+    if (maxcombo > comboCount + 1) {
       Vector3 spawnPosition = getNextSpawnPosition(currentPos);
       GameObject nextInstance = (GameObject) Instantiate (next_prefab, spawnPosition, spawnRotation);
+      Instantiate(energyDestroy, spawnPosition, spawnRotation);
       nextInstance.transform.parent = som.gameObject.transform;
       nextInstance.GetComponent<OffsetFixer>().setParent(newInstance);
+
       newInstance.GetComponent<GenerateNextSpecial>().setNext(nextInstance);
     }
     else {
@@ -75,7 +77,6 @@ public class GenerateNextSpecial : MonoBehaviour {
   public void destroySelf(bool turnEffectON, bool unstoppable, bool createNew) {
     if (turnEffectON) {
       Instantiate(energyDestroy, transform.position, transform.rotation);
-      if (next != null) Instantiate(energyDestroy, next.transform.position, next.transform.rotation);
     }
 
     if (unstoppable) {
