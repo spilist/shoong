@@ -90,14 +90,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a03bc6f4050734c98a1a0624e79be0fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unstoppableFollowSpeed: 2
 --- !u!122 &12281408
 Halo:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 103062}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Color:
     serializedVersion: 2
     rgba: 512750743
@@ -191,7 +190,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: ShapeModule.m_Mesh

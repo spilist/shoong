@@ -7,8 +7,8 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: brokenspaceship
-  m_Shader: {fileID: 10, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
+  m_Shader: {fileID: 4800000, guid: 79878d3b3a006114383e8a4f17e26b5f, type: 3}
+  m_ShaderKeywords: _OUTLINEONOFF_ON
   m_LightmapFlags: 1
   m_CustomRenderQueue: -1
   stringTagMap: {}
@@ -85,6 +85,48 @@ Material:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Diffuse
+        second:
+          m_Texture: {fileID: 2800000, guid: ad23e8fba2100974ab81fbe3253265a4, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Specular
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Normal
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Emissive
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _GlowExtrusion_Texture
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _DiffuseMap
+        second:
+          m_Texture: {fileID: 2800000, guid: ad23e8fba2100974ab81fbe3253265a4, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
     m_Floats:
       data:
         first:
@@ -138,6 +180,62 @@ Material:
         first:
           name: _EmissionScaleUI
         second: 0
+      data:
+        first:
+          name: _Specular_Power
+        second: 1
+      data:
+        first:
+          name: _Emissive_OnOff
+        second: 0
+      data:
+        first:
+          name: _Emissive
+        second: .5
+      data:
+        first:
+          name: _Outline_Width
+        second: .0500000007
+      data:
+        first:
+          name: _Pulse_Speed
+        second: 6
+      data:
+        first:
+          name: _Normal_Intensity
+        second: 1
+      data:
+        first:
+          name: _Corrective_Glow
+        second: 1
+      data:
+        first:
+          name: _Emission_Intensity
+        second: 1
+      data:
+        first:
+          name: _Fresnel_Width
+        second: 2.6400001
+      data:
+        first:
+          name: _Pan_Speed_Y
+        second: 1
+      data:
+        first:
+          name: _Pan_Speed_X
+        second: 1
+      data:
+        first:
+          name: _HighlightSurface
+        second: .5
+      data:
+        first:
+          name: _OutlineOnOff
+        second: 1
+      data:
+        first:
+          name: _OutlineWidth
+        second: 1
     m_Colors:
       data:
         first:
@@ -150,4 +248,24 @@ Material:
       data:
         first:
           name: _EmissionColorUI
+        second: {r: 1, g: 1, b: 1, a: 1}
+      data:
+        first:
+          name: _OutlineColor
+        second: {r: 1, g: 0, b: 0, a: 1}
+      data:
+        first:
+          name: _Fresnel_Color
+        second: {r: 1, g: .600000024, b: 0, a: 1}
+      data:
+        first:
+          name: _Highlight_Color
+        second: {r: 1, g: .600000024, b: 0, a: 1}
+      data:
+        first:
+          name: _DiffuseColor
+        second: {r: .683823526, g: .683823526, b: .683823526, a: 1}
+      data:
+        first:
+          name: _HighlightColor
         second: {r: 1, g: 1, b: 1, a: 1}

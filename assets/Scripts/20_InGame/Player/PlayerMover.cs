@@ -8,14 +8,17 @@ public class PlayerMover : MonoBehaviour {
   public Transform energyDestroy;
   public GameObject obstacleDestroy;
   public GameObject unstoppableSphere;
+  public GameObject howManyPartsGet;
+  public Canvas UICanvas;
 
-	public float speed;
+  public float speed;
   public float tumble;
-	private Vector3 direction;
+  private Vector3 direction;
 
   private Canvas barsCanvas;
   private EnergyBar energyBar;
   private ComboBar comboBar;
+  private UnstoppableComboBar uComboBar;
   public ParticleSystem booster;
   public ParticleSystem getEnergy;
   public ParticleSystem unstoppableEffect;
@@ -45,6 +48,7 @@ public class PlayerMover : MonoBehaviour {
     barsCanvas = transform.Find("Bars Canvas").GetComponent<Canvas>();
     energyBar = transform.Find("Bars Canvas/EnergyBar").GetComponent<EnergyBar>();
     comboBar = transform.Find("Bars Canvas").GetComponent<ComboBar>();
+    uComboBar = transform.Find("Bars Canvas/UnstoppableComboBar").GetComponent<UnstoppableComboBar>();
 	}
 
 	void Update () {
@@ -83,6 +87,7 @@ public class PlayerMover : MonoBehaviour {
 			}
 			goodPartsEncounter();
       gns.destroySelf(true, false, false);
+      uComboBar.addCombo();
 		}
 	}
 
@@ -91,6 +96,8 @@ public class PlayerMover : MonoBehaviour {
     energyBar.getHealthbyParts();
     partsCount.addCount();
     comboBar.addCombo();
+    GameObject partsGetInstance = Instantiate(howManyPartsGet);
+    partsGetInstance.transform.SetParent(UICanvas.transform, false);
   }
 
 	public void rotatePlayerBody() {
@@ -111,7 +118,8 @@ public class PlayerMover : MonoBehaviour {
   	unstoppableEffect.Play();
 		unstoppableEffect_two.Play();
   	energyBar.startUnstoppable();
-  	unstoppableSphere.SetActive(true);
+    uComboBar.startUnstoppable();
+    unstoppableSphere.SetActive(true);
   	StartCoroutine("stopUnstoppable");
   }
 
@@ -123,6 +131,8 @@ public class PlayerMover : MonoBehaviour {
       duration -= unstoppable_blinkingSeconds;
       // GetComponent<Renderer>().enabled = !GetComponent<Renderer>().enabled;
       unstoppableEffect.enableEmission = !unstoppableEffect.enableEmission;
+      // if (uComboBar.GetComponent<Image>().fillAmount <= 1f / max_unstoppable_combo)
+      // uComboBar.GetComponent<Image>().enabled = !uComboBar.GetComponent<Image>().enabled;
       // unstoppableEffect_two.enableEmission = !unstoppableEffect_two.enableEmission;
       // GetComponent<TrailRenderer>().enabled = !GetComponent<TrailRenderer>().enabled;
       // barsCanvas.enabled = !barsCanvas.enabled;
@@ -131,6 +141,7 @@ public class PlayerMover : MonoBehaviour {
     }
     // GetComponent<Renderer>().enabled = true;
     unstoppableEffect.enableEmission = true;
+    // uComboBar.GetComponent<Image>().enabled = true;
     // unstoppableEffect_two.enableEmission = true;
     // GetComponent<TrailRenderer>().enabled = true;
     // barsCanvas.enabled = true;

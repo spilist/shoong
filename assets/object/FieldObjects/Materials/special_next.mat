@@ -20,7 +20,7 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 0}
+          m_Texture: {fileID: 2800000, guid: a752ad482416e492d949dcc47cab5047, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -93,6 +93,41 @@ Material:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Diffuse
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Specular
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Normal
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Emissive
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _DiffuseMapCutoutA
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
     m_Floats:
       data:
         first:
@@ -110,6 +145,10 @@ Material:
         first:
           name: _Shininess
         second: .078125
+      data:
+        first:
+          name: PixelSnap
+        second: 0
       data:
         first:
           name: _Parallax
@@ -153,11 +192,55 @@ Material:
       data:
         first:
           name: _Outline
-        second: .00499999989
+        second: .000500000024
       data:
         first:
           name: _LineWidth
         second: .200000003
+      data:
+        first:
+          name: _Specular_Power
+        second: 1
+      data:
+        first:
+          name: _Emissive_OnOff
+        second: 0
+      data:
+        first:
+          name: _Emissive
+        second: .5
+      data:
+        first:
+          name: _Pulse_Speed
+        second: 7.07999992
+      data:
+        first:
+          name: _Normal_Intensity
+        second: 1
+      data:
+        first:
+          name: _Corrective_Glow
+        second: .540000021
+      data:
+        first:
+          name: _Emission_Intensity
+        second: .50999999
+      data:
+        first:
+          name: _Fresnel_Width
+        second: 5
+      data:
+        first:
+          name: _HighlightSurface
+        second: .5
+      data:
+        first:
+          name: _OutlineOnOff
+        second: 0
+      data:
+        first:
+          name: _OutlineWidth
+        second: .300000012
     m_Colors:
       data:
         first:
@@ -166,7 +249,7 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: .549019635, g: .549019635, b: .549019635, a: 1}
+        second: {r: 1, g: .724137902, b: 0, a: .158999994}
       data:
         first:
           name: _SpecColor
@@ -174,11 +257,11 @@ Material:
       data:
         first:
           name: _TintColor
-        second: {r: .571900785, g: .764705896, b: .129325256, a: .0780000016}
+        second: {r: .0997512862, g: .737930119, b: .904411793, a: .115999997}
       data:
         first:
           name: _OutlineColor
-        second: {r: 1, g: 1, b: 1, a: 1}
+        second: {r: .382352948, g: .37180528, b: 0, a: 0}
       data:
         first:
           name: _LineColor
@@ -187,3 +270,15 @@ Material:
         first:
           name: _GridColor
         second: {r: 1, g: 1, b: 1, a: 0}
+      data:
+        first:
+          name: _Fresnel_Color
+        second: {r: 1, g: .600000024, b: 0, a: 1}
+      data:
+        first:
+          name: _DiffuseColor
+        second: {r: 1, g: 1, b: 1, a: 1}
+      data:
+        first:
+          name: _HighlightColor
+        second: {r: 1, g: 1, b: 1, a: 1}

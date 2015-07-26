@@ -31,6 +31,7 @@ public class SpecialObjectsManager : MonoBehaviour {
     origin.GetComponent<GenerateNextSpecial>().setComboCount(0);
 
     // Draw line between special and next
+
     // GameObject specialLineInstance = (GameObject) Instantiate (special_line, originV, spawnRotation);
     // specialLineInstance.transform.parent = gameObject.transform;
     // specialLineInstance.GetComponent<OffsetFixer>().setParent(origin);
