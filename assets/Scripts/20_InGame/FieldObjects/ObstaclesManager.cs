@@ -9,13 +9,16 @@ public class ObstaclesManager : MonoBehaviour {
   public float minSpawnInterval = 0.5f;
   public float maxSpawnInterval = 5;
   public float warnPlayerDuring = 1;
-  public float obstacleCircleScale = 1.2f;
+  public float spawnRadius = 400;
   public Canvas UICanvas;
 
   public GameObject obsIndicatorPrefab;
 
+  private Transform playerTransform;
+
   void Start () {
     StartCoroutine("spawnObstacle");
+    playerTransform = GameObject.Find("Player").transform;
   }
 
   void Update () {
@@ -29,15 +32,14 @@ public class ObstaclesManager : MonoBehaviour {
 
       Vector2 screenPos = Random.insideUnitCircle;
       screenPos.Normalize();
+      screenPos *= spawnRadius;
       GameObject obsIndicator = (GameObject) Instantiate (obsIndicatorPrefab);
       obsIndicator.transform.SetParent(UICanvas.transform, false);
       obsIndicator.GetComponent<ObstacleIndicator>().run(screenPos, warnPlayerDuring);
       yield return new WaitForSeconds(warnPlayerDuring);
 
-      screenPos.x = (screenPos.x - 0.5f) * obstacleCircleScale + 0.5f;
-      screenPos.y = (screenPos.y - 0.5f) * obstacleCircleScale + 0.5f;
+      Vector3 spawnPos = new Vector3(screenPos.x + playerTransform.position.x, playerTransform.position.y, screenPos.y + playerTransform.position.z);
 
-      Vector3 spawnPos = Camera.main.ViewportToWorldPoint(new Vector3(screenPos.x, screenPos.y, Camera.main.transform.position.y));
       GameObject obstacle = (GameObject) Instantiate(prefab, spawnPos, Quaternion.identity);
       obstacle.transform.parent = gameObject.transform;
     }

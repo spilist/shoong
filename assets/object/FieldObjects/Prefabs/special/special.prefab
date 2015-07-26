@@ -106,6 +106,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   next_prefab: {fileID: 106010, guid: 0c9f9410f926d487d8f749586b909967, type: 2}
   energyDestroy: {fileID: 158326, guid: 7a4903aebeaf1440d95d69b1daac37af, type: 2}
+  energyActive: {fileID: 112118, guid: 6c58975c5d837489bae74501313fb2aa, type: 2}
 --- !u!122 &12273160
 Halo:
   m_ObjectHideFlags: 1
@@ -1283,6 +1284,10 @@ Prefab:
       propertyPath: EmissionModule.rate.scalar
       value: 300
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: energyActive
+      value: 
+      objectReference: {fileID: 112118, guid: 6c58975c5d837489bae74501313fb2aa, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 120344}

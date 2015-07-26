@@ -12,14 +12,18 @@ public class ObstacleIndicator : MonoBehaviour {
 
   private Vector2 spawnPosition;
   private float warnPlayerDuring;
+  private Image image;
 
 	void Start () {
     screenWidth = transform.parent.GetComponent<RectTransform>().rect.width;
     screenHeight = transform.parent.GetComponent<RectTransform>().rect.height;
+    image = GetComponent<Image>();
+    image.enabled = false;
 	}
 
 	void Update () {
     if (isWarning && warnPlayerDuring > 0) {
+      image.enabled = true;
       warnPlayerDuring -= Time.deltaTime;
       showWarning();
     } else {
@@ -29,8 +33,10 @@ public class ObstacleIndicator : MonoBehaviour {
 
   public void run(Vector2 pos, float during) {
     isWarning = true;
-    spawnPosition = pos;
     warnPlayerDuring = during;
+    Vector3 playerPosition = GameObject.Find("Player").transform.position;
+    Vector3 spawnWorld = new Vector3(pos.x + playerPosition.x, playerPosition.y, pos.y + playerPosition.z);
+    spawnPosition = Camera.main.WorldToViewportPoint(spawnWorld);
   }
 
   void showWarning() {

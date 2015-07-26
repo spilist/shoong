@@ -4,6 +4,7 @@ using System.Collections;
 public class GenerateNextSpecial : MonoBehaviour {
   public GameObject next_prefab;
   public GameObject energyDestroy;
+  public GameObject energyActive;
 
   GameObject next;
   SpecialObjectsManager som;
@@ -24,11 +25,11 @@ public class GenerateNextSpecial : MonoBehaviour {
     GameObject newInstance = (GameObject) Instantiate (gameObject, currentPos, spawnRotation);
     newInstance.transform.parent = som.gameObject.transform;
     newInstance.GetComponent<GenerateNextSpecial>().setComboCount(comboCount + 1);
+    Instantiate(energyActive, currentPos, spawnRotation);
 
     if (maxcombo > comboCount + 1) {
       Vector3 spawnPosition = getNextSpawnPosition(currentPos);
       GameObject nextInstance = (GameObject) Instantiate (next_prefab, spawnPosition, spawnRotation);
-      Instantiate(energyDestroy, spawnPosition, spawnRotation);
       nextInstance.transform.parent = som.gameObject.transform;
       nextInstance.GetComponent<OffsetFixer>().setParent(newInstance);
 

@@ -3973,7 +3973,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c55c8e133eb0c47e28e0cc77e0aaaeb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  autoDecreaseRate: .0900000036
+  autoDecreaseRate: .899999976
   getAmountbyParts: 24
   getRate: 1
   shootAmount: -10
@@ -4320,93 +4320,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   touchToStart: {fileID: 135970117}
   blinkingSeconds: .600000024
---- !u!1001 &1833034543
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 2134279969}
-    m_Modifications:
-    - target: {fileID: 22485504, guid: 9442ad7c6bf394846b08f279259f074d, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22485504, guid: 9442ad7c6bf394846b08f279259f074d, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22485504, guid: 9442ad7c6bf394846b08f279259f074d, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22485504, guid: 9442ad7c6bf394846b08f279259f074d, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22485504, guid: 9442ad7c6bf394846b08f279259f074d, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22485504, guid: 9442ad7c6bf394846b08f279259f074d, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22485504, guid: 9442ad7c6bf394846b08f279259f074d, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 22485504, guid: 9442ad7c6bf394846b08f279259f074d, type: 2}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 22485504, guid: 9442ad7c6bf394846b08f279259f074d, type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22485504, guid: 9442ad7c6bf394846b08f279259f074d, type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: 250
-      objectReference: {fileID: 0}
-    - target: {fileID: 22485504, guid: 9442ad7c6bf394846b08f279259f074d, type: 2}
-      propertyPath: m_SizeDelta.x
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 22485504, guid: 9442ad7c6bf394846b08f279259f074d, type: 2}
-      propertyPath: m_SizeDelta.y
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 22485504, guid: 9442ad7c6bf394846b08f279259f074d, type: 2}
-      propertyPath: m_AnchorMin.x
-      value: .5
-      objectReference: {fileID: 0}
-    - target: {fileID: 22485504, guid: 9442ad7c6bf394846b08f279259f074d, type: 2}
-      propertyPath: m_AnchorMin.y
-      value: .5
-      objectReference: {fileID: 0}
-    - target: {fileID: 22485504, guid: 9442ad7c6bf394846b08f279259f074d, type: 2}
-      propertyPath: m_AnchorMax.x
-      value: .5
-      objectReference: {fileID: 0}
-    - target: {fileID: 22485504, guid: 9442ad7c6bf394846b08f279259f074d, type: 2}
-      propertyPath: m_AnchorMax.y
-      value: .5
-      objectReference: {fileID: 0}
-    - target: {fileID: 22485504, guid: 9442ad7c6bf394846b08f279259f074d, type: 2}
-      propertyPath: m_Pivot.x
-      value: .5
-      objectReference: {fileID: 0}
-    - target: {fileID: 22485504, guid: 9442ad7c6bf394846b08f279259f074d, type: 2}
-      propertyPath: m_Pivot.y
-      value: .5
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 9442ad7c6bf394846b08f279259f074d, type: 2}
-  m_IsPrefabParent: 0
---- !u!224 &1833034544 stripped
-RectTransform:
-  m_PrefabParentObject: {fileID: 22485504, guid: 9442ad7c6bf394846b08f279259f074d,
-    type: 2}
-  m_PrefabInternal: {fileID: 1833034543}
 --- !u!1001 &1887481636
 Prefab:
   m_ObjectHideFlags: 0
@@ -4648,12 +4561,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obstacles:
   - {fileID: 195472, guid: cfdf45a8ca588407d84475bccdb83b45, type: 2}
-  speed: 160
+  speed: 180
   tumble: 1
-  minSpawnInterval: 1
-  maxSpawnInterval: 12
+  minSpawnInterval: .5
+  maxSpawnInterval: 3
   warnPlayerDuring: 1.5
-  obstacleCircleScale: 1.20000005
+  spawnRadius: 140
   UICanvas: {fileID: 2134279972}
   obsIndicatorPrefab: {fileID: 144306, guid: 825df36890cc14b58a88c21930d89f0d, type: 2}
 --- !u!1 &2114907097
@@ -4829,7 +4742,6 @@ RectTransform:
   - {fileID: 980455323}
   - {fileID: 589887828}
   - {fileID: 2131139020}
-  - {fileID: 1833034544}
   m_Father: {fileID: 507386076}
   m_RootOrder: 1
   m_AnchorMin: {x: 0, y: 0}

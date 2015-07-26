@@ -33,7 +33,6 @@ public class GameOver : MonoBehaviour {
     player.GetComponent<MeshRenderer>().enabled = false;
     player.GetComponent<SphereCollider>().enabled = false;
     player.GetComponent<TrailRenderer>().enabled = false;
-    player.GetComponent<TrailRenderer>().enabled = false;
     barsCanvas.GetComponent<Canvas>().enabled = false;
     restartMessage.GetComponent<Text>().enabled = true;
   }
