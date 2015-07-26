@@ -119,15 +119,19 @@ public class PlayerMover : MonoBehaviour {
     float duration = unstoppable_end_soon_during;
     while(duration > 0f) {
       duration -= unstoppable_blinkingSeconds;
-      GetComponent<Renderer>().enabled = !GetComponent<Renderer>().enabled;
+      // GetComponent<Renderer>().enabled = !GetComponent<Renderer>().enabled;
+      unstoppableEffect.enableEmission = !unstoppableEffect.enableEmission;
+      unstoppableEffect_two.enableEmission = !unstoppableEffect_two.enableEmission;
       // GetComponent<TrailRenderer>().enabled = !GetComponent<TrailRenderer>().enabled;
-      barsCanvas.enabled = !barsCanvas.enabled;
+      // barsCanvas.enabled = !barsCanvas.enabled;
 
       yield return new WaitForSeconds(unstoppable_blinkingSeconds);
     }
-    GetComponent<Renderer>().enabled = true;
+    // GetComponent<Renderer>().enabled = true;
+    unstoppableEffect.enableEmission = true;
+    unstoppableEffect_two.enableEmission = true;
     // GetComponent<TrailRenderer>().enabled = true;
-    barsCanvas.enabled = true;
+    // barsCanvas.enabled = true;
 
     unstoppable = false;
   	unstoppableEffect.Stop();
