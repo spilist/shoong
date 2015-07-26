@@ -20,12 +20,14 @@ public class PlayerMover : MonoBehaviour {
   public ParticleSystem getEnergy;
   public ParticleSystem unstoppableEffect;
   public ParticleSystem unstoppableEffect_two;
+  public ParticleSystem getSpecialEnergyEffect;
 
 	private bool unstoppable = false;
 	private float unstoppable_during = 0;
   public float unstoppable_minbonus = 0.5f;
   public float unstoppable_end_soon_during = 1;
   public float unstoppable_blinkingSeconds = 0.2f;
+  public float[] unstoppable_respawn;
 	public int unstoppable_speed = 150;
 	public float unstoppable_time_scale = 1;
 	public int max_unstoppable_combo = 10;
@@ -69,6 +71,7 @@ public class PlayerMover : MonoBehaviour {
 			}
 		} else if (other.tag == "Part") {
 			goodPartsEncounter();
+      getEnergy.Play ();
 			Instantiate(energyDestroy, other.transform.position, other.transform.rotation);
 			Destroy (other.gameObject);
 		} else if (other.tag == "SpecialPart") {
@@ -85,7 +88,6 @@ public class PlayerMover : MonoBehaviour {
 
   private void goodPartsEncounter() {
     GetComponent<AudioSource>().Play ();
-    getEnergy.Play ();
     energyBar.getHealthbyParts();
     partsCount.addCount();
     comboBar.addCombo();
@@ -121,7 +123,7 @@ public class PlayerMover : MonoBehaviour {
       duration -= unstoppable_blinkingSeconds;
       // GetComponent<Renderer>().enabled = !GetComponent<Renderer>().enabled;
       unstoppableEffect.enableEmission = !unstoppableEffect.enableEmission;
-      unstoppableEffect_two.enableEmission = !unstoppableEffect_two.enableEmission;
+      // unstoppableEffect_two.enableEmission = !unstoppableEffect_two.enableEmission;
       // GetComponent<TrailRenderer>().enabled = !GetComponent<TrailRenderer>().enabled;
       // barsCanvas.enabled = !barsCanvas.enabled;
 
@@ -129,7 +131,7 @@ public class PlayerMover : MonoBehaviour {
     }
     // GetComponent<Renderer>().enabled = true;
     unstoppableEffect.enableEmission = true;
-    unstoppableEffect_two.enableEmission = true;
+    // unstoppableEffect_two.enableEmission = true;
     // GetComponent<TrailRenderer>().enabled = true;
     // barsCanvas.enabled = true;
 
@@ -138,10 +140,16 @@ public class PlayerMover : MonoBehaviour {
 		unstoppableEffect_two.Stop();
   	energyBar.stopUnstoppable();
   	unstoppableSphere.SetActive(false);
-		GameObject.Find("Field Objects").GetComponent<SpecialObjectsManager>().run();
+
+    yield return new WaitForSeconds(Random.Range(unstoppable_respawn[0], unstoppable_respawn[1]));
+    GameObject.Find("Field Objects").GetComponent<SpecialObjectsManager>().run();
   }
 
   public bool isUnstoppable() {
     return unstoppable;
+  }
+
+  public void getSpecialEnergyPlay() {
+    getSpecialEnergyEffect.Play();
   }
 }

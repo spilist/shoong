@@ -3,9 +3,7 @@ using System.Collections;
 
 public class GenerateNextSpecial : MonoBehaviour {
   public GameObject next_prefab;
-  public GameObject energyDestroy;
-  public GameObject energyActive;
-
+  public GameObject newSpecialEffect;
   GameObject next;
   SpecialObjectsManager som;
   int maxcombo;
@@ -25,7 +23,7 @@ public class GenerateNextSpecial : MonoBehaviour {
     GameObject newInstance = (GameObject) Instantiate (gameObject, currentPos, spawnRotation);
     newInstance.transform.parent = som.gameObject.transform;
     newInstance.GetComponent<GenerateNextSpecial>().setComboCount(comboCount + 1);
-    Instantiate(energyActive, currentPos, spawnRotation);
+    Instantiate(newSpecialEffect, currentPos, spawnRotation);
 
     if (maxcombo > comboCount + 1) {
       Vector3 spawnPosition = getNextSpawnPosition(currentPos);
@@ -77,7 +75,8 @@ public class GenerateNextSpecial : MonoBehaviour {
 
   public void destroySelf(bool turnEffectON, bool unstoppable, bool createNew) {
     if (turnEffectON) {
-      Instantiate(energyDestroy, transform.position, transform.rotation);
+      GameObject.Find("Player").GetComponent<PlayerMover>().getSpecialEnergyPlay();
+      // Instantiate(getSpecialEffect, transform.position, transform.rotation);
     }
 
     if (unstoppable) {
