@@ -7,11 +7,12 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: partscollector
-  m_Shader: {fileID: 200, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 5
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: _ALPHAPREMULTIPLY_ON _EMISSION _EMISSIVE_ONOFF_ON
+  m_LightmapFlags: 1
+  m_CustomRenderQueue: 3000
+  stringTagMap:
+    RenderType: Transparent
   m_SavedProperties:
     serializedVersion: 2
     m_TexEnvs:
@@ -19,8 +20,8 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: 0f5361f869c34f34f96dc17dd3d2008c, type: 3}
-          m_Scale: {x: 10, y: 10}
+          m_Texture: {fileID: 2800000, guid: ecd9a2c463dcb476891e43d7c9f16ffa, type: 3}
+          m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
@@ -32,6 +33,13 @@ Material:
       data:
         first:
           name: _DetailNormalMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _DecalTex
         second:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
@@ -78,6 +86,34 @@ Material:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Diffuse
+        second:
+          m_Texture: {fileID: 2800000, guid: ecd9a2c463dcb476891e43d7c9f16ffa, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Specular
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Normal
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Emissive
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
     m_Floats:
       data:
         first:
@@ -86,7 +122,7 @@ Material:
       data:
         first:
           name: _DstBlend
-        second: 0
+        second: 10
       data:
         first:
           name: _Cutoff
@@ -98,11 +134,11 @@ Material:
       data:
         first:
           name: _ZWrite
-        second: 1
+        second: 0
       data:
         first:
           name: _Glossiness
-        second: .5
+        second: 0
       data:
         first:
           name: _BumpScale
@@ -122,7 +158,7 @@ Material:
       data:
         first:
           name: _Mode
-        second: 0
+        second: 3
       data:
         first:
           name: _Metallic
@@ -131,16 +167,64 @@ Material:
         first:
           name: _InvFade
         second: 1
+      data:
+        first:
+          name: _Outline
+        second: .0299999993
+      data:
+        first:
+          name: _Specular_Power
+        second: 1
+      data:
+        first:
+          name: _Emissive_OnOff
+        second: 1
+      data:
+        first:
+          name: _Outline_Width
+        second: .0500000007
+      data:
+        first:
+          name: _Pulse_Speed
+        second: 6
+      data:
+        first:
+          name: _Normal_Intensity
+        second: 1
+      data:
+        first:
+          name: _Corrective_Glow
+        second: .100000001
+      data:
+        first:
+          name: _Emission_Intensity
+        second: .200000003
+      data:
+        first:
+          name: _Fresnel_Width
+        second: 1.5
     m_Colors:
       data:
         first:
           name: _EmissionColor
-        second: {r: 0, g: 0, b: 0, a: 1}
+        second: {r: .573529422, g: .557708025, b: 0, a: 1}
       data:
         first:
           name: _Color
-        second: {r: 1, g: 1, b: 1, a: 1}
+        second: {r: .725152016, g: .735294104, b: 0, a: 1}
       data:
         first:
           name: _TintColor
-        second: {r: .0899653733, g: .941176474, b: .765063822, a: .202999994}
+        second: {r: .779411793, g: .693407774, b: 0, a: .108999997}
+      data:
+        first:
+          name: _OutlineColor
+        second: {r: 0, g: .958620548, b: 1, a: 1}
+      data:
+        first:
+          name: _Outline_Color
+        second: {r: 1, g: .600000024, b: 0, a: 1}
+      data:
+        first:
+          name: _Fresnel_Color
+        second: {r: 1, g: .600000024, b: 0, a: 1}

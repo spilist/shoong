@@ -6,8 +6,8 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: CollectedParts
-  m_Shader: {fileID: 30, guid: 0000000000000000f000000000000000, type: 0}
+  m_Name: partsgetparticle
+  m_Shader: {fileID: 200, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
   m_CustomRenderQueue: -1
@@ -19,7 +19,7 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: a2ddb77786f994f1aacf40fde0dc225a, type: 3}
+          m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -131,10 +131,6 @@ Material:
         first:
           name: _InvFade
         second: 1
-      data:
-        first:
-          name: _Outline
-        second: 9.99999975e-05
     m_Colors:
       data:
         first:
@@ -143,12 +139,8 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: .727941155, g: .727941155, b: .727941155, a: .316000015}
+        second: {r: 1, g: 1, b: 1, a: 1}
       data:
         first:
           name: _TintColor
-        second: {r: .741565704, g: .791943073, b: .79411763, a: .0590000004}
-      data:
-        first:
-          name: _OutlineColor
-        second: {r: .0701773539, g: .76865083, b: .867647052, a: 1}
+        second: {r: .0367646813, g: .7608518, b: 1, a: .791000009}

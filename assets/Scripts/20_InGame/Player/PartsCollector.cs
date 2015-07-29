@@ -6,6 +6,7 @@ public class PartsCollector : MonoBehaviour {
 	public PlayerMover player;
   public ComboBar comboBar;
   public GameObject[] prefabs;
+	public ParticleSystem collecteffect;
 
   public int maxPartsGet = 1000;
   public float startOffset = 20f;
@@ -28,7 +29,7 @@ public class PartsCollector : MonoBehaviour {
       GetComponent<Rigidbody> ().velocity = heading * player.GetComponent<Rigidbody>().velocity.magnitude;
     } else {
       heading /= heading.magnitude;
-      GetComponent<Rigidbody> ().velocity = heading * player.GetComponent<Rigidbody>().velocity.magnitude * 1.5f;
+      GetComponent<Rigidbody> ().velocity = heading * player.GetComponent<Rigidbody>().velocity.magnitude * 1.3f;
     }
 
     transform.rotation = player.transform.rotation;
@@ -44,6 +45,7 @@ public class PartsCollector : MonoBehaviour {
       GameObject newInstance = (GameObject) Instantiate(target, rndPosWithin, Quaternion.identity);
       newInstance.transform.parent = transform;
     }
+		collecteffect.Play ();
     // obj.GetComponent<FieldObjectsMover>().enabled = false;
     // Destroy(obj.GetComponent<Rigidbody>());
     // Destroy(obj.GetComponent<SphereCollider>());

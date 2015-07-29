@@ -17,7 +17,7 @@ public class ParticleGathered : MonoBehaviour {
       if (m_Particles[i].lifetime < 0.5f) {
         Vector3 heading =  partsCollector.transform.position - m_Particles[i].position;
         heading /= heading.magnitude;
-        m_Particles[i].velocity = heading * GameObject.Find("Player").GetComponent<Rigidbody>().velocity.magnitude * 3;
+        m_Particles[i].velocity = heading * GameObject.Find("Player").GetComponent<Rigidbody>().velocity.magnitude * 5;
       }
     }
 
