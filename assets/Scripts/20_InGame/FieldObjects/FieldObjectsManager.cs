@@ -12,16 +12,19 @@ public class FieldObjectsManager : MonoBehaviour {
  	public LayerMask fieldObjectsLayerMask;
 
 	// public float speed_obstacles = 1;
-	public float speed_parts = 10;
+	public float speed_parts = 5;
 	public float speed_special = 5;
 	private Hashtable speed;
 
 	// public float tumble_obstacles = 0.5f;
-	public float tumble_parts = 5f;
-	public float tumble_special = 5f;
+	public float tumble_parts = 1f;
+	public float tumble_special = 3f;
+	public float tumble_patternparts = 3f;
 	private Hashtable tumble;
 
 	public float unstoppableFollowSpeed = 1.1f;
+
+	public Material collectedPartsMaterial;
 
 	void Start () {
 	}
@@ -42,6 +45,7 @@ public class FieldObjectsManager : MonoBehaviour {
 		// tumble.Add("Obstacle", tumble_obstacles);
 		tumble.Add("Part", tumble_parts);
 		tumble.Add("SpecialPart", tumble_special);
+		tumble.Add("PatternPart", tumble_patternparts);
 	}
 
 	void generateObjectsAtStart() {

@@ -12,6 +12,9 @@ TagManager:
   - Spaceship
   - SpecialPart
   - UnstoppableSphere
+  - Obstacle_big
+  - PatternPart
+  - CollectedPart
   layers:
   - Default
   - TransparentFX
@@ -25,9 +28,9 @@ TagManager:
   - FieldObjects
   - Character
   - UnstoppableSphere
-  - 
-  - 
-  - 
+  - PatternParts
+  - CollectedParts
+  - CollectingSphere
   - 
   - 
   - 

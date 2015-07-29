@@ -28,12 +28,12 @@ public class GameOver : MonoBehaviour {
     elapsedTime.stopTime();
 
     playerExplosion.Play ();
-	playerExplosion.GetComponent<AudioSource>().Play();
+    playerExplosion.GetComponent<AudioSource>().Play();
     comboGlow.Stop();
     player.GetComponent<MeshRenderer>().enabled = false;
     player.GetComponent<SphereCollider>().enabled = false;
     player.GetComponent<TrailRenderer>().enabled = false;
-    barsCanvas.GetComponent<Canvas>().enabled = false;
+    barsCanvas.SetActive(false);
     restartMessage.GetComponent<Text>().enabled = true;
   }
 }

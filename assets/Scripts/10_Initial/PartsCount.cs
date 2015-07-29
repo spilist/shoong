@@ -5,6 +5,7 @@ using System.Collections;
 public class PartsCount : MonoBehaviour {
   private int count = 0;
   public ComboBar comboBar;
+  public GameObject howManyPartsGet;
 
 	void Start () {
 	}
@@ -13,7 +14,11 @@ public class PartsCount : MonoBehaviour {
 	}
 
   public void addCount() {
-    count += comboBar.getComboRatio();
+    int partsGet = comboBar.getComboRatio();
+    count += partsGet;
     GetComponent<Text>().text = count.ToString();
+    GameObject partsGetInstance = Instantiate(howManyPartsGet);
+    partsGetInstance.transform.SetParent(transform.parent.transform, false);
+    partsGetInstance.GetComponent<HowManyPartsGet>().run(partsGet);
   }
 }

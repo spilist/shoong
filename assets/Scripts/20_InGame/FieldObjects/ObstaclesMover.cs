@@ -36,7 +36,7 @@ public class ObstaclesMover : MonoBehaviour {
         gns.destroySelf(true, true, false);
       } else {
         // Destroyed somewhere
-        gns.destroySelf(true, false, true);
+        gns.destroySelf(false, false, true);
       }
     }
   }

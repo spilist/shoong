@@ -8,17 +8,15 @@ public class PlayerMover : MonoBehaviour {
   public Transform energyDestroy;
   public GameObject obstacleDestroy;
   public GameObject unstoppableSphere;
-  public GameObject howManyPartsGet;
-  public Canvas UICanvas;
 
   public float speed;
   public float tumble;
   private Vector3 direction;
 
-  private Canvas barsCanvas;
   private EnergyBar energyBar;
   private ComboBar comboBar;
   private UnstoppableComboBar uComboBar;
+
   public ParticleSystem booster;
   public ParticleSystem getEnergy;
   public ParticleSystem unstoppableEffect;
@@ -45,10 +43,10 @@ public class PlayerMover : MonoBehaviour {
     direction = new Vector3(randomV.x, 0, randomV.y);
     GetComponent<Rigidbody> ().velocity = direction * speed;
 
-    barsCanvas = transform.Find("Bars Canvas").GetComponent<Canvas>();
     energyBar = transform.Find("Bars Canvas/EnergyBar").GetComponent<EnergyBar>();
     comboBar = transform.Find("Bars Canvas").GetComponent<ComboBar>();
     uComboBar = transform.Find("Bars Canvas/UnstoppableComboBar").GetComponent<UnstoppableComboBar>();
+    // GetComponent<Rigidbody> ().AddForce(Vector3.one * 10000);
 	}
 
 	void Update () {
@@ -77,7 +75,8 @@ public class PlayerMover : MonoBehaviour {
 			goodPartsEncounter();
       getEnergy.Play ();
 			Instantiate(energyDestroy, other.transform.position, other.transform.rotation);
-			Destroy (other.gameObject);
+			// Destroy (other.gameObject);
+      other.gameObject.GetComponent<FieldObjectsMover>().collected();
 		} else if (other.tag == "SpecialPart") {
 			GenerateNextSpecial gns = other.gameObject.GetComponent<GenerateNextSpecial>();
 			if (gns.getComboCount() == (max_unstoppable_combo - 1)) {
@@ -88,7 +87,9 @@ public class PlayerMover : MonoBehaviour {
 			goodPartsEncounter();
       gns.destroySelf(true, false, false);
       uComboBar.addCombo();
-		}
+		} else if (other.tag == "PatternPart") {
+      other.gameObject.GetComponent<PatternPartsMover>().becomeActive();
+    }
 	}
 
   private void goodPartsEncounter() {
@@ -96,8 +97,6 @@ public class PlayerMover : MonoBehaviour {
     energyBar.getHealthbyParts();
     partsCount.addCount();
     comboBar.addCombo();
-    GameObject partsGetInstance = Instantiate(howManyPartsGet);
-    partsGetInstance.transform.SetParent(UICanvas.transform, false);
   }
 
 	public void rotatePlayerBody() {
@@ -106,6 +105,10 @@ public class PlayerMover : MonoBehaviour {
 
 	public void setDirection(Vector3 value) {
     direction = value;
+  }
+
+  public Vector3 getDirection() {
+    return direction;
   }
 
   public GameObject getNextSpecialTry() {
@@ -129,22 +132,11 @@ public class PlayerMover : MonoBehaviour {
     float duration = unstoppable_end_soon_during;
     while(duration > 0f) {
       duration -= unstoppable_blinkingSeconds;
-      // GetComponent<Renderer>().enabled = !GetComponent<Renderer>().enabled;
       unstoppableEffect.enableEmission = !unstoppableEffect.enableEmission;
-      // if (uComboBar.GetComponent<Image>().fillAmount <= 1f / max_unstoppable_combo)
-      // uComboBar.GetComponent<Image>().enabled = !uComboBar.GetComponent<Image>().enabled;
-      // unstoppableEffect_two.enableEmission = !unstoppableEffect_two.enableEmission;
-      // GetComponent<TrailRenderer>().enabled = !GetComponent<TrailRenderer>().enabled;
-      // barsCanvas.enabled = !barsCanvas.enabled;
 
       yield return new WaitForSeconds(unstoppable_blinkingSeconds);
     }
-    // GetComponent<Renderer>().enabled = true;
     unstoppableEffect.enableEmission = true;
-    // uComboBar.GetComponent<Image>().enabled = true;
-    // unstoppableEffect_two.enableEmission = true;
-    // GetComponent<TrailRenderer>().enabled = true;
-    // barsCanvas.enabled = true;
 
     unstoppable = false;
   	unstoppableEffect.Stop();
