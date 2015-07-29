@@ -79,8 +79,16 @@ public class FieldObjectsMover : MonoBehaviour {
   public void collected() {
     gameObject.tag = "CollectedPart";
     gameObject.layer = LayerMask.NameToLayer("CollectedParts");
-    GetComponent<MeshRenderer>().material = fom.collectedPartsMaterial;
-    GetComponent<SphereCollider>().radius = 3;
-    isCollected = true;
+    // GetComponent<MeshRenderer>().material = fom.collectedPartsMaterial;
+    GetComponent<MeshRenderer>().enabled = false;
+    // transform.localScale = Vector3.one * 0.4f;
+    StartCoroutine("startCollect");
+  }
+
+  IEnumerator startCollect() {
+    yield return new WaitForSeconds(1);
+    // GetComponent<MeshRenderer>().enabled = true;
+    partsCollector.collect();
+    Destroy(gameObject);
   }
 }

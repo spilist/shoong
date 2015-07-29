@@ -72,9 +72,9 @@ public class PlayerMover : MonoBehaviour {
 				gameOver.run();
 			}
 		} else if (other.tag == "Part") {
-			goodPartsEncounter();
-      getEnergy.Play ();
 			Instantiate(energyDestroy, other.transform.position, other.transform.rotation);
+      goodPartsEncounter();
+      getEnergy.Play ();
 			// Destroy (other.gameObject);
       other.gameObject.GetComponent<FieldObjectsMover>().collected();
 		} else if (other.tag == "SpecialPart") {

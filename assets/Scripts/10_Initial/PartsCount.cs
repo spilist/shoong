@@ -6,6 +6,7 @@ public class PartsCount : MonoBehaviour {
   private int count = 0;
   public ComboBar comboBar;
   public GameObject howManyPartsGet;
+  public PartsCollector partsCollector;
 
 	void Start () {
 	}
@@ -20,5 +21,6 @@ public class PartsCount : MonoBehaviour {
     GameObject partsGetInstance = Instantiate(howManyPartsGet);
     partsGetInstance.transform.SetParent(transform.parent.transform, false);
     partsGetInstance.GetComponent<HowManyPartsGet>().run(partsGet);
+    partsCollector.increaseSize(partsGet);
   }
 }

@@ -13,7 +13,6 @@ GameObject:
   - 54: {fileID: 5421976}
   - 135: {fileID: 13599702}
   - 114: {fileID: 11413534}
-  - 122: {fileID: 12281408}
   m_Layer: 9
   m_Name: parts_seat
   m_TagString: Part
@@ -90,17 +89,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a03bc6f4050734c98a1a0624e79be0fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!122 &12281408
-Halo:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 103062}
-  m_Enabled: 0
-  m_Color:
-    serializedVersion: 2
-    rgba: 512750743
-  m_Size: 6
 --- !u!135 &13599702
 SphereCollider:
   m_ObjectHideFlags: 1
