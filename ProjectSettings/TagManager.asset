@@ -15,6 +15,7 @@ TagManager:
   - Obstacle_big
   - PatternPart
   - CollectedPart
+  - PartCollector
   layers:
   - Default
   - TransparentFX

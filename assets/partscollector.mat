@@ -7,8 +7,8 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: partscollector
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: _ALPHAPREMULTIPLY_ON _EMISSION _EMISSIVE_ONOFF_ON
+  m_Shader: {fileID: 30, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: _ALPHABLEND_ON _EMISSION _EMISSIVE_ONOFF_ON
   m_LightmapFlags: 1
   m_CustomRenderQueue: 3000
   stringTagMap:
@@ -20,7 +20,7 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: ecd9a2c463dcb476891e43d7c9f16ffa, type: 3}
+          m_Texture: {fileID: 2800000, guid: a1647d00a7b1b4747bc840b8a5ab75ca, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -88,6 +88,13 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
+          name: _Illum
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
           name: _Diffuse
         second:
           m_Texture: {fileID: 2800000, guid: ecd9a2c463dcb476891e43d7c9f16ffa, type: 3}
@@ -114,11 +121,18 @@ Material:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Cube
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
     m_Floats:
       data:
         first:
           name: _SrcBlend
-        second: 1
+        second: 5
       data:
         first:
           name: _DstBlend
@@ -127,6 +141,10 @@ Material:
         first:
           name: _Cutoff
         second: .5
+      data:
+        first:
+          name: _Shininess
+        second: .0700000003
       data:
         first:
           name: _Parallax
@@ -158,7 +176,7 @@ Material:
       data:
         first:
           name: _Mode
-        second: 3
+        second: 2
       data:
         first:
           name: _Metallic
@@ -166,7 +184,7 @@ Material:
       data:
         first:
           name: _InvFade
-        second: 1
+        second: .00999999978
       data:
         first:
           name: _Outline
@@ -207,15 +225,19 @@ Material:
       data:
         first:
           name: _EmissionColor
-        second: {r: .573529422, g: .557708025, b: 0, a: 1}
+        second: {r: 0, g: .0991379023, b: .125, a: 1}
       data:
         first:
           name: _Color
-        second: {r: .725152016, g: .735294104, b: 0, a: 1}
+        second: {r: .184904858, g: .528502107, b: .698529422, a: .277999997}
+      data:
+        first:
+          name: _SpecColor
+        second: {r: .5, g: .5, b: .5, a: 1}
       data:
         first:
           name: _TintColor
-        second: {r: .779411793, g: .693407774, b: 0, a: .108999997}
+        second: {r: .0043252632, g: .419102699, b: .588235259, a: .108999997}
       data:
         first:
           name: _OutlineColor
@@ -228,3 +250,11 @@ Material:
         first:
           name: _Fresnel_Color
         second: {r: 1, g: .600000024, b: 0, a: 1}
+      data:
+        first:
+          name: _EmisColor
+        second: {r: .200000003, g: .200000003, b: .200000003, a: 0}
+      data:
+        first:
+          name: _ReflectColor
+        second: {r: 1, g: 1, b: 1, a: .147}

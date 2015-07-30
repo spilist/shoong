@@ -23,6 +23,8 @@ public class PlayerMover : MonoBehaviour {
   public ParticleSystem unstoppableEffect_two;
   public ParticleSystem getSpecialEnergyEffect;
 
+	public GameObject particles;
+
 	private bool unstoppable = false;
 	private float unstoppable_during = 0;
   public float unstoppable_minbonus = 0.5f;
@@ -72,7 +74,12 @@ public class PlayerMover : MonoBehaviour {
 				gameOver.run();
 			}
 		} else if (other.tag == "Part") {
-			Instantiate(energyDestroy, other.transform.position, other.transform.rotation);
+			//Instantiate(energyDestroy, other.transform.position, other.transform.rotation);
+			for (int e = 0; e < comboBar.getComboRatio(); e++){
+				Instantiate(particles, other.transform.position, other.transform.rotation);}
+//			StartCoroutine(instantiateParticles());
+
+
       goodPartsEncounter();
       getEnergy.Play ();
 			// Destroy (other.gameObject);
@@ -126,6 +133,15 @@ public class PlayerMover : MonoBehaviour {
   	StartCoroutine("stopUnstoppable");
   }
 
+//	IEnumerator instantiateParticles(){
+//			for (int c = 0; c < comboBar.getComboRatio()-1; c++){
+//				Instantiate(particles, transform.position, transform.rotation);
+//			yield return new WaitForSeconds(0.05f);
+//			}
+//
+//	}
+
+
   IEnumerator stopUnstoppable() {
     yield return new WaitForSeconds(unstoppable_during - unstoppable_end_soon_during);
 
@@ -143,6 +159,7 @@ public class PlayerMover : MonoBehaviour {
 		unstoppableEffect_two.Stop();
   	energyBar.stopUnstoppable();
   	unstoppableSphere.SetActive(false);
+
 
     yield return new WaitForSeconds(Random.Range(unstoppable_respawn[0], unstoppable_respawn[1]));
     GameObject.Find("Field Objects").GetComponent<SpecialObjectsManager>().run();

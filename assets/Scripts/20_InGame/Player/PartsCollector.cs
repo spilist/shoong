@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEditor;
 
 public class PartsCollector : MonoBehaviour {
 	public PlayerMover player;
@@ -45,7 +44,7 @@ public class PartsCollector : MonoBehaviour {
       GameObject newInstance = (GameObject) Instantiate(target, rndPosWithin, Quaternion.identity);
       newInstance.transform.parent = transform;
     }
-		collecteffect.Play ();
+		//collecteffect.Play ();
     // obj.GetComponent<FieldObjectsMover>().enabled = false;
     // Destroy(obj.GetComponent<Rigidbody>());
     // Destroy(obj.GetComponent<SphereCollider>());
@@ -55,6 +54,10 @@ public class PartsCollector : MonoBehaviour {
     // obj.transform.position = rndPosWithin;
     // obj.transform.parent = transform;
   }
+	public void effect(){
+		collecteffect.Play ();
+		GetComponent<AudioSource>().Play();
+	}
 
   public void increaseSize(int partsGet) {
     if (transform.localScale.x < maxScale) {
