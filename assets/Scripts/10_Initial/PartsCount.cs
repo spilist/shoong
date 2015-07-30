@@ -8,12 +8,6 @@ public class PartsCount : MonoBehaviour {
   public GameObject howManyPartsGet;
   public PartsCollector partsCollector;
 
-	void Start () {
-	}
-
-	void Update () {
-	}
-
   public void addCount() {
     int partsGet = comboBar.getComboRatio();
     count += partsGet;

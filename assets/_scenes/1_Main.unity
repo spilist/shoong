@@ -5938,6 +5938,33 @@ ParticleSystemRenderer:
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
+--- !u!1 &765725196
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 765725197}
+  m_Layer: 0
+  m_Name: CollectedParts
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &765725197
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 765725196}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1701025775}
+  m_RootOrder: 5
 --- !u!198 &787888476
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -12640,6 +12667,9 @@ MonoBehaviour:
   comboBar: {fileID: 1289803601}
   collected: {fileID: 185406, guid: b1f40a9d890ad48adae6def9754a2d3a, type: 2}
   collecteffect: {fileID: 155359882}
+  collectedParts: {fileID: 765725196}
+  proportionalUntil: 30
+  maxCube: 200
   maxPartsGet: 1000
   startOffset: 25
   startScale: 10
@@ -15684,6 +15714,7 @@ Transform:
   - {fileID: 892369442}
   - {fileID: 1270861826}
   - {fileID: 851953043}
+  - {fileID: 765725197}
   m_Father: {fileID: 0}
   m_RootOrder: 5
 --- !u!1 &1801634117

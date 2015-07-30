@@ -38,7 +38,7 @@ public class ParticleMover : MonoBehaviour {
 		}
 	}
 
-	void OnTriggerEnter(Collider other) {
+	void OnTriggerStay(Collider other) {
 		if (other.tag == "PartCollector" && timeelapsed) {
 			Destroy (gameObject);
 			partsCollector.effect();

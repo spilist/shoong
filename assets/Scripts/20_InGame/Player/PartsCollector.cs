@@ -6,7 +6,10 @@ public class PartsCollector : MonoBehaviour {
   public ComboBar comboBar;
   public GameObject collected;
 	public ParticleSystem collecteffect;
+  public GameObject collectedParts;
 
+  public int proportionalUntil = 30;
+  public int maxCube = 200;
   public int maxPartsGet = 1000;
   public float startOffset = 20f;
   public float startScale = 10f;
@@ -14,10 +17,18 @@ public class PartsCollector : MonoBehaviour {
 
   private float offset;
   private float scaleDifference;
+  private int cubesDifference;
+  private int partsDifference;
+
+  private int partsCount = 0;
+  private int lastIncreasedCount = 0;
+  private int count = 0;
 
   void Start() {
     offset = startOffset;
     scaleDifference = maxScale - startScale;
+    cubesDifference = maxCube - proportionalUntil;
+    partsDifference = maxPartsGet - proportionalUntil;
   }
 
   void Update() {
@@ -34,13 +45,22 @@ public class PartsCollector : MonoBehaviour {
   }
 
 	public void effect(){
-		collecteffect.Play ();
-		GetComponent<AudioSource>().Play();
+    collecteffect.Play ();
+    GetComponent<AudioSource>().Play();
 
-    Vector3 rndPosWithin = new Vector3(Random.Range(-0.5f, 0.5f), Random.Range(-0.5f, 0.5f), Random.Range(-0.5f, 0.5f));
-    rndPosWithin = transform.TransformPoint(rndPosWithin * .5f);
-    GameObject newInstance = (GameObject) Instantiate(collected, rndPosWithin, Quaternion.identity);
-    // newInstance.transform.parent = transform;
+    partsCount++;
+    if (partsCount <= proportionalUntil || (partsCount - lastIncreasedCount) * cubesDifference / (float) partsDifference > 1) {
+      Vector3 rndPosWithin = new Vector3(Random.Range(-0.5f, 0.5f), Random.Range(-0.5f, 0.5f), Random.Range(-0.5f, 0.5f));
+      rndPosWithin = transform.TransformPoint(rndPosWithin * .5f);
+      GameObject newInstance = (GameObject) Instantiate(collected, rndPosWithin, Quaternion.identity);
+      newInstance.transform.parent = collectedParts.transform;
+      lastIncreasedCount = partsCount;
+
+      count++;
+
+      if (count >= proportionalUntil)
+        Debug.Log(count);
+    }
 	}
 
   public void increaseSize(int partsGet) {

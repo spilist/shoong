@@ -76,7 +76,6 @@ public class GenerateNextSpecial : MonoBehaviour {
   public void destroySelf(bool turnEffectON, bool unstoppable, bool createNew) {
     if (turnEffectON) {
       GameObject.Find("Player").GetComponent<PlayerMover>().getSpecialEnergyPlay();
-      // Instantiate(getSpecialEffect, transform.position, transform.rotation);
     }
 
     if (unstoppable) {
@@ -86,6 +85,7 @@ public class GenerateNextSpecial : MonoBehaviour {
     }
 
     Destroy (gameObject);
+
     if (next != null) Destroy(next);
 
     if (createNew) {

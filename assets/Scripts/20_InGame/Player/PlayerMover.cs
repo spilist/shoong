@@ -73,10 +73,7 @@ public class PlayerMover : MonoBehaviour {
 				gameOver.run();
 			}
 		} else if (other.tag == "Part") {
-			for (int e = 0; e < comboBar.getComboRatio(); e++) {
-				Instantiate(particles, other.transform.position, other.transform.rotation);
-      }
-      goodPartsEncounter();
+      goodPartsEncounter(other.transform);
       getEnergy.Play ();
       Destroy(other.gameObject);
 		} else if (other.tag == "SpecialPart") {
@@ -86,7 +83,7 @@ public class PlayerMover : MonoBehaviour {
 			} else {
 				nextSpecialTry = gns.spawnNext();
 			}
-			goodPartsEncounter();
+			goodPartsEncounter(other.transform);
       gns.destroySelf(true, false, false);
       uComboBar.addCombo();
 		} else if (other.tag == "PatternPart") {
@@ -94,7 +91,10 @@ public class PlayerMover : MonoBehaviour {
     }
 	}
 
-  private void goodPartsEncounter() {
+  private void goodPartsEncounter(Transform tr) {
+    for (int e = 0; e < comboBar.getComboRatio(); e++) {
+      Instantiate(particles, tr.position, tr.rotation);
+    }
     GetComponent<AudioSource>().Play ();
     energyBar.getHealthbyParts();
     partsCount.addCount();
