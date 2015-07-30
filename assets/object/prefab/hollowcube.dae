@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.4.0" xmlns="http://www.collada.org/2005/11/COLLADASchema">
+  <asset>
+    <contributor>
+      <authoring_tool>Minddesk Qubicle 2</authoring_tool>
+      <comments>Get Qubicle at www.minddesk.com</comments>
+    </contributor>
+    <created>2015-07-304:41 PM16:41:17:962</created>
+    <modified>2015-07-304:41 PM16:41:17:962</modified>
+    <unit meter="0.01" />
+  </asset>
+  <library_images>
+    <image id="hollowcube-image" name="hollowcube-image">
+      <init_from>file:///Materials/hollowcube.png</init_from>
+    </image>
+  </library_images>
+  <library_materials>
+    <material id="hollowcube-material" name="hollowcube-material">
+      <instance_effect url="#hollowcube-shader-fx" />
+    </material>
+  </library_materials>
+  <library_effects>
+    <effect id="hollowcube-shader-fx" name="hollowcube-shader-fx">
+      <profile_COMMON>
+        <newparam sid="hollowcube-image-surface">
+          <surface type="2D">
+            <init_from>hollowcube-image</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="hollowcube-image-sampler">
+          <sampler2D>
+            <source>hollowcube-image-surface</source>
+            <wrap_s>WRAP</wrap_s>
+            <wrap_t>WRAP</wrap_t>
+            <minfilter>NEAREST</minfilter>
+            <magfilter>NEAREST</magfilter>
+          </sampler2D>
+        </newparam>
+        <technique sid="standard">
+          <lambert>
+            <ambient>
+              <color sid="ambient">0.0 0.0 0.0 1.0</color>
+            </ambient>
+            <diffuse>
+              <texture texcoord="CHANNEL0" texture="hollowcube-image-sampler" />
+            </diffuse>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+  </library_effects>
+  <library_geometries>
+    <geometry name="Box" id="Box-lib">
+      <mesh>
+        <source id="Box-position">
+          <float_array id="Box-position-array" count="48">6.0 6.0 -6.0 6.0 -6.0 -6.0 -6.0 -6.0 -6.0 -6.0 6.0 -6.0 5.0 5.0 5.0 5.0 -5.0 5.0 -5.0 -5.0 5.0 -5.0 5.0 5.0 -6.0 6.0 6.0 -6.0 -6.0 6.0 6.0 -6.0 6.0 6.0 6.0 6.0 -5.0 5.0 -5.0 -5.0 -5.0 -5.0 5.0 -5.0 -5.0 5.0 5.0 -5.0 </float_array>
+          <technique_common>
+            <accessor source="Box-position-array" stride="3" count="16">
+              <param name="X" type="float" />
+              <param name="Y" type="float" />
+              <param name="Z" type="float" />
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Box-normal">
+          <float_array id="Box-normal-array" count="18">0.0 0.0 1.0 0.0 0.0 -1.0 -1.0 0.0 0.0 1.0 0.0 0.0 0.0 1.0 0.0 0.0 -1.0 0.0</float_array>
+          <technique_common>
+            <accessor source="Box-normal-array" stride="3" count="6">
+              <param name="X" type="float" />
+              <param name="Y" type="float" />
+              <param name="Z" type="float" />
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Box-uv">
+          <float_array id="Box-uv-array" count="96">0.015625 0.203125 0.015625 0.015625 0.203125 0.015625 0.203125 0.203125 0.234375 0.203125 0.234375 0.015625 0.421875 0.015625 0.421875 0.203125 0.453125 0.203125 0.453125 0.015625 0.640625 0.015625 0.640625 0.203125 0.671875 0.203125 0.671875 0.015625 0.859375 0.015625 0.859375 0.203125 0.015625 0.421875 0.015625 0.234375 0.203125 0.234375 0.203125 0.421875 0.234375 0.421875 0.234375 0.234375 0.421875 0.234375 0.421875 0.421875 0.453125 0.390625 0.453125 0.234375 0.609375 0.234375 0.609375 0.390625 0.640625 0.390625 0.640625 0.234375 0.796875 0.234375 0.796875 0.390625 0.828125 0.390625 0.828125 0.234375 0.984375 0.234375 0.984375 0.390625 0.015625 0.609375 0.015625 0.453125 0.171875 0.453125 0.171875 0.609375 0.203125 0.609375 0.203125 0.453125 0.359375 0.453125 0.359375 0.609375 0.390625 0.609375 0.390625 0.453125 0.546875 0.453125 0.546875 0.609375 </float_array>
+          <technique_common>
+            <accessor source="Box-uv-array" stride="2" count="48">
+              <param name="S" type="float" />
+              <param name="T" type="float" />
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Box-vertex">
+          <input semantic="POSITION" source="#Box-position" />
+        </vertices>
+        <polylist material="hollowcube-material" count="24">
+          <input offset="0" semantic="VERTEX" source="#Box-vertex" />
+          <input offset="1" semantic="NORMAL" source="#Box-normal" />
+          <input offset="2" semantic="TEXCOORD" source="#Box-uv" />
+          <vcount>3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 </vcount>
+          <p>1 1 21 3 1 23 0 1 20 1 1 21 2 1 22 3 1 23 5 1 29 7 1 31 4 1 28 5 1 29 6 1 30 7 1 31 9 0 5 11 0 7 8 0 4 9 0 5 10 0 6 11 0 7 13 0 25 15 0 27 12 0 24 13 0 25 14 0 26 15 0 27 2 2 9 8 2 11 3 2 8 2 2 9 9 2 10 8 2 11 14 2 41 4 2 43 15 2 40 14 2 41 5 2 42 4 2 43 6 3 45 12 3 47 7 3 44 6 3 45 13 3 46 12 3 47 10 3 1 0 3 3 11 3 0 10 3 1 1 3 2 0 3 3 3 4 12 8 4 13 0 4 15 8 4 13 11 4 14 0 4 15 13 4 32 6 4 33 14 4 35 6 4 33 5 4 34 14 4 35 9 5 16 2 5 17 10 5 19 2 5 17 1 5 18 10 5 19 7 5 36 12 5 37 4 5 39 12 5 37 15 5 38 4 5 39 </p>
+        </polylist>
+      </mesh>
+    </geometry>)
+  </library_geometries>
+  <library_visual_scenes>
+    <visual_scene id="hollowcube-scene" name="hollowcube-scene">
+      <node sid="Box" id="Box" name="Box">
+        <translate sid="translate">0.00 6.00 -90.00</translate>
+        <instance_geometry url="#Box-lib">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="hollowcube-material" target="#hollowcube-material" />
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene name="" sid="" url="#hollowcube-scene" />
+  </scene>
+</COLLADA>

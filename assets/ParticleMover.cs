@@ -11,13 +11,10 @@ public class ParticleMover : MonoBehaviour {
 	private bool timeelapsed = false;
 	private PartsCollector partsCollector;
 
-	// Use this for initialization
 	void Start () {
-
 		random = Random.Range (0.5f, 1.5f);
 
 		GetComponent<Rigidbody>().angularVelocity = Random.onUnitSphere * tumble;
-
 
 		Vector2 randomV = Random.insideUnitCircle;
 		randomV.Normalize();
@@ -25,20 +22,14 @@ public class ParticleMover : MonoBehaviour {
 		GetComponent<Rigidbody> ().velocity = direction * speed *random;
 
 		partsCollector = GameObject.Find("PartsCollector").GetComponent<PartsCollector>();
-
 	}
-	
-	// Update is called once per frame
-	void Update () {
 
-		if(time > 0)
-		{
+	void Update () {
+		if(time > 0) {
 			// Reduce the remaining time by time passed since last update (frame)
 			time -= Time.deltaTime;
-		}
-		else
-		{
-			timeelapsed=true;
+		} else {
+			timeelapsed = true;
 
 			Vector3 heading =  GameObject.FindWithTag("PartCollector").transform.position - transform.position;
 			heading /= heading.magnitude;
@@ -47,13 +38,11 @@ public class ParticleMover : MonoBehaviour {
 		}
 	}
 
-	void OnTriggerEnter(Collider other)
-	{
+	void OnTriggerEnter(Collider other) {
 		if (other.tag == "PartCollector" && timeelapsed) {
-
 			Destroy (gameObject);
 			partsCollector.effect();
 		}
 	}
-		
+
 }

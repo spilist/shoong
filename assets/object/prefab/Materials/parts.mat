@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: parts
-  m_Shader: {fileID: 4800000, guid: e3f7d5f5418b64e49bd1a5c4f3aade95, type: 3}
+  m_Shader: {fileID: 4800000, guid: 7bf83126e592a4f57aa361c91b298c2b, type: 3}
   m_ShaderKeywords: _OUTLINEONOFF_ON
   m_LightmapFlags: 5
   m_CustomRenderQueue: -1
@@ -248,7 +248,7 @@ Material:
       data:
         first:
           name: _OutlineColor
-        second: {r: 0, g: 1, b: .172413588, a: 1}
+        second: {r: .441176474, g: .907505035, b: 1, a: 1}
       data:
         first:
           name: _Outline_Color

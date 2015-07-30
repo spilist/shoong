@@ -48,7 +48,6 @@ public class PlayerMover : MonoBehaviour {
     energyBar = transform.Find("Bars Canvas/EnergyBar").GetComponent<EnergyBar>();
     comboBar = transform.Find("Bars Canvas").GetComponent<ComboBar>();
     uComboBar = transform.Find("Bars Canvas/UnstoppableComboBar").GetComponent<UnstoppableComboBar>();
-    // GetComponent<Rigidbody> ().AddForce(Vector3.one * 10000);
 	}
 
 	void Update () {
@@ -74,16 +73,12 @@ public class PlayerMover : MonoBehaviour {
 				gameOver.run();
 			}
 		} else if (other.tag == "Part") {
-			//Instantiate(energyDestroy, other.transform.position, other.transform.rotation);
-			for (int e = 0; e < comboBar.getComboRatio(); e++){
-				Instantiate(particles, other.transform.position, other.transform.rotation);}
-//			StartCoroutine(instantiateParticles());
-
-
+			for (int e = 0; e < comboBar.getComboRatio(); e++) {
+				Instantiate(particles, other.transform.position, other.transform.rotation);
+      }
       goodPartsEncounter();
       getEnergy.Play ();
-			// Destroy (other.gameObject);
-      other.gameObject.GetComponent<FieldObjectsMover>().collected();
+      Destroy(other.gameObject);
 		} else if (other.tag == "SpecialPart") {
 			GenerateNextSpecial gns = other.gameObject.GetComponent<GenerateNextSpecial>();
 			if (gns.getComboCount() == (max_unstoppable_combo - 1)) {
@@ -132,15 +127,6 @@ public class PlayerMover : MonoBehaviour {
     unstoppableSphere.SetActive(true);
   	StartCoroutine("stopUnstoppable");
   }
-
-//	IEnumerator instantiateParticles(){
-//			for (int c = 0; c < comboBar.getComboRatio()-1; c++){
-//				Instantiate(particles, transform.position, transform.rotation);
-//			yield return new WaitForSeconds(0.05f);
-//			}
-//
-//	}
-
 
   IEnumerator stopUnstoppable() {
     yield return new WaitForSeconds(unstoppable_during - unstoppable_end_soon_during);
