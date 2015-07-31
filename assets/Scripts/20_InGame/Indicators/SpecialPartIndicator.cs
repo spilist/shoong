@@ -57,5 +57,6 @@ public class SpecialPartIndicator : MonoBehaviour {
 
   public void stopIndicate() {
     isIndicating = false;
+    GetComponent<Image>().enabled = false;
   }
 }

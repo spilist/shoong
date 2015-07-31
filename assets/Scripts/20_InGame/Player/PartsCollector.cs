@@ -21,19 +21,19 @@ public class PartsCollector : MonoBehaviour {
   private float offset;
   private float scaleDifference;
 	private float emissionDifference;
-  private int cubesDifference;
-  private int partsDifference;
+  // private int cubesDifference;
+  // private int partsDifference;
 
-  private int partsCount = 0;
-  private int lastIncreasedCount = 0;
-  private int count = 0;
+  // private int partsCount = 0;
+  // private int lastIncreasedCount = 0;
+  // private int count = 0;
 
   void Start() {
     offset = startOffset;
 		emissionDifference = maxEmission - startEmission;
     scaleDifference = maxScale - startScale;
-    cubesDifference = maxCube - proportionalUntil;
-    partsDifference = maxPartsGet - proportionalUntil;
+    // cubesDifference = maxCube - proportionalUntil;
+    // partsDifference = maxPartsGet - proportionalUntil;
   }
 
   void Update() {
@@ -77,7 +77,7 @@ public class PartsCollector : MonoBehaviour {
 		if (particleeffect.emissionRate < maxEmission) {
 			particleeffect.emissionRate += 1 * (emissionDifference * partsGet / (float) maxPartsGet);
 		}
-			
+
 
 
   }

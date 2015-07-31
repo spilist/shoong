@@ -4,10 +4,11 @@ using System.Collections;
 
 public class UnstoppableComboBar : MonoBehaviour {
   public PlayerMover player;
-  public float blinkingSeconds = 0.2f;
+  public UnstoppableBlinkingComboBar ubc;
 
   private Image image;
   private int fullComboCount;
+  private int comboCount = 0;
 
 	void Start () {
     image = GetComponent<Image>();
@@ -15,29 +16,23 @@ public class UnstoppableComboBar : MonoBehaviour {
 	}
 
   public void addCombo() {
-    image.fillAmount += 1f / fullComboCount;
+    ubc.addCombo(comboCount);
+    comboCount++;
+    if (comboCount > 1) image.fillAmount += 1f / fullComboCount;
   }
 
   public void startUnstoppable() {
     StartCoroutine("startDecrase");
+    ubc.startUnstoppable();
   }
 
   IEnumerator startDecrase() {
-    while(image.fillAmount > 0f) {
-      if (image.fillAmount <= 1f / fullComboCount) {
-        float blinking = 1;
-        while(blinking > 0f) {
-          yield return new WaitForSeconds(blinkingSeconds);
-          image.enabled = !image.enabled;
-          blinking -= blinkingSeconds;
-        }
-        image.enabled = true;
-        image.fillAmount = 0;
-      }
-      else {
-        yield return new WaitForSeconds(1);
-        image.fillAmount -= 1f / fullComboCount;
-      }
+    while(comboCount > 0) {
+      yield return new WaitForSeconds(1);
+      image.fillAmount -= 1f / fullComboCount;
+      if (comboCount > 1) ubc.timeElapse();
+      comboCount--;
     }
+    ubc.stopUnstoppable();
   }
 }

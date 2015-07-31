@@ -52,8 +52,8 @@ public class PlayerMover : MonoBehaviour {
 	}
 
 	void Update () {
-		
-		
+
+
 		if (unstoppable) {
 			speed = unstoppable_speed;
 		}
@@ -61,18 +61,16 @@ public class PlayerMover : MonoBehaviour {
 			speed = comboBar.moverspeed+boosterspeed;
 		}
 
-		
+
 		if(boosterspeed>0){
 			boosterspeed -= speed/60.0f+20*Time.deltaTime;
 		}else if(boosterspeed<0){
 			boosterspeed=0;
 		}
 
-		Debug.Log (boosterspeed);
-
 	}
-	
-	
+
+
 	void FixedUpdate () {
 
 		GetComponent<Rigidbody> ().velocity = direction * speed;
