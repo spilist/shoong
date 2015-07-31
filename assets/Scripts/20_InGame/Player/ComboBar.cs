@@ -11,6 +11,7 @@ public class ComboBar : MonoBehaviour {
   public GameObject player;
 
   public float tintAmount = 0.02f;
+	public float speedraiseamount=8;
 
   private int comboCount = 0;
 	private int fill = 1;
@@ -57,7 +58,7 @@ public class ComboBar : MonoBehaviour {
       comboRatio[comboCount-1].transform.GetChild(0).GetComponent<ParticleSystem>().Play();
 
 			energyDestroy.emissionRate += 10;
-			moverspeed += 10f;
+			moverspeed += speedraiseamount;
 
 			//energyDestroyColor = energyDestroy.GetComponent<ParticleSystem>().startColor;
 			//	energyDestroyColor.g -= 0.2f;

@@ -88,13 +88,6 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _SpecGlossMap
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
           name: _Diffuse
         second:
           m_Texture: {fileID: 0}
@@ -117,6 +110,13 @@ Material:
       data:
         first:
           name: _Emissive
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _SpecGlossMap
         second:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
@@ -191,12 +191,12 @@ Material:
         second: 1
       data:
         first:
-          name: _Outline
-        second: .000500000024
+          name: _Emissive
+        second: .5
       data:
         first:
-          name: _LineWidth
-        second: .200000003
+          name: _Outline
+        second: .000500000024
       data:
         first:
           name: _Specular_Power
@@ -205,10 +205,6 @@ Material:
         first:
           name: _Emissive_OnOff
         second: 0
-      data:
-        first:
-          name: _Emissive
-        second: .5
       data:
         first:
           name: _Pulse_Speed
@@ -241,6 +237,10 @@ Material:
         first:
           name: _OutlineWidth
         second: .300000012
+      data:
+        first:
+          name: _LineWidth
+        second: .200000003
     m_Colors:
       data:
         first:
@@ -257,23 +257,11 @@ Material:
       data:
         first:
           name: _TintColor
-        second: {r: .0997512862, g: .737930119, b: .904411793, a: .115999997}
+        second: {r: .0778546557, g: .575945437, b: .705882311, a: .115999997}
       data:
         first:
           name: _OutlineColor
         second: {r: .382352948, g: .37180528, b: 0, a: 0}
-      data:
-        first:
-          name: _LineColor
-        second: {r: 1, g: 1, b: 1, a: 1}
-      data:
-        first:
-          name: _GridColor
-        second: {r: 1, g: 1, b: 1, a: 0}
-      data:
-        first:
-          name: _Fresnel_Color
-        second: {r: 1, g: .600000024, b: 0, a: 1}
       data:
         first:
           name: _DiffuseColor
@@ -282,3 +270,15 @@ Material:
         first:
           name: _HighlightColor
         second: {r: 1, g: 1, b: 1, a: 1}
+      data:
+        first:
+          name: _Fresnel_Color
+        second: {r: 1, g: .600000024, b: 0, a: 1}
+      data:
+        first:
+          name: _LineColor
+        second: {r: 1, g: 1, b: 1, a: 1}
+      data:
+        first:
+          name: _GridColor
+        second: {r: 1, g: 1, b: 1, a: 0}

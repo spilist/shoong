@@ -463,7 +463,7 @@ ParticleSystem:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1343430248}
-  lengthInSec: .349999994
+  lengthInSec: .400000006
   startDelay: 0
   speed: 1
   randomSeed: 0
@@ -696,7 +696,7 @@ ParticleSystem:
     serializedVersion: 2
     enabled: 1
     type: 0
-    radius: 2.23000002
+    radius: 3.00999999
     angle: 70
     length: 10
     boxX: 1
@@ -710,7 +710,7 @@ ParticleSystem:
     enabled: 1
     m_Type: 0
     rate:
-      scalar: 50
+      scalar: 100
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -14069,6 +14069,7 @@ MonoBehaviour:
   energyDestroy: {fileID: 19839298, guid: 7a4903aebeaf1440d95d69b1daac37af, type: 2}
   player: {fileID: 91418582}
   tintAmount: .0199999996
+  speedraiseamount: 10
   blinkingSeconds: .600000024
   moverspeed: 45
 --- !u!1 &1301094251
@@ -16797,10 +16798,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c55c8e133eb0c47e28e0cc77e0aaaeb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  autoDecreaseRate: .100000001
-  getAmountbyParts: 45
+  autoDecreaseRate: .25
+  getAmountbyParts: 50
   getRate: 2
-  shootAmount: -25
+  shootAmount: -15
   loseRate: 2
   gameOver: {fileID: 868146742}
 --- !u!114 &1593744719
@@ -19338,7 +19339,7 @@ MonoBehaviour:
   - {fileID: 137376, guid: 687c694e3e0c84920afaa2510449ab32, type: 2}
   - {fileID: 178760, guid: 60ac4f8bf259148408f8d9e99bcb1ca2, type: 2}
   - {fileID: 103062, guid: b9e87ec91a93341948e088c253b40abc, type: 2}
-  max_parts: 40
+  max_parts: 50
   generateSpaceRadius: 1
   generateOffset: .200000003
   partsMinDistance: 50
@@ -19381,12 +19382,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obstacles:
   - {fileID: 195472, guid: cfdf45a8ca588407d84475bccdb83b45, type: 2}
-  speed: 180
+  speed: 240
   tumble: 10
-  minSpawnInterval: .5
-  maxSpawnInterval: 9
-  warnPlayerDuring: 1.5
-  spawnRadius: 140
+  minSpawnInterval: 0
+  maxSpawnInterval: 3
+  warnPlayerDuring: 1
+  spawnRadius: 130
   UICanvas: {fileID: 2134279972}
   obsIndicatorPrefab: {fileID: 144306, guid: 825df36890cc14b58a88c21930d89f0d, type: 2}
 --- !u!114 &1991538108

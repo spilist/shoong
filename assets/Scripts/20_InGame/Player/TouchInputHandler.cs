@@ -55,7 +55,9 @@ public class TouchInputHandler : MonoBehaviour
 			if (!player.isUnstoppable()) {
 				energyBar.loseByShoot();
 				comboBar.loseByShoot();
+				player.boosterSpeedup();
 			}
+
 
 			player.booster.Play();
 			player.booster.GetComponent<AudioSource>().Play();

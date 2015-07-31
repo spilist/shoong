@@ -10,6 +10,7 @@ public class PlayerMover : MonoBehaviour {
   public GameObject unstoppableSphere;
 
   public float speed;
+	private float boosterspeed;
   public float tumble;
   private Vector3 direction;
 
@@ -51,16 +52,34 @@ public class PlayerMover : MonoBehaviour {
 	}
 
 	void Update () {
+		
+		
 		if (unstoppable) {
 			speed = unstoppable_speed;
 		}
 		else {
-			speed = comboBar.moverspeed;
+			speed = comboBar.moverspeed+boosterspeed;
 		}
+
+		
+		if(boosterspeed>0){
+			boosterspeed -= speed/60.0f+20*Time.deltaTime;
+		}else if(boosterspeed<0){
+			boosterspeed=0;
+		}
+
+		Debug.Log (boosterspeed);
+
+	}
+	
+	
+	void FixedUpdate () {
+
+		GetComponent<Rigidbody> ().velocity = direction * speed;
 	}
 
-	void FixedUpdate () {
-    GetComponent<Rigidbody> ().velocity = direction * speed;
+	public void boosterSpeedup(){
+		boosterspeed += 80.0f;
 	}
 
 	void OnTriggerEnter(Collider other)
