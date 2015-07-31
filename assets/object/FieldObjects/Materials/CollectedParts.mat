@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: CollectedParts
-  m_Shader: {fileID: 12, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 200, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 1
   m_CustomRenderQueue: -1
@@ -19,7 +19,7 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: a1647d00a7b1b4747bc840b8a5ab75ca, type: 3}
+          m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -161,7 +161,7 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: .492647052, g: .475159615, b: .239078715, a: 1}
+        second: {r: .0324394442, g: .358176321, b: .551470578, a: .790000021}
       data:
         first:
           name: _SpecColor
@@ -169,7 +169,7 @@ Material:
       data:
         first:
           name: _TintColor
-        second: {r: .741565704, g: .791943073, b: .79411763, a: .0590000004}
+        second: {r: 0, g: .66257596, b: .691176474, a: .740999997}
       data:
         first:
           name: _OutlineColor

@@ -1,0 +1,197 @@
+fileFormatVersion: 2
+guid: 9d8c79f1a342edf4dadfcaae44e1c75c
+labels:
+- abstract
+- electric
+- liquid
+- effect
+- glow
+- gaz
+timeCreated: 1438306868
+licenseType: Free
+SubstanceImporter:
+  serializedVersion: 5
+  materialInstances:
+  - serializedVersion: 16
+    name: Electric_Liquid
+    prototypeName: Electric_Liquid
+    shader: {fileID: 200, guid: 0000000000000000f000000000000000, type: 0}
+    shaderKeywords: 
+    renderQueue: -1
+    lightmapFlags: 5
+    inputs:
+    - name: $outputsize
+      value:
+        scalar[0]: 9
+        scalar[1]: 9
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: $randomseed
+      value:
+        scalar[0]: 980
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: Flow
+      value:
+        scalar[0]: 3333
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: Glow_Intensity
+      value:
+        scalar[0]: .5
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: Glow_Size
+      value:
+        scalar[0]: 1
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: Liquid_Color
+      value:
+        scalar[0]: .514976203
+        scalar[1]: .864497006
+        scalar[2]: .933823526
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: Hue_Shift
+      value:
+        scalar[0]: 0
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: Saturation
+      value:
+        scalar[0]: .529999971
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: Luminosity
+      value:
+        scalar[0]: .230000004
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: Contrast
+      value:
+        scalar[0]: 0
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    materialInformation:
+      serializedVersion: 5
+      offset: {x: 0, y: 0}
+      scale: {x: 1, y: 1}
+      generateMipmaps: 1
+      generateAllOutputs: 1
+      animationUpdateRate: 42
+    materialProperties:
+      serializedVersion: 2
+      texEnvs:
+        data:
+          first:
+            name: _MainTex
+          second:
+            texture: {instanceID: 0}
+            scale: {x: 1, y: 1}
+            offset: {x: 0, y: 0}
+      floats:
+        data:
+          first:
+            name: _SrcBlend
+          second: 1
+        data:
+          first:
+            name: _DstBlend
+          second: 0
+        data:
+          first:
+            name: _Cutoff
+          second: .5
+        data:
+          first:
+            name: _Parallax
+          second: .0199999996
+        data:
+          first:
+            name: _ZWrite
+          second: 1
+        data:
+          first:
+            name: _Glossiness
+          second: .5
+        data:
+          first:
+            name: _BumpScale
+          second: 1
+        data:
+          first:
+            name: _OcclusionStrength
+          second: 1
+        data:
+          first:
+            name: _DetailNormalMapScale
+          second: 1
+        data:
+          first:
+            name: _UVSec
+          second: 0
+        data:
+          first:
+            name: _Mode
+          second: 0
+        data:
+          first:
+            name: _Metallic
+          second: 0
+        data:
+          first:
+            name: _InvFade
+          second: 1
+      colors:
+        data:
+          first:
+            name: _EmissionColor
+          second: {r: 0, g: 0, b: 0, a: 1}
+        data:
+          first:
+            name: _Color
+          second: {r: 1, g: 1, b: 1, a: .572000027}
+        data:
+          first:
+            name: _TintColor
+          second: {r: .367647052, g: .367647052, b: .367647052, a: .291000009}
+    textureParameters:
+    - name: Electric_Liquid_Emissive
+      alphaSource: 0
+      filterMode: 1
+      aniso: 1
+      wrapMode: 0
+    textureAssignments:
+    - shaderProp:
+        name: _MainTex
+      material: {instanceID: 0}
+      baseUID: 749476946
+    buildTargetSettings:
+    - serializedVersion: 2
+      buildTarget: 
+      textureWidth: 512
+      textureHeight: 512
+      textureFormat: 0
+      loadingBehavior: 1
+  deletedPrototypes: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

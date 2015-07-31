@@ -6,6 +6,7 @@ public class ParticleMover : MonoBehaviour {
 	public float speed=30;
 	public float time = 1;
 	public float tumble = 1;
+	private float randomscale;
 	private float random;
 	private Vector3 direction;
 	private bool timeelapsed = false;
@@ -13,6 +14,10 @@ public class ParticleMover : MonoBehaviour {
 
 	void Start () {
 		random = Random.Range (0.5f, 1.5f);
+		randomscale = transform.localScale.x * random;
+
+
+		transform.localScale = new Vector3(randomscale,randomscale,randomscale);
 
 		GetComponent<Rigidbody>().angularVelocity = Random.onUnitSphere * tumble;
 
