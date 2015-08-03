@@ -9,7 +9,10 @@ public class PartsCount : MonoBehaviour {
   public PartsCollector partsCollector;
 
   public void addCount() {
-    int partsGet = comboBar.getComboRatio();
+    addCount(comboBar.getComboRatio());
+  }
+
+  public void addCount(int partsGet) {
     count += partsGet;
     GetComponent<Text>().text = count.ToString();
     GameObject partsGetInstance = Instantiate(howManyPartsGet);

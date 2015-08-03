@@ -30,7 +30,6 @@ public class ObstaclesMover : MonoBehaviour {
       Destroy(collision.collider.gameObject);
     } else if (colliderTag == "SpecialPart") {
       GenerateNextSpecial gns = collision.collider.gameObject.GetComponent<GenerateNextSpecial>();
-
       if (gns.getComboCount() > 0) {
         // Player was trying to get it
         gns.destroySelf(true, true, false);

@@ -52,8 +52,6 @@ public class PlayerMover : MonoBehaviour {
 	}
 
 	void Update () {
-
-
 		if (unstoppable) {
 			speed = unstoppable_speed;
 		}
@@ -61,18 +59,15 @@ public class PlayerMover : MonoBehaviour {
 			speed = comboBar.moverspeed+boosterspeed;
 		}
 
-
-		if(boosterspeed>0){
-			boosterspeed -= speed/60.0f+20*Time.deltaTime;
-		}else if(boosterspeed<0){
-			boosterspeed=0;
+		if (boosterspeed > 0) {
+			boosterspeed -= speed / 60.0f + 20 * Time.deltaTime;
+		} else if (boosterspeed < 0){
+			boosterspeed = 0;
 		}
-
 	}
 
 
 	void FixedUpdate () {
-
 		GetComponent<Rigidbody> ().velocity = direction * speed;
 	}
 
@@ -104,7 +99,11 @@ public class PlayerMover : MonoBehaviour {
       gns.destroySelf(true, false, false);
       uComboBar.addCombo();
 		} else if (other.tag == "PatternPart") {
-      other.gameObject.GetComponent<PatternPartsMover>().becomeActive();
+      PatternPartsMover mover = other.gameObject.GetComponent<PatternPartsMover>();
+      if (!mover.isActive()) {
+        goodPartsEncounter(other.transform);
+        mover.becomeActive();
+      }
     }
 	}
 
@@ -174,5 +173,9 @@ public class PlayerMover : MonoBehaviour {
 
   public void getSpecialEnergyPlay() {
     getSpecialEnergyEffect.Play();
+  }
+
+  public EnergyBar getEnergyBar() {
+    return energyBar;
   }
 }

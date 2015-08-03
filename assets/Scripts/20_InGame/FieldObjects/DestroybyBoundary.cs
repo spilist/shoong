@@ -2,12 +2,14 @@
 using System.Collections;
 
 public class DestroybyBoundary : MonoBehaviour {
-  public SpecialObjectsManager som;
+  public PatternPartsManager ppm;
 
 	void OnTriggerExit(Collider other) {
     if (other.tag == "SpecialPart") {
       other.gameObject.GetComponent<GenerateNextSpecial>().destroySelf(false, false, true);
-    } else if (other.tag == "CollectedPart") {
+    } else if (other.tag == "PatternPart") {
+      Destroy(other.transform.parent.gameObject);
+      ppm.run();
     } else {
       Destroy(other.gameObject);
     }

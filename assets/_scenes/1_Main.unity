@@ -7136,7 +7136,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1701025775}
-  m_RootOrder: 5
+  m_RootOrder: 4
 --- !u!198 &787888476
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -8358,7 +8358,7 @@ Transform:
   m_LocalScale: {x: 95, y: 95, z: 95}
   m_Children: []
   m_Father: {fileID: 1701025775}
-  m_RootOrder: 4
+  m_RootOrder: 3
 --- !u!23 &851953044
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -10832,7 +10832,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed4ae3a4877af9b4dbe2b7d76edeb9ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  som: {fileID: 1991538106}
+  ppm: {fileID: 1991538108}
 --- !u!65 &892369440
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10863,7 +10863,7 @@ Transform:
   m_LocalScale: {x: 800, y: 250.000031, z: 800}
   m_Children: []
   m_Father: {fileID: 1701025775}
-  m_RootOrder: 2
+  m_RootOrder: 5
 --- !u!114 &892369443
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13794,7 +13794,7 @@ Transform:
   - {fileID: 1120510809}
   - {fileID: 544844246}
   m_Father: {fileID: 1701025775}
-  m_RootOrder: 3
+  m_RootOrder: 1
 --- !u!23 &1270861827
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -16934,11 +16934,11 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 91418581}
-  - {fileID: 1991538104}
-  - {fileID: 892369442}
   - {fileID: 1270861826}
+  - {fileID: 1991538104}
   - {fileID: 851953043}
   - {fileID: 765725197}
+  - {fileID: 892369442}
   m_Father: {fileID: 0}
   m_RootOrder: 5
 --- !u!1 &1801634117
@@ -19397,7 +19397,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1701025775}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!114 &1991538105
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19459,8 +19459,8 @@ MonoBehaviour:
   - {fileID: 195472, guid: cfdf45a8ca588407d84475bccdb83b45, type: 2}
   speed: 240
   tumble: 10
-  minSpawnInterval: 0
-  maxSpawnInterval: 3
+  minSpawnInterval: 100
+  maxSpawnInterval: 100
   warnPlayerDuring: 1
   spawnRadius: 130
   UICanvas: {fileID: 2134279972}
@@ -19479,6 +19479,10 @@ MonoBehaviour:
   patternPartsPrefab: {fileID: 153392, guid: b0841e772095a469abd53ff5e4b96845, type: 2}
   activePatternPartsMaterial: {fileID: 2100000, guid: 7a8c260f9d0e94e7f9184d84d1e6a962,
     type: 2}
+  particlesPrefab: {fileID: 178344, guid: b185d52f68bf5499e81f948bbbf1bd8c, type: 2}
+  destroyAfter: 3
+  spawnAfter: 3
+  numBonusParts: 5
   group_speed: 0
 --- !u!1 &1992069188
 GameObject:
