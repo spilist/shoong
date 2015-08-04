@@ -20,4 +20,8 @@ public class PartsCount : MonoBehaviour {
     partsGetInstance.GetComponent<HowManyPartsGet>().run(partsGet);
     partsCollector.increaseSize(partsGet);
   }
+
+  public int getCount() {
+    return count;
+  }
 }

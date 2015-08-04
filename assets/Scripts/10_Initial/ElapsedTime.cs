@@ -24,4 +24,8 @@ public class ElapsedTime : MonoBehaviour {
 	public void stopTime() {
 		timeChanging = false;
 	}
+
+	public int getTime() {
+		return (int) time;
+	}
 }
