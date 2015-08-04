@@ -198,7 +198,7 @@ ParticleSystem:
         rgba: 4293563158
       maxColor:
         serializedVersion: 2
-        rgba: 3660766162
+        rgba: 3670465330
       minMaxState: 0
     startSize:
       scalar: 1.5
@@ -273,7 +273,7 @@ ParticleSystem:
     serializedVersion: 2
     enabled: 1
     type: 0
-    radius: 5
+    radius: 4.71000004
     angle: 25
     length: 5
     boxX: 1
@@ -287,7 +287,7 @@ ParticleSystem:
     enabled: 1
     m_Type: 0
     rate:
-      scalar: 20
+      scalar: 200
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1119,7 +1119,19 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: InitialModule.startColor.maxColor.rgba
+      value: 3670465330
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: EmissionModule.rate.scalar
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: ShapeModule.radius
+      value: 4.71000004
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 131142}

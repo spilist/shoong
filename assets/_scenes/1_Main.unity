@@ -14254,7 +14254,7 @@ MonoBehaviour:
   energyDestroy: {fileID: 19839298, guid: 7a4903aebeaf1440d95d69b1daac37af, type: 2}
   player: {fileID: 91418582}
   tintAmount: .0199999996
-  speedraiseamount: 10
+  speedraiseamount: 8
   blinkingSeconds: .600000024
   moverspeed: 45
 --- !u!1 &1301094251
@@ -16983,10 +16983,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c55c8e133eb0c47e28e0cc77e0aaaeb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  autoDecreaseRate: 0
-  getAmountbyParts: 50
+  autoDecreaseRate: .100000001
+  getAmountbyParts: 5
   getRate: 2
-  shootAmount: -15
+  shootAmount: -2
   loseRate: 2
   gameOver: {fileID: 868146742}
 --- !u!114 &1593744719
@@ -17082,7 +17082,7 @@ RectTransform:
   m_RootOrder: 3
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -63.0999985, y: -43}
+  m_AnchoredPosition: {x: -63.1000977, y: -43}
   m_SizeDelta: {x: 110, y: 50}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1797352165
@@ -19633,12 +19633,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obstacles:
   - {fileID: 195472, guid: cfdf45a8ca588407d84475bccdb83b45, type: 2}
-  speed: 240
+  speed: 160
   tumble: 10
-  minSpawnInterval: 1
+  minSpawnInterval: 0
   maxSpawnInterval: 5
   warnPlayerDuring: 1
-  spawnRadius: 130
+  spawnRadius: 120
   UICanvas: {fileID: 2134279972}
   obsIndicatorPrefab: {fileID: 144306, guid: 825df36890cc14b58a88c21930d89f0d, type: 2}
 --- !u!114 &1991538108

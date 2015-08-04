@@ -52,27 +52,29 @@ public class PlayerMover : MonoBehaviour {
 	}
 
 	void Update () {
+	
+	}
+
+
+	void FixedUpdate () {
 		if (unstoppable) {
 			speed = unstoppable_speed;
 		}
 		else {
 			speed = comboBar.moverspeed+boosterspeed;
 		}
-
+		
 		if (boosterspeed > 0) {
-			boosterspeed -= speed / 60.0f + 20 * Time.deltaTime;
+			boosterspeed -= speed / 70.0f + 20 * Time.deltaTime;
+			Debug.Log (boosterspeed);
 		} else if (boosterspeed < 0){
 			boosterspeed = 0;
 		}
-	}
-
-
-	void FixedUpdate () {
 		GetComponent<Rigidbody> ().velocity = direction * speed;
 	}
 
 	public void boosterSpeedup(){
-		boosterspeed += 80.0f;
+		boosterspeed += 60.0f;
 	}
 
 	void OnTriggerEnter(Collider other)
