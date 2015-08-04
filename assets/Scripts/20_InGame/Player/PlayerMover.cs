@@ -17,6 +17,7 @@ public class PlayerMover : MonoBehaviour {
   private EnergyBar energyBar;
   private ComboBar comboBar;
   private UnstoppableComboBar uComboBar;
+  private SpecialPartIndicator spIndicator;
 
   public ParticleSystem booster;
   public ParticleSystem getEnergy;
@@ -49,12 +50,8 @@ public class PlayerMover : MonoBehaviour {
     energyBar = transform.Find("Bars Canvas/EnergyBar").GetComponent<EnergyBar>();
     comboBar = transform.Find("Bars Canvas").GetComponent<ComboBar>();
     uComboBar = transform.Find("Bars Canvas/UnstoppableComboBar").GetComponent<UnstoppableComboBar>();
+    spIndicator = GameObject.Find("SpecialPart Indicator").GetComponent<SpecialPartIndicator>();
 	}
-
-	void Update () {
-	
-	}
-
 
 	void FixedUpdate () {
 		if (unstoppable) {
@@ -63,10 +60,9 @@ public class PlayerMover : MonoBehaviour {
 		else {
 			speed = comboBar.moverspeed+boosterspeed;
 		}
-		
+
 		if (boosterspeed > 0) {
 			boosterspeed -= speed / 70.0f + 20 * Time.deltaTime;
-			Debug.Log (boosterspeed);
 		} else if (boosterspeed < 0){
 			boosterspeed = 0;
 		}
@@ -136,13 +132,16 @@ public class PlayerMover : MonoBehaviour {
   }
 
   public void startUnstoppable(int comboCount) {
-  	unstoppable = true;
+  	if (gameOver.isOver()) return;
+
+    unstoppable = true;
   	unstoppable_during = comboCount * unstoppable_time_scale + unstoppable_minbonus;
   	unstoppableEffect.Play();
 		unstoppableEffect_two.Play();
   	energyBar.startUnstoppable();
     uComboBar.startUnstoppable();
     unstoppableSphere.SetActive(true);
+    spIndicator.stopIndicate();
   	StartCoroutine("stopUnstoppable");
   }
 

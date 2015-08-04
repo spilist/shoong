@@ -6,8 +6,8 @@ public class GenerateNextSpecial : MonoBehaviour {
   public GameObject newSpecialEffect;
   GameObject next;
   SpecialObjectsManager som;
-  int maxcombo;
 
+  int maxcombo;
   int comboCount;
   bool secondShot = false;
 

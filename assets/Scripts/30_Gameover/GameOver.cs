@@ -36,4 +36,8 @@ public class GameOver : MonoBehaviour {
     barsCanvas.SetActive(false);
     restartMessage.GetComponent<Text>().enabled = true;
   }
+
+  public bool isOver() {
+    return gameOver;
+  }
 }

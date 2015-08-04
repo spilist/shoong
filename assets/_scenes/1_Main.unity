@@ -17166,7 +17166,6 @@ MonoBehaviour:
   elapsedTime: {fileID: 980455324}
   idleUI: {fileID: 1817731073}
   objectsManager: {fileID: 1991538103}
-  spIndicator: {fileID: 2131139023}
   partsCollector: {fileID: 1270861825}
 --- !u!64 &1801634120
 MeshCollider:
@@ -19619,6 +19618,7 @@ MonoBehaviour:
   special_next: {fileID: 106010, guid: 0c9f9410f926d487d8f749586b909967, type: 2}
   special_line: {fileID: 160548, guid: ff79b10b6d1744e5f8e59299310d0ae0, type: 2}
   fom: {fileID: 1991538105}
+  spIndicator: {fileID: 2131139023}
   radius: 50
 --- !u!114 &1991538107
 MonoBehaviour:

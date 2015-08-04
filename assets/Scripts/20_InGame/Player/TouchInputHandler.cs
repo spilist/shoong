@@ -16,7 +16,6 @@ public class TouchInputHandler : MonoBehaviour
 	private SpecialObjectsManager som;
 	private PatternPartsManager ppm;
 
-	public SpecialPartIndicator spIndicator;
 	public GameObject partsCollector;
 
 	private bool gameStarted = false;
@@ -38,7 +37,6 @@ public class TouchInputHandler : MonoBehaviour
 				som.run();
 				fom.run();
 				ppm.run();
-				spIndicator.startIndicate();
 				barsCanvas.GetComponent<Canvas>().enabled = true;
 				energyBar.startDecrease();
 				elapsedTime.startTime();

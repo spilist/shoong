@@ -23,15 +23,25 @@ public class ScoreManager : MonoBehaviour {
     elapsedTime_highScore.text = timeHighScore.ToString();
 	}
 
+  void Update() {
+    if (partsCount.getCount() > partsHighScore) {
+      partsCount_highScore.text = partsCount.getCount().ToString();
+    }
+
+    if (elapsedTime.getTime() > timeHighScore) {
+      elapsedTime_highScore.text = elapsedTime.getTime().ToString();
+    }
+  }
+
   void OnDisable(){
     if (partsCount.getCount() > partsHighScore) {
       PlayerPrefs.SetInt(partsHighScoreKey, partsCount.getCount());
-      PlayerPrefs.Save();
     }
 
     if (elapsedTime.getTime() > timeHighScore) {
       PlayerPrefs.SetInt(timeHighScoreKey, elapsedTime.getTime());
-      PlayerPrefs.Save();
     }
+
+    PlayerPrefs.Save();
   }
 }

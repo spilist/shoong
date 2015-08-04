@@ -3,26 +3,22 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class ElapsedTime : MonoBehaviour {
-	private bool timeChanging = false;
-	private float time = 0.0f;
+	private int time = 0;
 
-	void Start () {
-	}
-
-	void Update () {
-		if (timeChanging) {
-			time += Time.deltaTime;
-			GetComponent<Text>().text = time.ToString ("0");
+	IEnumerator startElapse() {
+		while(true) {
+			yield return new WaitForSeconds(1);
+			time++;
+			GetComponent<Text>().text = time.ToString();
 		}
-
 	}
 
 	public void startTime() {
-		timeChanging = true;
+		StartCoroutine("startElapse");
 	}
 
 	public void stopTime() {
-		timeChanging = false;
+		StopCoroutine("startElapse");
 	}
 
 	public int getTime() {
