@@ -6,6 +6,8 @@ public class PatternPartsManager : MonoBehaviour {
   public Material activePatternPartsMaterial;
   public GameObject particlesPrefab;
   public int destroyAfter = 3;
+  public float blinkingInvisible = 0.2f;
+  public float blinkingVisible = 0.6f;
   public int spawnAfter = 3;
   public int numBonusParts = 5;
 

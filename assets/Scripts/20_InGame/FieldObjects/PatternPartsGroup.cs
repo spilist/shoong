@@ -52,6 +52,9 @@ public class PatternPartsGroup : MonoBehaviour {
   }
 
   IEnumerator destroyAll() {
+    foreach (Transform tr in transform) {
+      if (tr.tag == "PatternPart") tr.GetComponent<PatternPartsMover>().startBlink();
+    }
     yield return new WaitForSeconds(ppm.destroyAfter);
 
     if (count < numPatternParts) Destroy(gameObject);
