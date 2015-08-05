@@ -319,8 +319,9 @@ MonoBehaviour:
   energyDestroy: {fileID: 428390, guid: 7a4903aebeaf1440d95d69b1daac37af, type: 2}
   obstacleDestroy: {fileID: 190966, guid: 06a9d910a6ef7477eb37b2d7cddcfa88, type: 2}
   unstoppableSphere: {fileID: 851953042}
-  cubesWhenDestroyBigObstacle: 50
-  cubesWhenDestroySmallObstacle: 20
+  cubesWhenDestroyBigObstacle: 30
+  cubesWhenDestroySmallObstacle: 15
+  cubesWhenDestroyMonster: 50
   speed: 5
   tumble: 4
   booster: {fileID: 131396333}
@@ -19557,6 +19558,7 @@ GameObject:
   - 114: {fileID: 1991538106}
   - 114: {fileID: 1991538107}
   - 114: {fileID: 1991538108}
+  - 114: {fileID: 1991538109}
   m_Layer: 9
   m_Name: Field Objects
   m_TagString: Untagged
@@ -19596,8 +19598,6 @@ MonoBehaviour:
   - {fileID: 131058, guid: b2e788ee7ee7747ae89b9fd021c3b05b, type: 2}
   - {fileID: 119532, guid: 8de9923715b8e4769a343553e0193937, type: 2}
   - {fileID: 190242, guid: d8430bbeb85c44b9b9b8df1654f1e53b, type: 2}
-  monster:
-  - {fileID: 128816, guid: d6736fed920184832b40515128a9cad2, type: 2}
   max_parts: 50
   max_obstacles: 3
   generateSpaceRadius: 1
@@ -19609,12 +19609,10 @@ MonoBehaviour:
   speed_obstacles: 15
   speed_parts: 0
   speed_special: 0
-  speed_monster: 80
   tumble_obstacles: .5
   tumble_parts: 1
   tumble_special: 3
   tumble_patternparts: 3
-  tumble_monster: 3
   unstoppableFollowSpeed: 1.5
   collectedPartsMaterial: {fileID: 0}
 --- !u!114 &1991538106
@@ -19681,6 +19679,24 @@ MonoBehaviour:
   spawnAfter: 3
   numBonusParts: 5
   group_speed: 0
+--- !u!114 &1991538109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1991538103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5edcb4094aa64a1cb46c7914f086d22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monster: {fileID: 128816, guid: d6736fed920184832b40515128a9cad2, type: 2}
+  speed_chase: 80
+  speed_runaway: 70
+  tumble: 3
+  minSpawnInterval: 5
+  maxSpawnInterval: 10
+  spawnRadius: 600
 --- !u!1 &1992069188
 GameObject:
   m_ObjectHideFlags: 0

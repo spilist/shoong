@@ -15,6 +15,7 @@ public class TouchInputHandler : MonoBehaviour
 	private FieldObjectsManager fom;
 	private SpecialObjectsManager som;
 	private PatternPartsManager ppm;
+	private MonsterManager monm;
 
 	public GameObject partsCollector;
 
@@ -26,6 +27,7 @@ public class TouchInputHandler : MonoBehaviour
 		fom = objectsManager.GetComponent<FieldObjectsManager>();
 		som = objectsManager.GetComponent<SpecialObjectsManager>();
 		ppm = objectsManager.GetComponent<PatternPartsManager>();
+		monm = objectsManager.GetComponent<MonsterManager>();
 
 		barsCanvas.GetComponent<Canvas>().enabled = false;
 		// partsCollector.SetActive(false);
@@ -37,6 +39,7 @@ public class TouchInputHandler : MonoBehaviour
 				som.run();
 				fom.run();
 				ppm.run();
+				monm.run();
 				barsCanvas.GetComponent<Canvas>().enabled = true;
 				energyBar.startDecrease();
 				elapsedTime.startTime();
@@ -56,7 +59,7 @@ public class TouchInputHandler : MonoBehaviour
 				player.boosterSpeedup();
 			}
 
-			player.moveTo(worldTouchPosition);
+			// player.moveTo(worldTouchPosition);
 
 			player.booster.Play();
 			player.booster.GetComponent<AudioSource>().Play();

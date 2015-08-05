@@ -5,7 +5,7 @@ public class PatternPartsGroup : MonoBehaviour {
   private Vector3 direction;
   private float speed;
   private PatternPartsManager ppm;
-  private int numPatternParts;
+  private int numPatternParts = 0;
   private int count = 0;
   private PlayerMover player;
 
@@ -30,7 +30,10 @@ public class PatternPartsGroup : MonoBehaviour {
   public void destroyAfterCount() {
     count++;
 
-    if (count == numPatternParts) absorbAll();
+    if (count == numPatternParts) {
+      absorbAll();
+      return;
+    }
 
     if (count > 1) return;
 
@@ -49,6 +52,7 @@ public class PatternPartsGroup : MonoBehaviour {
       }
     }
     Destroy(gameObject);
+    ppm.spawnReady();
   }
 
   IEnumerator destroyAll() {

@@ -8,8 +8,9 @@ public class PlayerMover : MonoBehaviour {
   public Transform energyDestroy;
   public GameObject obstacleDestroy;
   public GameObject unstoppableSphere;
-  public int cubesWhenDestroyBigObstacle = 50;
-  public int cubesWhenDestroySmallObstacle = 20;
+  public int cubesWhenDestroyBigObstacle = 30;
+  public int cubesWhenDestroySmallObstacle = 15;
+  public int cubesWhenDestroyMonster = 50;
   private Hashtable cubesWhenDestroy;
 
   public float speed;
@@ -63,11 +64,12 @@ public class PlayerMover : MonoBehaviour {
     cubesWhenDestroy = new Hashtable();
     cubesWhenDestroy.Add("Obstacle_big", cubesWhenDestroyBigObstacle);
     cubesWhenDestroy.Add("Obstacle", cubesWhenDestroySmallObstacle);
+    cubesWhenDestroy.Add("Monster", cubesWhenDestroyMonster);
 	}
 
-  public void moveTo(Vector3 touchPosition) {
-    moveToHere = touchPosition;
-  }
+  // public void moveTo(Vector3 touchPosition) {
+    // moveToHere = touchPosition;
+  // }
 
 	void FixedUpdate () {
 		if (unstoppable) {
@@ -96,7 +98,7 @@ public class PlayerMover : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other)
 	{
-		if (other.tag == "Obstacle" || other.tag == "Obstacle_big") {
+		if (other.tag == "Obstacle" || other.tag == "Obstacle_big" || other.tag == "Monster") {
 			if (unstoppable) {
 				Instantiate(obstacleDestroy, other.transform.position, other.transform.rotation);
         for (int k = 0; k < (int)cubesWhenDestroy[other.tag]; k++) {
@@ -104,7 +106,7 @@ public class PlayerMover : MonoBehaviour {
         }
         energyBar.getHealthbyParts((int)cubesWhenDestroy[other.tag]/2);
         partsCount.addCount((int)cubesWhenDestroy[other.tag]);
-        other.GetComponent<AudioSource>().Play();
+        // other.GetComponent<AudioSource>().Play();
         Destroy(other.gameObject);
 			} else {
 				gameOver.run();

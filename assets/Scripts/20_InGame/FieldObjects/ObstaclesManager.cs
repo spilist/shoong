@@ -21,9 +21,6 @@ public class ObstaclesManager : MonoBehaviour {
     playerTransform = GameObject.Find("Player").transform;
   }
 
-  void Update () {
-  }
-
   IEnumerator spawnObstacle() {
     while(true) {
       GameObject prefab = obstacles[Random.Range(0, obstacles.Length)];
