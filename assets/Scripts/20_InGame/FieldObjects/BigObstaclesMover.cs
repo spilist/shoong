@@ -1,0 +1,54 @@
+﻿using UnityEngine;
+using System.Collections;
+
+public class BigObstaclesMover : MonoBehaviour {
+  private float speed;
+  private float tumble;
+  private Vector3 direction;
+
+  private FieldObjectsManager fom;
+
+  void Start () {
+    fom = GameObject.Find("Field Objects").GetComponent<FieldObjectsManager>();
+    speed = fom.getSpeed(gameObject.tag);
+    tumble = fom.getTumble(gameObject.tag);
+    GetComponent<Rigidbody>().angularVelocity = Random.onUnitSphere * tumble;
+
+    Vector2 randomV = Random.insideUnitCircle;
+    direction = new Vector3(randomV.x, 0, randomV.y);
+    direction.Normalize();
+
+    GetComponent<Rigidbody> ().velocity = direction * speed;
+	}
+
+	void FixedUpdate () {
+    GetComponent<Rigidbody> ().velocity = direction * speed;
+	}
+
+  void OnCollisionEnter(Collision collision) {
+    string colliderTag = collision.collider.tag;
+
+    if (colliderTag == "Part" || colliderTag == "Obstacle") {
+      Destroy(collision.collider.gameObject);
+    } else if (colliderTag == "SpecialPart") {
+      GenerateNextSpecial gns = collision.collider.gameObject.GetComponent<GenerateNextSpecial>();
+      if (gns.getComboCount() > 0) {
+        // Player was trying to get it
+        gns.destroySelf(true, true, false);
+      } else {
+        // Destroyed somewhere
+        gns.destroySelf(false, false, true);
+      }
+    } else if (colliderTag == "Obstacle_big") {
+      processCollision(collision);
+    }
+  }
+
+  void processCollision(Collision collision) {
+    ContactPoint contact = collision.contacts[0];
+    Vector3 normal = contact.normal;
+    direction = Vector3.Reflect(direction, -normal).normalized;
+    direction.y = 0;
+    direction.Normalize();
+  }
+}

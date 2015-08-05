@@ -319,9 +319,12 @@ MonoBehaviour:
   energyDestroy: {fileID: 428390, guid: 7a4903aebeaf1440d95d69b1daac37af, type: 2}
   obstacleDestroy: {fileID: 190966, guid: 06a9d910a6ef7477eb37b2d7cddcfa88, type: 2}
   unstoppableSphere: {fileID: 851953042}
+  cubesWhenDestroyBigObstacle: 50
+  cubesWhenDestroySmallObstacle: 20
   speed: 5
   tumble: 4
   booster: {fileID: 131396333}
+  boosterSpeedUpAmount: 60
   getEnergy: {fileID: 317572741}
   unstoppableEffect: {fileID: 621705455}
   unstoppableEffect_two: {fileID: 1934776454}
@@ -19589,18 +19592,29 @@ MonoBehaviour:
   - {fileID: 137376, guid: 687c694e3e0c84920afaa2510449ab32, type: 2}
   - {fileID: 178760, guid: 60ac4f8bf259148408f8d9e99bcb1ca2, type: 2}
   - {fileID: 103062, guid: b9e87ec91a93341948e088c253b40abc, type: 2}
+  obstacles_big:
+  - {fileID: 131058, guid: b2e788ee7ee7747ae89b9fd021c3b05b, type: 2}
+  - {fileID: 119532, guid: 8de9923715b8e4769a343553e0193937, type: 2}
+  - {fileID: 190242, guid: d8430bbeb85c44b9b9b8df1654f1e53b, type: 2}
+  monster:
+  - {fileID: 128816, guid: d6736fed920184832b40515128a9cad2, type: 2}
   max_parts: 50
+  max_obstacles: 3
   generateSpaceRadius: 1
   generateOffset: .200000003
   partsMinDistance: 50
   fieldObjectsLayerMask:
     serializedVersion: 2
     m_Bits: 512
+  speed_obstacles: 15
   speed_parts: 0
   speed_special: 0
+  speed_monster: 80
+  tumble_obstacles: .5
   tumble_parts: 1
   tumble_special: 3
   tumble_patternparts: 3
+  tumble_monster: 3
   unstoppableFollowSpeed: 1.5
   collectedPartsMaterial: {fileID: 0}
 --- !u!114 &1991538106
@@ -19633,6 +19647,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obstacles:
   - {fileID: 195472, guid: cfdf45a8ca588407d84475bccdb83b45, type: 2}
+  - {fileID: 119438, guid: 3d3b1ff59a5524adaa196a2a9a5dd4f8, type: 2}
+  - {fileID: 138192, guid: 39ae9325fc1bd4d13a70c089698899bd, type: 2}
+  - {fileID: 121254, guid: 2679d9d5cfcac4d17a30ffbf890b119b, type: 2}
+  - {fileID: 138142, guid: 5282d75336a9344948a3850d724a40a3, type: 2}
+  - {fileID: 155078, guid: e6c20ed1857a7484f93bdc922b3cf045, type: 2}
   speed: 160
   tumble: 10
   minSpawnInterval: 0
@@ -19657,6 +19676,8 @@ MonoBehaviour:
     type: 2}
   particlesPrefab: {fileID: 178344, guid: b185d52f68bf5499e81f948bbbf1bd8c, type: 2}
   destroyAfter: 3
+  blinkingInvisible: .200000003
+  blinkingVisible: .600000024
   spawnAfter: 3
   numBonusParts: 5
   group_speed: 0

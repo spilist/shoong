@@ -8,6 +8,9 @@ public class PlayerMover : MonoBehaviour {
   public Transform energyDestroy;
   public GameObject obstacleDestroy;
   public GameObject unstoppableSphere;
+  public int cubesWhenDestroyBigObstacle = 50;
+  public int cubesWhenDestroySmallObstacle = 20;
+  private Hashtable cubesWhenDestroy;
 
   public float speed;
 	private float boosterspeed;
@@ -20,6 +23,7 @@ public class PlayerMover : MonoBehaviour {
   private SpecialPartIndicator spIndicator;
 
   public ParticleSystem booster;
+  public float boosterSpeedUpAmount = 120f;
   public ParticleSystem getEnergy;
   public ParticleSystem unstoppableEffect;
   public ParticleSystem unstoppableEffect_two;
@@ -39,6 +43,10 @@ public class PlayerMover : MonoBehaviour {
 
 	GameObject nextSpecialTry;
 
+  // experiments
+  private bool stopNow = false;
+  Vector3 moveToHere;
+
 	void Start () {
     GetComponent<Rigidbody>().angularVelocity = Random.onUnitSphere * tumble;
 
@@ -51,7 +59,15 @@ public class PlayerMover : MonoBehaviour {
     comboBar = transform.Find("Bars Canvas").GetComponent<ComboBar>();
     uComboBar = transform.Find("Bars Canvas/UnstoppableComboBar").GetComponent<UnstoppableComboBar>();
     spIndicator = GameObject.Find("SpecialPart Indicator").GetComponent<SpecialPartIndicator>();
+
+    cubesWhenDestroy = new Hashtable();
+    cubesWhenDestroy.Add("Obstacle_big", cubesWhenDestroyBigObstacle);
+    cubesWhenDestroy.Add("Obstacle", cubesWhenDestroySmallObstacle);
 	}
+
+  public void moveTo(Vector3 touchPosition) {
+    moveToHere = touchPosition;
+  }
 
 	void FixedUpdate () {
 		if (unstoppable) {
@@ -66,19 +82,30 @@ public class PlayerMover : MonoBehaviour {
 		} else if (boosterspeed < 0){
 			boosterspeed = 0;
 		}
-		GetComponent<Rigidbody> ().velocity = direction * speed;
+
+    // if (!unstoppable & (Vector3.Distance(moveToHere, transform.position) < 3)) {
+      // GetComponent<Rigidbody> ().velocity = Vector3.zero;
+    // } else {
+  		GetComponent<Rigidbody> ().velocity = direction * speed;
+    // }
 	}
 
 	public void boosterSpeedup(){
-		boosterspeed += 60.0f;
+		boosterspeed += boosterSpeedUpAmount;
 	}
 
 	void OnTriggerEnter(Collider other)
 	{
-		if (other.tag == "Obstacle") {
+		if (other.tag == "Obstacle" || other.tag == "Obstacle_big") {
 			if (unstoppable) {
 				Instantiate(obstacleDestroy, other.transform.position, other.transform.rotation);
-				Destroy(other.gameObject);
+        for (int k = 0; k < (int)cubesWhenDestroy[other.tag]; k++) {
+          Instantiate(particles, other.transform.position, other.transform.rotation);
+        }
+        energyBar.getHealthbyParts((int)cubesWhenDestroy[other.tag]/2);
+        partsCount.addCount((int)cubesWhenDestroy[other.tag]);
+        other.gameObject.GetComponent<AudioSource>().Play ();
+        Destroy(other.gameObject);
 			} else {
 				gameOver.run();
 			}
@@ -110,13 +137,15 @@ public class PlayerMover : MonoBehaviour {
       Instantiate(particles, tr.position, tr.rotation);
     }
     GetComponent<AudioSource>().Play ();
-    energyBar.getHealthbyParts();
     partsCount.addCount();
+    energyBar.getHealthbyParts(comboBar.getComboRatio());
     comboBar.addCombo();
+    stopNow = true;
   }
 
 	public void rotatePlayerBody() {
 		GetComponent<Rigidbody>().angularVelocity = Random.onUnitSphere * tumble;
+    stopNow = false;
 	}
 
 	public void setDirection(Vector3 value) {

@@ -56,6 +56,7 @@ public class TouchInputHandler : MonoBehaviour
 				player.boosterSpeedup();
 			}
 
+			player.moveTo(worldTouchPosition);
 
 			player.booster.Play();
 			player.booster.GetComponent<AudioSource>().Play();

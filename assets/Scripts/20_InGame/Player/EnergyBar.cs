@@ -95,6 +95,10 @@ public class EnergyBar : MonoBehaviour {
     changeHealth(getAmountbyParts, getRate);
   }
 
+  public void getHealthbyParts(int combo) {
+   changeHealth(getAmountbyParts * combo, getRate * combo);
+  }
+
   public void loseByShoot() {
     changeHealth(shootAmount, loseRate);
   }

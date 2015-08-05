@@ -11,7 +11,6 @@ GameObject:
   - 33: {fileID: 3378926}
   - 23: {fileID: 2372184}
   - 54: {fileID: 5422834}
-  - 114: {fileID: 11470278}
   - 198: {fileID: 19874770}
   - 199: {fileID: 19900778}
   - 136: {fileID: 13610204}
@@ -80,23 +79,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 4
   m_CollisionDetection: 0
---- !u!114 &11470278
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 195732}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24463a14026f5c344a9b1c9e82365614, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  boosterPs: {fileID: 0}
-  firePs: {fileID: 0}
-  energyBar: {fileID: 0}
-  sphereMover: {fileID: 0}
-  rb: {fileID: 0}
-  speed: 22
 --- !u!136 &13610204
 CapsuleCollider:
   m_ObjectHideFlags: 1
