@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: PatternPartsLine
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 200, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _ALPHAPREMULTIPLY_ON
   m_LightmapFlags: 5
   m_CustomRenderQueue: 3000
@@ -128,6 +128,10 @@ Material:
         first:
           name: _Metallic
         second: 0
+      data:
+        first:
+          name: _InvFade
+        second: 1
     m_Colors:
       data:
         first:
@@ -136,4 +140,8 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: .604238749, g: .633787632, b: .933823526, a: .421999991}
+        second: {r: .604238749, g: .892909586, b: .933823526, a: .222000003}
+      data:
+        first:
+          name: _TintColor
+        second: {r: 0, g: .875862181, b: 1, a: .209000006}

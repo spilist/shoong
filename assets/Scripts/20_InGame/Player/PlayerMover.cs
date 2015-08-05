@@ -104,7 +104,7 @@ public class PlayerMover : MonoBehaviour {
         }
         energyBar.getHealthbyParts((int)cubesWhenDestroy[other.tag]/2);
         partsCount.addCount((int)cubesWhenDestroy[other.tag]);
-        other.gameObject.GetComponent<AudioSource>().Play ();
+        other.GetComponent<AudioSource>().Play();
         Destroy(other.gameObject);
 			} else {
 				gameOver.run();

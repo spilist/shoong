@@ -16986,8 +16986,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c55c8e133eb0c47e28e0cc77e0aaaeb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  autoDecreaseRate: .100000001
-  getAmountbyParts: 5
+  autoDecreaseRate: .150000006
+  getAmountbyParts: 4
   getRate: 2
   shootAmount: -2
   loseRate: 2

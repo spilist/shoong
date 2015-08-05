@@ -11,11 +11,15 @@ GameObject:
   - 33: {fileID: 3394354}
   - 23: {fileID: 2301146}
   - 54: {fileID: 5474114}
-  - 135: {fileID: 13569772}
   - 198: {fileID: 19867588}
   - 199: {fileID: 19946196}
   - 114: {fileID: 11482744}
   - 82: {fileID: 8233114}
+  - 136: {fileID: 13622880}
+  - 136: {fileID: 13623140}
+  - 136: {fileID: 13640072}
+  - 136: {fileID: 13670538}
+  - 136: {fileID: 13611266}
   m_Layer: 0
   m_Name: Asteroid_big_2
   m_TagString: Obstacle_big
@@ -30,7 +34,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 119532}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -110, y: 0, z: 44}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.10000002, y: 1.10000002, z: 1.10000002}
   m_Children: []
   m_Father: {fileID: 0}
@@ -161,8 +165,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e043be71738734f7cb680b3940904180, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!135 &13569772
-SphereCollider:
+--- !u!136 &13611266
+CapsuleCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -170,9 +174,62 @@ SphereCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 19
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 10.6999998
+  m_Height: 36.6100006
+  m_Direction: 0
+  m_Center: {x: -2.70000005, y: 0, z: 2.05999994}
+--- !u!136 &13622880
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 119532}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 10.5299997
+  m_Height: 35.8400002
+  m_Direction: 1
+  m_Center: {x: -4, y: 1.88, z: 1.5}
+--- !u!136 &13623140
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 119532}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 7.5
+  m_Height: 32.9500008
+  m_Direction: 1
+  m_Center: {x: 6.19999981, y: 0, z: -6.19000006}
+--- !u!136 &13640072
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 119532}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 10.6000004
+  m_Height: 30.4899998
+  m_Direction: 1
+  m_Center: {x: -5.5, y: -2, z: -3.91000009}
+--- !u!136 &13670538
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 119532}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 6.55999994
+  m_Height: 33.0600014
+  m_Direction: 1
+  m_Center: {x: 3.69000006, y: -1.89999998, z: 3.76999998}
 --- !u!198 &19867588
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -410,13 +467,13 @@ ParticleSystem:
     boxZ: 1
     arc: 360
     placementMode: 0
-    m_Mesh: {fileID: 4300022, guid: 36d309dafa347484c9830003976b48f9, type: 3}
+    m_Mesh: {fileID: 4300024, guid: 36d309dafa347484c9830003976b48f9, type: 3}
     randomDirection: 0
   EmissionModule:
     enabled: 1
-    m_Type: 1
+    m_Type: 0
     rate:
-      scalar: 6
+      scalar: 60
       maxCurve:
         serializedVersion: 2
         m_Curve:

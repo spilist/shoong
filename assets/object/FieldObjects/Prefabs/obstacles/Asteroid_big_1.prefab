@@ -16,6 +16,7 @@ GameObject:
   - 136: {fileID: 13677032}
   - 114: {fileID: 11415280}
   - 82: {fileID: 8294844}
+  - 136: {fileID: 13677616}
   m_Layer: 0
   m_Name: Asteroid_big_1
   m_TagString: Obstacle_big
@@ -30,7 +31,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 131058}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -45, y: 0, z: 44.5}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.10000002, y: 1.10000002, z: 1.10000002}
   m_Children: []
   m_Father: {fileID: 0}
@@ -170,10 +171,23 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 29
-  m_Height: 42
+  m_Radius: 19.4300003
+  m_Height: 48.2000008
+  m_Direction: 0
+  m_Center: {x: -5.30000019, y: 0, z: 0}
+--- !u!136 &13677616
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 131058}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 16.6499996
+  m_Height: 40.7000008
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 9.75, y: 0, z: -3.91000009}
 --- !u!198 &19854792
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -415,9 +429,9 @@ ParticleSystem:
     randomDirection: 0
   EmissionModule:
     enabled: 1
-    m_Type: 1
+    m_Type: 0
     rate:
-      scalar: 6
+      scalar: 60
       maxCurve:
         serializedVersion: 2
         m_Curve:
