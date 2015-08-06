@@ -14260,7 +14260,7 @@ MonoBehaviour:
   energyDestroy: {fileID: 19839298, guid: 7a4903aebeaf1440d95d69b1daac37af, type: 2}
   player: {fileID: 91418582}
   tintAmount: .0199999996
-  speedraiseamount: 8
+  speedraiseamount: 7
   blinkingSeconds: .600000024
   moverspeed: 45
 --- !u!1 &1301094251
@@ -16990,7 +16990,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c55c8e133eb0c47e28e0cc77e0aaaeb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  autoDecreaseRate: 0
+  autoDecreaseRate: .150000006
   getAmountbyParts: 4
   getRate: 2
   shootAmount: -2
@@ -17399,7 +17399,7 @@ RectTransform:
   m_RootOrder: 5
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 0, y: 160}
+  m_AnchoredPosition: {x: 0, y: 140}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1881103579
@@ -19903,14 +19903,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monster: {fileID: 128816, guid: d6736fed920184832b40515128a9cad2, type: 2}
-  speed_chase: 80
-  speed_runaway: 70
-  tumble: 3
-  minSpawnInterval: 50
-  maxSpawnInterval: 50
-  spawnRadius: 600
-  minLifeTime: 10
-  maxLifeTime: 15
+  speed_chase: 75
+  speed_runaway: 50
+  tumble: 5
+  minSpawnInterval: 20
+  maxSpawnInterval: 30
+  spawnRadius: 550
+  minLifeTime: 15
+  maxLifeTime: 25
   monsterWarning: {fileID: 1881103577}
   warningBlinkSeconds: .699999988
 --- !u!1 &1992069188
