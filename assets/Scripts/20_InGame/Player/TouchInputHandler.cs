@@ -13,8 +13,7 @@ public class TouchInputHandler : MonoBehaviour
 
 	public GameObject objectsManager;
 	private FieldObjectsManager fom;
-	private SpecialObjectsManager som;
-	private PatternPartsManager ppm;
+	private ComboPartsManager cpm;
 	private MonsterManager monm;
 
 	public GameObject partsCollector;
@@ -25,20 +24,17 @@ public class TouchInputHandler : MonoBehaviour
 
 	void Start() {
 		fom = objectsManager.GetComponent<FieldObjectsManager>();
-		som = objectsManager.GetComponent<SpecialObjectsManager>();
-		ppm = objectsManager.GetComponent<PatternPartsManager>();
+		cpm = objectsManager.GetComponent<ComboPartsManager>();
 		monm = objectsManager.GetComponent<MonsterManager>();
 
 		barsCanvas.GetComponent<Canvas>().enabled = false;
-		// partsCollector.SetActive(false);
 	}
 
 	void Update() {
 		if (react && Input.GetMouseButtonDown(0)) {
 			if (!gameStarted) {
-				som.run();
+				cpm.run();
 				fom.run();
-				ppm.run();
 				monm.run();
 				barsCanvas.GetComponent<Canvas>().enabled = true;
 				energyBar.startDecrease();
@@ -59,15 +55,11 @@ public class TouchInputHandler : MonoBehaviour
 				player.boosterSpeedup();
 			}
 
-			// player.moveTo(worldTouchPosition);
-
 			player.booster.Play();
 			player.booster.GetComponent<AudioSource>().Play();
 			player.setDirection(direction);
 
-			if (player.getNextSpecialTry() != null ) {
-				player.getNextSpecialTry().GetComponent<GenerateNextSpecial>().tryGetSpecial();
-			}
+			cpm.tryToGet();
 		}
 	}
 

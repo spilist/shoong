@@ -18,6 +18,8 @@ public class PlayerMover : MonoBehaviour {
   public float tumble;
   private Vector3 direction;
 
+  public FieldObjectsManager fom;
+  public ComboPartsManager cpm;
   private EnergyBar energyBar;
   private ComboBar comboBar;
   private UnstoppableComboBar uComboBar;
@@ -33,20 +35,11 @@ public class PlayerMover : MonoBehaviour {
 	public GameObject particles;
 
 	private bool unstoppable = false;
-	private float unstoppable_during = 0;
-  public float unstoppable_minbonus = 0.5f;
+	public float unstoppable_during = 8f;
   public float unstoppable_end_soon_during = 1;
   public float unstoppable_blinkingSeconds = 0.2f;
   public float[] unstoppable_respawn;
 	public int unstoppable_speed = 150;
-	public float unstoppable_time_scale = 1;
-	public int max_unstoppable_combo = 10;
-
-	GameObject nextSpecialTry;
-
-  // experiments
-  private bool stopNow = false;
-  Vector3 moveToHere;
 
 	void Start () {
     GetComponent<Rigidbody>().angularVelocity = Random.onUnitSphere * tumble;
@@ -67,10 +60,6 @@ public class PlayerMover : MonoBehaviour {
     cubesWhenDestroy.Add("Monster", cubesWhenDestroyMonster);
 	}
 
-  // public void moveTo(Vector3 touchPosition) {
-    // moveToHere = touchPosition;
-  // }
-
 	void FixedUpdate () {
 		if (unstoppable) {
 			speed = unstoppable_speed;
@@ -85,11 +74,7 @@ public class PlayerMover : MonoBehaviour {
 			boosterspeed = 0;
 		}
 
-    // if (!unstoppable & (Vector3.Distance(moveToHere, transform.position) < 3)) {
-      // GetComponent<Rigidbody> ().velocity = Vector3.zero;
-    // } else {
-  		GetComponent<Rigidbody> ().velocity = direction * speed;
-    // }
+		GetComponent<Rigidbody> ().velocity = direction * speed;
 	}
 
 	public void boosterSpeedup(){
@@ -101,53 +86,38 @@ public class PlayerMover : MonoBehaviour {
 		if (other.tag == "Obstacle" || other.tag == "Obstacle_big" || other.tag == "Monster") {
 			if (unstoppable) {
 				Instantiate(obstacleDestroy, other.transform.position, other.transform.rotation);
-        for (int k = 0; k < (int)cubesWhenDestroy[other.tag]; k++) {
-          Instantiate(particles, other.transform.position, other.transform.rotation);
-        }
-        energyBar.getHealthbyParts((int)cubesWhenDestroy[other.tag]/2);
-        partsCount.addCount((int)cubesWhenDestroy[other.tag]);
+        goodPartsEncounter(other.transform, (int)cubesWhenDestroy[other.tag], false);
         // other.GetComponent<AudioSource>().Play();
-        Destroy(other.gameObject);
 			} else {
 				gameOver.run();
 			}
 		} else if (other.tag == "Part") {
-      goodPartsEncounter(other.transform);
-      getEnergy.Play ();
-      Destroy(other.gameObject);
+      goodPartsEncounter(other.transform, comboBar.getComboRatio(), true);
 		} else if (other.tag == "SpecialPart") {
-			GenerateNextSpecial gns = other.gameObject.GetComponent<GenerateNextSpecial>();
-			if (gns.getComboCount() == (max_unstoppable_combo - 1)) {
-				startUnstoppable(max_unstoppable_combo);
-			} else {
-				nextSpecialTry = gns.spawnNext();
-			}
-			goodPartsEncounter(other.transform);
-      gns.destroySelf(true, false, false);
-      uComboBar.addCombo();
-		} else if (other.tag == "PatternPart") {
-      PatternPartsMover mover = other.gameObject.GetComponent<PatternPartsMover>();
-      if (!mover.isActive()) {
-        goodPartsEncounter(other.transform);
-        mover.becomeActive();
-      }
+      goodPartsEncounter(other.transform, comboBar.getComboRatio(), true);
+      getSpecialEnergyEffect.Play();
+      startUnstoppable();
+		} else if (other.tag == "ComboPart") {
+      cpm.eatenByPlayer();
+      goodPartsEncounter(other.transform, cpm.getComboCount() * cpm.comboBonusScale, true);
     }
 	}
 
-  private void goodPartsEncounter(Transform tr) {
-    for (int e = 0; e < comboBar.getComboRatio(); e++) {
+  private void goodPartsEncounter(Transform tr, int howMany, bool audio) {
+    for (int e = 0; e < howMany; e++) {
       Instantiate(particles, tr.position, tr.rotation);
     }
-    GetComponent<AudioSource>().Play ();
-    partsCount.addCount();
-    energyBar.getHealthbyParts(comboBar.getComboRatio());
+    partsCount.addCount(howMany);
+    energyBar.getHealthbyParts(howMany);
+    getEnergy.Play ();
     comboBar.addCombo();
-    stopNow = true;
+    if (audio) GetComponent<AudioSource>().Play ();
+
+    Destroy(tr.gameObject);
   }
 
 	public void rotatePlayerBody() {
 		GetComponent<Rigidbody>().angularVelocity = Random.onUnitSphere * tumble;
-    stopNow = false;
 	}
 
 	public void setDirection(Vector3 value) {
@@ -158,15 +128,10 @@ public class PlayerMover : MonoBehaviour {
     return direction;
   }
 
-  public GameObject getNextSpecialTry() {
-  	return nextSpecialTry;
-  }
-
-  public void startUnstoppable(int comboCount) {
+  public void startUnstoppable() {
   	if (gameOver.isOver()) return;
 
     unstoppable = true;
-  	unstoppable_during = comboCount * unstoppable_time_scale + unstoppable_minbonus;
   	unstoppableEffect.Play();
 		unstoppableEffect_two.Play();
   	energyBar.startUnstoppable();
@@ -194,9 +159,8 @@ public class PlayerMover : MonoBehaviour {
   	energyBar.stopUnstoppable();
   	unstoppableSphere.SetActive(false);
 
-
     yield return new WaitForSeconds(Random.Range(unstoppable_respawn[0], unstoppable_respawn[1]));
-    GameObject.Find("Field Objects").GetComponent<SpecialObjectsManager>().run();
+    fom.spawn(fom.special_single);
   }
 
   public bool isUnstoppable() {

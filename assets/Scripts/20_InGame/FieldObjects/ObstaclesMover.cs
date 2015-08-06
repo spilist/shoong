@@ -5,8 +5,13 @@ public class ObstaclesMover : MonoBehaviour {
   private float speed;
   private float tumble;
   private Vector3 direction;
+  private FieldObjectsManager fom;
+  private ComboPartsManager cpm;
 
 	void Start () {
+    fom = GameObject.Find("Field Objects").GetComponent<FieldObjectsManager>();
+    cpm = GameObject.Find("Field Objects").GetComponent<ComboPartsManager>();
+
     ObstaclesManager obm = GameObject.Find("Field Objects").GetComponent<ObstaclesManager>();
 
     speed = obm.speed;
@@ -29,14 +34,10 @@ public class ObstaclesMover : MonoBehaviour {
     } else if (colliderTag == "Part") {
       Destroy(collision.collider.gameObject);
     } else if (colliderTag == "SpecialPart") {
-      GenerateNextSpecial gns = collision.collider.gameObject.GetComponent<GenerateNextSpecial>();
-      if (gns.getComboCount() > 0) {
-        // Player was trying to get it
-        gns.destroySelf(true, true, false);
-      } else {
-        // Destroyed somewhere
-        gns.destroySelf(false, false, true);
-      }
+      fom.spawn(fom.special_single);
+      Destroy(collision.collider.gameObject);
+    } else if (colliderTag == "ComboPart") {
+      cpm.destroyInstances();
     }
   }
 

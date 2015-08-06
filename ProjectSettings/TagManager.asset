@@ -17,6 +17,7 @@ TagManager:
   - CollectedPart
   - PartCollector
   - Monster
+  - ComboPart
   layers:
   - Default
   - TransparentFX
@@ -35,7 +36,7 @@ TagManager:
   - CollectingSphere
   - CubeInCollectingSphere
   - Monster
-  - 
+  - UpgradeParts
   - 
   - 
   - 

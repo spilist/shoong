@@ -4,6 +4,7 @@ using System.Collections;
 public class FieldObjectsManager : MonoBehaviour {
 	public GameObject[] parts;
 	public GameObject[] obstacles_big;
+	public GameObject special_single;
 
 	public int max_parts = 50;
 	public int max_obstacles = 3;
@@ -16,12 +17,13 @@ public class FieldObjectsManager : MonoBehaviour {
 	public float speed_obstacles = 15;
 	public float speed_parts = 5;
 	public float speed_special = 5;
+	public float speed_comboparts = 0;
 	private Hashtable speed;
 
 	public float tumble_obstacles = 0.5f;
 	public float tumble_parts = 1f;
 	public float tumble_special = 3f;
-	public float tumble_patternparts = 3f;
+	public float tumble_comboparts = 3f;
 	private Hashtable tumble;
 
 	public float unstoppableFollowSpeed = 1.1f;
@@ -42,12 +44,13 @@ public class FieldObjectsManager : MonoBehaviour {
 		speed.Add("Obstacle_big", speed_obstacles);
 		speed.Add("Part", speed_parts);
 		speed.Add("SpecialPart", speed_special);
+		speed.Add("ComboPart", speed_comboparts);
 
 		tumble = new Hashtable();
 		tumble.Add("Obstacle_big", tumble_obstacles);
 		tumble.Add("Part", tumble_parts);
 		tumble.Add("SpecialPart", tumble_special);
-		tumble.Add("PatternPart", tumble_patternparts);
+		tumble.Add("ComboPart", tumble_comboparts);
 	}
 
 	void generateObjectsAtStart() {
@@ -58,6 +61,8 @@ public class FieldObjectsManager : MonoBehaviour {
 		for (int i = 0; i < max_obstacles; i++) {
 			instantiateFieldObject(obstacles_big);
 		}
+
+		spawn(special_single);
 	}
 
 	private void instantiateFieldObject(GameObject[] objects) {

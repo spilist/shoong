@@ -7,13 +7,19 @@ public class MonsterMover : MonoBehaviour {
   private float tumble;
   private Vector3 direction;
 
+  private FieldObjectsManager fom;
   private MonsterManager monm;
+  private ComboPartsManager cpm;
+
   private PlayerMover player;
   private GameOver gameOver;
   private bool isQuitting = false;
 
 	void Start () {
+    fom = GameObject.Find("Field Objects").GetComponent<FieldObjectsManager>();
     monm = GameObject.Find("Field Objects").GetComponent<MonsterManager>();
+    cpm = GameObject.Find("Field Objects").GetComponent<ComboPartsManager>();
+
     speed_chase = monm.speed_chase;
     speed_runaway = monm.speed_runaway;
     tumble = monm.tumble;
@@ -47,14 +53,10 @@ public class MonsterMover : MonoBehaviour {
     } else if (colliderTag == "Part") {
       Destroy(collision.collider.gameObject);
     } else if (colliderTag == "SpecialPart") {
-      GenerateNextSpecial gns = collision.collider.gameObject.GetComponent<GenerateNextSpecial>();
-      if (gns.getComboCount() > 0) {
-        // Player was trying to get it
-        gns.destroySelf(true, true, false);
-      } else {
-        // Destroyed somewhere
-        gns.destroySelf(false, false, true);
-      }
+      fom.spawn(fom.special_single);
+      Destroy(collision.collider.gameObject);
+    } else if (colliderTag == "ComboPart") {
+      cpm.destroyInstances();
     }
   }
 

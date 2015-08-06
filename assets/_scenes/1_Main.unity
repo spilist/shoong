@@ -324,6 +324,8 @@ MonoBehaviour:
   cubesWhenDestroyMonster: 50
   speed: 5
   tumble: 4
+  fom: {fileID: 1991538105}
+  cpm: {fileID: 1991538106}
   booster: {fileID: 131396333}
   boosterSpeedUpAmount: 60
   getEnergy: {fileID: 317572741}
@@ -331,15 +333,13 @@ MonoBehaviour:
   unstoppableEffect_two: {fileID: 1934776454}
   getSpecialEnergyEffect: {fileID: 1355077822}
   particles: {fileID: 178344, guid: b185d52f68bf5499e81f948bbbf1bd8c, type: 2}
-  unstoppable_minbonus: 0
+  unstoppable_during: 8
   unstoppable_end_soon_during: 1
   unstoppable_blinkingSeconds: .200000003
   unstoppable_respawn:
   - 5
   - 10
   unstoppable_speed: 150
-  unstoppable_time_scale: 1
-  max_unstoppable_combo: 8
 --- !u!96 &91418584
 TrailRenderer:
   m_ObjectHideFlags: 0
@@ -10946,7 +10946,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed4ae3a4877af9b4dbe2b7d76edeb9ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ppm: {fileID: 1991538108}
+  fom: {fileID: 1991538105}
+  cpm: {fileID: 1991538106}
 --- !u!65 &892369440
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19598,6 +19599,7 @@ MonoBehaviour:
   - {fileID: 131058, guid: b2e788ee7ee7747ae89b9fd021c3b05b, type: 2}
   - {fileID: 119532, guid: 8de9923715b8e4769a343553e0193937, type: 2}
   - {fileID: 190242, guid: d8430bbeb85c44b9b9b8df1654f1e53b, type: 2}
+  special_single: {fileID: 189520, guid: dccc40739d6254de9aaa62d3c75f9b0d, type: 2}
   max_parts: 50
   max_obstacles: 3
   generateSpaceRadius: 1
@@ -19609,10 +19611,11 @@ MonoBehaviour:
   speed_obstacles: 15
   speed_parts: 0
   speed_special: 0
+  speed_comboparts: 0
   tumble_obstacles: .5
   tumble_parts: 1
   tumble_special: 3
-  tumble_patternparts: 3
+  tumble_comboparts: 3
   unstoppableFollowSpeed: 1.5
   collectedPartsMaterial: {fileID: 0}
 --- !u!114 &1991538106
@@ -19626,12 +19629,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0505b83e2366e4c30bf4b87b9ac88aa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  special: {fileID: 120344, guid: 54cea864d856c40859cc6c06841c2a80, type: 2}
-  special_next: {fileID: 106010, guid: 0c9f9410f926d487d8f749586b909967, type: 2}
-  special_line: {fileID: 160548, guid: ff79b10b6d1744e5f8e59299310d0ae0, type: 2}
+  comboPartPrefab: {fileID: 164108, guid: a6fcdda2fbd1d4fe0b8a15b6d19364a9, type: 2}
+  comboPartPrefab_next: {fileID: 192146, guid: d357428246b5f4e5fb2b54651d371984, type: 2}
   fom: {fileID: 1991538105}
-  spIndicator: {fileID: 2131139023}
+  fullComboCount: 4
+  comboBonusScale: 5
   radius: 50
+  respawnInterval_min: 5
+  respawnInterval_max: 8
 --- !u!114 &1991538107
 MonoBehaviour:
   m_ObjectHideFlags: 0

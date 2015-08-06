@@ -7,31 +7,27 @@ public class UnstoppableComboBar : MonoBehaviour {
   public UnstoppableBlinkingComboBar ubc;
 
   private Image image;
-  private int fullComboCount;
-  private int comboCount = 0;
+  private int during;
+  private int count = 0;
 
 	void Start () {
     image = GetComponent<Image>();
-    fullComboCount = player.max_unstoppable_combo;
+    during = (int) player.unstoppable_during;
+    count = during;
 	}
 
-  public void addCombo() {
-    ubc.addCombo(comboCount);
-    comboCount++;
-    if (comboCount > 1) image.fillAmount += 1f / fullComboCount;
-  }
-
   public void startUnstoppable() {
-    StartCoroutine("startDecrase");
+    image.fillAmount = 1f - 1f / during;
     ubc.startUnstoppable();
+    StartCoroutine("startDecrase");
   }
 
   IEnumerator startDecrase() {
-    while(comboCount > 0) {
+    while(count > 0) {
       yield return new WaitForSeconds(1);
-      image.fillAmount -= 1f / fullComboCount;
-      if (comboCount > 1) ubc.timeElapse();
-      comboCount--;
+      image.fillAmount -= 1f / during;
+      if (count > 1) ubc.timeElapse();
+      count--;
     }
     ubc.stopUnstoppable();
   }

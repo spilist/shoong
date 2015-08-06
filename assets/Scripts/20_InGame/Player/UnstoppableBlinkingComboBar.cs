@@ -7,25 +7,23 @@ public class UnstoppableBlinkingComboBar : MonoBehaviour {
 
   private Image image;
   private int[] angles;
-  private int comboCount;
+  private int count;
 
 	void Start () {
     image = GetComponent<Image>();
     angles = new int[] {0, -60, -90, -150, -180, -240, -270, -330};
 	}
 
-  public void addCombo(int count) {
-    image.enabled = true;
-    comboCount = count;
-    transform.localRotation = Quaternion.Euler(0, 0, angles[comboCount]);
-  }
-
   public void timeElapse() {
-    comboCount--;
-    transform.localRotation = Quaternion.Euler(0, 0, angles[comboCount]);
+    count--;
+    transform.localRotation = Quaternion.Euler(0, 0, angles[count]);
   }
 
   public void startUnstoppable() {
+    image.enabled = true;
+    count = 7;
+    transform.localRotation = Quaternion.Euler(0, 0, angles[7]);
+
     StartCoroutine("startBlink");
   }
 

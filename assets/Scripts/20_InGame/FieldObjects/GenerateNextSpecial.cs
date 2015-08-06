@@ -1,95 +1,95 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿// using UnityEngine;
+// using System.Collections;
 
-public class GenerateNextSpecial : MonoBehaviour {
-  public GameObject next_prefab;
-  public GameObject newSpecialEffect;
-  GameObject next;
-  SpecialObjectsManager som;
+// public class GenerateNextSpecial : MonoBehaviour {
+//   public GameObject next_prefab;
+//   public GameObject newSpecialEffect;
+//   GameObject next;
+//   SpecialObjectsManager som;
 
-  int maxcombo;
-  int comboCount;
-  bool secondShot = false;
+//   int maxcombo;
+//   int comboCount;
+//   bool secondShot = false;
 
-  void Start() {
-    som = GameObject.Find("Field Objects").GetComponent<SpecialObjectsManager>();
-    maxcombo = GameObject.Find("Player").GetComponent<PlayerMover>().max_unstoppable_combo - 1;
-  }
+//   void Start() {
+//     som = GameObject.Find("Field Objects").GetComponent<SpecialObjectsManager>();
+//     maxcombo = GameObject.Find("Player").GetComponent<PlayerMover>().max_unstoppable_combo - 1;
+//   }
 
-  public GameObject spawnNext() {
-    Vector3 currentPos = next.transform.position;
-    Quaternion spawnRotation = next.transform.rotation;
+//   public GameObject spawnNext() {
+//     Vector3 currentPos = next.transform.position;
+//     Quaternion spawnRotation = next.transform.rotation;
 
-    GameObject newInstance = (GameObject) Instantiate (gameObject, currentPos, spawnRotation);
-    newInstance.transform.parent = som.gameObject.transform;
-    newInstance.GetComponent<GenerateNextSpecial>().setComboCount(comboCount + 1);
-    Instantiate(newSpecialEffect, currentPos, spawnRotation);
+//     GameObject newInstance = (GameObject) Instantiate (gameObject, currentPos, spawnRotation);
+//     newInstance.transform.parent = som.gameObject.transform;
+//     newInstance.GetComponent<GenerateNextSpecial>().setComboCount(comboCount + 1);
+//     Instantiate(newSpecialEffect, currentPos, spawnRotation);
 
-    if (maxcombo > comboCount + 1) {
-      Vector3 spawnPosition = getNextSpawnPosition(currentPos);
-      GameObject nextInstance = (GameObject) Instantiate (next_prefab, spawnPosition, spawnRotation);
-      nextInstance.transform.parent = som.gameObject.transform;
-      nextInstance.GetComponent<OffsetFixer>().setParent(newInstance);
+//     if (maxcombo > comboCount + 1) {
+//       Vector3 spawnPosition = getNextSpawnPosition(currentPos);
+//       GameObject nextInstance = (GameObject) Instantiate (next_prefab, spawnPosition, spawnRotation);
+//       nextInstance.transform.parent = som.gameObject.transform;
+//       nextInstance.GetComponent<OffsetFixer>().setParent(newInstance);
 
-      newInstance.GetComponent<GenerateNextSpecial>().setNext(nextInstance);
-    }
-    else {
-      // 마지막 부품일 경우 효과를 다르게 줌
-    }
+//       newInstance.GetComponent<GenerateNextSpecial>().setNext(nextInstance);
+//     }
+//     else {
+//       // 마지막 부품일 경우 효과를 다르게 줌
+//     }
 
-    Destroy(next);
+//     Destroy(next);
 
-    return newInstance;
-  }
+//     return newInstance;
+//   }
 
-  Vector3 getNextSpawnPosition(Vector3 pos) {
-    Vector2 randomV = Random.insideUnitCircle;
-    randomV.Normalize();
-    return new Vector3(pos.x + randomV.x * som.radius, 0, pos.z + randomV.y * som.radius);
-  }
+//   Vector3 getNextSpawnPosition(Vector3 pos) {
+//     Vector2 randomV = Random.insideUnitCircle;
+//     randomV.Normalize();
+//     return new Vector3(pos.x + randomV.x * som.radius, 0, pos.z + randomV.y * som.radius);
+//   }
 
-  public void setComboCount(int val) {
-    comboCount = val;
-  }
+//   public void setComboCount(int val) {
+//     comboCount = val;
+//   }
 
-  public int getComboCount() {
-    return comboCount;
-  }
+//   public int getComboCount() {
+//     return comboCount;
+//   }
 
-  public void setNext(GameObject target) {
-    next = target;
-  }
+//   public void setNext(GameObject target) {
+//     next = target;
+//   }
 
-  public GameObject getNext() {
-    return next;
-  }
+//   public GameObject getNext() {
+//     return next;
+//   }
 
-  public void tryGetSpecial() {
-    if (secondShot) {
-      destroySelf(true, true, false);
-    }
-    else {
-      secondShot = true;
-    }
-  }
+//   public void tryGetSpecial() {
+//     if (secondShot) {
+//       destroySelf(true, true, false);
+//     }
+//     else {
+//       secondShot = true;
+//     }
+//   }
 
-  public void destroySelf(bool turnEffectON, bool unstoppable, bool createNew) {
-    if (turnEffectON) {
-      GameObject.Find("Player").GetComponent<PlayerMover>().getSpecialEnergyPlay();
-    }
+//   public void destroySelf(bool turnEffectON, bool unstoppable, bool createNew) {
+//     if (turnEffectON) {
+//       GameObject.Find("Player").GetComponent<PlayerMover>().getSpecialEnergyPlay();
+//     }
 
-    if (unstoppable) {
-      if (comboCount > 0) {
-        GameObject.Find("Player").GetComponent<PlayerMover>().startUnstoppable(comboCount);
-      }
-    }
+//     if (unstoppable) {
+//       if (comboCount > 0) {
+//         GameObject.Find("Player").GetComponent<PlayerMover>().startUnstoppable(comboCount);
+//       }
+//     }
 
-    Destroy (gameObject);
+//     Destroy (gameObject);
 
-    if (next != null) Destroy(next);
+//     if (next != null) Destroy(next);
 
-    if (createNew) {
-      som.run();
-    }
-  }
-}
+//     if (createNew) {
+//       som.run();
+//     }
+//   }
+// }

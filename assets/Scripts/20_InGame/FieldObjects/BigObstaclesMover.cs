@@ -6,9 +6,11 @@ public class BigObstaclesMover : MonoBehaviour {
   private float tumble;
   private Vector3 direction;
 
+  private ComboPartsManager cpm;
   private FieldObjectsManager fom;
 
   void Start () {
+    cpm = GameObject.Find("Field Objects").GetComponent<ComboPartsManager>();
     fom = GameObject.Find("Field Objects").GetComponent<FieldObjectsManager>();
     speed = fom.getSpeed(gameObject.tag);
     tumble = fom.getTumble(gameObject.tag);
@@ -31,16 +33,12 @@ public class BigObstaclesMover : MonoBehaviour {
     if (colliderTag == "Part" || colliderTag == "Obstacle") {
       Destroy(collision.collider.gameObject);
     } else if (colliderTag == "SpecialPart") {
-      GenerateNextSpecial gns = collision.collider.gameObject.GetComponent<GenerateNextSpecial>();
-      if (gns.getComboCount() > 0) {
-        // Player was trying to get it
-        gns.destroySelf(true, true, false);
-      } else {
-        // Destroyed somewhere
-        gns.destroySelf(false, false, true);
-      }
+      fom.spawn(fom.special_single);
+      Destroy(collision.collider.gameObject);
     } else if (colliderTag == "Obstacle_big") {
       processCollision(collision);
+    } else if (colliderTag == "ComboPart") {
+      cpm.destroyInstances();
     }
   }
 
