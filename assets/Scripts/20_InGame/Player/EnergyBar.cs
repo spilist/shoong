@@ -21,6 +21,9 @@ public class EnergyBar : MonoBehaviour {
   public float loseRate = 1;
   public GameOver gameOver;
 
+  private Color color_healthy;
+  private Color color_danger;
+
   void Start () {
     image = GetComponent<Image>();
     isChanging = false;
@@ -28,6 +31,9 @@ public class EnergyBar : MonoBehaviour {
     gameStarted = false;
     changeTo = 0;
     restAmount = 0;
+
+    color_healthy = image.color;
+    color_danger = new Color(1, 0, 0, color_healthy.a);
 	}
 
 	void Update () {
@@ -38,6 +44,12 @@ public class EnergyBar : MonoBehaviour {
         changeRest();
       } else {
         autoDecrease();
+      }
+
+      if (image.fillAmount > 0.3f) {
+        image.color = color_healthy;
+      } else {
+        image.color = color_danger;
       }
 
       if (image.fillAmount == 0) {

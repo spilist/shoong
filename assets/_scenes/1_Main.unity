@@ -16952,6 +16952,7 @@ GameObject:
   - 222: {fileID: 1593744720}
   - 114: {fileID: 1593744719}
   - 114: {fileID: 1593744718}
+  - 82: {fileID: 1593744721}
   m_Layer: 10
   m_Name: EnergyBar
   m_TagString: Untagged
@@ -16989,7 +16990,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c55c8e133eb0c47e28e0cc77e0aaaeb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  autoDecreaseRate: .150000006
+  autoDecreaseRate: 0
   getAmountbyParts: 4
   getRate: 2
   shootAmount: -2
@@ -17024,6 +17025,75 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1593744716}
+--- !u!82 &1593744721
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1593744716}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: dcab33bc44592964b830b32d5b46b075, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: .100000001
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!1 &1701025774
 GameObject:
   m_ObjectHideFlags: 0
@@ -17307,7 +17377,6 @@ GameObject:
   - 224: {fileID: 1881103578}
   - 222: {fileID: 1881103580}
   - 114: {fileID: 1881103579}
-  - 114: {fileID: 1881103582}
   - 82: {fileID: 1881103581}
   m_Layer: 5
   m_Name: Monster Warning
@@ -17331,7 +17400,7 @@ RectTransform:
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: 160}
-  m_SizeDelta: {x: 155.669998, y: 50}
+  m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1881103579
 MonoBehaviour:
@@ -17434,17 +17503,6 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
---- !u!114 &1881103582
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1881103577}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e143eff7eb9b44a5b988189452d3d343, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1934776451
 Transform:
   m_ObjectHideFlags: 0
@@ -19806,8 +19864,8 @@ MonoBehaviour:
   - {fileID: 155078, guid: e6c20ed1857a7484f93bdc922b3cf045, type: 2}
   speed: 160
   tumble: 10
-  minSpawnInterval: 0
-  maxSpawnInterval: 5
+  minSpawnInterval: 100
+  maxSpawnInterval: 100
   warnPlayerDuring: 1
   spawnRadius: 120
   UICanvas: {fileID: 2134279972}
@@ -19848,8 +19906,8 @@ MonoBehaviour:
   speed_chase: 80
   speed_runaway: 70
   tumble: 3
-  minSpawnInterval: 5
-  maxSpawnInterval: 10
+  minSpawnInterval: 50
+  maxSpawnInterval: 50
   spawnRadius: 600
   minLifeTime: 10
   maxLifeTime: 15

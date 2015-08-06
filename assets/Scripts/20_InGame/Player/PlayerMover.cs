@@ -159,7 +159,7 @@ public class PlayerMover : MonoBehaviour {
   	unstoppableSphere.SetActive(false);
 
     yield return new WaitForSeconds(Random.Range(unstoppable_respawn[0], unstoppable_respawn[1]));
-    fom.spawn(fom.special_single);
+    fom.spawnSpecial();
   }
 
   public bool isUnstoppable() {

@@ -13,10 +13,10 @@ public class UnstoppableComboBar : MonoBehaviour {
 	void Start () {
     image = GetComponent<Image>();
     during = (int) player.unstoppable_during;
-    count = during;
 	}
 
   public void startUnstoppable() {
+    count = during;
     image.fillAmount = 1f - 1f / during;
     ubc.startUnstoppable();
     StartCoroutine("startDecrase");

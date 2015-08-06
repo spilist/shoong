@@ -7,7 +7,7 @@ public class DestroybyBoundary : MonoBehaviour {
 
 	void OnTriggerExit(Collider other) {
     if (other.tag == "SpecialPart") {
-      fom.spawn(fom.special_single);
+      fom.spawnSpecial();
       Destroy(other.gameObject);
     } else if (other.tag == "ComboPart") {
       cpm.destroyInstances();

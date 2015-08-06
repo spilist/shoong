@@ -55,7 +55,7 @@ public class MonsterMover : MonoBehaviour {
     } else if (colliderTag == "Part") {
       Destroy(collision.collider.gameObject);
     } else if (colliderTag == "SpecialPart") {
-      fom.spawn(fom.special_single);
+      fom.spawnSpecial();
       Destroy(collision.collider.gameObject);
     } else if (colliderTag == "ComboPart") {
       cpm.destroyInstances();
@@ -67,8 +67,10 @@ public class MonsterMover : MonoBehaviour {
   }
 
   void OnDestroy() {
-    if (isQuitting || gameOver.isOver()) return;
+    if (isQuitting) return;
     monm.stopWarning();
+
+    if (gameOver.isOver()) return;
     monm.run();
   }
 }

@@ -16,9 +16,11 @@ public class ComboPartsManager : MonoBehaviour {
   private GameObject current;
   private GameObject next;
   private int comboCount = 0;
-
+  private bool isSpawning = false;
 
   public void run() {
+    comboCount = 0;
+    isSpawning = false;
     current = fom.spawn(comboPartPrefab);
     Vector2 randomV = Random.insideUnitCircle;
     randomV.Normalize();
@@ -69,7 +71,7 @@ public class ComboPartsManager : MonoBehaviour {
 
     Destroy(next);
 
-    if (comboCount < fullComboCount) {
+    if (comboCount + 1 < fullComboCount) {
       Vector2 randomV = Random.insideUnitCircle;
       randomV.Normalize();
       Vector3 nextSpawnPos = new Vector3(spawnPos.x + randomV.x * radius, 0, spawnPos.z + randomV.y * radius);
@@ -80,6 +82,9 @@ public class ComboPartsManager : MonoBehaviour {
   }
 
   public void destroyInstances() {
+    if (isSpawning) return;
+
+    isSpawning = true;
     Destroy(current);
     if (next != null) Destroy(next);
     StartCoroutine("startSpawn");
