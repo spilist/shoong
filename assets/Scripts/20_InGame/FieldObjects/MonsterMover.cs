@@ -31,6 +31,8 @@ public class MonsterMover : MonoBehaviour {
 
     player = GameObject.Find("Player").GetComponent<PlayerMover>();
     gameOver = GameObject.Find("GameOver").GetComponent<GameOver>();
+
+    Destroy(gameObject, Random.Range(monm.minLifeTime, monm.maxLifeTime));
 	}
 
 	void FixedUpdate () {
@@ -66,6 +68,7 @@ public class MonsterMover : MonoBehaviour {
 
   void OnDestroy() {
     if (isQuitting || gameOver.isOver()) return;
+    monm.stopWarning();
     monm.run();
   }
 }

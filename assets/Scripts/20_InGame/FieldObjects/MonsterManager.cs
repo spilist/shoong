@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class MonsterManager : MonoBehaviour {
@@ -9,6 +10,11 @@ public class MonsterManager : MonoBehaviour {
   public float minSpawnInterval = 5f;
   public float maxSpawnInterval = 10f;
   public float spawnRadius = 600;
+  public float minLifeTime = 10;
+  public float maxLifeTime = 15;
+
+  public GameObject monsterWarning;
+  public float warningBlinkSeconds = 0.7f;
 
   private Transform playerTransform;
 
@@ -31,5 +37,26 @@ public class MonsterManager : MonoBehaviour {
 
     GameObject newInstance = (GameObject) Instantiate(monster, spawnPos, Quaternion.identity);
     newInstance.transform.parent = gameObject.transform;
+
+    StartCoroutine("startWarning");
+  }
+
+  IEnumerator startWarning() {
+    monsterWarning.GetComponent<AudioSource>().Play();
+    while(true) {
+      monsterWarning.GetComponent<Text>().enabled = true;
+
+      yield return new WaitForSeconds(warningBlinkSeconds);
+
+      monsterWarning.GetComponent<Text>().enabled = false;
+
+      yield return new WaitForSeconds(1 - warningBlinkSeconds);
+    }
+  }
+
+  public void stopWarning() {
+    monsterWarning.GetComponent<AudioSource>().Stop();
+    monsterWarning.GetComponent<Text>().enabled = false;
+    StopCoroutine("startWarning");
   }
 }

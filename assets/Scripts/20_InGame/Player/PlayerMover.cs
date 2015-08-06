@@ -20,10 +20,11 @@ public class PlayerMover : MonoBehaviour {
 
   public FieldObjectsManager fom;
   public ComboPartsManager cpm;
+  public MonsterManager monm;
+
   private EnergyBar energyBar;
   private ComboBar comboBar;
   private UnstoppableComboBar uComboBar;
-  private SpecialPartIndicator spIndicator;
 
   public ParticleSystem booster;
   public float boosterSpeedUpAmount = 120f;
@@ -52,7 +53,6 @@ public class PlayerMover : MonoBehaviour {
     energyBar = transform.Find("Bars Canvas/EnergyBar").GetComponent<EnergyBar>();
     comboBar = transform.Find("Bars Canvas").GetComponent<ComboBar>();
     uComboBar = transform.Find("Bars Canvas/UnstoppableComboBar").GetComponent<UnstoppableComboBar>();
-    spIndicator = GameObject.Find("SpecialPart Indicator").GetComponent<SpecialPartIndicator>();
 
     cubesWhenDestroy = new Hashtable();
     cubesWhenDestroy.Add("Obstacle_big", cubesWhenDestroyBigObstacle);
@@ -137,7 +137,6 @@ public class PlayerMover : MonoBehaviour {
   	energyBar.startUnstoppable();
     uComboBar.startUnstoppable();
     unstoppableSphere.SetActive(true);
-    spIndicator.stopIndicate();
   	StartCoroutine("stopUnstoppable");
   }
 
