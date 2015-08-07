@@ -13,11 +13,12 @@ TagManager:
   - SpecialPart
   - UnstoppableSphere
   - Obstacle_big
-  - PatternPart
+  - Blackhole
   - CollectedPart
   - PartCollector
   - Monster
   - ComboPart
+  - BlackholeGravitySphere
   layers:
   - Default
   - TransparentFX
@@ -31,14 +32,14 @@ TagManager:
   - FieldObjects
   - Character
   - UnstoppableSphere
-  - PatternParts
+  - 
   - CollectedParts
   - CollectingSphere
-  - CubeInCollectingSphere
+  - 
   - Monster
-  - UpgradeParts
   - 
-  - 
+  - Blackhole
+  - BlackholeGravity
   - 
   - 
   - 

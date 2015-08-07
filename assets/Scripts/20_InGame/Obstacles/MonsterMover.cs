@@ -11,6 +11,11 @@ public class MonsterMover : MonoBehaviour {
   private MonsterManager monm;
   private ComboPartsManager cpm;
 
+  private BlackholeManager blm;
+  private GameObject blackhole;
+  private bool isInsideBlackhole = false;
+  private float shrinkedScale;
+
   private PlayerMover player;
   private GameOver gameOver;
   private bool isQuitting = false;
@@ -19,6 +24,8 @@ public class MonsterMover : MonoBehaviour {
     fom = GameObject.Find("Field Objects").GetComponent<FieldObjectsManager>();
     monm = GameObject.Find("Field Objects").GetComponent<MonsterManager>();
     cpm = GameObject.Find("Field Objects").GetComponent<ComboPartsManager>();
+    blm = GameObject.Find("Field Objects").GetComponent<BlackholeManager>();
+    shrinkedScale = transform.localScale.x;
 
     speed_chase = monm.speed_chase;
     speed_runaway = monm.speed_runaway;
@@ -36,13 +43,22 @@ public class MonsterMover : MonoBehaviour {
 	}
 
 	void FixedUpdate () {
-    direction = GameObject.Find("Player").GetComponent<PlayerMover>().transform.position - transform.position;
-    direction /= direction.magnitude;
+    if (isInsideBlackhole) {
+      Vector3 heading = blackhole.transform.position - transform.position;
+      heading /= heading.magnitude;
+      GetComponent<Rigidbody> ().velocity = heading * blm.gravity;
 
-    if (player.isUnstoppable()) {
-      GetComponent<Rigidbody>().velocity = -direction * speed_runaway;
+      shrinkedScale = Mathf.MoveTowards(shrinkedScale, 0f, Time.deltaTime);
+      transform.localScale = new Vector3(shrinkedScale, shrinkedScale, shrinkedScale);
     } else {
-      GetComponent<Rigidbody>().velocity = direction * speed_chase;
+      direction = GameObject.Find("Player").GetComponent<PlayerMover>().transform.position - transform.position;
+      direction /= direction.magnitude;
+
+      if (player.isUnstoppable()) {
+        GetComponent<Rigidbody>().velocity = -direction * speed_runaway;
+      } else {
+        GetComponent<Rigidbody>().velocity = direction * speed_chase;
+      }
     }
 	}
 
@@ -71,5 +87,10 @@ public class MonsterMover : MonoBehaviour {
 
     monm.stopWarning();
     monm.run();
+  }
+
+  public void insideBlackhole() {
+    isInsideBlackhole = true;
+    blackhole = GameObject.Find("Blackhole");
   }
 }

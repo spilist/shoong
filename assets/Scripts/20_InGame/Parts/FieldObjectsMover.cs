@@ -8,13 +8,20 @@ public class FieldObjectsMover : MonoBehaviour {
   private Vector3 direction;
 
   private bool isMagnetized = false;
-  private bool isCollected = false;
   private FieldObjectsManager fom;
   private PartsCollector partsCollector;
   private GameObject player;
 
+  private BlackholeManager blm;
+  private GameObject blackhole;
+  private bool isInsideBlackhole = false;
+  private float shrinkedScale;
+
   void Start () {
     fom = GameObject.Find("Field Objects").GetComponent<FieldObjectsManager>();
+    blm = GameObject.Find("Field Objects").GetComponent<BlackholeManager>();
+    shrinkedScale = transform.localScale.x;
+
     speed = fom.getSpeed(gameObject.tag);
     tumble = fom.getTumble(gameObject.tag);
     unstoppableFollowSpeed = fom.getUnstoppableFollowSpeed();
@@ -27,23 +34,17 @@ public class FieldObjectsMover : MonoBehaviour {
 
     GetComponent<Rigidbody> ().velocity = direction * speed;
 
-    partsCollector = GameObject.Find("PartsCollector").GetComponent<PartsCollector>();
-
     player = GameObject.Find("Player");
 	}
 
 	void FixedUpdate () {
-    if (isCollected) {
-      Vector3 heading =  partsCollector.transform.position - transform.position;
+    if (isInsideBlackhole) {
+      Vector3 heading = blackhole.transform.position - transform.position;
       heading /= heading.magnitude;
+      GetComponent<Rigidbody> ().velocity = heading * blm.gravity;
 
-      if (transform.localScale.x > 0.4) {
-        transform.localScale -= Vector3.one * 0.05f;
-        GetComponent<Rigidbody> ().velocity = heading * 50;
-
-      } else {
-        GetComponent<Rigidbody> ().velocity = heading * player.GetComponent<Rigidbody>().velocity.magnitude * 1.01f;
-      }
+      shrinkedScale = Mathf.MoveTowards(shrinkedScale, 0f, Time.deltaTime);
+      transform.localScale = new Vector3(shrinkedScale, shrinkedScale, shrinkedScale);
     } else if (isMagnetized) {
       Vector3 heading =  player.transform.position - transform.position;
       heading /= heading.magnitude;
@@ -74,5 +75,10 @@ public class FieldObjectsMover : MonoBehaviour {
 
   public void setMagnetized() {
     isMagnetized = true;
+  }
+
+  public void insideBlackhole() {
+    isInsideBlackhole = true;
+    blackhole = GameObject.Find("Blackhole");
   }
 }

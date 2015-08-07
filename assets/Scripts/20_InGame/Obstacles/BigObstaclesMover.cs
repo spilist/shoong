@@ -8,10 +8,17 @@ public class BigObstaclesMover : MonoBehaviour {
 
   private ComboPartsManager cpm;
   private FieldObjectsManager fom;
+  private BlackholeManager blm;
+  private GameObject blackhole;
+  private bool isInsideBlackhole = false;
+  private float shrinkedScale;
 
   void Start () {
     cpm = GameObject.Find("Field Objects").GetComponent<ComboPartsManager>();
     fom = GameObject.Find("Field Objects").GetComponent<FieldObjectsManager>();
+    blm = GameObject.Find("Field Objects").GetComponent<BlackholeManager>();
+    shrinkedScale = transform.localScale.x;
+
     speed = fom.getSpeed(gameObject.tag);
     tumble = fom.getTumble(gameObject.tag);
     GetComponent<Rigidbody>().angularVelocity = Random.onUnitSphere * tumble;
@@ -19,12 +26,20 @@ public class BigObstaclesMover : MonoBehaviour {
     Vector2 randomV = Random.insideUnitCircle;
     direction = new Vector3(randomV.x, 0, randomV.y);
     direction.Normalize();
-
     GetComponent<Rigidbody> ().velocity = direction * speed;
 	}
 
 	void FixedUpdate () {
-    GetComponent<Rigidbody> ().velocity = direction * speed;
+    if (isInsideBlackhole) {
+      Vector3 heading = blackhole.transform.position - transform.position;
+      heading /= heading.magnitude;
+      GetComponent<Rigidbody> ().velocity = heading * blm.gravity;
+
+      shrinkedScale = Mathf.MoveTowards(shrinkedScale, 0f, Time.deltaTime);
+      transform.localScale = new Vector3(shrinkedScale, shrinkedScale, shrinkedScale);
+    } else {
+      GetComponent<Rigidbody> ().velocity = direction * speed;
+    }
 	}
 
   void OnCollisionEnter(Collision collision) {
@@ -47,5 +62,10 @@ public class BigObstaclesMover : MonoBehaviour {
     direction = Vector3.Reflect(direction, -normal).normalized;
     direction.y = 0;
     direction.Normalize();
+  }
+
+  public void insideBlackhole() {
+    isInsideBlackhole = true;
+    blackhole = GameObject.Find("Blackhole");
   }
 }

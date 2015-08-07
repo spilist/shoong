@@ -21,6 +21,10 @@ public class PlayerMover : MonoBehaviour {
   public FieldObjectsManager fom;
   public ComboPartsManager cpm;
   public MonsterManager monm;
+  public BlackholeManager blm;
+  private GameObject blackhole;
+  private bool isInsideBlackhole = false;
+  private bool exitedBlackhole = false;
 
   private EnergyBar energyBar;
   private ComboBar comboBar;
@@ -75,7 +79,13 @@ public class PlayerMover : MonoBehaviour {
 			boosterspeed = 0;
 		}
 
+    if (isInsideBlackhole && !unstoppable) {
+      Vector3 heading = blackhole.transform.position - transform.position;
+      heading /= heading.magnitude;
+      GetComponent<Rigidbody> ().AddForce(heading * blm.pullUser, ForceMode.VelocityChange);
+    }
 		GetComponent<Rigidbody> ().velocity = direction * speed;
+    // }
 	}
 
 	public void boosterSpeedup(){
@@ -179,4 +189,20 @@ public class PlayerMover : MonoBehaviour {
   public EnergyBar getEnergyBar() {
     return energyBar;
   }
+
+  public void insideBlackhole() {
+    isInsideBlackhole = true;
+    blackhole = GameObject.Find("Blackhole");
+  }
+
+  public void outsideBlackhole() {
+    isInsideBlackhole = false;
+    blackhole = GameObject.Find("Blackhole");
+    exitedBlackhole = true;
+    // StartCoroutine("exitBlackhole");
+  }
+
+  // IEnumerator exitBlackhole() {
+//
+  // }
 }

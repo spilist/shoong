@@ -7,10 +7,16 @@ public class ObstaclesMover : MonoBehaviour {
   private Vector3 direction;
   private FieldObjectsManager fom;
   private ComboPartsManager cpm;
+  private BlackholeManager blm;
+  private GameObject blackhole;
+  private bool isInsideBlackhole = false;
+  private float shrinkedScale;
 
 	void Start () {
     fom = GameObject.Find("Field Objects").GetComponent<FieldObjectsManager>();
     cpm = GameObject.Find("Field Objects").GetComponent<ComboPartsManager>();
+    blm = GameObject.Find("Field Objects").GetComponent<BlackholeManager>();
+    shrinkedScale = transform.localScale.x;
 
     ObstaclesManager obm = GameObject.Find("Field Objects").GetComponent<ObstaclesManager>();
 
@@ -23,7 +29,16 @@ public class ObstaclesMover : MonoBehaviour {
 	}
 
 	void FixedUpdate () {
-    GetComponent<Rigidbody>().velocity = direction * speed;
+    if (isInsideBlackhole) {
+      Vector3 heading = blackhole.transform.position - transform.position;
+      heading /= heading.magnitude;
+      GetComponent<Rigidbody> ().velocity = heading * blm.gravity;
+
+      shrinkedScale = Mathf.MoveTowards(shrinkedScale, 0f, Time.deltaTime);
+      transform.localScale = new Vector3(shrinkedScale, shrinkedScale, shrinkedScale);
+    } else {
+      GetComponent<Rigidbody> ().velocity = direction * speed;
+    }
 	}
 
   void OnCollisionEnter(Collision collision) {
@@ -46,5 +61,10 @@ public class ObstaclesMover : MonoBehaviour {
     direction = Vector3.Reflect(direction, -normal).normalized;
     direction.y = 0;
     direction.Normalize();
+  }
+
+  public void insideBlackhole() {
+    isInsideBlackhole = true;
+    blackhole = GameObject.Find("Blackhole");
   }
 }
