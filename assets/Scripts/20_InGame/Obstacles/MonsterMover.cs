@@ -19,6 +19,7 @@ public class MonsterMover : MonoBehaviour {
   private PlayerMover player;
   private GameOver gameOver;
   private bool isQuitting = false;
+	private float distance;
 
 	void Start () {
     fom = GameObject.Find("Field Objects").GetComponent<FieldObjectsManager>();
@@ -52,13 +53,26 @@ public class MonsterMover : MonoBehaviour {
       transform.localScale = new Vector3(shrinkedScale, shrinkedScale, shrinkedScale);
     } else {
       direction = GameObject.Find("Player").GetComponent<PlayerMover>().transform.position - transform.position;
+			distance = direction.magnitude;
       direction /= direction.magnitude;
 
-      if (player.isUnstoppable()) {
-        GetComponent<Rigidbody>().velocity = -direction * speed_runaway;
-      } else {
-        GetComponent<Rigidbody>().velocity = direction * speed_chase;
-      }
+			if(distance>140){
+				GetComponent<Rigidbody>().velocity = direction * speed_chase*2;
+
+			}else if(distance<140 & distance>80){
+				GetComponent<Rigidbody>().velocity = direction * speed_runaway;
+
+			}else{
+				if (player.isUnstoppable()) {
+					GetComponent<Rigidbody>().velocity = -direction * speed_runaway;
+				} else {
+					GetComponent<Rigidbody>().velocity = direction * speed_chase;
+				}
+			}
+
+
+
+      
     }
 	}
 

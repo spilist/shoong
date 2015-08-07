@@ -11,7 +11,7 @@ public class ComboBar : MonoBehaviour {
   public GameObject player;
 
   public float tintAmount = 0.02f;
-	public float speedraiseamount=8;
+	public float speedraiseamount;
 
   private int comboCount = 0;
 	private int fill = 1;

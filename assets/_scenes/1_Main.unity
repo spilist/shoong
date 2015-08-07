@@ -415,7 +415,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 5ab91a2740f8b4476a8946f20def321f, type: 3}
   m_PlayOnAwake: 0
   m_Volume: .379999995
-  m_Pitch: .860000014
+  m_Pitch: .899999976
   Loop: 0
   Mute: 0
   Priority: 128
@@ -2901,7 +2901,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 192454345}
   m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106709}
-  m_LocalPosition: {x: 0, y: 1300, z: 0}
+  m_LocalPosition: {x: 0, y: 1500, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 14073673}
@@ -4385,7 +4385,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &505518344
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8190,7 +8190,7 @@ AudioSource:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 749815780}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 5ab91a2740f8b4476a8946f20def321f, type: 3}
@@ -16557,6 +16557,10 @@ Prefab:
       propertyPath: m_Constraints
       value: 84
       objectReference: {fileID: 0}
+    - target: {fileID: 160458, guid: c50207ae3f3a64ec283b7e3409948ae2, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c50207ae3f3a64ec283b7e3409948ae2, type: 2}
   m_IsPrefabParent: 0
@@ -17673,10 +17677,10 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: a311af8d30e8248039087421007391e9, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 5ab91a2740f8b4476a8946f20def321f, type: 3}
   m_PlayOnAwake: 0
   m_Volume: .75
-  m_Pitch: 1.20000005
+  m_Pitch: .5
   Loop: 0
   Mute: 0
   Priority: 128
@@ -22052,11 +22056,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monster: {fileID: 128816, guid: d6736fed920184832b40515128a9cad2, type: 2}
-  speed_chase: 75
-  speed_runaway: 50
+  speed_chase: 81
+  speed_runaway: 70
   tumble: 5
-  minSpawnInterval: 25
-  maxSpawnInterval: 35
+  minSpawnInterval: 20
+  maxSpawnInterval: 30
   spawnRadius: 160
   minLifeTime: 15
   maxLifeTime: 25
