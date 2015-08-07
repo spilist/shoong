@@ -32,6 +32,7 @@ public class PlayerMover : MonoBehaviour {
   public ParticleSystem unstoppableEffect;
   public ParticleSystem unstoppableEffect_two;
   public ParticleSystem getSpecialEnergyEffect;
+	public ParticleSystem getComboParts;
 
 	public GameObject particles;
 
@@ -85,6 +86,7 @@ public class PlayerMover : MonoBehaviour {
 	{
 		if (other.tag == "Obstacle" || other.tag == "Obstacle_big" || other.tag == "Monster") {
 			if (unstoppable) {
+
 				Instantiate(obstacleDestroy, other.transform.position, other.transform.rotation);
         goodPartsEncounter(other.transform, (int)cubesWhenDestroy[other.tag], false);
         // other.GetComponent<AudioSource>().Play();
@@ -93,12 +95,15 @@ public class PlayerMover : MonoBehaviour {
 			}
 		} else if (other.tag == "Part") {
       goodPartsEncounter(other.transform, comboBar.getComboRatio(), true);
+			GetComponent<AudioSource>().Play ();
 		} else if (other.tag == "SpecialPart") {
       goodPartsEncounter(other.transform, comboBar.getComboRatio(), true);
       getSpecialEnergyEffect.Play();
       startUnstoppable();
 		} else if (other.tag == "ComboPart") {
       cpm.eatenByPlayer();
+			getComboParts.Play();
+			getComboParts.GetComponent<AudioSource>().Play ();
       goodPartsEncounter(other.transform, cpm.getComboCount() * cpm.comboBonusScale, true);
     }
 	}
@@ -111,7 +116,7 @@ public class PlayerMover : MonoBehaviour {
     energyBar.getHealthbyParts(howMany);
     getEnergy.Play ();
     comboBar.addCombo();
-    if (audio) GetComponent<AudioSource>().Play ();
+    
 
     Destroy(tr.gameObject);
   }
@@ -133,6 +138,7 @@ public class PlayerMover : MonoBehaviour {
 
     unstoppable = true;
   	unstoppableEffect.Play();
+		unstoppableEffect.GetComponent<AudioSource>().Play ();
 		unstoppableEffect_two.Play();
   	energyBar.startUnstoppable();
     uComboBar.startUnstoppable();
