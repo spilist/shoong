@@ -9,6 +9,7 @@ public class Blackhole : MonoBehaviour {
   public GameOver gameOver;
 
   void Start () {
+		//GetComponent<Rigidbody>().angularVelocity = Random.onUnitSphere * 5;
     // fom = GameObject.Find("Field Objects").GetComponent<FieldObjectsManager>();
     // cpm = GameObject.Find("Field Objects").GetComponent<ComboPartsManager>();
     // gameOver = GameObject.Find("GameOver").GetComponent<GameOver>();
