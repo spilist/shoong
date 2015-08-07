@@ -30,8 +30,6 @@ public class FieldObjectsManager : MonoBehaviour {
 
 	public Material collectedPartsMaterial;
 
-	private bool isSpecialSpawning = false;
-
 	void Start () {
 	}
 
@@ -81,14 +79,14 @@ public class FieldObjectsManager : MonoBehaviour {
 	}
 
 	public void spawnSpecial() {
-		if (isSpecialSpawning) return;
+		Destroy(GameObject.FindGameObjectsWithTag("SpecialPart")[0]);
 
-		isSpecialSpawning = true;
+    if (GameObject.FindGameObjectsWithTag("SpecialPart").Length > 1) return;
+
 		Vector3 spawnPosition = getSpawnPosition(special_single.tag);
 		Quaternion spawnRotation = Quaternion.identity;
 		GameObject newInstance = (GameObject) Instantiate (special_single, spawnPosition, spawnRotation);
 		newInstance.transform.parent = gameObject.transform;
-		isSpecialSpawning = false;
 	}
 
 	private Vector3 getSpawnPosition(string tag) {

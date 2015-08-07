@@ -34,7 +34,6 @@ public class BigObstaclesMover : MonoBehaviour {
       Destroy(collision.collider.gameObject);
     } else if (colliderTag == "SpecialPart") {
       fom.spawnSpecial();
-      Destroy(collision.collider.gameObject);
     } else if (colliderTag == "Obstacle_big") {
       processCollision(collision);
     } else if (colliderTag == "ComboPart") {

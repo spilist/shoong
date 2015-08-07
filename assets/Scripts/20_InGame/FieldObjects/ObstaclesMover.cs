@@ -35,7 +35,6 @@ public class ObstaclesMover : MonoBehaviour {
       Destroy(collision.collider.gameObject);
     } else if (colliderTag == "SpecialPart") {
       fom.spawnSpecial();
-      Destroy(collision.collider.gameObject);
     } else if (colliderTag == "ComboPart") {
       cpm.destroyInstances();
     }

@@ -16,11 +16,9 @@ public class ComboPartsManager : MonoBehaviour {
   private GameObject current;
   private GameObject next;
   private int comboCount = 0;
-  private bool isSpawning = false;
 
   public void run() {
     comboCount = 0;
-    isSpawning = false;
     current = fom.spawn(comboPartPrefab);
     Vector2 randomV = Random.insideUnitCircle;
     randomV.Normalize();
@@ -38,6 +36,7 @@ public class ComboPartsManager : MonoBehaviour {
   public void tryToGet() {
     if (trying) {
       if (secondShot) {
+        secondShot = false;
         destroyInstances();
       } else {
         secondShot = true;
@@ -47,9 +46,9 @@ public class ComboPartsManager : MonoBehaviour {
 
   IEnumerator startSpawn() {
     if (trying) {
+      trying = false;
       yield return new WaitForSeconds(Random.Range(respawnInterval_min, respawnInterval_max));
     }
-    trying = false;
     run();
   }
 
@@ -82,11 +81,12 @@ public class ComboPartsManager : MonoBehaviour {
   }
 
   public void destroyInstances() {
-    if (isSpawning) return;
+    foreach (GameObject comboPart in GameObject.FindGameObjectsWithTag("ComboPart")) {
+      Destroy(comboPart);
+    }
 
-    isSpawning = true;
-    Destroy(current);
-    if (next != null) Destroy(next);
+    // Debug.Log("ComboPartLength: " + GameObject.FindGameObjectsWithTag("ComboPart").Length);
+
     StartCoroutine("startSpawn");
   }
 

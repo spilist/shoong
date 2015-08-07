@@ -116,7 +116,7 @@ public class PlayerMover : MonoBehaviour {
     energyBar.getHealthbyParts(howMany);
     getEnergy.Play ();
     comboBar.addCombo();
-    
+
 
     Destroy(tr.gameObject);
   }
@@ -165,7 +165,7 @@ public class PlayerMover : MonoBehaviour {
   	unstoppableSphere.SetActive(false);
 
     yield return new WaitForSeconds(Random.Range(unstoppable_respawn[0], unstoppable_respawn[1]));
-    fom.spawnSpecial();
+    fom.spawn(fom.special_single);
   }
 
   public bool isUnstoppable() {
