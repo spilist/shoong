@@ -49,7 +49,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 0
   MinDistance: 1
-  MaxDistance: 150
+  MaxDistance: 100
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
@@ -64,9 +64,9 @@ AudioSource:
       outSlope: -1.00671136
       tangentMode: 0
     - time: 1
-      value: .5
-      inSlope: -1.00671136
-      outSlope: 0
+      value: .658333302
+      inSlope: -.27655378
+      outSlope: -.27655378
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -1245,19 +1245,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: MaxDistance
-      value: 150
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: rolloffCustomCurve.m_Curve.Array.data[1].value
-      value: .5
+      value: .658333302
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: rolloffCustomCurve.m_Curve.Array.data[1].inSlope
-      value: -1.00671136
+      value: -.27655378
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: rolloffCustomCurve.m_Curve.Array.data[1].outSlope
-      value: 0
+      value: -.27655378
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: BypassListenerEffects

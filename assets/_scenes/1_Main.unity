@@ -21344,7 +21344,7 @@ MonoBehaviour:
   - {fileID: 190242, guid: d8430bbeb85c44b9b9b8df1654f1e53b, type: 2}
   special_single: {fileID: 189520, guid: dccc40739d6254de9aaa62d3c75f9b0d, type: 2}
   max_parts: 50
-  max_obstacles: 3
+  max_obstacles: 4
   generateSpaceRadius: 1
   generateOffset: .200000003
   partsMinDistance: 50
@@ -21398,10 +21398,10 @@ MonoBehaviour:
   - {fileID: 121254, guid: 2679d9d5cfcac4d17a30ffbf890b119b, type: 2}
   - {fileID: 138142, guid: 5282d75336a9344948a3850d724a40a3, type: 2}
   - {fileID: 155078, guid: e6c20ed1857a7484f93bdc922b3cf045, type: 2}
-  speed: 160
+  speed: 130
   tumble: 10
-  minSpawnInterval: 100
-  maxSpawnInterval: 100
+  minSpawnInterval: 0
+  maxSpawnInterval: 8
   warnPlayerDuring: 1
   spawnRadius: 120
   UICanvas: {fileID: 2134279972}
@@ -21442,9 +21442,9 @@ MonoBehaviour:
   speed_chase: 75
   speed_runaway: 50
   tumble: 5
-  minSpawnInterval: 20
-  maxSpawnInterval: 30
-  spawnRadius: 140
+  minSpawnInterval: 25
+  maxSpawnInterval: 35
+  spawnRadius: 160
   minLifeTime: 15
   maxLifeTime: 25
   monsterWarning: {fileID: 1881103577}
