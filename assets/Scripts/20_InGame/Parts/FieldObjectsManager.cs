@@ -89,7 +89,7 @@ public class FieldObjectsManager : MonoBehaviour {
 		newInstance.transform.parent = gameObject.transform;
 	}
 
-	private Vector3 getSpawnPosition(string tag) {
+	public Vector3 getSpawnPosition(string tag) {
 		float screenX, screenY;
 		Vector3 spawnPosition;
 		int count = 0;

@@ -1,43 +1,43 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &160458
+--- !u!1 &117910
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 437766}
-  - 33: {fileID: 3320664}
-  - 23: {fileID: 2324296}
-  - 54: {fileID: 5438202}
-  - 135: {fileID: 13539794}
-  - 114: {fileID: 11412398}
+  - 4: {fileID: 430028}
+  - 33: {fileID: 3333586}
+  - 23: {fileID: 2308196}
+  - 54: {fileID: 5406708}
+  - 135: {fileID: 13562994}
+  - 114: {fileID: 11432574}
   m_Layer: 18
-  m_Name: blackhole
+  m_Name: Blackhole
   m_TagString: Blachole
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &437766
+--- !u!4 &430028
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 160458}
+  m_GameObject: {fileID: 117910}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1, y: 0, z: 65}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: .800000012, y: .800000012, z: .800000012}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!23 &2324296
+--- !u!23 &2308196
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 160458}
+  m_GameObject: {fileID: 117910}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -56,19 +56,19 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!33 &3320664
+--- !u!33 &3333586
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 160458}
+  m_GameObject: {fileID: 117910}
   m_Mesh: {fileID: 4300000, guid: 977eaa52d67d74cb7a4e06604cc96f2e, type: 3}
---- !u!54 &5438202
+--- !u!54 &5406708
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 160458}
+  m_GameObject: {fileID: 117910}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -76,31 +76,28 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 4
+  m_Constraints: 94
   m_CollisionDetection: 0
---- !u!114 &11412398
+--- !u!114 &11432574
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 160458}
+  m_GameObject: {fileID: 117910}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9d70a08238d904e4b80cd6018e42b53e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   obstacleDestroy: {fileID: 19845298, guid: 06a9d910a6ef7477eb37b2d7cddcfa88, type: 2}
-  fom: {fileID: 0}
-  cpm: {fileID: 0}
-  gameOver: {fileID: 0}
---- !u!135 &13539794
+--- !u!135 &13562994
 SphereCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 160458}
+  m_GameObject: {fileID: 117910}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 12
@@ -111,8 +108,20 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 160458}
+  m_RootGameObject: {fileID: 117910}
   m_IsPrefabParent: 1

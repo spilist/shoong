@@ -44,7 +44,7 @@ public class MonsterMover : MonoBehaviour {
 	}
 
 	void FixedUpdate () {
-    if (isInsideBlackhole) {
+    if (isInsideBlackhole && blackhole != null) {
       Vector3 heading = blackhole.transform.position - transform.position;
       heading /= heading.magnitude;
       GetComponent<Rigidbody> ().velocity = heading * blm.gravity;
@@ -69,10 +69,6 @@ public class MonsterMover : MonoBehaviour {
 					GetComponent<Rigidbody>().velocity = direction * speed_chase;
 				}
 			}
-
-
-
-      
     }
 	}
 
@@ -105,6 +101,6 @@ public class MonsterMover : MonoBehaviour {
 
   public void insideBlackhole() {
     isInsideBlackhole = true;
-    blackhole = GameObject.Find("Blackhole");
+    blackhole = blm.getBlackhole();
   }
 }

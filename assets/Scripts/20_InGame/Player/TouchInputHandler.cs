@@ -15,6 +15,7 @@ public class TouchInputHandler : MonoBehaviour
 	private FieldObjectsManager fom;
 	private ComboPartsManager cpm;
 	private MonsterManager monm;
+	private BlackholeManager blm;
 
 	public GameObject partsCollector;
 
@@ -26,16 +27,20 @@ public class TouchInputHandler : MonoBehaviour
 		fom = objectsManager.GetComponent<FieldObjectsManager>();
 		cpm = objectsManager.GetComponent<ComboPartsManager>();
 		monm = objectsManager.GetComponent<MonsterManager>();
+		blm = objectsManager.GetComponent<BlackholeManager>();
 
 		barsCanvas.GetComponent<Canvas>().enabled = false;
 	}
 
 	void Update() {
 		if (react && Input.GetMouseButtonDown(0)) {
+			if (player.isRebounding()) return;
+
 			if (!gameStarted) {
 				cpm.run();
 				fom.run();
 				monm.run();
+				blm.run();
 				barsCanvas.GetComponent<Canvas>().enabled = true;
 				energyBar.startDecrease();
 				elapsedTime.startTime();
@@ -43,6 +48,7 @@ public class TouchInputHandler : MonoBehaviour
 				gameStarted = true;
 				partsCollector.SetActive(true);
 			}
+
 			player.rotatePlayerBody();
 			Vector3 touchPosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.transform.position.y);
 			Vector3 worldTouchPosition = Camera.main.ScreenToWorldPoint(touchPosition);

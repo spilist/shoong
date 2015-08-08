@@ -2,9 +2,9 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class UnstoppableComboBar : MonoBehaviour {
+public class StrengthenTimeBar : MonoBehaviour {
   public PlayerMover player;
-  public UnstoppableBlinkingComboBar ubc;
+  public StrengthenTimeBlinkingBar stb;
 
   private Image image;
   private int during;
@@ -12,13 +12,13 @@ public class UnstoppableComboBar : MonoBehaviour {
 
 	void Start () {
     image = GetComponent<Image>();
-    during = (int) player.unstoppable_during;
+    during = (int) player.strengthen_during;
 	}
 
-  public void startUnstoppable() {
+  public void startStrengthen() {
     count = during;
     image.fillAmount = 1f - 1f / during;
-    ubc.startUnstoppable();
+    stb.startStrengthen();
     StartCoroutine("startDecrase");
   }
 
@@ -26,9 +26,17 @@ public class UnstoppableComboBar : MonoBehaviour {
     while(count > 0) {
       yield return new WaitForSeconds(1);
       image.fillAmount -= 1f / during;
-      if (count > 1) ubc.timeElapse();
+      if (count > 1) stb.timeElapse();
       count--;
     }
-    ubc.stopUnstoppable();
+    stb.stopStrengthen();
+  }
+
+  public void rebounded(int rebonudDuring) {
+    StopCoroutine("startDecrase");
+    count = rebonudDuring;
+    stb.setCount(rebonudDuring - 1);
+    image.fillAmount = 1f / during;
+    StartCoroutine("startDecrase");
   }
 }

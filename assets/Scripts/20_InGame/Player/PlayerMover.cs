@@ -21,14 +21,16 @@ public class PlayerMover : MonoBehaviour {
   public FieldObjectsManager fom;
   public ComboPartsManager cpm;
   public MonsterManager monm;
+
   public BlackholeManager blm;
   private GameObject blackhole;
   private bool isInsideBlackhole = false;
   private bool exitedBlackhole = false;
+  private bool rebounding = false;
 
   private EnergyBar energyBar;
   private ComboBar comboBar;
-  private UnstoppableComboBar uComboBar;
+  private StrengthenTimeBar stBar;
 
   public ParticleSystem booster;
   public float boosterSpeedUpAmount = 120f;
@@ -40,10 +42,9 @@ public class PlayerMover : MonoBehaviour {
 
 	public GameObject particles;
 
-	private bool unstoppable = false;
-	public float unstoppable_during = 8f;
-  public float unstoppable_end_soon_during = 1;
-  public float unstoppable_blinkingSeconds = 0.2f;
+	public float strengthen_during = 8f;
+
+  private bool unstoppable = false;
   public float[] unstoppable_respawn;
 	public int unstoppable_speed = 150;
 
@@ -57,7 +58,7 @@ public class PlayerMover : MonoBehaviour {
 
     energyBar = transform.Find("Bars Canvas/EnergyBar").GetComponent<EnergyBar>();
     comboBar = transform.Find("Bars Canvas").GetComponent<ComboBar>();
-    uComboBar = transform.Find("Bars Canvas/UnstoppableComboBar").GetComponent<UnstoppableComboBar>();
+    stBar = transform.Find("Bars Canvas/StrengthenTimeBar").GetComponent<StrengthenTimeBar>();
 
     cubesWhenDestroy = new Hashtable();
     cubesWhenDestroy.Add("Obstacle_big", cubesWhenDestroyBigObstacle);
@@ -66,16 +67,21 @@ public class PlayerMover : MonoBehaviour {
 	}
 
 	void FixedUpdate () {
-		if (unstoppable) {
-			speed = unstoppable_speed;
-		}
-		else {
-			speed = comboBar.moverspeed+boosterspeed;
-		}
+    if (rebounding) {
+      speed = blm.reboundSpeed;
+    } else if (unstoppable) {
+      speed = unstoppable_speed;
+    } else if (exitedBlackhole) {
+      speed = blm.exitSpeed;
+    } else {
+			speed = comboBar.moverspeed;
+    }
 
-		if (boosterspeed > 0) {
+    speed += boosterspeed;
+
+    if (boosterspeed > 0) {
 			boosterspeed -= speed / 70.0f + 20 * Time.deltaTime;
-		} else if (boosterspeed < 0){
+		} else if (boosterspeed <= 0){
 			boosterspeed = 0;
 		}
 
@@ -84,41 +90,37 @@ public class PlayerMover : MonoBehaviour {
       heading /= heading.magnitude;
       GetComponent<Rigidbody> ().AddForce(heading * blm.pullUser, ForceMode.VelocityChange);
     }
-		GetComponent<Rigidbody> ().velocity = direction * speed;
-    // }
+    GetComponent<Rigidbody> ().velocity = direction * speed;
 	}
 
-	public void boosterSpeedup(){
-		boosterspeed += boosterSpeedUpAmount;
-	}
-
-	void OnTriggerEnter(Collider other)
-	{
+	void OnTriggerEnter(Collider other) {
 		if (other.tag == "Obstacle" || other.tag == "Obstacle_big" || other.tag == "Monster") {
 			if (unstoppable) {
-
 				Instantiate(obstacleDestroy, other.transform.position, other.transform.rotation);
-        goodPartsEncounter(other.transform, (int)cubesWhenDestroy[other.tag], false);
-        // other.GetComponent<AudioSource>().Play();
-			} else {
+        goodPartsEncounter(other.transform, (int)cubesWhenDestroy[other.tag]);
+			} else if (exitedBlackhole && other.tag == "Monster") {
+        Debug.Log("I'm on a monster");
+        Destroy(other.gameObject);
+      } else {
 				gameOver.run();
 			}
 		} else if (other.tag == "Part") {
-      goodPartsEncounter(other.transform, comboBar.getComboRatio(), true);
+      goodPartsEncounter(other.transform, comboBar.getComboRatio());
 			GetComponent<AudioSource>().Play ();
 		} else if (other.tag == "SpecialPart") {
-      goodPartsEncounter(other.transform, comboBar.getComboRatio(), true);
+      goodPartsEncounter(other.transform, comboBar.getComboRatio());
       getSpecialEnergyEffect.Play();
+      // what if player is exited blackhole?
       startUnstoppable();
 		} else if (other.tag == "ComboPart") {
       cpm.eatenByPlayer();
 			getComboParts.Play();
 			getComboParts.GetComponent<AudioSource>().Play ();
-      goodPartsEncounter(other.transform, cpm.getComboCount() * cpm.comboBonusScale, true);
+      goodPartsEncounter(other.transform, cpm.getComboCount() * cpm.comboBonusScale);
     }
 	}
 
-  private void goodPartsEncounter(Transform tr, int howMany, bool audio) {
+  private void goodPartsEncounter(Transform tr, int howMany) {
     for (int e = 0; e < howMany; e++) {
       Instantiate(particles, tr.position, tr.rotation);
     }
@@ -127,20 +129,7 @@ public class PlayerMover : MonoBehaviour {
     getEnergy.Play ();
     comboBar.addCombo();
 
-
     Destroy(tr.gameObject);
-  }
-
-	public void rotatePlayerBody() {
-		GetComponent<Rigidbody>().angularVelocity = Random.onUnitSphere * tumble;
-	}
-
-	public void setDirection(Vector3 value) {
-    direction = value;
-  }
-
-  public Vector3 getDirection() {
-    return direction;
   }
 
   public void startUnstoppable() {
@@ -151,31 +140,83 @@ public class PlayerMover : MonoBehaviour {
 		unstoppableEffect.GetComponent<AudioSource>().Play ();
 		unstoppableEffect_two.Play();
   	energyBar.startUnstoppable();
-    uComboBar.startUnstoppable();
-    unstoppableSphere.SetActive(true);
+    stBar.startStrengthen();
   	StartCoroutine("stopUnstoppable");
   }
 
   IEnumerator stopUnstoppable() {
-    yield return new WaitForSeconds(unstoppable_during - unstoppable_end_soon_during);
-
-    float duration = unstoppable_end_soon_during;
-    while(duration > 0f) {
-      duration -= unstoppable_blinkingSeconds;
-      unstoppableEffect.enableEmission = !unstoppableEffect.enableEmission;
-
-      yield return new WaitForSeconds(unstoppable_blinkingSeconds);
-    }
-    unstoppableEffect.enableEmission = true;
+    yield return new WaitForSeconds(strengthen_during);
 
     unstoppable = false;
   	unstoppableEffect.Stop();
 		unstoppableEffect_two.Stop();
   	energyBar.stopUnstoppable();
-  	unstoppableSphere.SetActive(false);
 
     yield return new WaitForSeconds(Random.Range(unstoppable_respawn[0], unstoppable_respawn[1]));
     fom.spawn(fom.special_single);
+  }
+
+  public void insideBlackhole() {
+    isInsideBlackhole = true;
+    blackhole = blm.getBlackhole();
+  }
+
+  public void outsideBlackhole() {
+    isInsideBlackhole = false;
+    exitedBlackhole = true;
+
+    Destroy(blackhole);
+    unstoppableSphere.SetActive(true);
+    stBar.startStrengthen();
+
+    StartCoroutine("exitBlackhole");
+  }
+
+  IEnumerator exitBlackhole() {
+    yield return new WaitForSeconds(strengthen_during);
+    exitedBlackhole = false;
+    unstoppableSphere.SetActive(false);
+  }
+
+  public void contactBlackholeWhileUnstoppable(Collision collision) {
+    rebounding = true;
+    isInsideBlackhole = false;
+
+    ContactPoint contact = collision.contacts[0];
+    Vector3 normal = contact.normal;
+    direction = Vector3.Reflect(direction, -normal).normalized;
+    direction.y = 0;
+    direction.Normalize();
+
+    stBar.rebounded(blm.reboundDuring);
+    StopCoroutine("stopUnstoppable");
+    StartCoroutine("reboundedByBlackhole");
+  }
+
+  IEnumerator reboundedByBlackhole() {
+    yield return new WaitForSeconds(blm.reboundDuring);
+    rebounding = false;
+    unstoppable = false;
+
+    unstoppableEffect.Stop();
+    unstoppableEffect_two.Stop();
+    energyBar.stopUnstoppable();
+    unstoppableSphere.SetActive(false);
+
+    yield return new WaitForSeconds(Random.Range(unstoppable_respawn[0], unstoppable_respawn[1]));
+    fom.spawn(fom.special_single);
+  }
+
+  public void rotatePlayerBody() {
+    GetComponent<Rigidbody>().angularVelocity = Random.onUnitSphere * tumble;
+  }
+
+  public void setDirection(Vector3 value) {
+    direction = value;
+  }
+
+  public Vector3 getDirection() {
+    return direction;
   }
 
   public bool isUnstoppable() {
@@ -190,19 +231,11 @@ public class PlayerMover : MonoBehaviour {
     return energyBar;
   }
 
-  public void insideBlackhole() {
-    isInsideBlackhole = true;
-    blackhole = GameObject.Find("Blackhole");
+  public bool isRebounding() {
+    return rebounding;
   }
 
-  public void outsideBlackhole() {
-    isInsideBlackhole = false;
-    blackhole = GameObject.Find("Blackhole");
-    exitedBlackhole = true;
-    // StartCoroutine("exitBlackhole");
+  public void boosterSpeedup(){
+    boosterspeed += boosterSpeedUpAmount;
   }
-
-  // IEnumerator exitBlackhole() {
-//
-  // }
 }

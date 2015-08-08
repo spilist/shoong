@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class UnstoppableBlinkingComboBar : MonoBehaviour {
+public class StrengthenTimeBlinkingBar : MonoBehaviour {
   public float blinkingSeconds = 0.2f;
 
   private Image image;
@@ -19,7 +19,7 @@ public class UnstoppableBlinkingComboBar : MonoBehaviour {
     transform.localRotation = Quaternion.Euler(0, 0, angles[count]);
   }
 
-  public void startUnstoppable() {
+  public void startStrengthen() {
     image.enabled = true;
     count = 7;
     transform.localRotation = Quaternion.Euler(0, 0, angles[7]);
@@ -27,7 +27,7 @@ public class UnstoppableBlinkingComboBar : MonoBehaviour {
     StartCoroutine("startBlink");
   }
 
-  public void stopUnstoppable() {
+  public void stopStrengthen() {
     image.enabled = false;
     StopCoroutine("startBlink");
   }
@@ -37,5 +37,10 @@ public class UnstoppableBlinkingComboBar : MonoBehaviour {
       yield return new WaitForSeconds(blinkingSeconds);
       image.enabled = !image.enabled;
     }
+  }
+
+  public void setCount(int val) {
+    count = val;
+    transform.localRotation = Quaternion.Euler(0, 0, angles[count]);
   }
 }

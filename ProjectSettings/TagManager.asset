@@ -19,6 +19,8 @@ TagManager:
   - Monster
   - ComboPart
   - BlackholeGravitySphere
+  - Blachole
+  - ContactCollider
   layers:
   - Default
   - TransparentFX
@@ -32,7 +34,7 @@ TagManager:
   - FieldObjects
   - Character
   - UnstoppableSphere
-  - 
+  - ContactCollider
   - CollectedParts
   - CollectingSphere
   - 

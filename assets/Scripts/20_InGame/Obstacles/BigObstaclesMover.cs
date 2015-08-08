@@ -30,7 +30,7 @@ public class BigObstaclesMover : MonoBehaviour {
 	}
 
 	void FixedUpdate () {
-    if (isInsideBlackhole) {
+    if (isInsideBlackhole && blackhole != null) {
       Vector3 heading = blackhole.transform.position - transform.position;
       heading /= heading.magnitude;
       GetComponent<Rigidbody> ().velocity = heading * blm.gravity;
@@ -66,6 +66,6 @@ public class BigObstaclesMover : MonoBehaviour {
 
   public void insideBlackhole() {
     isInsideBlackhole = true;
-    blackhole = GameObject.Find("Blackhole");
+    blackhole = blm.getBlackhole();
   }
 }
