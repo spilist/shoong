@@ -11,6 +11,7 @@ public class MonsterManager : MonoBehaviour {
   public float minSpawnInterval = 5f;
   public float maxSpawnInterval = 10f;
   public float spawnRadius = 600;
+  public float detectDistance = 160;
   public float minLifeTime = 10;
   public float maxLifeTime = 15;
   public float weakenDuration = 5.5f;

@@ -8,6 +8,7 @@ public class ObstaclesMover : MonoBehaviour {
   private FieldObjectsManager fom;
   private ComboPartsManager cpm;
   private BlackholeManager blm;
+  private CubeDispenserManager cdm;
   private GameObject blackhole;
   private bool isInsideBlackhole = false;
   private float shrinkedScale;
@@ -16,6 +17,7 @@ public class ObstaclesMover : MonoBehaviour {
     fom = GameObject.Find("Field Objects").GetComponent<FieldObjectsManager>();
     cpm = GameObject.Find("Field Objects").GetComponent<ComboPartsManager>();
     blm = GameObject.Find("Field Objects").GetComponent<BlackholeManager>();
+    cdm = GameObject.Find("Field Objects").GetComponent<CubeDispenserManager>();
     shrinkedScale = transform.localScale.x;
 
     ObstaclesManager obm = GameObject.Find("Field Objects").GetComponent<ObstaclesManager>();
@@ -30,7 +32,10 @@ public class ObstaclesMover : MonoBehaviour {
 
 	void FixedUpdate () {
     if (isInsideBlackhole) {
-      if (blackhole == null) Destroy(gameObject);
+      if (blackhole == null) {
+        Destroy(gameObject);
+        return;
+      }
       Vector3 heading = blackhole.transform.position - transform.position;
       heading /= heading.magnitude;
       GetComponent<Rigidbody> ().velocity = heading * blm.gravity;
@@ -53,6 +58,8 @@ public class ObstaclesMover : MonoBehaviour {
       fom.spawnSpecial();
     } else if (colliderTag == "ComboPart") {
       cpm.destroyInstances();
+    } else if (colliderTag == "CubeDispenser") {
+      cdm.startRespawn();
     }
   }
 

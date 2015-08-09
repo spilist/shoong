@@ -11,6 +11,7 @@ public class MonsterMover : MonoBehaviour {
   private FieldObjectsManager fom;
   private MonsterManager monm;
   private ComboPartsManager cpm;
+  private CubeDispenserManager cdm;
 
   private BlackholeManager blm;
   private GameObject blackhole;
@@ -27,11 +28,15 @@ public class MonsterMover : MonoBehaviour {
   private bool weak = false;
   private bool shrinking = true;
 
+  public ParticleSystem aura;
+  public ParticleSystem weakenAura;
+
 	void Start () {
     fom = GameObject.Find("Field Objects").GetComponent<FieldObjectsManager>();
     monm = GameObject.Find("Field Objects").GetComponent<MonsterManager>();
     cpm = GameObject.Find("Field Objects").GetComponent<ComboPartsManager>();
     blm = GameObject.Find("Field Objects").GetComponent<BlackholeManager>();
+    cdm = GameObject.Find("Field Objects").GetComponent<CubeDispenserManager>();
 
     shrinkedScale = transform.localScale.x;
     originalScale = shrinkedScale;
@@ -56,7 +61,8 @@ public class MonsterMover : MonoBehaviour {
     yield return new WaitForSeconds(Random.Range(monm.minLifeTime, monm.maxLifeTime));
     weak = true;
     monm.stopWarning();
-
+    weakenAura.Play();
+    aura.Stop();
     GetComponent<Renderer>().material.SetColor("_OutlineColor", monm.weakenedOutlineColor);
 
     yield return new WaitForSeconds(monm.weakenDuration);
@@ -70,7 +76,10 @@ public class MonsterMover : MonoBehaviour {
 
 	void FixedUpdate () {
     if (isInsideBlackhole) {
-      if (blackhole == null) Destroy(gameObject);
+      if (blackhole == null) {
+        Destroy(gameObject);
+        return;
+      }
       Vector3 heading = blackhole.transform.position - transform.position;
       heading /= heading.magnitude;
       GetComponent<Rigidbody> ().velocity = heading * blm.gravity;
@@ -82,7 +91,7 @@ public class MonsterMover : MonoBehaviour {
 			distance = direction.magnitude;
       direction /= direction.magnitude;
 
-			if (distance > 140){
+			if (distance > monm.detectDistance){
 				GetComponent<Rigidbody>().velocity = direction * speed_chase * 2;
 
 			} else if (isMagnetized) {
@@ -119,6 +128,8 @@ public class MonsterMover : MonoBehaviour {
       fom.spawnSpecial();
     } else if (colliderTag == "ComboPart") {
       cpm.destroyInstances();
+    } else if (colliderTag == "CubeDispenser") {
+      cdm.startRespawn();
     }
   }
 

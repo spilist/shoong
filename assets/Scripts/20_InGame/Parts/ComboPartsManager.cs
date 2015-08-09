@@ -85,8 +85,6 @@ public class ComboPartsManager : MonoBehaviour {
       Destroy(comboPart);
     }
 
-    // Debug.Log("ComboPartLength: " + GameObject.FindGameObjectsWithTag("ComboPart").Length);
-
     StartCoroutine("startSpawn");
   }
 

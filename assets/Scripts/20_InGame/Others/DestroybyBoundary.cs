@@ -5,6 +5,7 @@ public class DestroybyBoundary : MonoBehaviour {
   public FieldObjectsManager fom;
   public ComboPartsManager cpm;
   public BlackholeManager blm;
+  public CubeDispenserManager cdm;
 
 	void OnTriggerExit(Collider other) {
     if (other.tag == "SpecialPart") {
@@ -12,9 +13,10 @@ public class DestroybyBoundary : MonoBehaviour {
     } else if (other.tag == "ComboPart") {
       cpm.destroyInstances();
     } else if (other.tag == "Blackhole") {
-      Debug.Log("destroyed by boundary?");
       blm.skipRespawnInterval();
       Destroy(other.gameObject);
+    } else if (other.tag == "CubeDispenser") {
+      cdm.startRespawn();
     } else {
       Destroy(other.gameObject);
     }

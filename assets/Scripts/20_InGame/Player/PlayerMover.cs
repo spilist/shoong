@@ -148,6 +148,16 @@ public class PlayerMover : MonoBehaviour {
     Destroy(tr.gameObject);
   }
 
+  public void goodPartsEncounterWithoutDestroy(Transform tr, int howMany) {
+    for (int e = 0; e < howMany; e++) {
+      Instantiate(particles, tr.position, tr.rotation);
+    }
+    partsCount.addCount(howMany);
+    energyBar.getHealthbyParts(howMany);
+    getEnergy.Play ();
+    comboBar.addCombo();
+  }
+
   IEnumerator strengthen() {
     if (gameOver.isOver()) yield break;
 
@@ -238,15 +248,18 @@ public class PlayerMover : MonoBehaviour {
   public void contactBlackholeWhileUnstoppable(Collision collision) {
     rebounding = true;
     isInsideBlackhole = false;
+    processCollision(collision);
 
+    StopCoroutine("strengthen");
+    StartCoroutine("strengthen");
+  }
+
+  public void processCollision(Collision collision) {
     ContactPoint contact = collision.contacts[0];
     Vector3 normal = contact.normal;
     direction = Vector3.Reflect(direction, -normal).normalized;
     direction.y = 0;
     direction.Normalize();
-
-    StopCoroutine("strengthen");
-    StartCoroutine("strengthen");
   }
 
   public void rotatePlayerBody() {

@@ -39,7 +39,10 @@ public class FieldObjectsMover : MonoBehaviour {
 
 	void FixedUpdate () {
     if (isInsideBlackhole) {
-      if (blackhole == null) Destroy(gameObject);
+      if (blackhole == null) {
+        Destroy(gameObject);
+        return;
+      }
       Vector3 heading = blackhole.transform.position - transform.position;
       heading /= heading.magnitude;
       GetComponent<Rigidbody> ().velocity = heading * blm.gravity;

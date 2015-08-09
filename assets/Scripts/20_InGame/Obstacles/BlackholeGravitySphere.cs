@@ -36,6 +36,8 @@ public class BlackholeGravitySphere : MonoBehaviour {
       other.gameObject.GetComponent<ObstaclesMover>().insideBlackhole();
     } else if (other.tag == "Monster") {
       other.gameObject.GetComponent<MonsterMover>().insideBlackhole();
+    } else if (other.tag == "CubeDispenser") {
+      other.gameObject.GetComponent<CubeDispenserMover>().insideBlackhole();
     } else {
       other.gameObject.GetComponent<FieldObjectsMover>().insideBlackhole();
     }

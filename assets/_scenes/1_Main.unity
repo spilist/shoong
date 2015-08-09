@@ -501,7 +501,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 6d727aa5437cacd4da4b73b8e40cf9cf, type: 2}
+  - {fileID: 2100000, guid: 121f68733b2be4d6da171cfd48b6de49, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -522,7 +522,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 91418582}
-  m_Mesh: {fileID: 4300000, guid: e326e2716b98bcf4eb9c273c7742b2b0, type: 3}
+  m_Mesh: {fileID: 4300012, guid: 0de94dcbd129f49c9ab366ccb45fa469, type: 3}
 --- !u!81 &91418590
 AudioListener:
   m_ObjectHideFlags: 0
@@ -10737,6 +10737,7 @@ MonoBehaviour:
   fom: {fileID: 1991538105}
   cpm: {fileID: 1991538106}
   blm: {fileID: 1991538108}
+  cdm: {fileID: 1991538110}
 --- !u!65 &892369440
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13998,7 +13999,7 @@ Transform:
   m_GameObject: {fileID: 1298175622}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 13, y: 13, z: 13}
+  m_LocalScale: {x: 15, y: 15, z: 15}
   m_Children: []
   m_Father: {fileID: 1701025775}
   m_RootOrder: 1
@@ -21830,6 +21831,7 @@ GameObject:
   - 114: {fileID: 1991538107}
   - 114: {fileID: 1991538109}
   - 114: {fileID: 1991538108}
+  - 114: {fileID: 1991538110}
   m_Layer: 9
   m_Name: Field Objects
   m_TagString: Untagged
@@ -21882,10 +21884,12 @@ MonoBehaviour:
   speed_parts: 0
   speed_special: 0
   speed_comboparts: 0
+  speed_dispenser: 0
   tumble_obstacles: .5
   tumble_parts: 1
   tumble_special: 3
   tumble_comboparts: 3
+  tumble_dispenser: 0
   unstoppableFollowSpeed: 1.5
   collectedPartsMaterial: {fileID: 0}
 --- !u!114 &1991538106
@@ -21966,13 +21970,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5edcb4094aa64a1cb46c7914f086d22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monster: {fileID: 128816, guid: d6736fed920184832b40515128a9cad2, type: 2}
+  monster: {fileID: 187024, guid: b82e156aa96e74e6ab2dfef6ffcc7bcf, type: 2}
   speed_chase: 81
   speed_runaway: 70
+  speed_weaken: 30
   tumble: 5
   minSpawnInterval: 0
   maxSpawnInterval: 0
   spawnRadius: 140
+  detectDistance: 180
   minLifeTime: 1
   maxLifeTime: 1
   weakenDuration: 5
@@ -21984,6 +21990,24 @@ MonoBehaviour:
   destroyEffect: {fileID: 19885190, guid: 46089bf9ed3c44683abd20a8e16a7bee, type: 2}
   monsterWarning: {fileID: 1881103577}
   warningBlinkSeconds: .699999988
+--- !u!114 &1991538110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1991538103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81cf703db72ac430e98bc24b14730d6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fom: {fileID: 1991538105}
+  cubeDispenserPrefab: {fileID: 148822, guid: de23a7876221f4b818e7bfdccf294c71, type: 2}
+  fullComboCount: 6
+  respawnInterval_min: 0
+  respawnInterval_max: 0
+  destroyAfterTry: 4
+  cubesPerContact: 10
 --- !u!1 &1997391145
 GameObject:
   m_ObjectHideFlags: 0

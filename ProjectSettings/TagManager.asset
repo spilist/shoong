@@ -21,6 +21,8 @@ TagManager:
   - BlackholeGravitySphere
   - Blachole
   - ContactCollider
+  - PatternPart
+  - CubeDispenser
   layers:
   - Default
   - TransparentFX
@@ -37,7 +39,7 @@ TagManager:
   - ContactCollider
   - CollectedParts
   - CollectingSphere
-  - 
+  - CubeDispenser
   - Monster
   - 
   - Blackhole

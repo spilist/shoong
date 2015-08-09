@@ -17,6 +17,7 @@ public class TouchInputHandler : MonoBehaviour
 	private ComboPartsManager cpm;
 	private MonsterManager monm;
 	private BlackholeManager blm;
+	private CubeDispenserManager cdm;
 
 	public GameObject partsCollector;
 
@@ -29,6 +30,7 @@ public class TouchInputHandler : MonoBehaviour
 		cpm = objectsManager.GetComponent<ComboPartsManager>();
 		monm = objectsManager.GetComponent<MonsterManager>();
 		blm = objectsManager.GetComponent<BlackholeManager>();
+		cdm = objectsManager.GetComponent<CubeDispenserManager>();
 
 		barsCanvas.GetComponent<Canvas>().enabled = false;
 	}
@@ -42,6 +44,7 @@ public class TouchInputHandler : MonoBehaviour
 				fom.run();
 				monm.run();
 				blm.run();
+				cdm.run();
 				barsCanvas.GetComponent<Canvas>().enabled = true;
 				energyBar.startDecrease();
 				elapsedTime.startTime();

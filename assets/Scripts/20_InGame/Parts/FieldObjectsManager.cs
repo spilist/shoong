@@ -18,12 +18,14 @@ public class FieldObjectsManager : MonoBehaviour {
 	public float speed_parts = 5;
 	public float speed_special = 5;
 	public float speed_comboparts = 0;
+	public float speed_dispenser = 0;
 	private Hashtable speed;
 
 	public float tumble_obstacles = 0.5f;
 	public float tumble_parts = 1f;
 	public float tumble_special = 3f;
 	public float tumble_comboparts = 3f;
+	public float tumble_dispenser = 0;
 	private Hashtable tumble;
 
 	public float unstoppableFollowSpeed = 1.1f;
@@ -48,12 +50,14 @@ public class FieldObjectsManager : MonoBehaviour {
 		speed.Add("Part", speed_parts);
 		speed.Add("SpecialPart", speed_special);
 		speed.Add("ComboPart", speed_comboparts);
+		speed.Add("CubeDispenser", speed_dispenser);
 
 		tumble = new Hashtable();
 		tumble.Add("Obstacle_big", tumble_obstacles);
 		tumble.Add("Part", tumble_parts);
 		tumble.Add("SpecialPart", tumble_special);
 		tumble.Add("ComboPart", tumble_comboparts);
+		tumble.Add("CubeDispenser", tumble_dispenser);
 	}
 
 	void generateObjectsAtStart() {

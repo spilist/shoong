@@ -9,6 +9,8 @@ public class BigObstaclesMover : MonoBehaviour {
   private ComboPartsManager cpm;
   private FieldObjectsManager fom;
   private BlackholeManager blm;
+  private CubeDispenserManager cdm;
+
   private GameObject blackhole;
   private bool isInsideBlackhole = false;
   private float shrinkedScale;
@@ -17,6 +19,7 @@ public class BigObstaclesMover : MonoBehaviour {
     cpm = GameObject.Find("Field Objects").GetComponent<ComboPartsManager>();
     fom = GameObject.Find("Field Objects").GetComponent<FieldObjectsManager>();
     blm = GameObject.Find("Field Objects").GetComponent<BlackholeManager>();
+    cdm = GameObject.Find("Field Objects").GetComponent<CubeDispenserManager>();
     shrinkedScale = transform.localScale.x;
 
     speed = fom.getSpeed(gameObject.tag);
@@ -31,7 +34,10 @@ public class BigObstaclesMover : MonoBehaviour {
 
 	void FixedUpdate () {
     if (isInsideBlackhole) {
-      if (blackhole == null) Destroy(gameObject);
+      if (blackhole == null) {
+        Destroy(gameObject);
+        return;
+      }
       Vector3 heading = blackhole.transform.position - transform.position;
       heading /= heading.magnitude;
       GetComponent<Rigidbody> ().velocity = heading * blm.gravity;
@@ -54,6 +60,8 @@ public class BigObstaclesMover : MonoBehaviour {
       processCollision(collision);
     } else if (colliderTag == "ComboPart") {
       cpm.destroyInstances();
+    } else if (colliderTag == "CubeDispenser") {
+      cdm.startRespawn();
     }
   }
 

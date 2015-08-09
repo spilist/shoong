@@ -7,6 +7,7 @@ public class Blackhole : MonoBehaviour {
   private FieldObjectsManager fom;
   private ComboPartsManager cpm;
   private BlackholeManager blm;
+  private CubeDispenserManager cdm;
   private GameOver gameOver;
 
   private PlayerMover player;
@@ -21,6 +22,7 @@ public class Blackhole : MonoBehaviour {
     fom = GameObject.Find("Field Objects").GetComponent<FieldObjectsManager>();
     cpm = GameObject.Find("Field Objects").GetComponent<ComboPartsManager>();
     blm = GameObject.Find("Field Objects").GetComponent<BlackholeManager>();
+    cdm = GameObject.Find("Field Objects").GetComponent<CubeDispenserManager>();
     gameOver = GameObject.Find("GameOver").GetComponent<GameOver>();
 	}
 
@@ -33,12 +35,14 @@ public class Blackhole : MonoBehaviour {
     } else if (other.tag == "Obstacle" || other.tag == "Obstacle_big" || other.tag == "Monster") {
       Destroy(other.gameObject);
     } else if (other.tag == "ContactCollider") {
-      if (player.isUnstoppable()) {
+      // if (player.isUnstoppable()) {
         player.contactBlackholeWhileUnstoppable(collision);
-        Destroy(gameObject);
-      } else {
-        gameOver.run();
-      }
+        // Destroy(gameObject);
+      // } else {
+        // gameOver.run();
+      // }
+    } else if (other.tag == "CubeDispenser") {
+      cdm.startRespawn();
     } else {
       Destroy(other.gameObject);
     }
