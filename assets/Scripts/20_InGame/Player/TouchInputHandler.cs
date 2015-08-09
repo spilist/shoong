@@ -10,6 +10,7 @@ public class TouchInputHandler : MonoBehaviour
 	public ComboBar comboBar;
 	public ElapsedTime elapsedTime;
 	public GameObject idleUI;
+	public ParticleSystem touchEffect;
 
 	public GameObject objectsManager;
 	private FieldObjectsManager fom;
@@ -49,6 +50,7 @@ public class TouchInputHandler : MonoBehaviour
 				partsCollector.SetActive(true);
 			}
 
+
 			player.rotatePlayerBody();
 			Vector3 touchPosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.transform.position.y);
 			Vector3 worldTouchPosition = Camera.main.ScreenToWorldPoint(touchPosition);
@@ -64,6 +66,7 @@ public class TouchInputHandler : MonoBehaviour
 			player.booster.Play();
 			player.booster.GetComponent<AudioSource>().Play();
 			player.setDirection(direction);
+			Instantiate(touchEffect, worldTouchPosition, Quaternion.identity);
 
 			cpm.tryToGet();
 		}

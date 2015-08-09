@@ -337,10 +337,10 @@ MonoBehaviour:
   getComboParts: {fileID: 1384869938}
   particles: {fileID: 178344, guid: b185d52f68bf5499e81f948bbbf1bd8c, type: 2}
   strengthen_during: 8
+  strengthen_speed: 120
   unstoppable_respawn:
   - 5
   - 10
-  unstoppable_speed: 150
 --- !u!96 &91418584
 TrailRenderer:
   m_ObjectHideFlags: 0
@@ -13853,7 +13853,7 @@ RectTransform:
   m_GameObject: {fileID: 1289803595}
   m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106709}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: .430000007, y: .430000007, z: .430000007}
+  m_LocalScale: {x: .5, y: .5, z: .5}
   m_Children:
   - {fileID: 1593744717}
   - {fileID: 1301094252}
@@ -16645,6 +16645,48 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1437578306}
+--- !u!1001 &1438335340
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 450962, guid: 685937296cad741c18018a97b8d10789, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 450962, guid: 685937296cad741c18018a97b8d10789, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 450962, guid: 685937296cad741c18018a97b8d10789, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 450962, guid: 685937296cad741c18018a97b8d10789, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 450962, guid: 685937296cad741c18018a97b8d10789, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 450962, guid: 685937296cad741c18018a97b8d10789, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 450962, guid: 685937296cad741c18018a97b8d10789, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 450962, guid: 685937296cad741c18018a97b8d10789, type: 2}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 685937296cad741c18018a97b8d10789, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1492165815
 GameObject:
   m_ObjectHideFlags: 0
@@ -18178,6 +18220,7 @@ MonoBehaviour:
   comboBar: {fileID: 1289803601}
   elapsedTime: {fileID: 980455324}
   idleUI: {fileID: 1817731073}
+  touchEffect: {fileID: 19869282, guid: 685937296cad741c18018a97b8d10789, type: 2}
   objectsManager: {fileID: 1991538103}
   partsCollector: {fileID: 1270861825}
 --- !u!64 &1801634120
@@ -20829,7 +20872,6 @@ MonoBehaviour:
   maxLifeTime: 15
   gravity: 50
   pullUser: 80
-  exitSpeed: 150
   reboundSpeed: 300
   reboundDuring: 2
 --- !u!114 &1991538109
