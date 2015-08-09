@@ -4,6 +4,7 @@ using System.Collections;
 public class MonsterMover : MonoBehaviour {
   private float speed_chase;
   private float speed_runaway;
+  private float speed_weaken;
   private float tumble;
   private Vector3 direction;
 
@@ -15,21 +16,29 @@ public class MonsterMover : MonoBehaviour {
   private GameObject blackhole;
   private bool isInsideBlackhole = false;
   private float shrinkedScale;
+  private bool isMagnetized = false;
 
   private PlayerMover player;
   private GameOver gameOver;
   private bool isQuitting = false;
-	private float distance;
+  private float distance;
+
+  private float originalScale;
+  private bool weak = false;
+  private bool shrinking = true;
 
 	void Start () {
     fom = GameObject.Find("Field Objects").GetComponent<FieldObjectsManager>();
     monm = GameObject.Find("Field Objects").GetComponent<MonsterManager>();
     cpm = GameObject.Find("Field Objects").GetComponent<ComboPartsManager>();
     blm = GameObject.Find("Field Objects").GetComponent<BlackholeManager>();
+
     shrinkedScale = transform.localScale.x;
+    originalScale = shrinkedScale;
 
     speed_chase = monm.speed_chase;
     speed_runaway = monm.speed_runaway;
+    speed_weaken = monm.speed_weaken;
     tumble = monm.tumble;
     GetComponent<Rigidbody>().angularVelocity = Random.onUnitSphere * tumble;
 
@@ -40,11 +49,28 @@ public class MonsterMover : MonoBehaviour {
     player = GameObject.Find("Player").GetComponent<PlayerMover>();
     gameOver = GameObject.Find("GameOver").GetComponent<GameOver>();
 
-    Destroy(gameObject, Random.Range(monm.minLifeTime, monm.maxLifeTime));
+    StartCoroutine("weakened");
 	}
 
+  IEnumerator weakened() {
+    yield return new WaitForSeconds(Random.Range(monm.minLifeTime, monm.maxLifeTime));
+    weak = true;
+    monm.stopWarning();
+
+    GetComponent<Renderer>().material.SetColor("_OutlineColor", monm.weakenedOutlineColor);
+
+    yield return new WaitForSeconds(monm.weakenDuration);
+    Instantiate(monm.destroyEffect, transform.position, transform.rotation);
+    Destroy(gameObject);
+  }
+
+  public bool isWeak() {
+    return weak;
+  }
+
 	void FixedUpdate () {
-    if (isInsideBlackhole && blackhole != null) {
+    if (isInsideBlackhole) {
+      if (blackhole == null) Destroy(gameObject);
       Vector3 heading = blackhole.transform.position - transform.position;
       heading /= heading.magnitude;
       GetComponent<Rigidbody> ().velocity = heading * blm.gravity;
@@ -56,22 +82,31 @@ public class MonsterMover : MonoBehaviour {
 			distance = direction.magnitude;
       direction /= direction.magnitude;
 
-			if(distance>140){
-				GetComponent<Rigidbody>().velocity = direction * speed_chase*2;
+			if (distance > 140){
+				GetComponent<Rigidbody>().velocity = direction * speed_chase * 2;
 
-			}else if(distance<140 & distance>80){
-				GetComponent<Rigidbody>().velocity = direction * speed_runaway;
-
-			}else{
-				if (player.isUnstoppable()) {
-					GetComponent<Rigidbody>().velocity = -direction * speed_runaway;
-				} else {
-					GetComponent<Rigidbody>().velocity = direction * speed_chase;
-				}
+			} else if (isMagnetized) {
+        GetComponent<Rigidbody>().velocity = direction * player.GetComponent<Rigidbody>().velocity.magnitude * fom.unstoppableFollowSpeed;
+      } else if (weak) {
+        GetComponent<Rigidbody>().velocity = -direction * speed_weaken;
+      } else if (player.isUnstoppable()) {
+        GetComponent<Rigidbody>().velocity = -direction * speed_runaway;
+			} else {
+        GetComponent<Rigidbody>().velocity = direction * speed_chase;
 			}
+
+      if (weak) {
+        if (shrinking) {
+          shrinkedScale = Mathf.MoveTowards(shrinkedScale, monm.shrinkUntil, Time.deltaTime * monm.shrinkSpeed);
+          if (shrinkedScale == monm.shrinkUntil) shrinking = false;
+        } else {
+          shrinkedScale = Mathf.MoveTowards(shrinkedScale, originalScale, Time.deltaTime * monm.restoreSpeed);
+          if (shrinkedScale == originalScale) shrinking = true;
+        }
+        transform.localScale = new Vector3(shrinkedScale, shrinkedScale, shrinkedScale);
+      }
     }
 	}
-
   void OnCollisionEnter(Collision collision) {
     string colliderTag = collision.collider.tag;
 
@@ -94,13 +129,17 @@ public class MonsterMover : MonoBehaviour {
   void OnDestroy() {
     if (isQuitting) return;
     if (gameOver.isOver()) return;
+    if (player.isRiding()) return;
 
-    monm.stopWarning();
     monm.run();
   }
 
   public void insideBlackhole() {
     isInsideBlackhole = true;
     blackhole = blm.getBlackhole();
+  }
+
+  public void setMagnetized() {
+    isMagnetized = true;
   }
 }

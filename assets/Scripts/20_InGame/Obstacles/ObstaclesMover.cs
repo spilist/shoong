@@ -29,7 +29,8 @@ public class ObstaclesMover : MonoBehaviour {
 	}
 
 	void FixedUpdate () {
-    if (isInsideBlackhole && blackhole != null) {
+    if (isInsideBlackhole) {
+      if (blackhole == null) Destroy(gameObject);
       Vector3 heading = blackhole.transform.position - transform.position;
       heading /= heading.magnitude;
       GetComponent<Rigidbody> ().velocity = heading * blm.gravity;

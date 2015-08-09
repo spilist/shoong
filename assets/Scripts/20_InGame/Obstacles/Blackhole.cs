@@ -22,8 +22,6 @@ public class Blackhole : MonoBehaviour {
     cpm = GameObject.Find("Field Objects").GetComponent<ComboPartsManager>();
     blm = GameObject.Find("Field Objects").GetComponent<BlackholeManager>();
     gameOver = GameObject.Find("GameOver").GetComponent<GameOver>();
-
-    Destroy(gameObject, Random.Range(blm.minLifeTime, blm.maxLifeTime));
 	}
 
   void OnCollisionEnter(Collision collision) {
@@ -53,6 +51,7 @@ public class Blackhole : MonoBehaviour {
   void OnDestroy() {
     if (isQuitting) return;
     if (gameOver.isOver()) return;
+    if (player.isExitedBlackhole()) return;
 
     blm.run();
   }

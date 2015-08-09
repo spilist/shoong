@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEditor;
 
 public class PlayerMover : MonoBehaviour {
 	public PartsCount partsCount;
   public GameOver gameOver;
-  public Transform energyDestroy;
   public GameObject obstacleDestroy;
   public GameObject unstoppableSphere;
   public int cubesWhenDestroyBigObstacle = 30;
@@ -34,6 +34,8 @@ public class PlayerMover : MonoBehaviour {
 
   public ParticleSystem booster;
   public float boosterSpeedUpAmount = 60;
+  public float maxBoosterSpeed = 100;
+
   public ParticleSystem getEnergy;
   public ParticleSystem unstoppableEffect;
   public ParticleSystem unstoppableEffect_two;
@@ -48,7 +50,17 @@ public class PlayerMover : MonoBehaviour {
   private bool unstoppable = false;
   public float[] unstoppable_respawn;
 
+  public Mesh monsterMesh;
+  public Material monsterMaterial;
+  public ParticleSystem ridingEffect;
+  private bool ridingMonster = false;
+  private Mesh originalMesh;
+  private Material originalMaterial;
+
 	void Start () {
+    originalMesh = GetComponent<MeshFilter>().sharedMesh;
+    originalMaterial = GetComponent<Renderer>().sharedMaterial;
+
     GetComponent<Rigidbody>().angularVelocity = Random.onUnitSphere * tumble;
 
     Vector2 randomV = Random.insideUnitCircle;
@@ -69,7 +81,7 @@ public class PlayerMover : MonoBehaviour {
 	void FixedUpdate () {
     if (rebounding) {
       speed = blm.reboundSpeed;
-    } else if (unstoppable || exitedBlackhole) {
+    } else if (unstoppable || exitedBlackhole || ridingMonster) {
       speed = strengthen_speed;
     } else {
 			speed = comboBar.moverspeed;
@@ -92,12 +104,19 @@ public class PlayerMover : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other) {
-		if (other.tag == "Obstacle" || other.tag == "Obstacle_big" || other.tag == "Monster") {
-			if (unstoppable) {
-				Instantiate(obstacleDestroy, other.transform.position, other.transform.rotation);
+		if (other.tag == "Obstacle" || other.tag == "Obstacle_big") {
+      if (unstoppable || ridingMonster) {
+        Instantiate(obstacleDestroy, other.transform.position, other.transform.rotation);
         goodPartsEncounter(other.transform, (int)cubesWhenDestroy[other.tag]);
-			} else if (exitedBlackhole && other.tag == "Monster") {
-        Debug.Log("I'm on a monster");
+      } else {
+        gameOver.run();
+      }
+    } else if (other.tag == "Monster") {
+			if (unstoppable || ridingMonster) {
+				Instantiate(monm.destroyEffect, other.transform.position, other.transform.rotation);
+        goodPartsEncounter(other.transform, (int)cubesWhenDestroy[other.tag]);
+			} else if (exitedBlackhole || other.gameObject.GetComponent<MonsterMover>().isWeak()) {
+        startRiding();
         Destroy(other.gameObject);
       } else {
 				gameOver.run();
@@ -108,7 +127,6 @@ public class PlayerMover : MonoBehaviour {
 		} else if (other.tag == "SpecialPart") {
       goodPartsEncounter(other.transform, comboBar.getComboRatio());
       getSpecialEnergyEffect.Play();
-      // what if player is exited blackhole?
       startUnstoppable();
 		} else if (other.tag == "ComboPart") {
       cpm.eatenByPlayer();
@@ -151,21 +169,50 @@ public class PlayerMover : MonoBehaviour {
       unstoppableSphere.SetActive(true);
     }
 
+    if (ridingMonster) {
+      energyBar.getFullHealth();
+      changeCharacter(monsterMesh, monsterMaterial);
+    }
+
     stBar.startStrengthen(effectDuration);
 
     yield return new WaitForSeconds(effectDuration);
 
     if (unstoppable) {
       fom.spawnSpecial(Random.Range(unstoppable_respawn[0], unstoppable_respawn[1]));
+      unstoppable = false;
+      unstoppableEffect.Stop();
+      unstoppableEffect_two.Stop();
+      energyBar.stopUnstoppable();
     }
 
-    rebounding = false;
-    unstoppable = false;
-    unstoppableEffect.Stop();
-    unstoppableEffect_two.Stop();
-    energyBar.stopUnstoppable();
-    exitedBlackhole = false;
-    unstoppableSphere.SetActive(false);
+    if (rebounding) {
+      rebounding = false;
+    }
+
+    if (exitedBlackhole) {
+      exitedBlackhole = false;
+      unstoppableSphere.SetActive(false);
+      blm.run();
+    }
+
+    if (ridingMonster) {
+      energyBar.getFullHealth();
+      ridingMonster = false;
+      changeCharacter(originalMesh, originalMaterial);
+      ridingEffect.Play();
+      monm.monsterFilter.SetActive(false);
+      monm.run();
+    }
+  }
+
+  void startRiding() {
+    ridingMonster = true;
+    monm.monsterFilter.SetActive(true);
+    monm.stopWarning();
+    ridingEffect.Play();
+    StopCoroutine("strengthen");
+    StartCoroutine("strengthen");
   }
 
   public void startUnstoppable() {
@@ -218,6 +265,14 @@ public class PlayerMover : MonoBehaviour {
     return unstoppable;
   }
 
+  public bool isRiding() {
+    return ridingMonster;
+  }
+
+  public bool isExitedBlackhole() {
+    return exitedBlackhole;
+  }
+
   public void getSpecialEnergyPlay() {
     getSpecialEnergyEffect.Play();
   }
@@ -232,5 +287,11 @@ public class PlayerMover : MonoBehaviour {
 
   public void boosterSpeedup(){
     boosterspeed += boosterSpeedUpAmount;
+    if (boosterspeed > maxBoosterSpeed) boosterspeed = maxBoosterSpeed;
+  }
+
+  public void changeCharacter(Mesh mesh, Material material) {
+    GetComponent<MeshFilter>().sharedMesh = mesh;
+    GetComponent<Renderer>().sharedMaterial = material;
   }
 }

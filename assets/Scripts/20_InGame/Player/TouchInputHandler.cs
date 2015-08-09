@@ -50,7 +50,6 @@ public class TouchInputHandler : MonoBehaviour
 				partsCollector.SetActive(true);
 			}
 
-
 			player.rotatePlayerBody();
 			Vector3 touchPosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.transform.position.y);
 			Vector3 worldTouchPosition = Camera.main.ScreenToWorldPoint(touchPosition);

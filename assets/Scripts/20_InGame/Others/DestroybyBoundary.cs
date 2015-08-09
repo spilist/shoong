@@ -12,6 +12,7 @@ public class DestroybyBoundary : MonoBehaviour {
     } else if (other.tag == "ComboPart") {
       cpm.destroyInstances();
     } else if (other.tag == "Blackhole") {
+      Debug.Log("destroyed by boundary?");
       blm.skipRespawnInterval();
       Destroy(other.gameObject);
     } else {

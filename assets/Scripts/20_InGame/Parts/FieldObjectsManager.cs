@@ -30,6 +30,9 @@ public class FieldObjectsManager : MonoBehaviour {
 
 	public Material collectedPartsMaterial;
 
+	private float targetRespawnInterval;
+	private GameObject spawnTarget;
+
 	void Start () {
 	}
 
@@ -89,9 +92,15 @@ public class FieldObjectsManager : MonoBehaviour {
 		newInstance.transform.parent = gameObject.transform;
 	}
 
-	public IEnumerator spawnSpecial(float respawnInterval) {
-		yield return new WaitForSeconds(respawnInterval);
-		spawnSpecial();
+	public void spawnSpecial(float respawnInterval) {
+		targetRespawnInterval = respawnInterval;
+		spawnTarget = special_single;
+		StartCoroutine("waitAndSpawn");
+	}
+
+	IEnumerator waitAndSpawn() {
+		yield return new WaitForSeconds(targetRespawnInterval);
+		spawn(spawnTarget);
 	}
 
 	public Vector3 getSpawnPosition(string tag) {

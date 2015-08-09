@@ -6,12 +6,20 @@ public class MonsterManager : MonoBehaviour {
   public GameObject monster;
   public float speed_chase = 80;
   public float speed_runaway = 120;
+  public float speed_weaken = 30;
   public float tumble = 3f;
   public float minSpawnInterval = 5f;
   public float maxSpawnInterval = 10f;
   public float spawnRadius = 600;
   public float minLifeTime = 10;
   public float maxLifeTime = 15;
+  public float weakenDuration = 5.5f;
+  public float shrinkUntil = 1.2f;
+  public float shrinkSpeed = 2;
+  public float restoreSpeed = 0;
+  public Color weakenedOutlineColor;
+  public GameObject monsterFilter;
+  public ParticleSystem destroyEffect;
 
   public GameObject monsterWarning;
   public float warningBlinkSeconds = 0.7f;

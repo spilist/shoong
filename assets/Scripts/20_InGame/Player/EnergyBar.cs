@@ -59,6 +59,10 @@ public class EnergyBar : MonoBehaviour {
     }
 	}
 
+  public void getFullHealth() {
+    image.fillAmount = 1;
+  }
+
   void autoDecrease() {
     if (unstoppable) return;
     image.fillAmount = Mathf.MoveTowards(image.fillAmount, 0, Time.deltaTime * autoDecreaseRate);
