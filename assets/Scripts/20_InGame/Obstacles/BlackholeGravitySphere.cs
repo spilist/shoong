@@ -42,7 +42,7 @@ public class BlackholeGravitySphere : MonoBehaviour {
   }
 
   void OnTriggerExit(Collider other) {
-    if (other.tag == "Player" && !player.isUnstoppable()) {
+    if (other.tag == "Player") {
       player.outsideBlackhole();
     }
   }

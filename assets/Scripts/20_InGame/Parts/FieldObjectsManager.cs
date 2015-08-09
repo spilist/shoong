@@ -89,6 +89,11 @@ public class FieldObjectsManager : MonoBehaviour {
 		newInstance.transform.parent = gameObject.transform;
 	}
 
+	public IEnumerator spawnSpecial(float respawnInterval) {
+		yield return new WaitForSeconds(respawnInterval);
+		spawnSpecial();
+	}
+
 	public Vector3 getSpawnPosition(string tag) {
 		float screenX, screenY;
 		Vector3 spawnPosition;

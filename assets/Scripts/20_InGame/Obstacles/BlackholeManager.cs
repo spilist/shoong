@@ -16,7 +16,6 @@ public class BlackholeManager : MonoBehaviour {
 
   public int gravity = 50;
   public int pullUser = 50;
-  public int exitSpeed = 150;
 
   public int reboundSpeed = 300;
   public int reboundDuring = 2;

@@ -7,36 +7,29 @@ public class StrengthenTimeBar : MonoBehaviour {
   public StrengthenTimeBlinkingBar stb;
 
   private Image image;
-  private int during;
   private int count = 0;
+  private float decreaseAmount;
 
 	void Start () {
     image = GetComponent<Image>();
-    during = (int) player.strengthen_during;
+    decreaseAmount = 1f / player.strengthen_during;
 	}
 
-  public void startStrengthen() {
-    count = during;
-    image.fillAmount = 1f - 1f / during;
-    stb.startStrengthen();
+  public void startStrengthen(int duration) {
+    StopCoroutine("startDecrase");
+    count = duration;
+    stb.startStrengthen(duration);
+    image.fillAmount = (duration - 1) * decreaseAmount;
     StartCoroutine("startDecrase");
   }
 
   IEnumerator startDecrase() {
     while(count > 0) {
       yield return new WaitForSeconds(1);
-      image.fillAmount -= 1f / during;
+      image.fillAmount -= decreaseAmount;
       if (count > 1) stb.timeElapse();
       count--;
     }
     stb.stopStrengthen();
-  }
-
-  public void rebounded(int rebonudDuring) {
-    StopCoroutine("startDecrase");
-    count = rebonudDuring;
-    stb.setCount(rebonudDuring - 1);
-    image.fillAmount = 1f / during;
-    StartCoroutine("startDecrase");
   }
 }

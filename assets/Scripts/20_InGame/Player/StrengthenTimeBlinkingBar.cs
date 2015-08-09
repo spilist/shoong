@@ -19,11 +19,11 @@ public class StrengthenTimeBlinkingBar : MonoBehaviour {
     transform.localRotation = Quaternion.Euler(0, 0, angles[count]);
   }
 
-  public void startStrengthen() {
+  public void startStrengthen(int val) {
+    StopCoroutine("startBlink");
     image.enabled = true;
-    count = 7;
-    transform.localRotation = Quaternion.Euler(0, 0, angles[7]);
-
+    count = val - 1;
+    transform.localRotation = Quaternion.Euler(0, 0, angles[count]);
     StartCoroutine("startBlink");
   }
 
@@ -37,10 +37,5 @@ public class StrengthenTimeBlinkingBar : MonoBehaviour {
       yield return new WaitForSeconds(blinkingSeconds);
       image.enabled = !image.enabled;
     }
-  }
-
-  public void setCount(int val) {
-    count = val;
-    transform.localRotation = Quaternion.Euler(0, 0, angles[count]);
   }
 }

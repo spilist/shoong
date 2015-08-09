@@ -33,7 +33,7 @@ public class PlayerMover : MonoBehaviour {
   private StrengthenTimeBar stBar;
 
   public ParticleSystem booster;
-  public float boosterSpeedUpAmount = 120f;
+  public float boosterSpeedUpAmount = 60;
   public ParticleSystem getEnergy;
   public ParticleSystem unstoppableEffect;
   public ParticleSystem unstoppableEffect_two;
@@ -42,11 +42,11 @@ public class PlayerMover : MonoBehaviour {
 
 	public GameObject particles;
 
-	public float strengthen_during = 8f;
+  public int strengthen_during = 8;
+	public float strengthen_speed = 120;
 
   private bool unstoppable = false;
   public float[] unstoppable_respawn;
-	public int unstoppable_speed = 150;
 
 	void Start () {
     GetComponent<Rigidbody>().angularVelocity = Random.onUnitSphere * tumble;
@@ -69,10 +69,8 @@ public class PlayerMover : MonoBehaviour {
 	void FixedUpdate () {
     if (rebounding) {
       speed = blm.reboundSpeed;
-    } else if (unstoppable) {
-      speed = unstoppable_speed;
-    } else if (exitedBlackhole) {
-      speed = blm.exitSpeed;
+    } else if (unstoppable || exitedBlackhole) {
+      speed = strengthen_speed;
     } else {
 			speed = comboBar.moverspeed;
     }
@@ -85,7 +83,7 @@ public class PlayerMover : MonoBehaviour {
 			boosterspeed = 0;
 		}
 
-    if (isInsideBlackhole && !unstoppable) {
+    if (isInsideBlackhole) {
       Vector3 heading = blackhole.transform.position - transform.position;
       heading /= heading.magnitude;
       GetComponent<Rigidbody> ().AddForce(heading * blm.pullUser, ForceMode.VelocityChange);
@@ -132,28 +130,48 @@ public class PlayerMover : MonoBehaviour {
     Destroy(tr.gameObject);
   }
 
-  public void startUnstoppable() {
-  	if (gameOver.isOver()) return;
+  IEnumerator strengthen() {
+    if (gameOver.isOver()) yield break;
 
-    unstoppable = true;
-  	unstoppableEffect.Play();
-		unstoppableEffect.GetComponent<AudioSource>().Play ();
-		unstoppableEffect_two.Play();
-  	energyBar.startUnstoppable();
-    stBar.startStrengthen();
-  	StartCoroutine("stopUnstoppable");
+    int effectDuration;
+    if (rebounding) {
+      effectDuration = blm.reboundDuring;
+    } else {
+      effectDuration = strengthen_during;
+    }
+
+    if (unstoppable) {
+      unstoppableEffect.Play();
+      unstoppableEffect.GetComponent<AudioSource>().Play ();
+      unstoppableEffect_two.Play();
+      energyBar.startUnstoppable();
+    }
+
+    if (exitedBlackhole) {
+      unstoppableSphere.SetActive(true);
+    }
+
+    stBar.startStrengthen(effectDuration);
+
+    yield return new WaitForSeconds(effectDuration);
+
+    if (unstoppable) {
+      fom.spawnSpecial(Random.Range(unstoppable_respawn[0], unstoppable_respawn[1]));
+    }
+
+    rebounding = false;
+    unstoppable = false;
+    unstoppableEffect.Stop();
+    unstoppableEffect_two.Stop();
+    energyBar.stopUnstoppable();
+    exitedBlackhole = false;
+    unstoppableSphere.SetActive(false);
   }
 
-  IEnumerator stopUnstoppable() {
-    yield return new WaitForSeconds(strengthen_during);
-
-    unstoppable = false;
-  	unstoppableEffect.Stop();
-		unstoppableEffect_two.Stop();
-  	energyBar.stopUnstoppable();
-
-    yield return new WaitForSeconds(Random.Range(unstoppable_respawn[0], unstoppable_respawn[1]));
-    fom.spawn(fom.special_single);
+  public void startUnstoppable() {
+    unstoppable = true;
+  	StopCoroutine("strengthen");
+    StartCoroutine("strengthen");
   }
 
   public void insideBlackhole() {
@@ -164,18 +182,10 @@ public class PlayerMover : MonoBehaviour {
   public void outsideBlackhole() {
     isInsideBlackhole = false;
     exitedBlackhole = true;
-
     Destroy(blackhole);
-    unstoppableSphere.SetActive(true);
-    stBar.startStrengthen();
 
-    StartCoroutine("exitBlackhole");
-  }
-
-  IEnumerator exitBlackhole() {
-    yield return new WaitForSeconds(strengthen_during);
-    exitedBlackhole = false;
-    unstoppableSphere.SetActive(false);
+    StopCoroutine("strengthen");
+    StartCoroutine("strengthen");
   }
 
   public void contactBlackholeWhileUnstoppable(Collision collision) {
@@ -188,23 +198,8 @@ public class PlayerMover : MonoBehaviour {
     direction.y = 0;
     direction.Normalize();
 
-    stBar.rebounded(blm.reboundDuring);
-    StopCoroutine("stopUnstoppable");
-    StartCoroutine("reboundedByBlackhole");
-  }
-
-  IEnumerator reboundedByBlackhole() {
-    yield return new WaitForSeconds(blm.reboundDuring);
-    rebounding = false;
-    unstoppable = false;
-
-    unstoppableEffect.Stop();
-    unstoppableEffect_two.Stop();
-    energyBar.stopUnstoppable();
-    unstoppableSphere.SetActive(false);
-
-    yield return new WaitForSeconds(Random.Range(unstoppable_respawn[0], unstoppable_respawn[1]));
-    fom.spawn(fom.special_single);
+    StopCoroutine("strengthen");
+    StartCoroutine("strengthen");
   }
 
   public void rotatePlayerBody() {

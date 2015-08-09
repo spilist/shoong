@@ -116,7 +116,6 @@ public class EnergyBar : MonoBehaviour {
   }
 
   public void startUnstoppable() {
-    image.fillAmount = 1;
     unstoppable = true;
   }
 
