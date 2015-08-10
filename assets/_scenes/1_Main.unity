@@ -522,7 +522,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 91418582}
-  m_Mesh: {fileID: 4300012, guid: 0de94dcbd129f49c9ab366ccb45fa469, type: 3}
+  m_Mesh: {fileID: 4300016, guid: 0de94dcbd129f49c9ab366ccb45fa469, type: 3}
 --- !u!81 &91418590
 AudioListener:
   m_ObjectHideFlags: 0
@@ -6039,7 +6039,7 @@ ParticleSystem:
     enabled: 1
     m_Type: 0
     rate:
-      scalar: 150
+      scalar: 300
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -17932,10 +17932,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c55c8e133eb0c47e28e0cc77e0aaaeb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  autoDecreaseRate: 0
+  autoDecreaseRate: .100000001
   getAmountbyParts: 4
   getRate: 2
-  shootAmount: -2
+  shootAmount: -3
   loseRate: 2
   gameOver: {fileID: 868146742}
 --- !u!114 &1593744719
@@ -21952,8 +21952,8 @@ MonoBehaviour:
   blackhole_prefab: {fileID: 117910, guid: bbcd82bb603674de8b6cb8bab02b2b62, type: 2}
   blackholeGravitySphere_prefab: {fileID: 162082, guid: 2cc8b66773d8e4032bade512e7e76b8e,
     type: 2}
-  minSpawnInterval: 0
-  maxSpawnInterval: 0
+  minSpawnInterval: 5
+  maxSpawnInterval: 15
   spawnRadius: 100
   gravity: 50
   pullUser: 80
@@ -21971,16 +21971,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monster: {fileID: 187024, guid: b82e156aa96e74e6ab2dfef6ffcc7bcf, type: 2}
-  speed_chase: 81
+  speed_chase: 80
   speed_runaway: 70
   speed_weaken: 30
   tumble: 5
-  minSpawnInterval: 0
-  maxSpawnInterval: 0
-  spawnRadius: 140
+  minSpawnInterval: 25
+  maxSpawnInterval: 35
+  spawnRadius: 180
   detectDistance: 180
-  minLifeTime: 1
-  maxLifeTime: 1
+  minLifeTime: 8
+  maxLifeTime: 12
   weakenDuration: 5
   shrinkUntil: 1
   shrinkSpeed: 1
@@ -22004,8 +22004,8 @@ MonoBehaviour:
   fom: {fileID: 1991538105}
   cubeDispenserPrefab: {fileID: 148822, guid: de23a7876221f4b818e7bfdccf294c71, type: 2}
   fullComboCount: 6
-  respawnInterval_min: 0
-  respawnInterval_max: 0
+  respawnInterval_min: 5
+  respawnInterval_max: 15
   destroyAfterTry: 4
   cubesPerContact: 10
 --- !u!1 &1997391145

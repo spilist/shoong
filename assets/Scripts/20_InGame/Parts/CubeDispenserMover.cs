@@ -13,6 +13,7 @@ public class CubeDispenserMover : MonoBehaviour {
 
 
 	void Start () {
+		GetComponent<Rigidbody>().angularVelocity = Random.onUnitSphere * 0.5f;
     player = GameObject.Find("Player").GetComponent<PlayerMover>();
     cdm = GameObject.Find("Field Objects").GetComponent<CubeDispenserManager>();
     blm = GameObject.Find("Field Objects").GetComponent<BlackholeManager>();
@@ -20,6 +21,7 @@ public class CubeDispenserMover : MonoBehaviour {
 	}
 
   void FixedUpdate () {
+
     if (isInsideBlackhole) {
       if (blackhole == null) {
         Destroy(gameObject);
@@ -37,8 +39,8 @@ public class CubeDispenserMover : MonoBehaviour {
 	void OnCollisionEnter(Collision collision) {
     Debug.Log(collision.collider.tag);
     if (collision.collider.tag == "ContactCollider") {
-      // player.goodPartsEncounterWithoutDestroy(transform, cdm.cubesPerContact);
-      // cdm.contact();
+       player.goodPartsEncounterWithoutDestroy(transform, cdm.cubesPerContact);
+       cdm.contact();
       player.processCollision(collision);
     }
   }
