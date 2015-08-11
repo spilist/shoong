@@ -15,10 +15,12 @@ public class CubeDispenserManager : MonoBehaviour {
   private int comboCount = 0;
   private float decreaseEmissionAmount;
   private bool notContactYet = true;
+  private bool respawnRunning = false;
 
   public void run() {
     comboCount = 0;
     notContactYet = true;
+    respawnRunning = false;
     decreaseEmissionAmount = cubeDispenserPrefab.GetComponent<ParticleSystem>().emissionRate / fullComboCount;
 
     cubeDispenser = fom.spawn(cubeDispenserPrefab);
@@ -43,7 +45,10 @@ public class CubeDispenserManager : MonoBehaviour {
   }
 
   public void startRespawn() {
-    StartCoroutine("respawn");
+    if (!respawnRunning) {
+      respawnRunning = true;
+      StartCoroutine("respawn");
+    }
   }
 
   IEnumerator respawn() {
