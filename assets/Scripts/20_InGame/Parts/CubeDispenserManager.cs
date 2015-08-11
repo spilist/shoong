@@ -45,18 +45,18 @@ public class CubeDispenserManager : MonoBehaviour {
   }
 
   public void startRespawn() {
-    if (!respawnRunning) {
-      respawnRunning = true;
-      StartCoroutine("respawn");
-    }
+    StartCoroutine("respawn");
   }
 
   IEnumerator respawn() {
-    // particle instantiate
-    Destroy(cubeDispenser);
-    if (!notContactYet) {
-      yield return new WaitForSeconds(Random.Range(respawnInterval_min, respawnInterval_max));
+    if (!respawnRunning) {
+      respawnRunning = true;
+      // particle instantiate
+      Destroy(cubeDispenser);
+      if (!notContactYet) {
+        yield return new WaitForSeconds(Random.Range(respawnInterval_min, respawnInterval_max));
+      }
+      run();
     }
-    run();
   }
 }
