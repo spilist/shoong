@@ -35,12 +35,12 @@ public class Blackhole : MonoBehaviour {
     } else if (other.tag == "Obstacle" || other.tag == "Obstacle_big" || other.tag == "Monster") {
       Destroy(other.gameObject);
     } else if (other.tag == "ContactCollider") {
-      // if (player.isUnstoppable()) {
+      if (player.isUnstoppable()) {
         player.contactBlackholeWhileUnstoppable(collision);
-        // Destroy(gameObject);
-      // } else {
-        // gameOver.run();
-      // }
+        Destroy(gameObject);
+      } else {
+        gameOver.run();
+      }
     } else if (other.tag == "CubeDispenser") {
       cdm.startRespawn();
     } else {

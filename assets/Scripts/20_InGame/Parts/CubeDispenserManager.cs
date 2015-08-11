@@ -19,7 +19,7 @@ public class CubeDispenserManager : MonoBehaviour {
   public void run() {
     comboCount = 0;
     notContactYet = true;
-    // decreaseEmissionAmount = cubeDispenserPrefab.GetComponent<ParticleSystem>().emissionRate / fullComboCount;
+    decreaseEmissionAmount = cubeDispenserPrefab.GetComponent<ParticleSystem>().emissionRate / fullComboCount;
 
     cubeDispenser = fom.spawn(cubeDispenserPrefab);
   }

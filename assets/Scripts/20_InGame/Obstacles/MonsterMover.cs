@@ -139,9 +139,9 @@ public class MonsterMover : MonoBehaviour {
 
   void OnDestroy() {
     if (isQuitting) return;
+    monm.stopWarning();
     if (gameOver.isOver()) return;
     if (player.isRiding()) return;
-
     monm.run();
   }
 

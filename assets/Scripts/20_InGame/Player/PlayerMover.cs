@@ -111,7 +111,7 @@ public class PlayerMover : MonoBehaviour {
         gameOver.run();
       }
     } else if (other.tag == "Monster") {
-			if (unstoppable || ridingMonster) {
+			if (unstoppable) {
 				Instantiate(monm.destroyEffect, other.transform.position, other.transform.rotation);
         goodPartsEncounter(other.transform, (int)cubesWhenDestroy[other.tag]);
 			} else if (exitedBlackhole || other.gameObject.GetComponent<MonsterMover>().isWeak()) {
@@ -163,6 +163,7 @@ public class PlayerMover : MonoBehaviour {
     int effectDuration;
     if (rebounding) {
       effectDuration = blm.reboundDuring;
+      unstoppableSphere.SetActive(true);
     } else {
       effectDuration = strengthen_during;
     }
@@ -197,6 +198,7 @@ public class PlayerMover : MonoBehaviour {
 
     if (rebounding) {
       rebounding = false;
+      unstoppableSphere.SetActive(false);
     }
 
     if (exitedBlackhole) {

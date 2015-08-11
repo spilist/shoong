@@ -37,10 +37,9 @@ public class CubeDispenserMover : MonoBehaviour {
   }
 
 	void OnCollisionEnter(Collision collision) {
-    Debug.Log(collision.collider.tag);
     if (collision.collider.tag == "ContactCollider") {
-       player.goodPartsEncounterWithoutDestroy(transform, cdm.cubesPerContact);
-       cdm.contact();
+      player.goodPartsEncounterWithoutDestroy(transform, cdm.cubesPerContact);
+      cdm.contact();
       player.processCollision(collision);
     }
   }
