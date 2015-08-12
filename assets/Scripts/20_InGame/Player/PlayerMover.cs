@@ -25,7 +25,10 @@ public class PlayerMover : MonoBehaviour {
   private GameObject blackhole;
   private bool isInsideBlackhole = false;
   private bool exitedBlackhole = false;
-  private bool rebounding = false;
+  private bool reboundingByBlackhole = false;
+
+  private bool reboundingByDispenser = false;
+  private float reboundingByDispenserDuring = 0;
 
   private EnergyBar energyBar;
   private ComboBar comboBar;
@@ -45,6 +48,7 @@ public class PlayerMover : MonoBehaviour {
 
   public int strengthen_during = 8;
 	public float strengthen_speed = 120;
+  public float reboundSpeed = 300;
 
   private bool unstoppable = false;
   public float[] unstoppable_respawn;
@@ -78,8 +82,8 @@ public class PlayerMover : MonoBehaviour {
 	}
 
 	void FixedUpdate () {
-    if (rebounding) {
-      speed = blm.reboundSpeed;
+    if (isRebounding()) {
+      speed = reboundSpeed;
     } else if (unstoppable || exitedBlackhole || ridingMonster) {
       speed = strengthen_speed;
     } else {
@@ -147,7 +151,7 @@ public class PlayerMover : MonoBehaviour {
     Destroy(tr.gameObject);
   }
 
-  public void goodPartsEncounterWithoutDestroy(Transform tr, int howMany) {
+  public void contactCubeDispenser(Transform tr, int howMany, Collision collision, float reboundDuring) {
     for (int e = 0; e < howMany; e++) {
       Instantiate(particles, tr.position, tr.rotation);
     }
@@ -155,13 +159,22 @@ public class PlayerMover : MonoBehaviour {
     energyBar.getHealthbyParts(howMany);
     getEnergy.Play ();
     comboBar.addCombo();
+    processCollision(collision);
+    reboundingByDispenser = true;
+    reboundingByDispenserDuring = reboundDuring;
+    StartCoroutine("stopReboundingByDispenser");
+  }
+
+  IEnumerator stopReboundingByDispenser() {
+    yield return new WaitForSeconds(reboundingByDispenserDuring);
+    reboundingByDispenser = false;
   }
 
   IEnumerator strengthen() {
     if (gameOver.isOver()) yield break;
 
     int effectDuration;
-    if (rebounding) {
+    if (reboundingByBlackhole) {
       effectDuration = blm.reboundDuring;
       unstoppableSphere.SetActive(true);
     } else {
@@ -196,8 +209,8 @@ public class PlayerMover : MonoBehaviour {
       energyBar.stopUnstoppable();
     }
 
-    if (rebounding) {
-      rebounding = false;
+    if (reboundingByBlackhole) {
+      reboundingByBlackhole = false;
       unstoppableSphere.SetActive(false);
     }
 
@@ -247,7 +260,7 @@ public class PlayerMover : MonoBehaviour {
   }
 
   public void contactBlackholeWhileUnstoppable(Collision collision) {
-    rebounding = true;
+    reboundingByBlackhole = true;
     isInsideBlackhole = false;
     processCollision(collision);
 
@@ -296,7 +309,7 @@ public class PlayerMover : MonoBehaviour {
   }
 
   public bool isRebounding() {
-    return rebounding;
+    return reboundingByBlackhole || reboundingByDispenser;
   }
 
   public void boosterSpeedup(){

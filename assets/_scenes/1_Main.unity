@@ -339,6 +339,7 @@ MonoBehaviour:
   particles: {fileID: 178344, guid: b185d52f68bf5499e81f948bbbf1bd8c, type: 2}
   strengthen_during: 8
   strengthen_speed: 120
+  reboundSpeed: 250
   unstoppable_respawn:
   - 0
   - 0
@@ -21957,7 +21958,6 @@ MonoBehaviour:
   spawnRadius: 100
   gravity: 50
   pullUser: 80
-  reboundSpeed: 300
   reboundDuring: 2
 --- !u!114 &1991538109
 MonoBehaviour:
@@ -22008,6 +22008,7 @@ MonoBehaviour:
   respawnInterval_max: 15
   destroyAfterTry: 4
   cubesPerContact: 10
+  reboundDuring: .100000001
 --- !u!1 &1997391145
 GameObject:
   m_ObjectHideFlags: 0

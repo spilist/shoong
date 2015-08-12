@@ -10,6 +10,7 @@ public class CubeDispenserManager : MonoBehaviour {
   public int respawnInterval_max = 15;
   public float destroyAfterTry = 4;
   public int cubesPerContact = 10;
+  public float reboundDuring = 0.2f;
 
   private GameObject cubeDispenser;
   private int comboCount = 0;

@@ -38,9 +38,8 @@ public class CubeDispenserMover : MonoBehaviour {
 
 	void OnCollisionEnter(Collision collision) {
     if (collision.collider.tag == "ContactCollider") {
-      player.goodPartsEncounterWithoutDestroy(transform, cdm.cubesPerContact);
+      player.contactCubeDispenser(transform, cdm.cubesPerContact, collision, cdm.reboundDuring);
       cdm.contact();
-      player.processCollision(collision);
     }
   }
 
