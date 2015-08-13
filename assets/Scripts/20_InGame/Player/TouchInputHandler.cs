@@ -20,6 +20,7 @@ public class TouchInputHandler : MonoBehaviour
 	private CubeDispenserManager cdm;
 
 	public GameObject partsCollector;
+	public MenusController menus;
 
 	private bool gameStarted = false;
 	private bool react = true;
@@ -36,7 +37,7 @@ public class TouchInputHandler : MonoBehaviour
 	}
 
 	void Update() {
-		if (react && Input.GetMouseButtonDown(0)) {
+		if (react && Input.GetMouseButtonDown(0) && menus.touched() == "Ground") {
 			if (player.isRebounding()) return;
 
 			if (!gameStarted) {
@@ -49,6 +50,7 @@ public class TouchInputHandler : MonoBehaviour
 				energyBar.startDecrease();
 				elapsedTime.startTime();
 				idleUI.SetActive(false);
+				menus.gameObject.SetActive(false);
 				gameStarted = true;
 				partsCollector.SetActive(true);
 			}

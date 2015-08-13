@@ -10,12 +10,14 @@ public class GameOver : MonoBehaviour {
   public ParticleSystem comboGlow;
   public ElapsedTime elapsedTime;
   public TouchInputHandler inputHandler;
+  public MenusController menus;
+  public ScoreManager scoreManager;
 
   private bool gameOver = false;
 
   void Update() {
     if (gameOver) {
-      if (Input.GetMouseButtonDown(0)) {
+      if (Input.GetMouseButtonDown(0) && menus.touched() == "Ground") {
         Application.LoadLevel(Application.loadedLevel);
       }
     }
@@ -35,6 +37,8 @@ public class GameOver : MonoBehaviour {
     player.GetComponent<TrailRenderer>().enabled = false;
     barsCanvas.SetActive(false);
     restartMessage.GetComponent<Text>().enabled = true;
+    menus.gameObject.SetActive(true);
+    scoreManager.run();
   }
 
   public bool isOver() {

@@ -23,6 +23,7 @@ TagManager:
   - ContactCollider
   - PatternPart
   - CubeDispenser
+  - Stats
   layers:
   - Default
   - TransparentFX

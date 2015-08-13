@@ -8,40 +8,39 @@ public class ScoreManager : MonoBehaviour {
   public ElapsedTime elapsedTime;
   public Text elapsedTime_highScore;
 
-  int partsHighScore = 0;
-  string partsHighScoreKey = "PartsHighScore";
-
-  int timeHighScore = 0;
-  string timeHighScoreKey = "TimeHighScore";
+  int cubesHighscore = 0;
+  int timeHighscore = 0;
 
 	void Start () {
-    //Get the highScore from player prefs if it is there, 0 otherwise.
-    partsHighScore = PlayerPrefs.GetInt(partsHighScoreKey, 0);
-    partsCount_highScore.text = partsHighScore.ToString();
+    cubesHighscore = (int) GameController.control.cubes["highscore"];
+    partsCount_highScore.text = cubesHighscore.ToString();
 
-    timeHighScore = PlayerPrefs.GetInt(timeHighScoreKey, 0);
-    elapsedTime_highScore.text = timeHighScore.ToString();
+    timeHighscore = (int) GameController.control.times["highscore"];
+    elapsedTime_highScore.text = timeHighscore.ToString();
 	}
 
   void Update() {
-    if (partsCount.getCount() > partsHighScore) {
+    if (partsCount.getCount() > cubesHighscore) {
       partsCount_highScore.text = partsCount.getCount().ToString();
     }
 
-    if (elapsedTime.getTime() > timeHighScore) {
+    if (elapsedTime.getTime() > timeHighscore) {
       elapsedTime_highScore.text = elapsedTime.getTime().ToString();
     }
   }
 
-  void OnDisable(){
-    if (partsCount.getCount() > partsHighScore) {
-      PlayerPrefs.SetInt(partsHighScoreKey, partsCount.getCount());
+  public void run() {
+    GameController.control.cubes["now"] = (int) GameController.control.cubes["now"] + partsCount.getCount();
+    GameController.control.cubes["total"] = (int) GameController.control.cubes["total"] + partsCount.getCount();;
+    if (partsCount.getCount() > cubesHighscore) {
+      GameController.control.cubes["highscore"] = partsCount.getCount();
     }
 
-    if (elapsedTime.getTime() > timeHighScore) {
-      PlayerPrefs.SetInt(timeHighScoreKey, elapsedTime.getTime());
+    GameController.control.times["total"] = (int) GameController.control.times["total"] + elapsedTime.getTime();
+    if (elapsedTime.getTime() > timeHighscore) {
+      GameController.control.times["highscore"] = elapsedTime.getTime();
     }
 
-    PlayerPrefs.Save();
+    GameController.control.save();
   }
 }
