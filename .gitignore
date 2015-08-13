@@ -16,7 +16,6 @@
 *.userprefs
 *.pidb
 *.booproj
-*.apk
 
 # Sublime project files
 *.sublime-project
