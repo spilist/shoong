@@ -12,6 +12,7 @@ public class GameController : MonoBehaviour {
 
   public Hashtable cubes;
   public Hashtable cubes_by;
+  public Hashtable goldenCubes;
   public Hashtable times;
   public Hashtable num_deaths_by;
   public Hashtable num_destroys;
@@ -27,11 +28,13 @@ public class GameController : MonoBehaviour {
 
       cubes = new Hashtable();
       cubes_by = new Hashtable();
+      goldenCubes = new Hashtable();
       times = new Hashtable();
       num_deaths_by = new Hashtable();
       num_destroys = new Hashtable();
       num_use_objects = new Hashtable();
       load();
+      // reset();
     } else if (control != this) {
       Destroy(gameObject);
     }
@@ -47,6 +50,7 @@ public class GameController : MonoBehaviour {
     data.numBoosters = numBoosters;
     data.cubes = cubes;
     data.cubes_by = cubes_by;
+    data.goldenCubes = goldenCubes;
     data.times = times;
     data.num_deaths_by = num_deaths_by;
     data.num_destroys = num_destroys;
@@ -67,6 +71,7 @@ public class GameController : MonoBehaviour {
       numBoosters = data.numBoosters;
       cubes = data.cubes;
       cubes_by = data.cubes_by;
+      goldenCubes = data.goldenCubes;
       times = data.times;
       num_deaths_by = data.num_deaths_by;
       num_destroys = data.num_destroys;
@@ -91,6 +96,10 @@ public class GameController : MonoBehaviour {
     cubes_by.Add("destroying_obstacle", 0);
     cubes_by.Add("destroying_monster", 0);
     cubes_by.Add("cubeDispenser", 0);
+
+    goldenCubes.Add("now", 0);
+    goldenCubes.Add("used", 0);
+    goldenCubes.Add("total", 0);
 
     times.Add("total", 0);
     times.Add("highscore", 0);
@@ -125,6 +134,7 @@ class PlayerData {
   public int numBoosters;
   public Hashtable cubes;
   public Hashtable cubes_by;
+  public Hashtable goldenCubes;
   public Hashtable times;
   public Hashtable num_deaths_by;
   public Hashtable num_destroys;

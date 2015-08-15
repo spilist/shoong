@@ -40,7 +40,7 @@ MeshRenderer:
   m_GameObject: {fileID: 117910}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_Materials:
   - {fileID: 2100000, guid: 46f45d53ca1314a638208c249adacd9b, type: 2}
   m_SubsetIndices: 
@@ -124,6 +124,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_TagString
       value: CubeDispenser
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_ReceiveShadows
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

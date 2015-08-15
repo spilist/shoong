@@ -5,7 +5,6 @@ using System.Collections;
 public class ComboBar : MonoBehaviour {
   public Image inner;
   public Text[] comboRatio;
-  public ParticleSystem comboGlow;
 	public ParticleSystem getEnergy;
 	public ParticleSystem energyDestroy;
   public GameObject player;
@@ -48,7 +47,6 @@ public class ComboBar : MonoBehaviour {
     if (comboCount < 4) {
       comboCount++;
 			getEnergy.emissionRate += 100;
-      comboGlow.emissionRate += 	100;
 			comboBarTintColor = inner.material.GetColor ("_TintColor");
 				comboBarTintColor.a = 1.0f;
 				inner.material.SetColor("_TintColor",comboBarTintColor);
@@ -94,7 +92,6 @@ public class ComboBar : MonoBehaviour {
 					getEnergy.emissionRate = 0;
 					energyDestroy.emissionRate = 20;
 					moverspeed = 45f;
-					comboGlow.emissionRate = 0;
 
 					//energyDestroyColor = energyDestroy.GetComponent<ParticleSystem>().startColor;
 					//energyDestroyColor.g = 0.8f;

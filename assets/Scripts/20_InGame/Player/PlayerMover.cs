@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class PlayerMover : MonoBehaviour {
-	public PartsCount partsCount;
+	public CubesCount cubesCount;
   public GameOver gameOver;
   public GameObject obstacleDestroy;
   public GameObject unstoppableSphere;
@@ -33,6 +33,8 @@ public class PlayerMover : MonoBehaviour {
   private EnergyBar energyBar;
   private ComboBar comboBar;
   private StrengthenTimeBar stBar;
+
+  public Transform playerParticlesParent;
 
   public ParticleSystem booster;
   public float boosterSpeedUpAmount = 60;
@@ -79,6 +81,13 @@ public class PlayerMover : MonoBehaviour {
     cubesWhenDestroy.Add("Obstacle_big", cubesWhenDestroyBigObstacle);
     cubesWhenDestroy.Add("Obstacle", cubesWhenDestroySmallObstacle);
     cubesWhenDestroy.Add("Monster", cubesWhenDestroyMonster);
+
+    string character_name = "bender";
+
+    GetComponent<MeshFilter>().sharedMesh = Resources.Load<GameObject>("_characters/play_characters").transform.FindChild(character_name).GetComponent<MeshFilter>().sharedMesh;
+    booster = Instantiate(Resources.Load(character_name + "/Booster", typeof(ParticleSystem))) as ParticleSystem;
+    booster.transform.parent = playerParticlesParent;
+
 	}
 
 	void FixedUpdate () {
@@ -142,7 +151,7 @@ public class PlayerMover : MonoBehaviour {
     for (int e = 0; e < howMany; e++) {
       Instantiate(particles, mover.transform.position, mover.transform.rotation);
     }
-    partsCount.addCount(howMany);
+    cubesCount.addCount(howMany);
     energyBar.getHealthbyParts(howMany);
     getEnergy.Play ();
     comboBar.addCombo();
@@ -154,7 +163,7 @@ public class PlayerMover : MonoBehaviour {
     for (int e = 0; e < howMany; e++) {
       Instantiate(particles, tr.position, tr.rotation);
     }
-    partsCount.addCount(howMany);
+    cubesCount.addCount(howMany);
     energyBar.getHealthbyParts(howMany);
     getEnergy.Play ();
     comboBar.addCombo();

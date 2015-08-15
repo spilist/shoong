@@ -43,7 +43,7 @@ MeshRenderer:
   m_GameObject: {fileID: 131058}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_Materials:
   - {fileID: 2100000, guid: 08929657cc06d4418a6d6019f00abed9, type: 2}
   m_SubsetIndices: 
@@ -1344,6 +1344,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: Priority
       value: 128
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_ReceiveShadows
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

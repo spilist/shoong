@@ -3,7 +3,6 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class GameOver : MonoBehaviour {
-  public GameObject restartMessage;
   public GameObject player;
   public GameObject barsCanvas;
   public ParticleSystem playerExplosion;
@@ -25,6 +24,8 @@ public class GameOver : MonoBehaviour {
 
   public void run() {
     gameOver = true;
+    menus.gameEnd();
+    GetComponent<Canvas>().enabled = true;
 
     inputHandler.stopReact();
     elapsedTime.stopTime();
@@ -35,7 +36,8 @@ public class GameOver : MonoBehaviour {
     player.GetComponent<MeshRenderer>().enabled = false;
     player.GetComponent<SphereCollider>().enabled = false;
     barsCanvas.SetActive(false);
-    restartMessage.GetComponent<Text>().enabled = true;
+
+
     menus.gameObject.SetActive(true);
     scoreManager.run();
   }

@@ -64,9 +64,9 @@ AudioSource:
       outSlope: -1.00671136
       tangentMode: 0
     - time: 1
-      value: .658333302
-      inSlope: -.27655378
-      outSlope: -.27655378
+      value: 0
+      inSlope: -3.70833254
+      outSlope: -3.70833254
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -1249,15 +1249,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: rolloffCustomCurve.m_Curve.Array.data[1].value
-      value: .658333302
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: rolloffCustomCurve.m_Curve.Array.data[1].inSlope
-      value: -.27655378
+      value: -3.70833254
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: rolloffCustomCurve.m_Curve.Array.data[1].outSlope
-      value: -.27655378
+      value: -3.70833254
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: BypassListenerEffects

@@ -10,6 +10,7 @@ public class TouchInputHandler : MonoBehaviour
 	public ComboBar comboBar;
 	public ElapsedTime elapsedTime;
 	public GameObject idleUI;
+	public GameObject inGameUI;
 	public ParticleSystem touchEffect;
 
 	public GameObject objectsManager;
@@ -19,7 +20,6 @@ public class TouchInputHandler : MonoBehaviour
 	private BlackholeManager blm;
 	private CubeDispenserManager cdm;
 
-	public GameObject partsCollector;
 	public MenusController menus;
 
 	private bool gameStarted = false;
@@ -41,6 +41,7 @@ public class TouchInputHandler : MonoBehaviour
 			if (player.isRebounding()) return;
 
 			if (!gameStarted) {
+				menus.gameStart();
 				cpm.run();
 				fom.run();
 				monm.run();
@@ -48,11 +49,11 @@ public class TouchInputHandler : MonoBehaviour
 				cdm.run();
 				barsCanvas.GetComponent<Canvas>().enabled = true;
 				energyBar.startDecrease();
+				inGameUI.SetActive(true);
 				elapsedTime.startTime();
 				idleUI.SetActive(false);
 				menus.gameObject.SetActive(false);
 				gameStarted = true;
-				partsCollector.SetActive(true);
 			}
 
 			player.rotatePlayerBody();

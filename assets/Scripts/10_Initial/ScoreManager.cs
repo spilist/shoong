@@ -3,8 +3,8 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class ScoreManager : MonoBehaviour {
-  public PartsCount partsCount;
-  public Text partsCount_highScore;
+  public CubesCount cubesCount;
+  public Text cubesCount_highScore;
   public ElapsedTime elapsedTime;
   public Text elapsedTime_highScore;
 
@@ -13,15 +13,15 @@ public class ScoreManager : MonoBehaviour {
 
 	void Start () {
     cubesHighscore = (int) GameController.control.cubes["highscore"];
-    partsCount_highScore.text = cubesHighscore.ToString();
+    cubesCount_highScore.text = cubesHighscore.ToString();
 
     timeHighscore = (int) GameController.control.times["highscore"];
     elapsedTime_highScore.text = timeHighscore.ToString();
 	}
 
   void Update() {
-    if (partsCount.getCount() > cubesHighscore) {
-      partsCount_highScore.text = partsCount.getCount().ToString();
+    if (cubesCount.getCount() > cubesHighscore) {
+      cubesCount_highScore.text = cubesCount.getCount().ToString();
     }
 
     if (elapsedTime.getTime() > timeHighscore) {
@@ -30,10 +30,10 @@ public class ScoreManager : MonoBehaviour {
   }
 
   public void run() {
-    GameController.control.cubes["now"] = (int) GameController.control.cubes["now"] + partsCount.getCount();
-    GameController.control.cubes["total"] = (int) GameController.control.cubes["total"] + partsCount.getCount();;
-    if (partsCount.getCount() > cubesHighscore) {
-      GameController.control.cubes["highscore"] = partsCount.getCount();
+    GameController.control.cubes["now"] = (int) GameController.control.cubes["now"] + cubesCount.getCount();
+    GameController.control.cubes["total"] = (int) GameController.control.cubes["total"] + cubesCount.getCount();;
+    if (cubesCount.getCount() > cubesHighscore) {
+      GameController.control.cubes["highscore"] = cubesCount.getCount();
     }
 
     GameController.control.times["total"] = (int) GameController.control.times["total"] + elapsedTime.getTime();
