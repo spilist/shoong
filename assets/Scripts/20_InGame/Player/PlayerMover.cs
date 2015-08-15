@@ -107,48 +107,47 @@ public class PlayerMover : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other) {
-		if (other.tag == "Obstacle" || other.tag == "Obstacle_big") {
+		ObjectsMover mover = other.gameObject.GetComponent<ObjectsMover>();
+
+    if (other.tag == "Obstacle" || other.tag == "Obstacle_big") {
       if (unstoppable || ridingMonster) {
-        Instantiate(obstacleDestroy, other.transform.position, other.transform.rotation);
-        goodPartsEncounter(other.transform, (int)cubesWhenDestroy[other.tag]);
+        goodPartsEncounter(mover, (int)cubesWhenDestroy[other.tag]);
       } else {
         gameOver.run();
       }
     } else if (other.tag == "Monster") {
 			if (unstoppable) {
-				Instantiate(monm.destroyEffect, other.transform.position, other.transform.rotation);
-        goodPartsEncounter(other.transform, (int)cubesWhenDestroy[other.tag]);
+        goodPartsEncounter(mover, (int)cubesWhenDestroy[other.tag]);
 			} else if (exitedBlackhole || other.gameObject.GetComponent<MonsterMover>().isWeak()) {
-        startRiding();
-        Destroy(other.gameObject);
+        startRiding(mover);
       } else {
 				gameOver.run();
 			}
 		} else if (other.tag == "Part") {
-      goodPartsEncounter(other.transform, comboBar.getComboRatio());
+      goodPartsEncounter(mover, comboBar.getComboRatio());
 			GetComponent<AudioSource>().Play ();
 		} else if (other.tag == "SpecialPart") {
-      goodPartsEncounter(other.transform, comboBar.getComboRatio());
+      goodPartsEncounter(mover, comboBar.getComboRatio());
       getSpecialEnergyEffect.Play();
       startUnstoppable();
 		} else if (other.tag == "ComboPart") {
       cpm.eatenByPlayer();
 			getComboParts.Play();
 			getComboParts.GetComponent<AudioSource>().Play ();
-      goodPartsEncounter(other.transform, cpm.getComboCount() * cpm.comboBonusScale);
+      goodPartsEncounter(mover, cpm.getComboCount() * cpm.comboBonusScale);
     }
 	}
 
-  private void goodPartsEncounter(Transform tr, int howMany) {
+  private void goodPartsEncounter(ObjectsMover mover, int howMany) {
     for (int e = 0; e < howMany; e++) {
-      Instantiate(particles, tr.position, tr.rotation);
+      Instantiate(particles, mover.transform.position, mover.transform.rotation);
     }
     partsCount.addCount(howMany);
     energyBar.getHealthbyParts(howMany);
     getEnergy.Play ();
     comboBar.addCombo();
 
-    Destroy(tr.gameObject);
+    mover.destroyObject();
   }
 
   public void contactCubeDispenser(Transform tr, int howMany, Collision collision, float reboundDuring) {
@@ -230,11 +229,11 @@ public class PlayerMover : MonoBehaviour {
     }
   }
 
-  void startRiding() {
+  void startRiding(ObjectsMover obMover) {
     ridingMonster = true;
     monm.monsterFilter.SetActive(true);
-    monm.stopWarning();
     ridingEffect.Play();
+    obMover.destroyObject();
     StopCoroutine("strengthen");
     StartCoroutine("strengthen");
   }

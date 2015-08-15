@@ -30,16 +30,8 @@ public class BlackholeGravitySphere : MonoBehaviour {
   void OnTriggerEnter(Collider other) {
     if (other.tag == "Player") {
       player.insideBlackhole();
-    } else if (other.tag == "Obstacle_big") {
-      other.gameObject.GetComponent<BigObstaclesMover>().insideBlackhole();
-    } else if (other.tag == "Obstacle") {
-      other.gameObject.GetComponent<ObstaclesMover>().insideBlackhole();
-    } else if (other.tag == "Monster") {
-      other.gameObject.GetComponent<MonsterMover>().insideBlackhole();
-    } else if (other.tag == "CubeDispenser") {
-      other.gameObject.GetComponent<CubeDispenserMover>().insideBlackhole();
     } else {
-      other.gameObject.GetComponent<FieldObjectsMover>().insideBlackhole();
+      other.gameObject.GetComponent<ObjectsMover>().insideBlackhole();
     }
   }
 

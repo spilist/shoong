@@ -34,7 +34,6 @@ public class GameOver : MonoBehaviour {
     comboGlow.Stop();
     player.GetComponent<MeshRenderer>().enabled = false;
     player.GetComponent<SphereCollider>().enabled = false;
-    player.GetComponent<TrailRenderer>().enabled = false;
     barsCanvas.SetActive(false);
     restartMessage.GetComponent<Text>().enabled = true;
     menus.gameObject.SetActive(true);
