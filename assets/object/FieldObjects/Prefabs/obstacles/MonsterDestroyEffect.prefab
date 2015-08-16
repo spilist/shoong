@@ -231,7 +231,7 @@ ParticleSystem:
         rgba: 4284234448
       minMaxState: 2
     startSize:
-      scalar: 6
+      scalar: 9
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -246,7 +246,7 @@ ParticleSystem:
         serializedVersion: 2
         m_Curve:
         - time: 0
-          value: .666666687
+          value: .777777791
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -307,7 +307,7 @@ ParticleSystem:
     enabled: 1
     m_Type: 0
     rate:
-      scalar: 800
+      scalar: 200
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1147,6 +1147,18 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: playOnAwake
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: EmissionModule.rate.scalar
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: InitialModule.startSize.minCurve.m_Curve.Array.data[0].value
+      value: .777777791
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: InitialModule.startSize.scalar
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

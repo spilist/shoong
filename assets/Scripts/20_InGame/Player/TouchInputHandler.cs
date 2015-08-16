@@ -37,7 +37,7 @@ public class TouchInputHandler : MonoBehaviour
 	}
 
 	void Update() {
-		if (react && Input.GetMouseButtonDown(0) && menus.touched() == "Ground") {
+		if (react && Input.GetMouseButtonDown(0) && menus.touched() == "Ground" && !menus.isMenuOn()) {
 			if (player.isRebounding()) return;
 
 			if (!gameStarted) {

@@ -18,9 +18,12 @@ public class GameController : MonoBehaviour {
   public Hashtable num_destroys;
   public Hashtable num_use_objects;
 
+  public Hashtable characters;
+  public Hashtable objects;
+
   private string datapath;
 
-	void Start () {
+	void OnEnable () {
     if (control == null) {
       DontDestroyOnLoad(gameObject);
       control = this;
@@ -33,6 +36,9 @@ public class GameController : MonoBehaviour {
       num_deaths_by = new Hashtable();
       num_destroys = new Hashtable();
       num_use_objects = new Hashtable();
+
+      characters = new Hashtable();
+      objects = new Hashtable();
       load();
       // reset();
     } else if (control != this) {
@@ -55,6 +61,8 @@ public class GameController : MonoBehaviour {
     data.num_deaths_by = num_deaths_by;
     data.num_destroys = num_destroys;
     data.num_use_objects = num_use_objects;
+    data.characters = characters;
+    data.objects = objects;
 
     bf.Serialize(file, data);
     file.Close();
@@ -76,6 +84,8 @@ public class GameController : MonoBehaviour {
       num_deaths_by = data.num_deaths_by;
       num_destroys = data.num_destroys;
       num_use_objects = data.num_use_objects;
+      characters = data.characters;
+      objects = data.objects;
     } else {
       reset();
     }
@@ -83,6 +93,9 @@ public class GameController : MonoBehaviour {
 
   void reset() {
     File.Delete(datapath);
+
+    PlayerPrefs.SetString("SelectedCharacter", "robotcogi");
+
     numPlays = 0;
     numBoosters = 0;
 
@@ -125,6 +138,18 @@ public class GameController : MonoBehaviour {
     num_use_objects.Add("absorb_with_monster", 0);
     num_use_objects.Add("combopart_maxcombo", 0);
     num_use_objects.Add("cubedispenser_maxcombo", 0);
+
+    characters.Add("robotcogi", true);
+    characters.Add("minimonster", false);
+    characters.Add("vacuumrobot", false);
+    characters.Add("soju", false);
+    characters.Add("leonplant", false);
+    characters.Add("deathstar", false);
+    characters.Add("crab", false);
+    characters.Add("chameleon", false);
+    characters.Add("cat", false);
+    characters.Add("butterfly", false);
+    characters.Add("bender", true);
   }
 }
 
@@ -139,4 +164,7 @@ class PlayerData {
   public Hashtable num_deaths_by;
   public Hashtable num_destroys;
   public Hashtable num_use_objects;
+
+  public Hashtable characters;
+  public Hashtable objects;
 }

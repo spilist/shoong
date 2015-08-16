@@ -35,16 +35,15 @@ public class PlayerMover : MonoBehaviour {
   private StrengthenTimeBar stBar;
 
   public Transform playerParticlesParent;
-
   public ParticleSystem booster;
-  public float boosterSpeedUpAmount = 60;
-  public float maxBoosterSpeed = 100;
-
   public ParticleSystem getEnergy;
   public ParticleSystem unstoppableEffect;
   public ParticleSystem unstoppableEffect_two;
   public ParticleSystem getSpecialEnergyEffect;
 	public ParticleSystem getComboParts;
+
+  public float boosterSpeedUpAmount = 60;
+  public float maxBoosterSpeed = 100;
 
 	public GameObject particles;
 
@@ -63,6 +62,8 @@ public class PlayerMover : MonoBehaviour {
   private Material originalMaterial;
 
 	void Start () {
+    changeCharacter(PlayerPrefs.GetString("SelectedCharacter"));
+
     originalMesh = GetComponent<MeshFilter>().sharedMesh;
     originalMaterial = GetComponent<Renderer>().sharedMaterial;
 
@@ -81,13 +82,6 @@ public class PlayerMover : MonoBehaviour {
     cubesWhenDestroy.Add("Obstacle_big", cubesWhenDestroyBigObstacle);
     cubesWhenDestroy.Add("Obstacle", cubesWhenDestroySmallObstacle);
     cubesWhenDestroy.Add("Monster", cubesWhenDestroyMonster);
-
-    string character_name = "bender";
-
-    GetComponent<MeshFilter>().sharedMesh = Resources.Load<GameObject>("_characters/play_characters").transform.FindChild(character_name).GetComponent<MeshFilter>().sharedMesh;
-    booster = Instantiate(Resources.Load(character_name + "/Booster", typeof(ParticleSystem))) as ParticleSystem;
-    booster.transform.parent = playerParticlesParent;
-
 	}
 
 	void FixedUpdate () {
@@ -328,5 +322,16 @@ public class PlayerMover : MonoBehaviour {
   public void changeCharacter(Mesh mesh, Material material) {
     GetComponent<MeshFilter>().sharedMesh = mesh;
     GetComponent<Renderer>().sharedMaterial = material;
+  }
+
+  public void changeCharacter(string characterName) {
+    GameObject play_characters = Resources.Load<GameObject>("_characters/play_characters");
+    GetComponent<MeshFilter>().sharedMesh = play_characters.transform.FindChild(characterName).GetComponent<MeshFilter>().sharedMesh;
+
+    booster = Instantiate(Resources.Load(characterName + "/Booster", typeof(ParticleSystem))) as ParticleSystem;
+    booster.transform.parent = playerParticlesParent;
+    booster.transform.localScale = Vector3.one;
+    booster.transform.localPosition = Vector3.zero;
+    booster.transform.localRotation = Quaternion.identity;
   }
 }

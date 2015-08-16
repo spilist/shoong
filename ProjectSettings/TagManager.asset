@@ -21,10 +21,12 @@ TagManager:
   - BlackholeGravitySphere
   - Blachole
   - ContactCollider
-  - PatternPart
+  - BackButton
   - CubeDispenser
   - StatsMenu
   - CharactersMenu
+  - UICharacters
+  - MenuButtons
   layers:
   - Default
   - TransparentFX
@@ -43,7 +45,7 @@ TagManager:
   - CollectingSphere
   - CubeDispenser
   - Monster
-  - 
+  - MenusBehavior
   - Blackhole
   - BlackholeGravity
   - 
