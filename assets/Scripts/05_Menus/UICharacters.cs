@@ -33,8 +33,7 @@ public class UICharacters : MonoBehaviour {
 	}
 
   void select() {
-    Vector3 diffVector = new Vector3(transform.parent.localPosition.x - transform.localPosition.x, 0, 0);
-    transform.localPosition += diffVector;
+    transform.localPosition = new Vector3(transform.parent.localPosition.x, charactersMenu.selectedOffset_y, charactersMenu.selectedOffset_z);
 
     charactersMenu.characterName.text = characterName;
     transform.Rotate(-Vector3.up * Time.deltaTime * charactersMenu.selectedCharacterRotationSpeed);

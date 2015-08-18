@@ -90,7 +90,13 @@ public class TouchInputHandler : MonoBehaviour
 
   void OnMouseDrag() {
     if (menus.isMenuOn()) {
-    	menus.draggable().transform.localPosition = new Vector3(lastDraggablePosition_x + Input.mousePosition.x - lastMousePosition_x, 0, 0);
+  		float positionX = menus.draggable().transform.localPosition.x;
+  		int moveLimit = menus.moveLimit();
+    	if (positionX > menus.leftDragEnd() + moveLimit || positionX < menus.rightDragEnd() - moveLimit) {
+    		return;
+    	} else {
+	    	menus.draggable().transform.localPosition = new Vector3(lastDraggablePosition_x + Input.mousePosition.x - lastMousePosition_x, 0, 0);
+    	}
     }
   }
 
@@ -98,9 +104,9 @@ public class TouchInputHandler : MonoBehaviour
   	if (menus.isMenuOn() && dragging) {
   		dragging = false;
   		float positionX = menus.draggable().transform.localPosition.x;
-  		if (positionX > menus.leftDragEnd() + 50) {
+  		if (positionX > menus.leftDragEnd()) {
   			menus.returnToEnd("left");
-			} else if (positionX < menus.rightDragEnd() - 50) {
+			} else if (positionX < menus.rightDragEnd()) {
 				menus.returnToEnd("right");
 			}
   	}

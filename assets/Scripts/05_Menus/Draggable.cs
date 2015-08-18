@@ -6,6 +6,7 @@ public class Draggable : MonoBehaviour {
   protected bool returningToLeft = false;
   protected bool returningToRight = false;
   public int returningSpeed = 500;
+  public int moveLimit = 300;
   float positionX = 0;
 
   public GameObject draggable() {

@@ -8,7 +8,9 @@ public class CharactersMenu : Draggable {
   public CharacterSelectButton selectButton;
   public CharacterBuyButton buyButton;
   public Text characterName;
-  public int selectWidth = 65;
+  public int selectWidth = 50;
+  public int selectedOffset_y = 15;
+  public int selectedOffset_z = 50;
   public bool openAll = false;
 
   void OnEnable() {
@@ -28,6 +30,11 @@ public class CharactersMenu : Draggable {
       }
       GameController.control.characters = table;
       GameController.control.characters["robotcogi"] = true;
+    }
+
+    int count = 0;
+    foreach (Transform character in transform.Find("Characters").transform) {
+      character.transform.localPosition = new Vector3(-selectWidth * 2 * count++, 0, 0);
     }
   }
 
