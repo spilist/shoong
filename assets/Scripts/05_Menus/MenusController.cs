@@ -19,7 +19,8 @@ public class MenusController : MonoBehaviour {
     if( Physics.Raycast( ray, out hit, 100 ) ) {
       string hitTag = hit.transform.tag;
       string layer = LayerMask.LayerToName(hit.transform.gameObject.layer);
-      if (hit.transform.parent.name == "MenuButtons") {
+      string menuButtons = hit.transform.parent.name;
+      if (menuButtons == "MenuButtonsLeft" || menuButtons == "MenuButtonsRight") {
         currentlyOn = transform.Find(hitTag).gameObject;
         toggleMenuAndUI();
       } else if (isMenuOn() && layer == "MenusBehavior") {

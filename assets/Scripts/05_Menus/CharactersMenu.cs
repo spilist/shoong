@@ -5,6 +5,8 @@ using System.Collections;
 public class CharactersMenu : Draggable {
   public Material inactiveCharactersMaterial;
   public float selectedCharacterRotationSpeed = 30;
+  public GameObject cubeYouHave;
+  public GameObject goldenCubeYouHave;
   public CharacterSelectButton selectButton;
   public CharacterBuyButton buyButton;
   public Text characterName;
@@ -14,6 +16,9 @@ public class CharactersMenu : Draggable {
   public bool openAll = false;
 
   void OnEnable() {
+    cubeYouHave.SetActive(true);
+    goldenCubeYouHave.SetActive(true);
+
     Vector3 prevSelected = transform.Find("Characters/" + PlayerPrefs.GetString("SelectedCharacter")).transform.localPosition;
     transform.Find("Characters").transform.localPosition = new Vector3(prevSelected.x, 0, 0);
 
@@ -46,5 +51,10 @@ public class CharactersMenu : Draggable {
   override public float rightDragEnd() {
     Transform lastChild = transform.Find("Characters").transform.GetChild(transform.Find("Characters").transform.childCount - 1);
     return lastChild.localPosition.x;
+  }
+
+  void OnDisable() {
+    cubeYouHave.SetActive(false);
+    goldenCubeYouHave.SetActive(false);
   }
 }
