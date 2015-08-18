@@ -14,4 +14,9 @@ public class BigObstaclesMover : ObjectsMover {
     Instantiate(player.GetComponent<PlayerMover>().obstacleDestroy, transform.position, transform.rotation);
     Destroy(gameObject);
   }
+
+  public override void encounterPlayer() {
+    Instantiate(player.GetComponent<PlayerMover>().obstacleDestroy, transform.position, transform.rotation);
+    Destroy(gameObject);
+  }
 }

@@ -86,13 +86,14 @@ public class MonsterMover : ObjectsMover {
   }
 
   public override void destroyObject() {
-    PlayerMover mover = player.GetComponent<PlayerMover>();
-
     Destroy(gameObject);
     monm.stopWarning();
+    monm.run();
+  }
 
-    if (mover.isRiding()) return;
-
+  override public void encounterPlayer() {
+    Destroy(gameObject);
+    monm.stopWarning();
     Instantiate(monm.destroyEffect, transform.position, transform.rotation);
     monm.run();
   }

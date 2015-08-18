@@ -204,7 +204,7 @@ Material:
       data:
         first:
           name: _Outline
-        second: .000600000028
+        second: .75
       data:
         first:
           name: _Specular_Power

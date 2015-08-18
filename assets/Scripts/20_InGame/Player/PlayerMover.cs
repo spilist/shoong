@@ -150,7 +150,7 @@ public class PlayerMover : MonoBehaviour {
     getEnergy.Play ();
     comboBar.addCombo();
 
-    mover.destroyObject();
+    mover.encounterPlayer();
   }
 
   public void contactCubeDispenser(Transform tr, int howMany, Collision collision, float reboundDuring) {

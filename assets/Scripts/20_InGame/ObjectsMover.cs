@@ -93,6 +93,10 @@ public class ObjectsMover : MonoBehaviour {
     Destroy(gameObject);
   }
 
+  virtual public void encounterPlayer() {
+    Destroy(gameObject);
+  }
+
   public void setMagnetized() {
     if (canBeMagnetized) isMagnetized = true;
   }
