@@ -24,7 +24,10 @@ public class TouchInputHandler : MonoBehaviour
 
 	private bool gameStarted = false;
 	private bool react = true;
+	private bool dragging = false;
 	private Vector3 direction;
+  private float lastMousePosition_x;
+  private float lastDraggablePosition_x;
 
 	void Start() {
 		fom = objectsManager.GetComponent<FieldObjectsManager>();
@@ -76,6 +79,32 @@ public class TouchInputHandler : MonoBehaviour
 			cpm.tryToGet();
 		}
 	}
+
+	void OnMouseDown() {
+    if (menus.isMenuOn()) {
+	    lastMousePosition_x = Input.mousePosition.x;
+	    lastDraggablePosition_x = menus.draggable().transform.localPosition.x;
+	    dragging = true;
+		}
+  }
+
+  void OnMouseDrag() {
+    if (menus.isMenuOn()) {
+    	menus.draggable().transform.localPosition = new Vector3(lastDraggablePosition_x + Input.mousePosition.x - lastMousePosition_x, 0, 0);
+    }
+  }
+
+  void OnMouseUp() {
+  	if (menus.isMenuOn() && dragging) {
+  		dragging = false;
+  		float positionX = menus.draggable().transform.localPosition.x;
+  		if (positionX > menus.leftDragEnd() + 50) {
+  			menus.returnToEnd("left");
+			} else if (positionX < menus.rightDragEnd() - 50) {
+				menus.returnToEnd("right");
+			}
+  	}
+  }
 
 	public void stopReact() {
 		react = false;

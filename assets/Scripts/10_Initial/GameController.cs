@@ -149,7 +149,7 @@ public class GameController : MonoBehaviour {
     characters.Add("chameleon", false);
     characters.Add("cat", false);
     characters.Add("butterfly", false);
-    characters.Add("bender", true);
+    characters.Add("bender", false);
   }
 }
 

@@ -57,4 +57,21 @@ public class MenusController : MonoBehaviour {
   public bool isMenuOn() {
     return menusOverlay.activeSelf;
   }
+
+  public GameObject draggable() {
+    return currentlyOn.GetComponent<Draggable>().draggable();
+  }
+
+  public float leftDragEnd() {
+    return currentlyOn.GetComponent<Draggable>().leftDragEnd();
+  }
+
+  public float rightDragEnd() {
+    return currentlyOn.GetComponent<Draggable>().rightDragEnd();
+  }
+
+  public void returnToEnd(string where) {
+    if (where == "left") currentlyOn.GetComponent<Draggable>().returnToLeftEnd();
+    else currentlyOn.GetComponent<Draggable>().returnToRightEnd();
+  }
 }
