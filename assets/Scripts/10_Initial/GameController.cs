@@ -23,6 +23,9 @@ public class GameController : MonoBehaviour {
 
   private string datapath;
 
+  public bool openAllCharacter = false;
+  public bool resetAll = false;
+
 	void OnEnable () {
     if (control == null) {
       DontDestroyOnLoad(gameObject);
@@ -88,6 +91,25 @@ public class GameController : MonoBehaviour {
       objects = data.objects;
     } else {
       reset();
+    }
+
+    if (openAllCharacter) {
+      Hashtable table = new Hashtable();
+      foreach (DictionaryEntry pair in characters) {
+        table.Add(pair.Key, true);
+      }
+      characters = table;
+    } else if (resetAll) {
+      Hashtable table = new Hashtable();
+      foreach (DictionaryEntry pair in characters) {
+        table.Add(pair.Key, false);
+      }
+      characters = table;
+      characters["robotcogi"] = true;
+      PlayerPrefs.SetString("SelectedCharacter", "robotcogi");
+
+      goldenCubes["now"] = 1500;
+      goldenCubes["total"] = 1500;
     }
   }
 

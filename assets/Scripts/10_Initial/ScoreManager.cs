@@ -43,4 +43,8 @@ public class ScoreManager : MonoBehaviour {
 
     GameController.control.save();
   }
+
+  void OnDisable() {
+    run();
+  }
 }

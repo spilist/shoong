@@ -14,8 +14,9 @@ public class CharactersMenu : Draggable {
   public int selectedOffset_y = 15;
   public int selectedOffset_z = 50;
   public int scaleChangingSpeed = 50;
-  public bool openAll = false;
+
   public AudioClip characterSelectionSound;
+  public AudioClip characterBuySound;
 
   void OnEnable() {
     cubeYouHave.SetActive(true);
@@ -23,21 +24,6 @@ public class CharactersMenu : Draggable {
 
     Vector3 prevSelected = transform.Find("Characters/" + PlayerPrefs.GetString("SelectedCharacter")).transform.localPosition;
     transform.Find("Characters").transform.localPosition = new Vector3(prevSelected.x, 0, 0);
-
-    if (openAll) {
-      Hashtable table = new Hashtable();
-      foreach (DictionaryEntry pair in GameController.control.characters) {
-        table.Add(pair.Key, true);
-      }
-      GameController.control.characters = table;
-    } else {
-      Hashtable table = new Hashtable();
-      foreach (DictionaryEntry pair in GameController.control.characters) {
-        table.Add(pair.Key, false);
-      }
-      GameController.control.characters = table;
-      GameController.control.characters["robotcogi"] = true;
-    }
 
     int count = 0;
     foreach (Transform character in transform.Find("Characters").transform) {
