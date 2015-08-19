@@ -93,16 +93,20 @@ Material:
         second: .5
       data:
         first:
+          name: _Outline
+        second: .75
+      data:
+        first:
+          name: _Glossiness
+        second: .5
+      data:
+        first:
           name: _Parallax
         second: .0199999996
       data:
         first:
           name: _ZWrite
         second: 1
-      data:
-        first:
-          name: _Glossiness
-        second: .5
       data:
         first:
           name: _BumpScale
@@ -127,10 +131,6 @@ Material:
         first:
           name: _Metallic
         second: 0
-      data:
-        first:
-          name: _Outline
-        second: .000500000024
     m_Colors:
       data:
         first:

@@ -14,7 +14,7 @@ GameObject:
   - 135: {fileID: 13562994}
   - 114: {fileID: 11432574}
   m_Layer: 18
-  m_Name: Blackhole
+  m_Name: blackhole
   m_TagString: Blachole
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
