@@ -13,7 +13,9 @@ public class CharactersMenu : Draggable {
   public int selectWidth = 50;
   public int selectedOffset_y = 15;
   public int selectedOffset_z = 50;
+  public int scaleChangingSpeed = 50;
   public bool openAll = false;
+  public AudioClip characterSelectionSound;
 
   void OnEnable() {
     cubeYouHave.SetActive(true);

@@ -316,7 +316,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   whatToDrag: {fileID: 552014890}
   returningSpeed: 2000
-  moveLimit: 350
   inactiveCharactersMaterial: {fileID: 2100000, guid: 2f5d7646405d44931b78c6838bbfbaee,
     type: 2}
   selectedCharacterRotationSpeed: 150
@@ -328,6 +327,7 @@ MonoBehaviour:
   selectWidth: 60
   selectedOffset_y: 30
   selectedOffset_z: 100
+  scaleChangingSpeed: 50
   openAll: 0
 --- !u!1 &85813355
 GameObject:
@@ -7291,6 +7291,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 552014891}
+  - 82: {fileID: 552014892}
   m_Layer: 5
   m_Name: Characters
   m_TagString: Untagged
@@ -7321,6 +7322,75 @@ Transform:
   - {fileID: 501650841}
   m_Father: {fileID: 75942067}
   m_RootOrder: 0
+--- !u!82 &552014892
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 552014890}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: c43141733afb54733910fd1c0db3c492, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!1 &578682937
 GameObject:
   m_ObjectHideFlags: 0

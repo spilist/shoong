@@ -75,8 +75,4 @@ public class MenusController : MonoBehaviour {
     if (where == "left") currentlyOn.GetComponent<Draggable>().returnToLeftEnd();
     else currentlyOn.GetComponent<Draggable>().returnToRightEnd();
   }
-
-  public int moveLimit() {
-    return currentlyOn.GetComponent<Draggable>().moveLimit;
-  }
 }

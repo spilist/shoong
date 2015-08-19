@@ -9,7 +9,9 @@ public class UICharacters : MonoBehaviour {
   private Vector3 originalPosition;
   private Quaternion originalRotation;
   private Vector3 originalScale;
+  private float scaleChanging;
   private bool bought;
+  private bool soundPlayed = false;
 
   void Start () {
     charactersMenu = GameObject.Find("CharactersMenu").GetComponent<CharactersMenu>();
@@ -17,6 +19,7 @@ public class UICharacters : MonoBehaviour {
     originalPosition = transform.localPosition;
     originalRotation = transform.localRotation;
     originalScale = transform.localScale;
+    scaleChanging = transform.localScale.x;
 
     bought = (bool)GameController.control.characters[name];
     if (!bought) {
@@ -33,11 +36,21 @@ public class UICharacters : MonoBehaviour {
 	}
 
   void select() {
+    if (!soundPlayed) {
+      soundPlayed = true;
+      AudioSource.PlayClipAtPoint(charactersMenu.characterSelectionSound, transform.position);
+    }
+
     transform.localPosition = new Vector3(transform.parent.localPosition.x, charactersMenu.selectedOffset_y, charactersMenu.selectedOffset_z);
 
     charactersMenu.characterName.text = characterName;
     transform.Rotate(-Vector3.up * Time.deltaTime * charactersMenu.selectedCharacterRotationSpeed);
-    transform.localScale = originalScale * 2;
+
+    if (scaleChanging != originalScale.x * 2) {
+      scaleChanging = Mathf.MoveTowards(scaleChanging, originalScale.x * 2, Time.deltaTime * charactersMenu.scaleChangingSpeed);
+      transform.localScale = new Vector3(scaleChanging, scaleChanging, scaleChanging);
+    }
+
     if (bought) {
       charactersMenu.buyButton.gameObject.SetActive(false);
       charactersMenu.selectButton.gameObject.SetActive(true);
@@ -50,8 +63,14 @@ public class UICharacters : MonoBehaviour {
   }
 
   public void unselect() {
+    soundPlayed = false;
+
     transform.localPosition = originalPosition;
     transform.localRotation = originalRotation;
-    transform.localScale = originalScale;
+
+    if (scaleChanging != originalScale.x) {
+      scaleChanging = Mathf.MoveTowards(scaleChanging, originalScale.x, Time.deltaTime * charactersMenu.scaleChangingSpeed);
+      transform.localScale = new Vector3(scaleChanging, scaleChanging, scaleChanging);
+    }
   }
 }
