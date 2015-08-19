@@ -9,6 +9,8 @@ public class MenusController : MonoBehaviour {
   public GameObject inGameUI;
   public GameObject gameOverUI;
 
+  public AudioClip UITouchSound;
+
   private bool notYetStarted = true;
   private bool isGameEnded = false;
   private GameObject currentlyOn;
@@ -23,10 +25,13 @@ public class MenusController : MonoBehaviour {
       if (menuButtons == "MenuButtonsLeft" || menuButtons == "MenuButtonsRight") {
         currentlyOn = transform.Find(hitTag).gameObject;
         toggleMenuAndUI();
+        AudioSource.PlayClipAtPoint(UITouchSound, hit.transform.position);
       } else if (isMenuOn() && layer == "MenusBehavior") {
-        hit.transform.GetComponent<MenusBehavior>().activateSelf();
-      } else if (hitTag == "BackButton") {
-        toggleMenuAndUI();
+        MenusBehavior mb = hit.transform.GetComponent<MenusBehavior>();
+        mb.activateSelf();
+        if (mb.playTouchSound) {
+          AudioSource.PlayClipAtPoint(UITouchSound, hit.transform.position);
+        }
       }
       return hitTag;
     } else {

@@ -34,7 +34,11 @@ public class UICharacters : MonoBehaviour {
   void select() {
     if (!soundPlayed) {
       soundPlayed = true;
-      AudioSource.PlayClipAtPoint(charactersMenu.characterSelectionSound, transform.position);
+      if (charactersMenu.isJustOpened()) {
+        charactersMenu.setOpened();
+      } else {
+        AudioSource.PlayClipAtPoint(charactersMenu.characterSelectionSound, transform.position);
+      }
       charactersMenu.characterName.text = characterName;
       checkBought();
     }

@@ -14,6 +14,10 @@ public class CharacterBuyButton : MenusBehavior {
   private int price;
   private bool affordable = true;
 
+  void Start() {
+    playTouchSound = false;
+  }
+
   public void setCharacter(string nameVal, int priceVal) {
     characterName = nameVal;
     price = priceVal;
@@ -34,7 +38,6 @@ public class CharacterBuyButton : MenusBehavior {
     if (!affordable) return;
 
     goldenCubes.buy(price);
-    GetComponent<AudioSource>().Play();
     GameController.control.characters[characterName] = true;
     transform.parent.Find("Characters/" + characterName).GetComponent<UICharacters>().buy();
   }

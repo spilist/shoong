@@ -17,6 +17,7 @@ public class CharactersMenu : Draggable {
 
   public AudioClip characterSelectionSound;
   public AudioClip characterBuySound;
+  private bool justOpened = true;
 
   void OnEnable() {
     cubeYouHave.SetActive(true);
@@ -29,6 +30,14 @@ public class CharactersMenu : Draggable {
     foreach (Transform character in transform.Find("Characters").transform) {
       character.transform.localPosition = new Vector3(-selectWidth * 2 * count++, 0, 0);
     }
+  }
+
+  public bool isJustOpened() {
+    return justOpened;
+  }
+
+  public void setOpened() {
+    justOpened = false;
   }
 
   override public float leftDragEnd() {
