@@ -46,12 +46,14 @@ public class TouchInputHandler : MonoBehaviour
 
 			if (!gameStarted) {
 				menus.gameStart();
-				cpm.run();
 				fom.run();
+
+        cpm.run();
 				monm.run();
 				blm.run();
 				cdm.run();
-				barsCanvas.GetComponent<Canvas>().enabled = true;
+
+        barsCanvas.GetComponent<Canvas>().enabled = true;
 				energyBar.startDecrease();
 				inGameUI.SetActive(true);
 				elapsedTime.startTime();

@@ -42,8 +42,9 @@ public class GameController : MonoBehaviour {
 
       characters = new Hashtable();
       objects = new Hashtable();
-      load();
-      // reset();
+
+      if (resetAll) reset();
+      else load();
     } else if (control != this) {
       Destroy(gameObject);
     }
@@ -99,17 +100,6 @@ public class GameController : MonoBehaviour {
         table.Add(pair.Key, true);
       }
       characters = table;
-    } else if (resetAll) {
-      Hashtable table = new Hashtable();
-      foreach (DictionaryEntry pair in characters) {
-        table.Add(pair.Key, false);
-      }
-      characters = table;
-      characters["robotcogi"] = true;
-      PlayerPrefs.SetString("SelectedCharacter", "robotcogi");
-
-      goldenCubes["now"] = 1500;
-      goldenCubes["total"] = 1500;
     }
   }
 
@@ -117,6 +107,8 @@ public class GameController : MonoBehaviour {
     File.Delete(datapath);
 
     PlayerPrefs.SetString("SelectedCharacter", "robotcogi");
+    PlayerPrefs.SetString("MainObjects", "invincible monster");
+    PlayerPrefs.SetString("SubObjects", "cubedispenser");
 
     numPlays = 0;
     numBoosters = 0;
@@ -132,9 +124,9 @@ public class GameController : MonoBehaviour {
     cubes_by.Add("destroying_monster", 0);
     cubes_by.Add("cubeDispenser", 0);
 
-    goldenCubes.Add("now", 0);
+    goldenCubes.Add("now", 1500);
     goldenCubes.Add("used", 0);
-    goldenCubes.Add("total", 0);
+    goldenCubes.Add("total", 1500);
 
     times.Add("total", 0);
     times.Add("highscore", 0);
