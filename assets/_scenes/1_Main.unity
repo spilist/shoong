@@ -315,8 +315,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   whatToDrag: {fileID: 552014890}
-  returningSpeed: 3000
-  moveLimit: 200
+  returningSpeed: 2000
+  moveLimit: 350
   inactiveCharactersMaterial: {fileID: 2100000, guid: 2f5d7646405d44931b78c6838bbfbaee,
     type: 2}
   selectedCharacterRotationSpeed: 150
