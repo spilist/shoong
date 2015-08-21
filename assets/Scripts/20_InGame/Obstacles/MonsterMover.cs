@@ -88,6 +88,7 @@ public class MonsterMover : ObjectsMover {
   public override void destroyObject() {
     Destroy(gameObject);
     monm.stopWarning();
+    Instantiate(monm.destroyEffect, transform.position, transform.rotation);
     monm.run();
   }
 

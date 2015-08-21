@@ -236,7 +236,8 @@ public class PlayerMover : MonoBehaviour {
     ridingMonster = true;
     monm.monsterFilter.SetActive(true);
     ridingEffect.Play();
-    obMover.destroyObject();
+    Destroy(obMover.gameObject);
+    monm.stopWarning();
     StopCoroutine("strengthen");
     StartCoroutine("strengthen");
   }

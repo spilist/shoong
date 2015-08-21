@@ -28,7 +28,7 @@ public class TouchInputHandler : MonoBehaviour
 	private Vector3 direction;
   private float lastMousePosition_x;
   private float endMousePosition_x;
-  private float lastDraggablePosition_x;
+  private Vector3 lastDraggablePosition;
 
 	void Start() {
 		fom = objectsManager.GetComponent<FieldObjectsManager>();
@@ -86,25 +86,25 @@ public class TouchInputHandler : MonoBehaviour
 	void OnMouseDown() {
     if (menus.isMenuOn()) {
 	    lastMousePosition_x = Input.mousePosition.x;
-	    lastDraggablePosition_x = menus.draggable().transform.localPosition.x;
-	    dragging = true;
+      lastDraggablePosition = Camera.main.WorldToScreenPoint(menus.draggable().transform.position);
+      dragging = true;
 		}
   }
 
   void OnMouseDrag() {
     if (menus.isMenuOn()) {
-  		float positionX = menus.draggable().transform.localPosition.x;
-  		float movement;
+      float positionX = menus.draggable().transform.localPosition.x;
+  		Vector3 movement;
     	if (positionX == menus.leftDragEnd() || positionX == menus.rightDragEnd()) {
     		endMousePosition_x = Input.mousePosition.x;
     	}
-
     	if (positionX > menus.leftDragEnd() || positionX < menus.rightDragEnd()) {
-    		movement = (Input.mousePosition.x - endMousePosition_x)/2f + (endMousePosition_x - lastMousePosition_x);
+    		movement = new Vector3((Input.mousePosition.x - endMousePosition_x)/5f + (endMousePosition_x - lastMousePosition_x), 0, 0);
     	} else {
-    		movement = Input.mousePosition.x - lastMousePosition_x;
+    		movement = new Vector3(Input.mousePosition.x - lastMousePosition_x, 0, 0);
     	}
-    	menus.draggable().transform.localPosition = new Vector3(lastDraggablePosition_x + movement, 0, 0);
+
+      menus.draggable().transform.position = Camera.main.ScreenToWorldPoint(lastDraggablePosition + movement);
     }
   }
 
