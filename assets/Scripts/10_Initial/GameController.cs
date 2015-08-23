@@ -107,8 +107,8 @@ public class GameController : MonoBehaviour {
     File.Delete(datapath);
 
     PlayerPrefs.SetString("SelectedCharacter", "robotcogi");
-    PlayerPrefs.SetString("MainObjects", "invincible monster");
-    PlayerPrefs.SetString("SubObjects", "cubedispenser");
+    PlayerPrefs.SetString("MainObjects", "SpecialParts Blackhole Monster");
+    PlayerPrefs.SetString("SubObjects", "CubeDispenser ComboParts");
 
     numPlays = 0;
     numBoosters = 0;

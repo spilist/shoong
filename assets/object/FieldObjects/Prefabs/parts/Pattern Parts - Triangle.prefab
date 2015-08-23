@@ -12,7 +12,6 @@ GameObject:
   - 23: {fileID: 2380502}
   - 135: {fileID: 13559872}
   - 54: {fileID: 5490670}
-  - 114: {fileID: 11450636}
   m_Layer: 12
   m_Name: parts_brokenhandle_2
   m_TagString: PatternPart
@@ -49,7 +48,6 @@ GameObject:
   - 23: {fileID: 2378844}
   - 135: {fileID: 13569660}
   - 54: {fileID: 5482680}
-  - 114: {fileID: 11455590}
   m_Layer: 12
   m_Name: parts_seat
   m_TagString: PatternPart
@@ -86,7 +84,6 @@ GameObject:
   - 23: {fileID: 2377924}
   - 135: {fileID: 13519744}
   - 54: {fileID: 5476364}
-  - 114: {fileID: 11446252}
   m_Layer: 12
   m_Name: parts_toilet
   m_TagString: PatternPart
@@ -123,7 +120,6 @@ GameObject:
   - 23: {fileID: 2371742}
   - 135: {fileID: 13542186}
   - 54: {fileID: 5479142}
-  - 114: {fileID: 11423290}
   m_Layer: 12
   m_Name: parts_cylinder_2
   m_TagString: PatternPart
@@ -599,17 +595,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 4
   m_CollisionDetection: 0
---- !u!114 &11423290
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 137848}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3cdf25bbcae440f29702bfa7deacc71, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &11433226
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -619,39 +604,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4d592aa910c2e4124a5793ff7069891c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &11446252
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 123254}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3cdf25bbcae440f29702bfa7deacc71, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &11450636
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 105356}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3cdf25bbcae440f29702bfa7deacc71, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &11455590
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 112344}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3cdf25bbcae440f29702bfa7deacc71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!120 &12004592

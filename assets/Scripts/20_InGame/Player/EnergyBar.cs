@@ -4,14 +4,14 @@ using System.Collections;
 
 public class EnergyBar : MonoBehaviour {
   private Image image;
-  private float changeTo;
+  private float changeTo = 0;
   private float changeRate;
-  private float restAmount;
+  private float restAmount = 0;
   private float restRate;
 
-  private bool isChanging;
-  private bool isChangingRest;
-  private bool gameStarted;
+  private bool isChanging = false;
+  private bool isChangingRest = false;
+  private bool gameStarted = false;
   private bool unstoppable = false;
 
   public float autoDecreaseRate = 0.05f;
@@ -26,11 +26,6 @@ public class EnergyBar : MonoBehaviour {
 
   void Start () {
     image = GetComponent<Image>();
-    isChanging = false;
-    isChangingRest = false;
-    gameStarted = false;
-    changeTo = 0;
-    restAmount = 0;
 
     color_healthy = image.color;
     color_danger = new Color(1, 0, 0, color_healthy.a);

@@ -14,7 +14,7 @@ GameObject:
   - 54: {fileID: 5475864}
   - 199: {fileID: 19917934}
   - 198: {fileID: 19821560}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: comboPart_next
   m_TagString: ComboPart
   m_Icon: {fileID: 0}
@@ -1183,6 +1183,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_ReceiveShadows
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class MonsterManager : MonoBehaviour {
+public class MonsterManager : ObjectsManager {
   public GameObject monster;
   public float speed_chase = 80;
   public float speed_runaway = 120;
@@ -31,7 +31,7 @@ public class MonsterManager : MonoBehaviour {
     playerTransform = GameObject.Find("Player").transform;
 	}
 
-  public void run() {
+  override public void run() {
     StartCoroutine("spawnMonster");
   }
 

@@ -3,7 +3,9 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class PlayerMover : MonoBehaviour {
-	public CubesCount cubesCount;
+	public SpawnManager spawnManager;
+
+  public CubesCount cubesCount;
   public GameOver gameOver;
   public GameObject obstacleDestroy;
   public GameObject unstoppableSphere;
@@ -17,7 +19,6 @@ public class PlayerMover : MonoBehaviour {
   public float tumble;
   private Vector3 direction;
 
-  public FieldObjectsManager fom;
   public ComboPartsManager cpm;
   public MonsterManager monm;
 
@@ -67,7 +68,7 @@ public class PlayerMover : MonoBehaviour {
     originalMesh = GetComponent<MeshFilter>().sharedMesh;
     originalMaterial = GetComponent<Renderer>().sharedMaterial;
 
-    GetComponent<Rigidbody>().angularVelocity = Random.onUnitSphere * tumble;
+    rotatePlayerBody();
 
     Vector2 randomV = Random.insideUnitCircle;
     randomV.Normalize();
@@ -204,7 +205,7 @@ public class PlayerMover : MonoBehaviour {
     yield return new WaitForSeconds(effectDuration);
 
     if (unstoppable) {
-      fom.spawnSpecial(Random.Range(unstoppable_respawn[0], unstoppable_respawn[1]));
+      spawnManager.runManager("SpecialParts");
       unstoppable = false;
       unstoppableEffect.Stop();
       unstoppableEffect_two.Stop();
@@ -283,10 +284,6 @@ public class PlayerMover : MonoBehaviour {
     GetComponent<Rigidbody>().angularVelocity = Random.onUnitSphere * tumble;
   }
 
-  public void setDirection(Vector3 value) {
-    direction = value;
-  }
-
   public Vector3 getDirection() {
     return direction;
   }
@@ -315,9 +312,23 @@ public class PlayerMover : MonoBehaviour {
     return reboundingByBlackhole || reboundingByDispenser;
   }
 
-  public void boosterSpeedup(){
+  public void shootBooster(Vector3 dir){
+    if (!unstoppable) {
+      energyBar.loseByShoot();
+      comboBar.loseByShoot();
+    }
+
+    rotatePlayerBody();
+
+    booster.Play();
+    booster.GetComponent<AudioSource>().Play();
+
+    direction = dir;
+
     boosterspeed += boosterSpeedUpAmount;
     if (boosterspeed > maxBoosterSpeed) boosterspeed = maxBoosterSpeed;
+
+    cpm.tryToGet();
   }
 
   public void changeCharacter(Mesh mesh, Material material) {

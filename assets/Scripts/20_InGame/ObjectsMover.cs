@@ -8,20 +8,21 @@ public class ObjectsMover : MonoBehaviour {
   protected Vector3 direction;
   protected bool canBeMagnetized = true;
   protected bool isMagnetized = false;
-  protected float magnetizedSpeed;
 
   protected GameObject player;
-  protected FieldObjectsManager fom;
 
   protected BlackholeManager blm;
   protected GameObject blackhole;
   protected bool isInsideBlackhole = false;
   protected float shrinkedScale;
 
+  protected ObjectsManager objectsManager;
+
   void Start() {
     player = GameObject.Find("Player");
 
-    fom = GameObject.Find("Field Objects").GetComponent<FieldObjectsManager>();
+    string layer = LayerMask.LayerToName(gameObject.layer);
+    objectsManager = (ObjectsManager) GameObject.Find("Field Objects").GetComponent(layer + "Manager");
     blm = GameObject.Find("Field Objects").GetComponent<BlackholeManager>();
 
     shrinkedScale = transform.localScale.x;
@@ -51,7 +52,7 @@ public class ObjectsMover : MonoBehaviour {
     } else if (isMagnetized) {
       Vector3 heading =  player.transform.position - transform.position;
       heading /= heading.magnitude;
-      GetComponent<Rigidbody> ().velocity = heading * player.GetComponent<Rigidbody>().velocity.magnitude * magnetizedSpeed;
+      GetComponent<Rigidbody> ().velocity = heading * player.GetComponent<Rigidbody>().velocity.magnitude * 1.5f;
     } else {
       normalMovement();
     }
@@ -107,11 +108,11 @@ public class ObjectsMover : MonoBehaviour {
   }
 
   virtual protected float getSpeed() {
-    return fom.getSpeed(tag);
+    return objectsManager.getSpeed(tag);
   }
 
   virtual protected float getTumble() {
-    return fom.getTumble(tag);
+    return objectsManager.getTumble(tag);
   }
 
   virtual protected Vector3 getDirection() {
@@ -121,7 +122,6 @@ public class ObjectsMover : MonoBehaviour {
   }
 
   virtual protected void initializeRest() {
-    magnetizedSpeed = fom.getUnstoppableFollowSpeed();
   }
 
   virtual protected void normalMovement() {

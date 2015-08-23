@@ -12,14 +12,14 @@ public class ObjectsMenu : Draggable {
     cubeYouHave.SetActive(true);
     goldenCubeYouHave.SetActive(true);
 
-    mainObjects = PlayerPrefs.GetString("MainObjects").Split(' ');
-    foreach (string mainObject in mainObjects) {
-      // Debug.Log("Main: " + mainObject);
-    }
+    // mainObjects = PlayerPrefs.GetString("MainObjects").Split(' ');
+    // foreach (string mainObject in mainObjects) {
+    //   // Debug.Log("Main: " + mainObject);
+    // }
 
-    subObjects = PlayerPrefs.GetString("SubObjects").Split(' ');
-    foreach (string subObject in subObjects) {
-      // Debug.Log("Sub: " + subObject);
-    }
+    // subObjects = PlayerPrefs.GetString("SubObjects").Split(' ');
+    // foreach (string subObject in subObjects) {
+    //   // Debug.Log("Sub: " + subObject);
+    // }
   }
 }

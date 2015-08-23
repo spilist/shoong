@@ -1,14 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CubeDispenserManager : MonoBehaviour {
-  public FieldObjectsManager fom;
-
+public class CubeDispenserManager : ObjectsManager {
   public GameObject cubeDispenserPrefab;
 	public int fullComboCount = 6;
   public int respawnInterval_min = 10;
   public int respawnInterval_max = 15;
-  public float destroyAfterTry = 4;
+  public float destroyAfterSeconds = 4;
   public int cubesPerContact = 10;
   public float reboundDuring = 0.2f;
 
@@ -18,19 +16,19 @@ public class CubeDispenserManager : MonoBehaviour {
   private bool notContactYet = true;
   private bool respawnRunning = false;
 
-  public void run() {
+  override public void run() {
     comboCount = 0;
     notContactYet = true;
     respawnRunning = false;
     decreaseEmissionAmount = cubeDispenserPrefab.GetComponent<ParticleSystem>().emissionRate / fullComboCount;
 
-    cubeDispenser = fom.spawn(cubeDispenserPrefab);
+    cubeDispenser = spawnManager.spawn(cubeDispenserPrefab);
   }
 
 	public void contact() {
     if (notContactYet) {
       notContactYet = false;
-      StartCoroutine("destroySelf");
+      StartCoroutine("destroyAfterTry");
     }
     comboCount++;
     cubeDispenser.GetComponent<ParticleSystem>().emissionRate -= decreaseEmissionAmount;
@@ -40,12 +38,12 @@ public class CubeDispenserManager : MonoBehaviour {
     }
   }
 
-  IEnumerator destroySelf() {
-    yield return new WaitForSeconds(destroyAfterTry);
+  IEnumerator destroyAfterTry() {
+    yield return new WaitForSeconds(destroyAfterSeconds);
     StartCoroutine("respawn");
   }
 
-  public void startRespawn() {
+  public void destroyInstances() {
     StartCoroutine("respawn");
   }
 

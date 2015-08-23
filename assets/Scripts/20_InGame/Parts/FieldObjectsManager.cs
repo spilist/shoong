@@ -39,7 +39,6 @@ public class FieldObjectsManager : MonoBehaviour {
 	}
 
 	public void run() {
-		gameObject.SetActive(true);
 		generateObjectsAtStart();
 		generateObjectValuesHashtable();
 	}

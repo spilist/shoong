@@ -297,7 +297,7 @@ RectTransform:
   m_RootOrder: 2
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 302, y: -97}
+  m_AnchoredPosition: {x: 302, y: -119.300003}
   m_SizeDelta: {x: 350, y: 100}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &69566123
@@ -480,6 +480,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e43d260986d57a40b41b81b06bb0f7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnManager: {fileID: 0}
   cubesCount: {fileID: 589887829}
   gameOver: {fileID: 868146742}
   obstacleDestroy: {fileID: 190966, guid: 06a9d910a6ef7477eb37b2d7cddcfa88, type: 2}
@@ -489,7 +490,6 @@ MonoBehaviour:
   cubesWhenDestroyMonster: 50
   speed: 5
   tumble: 4
-  fom: {fileID: 1991538105}
   cpm: {fileID: 1991538106}
   monm: {fileID: 1991538109}
   blm: {fileID: 1991538108}
@@ -5977,7 +5977,7 @@ MonoBehaviour:
   numPlays: 0
   numBoosters: 0
   openAllCharacter: 0
-  resetAll: 0
+  resetAll: 1
 --- !u!4 &339434085
 Transform:
   m_ObjectHideFlags: 0
@@ -15857,7 +15857,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed4ae3a4877af9b4dbe2b7d76edeb9ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fom: {fileID: 1991538105}
   cpm: {fileID: 1991538106}
   blm: {fileID: 1991538108}
   cdm: {fileID: 1991538110}
@@ -17917,7 +17916,6 @@ GameObject:
   - 114: {fileID: 1082642567}
   - 114: {fileID: 1082642566}
   - 114: {fileID: 1082642569}
-  - 114: {fileID: 1082642570}
   m_Layer: 5
   m_Name: Menus
   m_TagString: Untagged
@@ -18021,33 +18019,8 @@ MonoBehaviour:
   idleUI: {fileID: 1817731073}
   inGameUI: {fileID: 2134279968}
   gameOverUI: {fileID: 868146740}
+  barsCanvas: {fileID: 1289803595}
   UITouchSound: {fileID: 8300000, guid: 3b7a828a646174088aa48ee1db9c439c, type: 3}
---- !u!114 &1082642570
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1082642564}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1367256648, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Content: {fileID: 0}
-  m_Horizontal: 1
-  m_Vertical: 1
-  m_MovementType: 1
-  m_Elasticity: .100000001
-  m_Inertia: 1
-  m_DecelerationRate: .135000005
-  m_ScrollSensitivity: 1
-  m_HorizontalScrollbar: {fileID: 0}
-  m_VerticalScrollbar: {fileID: 0}
-  m_OnValueChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.ScrollRect+ScrollRectEvent, UnityEngine.UI, Version=1.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!1 &1099270786
 GameObject:
   m_ObjectHideFlags: 0
@@ -18144,7 +18117,7 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 297, y: -11.79}
+  m_AnchoredPosition: {x: 297, y: -37.0999985}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1111430382
@@ -20199,7 +20172,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 2.76789069e-05}
+  m_AnchoredPosition: {x: 0, y: 2.5251371e-05}
   m_SizeDelta: {x: 84.4000015, y: 77.5}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1289803597
@@ -20260,7 +20233,7 @@ Canvas:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1289803595}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_RenderMode: 2
   m_Camera: {fileID: 0}
@@ -25731,7 +25704,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1574021962
 RectTransform:
   m_ObjectHideFlags: 0
@@ -26293,7 +26266,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 297.299988, y: 138.300003}
+  m_AnchoredPosition: {x: 297.299988, y: 83.5}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1710713623
@@ -26609,14 +26582,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 91418583}
-  barsCanvas: {fileID: 1289803595}
-  energyBar: {fileID: 1593744718}
-  comboBar: {fileID: 1289803601}
-  elapsedTime: {fileID: 980455324}
-  idleUI: {fileID: 1817731073}
-  inGameUI: {fileID: 2134279968}
   touchEffect: {fileID: 19869282, guid: 685937296cad741c18018a97b8d10789, type: 2}
-  objectsManager: {fileID: 1991538103}
+  spawnManager: {fileID: 1991538111}
   menus: {fileID: 1082642569}
 --- !u!64 &1801634120
 MeshCollider:
@@ -29610,7 +29577,7 @@ RectTransform:
   m_GameObject: {fileID: 1918549623}
   m_LocalRotation: {x: 2.98023224e-08, y: .382683456, z: 0, w: .923879504}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 7, y: 7, z: 7}
+  m_LocalScale: {x: 6, y: 6, z: 6}
   m_Children:
   - {fileID: 1176315503}
   m_Father: {fileID: 1978664489}
@@ -32097,12 +32064,14 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1991538104}
-  - 114: {fileID: 1991538105}
   - 114: {fileID: 1991538106}
   - 114: {fileID: 1991538107}
   - 114: {fileID: 1991538109}
   - 114: {fileID: 1991538108}
   - 114: {fileID: 1991538110}
+  - 114: {fileID: 1991538111}
+  - 114: {fileID: 1991538112}
+  - 114: {fileID: 1991538113}
   m_Layer: 9
   m_Name: Field Objects
   m_TagString: Untagged
@@ -32122,47 +32091,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1701025775}
   m_RootOrder: 3
---- !u!114 &1991538105
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1991538103}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e79a950af34ff99459a86f3608e9c01f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parts:
-  - {fileID: 121012, guid: 532f92fe8826d433c9465e8fc387f305, type: 2}
-  - {fileID: 137376, guid: 687c694e3e0c84920afaa2510449ab32, type: 2}
-  - {fileID: 178760, guid: 60ac4f8bf259148408f8d9e99bcb1ca2, type: 2}
-  - {fileID: 103062, guid: b9e87ec91a93341948e088c253b40abc, type: 2}
-  obstacles_big:
-  - {fileID: 131058, guid: b2e788ee7ee7747ae89b9fd021c3b05b, type: 2}
-  - {fileID: 119532, guid: 8de9923715b8e4769a343553e0193937, type: 2}
-  - {fileID: 190242, guid: d8430bbeb85c44b9b9b8df1654f1e53b, type: 2}
-  special_single: {fileID: 189520, guid: dccc40739d6254de9aaa62d3c75f9b0d, type: 2}
-  max_parts: 50
-  max_obstacles: 5
-  generateSpaceRadius: .899999976
-  generateOffset: .200000003
-  partsMinDistance: 50
-  fieldObjectsLayerMask:
-    serializedVersion: 2
-    m_Bits: 512
-  speed_obstacles: 15
-  speed_parts: 0
-  speed_special: 0
-  speed_comboparts: 0
-  speed_dispenser: 0
-  tumble_obstacles: .5
-  tumble_parts: 1
-  tumble_special: 3
-  tumble_comboparts: 3
-  tumble_dispenser: 0
-  unstoppableFollowSpeed: 1.5
-  collectedPartsMaterial: {fileID: 0}
 --- !u!114 &1991538106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32176,12 +32104,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   comboPartPrefab: {fileID: 164108, guid: a6fcdda2fbd1d4fe0b8a15b6d19364a9, type: 2}
   comboPartPrefab_next: {fileID: 192146, guid: d357428246b5f4e5fb2b54651d371984, type: 2}
-  fom: {fileID: 1991538105}
   fullComboCount: 4
   comboBonusScale: 5
   radius: 50
-  respawnInterval_min: 5
-  respawnInterval_max: 8
+  respawnInterval_min: 0
+  respawnInterval_max: 0
+  tumble: 3
 --- !u!114 &1991538107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32219,7 +32147,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3d3774ac507d4255b324f7cde875a00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fom: {fileID: 1991538105}
   blackhole_prefab: {fileID: 117910, guid: bbcd82bb603674de8b6cb8bab02b2b62, type: 2}
   blackholeGravitySphere_prefab: {fileID: 162082, guid: 2cc8b66773d8e4032bade512e7e76b8e,
     type: 2}
@@ -32271,14 +32198,74 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81cf703db72ac430e98bc24b14730d6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fom: {fileID: 1991538105}
   cubeDispenserPrefab: {fileID: 148822, guid: de23a7876221f4b818e7bfdccf294c71, type: 2}
   fullComboCount: 6
   respawnInterval_min: 5
   respawnInterval_max: 15
-  destroyAfterTry: 4
+  destroyAfterSeconds: 4
   cubesPerContact: 10
   reboundDuring: .100000001
+--- !u!114 &1991538111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1991538103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4ef5f5fe3e9c4deab674825c79028e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  generateSpaceRadius: .899999976
+  generateOffset: .200000003
+  overlapDistance: 50
+  layersShouldNotOverlap:
+  - BasicObjects
+  - SpecialParts
+  mask:
+    serializedVersion: 2
+    m_Bits: 512
+--- !u!114 &1991538112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1991538103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31ddf415cadb54b01a56abb875dc7121, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parts:
+  - {fileID: 137376, guid: 687c694e3e0c84920afaa2510449ab32, type: 2}
+  - {fileID: 178760, guid: 60ac4f8bf259148408f8d9e99bcb1ca2, type: 2}
+  - {fileID: 103062, guid: b9e87ec91a93341948e088c253b40abc, type: 2}
+  - {fileID: 121012, guid: 532f92fe8826d433c9465e8fc387f305, type: 2}
+  max_parts: 50
+  obstacles_big:
+  - {fileID: 131058, guid: b2e788ee7ee7747ae89b9fd021c3b05b, type: 2}
+  - {fileID: 119532, guid: 8de9923715b8e4769a343553e0193937, type: 2}
+  - {fileID: 190242, guid: d8430bbeb85c44b9b9b8df1654f1e53b, type: 2}
+  max_obstacles: 5
+  speed_parts: 0
+  speed_obstacles: 15
+  tumble_parts: 1
+  tumble_obstacles: .5
+--- !u!114 &1991538113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1991538103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d1c54e7a71bf4fc6be5112606b0eced, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  special: {fileID: 189520, guid: dccc40739d6254de9aaa62d3c75f9b0d, type: 2}
+  tumble: 3
+  minSpawnInterval: 8
+  maxSpawnInterval: 12
 --- !u!1 &1997391145
 GameObject:
   m_ObjectHideFlags: 0

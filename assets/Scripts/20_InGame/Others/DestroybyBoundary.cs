@@ -2,23 +2,17 @@
 using System.Collections;
 
 public class DestroybyBoundary : MonoBehaviour {
-  public FieldObjectsManager fom;
   public ComboPartsManager cpm;
   public BlackholeManager blm;
   public CubeDispenserManager cdm;
 
 	void OnTriggerExit(Collider other) {
-    if (other.tag == "SpecialPart") {
-      fom.spawnSpecial();
-    } else if (other.tag == "ComboPart") {
-      cpm.destroyInstances();
-    } else if (other.tag == "Blackhole") {
+    if (other.tag == "Blackhole") {
       blm.skipRespawnInterval();
       Destroy(other.gameObject);
-    } else if (other.tag == "CubeDispenser") {
-      cdm.startRespawn();
     } else {
-      Destroy(other.gameObject);
+      ObjectsMover mover = other.gameObject.GetComponent<ObjectsMover>();
+      mover.destroyObject();
     }
 	}
 }

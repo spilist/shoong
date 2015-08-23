@@ -7,7 +7,8 @@ public class SpecialPartMover : ObjectsMover {
   }
 
   override public void destroyObject() {
-    fom.spawnSpecial();
+    Destroy(gameObject);
+    objectsManager.run();
   }
 
   override public void encounterPlayer() {

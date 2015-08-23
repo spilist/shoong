@@ -8,6 +8,7 @@ public class MenusController : MonoBehaviour {
   public GameObject idleUI;
   public GameObject inGameUI;
   public GameObject gameOverUI;
+  public GameObject barsCanvas;
 
   public AudioClip UITouchSound;
 
@@ -54,6 +55,12 @@ public class MenusController : MonoBehaviour {
 
   public void gameStart() {
     notYetStarted = false;
+    inGameUI.SetActive(true);
+    idleUI.SetActive(false);
+    menuButtons.SetActive(false);
+
+    barsCanvas.GetComponent<Canvas>().enabled = true;
+    barsCanvas.transform.Find("EnergyBar").GetComponent<EnergyBar>().startDecrease();
   }
 
   public void gameEnd() {

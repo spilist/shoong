@@ -1,9 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BlackholeManager : MonoBehaviour {
-  public FieldObjectsManager fom;
-
+public class BlackholeManager : ObjectsManager {
   public GameObject blackhole_prefab;
   public GameObject blackholeGravitySphere_prefab;
   private GameObject blackhole;
@@ -20,10 +18,7 @@ public class BlackholeManager : MonoBehaviour {
 
   private bool skipInterval = false;
 
-  void Start () {
-  }
-
-  public void run() {
+  override public void run() {
     StartCoroutine("spawnBlackhole");
   }
 
@@ -35,7 +30,7 @@ public class BlackholeManager : MonoBehaviour {
 
     skipInterval = false;
 
-    Vector3 spawnPos = fom.getSpawnPosition("Blackhole");
+    Vector3 spawnPos = spawnManager.getSpawnPosition(blackhole_prefab);
     blackhole = (GameObject) Instantiate(blackhole_prefab, spawnPos, Quaternion.identity);
     blackhole.transform.parent = transform;
 

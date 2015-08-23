@@ -1,15 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ComboPartsManager : MonoBehaviour {
+public class ComboPartsManager : ObjectsManager {
   public GameObject comboPartPrefab;
   public GameObject comboPartPrefab_next;
-  public FieldObjectsManager fom;
   public int fullComboCount = 4;
   public int comboBonusScale = 5;
   public float radius = 20;
   public int respawnInterval_min = 10;
   public int respawnInterval_max = 15;
+  public float tumble = 3;
 
   private bool trying = false;
   private bool secondShot = false;
@@ -17,9 +17,9 @@ public class ComboPartsManager : MonoBehaviour {
   private GameObject next;
   private int comboCount = 0;
 
-  public void run() {
+  override public void run() {
     comboCount = 0;
-    current = fom.spawn(comboPartPrefab);
+    current = spawnManager.spawn(comboPartPrefab);
     Vector2 randomV = Random.insideUnitCircle;
     randomV.Normalize();
 
@@ -90,5 +90,9 @@ public class ComboPartsManager : MonoBehaviour {
 
   public int getComboCount() {
     return comboCount;
+  }
+
+  override public float getTumble(string objTag) {
+    return tumble;
   }
 }

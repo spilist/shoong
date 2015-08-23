@@ -25,7 +25,6 @@ public class CubeDispenserMover : ObjectsMover {
   }
 
   override public void destroyObject() {
-    Destroy(gameObject);
-    cdm.startRespawn();
+    cdm.destroyInstances();
   }
 }

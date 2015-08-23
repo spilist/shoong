@@ -13,8 +13,6 @@ GameObject:
   - 54: {fileID: 5437622}
   - 135: {fileID: 13574360}
   - 122: {fileID: 12273160}
-  - 114: {fileID: 11454344}
-  - 114: {fileID: 11484952}
   - 198: {fileID: 19845582}
   - 199: {fileID: 19964248}
   m_Layer: 0
@@ -82,30 +80,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 4
   m_CollisionDetection: 0
---- !u!114 &11454344
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 120344}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d592aa910c2e4124a5793ff7069891c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &11484952
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 120344}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06ce81ab1afcd436691dd49ee4bb06c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  next_prefab: {fileID: 106010, guid: 0c9f9410f926d487d8f749586b909967, type: 2}
-  newSpecialEffect: {fileID: 112118, guid: 6c58975c5d837489bae74501313fb2aa, type: 2}
 --- !u!122 &12273160
 Halo:
   m_ObjectHideFlags: 1
