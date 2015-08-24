@@ -16,14 +16,20 @@ public class SpawnManager : MonoBehaviour {
     gameObject.GetComponent<BasicObjectsManager>().run();
 
     // spawn selected objects
-    string[] mainObjects = PlayerPrefs.GetString("MainObjects").Split(' ');
-    foreach (string mainObject in mainObjects) {
-      runManager(mainObject);
+    string mainObjectsString = PlayerPrefs.GetString("MainObjects");
+    if (mainObjectsString != "") {
+      string[] mainObjects = mainObjectsString.Split(' ');
+      foreach (string mainObject in mainObjects) {
+        runManager(mainObject);
+      }
     }
 
-    string[] subObjects = PlayerPrefs.GetString("SubObjects").Split(' ');
-    foreach (string subObject in subObjects) {
-      runManager(subObject);
+    string subObjectsString = PlayerPrefs.GetString("SubObjects");
+    if (subObjectsString != "") {
+      string[] subObjects = subObjectsString.Split(' ');
+      foreach (string subObject in subObjects) {
+        runManager(subObject);
+      }
     }
   }
 

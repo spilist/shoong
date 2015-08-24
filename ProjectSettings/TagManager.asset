@@ -28,9 +28,7 @@ TagManager:
   - UICharacters
   - MenuButtons
   - ObjectsMenu
-  - Fire
-  - PatternPart
-  - Wall
+  - UIObjects
   layers:
   - Default
   - TransparentFX

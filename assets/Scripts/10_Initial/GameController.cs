@@ -25,6 +25,7 @@ public class GameController : MonoBehaviour {
 
   public bool openAllCharacter = false;
   public bool resetAll = false;
+  public int resetGoldenCube = 5000;
 
 	void OnEnable () {
     if (control == null) {
@@ -107,8 +108,8 @@ public class GameController : MonoBehaviour {
     File.Delete(datapath);
 
     PlayerPrefs.SetString("SelectedCharacter", "robotcogi");
-    PlayerPrefs.SetString("MainObjects", "SpecialParts Blackhole Monster");
-    PlayerPrefs.SetString("SubObjects", "CubeDispenser ComboParts");
+    PlayerPrefs.SetString("MainObjects", "");
+    PlayerPrefs.SetString("SubObjects", "");
 
     numPlays = 0;
     numBoosters = 0;
@@ -124,9 +125,9 @@ public class GameController : MonoBehaviour {
     cubes_by.Add("destroying_monster", 0);
     cubes_by.Add("cubeDispenser", 0);
 
-    goldenCubes.Add("now", 1500);
+    goldenCubes.Add("now", resetGoldenCube);
     goldenCubes.Add("used", 0);
-    goldenCubes.Add("total", 1500);
+    goldenCubes.Add("total", resetGoldenCube);
 
     times.Add("total", 0);
     times.Add("highscore", 0);
@@ -164,6 +165,12 @@ public class GameController : MonoBehaviour {
     characters.Add("cat", false);
     characters.Add("butterfly", false);
     characters.Add("bender", false);
+
+    objects.Add("SpecialParts", false);
+    objects.Add("Blackhole", false);
+    objects.Add("Monster", false);
+    objects.Add("CubeDispenser", false);
+    objects.Add("ComboParts", false);
   }
 }
 
