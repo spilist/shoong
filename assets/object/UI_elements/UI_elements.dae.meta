@@ -17,6 +17,7 @@ ModelImporter:
     100018: selected_object
     100020: //RootNode
     100022: button_blank_topbottom
+    100024: button_blank_leftright_longer
     400000: active_object
     400002: button_back
     400004: button_blank_leftright
@@ -29,6 +30,7 @@ ModelImporter:
     400018: selected_object
     400020: //RootNode
     400022: button_blank_topbottom
+    400024: button_blank_leftright_longer
     2300000: active_object
     2300002: button_back
     2300004: button_blank_leftright
@@ -40,6 +42,7 @@ ModelImporter:
     2300016: object_detail_background
     2300018: selected_object
     2300020: button_blank_topbottom
+    2300022: button_blank_leftright_longer
     3300000: active_object
     3300002: button_back
     3300004: button_blank_leftright
@@ -51,6 +54,7 @@ ModelImporter:
     3300016: object_detail_background
     3300018: selected_object
     3300020: button_blank_topbottom
+    3300022: button_blank_leftright_longer
     4300000: button_back
     4300002: button_select
     4300004: button_character
@@ -62,6 +66,7 @@ ModelImporter:
     4300016: selected_object
     4300018: button_objectmenu
     4300020: button_blank_topbottom
+    4300022: button_blank_leftright_longer
     9500000: //RootNode
   materials:
     importMaterials: 1

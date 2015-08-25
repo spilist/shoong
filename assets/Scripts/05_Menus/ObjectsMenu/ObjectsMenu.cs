@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 
 public class ObjectsMenu : MonoBehaviour {
+  public Material inactiveObjectsMaterial;
   public AudioClip objectActiveSound;
   public AudioClip objectBuySound;
   public Color activeColor;

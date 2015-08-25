@@ -3,6 +3,9 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class ObjectDetail : MonoBehaviour {
+  public Material activeObjectsMaterial;
+  public Material inactiveObjectsMaterial;
+
   public float selectedObjectRotationSpeed = 150;
   public GameObject selectButton;
   public GameObject unselectButton;
@@ -35,6 +38,7 @@ public class ObjectDetail : MonoBehaviour {
     if ((bool)GameController.control.objects[selected.name]) {
       rotate = true;
       selected.transform.Find("Effect").gameObject.SetActive(true);
+      selected.GetComponent<Renderer>().sharedMaterial = activeObjectsMaterial;
       if (obj.isActive()) {
         selectButton.SetActive(false);
         unselectButton.GetComponent<ObjectUnselectButton>().setObject(obj);
@@ -45,7 +49,7 @@ public class ObjectDetail : MonoBehaviour {
         buyButton.SetActive(false);
       }
     } else {
-      // gray color material needed
+      selected.GetComponent<Renderer>().sharedMaterial = inactiveObjectsMaterial;
       rotate = false;
       selected.transform.Find("Effect").gameObject.SetActive(false);
       selectButton.SetActive(false);
