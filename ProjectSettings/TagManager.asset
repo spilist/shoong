@@ -29,6 +29,8 @@ TagManager:
   - MenuButtons
   - ObjectsMenu
   - UIObjects
+  - PatternPart
+  - RainbowDonut
   layers:
   - Default
   - TransparentFX
@@ -52,7 +54,7 @@ TagManager:
   - BlackholeGravity
   - ComboParts
   - SpecialParts
-  - 
+  - RainbowDonuts
   - 
   - 
   - 

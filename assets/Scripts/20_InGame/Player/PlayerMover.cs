@@ -21,6 +21,7 @@ public class PlayerMover : MonoBehaviour {
 
   public ComboPartsManager cpm;
   public MonsterManager monm;
+  public RainbowDonutsManager rdm;
 
   public BlackholeManager blm;
   private GameObject blackhole;
@@ -42,6 +43,7 @@ public class PlayerMover : MonoBehaviour {
   public ParticleSystem unstoppableEffect_two;
   public ParticleSystem getSpecialEnergyEffect;
 	public ParticleSystem getComboParts;
+  public ParticleSystem getBlackhole;
 
   public float boosterSpeedUpAmount = 60;
   public float maxBoosterSpeed = 100;
@@ -61,6 +63,10 @@ public class PlayerMover : MonoBehaviour {
   private bool ridingMonster = false;
   private Mesh originalMesh;
   private Material originalMaterial;
+
+  private bool isRotatingByRainbow = false;
+  private bool isRidingRainbowRoad = false;
+  private Vector3 rainbowPosition;
 
 	void Start () {
     changeCharacter(PlayerPrefs.GetString("SelectedCharacter"));
@@ -90,6 +96,8 @@ public class PlayerMover : MonoBehaviour {
       speed = reboundSpeed;
     } else if (unstoppable || exitedBlackhole || ridingMonster) {
       speed = strengthen_speed;
+    } else if (isRidingRainbowRoad) {
+      speed = rdm.ridingSpeed;
     } else {
 			speed = comboBar.moverspeed;
     }
@@ -114,7 +122,7 @@ public class PlayerMover : MonoBehaviour {
 		ObjectsMover mover = other.gameObject.GetComponent<ObjectsMover>();
 
     if (other.tag == "Obstacle" || other.tag == "Obstacle_big") {
-      if (unstoppable || ridingMonster) {
+      if (unstoppable || ridingMonster || isUsingRainbow()) {
         goodPartsEncounter(mover, (int)cubesWhenDestroy[other.tag]);
       } else {
         gameOver.run();
@@ -139,6 +147,9 @@ public class PlayerMover : MonoBehaviour {
 			getComboParts.Play();
 			getComboParts.GetComponent<AudioSource>().Play ();
       goodPartsEncounter(mover, cpm.getComboCount() * cpm.comboBonusScale);
+    } else if (other.tag == "RainbowDonut") {
+      rainbowPosition = other.transform.position;
+      goodPartsEncounter(mover, rdm.cubesPerRide);
     }
 	}
 
@@ -188,11 +199,11 @@ public class PlayerMover : MonoBehaviour {
       unstoppableEffect.Play();
       unstoppableEffect.GetComponent<AudioSource>().Play ();
       unstoppableEffect_two.Play();
-      energyBar.startUnstoppable();
     }
 
     if (exitedBlackhole) {
       unstoppableSphere.SetActive(true);
+      getBlackhole.Play();
     }
 
     if (ridingMonster) {
@@ -209,7 +220,6 @@ public class PlayerMover : MonoBehaviour {
       unstoppable = false;
       unstoppableEffect.Stop();
       unstoppableEffect_two.Stop();
-      energyBar.stopUnstoppable();
     }
 
     if (reboundingByBlackhole) {
@@ -346,4 +356,32 @@ public class PlayerMover : MonoBehaviour {
     booster.transform.localPosition = Vector3.zero;
     booster.transform.localRotation = Quaternion.identity;
   }
+
+  public void setRotateByRainbow(bool val) {
+    if (val) GetComponent<Rigidbody>().isKinematic = true;
+    else GetComponent<Rigidbody>().isKinematic = false;
+    isRotatingByRainbow = val;
+  }
+
+  void Update() {
+    if (isRotatingByRainbow) {
+      Vector3 dir = (rainbowPosition - transform.position).normalized;
+      transform.Translate(dir * Time.deltaTime * 30, Space.World);
+      transform.Rotate(-Vector3.forward * Time.deltaTime * rdm.rotateAngularSpeed, Space.World);
+    }
+  }
+
+  public void setRidingRainbowRoad(bool val) {
+    isRidingRainbowRoad = val;
+  }
+
+  public bool isUsingRainbow() {
+    return isRotatingByRainbow || isRidingRainbowRoad;
+  }
+
+  public void setDirection(Vector3 dir) {
+    direction = dir;
+    rotatePlayerBody();
+  }
+
 }

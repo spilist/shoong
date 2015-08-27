@@ -662,6 +662,7 @@ MonoBehaviour:
   tumble: 4
   cpm: {fileID: 1991538106}
   monm: {fileID: 1991538109}
+  rdm: {fileID: 1991538105}
   blm: {fileID: 1991538108}
   playerParticlesParent: {fileID: 678200079}
   booster: {fileID: 131396333}
@@ -863,7 +864,7 @@ ParticleSystem:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 126330263}
-  lengthInSec: 3
+  lengthInSec: 5
   startDelay: 0
   speed: 1
   randomSeed: 0
@@ -874,7 +875,7 @@ ParticleSystem:
   InitialModule:
     enabled: 1
     startLifetime:
-      scalar: 1.5
+      scalar: .400000006
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -907,7 +908,7 @@ ParticleSystem:
         m_PostInfinity: 2
       minMaxState: 0
     startSpeed:
-      scalar: 20
+      scalar: 5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1028,18 +1029,18 @@ ParticleSystem:
         m_NumAlphaKeys: 2
       minColor:
         serializedVersion: 2
-        rgba: 4294967295
+        rgba: 4293376044
       maxColor:
         serializedVersion: 2
-        rgba: 1627328783
-      minMaxState: 0
+        rgba: 4287365371
+      minMaxState: 2
     startSize:
-      scalar: 2.5
+      scalar: 3
       maxCurve:
         serializedVersion: 2
         m_Curve:
         - time: 0
-          value: .600000024
+          value: 1
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -1049,7 +1050,7 @@ ParticleSystem:
         serializedVersion: 2
         m_Curve:
         - time: 0
-          value: 1
+          value: .666666687
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -1091,12 +1092,12 @@ ParticleSystem:
       minMaxState: 0
     gravityModifier: 0
     inheritVelocity: 0
-    maxNumParticles: 800
+    maxNumParticles: 1000
   ShapeModule:
     serializedVersion: 2
     enabled: 1
     type: 1
-    radius: 10.1700001
+    radius: 8
     angle: 25
     length: 5
     boxX: 1
@@ -1110,7 +1111,7 @@ ParticleSystem:
     enabled: 1
     m_Type: 0
     rate:
-      scalar: 800
+      scalar: 50
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1152,7 +1153,7 @@ ParticleSystem:
     time3: 0
     m_BurstCount: 0
   SizeModule:
-    enabled: 0
+    enabled: 1
     curve:
       scalar: 1
       maxCurve:
@@ -1160,14 +1161,14 @@ ParticleSystem:
         m_Curve:
         - time: 0
           value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
+          inSlope: -1
+          outSlope: -1
+          tangentMode: 10
         - time: 1
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
+          value: 0
+          inSlope: -1
+          outSlope: -1
+          tangentMode: 10
         m_PreInfinity: 2
         m_PostInfinity: 2
       minCurve:
@@ -1222,7 +1223,7 @@ ParticleSystem:
         m_PostInfinity: 2
       minMaxState: 0
   ColorModule:
-    enabled: 1
+    enabled: 0
     gradient:
       maxGradient:
         key0:
@@ -1230,7 +1231,7 @@ ParticleSystem:
           rgba: 4294967295
         key1:
           serializedVersion: 2
-          rgba: 16777215
+          rgba: 4294967295
         key2:
           serializedVersion: 2
           rgba: 0
@@ -10712,7 +10713,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d979165f89e7640e0b49bb2db76f9302, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inactiveObjectsMaterial: {fileID: 2100000, guid: 2f5d7646405d44931b78c6838bbfbaee,
+  inactiveObjectsMaterial: {fileID: 2100000, guid: 73269cd7f59c840a6b04274f0e651637,
     type: 2}
   objectActiveSound: {fileID: 8300000, guid: c43141733afb54733910fd1c0db3c492, type: 3}
   objectBuySound: {fileID: 8300000, guid: 969f3d2adc0a649d8b956283267bbe8c, type: 3}
@@ -11513,7 +11514,7 @@ RectTransform:
   m_GameObject: {fileID: 707381357}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 1062109608}
   m_RootOrder: 0
@@ -26085,6 +26086,7 @@ MonoBehaviour:
   shootAmount: -3
   loseRate: 2
   gameOver: {fileID: 868146742}
+  player: {fileID: 91418583}
 --- !u!114 &1593744719
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33582,6 +33584,7 @@ GameObject:
   - 114: {fileID: 1991538111}
   - 114: {fileID: 1991538112}
   - 114: {fileID: 1991538113}
+  - 114: {fileID: 1991538105}
   m_Layer: 9
   m_Name: Field Objects
   m_TagString: Untagged
@@ -33601,6 +33604,29 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1701025775}
   m_RootOrder: 3
+--- !u!114 &1991538105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1991538103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 252e406bfcfe041a39a073c8ee7e45f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rainbowDonutPrefab: {fileID: 145992, guid: 8dda1ea4426a74d1d9d0e64e93097cbd, type: 2}
+  rainbowRoadPrefab: {fileID: 173076, guid: af846d2fda9ca46229d31f23fc80dd18, type: 2}
+  tumble: 5
+  minSpawnInterval: 8
+  maxSpawnInterval: 12
+  numRoadRides: 3
+  nextDonutRadius: 300
+  rotateDuring: .800000012
+  rotateAngularSpeed: 1000
+  rideDuring: 1.5
+  ridingSpeed: 200
+  cubesPerRide: 7
 --- !u!114 &1991538106
 MonoBehaviour:
   m_ObjectHideFlags: 0

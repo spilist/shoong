@@ -14,9 +14,10 @@ public class SpawnManager : MonoBehaviour {
 
     // spawn which doesn't need settings
     gameObject.GetComponent<BasicObjectsManager>().run();
+    gameObject.GetComponent<RainbowDonutsManager>().run();
 
     // spawn selected objects
-    string mainObjectsString = PlayerPrefs.GetString("MainObjects");
+    string mainObjectsString = PlayerPrefs.GetString("MainObjects").Trim();
     if (mainObjectsString != "") {
       string[] mainObjects = mainObjectsString.Split(' ');
       foreach (string mainObject in mainObjects) {
@@ -24,7 +25,7 @@ public class SpawnManager : MonoBehaviour {
       }
     }
 
-    string subObjectsString = PlayerPrefs.GetString("SubObjects");
+    string subObjectsString = PlayerPrefs.GetString("SubObjects").Trim();
     if (subObjectsString != "") {
       string[] subObjects = subObjectsString.Split(' ');
       foreach (string subObject in subObjects) {

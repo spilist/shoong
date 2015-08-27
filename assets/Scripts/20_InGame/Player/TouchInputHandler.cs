@@ -20,7 +20,7 @@ public class TouchInputHandler : MonoBehaviour
 
 	void Update() {
 		if (react && Input.GetMouseButtonDown(0) && menus.touched() == "Ground" && !menus.isMenuOn()) {
-			if (player.isRebounding()) return;
+			if (player.isRebounding() || player.isUsingRainbow()) return;
 
 			if (!gameStarted) {
 				menus.gameStart();
@@ -40,7 +40,7 @@ public class TouchInputHandler : MonoBehaviour
 	}
 
 	void OnMouseDown() {
-    if (menus.isMenuOn()) {
+    if (menus.isMenuOn() && menus.isDraggable()) {
 	    lastMousePosition_x = Input.mousePosition.x;
       lastDraggablePosition = Camera.main.WorldToScreenPoint(menus.draggable().transform.position);
       dragging = true;
@@ -48,7 +48,7 @@ public class TouchInputHandler : MonoBehaviour
   }
 
   void OnMouseDrag() {
-    if (menus.isMenuOn()) {
+    if (menus.isMenuOn() && menus.isDraggable()) {
       float positionX = menus.draggable().transform.localPosition.x;
   		Vector3 movement;
     	if (positionX == menus.leftDragEnd() || positionX == menus.rightDragEnd()) {

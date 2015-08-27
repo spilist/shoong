@@ -71,6 +71,10 @@ public class MenusController : MonoBehaviour {
     return menusOverlay.activeSelf;
   }
 
+  public bool isDraggable() {
+    return currentlyOn.GetComponent<Draggable>() != null;
+  }
+
   public GameObject draggable() {
     return currentlyOn.GetComponent<Draggable>().draggable();
   }

@@ -12,7 +12,6 @@ public class EnergyBar : MonoBehaviour {
   private bool isChanging = false;
   private bool isChangingRest = false;
   private bool gameStarted = false;
-  private bool unstoppable = false;
 
   public float autoDecreaseRate = 0.05f;
   public int getAmountbyParts = 10;
@@ -20,6 +19,7 @@ public class EnergyBar : MonoBehaviour {
   public int shootAmount = -10;
   public float loseRate = 1;
   public GameOver gameOver;
+  public PlayerMover player;
 
   private Color color_healthy;
   private Color color_danger;
@@ -59,7 +59,7 @@ public class EnergyBar : MonoBehaviour {
   }
 
   void autoDecrease() {
-    if (unstoppable) return;
+    if (player.isUnstoppable() || player.isUsingRainbow()) return;
     image.fillAmount = Mathf.MoveTowards(image.fillAmount, 0, Time.deltaTime * autoDecreaseRate);
   }
 
@@ -112,14 +112,6 @@ public class EnergyBar : MonoBehaviour {
 
   public void loseByShoot() {
     changeHealth(shootAmount, loseRate);
-  }
-
-  public void startUnstoppable() {
-    unstoppable = true;
-  }
-
-  public void stopUnstoppable() {
-    unstoppable = false;
   }
 }
 
