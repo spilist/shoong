@@ -18036,6 +18036,7 @@ GameObject:
   - 198: {fileID: 1056094478}
   - 199: {fileID: 1056094481}
   - 82: {fileID: 1056094480}
+  - 114: {fileID: 1056094482}
   m_Layer: 0
   m_Name: RainbowEffect
   m_TagString: Untagged
@@ -19109,7 +19110,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 74597c6fd14c57e45954c02c09b46634, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 9d75263984b5f9c4087761810bc67b6f, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -19206,6 +19207,17 @@ ParticleSystemRenderer:
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
+--- !u!114 &1056094482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1056094477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6e43e5ec2dda449dbd8b0fa4847f785, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1062109607
 GameObject:
   m_ObjectHideFlags: 0
@@ -28592,6 +28604,7 @@ GameObject:
   - 4: {fileID: 1552135348}
   - 198: {fileID: 1552135347}
   - 199: {fileID: 1552135349}
+  - 114: {fileID: 1552135350}
   m_Layer: 9
   m_Name: GetBlackHole
   m_TagString: Untagged
@@ -28617,7 +28630,7 @@ ParticleSystem:
   InitialModule:
     enabled: 1
     startLifetime:
-      scalar: .300000012
+      scalar: .400000006
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -28650,7 +28663,7 @@ ParticleSystem:
         m_PostInfinity: 2
       minMaxState: 0
     startSpeed:
-      scalar: -160
+      scalar: 0
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -28689,7 +28702,7 @@ ParticleSystem:
           rgba: 4287354043
         key1:
           serializedVersion: 2
-          rgba: 4294948096
+          rgba: 4293115248
         key2:
           serializedVersion: 2
           rgba: 0
@@ -28838,8 +28851,8 @@ ParticleSystem:
   ShapeModule:
     serializedVersion: 2
     enabled: 1
-    type: 1
-    radius: 43.9399986
+    type: 11
+    radius: 42.2999992
     angle: 25
     length: 5
     boxX: 1
@@ -29649,7 +29662,7 @@ Transform:
   m_PrefabParentObject: {fileID: 451376, guid: 4c9406b8460314547bf9b2aaf13e8547, type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1552135346}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106709}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -29692,6 +29705,17 @@ ParticleSystemRenderer:
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
+--- !u!114 &1552135350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1552135346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6e43e5ec2dda449dbd8b0fa4847f785, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!23 &1576804391 stripped
 MeshRenderer:
   m_PrefabParentObject: {fileID: 2379152, guid: 687c694e3e0c84920afaa2510449ab32,
@@ -35357,7 +35381,7 @@ ParticleSystem:
         m_PostInfinity: 2
       minMaxState: 0
   ColorModule:
-    enabled: 1
+    enabled: 0
     gradient:
       maxGradient:
         key0:
@@ -37383,11 +37407,11 @@ MonoBehaviour:
   tumble: 5
   minSpawnInterval: 8
   maxSpawnInterval: 12
-  numRoadRides: 3
+  numRoadRides: 2
   nextDonutRadius: 300
   rotateDuring: .800000012
   rotateAngularSpeed: 1000
-  ridingSpeed: 200
+  ridingSpeed: 400
   cubesPerRide: 7
   reboundByBlackholeDuring: 2
   rainbowColors:

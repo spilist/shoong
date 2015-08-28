@@ -178,12 +178,12 @@ Material:
         second: 0
       data:
         first:
-          name: _Emissive
-        second: .5
-      data:
-        first:
           name: _Outline
         second: .75
+      data:
+        first:
+          name: _Emissive
+        second: .5
       data:
         first:
           name: _Specular_Power
