@@ -19,7 +19,6 @@ TagManager:
   - Monster
   - ComboPart
   - BlackholeGravitySphere
-  - Blachole
   - ContactCollider
   - BackButton
   - CubeDispenser

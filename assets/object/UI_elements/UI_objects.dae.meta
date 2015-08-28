@@ -11,27 +11,32 @@ ModelImporter:
     100006: parts_battery_2
     100008: parts_combo
     100010: //RootNode
+    100012: Rainbow
     400000: Blackhole
     400002: Cube_Dispenser
     400004: monster
     400006: parts_battery_2
     400008: parts_combo
     400010: //RootNode
+    400012: Rainbow
     2300000: Blackhole
     2300002: Cube_Dispenser
     2300004: monster
     2300006: parts_battery_2
     2300008: parts_combo
+    2300010: Rainbow
     3300000: Blackhole
     3300002: Cube_Dispenser
     3300004: monster
     3300006: parts_battery_2
     3300008: parts_combo
+    3300010: Rainbow
     4300000: parts_battery_2
     4300002: parts_combo
     4300004: Cube_Dispenser
     4300006: monster
     4300008: Blackhole
+    4300010: Rainbow
     9500000: //RootNode
   materials:
     importMaterials: 1

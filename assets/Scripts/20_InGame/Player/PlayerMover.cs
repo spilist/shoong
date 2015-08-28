@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class PlayerMover : MonoBehaviour {
-	public SpawnManager spawnManager;
+  public SpawnManager spawnManager;
 
   public CubesCount cubesCount;
   public GameOver gameOver;
@@ -44,6 +44,7 @@ public class PlayerMover : MonoBehaviour {
   public ParticleSystem getSpecialEnergyEffect;
 	public ParticleSystem getComboParts;
   public ParticleSystem getBlackhole;
+  public ParticleSystem rainbowEffect;
 
   public float boosterSpeedUpAmount = 60;
   public float maxBoosterSpeed = 100;
@@ -92,12 +93,12 @@ public class PlayerMover : MonoBehaviour {
 	}
 
 	void FixedUpdate () {
-    if (isRebounding()) {
+    if (isRidingRainbowRoad) {
+      speed = rdm.ridingSpeed;
+    } else if (isRebounding()) {
       speed = reboundSpeed;
     } else if (unstoppable || exitedBlackhole || ridingMonster) {
       speed = strengthen_speed;
-    } else if (isRidingRainbowRoad) {
-      speed = rdm.ridingSpeed;
     } else {
 			speed = comboBar.moverspeed;
     }
@@ -110,7 +111,7 @@ public class PlayerMover : MonoBehaviour {
 			boosterspeed = 0;
 		}
 
-    if (isInsideBlackhole) {
+    if (isInsideBlackhole && !isUsingRainbow()) {
       Vector3 heading = blackhole.transform.position - transform.position;
       heading /= heading.magnitude;
       GetComponent<Rigidbody> ().AddForce(heading * blm.pullUser, ForceMode.VelocityChange);
@@ -128,7 +129,7 @@ public class PlayerMover : MonoBehaviour {
         gameOver.run();
       }
     } else if (other.tag == "Monster") {
-			if (unstoppable) {
+			if (unstoppable || isUsingRainbow()) {
         goodPartsEncounter(mover, (int)cubesWhenDestroy[other.tag]);
 			} else if (exitedBlackhole || other.gameObject.GetComponent<MonsterMover>().isWeak()) {
         startRiding(mover);
@@ -149,13 +150,16 @@ public class PlayerMover : MonoBehaviour {
       goodPartsEncounter(mover, cpm.getComboCount() * cpm.comboBonusScale);
     } else if (other.tag == "RainbowDonut") {
       rainbowPosition = other.transform.position;
-      goodPartsEncounter(mover, rdm.cubesPerRide);
+      goodPartsEncounter(mover, rdm.cubesPerRide, true);
     }
 	}
 
-  private void goodPartsEncounter(ObjectsMover mover, int howMany) {
+  public void goodPartsEncounter(ObjectsMover mover, int howMany, bool rainbow = false) {
     for (int e = 0; e < howMany; e++) {
-      Instantiate(particles, mover.transform.position, mover.transform.rotation);
+      GameObject cube = (GameObject) Instantiate(particles, mover.transform.position, mover.transform.rotation);
+      if (rainbow) {
+        cube.GetComponent<Renderer>().material.SetColor("_TintColor", rdm.rainbowColors[e]);
+      }
     }
     cubesCount.addCount(howMany);
     energyBar.getHealthbyParts(howMany);
@@ -225,6 +229,10 @@ public class PlayerMover : MonoBehaviour {
     if (reboundingByBlackhole) {
       reboundingByBlackhole = false;
       unstoppableSphere.SetActive(false);
+      if (isRidingRainbowRoad) {
+        isRidingRainbowRoad = false;
+        rainbowEffect.Stop();
+      }
     }
 
     if (exitedBlackhole) {
@@ -277,6 +285,16 @@ public class PlayerMover : MonoBehaviour {
     reboundingByBlackhole = true;
     isInsideBlackhole = false;
     processCollision(collision);
+
+    StopCoroutine("strengthen");
+    StartCoroutine("strengthen");
+  }
+
+  public void contactBlackholeWhileRainbow(Collision collision) {
+    reboundingByBlackhole = true;
+    isInsideBlackhole = false;
+    processCollision(collision);
+    rdm.destroyInstances();
 
     StopCoroutine("strengthen");
     StartCoroutine("strengthen");

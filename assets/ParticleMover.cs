@@ -2,6 +2,8 @@
 using System.Collections;
 
 public class ParticleMover : MonoBehaviour {
+	public float minScale = 2;
+	public float maxScale = 3;
 
 	public float speed=30;
 	public float time = 1;
@@ -12,10 +14,10 @@ public class ParticleMover : MonoBehaviour {
 	private bool timeelapsed = false;
 	private PartsCollector partsCollector;
 
-	void Start () {
-		random = Random.Range (0.5f, 1.5f);
-		randomscale = transform.localScale.x * random;
 
+	void Start () {
+		random = Random.Range (minScale, maxScale);
+		randomscale = transform.localScale.x * random;
 
 		transform.localScale = new Vector3(randomscale,randomscale,randomscale);
 
@@ -24,7 +26,7 @@ public class ParticleMover : MonoBehaviour {
 		Vector2 randomV = Random.insideUnitCircle;
 		randomV.Normalize();
 		direction = new Vector3(randomV.x, 0, randomV.y);
-		GetComponent<Rigidbody> ().velocity = direction * speed *random;
+		GetComponent<Rigidbody> ().velocity = direction * speed * random;
 
 		partsCollector = GameObject.Find("PartsCollector").GetComponent<PartsCollector>();
 	}
@@ -39,7 +41,6 @@ public class ParticleMover : MonoBehaviour {
 			Vector3 heading =  GameObject.FindWithTag("PartCollector").transform.position - transform.position;
 			heading /= heading.magnitude;
 			GetComponent<Rigidbody>().velocity = heading * GameObject.Find("Player").GetComponent<Rigidbody>().velocity.magnitude * 3;
-
 		}
 	}
 

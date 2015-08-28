@@ -8,6 +8,9 @@ public class RainbowDonutMover : ObjectsMover {
   override protected void initializeRest() {
     canBeMagnetized = false;
     rdm = (RainbowDonutsManager) objectsManager;
+    GetComponent<Renderer>().material.renderQueue += 1;
+    GetComponent<Renderer>().material.SetInt ("_ZTest", (int)UnityEngine.Rendering.CompareFunction.Always);
+
   }
 
 	override public void destroyObject() {

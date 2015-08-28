@@ -14,7 +14,6 @@ public class SpawnManager : MonoBehaviour {
 
     // spawn which doesn't need settings
     gameObject.GetComponent<BasicObjectsManager>().run();
-    gameObject.GetComponent<RainbowDonutsManager>().run();
 
     // spawn selected objects
     string mainObjectsString = PlayerPrefs.GetString("MainObjects").Trim();

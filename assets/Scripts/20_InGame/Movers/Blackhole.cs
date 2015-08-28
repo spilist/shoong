@@ -26,6 +26,9 @@ public class Blackhole : MonoBehaviour {
       if (player.isUnstoppable()) {
         player.contactBlackholeWhileUnstoppable(collision);
         Destroy(gameObject);
+      } else if (player.isUsingRainbow()) {
+        player.contactBlackholeWhileRainbow(collision);
+        Destroy(gameObject);
       } else {
         gameOver.run();
       }

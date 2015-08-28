@@ -153,6 +153,7 @@ public class GameController : MonoBehaviour {
     num_use_objects.Add("absorb_with_monster", 0);
     num_use_objects.Add("combopart_maxcombo", 0);
     num_use_objects.Add("cubedispenser_maxcombo", 0);
+    num_use_objects.Add("RainbowDonuts", 0);
 
     characters.Add("robotcogi", true);
     characters.Add("minimonster", false);
@@ -171,6 +172,7 @@ public class GameController : MonoBehaviour {
     objects.Add("Monster", false);
     objects.Add("CubeDispenser", false);
     objects.Add("ComboParts", false);
+    objects.Add("RainbowDonuts", false);
   }
 }
 

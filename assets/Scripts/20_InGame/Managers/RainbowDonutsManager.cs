@@ -2,6 +2,7 @@
 using System.Collections;
 
 public class RainbowDonutsManager : ObjectsManager {
+  public LayerMask blackholeGravityMask;
   public GameObject rainbowDonutPrefab;
   public GameObject rainbowRoadPrefab;
   public float tumble = 5;
@@ -12,9 +13,10 @@ public class RainbowDonutsManager : ObjectsManager {
   public int nextDonutRadius = 100;
   public float rotateDuring = 0.2f;
   public int rotateAngularSpeed = 50;
-  public float rideDuring = 0.8f;
   public int ridingSpeed = 200;
   public int cubesPerRide = 7;
+  public int reboundByBlackholeDuring = 2;
+  public Color[] rainbowColors;
 
   private int rideCount = 0;
   private GameObject rainbowDonut;
@@ -48,8 +50,11 @@ public class RainbowDonutsManager : ObjectsManager {
 
     if (rideCount < numRoadRides) {
       rideCount++;
+      player.rainbowEffect.Play();
+      player.rainbowEffect.GetComponent<AudioSource>().Play();
       StartCoroutine("rideRainbow");
     } else {
+      player.rainbowEffect.Stop();
       StartCoroutine("respawn");
     }
   }
@@ -57,13 +62,16 @@ public class RainbowDonutsManager : ObjectsManager {
   IEnumerator rideRainbow() {
     player.setRotateByRainbow(true);
 
-    Vector3 dir = getRandomDirection();
-
     rainbowRoad = ((GameObject) Instantiate(rainbowRoadPrefab)).GetComponent<LineRenderer>();
     origin = rainbowDonut.transform.position;
     rainbowRoad.SetPosition(0, origin);
-    destination = rainbowDonut.transform.position + dir * nextDonutRadius;
     drawingDistance = 0;
+
+    Vector3 dir;
+    do {
+      dir = getRandomDirection();
+      destination = rainbowDonut.transform.position + dir * nextDonutRadius;
+    } while(Physics.OverlapSphere(destination, 0, blackholeGravityMask).Length > 0);
 
     drawingRainbowRoad = true;
 
@@ -74,7 +82,7 @@ public class RainbowDonutsManager : ObjectsManager {
     player.setRidingRainbowRoad(true);
     erasingRainbowRoad = true;
 
-    yield return new WaitForSeconds(rideDuring);
+    yield return new WaitForSeconds((float)nextDonutRadius / (float)ridingSpeed);
 
     player.setRidingRainbowRoad(false);
   }
@@ -88,7 +96,8 @@ public class RainbowDonutsManager : ObjectsManager {
   void Update() {
     if (drawingRainbowRoad) {
       drawingDistance = Mathf.MoveTowards(drawingDistance, nextDonutRadius, Time.deltaTime * ridingSpeed);
-      rainbowRoad.SetPosition(1, drawingDistance * Vector3.Normalize(destination - origin) + origin);
+      Vector3 nextPos = drawingDistance * Vector3.Normalize(destination - origin) + origin;
+      rainbowRoad.SetPosition(1, nextPos);
 
       if (drawingDistance == nextDonutRadius) {
         drawingRainbowRoad = false;
@@ -104,5 +113,14 @@ public class RainbowDonutsManager : ObjectsManager {
 
   public bool moreRide() {
     return rideCount < numRoadRides;
+  }
+
+  public void destroyInstances() {
+    StopCoroutine("rideRainbow");
+    erasingRainbowRoad = false;
+    drawingRainbowRoad = false;
+    Destroy(rainbowRoad.gameObject);
+    Destroy(rainbowDonut);
+    StartCoroutine("respawn");
   }
 }

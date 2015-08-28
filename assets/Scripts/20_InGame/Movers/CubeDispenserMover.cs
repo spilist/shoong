@@ -21,9 +21,14 @@ public class CubeDispenserMover : ObjectsMover {
 
   override protected void doSomethingSpecial(Collision collision) {
     if (collision.collider.tag == "ContactCollider") {
-      player.GetComponent<PlayerMover>().contactCubeDispenser(transform, cdm.cubesPerContact, collision, cdm.reboundDuring);
-      cdm.contact();
-      reaction.Play();
+      PlayerMover playerMover = player.GetComponent<PlayerMover>();
+      if (playerMover.isUsingRainbow()) {
+        playerMover.goodPartsEncounter(this, cdm.cubesPerContact * 2);
+      } else {
+        playerMover.contactCubeDispenser(transform, cdm.cubesPerContact, collision, cdm.reboundDuring);
+        cdm.contact();
+        reaction.Play();
+      }
     }
   }
 
@@ -33,5 +38,9 @@ public class CubeDispenserMover : ObjectsMover {
 
   override public string getManager() {
     return "CubeDispenserManager";
+  }
+
+  override public void encounterPlayer() {
+    cdm.destroyInstances();
   }
 }
