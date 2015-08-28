@@ -28,6 +28,7 @@ public class CubeDispenserMover : ObjectsMover {
         playerMover.contactCubeDispenser(transform, cdm.cubesPerContact, collision, cdm.reboundDuring);
         cdm.contact();
         reaction.Play();
+		reaction.GetComponent<AudioSource>().Play();
       }
     }
   }

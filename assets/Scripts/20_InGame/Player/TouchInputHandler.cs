@@ -35,7 +35,7 @@ public class TouchInputHandler : MonoBehaviour
 			direction = heading / heading.magnitude;
 
 			player.shootBooster(direction);
-			Instantiate(touchEffect, worldTouchPosition, Quaternion.identity);
+			Instantiate(touchEffect, worldTouchPosition, Quaternion.Euler(90, 0, 0));
 		}
 	}
 

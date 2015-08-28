@@ -208,6 +208,7 @@ public class PlayerMover : MonoBehaviour {
     if (exitedBlackhole) {
       unstoppableSphere.SetActive(true);
       getBlackhole.Play();
+	  getBlackhole.GetComponent<AudioSource>().Play();
     }
 
     if (ridingMonster) {
@@ -255,6 +256,7 @@ public class PlayerMover : MonoBehaviour {
     ridingMonster = true;
     monm.monsterFilter.SetActive(true);
     ridingEffect.Play();
+	ridingEffect.GetComponent<AudioSource>().Play();
     Destroy(obMover.gameObject);
     monm.stopWarning();
     StopCoroutine("strengthen");
