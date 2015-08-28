@@ -23,7 +23,7 @@ public class CubeDispenserMover : ObjectsMover {
     if (collision.collider.tag == "ContactCollider") {
       PlayerMover playerMover = player.GetComponent<PlayerMover>();
       if (playerMover.isUsingRainbow()) {
-        playerMover.goodPartsEncounter(this, cdm.cubesPerContact * 2);
+        playerMover.goodPartsEncounter(this, cdm.cubesPerContact * 4);
       } else {
         playerMover.contactCubeDispenser(transform, cdm.cubesPerContact, collision, cdm.reboundDuring);
         cdm.contact();

@@ -14,6 +14,8 @@ public class CharactersMenu : Draggable {
   public int selectedOffset_y = 15;
   public int selectedOffset_z = 50;
   public int scaleChangingSpeed = 50;
+  public Text numYourCharacters;
+  public Text numAllCharacters;
 
   public AudioClip characterSelectionSound;
   public AudioClip characterBuySound;
@@ -24,12 +26,18 @@ public class CharactersMenu : Draggable {
     goldenCubeYouHave.SetActive(true);
 
     Vector3 prevSelected = transform.Find("Characters/" + PlayerPrefs.GetString("SelectedCharacter")).transform.localPosition;
-    transform.Find("Characters").transform.localPosition = new Vector3(prevSelected.x, 0, 0);
+    transform.Find("Characters").transform.localPosition = new Vector3(prevSelected.x, -20, 0);
 
-    int count = 0;
+    int charactersCount = 0;
+    int yourCharactersCount = 0;
     foreach (Transform character in transform.Find("Characters").transform) {
-      character.transform.localPosition = new Vector3(-selectWidth * 2 * count++, 0, 0);
+      character.transform.localPosition = new Vector3(-selectWidth * 2 * charactersCount++, 0, 0);
+
+      if ((bool)GameController.control.characters[character.name]) yourCharactersCount++;
     }
+
+    numYourCharacters.text = yourCharactersCount.ToString();
+    numAllCharacters.text = "/" + charactersCount.ToString();
   }
 
   public bool isJustOpened() {

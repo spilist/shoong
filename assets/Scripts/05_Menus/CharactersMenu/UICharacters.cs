@@ -87,6 +87,7 @@ public class UICharacters : MonoBehaviour {
     charactersMenu.selectButton.gameObject.SetActive(true);
     charactersMenu.selectButton.setCharacter(name);
     charactersMenu.buyButton.gameObject.SetActive(false);
+    charactersMenu.numYourCharacters.text = (int.Parse(charactersMenu.numYourCharacters.text) + 1).ToString();
     GetComponent<Renderer>().sharedMaterial = originalMaterial;
 
     AudioSource.PlayClipAtPoint(charactersMenu.characterBuySound, transform.position);
