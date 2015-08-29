@@ -18,8 +18,7 @@ public class ObstaclesMover : ObjectsMover {
   }
 
   protected override Vector3 getDirection() {
-    Vector3 dir = player.transform.position - transform.position;
-    return dir / dir.magnitude;
+    return obm.getDirection();
   }
 
   protected override int strength() {

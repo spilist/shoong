@@ -15,7 +15,6 @@ public class RainbowDonutsManager : ObjectsManager {
   public int rotateAngularSpeed = 50;
   public int ridingSpeed = 200;
   public int cubesPerRide = 7;
-  public int reboundByBlackholeDuring = 2;
   public Color[] rainbowColors;
 
   private int rideCount = 0;

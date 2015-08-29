@@ -25,9 +25,6 @@ public class CharactersMenu : Draggable {
     cubeYouHave.SetActive(true);
     goldenCubeYouHave.SetActive(true);
 
-    Vector3 prevSelected = transform.Find("Characters/" + PlayerPrefs.GetString("SelectedCharacter")).transform.localPosition;
-    transform.Find("Characters").transform.localPosition = new Vector3(prevSelected.x, -20, 0);
-
     int charactersCount = 0;
     int yourCharactersCount = 0;
     foreach (Transform character in transform.Find("Characters").transform) {
@@ -38,6 +35,9 @@ public class CharactersMenu : Draggable {
 
     numYourCharacters.text = yourCharactersCount.ToString();
     numAllCharacters.text = "/" + charactersCount.ToString();
+
+    Vector3 prevSelected = transform.Find("Characters/" + PlayerPrefs.GetString("SelectedCharacter")).transform.localPosition;
+    transform.Find("Characters").transform.localPosition = new Vector3(prevSelected.x, -20, 0);
   }
 
   public bool isJustOpened() {
