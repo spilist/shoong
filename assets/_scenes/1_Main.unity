@@ -37703,12 +37703,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obstacles:
   - {fileID: 195472, guid: cfdf45a8ca588407d84475bccdb83b45, type: 2}
-  - {fileID: 119438, guid: 3d3b1ff59a5524adaa196a2a9a5dd4f8, type: 2}
-  - {fileID: 138192, guid: 39ae9325fc1bd4d13a70c089698899bd, type: 2}
-  - {fileID: 121254, guid: 2679d9d5cfcac4d17a30ffbf890b119b, type: 2}
-  - {fileID: 138142, guid: 5282d75336a9344948a3850d724a40a3, type: 2}
-  - {fileID: 155078, guid: e6c20ed1857a7484f93bdc922b3cf045, type: 2}
-  speed: 120
+  speed: 320
   tumble: 10
   minSpawnInterval: 0
   maxSpawnInterval: 8
@@ -37719,7 +37714,8 @@ MonoBehaviour:
   lineDistance: 1000
   fallingStarWarningLinePrefab: {fileID: 125686, guid: d2657da8f1ab74d79b03574cca181388,
     type: 2}
-  fallingStarSoundWarningPrefab: {fileID: 0}
+  fallingStarSoundWarningPrefab: {fileID: 122456, guid: 32ffe4a364250467bba5659a4276cfd9,
+    type: 2}
   obsIndicatorPrefab: {fileID: 144306, guid: 825df36890cc14b58a88c21930d89f0d, type: 2}
 --- !u!114 &1991538108
 MonoBehaviour:

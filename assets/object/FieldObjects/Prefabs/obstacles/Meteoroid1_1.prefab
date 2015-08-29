@@ -17,6 +17,7 @@ GameObject:
   - 122: {fileID: 12201466}
   - 114: {fileID: 11436260}
   - 82: {fileID: 8204370}
+  - 96: {fileID: 9695872}
   m_Layer: 0
   m_Name: Meteoroid1_1
   m_TagString: Obstacle
@@ -151,6 +152,51 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+--- !u!96 &9695872
+TrailRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 195472}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 59557077aeebc4708aef0f9d2e141f25, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 1
+  m_ReflectionProbeUsage: 1
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_ImportantGI: 0
+  m_AutoUVMaxDistance: .5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_Time: .300000012
+  m_StartWidth: 3
+  m_EndWidth: 2
+  m_Colors:
+    m_Color[0]:
+      serializedVersion: 2
+      rgba: 4294967295
+    m_Color[1]:
+      serializedVersion: 2
+      rgba: 4294967295
+    m_Color[2]:
+      serializedVersion: 2
+      rgba: 2147483647
+    m_Color[3]:
+      serializedVersion: 2
+      rgba: 1207959551
+    m_Color[4]:
+      serializedVersion: 2
+      rgba: 16777215
+  m_MinVertexDistance: .100000001
+  m_Autodestruct: 0
 --- !u!114 &11436260
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -202,7 +248,7 @@ ParticleSystem:
   InitialModule:
     enabled: 1
     startLifetime:
-      scalar: .600000024
+      scalar: .300000012
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -235,12 +281,12 @@ ParticleSystem:
         m_PostInfinity: 2
       minMaxState: 0
     startSpeed:
-      scalar: 4
+      scalar: 0
       maxCurve:
         serializedVersion: 2
         m_Curve:
         - time: 0
-          value: 1
+          value: 0
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -250,7 +296,7 @@ ParticleSystem:
         serializedVersion: 2
         m_Curve:
         - time: 0
-          value: .5
+          value: 0
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -346,10 +392,10 @@ ParticleSystem:
         m_NumAlphaKeys: 2
       minColor:
         serializedVersion: 2
-        rgba: 4278232319
+        rgba: 4294942720
       maxColor:
         serializedVersion: 2
-        rgba: 4292480511
+        rgba: 4280159743
       minMaxState: 2
     startSize:
       scalar: 3
@@ -408,8 +454,8 @@ ParticleSystem:
         m_PostInfinity: 2
       minMaxState: 0
     gravityModifier: 0
-    inheritVelocity: -1.5
-    maxNumParticles: 100
+    inheritVelocity: 0
+    maxNumParticles: 200
   ShapeModule:
     serializedVersion: 2
     enabled: 1
@@ -1322,7 +1368,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: InitialModule.startColor.maxColor.rgba
-      value: 4292480511
+      value: 4280159743
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: moveWithTransform
@@ -1334,7 +1380,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: InitialModule.maxNumParticles
-      value: 100
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_CastShadows
@@ -1350,11 +1396,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: InitialModule.startLifetime.scalar
-      value: .600000024
+      value: .300000012
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: InitialModule.startSpeed.scalar
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: InitialModule.startSpeed.maxCurve.m_Curve.Array.data[1].time
@@ -1366,7 +1412,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: InitialModule.startSpeed.minCurve.m_Curve.Array.data[0].value
-      value: .5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: InitialModule.startSpeed.minCurve.m_Curve.Array.data[1].time
@@ -1402,7 +1448,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: InitialModule.inheritVelocity
-      value: -1.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: ShapeModule.radius
@@ -1434,7 +1480,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: InitialModule.startColor.minColor.rgba
-      value: 4278232319
+      value: 4294942720
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: ColorModule.enabled
@@ -1463,7 +1509,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
+      objectReference: {fileID: 2100000, guid: 59557077aeebc4708aef0f9d2e141f25, type: 2}
     - target: {fileID: 0}
       propertyPath: SizeModule.enabled
       value: 1
@@ -1590,6 +1636,34 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_ReflectionProbeUsage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Time
+      value: .300000012
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_StartWidth
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_EndWidth
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Colors.m_Color[3].rgba
+      value: 1207959551
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Colors.m_Color[2].rgba
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: InitialModule.startSpeed.maxCurve.m_Curve.Array.data[0].value
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
