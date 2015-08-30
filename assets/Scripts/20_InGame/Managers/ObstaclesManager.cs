@@ -22,7 +22,6 @@ public class ObstaclesManager : MonoBehaviour {
   private Transform playerTransform;
   private Vector3 obstacleDirection;
   private Vector3 destination;
-  private bool isDrawing = false;
   private LineRenderer inner;
   private LineRenderer outer;
 
@@ -59,9 +58,9 @@ public class ObstaclesManager : MonoBehaviour {
 
       Instantiate (fallingStarSoundWarningPrefab);
 
-      // GameObject obsIndicator = (GameObject) Instantiate (obsIndicatorPrefab);
-      // obsIndicator.transform.SetParent(UICanvas.transform, false);
-      // obsIndicator.GetComponent<ObstacleIndicator>().run(screenPos, warnPlayerDuring);
+      GameObject obsIndicator = (GameObject) Instantiate (obsIndicatorPrefab);
+      obsIndicator.transform.SetParent(UICanvas.transform, false);
+      obsIndicator.GetComponent<ObstacleIndicator>().run(spawnPos, warnPlayerDuring);
 
       yield return new WaitForSeconds(warnPlayerDuring);
 
@@ -82,11 +81,4 @@ public class ObstaclesManager : MonoBehaviour {
   public Vector3 getDirection() {
     return obstacleDirection;
   }
-
-  // void Update() {
-  //   if (isDrawing) {
-  //     inner.SetPosition(1, destination);
-  //     outer.SetPosition(1, destination);
-  //   }
-  // }
 }

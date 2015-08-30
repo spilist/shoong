@@ -34,16 +34,14 @@ public class ObstacleIndicator : MonoBehaviour {
   public void run(Vector2 pos, float during) {
     isWarning = true;
     warnPlayerDuring = during;
-    Vector3 playerPosition = GameObject.Find("Player").transform.position;
-    Vector3 spawnWorld = new Vector3(pos.x + playerPosition.x, playerPosition.y, pos.y + playerPosition.z);
-    spawnPosition = Camera.main.WorldToViewportPoint(spawnWorld);
+    spawnPosition = Camera.main.WorldToViewportPoint(pos);
   }
 
   void showWarning() {
     // Player와의 각도를 얻음
     Vector2 direction = new Vector2(spawnPosition.x - 0.5f, spawnPosition.y - 0.5f);
     float angle = Mathf.Atan2 (direction.x, direction.y);
-    transform.localEulerAngles = new Vector3(0, 0, -angle * Mathf.Rad2Deg);
+    // transform.localEulerAngles = new Vector3(0, 0, -angle * Mathf.Rad2Deg);
 
     direction.x = Mathf.Sin (angle);
     direction.y = Mathf.Cos (angle);

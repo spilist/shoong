@@ -4,119 +4,79 @@ using System.Collections;
 
 public class ComboBar : MonoBehaviour {
   public Image inner;
-  public Text[] comboRatio;
+  public Image innerBlinking;
 	public ParticleSystem getEnergy;
-	public ParticleSystem energyDestroy;
   public GameObject player;
 
   public float tintAmount = 0.02f;
 	public float speedraiseamount;
 
   private int comboCount = 0;
-	private int fill = 1;
-  private Color trailTintColor;
-	private Color comboBarTintColor;
-	private IEnumerator coroutine;
-	private Color energyDestroyColor;
+  private Color comboBarTintColor;
+	private Color comboBarTintColor_empty;
+  private Color comboBarTintColor_full;
+  public float comboBarTintColorEmptyAlpha = 0.3f;
 
-	public float blinkingSeconds = 0.4f;
-	public float moverspeed;
+  public float loseAfter = 1.9f;
+  public float showDurationStart = 0.45f;
+	public float showDurationDecrease = 0.1f;
+  public float emptyDurationStart = 0.25f;
+  public float emptyDurationDecrease = 0.05f;
 
-	void Start () {
+  public float originalSpeed = 45;
+  public int emissionRate = 100;
+  public Color[] comboBarColors;
+
+  private float moverspeed;
+
+	void OnEnable () {
 		comboBarTintColor = inner.material.GetColor ("_TintColor");
-		energyDestroy.emissionRate = 20;
-    coroutine = BlinkCombobar ();
+		comboBarTintColor_empty = new Color(comboBarTintColor.r, comboBarTintColor.g, comboBarTintColor.b, comboBarTintColorEmptyAlpha);
+    comboBarTintColor_full = new Color(comboBarTintColor.r, comboBarTintColor.g, comboBarTintColor.b, 1);
+
+    moverspeed = originalSpeed;
 	}
 
-	IEnumerator BlinkCombobar() {
-		while (true) {
+  IEnumerator loseByTime() {
+    float duration = loseAfter;
+    float showDuring = showDurationStart;
+    float emptyDuring = emptyDurationStart;
+    while (duration > 0) {
+      inner.material.SetColor ("_TintColor", comboBarTintColor_full);
+      yield return new WaitForSeconds (showDuring);
 
-			comboBarTintColor.a = 0.3f;
-			inner.material.SetColor ("_TintColor", comboBarTintColor);
+      inner.material.SetColor ("_TintColor", comboBarTintColor_empty);
+      yield return new WaitForSeconds (emptyDuring);
 
-			yield return new WaitForSeconds (0.8f - blinkingSeconds);
+      duration -= showDuring + emptyDuring;
 
-			comboBarTintColor.a = 1.0f;
-			inner.material.SetColor ("_TintColor", comboBarTintColor);
+      showDuring -= showDurationDecrease;
+      emptyDuring -= emptyDurationDecrease;
+    }
 
-			yield return new WaitForSeconds (blinkingSeconds);
-		}
-	}
+    comboCount = 0;
+    inner.fillAmount = 0;
+    getEnergy.emissionRate = 0;
+    moverspeed = originalSpeed;
+  }
 
   public void addCombo() {
     if (comboCount < 4) {
       comboCount++;
-			getEnergy.emissionRate += 100;
-			comboBarTintColor = inner.material.GetColor ("_TintColor");
-				comboBarTintColor.a = 1.0f;
-				inner.material.SetColor("_TintColor",comboBarTintColor);
-
-      hideComboRatios();
-      comboRatio[comboCount-1].enabled = true;
-      comboRatio[comboCount-1].transform.GetChild(0).GetComponent<ParticleSystem>().Play();
-
-			energyDestroy.emissionRate += 10;
-			moverspeed += speedraiseamount;
-
-			//energyDestroyColor = energyDestroy.GetComponent<ParticleSystem>().startColor;
-			//	energyDestroyColor.g -= 0.2f;
-			//energyDestroy.GetComponent<ParticleSystem>().startColor= energyDestroyColor;
-
-      //trailTintColor = player.GetComponent<TrailRenderer>().material.GetColor("_TintColor");
-      //trailTintColor.a += tintAmount;
-      //player.GetComponent<TrailRenderer>().material.SetColor("_TintColor", trailTintColor);
-
+      inner.fillAmount += 0.25f;
+      inner.material.SetColor("_TintColor",comboBarTintColor_full);
+      getEnergy.emissionRate += emissionRate;
+      moverspeed += speedraiseamount;
     }
-    inner.fillAmount += 0.25f;
-		fill = 1;
-		StopCoroutine(coroutine);
-		comboBarTintColor.a = 1.0f;
-		inner.material.SetColor("_TintColor",comboBarTintColor);
-  }
-
-  public void loseByShoot() {
-    if (comboCount > 0) {
-			if (fill == 1) {
-				fill = 0;
-				StartCoroutine(coroutine);
-			} else {
-				fill = 1;
-				inner.fillAmount = 0f;
-				hideComboRatios ();
-				StopCoroutine(coroutine);
-				comboBarTintColor.a = 1.0f;
-				inner.material.SetColor("_TintColor",comboBarTintColor);
-				if (comboCount > 0) {
-					//comboCount--;
-					comboCount = 0;
-					getEnergy.emissionRate = 0;
-					energyDestroy.emissionRate = 20;
-					moverspeed = 45f;
-
-					//energyDestroyColor = energyDestroy.GetComponent<ParticleSystem>().startColor;
-					//energyDestroyColor.g = 0.8f;
-					//energyDestroy.GetComponent<ParticleSystem>().startColor= energyDestroyColor;
-
-
-					//trailTintColor = player.GetComponent<TrailRenderer> ().material.GetColor ("_TintColor");
-					//trailTintColor.a = 0.14f;
-					//player.GetComponent<TrailRenderer> ().material.SetColor ("_TintColor", trailTintColor);
-
-					//if (comboCount != 0) {
-					//comboRatio[comboCount-1].enabled = true;
-					//}
-				}
-			}
-		}
+    StopCoroutine("loseByTime");
+    StartCoroutine("loseByTime");
   }
 
   public int getComboRatio() {
     return (comboCount + 1);
   }
 
-  private void hideComboRatios() {
-    for (int i = 0; i < comboRatio.Length; i++) {
-      comboRatio[i].enabled = false;
-    }
+  public float getSpeed() {
+    return moverspeed;
   }
 }

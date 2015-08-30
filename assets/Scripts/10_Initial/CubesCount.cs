@@ -16,7 +16,7 @@ public class CubesCount : MonoBehaviour {
     count += cubesGet;
     GetComponent<Text>().text = count.ToString();
     GameObject partsGetInstance = Instantiate(howManyPartsGet);
-    partsGetInstance.transform.SetParent(transform.parent.transform, false);
+    partsGetInstance.transform.SetParent(transform, false);
     partsGetInstance.GetComponent<HowManyPartsGet>().run(cubesGet);
     partsCollector.increaseSize(cubesGet);
   }

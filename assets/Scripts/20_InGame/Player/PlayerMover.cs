@@ -14,7 +14,7 @@ public class PlayerMover : MonoBehaviour {
   public int cubesWhenDestroyMonster = 50;
   private Hashtable cubesWhenDestroy;
 
-  public float speed;
+  private float speed;
 	private float boosterspeed;
   public float tumble;
   private Vector3 direction;
@@ -74,17 +74,18 @@ public class PlayerMover : MonoBehaviour {
 
     originalMesh = GetComponent<MeshFilter>().sharedMesh;
     originalMaterial = GetComponent<Renderer>().sharedMaterial;
+    energyBar = transform.Find("Bars Canvas/EnergyBar").GetComponent<EnergyBar>();
+    comboBar = transform.Find("Bars Canvas").GetComponent<ComboBar>();
+    stBar = transform.Find("Bars Canvas/StrengthenTimeBar").GetComponent<StrengthenTimeBar>();
 
     rotatePlayerBody();
 
     Vector2 randomV = Random.insideUnitCircle;
     randomV.Normalize();
     direction = new Vector3(randomV.x, 0, randomV.y);
+    speed = comboBar.getSpeed();
     GetComponent<Rigidbody> ().velocity = direction * speed;
 
-    energyBar = transform.Find("Bars Canvas/EnergyBar").GetComponent<EnergyBar>();
-    comboBar = transform.Find("Bars Canvas").GetComponent<ComboBar>();
-    stBar = transform.Find("Bars Canvas/StrengthenTimeBar").GetComponent<StrengthenTimeBar>();
 
     cubesWhenDestroy = new Hashtable();
     cubesWhenDestroy.Add("Obstacle_big", cubesWhenDestroyBigObstacle);
@@ -100,7 +101,7 @@ public class PlayerMover : MonoBehaviour {
     } else if (unstoppable || exitedBlackhole || ridingMonster) {
       speed = strengthen_speed;
     } else {
-			speed = comboBar.moverspeed;
+			speed = comboBar.getSpeed();
     }
 
     speed += boosterspeed;
@@ -345,7 +346,6 @@ public class PlayerMover : MonoBehaviour {
   public void shootBooster(Vector3 dir){
     if (!unstoppable) {
       energyBar.loseByShoot();
-      comboBar.loseByShoot();
     }
 
     rotatePlayerBody();

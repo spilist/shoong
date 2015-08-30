@@ -20,6 +20,9 @@ public class EnergyBar : MonoBehaviour {
   public float loseRate = 1;
   public GameOver gameOver;
   public PlayerMover player;
+  public Text energyCurrent;
+  public GameObject loseEnergy;
+  public GameObject getEnergy;
 
   private Color color_healthy;
   private Color color_danger;
@@ -46,6 +49,8 @@ public class EnergyBar : MonoBehaviour {
       } else {
         image.color = color_danger;
       }
+
+      energyCurrent.text = (image.fillAmount * 100).ToString("0");
 
       if (image.fillAmount == 0) {
         gameOver.run();
@@ -100,6 +105,15 @@ public class EnergyBar : MonoBehaviour {
     changeTo = image.fillAmount + amount / 100f;
     changeTo = Mathf.Clamp(changeTo, 0, 1);
     changeRate = Time.deltaTime * rate;
+
+    GameObject showEnergyInstance;
+    if (amount > 0) {
+      showEnergyInstance = (GameObject) Instantiate(getEnergy);
+    } else {
+      showEnergyInstance = (GameObject) Instantiate(loseEnergy);
+    }
+      showEnergyInstance.transform.SetParent(transform.parent.transform, false);
+      showEnergyInstance.GetComponent<ShowEnergyChange>().run(amount);
   }
 
   public void getHealthbyParts() {
@@ -107,7 +121,7 @@ public class EnergyBar : MonoBehaviour {
   }
 
   public void getHealthbyParts(int combo) {
-   changeHealth(getAmountbyParts * combo, getRate * combo);
+    changeHealth(getAmountbyParts * combo, getRate * combo);
   }
 
   public void loseByShoot() {
