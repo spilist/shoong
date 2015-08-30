@@ -25,6 +25,7 @@ public class GameController : MonoBehaviour {
 
   public bool openAllCharacter = false;
   public bool resetAll = false;
+  public int resetCube = 100000;
   public int resetGoldenCube = 5000;
 
 	void OnEnable () {
@@ -111,12 +112,24 @@ public class GameController : MonoBehaviour {
     PlayerPrefs.SetString("MainObjects", "");
     PlayerPrefs.SetString("SubObjects", "");
 
+    PlayerPrefs.SetString("robotcogi", "로봇코기");
+    PlayerPrefs.SetString("minimonster", "미니몬");
+    PlayerPrefs.SetString("vacuumrobot", "청소로봇");
+    PlayerPrefs.SetString("soju", "쐬주");
+    PlayerPrefs.SetString("leonplant", "레옹화분");
+    PlayerPrefs.SetString("deathstar", "데쓰스타");
+    PlayerPrefs.SetString("crab", "오염된 게");
+    PlayerPrefs.SetString("chameleon", "모로고로");
+    PlayerPrefs.SetString("cat", "슈퍼캣");
+    PlayerPrefs.SetString("butterfly", "나비");
+    PlayerPrefs.SetString("bender", "벤더");
+
     numPlays = 0;
     numBoosters = 0;
 
-    cubes.Add("now", 0);
+    cubes.Add("now", resetCube);
     cubes.Add("used", 0);
-    cubes.Add("total", 0);
+    cubes.Add("total", resetCube);
     cubes.Add("highscore", 0);
 
     cubes_by.Add("part", 0);

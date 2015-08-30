@@ -134,6 +134,10 @@ Material:
         first:
           name: _Metallic
         second: 0
+      data:
+        first:
+          name: _Outline
+        second: 4.42000008
     m_Colors:
       data:
         first:
@@ -142,4 +146,8 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: .231239185, g: .542284012, b: .669117689, a: 1}
+        second: {r: .0256812125, g: .503635585, b: .698529422, a: 1}
+      data:
+        first:
+          name: _OutlineColor
+        second: {r: 1, g: .0661764741, b: .0661764741, a: 1}
