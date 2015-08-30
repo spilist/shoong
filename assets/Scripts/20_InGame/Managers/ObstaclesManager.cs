@@ -58,9 +58,9 @@ public class ObstaclesManager : MonoBehaviour {
 
       Instantiate (fallingStarSoundWarningPrefab);
 
-      GameObject obsIndicator = (GameObject) Instantiate (obsIndicatorPrefab);
-      obsIndicator.transform.SetParent(UICanvas.transform, false);
-      obsIndicator.GetComponent<ObstacleIndicator>().run(spawnPos, warnPlayerDuring);
+      // GameObject obsIndicator = (GameObject) Instantiate (obsIndicatorPrefab);
+      // obsIndicator.transform.SetParent(UICanvas.transform, false);
+      // obsIndicator.GetComponent<ObstacleIndicator>().run(spawnPos, warnPlayerDuring);
 
       yield return new WaitForSeconds(warnPlayerDuring);
 

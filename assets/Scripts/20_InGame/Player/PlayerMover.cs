@@ -74,9 +74,9 @@ public class PlayerMover : MonoBehaviour {
 
     originalMesh = GetComponent<MeshFilter>().sharedMesh;
     originalMaterial = GetComponent<Renderer>().sharedMaterial;
-    energyBar = transform.Find("Bars Canvas/EnergyBar").GetComponent<EnergyBar>();
-    comboBar = transform.Find("Bars Canvas").GetComponent<ComboBar>();
-    stBar = transform.Find("Bars Canvas/StrengthenTimeBar").GetComponent<StrengthenTimeBar>();
+    energyBar = transform.parent.Find("Bars Canvas/EnergyBar").GetComponent<EnergyBar>();
+    comboBar = transform.parent.Find("Bars Canvas").GetComponent<ComboBar>();
+    stBar = transform.parent.Find("Bars Canvas/StrengthenTimeBar").GetComponent<StrengthenTimeBar>();
 
     rotatePlayerBody();
 

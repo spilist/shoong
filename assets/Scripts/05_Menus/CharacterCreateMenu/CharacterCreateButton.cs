@@ -84,7 +84,7 @@ public class CharacterCreateButton : MenusBehavior {
 
       if (interval >= 0.1f) interval -= 0.05f;
 
-      if (duration < 0.5f) {
+      if (newCharacter && duration < 0.5f) {
         congraturation.gameObject.SetActive(true);
       }
     }

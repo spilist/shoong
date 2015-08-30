@@ -30,6 +30,8 @@ TagManager:
   - UIObjects
   - PatternPart
   - RainbowDonut
+  - Blachole
+  - CharacterCreateMenu
   layers:
   - Default
   - TransparentFX

@@ -90,6 +90,7 @@ public class ObjectsMover : MonoBehaviour {
   }
 
   virtual public void destroyObject() {
+    Instantiate(((BasicObjectsManager)objectsManager).partsDestroy, transform.position, transform.rotation);
     Destroy(gameObject);
   }
 

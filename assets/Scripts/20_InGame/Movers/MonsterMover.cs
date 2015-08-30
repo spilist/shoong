@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class MonsterMover : ObjectsMover {
@@ -21,6 +22,8 @@ public class MonsterMover : ObjectsMover {
     speed_chase = monm.speed_chase;
     speed_runaway = monm.speed_runaway;
     speed_weaken = monm.speed_weaken;
+    monm.indicator.startIndicate();
+    monm.indicator.GetComponent<Image>().color = Color.red;
     StartCoroutine("weakened");
   }
 
@@ -42,9 +45,10 @@ public class MonsterMover : ObjectsMover {
     weak = true;
     monm.stopWarning();
     weakenAura.Play();
-	weakenAura.GetComponent<AudioSource> ().Play ();
+    weakenAura.GetComponent<AudioSource> ().Play ();
     aura.Stop();
     GetComponent<Renderer>().material.SetColor("_OutlineColor", monm.weakenedOutlineColor);
+    monm.indicator.GetComponent<Image>().color = monm.weakenedOutlineColor;
 
     yield return new WaitForSeconds(monm.weakenDuration);
     destroyObject();
@@ -88,6 +92,7 @@ public class MonsterMover : ObjectsMover {
 
   public override void destroyObject() {
     Destroy(gameObject);
+    monm.indicator.stopIndicate();
     monm.stopWarning();
     Instantiate(monm.destroyEffect, transform.position, transform.rotation);
     monm.run();
@@ -95,6 +100,7 @@ public class MonsterMover : ObjectsMover {
 
   override public void encounterPlayer() {
     Destroy(gameObject);
+    monm.indicator.stopIndicate();
     monm.stopWarning();
     Instantiate(monm.destroyEffect, transform.position, transform.rotation);
     monm.run();

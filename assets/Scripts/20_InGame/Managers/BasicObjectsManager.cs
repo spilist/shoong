@@ -4,6 +4,7 @@ using System.Collections;
 public class BasicObjectsManager : ObjectsManager {
   public GameObject[] parts;
   public int max_parts = 50;
+  public GameObject partsDestroy;
 
   public GameObject[] obstacles_big;
   public int max_obstacles = 5;

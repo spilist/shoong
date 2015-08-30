@@ -25,7 +25,7 @@ public class SpecialPartIndicator : MonoBehaviour {
 	}
 
   void showIndicate() {
-    GameObject target = GameObject.FindWithTag("SpecialPart");
+    GameObject target = GameObject.FindWithTag("Monster");
     if (target == null) return;
 
     Vector2 targetPos = Camera.main.WorldToViewportPoint(target.transform.position);

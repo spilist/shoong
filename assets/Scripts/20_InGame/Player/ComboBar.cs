@@ -58,6 +58,7 @@ public class ComboBar : MonoBehaviour {
     inner.fillAmount = 0;
     getEnergy.emissionRate = 0;
     moverspeed = originalSpeed;
+    changeTrail();
   }
 
   public void addCombo() {
@@ -67,6 +68,7 @@ public class ComboBar : MonoBehaviour {
       inner.material.SetColor("_TintColor",comboBarTintColor_full);
       getEnergy.emissionRate += emissionRate;
       moverspeed += speedraiseamount;
+      changeTrail();
     }
     StopCoroutine("loseByTime");
     StartCoroutine("loseByTime");
@@ -78,5 +80,11 @@ public class ComboBar : MonoBehaviour {
 
   public float getSpeed() {
     return moverspeed;
+  }
+
+  void changeTrail() {
+    TrailRenderer trail = player.GetComponent<TrailRenderer>();
+    trail.startWidth = 2 + comboCount;
+    trail.endWidth = 1 + comboCount * 0.5f;
   }
 }
