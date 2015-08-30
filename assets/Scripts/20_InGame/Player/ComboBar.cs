@@ -49,9 +49,13 @@ public class ComboBar : MonoBehaviour {
       yield return new WaitForSeconds (emptyDuring);
 
       duration -= showDuring + emptyDuring;
+			Debug.Log (duration);
 
-      showDuring -= showDurationDecrease;
-      emptyDuring -= emptyDurationDecrease;
+
+      if(showDuring>1f) showDuring -= showDurationDecrease;
+			if(emptyDuring>0.5f) emptyDuring -= emptyDurationDecrease;
+			Debug.Log (showDuring);
+			Debug.Log (emptyDuring);
     }
 
     comboCount = 0;

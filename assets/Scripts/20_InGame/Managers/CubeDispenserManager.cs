@@ -9,6 +9,7 @@ public class CubeDispenserManager : ObjectsManager {
   public float destroyAfterSeconds = 4;
   public int cubesPerContact = 10;
   public float reboundDuring = 0.2f;
+	public ParticleSystem destroy;
 
   private GameObject cubeDispenser;
   private int comboCount = 0;
@@ -50,6 +51,7 @@ public class CubeDispenserManager : ObjectsManager {
   IEnumerator respawn() {
     if (!respawnRunning) {
       respawnRunning = true;
+			Instantiate (destroy, cubeDispenser.transform.position, cubeDispenser.transform.rotation);
       // particle instantiate
       Destroy(cubeDispenser);
       if (!notContactYet) {

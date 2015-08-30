@@ -9830,7 +9830,7 @@ MonoBehaviour:
   numPlays: 0
   numBoosters: 0
   openAllCharacter: 0
-  resetAll: 1
+  resetAll: 0
   resetCube: 100000
   resetGoldenCube: 20000
 --- !u!4 &339434085
@@ -16906,7 +16906,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: 7cd975d0952444c83949866f3999aacd, type: 2}
-  m_Color: {r: .227941155, g: .227941155, b: .227941155, a: .527999997}
+  m_Color: {r: .110294104, g: .110294104, b: .110294104, a: .421999991}
   m_Sprite: {fileID: 21300000, guid: 6987849e2b4f041bdb2e9a1df519a509, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
@@ -22690,10 +22690,10 @@ MonoBehaviour:
   tintAmount: .0199999996
   speedraiseamount: 7
   comboBarTintColorEmptyAlpha: .300000012
-  loseAfter: 1.89999998
-  showDurationStart: .449999988
+  loseAfter: 1.20000005
+  showDurationStart: .349999994
   showDurationDecrease: .100000001
-  emptyDurationStart: .25
+  emptyDurationStart: .150000006
   emptyDurationDecrease: .0500000007
   originalSpeed: 45
   emissionRate: 100
@@ -30790,7 +30790,7 @@ MonoBehaviour:
   autoDecreaseRate: .100000001
   getAmountbyParts: 4
   getRate: 2
-  shootAmount: -3
+  shootAmount: -5
   loseRate: 2
   gameOver: {fileID: 868146742}
   player: {fileID: 91418583}
@@ -37547,6 +37547,7 @@ MonoBehaviour:
   destroyAfterSeconds: 4
   cubesPerContact: 10
   reboundDuring: .100000001
+  destroy: {fileID: 19849298, guid: b3ce2718fb37c492f9d26f509fc35908, type: 2}
 --- !u!114 &1991538111
 MonoBehaviour:
   m_ObjectHideFlags: 0
