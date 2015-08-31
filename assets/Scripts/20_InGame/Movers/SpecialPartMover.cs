@@ -6,7 +6,7 @@ public class SpecialPartMover : ObjectsMover {
     canBeMagnetized = false;
   }
 
-  override public void destroyObject() {
+  override public void destroyObject(bool destroyEffect = true) {
     Destroy(gameObject);
     objectsManager.run();
   }

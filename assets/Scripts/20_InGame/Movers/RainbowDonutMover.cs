@@ -13,7 +13,7 @@ public class RainbowDonutMover : ObjectsMover {
 
   }
 
-	override public void destroyObject() {
+	override public void destroyObject(bool destroyEffect = true) {
     Destroy(gameObject);
     objectsManager.run();
   }

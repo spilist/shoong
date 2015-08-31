@@ -1814,8 +1814,8 @@ MonoBehaviour:
   boosterSpeedUpAmount: 60
   maxBoosterSpeed: 100
   particles: {fileID: 178344, guid: b185d52f68bf5499e81f948bbbf1bd8c, type: 2}
+  unstoppable_speed: 120
   strengthen_during: 8
-  strengthen_speed: 120
   reboundSpeed: 160
   unstoppable_respawn:
   - 0
@@ -2147,6 +2147,10 @@ MonoBehaviour:
   backButton: {fileID: 1410312520}
   cubesYouHave: {fileID: 545979715}
   goldenCubesYouHave: {fileID: 1928310596}
+  originalMat: {fileID: 2100000, guid: a9f492b1bc159478c8c5ca85e56828a2, type: 2}
+  notAffordableCubeMat: {fileID: 2100000, guid: 08bec51b7101148028256f1bfb0aef75,
+    type: 2}
+  notAffordableTextColor: {r: .513725519, g: .513725519, b: .513725519, a: 1}
   originalSize: 200
   shrinkSize: 100
   totalSeconds: 3
@@ -17087,7 +17091,6 @@ GameObject:
   - 122: {fileID: 851953049}
   - 198: {fileID: 851953052}
   - 199: {fileID: 851953051}
-  - 82: {fileID: 851953050}
   m_Layer: 11
   m_Name: UnstoppableSphere
   m_TagString: UnstoppableSphere
@@ -17185,75 +17188,6 @@ Halo:
     serializedVersion: 2
     rgba: 1250067
   m_Size: 50.5
---- !u!82 &851953050
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 851953042}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 4b01e305cc85d9b489151533e11337f4, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: .100000001
-  m_Pitch: 1
-  Loop: 1
-  Mute: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
 --- !u!199 &851953051
 ParticleSystemRenderer:
   m_ObjectHideFlags: 0
@@ -22048,6 +21982,7 @@ GameObject:
   - 4: {fileID: 1934776451}
   - 198: {fileID: 1934776454}
   - 199: {fileID: 1220998265}
+  - 82: {fileID: 1220998264}
   m_Layer: 10
   m_Name: Unstoppable 2
   m_TagString: Untagged
@@ -22055,6 +21990,75 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!82 &1220998264
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1220998263}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 4b01e305cc85d9b489151533e11337f4, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: .100000001
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!199 &1220998265
 ParticleSystemRenderer:
   m_ObjectHideFlags: 0
@@ -39414,7 +39418,7 @@ GameObject:
   - 114: {fileID: 2131139021}
   - 114: {fileID: 2131139023}
   m_Layer: 5
-  m_Name: SpecialPart Indicator
+  m_Name: Monster Indicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

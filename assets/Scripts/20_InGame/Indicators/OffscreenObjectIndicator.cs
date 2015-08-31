@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class SpecialPartIndicator : MonoBehaviour {
+public class OffscreenObjectIndicator : MonoBehaviour {
   public float detectDistance = 1;
 
   private bool isIndicating = false;
@@ -12,6 +12,8 @@ public class SpecialPartIndicator : MonoBehaviour {
   public float widthOffset = 30;
   public float heightOffset = 50;
 
+  private GameObject toIndicate;
+
 	void Start () {
     GetComponent<Image>().enabled = false;
     screenWidth = transform.parent.GetComponent<RectTransform>().rect.width;
@@ -20,15 +22,14 @@ public class SpecialPartIndicator : MonoBehaviour {
 
 	void Update () {
     if (isIndicating) {
-      showIndicate();
+      show();
     }
 	}
 
-  void showIndicate() {
-    GameObject target = GameObject.FindWithTag("Monster");
-    if (target == null) return;
+  void show() {
+    if (toIndicate == null) return;
 
-    Vector2 targetPos = Camera.main.WorldToViewportPoint(target.transform.position);
+    Vector2 targetPos = Camera.main.WorldToViewportPoint(toIndicate.transform.position);
 
     if (targetPos.x < -detectDistance || targetPos.x > (detectDistance + 1) || targetPos.y < -detectDistance || targetPos.y > (detectDistance + 1)) {
       GetComponent<Image>().enabled = false;
@@ -51,8 +52,9 @@ public class SpecialPartIndicator : MonoBehaviour {
     }
   }
 
-  public void startIndicate() {
+  public void startIndicate(GameObject target) {
     isIndicating = true;
+    toIndicate = target;
   }
 
   public void stopIndicate() {

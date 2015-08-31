@@ -22,7 +22,7 @@ public class MonsterMover : ObjectsMover {
     speed_chase = monm.speed_chase;
     speed_runaway = monm.speed_runaway;
     speed_weaken = monm.speed_weaken;
-    monm.indicator.startIndicate();
+    monm.indicator.startIndicate(gameObject);
     monm.indicator.GetComponent<Image>().color = Color.red;
     StartCoroutine("weakened");
   }
@@ -90,11 +90,13 @@ public class MonsterMover : ObjectsMover {
     }
   }
 
-  public override void destroyObject() {
+  public override void destroyObject(bool destroyEffect = true) {
     Destroy(gameObject);
     monm.indicator.stopIndicate();
     monm.stopWarning();
-    Instantiate(monm.destroyEffect, transform.position, transform.rotation);
+    if (destroyEffect) {
+      Instantiate(monm.destroyEffect, transform.position, transform.rotation);
+    }
     monm.run();
   }
 

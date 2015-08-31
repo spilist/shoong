@@ -9,7 +9,7 @@ public class ComboPartMover : ObjectsMover {
     canBeMagnetized = false;
   }
 
-  override public void destroyObject() {
+  override public void destroyObject(bool destroyEffect = true) {
     cpm.destroyInstances();
   }
 

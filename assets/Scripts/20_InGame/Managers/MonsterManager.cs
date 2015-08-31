@@ -21,7 +21,7 @@ public class MonsterManager : ObjectsManager {
   public Color weakenedOutlineColor;
   public GameObject monsterFilter;
   public ParticleSystem destroyEffect;
-  public SpecialPartIndicator indicator;
+  public OffscreenObjectIndicator indicator;
 
   public GameObject monsterWarning;
   public float warningBlinkSeconds = 0.7f;

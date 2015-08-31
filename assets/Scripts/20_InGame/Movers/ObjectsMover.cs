@@ -39,7 +39,7 @@ public class ObjectsMover : MonoBehaviour {
   void FixedUpdate() {
     if (isInsideBlackhole) {
       if (blackhole == null) {
-        Destroy(gameObject);
+        destroyObject(false);
         return;
       }
       Vector3 heading = blackhole.transform.position - transform.position;
@@ -89,8 +89,10 @@ public class ObjectsMover : MonoBehaviour {
     direction.Normalize();
   }
 
-  virtual public void destroyObject() {
-    Instantiate(((BasicObjectsManager)objectsManager).partsDestroy, transform.position, transform.rotation);
+  virtual public void destroyObject(bool destroyEffect = true) {
+    if (destroyEffect) {
+      Instantiate(((BasicObjectsManager)objectsManager).partsDestroy, transform.position, transform.rotation);
+    }
     Destroy(gameObject);
   }
 

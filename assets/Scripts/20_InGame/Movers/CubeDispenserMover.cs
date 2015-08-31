@@ -37,7 +37,7 @@ public class CubeDispenserMover : ObjectsMover {
     }
   }
 
-  override public void destroyObject() {
+  override public void destroyObject(bool destroyEffect = true) {
     cdm.destroyInstances();
   }
 

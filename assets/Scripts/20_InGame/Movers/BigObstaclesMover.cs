@@ -10,8 +10,10 @@ public class BigObstaclesMover : ObjectsMover {
     return 2;
   }
 
-  public override void destroyObject() {
-    Instantiate(player.GetComponent<PlayerMover>().obstacleDestroy, transform.position, transform.rotation);
+  public override void destroyObject(bool destroyEffect = true) {
+    if (destroyEffect) {
+      Instantiate(player.GetComponent<PlayerMover>().obstacleDestroy, transform.position, transform.rotation);
+    }
     Destroy(gameObject);
   }
 

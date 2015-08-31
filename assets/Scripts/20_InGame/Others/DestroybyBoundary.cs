@@ -12,7 +12,7 @@ public class DestroybyBoundary : MonoBehaviour {
       Destroy(other.gameObject);
     } else {
       ObjectsMover mover = other.gameObject.GetComponent<ObjectsMover>();
-      mover.destroyObject();
+      mover.destroyObject(false);
     }
 	}
 }

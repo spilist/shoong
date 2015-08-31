@@ -34,7 +34,7 @@ public class Blackhole : MonoBehaviour {
       }
     } else {
       ObjectsMover mover = other.GetComponent<ObjectsMover>();
-      mover.destroyObject();
+      mover.destroyObject(false);
     }
   }
 

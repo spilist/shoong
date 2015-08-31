@@ -18,6 +18,9 @@ public class CharacterCreateButton : MenusBehavior {
   public GameObject backButton;
   public GameObject cubesYouHave;
   public GameObject goldenCubesYouHave;
+  public Material originalMat;
+  public Material notAffordableCubeMat;
+  public Color notAffordableTextColor;
 
   public int originalSize = 200;
   public int shrinkSize = 180;
@@ -27,18 +30,48 @@ public class CharacterCreateButton : MenusBehavior {
   public int characterRotatingSpeed = 150;
   public int createPrice = 10000;
 
+  private bool affordable = false;
+  private bool running = false;
+  private Text priceText;
+  private Renderer cubeRenderer;
+
   void OnEnable() {
-    transform.Find("PriceText").GetComponent<Text>().text = createPrice.ToString("N0");
+    priceText = transform.Find("PriceText").GetComponent<Text>();
+    priceText.text = createPrice.ToString("N0");
+    cubeRenderer = transform.Find("CubeIcon").GetComponent<Renderer>();
+    resetAll();
+    checkAffordable();
   }
 
-  override public void activateSelf() {
-    turnOnOff(false);
+  void resetAll() {
     createdCharacter.SetActive(false);
     characterName.enabled = false;
     characterCube.SetActive(true);
     congraturation.GetComponent<ParticleSystem>().Stop();
     congraturation.gameObject.SetActive(false);
     isNewCharacter.SetActive(false);
+  }
+
+  void checkAffordable() {
+    if (cubesYouHave.GetComponent<CubesYouHave>().youHave() < createPrice) {
+      affordable = false;
+      cubeRenderer.sharedMaterial = notAffordableCubeMat;
+      priceText.color = notAffordableTextColor;
+      GetComponent<Collider>().enabled = false;
+    } else {
+      affordable = true;
+      cubeRenderer.sharedMaterial = originalMat;
+      priceText.color = new Color(255, 255, 255);
+      GetComponent<Collider>().enabled = true;
+    }
+  }
+
+  override public void activateSelf() {
+    if (!affordable || running) return;
+
+    running = true;
+    resetAll();
+    turnOnOff(false);
     gathering.Play();
     gathering.GetComponent<AudioSource>().Play();
     explosion.Play();
@@ -52,6 +85,7 @@ public class CharacterCreateButton : MenusBehavior {
     cubesYouHave.SetActive(val);
     goldenCubesYouHave.SetActive(val);
     GetComponent<Renderer>().enabled = val;
+    GetComponent<Collider>().enabled = val;
     transform.Find("CubeIcon").GetComponent<Renderer>().enabled = val;
     transform.Find("PriceText").GetComponent<Text>().enabled = val;
   }
@@ -108,5 +142,7 @@ public class CharacterCreateButton : MenusBehavior {
     yield return new WaitForSeconds(showUIsAfter);
 
     turnOnOff(true);
+    running = false;
+    checkAffordable();
   }
 }

@@ -15,7 +15,7 @@ public class PlayerMover : MonoBehaviour {
   private Hashtable cubesWhenDestroy;
 
   private float speed;
-	private float boosterspeed;
+	private float boosterspeed = 0;
   public float tumble;
   private Vector3 direction;
 
@@ -51,8 +51,8 @@ public class PlayerMover : MonoBehaviour {
 
 	public GameObject particles;
 
+	public float unstoppable_speed = 120;
   public int strengthen_during = 8;
-	public float strengthen_speed = 120;
   public float reboundSpeed = 300;
 
   private bool unstoppable = false;
@@ -98,8 +98,8 @@ public class PlayerMover : MonoBehaviour {
       speed = rdm.ridingSpeed;
     } else if (isRebounding()) {
       speed = reboundSpeed;
-    } else if (unstoppable || exitedBlackhole || ridingMonster) {
-      speed = strengthen_speed;
+    } else if (unstoppable) {
+      speed = unstoppable_speed;
     } else {
 			speed = comboBar.getSpeed();
     }
@@ -204,12 +204,13 @@ public class PlayerMover : MonoBehaviour {
       unstoppableEffect.Play();
       unstoppableEffect.GetComponent<AudioSource>().Play ();
       unstoppableEffect_two.Play();
+      unstoppableEffect_two.GetComponent<AudioSource>().Play ();
     }
 
     if (exitedBlackhole) {
       unstoppableSphere.SetActive(true);
       getBlackhole.Play();
-	  getBlackhole.GetComponent<AudioSource>().Play();
+      getBlackhole.GetComponent<AudioSource>().Play();
     }
 
     if (ridingMonster) {
