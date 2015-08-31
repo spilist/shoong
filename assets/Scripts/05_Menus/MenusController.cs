@@ -12,6 +12,7 @@ public class MenusController : MonoBehaviour {
 
   public AudioClip UITouchSound;
 
+  private bool menuOn = false;
   private bool notYetStarted = true;
   private bool isGameEnded = false;
   private GameObject currentlyOn;
@@ -47,10 +48,11 @@ public class MenusController : MonoBehaviour {
       inGameUI.SetActive(!inGameUI.activeSelf);
       gameOverUI.GetComponent<Canvas>().enabled = !gameOverUI.GetComponent<Canvas>().enabled;
     }
-    menusOverlay.SetActive(!menusOverlay.activeSelf);
+    menuOn = !menuOn;
     backButton.SetActive(!backButton.activeSelf);
     menuButtons.SetActive(!menuButtons.activeSelf);
     currentlyOn.SetActive(!currentlyOn.activeSelf);
+    menusOverlay.SetActive(!menusOverlay.activeSelf);
   }
 
   public void gameStart() {
@@ -68,7 +70,7 @@ public class MenusController : MonoBehaviour {
   }
 
   public bool isMenuOn() {
-    return menusOverlay.activeSelf;
+    return menuOn;
   }
 
   public bool isDraggable() {

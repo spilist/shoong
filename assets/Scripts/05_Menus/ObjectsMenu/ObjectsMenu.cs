@@ -12,6 +12,7 @@ public class ObjectsMenu : MonoBehaviour {
 
   public GameObject cubeYouHave;
   public GameObject goldenCubeYouHave;
+  public float rotationSpeed = 150;
 
   private string[] mainObjects;
   private string[] subObjects;

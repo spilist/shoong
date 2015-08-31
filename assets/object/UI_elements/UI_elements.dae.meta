@@ -20,6 +20,12 @@ ModelImporter:
     100024: button_blank_leftright_longer
     100026: button_character_1
     100028: button_randomCharacterGet
+    100030: button_blank_red_leftright_1
+    100032: button_blank_red_leftright_longer_1
+    100034: button_red_back_1
+    100036: button_red_objectmenu_1
+    100038: button_red_randomCharacterGet_1
+    100040: button_red_select_1
     400000: active_object
     400002: button_back
     400004: button_blank_leftright
@@ -35,6 +41,12 @@ ModelImporter:
     400024: button_blank_leftright_longer
     400026: button_character_1
     400028: button_randomCharacterGet
+    400030: button_blank_red_leftright_1
+    400032: button_blank_red_leftright_longer_1
+    400034: button_red_back_1
+    400036: button_red_objectmenu_1
+    400038: button_red_randomCharacterGet_1
+    400040: button_red_select_1
     2300000: active_object
     2300002: button_back
     2300004: button_blank_leftright
@@ -49,6 +61,12 @@ ModelImporter:
     2300022: button_blank_leftright_longer
     2300024: button_character_1
     2300026: button_randomCharacterGet
+    2300028: button_blank_red_leftright_1
+    2300030: button_blank_red_leftright_longer_1
+    2300032: button_red_back_1
+    2300034: button_red_objectmenu_1
+    2300036: button_red_randomCharacterGet_1
+    2300038: button_red_select_1
     3300000: active_object
     3300002: button_back
     3300004: button_blank_leftright
@@ -63,6 +81,12 @@ ModelImporter:
     3300022: button_blank_leftright_longer
     3300024: button_character_1
     3300026: button_randomCharacterGet
+    3300028: button_blank_red_leftright_1
+    3300030: button_blank_red_leftright_longer_1
+    3300032: button_red_back_1
+    3300034: button_red_objectmenu_1
+    3300036: button_red_randomCharacterGet_1
+    3300038: button_red_select_1
     4300000: button_back
     4300002: button_select
     4300004: button_character
@@ -77,6 +101,12 @@ ModelImporter:
     4300022: button_blank_leftright_longer
     4300024: button_character_1
     4300026: button_randomCharacterGet
+    4300028: button_blank_red_leftright_longer_1
+    4300030: button_blank_red_leftright_1
+    4300032: button_red_back_1
+    4300034: button_red_select_1
+    4300036: button_red_objectmenu_1
+    4300038: button_red_randomCharacterGet_1
     9500000: //RootNode
   materials:
     importMaterials: 1

@@ -61,6 +61,7 @@ public class PlayerMover : MonoBehaviour {
   public Mesh monsterMesh;
   public Material monsterMaterial;
   public ParticleSystem ridingEffect;
+  public ParticleSystem monsterEffect;
   private bool ridingMonster = false;
   private Mesh originalMesh;
   private Material originalMaterial;
@@ -216,6 +217,8 @@ public class PlayerMover : MonoBehaviour {
     if (ridingMonster) {
       energyBar.getFullHealth();
       changeCharacter(monsterMesh, monsterMaterial);
+      monsterEffect.Play();
+      monsterEffect.GetComponent<AudioSource>().Play();
     }
 
     stBar.startStrengthen(effectDuration);
@@ -227,6 +230,7 @@ public class PlayerMover : MonoBehaviour {
       unstoppable = false;
       unstoppableEffect.Stop();
       unstoppableEffect_two.Stop();
+      unstoppableEffect_two.GetComponent<AudioSource>().Stop ();
     }
 
     if (reboundingByBlackhole) {
@@ -249,6 +253,8 @@ public class PlayerMover : MonoBehaviour {
       ridingMonster = false;
       changeCharacter(originalMesh, originalMaterial);
       ridingEffect.Play();
+      monsterEffect.Stop();
+      monsterEffect.GetComponent<AudioSource>().Stop();
       monm.monsterFilter.SetActive(false);
       monm.run();
     }
@@ -258,7 +264,7 @@ public class PlayerMover : MonoBehaviour {
     ridingMonster = true;
     monm.monsterFilter.SetActive(true);
     ridingEffect.Play();
-	ridingEffect.GetComponent<AudioSource>().Play();
+    ridingEffect.GetComponent<AudioSource>().Play();
     Destroy(obMover.gameObject);
     monm.stopWarning();
     StopCoroutine("strengthen");

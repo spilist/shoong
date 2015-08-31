@@ -37,8 +37,12 @@ public class ObjectDetail : MonoBehaviour {
   public void checkBought(UIObjects obj) {
     if ((bool)GameController.control.objects[selected.name]) {
       rotate = true;
+      SmallObjects smallObject = obj.transform.parent.Find("Object").GetComponent<SmallObjects>();
+      smallObject.checkBought();
+      selected.GetComponent<MeshFilter>().sharedMesh = smallObject.activeMesh;
+      selected.GetComponent<Renderer>().sharedMaterial = smallObject.activeMaterial;
+
       selected.transform.Find("Effect").gameObject.SetActive(true);
-      selected.GetComponent<Renderer>().sharedMaterial = activeObjectsMaterial;
       if (obj.isActive()) {
         selectButton.SetActive(false);
         unselectButton.GetComponent<ObjectUnselectButton>().setObject(obj);
@@ -49,9 +53,7 @@ public class ObjectDetail : MonoBehaviour {
         buyButton.SetActive(false);
       }
     } else {
-      selected.GetComponent<Renderer>().sharedMaterial = inactiveObjectsMaterial;
       rotate = false;
-      selected.transform.Find("Effect").gameObject.SetActive(false);
       selectButton.SetActive(false);
       unselectButton.SetActive(false);
       buyButton.GetComponent<ObjectBuyButton>().setObject(obj);

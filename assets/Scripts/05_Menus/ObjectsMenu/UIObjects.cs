@@ -5,8 +5,6 @@ public class UIObjects : MenusBehavior {
   private ObjectsMenu objectsMenu;
   private string objectCategory;
   private ObjectsCategoryButton categoryButton;
-  private Material originalMaterial;
-  private Renderer objectRenderer;
 
   public string objectName;
   public string description;
@@ -15,13 +13,6 @@ public class UIObjects : MenusBehavior {
   void Start() {
     objectsMenu = GameObject.Find("ObjectsMenu").GetComponent<ObjectsMenu>();
     objectCategory = transform.parent.parent.name;
-
-    objectRenderer = transform.parent.Find("Object").GetComponent<Renderer>();
-    originalMaterial = objectRenderer.sharedMaterial;
-
-    if (!(bool)GameController.control.objects[transform.parent.name]) {
-      objectRenderer.sharedMaterial = objectsMenu.inactiveObjectsMaterial;
-    }
   }
 
   override public void activateSelf() {
@@ -43,9 +34,7 @@ public class UIObjects : MenusBehavior {
   }
 
   public void buy() {
-    objectRenderer.sharedMaterial = originalMaterial;
     objectsMenu.objDetail.checkBought(this);
-
     AudioSource.PlayClipAtPoint(objectsMenu.objectBuySound, transform.position);
   }
 }
