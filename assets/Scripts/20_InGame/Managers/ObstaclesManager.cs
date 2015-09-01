@@ -23,8 +23,6 @@ public class ObstaclesManager : MonoBehaviour {
   private Transform playerTransform;
   private Vector3 obstacleDirection;
   private Vector3 destination;
-  private LineRenderer inner;
-  private LineRenderer outer;
 
   void Start () {
     StartCoroutine("spawnObstacle");
@@ -49,13 +47,7 @@ public class ObstaclesManager : MonoBehaviour {
 
       GameObject warningLine = (GameObject) Instantiate (fallingStarWarningLinePrefab);
       warningLine.transform.SetParent(UICanvas.transform, false);
-      inner = warningLine.transform.Find("Inner").GetComponent<LineRenderer>();
-      outer = warningLine.transform.Find("Outer").GetComponent<LineRenderer>();
-      inner.SetPosition(0, spawnPos - obstacleDirection * lineDistance);
-      outer.SetPosition(0, spawnPos - obstacleDirection * lineDistance);
-
-      inner.SetPosition(1, destination);
-      outer.SetPosition(1, destination);
+      warningLine.GetComponent<FallingstarWarningLine>().run(spawnPos - 100 * obstacleDirection, destination, lineDistance + 100, warnPlayerDuring);
 
       Instantiate (fallingStarSoundWarningPrefab);
 
@@ -65,7 +57,7 @@ public class ObstaclesManager : MonoBehaviour {
 
       yield return new WaitForSeconds(warnPlayerDuring);
 
-      Destroy(warningLine);
+      warningLine.GetComponent<FallingstarWarningLine>().erase();
       GameObject obstacle = (GameObject) Instantiate(prefab, spawnPos, Quaternion.identity);
       obstacle.transform.parent = gameObject.transform;
     }
