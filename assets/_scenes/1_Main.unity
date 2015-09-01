@@ -46466,7 +46466,7 @@ MonoBehaviour:
   strength: 0
   blackholeGravityMask:
     serializedVersion: 2
-    m_Bits: 524288
+    m_Bits: 8912896
   rainbowDonutPrefab: {fileID: 145992, guid: 8dda1ea4426a74d1d9d0e64e93097cbd, type: 2}
   rainbowRoadPrefab: {fileID: 173076, guid: af846d2fda9ca46229d31f23fc80dd18, type: 2}
   tumble: 5
@@ -46572,12 +46572,12 @@ MonoBehaviour:
   speed_runaway: 60
   speed_weaken: 20
   tumble: 5
-  minSpawnInterval: 0
-  maxSpawnInterval: 0
+  minSpawnInterval: 25
+  maxSpawnInterval: 35
   spawnRadius: 200
   detectDistance: 200
-  minLifeTime: 5
-  maxLifeTime: 5
+  minLifeTime: 8
+  maxLifeTime: 12
   weakenDuration: 5
   shrinkUntil: .699999988
   shrinkSpeed: 1
