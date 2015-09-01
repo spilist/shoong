@@ -21,6 +21,9 @@ public class CharacterCreateButton : MenusBehavior {
   public Material originalMat;
   public Material notAffordableCubeMat;
   public Color notAffordableTextColor;
+  public Mesh originalMesh;
+  public Mesh blinkingMesh;
+  public float blinkingSeconds = 0.4f;
 
   public int originalSize = 200;
   public int shrinkSize = 180;
@@ -58,11 +61,26 @@ public class CharacterCreateButton : MenusBehavior {
       cubeRenderer.sharedMaterial = notAffordableCubeMat;
       priceText.color = notAffordableTextColor;
       GetComponent<Collider>().enabled = false;
+      StopCoroutine("blinkButton");
+      GetComponent<MeshFilter>().sharedMesh = originalMesh;
     } else {
       affordable = true;
       cubeRenderer.sharedMaterial = originalMat;
       priceText.color = new Color(255, 255, 255);
       GetComponent<Collider>().enabled = true;
+      StartCoroutine("blinkButton");
+    }
+  }
+
+  IEnumerator blinkButton() {
+    while(true) {
+      GetComponent<MeshFilter>().sharedMesh = originalMesh;
+
+      yield return new WaitForSeconds(blinkingSeconds);
+
+      GetComponent<MeshFilter>().sharedMesh = blinkingMesh;
+
+      yield return new WaitForSeconds(blinkingSeconds);
     }
   }
 
@@ -77,6 +95,8 @@ public class CharacterCreateButton : MenusBehavior {
     explosion.Clear();
     explosion.Play();
     collect.Play();
+    StopCoroutine("blinkButton");
+    GetComponent<MeshFilter>().sharedMesh = originalMesh;
 
     StartCoroutine("shake");
   }

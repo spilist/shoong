@@ -2242,6 +2242,9 @@ MonoBehaviour:
   notAffordableCubeMat: {fileID: 2100000, guid: 08bec51b7101148028256f1bfb0aef75,
     type: 2}
   notAffordableTextColor: {r: .513725519, g: .513725519, b: .513725519, a: 1}
+  originalMesh: {fileID: 4300022, guid: 7d4e33b83f6a046ab845e77e3044ffcc, type: 3}
+  blinkingMesh: {fileID: 4300028, guid: 7d4e33b83f6a046ab845e77e3044ffcc, type: 3}
+  blinkingSeconds: .400000006
   originalSize: 200
   shrinkSize: 100
   totalSeconds: 3
@@ -10211,7 +10214,7 @@ MonoBehaviour:
   numPlays: 0
   numBoosters: 0
   openAllCharacter: 0
-  resetAll: 1
+  resetAll: 0
   resetCube: 100000
   resetGoldenCube: 20000
 --- !u!4 &339434085
@@ -25713,6 +25716,9 @@ MonoBehaviour:
   notAffordableTextColor: {r: .513725519, g: .513725519, b: .513725519, a: 1}
   goldenCubeIconRenderer: {fileID: 1927758380}
   priceText: {fileID: 1306473452}
+  originalMesh: {fileID: 0}
+  blinkingMesh: {fileID: 0}
+  blinkingSeconds: .400000006
 --- !u!23 &1174462711
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -34705,6 +34711,9 @@ MonoBehaviour:
   notAffordableTextColor: {r: .513725519, g: .513725519, b: .513725519, a: 1}
   goldenCubeIconRenderer: {fileID: 1161190012}
   priceText: {fileID: 685884384}
+  originalMesh: {fileID: 4300006, guid: 7d4e33b83f6a046ab845e77e3044ffcc, type: 3}
+  blinkingMesh: {fileID: 4300030, guid: 7d4e33b83f6a046ab845e77e3044ffcc, type: 3}
+  blinkingSeconds: .400000006
 --- !u!65 &1488355727
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -46559,12 +46568,12 @@ MonoBehaviour:
   speed_runaway: 60
   speed_weaken: 20
   tumble: 5
-  minSpawnInterval: 25
-  maxSpawnInterval: 35
+  minSpawnInterval: 0
+  maxSpawnInterval: 0
   spawnRadius: 200
   detectDistance: 200
-  minLifeTime: 8
-  maxLifeTime: 12
+  minLifeTime: 5
+  maxLifeTime: 5
   weakenDuration: 5
   shrinkUntil: .699999988
   shrinkSpeed: 1

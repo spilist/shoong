@@ -48,6 +48,7 @@ public class MonsterMover : ObjectsMover {
     weakenAura.GetComponent<AudioSource> ().Play ();
     aura.Stop();
     GetComponent<Renderer>().material.SetColor("_OutlineColor", monm.weakenedOutlineColor);
+    GetComponent<Renderer>().material.SetFloat("_Outline", 0.75f);
     monm.indicator.GetComponent<Image>().color = monm.weakenedOutlineColor;
 
     yield return new WaitForSeconds(monm.weakenDuration);
