@@ -70,7 +70,7 @@ public class RainbowDonutsManager : ObjectsManager {
     do {
       dir = getRandomDirection();
       destination = rainbowDonut.transform.position + dir * nextDonutRadius;
-    } while(Physics.OverlapSphere(destination, 0, blackholeGravityMask).Length > 0);
+    } while(Physics.OverlapSphere(destination, 50, blackholeGravityMask).Length > 0);
 
     drawingRainbowRoad = true;
 

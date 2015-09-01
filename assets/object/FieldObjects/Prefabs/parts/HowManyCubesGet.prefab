@@ -106,7 +106,7 @@ MonoBehaviour:
   sign: 1
   changeDirection: 
   hasIcon: 1
-  disappearLengthY: 18
+  disappearLengthY: 20
   disappearLengthX: 30
   changeBase: 1
   changeScale: 4

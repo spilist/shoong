@@ -87,4 +87,8 @@ public class ComboBar : MonoBehaviour {
     trail.startWidth = 2 + comboCount;
     trail.endWidth = 1 + comboCount * 0.5f;
   }
+
+  void OnDisable() {
+    inner.material.SetColor ("_TintColor", comboBarTintColor_empty);
+  }
 }
