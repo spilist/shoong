@@ -1796,7 +1796,7 @@ MonoBehaviour:
   unstoppableSphere: {fileID: 851953042}
   cubesWhenDestroyBigObstacle: 30
   cubesWhenDestroySmallObstacle: 15
-  cubesWhenDestroyMonster: 50
+  cubesWhenDestroyMonster: 100
   tumble: 4
   cpm: {fileID: 1991538106}
   monm: {fileID: 1991538109}
@@ -19658,6 +19658,7 @@ GameObject:
   - 122: {fileID: 851953049}
   - 198: {fileID: 851953052}
   - 199: {fileID: 851953051}
+  - 82: {fileID: 851953050}
   m_Layer: 11
   m_Name: UnstoppableSphere
   m_TagString: UnstoppableSphere
@@ -19755,6 +19756,75 @@ Halo:
     serializedVersion: 2
     rgba: 1250067
   m_Size: 50.5
+--- !u!82 &851953050
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 851953042}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 4b01e305cc85d9b489151533e11337f4, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: .0500000007
+  m_Pitch: .800000012
+  Loop: 1
+  Mute: 0
+  Priority: 130
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!199 &851953051
 ParticleSystemRenderer:
   m_ObjectHideFlags: 0
@@ -25804,13 +25874,13 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 4b01e305cc85d9b489151533e11337f4, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 79bef49f9172fe74d9687c7ab6901011, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: .100000001
-  m_Pitch: 1
+  m_Volume: .300000012
+  m_Pitch: 2
   Loop: 1
   Mute: 0
-  Priority: 128
+  Priority: 125
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -46213,7 +46283,7 @@ MonoBehaviour:
   minSpawnInterval: 0
   maxSpawnInterval: 8
   warnPlayerDuring: .5
-  spawnRadius: 180
+  spawnRadius: 200
   UICanvas: {fileID: 2134279972}
   scatterAmount: 30
   lineDistance: 1000
@@ -46265,7 +46335,7 @@ MonoBehaviour:
   minLifeTime: 8
   maxLifeTime: 12
   weakenDuration: 5
-  shrinkUntil: 1
+  shrinkUntil: .699999988
   shrinkSpeed: 1
   restoreSpeed: 0
   weakenedOutlineColor: {r: .0784313753, g: .909803927, b: .360784322, a: .533333361}
