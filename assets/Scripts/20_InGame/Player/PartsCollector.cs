@@ -1,10 +1,13 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class PartsCollector : MonoBehaviour {
 	public PlayerMover player;
 	public ParticleSystem collecteffect;
 	public ParticleSystem particleeffect;
+  public GameObject howManyCubesGet;
+  public Text cubesCount;
 
   public int maxCubesGet = 2000;
 	public int maxEmission = 1000;
@@ -36,9 +39,17 @@ public class PartsCollector : MonoBehaviour {
 		transform.rotation = player.transform.rotation;
   }
 
-	public void effect(){
+	public void effect(bool triggerCubesGet, int count){
+    if (triggerCubesGet) {
+      GameObject cubesGetInstance = Instantiate(howManyCubesGet);
+      cubesGetInstance.transform.SetParent(transform.parent.Find("Bars Canvas"), false);
+      cubesGetInstance.transform.position = transform.position;
+      cubesGetInstance.GetComponent<ShowChangeText>().run(count);
+      increaseSize(count);
+    }
     collecteffect.Play ();
     GetComponent<AudioSource>().Play();
+    cubesCount.text = (int.Parse(cubesCount.text) + 1).ToString();
 	}
 
   public void increaseSize(int partsGet) {

@@ -159,6 +159,9 @@ public class PlayerMover : MonoBehaviour {
   public void goodPartsEncounter(ObjectsMover mover, int howMany, bool rainbow = false) {
     for (int e = 0; e < howMany; e++) {
       GameObject cube = (GameObject) Instantiate(particles, mover.transform.position, mover.transform.rotation);
+      if (e == 0) {
+        cube.GetComponent<ParticleMover>().triggerCubesGet(howMany);
+      }
       if (rainbow) {
         cube.GetComponent<Renderer>().material.SetColor("_TintColor", rdm.rainbowColors[e]);
       }

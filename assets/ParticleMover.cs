@@ -14,6 +14,8 @@ public class ParticleMover : MonoBehaviour {
 	private bool timeelapsed = false;
 	private PartsCollector partsCollector;
 
+	private bool isTriggeringCubesGet = false;
+	private int howMany = 0;
 
 	void Start () {
 		random = Random.Range (minScale, maxScale);
@@ -47,8 +49,13 @@ public class ParticleMover : MonoBehaviour {
 	void OnTriggerStay(Collider other) {
 		if (other.tag == "PartCollector" && timeelapsed) {
 			Destroy (gameObject);
-			partsCollector.effect();
+			partsCollector.effect(isTriggeringCubesGet, howMany);
 		}
+	}
+
+	public void triggerCubesGet(int count) {
+		isTriggeringCubesGet = true;
+		howMany = count;
 	}
 
 }
