@@ -4,6 +4,7 @@ using System.Collections;
 public class ObjectsManager : MonoBehaviour {
   protected SpawnManager spawnManager;
   protected PlayerMover player;
+  public float strength = 0;
 
   void OnEnable() {
     spawnManager = gameObject.GetComponent<SpawnManager>();

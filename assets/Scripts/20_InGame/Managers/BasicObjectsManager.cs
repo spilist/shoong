@@ -15,6 +15,8 @@ public class BasicObjectsManager : ObjectsManager {
   public float tumble_parts = 1;
   public float tumble_obstacles = 0.5f;
 
+  public float strength_obstacle = 2;
+
   override public void run() {
     spawnManager.spawnRandom(parts, max_parts);
     spawnManager.spawnRandom(obstacles_big, max_obstacles);

@@ -3,11 +3,18 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class CubesYouHave : MonoBehaviour {
+  public string which;
   private Text cubes;
+  private Hashtable table;
 
 	void OnEnable () {
     cubes = GetComponent<Text>();
-    GetComponent<Text>().text = ((int)GameController.control.cubes["now"]).ToString();
+    if (which == "golden") {
+      table = GameController.control.goldenCubes;
+    } else {
+      table = GameController.control.cubes;
+    }
+    cubes.text = ((int)table["now"]).ToString();
 	}
 
   public int youHave() {
@@ -16,7 +23,7 @@ public class CubesYouHave : MonoBehaviour {
 
   public void buy(int price) {
     cubes.text = (int.Parse(cubes.text) - price).ToString();
-    GameController.control.cubes["now"] = int.Parse(cubes.text);
-    GameController.control.cubes["used"] = (int)GameController.control.cubes["used"] + price;
+    table["now"] = int.Parse(cubes.text);
+    table["used"] = (int)table["used"] + price;
   }
 }

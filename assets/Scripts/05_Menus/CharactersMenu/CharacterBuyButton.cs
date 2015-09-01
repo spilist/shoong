@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class CharacterBuyButton : MenusBehavior {
-  public GoldenCubesYouHave goldenCubes;
+  public CubesYouHave goldenCubes;
   public Material notAffordableCubeMat;
   public Material originalMat;
   public Color notAffordableTextColor;

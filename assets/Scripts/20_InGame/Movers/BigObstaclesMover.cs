@@ -6,8 +6,8 @@ public class BigObstaclesMover : ObjectsMover {
     canBeMagnetized = false;
   }
 
-  protected override int strength() {
-    return 2;
+  protected override float strength() {
+    return ((BasicObjectsManager)objectsManager).strength_obstacle;
   }
 
   public override void destroyObject(bool destroyEffect = true) {

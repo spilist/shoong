@@ -58,8 +58,12 @@ public class MonsterMover : ObjectsMover {
     return weak;
   }
 
-  protected override int strength() {
-    return 3;
+  protected override float strength() {
+    if (weak) {
+      return 0.5f;
+    } else {
+      return objectsManager.strength;
+    }
   }
 
   protected override void normalMovement() {

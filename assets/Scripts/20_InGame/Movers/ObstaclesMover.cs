@@ -21,8 +21,8 @@ public class ObstaclesMover : ObjectsMover {
     return obm.getDirection();
   }
 
-  protected override int strength() {
-    return 1;
+  protected override float strength() {
+    return obm.strength;
   }
 
   public override void destroyObject(bool destroyEffect = true) {

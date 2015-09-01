@@ -9,7 +9,8 @@ public class ObjectDetail : MonoBehaviour {
   public float selectedObjectRotationSpeed = 150;
   public GameObject selectButton;
   public GameObject unselectButton;
-  public GameObject buyButton;
+  public GameObject buyButtonByCube;
+  public GameObject buyButtonByGoldencube;
 
   private GameObject selected;
   private bool rotate = false;
@@ -46,17 +47,20 @@ public class ObjectDetail : MonoBehaviour {
       if (obj.isActive()) {
         selectButton.SetActive(false);
         unselectButton.GetComponent<ObjectUnselectButton>().setObject(obj);
-        buyButton.SetActive(false);
+        buyButtonByCube.SetActive(false);
+        buyButtonByGoldencube.SetActive(false);
       } else {
         selectButton.GetComponent<ObjectSelectButton>().setObject(obj);
         unselectButton.SetActive(false);
-        buyButton.SetActive(false);
+        buyButtonByCube.SetActive(false);
+        buyButtonByGoldencube.SetActive(false);
       }
     } else {
       rotate = false;
       selectButton.SetActive(false);
       unselectButton.SetActive(false);
-      buyButton.GetComponent<ObjectBuyButton>().setObject(obj);
+      buyButtonByCube.GetComponent<ObjectBuyButton>().setObject(obj);
+      buyButtonByGoldencube.GetComponent<ObjectBuyButton>().setObject(obj);
     }
   }
 
@@ -64,6 +68,7 @@ public class ObjectDetail : MonoBehaviour {
     rotate = false;
     selectButton.SetActive(false);
     unselectButton.SetActive(false);
-    buyButton.SetActive(false);
+    buyButtonByCube.SetActive(false);
+    buyButtonByGoldencube.SetActive(false);
   }
 }

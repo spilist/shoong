@@ -74,6 +74,7 @@ public class CharacterCreateButton : MenusBehavior {
     turnOnOff(false);
     gathering.Play();
     gathering.GetComponent<AudioSource>().Play();
+    explosion.Clear();
     explosion.Play();
     collect.Play();
 

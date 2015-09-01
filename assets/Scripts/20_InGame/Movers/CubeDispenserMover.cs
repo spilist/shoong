@@ -19,10 +19,6 @@ public class CubeDispenserMover : ObjectsMover {
     return 0.5f;
   }
 
-  protected override int strength() {
-    return 1;
-  }
-
   override protected void doSomethingSpecial(Collision collision) {
     if (collision.collider.tag == "ContactCollider") {
       PlayerMover playerMover = player.GetComponent<PlayerMover>();

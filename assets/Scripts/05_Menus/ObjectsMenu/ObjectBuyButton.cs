@@ -3,7 +3,8 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class ObjectBuyButton : MenusBehavior {
-  public GoldenCubesYouHave goldenCubes;
+  public string which;
+  public CubesYouHave cubes;
   public Material notAffordableCubeMat;
   public Material originalMat;
   public Color notAffordableTextColor;
@@ -11,8 +12,8 @@ public class ObjectBuyButton : MenusBehavior {
   public Text priceText;
 
   private UIObjects selectedObj;
-  private string objectName;
   private int price;
+  private string objectName;
   private bool affordable = true;
 
 	void Start () {
@@ -23,9 +24,11 @@ public class ObjectBuyButton : MenusBehavior {
     gameObject.SetActive(true);
     selectedObj = obj;
     objectName = obj.transform.parent.name;
-    priceText.text = obj.price.ToString("N0");
 
-    if (goldenCubes.youHave() < obj.price) {
+    price = obj.getPrice(which);
+    priceText.text = price.ToString("N0");
+
+    if (cubes.youHave() < price) {
       affordable = false;
       goldenCubeIconRenderer.sharedMaterial = notAffordableCubeMat;
       priceText.color = notAffordableTextColor;
@@ -39,7 +42,7 @@ public class ObjectBuyButton : MenusBehavior {
   override public void activateSelf() {
     if (!affordable) return;
 
-    goldenCubes.buy(selectedObj.price);
+    cubes.buy(price);
     GameController.control.objects[objectName] = true;
     selectedObj.buy();
   }

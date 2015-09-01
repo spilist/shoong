@@ -77,8 +77,8 @@ public class ObjectsMover : MonoBehaviour {
     return;
   }
 
-  virtual protected int strength() {
-    return 0;
+  virtual protected float strength() {
+    return objectsManager.strength;
   }
 
   void processCollision(Collision collision) {

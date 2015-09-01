@@ -7,7 +7,7 @@ public class SmallObjects : MonoBehaviour {
   private UIObjects obj;
   private Quaternion originalRotation;
 
-  void OnEnable() {
+  void Start() {
     obj = transform.parent.Find("SelectionBox").GetComponent<UIObjects>();
     originalRotation = transform.localRotation;
     checkBought();
@@ -16,10 +16,10 @@ public class SmallObjects : MonoBehaviour {
   void Update () {
     if (obj.isActive()) {
       transform.Rotate(-Vector3.forward * Time.deltaTime * 150, Space.World);
-      transform.Find("Effect").gameObject.SetActive(true);
+      transform.parent.Find("Effect").gameObject.SetActive(true);
     } else {
       transform.localRotation = originalRotation;
-      transform.Find("Effect").gameObject.SetActive(false);
+      transform.parent.Find("Effect").gameObject.SetActive(false);
     }
 	}
 

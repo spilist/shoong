@@ -3,7 +3,7 @@ using System.Collections;
 
 public class CubeDispenserManager : ObjectsManager {
   public GameObject cubeDispenserPrefab;
-	public int fullComboCount = 6;
+  public int fullComboCount = 6;
   public int respawnInterval_min = 10;
   public int respawnInterval_max = 15;
   public float destroyAfterSeconds = 4;

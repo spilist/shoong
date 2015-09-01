@@ -8,7 +8,8 @@ public class UIObjects : MenusBehavior {
 
   public string objectName;
   public string description;
-  public int price;
+  public int cubePrice = 10000;
+  public int goldenCubePrice = 1000;
 
   void Start() {
     objectsMenu = GameObject.Find("ObjectsMenu").GetComponent<ObjectsMenu>();
@@ -36,5 +37,10 @@ public class UIObjects : MenusBehavior {
   public void buy() {
     objectsMenu.objDetail.checkBought(this);
     AudioSource.PlayClipAtPoint(objectsMenu.objectBuySound, transform.position);
+  }
+
+  public int getPrice(string which) {
+    if (which == "golden") return goldenCubePrice;
+    else return cubePrice;
   }
 }
