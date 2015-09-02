@@ -24,11 +24,12 @@ public class MenusController : MonoBehaviour {
       string hitTag = hit.transform.tag;
       string layer = LayerMask.LayerToName(hit.transform.gameObject.layer);
       string menuButtons = hit.transform.parent.name;
+
       if (menuButtons == "MenuButtonsLeft" || menuButtons == "MenuButtonsRight") {
         currentlyOn = transform.Find(hitTag).gameObject;
         toggleMenuAndUI();
         AudioSource.PlayClipAtPoint(UITouchSound, hit.transform.position);
-      } else if (isMenuOn() && layer == "MenusBehavior") {
+      } else if (hitTag == "PauseButton" || (isMenuOn() && layer == "MenusBehavior")) {
         MenusBehavior mb = hit.transform.GetComponent<MenusBehavior>();
         mb.activateSelf();
         if (mb.playTouchSound) {

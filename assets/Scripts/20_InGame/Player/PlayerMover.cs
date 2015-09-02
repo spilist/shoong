@@ -50,6 +50,8 @@ public class PlayerMover : MonoBehaviour {
 
   public float boosterSpeedUpAmount = 60;
   public float maxBoosterSpeed = 100;
+  public float boosterSpeedDecreaseBase = 70;
+  public float boosterSpeedDecreasePerTime = 20;
 
 	public GameObject particles;
 
@@ -110,7 +112,7 @@ public class PlayerMover : MonoBehaviour {
     speed += boosterspeed;
 
     if (boosterspeed > 0) {
-			boosterspeed -= speed / 70.0f + 20 * Time.deltaTime;
+			boosterspeed -= speed / boosterSpeedDecreaseBase + boosterSpeedDecreasePerTime * Time.deltaTime;
 		} else if (boosterspeed <= 0){
 			boosterspeed = 0;
 		}

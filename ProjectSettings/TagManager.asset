@@ -32,6 +32,7 @@ TagManager:
   - RainbowDonut
   - Blachole
   - CharacterCreateMenu
+  - PauseButton
   layers:
   - Default
   - TransparentFX
