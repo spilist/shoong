@@ -61,6 +61,9 @@ public class EnergyBar : MonoBehaviour {
 
   public void getFullHealth() {
     image.fillAmount = 1;
+    isChanging = false;
+    isChangingRest = false;
+    restAmount = 0;
   }
 
   void autoDecrease() {

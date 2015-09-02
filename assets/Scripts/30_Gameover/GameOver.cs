@@ -37,6 +37,9 @@ public class GameOver : MonoBehaviour {
     player.GetComponent<MeshRenderer>().enabled = false;
     player.GetComponent<SphereCollider>().enabled = false;
     partsCollector.enabled = false;
+    foreach (Transform tr in partsCollector.transform) {
+      tr.gameObject.SetActive(false);
+    }
     unstoppableSphere.SetActive(false);
     barsCanvas.SetActive(false);
     scoreManager.run();

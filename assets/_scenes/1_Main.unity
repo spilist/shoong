@@ -1822,6 +1822,8 @@ MonoBehaviour:
   cubesWhenDestroyBigObstacle: 30
   cubesWhenDestroySmallObstacle: 15
   cubesWhenDestroyMonster: 100
+  cubesAsItIsUntill: 20
+  restCubesChangePer: 5
   tumble: 4
   cpm: {fileID: 1991538106}
   monm: {fileID: 1991538109}
@@ -4752,7 +4754,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11455114, guid: 1afee8ce7a54f4af597a4df1a8e26203, type: 2}
       propertyPath: disappearLengthX
-      value: 0
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 11455114, guid: 1afee8ce7a54f4af597a4df1a8e26203, type: 2}
+      propertyPath: changeScale
+      value: .5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1afee8ce7a54f4af597a4df1a8e26203, type: 2}
@@ -14412,6 +14418,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b2a1c6c01ea844e8a42f4c1cbd02792, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  increaseSpeed: 5
   comboBar: {fileID: 1289803601}
   howManyCubesGet: {fileID: 108266, guid: 1afee8ce7a54f4af597a4df1a8e26203, type: 2}
 --- !u!1 &600005597

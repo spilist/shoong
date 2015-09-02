@@ -12,6 +12,8 @@ public class PlayerMover : MonoBehaviour {
   public int cubesWhenDestroyBigObstacle = 30;
   public int cubesWhenDestroySmallObstacle = 15;
   public int cubesWhenDestroyMonster = 50;
+  public int cubesAsItIsUntill = 20;
+  public int restCubesChangePer = 5;
   private Hashtable cubesWhenDestroy;
 
   private float speed;
@@ -157,7 +159,14 @@ public class PlayerMover : MonoBehaviour {
 	}
 
   public void goodPartsEncounter(ObjectsMover mover, int howMany, bool rainbow = false) {
-    for (int e = 0; e < howMany; e++) {
+    int instantiateCount;
+    if (howMany < cubesAsItIsUntill) {
+      instantiateCount = howMany;
+    } else {
+      instantiateCount = cubesAsItIsUntill + Mathf.RoundToInt((howMany - cubesAsItIsUntill) / (float) restCubesChangePer);
+    }
+
+    for (int e = 0; e < instantiateCount; e++) {
       GameObject cube = (GameObject) Instantiate(particles, mover.transform.position, mover.transform.rotation);
       if (e == 0) {
         cube.GetComponent<ParticleMover>().triggerCubesGet(howMany);

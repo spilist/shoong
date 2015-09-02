@@ -58,8 +58,9 @@ MonoBehaviour:
   sign: 1
   changeDirection: +
   hasIcon: 0
-  disappearDuring: 1
-  disappearLengthY: 50
+  stayDuring: 0
+  disappearDuring: .600000024
+  disappearLengthY: 40
   disappearLengthX: 0
   changeBase: 4
   changeScale: 0
@@ -84,7 +85,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: -36, y: -94}
+  m_AnchoredPosition: {x: -29, y: -78}
   m_SizeDelta: {x: 130, y: 80}
   m_Pivot: {x: .5, y: .5}
 --- !u!1001 &100100000
@@ -132,11 +133,23 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: disappearLengthY
-      value: 50
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: maxScale
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_AnchoredPosition.y
+      value: -78
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_AnchoredPosition.x
+      value: -29
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: disappearDuring
+      value: .600000024
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

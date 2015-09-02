@@ -49,7 +49,7 @@ public class PartsCollector : MonoBehaviour {
     }
     collecteffect.Play ();
     GetComponent<AudioSource>().Play();
-    cubesCount.text = (int.Parse(cubesCount.text) + 1).ToString();
+    // cubesCount.text = (int.Parse(cubesCount.text) + 1).ToString();
 	}
 
   public void increaseSize(int partsGet) {
