@@ -106,11 +106,11 @@ MonoBehaviour:
   sign: 1
   changeDirection: 
   hasIcon: 1
-  disappearLengthY: 20
-  disappearLengthX: 30
+  disappearLengthY: 100
+  disappearLengthX: 70
   changeBase: 1
-  changeScale: 4
-  maxScale: 6
+  changeScale: 1
+  maxScale: 100
 --- !u!222 &22236060
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -186,6 +186,34 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_LocalPosition.z
       value: -20
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: maxScale
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: disappearLengthY
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: disappearLengthX
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: changeScale
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

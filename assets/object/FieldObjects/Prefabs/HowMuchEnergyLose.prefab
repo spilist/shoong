@@ -29,14 +29,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e3c1a0ee90a945c4a9e83bb493bef3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sign: -1
+  sign: 1
   changeDirection: '-'
   hasIcon: 0
   disappearLengthY: 40
   disappearLengthX: 30
   changeBase: 5
   changeScale: 4
-  maxScale: 3
+  maxScale: 4
 --- !u!114 &11468582
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -99,7 +99,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: sign
-      value: -1
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: changeDirection
+      value: '-'
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: maxScale
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
