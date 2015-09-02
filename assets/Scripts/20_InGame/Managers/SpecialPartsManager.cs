@@ -8,6 +8,9 @@ public class SpecialPartsManager : ObjectsManager {
   public float maxSpawnInterval = 12;
 
   override public void run() {
+    foreach (GameObject specialPart in GameObject.FindGameObjectsWithTag("SpecialPart")) {
+      Destroy(specialPart);
+    }
     StartCoroutine("spawnSpecial");
   }
 
@@ -16,9 +19,17 @@ public class SpecialPartsManager : ObjectsManager {
   }
 
   IEnumerator spawnSpecial() {
-    float interval = Random.Range(minSpawnInterval, maxSpawnInterval);
-    yield return new WaitForSeconds(interval);
+    if (!skipInterval) {
+      float interval = Random.Range(minSpawnInterval, maxSpawnInterval);
+      yield return new WaitForSeconds(interval);
+    }
+
+    skipInterval = false;
 
     spawnManager.spawn(special);
+  }
+
+  override public void skipRespawnInterval() {
+    skipInterval = true;
   }
 }

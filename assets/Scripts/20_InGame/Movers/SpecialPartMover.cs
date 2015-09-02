@@ -8,6 +8,7 @@ public class SpecialPartMover : ObjectsMover {
 
   override public void destroyObject(bool destroyEffect = true) {
     Destroy(gameObject);
+    objectsManager.skipRespawnInterval();
     objectsManager.run();
   }
 

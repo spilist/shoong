@@ -11,6 +11,9 @@ public class GameOver : MonoBehaviour {
   public MenusController menus;
   public ScoreManager scoreManager;
 
+  public Renderer partsCollector;
+  public GameObject unstoppableSphere;
+
   private bool gameOver = false;
 
   void Update() {
@@ -33,6 +36,8 @@ public class GameOver : MonoBehaviour {
     playerExplosion.GetComponent<AudioSource>().Play();
     player.GetComponent<MeshRenderer>().enabled = false;
     player.GetComponent<SphereCollider>().enabled = false;
+    partsCollector.enabled = false;
+    unstoppableSphere.SetActive(false);
     barsCanvas.SetActive(false);
     scoreManager.run();
   }

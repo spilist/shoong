@@ -16,8 +16,6 @@ public class BlackholeManager : ObjectsManager {
 
   public int reboundDuring = 2;
 
-  private bool skipInterval = false;
-
   override public void run() {
     StartCoroutine("spawnBlackhole");
   }
@@ -39,7 +37,7 @@ public class BlackholeManager : ObjectsManager {
     blackholeGravity.GetComponent<BlackholeGravitySphere>().setBlackhole(blackhole);
   }
 
-  public void skipRespawnInterval() {
+  override public void skipRespawnInterval() {
     skipInterval = true;
   }
 

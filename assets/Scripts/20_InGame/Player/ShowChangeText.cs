@@ -11,11 +11,14 @@ public class ShowChangeText : MonoBehaviour {
   private float disappearStartPosY;
   private bool show = false;
   private Renderer icon;
+  private float stayCount = 0;
 
   public int sign = 1;
   public string changeDirection;
   public bool hasIcon = true;
 
+  public float stayDuring = 0;
+  public float disappearDuring = 1;
   public float disappearLengthY = 18;
   public float disappearLengthX = 10;
   private float directionVariable = 1;
@@ -25,15 +28,19 @@ public class ShowChangeText : MonoBehaviour {
 
   void Update() {
     if (show) {
-      color.a = Mathf.MoveTowards(color.a, 0f, Time.deltaTime);
-      text.color = color;
-      if (hasIcon) {
-        iconColor.a = color.a;
-        icon.material.color = iconColor;
+      if (stayCount < stayDuring) {
+        stayCount += Time.deltaTime;
+      } else {
+        color.a = Mathf.MoveTowards(color.a, 0f, Time.deltaTime / disappearDuring);
+        text.color = color;
+        if (hasIcon) {
+          iconColor.a = color.a;
+          icon.material.color = iconColor;
+        }
       }
 
       position.x = Mathf.MoveTowards(position.x, disappearStartPosX + disappearLengthX * directionVariable, Time.deltaTime * disappearLengthX * Random.Range(0.5f, 1.5f));
-      position.y = Mathf.MoveTowards(position.y, disappearStartPosY + disappearLengthY * sign, Time.deltaTime * disappearLengthY * Random.Range(0.5f, 1.5f));
+      position.y = Mathf.MoveTowards(position.y, disappearStartPosY + disappearLengthY * sign, Time.deltaTime * disappearLengthY);
       GetComponent<RectTransform>().anchoredPosition = position;
       if (color.a == 0) Destroy(gameObject);
     }
@@ -65,8 +72,8 @@ public class ShowChangeText : MonoBehaviour {
       icon = transform.Find("Icon").GetComponent<Renderer>();
       iconColor = icon.material.color;
 
-      float iconChangeAmount = ((amount / changeBase) - 1) * (changeScale - 1);
-      iconChangeAmount = Mathf.Min(iconChangeAmount, (changeScale - 1) * maxScale);
+      float iconChangeAmount = ((amount / changeBase) - 1) * changeScale;
+      iconChangeAmount = Mathf.Min(iconChangeAmount, changeScale * maxScale);
 
       icon.transform.localScale += Vector3.one * iconChangeAmount;
       icon.GetComponent<RectTransform>().anchoredPosition = new Vector3(-icon.transform.localScale.x, 0, 0);

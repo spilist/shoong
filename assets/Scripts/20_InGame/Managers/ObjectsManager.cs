@@ -4,6 +4,7 @@ using System.Collections;
 public class ObjectsManager : MonoBehaviour {
   protected SpawnManager spawnManager;
   protected PlayerMover player;
+  protected bool skipInterval = false;
   public float strength = 0;
 
   void OnEnable() {
@@ -21,5 +22,9 @@ public class ObjectsManager : MonoBehaviour {
 
   virtual public float getTumble(string objTag) {
     return 0;
+  }
+
+  virtual public void skipRespawnInterval() {
+    skipInterval = true;
   }
 }

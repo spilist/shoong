@@ -39,7 +39,6 @@ public class FallingstarWarningLine : MonoBehaviour {
 
   public void run(Vector3 startPos, Vector3 destPos, int distance, float duration) {
     outer = transform.Find("Outer").GetComponent<LineRenderer>();
-    outer.enabled = true;
 
     origin = startPos;
     destination = destPos;
@@ -47,6 +46,8 @@ public class FallingstarWarningLine : MonoBehaviour {
     distanceToDest = distance;
     drawingSpeed = distance / duration;
     isDrawing = true;
+
+    outer.enabled = true;
   }
 
   public void erase() {

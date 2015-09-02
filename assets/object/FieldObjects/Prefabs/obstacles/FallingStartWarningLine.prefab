@@ -122,8 +122,8 @@ LineRenderer:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 5000, z: 0}
+  - {x: 0, y: 5000, z: 0}
   m_Parameters:
     startWidth: 6
     endWidth: 6
@@ -184,7 +184,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Positions.Array.data[1].y
-      value: 0
+      value: 5000
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_UseWorldSpace
@@ -212,6 +212,14 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Positions.Array.data[0].y
+      value: 5000
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Positions.Array.data[0].z
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
