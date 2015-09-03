@@ -10,6 +10,7 @@ public class GameOver : MonoBehaviour {
   public TouchInputHandler inputHandler;
   public MenusController menus;
   public ScoreManager scoreManager;
+  public GameObject pauseButton;
 
   public Renderer partsCollector;
   public GameObject unstoppableSphere;
@@ -42,6 +43,7 @@ public class GameOver : MonoBehaviour {
     }
     unstoppableSphere.SetActive(false);
     barsCanvas.SetActive(false);
+    pauseButton.SetActive(false);
     scoreManager.run();
   }
 

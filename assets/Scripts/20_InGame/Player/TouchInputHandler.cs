@@ -9,6 +9,7 @@ public class TouchInputHandler : MonoBehaviour
 
   public SpawnManager spawnManager;
 	public MenusController menus;
+  public PauseButton pause;
 
 	private bool gameStarted = false;
 	private bool react = true;
@@ -19,8 +20,26 @@ public class TouchInputHandler : MonoBehaviour
   private Vector3 lastDraggablePosition;
 
 	void Update() {
-		if (react && Input.GetMouseButtonDown(0) && menus.touched() == "Ground" && !menus.isMenuOn()) {
-			if (player.isRebounding() || player.isUsingRainbow()) return;
+		if (Application.platform == RuntimePlatform.Android) {
+      if (Input.GetKeyDown(KeyCode.Escape)) {
+        if (gameStarted) {
+          pause.activateSelf();
+        } else if (menus.isMenuOn()) {
+          menus.toggleMenuAndUI();
+        } else {
+          Application.Quit();
+        }
+        return;
+      }
+    }
+
+    if (react && Input.GetMouseButtonDown(0) && menus.touched() == "Ground" && !menus.isMenuOn()) {
+			if (pause.isPaused()) {
+        pause.resume();
+        return;
+      }
+
+      if (player.isRebounding() || player.isUsingRainbow()) return;
 
 			if (!gameStarted) {
 				menus.gameStart();
