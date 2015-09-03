@@ -7,6 +7,7 @@ public class PauseButton : MenusBehavior {
   public GameObject pauseStatus;
 
   private bool paused = false;
+  private bool resuming = false;
   private GameObject pausedImage;
   private Text resumingText;
 
@@ -24,6 +25,8 @@ public class PauseButton : MenusBehavior {
   }
 
   public void resume() {
+    if (resuming) return;
+    resuming = true;
     pausedImage.SetActive(false);
     resumingText.gameObject.SetActive(true);
     StartCoroutine("resumeGame");
@@ -42,6 +45,7 @@ public class PauseButton : MenusBehavior {
     resumingText.gameObject.SetActive(false);
     resumingText.text = "3";
     paused = false;
+    resuming = false;
     Time.timeScale = 1;
   }
 

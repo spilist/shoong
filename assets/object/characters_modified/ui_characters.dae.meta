@@ -17,6 +17,10 @@ ModelImporter:
     100018: ui_robotcogi
     100020: ui_soju
     100022: ui_vacuumrobot
+    100024: ui_beardedfrog
+    100026: ui_cottoncandy
+    100028: ui_paperplane
+    100030: ui_tyranno
     400000: ui_bender
     400002: ui_butterfly
     400004: ui_cat
@@ -29,6 +33,10 @@ ModelImporter:
     400018: ui_robotcogi
     400020: ui_soju
     400022: ui_vacuumrobot
+    400024: ui_beardedfrog
+    400026: ui_cottoncandy
+    400028: ui_paperplane
+    400030: ui_tyranno
     2300000: ui_bender
     2300002: ui_butterfly
     2300004: ui_cat
@@ -40,6 +48,10 @@ ModelImporter:
     2300016: ui_robotcogi
     2300018: ui_soju
     2300020: ui_vacuumrobot
+    2300022: ui_beardedfrog
+    2300024: ui_cottoncandy
+    2300026: ui_paperplane
+    2300028: ui_tyranno
     3300000: ui_bender
     3300002: ui_butterfly
     3300004: ui_cat
@@ -51,6 +63,10 @@ ModelImporter:
     3300016: ui_robotcogi
     3300018: ui_soju
     3300020: ui_vacuumrobot
+    3300022: ui_beardedfrog
+    3300024: ui_cottoncandy
+    3300026: ui_paperplane
+    3300028: ui_tyranno
     4300000: ui_cat
     4300002: ui_crab
     4300004: ui_bender
@@ -62,6 +78,10 @@ ModelImporter:
     4300016: ui_robotcogi
     4300018: ui_chameleon
     4300020: ui_butterfly
+    4300022: ui_beardedfrog
+    4300024: ui_cottoncandy
+    4300026: ui_tyranno
+    4300028: ui_paperplane
     9500000: //RootNode
   materials:
     importMaterials: 1

@@ -179,6 +179,10 @@ public class GameController : MonoBehaviour {
     characters.Add("cat", false);
     characters.Add("butterfly", false);
     characters.Add("bender", false);
+    characters.Add("beardedfrog", false);
+    characters.Add("cottoncandy", false);
+    characters.Add("tyranno", false);
+    characters.Add("paperplane", false);
 
     objects.Add("SpecialParts", false);
     objects.Add("Blackhole", false);

@@ -17,6 +17,14 @@ ModelImporter:
     100018: robotcogi
     100020: soju
     100022: vacuumrobot
+    100024: BeardedFrog
+    100026: CottonCandy
+    100028: PaperPlane
+    100030: Tryanno
+    100032: beardedfrog
+    100034: cottoncandy
+    100036: paperplane
+    100038: tyranno
     400000: bender
     400002: butterfly
     400004: cat
@@ -29,6 +37,14 @@ ModelImporter:
     400018: robotcogi
     400020: soju
     400022: vacuumrobot
+    400024: BeardedFrog
+    400026: CottonCandy
+    400028: PaperPlane
+    400030: Tryanno
+    400032: beardedfrog
+    400034: cottoncandy
+    400036: paperplane
+    400038: tyranno
     2300000: bender
     2300002: butterfly
     2300004: cat
@@ -40,6 +56,14 @@ ModelImporter:
     2300016: robotcogi
     2300018: soju
     2300020: vacuumrobot
+    2300022: BeardedFrog
+    2300024: CottonCandy
+    2300026: PaperPlane
+    2300028: Tryanno
+    2300030: beardedfrog
+    2300032: cottoncandy
+    2300034: paperplane
+    2300036: tyranno
     3300000: bender
     3300002: butterfly
     3300004: cat
@@ -51,6 +75,14 @@ ModelImporter:
     3300016: robotcogi
     3300018: soju
     3300020: vacuumrobot
+    3300022: BeardedFrog
+    3300024: CottonCandy
+    3300026: PaperPlane
+    3300028: Tryanno
+    3300030: beardedfrog
+    3300032: cottoncandy
+    3300034: paperplane
+    3300036: tyranno
     4300000: cat
     4300002: crab
     4300004: bender
@@ -62,6 +94,14 @@ ModelImporter:
     4300016: robotcogi
     4300018: chameleon
     4300020: butterfly
+    4300022: BeardedFrog
+    4300024: CottonCandy
+    4300026: Tryanno
+    4300028: PaperPlane
+    4300030: beardedfrog
+    4300032: cottoncandy
+    4300034: tyranno
+    4300036: paperplane
     9500000: //RootNode
   materials:
     importMaterials: 1

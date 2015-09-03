@@ -37,7 +37,7 @@ public class CharactersMenu : Draggable {
     numAllCharacters.text = "/" + charactersCount.ToString();
 
     Vector3 prevSelected = transform.Find("Characters/" + PlayerPrefs.GetString("SelectedCharacter")).transform.localPosition;
-    transform.Find("Characters").transform.localPosition = new Vector3(prevSelected.x, -20, 0);
+    transform.Find("Characters").transform.localPosition = new Vector3(prevSelected.x, 55, 0);
   }
 
   public bool isJustOpened() {
