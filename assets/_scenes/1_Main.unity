@@ -22629,7 +22629,7 @@ GameObject:
   - 224: {fileID: 950434393}
   - 114: {fileID: 950434394}
   m_Layer: 5
-  m_Name: DestroyMeteroid
+  m_Name: DestroyAsteroid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -38546,7 +38546,7 @@ MonoBehaviour:
   distBtwOnGoingQuest: 50
   showQuestDuration: 2
   hideQuestAlong: 1
-  resetQuest: 1
+  resetQuest: 0
   goldenCubes: {fileID: 667805692}
 --- !u!1 &1567307126
 GameObject:

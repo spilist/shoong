@@ -14,7 +14,7 @@ public class QuestManager : MonoBehaviour {
   private Transform questLists;
   private Transform onGoingQuests;
 
-	void OnEnable() {
+	void Start() {
     if (resetQuest) {
       resetPrevQuests();
       GameController.control.lastQuestGivenAt = DateTime.MinValue;
