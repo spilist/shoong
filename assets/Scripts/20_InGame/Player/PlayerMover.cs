@@ -14,6 +14,7 @@ public class PlayerMover : MonoBehaviour {
   public int cubesWhenDestroyMonster = 50;
   public int cubesAsItIsUntill = 20;
   public int restCubesChangePer = 5;
+  public int avoidDistance = 20;
   private Hashtable cubesWhenDestroy;
 
   private float speed;
@@ -148,7 +149,19 @@ public class PlayerMover : MonoBehaviour {
 		} else if (other.tag == "Part") {
       goodPartsEncounter(mover, comboBar.getComboRatio());
 			GetComponent<AudioSource>().Play ();
-      QuestManager.qm.addCountToQuest("GetPartsOnRainbow");
+
+      if (QuestManager.qm.doingQuest("GetPartsNearAsteroid")) {
+        foreach (GameObject asteroid in GameObject.FindGameObjectsWithTag("Obstacle_big")) {
+          if (Vector3.Distance(transform.position, asteroid.transform.position) < (avoidDistance + asteroid.GetComponent<BigObstaclesMover>().width)) {
+            QuestManager.qm.addCountToQuest("GetPartsNearAsteroid");
+            break;
+          }
+
+        }
+      }
+      if (isUsingRainbow()) {
+        QuestManager.qm.addCountToQuest("GetPartsOnRainbow");
+      }
 
 		} else if (other.tag == "SpecialPart") {
       goodPartsEncounter(mover, comboBar.getComboRatio());
@@ -372,8 +385,8 @@ public class PlayerMover : MonoBehaviour {
     return ridingMonster;
   }
 
-  public bool isExitedBlackhole() {
-    return exitedBlackhole;
+  public bool isUsingBlackhole() {
+    return exitedBlackhole || isInsideBlackhole;
   }
 
   public void getSpecialEnergyPlay() {

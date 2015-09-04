@@ -96,6 +96,12 @@ public class MonsterMover : ObjectsMover {
   }
 
   public override void destroyObject(bool destroyEffect = true) {
+    if (isInsideBlackhole && QuestManager.qm.doingQuest("DestroyMonsterByBlackhole")) {
+      if (player.GetComponent<PlayerMover>().isUsingBlackhole()) {
+        QuestManager.qm.addCountToQuest("DestroyMonsterByBlackhole");
+      }
+    }
+
     Destroy(gameObject);
     monm.indicator.stopIndicate();
     monm.stopWarning();

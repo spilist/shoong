@@ -79,4 +79,14 @@ public class QuestManager : MonoBehaviour {
       ogq.endGame();
     }
   }
+
+  public bool doingQuest(string questName) {
+    foreach (Transform tr in onGoingQuests) {
+      OnGoingQuest ogq = tr.GetComponent<OnGoingQuest>();
+      if (ogq.name() == questName) {
+        return true;
+      }
+    }
+    return false;
+  }
 }

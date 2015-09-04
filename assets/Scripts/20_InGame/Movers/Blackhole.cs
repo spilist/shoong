@@ -45,7 +45,7 @@ public class Blackhole : MonoBehaviour {
   void OnDestroy() {
     if (isQuitting) return;
     if (gameOver.isOver()) return;
-    if (player.isExitedBlackhole()) return;
+    if (player.isUsingBlackhole()) return;
 
     blm.run();
   }

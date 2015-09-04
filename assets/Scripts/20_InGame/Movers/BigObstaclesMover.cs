@@ -2,6 +2,8 @@
 using System.Collections;
 
 public class BigObstaclesMover : ObjectsMover {
+  public int width;
+
   protected override void initializeRest() {
     canBeMagnetized = false;
   }

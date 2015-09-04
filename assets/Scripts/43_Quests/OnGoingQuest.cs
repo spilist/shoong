@@ -25,6 +25,7 @@ public class OnGoingQuest : MonoBehaviour {
   private Vector2 anchorPos;
   private float scaleFactor;
   private int emphasizeStatus = 0;
+  private bool gameEnded = false;
 
 	public void startQuest(Quest quest, int currentCount) {
     questName = quest.name;
@@ -113,7 +114,7 @@ public class OnGoingQuest : MonoBehaviour {
   }
 
   public void addCount(int howMany) {
-    if (isComplete) return;
+    if (isComplete || gameEnded) return;
 
     if (howMany == 0) {
       count = 0;
@@ -151,6 +152,7 @@ public class OnGoingQuest : MonoBehaviour {
   }
 
   public void endGame() {
+    gameEnded = true;
     countByTime = false;
 
     if (isComplete) {

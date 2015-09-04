@@ -93,6 +93,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e043be71738734f7cb680b3940904180, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  width: 37
 --- !u!136 &13611266
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -440,6 +441,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_ReflectionProbeUsage
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: width
+      value: 37
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
