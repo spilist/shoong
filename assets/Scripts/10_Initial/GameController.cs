@@ -199,17 +199,23 @@ public class GameController : MonoBehaviour {
     objects.Add("ComboParts", false);
     objects.Add("RainbowDonuts", false);
 
-    quests.Add("GetCube", -1);
-    quests.Add("UseBooster", -1);
-    quests.Add("DestroyAsteroid", -1);
-    quests.Add("DestroyFallingStar", -1);
-    quests.Add("RideMonster", -1);
-    quests.Add("DestroyMonster", -1);
-    quests.Add("ExitBlackhole", -1);
-    quests.Add("ReboundByBlackhole", -1);
-    quests.Add("RideMonsterByBlackhole", -1);
-    quests.Add("CompleteComboParts", -1);
-    quests.Add("CompleteCubeDispenser", -1);
+    quests.Add("GamePause", 0);
+    quests.Add("GetCube", 0);
+    quests.Add("UseBooster", 0);
+    quests.Add("NoBooster", 0);
+    quests.Add("DestroyAsteroid", 0);
+    quests.Add("DestroyAsteroidsBeforeUnstoppableEnd", 0);
+    quests.Add("DestroyFallingStar", 0);
+    quests.Add("RideMonster", 0);
+    quests.Add("RideMonsterWithLowEnergy", 0);
+    quests.Add("DestroyMonster", 0);
+    quests.Add("DestroyMonsterByRainbow", 0);
+    quests.Add("GetPartsOnRainbow", 0);
+    quests.Add("ExitBlackhole", 0);
+    quests.Add("ReboundByBlackhole", 0);
+    quests.Add("RideMonsterByBlackhole", 0);
+    quests.Add("CompleteComboParts", 0);
+    quests.Add("CompleteCubeDispenser", 0);
   }
 }
 

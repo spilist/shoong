@@ -29,8 +29,7 @@ public class QuestManager : MonoBehaviour {
   }
 
   public void generateQuest() {
-    // if tutorial quest, don't reset
-    resetPrevQuests();
+    // if there is ongoing quest, do something else
 
     Quest[] availableQuests = new Quest[questsList.childCount];
     int count = 0;
@@ -47,10 +46,6 @@ public class QuestManager : MonoBehaviour {
   }
 
   public void startQuest(Quest quest, int currentCount = 0) {
-    if ((int) GameController.control.quests[quest.name] == -1) {
-      GameController.control.quests[quest.name] = 0;
-    };
-
     GameObject onGoingQuest = Instantiate(onGoingQuestPrefab);
     onGoingQuest.transform.SetParent(onGoingQuests, false);
     onGoingQuest.GetComponent<OnGoingQuest>().startQuest(quest, currentCount);
@@ -72,27 +67,16 @@ public class QuestManager : MonoBehaviour {
 
   void showOnGoingQuests() {
     foreach (DictionaryEntry quest in GameController.control.quests) {
-      if ((int) quest.Value != -1) {
+      if ((int) quest.Value != 0) {
         startQuestWithName((string) quest.Key, (int) quest.Value);
       }
     }
   }
 
-  public void resetPrevQuests() {
-    Hashtable table = new Hashtable();
-    foreach (DictionaryEntry quest in GameController.control.quests) {
-      table.Add(quest.Key, -1);
-    }
-    GameController.control.quests = table;
-  }
-
   public void checkQuestComplete() {
     foreach (Transform tr in onGoingQuests) {
       OnGoingQuest ogq = tr.GetComponent<OnGoingQuest>();
-      if (ogq.isCompleted()) {
-        Debug.Log("You completed a quest");
-        ogq.congraturation();
-      }
+      ogq.endGame();
     }
   }
 }

@@ -7090,7 +7090,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 574837081}
-  m_RootOrder: 3
+  m_RootOrder: 6
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: 6.10351562e-05}
@@ -7110,6 +7110,8 @@ MonoBehaviour:
   conditionNotRequired: 0
   questStartConditions:
   - SpecialParts Monster RainbowDonuts
+  countByTime: 0
+  doNotShow: 0
   description: "\uC720\uC131 \uD30C\uAD34"
   numbersToComplete: 10
   goldenCubesWhenComplete: 100
@@ -8898,6 +8900,59 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 252849846}
+--- !u!1 &260982450
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 260982451}
+  - 114: {fileID: 260982452}
+  m_Layer: 5
+  m_Name: RideMonsterWithLowEnergy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &260982451
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 260982450}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: .000610351562}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 574837081}
+  m_RootOrder: 8
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
+  m_AnchoredPosition: {x: 0, y: .000122070312}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: .5, y: .5}
+--- !u!114 &260982452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 260982450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9086817214d0f406caf8914942cb69eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  conditionNotRequired: 0
+  questStartConditions:
+  - Monster
+  countByTime: 0
+  doNotShow: 0
+  description: "\uC5D0\uB108\uC9C0 30 \uC774\uD558\uC5D0\uC11C \uBAAC\uC2A4\uD130
+    \uD0D1\uC2B9"
+  numbersToComplete: 1
+  goldenCubesWhenComplete: 100
 --- !u!1 &266830809
 GameObject:
   m_ObjectHideFlags: 0
@@ -10455,6 +10510,110 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 426184, guid: 687c694e3e0c84920afaa2510449ab32, type: 2}
   m_PrefabInternal: {fileID: 434693578}
+--- !u!1 &439679493
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 439679494}
+  - 114: {fileID: 439679495}
+  m_Layer: 5
+  m_Name: DestroyAsteroidsBeforeUnstoppableEnd
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &439679494
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 439679493}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: .000203450516}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 574837081}
+  m_RootOrder: 5
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
+  m_AnchoredPosition: {x: 0, y: 6.10351562e-05}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: .5, y: .5}
+--- !u!114 &439679495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 439679493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9086817214d0f406caf8914942cb69eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  conditionNotRequired: 0
+  questStartConditions:
+  - SpecialParts
+  countByTime: 0
+  doNotShow: 0
+  description: "\uBB34\uC801 \uC9C0\uC18D\uC2DC\uAC04 \uC548\uC5D0 \uC6B4\uC11D \uD30C\uAD34"
+  numbersToComplete: 3
+  goldenCubesWhenComplete: 100
+--- !u!1 &440487357
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 440487358}
+  - 114: {fileID: 440487359}
+  m_Layer: 5
+  m_Name: GetPartsOnRainbow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &440487358
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 440487357}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: .000610351562}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 574837081}
+  m_RootOrder: 11
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
+  m_AnchoredPosition: {x: 0, y: .000122070312}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: .5, y: .5}
+--- !u!114 &440487359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 440487357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9086817214d0f406caf8914942cb69eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  conditionNotRequired: 0
+  questStartConditions:
+  - RainbowDonuts
+  countByTime: 0
+  doNotShow: 0
+  description: "\uBB34\uC9C0\uAC1C \uD0C0\uACE0 \uBD80\uD488\uBA39\uAE30"
+  numbersToComplete: 10
+  goldenCubesWhenComplete: 100
 --- !u!1 &465752960
 GameObject:
   m_ObjectHideFlags: 0
@@ -10577,6 +10736,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   conditionNotRequired: 1
   questStartConditions: []
+  countByTime: 0
+  doNotShow: 0
   description: "\uBD80\uC2A4\uD130 \uC0AC\uC6A9"
   numbersToComplete: 100
   goldenCubesWhenComplete: 30
@@ -14470,7 +14631,7 @@ GameObject:
   m_Component:
   - 224: {fileID: 574837081}
   m_Layer: 5
-  m_Name: QuestLists
+  m_Name: QuestsList
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14488,10 +14649,16 @@ RectTransform:
   m_Children:
   - {fileID: 590379131}
   - {fileID: 470650675}
+  - {fileID: 1402410140}
+  - {fileID: 1187778667}
   - {fileID: 950434393}
+  - {fileID: 439679494}
   - {fileID: 186705002}
   - {fileID: 775777495}
+  - {fileID: 260982451}
   - {fileID: 863897421}
+  - {fileID: 588592962}
+  - {fileID: 440487358}
   - {fileID: 576634737}
   - {fileID: 1204889871}
   - {fileID: 1470665265}
@@ -14531,7 +14698,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 574837081}
-  m_RootOrder: 6
+  m_RootOrder: 12
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: 6.10351562e-05}
@@ -14551,6 +14718,8 @@ MonoBehaviour:
   conditionNotRequired: 0
   questStartConditions:
   - Blackhole
+  countByTime: 0
+  doNotShow: 0
   description: "\uBE14\uB799\uD640 \uD0C8\uCD9C"
   numbersToComplete: 10
   goldenCubesWhenComplete: 100
@@ -14716,6 +14885,59 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: "\uC42C\uC8FC"
   price: 1000
+--- !u!1 &588592961
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 588592962}
+  - 114: {fileID: 588592963}
+  m_Layer: 5
+  m_Name: DestroyMonsterByRainbow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &588592962
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 588592961}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: .000406901032}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 574837081}
+  m_RootOrder: 10
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
+  m_AnchoredPosition: {x: 0, y: 9.15527344e-05}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: .5, y: .5}
+--- !u!114 &588592963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 588592961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9086817214d0f406caf8914942cb69eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  conditionNotRequired: 0
+  questStartConditions:
+  - Monster
+  - RainbowDonuts
+  countByTime: 0
+  doNotShow: 0
+  description: "\uBB34\uC9C0\uAC1C \uD0C0\uACE0 \uBAAC\uC2A4\uD130 \uD30C\uAD34"
+  numbersToComplete: 5
+  goldenCubesWhenComplete: 100
 --- !u!1 &589887825
 GameObject:
   m_ObjectHideFlags: 0
@@ -14844,6 +15066,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   conditionNotRequired: 1
   questStartConditions: []
+  countByTime: 0
+  doNotShow: 0
   description: "\uD050\uBE0C \uD68D\uB4DD"
   numbersToComplete: 30
   goldenCubesWhenComplete: 30
@@ -19986,7 +20210,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 574837081}
-  m_RootOrder: 4
+  m_RootOrder: 7
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: 9.15527344e-05}
@@ -20006,6 +20230,8 @@ MonoBehaviour:
   conditionNotRequired: 0
   questStartConditions:
   - Monster
+  countByTime: 0
+  doNotShow: 0
   description: "\uBAAC\uC2A4\uD130 \uD0D1\uC2B9"
   numbersToComplete: 10
   goldenCubesWhenComplete: 100
@@ -21859,7 +22085,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 574837081}
-  m_RootOrder: 5
+  m_RootOrder: 9
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: 6.10351562e-05}
@@ -21880,6 +22106,8 @@ MonoBehaviour:
   questStartConditions:
   - Monster
   - SpecialParts RainbowDonuts
+  countByTime: 0
+  doNotShow: 0
   description: "\uBAAC\uC2A4\uD130 \uD30C\uAD34"
   numbersToComplete: 5
   goldenCubesWhenComplete: 100
@@ -22089,7 +22317,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 574837081}
-  m_RootOrder: 10
+  m_RootOrder: 16
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: .000122070312}
@@ -22109,6 +22337,8 @@ MonoBehaviour:
   conditionNotRequired: 0
   questStartConditions:
   - CubeDispenser
+  countByTime: 0
+  doNotShow: 0
   description: "\uD050\uBE0C \uD0F1\uD0F1\uBCFC \uC644\uB8CC"
   numbersToComplete: 10
   goldenCubesWhenComplete: 100
@@ -22646,7 +22876,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 574837081}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -22666,6 +22896,8 @@ MonoBehaviour:
   conditionNotRequired: 0
   questStartConditions:
   - SpecialParts Monster RainbowDonuts
+  countByTime: 0
+  doNotShow: 0
   description: "\uC6B4\uC11D \uD30C\uAD34"
   numbersToComplete: 10
   goldenCubesWhenComplete: 100
@@ -26678,6 +26910,57 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1179511917}
   m_Mesh: {fileID: 4300022, guid: 46bd8557e7c474556ab17eda482a0d06, type: 3}
+--- !u!1 &1187778666
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 1187778667}
+  - 114: {fileID: 1187778668}
+  m_Layer: 5
+  m_Name: GamePause
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1187778667
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1187778666}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: .000610351562}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 574837081}
+  m_RootOrder: 3
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
+  m_AnchoredPosition: {x: 0, y: .000122070312}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: .5, y: .5}
+--- !u!114 &1187778668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1187778666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9086817214d0f406caf8914942cb69eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  conditionNotRequired: 1
+  questStartConditions: []
+  countByTime: 0
+  doNotShow: 0
+  description: "\uC77C\uC2DC\uC815\uC9C0"
+  numbersToComplete: 1
+  goldenCubesWhenComplete: 30
 --- !u!1 &1194304518
 GameObject:
   m_ObjectHideFlags: 0
@@ -26765,7 +27048,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 574837081}
-  m_RootOrder: 7
+  m_RootOrder: 13
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -26786,6 +27069,8 @@ MonoBehaviour:
   questStartConditions:
   - Blackhole
   - SpecialParts RainbowDonuts
+  countByTime: 0
+  doNotShow: 0
   description: "\uBE14\uB799\uD640\uC5D0 \uD295\uAE30\uAE30"
   numbersToComplete: 5
   goldenCubesWhenComplete: 100
@@ -32933,6 +33218,57 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1388362257}
+--- !u!1 &1402410139
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 1402410140}
+  - 114: {fileID: 1402410141}
+  m_Layer: 5
+  m_Name: NoBooster
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1402410140
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1402410139}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: .000406901032}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 574837081}
+  m_RootOrder: 2
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
+  m_AnchoredPosition: {x: 0, y: 9.15527344e-05}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: .5, y: .5}
+--- !u!114 &1402410141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1402410139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9086817214d0f406caf8914942cb69eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  conditionNotRequired: 1
+  questStartConditions: []
+  countByTime: 1
+  doNotShow: 0
+  description: "\uBD80\uC2A4\uD130 \uC5C6\uC774 \uBC84\uD2F0\uAE30"
+  numbersToComplete: 10
+  goldenCubesWhenComplete: 30
 --- !u!1 &1410312520
 GameObject:
   m_ObjectHideFlags: 0
@@ -34451,7 +34787,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 574837081}
-  m_RootOrder: 8
+  m_RootOrder: 14
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: 6.10351562e-05}
@@ -34472,6 +34808,8 @@ MonoBehaviour:
   questStartConditions:
   - Blackhole
   - Monster
+  countByTime: 0
+  doNotShow: 0
   description: "\uBAAC\uC2A4\uD130 \uD761\uC218"
   numbersToComplete: 5
   goldenCubesWhenComplete: 100
@@ -43756,7 +44094,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 574837081}
-  m_RootOrder: 9
+  m_RootOrder: 15
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: 9.15527344e-05}
@@ -43776,6 +44114,8 @@ MonoBehaviour:
   conditionNotRequired: 0
   questStartConditions:
   - ComboParts
+  countByTime: 0
+  doNotShow: 0
   description: "\uD658\uC601 \uBD80\uD488 \uC644\uB8CC"
   numbersToComplete: 10
   goldenCubesWhenComplete: 100

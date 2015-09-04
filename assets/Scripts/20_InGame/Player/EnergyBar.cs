@@ -130,5 +130,9 @@ public class EnergyBar : MonoBehaviour {
   public void loseByShoot() {
     changeHealth(shootAmount, loseRate);
   }
+
+  public int currentEnergy() {
+    return (int) (image.fillAmount * 100);
+  }
 }
 

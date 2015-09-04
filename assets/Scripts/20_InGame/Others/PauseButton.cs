@@ -49,6 +49,7 @@ public class PauseButton : MenusBehavior {
     resuming = false;
     Time.timeScale = 1;
     AudioListener.pause = false;
+    QuestManager.qm.addCountToQuest("GamePause");
   }
 
   public bool isPaused() {

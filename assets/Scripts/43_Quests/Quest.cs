@@ -5,12 +5,16 @@ public class Quest : MonoBehaviour {
   public bool conditionNotRequired;
   public string[] questStartConditions;
 
+  public bool countByTime = false;
+  public bool doNotShow = false;
   public string description;
   public int numbersToComplete;
   public int goldenCubesWhenComplete = 100;
 
   // 활성화한 오브젝트 기준
   public bool isAvailable() {
+    if (doNotShow) return false;
+
     if (conditionNotRequired) return true;
 
     string activeObjects = PlayerPrefs.GetString("MainObjects").Trim() + " " + PlayerPrefs.GetString("SubObjects").Trim();

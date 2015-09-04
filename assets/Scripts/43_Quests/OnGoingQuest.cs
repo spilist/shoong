@@ -10,9 +10,11 @@ public class OnGoingQuest : MonoBehaviour {
   private int numbersToComplete;
   private string numbersToCompleteToString;
   private int goldenCubesWhenComplete;
+  private bool countByTime;
 
   private bool convetToInactive = false;
   private float stayCount = 0;
+  private float timeCount = 0;
   private Color color;
   private Color inactiveColor;
   private Color activeColor;
@@ -26,6 +28,7 @@ public class OnGoingQuest : MonoBehaviour {
 
 	public void startQuest(Quest quest, int currentCount) {
     questName = quest.name;
+    countByTime = quest.countByTime;
     about = transform.Find("About").GetComponent<Text>();
     numbers = transform.Find("Numbers").GetComponent<Text>();
 
@@ -100,16 +103,29 @@ public class OnGoingQuest : MonoBehaviour {
 
       if (color.a == 0) emphasizeStatus = 0;
     }
+
+    if (countByTime && !isComplete) {
+      timeCount += Time.deltaTime;
+      if (timeCount >= 1) {
+        addCount(1);
+      }
+    }
   }
 
   public void addCount(int howMany) {
     if (isComplete) return;
 
-    count += howMany;
+    if (howMany == 0) {
+      count = 0;
+    } else {
+      count += howMany;
+    }
+
     if (count > numbersToComplete) count = numbersToComplete;
     numbers.text = count.ToString() + numbersToCompleteToString;
     GameController.control.quests[questName] = count;
     stayCount = 0;
+    timeCount = 0;
 
     if (count >= numbersToComplete) {
       isComplete = true;
@@ -134,9 +150,16 @@ public class OnGoingQuest : MonoBehaviour {
     return isComplete;
   }
 
-  public void congraturation() {
-    GameController.control.quests[questName] = -1;
-    QuestManager.qm.goldenCubes.add(goldenCubesWhenComplete);
-    Destroy(gameObject);
+  public void endGame() {
+    countByTime = false;
+
+    if (isComplete) {
+      QuestManager.qm.goldenCubes.add(goldenCubesWhenComplete);
+    } else {
+      // if tutorial, don't
+      GameController.control.quests[questName] = 0;
+    }
+
+    // Destroy(gameObject);
   }
 }

@@ -20,6 +20,7 @@ public class BigObstaclesMover : ObjectsMover {
   public override void encounterPlayer() {
     Instantiate(player.GetComponent<PlayerMover>().obstacleDestroy, transform.position, transform.rotation);
     QuestManager.qm.addCountToQuest("DestroyAsteroid");
+    QuestManager.qm.addCountToQuest("DestroyAsteroidsBeforeUnstoppableEnd");
     Destroy(gameObject);
   }
 

@@ -137,6 +137,9 @@ public class PlayerMover : MonoBehaviour {
     } else if (other.tag == "Monster") {
 			if (unstoppable || isUsingRainbow()) {
         goodPartsEncounter(mover, (int)cubesWhenDestroy[other.tag]);
+        if (isUsingRainbow()) {
+          QuestManager.qm.addCountToQuest("DestroyMonsterByRainbow");
+        }
 			} else if (exitedBlackhole || other.gameObject.GetComponent<MonsterMover>().isWeak()) {
         startRiding(mover);
       } else {
@@ -145,6 +148,8 @@ public class PlayerMover : MonoBehaviour {
 		} else if (other.tag == "Part") {
       goodPartsEncounter(mover, comboBar.getComboRatio());
 			GetComponent<AudioSource>().Play ();
+      QuestManager.qm.addCountToQuest("GetPartsOnRainbow");
+
 		} else if (other.tag == "SpecialPart") {
       goodPartsEncounter(mover, comboBar.getComboRatio());
       getSpecialEnergyEffect.Play();
@@ -247,6 +252,7 @@ public class PlayerMover : MonoBehaviour {
       unstoppableEffect.Stop();
       unstoppableEffect_two.Stop();
       unstoppableEffect_two.GetComponent<AudioSource>().Stop ();
+      QuestManager.qm.addCountToQuest("DestroyAsteroidsBeforeUnstoppableEnd", 0);
     }
 
     if (reboundingByBlackhole) {
@@ -278,6 +284,10 @@ public class PlayerMover : MonoBehaviour {
 
   void startRiding(ObjectsMover obMover) {
     QuestManager.qm.addCountToQuest("RideMonster");
+
+    if (energyBar.currentEnergy() <= 30) {
+      QuestManager.qm.addCountToQuest("RideMonsterWithLowEnergy");
+    }
 
     if (exitedBlackhole) {
       QuestManager.qm.addCountToQuest("RideMonsterByBlackhole");
@@ -379,6 +389,7 @@ public class PlayerMover : MonoBehaviour {
   }
 
   public void shootBooster(Vector3 dir){
+    QuestManager.qm.addCountToQuest("NoBooster", 0);
     QuestManager.qm.addCountToQuest("UseBooster");
 
     if (!unstoppable) {
