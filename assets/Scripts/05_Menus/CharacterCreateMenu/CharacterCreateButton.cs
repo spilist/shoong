@@ -166,4 +166,9 @@ public class CharacterCreateButton : MenusBehavior {
     running = false;
     checkAffordable();
   }
+
+  void OnDisable() {
+    cubesYouHave.SetActive(false);
+    goldenCubesYouHave.SetActive(false);
+  }
 }

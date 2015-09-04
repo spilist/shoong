@@ -106,6 +106,8 @@ public class MonsterMover : ObjectsMover {
   }
 
   override public void encounterPlayer() {
+    QuestManager.qm.addCountToQuest("DestroyMonster");
+
     Destroy(gameObject);
     monm.indicator.stopIndicate();
     monm.stopWarning();

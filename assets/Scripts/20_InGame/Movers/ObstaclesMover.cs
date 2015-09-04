@@ -34,6 +34,8 @@ public class ObstaclesMover : ObjectsMover {
 
   public override void encounterPlayer() {
     Instantiate(player.GetComponent<PlayerMover>().obstacleDestroy, transform.position, transform.rotation);
+    QuestManager.qm.addCountToQuest("DestroyFallingStar");
+
     Destroy(gameObject);
   }
 }

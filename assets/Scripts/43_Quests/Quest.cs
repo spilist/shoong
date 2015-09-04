@@ -2,12 +2,12 @@
 using System.Collections;
 
 public class Quest : MonoBehaviour {
-  public int questNumber;
   public bool conditionNotRequired;
   public string[] questStartConditions;
 
   public string description;
   public int numbersToComplete;
+  public int goldenCubesWhenComplete = 100;
 
   public bool isAvailable() {
     if ((int)GameController.control.quests[name] != -1) return false; // 해당 퀘스트 진행중

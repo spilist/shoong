@@ -205,9 +205,16 @@ public class GameController : MonoBehaviour {
     objects.Add("RainbowDonuts", false);
 
     quests.Add("GetCube", -1);
-    quests.Add("DestroyMeteroid", -1);
+    quests.Add("UseBooster", -1);
+    quests.Add("DestroyAsteroid", -1);
+    quests.Add("DestroyFallingStar", -1);
+    quests.Add("RideMonster", -1);
+    quests.Add("DestroyMonster", -1);
+    quests.Add("ExitBlackhole", -1);
     quests.Add("ReboundByBlackhole", -1);
-
+    quests.Add("RideMonsterByBlackhole", -1);
+    quests.Add("CompleteComboParts", -1);
+    quests.Add("CompleteCubeDispenser", -1);
   }
 }
 

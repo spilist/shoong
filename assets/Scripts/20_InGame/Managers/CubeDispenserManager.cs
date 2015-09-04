@@ -35,6 +35,7 @@ public class CubeDispenserManager : ObjectsManager {
     cubeDispenser.GetComponent<ParticleSystem>().emissionRate -= decreaseEmissionAmount;
 
     if (comboCount == fullComboCount) {
+      QuestManager.qm.addCountToQuest("CompleteCubeDispenser");
       StartCoroutine("respawn");
     }
   }

@@ -7063,6 +7063,56 @@ ParticleSystem:
     subEmitterCollision1: {fileID: 0}
     subEmitterDeath: {fileID: 0}
     subEmitterDeath1: {fileID: 0}
+--- !u!1 &186705001
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 186705002}
+  - 114: {fileID: 186705003}
+  m_Layer: 5
+  m_Name: DestroyFallingStar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &186705002
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 186705001}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: .000203450516}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 574837081}
+  m_RootOrder: 3
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
+  m_AnchoredPosition: {x: 0, y: 6.10351562e-05}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: .5, y: .5}
+--- !u!114 &186705003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 186705001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9086817214d0f406caf8914942cb69eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  conditionNotRequired: 0
+  questStartConditions:
+  - SpecialParts Monster RainbowDonuts
+  description: "\uC720\uC131 \uD30C\uAD34"
+  numbersToComplete: 10
+  goldenCubesWhenComplete: 100
 --- !u!1 &188335416
 GameObject:
   m_ObjectHideFlags: 0
@@ -10481,6 +10531,55 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: "\uB370\uC4F0\uC2A4\uD0C0"
   price: 1000
+--- !u!1 &470650674
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 470650675}
+  - 114: {fileID: 470650676}
+  m_Layer: 5
+  m_Name: UseBooster
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &470650675
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 470650674}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: .000203450516}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 574837081}
+  m_RootOrder: 1
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
+  m_AnchoredPosition: {x: 0, y: 6.10351562e-05}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: .5, y: .5}
+--- !u!114 &470650676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 470650674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9086817214d0f406caf8914942cb69eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  conditionNotRequired: 1
+  questStartConditions: []
+  description: "\uBD80\uC2A4\uD130 \uC0AC\uC6A9"
+  numbersToComplete: 100
+  goldenCubesWhenComplete: 30
 --- !u!1 &501650840
 GameObject:
   m_ObjectHideFlags: 0
@@ -14388,8 +14487,16 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 590379131}
+  - {fileID: 470650675}
   - {fileID: 950434393}
+  - {fileID: 186705002}
+  - {fileID: 775777495}
+  - {fileID: 863897421}
+  - {fileID: 576634737}
   - {fileID: 1204889871}
+  - {fileID: 1470665265}
+  - {fileID: 1874486845}
+  - {fileID: 890419730}
   m_Father: {fileID: 1560845398}
   m_RootOrder: 0
   m_AnchorMin: {x: .5, y: .5}
@@ -14397,6 +14504,56 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: .5, y: .5}
+--- !u!1 &576634736
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 576634737}
+  - 114: {fileID: 576634738}
+  m_Layer: 5
+  m_Name: ExitBlackhole
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &576634737
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 576634736}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: .000203450516}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 574837081}
+  m_RootOrder: 6
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
+  m_AnchoredPosition: {x: 0, y: 6.10351562e-05}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: .5, y: .5}
+--- !u!114 &576634738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 576634736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9086817214d0f406caf8914942cb69eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  conditionNotRequired: 0
+  questStartConditions:
+  - Blackhole
+  description: "\uBE14\uB799\uD640 \uD0C8\uCD9C"
+  numbersToComplete: 10
+  goldenCubesWhenComplete: 100
 --- !u!1001 &578305428
 Prefab:
   m_ObjectHideFlags: 0
@@ -14685,11 +14842,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9086817214d0f406caf8914942cb69eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questNumber: 0
   conditionNotRequired: 1
   questStartConditions: []
   description: "\uD050\uBE0C \uD68D\uB4DD"
-  numbersToComplete: 100
+  numbersToComplete: 30
+  goldenCubesWhenComplete: 30
 --- !u!1 &600005597
 GameObject:
   m_ObjectHideFlags: 0
@@ -19802,6 +19959,56 @@ MonoBehaviour:
     \uD558\uC9C0\uB9CC,  \uC57D\uD574\uC9C0\uACE0 \uB098\uBA74 \uC804\uC138\uC5ED\uC804."
   cubePrice: 10000
   goldenCubePrice: 1000
+--- !u!1 &775777494
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 775777495}
+  - 114: {fileID: 775777496}
+  m_Layer: 5
+  m_Name: RideMonster
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &775777495
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 775777494}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: .000406901032}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 574837081}
+  m_RootOrder: 4
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
+  m_AnchoredPosition: {x: 0, y: 9.15527344e-05}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: .5, y: .5}
+--- !u!114 &775777496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 775777494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9086817214d0f406caf8914942cb69eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  conditionNotRequired: 0
+  questStartConditions:
+  - Monster
+  description: "\uBAAC\uC2A4\uD130 \uD0D1\uC2B9"
+  numbersToComplete: 10
+  goldenCubesWhenComplete: 100
 --- !u!1 &803409794
 GameObject:
   m_ObjectHideFlags: 0
@@ -21625,6 +21832,57 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 863087876}
+--- !u!1 &863897420
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 863897421}
+  - 114: {fileID: 863897422}
+  m_Layer: 5
+  m_Name: DestroyMonster
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &863897421
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 863897420}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: .000203450516}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 574837081}
+  m_RootOrder: 5
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
+  m_AnchoredPosition: {x: 0, y: 6.10351562e-05}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: .5, y: .5}
+--- !u!114 &863897422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 863897420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9086817214d0f406caf8914942cb69eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  conditionNotRequired: 0
+  questStartConditions:
+  - Monster
+  - SpecialParts RainbowDonuts
+  description: "\uBAAC\uC2A4\uD130 \uD30C\uAD34"
+  numbersToComplete: 5
+  goldenCubesWhenComplete: 100
 --- !u!1 &868146740
 GameObject:
   m_ObjectHideFlags: 0
@@ -21804,6 +22062,56 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!1 &890419729
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 890419730}
+  - 114: {fileID: 890419731}
+  m_Layer: 5
+  m_Name: CompleteCubeDispenser
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &890419730
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 890419729}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: .000610351562}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 574837081}
+  m_RootOrder: 10
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
+  m_AnchoredPosition: {x: 0, y: .000122070312}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: .5, y: .5}
+--- !u!114 &890419731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 890419729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9086817214d0f406caf8914942cb69eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  conditionNotRequired: 0
+  questStartConditions:
+  - CubeDispenser
+  description: "\uD050\uBE0C \uD0F1\uD0F1\uBCFC \uC644\uB8CC"
+  numbersToComplete: 10
+  goldenCubesWhenComplete: 100
 --- !u!1 &892369437
 GameObject:
   m_ObjectHideFlags: 0
@@ -22338,7 +22646,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 574837081}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -22355,12 +22663,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9086817214d0f406caf8914942cb69eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questNumber: 1
   conditionNotRequired: 0
   questStartConditions:
   - SpecialParts Monster RainbowDonuts
   description: "\uC6B4\uC11D \uD30C\uAD34"
   numbersToComplete: 10
+  goldenCubesWhenComplete: 100
 --- !u!1 &975181075
 GameObject:
   m_ObjectHideFlags: 0
@@ -26457,7 +26765,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 574837081}
-  m_RootOrder: 2
+  m_RootOrder: 7
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -26474,13 +26782,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9086817214d0f406caf8914942cb69eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questNumber: 2
   conditionNotRequired: 0
   questStartConditions:
   - Blackhole
   - SpecialParts RainbowDonuts
-  description: "\uBE14\uB799\uD640\uC5D0\uC11C \uD295\uACA8\uB098\uAC00\uAE30"
-  numbersToComplete: 10
+  description: "\uBE14\uB799\uD640\uC5D0 \uD295\uAE30\uAE30"
+  numbersToComplete: 5
+  goldenCubesWhenComplete: 100
 --- !u!1 &1211019733
 GameObject:
   m_ObjectHideFlags: 0
@@ -34116,6 +34424,57 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!1 &1470665264
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 1470665265}
+  - 114: {fileID: 1470665266}
+  m_Layer: 5
+  m_Name: RideMonsterByBlackhole
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1470665265
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1470665264}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: .000203450516}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 574837081}
+  m_RootOrder: 8
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
+  m_AnchoredPosition: {x: 0, y: 6.10351562e-05}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: .5, y: .5}
+--- !u!114 &1470665266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1470665264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9086817214d0f406caf8914942cb69eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  conditionNotRequired: 0
+  questStartConditions:
+  - Blackhole
+  - Monster
+  description: "\uBAAC\uC2A4\uD130 \uD761\uC218"
+  numbersToComplete: 5
+  goldenCubesWhenComplete: 100
 --- !u!1 &1479683095
 GameObject:
   m_ObjectHideFlags: 0
@@ -38183,8 +38542,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09719ef8a71c741db9922915f3a2bbb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onGoingQuestPrefab: {fileID: 0}
+  onGoingQuestPrefab: {fileID: 142856, guid: 9848dc2c84e8c4746b55c150864614f5, type: 2}
   distBtwOnGoingQuest: 50
+  showQuestDuration: 2
+  hideQuestAlong: 1
+  resetQuest: 1
+  goldenCubes: {fileID: 667805692}
 --- !u!1 &1567307126
 GameObject:
   m_ObjectHideFlags: 0
@@ -43364,6 +43727,56 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+--- !u!1 &1874486844
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 1874486845}
+  - 114: {fileID: 1874486846}
+  m_Layer: 5
+  m_Name: CompleteComboParts
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1874486845
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1874486844}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: .000406901032}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 574837081}
+  m_RootOrder: 9
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
+  m_AnchoredPosition: {x: 0, y: 9.15527344e-05}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: .5, y: .5}
+--- !u!114 &1874486846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1874486844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9086817214d0f406caf8914942cb69eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  conditionNotRequired: 0
+  questStartConditions:
+  - ComboParts
+  description: "\uD658\uC601 \uBD80\uD488 \uC644\uB8CC"
+  numbersToComplete: 10
+  goldenCubesWhenComplete: 100
 --- !u!1 &1878094423
 GameObject:
   m_ObjectHideFlags: 0
@@ -47466,8 +47879,8 @@ MonoBehaviour:
   fullComboCount: 4
   comboBonusScale: 5
   radius: 50
-  respawnInterval_min: 0
-  respawnInterval_max: 0
+  respawnInterval_min: 8
+  respawnInterval_max: 12
   tumble: 3
 --- !u!114 &1991538107
 MonoBehaviour:

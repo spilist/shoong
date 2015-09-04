@@ -54,6 +54,7 @@ public class MenusController : MonoBehaviour {
     menuButtons.SetActive(!menuButtons.activeSelf);
     currentlyOn.SetActive(!currentlyOn.activeSelf);
     menusOverlay.SetActive(!menusOverlay.activeSelf);
+    QuestManager.qm.toggleView();
   }
 
   public void gameStart() {

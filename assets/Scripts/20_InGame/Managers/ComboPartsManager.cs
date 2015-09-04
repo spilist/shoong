@@ -58,6 +58,7 @@ public class ComboPartsManager : ObjectsManager {
     secondShot = false;
 
     if (comboCount == fullComboCount) {
+      QuestManager.qm.addCountToQuest("CompleteComboParts");
       StartCoroutine("startSpawn");
       return;
     }

@@ -44,11 +44,9 @@ public class TouchInputHandler : MonoBehaviour
 			if (!gameStarted) {
 				menus.gameStart();
         spawnManager.run();
-        QuestManager.qm.hideQuestsOnStart();
+        QuestManager.qm.toggleView();
 				gameStarted = true;
 			}
-
-      // QuestManager.qm.addCountToQuest("GetCube", 2);
 
 			Vector3 touchPosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.transform.position.y);
 			Vector3 worldTouchPosition = Camera.main.ScreenToWorldPoint(touchPosition);

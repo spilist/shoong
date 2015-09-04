@@ -183,6 +183,7 @@ public class PlayerMover : MonoBehaviour {
     comboBar.addCombo();
 
     mover.encounterPlayer();
+    QuestManager.qm.addCountToQuest("GetCube", howMany);
   }
 
   public void contactCubeDispenser(Transform tr, int howMany, Collision collision, float reboundDuring) {
@@ -275,6 +276,12 @@ public class PlayerMover : MonoBehaviour {
   }
 
   void startRiding(ObjectsMover obMover) {
+    QuestManager.qm.addCountToQuest("RideMonster");
+
+    if (exitedBlackhole) {
+      QuestManager.qm.addCountToQuest("RideMonsterByBlackhole");
+    }
+
     ridingMonster = true;
     monm.monsterFilter.SetActive(true);
     ridingEffect.Play();
@@ -297,6 +304,8 @@ public class PlayerMover : MonoBehaviour {
   }
 
   public void outsideBlackhole() {
+    QuestManager.qm.addCountToQuest("ExitBlackhole");
+
     isInsideBlackhole = false;
     exitedBlackhole = true;
     Destroy(blackhole);
@@ -306,6 +315,8 @@ public class PlayerMover : MonoBehaviour {
   }
 
   public void contactBlackholeWhileUnstoppable(Collision collision) {
+    QuestManager.qm.addCountToQuest("ReboundByBlackhole");
+
     reboundingByBlackhole = true;
     isInsideBlackhole = false;
     processCollision(collision);
@@ -315,6 +326,8 @@ public class PlayerMover : MonoBehaviour {
   }
 
   public void contactBlackholeWhileRainbow(Collision collision) {
+    QuestManager.qm.addCountToQuest("ReboundByBlackhole");
+
     reboundingByBlackhole = true;
     isInsideBlackhole = false;
     processCollision(collision);
@@ -365,6 +378,8 @@ public class PlayerMover : MonoBehaviour {
   }
 
   public void shootBooster(Vector3 dir){
+    QuestManager.qm.addCountToQuest("UseBooster");
+
     if (!unstoppable) {
       energyBar.loseByShoot();
     }

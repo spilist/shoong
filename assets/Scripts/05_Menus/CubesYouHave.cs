@@ -26,4 +26,10 @@ public class CubesYouHave : MonoBehaviour {
     table["now"] = int.Parse(cubes.text);
     table["used"] = (int)table["used"] + price;
   }
+
+  public void add(int amount) {
+    cubes.text = (int.Parse(cubes.text) + amount).ToString();
+    table["now"] = int.Parse(cubes.text);
+    table["total"] = ((int)table["total"]) + amount;
+  }
 }

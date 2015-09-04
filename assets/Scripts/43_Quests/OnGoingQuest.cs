@@ -9,6 +9,8 @@ public class OnGoingQuest : MonoBehaviour {
   private int count = 0;
   private int numbersToComplete;
   private string numbersToCompleteToString;
+  private int goldenCubesWhenComplete;
+
   private bool startHide = false;
   private float stayCount = 0;
   private Color color;
@@ -24,6 +26,9 @@ public class OnGoingQuest : MonoBehaviour {
     numbersToComplete = quest.numbersToComplete;
     numbersToCompleteToString = "/" + numbersToComplete.ToString();
     numbers.text = count.ToString() + numbersToCompleteToString;
+
+    goldenCubesWhenComplete = quest.goldenCubesWhenComplete;
+
     color = new Color (1, 1, 1, 1);
   }
 
@@ -42,16 +47,26 @@ public class OnGoingQuest : MonoBehaviour {
     stayCount = 0;
     color.a = 1;
 
-    if (count >= numbersToComplete) isComplete = true;
+    if (count >= numbersToComplete) {
+      isComplete = true;
+
+      // startHide = false;
+      // 시각적 표시
+    }
   }
 
   public new string name() {
     return questName;
   }
 
-  public void hide() {
-    about.color = new Color (1, 1, 1, 0);
-    numbers.color = new Color (1, 1, 1, 0);
+  public void toggleView() {
+    if (about.color.a == 0) {
+      about.color = new Color (1, 1, 1, 1);
+      numbers.color = new Color (1, 1, 1, 1);
+    } else {
+      about.color = new Color (1, 1, 1, 0);
+      numbers.color = new Color (1, 1, 1, 0);
+    }
   }
 
   void Update() {
@@ -74,6 +89,7 @@ public class OnGoingQuest : MonoBehaviour {
 
   public void congraturation() {
     GameController.control.quests[questName] = -1;
+    QuestManager.qm.goldenCubes.add(goldenCubesWhenComplete);
     Destroy(gameObject);
   }
 }

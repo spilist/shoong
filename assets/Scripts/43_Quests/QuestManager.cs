@@ -8,11 +8,18 @@ public class QuestManager : MonoBehaviour {
   public int distBtwOnGoingQuest = 50;
   public float showQuestDuration = 2;
   public float hideQuestAlong = 1;
+  public bool resetQuest = false;
+  public CubesYouHave goldenCubes;
 
   private Transform questLists;
   private Transform onGoingQuests;
 
 	void OnEnable() {
+    if (resetQuest) {
+      resetPrevQuests();
+      GameController.control.lastQuestGivenAt = DateTime.MinValue;
+    }
+
     if (qm == null) {
       DontDestroyOnLoad(gameObject);
       qm = this;
@@ -86,7 +93,7 @@ public class QuestManager : MonoBehaviour {
     }
   }
 
-  void resetPrevQuests() {
+  public void resetPrevQuests() {
     Hashtable table = new Hashtable();
     foreach (DictionaryEntry quest in GameController.control.quests) {
       table.Add(quest.Key, -1);
@@ -94,9 +101,9 @@ public class QuestManager : MonoBehaviour {
     GameController.control.quests = table;
   }
 
-  public void hideQuestsOnStart() {
+  public void toggleView() {
     foreach (Transform tr in onGoingQuests) {
-      tr.GetComponent<OnGoingQuest>().hide();
+      tr.GetComponent<OnGoingQuest>().toggleView();
     }
   }
 
