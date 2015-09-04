@@ -28,20 +28,19 @@ TagManager:
   - MenuButtons
   - ObjectsMenu
   - UIObjects
-  - PatternPart
+  - Quest
   - RainbowDonut
-  - Blachole
-  - CharacterCreateMenu
   - PauseButton
+  - CharacterCreateMenu
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  -
   - Water
   - UI
-  - 
-  - 
+  -
+  -
   - Boundary
   - BasicObjects
   - Character
@@ -58,14 +57,14 @@ TagManager:
   - SpecialParts
   - RainbowDonuts
   - BigObstacle
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  -
+  -
+  -
+  -
+  -
+  -
+  -
+  -
   m_SortingLayers:
   - name: Default
     uniqueID: 0

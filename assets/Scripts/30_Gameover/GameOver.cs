@@ -45,6 +45,7 @@ public class GameOver : MonoBehaviour {
     barsCanvas.SetActive(false);
     pauseButton.SetActive(false);
     scoreManager.run();
+    QuestManager.qm.checkQuestComplete();
   }
 
   public bool isOver() {

@@ -7,6 +7,7 @@ using System.IO;
 public class GameController : MonoBehaviour {
   public static GameController control;
 
+  public DateTime lastQuestGivenAt;
   public int numPlays;
   public int numBoosters;
 
@@ -20,6 +21,7 @@ public class GameController : MonoBehaviour {
 
   public Hashtable characters;
   public Hashtable objects;
+  public Hashtable quests;
 
   private string datapath;
 
@@ -34,6 +36,7 @@ public class GameController : MonoBehaviour {
       control = this;
       datapath = Application.persistentDataPath + "/GameData.dat";
 
+      lastQuestGivenAt = DateTime.MinValue;
       cubes = new Hashtable();
       cubes_by = new Hashtable();
       goldenCubes = new Hashtable();
@@ -44,6 +47,7 @@ public class GameController : MonoBehaviour {
 
       characters = new Hashtable();
       objects = new Hashtable();
+      quests = new Hashtable();
 
       if (resetAll) reset();
       else load();
@@ -58,6 +62,7 @@ public class GameController : MonoBehaviour {
 
     PlayerData data = new PlayerData();
 
+    data.lastQuestGivenAt = lastQuestGivenAt;
     data.numPlays = numPlays;
     data.numBoosters = numBoosters;
     data.cubes = cubes;
@@ -69,6 +74,7 @@ public class GameController : MonoBehaviour {
     data.num_use_objects = num_use_objects;
     data.characters = characters;
     data.objects = objects;
+    data.quests = quests;
 
     bf.Serialize(file, data);
     file.Close();
@@ -81,6 +87,7 @@ public class GameController : MonoBehaviour {
       PlayerData data = (PlayerData) bf.Deserialize(file);
       file.Close();
 
+      lastQuestGivenAt = data.lastQuestGivenAt;
       numPlays = data.numPlays;
       numBoosters = data.numBoosters;
       cubes = data.cubes;
@@ -92,6 +99,7 @@ public class GameController : MonoBehaviour {
       num_use_objects = data.num_use_objects;
       characters = data.characters;
       objects = data.objects;
+      quests = data.quests;
     } else {
       reset();
     }
@@ -123,7 +131,12 @@ public class GameController : MonoBehaviour {
     PlayerPrefs.SetString("cat", "슈퍼캣");
     PlayerPrefs.SetString("butterfly", "나비");
     PlayerPrefs.SetString("bender", "벤더");
+    PlayerPrefs.SetString("beardedfrog", "수염개구리");
+    PlayerPrefs.SetString("paperplane", "종이비행기");
+    PlayerPrefs.SetString("tyranno", "티라노");
+    PlayerPrefs.SetString("cottoncandy", "솜사탕");
 
+    lastQuestGivenAt = DateTime.MinValue;
     numPlays = 0;
     numBoosters = 0;
 
@@ -190,11 +203,17 @@ public class GameController : MonoBehaviour {
     objects.Add("CubeDispenser", false);
     objects.Add("ComboParts", false);
     objects.Add("RainbowDonuts", false);
+
+    quests.Add("GetCube", -1);
+    quests.Add("DestroyMeteroid", -1);
+    quests.Add("ReboundByBlackhole", -1);
+
   }
 }
 
 [Serializable]
 class PlayerData {
+  public DateTime lastQuestGivenAt;
   public int numPlays;
   public int numBoosters;
   public Hashtable cubes;
@@ -207,4 +226,5 @@ class PlayerData {
 
   public Hashtable characters;
   public Hashtable objects;
+  public Hashtable quests;
 }

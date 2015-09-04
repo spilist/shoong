@@ -123,7 +123,7 @@ public class CharacterCreateButton : MenusBehavior {
 
     Dictionary<object, object> characters = GameController.control.characters.Cast<DictionaryEntry>().ToDictionary(d => d.Key, d => d.Value);
     characters.Remove("robotcogi");
-    int random = Random.Range(0, characters.Count - 1);
+    int random = Random.Range(0, characters.Count);
     string createdCharacterName = (string) characters.ElementAt(random).Key;
     bool newCharacter = !(bool)GameController.control.characters[createdCharacterName];
 

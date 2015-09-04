@@ -22,6 +22,7 @@ public class PauseButton : MenusBehavior {
     pauseFilter.SetActive(true);
     pauseStatus.SetActive(true);
     pausedImage.SetActive(true);
+    AudioListener.pause = true;
   }
 
   public void resume() {
@@ -47,6 +48,7 @@ public class PauseButton : MenusBehavior {
     paused = false;
     resuming = false;
     Time.timeScale = 1;
+    AudioListener.pause = false;
   }
 
   public bool isPaused() {
