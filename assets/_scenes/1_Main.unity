@@ -38543,10 +38543,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onGoingQuestPrefab: {fileID: 142856, guid: 9848dc2c84e8c4746b55c150864614f5, type: 2}
-  distBtwOnGoingQuest: 50
+  qMoveToY: -50
+  qMoveDuring: 1
   showQuestDuration: 2
   hideQuestAlong: 1
-  resetQuest: 0
+  inactiveQuestColor: {r: .426470578, g: .426470578, b: .426470578, a: 1}
+  completeQuestColor: {r: .986206889, g: 1, b: 0, a: 1}
   goldenCubes: {fileID: 667805692}
 --- !u!1 &1567307126
 GameObject:

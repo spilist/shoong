@@ -44,7 +44,7 @@ public class TouchInputHandler : MonoBehaviour
 			if (!gameStarted) {
 				menus.gameStart();
         spawnManager.run();
-        QuestManager.qm.toggleView();
+        QuestManager.qm.generateQuest();
 				gameStarted = true;
 			}
 

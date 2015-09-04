@@ -197,6 +197,7 @@ public class PlayerMover : MonoBehaviour {
     processCollision(collision);
     reboundingByDispenser = true;
     reboundingByDispenserDuring = reboundDuring;
+    QuestManager.qm.addCountToQuest("GetCube", howMany);
     StartCoroutine("stopReboundingByDispenser");
   }
 

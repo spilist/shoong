@@ -5,50 +5,36 @@ using System;
 public class QuestManager : MonoBehaviour {
   public static QuestManager qm;
   public GameObject onGoingQuestPrefab;
-  public int distBtwOnGoingQuest = 50;
+  public int qMoveToY = -50;
+  public int qMoveDuring = 1;
   public float showQuestDuration = 2;
   public float hideQuestAlong = 1;
-  public bool resetQuest = false;
+  public Color inactiveQuestColor;
+  public Color completeQuestColor;
   public CubesYouHave goldenCubes;
 
-  private Transform questLists;
+  private Transform questsList;
   private Transform onGoingQuests;
 
 	void Start() {
-    if (resetQuest) {
-      resetPrevQuests();
-      GameController.control.lastQuestGivenAt = DateTime.MinValue;
-    }
-
     if (qm == null) {
       DontDestroyOnLoad(gameObject);
       qm = this;
-      questLists = transform.Find("QuestLists");
+      questsList = transform.Find("QuestsList");
       onGoingQuests = transform.Find("OnGoingQuests");
     } else if (qm != this) {
       Destroy(gameObject);
       return;
     }
-
-    generateDailyQuest();
   }
 
-  public void generateDailyQuest() {
-    DateTime now = DateTime.Now;
-
-    // if a quest is already given on the day, show it
-    if ((now.Date - ((DateTime)GameController.control.lastQuestGivenAt).Date).TotalDays == 0) {
-      showOnGoingQuests();
-      return;
-    }
-
-    // if new day, reset previous quests and generate new one
+  public void generateQuest() {
+    // if tutorial quest, don't reset
     resetPrevQuests();
-    GameController.control.lastQuestGivenAt = now;
 
-    Quest[] availableQuests = new Quest[questLists.childCount];
+    Quest[] availableQuests = new Quest[questsList.childCount];
     int count = 0;
-    foreach (Transform tr in questLists) {
+    foreach (Transform tr in questsList) {
       Quest quest = tr.GetComponent<Quest>();
       if (quest.isAvailable()) {
         availableQuests[count++] = quest;
@@ -68,11 +54,10 @@ public class QuestManager : MonoBehaviour {
     GameObject onGoingQuest = Instantiate(onGoingQuestPrefab);
     onGoingQuest.transform.SetParent(onGoingQuests, false);
     onGoingQuest.GetComponent<OnGoingQuest>().startQuest(quest, currentCount);
-    onGoingQuest.GetComponent<RectTransform>().anchoredPosition += new Vector2(0, - onGoingQuests.childCount * distBtwOnGoingQuest);
   }
 
   public void startQuestWithName(string questName, int currentCount = 0) {
-    startQuest(questLists.Find(questName).GetComponent<Quest>(), currentCount);
+    startQuest(questsList.Find(questName).GetComponent<Quest>(), currentCount);
   }
 
   public void addCountToQuest(string questName, int howMany = 1) {
@@ -99,12 +84,6 @@ public class QuestManager : MonoBehaviour {
       table.Add(quest.Key, -1);
     }
     GameController.control.quests = table;
-  }
-
-  public void toggleView() {
-    foreach (Transform tr in onGoingQuests) {
-      tr.GetComponent<OnGoingQuest>().toggleView();
-    }
   }
 
   public void checkQuestComplete() {
