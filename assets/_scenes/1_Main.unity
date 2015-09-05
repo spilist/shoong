@@ -7525,7 +7525,7 @@ MonoBehaviour:
   countByTime: 0
   doNotShow: 0
   tutorial: 1
-  description: "\uBE14\uB799\uD640 \uD0C8\uCD9C\uD558\uC5EC \uBD80\uD488 \uD761\uC218"
+  description: "\uBE14\uB799\uD640 \uD0C8\uCD9C \uD6A8\uACFC\uB85C \uBD80\uD488 \uBA39"
   numbersToComplete: 10
   goldenCubesWhenComplete: 1
 --- !u!1001 &201173112
@@ -10774,7 +10774,7 @@ MonoBehaviour:
   countByTime: 0
   doNotShow: 0
   tutorial: 0
-  description: "\uBB34\uC9C0\uAC1C\uAE38 \uC704\uC5D0\uC11C \uBD80\uD488\uBA39\uAE30"
+  description: "\uBB34\uC9C0\uAC1C\uAE38 \uD0C0\uACE0 \uBD80\uD488\uBA39\uAE30"
   numbersToComplete: 10
   goldenCubesWhenComplete: 2
 --- !u!1 &465752960
@@ -14944,7 +14944,7 @@ MonoBehaviour:
   doNotShow: 0
   tutorial: 0
   description: "\uBE14\uB799\uD640 \uD0C8\uCD9C"
-  numbersToComplete: 10
+  numbersToComplete: 3
   goldenCubesWhenComplete: 1
 --- !u!1001 &578305428
 Prefab:
@@ -15160,7 +15160,7 @@ MonoBehaviour:
   doNotShow: 0
   tutorial: 0
   description: "\uBB34\uC9C0\uAC1C \uD0C0\uACE0 \uBAAC\uC2A4\uD130 \uD30C\uAD34"
-  numbersToComplete: 5
+  numbersToComplete: 1
   goldenCubesWhenComplete: 3
 --- !u!1 &589887825
 GameObject:
@@ -15294,7 +15294,7 @@ MonoBehaviour:
   doNotShow: 0
   tutorial: 0
   description: "\uD050\uBE0C \uD68D\uB4DD"
-  numbersToComplete: 30
+  numbersToComplete: 200
   goldenCubesWhenComplete: 1
 --- !u!1 &600005597
 GameObject:
@@ -20564,8 +20564,8 @@ MonoBehaviour:
   countByTime: 0
   doNotShow: 0
   tutorial: 0
-  description: "\uBAAC\uC2A4\uD130 \uD0D1\uC2B9"
-  numbersToComplete: 10
+  description: "\uBAAC\uC2A4\uD130 \uD0D1\uC2B9\uD558\uAE30"
+  numbersToComplete: 1
   goldenCubesWhenComplete: 1
 --- !u!1 &799450316
 GameObject:
@@ -20618,7 +20618,7 @@ MonoBehaviour:
   doNotShow: 0
   tutorial: 0
   description: "\uBB34\uC9C0\uAC1C\uAE38 \uD0C0\uAE30"
-  numbersToComplete: 10
+  numbersToComplete: 3
   goldenCubesWhenComplete: 1
 --- !u!1 &803409794
 GameObject:
@@ -22495,8 +22495,8 @@ MonoBehaviour:
   doNotShow: 0
   tutorial: 0
   description: "\uBAAC\uC2A4\uD130 \uD30C\uAD34"
-  numbersToComplete: 5
-  goldenCubesWhenComplete: 2
+  numbersToComplete: 3
+  goldenCubesWhenComplete: 3
 --- !u!1 &868146740
 GameObject:
   m_ObjectHideFlags: 0
@@ -22724,7 +22724,7 @@ MonoBehaviour:
   questStartConditions:
   - ComboParts
   countByTime: 0
-  doNotShow: 0
+  doNotShow: 1
   tutorial: 0
   description: "\uBD80\uC2A4\uD130 2\uBC88\uC73C\uB85C \uD658\uC601 \uBD80\uD488 \uC644\uB8CC"
   numbersToComplete: 3
@@ -22780,7 +22780,7 @@ MonoBehaviour:
   doNotShow: 0
   tutorial: 0
   description: "\uD050\uBE0C \uD0F1\uD0F1\uBCFC \uC644\uB8CC"
-  numbersToComplete: 10
+  numbersToComplete: 3
   goldenCubesWhenComplete: 1
 --- !u!1 &892369437
 GameObject:
@@ -27452,9 +27452,9 @@ MonoBehaviour:
   conditionNotRequired: 1
   questStartConditions: []
   countByTime: 0
-  doNotShow: 0
+  doNotShow: 1
   tutorial: 0
-  description: "\uC77C\uC2DC\uC815\uC9C0"
+  description: "\uC77C\uC2DC\uC815\uC9C0 \uD558\uAE30"
   numbersToComplete: 1
   goldenCubesWhenComplete: 1
 --- !u!1 &1194304518
@@ -27567,7 +27567,7 @@ MonoBehaviour:
   countByTime: 0
   doNotShow: 0
   tutorial: 1
-  description: "\uBAAC\uC2A4\uD130\uC5D0 \uD0D1\uC2B9\uD574 \uC6B4\uC11D \uD30C\uAD34"
+  description: "\uBAAC\uC2A4\uD130\uC5D0 \uD0C0\uC11C \uC6B4\uC11D \uD30C\uAD34"
   numbersToComplete: 1
   goldenCubesWhenComplete: 1
 --- !u!1 &1204889870
@@ -27622,7 +27622,7 @@ MonoBehaviour:
   doNotShow: 0
   tutorial: 0
   description: "\uBE14\uB799\uD640\uC5D0 \uD295\uAE30\uAE30"
-  numbersToComplete: 5
+  numbersToComplete: 1
   goldenCubesWhenComplete: 2
 --- !u!1 &1211019733
 GameObject:
@@ -28868,7 +28868,7 @@ MonoBehaviour:
   doNotShow: 0
   tutorial: 0
   description: "\uD0F1\uD0F1\uBCFC\uC5D0 \uD295\uAE30\uB294 \uC720\uC131 \uAD00\uCC30"
-  numbersToComplete: 3
+  numbersToComplete: 1
   goldenCubesWhenComplete: 2
 --- !u!1 &1343430248
 GameObject:
@@ -35415,9 +35415,9 @@ MonoBehaviour:
   countByTime: 0
   doNotShow: 0
   tutorial: 0
-  description: "\uBAAC\uC2A4\uD130 \uD761\uC218"
-  numbersToComplete: 5
-  goldenCubesWhenComplete: 3
+  description: "\uBE14\uB799\uD640 \uD6A8\uACFC\uB85C \uBAAC\uC2A4\uD130 \uD0D1\uC2B9"
+  numbersToComplete: 1
+  goldenCubesWhenComplete: 2
 --- !u!1 &1479683095
 GameObject:
   m_ObjectHideFlags: 0
@@ -39489,7 +39489,7 @@ MonoBehaviour:
   onGoingQuestPrefab: {fileID: 142856, guid: 9848dc2c84e8c4746b55c150864614f5, type: 2}
   qMoveToY: -50
   qMoveStay: .5
-  qMoveDuring: .5
+  qMoveDuring: .200000003
   qCompleteScaleChangeDuring: .300000012
   qCompleteScaleChangeStay: .5
   showQuestDuration: 2
@@ -44819,7 +44819,7 @@ MonoBehaviour:
   doNotShow: 0
   tutorial: 0
   description: "\uD658\uC601 \uBD80\uD488 \uC644\uB8CC"
-  numbersToComplete: 10
+  numbersToComplete: 3
   goldenCubesWhenComplete: 1
 --- !u!1 &1878094423
 GameObject:
