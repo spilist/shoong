@@ -165,6 +165,8 @@ public class OnGoingQuest : MonoBehaviour {
       about.color = QuestManager.qm.completeQuestColor;
       numbers.color = QuestManager.qm.completeQuestColor;
       color = QuestManager.qm.completeQuestColor;
+      QuestManager.qm.questCompleteSound.Play();
+      QuestManager.qm.goldCubeBanner.add(goldenCubesWhenComplete);
     } else {
       convetToInactive = true;
       about.color = activeColor;

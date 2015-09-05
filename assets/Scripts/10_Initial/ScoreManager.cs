@@ -16,7 +16,7 @@ public class ScoreManager : MonoBehaviour {
     cubesCount_highScore.text = cubesHighscore.ToString();
 
     timeHighscore = (int) GameController.control.times["highscore"];
-    elapsedTime_highScore.text = timeHighscore.ToString();
+    // elapsedTime_highScore.text = timeHighscore.ToString();
 	}
 
   void Update() {
@@ -24,9 +24,9 @@ public class ScoreManager : MonoBehaviour {
       cubesCount_highScore.text = cubesCount.getCount().ToString();
     }
 
-    if (elapsedTime.getTime() > timeHighscore) {
-      elapsedTime_highScore.text = elapsedTime.getTime().ToString();
-    }
+    // if (elapsedTime.getTime() > timeHighscore) {
+    //   elapsedTime_highScore.text = elapsedTime.getTime().ToString();
+    // }
   }
 
   public void run() {

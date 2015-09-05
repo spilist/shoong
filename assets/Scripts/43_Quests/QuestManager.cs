@@ -16,6 +16,9 @@ public class QuestManager : MonoBehaviour {
   public Color inactiveQuestColor;
   public Color completeQuestColor;
   public CubesYouHave goldenCubes;
+  public AudioSource questStartSound;
+  public AudioSource questCompleteSound;
+  public GoldCubeBanner goldCubeBanner;
 
   private Transform questsList;
   private Transform objectTutorials;
@@ -70,6 +73,7 @@ public class QuestManager : MonoBehaviour {
     GameObject onGoingQuest = Instantiate(onGoingQuestPrefab);
     onGoingQuest.transform.SetParent(onGoingQuests, false);
     onGoingQuest.GetComponent<OnGoingQuest>().startQuest(quest, currentCount);
+    questStartSound.Play();
   }
 
   public void startQuestWithName(string questName, int currentCount = 0) {
@@ -100,7 +104,7 @@ public class QuestManager : MonoBehaviour {
 
   public void congraturation(int reward) {
     // 연출
-    goldenCubes.add(reward);
+    // goldenCubes.add(reward);
 
     if (PlayerPrefs.GetInt("FirstQuestComplete") == 0) {
       // 첫 보상 연출

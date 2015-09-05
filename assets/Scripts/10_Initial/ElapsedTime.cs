@@ -13,7 +13,7 @@ public class ElapsedTime : MonoBehaviour {
 		while(true) {
 			yield return new WaitForSeconds(1);
 			time++;
-			GetComponent<Text>().text = time.ToString();
+			// GetComponent<Text>().text = time.ToString();
 		}
 	}
 
