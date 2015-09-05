@@ -203,23 +203,31 @@ public class GameController : MonoBehaviour {
     quests.Add("GetCube", 0);
     quests.Add("UseBooster", 0);
     quests.Add("NoBooster", 0);
+    quests.Add("GetPartsNearAsteroid", 0);
+    quests.Add("AvoidFallingStar", 0);
+
     quests.Add("DestroyAsteroid", 0);
     quests.Add("DestroyAsteroidsBeforeUnstoppableEnd", 0);
-    quests.Add("GetPartsNearAsteroid", 0);
     quests.Add("DestroyFallingStar", 0);
-    quests.Add("AvoidFallingStar", 0);
+
     quests.Add("RideMonster", 0);
     quests.Add("RideMonsterWithLowEnergy", 0);
+    quests.Add("RideMonsterByBlackhole", 0);
     quests.Add("DestroyMonster", 0);
     quests.Add("DestroyMonsterByRainbow", 0);
     quests.Add("DestroyMonsterByBlackhole", 0);
-    quests.Add("GetPartsOnRainbow", 0);
+
     quests.Add("ExitBlackhole", 0);
     quests.Add("ReboundByBlackhole", 0);
-    quests.Add("RideMonsterByBlackhole", 0);
+
     quests.Add("CompleteComboParts", 0);
+    quests.Add("CompleteComboPartsInTwoBoosters", 0);
+
     quests.Add("CompleteCubeDispenser", 0);
     quests.Add("FallingStarReboundByCubeDispenser", 0);
+
+    quests.Add("RideRainbow", 0);
+    quests.Add("GetPartsOnRainbow", 0);
   }
 }
 

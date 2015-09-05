@@ -16,9 +16,11 @@ public class ComboPartsManager : ObjectsManager {
   private GameObject current;
   private GameObject next;
   private int comboCount = 0;
+  private int boosterCount = 0;
 
   override public void run() {
     comboCount = 0;
+    boosterCount = 0;
     current = spawnManager.spawn(comboPartPrefab);
     Vector2 randomV = Random.insideUnitCircle;
     randomV.Normalize();
@@ -40,6 +42,7 @@ public class ComboPartsManager : ObjectsManager {
         destroyInstances();
       } else {
         secondShot = true;
+        boosterCount++;
       }
     }
   }
@@ -56,9 +59,13 @@ public class ComboPartsManager : ObjectsManager {
     comboCount++;
     trying = true;
     secondShot = false;
+    Debug.Log(boosterCount);
 
     if (comboCount == fullComboCount) {
       QuestManager.qm.addCountToQuest("CompleteComboParts");
+      if (boosterCount < fullComboCount - 1) {
+        QuestManager.qm.addCountToQuest("CompleteComboPartsInTwoBoosters");
+      }
       StartCoroutine("startSpawn");
       return;
     }

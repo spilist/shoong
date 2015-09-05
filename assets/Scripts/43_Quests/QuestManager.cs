@@ -6,7 +6,10 @@ public class QuestManager : MonoBehaviour {
   public static QuestManager qm;
   public GameObject onGoingQuestPrefab;
   public int qMoveToY = -50;
-  public int qMoveDuring = 1;
+  public float qMoveStay = 0.5f;
+  public float qMoveDuring = 0.5f;
+  public float qCompleteScaleChangeDuring = 0.3f;
+  public float qCompleteScaleChangeStay = 0.5f;
   public float showQuestDuration = 2;
   public float hideQuestAlong = 1;
   public Color inactiveQuestColor;

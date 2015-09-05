@@ -7091,7 +7091,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 574837081}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: 6.10351562e-05}
@@ -7112,7 +7112,7 @@ MonoBehaviour:
   questStartConditions:
   - SpecialParts Monster RainbowDonuts
   countByTime: 0
-  doNotShow: 0
+  doNotShow: 1
   description: "\uC720\uC131 \uD30C\uAD34"
   numbersToComplete: 10
   goldenCubesWhenComplete: 100
@@ -7633,7 +7633,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 574837081}
-  m_RootOrder: 8
+  m_RootOrder: 5
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: 9.15527344e-05}
@@ -7653,7 +7653,7 @@ MonoBehaviour:
   conditionNotRequired: 1
   questStartConditions: []
   countByTime: 0
-  doNotShow: 0
+  doNotShow: 1
   description: "\uAC04\uBC1C\uC758 \uCC28\uB85C \uC720\uC131 \uD53C\uD558\uAE30"
   numbersToComplete: 5
   goldenCubesWhenComplete: 50
@@ -9000,7 +9000,7 @@ MonoBehaviour:
   questStartConditions:
   - Monster
   countByTime: 0
-  doNotShow: 0
+  doNotShow: 1
   description: "\uC5D0\uB108\uC9C0 30 \uC774\uD558\uC5D0\uC11C \uBAAC\uC2A4\uD130
     \uD0D1\uC2B9"
   numbersToComplete: 1
@@ -10589,7 +10589,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 574837081}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: 6.10351562e-05}
@@ -10610,7 +10610,7 @@ MonoBehaviour:
   questStartConditions:
   - SpecialParts
   countByTime: 0
-  doNotShow: 0
+  doNotShow: 1
   description: "\uBB34\uC801 \uC9C0\uC18D\uC2DC\uAC04 \uC548\uC5D0 \uC6B4\uC11D \uD30C\uAD34"
   numbersToComplete: 3
   goldenCubesWhenComplete: 100
@@ -10641,7 +10641,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 574837081}
-  m_RootOrder: 14
+  m_RootOrder: 22
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: .000122070312}
@@ -10662,7 +10662,7 @@ MonoBehaviour:
   questStartConditions:
   - RainbowDonuts
   countByTime: 0
-  doNotShow: 0
+  doNotShow: 1
   description: "\uBB34\uC9C0\uAC1C \uD0C0\uACE0 \uBD80\uD488\uBA39\uAE30"
   numbersToComplete: 10
   goldenCubesWhenComplete: 100
@@ -10789,7 +10789,7 @@ MonoBehaviour:
   conditionNotRequired: 1
   questStartConditions: []
   countByTime: 0
-  doNotShow: 0
+  doNotShow: 1
   description: "\uBD80\uC2A4\uD130 \uC0AC\uC6A9"
   numbersToComplete: 100
   goldenCubesWhenComplete: 30
@@ -13608,7 +13608,7 @@ MonoBehaviour:
   conditionNotRequired: 1
   questStartConditions: []
   countByTime: 0
-  doNotShow: 0
+  doNotShow: 1
   description: "\uC6B4\uC11D \uC606 \uBD80\uD488 \uBA39\uAE30"
   numbersToComplete: 10
   goldenCubesWhenComplete: 50
@@ -14755,22 +14755,24 @@ RectTransform:
   - {fileID: 1402410140}
   - {fileID: 1187778667}
   - {fileID: 559598883}
+  - {fileID: 214724077}
   - {fileID: 950434393}
   - {fileID: 439679494}
   - {fileID: 186705002}
-  - {fileID: 214724077}
   - {fileID: 775777495}
   - {fileID: 260982451}
+  - {fileID: 1470665265}
   - {fileID: 863897421}
   - {fileID: 588592962}
   - {fileID: 1006369675}
-  - {fileID: 440487358}
   - {fileID: 576634737}
   - {fileID: 1204889871}
-  - {fileID: 1470665265}
   - {fileID: 1874486845}
+  - {fileID: 883650270}
   - {fileID: 890419730}
   - {fileID: 1317437492}
+  - {fileID: 799450317}
+  - {fileID: 440487358}
   m_Father: {fileID: 1560845398}
   m_RootOrder: 0
   m_AnchorMin: {x: .5, y: .5}
@@ -14826,7 +14828,7 @@ MonoBehaviour:
   questStartConditions:
   - Blackhole
   countByTime: 0
-  doNotShow: 0
+  doNotShow: 1
   description: "\uBE14\uB799\uD640 \uD0C8\uCD9C"
   numbersToComplete: 10
   goldenCubesWhenComplete: 100
@@ -15019,7 +15021,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 574837081}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: 9.15527344e-05}
@@ -15041,7 +15043,7 @@ MonoBehaviour:
   - Monster
   - RainbowDonuts
   countByTime: 0
-  doNotShow: 0
+  doNotShow: 1
   description: "\uBB34\uC9C0\uAC1C \uD0C0\uACE0 \uBAAC\uC2A4\uD130 \uD30C\uAD34"
   numbersToComplete: 5
   goldenCubesWhenComplete: 100
@@ -15174,7 +15176,7 @@ MonoBehaviour:
   conditionNotRequired: 1
   questStartConditions: []
   countByTime: 0
-  doNotShow: 0
+  doNotShow: 1
   description: "\uD050\uBE0C \uD68D\uB4DD"
   numbersToComplete: 30
   goldenCubesWhenComplete: 30
@@ -20338,10 +20340,62 @@ MonoBehaviour:
   questStartConditions:
   - Monster
   countByTime: 0
-  doNotShow: 0
+  doNotShow: 1
   description: "\uBAAC\uC2A4\uD130 \uD0D1\uC2B9"
   numbersToComplete: 10
   goldenCubesWhenComplete: 100
+--- !u!1 &799450316
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 799450317}
+  - 114: {fileID: 799450318}
+  m_Layer: 5
+  m_Name: RideRainbow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &799450317
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 799450316}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: .000813802064}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 574837081}
+  m_RootOrder: 21
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
+  m_AnchoredPosition: {x: 0, y: .000183105469}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: .5, y: .5}
+--- !u!114 &799450318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 799450316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9086817214d0f406caf8914942cb69eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  conditionNotRequired: 0
+  questStartConditions:
+  - RainbowDonuts
+  countByTime: 0
+  doNotShow: 0
+  description: "\uBB34\uC9C0\uAC1C \uD0C0\uAE30"
+  numbersToComplete: 20
+  goldenCubesWhenComplete: 50
 --- !u!1 &803409794
 GameObject:
   m_ObjectHideFlags: 0
@@ -22192,7 +22246,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 574837081}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: 6.10351562e-05}
@@ -22214,7 +22268,7 @@ MonoBehaviour:
   - Monster
   - SpecialParts RainbowDonuts
   countByTime: 0
-  doNotShow: 0
+  doNotShow: 1
   description: "\uBAAC\uC2A4\uD130 \uD30C\uAD34"
   numbersToComplete: 5
   goldenCubesWhenComplete: 100
@@ -22397,6 +22451,58 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!1 &883650269
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 883650270}
+  - 114: {fileID: 883650271}
+  m_Layer: 5
+  m_Name: CompleteComboPartsInTwoBoosters
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &883650270
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 883650269}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: .000610351562}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 574837081}
+  m_RootOrder: 18
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
+  m_AnchoredPosition: {x: 0, y: .000122070312}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: .5, y: .5}
+--- !u!114 &883650271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 883650269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9086817214d0f406caf8914942cb69eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  conditionNotRequired: 0
+  questStartConditions:
+  - ComboParts
+  countByTime: 0
+  doNotShow: 0
+  description: "\uBD80\uC2A4\uD130 2\uBC88\uC73C\uB85C \uD658\uC601 \uBD80\uD488 \uC644\uB8CC"
+  numbersToComplete: 3
+  goldenCubesWhenComplete: 100
 --- !u!1 &890419729
 GameObject:
   m_ObjectHideFlags: 0
@@ -22445,7 +22551,7 @@ MonoBehaviour:
   questStartConditions:
   - CubeDispenser
   countByTime: 0
-  doNotShow: 0
+  doNotShow: 1
   description: "\uD050\uBE0C \uD0F1\uD0F1\uBCFC \uC644\uB8CC"
   numbersToComplete: 10
   goldenCubesWhenComplete: 100
@@ -22983,7 +23089,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 574837081}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -23004,7 +23110,7 @@ MonoBehaviour:
   questStartConditions:
   - SpecialParts Monster RainbowDonuts
   countByTime: 0
-  doNotShow: 0
+  doNotShow: 1
   description: "\uC6B4\uC11D \uD30C\uAD34"
   numbersToComplete: 10
   goldenCubesWhenComplete: 100
@@ -23268,7 +23374,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 574837081}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: .000122070312}
@@ -23290,7 +23396,7 @@ MonoBehaviour:
   - Monster
   - Blackhole
   countByTime: 0
-  doNotShow: 0
+  doNotShow: 1
   description: "\uBAAC\uC2A4\uD130\uC640 \uD568\uAED8 \uBE14\uB799\uD640 \uB4E4\uC5B4\uAC00\uAE30"
   numbersToComplete: 1
   goldenCubesWhenComplete: 100
@@ -27117,7 +27223,7 @@ MonoBehaviour:
   conditionNotRequired: 1
   questStartConditions: []
   countByTime: 0
-  doNotShow: 0
+  doNotShow: 1
   description: "\uC77C\uC2DC\uC815\uC9C0"
   numbersToComplete: 1
   goldenCubesWhenComplete: 30
@@ -27230,7 +27336,7 @@ MonoBehaviour:
   - Blackhole
   - SpecialParts RainbowDonuts
   countByTime: 0
-  doNotShow: 0
+  doNotShow: 1
   description: "\uBE14\uB799\uD640\uC5D0 \uD295\uAE30\uAE30"
   numbersToComplete: 5
   goldenCubesWhenComplete: 100
@@ -28475,8 +28581,8 @@ MonoBehaviour:
   questStartConditions:
   - CubeDispenser
   countByTime: 0
-  doNotShow: 0
-  description: "\uD0F1\uD0F1\uBCFC\uC5D0 \uD295\uAE30\uB294 \uC720\uC131"
+  doNotShow: 1
+  description: "\uD0F1\uD0F1\uBCFC\uC5D0 \uD295\uAE30\uB294 \uC720\uC131 \uAD00\uCC30"
   numbersToComplete: 3
   goldenCubesWhenComplete: 100
 --- !u!1 &1343430248
@@ -33477,7 +33583,7 @@ MonoBehaviour:
   conditionNotRequired: 1
   questStartConditions: []
   countByTime: 1
-  doNotShow: 0
+  doNotShow: 1
   description: "\uBD80\uC2A4\uD130 \uC5C6\uC774 \uBC84\uD2F0\uAE30"
   numbersToComplete: 10
   goldenCubesWhenComplete: 30
@@ -34999,7 +35105,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 574837081}
-  m_RootOrder: 17
+  m_RootOrder: 11
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: 6.10351562e-05}
@@ -35021,7 +35127,7 @@ MonoBehaviour:
   - Blackhole
   - Monster
   countByTime: 0
-  doNotShow: 0
+  doNotShow: 1
   description: "\uBAAC\uC2A4\uD130 \uD761\uC218"
   numbersToComplete: 5
   goldenCubesWhenComplete: 100
@@ -39094,7 +39200,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onGoingQuestPrefab: {fileID: 142856, guid: 9848dc2c84e8c4746b55c150864614f5, type: 2}
   qMoveToY: -50
-  qMoveDuring: 1
+  qMoveStay: .5
+  qMoveDuring: .5
+  qCompleteScaleChangeDuring: .300000012
+  qCompleteScaleChangeStay: .5
   showQuestDuration: 2
   hideQuestAlong: 1
   inactiveQuestColor: {r: .426470578, g: .426470578, b: .426470578, a: 1}
@@ -44306,7 +44415,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 574837081}
-  m_RootOrder: 18
+  m_RootOrder: 17
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: 9.15527344e-05}
@@ -44327,7 +44436,7 @@ MonoBehaviour:
   questStartConditions:
   - ComboParts
   countByTime: 0
-  doNotShow: 0
+  doNotShow: 1
   description: "\uD658\uC601 \uBD80\uD488 \uC644\uB8CC"
   numbersToComplete: 10
   goldenCubesWhenComplete: 100

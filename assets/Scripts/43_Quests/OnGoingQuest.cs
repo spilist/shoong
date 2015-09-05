@@ -15,12 +15,15 @@ public class OnGoingQuest : MonoBehaviour {
   private bool convetToInactive = false;
   private float stayCount = 0;
   private float timeCount = 0;
+  private float movingTopStayCount = 0;
+  private float completeStayCount = 0;
   private Color color;
   private Color inactiveColor;
   private Color activeColor;
   private bool isComplete = false;
   private bool movingTop = false;
   private float positionY;
+  private float positionX;
   private float distance;
   private Vector2 anchorPos;
   private float scaleFactor;
@@ -46,24 +49,33 @@ public class OnGoingQuest : MonoBehaviour {
     color = activeColor;
 
     movingTop = true;
+
+    scaleFactor = transform.localScale.x;
     anchorPos = GetComponent<RectTransform>().anchoredPosition;
 
     float totalWidth = about.preferredWidth + numbers.GetComponent<RectTransform>().anchoredPosition.x + numbers.preferredWidth;
-    anchorPos.x = about.preferredWidth - totalWidth / 2;
+    positionX = about.preferredWidth - totalWidth / 2;
+    anchorPos.x = positionX * scaleFactor;
+    GetComponent<RectTransform>().anchoredPosition = anchorPos;
 
     positionY = anchorPos.y;
     distance = QuestManager.qm.qMoveToY - anchorPos.y;
-    scaleFactor = transform.localScale.x;
   }
 
   void Update() {
     if (movingTop) {
-      positionY = Mathf.MoveTowards(positionY, QuestManager.qm.qMoveToY, Time.deltaTime / QuestManager.qm.qMoveDuring * distance);
-      anchorPos.y = positionY;
-      GetComponent<RectTransform>().anchoredPosition = anchorPos;
+      if (movingTopStayCount < QuestManager.qm.qMoveStay) {
+        movingTopStayCount += Time.deltaTime;
+      } else {
+        positionY = Mathf.MoveTowards(positionY, QuestManager.qm.qMoveToY, Time.deltaTime / QuestManager.qm.qMoveDuring * distance);
+        anchorPos.y = positionY;
 
-      scaleFactor = Mathf.MoveTowards(scaleFactor, 1, Time.deltaTime / QuestManager.qm.qMoveDuring * 0.5f);
-      transform.localScale = Vector3.one * scaleFactor;
+        scaleFactor = Mathf.MoveTowards(scaleFactor, 1, Time.deltaTime / QuestManager.qm.qMoveDuring * 0.5f);
+        transform.localScale = Vector3.one * scaleFactor;
+        anchorPos.x = positionX * scaleFactor;
+
+        GetComponent<RectTransform>().anchoredPosition = anchorPos;
+      }
 
       if (positionY == QuestManager.qm.qMoveToY) {
         movingTop = false;
@@ -86,23 +98,19 @@ public class OnGoingQuest : MonoBehaviour {
     }
 
     if (emphasizeStatus == 1) {
-      scaleFactor = Mathf.MoveTowards(scaleFactor, 1.5f, Time.deltaTime / 0.5f);
+      scaleFactor = Mathf.MoveTowards(scaleFactor, 1.5f, Time.deltaTime / QuestManager.qm.qCompleteScaleChangeDuring * 0.5f);
       transform.localScale = Vector3.one * scaleFactor;
       if (scaleFactor == 1.5f) emphasizeStatus = 2;
     } else if (emphasizeStatus == 2) {
-      scaleFactor = Mathf.MoveTowards(scaleFactor, 1, Time.deltaTime / 0.5f);
-      transform.localScale = Vector3.one * scaleFactor;
-      if (scaleFactor == 1) emphasizeStatus = 3;
-    } else if (emphasizeStatus == 3) {
-      if (stayCount < QuestManager.qm.showQuestDuration) {
-        stayCount += Time.deltaTime;
+      if (completeStayCount < QuestManager.qm.qCompleteScaleChangeStay) {
+        completeStayCount += Time.deltaTime;
       } else {
-        color.a = Mathf.MoveTowards(color.a, 0, Time.deltaTime / QuestManager.qm.hideQuestAlong);
-        about.color = color;
-        numbers.color = color;
+        emphasizeStatus = 3;
       }
-
-      if (color.a == 0) emphasizeStatus = 0;
+    } else if (emphasizeStatus == 3) {
+      scaleFactor = Mathf.MoveTowards(scaleFactor, 1, Time.deltaTime / QuestManager.qm.qCompleteScaleChangeDuring * 0.5f);
+      transform.localScale = Vector3.one * scaleFactor;
+      if (scaleFactor == 1) emphasizeStatus = 4;
     }
 
     if (countByTime && !isComplete) {
