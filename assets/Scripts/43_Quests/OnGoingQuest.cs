@@ -4,6 +4,7 @@ using System.Collections;
 
 public class OnGoingQuest : MonoBehaviour {
   private string questName;
+  private GameObject goldenCubes;
   private Text about;
   private Text numbers;
   private int count = 0;
@@ -31,10 +32,13 @@ public class OnGoingQuest : MonoBehaviour {
   private bool gameEnded = false;
 
 	public void startQuest(Quest quest, int currentCount) {
-    questName = quest.name;
-    countByTime = quest.countByTime;
     about = transform.Find("About").GetComponent<Text>();
     numbers = transform.Find("Numbers").GetComponent<Text>();
+    goldenCubes = transform.Find("GoldenCubes").gameObject;
+
+    questName = quest.name;
+    countByTime = quest.countByTime;
+    goldenCubesWhenComplete = quest.goldenCubesWhenComplete;
 
     about.text = "임무: " + quest.description;
     count = currentCount;
@@ -42,24 +46,31 @@ public class OnGoingQuest : MonoBehaviour {
     numbersToCompleteToString = "/" + numbersToComplete.ToString();
     numbers.text = count.ToString() + numbersToCompleteToString;
 
-    goldenCubesWhenComplete = quest.goldenCubesWhenComplete;
-
     inactiveColor = QuestManager.qm.inactiveQuestColor;
     activeColor = new Color (1, 1, 1, 1);
     color = activeColor;
 
-    movingTop = true;
-
     scaleFactor = transform.localScale.x;
     anchorPos = GetComponent<RectTransform>().anchoredPosition;
 
+    goldenCubes.GetComponent<RectTransform>().anchoredPosition -= new Vector2(about.preferredWidth + 20, 0);
+    int rewardCount = goldenCubesWhenComplete;
+    foreach (Transform tr in goldenCubes.transform) {
+      if (rewardCount > 0) {
+        rewardCount--;
+        tr.gameObject.SetActive(true);
+      }
+    }
+
     float totalWidth = about.preferredWidth + numbers.GetComponent<RectTransform>().anchoredPosition.x + numbers.preferredWidth;
-    positionX = about.preferredWidth - totalWidth / 2;
+    positionX = (about.preferredWidth + 15 * goldenCubesWhenComplete - totalWidth / 2);
     anchorPos.x = positionX * scaleFactor;
     GetComponent<RectTransform>().anchoredPosition = anchorPos;
 
     positionY = anchorPos.y;
     distance = QuestManager.qm.qMoveToY - anchorPos.y;
+
+    movingTop = true;
   }
 
   void Update() {
@@ -100,6 +111,10 @@ public class OnGoingQuest : MonoBehaviour {
     if (emphasizeStatus == 1) {
       scaleFactor = Mathf.MoveTowards(scaleFactor, 1.5f, Time.deltaTime / QuestManager.qm.qCompleteScaleChangeDuring * 0.5f);
       transform.localScale = Vector3.one * scaleFactor;
+
+      anchorPos.x = positionX * scaleFactor;
+      GetComponent<RectTransform>().anchoredPosition = anchorPos;
+
       if (scaleFactor == 1.5f) emphasizeStatus = 2;
     } else if (emphasizeStatus == 2) {
       if (completeStayCount < QuestManager.qm.qCompleteScaleChangeStay) {
@@ -110,6 +125,10 @@ public class OnGoingQuest : MonoBehaviour {
     } else if (emphasizeStatus == 3) {
       scaleFactor = Mathf.MoveTowards(scaleFactor, 1, Time.deltaTime / QuestManager.qm.qCompleteScaleChangeDuring * 0.5f);
       transform.localScale = Vector3.one * scaleFactor;
+
+      anchorPos.x = positionX * scaleFactor;
+      GetComponent<RectTransform>().anchoredPosition = anchorPos;
+
       if (scaleFactor == 1) emphasizeStatus = 4;
     }
 
@@ -164,7 +183,7 @@ public class OnGoingQuest : MonoBehaviour {
     countByTime = false;
 
     if (isComplete) {
-      QuestManager.qm.goldenCubes.add(goldenCubesWhenComplete);
+      QuestManager.qm.congraturation(goldenCubesWhenComplete);
     } else {
       // if tutorial, don't
       GameController.control.quests[questName] = 0;

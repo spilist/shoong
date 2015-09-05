@@ -3,6 +3,8 @@ using System.Collections;
 using System.Linq;
 
 public class SpawnManager : MonoBehaviour {
+  public int showHiddensInHowManyGames = 100;
+  private bool showingHidden = false;
   public float generateSpaceRadius = 0.9f;
   public float generateOffset = 0.2f;
   public int overlapDistance = 50;
@@ -11,6 +13,10 @@ public class SpawnManager : MonoBehaviour {
 
   public void run() {
     gameObject.SetActive(true);
+
+    if (Random.Range(0, showHiddensInHowManyGames) == 0) {
+      showingHidden = true;
+    }
 
     // spawn which doesn't need settings
     gameObject.GetComponent<BasicObjectsManager>().run();
@@ -31,6 +37,10 @@ public class SpawnManager : MonoBehaviour {
         runManager(subObject);
       }
     }
+  }
+
+  public bool showHidden() {
+    return showingHidden;
   }
 
   public void runManager(string objName) {

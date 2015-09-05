@@ -7112,10 +7112,10 @@ MonoBehaviour:
   questStartConditions:
   - SpecialParts Monster RainbowDonuts
   countByTime: 0
-  doNotShow: 1
+  doNotShow: 0
   description: "\uC720\uC131 \uD30C\uAD34"
-  numbersToComplete: 10
-  goldenCubesWhenComplete: 100
+  numbersToComplete: 5
+  goldenCubesWhenComplete: 2
 --- !u!1 &188335416
 GameObject:
   m_ObjectHideFlags: 0
@@ -7653,10 +7653,10 @@ MonoBehaviour:
   conditionNotRequired: 1
   questStartConditions: []
   countByTime: 0
-  doNotShow: 1
+  doNotShow: 0
   description: "\uAC04\uBC1C\uC758 \uCC28\uB85C \uC720\uC131 \uD53C\uD558\uAE30"
-  numbersToComplete: 5
-  goldenCubesWhenComplete: 50
+  numbersToComplete: 3
+  goldenCubesWhenComplete: 2
 --- !u!1 &215114007
 GameObject:
   m_ObjectHideFlags: 0
@@ -9000,11 +9000,11 @@ MonoBehaviour:
   questStartConditions:
   - Monster
   countByTime: 0
-  doNotShow: 1
+  doNotShow: 0
   description: "\uC5D0\uB108\uC9C0 30 \uC774\uD558\uC5D0\uC11C \uBAAC\uC2A4\uD130
     \uD0D1\uC2B9"
   numbersToComplete: 1
-  goldenCubesWhenComplete: 100
+  goldenCubesWhenComplete: 2
 --- !u!1 &266830809
 GameObject:
   m_ObjectHideFlags: 0
@@ -10610,10 +10610,10 @@ MonoBehaviour:
   questStartConditions:
   - SpecialParts
   countByTime: 0
-  doNotShow: 1
+  doNotShow: 0
   description: "\uBB34\uC801 \uC9C0\uC18D\uC2DC\uAC04 \uC548\uC5D0 \uC6B4\uC11D \uD30C\uAD34"
   numbersToComplete: 3
-  goldenCubesWhenComplete: 100
+  goldenCubesWhenComplete: 3
 --- !u!1 &440487357
 GameObject:
   m_ObjectHideFlags: 0
@@ -10662,10 +10662,10 @@ MonoBehaviour:
   questStartConditions:
   - RainbowDonuts
   countByTime: 0
-  doNotShow: 1
-  description: "\uBB34\uC9C0\uAC1C \uD0C0\uACE0 \uBD80\uD488\uBA39\uAE30"
+  doNotShow: 0
+  description: "\uBB34\uC9C0\uAC1C\uAE38 \uC704\uC5D0\uC11C \uBD80\uD488\uBA39\uAE30"
   numbersToComplete: 10
-  goldenCubesWhenComplete: 100
+  goldenCubesWhenComplete: 2
 --- !u!1 &465752960
 GameObject:
   m_ObjectHideFlags: 0
@@ -10789,10 +10789,10 @@ MonoBehaviour:
   conditionNotRequired: 1
   questStartConditions: []
   countByTime: 0
-  doNotShow: 1
+  doNotShow: 0
   description: "\uBD80\uC2A4\uD130 \uC0AC\uC6A9"
   numbersToComplete: 100
-  goldenCubesWhenComplete: 30
+  goldenCubesWhenComplete: 1
 --- !u!1 &501650840
 GameObject:
   m_ObjectHideFlags: 0
@@ -13608,10 +13608,10 @@ MonoBehaviour:
   conditionNotRequired: 1
   questStartConditions: []
   countByTime: 0
-  doNotShow: 1
+  doNotShow: 0
   description: "\uC6B4\uC11D \uC606 \uBD80\uD488 \uBA39\uAE30"
   numbersToComplete: 10
-  goldenCubesWhenComplete: 50
+  goldenCubesWhenComplete: 2
 --- !u!1 &562534125
 GameObject:
   m_ObjectHideFlags: 0
@@ -14828,10 +14828,10 @@ MonoBehaviour:
   questStartConditions:
   - Blackhole
   countByTime: 0
-  doNotShow: 1
+  doNotShow: 0
   description: "\uBE14\uB799\uD640 \uD0C8\uCD9C"
   numbersToComplete: 10
-  goldenCubesWhenComplete: 100
+  goldenCubesWhenComplete: 1
 --- !u!1001 &578305428
 Prefab:
   m_ObjectHideFlags: 0
@@ -15043,10 +15043,10 @@ MonoBehaviour:
   - Monster
   - RainbowDonuts
   countByTime: 0
-  doNotShow: 1
+  doNotShow: 0
   description: "\uBB34\uC9C0\uAC1C \uD0C0\uACE0 \uBAAC\uC2A4\uD130 \uD30C\uAD34"
   numbersToComplete: 5
-  goldenCubesWhenComplete: 100
+  goldenCubesWhenComplete: 3
 --- !u!1 &589887825
 GameObject:
   m_ObjectHideFlags: 0
@@ -15176,10 +15176,10 @@ MonoBehaviour:
   conditionNotRequired: 1
   questStartConditions: []
   countByTime: 0
-  doNotShow: 1
+  doNotShow: 0
   description: "\uD050\uBE0C \uD68D\uB4DD"
   numbersToComplete: 30
-  goldenCubesWhenComplete: 30
+  goldenCubesWhenComplete: 1
 --- !u!1 &600005597
 GameObject:
   m_ObjectHideFlags: 0
@@ -20340,10 +20340,10 @@ MonoBehaviour:
   questStartConditions:
   - Monster
   countByTime: 0
-  doNotShow: 1
+  doNotShow: 0
   description: "\uBAAC\uC2A4\uD130 \uD0D1\uC2B9"
   numbersToComplete: 10
-  goldenCubesWhenComplete: 100
+  goldenCubesWhenComplete: 1
 --- !u!1 &799450316
 GameObject:
   m_ObjectHideFlags: 0
@@ -20393,9 +20393,9 @@ MonoBehaviour:
   - RainbowDonuts
   countByTime: 0
   doNotShow: 0
-  description: "\uBB34\uC9C0\uAC1C \uD0C0\uAE30"
+  description: "\uBB34\uC9C0\uAC1C\uAE38 \uD0C0\uAE30"
   numbersToComplete: 20
-  goldenCubesWhenComplete: 50
+  goldenCubesWhenComplete: 1
 --- !u!1 &803409794
 GameObject:
   m_ObjectHideFlags: 0
@@ -22268,10 +22268,10 @@ MonoBehaviour:
   - Monster
   - SpecialParts RainbowDonuts
   countByTime: 0
-  doNotShow: 1
+  doNotShow: 0
   description: "\uBAAC\uC2A4\uD130 \uD30C\uAD34"
   numbersToComplete: 5
-  goldenCubesWhenComplete: 100
+  goldenCubesWhenComplete: 2
 --- !u!1 &868146740
 GameObject:
   m_ObjectHideFlags: 0
@@ -22502,7 +22502,7 @@ MonoBehaviour:
   doNotShow: 0
   description: "\uBD80\uC2A4\uD130 2\uBC88\uC73C\uB85C \uD658\uC601 \uBD80\uD488 \uC644\uB8CC"
   numbersToComplete: 3
-  goldenCubesWhenComplete: 100
+  goldenCubesWhenComplete: 2
 --- !u!1 &890419729
 GameObject:
   m_ObjectHideFlags: 0
@@ -22551,10 +22551,10 @@ MonoBehaviour:
   questStartConditions:
   - CubeDispenser
   countByTime: 0
-  doNotShow: 1
+  doNotShow: 0
   description: "\uD050\uBE0C \uD0F1\uD0F1\uBCFC \uC644\uB8CC"
   numbersToComplete: 10
-  goldenCubesWhenComplete: 100
+  goldenCubesWhenComplete: 1
 --- !u!1 &892369437
 GameObject:
   m_ObjectHideFlags: 0
@@ -23110,10 +23110,10 @@ MonoBehaviour:
   questStartConditions:
   - SpecialParts Monster RainbowDonuts
   countByTime: 0
-  doNotShow: 1
+  doNotShow: 0
   description: "\uC6B4\uC11D \uD30C\uAD34"
   numbersToComplete: 10
-  goldenCubesWhenComplete: 100
+  goldenCubesWhenComplete: 2
 --- !u!1 &975181075
 GameObject:
   m_ObjectHideFlags: 0
@@ -23396,10 +23396,10 @@ MonoBehaviour:
   - Monster
   - Blackhole
   countByTime: 0
-  doNotShow: 1
+  doNotShow: 0
   description: "\uBAAC\uC2A4\uD130\uC640 \uD568\uAED8 \uBE14\uB799\uD640 \uB4E4\uC5B4\uAC00\uAE30"
   numbersToComplete: 1
-  goldenCubesWhenComplete: 100
+  goldenCubesWhenComplete: 3
 --- !u!1 &1025396002
 GameObject:
   m_ObjectHideFlags: 0
@@ -27223,10 +27223,10 @@ MonoBehaviour:
   conditionNotRequired: 1
   questStartConditions: []
   countByTime: 0
-  doNotShow: 1
+  doNotShow: 0
   description: "\uC77C\uC2DC\uC815\uC9C0"
   numbersToComplete: 1
-  goldenCubesWhenComplete: 30
+  goldenCubesWhenComplete: 1
 --- !u!1 &1194304518
 GameObject:
   m_ObjectHideFlags: 0
@@ -27336,10 +27336,10 @@ MonoBehaviour:
   - Blackhole
   - SpecialParts RainbowDonuts
   countByTime: 0
-  doNotShow: 1
+  doNotShow: 0
   description: "\uBE14\uB799\uD640\uC5D0 \uD295\uAE30\uAE30"
   numbersToComplete: 5
-  goldenCubesWhenComplete: 100
+  goldenCubesWhenComplete: 2
 --- !u!1 &1211019733
 GameObject:
   m_ObjectHideFlags: 0
@@ -28581,10 +28581,10 @@ MonoBehaviour:
   questStartConditions:
   - CubeDispenser
   countByTime: 0
-  doNotShow: 1
+  doNotShow: 0
   description: "\uD0F1\uD0F1\uBCFC\uC5D0 \uD295\uAE30\uB294 \uC720\uC131 \uAD00\uCC30"
   numbersToComplete: 3
-  goldenCubesWhenComplete: 100
+  goldenCubesWhenComplete: 2
 --- !u!1 &1343430248
 GameObject:
   m_ObjectHideFlags: 0
@@ -33583,10 +33583,10 @@ MonoBehaviour:
   conditionNotRequired: 1
   questStartConditions: []
   countByTime: 1
-  doNotShow: 1
+  doNotShow: 0
   description: "\uBD80\uC2A4\uD130 \uC5C6\uC774 \uBC84\uD2F0\uAE30"
   numbersToComplete: 10
-  goldenCubesWhenComplete: 30
+  goldenCubesWhenComplete: 2
 --- !u!1 &1410312520
 GameObject:
   m_ObjectHideFlags: 0
@@ -35127,10 +35127,10 @@ MonoBehaviour:
   - Blackhole
   - Monster
   countByTime: 0
-  doNotShow: 1
+  doNotShow: 0
   description: "\uBAAC\uC2A4\uD130 \uD761\uC218"
   numbersToComplete: 5
-  goldenCubesWhenComplete: 100
+  goldenCubesWhenComplete: 3
 --- !u!1 &1479683095
 GameObject:
   m_ObjectHideFlags: 0
@@ -39206,6 +39206,7 @@ MonoBehaviour:
   qCompleteScaleChangeStay: .5
   showQuestDuration: 2
   hideQuestAlong: 1
+  firstQuestReward: 30
   inactiveQuestColor: {r: .426470578, g: .426470578, b: .426470578, a: 1}
   completeQuestColor: {r: .986206889, g: 1, b: 0, a: 1}
   goldenCubes: {fileID: 667805692}
@@ -44436,10 +44437,10 @@ MonoBehaviour:
   questStartConditions:
   - ComboParts
   countByTime: 0
-  doNotShow: 1
+  doNotShow: 0
   description: "\uD658\uC601 \uBD80\uD488 \uC644\uB8CC"
   numbersToComplete: 10
-  goldenCubesWhenComplete: 100
+  goldenCubesWhenComplete: 1
 --- !u!1 &1878094423
 GameObject:
   m_ObjectHideFlags: 0
@@ -48607,6 +48608,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   strength: 3
   monster: {fileID: 187024, guid: b82e156aa96e74e6ab2dfef6ffcc7bcf, type: 2}
+  hiddenMonster: {fileID: 0}
   speed_chase: 75
   speed_runaway: 60
   speed_weaken: 20
@@ -48658,6 +48660,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4ef5f5fe3e9c4deab674825c79028e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  showHiddensInHowManyGames: 100
   generateSpaceRadius: .899999976
   generateOffset: .200000003
   overlapDistance: 50

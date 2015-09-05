@@ -9,7 +9,7 @@ public class Quest : MonoBehaviour {
   public bool doNotShow = false;
   public string description;
   public int numbersToComplete;
-  public int goldenCubesWhenComplete = 100;
+  public int goldenCubesWhenComplete = 1;
 
   // 활성화한 오브젝트 기준
   public bool isAvailable() {

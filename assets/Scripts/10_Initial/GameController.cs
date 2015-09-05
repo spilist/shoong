@@ -7,6 +7,7 @@ using System.IO;
 public class GameController : MonoBehaviour {
   public static GameController control;
 
+  public DateTime lastQuestCompleteAt;
   public int numPlays;
   public int numBoosters;
 
@@ -35,6 +36,7 @@ public class GameController : MonoBehaviour {
       control = this;
       datapath = Application.persistentDataPath + "/GameData.dat";
 
+      lastQuestCompleteAt = DateTime.MinValue;
       cubes = new Hashtable();
       cubes_by = new Hashtable();
       goldenCubes = new Hashtable();
@@ -60,6 +62,7 @@ public class GameController : MonoBehaviour {
 
     PlayerData data = new PlayerData();
 
+    data.lastQuestCompleteAt = lastQuestCompleteAt;
     data.numPlays = numPlays;
     data.numBoosters = numBoosters;
     data.cubes = cubes;
@@ -84,6 +87,7 @@ public class GameController : MonoBehaviour {
       PlayerData data = (PlayerData) bf.Deserialize(file);
       file.Close();
 
+      lastQuestCompleteAt = data.lastQuestCompleteAt;
       numPlays = data.numPlays;
       numBoosters = data.numBoosters;
       cubes = data.cubes;
@@ -112,6 +116,7 @@ public class GameController : MonoBehaviour {
   void reset() {
     File.Delete(datapath);
 
+    PlayerPrefs.SetInt("FirstQuestComplete", 0);
     PlayerPrefs.SetString("SelectedCharacter", "robotcogi");
     PlayerPrefs.SetString("MainObjects", "");
     PlayerPrefs.SetString("SubObjects", "");
@@ -132,6 +137,7 @@ public class GameController : MonoBehaviour {
     PlayerPrefs.SetString("tyranno", "티라노");
     PlayerPrefs.SetString("cottoncandy", "솜사탕");
 
+    lastQuestCompleteAt = DateTime.MinValue;
     numPlays = 0;
     numBoosters = 0;
 
@@ -233,6 +239,7 @@ public class GameController : MonoBehaviour {
 
 [Serializable]
 class PlayerData {
+  public DateTime lastQuestCompleteAt;
   public int numPlays;
   public int numBoosters;
   public Hashtable cubes;

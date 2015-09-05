@@ -4,6 +4,7 @@ using System.Collections;
 
 public class MonsterManager : ObjectsManager {
   public GameObject monster;
+  public GameObject hiddenMonster;
   public float speed_chase = 80;
   public float speed_runaway = 120;
   public float speed_weaken = 30;

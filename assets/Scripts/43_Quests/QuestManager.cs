@@ -12,6 +12,7 @@ public class QuestManager : MonoBehaviour {
   public float qCompleteScaleChangeStay = 0.5f;
   public float showQuestDuration = 2;
   public float hideQuestAlong = 1;
+  public int firstQuestReward = 30;
   public Color inactiveQuestColor;
   public Color completeQuestColor;
   public CubesYouHave goldenCubes;
@@ -32,6 +33,11 @@ public class QuestManager : MonoBehaviour {
   }
 
   public void generateQuest() {
+    // if another day, reset first quest reward
+    if ((DateTime.Now.Date - ((DateTime)GameController.control.lastQuestCompleteAt).Date).TotalDays > 0) {
+      PlayerPrefs.SetInt("FirstQuestComplete", 0);
+    }
+
     // if there is ongoing quest, do something else
 
     Quest[] availableQuests = new Quest[questsList.childCount];
@@ -91,5 +97,18 @@ public class QuestManager : MonoBehaviour {
       }
     }
     return false;
+  }
+
+  public void congraturation(int reward) {
+    // 연출
+    goldenCubes.add(reward);
+
+    if (PlayerPrefs.GetInt("FirstQuestComplete") == 0) {
+      // 첫 보상 연출
+      Debug.Log("first quest reward");
+      PlayerPrefs.SetInt("FirstQuestComplete", 1);
+      goldenCubes.add(firstQuestReward);
+      GameController.control.lastQuestCompleteAt = DateTime.Now;
+    }
   }
 }
