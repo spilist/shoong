@@ -59,10 +59,10 @@ public class ComboPartsManager : ObjectsManager {
     comboCount++;
     trying = true;
     secondShot = false;
-    Debug.Log(boosterCount);
 
     if (comboCount == fullComboCount) {
       QuestManager.qm.addCountToQuest("CompleteComboParts");
+      QuestManager.qm.addCountToQuest("ComboParts");
       if (boosterCount < fullComboCount - 1) {
         QuestManager.qm.addCountToQuest("CompleteComboPartsInTwoBoosters");
       }

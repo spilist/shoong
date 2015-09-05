@@ -12,6 +12,7 @@ public class OnGoingQuest : MonoBehaviour {
   private string numbersToCompleteToString;
   private int goldenCubesWhenComplete;
   private bool countByTime;
+  private bool tutorial;
 
   private bool convetToInactive = false;
   private float stayCount = 0;
@@ -39,6 +40,7 @@ public class OnGoingQuest : MonoBehaviour {
     questName = quest.name;
     countByTime = quest.countByTime;
     goldenCubesWhenComplete = quest.goldenCubesWhenComplete;
+    tutorial = quest.tutorial;
 
     about.text = "임무: " + quest.description;
     count = currentCount;
@@ -59,6 +61,8 @@ public class OnGoingQuest : MonoBehaviour {
       if (rewardCount > 0) {
         rewardCount--;
         tr.gameObject.SetActive(true);
+      } else {
+        tr.gameObject.SetActive(false);
       }
     }
 
@@ -151,7 +155,6 @@ public class OnGoingQuest : MonoBehaviour {
 
     if (count > numbersToComplete) count = numbersToComplete;
     numbers.text = count.ToString() + numbersToCompleteToString;
-    GameController.control.quests[questName] = count;
     stayCount = 0;
     timeCount = 0;
 
@@ -184,11 +187,13 @@ public class OnGoingQuest : MonoBehaviour {
 
     if (isComplete) {
       QuestManager.qm.congraturation(goldenCubesWhenComplete);
-    } else {
-      // if tutorial, don't
-      GameController.control.quests[questName] = 0;
-    }
+      if (tutorial) {
+        string tutorialsNotDone = PlayerPrefs.GetString("ObjTutorialsNotDone");
+        tutorialsNotDone = tutorialsNotDone.Replace(questName, "").Trim();
+        tutorialsNotDone = tutorialsNotDone.Replace("  ", " ").Trim();
 
-    // Destroy(gameObject);
+        PlayerPrefs.SetString("ObjTutorialsNotDone", tutorialsNotDone);
+      }
+    }
   }
 }

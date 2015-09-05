@@ -21,7 +21,6 @@ public class GameController : MonoBehaviour {
 
   public Hashtable characters;
   public Hashtable objects;
-  public Hashtable quests;
 
   private string datapath;
 
@@ -47,7 +46,6 @@ public class GameController : MonoBehaviour {
 
       characters = new Hashtable();
       objects = new Hashtable();
-      quests = new Hashtable();
 
       if (resetAll) reset();
       else load();
@@ -74,7 +72,6 @@ public class GameController : MonoBehaviour {
     data.num_use_objects = num_use_objects;
     data.characters = characters;
     data.objects = objects;
-    data.quests = quests;
 
     bf.Serialize(file, data);
     file.Close();
@@ -99,7 +96,6 @@ public class GameController : MonoBehaviour {
       num_use_objects = data.num_use_objects;
       characters = data.characters;
       objects = data.objects;
-      quests = data.quests;
     } else {
       reset();
     }
@@ -117,6 +113,7 @@ public class GameController : MonoBehaviour {
     File.Delete(datapath);
 
     PlayerPrefs.SetInt("FirstQuestComplete", 0);
+    PlayerPrefs.SetString("ObjTutorialsNotDone", "");
     PlayerPrefs.SetString("SelectedCharacter", "robotcogi");
     PlayerPrefs.SetString("MainObjects", "");
     PlayerPrefs.SetString("SubObjects", "");
@@ -204,36 +201,6 @@ public class GameController : MonoBehaviour {
     objects.Add("CubeDispenser", false);
     objects.Add("ComboParts", false);
     objects.Add("RainbowDonuts", false);
-
-    quests.Add("GamePause", 0);
-    quests.Add("GetCube", 0);
-    quests.Add("UseBooster", 0);
-    quests.Add("NoBooster", 0);
-    quests.Add("GetPartsNearAsteroid", 0);
-    quests.Add("AvoidFallingStar", 0);
-
-    quests.Add("DestroyAsteroid", 0);
-    quests.Add("DestroyAsteroidsBeforeUnstoppableEnd", 0);
-    quests.Add("DestroyFallingStar", 0);
-
-    quests.Add("RideMonster", 0);
-    quests.Add("RideMonsterWithLowEnergy", 0);
-    quests.Add("RideMonsterByBlackhole", 0);
-    quests.Add("DestroyMonster", 0);
-    quests.Add("DestroyMonsterByRainbow", 0);
-    quests.Add("DestroyMonsterByBlackhole", 0);
-
-    quests.Add("ExitBlackhole", 0);
-    quests.Add("ReboundByBlackhole", 0);
-
-    quests.Add("CompleteComboParts", 0);
-    quests.Add("CompleteComboPartsInTwoBoosters", 0);
-
-    quests.Add("CompleteCubeDispenser", 0);
-    quests.Add("FallingStarReboundByCubeDispenser", 0);
-
-    quests.Add("RideRainbow", 0);
-    quests.Add("GetPartsOnRainbow", 0);
   }
 }
 
@@ -252,5 +219,4 @@ class PlayerData {
 
   public Hashtable characters;
   public Hashtable objects;
-  public Hashtable quests;
 }

@@ -381,7 +381,7 @@ public class PlayerMover : MonoBehaviour {
     return unstoppable;
   }
 
-  public bool isRiding() {
+  public bool isRidingMonster() {
     return ridingMonster;
   }
 

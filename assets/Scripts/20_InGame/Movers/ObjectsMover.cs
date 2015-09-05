@@ -97,6 +97,9 @@ public class ObjectsMover : MonoBehaviour {
   }
 
   virtual public void encounterPlayer() {
+    if (tag == "Part" && isMagnetized) {
+      QuestManager.qm.addCountToQuest("Blackhole");
+    }
     Destroy(gameObject);
   }
 

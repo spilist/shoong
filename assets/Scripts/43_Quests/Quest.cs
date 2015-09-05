@@ -7,6 +7,7 @@ public class Quest : MonoBehaviour {
 
   public bool countByTime = false;
   public bool doNotShow = false;
+  public bool tutorial = false;
   public string description;
   public int numbersToComplete;
   public int goldenCubesWhenComplete = 1;

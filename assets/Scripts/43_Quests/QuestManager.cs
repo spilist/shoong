@@ -18,6 +18,7 @@ public class QuestManager : MonoBehaviour {
   public CubesYouHave goldenCubes;
 
   private Transform questsList;
+  private Transform objectTutorials;
   private Transform onGoingQuests;
 
 	void Start() {
@@ -25,6 +26,7 @@ public class QuestManager : MonoBehaviour {
       DontDestroyOnLoad(gameObject);
       qm = this;
       questsList = transform.Find("QuestsList");
+      objectTutorials = transform.Find("ObjectTutorials");
       onGoingQuests = transform.Find("OnGoingQuests");
     } else if (qm != this) {
       Destroy(gameObject);
@@ -38,7 +40,17 @@ public class QuestManager : MonoBehaviour {
       PlayerPrefs.SetInt("FirstQuestComplete", 0);
     }
 
-    // if there is ongoing quest, do something else
+    // if there is not completed tutorial quest, show it
+    string tutorialsNotDone = PlayerPrefs.GetString("ObjTutorialsNotDone");
+    if (tutorialsNotDone.Trim() != "") {
+      foreach (string obj in tutorialsNotDone.Split(null)) {
+        Quest tutorial = objectTutorials.Find(obj.Trim()).GetComponent<Quest>();
+        if (tutorial.isAvailable()) {
+          startQuest(tutorial);
+          return;
+        }
+      }
+    }
 
     Quest[] availableQuests = new Quest[questsList.childCount];
     int count = 0;
@@ -65,21 +77,8 @@ public class QuestManager : MonoBehaviour {
   }
 
   public void addCountToQuest(string questName, int howMany = 1) {
-    foreach (Transform tr in onGoingQuests) {
-      OnGoingQuest ogq = tr.GetComponent<OnGoingQuest>();
-      if (ogq.name() == questName) {
-        ogq.addCount(howMany);
-        break;
-      }
-    }
-  }
-
-  void showOnGoingQuests() {
-    foreach (DictionaryEntry quest in GameController.control.quests) {
-      if ((int) quest.Value != 0) {
-        startQuestWithName((string) quest.Key, (int) quest.Value);
-      }
-    }
+    OnGoingQuest ogq = onGoingQuests.GetChild(0).GetComponent<OnGoingQuest>();
+    if (ogq.name() == questName) ogq.addCount(howMany);
   }
 
   public void checkQuestComplete() {

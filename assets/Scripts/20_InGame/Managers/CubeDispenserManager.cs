@@ -36,6 +36,7 @@ public class CubeDispenserManager : ObjectsManager {
 
     if (comboCount == fullComboCount) {
       QuestManager.qm.addCountToQuest("CompleteCubeDispenser");
+      QuestManager.qm.addCountToQuest("CubeDispenser");
       StartCoroutine("respawn");
     }
   }
