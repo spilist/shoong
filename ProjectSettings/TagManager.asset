@@ -32,15 +32,17 @@ TagManager:
   - RainbowDonut
   - PauseButton
   - CharacterCreateMenu
+  - Blachole
+  - GameOverActions
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  -
+  - 
   - Water
   - UI
-  -
-  -
+  - 
+  - 
   - Boundary
   - BasicObjects
   - Character
@@ -57,14 +59,14 @@ TagManager:
   - SpecialParts
   - RainbowDonuts
   - BigObstacle
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   m_SortingLayers:
   - name: Default
     uniqueID: 0

@@ -6,7 +6,7 @@ public class PlayerMover : MonoBehaviour {
   public SpawnManager spawnManager;
 
   public CubesCount cubesCount;
-  public GameOver gameOver;
+  public ScoreManager scoreManager;
   public GameObject obstacleDestroy;
   public GameObject unstoppableSphere;
   public int cubesWhenDestroyBigObstacle = 30;
@@ -133,7 +133,7 @@ public class PlayerMover : MonoBehaviour {
       if (unstoppable || ridingMonster || isUsingRainbow()) {
         goodPartsEncounter(mover, (int)cubesWhenDestroy[other.tag]);
       } else {
-        gameOver.run();
+        scoreManager.gameOver();
       }
     } else if (other.tag == "Monster") {
 			if (unstoppable || isUsingRainbow()) {
@@ -144,7 +144,7 @@ public class PlayerMover : MonoBehaviour {
 			} else if (exitedBlackhole || other.gameObject.GetComponent<MonsterMover>().isWeak()) {
         startRiding(mover);
       } else {
-				gameOver.run();
+				scoreManager.gameOver();
 			}
 		} else if (other.tag == "Part") {
       goodPartsEncounter(mover, comboBar.getComboRatio());
@@ -225,7 +225,7 @@ public class PlayerMover : MonoBehaviour {
   }
 
   IEnumerator strengthen() {
-    if (gameOver.isOver()) yield break;
+    if (scoreManager.isGameOver()) yield break;
 
     int effectDuration;
     if (reboundingByBlackhole) {
@@ -464,5 +464,4 @@ public class PlayerMover : MonoBehaviour {
     direction = dir;
     rotatePlayerBody();
   }
-
 }

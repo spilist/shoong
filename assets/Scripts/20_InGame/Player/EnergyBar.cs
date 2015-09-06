@@ -18,7 +18,6 @@ public class EnergyBar : MonoBehaviour {
   public float getRate = 2f;
   public int shootAmount = -10;
   public float loseRate = 1;
-  public GameOver gameOver;
   public PlayerMover player;
   public Text energyCurrent;
   public GameObject loseEnergy;
@@ -53,7 +52,7 @@ public class EnergyBar : MonoBehaviour {
       energyCurrent.text = (image.fillAmount * 100).ToString("0");
 
       if (image.fillAmount == 0) {
-        gameOver.run();
+        player.scoreManager.gameOver();
         gameStarted = false;
       }
     }

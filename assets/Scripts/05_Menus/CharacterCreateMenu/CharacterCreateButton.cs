@@ -31,14 +31,18 @@ public class CharacterCreateButton : MenusBehavior {
   public float startInterval = 0.3f;
   public float showUIsAfter = 1f;
   public int characterRotatingSpeed = 150;
-  public int createPrice = 10000;
+  private int createPrice;
 
   private bool affordable = false;
   private bool running = false;
   private Text priceText;
   private Renderer cubeRenderer;
+  private CharacterCreateMenu menu;
 
   void OnEnable() {
+    menu = transform.parent.GetComponent<CharacterCreateMenu>();
+    createPrice = menu.createPrice;
+
     priceText = transform.Find("PriceText").GetComponent<Text>();
     priceText.text = createPrice.ToString("N0");
     cubeRenderer = transform.Find("CubeIcon").GetComponent<Renderer>();
@@ -170,5 +174,9 @@ public class CharacterCreateButton : MenusBehavior {
   void OnDisable() {
     cubesYouHave.SetActive(false);
     goldenCubesYouHave.SetActive(false);
+  }
+
+  public bool isAffordable() {
+    return cubesYouHave.GetComponent<CubesYouHave>().youHave() < createPrice;
   }
 }

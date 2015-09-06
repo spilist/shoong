@@ -5,7 +5,7 @@ public class Blackhole : MonoBehaviour {
   public ParticleSystem obstacleDestroy;
 
   private BlackholeManager blm;
-  private GameOver gameOver;
+  private ScoreManager scoreManager;
 
   private PlayerMover player;
 
@@ -17,7 +17,7 @@ public class Blackhole : MonoBehaviour {
     GetComponent<Rigidbody>().angularVelocity = Random.onUnitSphere * 5;
 
     blm = GameObject.Find("Field Objects").GetComponent<BlackholeManager>();
-    gameOver = GameObject.Find("GameOver").GetComponent<GameOver>();
+    scoreManager = GameObject.Find("ScoreManager").GetComponent<ScoreManager>();
 	}
 
   void OnCollisionEnter(Collision collision) {
@@ -30,7 +30,7 @@ public class Blackhole : MonoBehaviour {
         player.contactBlackholeWhileRainbow(collision);
         Destroy(gameObject);
       } else {
-        gameOver.run();
+        scoreManager.gameOver();
       }
     } else {
       ObjectsMover mover = other.GetComponent<ObjectsMover>();
@@ -44,7 +44,7 @@ public class Blackhole : MonoBehaviour {
 
   void OnDestroy() {
     if (isQuitting) return;
-    if (gameOver.isOver()) return;
+    if (scoreManager.isGameOver()) return;
     if (player.isUsingBlackhole()) return;
 
     blm.run();

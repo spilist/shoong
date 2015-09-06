@@ -71,7 +71,7 @@ public class ComboBar : MonoBehaviour {
       changeTrail();
     }
     StopCoroutine("loseByTime");
-    StartCoroutine("loseByTime");
+    if (gameObject.activeSelf) StartCoroutine("loseByTime");
   }
 
   public int getComboRatio() {

@@ -3,7 +3,8 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class PauseButton : MenusBehavior {
-	public GameObject pauseFilter;
+	public ScoreManager scoreManager;
+  public GameObject pauseFilter;
   public GameObject pauseStatus;
 
   private bool paused = false;
@@ -17,6 +18,7 @@ public class PauseButton : MenusBehavior {
   }
 
   override public void activateSelf() {
+    if (resuming) return;
     paused = true;
     Time.timeScale = 0;
     pauseFilter.SetActive(true);
@@ -57,7 +59,7 @@ public class PauseButton : MenusBehavior {
   }
 
   void OnApplicationPause() {
-    if (gameObject.activeSelf) activateSelf();
+    if (gameObject.activeSelf && !scoreManager.isGameOver()) activateSelf();
   }
 }
 

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using System;
 using System.Collections;
 
 public class OnGoingQuest : MonoBehaviour {
@@ -166,7 +167,7 @@ public class OnGoingQuest : MonoBehaviour {
       numbers.color = QuestManager.qm.completeQuestColor;
       color = QuestManager.qm.completeQuestColor;
       QuestManager.qm.questCompleteSound.Play();
-      QuestManager.qm.goldCubeBanner.add(goldenCubesWhenComplete);
+      // QuestManager.qm.goldCubeBanner.add(goldenCubesWhenComplete);
     } else {
       convetToInactive = true;
       about.color = activeColor;
@@ -183,12 +184,13 @@ public class OnGoingQuest : MonoBehaviour {
     return isComplete;
   }
 
-  public void endGame() {
+  public string result() {
     gameEnded = true;
     countByTime = false;
 
     if (isComplete) {
-      QuestManager.qm.congraturation(goldenCubesWhenComplete);
+      GameController.control.lastQuestCompleteAt = DateTime.Now;
+
       if (tutorial) {
         string tutorialsNotDone = PlayerPrefs.GetString("ObjTutorialsNotDone");
         tutorialsNotDone = tutorialsNotDone.Replace(questName, "").Trim();
@@ -196,6 +198,19 @@ public class OnGoingQuest : MonoBehaviour {
 
         PlayerPrefs.SetString("ObjTutorialsNotDone", tutorialsNotDone);
       }
+
+      if (PlayerPrefs.GetInt("FirstQuestComplete") == 0) {
+        PlayerPrefs.SetInt("FirstQuestComplete", 1);
+        return "FirstQuestComplete";
+      } else {
+        return "Complete";
+      }
+    } else {
+      return "Failed";
     }
+  }
+
+  public int reward() {
+    return goldenCubesWhenComplete;
   }
 }

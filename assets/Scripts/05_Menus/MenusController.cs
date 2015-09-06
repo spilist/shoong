@@ -2,19 +2,18 @@
 using System.Collections;
 
 public class MenusController : MonoBehaviour {
+  public ScoreManager scoreManager;
   public GameObject menusOverlay;
   public GameObject backButton;
   public GameObject menuButtons;
   public GameObject idleUI;
   public GameObject inGameUI;
-  public GameObject gameOverUI;
   public GameObject barsCanvas;
 
   public AudioClip UITouchSound;
 
   private bool menuOn = false;
   private bool notYetStarted = true;
-  private bool isGameEnded = false;
   private GameObject currentlyOn;
 
   public string touched() {
@@ -29,7 +28,7 @@ public class MenusController : MonoBehaviour {
         currentlyOn = transform.Find(hitTag).gameObject;
         toggleMenuAndUI();
         AudioSource.PlayClipAtPoint(UITouchSound, hit.transform.position);
-      } else if (hitTag == "PauseButton" || (isMenuOn() && layer == "MenusBehavior")) {
+      } else if (hitTag == "PauseButton" || (isMenuOn() && layer == "MenusBehavior") || (scoreManager.isGameOver() && layer == "MenusBehavior")) {
         MenusBehavior mb = hit.transform.GetComponent<MenusBehavior>();
         mb.activateSelf();
         if (mb.playTouchSound) {
@@ -45,9 +44,6 @@ public class MenusController : MonoBehaviour {
   public void toggleMenuAndUI() {
     if (notYetStarted) {
       idleUI.SetActive(!idleUI.activeSelf);
-    } else if (isGameEnded) {
-      inGameUI.SetActive(!inGameUI.activeSelf);
-      gameOverUI.GetComponent<Canvas>().enabled = !gameOverUI.GetComponent<Canvas>().enabled;
     }
     menuOn = !menuOn;
     backButton.SetActive(!backButton.activeSelf);
@@ -64,10 +60,6 @@ public class MenusController : MonoBehaviour {
 
     barsCanvas.GetComponent<Canvas>().enabled = true;
     barsCanvas.transform.Find("EnergyBar").GetComponent<EnergyBar>().startDecrease();
-  }
-
-  public void gameEnd() {
-    isGameEnded = true;
   }
 
   public bool isMenuOn() {

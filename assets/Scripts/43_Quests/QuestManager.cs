@@ -15,14 +15,16 @@ public class QuestManager : MonoBehaviour {
   public int firstQuestReward = 30;
   public Color inactiveQuestColor;
   public Color completeQuestColor;
-  public CubesYouHave goldenCubes;
   public AudioSource questStartSound;
   public AudioSource questCompleteSound;
-  public GoldCubeBanner goldCubeBanner;
+
+  public string questResult = "";
+  public int questReward = 0;
 
   private Transform questsList;
   private Transform objectTutorials;
   private Transform onGoingQuests;
+  private
 
 	void Start() {
     if (qm == null) {
@@ -88,7 +90,10 @@ public class QuestManager : MonoBehaviour {
   public void checkQuestComplete() {
     foreach (Transform tr in onGoingQuests) {
       OnGoingQuest ogq = tr.GetComponent<OnGoingQuest>();
-      ogq.endGame();
+      questResult = ogq.result();
+      if (questResult == "Failed") questReward = 0;
+      else if (questResult == "Complete") questReward = ogq.reward();
+      else if (questResult == "FirstQuestComplete") questReward = firstQuestReward;
     }
   }
 
@@ -102,16 +107,7 @@ public class QuestManager : MonoBehaviour {
     return false;
   }
 
-  public void congraturation(int reward) {
-    // 연출
-    // goldenCubes.add(reward);
-
-    if (PlayerPrefs.GetInt("FirstQuestComplete") == 0) {
-      // 첫 보상 연출
-      Debug.Log("first quest reward");
-      PlayerPrefs.SetInt("FirstQuestComplete", 1);
-      goldenCubes.add(firstQuestReward);
-      GameController.control.lastQuestCompleteAt = DateTime.Now;
-    }
+  public void hideOnGoingQuests() {
+    onGoingQuests.gameObject.SetActive(false);
   }
 }
