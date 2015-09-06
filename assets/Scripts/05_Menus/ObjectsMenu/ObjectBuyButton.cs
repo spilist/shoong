@@ -5,10 +5,7 @@ using System.Collections;
 public class ObjectBuyButton : MenusBehavior {
   public string which;
   public CubesYouHave cubes;
-  public Material notAffordableCubeMat;
-  public Material originalMat;
   public Color notAffordableTextColor;
-  public Renderer goldenCubeIconRenderer;
   public Text priceText;
   public Mesh originalMesh;
   public Mesh blinkingMesh;
@@ -45,13 +42,13 @@ public class ObjectBuyButton : MenusBehavior {
 
     if (cubes.youHave() < price) {
       affordable = false;
-      goldenCubeIconRenderer.sharedMaterial = notAffordableCubeMat;
       priceText.color = notAffordableTextColor;
       StopCoroutine("blinkButton");
-      GetComponent<MeshFilter>().sharedMesh = originalMesh;
+      if (which == "normal") {
+        GetComponent<MeshFilter>().sharedMesh = originalMesh;
+      }
     } else {
       affordable = true;
-      goldenCubeIconRenderer.sharedMaterial = originalMat;
       priceText.color = new Color(255, 255, 255);
       if (which == "normal") {
         StopCoroutine("blinkButton");

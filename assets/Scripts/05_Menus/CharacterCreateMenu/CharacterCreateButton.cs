@@ -18,8 +18,6 @@ public class CharacterCreateButton : MenusBehavior {
   public GameObject backButton;
   public GameObject cubesYouHave;
   public GameObject goldenCubesYouHave;
-  public Material originalMat;
-  public Material notAffordableCubeMat;
   public Color notAffordableTextColor;
   public Mesh originalMesh;
   public Mesh blinkingMesh;
@@ -36,7 +34,6 @@ public class CharacterCreateButton : MenusBehavior {
   private bool affordable = false;
   private bool running = false;
   private Text priceText;
-  private Renderer cubeRenderer;
   private CharacterCreateMenu menu;
 
   void OnEnable() {
@@ -45,7 +42,6 @@ public class CharacterCreateButton : MenusBehavior {
 
     priceText = transform.Find("PriceText").GetComponent<Text>();
     priceText.text = createPrice.ToString("N0");
-    cubeRenderer = transform.Find("CubeIcon").GetComponent<Renderer>();
     resetAll();
     checkAffordable();
   }
@@ -62,14 +58,12 @@ public class CharacterCreateButton : MenusBehavior {
   void checkAffordable() {
     if (cubesYouHave.GetComponent<CubesYouHave>().youHave() < createPrice) {
       affordable = false;
-      cubeRenderer.sharedMaterial = notAffordableCubeMat;
       priceText.color = notAffordableTextColor;
       GetComponent<Collider>().enabled = false;
       StopCoroutine("blinkButton");
       GetComponent<MeshFilter>().sharedMesh = originalMesh;
     } else {
       affordable = true;
-      cubeRenderer.sharedMaterial = originalMat;
       priceText.color = new Color(255, 255, 255);
       GetComponent<Collider>().enabled = true;
       StartCoroutine("blinkButton");

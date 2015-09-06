@@ -4,10 +4,7 @@ using System.Collections;
 
 public class CharacterBuyButton : MenusBehavior {
   public CubesYouHave goldenCubes;
-  public Material notAffordableCubeMat;
-  public Material originalMat;
   public Color notAffordableTextColor;
-  public Renderer goldenCubeIconRenderer;
   public Text priceText;
 
   private string characterName;
@@ -25,11 +22,9 @@ public class CharacterBuyButton : MenusBehavior {
 
     if (goldenCubes.youHave() < price) {
       affordable = false;
-      goldenCubeIconRenderer.sharedMaterial = notAffordableCubeMat;
       priceText.color = notAffordableTextColor;
     } else {
       affordable = true;
-      goldenCubeIconRenderer.sharedMaterial = originalMat;
       priceText.color = new Color(255, 255, 255);
     }
   }

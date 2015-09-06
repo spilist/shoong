@@ -2609,9 +2609,6 @@ MonoBehaviour:
   backButton: {fileID: 1410312520}
   cubesYouHave: {fileID: 545979715}
   goldenCubesYouHave: {fileID: 1928310596}
-  originalMat: {fileID: 2100000, guid: a9f492b1bc159478c8c5ca85e56828a2, type: 2}
-  notAffordableCubeMat: {fileID: 2100000, guid: 08bec51b7101148028256f1bfb0aef75,
-    type: 2}
   notAffordableTextColor: {r: .513725519, g: .513725519, b: .513725519, a: 1}
   originalMesh: {fileID: 4300022, guid: 7d4e33b83f6a046ab845e77e3044ffcc, type: 3}
   blinkingMesh: {fileID: 4300028, guid: 7d4e33b83f6a046ab845e77e3044ffcc, type: 3}
@@ -5336,7 +5333,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: "\uCCAD\uC18C\uB85C\uBD07"
-  price: 1000
+  price: 100
 --- !u!1 &155359880
 GameObject:
   m_ObjectHideFlags: 0
@@ -10973,8 +10970,8 @@ MonoBehaviour:
   numBoosters: 0
   openAllCharacter: 0
   resetAll: 0
-  resetCube: 9999
-  resetGoldenCube: 20000
+  resetCube: 500
+  resetGoldenCube: 0
 --- !u!4 &339434085
 Transform:
   m_ObjectHideFlags: 0
@@ -11431,7 +11428,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: "\uB370\uC4F0\uC2A4\uD0C0"
-  price: 1000
+  price: 100
 --- !u!1 &470650674
 GameObject:
   m_ObjectHideFlags: 0
@@ -11663,7 +11660,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: "\uBCA4\uB354"
-  price: 1000
+  price: 100
 --- !u!1 &507386075
 GameObject:
   m_ObjectHideFlags: 0
@@ -12049,7 +12046,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: "\uC885\uC774\uBE44\uD589\uAE30"
-  price: 1000
+  price: 100
 --- !u!23 &531710414
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -16028,7 +16025,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: "\uC42C\uC8FC"
-  price: 1000
+  price: 100
 --- !u!1 &588592961
 GameObject:
   m_ObjectHideFlags: 0
@@ -18206,7 +18203,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: "\uB808\uC639\uD654\uBD84"
-  price: 1000
+  price: 100
 --- !u!1 &658863008
 GameObject:
   m_ObjectHideFlags: 0
@@ -18651,7 +18648,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 685884382}
   m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106709}
-  m_LocalPosition: {x: 0, y: 0, z: .699999988}
+  m_LocalPosition: {x: 0, y: 0, z: .349999994}
   m_LocalScale: {x: .200000003, y: .200000003, z: .200000003}
   m_Children: []
   m_Father: {fileID: 1488355725}
@@ -21979,8 +21976,8 @@ MonoBehaviour:
   objectName: "\uC6B0\uC8FC \uBAAC\uC2A4\uD130"
   description: "\uC6B0\uC8FC\uB97C \uB5A0\uB3CC\uBA70 \uB2F9\uC2E0\uC744 \uC7A1\uC544\uBA39\uC73C\uB824
     \uD558\uC9C0\uB9CC,  \uC57D\uD574\uC9C0\uACE0 \uB098\uBA74 \uC804\uC138\uC5ED\uC804."
-  cubePrice: 10000
-  goldenCubePrice: 1000
+  cubePrice: 1000
+  goldenCubePrice: 100
 --- !u!1 &775777494
 GameObject:
   m_ObjectHideFlags: 0
@@ -23921,7 +23918,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: "\uBBF8\uB2C8\uBAAC"
-  price: 1000
+  price: 100
 --- !u!1001 &859962073
 Prefab:
   m_ObjectHideFlags: 0
@@ -25323,7 +25320,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: "\uC288\uD37C\uCEA3"
-  price: 1000
+  price: 100
 --- !u!1 &978985098
 GameObject:
   m_ObjectHideFlags: 0
@@ -25878,7 +25875,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cubeYouHave: {fileID: 545979715}
   goldenCubeYouHave: {fileID: 1928310596}
-  createPrice: 10000
+  createPrice: 1000
 --- !u!1 &1026162787
 GameObject:
   m_ObjectHideFlags: 0
@@ -27573,7 +27570,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: "\uD2F0\uB77C\uB178"
-  price: 1000
+  price: 100
 --- !u!23 &1068398462
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -29649,11 +29646,7 @@ MonoBehaviour:
   playTouchSound: 1
   which: golden
   cubes: {fileID: 1928310598}
-  notAffordableCubeMat: {fileID: 2100000, guid: 08bec51b7101148028256f1bfb0aef75,
-    type: 2}
-  originalMat: {fileID: 2100000, guid: b0c5dcb9f3d5044c898bdbdd644768ab, type: 2}
   notAffordableTextColor: {r: .513725519, g: .513725519, b: .513725519, a: 1}
-  goldenCubeIconRenderer: {fileID: 1927758380}
   priceText: {fileID: 1306473452}
   originalMesh: {fileID: 0}
   blinkingMesh: {fileID: 0}
@@ -29792,7 +29785,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: "\uBAA8\uB85C\uACE0\uB85C"
-  price: 1000
+  price: 100
 --- !u!1 &1177152361
 GameObject:
   m_ObjectHideFlags: 0
@@ -29900,7 +29893,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: "\uC218\uC5FC\uAC1C\uAD6C\uB9AC"
-  price: 1000
+  price: 100
 --- !u!23 &1179511920
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -30261,7 +30254,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: "\uC19C\uC0AC\uD0D5"
-  price: 1000
+  price: 100
 --- !u!23 &1211019736
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -30703,8 +30696,8 @@ MonoBehaviour:
   objectName: "\uBE14\uB799\uD640"
   description: "\uD0C8\uCD9C\uD558\uC138\uC694! \uC8FC\uBCC0\uC758 \uBAA8\uB4E0 \uAC83\uB4E4\uC744
     \uBE68\uC544\uB4E4\uC785\uB2C8\uB2E4. "
-  cubePrice: 10000
-  goldenCubePrice: 1000
+  cubePrice: 1000
+  goldenCubePrice: 100
 --- !u!1 &1251782787
 GameObject:
   m_ObjectHideFlags: 0
@@ -31310,7 +31303,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1306473450}
   m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106709}
-  m_LocalPosition: {x: 0, y: 0, z: .699999988}
+  m_LocalPosition: {x: 0, y: 0, z: .349999994}
   m_LocalScale: {x: .200000003, y: .200000003, z: .200000003}
   m_Children: []
   m_Father: {fileID: 1174462706}
@@ -31402,8 +31395,8 @@ MonoBehaviour:
   playTouchSound: 1
   objectName: "\uD050\uBE0C \uD0F1\uD0F1\uBCFC"
   description: "\uC548\uC5D0 \uC800\uC7A5\uB41C \uD050\uBE0C\uB97C \uC804\uBD80 \uBA39\uC5B4\uBD05\uC2DC\uB2E4."
-  cubePrice: 10000
-  goldenCubePrice: 1000
+  cubePrice: 500
+  goldenCubePrice: 50
 --- !u!65 &1316902508
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -34231,6 +34224,7 @@ MonoBehaviour:
   stayDuration: 1
   filterChangingDuration: .300000012
   movingDuration: .600000024
+  boosterStayDuration: .300000012
 --- !u!1 &1373664965
 GameObject:
   m_ObjectHideFlags: 0
@@ -39873,11 +39867,7 @@ MonoBehaviour:
   playTouchSound: 1
   which: normal
   cubes: {fileID: 545979717}
-  notAffordableCubeMat: {fileID: 2100000, guid: 08bec51b7101148028256f1bfb0aef75,
-    type: 2}
-  originalMat: {fileID: 2100000, guid: a9f492b1bc159478c8c5ca85e56828a2, type: 2}
   notAffordableTextColor: {r: .513725519, g: .513725519, b: .513725519, a: 1}
-  goldenCubeIconRenderer: {fileID: 1161190012}
   priceText: {fileID: 685884384}
   originalMesh: {fileID: 4300006, guid: 7d4e33b83f6a046ab845e77e3044ffcc, type: 3}
   blinkingMesh: {fileID: 4300030, guid: 7d4e33b83f6a046ab845e77e3044ffcc, type: 3}
@@ -42983,11 +42973,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1567307126}
---- !u!23 &1576804391 stripped
-MeshRenderer:
-  m_PrefabParentObject: {fileID: 2379152, guid: 687c694e3e0c84920afaa2510449ab32,
-    type: 2}
-  m_PrefabInternal: {fileID: 2017386922}
 --- !u!1 &1577976584
 GameObject:
   m_ObjectHideFlags: 0
@@ -43691,7 +43676,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: "\uB098\uBE44"
-  price: 1000
+  price: 100
 --- !u!1 &1665666479
 GameObject:
   m_ObjectHideFlags: 0
@@ -44113,7 +44098,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: "\uC624\uC5FC\uB41C \uAC8C"
-  price: 1000
+  price: 100
 --- !u!1 &1680677649
 GameObject:
   m_ObjectHideFlags: 0
@@ -44493,8 +44478,8 @@ MonoBehaviour:
   objectName: "\uBB34\uC801 \uBC30\uD130\uB9AC"
   description: "\uC5D0\uB108\uC9C0 \uAC71\uC815 \uC5C6\uC774 \uC8FC\uBCC0\uC744 \uB9C8\uAD6C
     \uB3CC\uC544\uB2E4\uB2C8\uBA70 \uBAA8\uB4E0 \uAC78 \uD30C\uAD34\uD574\uBCF4\uC138\uC694."
-  cubePrice: 10000
-  goldenCubePrice: 1000
+  cubePrice: 1000
+  goldenCubePrice: 100
 --- !u!1 &1768431852
 GameObject:
   m_ObjectHideFlags: 0
@@ -49769,11 +49754,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playTouchSound: 1
   goldenCubes: {fileID: 1928310598}
-  notAffordableCubeMat: {fileID: 2100000, guid: 08bec51b7101148028256f1bfb0aef75,
-    type: 2}
-  originalMat: {fileID: 2100000, guid: b0c5dcb9f3d5044c898bdbdd644768ab, type: 2}
   notAffordableTextColor: {r: .513725519, g: .513725519, b: .513725519, a: 1}
-  goldenCubeIconRenderer: {fileID: 1576804391}
   priceText: {fileID: 335624708}
 --- !u!82 &1873613236
 AudioSource:
@@ -52690,8 +52671,8 @@ MonoBehaviour:
   playTouchSound: 1
   objectName: "\uBB34\uC9C0\uAC1C \uB3C4\uB11B"
   description: "\uBB34\uC9C0\uAC1C\uAE38\uC5D0 \uC62C\uB77C (\uC124\uBA85\uD544\uC694)"
-  cubePrice: 10000
-  goldenCubePrice: 1000
+  cubePrice: 500
+  goldenCubePrice: 50
 --- !u!65 &1927849503
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -54383,8 +54364,8 @@ MonoBehaviour:
   objectName: "\uD658\uC601 \uBD80\uD488"
   description: "\uD558\uB098\uB97C \uBA39\uC73C\uBA74 \uD658\uC601\uC774 \uB2E4\uC74C
     \uBD80\uD488\uC73C\uB85C \uBCC0\uD569\uB2C8\uB2E4."
-  cubePrice: 10000
-  goldenCubePrice: 1000
+  cubePrice: 500
+  goldenCubePrice: 50
 --- !u!65 &2002636512
 BoxCollider:
   m_ObjectHideFlags: 0
