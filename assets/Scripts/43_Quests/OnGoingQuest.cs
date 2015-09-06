@@ -18,6 +18,10 @@ public class OnGoingQuest : MonoBehaviour {
   private bool convetToInactive = false;
   private float stayCount = 0;
   private float timeCount = 0;
+
+  private float hideStayCount = 0;
+  private BeforeIdle beforeIdle;
+
   private float movingTopStayCount = 0;
   private float completeStayCount = 0;
   private Color color;
@@ -33,10 +37,13 @@ public class OnGoingQuest : MonoBehaviour {
   private int emphasizeStatus = 0;
   private bool gameEnded = false;
 
+  private bool soundPlayed = false;
+
 	public void startQuest(Quest quest, int currentCount) {
     about = transform.Find("About").GetComponent<Text>();
     numbers = transform.Find("Numbers").GetComponent<Text>();
     goldenCubes = transform.Find("GoldenCubes").gameObject;
+    beforeIdle = GameObject.Find("BeforeIdle").GetComponent<BeforeIdle>();
 
     questName = quest.name;
     countByTime = quest.countByTime;
@@ -75,12 +82,25 @@ public class OnGoingQuest : MonoBehaviour {
     positionY = anchorPos.y;
     distance = QuestManager.qm.qMoveToY - anchorPos.y;
 
+    goldenCubes.SetActive(false);
+    about.gameObject.SetActive(false);
+    numbers.gameObject.SetActive(false);
     movingTop = true;
   }
 
   void Update() {
     if (movingTop) {
-      if (movingTopStayCount < QuestManager.qm.qMoveStay) {
+      if (hideStayCount < beforeIdle.movingDuration) {
+        hideStayCount += Time.deltaTime;
+      } else if (movingTopStayCount < QuestManager.qm.qMoveStay) {
+        if (!soundPlayed) {
+          soundPlayed = true;
+          QuestManager.qm.questStartSound.Play();
+        }
+
+        goldenCubes.SetActive(true);
+        about.gameObject.SetActive(true);
+        numbers.gameObject.SetActive(true);
         movingTopStayCount += Time.deltaTime;
       } else {
         positionY = Mathf.MoveTowards(positionY, QuestManager.qm.qMoveToY, Time.deltaTime / QuestManager.qm.qMoveDuring * distance);

@@ -8,4 +8,6 @@ EditorBuildSettings:
   - enabled: 0
     path: assets/_scenes/0_SplashScreen.unity
   - enabled: 1
-    path: assets/_scenes/1_Main.unity
+    path: assets/_scenes/2_BeforeMainScene.unity
+  - enabled: 1
+    path: assets/_scenes/5_Main.unity

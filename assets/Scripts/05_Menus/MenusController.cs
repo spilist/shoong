@@ -9,6 +9,8 @@ public class MenusController : MonoBehaviour {
   public GameObject idleUI;
   public GameObject inGameUI;
   public GameObject barsCanvas;
+  public GameObject title;
+  public BeforeIdle beforeIdle;
 
   public AudioClip UITouchSound;
 
@@ -29,11 +31,13 @@ public class MenusController : MonoBehaviour {
         toggleMenuAndUI();
         AudioSource.PlayClipAtPoint(UITouchSound, hit.transform.position);
       } else if (hitTag == "PauseButton" || (isMenuOn() && layer == "MenusBehavior") || (scoreManager.isGameOver() && layer == "MenusBehavior")) {
+        if (beforeIdle.isLoading()) return "";
+
         MenusBehavior mb = hit.transform.GetComponent<MenusBehavior>();
-        mb.activateSelf();
         if (mb.playTouchSound) {
           AudioSource.PlayClipAtPoint(UITouchSound, hit.transform.position);
         }
+        mb.activateSelf();
       }
       return hitTag;
     } else {
@@ -50,6 +54,7 @@ public class MenusController : MonoBehaviour {
     menuButtons.SetActive(!menuButtons.activeSelf);
     currentlyOn.SetActive(!currentlyOn.activeSelf);
     menusOverlay.SetActive(!menusOverlay.activeSelf);
+    title.SetActive(!title.activeSelf);
   }
 
   public void gameStart() {

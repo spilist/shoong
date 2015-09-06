@@ -136,7 +136,7 @@ public class ScoreUpdate : MonoBehaviour {
         goleCubeSoundPlayed = true;
       }
     } else if (updateStatus == 7) {
-      goldenCubeNum = Mathf.MoveTowards(goldenCubeNum, goldenCubeDifference, Time.deltaTime * goldenCubeDifference / moveDuration);
+      goldenCubeNum = Mathf.MoveTowards(goldenCubeNum, goldenCubeDifference, Time.deltaTime * goldenCubeDifference / 0.5f);
       goldenCubes.text = goldenCubeNum.ToString("0");
       if (goldenCubeNum == goldenCubeDifference) {
         updateStatus++;

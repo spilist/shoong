@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: energydestroy
-  m_Shader: {fileID: 4800000, guid: cc4347574b823934ba11785e25895920, type: 3}
+  m_Shader: {fileID: 4800000, guid: 8ccc5a354e67546cd91ee92e202e9b85, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
   m_CustomRenderQueue: -1
@@ -91,6 +91,10 @@ Material:
         first:
           name: _Cutoff
         second: .5
+      data:
+        first:
+          name: PixelSnap
+        second: 0
       data:
         first:
           name: _Parallax

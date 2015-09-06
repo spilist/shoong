@@ -4,6 +4,8 @@ using System.Collections;
 
 public class ScoreManager : MonoBehaviour {
   public MenusController menus;
+  public BeforeIdle beforeIdle;
+
   // for score managing
   public CubesCount cubesCount;
   public GoldCubesCount goldCubesCount;
@@ -34,7 +36,7 @@ public class ScoreManager : MonoBehaviour {
       if (Input.GetMouseButtonDown(0)) scoreUpdate();
     } else if (gameOverStatus > 1) {
       if (Input.GetMouseButtonDown(0)) {
-        if (menus.touched() != "GameOverActions") return;
+        if (!beforeIdle.isLoading() && menus.touched() != "GameOverActions") return;
       }
     }
   }
@@ -74,6 +76,8 @@ public class ScoreManager : MonoBehaviour {
   }
 
   public void scoringEnd() {
+    save();
+
     BannerButton[] availableBanners = new BannerButton[bannerButtonsList.childCount];
     int availableBannerCount = 0;
     foreach (Transform tr in bannerButtonsList) {

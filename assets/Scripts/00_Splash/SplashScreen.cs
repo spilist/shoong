@@ -18,7 +18,7 @@ public class SplashScreen : MonoBehaviour {
 			if (cr.GetAlpha() == 1) alphaIncreasing = false;
 		} else {
 			cr.SetAlpha(Mathf.MoveTowards(cr.GetAlpha(), 0, Time.deltaTime * 2 / splashDuring));
-			if (cr.GetAlpha() == 0) Application.LoadLevel("1_Main");
+			if (cr.GetAlpha() == 0) Application.LoadLevel("2_BeforeMainScene");
 		}
 	}
 }

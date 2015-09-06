@@ -75,7 +75,6 @@ public class QuestManager : MonoBehaviour {
     GameObject onGoingQuest = Instantiate(onGoingQuestPrefab);
     onGoingQuest.transform.SetParent(onGoingQuests, false);
     onGoingQuest.GetComponent<OnGoingQuest>().startQuest(quest, currentCount);
-    questStartSound.Play();
   }
 
   public void startQuestWithName(string questName, int currentCount = 0) {

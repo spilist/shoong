@@ -2,8 +2,9 @@
 using System.Collections;
 
 public class PlayAgainButton : MenusBehavior {
+  public BeforeIdle beforeIdle;
 
 	override public void activateSelf() {
-    Application.LoadLevel(Application.loadedLevel);
+    beforeIdle.playAgain();
   }
 }

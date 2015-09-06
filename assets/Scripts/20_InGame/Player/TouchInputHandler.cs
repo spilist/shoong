@@ -7,6 +7,7 @@ public class TouchInputHandler : MonoBehaviour
 	public PlayerMover player;
 	public ParticleSystem touchEffect;
 
+  public BeforeIdle beforeIdle;
   public SpawnManager spawnManager;
 	public MenusController menus;
   public PauseButton pause;
@@ -33,7 +34,7 @@ public class TouchInputHandler : MonoBehaviour
       }
     }
 
-    if (react && Input.GetMouseButtonDown(0) && menus.touched() == "Ground" && !menus.isMenuOn()) {
+    if (reactAble() && Input.GetMouseButtonDown(0) && menus.touched() == "Ground" && !menus.isMenuOn()) {
 			if (pause.isPaused()) {
         pause.resume();
         return;
@@ -42,7 +43,8 @@ public class TouchInputHandler : MonoBehaviour
       if (player.isRebounding() || player.isUsingRainbow()) return;
 
 			if (!gameStarted) {
-				menus.gameStart();
+				beforeIdle.moveTitle();
+        menus.gameStart();
         spawnManager.run();
         QuestManager.qm.generateQuest();
 				gameStarted = true;
@@ -98,5 +100,9 @@ public class TouchInputHandler : MonoBehaviour
 	public void stopReact() {
 		react = false;
 	}
+
+  bool reactAble() {
+    return !beforeIdle.isLoading() && react;
+  }
 }
 
