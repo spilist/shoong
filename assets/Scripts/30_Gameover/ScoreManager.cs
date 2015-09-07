@@ -9,7 +9,6 @@ public class ScoreManager : MonoBehaviour {
   // for score managing
   public CubesCount cubesCount;
   public GoldCubesCount goldCubesCount;
-  public ElapsedTime elapsedTime;
 
   // for gameover effect
   public float showPlayerExplosionDuring = 2;
@@ -124,12 +123,12 @@ public class ScoreManager : MonoBehaviour {
       GameController.control.cubes["highscore"] = count;
     }
 
-    GameController.control.times["total"] = (int) GameController.control.times["total"] + elapsedTime.getTime();
+    GameController.control.times["total"] = (int) GameController.control.times["total"] + ElapsedTime.time.now;
 
     GameController.control.save();
   }
 
   void OnDisable() {
-    save();
+    if (menus.gameStarted()) save();
   }
 }

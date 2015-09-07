@@ -2873,6 +2873,62 @@ MonoBehaviour:
   description: "\uD050\uBE0C \uD0F1\uD0F1\uBCFC 6\uBC88 \uC5F0\uC18D \uD295\uAE30\uAE30"
   numbersToComplete: 1
   goldenCubesWhenComplete: 1
+--- !u!1 &121058731
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 121058732}
+  - 222: {fileID: 121058734}
+  - 114: {fileID: 121058733}
+  m_Layer: 5
+  m_Name: 3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &121058732
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 121058731}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: .000438690186}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1498015742}
+  m_RootOrder: 3
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
+  m_AnchoredPosition: {x: 0, y: .000244140625}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: .5, y: .5}
+--- !u!114 &121058733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 121058731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1b222984a7384038a7309ad9c408267, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doNotShow: 0
+  conditionNotRequired: 1
+  showConditions: []
+  description: "\uB9E4\uC77C \uCCAB \uBC88\uC9F8\uB85C \uC644\uB8CC\uD55C \uD018\uC2A4\uD2B8\uB294
+    \uD669\uAE08\uD050\uBE0C 30\uAC1C\uB97C \uBCF4\uC0C1\uC73C\uB85C \uBC1B\uC2B5\uB2C8\uB2E4."
+--- !u!222 &121058734
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 121058731}
 --- !u!1 &126330263
 GameObject:
   m_ObjectHideFlags: 0
@@ -8226,6 +8282,62 @@ MonoBehaviour:
   description: "\uAC04\uBC1C\uC758 \uCC28\uB85C \uC720\uC131 \uD53C\uD558\uAE30"
   numbersToComplete: 3
   goldenCubesWhenComplete: 2
+--- !u!1 &216904544
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 216904545}
+  - 222: {fileID: 216904547}
+  - 114: {fileID: 216904546}
+  m_Layer: 5
+  m_Name: 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &216904545
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 216904544}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: .000438690186}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1498015742}
+  m_RootOrder: 1
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
+  m_AnchoredPosition: {x: 0, y: .000122070312}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: .5, y: .5}
+--- !u!114 &216904546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 216904544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1b222984a7384038a7309ad9c408267, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doNotShow: 0
+  conditionNotRequired: 1
+  showConditions: []
+  description: "\uBCF4\uC720\uD55C \uCE90\uB9AD\uD130\uAC00 \uB9CE\uC544\uC9C8\uC218\uB85D
+    \uCE90\uB9AD\uD130\uB97C \uBF51\uB294 \uBE44\uC6A9\uC774 \uB298\uC5B4\uB0A9\uB2C8\uB2E4."
+--- !u!222 &216904547
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 216904544}
 --- !u!1 &222636911
 GameObject:
   m_ObjectHideFlags: 0
@@ -11002,7 +11114,7 @@ MonoBehaviour:
   numPlays: 0
   numBoosters: 0
   openAllCharacter: 0
-  resetAll: 1
+  resetAll: 0
   resetCube: 50000
   resetGoldenCube: 3000
 --- !u!4 &339434085
@@ -11514,6 +11626,64 @@ MonoBehaviour:
   description: "\uBD80\uC2A4\uD130 \uC0AC\uC6A9"
   numbersToComplete: 100
   goldenCubesWhenComplete: 1
+--- !u!1 &472324035
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 472324036}
+  - 222: {fileID: 472324038}
+  - 114: {fileID: 472324037}
+  m_Layer: 5
+  m_Name: 0
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &472324036
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 472324035}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: .000438690186}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1498015742}
+  m_RootOrder: 0
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
+  m_AnchoredPosition: {x: 0, y: 6.10351562e-05}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: .5, y: .5}
+--- !u!114 &472324037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 472324035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1b222984a7384038a7309ad9c408267, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doNotShow: 0
+  conditionNotRequired: 0
+  showConditions:
+  - SpecialParts
+  - Blackhole
+  description: "\uBB34\uC801 \uC0C1\uD0DC\uC5D0\uC11C\uB294 \uBE14\uB799\uD640\uC5D0
+    \uBE68\uB824\uAC00\uB3C4 \uC8FD\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4."
+--- !u!222 &472324038
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 472324035}
 --- !u!1 &478286097
 GameObject:
   m_ObjectHideFlags: 0
@@ -24196,7 +24366,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreManager: {fileID: 1422286122}
-  time: {fileID: 980455324}
   totalCubes: {fileID: 1768431855}
   cubes: {fileID: 750202313}
   goldenCubes: {fileID: 2127701742}
@@ -25488,6 +25657,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45d9cde9be26d054c8f715507863ee3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bom: {fileID: 1991538112}
+  addObstaclePer: 20
+  removePartPer: 10
+  now: 0
 --- !u!1 &994520072
 GameObject:
   m_ObjectHideFlags: 0
@@ -34235,7 +34408,9 @@ MonoBehaviour:
   characterMovingDuration: .600000024
   characterMoveStart: -800
   characterStayDuration: .200000003
-  tip: {fileID: 1498015743}
+  tips: {fileID: 1498015743}
+  tipShowAfter: .5
+  tipAlphaChangeDuration: .600000024
   stayDuration: 1
   filterChangingDuration: .300000012
   movingDuration: .600000024
@@ -37012,7 +37187,6 @@ MonoBehaviour:
   beforeIdle: {fileID: 1366368665}
   cubesCount: {fileID: 589887829}
   goldCubesCount: {fileID: 966334536}
-  elapsedTime: {fileID: 980455324}
   showPlayerExplosionDuring: 3
   playerExplosion: {fileID: 1917855184}
   player: {fileID: 91418582}
@@ -40094,7 +40268,7 @@ GameObject:
   - 222: {fileID: 1498015744}
   - 114: {fileID: 1498015743}
   m_Layer: 5
-  m_Name: Tip
+  m_Name: Tips
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40109,13 +40283,17 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -43.2000008}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 472324036}
+  - {fileID: 216904545}
+  - {fileID: 1827984784}
+  - {fileID: 121058732}
   m_Father: {fileID: 1366368660}
   m_RootOrder: 3
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: -138.5}
-  m_SizeDelta: {x: 1000, y: 100}
+  m_SizeDelta: {x: 750, y: 100}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1498015743
 MonoBehaviour:
@@ -46062,6 +46240,63 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   touchToStart: {fileID: 135970117}
   blinkingSeconds: .600000024
+--- !u!1 &1827984783
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 1827984784}
+  - 222: {fileID: 1827984786}
+  - 114: {fileID: 1827984785}
+  m_Layer: 5
+  m_Name: 2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1827984784
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1827984783}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: .000438690186}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1498015742}
+  m_RootOrder: 2
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
+  m_AnchoredPosition: {x: 0, y: .00016784668}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: .5, y: .5}
+--- !u!114 &1827984785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1827984783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1b222984a7384038a7309ad9c408267, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doNotShow: 0
+  conditionNotRequired: 0
+  showConditions:
+  - Monster
+  description: "\uBAAC\uC2A4\uD130\uAC00 \uC57D\uD574\uC9C0\uBA74 \uAC00\uAE4C\uC774
+    \uAC00\uC11C \uD0D1\uC2B9\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4."
+--- !u!222 &1827984786
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1827984783}
 --- !u!1 &1830827562
 GameObject:
   m_ObjectHideFlags: 0
@@ -54221,8 +54456,8 @@ MonoBehaviour:
   strength: 1
   speed: 320
   tumble: 10
-  minSpawnInterval: 0
-  maxSpawnInterval: 8
+  minSpawnInterval: 3
+  maxSpawnInterval: 7
   warnPlayerDuring: .5
   spawnRadius: 200
   UICanvas: {fileID: 2134279972}
@@ -54233,6 +54468,9 @@ MonoBehaviour:
   fallingStarSoundWarningPrefab: {fileID: 122456, guid: 32ffe4a364250467bba5659a4276cfd9,
     type: 2}
   obsIndicatorPrefab: {fileID: 144306, guid: 825df36890cc14b58a88c21930d89f0d, type: 2}
+  shortenRespawnPer: 10
+  shortenRespawnAmount: .100000001
+  addSpeedAmount: 3
 --- !u!114 &1991538108
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54346,13 +54584,13 @@ MonoBehaviour:
   - {fileID: 178760, guid: 60ac4f8bf259148408f8d9e99bcb1ca2, type: 2}
   - {fileID: 103062, guid: b9e87ec91a93341948e088c253b40abc, type: 2}
   - {fileID: 121012, guid: 532f92fe8826d433c9465e8fc387f305, type: 2}
-  max_parts: 50
+  max_parts: 60
   partsDestroy: {fileID: 158326, guid: 7a4903aebeaf1440d95d69b1daac37af, type: 2}
   obstacles_big:
   - {fileID: 131058, guid: b2e788ee7ee7747ae89b9fd021c3b05b, type: 2}
   - {fileID: 119532, guid: 8de9923715b8e4769a343553e0193937, type: 2}
   - {fileID: 190242, guid: d8430bbeb85c44b9b9b8df1654f1e53b, type: 2}
-  max_obstacles: 5
+  max_obstacles: 2
   speed_parts: 0
   speed_obstacles: 15
   tumble_parts: 1

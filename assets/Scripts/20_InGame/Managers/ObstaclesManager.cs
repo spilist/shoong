@@ -19,6 +19,9 @@ public class ObstaclesManager : MonoBehaviour {
   public GameObject fallingStarSoundWarningPrefab;
 
   public GameObject obsIndicatorPrefab;
+  public float shortenRespawnPer = 10;
+  public float shortenRespawnAmount = 0.1f;
+  public int addSpeedAmount = 3;
 
   private Transform playerTransform;
   private Vector3 obstacleDirection;
@@ -32,9 +35,7 @@ public class ObstaclesManager : MonoBehaviour {
   IEnumerator spawnObstacle() {
     while(true) {
       GameObject prefab = obstacles[Random.Range(0, obstacles.Length)];
-      float interval = Random.Range(minSpawnInterval, maxSpawnInterval);
-
-      yield return new WaitForSeconds(interval);
+      yield return new WaitForSeconds(getInterval());
 
       Vector2 screenPos = Random.insideUnitCircle;
       screenPos.Normalize();
@@ -73,5 +74,16 @@ public class ObstaclesManager : MonoBehaviour {
 
   public Vector3 getDirection() {
     return obstacleDirection;
+  }
+
+  float getInterval() {
+    int timeUnit = (int) Mathf.Floor(ElapsedTime.time.now / shortenRespawnPer);
+
+    return Random.Range(minSpawnInterval - timeUnit * shortenRespawnAmount, maxSpawnInterval - timeUnit * shortenRespawnAmount);
+  }
+
+  public float getSpeed() {
+    int timeUnit = (int) Mathf.Floor(ElapsedTime.time.now / shortenRespawnPer);
+    return (speed + timeUnit * addSpeedAmount);
   }
 }

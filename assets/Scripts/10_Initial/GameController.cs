@@ -113,6 +113,7 @@ public class GameController : MonoBehaviour {
     File.Delete(datapath);
 
     PlayerPrefs.SetInt("FirstQuestComplete", 0);
+    PlayerPrefs.SetInt("LastTipIndex", 0);
     PlayerPrefs.SetString("ObjTutorialsNotDone", "");
     PlayerPrefs.SetString("SelectedCharacter", "robotcogi");
     PlayerPrefs.SetString("MainObjects", "");

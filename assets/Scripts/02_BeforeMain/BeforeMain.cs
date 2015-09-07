@@ -1,7 +1,14 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class BeforeMain : MonoBehaviour {
+  public Text tips;
+  public float tipShowAfter = 0.3f;
+  public float tipAlphaChangeDuration = 0.2f;
+  private float tipHideCount = 0;
+  private Color tipColor;
+
   public GameObject title;
   public float movingDuration = 0.6f;
   private bool titleMoving = false;
@@ -30,6 +37,21 @@ public class BeforeMain : MonoBehaviour {
     characterMoving = true;
     characterPosX = titlePosX;
     characterMoveDistance = distance;
+
+    tipColor = new Color(1, 1, 1, 0);
+
+    Tip[] availableTips = new Tip[tips.transform.childCount];
+    int availableTipsCount = 0;
+    foreach (Transform tr in tips.transform) {
+      Tip tip = tr.GetComponent<Tip>();
+      if (tip.isAvailable()) {
+        availableTips[availableTipsCount++] = tip;
+      }
+    }
+
+    Tip selected = availableTips[Random.Range(0, availableTipsCount)];
+    tips.text = selected.description;
+    PlayerPrefs.SetInt("LastTipIndex", int.Parse(selected.name));
 	}
 
 	void Update () {
@@ -63,6 +85,13 @@ public class BeforeMain : MonoBehaviour {
             Application.LoadLevel("5_Main");
           }
         }
+      }
+
+      if (tipHideCount < tipShowAfter) {
+        tipHideCount += Time.deltaTime;
+      } else {
+        tipColor.a = Mathf.MoveTowards(tipColor.a, 1, Time.deltaTime / tipAlphaChangeDuration);
+        tips.color = tipColor;
       }
     }
 	}

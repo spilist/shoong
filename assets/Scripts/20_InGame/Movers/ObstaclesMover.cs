@@ -12,7 +12,7 @@ public class ObstaclesMover : ObjectsMover {
   }
 
   protected override float getSpeed() {
-    return obm.speed;
+    return obm.getSpeed();
   }
 
   protected override float getTumble() {

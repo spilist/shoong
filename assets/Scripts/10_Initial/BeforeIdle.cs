@@ -18,7 +18,10 @@ public class BeforeIdle : MonoBehaviour {
   private bool boosterPlayed = false;
   private float boosterStayCount = 0;
 
-  public Text tip;
+  public Text tips;
+  public float tipShowAfter = 0.3f;
+  public float tipAlphaChangeDuration = 0.2f;
+  private float tipHideCount = 0;
   private Color tipColor;
   private bool showTip = false;
 
@@ -45,10 +48,12 @@ public class BeforeIdle : MonoBehaviour {
     stayCount = 0;
 
     showTip = true;
-    tipColor = tip.color;
+    tipColor = tips.color;
     characterColor = character.GetComponent<Renderer>().material.color;
 
     changeCharacter(PlayerPrefs.GetString("SelectedCharacter"));
+
+    tips.text = tips.transform.GetChild(PlayerPrefs.GetInt("LastTipIndex")).GetComponent<Tip>().description;
   }
 
   void Update() {
@@ -61,7 +66,7 @@ public class BeforeIdle : MonoBehaviour {
 
         if (showTip) {
           tipColor.a = Mathf.MoveTowards(tipColor.a, 0, Time.deltaTime / filterChangingDuration);
-          tip.color = tipColor;
+          tips.color = tipColor;
         }
 
         if (filterChangeTo == 0) {
@@ -105,8 +110,14 @@ public class BeforeIdle : MonoBehaviour {
             characterMoving = false;
             Application.LoadLevel(Application.loadedLevel);
           }
-
         }
+      }
+
+      if (tipHideCount < tipShowAfter) {
+        tipHideCount += Time.deltaTime;
+      } else {
+        tipColor.a = Mathf.MoveTowards(tipColor.a, 1, Time.deltaTime / tipAlphaChangeDuration);
+        tips.color = tipColor;
       }
     }
   }
@@ -140,6 +151,19 @@ public class BeforeIdle : MonoBehaviour {
     characterMoveDistance = Mathf.Abs(characterMoveStart);
     character.GetComponent<Renderer>().material.color = new Color(1, 1, 1, 1);
     character.GetComponent<RectTransform>().anchoredPosition = new Vector2(characterPosX, character.GetComponent<RectTransform>().anchoredPosition.y);
+
+    Tip[] availableTips = new Tip[tips.transform.childCount];
+    int availableTipsCount = 0;
+    foreach (Transform tr in tips.transform) {
+      Tip tip = tr.GetComponent<Tip>();
+      if (tip.isAvailable()) {
+        availableTips[availableTipsCount++] = tip;
+      }
+    }
+
+    Tip selected = availableTips[Random.Range(0, availableTipsCount)];
+    tips.text = selected.description;
+    PlayerPrefs.SetInt("LastTipIndex", int.Parse(selected.name));
   }
 
   void changeCharacter(string characterName) {

@@ -4,7 +4,6 @@ using System.Collections;
 
 public class ScoreUpdate : MonoBehaviour {
   public ScoreManager scoreManager;
-  public ElapsedTime time;
 
   public Text totalCubes;
   public Text cubes;
@@ -71,8 +70,8 @@ public class ScoreUpdate : MonoBehaviour {
     cubeCurrentNum = 0;
     cubesCurrentScore.text = "0";
 
-    elapsedTime.transform.Find("Number").GetComponent<Text>().text = time.getTime().ToString();
-    CPS.transform.Find("Number").GetComponent<Text>().text = ((float) cubeDifference / time.getTime()).ToString("0.00");
+    elapsedTime.transform.Find("Number").GetComponent<Text>().text = ElapsedTime.time.now.ToString();
+    CPS.transform.Find("Number").GetComponent<Text>().text = ((float) cubeDifference / ElapsedTime.time.now).ToString("0.00");
 
     string result = QuestManager.qm.questResult;
     if (result == "FirstQuestComplete") {
