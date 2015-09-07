@@ -7797,17 +7797,20 @@ MonoBehaviour:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 32
+    m_FontSize: 24
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
     m_Alignment: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
+    m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uBA54\uC778\uC624\uBE0C\uC81D\uD2B8\uB294 \uC5B4\uCA4C\uAD6C\uC800\uCA4C\uAD6C\u3131\u3139\u3131\u3137\u3139\u3134\u3139\u3141\u3134\u3139"
+  m_Text: "\uBA54\uC778 \uC624\uBE0C\uC81D\uD2B8\uB294 \uCE90\uB9AD\uD130\uB97C 8\uCD08\uAC04\n\uB2E4\uC591\uD558\uAC8C
+    \uAC15\uD654 \uC2DC\uCF1C\uC8FC\uB294 \uAC15\uB825\uD55C\n\uCD9C\uD604 \uC694\uC18C\uC785\uB2C8\uB2E4.\n\n\uB2E4\uC774\uB098\uBBF9\uD55C
+    \uAC8C\uC784\uC744 \uC704\uD574 \uCD5C\uB300\n3\uAC1C\uAE4C\uC9C0 \uCD9C\uD604
+    \uC2DC\uD0AC \uC218 \uC788\uC2B5\uB2C8\uB2E4."
 --- !u!222 &188575975
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11115,8 +11118,8 @@ MonoBehaviour:
   numBoosters: 0
   openAllCharacter: 0
   resetAll: 0
-  resetCube: 50000
-  resetGoldenCube: 3000
+  resetCube: 0
+  resetGoldenCube: 0
 --- !u!4 &339434085
 Transform:
   m_ObjectHideFlags: 0
@@ -18718,7 +18721,7 @@ MonoBehaviour:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 32
+    m_FontSize: 24
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -18728,7 +18731,10 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uC11C\uBE0C\uC624\uBE0C\uC81D\uD2B8\uB294 \uC5B4\uCA4C\uAD6C\uC800\uCA4C\uAD6C"
+  m_Text: "\uC11C\uBE0C \uC624\uBE0C\uC81D\uD2B8\uB294 \uD050\uBE0C\uB97C \uB9CE\uC774
+    \uBAA8\uC744 \uC218 \uC788\uAC8C \uB3C4\uC640\uC8FC\uB294 \uCD9C\uD604 \uC694\uC18C\uC785\uB2C8\uB2E4.
+    \n\n\uD050\uBE0C\uB97C \uBE60\uB974\uAC8C \uB9CE\uC774 \uBAA8\uC73C\uACE0 \uC2F6\uB2E4\uBA74
+    \uC11C\uBE0C \uC624\uBE0C\uC81D\uD2B8\uB97C \uCD9C\uD604\uC2DC\uD0A4\uC138\uC694."
 --- !u!222 &680399664
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -18876,7 +18882,7 @@ MonoBehaviour:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FontData:
     m_Font: {fileID: 12800000, guid: b578b0881daafcb47826d6bac8783197, type: 3}
-    m_FontSize: 26
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -22179,8 +22185,8 @@ MonoBehaviour:
   objectName: "\uC6B0\uC8FC \uBAAC\uC2A4\uD130"
   description: "\uC6B0\uC8FC\uB97C \uB5A0\uB3CC\uBA70 \uB2F9\uC2E0\uC744 \uC7A1\uC544\uBA39\uC73C\uB824
     \uD558\uC9C0\uB9CC,  \uC57D\uD574\uC9C0\uACE0 \uB098\uBA74 \uC804\uC138\uC5ED\uC804."
-  cubePrice: 1000
-  goldenCubePrice: 100
+  cubePrice: 30000
+  goldenCubePrice: 300
 --- !u!1 &775777494
 GameObject:
   m_ObjectHideFlags: 0
@@ -30884,8 +30890,8 @@ MonoBehaviour:
   objectName: "\uBE14\uB799\uD640"
   description: "\uD0C8\uCD9C\uD558\uC138\uC694! \uC8FC\uBCC0\uC758 \uBAA8\uB4E0 \uAC83\uB4E4\uC744
     \uBE68\uC544\uB4E4\uC785\uB2C8\uB2E4. "
-  cubePrice: 1000
-  goldenCubePrice: 100
+  cubePrice: 20000
+  goldenCubePrice: 200
 --- !u!1 &1251782787
 GameObject:
   m_ObjectHideFlags: 0
@@ -31516,7 +31522,7 @@ MonoBehaviour:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FontData:
     m_Font: {fileID: 12800000, guid: b578b0881daafcb47826d6bac8783197, type: 3}
-    m_FontSize: 26
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -31583,7 +31589,7 @@ MonoBehaviour:
   playTouchSound: 1
   objectName: "\uD050\uBE0C \uD0F1\uD0F1\uBCFC"
   description: "\uC548\uC5D0 \uC800\uC7A5\uB41C \uD050\uBE0C\uB97C \uC804\uBD80 \uBA39\uC5B4\uBD05\uC2DC\uB2E4."
-  cubePrice: 500
+  cubePrice: 5000
   goldenCubePrice: 50
 --- !u!65 &1316902508
 BoxCollider:
@@ -44741,10 +44747,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playTouchSound: 1
   objectName: "\uBB34\uC801 \uBC30\uD130\uB9AC"
-  description: "\uC5D0\uB108\uC9C0 \uAC71\uC815 \uC5C6\uC774 \uC8FC\uBCC0\uC744 \uB9C8\uAD6C
-    \uB3CC\uC544\uB2E4\uB2C8\uBA70 \uBAA8\uB4E0 \uAC78 \uD30C\uAD34\uD574\uBCF4\uC138\uC694."
-  cubePrice: 1000
-  goldenCubePrice: 100
+  description: "\uBB34\uC801 \uC0C1\uD0DC\uAC00 \uB418\uC5B4 \uBC29\uD574\uBB3C\uB4E4\uC744
+    \uD30C\uAD34\uD558\uACE0 \uD050\uBE0C\uB97C \uC5BB\uC73C\uC138"
+  cubePrice: 5000
+  goldenCubePrice: 50
 --- !u!1 &1768431852
 GameObject:
   m_ObjectHideFlags: 0
@@ -53026,9 +53032,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playTouchSound: 1
   objectName: "\uBB34\uC9C0\uAC1C \uB3C4\uB11B"
-  description: "\uBB34\uC9C0\uAC1C\uAE38\uC5D0 \uC62C\uB77C (\uC124\uBA85\uD544\uC694)"
-  cubePrice: 500
-  goldenCubePrice: 50
+  description: "\uC3D8 \uB4E4\uC5B4\uAC00 \uBB34\uC9C0\uAC1C \uAE38\uC744 \uB530\uB77C
+    \uB5A0\uB098\uC694"
+  cubePrice: 10000
+  goldenCubePrice: 100
 --- !u!65 &1927849503
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -54724,7 +54731,7 @@ MonoBehaviour:
   description: "\uD558\uB098\uB97C \uBA39\uC73C\uBA74 \uD658\uC601\uC774 \uB2E4\uC74C
     \uBD80\uD488\uC73C\uB85C \uBCC0\uD569\uB2C8\uB2E4."
   cubePrice: 500
-  goldenCubePrice: 50
+  goldenCubePrice: 5
 --- !u!65 &2002636512
 BoxCollider:
   m_ObjectHideFlags: 0
