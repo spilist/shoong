@@ -6,16 +6,20 @@ public class UICharacters : MonoBehaviour {
   public string characterName;
   public int price;
   private CharactersMenu charactersMenu;
-  private Material originalMaterial;
   private Vector3 originalPosition;
   private Quaternion originalRotation;
   private Vector3 originalScale;
   private float scaleChanging;
   private bool soundPlayed = false;
 
+  void OnEnable() {
+    if (charactersMenu == null) return;
+
+    checkBought(false);
+  }
+
   void Start () {
     charactersMenu = GameObject.Find("CharactersMenu").GetComponent<CharactersMenu>();
-    originalMaterial = GetComponent<Renderer>().sharedMaterial;
     originalPosition = transform.localPosition;
     originalRotation = transform.localRotation;
     originalScale = transform.localScale;
@@ -72,14 +76,13 @@ public class UICharacters : MonoBehaviour {
         charactersMenu.selectButton.setCharacter(name);
         charactersMenu.buyButton.gameObject.SetActive(false);
       }
-      GetComponent<Renderer>().sharedMaterial = originalMaterial;
+      GetComponent<Renderer>().sharedMaterial = charactersMenu.activeCharactersMaterial;
     } else {
       if (buttons) {
         charactersMenu.buyButton.gameObject.SetActive(true);
         charactersMenu.buyButton.setCharacter(name, price);
         charactersMenu.selectButton.gameObject.SetActive(false);
       }
-      GetComponent<Renderer>().sharedMaterial = charactersMenu.inactiveCharactersMaterial;
     }
   }
 
@@ -88,7 +91,7 @@ public class UICharacters : MonoBehaviour {
     charactersMenu.selectButton.setCharacter(name);
     charactersMenu.buyButton.gameObject.SetActive(false);
     charactersMenu.numYourCharacters.text = (int.Parse(charactersMenu.numYourCharacters.text) + 1).ToString();
-    GetComponent<Renderer>().sharedMaterial = originalMaterial;
+    GetComponent<Renderer>().sharedMaterial = charactersMenu.activeCharactersMaterial;
 
     AudioSource.PlayClipAtPoint(charactersMenu.characterBuySound, transform.position);
   }

@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class CharactersMenu : Draggable {
-  public Material inactiveCharactersMaterial;
+  public Material activeCharactersMaterial;
   public float selectedCharacterRotationSpeed = 30;
   public GameObject cubeYouHave;
   public GameObject goldenCubeYouHave;
@@ -30,7 +30,9 @@ public class CharactersMenu : Draggable {
     foreach (Transform character in transform.Find("Characters").transform) {
       character.transform.localPosition = new Vector3(-selectWidth * 2 * charactersCount++, 0, 0);
 
-      if ((bool)GameController.control.characters[character.name]) yourCharactersCount++;
+      if ((bool)GameController.control.characters[character.name]) {
+        yourCharactersCount++;
+      }
     }
 
     numYourCharacters.text = yourCharactersCount.ToString();

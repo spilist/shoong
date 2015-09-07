@@ -133,6 +133,7 @@ public class BeforeIdle : MonoBehaviour {
     filterChangeTo = 1;
     moveTitle(false);
 
+    changeCharacter(PlayerPrefs.GetString("SelectedCharacter"));
     characterMoving = true;
     characterPosX = characterMoveStart;
     characterPosX = characterMoveStart;
