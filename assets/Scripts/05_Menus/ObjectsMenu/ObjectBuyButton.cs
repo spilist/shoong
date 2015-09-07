@@ -10,6 +10,7 @@ public class ObjectBuyButton : MenusBehavior {
   public Mesh originalMesh;
   public Mesh blinkingMesh;
   public float blinkingSeconds = 0.4f;
+  public BuyButtonsCubeIconPosition icon;
 
   private UIObjects selectedObj;
   private int price;
@@ -39,6 +40,7 @@ public class ObjectBuyButton : MenusBehavior {
 
     price = obj.getPrice(which);
     priceText.text = price.ToString("N0");
+    icon.adjust(priceText);
 
     if (cubes.youHave() < price) {
       affordable = false;

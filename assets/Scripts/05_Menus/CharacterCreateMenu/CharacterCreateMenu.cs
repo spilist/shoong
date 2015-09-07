@@ -4,7 +4,7 @@ using System.Collections;
 public class CharacterCreateMenu : MonoBehaviour {
   public GameObject cubeYouHave;
   public GameObject goldenCubeYouHave;
-  public int createPrice = 10000;
+  public int[] createPrice;
 
   void OnEnable() {
     cubeYouHave.SetActive(true);
@@ -12,6 +12,12 @@ public class CharacterCreateMenu : MonoBehaviour {
   }
 
   public int price() {
-    return createPrice;
+    int charactersCount = 0;
+    foreach (DictionaryEntry character in GameController.control.characters) {
+      if ((bool) character.Value) charactersCount++;
+    }
+
+    charactersCount = Mathf.Min(charactersCount, createPrice.Length);
+    return createPrice[charactersCount-1];
   }
 }

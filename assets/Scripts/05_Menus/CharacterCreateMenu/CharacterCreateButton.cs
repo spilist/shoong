@@ -38,10 +38,7 @@ public class CharacterCreateButton : MenusBehavior {
 
   void OnEnable() {
     menu = transform.parent.GetComponent<CharacterCreateMenu>();
-    createPrice = menu.createPrice;
-
     priceText = transform.Find("PriceText").GetComponent<Text>();
-    priceText.text = createPrice.ToString("N0");
     resetAll();
     checkAffordable();
   }
@@ -56,6 +53,10 @@ public class CharacterCreateButton : MenusBehavior {
   }
 
   void checkAffordable() {
+    createPrice = menu.price();
+    priceText.text = createPrice.ToString("N0");
+    transform.Find("CubeIcon").GetComponent<BuyButtonsCubeIconPosition>().adjust(priceText);
+
     if (cubesYouHave.GetComponent<CubesYouHave>().youHave() < createPrice) {
       affordable = false;
       priceText.color = notAffordableTextColor;

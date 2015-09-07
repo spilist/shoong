@@ -6,6 +6,7 @@ public class CharacterBuyButton : MenusBehavior {
   public CubesYouHave goldenCubes;
   public Color notAffordableTextColor;
   public Text priceText;
+  public BuyButtonsCubeIconPosition icon;
 
   private string characterName;
   private int price;
@@ -19,6 +20,7 @@ public class CharacterBuyButton : MenusBehavior {
     characterName = nameVal;
     price = priceVal;
     priceText.text = price.ToString("N0");
+    icon.adjust(priceText);
 
     if (goldenCubes.youHave() < price) {
       affordable = false;
