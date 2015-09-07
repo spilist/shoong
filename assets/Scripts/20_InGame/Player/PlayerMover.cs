@@ -74,6 +74,7 @@ public class PlayerMover : MonoBehaviour {
   private bool isRotatingByRainbow = false;
   private bool isRidingRainbowRoad = false;
   private Vector3 rainbowPosition;
+  private Rigidbody rb;
 
 	void Start () {
     changeCharacter(PlayerPrefs.GetString("SelectedCharacter"));
@@ -92,11 +93,12 @@ public class PlayerMover : MonoBehaviour {
     speed = comboBar.getSpeed();
     GetComponent<Rigidbody> ().velocity = direction * speed;
 
-
     cubesWhenDestroy = new Hashtable();
     cubesWhenDestroy.Add("Obstacle_big", cubesWhenDestroyBigObstacle);
     cubesWhenDestroy.Add("Obstacle", cubesWhenDestroySmallObstacle);
     cubesWhenDestroy.Add("Monster", cubesWhenDestroyMonster);
+
+    rb = GetComponent<Rigidbody>();
 	}
 
 	void FixedUpdate () {
@@ -121,9 +123,9 @@ public class PlayerMover : MonoBehaviour {
     if (isInsideBlackhole && !isUsingRainbow()) {
       Vector3 heading = blackhole.transform.position - transform.position;
       heading /= heading.magnitude;
-      GetComponent<Rigidbody> ().AddForce(heading * blm.pullUser, ForceMode.VelocityChange);
+      rb.AddForce(heading * blm.pullUser, ForceMode.VelocityChange);
     }
-    GetComponent<Rigidbody> ().velocity = direction * speed;
+    rb.velocity = direction * speed;
 	}
 
 	void OnTriggerEnter(Collider other) {

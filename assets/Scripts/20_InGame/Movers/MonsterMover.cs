@@ -15,6 +15,7 @@ public class MonsterMover : ObjectsMover {
 
   public ParticleSystem aura;
   public ParticleSystem weakenAura;
+  private Renderer m_renderer;
 
   protected override void initializeRest() {
     monm = GameObject.Find("Field Objects").GetComponent<MonsterManager>();
@@ -24,6 +25,7 @@ public class MonsterMover : ObjectsMover {
     speed_weaken = monm.speed_weaken;
     monm.indicator.startIndicate(gameObject);
     monm.indicator.GetComponent<Image>().color = Color.red;
+    m_renderer = GetComponent<Renderer>();
     StartCoroutine("weakened");
   }
 
@@ -47,8 +49,8 @@ public class MonsterMover : ObjectsMover {
     weakenAura.Play();
     weakenAura.GetComponent<AudioSource> ().Play ();
     aura.Stop();
-    GetComponent<Renderer>().material.SetColor("_OutlineColor", monm.weakenedOutlineColor);
-    GetComponent<Renderer>().material.SetFloat("_Outline", 0.75f);
+    m_renderer.material.SetColor("_OutlineColor", monm.weakenedOutlineColor);
+    m_renderer.material.SetFloat("_Outline", 0.75f);
     monm.indicator.GetComponent<Image>().color = monm.weakenedOutlineColor;
 
     yield return new WaitForSeconds(monm.weakenDuration);
@@ -72,15 +74,15 @@ public class MonsterMover : ObjectsMover {
     float distance = direction.magnitude;
     direction /= distance;
     if (distance > monm.detectDistance){
-      GetComponent<Rigidbody>().velocity = direction * speed_chase * 2;
+      rb.velocity = direction * speed_chase * 2;
     } else if (isMagnetized) {
-      GetComponent<Rigidbody>().velocity = direction * player.GetComponent<Rigidbody>().velocity.magnitude * 1.5f;
+      rb.velocity = direction * player.GetComponent<Rigidbody>().velocity.magnitude * 1.5f;
     } else if (weak) {
-      GetComponent<Rigidbody>().velocity = -direction * speed_weaken;
+      rb.velocity = -direction * speed_weaken;
     } else if (player.GetComponent<PlayerMover>().isUnstoppable()) {
-      GetComponent<Rigidbody>().velocity = -direction * speed_runaway;
+      rb.velocity = -direction * speed_runaway;
     } else {
-      GetComponent<Rigidbody>().velocity = direction * speed_chase;
+      rb.velocity = direction * speed_chase;
     }
 
     if (weak) {

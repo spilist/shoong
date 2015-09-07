@@ -17,6 +17,7 @@ public class ObjectsMover : MonoBehaviour {
   protected float shrinkedScale;
 
   protected ObjectsManager objectsManager;
+  protected Rigidbody rb;
 
   void Start() {
     player = GameObject.Find("Player");
@@ -32,8 +33,10 @@ public class ObjectsMover : MonoBehaviour {
     tumble = getTumble();
     direction = getDirection();
 
-    GetComponent<Rigidbody>().angularVelocity = Random.onUnitSphere * tumble;
-    GetComponent<Rigidbody> ().velocity = direction * speed;
+
+    rb = GetComponent<Rigidbody>();
+    rb.angularVelocity = Random.onUnitSphere * tumble;
+    rb.velocity = direction * speed;
   }
 
   void FixedUpdate() {
@@ -44,14 +47,14 @@ public class ObjectsMover : MonoBehaviour {
       }
       Vector3 heading = blackhole.transform.position - transform.position;
       heading /= heading.magnitude;
-      GetComponent<Rigidbody> ().velocity = heading * blm.gravity;
+      rb.velocity = heading * blm.gravity;
 
       shrinkedScale = Mathf.MoveTowards(shrinkedScale, 0f, Time.deltaTime);
       transform.localScale = new Vector3(shrinkedScale, shrinkedScale, shrinkedScale);
     } else if (isMagnetized) {
       Vector3 heading =  player.transform.position - transform.position;
       heading /= heading.magnitude;
-      GetComponent<Rigidbody> ().velocity = heading * player.GetComponent<Rigidbody>().velocity.magnitude * 1.5f;
+      rb.velocity = heading * player.GetComponent<Rigidbody>().velocity.magnitude * 1.5f;
     } else {
       normalMovement();
     }
@@ -87,6 +90,7 @@ public class ObjectsMover : MonoBehaviour {
     direction = Vector3.Reflect(direction, -normal).normalized;
     direction.y = 0;
     direction.Normalize();
+    rb.velocity = direction * speed;
   }
 
   virtual public void destroyObject(bool destroyEffect = true) {
@@ -130,7 +134,6 @@ public class ObjectsMover : MonoBehaviour {
   }
 
   virtual protected void normalMovement() {
-    GetComponent<Rigidbody> ().velocity = direction * speed;
   }
 
   virtual public string getManager() {

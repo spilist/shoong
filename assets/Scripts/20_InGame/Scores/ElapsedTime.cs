@@ -38,4 +38,8 @@ public class ElapsedTime : MonoBehaviour {
 	void OnDisable() {
 		StopCoroutine("startElapse");
 	}
+
+	void OnDestroy() {
+		time = null;
+	}
 }

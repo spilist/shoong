@@ -47,8 +47,6 @@ public class ObstaclesMover : ObjectsMover {
   }
 
   override protected void normalMovement() {
-    GetComponent<Rigidbody> ().velocity = direction * speed;
-
     if (QuestManager.qm.doingQuest("AvoidFallingStar") && !questDone) {
       if (Vector3.Distance(player.transform.position, transform.position) < player.GetComponent<PlayerMover>().avoidDistance) {
         avoiding = true;

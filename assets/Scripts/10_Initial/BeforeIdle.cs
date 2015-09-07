@@ -77,6 +77,7 @@ public class BeforeIdle : MonoBehaviour {
         if (filterColor.a == filterChangeTo) {
           filterChanging = false;
           showTip = false;
+          if (filterChangeTo == 0) titleFilter.gameObject.SetActive(false);
         }
       }
     }
@@ -139,6 +140,7 @@ public class BeforeIdle : MonoBehaviour {
   }
 
   public void playAgain() {
+    titleFilter.gameObject.SetActive(true);
     filterColor = titleFilter.material.color;
     filterChanging = true;
     filterChangeTo = 1;

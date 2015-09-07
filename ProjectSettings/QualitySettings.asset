@@ -54,8 +54,8 @@ QualitySettings:
     excludedTargetPlatforms: []
   - serializedVersion: 2
     name: Simple
-    pixelLightCount: 1
-    shadows: 1
+    pixelLightCount: 0
+    shadows: 0
     shadowResolution: 0
     shadowProjection: 1
     shadowCascades: 1
@@ -63,7 +63,7 @@ QualitySettings:
     shadowCascade2Split: .333333343
     shadowCascade4Split: {x: .0666666701, y: .200000003, z: .466666669}
     blendWeights: 2
-    textureQuality: 0
+    textureQuality: 1
     anisotropicTextures: 1
     antiAliasing: 0
     softParticles: 0
@@ -145,7 +145,7 @@ QualitySettings:
     particleRaycastBudget: 4096
     excludedTargetPlatforms: []
   m_PerPlatformDefaultQuality:
-    Android: 3
+    Android: 2
     BlackBerry: 2
     GLES Emulation: 5
     PS3: 5
