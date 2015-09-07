@@ -7685,7 +7685,7 @@ MonoBehaviour:
   doNotShow: 0
   tutorial: 0
   description: "\uC720\uC131 \uD30C\uAD34"
-  numbersToComplete: 5
+  numbersToComplete: 3
   goldenCubesWhenComplete: 2
 --- !u!1 &188335416
 GameObject:
@@ -11102,7 +11102,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &339434084
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16067,7 +16067,7 @@ MonoBehaviour:
   doNotShow: 0
   tutorial: 0
   description: "\uBE14\uB799\uD640 \uD0C8\uCD9C"
-  numbersToComplete: 3
+  numbersToComplete: 1
   goldenCubesWhenComplete: 1
 --- !u!1001 &578305428
 Prefab:
@@ -24631,7 +24631,7 @@ MonoBehaviour:
   tutorial: 0
   description: "\uD050\uBE0C \uD0F1\uD0F1\uBCFC \uC644\uB8CC"
   numbersToComplete: 3
-  goldenCubesWhenComplete: 1
+  goldenCubesWhenComplete: 2
 --- !u!1 &892369437
 GameObject:
   m_ObjectHideFlags: 0
@@ -25224,8 +25224,8 @@ MonoBehaviour:
   doNotShow: 0
   tutorial: 0
   description: "\uC6B4\uC11D \uD30C\uAD34"
-  numbersToComplete: 10
-  goldenCubesWhenComplete: 2
+  numbersToComplete: 5
+  goldenCubesWhenComplete: 1
 --- !u!1 &966334534
 GameObject:
   m_ObjectHideFlags: 0
@@ -25610,7 +25610,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bom: {fileID: 1991538112}
-  addObstaclePer: 20
+  addObstaclePer: 40
   removePartPer: 10
   now: 0
 --- !u!1 &994520072
@@ -50151,7 +50151,7 @@ MonoBehaviour:
   doNotShow: 0
   tutorial: 0
   description: "\uD658\uC601 \uBD80\uD488 \uC644\uB8CC"
-  numbersToComplete: 3
+  numbersToComplete: 1
   goldenCubesWhenComplete: 1
 --- !u!1 &1878094423
 GameObject:
@@ -54414,7 +54414,7 @@ MonoBehaviour:
   warnPlayerDuring: .5
   spawnRadius: 200
   scatterAmount: 30
-  lineDistance: 500
+  lineDistance: 600
   fallingStarWarningLinePrefab: {fileID: 125686, guid: d2657da8f1ab74d79b03574cca181388,
     type: 2}
   fallingStarSoundWarningPrefab: {fileID: 122456, guid: 32ffe4a364250467bba5659a4276cfd9,
@@ -54422,7 +54422,7 @@ MonoBehaviour:
   obsIndicatorPrefab: {fileID: 144306, guid: 825df36890cc14b58a88c21930d89f0d, type: 2}
   shortenRespawnPer: 10
   shortenRespawnAmount: .100000001
-  addSpeedAmount: 3
+  addSpeedAmount: 4
 --- !u!114 &1991538108
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54542,7 +54542,7 @@ MonoBehaviour:
   - {fileID: 131058, guid: b2e788ee7ee7747ae89b9fd021c3b05b, type: 2}
   - {fileID: 119532, guid: 8de9923715b8e4769a343553e0193937, type: 2}
   - {fileID: 190242, guid: d8430bbeb85c44b9b9b8df1654f1e53b, type: 2}
-  max_obstacles: 2
+  max_obstacles: 3
   speed_parts: 0
   speed_obstacles: 15
   tumble_parts: 1
