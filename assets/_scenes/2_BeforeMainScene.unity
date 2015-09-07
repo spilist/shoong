@@ -189,7 +189,7 @@ MonoBehaviour:
   numBoosters: 0
   openAllCharacter: 0
   resetAll: 0
-  resetCube: 500
+  resetCube: 0
   resetGoldenCube: 0
 --- !u!4 &189010622
 Transform:

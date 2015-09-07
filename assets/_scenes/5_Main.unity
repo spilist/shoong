@@ -11102,7 +11102,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &339434084
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11442,7 +11442,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 574837081}
-  m_RootOrder: 22
+  m_RootOrder: 21
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: .000122070312}
@@ -16005,7 +16005,6 @@ RectTransform:
   - {fileID: 576634737}
   - {fileID: 1204889871}
   - {fileID: 1874486845}
-  - {fileID: 883650270}
   - {fileID: 890419730}
   - {fileID: 1317437492}
   - {fileID: 799450317}
@@ -22334,7 +22333,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 574837081}
-  m_RootOrder: 21
+  m_RootOrder: 20
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: .000183105469}
@@ -22359,7 +22358,7 @@ MonoBehaviour:
   tutorial: 0
   description: "\uBB34\uC9C0\uAC1C\uAE38 \uD0C0\uAE30"
   numbersToComplete: 3
-  goldenCubesWhenComplete: 1
+  goldenCubesWhenComplete: 2
 --- !u!1 &803409794
 GameObject:
   m_ObjectHideFlags: 0
@@ -24580,59 +24579,6 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!1 &883650269
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 224: {fileID: 883650270}
-  - 114: {fileID: 883650271}
-  m_Layer: 5
-  m_Name: CompleteComboPartsInTwoBoosters
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &883650270
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 883650269}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: .000610351562}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 574837081}
-  m_RootOrder: 18
-  m_AnchorMin: {x: .5, y: .5}
-  m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 0, y: .000122070312}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: .5, y: .5}
---- !u!114 &883650271
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 883650269}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9086817214d0f406caf8914942cb69eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  conditionNotRequired: 0
-  questStartConditions:
-  - ComboParts
-  countByTime: 0
-  doNotShow: 0
-  tutorial: 0
-  description: "\uBD80\uC2A4\uD130 2\uBC88\uC73C\uB85C \uD658\uC601 \uBD80\uD488 \uC644\uB8CC"
-  numbersToComplete: 3
-  goldenCubesWhenComplete: 2
 --- !u!1 &890419729
 GameObject:
   m_ObjectHideFlags: 0
@@ -24660,7 +24606,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 574837081}
-  m_RootOrder: 19
+  m_RootOrder: 18
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: .000122070312}
@@ -31661,7 +31607,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 574837081}
-  m_RootOrder: 20
+  m_RootOrder: 19
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: .000183105469}
@@ -54467,7 +54413,6 @@ MonoBehaviour:
   maxSpawnInterval: 7
   warnPlayerDuring: .5
   spawnRadius: 200
-  UICanvas: {fileID: 2134279972}
   scatterAmount: 30
   lineDistance: 500
   fallingStarWarningLinePrefab: {fileID: 125686, guid: d2657da8f1ab74d79b03574cca181388,

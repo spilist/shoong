@@ -47,8 +47,9 @@ public class RainbowDonutsManager : ObjectsManager {
     erasingRainbowRoad = false;
     if (rainbowRoad != null) Destroy(rainbowRoad.gameObject);
 
+    if (rideCount == 0) QuestManager.qm.addCountToQuest("RideRainbow");
+
     if (rideCount < numRoadRides) {
-      QuestManager.qm.addCountToQuest("RideRainbow");
       rideCount++;
       player.rainbowEffect.Play();
       player.rainbowEffect.GetComponent<AudioSource>().Play();

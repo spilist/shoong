@@ -43,6 +43,7 @@ public class FallingstarWarningLine : MonoBehaviour {
     origin = startPos;
     destination = destPos;
     outer.SetPosition(0, startPos);
+    outer.SetPosition(1, startPos);
     distanceToDest = distance;
     drawingSpeed = distance / duration;
     isDrawing = true;

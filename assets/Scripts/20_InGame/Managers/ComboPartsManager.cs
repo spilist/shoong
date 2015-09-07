@@ -63,9 +63,6 @@ public class ComboPartsManager : ObjectsManager {
     if (comboCount == fullComboCount) {
       QuestManager.qm.addCountToQuest("CompleteComboParts");
       QuestManager.qm.addCountToQuest("ComboParts");
-      if (boosterCount < fullComboCount - 1) {
-        QuestManager.qm.addCountToQuest("CompleteComboPartsInTwoBoosters");
-      }
       StartCoroutine("startSpawn");
       return;
     }

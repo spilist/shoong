@@ -11,7 +11,6 @@ public class ObstaclesManager : MonoBehaviour {
   public float maxSpawnInterval = 5;
   public float warnPlayerDuring = 1;
   public float spawnRadius = 400;
-  public Canvas UICanvas;
 
   public int scatterAmount = 30;
   public int lineDistance = 1000;
@@ -47,7 +46,6 @@ public class ObstaclesManager : MonoBehaviour {
       destination = spawnPos + obstacleDirection * lineDistance;
 
       GameObject warningLine = (GameObject) Instantiate (fallingStarWarningLinePrefab);
-      warningLine.transform.SetParent(UICanvas.transform, false);
       warningLine.GetComponent<FallingstarWarningLine>().run(spawnPos - 100 * obstacleDirection, destination, lineDistance + 100, warnPlayerDuring);
 
       Instantiate (fallingStarSoundWarningPrefab);
@@ -79,7 +77,7 @@ public class ObstaclesManager : MonoBehaviour {
   float getInterval() {
     int timeUnit = (int) Mathf.Floor(ElapsedTime.time.now / shortenRespawnPer);
 
-    return Random.Range(minSpawnInterval - timeUnit * shortenRespawnAmount, maxSpawnInterval - timeUnit * shortenRespawnAmount);
+    return Random.Range(Mathf.Max(0, minSpawnInterval - timeUnit * shortenRespawnAmount), Mathf.Max(0, maxSpawnInterval - timeUnit * shortenRespawnAmount));
   }
 
   public float getSpeed() {

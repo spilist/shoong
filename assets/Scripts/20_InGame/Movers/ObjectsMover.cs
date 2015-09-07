@@ -71,6 +71,7 @@ public class ObjectsMover : MonoBehaviour {
       } else if (strength() > other.strength()) {
         other.destroyObject();
       }
+      rb.velocity = direction * speed;
     }
 
     doSomethingSpecial(collision);
@@ -90,7 +91,6 @@ public class ObjectsMover : MonoBehaviour {
     direction = Vector3.Reflect(direction, -normal).normalized;
     direction.y = 0;
     direction.Normalize();
-    rb.velocity = direction * speed;
   }
 
   virtual public void destroyObject(bool destroyEffect = true) {
