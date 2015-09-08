@@ -17,7 +17,7 @@ public class Tip : MonoBehaviour {
     foreach (string objects in showConditions) {
       bool orCondition = false;
       foreach (string obj in objects.Split(' ')) {
-        if ((bool) GameController.control.objects[obj]) {
+        if (DataManager.dm.getBool(obj)) {
           orCondition = true;
           break;
         }

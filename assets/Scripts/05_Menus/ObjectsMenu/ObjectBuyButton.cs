@@ -63,10 +63,10 @@ public class ObjectBuyButton : MenusBehavior {
     if (!affordable) return;
 
     cubes.buy(price);
-    GameController.control.objects[objectName] = true;
+    DataManager.dm.setBool(objectName, true);
     selectedObj.buy();
 
-    string tutorialsNotDone = PlayerPrefs.GetString("ObjTutorialsNotDone");
-    PlayerPrefs.SetString("ObjTutorialsNotDone", (tutorialsNotDone + " " + objectName).Trim());
+    string tutorialsNotDone = DataManager.dm.getString("ObjectTutorialsNotDone");
+    DataManager.dm.setString("ObjectTutorialsNotDone", (tutorialsNotDone + " " + objectName).Trim());
   }
 }

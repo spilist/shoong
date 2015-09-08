@@ -30,7 +30,7 @@ public class CharactersMenu : Draggable {
     foreach (Transform character in transform.Find("Characters").transform) {
       character.transform.localPosition = new Vector3(-selectWidth * 2 * charactersCount++, 0, 0);
 
-      if ((bool)GameController.control.characters[character.name]) {
+      if (DataManager.dm.getBool(character.name)) {
         yourCharactersCount++;
       }
     }

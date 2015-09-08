@@ -24,7 +24,6 @@ public class QuestManager : MonoBehaviour {
   private Transform questsList;
   private Transform objectTutorials;
   private Transform onGoingQuests;
-  private
 
 	void Start() {
     if (qm == null) {
@@ -41,12 +40,12 @@ public class QuestManager : MonoBehaviour {
 
   public void generateQuest() {
     // if another day, reset first quest reward
-    if ((DateTime.Now.Date - ((DateTime)GameController.control.lastQuestCompleteAt).Date).TotalDays > 0) {
-      PlayerPrefs.SetInt("FirstQuestComplete", 0);
+    if ((DateTime.Now.Date - DataManager.dm.getDateTime("LastQuestCompletedAt").Date).TotalDays > 0) {
+      DataManager.dm.setBool("FirstQuestComplete", false);
     }
 
     // if there is not completed tutorial quest, show it
-    string tutorialsNotDone = PlayerPrefs.GetString("ObjTutorialsNotDone");
+    string tutorialsNotDone = DataManager.dm.getString("ObjectTutorialsNotDone");
     if (tutorialsNotDone.Trim() != "") {
       foreach (string obj in tutorialsNotDone.Split(null)) {
         Quest tutorial = objectTutorials.Find(obj.Trim()).GetComponent<Quest>();

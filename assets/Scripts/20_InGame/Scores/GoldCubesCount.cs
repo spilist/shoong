@@ -18,7 +18,7 @@ public class GoldCubesCount : MonoBehaviour {
 
 	void OnEnable() {
     cubes = GetComponent<Text>();
-    count = (int)GameController.control.goldenCubes["now"];
+    count = DataManager.dm.getInt("GoldenCubeNow");
     cubes.text = count.ToString();
 
     tr = GetComponent<RectTransform>();
@@ -30,8 +30,8 @@ public class GoldCubesCount : MonoBehaviour {
     count += amount;
     cubes.text = count.ToString();
 
-    GameController.control.goldenCubes["now"] = count;
-    GameController.control.goldenCubes["total"] = ((int)GameController.control.goldenCubes["total"]) + amount;
+    DataManager.dm.increment("GoldenCubeNow", amount);
+    DataManager.dm.increment("GoldenCubeTotal", amount);
 
     moveBackTo = cubes.preferredWidth + offset;
     showCount = 0;

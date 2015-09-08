@@ -9,12 +9,7 @@ public class CubesYouHave : MonoBehaviour {
 
 	void OnEnable () {
     cubes = GetComponent<Text>();
-    if (which == "golden") {
-      table = GameController.control.goldenCubes;
-    } else {
-      table = GameController.control.cubes;
-    }
-    cubes.text = ((int)table["now"]).ToString();
+    cubes.text = DataManager.dm.getInt(which + "Now").ToString();
 	}
 
   public int youHave() {
@@ -23,13 +18,14 @@ public class CubesYouHave : MonoBehaviour {
 
   public void buy(int price) {
     cubes.text = (int.Parse(cubes.text) - price).ToString();
-    table["now"] = int.Parse(cubes.text);
-    table["used"] = (int)table["used"] + price;
+    DataManager.dm.setInt(which + "Now", int.Parse(cubes.text));
+    DataManager.dm.increment(which + "Used", price);
   }
 
   public void add(int amount) {
     cubes.text = (int.Parse(cubes.text) + amount).ToString();
-    table["now"] = int.Parse(cubes.text);
-    table["total"] = ((int)table["total"]) + amount;
+
+    DataManager.dm.setInt(which + "Now", int.Parse(cubes.text));
+    DataManager.dm.increment(which + "Total", amount);
   }
 }

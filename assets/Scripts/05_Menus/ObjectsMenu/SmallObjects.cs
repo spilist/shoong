@@ -24,7 +24,7 @@ public class SmallObjects : MonoBehaviour {
 	}
 
   public void checkBought() {
-    if ((bool)GameController.control.objects[transform.parent.name]) {
+    if (DataManager.dm.getBool(transform.parent.name)) {
       GetComponent<MeshFilter>().sharedMesh = activeMesh;
       GetComponent<Renderer>().sharedMaterial = activeMaterial;
     }

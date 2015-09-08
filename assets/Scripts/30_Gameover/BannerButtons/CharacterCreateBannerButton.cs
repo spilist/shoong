@@ -9,6 +9,6 @@ public class CharacterCreateBannerButton : BannerButton {
   }
 
   override public bool available() {
-    return (int) GameController.control.cubes["now"] >= createMenu.price();
+    return DataManager.dm.getInt("CubeNow") >= createMenu.price();
   }
 }

@@ -122,19 +122,21 @@ public class ScoreManager : MonoBehaviour {
 
     isSaved = true;
     int count = cubesCount.getCount();
-    GameController.control.cubes["now"] = (int) GameController.control.cubes["now"] + count;
-    GameController.control.cubes["total"] = (int) GameController.control.cubes["total"] + count;
-    if (count > (int) GameController.control.cubes["highscore"]) {
-      GameController.control.cubes["highscore"] = count;
+    DataManager.dm.increment("CubeNow", count);
+    DataManager.dm.increment("CubeTotal", count);
+    if (count > DataManager.dm.getInt("CubeHighscore")) {
+      DataManager.dm.setInt("CubeHighscore", count);
     }
 
-    GameController.control.times["total"] = (int) GameController.control.times["total"] + ElapsedTime.time.now;
+    DataManager.dm.increment("GoldenCubeNow", QuestManager.qm.questReward);
+    DataManager.dm.increment("GoldenCubeTotal", QuestManager.qm.questReward);
 
+    DataManager.dm.setInt("TimeTotal", ElapsedTime.time.now);
   }
 
   void OnDisable() {
     if (menus.gameStarted()) {
-      GameController.control.save();
+      DataManager.dm.save();
     }
   }
 }

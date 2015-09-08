@@ -36,7 +36,7 @@ public class ObjectDetail : MonoBehaviour {
   }
 
   public void checkBought(UIObjects obj) {
-    if ((bool)GameController.control.objects[selected.name]) {
+    if (DataManager.dm.getBool(selected.name)) {
       rotate = true;
       SmallObjects smallObject = obj.transform.parent.Find("Object").GetComponent<SmallObjects>();
       smallObject.checkBought();

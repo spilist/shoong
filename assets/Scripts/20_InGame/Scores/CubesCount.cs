@@ -14,7 +14,7 @@ public class CubesCount : MonoBehaviour {
 
   void Start() {
     countText = GetComponent<Text>();
-    cubesHighscore = (int) GameController.control.cubes["highscore"];
+    cubesHighscore = DataManager.dm.getInt("CubeHighscore");
     cubesHighscoreText.text = cubesHighscore.ToString();
   }
 

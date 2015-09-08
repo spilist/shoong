@@ -13,11 +13,7 @@ public class CharacterCreateMenu : MonoBehaviour {
 
   public int price() {
     int charactersCount = 0;
-    foreach (DictionaryEntry character in GameController.control.characters) {
-      if ((bool) character.Value) charactersCount++;
-    }
-
-    charactersCount = Mathf.Min(charactersCount, createPrice.Length);
+    charactersCount = Mathf.Min(DataManager.dm.getInt("NumCharactersHave"), createPrice.Length);
     return createPrice[charactersCount-1];
   }
 }

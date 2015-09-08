@@ -70,7 +70,7 @@ public class UICharacters : MonoBehaviour {
   }
 
   public void checkBought(bool buttons = true) {
-    if ((bool)GameController.control.characters[name]) {
+    if (DataManager.dm.getBool(name)) {
       if (buttons) {
         charactersMenu.selectButton.gameObject.SetActive(true);
         charactersMenu.selectButton.setCharacter(name);

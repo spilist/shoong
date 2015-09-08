@@ -46,11 +46,11 @@ public class ScoreUpdate : MonoBehaviour {
   void OnEnable() {
     cubeDifference = cubesCount.getCount();
 
-    totalNum = (int) GameController.control.cubes["total"];
+    totalNum = DataManager.dm.getInt("CubeTotal");
     totalCubes.text = totalNum.ToString();
     totalChangeTo = (int) totalNum + cubeDifference;
 
-    cubeNum = (int) GameController.control.cubes["now"];
+    cubeNum = DataManager.dm.getInt("CubeNow");
     cubes.text = cubeNum.ToString();
     cubeChangeTo = (int) cubeNum + cubeDifference;
 
@@ -64,7 +64,7 @@ public class ScoreUpdate : MonoBehaviour {
       duration = Mathf.Max(scoreUpdateMaxDuration * (float) cubeDifference / scoreUpdateMaxStandard, scoreUpdateMinDuration);
     }
 
-    highscoreNum = (int) GameController.control.cubes["highscore"];
+    highscoreNum = DataManager.dm.getInt("CubeHighscore");
     cubesHighscoreNumber.text = highscoreNum.ToString();
 
     cubeCurrentNum = 0;
@@ -139,7 +139,6 @@ public class ScoreUpdate : MonoBehaviour {
       goldenCubes.text = goldenCubeNum.ToString("0");
       if (goldenCubeNum == goldenCubeDifference) {
         updateStatus++;
-        GameController.control.goldenCubes["now"] = (int) goldenCubeNum;
         scoreManager.scoringEnd();
       }
     }

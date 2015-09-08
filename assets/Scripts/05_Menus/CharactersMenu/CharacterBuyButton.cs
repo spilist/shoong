@@ -35,7 +35,8 @@ public class CharacterBuyButton : MenusBehavior {
     if (!affordable) return;
 
     goldenCubes.buy(price);
-    GameController.control.characters[characterName] = true;
+    DataManager.dm.setBool(characterName, true);
+    DataManager.dm.increment("NumCharactersHave");
     transform.parent.Find("Characters/" + characterName).GetComponent<UICharacters>().buy();
   }
 }

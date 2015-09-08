@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 
 public class CharacterCreateButton : MenusBehavior {
+  public Transform characters;
+
   public GameObject characterCube;
   public ParticleSystem gathering;
   public ParticleSystem explosion;
@@ -120,11 +122,9 @@ public class CharacterCreateButton : MenusBehavior {
     Vector3 originalScale = new Vector3(originalSize, originalSize, originalSize);
     Vector3 shrinkScale = new Vector3(shrinkSize, shrinkSize, shrinkSize);
 
-    Dictionary<object, object> characters = GameController.control.characters.Cast<DictionaryEntry>().ToDictionary(d => d.Key, d => d.Value);
-    characters.Remove("robotcogi");
-    int random = Random.Range(0, characters.Count);
-    string createdCharacterName = (string) characters.ElementAt(random).Key;
-    bool newCharacter = !(bool)GameController.control.characters[createdCharacterName];
+    int random = Random.Range(1, characters.childCount);
+    string createdCharacterName = characters.GetChild(random).name;
+    bool newCharacter = !DataManager.dm.getBool(createdCharacterName);
 
     float duration = totalSeconds;
     float interval = startInterval;
@@ -149,12 +149,13 @@ public class CharacterCreateButton : MenusBehavior {
     createdCharacter.GetComponent<MeshFilter>().sharedMesh = Resources.Load<GameObject>("_characters/play_characters").transform.FindChild(createdCharacterName).GetComponent<MeshFilter>().sharedMesh;
     createdCharacter.SetActive(true);
 
-    characterName.text = PlayerPrefs.GetString(createdCharacterName);
+    characterName.text = getCharacterName(createdCharacterName);
     characterName.enabled = true;
 
     if (newCharacter) {
       isNewCharacter.SetActive(true);
-      GameController.control.characters[createdCharacterName] = true;
+      DataManager.dm.setBool(createdCharacterName, true);
+      DataManager.dm.increment("NumCharactersHave");
     } else {
       nextChance.Play();
     }
@@ -173,5 +174,14 @@ public class CharacterCreateButton : MenusBehavior {
 
   public bool isAffordable() {
     return cubesYouHave.GetComponent<CubesYouHave>().youHave() < createPrice;
+  }
+
+  string getCharacterName(string characterCode) {
+    foreach (Transform tr in characters) {
+      UICharacters cha = tr.GetComponent<UICharacters>();
+      if (cha.name == characterCode) return cha.characterName;
+    }
+
+    return "";
   }
 }

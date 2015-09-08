@@ -209,21 +209,21 @@ public class OnGoingQuest : MonoBehaviour {
     countByTime = false;
 
     if (isComplete) {
-      GameController.control.lastQuestCompleteAt = DateTime.Now;
+      DataManager.dm.setDateTime("LastQuestCompletedAt", DateTime.Now);
 
       if (tutorial) {
-        string tutorialsNotDone = PlayerPrefs.GetString("ObjTutorialsNotDone");
+        string tutorialsNotDone = DataManager.dm.getString("ObjectTutorialsNotDone");
         tutorialsNotDone = tutorialsNotDone.Replace(questName, "").Trim();
         tutorialsNotDone = tutorialsNotDone.Replace("  ", " ").Trim();
 
-        PlayerPrefs.SetString("ObjTutorialsNotDone", tutorialsNotDone);
+        DataManager.dm.setString("ObjectTutorialsNotDone", tutorialsNotDone);
       }
 
-      if (PlayerPrefs.GetInt("FirstQuestComplete") == 0) {
-        PlayerPrefs.SetInt("FirstQuestComplete", 1);
-        return "FirstQuestComplete";
-      } else {
+      if (DataManager.dm.getBool("FirstQuestComplete")) {
         return "Complete";
+      } else {
+        DataManager.dm.setBool("FirstQuestComplete", true);
+        return "FirstQuestComplete";
       }
     } else {
       return "Failed";
