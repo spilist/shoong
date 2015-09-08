@@ -14,7 +14,6 @@ public class PlayerMover : MonoBehaviour {
   public int cubesWhenDestroyMonster = 50;
   public int cubesAsItIsUntill = 20;
   public int restCubesChangePer = 5;
-  public int avoidDistance = 20;
   private Hashtable cubesWhenDestroy;
 
   private float speed;
@@ -48,6 +47,7 @@ public class PlayerMover : MonoBehaviour {
 	public ParticleSystem getComboParts;
   public ParticleSystem getBlackhole;
   public ParticleSystem rainbowEffect;
+  public ParticleSystem chargedEffect;
 
   public float boosterSpeedUpAmount = 60;
   public float maxBoosterSpeed = 100;
@@ -75,6 +75,8 @@ public class PlayerMover : MonoBehaviour {
   private bool isRidingRainbowRoad = false;
   private Vector3 rainbowPosition;
   private Rigidbody rb;
+
+  private int nearAsteroidCounter = 0;
 
 	void Start () {
     changeCharacter(PlayerPrefs.GetString("SelectedCharacter"));
@@ -152,15 +154,10 @@ public class PlayerMover : MonoBehaviour {
       goodPartsEncounter(mover, comboBar.getComboRatio());
 			GetComponent<AudioSource>().Play ();
 
-      if (QuestManager.qm.doingQuest("GetPartsNearAsteroid")) {
-        foreach (GameObject asteroid in GameObject.FindGameObjectsWithTag("Obstacle_big")) {
-          if (Vector3.Distance(transform.position, asteroid.transform.position) < (avoidDistance + asteroid.GetComponent<BigObstaclesMover>().width)) {
-            QuestManager.qm.addCountToQuest("GetPartsNearAsteroid");
-            break;
-          }
-
-        }
+      if (nearAsteroidCounter > 0) {
+        QuestManager.qm.addCountToQuest("GetPartsNearAsteroid");
       }
+
       if (isUsingRainbow()) {
         QuestManager.qm.addCountToQuest("GetPartsOnRainbow");
       }
@@ -465,5 +462,10 @@ public class PlayerMover : MonoBehaviour {
   public void setDirection(Vector3 dir) {
     direction = dir;
     rotatePlayerBody();
+  }
+
+  public void nearAsteroid(bool enter = true) {
+    if (enter) nearAsteroidCounter++;
+    else nearAsteroidCounter--;
   }
 }

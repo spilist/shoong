@@ -110,7 +110,7 @@ public class ObjectsMover : MonoBehaviour {
     if (canBeMagnetized) isMagnetized = true;
   }
 
-  public void insideBlackhole() {
+  virtual public void insideBlackhole() {
     isInsideBlackhole = true;
     blackhole = blm.getBlackhole();
   }

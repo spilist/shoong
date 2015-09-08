@@ -64,7 +64,7 @@ public class MenusController : MonoBehaviour {
     menuButtons.SetActive(false);
 
     barsCanvas.GetComponent<Canvas>().enabled = true;
-    barsCanvas.transform.Find("EnergyBar").GetComponent<EnergyBar>().startDecrease();
+    barsCanvas.transform.Find("EnergyBar").GetComponent<EnergyBar>().startGame();
   }
 
   public bool isMenuOn() {

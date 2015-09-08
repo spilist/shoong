@@ -2,8 +2,8 @@
 using System.Collections;
 
 public class BigObstaclesMover : ObjectsMover {
-  public int width;
   private PlayerMover playerMover;
+  private bool isNearPlayer = false;
 
   protected override void initializeRest() {
     canBeMagnetized = false;
@@ -19,6 +19,8 @@ public class BigObstaclesMover : ObjectsMover {
       Instantiate(playerMover.obstacleDestroy, transform.position, transform.rotation);
     }
     Destroy(gameObject);
+
+    if (isNearPlayer) playerMover.nearAsteroid(false);
   }
 
   public override void encounterPlayer() {
@@ -39,5 +41,9 @@ public class BigObstaclesMover : ObjectsMover {
 
   override public string getManager() {
     return "BasicObjectsManager";
+  }
+
+  public void nearPlayer(bool enter = true) {
+    isNearPlayer = enter;
   }
 }
