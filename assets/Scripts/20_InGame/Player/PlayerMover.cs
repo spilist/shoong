@@ -91,7 +91,6 @@ public class PlayerMover : MonoBehaviour {
     randomV.Normalize();
     direction = new Vector3(randomV.x, 0, randomV.y);
     speed = comboBar.getSpeed();
-    GetComponent<Rigidbody> ().velocity = direction * speed;
 
     cubesWhenDestroy = new Hashtable();
     cubesWhenDestroy.Add("Obstacle_big", cubesWhenDestroyBigObstacle);
@@ -99,6 +98,7 @@ public class PlayerMover : MonoBehaviour {
     cubesWhenDestroy.Add("Monster", cubesWhenDestroyMonster);
 
     rb = GetComponent<Rigidbody>();
+    rb.velocity = direction * speed;
 	}
 
 	void FixedUpdate () {

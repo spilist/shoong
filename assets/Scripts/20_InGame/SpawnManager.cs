@@ -11,15 +11,25 @@ public class SpawnManager : MonoBehaviour {
   public string[] layersShouldNotOverlap;
   public LayerMask mask;
 
-  public void run() {
-    gameObject.SetActive(true);
+  public void preload() {
+    // spawn which doesn't need settings
+    GetComponent<BasicObjectsManager>().run();
+  }
 
-    if (Random.Range(0, showHiddensInHowManyGames) == 0) {
-      showingHidden = true;
+  public void run() {
+    // stop following user, activate inactivated basic objects
+    GetComponent<BasicObjectsManager>().startRespawn();
+    GetComponent<FollowTarget>().enabled = false;
+    foreach (Transform tr in transform) {
+      tr.gameObject.SetActive(true);
     }
 
-    // spawn which doesn't need settings
-    gameObject.GetComponent<BasicObjectsManager>().run();
+    // start spawn obstacles
+    GetComponent<ObstaclesManager>().enabled = true;
+
+    // if (Random.Range(0, showHiddensInHowManyGames) == 0) {
+    //   showingHidden = true;
+    // }
 
     // spawn selected objects
     string mainObjectsString = PlayerPrefs.GetString("MainObjects").Trim();
@@ -44,7 +54,8 @@ public class SpawnManager : MonoBehaviour {
   }
 
   public void runManager(string objName) {
-    ObjectsManager obm = (ObjectsManager)gameObject.GetComponent(objName + "Manager");
+    (GetComponent(objName + "Manager") as MonoBehaviour).enabled = true;
+    ObjectsManager obm = (ObjectsManager)GetComponent(objName + "Manager");
     obm.run();
   }
 

@@ -30,6 +30,8 @@ public class ScoreManager : MonoBehaviour {
   public float[] bannerPos;
   public GameObject gameOverButtons;
 
+  private bool isSaved = false;
+
   void Update() {
     if (gameOverStatus == 1) {
       if (Input.GetMouseButtonDown(0)) scoreUpdate();
@@ -75,7 +77,7 @@ public class ScoreManager : MonoBehaviour {
   }
 
   public void scoringEnd() {
-    save(false);
+    save();
 
     BannerButton[] availableBanners = new BannerButton[bannerButtonsList.childCount];
     int availableBannerCount = 0;
@@ -115,7 +117,10 @@ public class ScoreManager : MonoBehaviour {
     return gameOverStatus > 0;
   }
 
-  void save(bool saveToDisk) {
+  void save() {
+    if (isSaved) return;
+
+    isSaved = true;
     int count = cubesCount.getCount();
     GameController.control.cubes["now"] = (int) GameController.control.cubes["now"] + count;
     GameController.control.cubes["total"] = (int) GameController.control.cubes["total"] + count;
@@ -125,10 +130,11 @@ public class ScoreManager : MonoBehaviour {
 
     GameController.control.times["total"] = (int) GameController.control.times["total"] + ElapsedTime.time.now;
 
-    if (saveToDisk) GameController.control.save();
   }
 
   void OnDisable() {
-    if (menus.gameStarted()) save(true);
+    if (menus.gameStarted()) {
+      GameController.control.save();
+    }
   }
 }

@@ -34354,6 +34354,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e88555aff21104292b5e41b3696b84a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnManager: {fileID: 1991538111}
   titleFilter: {fileID: 1330183105}
   title: {fileID: 723740914}
   character: {fileID: 1199078785}
@@ -44694,7 +44695,7 @@ MonoBehaviour:
   playTouchSound: 1
   objectName: "\uBB34\uC801 \uBC30\uD130\uB9AC"
   description: "\uBB34\uC801 \uC0C1\uD0DC\uAC00 \uB418\uC5B4 \uBC29\uD574\uBB3C\uB4E4\uC744
-    \uD30C\uAD34\uD558\uACE0 \uD050\uBE0C\uB97C \uC5BB\uC73C\uC138"
+    \uD30C\uAD34\uD558\uACE0 \uD050\uBE0C\uB97C \uC5BB\uC73C\uC138\uC694."
   cubePrice: 5000
   goldenCubePrice: 50
 --- !u!1 &1768431852
@@ -45964,7 +45965,7 @@ GameObject:
   - 4: {fileID: 1801634118}
   - 33: {fileID: 1801634122}
   - 114: {fileID: 1801634119}
-  - 64: {fileID: 1801634120}
+  - 65: {fileID: 1801634121}
   m_Layer: 5
   m_Name: TouchRayCastCollider
   m_TagString: Ground
@@ -46002,8 +46003,8 @@ MonoBehaviour:
   spawnManager: {fileID: 1991538111}
   menus: {fileID: 1082642569}
   pause: {fileID: 1567307131}
---- !u!64 &1801634120
-MeshCollider:
+--- !u!65 &1801634121
+BoxCollider:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
@@ -46012,8 +46013,8 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Convex: 0
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &1801634122
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -52978,7 +52979,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playTouchSound: 1
   objectName: "\uBB34\uC9C0\uAC1C \uB3C4\uB11B"
-  description: "\uC3D8 \uB4E4\uC5B4\uAC00 \uBB34\uC9C0\uAC1C \uAE38\uC744 \uB530\uB77C
+  description: "\uC3D9 \uB4E4\uC5B4\uAC00 \uBB34\uC9C0\uAC1C \uAE38\uC744 \uB530\uB77C
     \uB5A0\uB098\uC694"
   cubePrice: 10000
   goldenCubePrice: 100
@@ -54320,13 +54321,14 @@ GameObject:
   - 114: {fileID: 1991538112}
   - 114: {fileID: 1991538113}
   - 114: {fileID: 1991538105}
+  - 114: {fileID: 1991538114}
   m_Layer: 9
   m_Name: Field Objects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1991538104
 Transform:
   m_ObjectHideFlags: 0
@@ -54345,7 +54347,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1991538103}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 252e406bfcfe041a39a073c8ee7e45f8, type: 3}
   m_Name: 
@@ -54379,7 +54381,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1991538103}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0505b83e2366e4c30bf4b87b9ac88aa0, type: 3}
   m_Name: 
@@ -54399,7 +54401,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1991538103}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a67c4dbdff88749fdb99622d14e4f2dc, type: 3}
   m_Name: 
@@ -54429,7 +54431,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1991538103}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f3d3774ac507d4255b324f7cde875a00, type: 3}
   m_Name: 
@@ -54450,7 +54452,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1991538103}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e5edcb4094aa64a1cb46c7914f086d22, type: 3}
   m_Name: 
@@ -54484,7 +54486,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1991538103}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 81cf703db72ac430e98bc24b14730d6a, type: 3}
   m_Name: 
@@ -54554,7 +54556,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1991538103}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3d1c54e7a71bf4fc6be5112606b0eced, type: 3}
   m_Name: 
@@ -54564,6 +54566,19 @@ MonoBehaviour:
   tumble: 3
   minSpawnInterval: 10
   maxSpawnInterval: 20
+--- !u!114 &1991538114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1991538103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85bd37e8eaf3c4f02a3d2a0f1a640b6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 91418582}
+  copyRotation: 0
 --- !u!1 &1997391145
 GameObject:
   m_ObjectHideFlags: 0

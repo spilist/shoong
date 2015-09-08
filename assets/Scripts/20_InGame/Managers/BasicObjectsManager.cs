@@ -17,18 +17,25 @@ public class BasicObjectsManager : ObjectsManager {
 
   public float strength_obstacle = 2;
 
+  private bool respawn = false;
+
   override public void run() {
     spawnManager.spawnRandom(parts, max_parts);
     spawnManager.spawnRandom(obstacles_big, max_obstacles);
+    foreach (Transform tr in transform) {
+      tr.gameObject.SetActive(false);
+    }
   }
 
   void Update() {
-    if (GameObject.FindGameObjectsWithTag("Part").Length < max_parts) {
-      spawnManager.spawnRandom(parts, 1);
-    }
+    if (respawn) {
+      if (GameObject.FindGameObjectsWithTag("Part").Length < max_parts) {
+        spawnManager.spawnRandom(parts, 1);
+      }
 
-    if (GameObject.FindGameObjectsWithTag("Obstacle_big").Length < max_obstacles) {
-      spawnManager.spawnRandom(obstacles_big, 1);
+      if (GameObject.FindGameObjectsWithTag("Obstacle_big").Length < max_obstacles) {
+        spawnManager.spawnRandom(obstacles_big, 1);
+      }
     }
   }
 
@@ -48,5 +55,9 @@ public class BasicObjectsManager : ObjectsManager {
     else if (objTag == "Obstacle_big") tumble = tumble_obstacles;
 
     return tumble;
+  }
+
+  public void startRespawn() {
+    respawn = true;
   }
 }

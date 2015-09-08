@@ -15,10 +15,12 @@ public class PauseButton : MenusBehavior {
   void Start() {
     pausedImage = pauseStatus.transform.Find("PausedImage").gameObject;
     resumingText = pauseStatus.transform.Find("ResumingText").GetComponent<Text>();
+    playTouchSound = false;
   }
 
   override public void activateSelf() {
-    if (resuming) return;
+    if (!gameObject.activeSelf || resuming || scoreManager.isGameOver()) return;
+
     paused = true;
     Time.timeScale = 0;
     pauseFilter.SetActive(true);
@@ -59,7 +61,7 @@ public class PauseButton : MenusBehavior {
   }
 
   void OnApplicationPause() {
-    if (gameObject.activeSelf && !scoreManager.isGameOver()) activateSelf();
+    activateSelf();
   }
 }
 

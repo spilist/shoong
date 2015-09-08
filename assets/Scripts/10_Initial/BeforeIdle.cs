@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class BeforeIdle : MonoBehaviour {
+  public SpawnManager spawnManager;
   public MeshRenderer titleFilter;
   public GameObject title;
 
@@ -54,6 +55,8 @@ public class BeforeIdle : MonoBehaviour {
     changeCharacter(PlayerPrefs.GetString("SelectedCharacter"));
 
     tips.text = tips.transform.GetChild(PlayerPrefs.GetInt("LastTipIndex")).GetComponent<Tip>().description;
+
+    spawnManager.preload();
   }
 
   void Update() {

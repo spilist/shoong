@@ -33,7 +33,6 @@ public class ObjectsMover : MonoBehaviour {
     tumble = getTumble();
     direction = getDirection();
 
-
     rb = GetComponent<Rigidbody>();
     rb.angularVelocity = Random.onUnitSphere * tumble;
     rb.velocity = direction * speed;
