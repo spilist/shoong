@@ -18,9 +18,9 @@ public class ObjectUnselectButton : MenusBehavior {
   }
 
   override public void activateSelf() {
-    string selectedObjString = PlayerPrefs.GetString(category);
+    string selectedObjString = DataManager.dm.getString(category);
     selectedObjString = selectedObjString.Replace(objName, "").Trim();
-    PlayerPrefs.SetString(category, selectedObjString);
+    DataManager.dm.setString(category, selectedObjString);
     selectedObj.setActive(false);
   }
 }

@@ -136,7 +136,8 @@ public class ScoreManager : MonoBehaviour {
 
   void OnDisable() {
     if (menus.gameStarted()) {
-      DataManager.dm.save();
+      save();
     }
+    DataManager.dm.save();
   }
 }

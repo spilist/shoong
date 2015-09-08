@@ -54,7 +54,7 @@ public class BeforeIdle : MonoBehaviour {
 
     changeCharacter(PlayerPrefs.GetString("SelectedCharacter"));
 
-    tips.text = tips.transform.GetChild(PlayerPrefs.GetInt("LastTipIndex")).GetComponent<Tip>().description;
+    tips.text = tips.transform.GetChild(DataManager.dm.getInt("LastTipIndex")).GetComponent<Tip>().description;
 
     spawnManager.preload();
   }
@@ -168,7 +168,7 @@ public class BeforeIdle : MonoBehaviour {
 
     Tip selected = availableTips[Random.Range(0, availableTipsCount)];
     tips.text = selected.description;
-    PlayerPrefs.SetInt("LastTipIndex", int.Parse(selected.name));
+    DataManager.dm.setInt("LastTipIndex", int.Parse(selected.name));
   }
 
   void changeCharacter(string characterName) {

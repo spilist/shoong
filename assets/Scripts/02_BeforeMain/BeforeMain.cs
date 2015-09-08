@@ -51,7 +51,7 @@ public class BeforeMain : MonoBehaviour {
 
     Tip selected = availableTips[Random.Range(0, availableTipsCount)];
     tips.text = selected.description;
-    PlayerPrefs.SetInt("LastTipIndex", int.Parse(selected.name));
+    DataManager.dm.setInt("LastTipIndex", int.Parse(selected.name));
 	}
 
 	void Update () {

@@ -18,7 +18,7 @@ public class Quest : MonoBehaviour {
 
     if (conditionNotRequired) return true;
 
-    string activeObjects = PlayerPrefs.GetString("MainObjects").Trim() + " " + PlayerPrefs.GetString("SubObjects").Trim();
+    string activeObjects = DataManager.dm.getString("MainObjects").Trim() + " " + DataManager.dm.getString("SubObjects").Trim();
 
     if (activeObjects == "") return false;
 

@@ -49,7 +49,7 @@ public class DataManager : MonoBehaviour {
         data = (SaveData)bf.Deserialize(file);
       } catch {
         Debug.LogWarning("Couldn't deserialize dataFile. Creating new.");
-        reset();
+        return false;
       }
       file.Close();
 
@@ -151,7 +151,7 @@ public class DataManager : MonoBehaviour {
       return dict;
     }
 
-    string[] tokens = s.Split(new char[] { ':', ',' }, StringSplitOptions.RemoveEmptyEntries);
+    string[] tokens = s.Split(new char[] { '=', ',' }, StringSplitOptions.RemoveEmptyEntries);
 
     for (int i = 0; i < tokens.Length; i += 2) {
       dict.Add(tokens[i], int.Parse(tokens[i + 1]));
@@ -168,7 +168,7 @@ public class DataManager : MonoBehaviour {
       return dict;
     }
 
-    string[] tokens = s.Split(new char[] { ':', ',' }, StringSplitOptions.RemoveEmptyEntries);
+    string[] tokens = s.Split(new char[] { '=', ',' }, StringSplitOptions.RemoveEmptyEntries);
 
     for (int i = 0; i < tokens.Length; i += 2) {
       dict.Add(tokens[i], float.Parse(tokens[i + 1]));
@@ -185,7 +185,7 @@ public class DataManager : MonoBehaviour {
       return dict;
     }
 
-    string[] tokens = s.Split(new char[] { ':', ',' }, StringSplitOptions.RemoveEmptyEntries);
+    string[] tokens = s.Split(new char[] { '=', ',' }, StringSplitOptions.RemoveEmptyEntries);
 
     for (int i = 0; i < tokens.Length; i += 2) {
       dict.Add(tokens[i], bool.Parse(tokens[i + 1]));
@@ -202,7 +202,7 @@ public class DataManager : MonoBehaviour {
          return dict;
      }
 
-     string[] tokens = s.Split(new char[] { ':', ',' }, StringSplitOptions.RemoveEmptyEntries);
+     string[] tokens = s.Split(new char[] { '=', ',' }, StringSplitOptions.RemoveEmptyEntries);
 
      for (int i = 0; i < tokens.Length; i += 2) {
          dict.Add(tokens[i], tokens[i + 1]);
@@ -219,11 +219,12 @@ public class DataManager : MonoBehaviour {
       return dict;
     }
 
-    string[] tokens = s.Split(new char[] { ':', ',' }, StringSplitOptions.RemoveEmptyEntries);
+    string[] tokens = s.Split(new char[] { '=', ',' }, StringSplitOptions.RemoveEmptyEntries);
 
     for (int i = 0; i < tokens.Length; i += 2) {
       dict.Add(tokens[i], DateTime.Parse(tokens[i + 1]));
     }
+
 
     return dict;
   }
@@ -231,7 +232,7 @@ public class DataManager : MonoBehaviour {
   private string intDictToString(Dictionary<string, int> d) {
     string result = "";
     foreach (KeyValuePair<string, int> pair in d) {
-      result += pair.Key + ":" + pair.Value + ",";
+      result += pair.Key + "=" + pair.Value + ",";
     }
     result = result.TrimEnd(',');
 
@@ -241,7 +242,7 @@ public class DataManager : MonoBehaviour {
   private string floatDictToString(Dictionary<string, float> d) {
     string result = "";
     foreach (KeyValuePair<string, float> pair in d) {
-      result += pair.Key + ":" + pair.Value + ",";
+      result += pair.Key + "=" + pair.Value + ",";
     }
     result = result.TrimEnd(',');
 
@@ -251,7 +252,7 @@ public class DataManager : MonoBehaviour {
   private string boolDictToString(Dictionary<string, bool> d) {
     string result = "";
     foreach (KeyValuePair<string, bool> pair in d) {
-      result += pair.Key + ":" + pair.Value + ",";
+      result += pair.Key + "=" + pair.Value + ",";
     }
     result = result.TrimEnd(',');
 
@@ -261,7 +262,7 @@ public class DataManager : MonoBehaviour {
   private string dateTimeDictToString(Dictionary<string, DateTime> d) {
     string result = "";
     foreach (KeyValuePair<string, DateTime> pair in d) {
-      result += pair.Key + ":" + pair.Value + ",";
+      result += pair.Key + "=" + pair.Value + ",";
     }
     result = result.TrimEnd(',');
 
@@ -271,7 +272,7 @@ public class DataManager : MonoBehaviour {
   private string stringDictToString(Dictionary<string, string> d) {
     string result = "";
     foreach (KeyValuePair<string, string> pair in d) {
-      result += pair.Key + ":" + pair.Value + ",";
+      result += pair.Key + "=" + pair.Value + ",";
     }
     result = result.TrimEnd(',');
 

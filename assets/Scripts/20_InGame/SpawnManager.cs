@@ -32,7 +32,7 @@ public class SpawnManager : MonoBehaviour {
     // }
 
     // spawn selected objects
-    string mainObjectsString = PlayerPrefs.GetString("MainObjects").Trim();
+    string mainObjectsString = DataManager.dm.getString("MainObjects").Trim();
     if (mainObjectsString != "") {
       string[] mainObjects = mainObjectsString.Split(' ');
       foreach (string mainObject in mainObjects) {
@@ -40,7 +40,7 @@ public class SpawnManager : MonoBehaviour {
       }
     }
 
-    string subObjectsString = PlayerPrefs.GetString("SubObjects").Trim();
+    string subObjectsString = DataManager.dm.getString("SubObjects").Trim();
     if (subObjectsString != "") {
       string[] subObjects = subObjectsString.Split(' ');
       foreach (string subObject in subObjects) {
