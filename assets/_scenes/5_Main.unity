@@ -5202,7 +5202,7 @@ RectTransform:
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 168, y: 168}
+  m_SizeDelta: {x: 165, y: 165}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &137094808
 MonoBehaviour:
@@ -7934,7 +7934,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: .319999993
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Priority: 128
   DopplerLevel: 0
@@ -8040,7 +8040,7 @@ MonoBehaviour:
   countByTime: 0
   doNotShow: 0
   tutorial: 1
-  description: "\uBE14\uB799\uD640 \uD0C8\uCD9C \uD6A8\uACFC\uB85C \uBD80\uD488 \uBA39"
+  description: "\uBE14\uB799\uD640 \uD0C8\uCD9C \uD6A8\uACFC\uB85C \uBD80\uD488 \uD68D\uB4DD"
   numbersToComplete: 10
   goldenCubesWhenComplete: 1
 --- !u!1001 &201173112
@@ -8279,7 +8279,7 @@ MonoBehaviour:
   tutorial: 0
   description: "\uAC04\uBC1C\uC758 \uCC28\uB85C \uC720\uC131 \uD53C\uD558\uAE30"
   numbersToComplete: 3
-  goldenCubesWhenComplete: 2
+  goldenCubesWhenComplete: 3
 --- !u!1 &216904544
 GameObject:
   m_ObjectHideFlags: 0
@@ -11460,7 +11460,7 @@ MonoBehaviour:
   countByTime: 0
   doNotShow: 0
   tutorial: 0
-  description: "\uBB34\uC9C0\uAC1C\uAE38 \uD0C0\uACE0 \uBD80\uD488\uBA39\uAE30"
+  description: "\uBB34\uC9C0\uAC1C\uAE38 \uD0C0\uACE0 \uBD80\uD488 \uD68D\uB4DD"
   numbersToComplete: 10
   goldenCubesWhenComplete: 2
 --- !u!1 &459535540
@@ -14807,7 +14807,7 @@ MonoBehaviour:
   countByTime: 0
   doNotShow: 0
   tutorial: 0
-  description: "\uC6B4\uC11D \uC606 \uBD80\uD488 \uBA39\uAE30"
+  description: "\uC6B4\uC11D\uC5D0 \uADFC\uC811\uD55C \uBD80\uD488 \uD68D\uB4DD"
   numbersToComplete: 10
   goldenCubesWhenComplete: 2
 --- !u!1 &562534125
@@ -22237,7 +22237,7 @@ MonoBehaviour:
   countByTime: 0
   doNotShow: 0
   tutorial: 0
-  description: "\uBAAC\uC2A4\uD130 \uD0D1\uC2B9\uD558\uAE30"
+  description: "\uBAAC\uC2A4\uD130 \uD0D1\uC2B9"
   numbersToComplete: 1
   goldenCubesWhenComplete: 1
 --- !u!1 &784850296
@@ -24404,8 +24404,8 @@ MonoBehaviour:
   doNotShow: 0
   tutorial: 0
   description: "\uBAAC\uC2A4\uD130 \uD30C\uAD34"
-  numbersToComplete: 3
-  goldenCubesWhenComplete: 3
+  numbersToComplete: 1
+  goldenCubesWhenComplete: 1
 --- !u!1 &868146740
 GameObject:
   m_ObjectHideFlags: 0
@@ -24721,8 +24721,8 @@ MonoBehaviour:
   doNotShow: 0
   tutorial: 0
   description: "\uD050\uBE0C \uD0F1\uD0F1\uBCFC \uC644\uB8CC"
-  numbersToComplete: 3
-  goldenCubesWhenComplete: 2
+  numbersToComplete: 1
+  goldenCubesWhenComplete: 1
 --- !u!1 &892369437
 GameObject:
   m_ObjectHideFlags: 0
@@ -30392,7 +30392,7 @@ MonoBehaviour:
   tutorial: 1
   description: "\uBAAC\uC2A4\uD130\uC5D0 \uD0C0\uC11C \uC6B4\uC11D \uD30C\uAD34"
   numbersToComplete: 1
-  goldenCubesWhenComplete: 1
+  goldenCubesWhenComplete: 2
 --- !u!1 &1204889870
 GameObject:
   m_ObjectHideFlags: 0
@@ -30444,7 +30444,7 @@ MonoBehaviour:
   countByTime: 0
   doNotShow: 0
   tutorial: 0
-  description: "\uBE14\uB799\uD640\uC5D0 \uD295\uAE30\uAE30"
+  description: "\uBB34\uC801 \uC0C1\uD0DC\uB85C \uBE14\uB799\uD640 \uB4E4\uC5B4\uAC00\uAE30"
   numbersToComplete: 1
   goldenCubesWhenComplete: 2
 --- !u!1 &1211019733
@@ -38928,7 +38928,7 @@ MonoBehaviour:
   tutorial: 0
   description: "\uBE14\uB799\uD640 \uD6A8\uACFC\uB85C \uBAAC\uC2A4\uD130 \uD0D1\uC2B9"
   numbersToComplete: 1
-  goldenCubesWhenComplete: 2
+  goldenCubesWhenComplete: 3
 --- !u!1 &1479683095
 GameObject:
   m_ObjectHideFlags: 0
@@ -44096,7 +44096,7 @@ MonoBehaviour:
   tutorial: 1
   description: "\uBB34\uC9C0\uAC1C\uAE38 \uD0C0\uACE0 \uC6B4\uC11D \uD30C\uAD34"
   numbersToComplete: 1
-  goldenCubesWhenComplete: 1
+  goldenCubesWhenComplete: 2
 --- !u!1 &1666786691
 GameObject:
   m_ObjectHideFlags: 0
@@ -56430,7 +56430,7 @@ RectTransform:
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 168, y: 168}
+  m_SizeDelta: {x: 165, y: 165}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &2093992732
 MonoBehaviour:
