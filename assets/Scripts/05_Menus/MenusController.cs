@@ -71,6 +71,14 @@ public class MenusController : MonoBehaviour {
     return menuOn;
   }
 
+  public GameObject currentMenu() {
+    return currentlyOn;
+  }
+
+  public void setCurrentMenu(GameObject newCurrent) {
+    currentlyOn = newCurrent;
+  }
+
   public bool isDraggable() {
     return currentlyOn.GetComponent<Draggable>() != null;
   }
@@ -94,5 +102,9 @@ public class MenusController : MonoBehaviour {
 
   public bool gameStarted() {
     return !notYetStarted;
+  }
+
+  public void changeBtwInsideMenu(GameObject outer, GameObject inner) {
+
   }
 }

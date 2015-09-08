@@ -4,6 +4,7 @@ using System.Collections;
 
 public class ScoreUpdate : MonoBehaviour {
   public ScoreManager scoreManager;
+  public BackButton back;
 
   public Text totalCubes;
   public Text cubes;
@@ -43,7 +44,7 @@ public class ScoreUpdate : MonoBehaviour {
   private float distance;
   private bool goleCubeSoundPlayed = false;
 
-  void OnEnable() {
+  void Start() {
     cubeDifference = cubesCount.getCount();
 
     totalNum = DataManager.dm.getInt("CubeTotal");
@@ -88,6 +89,7 @@ public class ScoreUpdate : MonoBehaviour {
     }
 
     updateStatus++;
+    GetComponent<AudioSource>().Play();
   }
 
   void Update() {

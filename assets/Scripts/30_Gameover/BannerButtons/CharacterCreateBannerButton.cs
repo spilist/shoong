@@ -3,12 +3,20 @@ using System.Collections;
 
 public class CharacterCreateBannerButton : BannerButton {
   public CharacterCreateMenu createMenu;
+  public GameObject menusOverlay;
 
   override public void activateSelf() {
-    Debug.Log("character create menu show");
+    menusOverlay.SetActive(true);
+    back.useBannerMenu(this, gameOverUI, createMenu.gameObject);
   }
 
   override public bool available() {
     return DataManager.dm.getInt("CubeNow") >= createMenu.price();
+  }
+
+  override public void goBack() {
+    menusOverlay.SetActive(false);
+
+    if (!available()) transform.parent.parent.gameObject.SetActive(false);
   }
 }

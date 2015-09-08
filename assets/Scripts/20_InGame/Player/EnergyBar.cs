@@ -12,12 +12,10 @@ public class EnergyBar : MonoBehaviour {
   private bool isChanging = false;
   private bool isChangingRest = false;
   private bool gameStarted = false;
-  private bool charging = false;
-  private bool charged = false;
+  private bool charged = true;
   private float chargedCount = 0;
 
   public float chargedDuration = 2.5f;
-  public float chargingDuration = 0.5f;
   public float autoDecreaseRate = 0.05f;
   public int getAmountbyParts = 10;
   public float getRate = 2f;
@@ -36,22 +34,16 @@ public class EnergyBar : MonoBehaviour {
 
     color_healthy = image.color;
     color_danger = new Color(1, 0, 0, color_healthy.a);
-	}
+  }
 
-	void Update () {
+  void Update () {
     if (gameStarted) {
-      if (charging) {
-        image.fillAmount = Mathf.MoveTowards(image.fillAmount, 1, Time.deltaTime / chargingDuration);
-        if (image.fillAmount == 1) {
-          charging = false;
-          charged = true;
-          chargedCount = 0;
-          player.chargedEffect.Play();
-          player.chargedEffect.GetComponent<AudioSource>().Play();
-        }
-      } else if (charged) {
+      if (charged) {
         if (chargedCount < chargedDuration) chargedCount += Time.deltaTime;
-        else charged = false;
+        else {
+          chargedCount = 0;
+          charged = false;
+        }
       } else {
         if (isChanging) {
           change();
@@ -109,7 +101,8 @@ public class EnergyBar : MonoBehaviour {
 
   public void startGame() {
     gameStarted = true;
-    charging = true;
+    player.chargedEffect.Play();
+    player.chargedEffect.GetComponent<AudioSource>().Play();
   }
 
   void changeHealth (int amount, float rate) {
@@ -146,7 +139,7 @@ public class EnergyBar : MonoBehaviour {
   }
 
   public void loseByShoot() {
-    if (charged || charging) return;
+    if (charged) return;
     changeHealth(shootAmount, loseRate);
   }
 

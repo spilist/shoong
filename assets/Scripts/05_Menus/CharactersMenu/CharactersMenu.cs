@@ -40,6 +40,8 @@ public class CharactersMenu : Draggable {
 
     Vector3 prevSelected = transform.Find("Characters/" + PlayerPrefs.GetString("SelectedCharacter")).transform.localPosition;
     transform.Find("Characters").transform.localPosition = new Vector3(prevSelected.x, 55, 0);
+
+    GetComponent<RectTransform>().sizeDelta = transform.parent.GetComponent<RectTransform>().sizeDelta;
   }
 
   public bool isJustOpened() {
