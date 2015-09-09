@@ -16,4 +16,14 @@ public class ComboPartMover : ObjectsMover {
   override public string getManager() {
     return "ComboPartsManager";
   }
+
+  override public void encounterPlayer() {
+    cpm.eatenByPlayer();
+    player.getComboParts.Play();
+    player.getComboParts.GetComponent<AudioSource>().Play ();
+  }
+
+  override public int cubesWhenEncounter() {
+    return cpm.getComboCount() * cpm.comboBonusScale;
+  }
 }

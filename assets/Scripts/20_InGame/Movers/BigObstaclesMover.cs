@@ -3,9 +3,11 @@ using System.Collections;
 
 public class BigObstaclesMover : ObjectsMover {
   private bool isNearPlayer = false;
+  private SpecialPartsManager spm;
 
   protected override void initializeRest() {
     canBeMagnetized = false;
+    spm = objectsManager.GetComponent<SpecialPartsManager>();
   }
 
   protected override float strength() {
@@ -51,6 +53,7 @@ public class BigObstaclesMover : ObjectsMover {
   }
 
   override public int cubesWhenEncounter() {
-    return ((BasicObjectsManager)objectsManager).cubesByBigObstacle;
+    int cubes = ((BasicObjectsManager)objectsManager).cubesByBigObstacle;
+    return player.isUnstoppable()? (int) (cubes * spm.bonus) : cubes;
   }
 }

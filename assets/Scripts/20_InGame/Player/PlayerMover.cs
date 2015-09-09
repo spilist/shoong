@@ -21,7 +21,6 @@ public class PlayerMover : MonoBehaviour {
   public ComboPartsManager cpm;
   public MonsterManager monm;
   public RainbowDonutsManager rdm;
-  public SpecialPartsManager spm;
 
   public BlackholeManager blm;
   private GameObject blackhole;
@@ -137,38 +136,6 @@ public class PlayerMover : MonoBehaviour {
     }
 
     int cubes = mover.cubesWhenEncounter();
-
-    if (unstoppable && (mover.tag == "Obstacle" || mover.tag == "Obstacle_big" || mover.tag == "Monster")) {
-      cubes = (int)(cubes * spm.bonus);
-    }
-
-    if (mover.tag == "Part") {
-			GetComponent<AudioSource>().Play ();
-      if (nearAsteroidCounter > 0) {
-        QuestManager.qm.addCountToQuest("GetPartsNearAsteroid");
-      }
-
-      if (isUsingRainbow()) {
-        QuestManager.qm.addCountToQuest("GetPartsOnRainbow");
-      }
-    }
-
-		if (mover.tag == "SpecialPart") {
-      getSpecialEnergyEffect.Play();
-      startUnstoppable();
-		}
-
-    if (mover.tag == "ComboPart") {
-      cpm.eatenByPlayer();
-			getComboParts.Play();
-			getComboParts.GetComponent<AudioSource>().Play ();
-      cubes = cpm.getComboCount() * cpm.comboBonusScale;
-    }
-
-    if (mover.tag == "RainbowDonut") {
-      rainbowPosition = mover.transform.position;
-      cubes = rdm.cubesPerRide;
-    }
 
     goodPartsEncounter(mover, cubes, mover.tag == "RainbowDonut");
 	}
@@ -438,8 +405,8 @@ public class PlayerMover : MonoBehaviour {
   }
 
   public void setRotateByRainbow(bool val) {
-    if (val) GetComponent<Rigidbody>().isKinematic = true;
-    else GetComponent<Rigidbody>().isKinematic = false;
+    rainbowPosition = rdm.rainbowDonut.transform.position;
+    GetComponent<Rigidbody>().isKinematic = val;
     isRotatingByRainbow = val;
   }
 
@@ -467,5 +434,9 @@ public class PlayerMover : MonoBehaviour {
   public void nearAsteroid(bool enter = true) {
     if (enter) nearAsteroidCounter++;
     else nearAsteroidCounter--;
+  }
+
+  public bool isNearAsteroid() {
+    return nearAsteroidCounter > 0;
   }
 }

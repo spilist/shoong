@@ -100,8 +100,12 @@ public class ObjectsMover : MonoBehaviour {
   }
 
   virtual public void encounterPlayer() {
-    if (tag == "Part" && isMagnetized) {
-      QuestManager.qm.addCountToQuest("Blackhole");
+    if (tag == "Part") {
+      player.GetComponent<AudioSource>().Play ();
+
+      if (isMagnetized) QuestManager.qm.addCountToQuest("Blackhole");
+      if (player.isUsingRainbow()) QuestManager.qm.addCountToQuest("GetPartsOnRainbow");
+      if (player.isNearAsteroid()) QuestManager.qm.addCountToQuest("GetPartsNearAsteroid");
     }
     Destroy(gameObject);
   }

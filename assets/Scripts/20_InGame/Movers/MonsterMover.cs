@@ -8,6 +8,7 @@ public class MonsterMover : ObjectsMover {
   private float speed_weaken;
 
   private MonsterManager monm;
+  private SpecialPartsManager spm;
 
   private float originalScale;
   private bool weak = false;
@@ -19,6 +20,8 @@ public class MonsterMover : ObjectsMover {
 
   protected override void initializeRest() {
     monm = GameObject.Find("Field Objects").GetComponent<MonsterManager>();
+    spm = monm.GetComponent<SpecialPartsManager>();
+
     originalScale = shrinkedScale;
     speed_chase = monm.speed_chase;
     speed_runaway = monm.speed_runaway;
@@ -137,7 +140,7 @@ public class MonsterMover : ObjectsMover {
   }
 
   override public int cubesWhenEncounter() {
-    return monm.cubesWhenDestroy;
+    return player.isUnstoppable()? (int) (monm.cubesWhenDestroy * spm.bonus) : monm.cubesWhenDestroy;
   }
 
   public bool rideable() {

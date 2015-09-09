@@ -3,10 +3,13 @@ using System.Collections;
 
 public class ObstaclesMover : ObjectsMover {
   ObstaclesManager obm;
+  SpecialPartsManager spm;
   private bool avoiding = false;
 
   protected override void initializeRest() {
     obm = GameObject.Find("Field Objects").GetComponent<ObstaclesManager>();
+    spm = obm.GetComponent<SpecialPartsManager>();
+
     canBeMagnetized = false;
   }
 
@@ -63,6 +66,6 @@ public class ObstaclesMover : ObjectsMover {
   }
 
   override public int cubesWhenEncounter() {
-    return obm.cubesWhenEncounter;
+    return player.isUnstoppable()? (int) (obm.cubesWhenEncounter * spm.bonus) : obm.cubesWhenEncounter;
   }
 }

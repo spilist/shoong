@@ -20,7 +20,7 @@ public class RainbowDonutsManager : ObjectsManager {
   public Color[] rainbowColors;
 
   private int rideCount = 0;
-  private GameObject rainbowDonut;
+  public GameObject rainbowDonut;
   private bool drawingRainbowRoad = false;
   private bool erasingRainbowRoad = false;
   private LineRenderer rainbowRoad;

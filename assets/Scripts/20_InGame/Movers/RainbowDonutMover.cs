@@ -37,4 +37,8 @@ public class RainbowDonutMover : ObjectsMover {
       transform.Rotate(-Vector3.forward * Time.deltaTime * rdm.rotateAngularSpeed, Space.World);
     }
   }
+
+  override public int cubesWhenEncounter() {
+    return rdm.cubesPerRide;
+  }
 }

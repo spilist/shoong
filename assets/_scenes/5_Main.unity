@@ -2183,15 +2183,13 @@ MonoBehaviour:
   scoreManager: {fileID: 1422286122}
   obstacleDestroy: {fileID: 190966, guid: 06a9d910a6ef7477eb37b2d7cddcfa88, type: 2}
   getBlackhole: {fileID: 851953042}
-  cubesWhenDestroyBigObstacle: 15
-  cubesWhenDestroySmallObstacle: 30
-  cubesWhenDestroyMonster: 100
   cubesAsItIsUntill: 20
   restCubesChangePer: 5
   tumble: 4
   cpm: {fileID: 1991538106}
   monm: {fileID: 1991538109}
   rdm: {fileID: 1991538105}
+  spm: {fileID: 1991538113}
   blm: {fileID: 1991538108}
   playerParticlesParent: {fileID: 678200079}
   booster: {fileID: 131396333}
@@ -54337,6 +54335,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obstacles:
   - {fileID: 195472, guid: cfdf45a8ca588407d84475bccdb83b45, type: 2}
+  cubesWhenEncounter: 30
   strength: 1
   speed: 320
   tumble: 10
@@ -54389,6 +54388,7 @@ MonoBehaviour:
   strength: 3
   monster: {fileID: 187024, guid: b82e156aa96e74e6ab2dfef6ffcc7bcf, type: 2}
   hiddenMonster: {fileID: 0}
+  cubesWhenDestroy: 100
   speed_chase: 75
   speed_runaway: 60
   speed_weaken: 20
@@ -54482,6 +54482,7 @@ MonoBehaviour:
   tumble_parts: 1
   tumble_obstacles: .5
   strength_obstacle: 2
+  cubesByBigObstacle: 15
 --- !u!114 &1991538113
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -13,6 +13,8 @@ public class SpecialPartMover : ObjectsMover {
   }
 
   override public void encounterPlayer() {
+    player.getSpecialEnergyEffect.Play();
+    player.startUnstoppable();
     Destroy(gameObject);
   }
 
