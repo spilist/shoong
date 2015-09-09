@@ -19112,14 +19112,14 @@ RectTransform:
   m_GameObject: {fileID: 723740914}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -32}
-  m_LocalScale: {x: .5, y: .5, z: 1}
+  m_LocalScale: {x: .349999994, y: .349999994, z: 1}
   m_Children: []
   m_Father: {fileID: 1366368660}
   m_RootOrder: 1
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: 135.100006}
-  m_SizeDelta: {x: 863, y: 254}
+  m_SizeDelta: {x: 1403, y: 559}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &723740916
 MonoBehaviour:
@@ -19134,7 +19134,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Sprite: {fileID: 21300000, guid: eb4f75a9086144e9c9027b0fc3a44fd6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bcff4d996d4bc4bdb9786d56adc7f8cd, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -30050,7 +30050,7 @@ RectTransform:
   m_RootOrder: 2
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -70}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: .5, y: .5}
 --- !u!33 &1199078787
@@ -30328,6 +30328,7 @@ MonoBehaviour:
   unselectButton: {fileID: 620051370}
   buyButtonByCube: {fileID: 1488355724}
   buyButtonByGoldencube: {fileID: 1174462705}
+  objLevel: {fileID: 2137997658}
 --- !u!1 &1220998263
 GameObject:
   m_ObjectHideFlags: 0
