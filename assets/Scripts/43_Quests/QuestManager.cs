@@ -24,6 +24,7 @@ public class QuestManager : MonoBehaviour {
   private Transform questsList;
   private Transform objectTutorials;
   private Transform onGoingQuests;
+  private OnGoingQuest ogq;
 
 	void Start() {
     if (qm == null) {
@@ -71,9 +72,9 @@ public class QuestManager : MonoBehaviour {
   }
 
   public void startQuest(Quest quest, int currentCount = 0) {
-    GameObject onGoingQuest = Instantiate(onGoingQuestPrefab);
-    onGoingQuest.transform.SetParent(onGoingQuests, false);
-    onGoingQuest.GetComponent<OnGoingQuest>().startQuest(quest, currentCount);
+    ogq = ((GameObject)Instantiate(onGoingQuestPrefab)).GetComponent<OnGoingQuest>();
+    ogq.transform.SetParent(onGoingQuests, false);
+    ogq.startQuest(quest, currentCount);
   }
 
   public void startQuestWithName(string questName, int currentCount = 0) {
@@ -81,28 +82,18 @@ public class QuestManager : MonoBehaviour {
   }
 
   public void addCountToQuest(string questName, int howMany = 1) {
-    OnGoingQuest ogq = onGoingQuests.GetChild(0).GetComponent<OnGoingQuest>();
     if (ogq.name() == questName) ogq.addCount(howMany);
   }
 
   public void checkQuestComplete() {
-    foreach (Transform tr in onGoingQuests) {
-      OnGoingQuest ogq = tr.GetComponent<OnGoingQuest>();
-      questResult = ogq.result();
-      if (questResult == "Failed") questReward = 0;
-      else if (questResult == "Complete") questReward = ogq.reward();
-      else if (questResult == "FirstQuestComplete") questReward = firstQuestReward;
-    }
+    questResult = ogq.result();
+    if (questResult == "Failed") questReward = 0;
+    else if (questResult == "Complete") questReward = ogq.reward();
+    else if (questResult == "FirstQuestComplete") questReward = firstQuestReward;
   }
 
   public bool doingQuest(string questName) {
-    foreach (Transform tr in onGoingQuests) {
-      OnGoingQuest ogq = tr.GetComponent<OnGoingQuest>();
-      if (ogq.name() == questName) {
-        return true;
-      }
-    }
-    return false;
+    return ogq.name() == questName;
   }
 
   public void hideOnGoingQuests() {

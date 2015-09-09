@@ -16,6 +16,7 @@ public class BasicObjectsManager : ObjectsManager {
   public float tumble_obstacles = 0.5f;
 
   public float strength_obstacle = 2;
+  public int cubesByBigObstacle = 15;
 
   private bool respawn = false;
 

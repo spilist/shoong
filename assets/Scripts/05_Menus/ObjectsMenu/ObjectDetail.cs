@@ -36,7 +36,13 @@ public class ObjectDetail : MonoBehaviour {
   }
 
   public void checkBought(UIObjects obj) {
-    if (DataManager.dm.getBool(selected.name)) {
+    int level = DataManager.dm.getInt(selected.name + "Level");
+
+    if (level == 0) {
+      rotate = false;
+      selectButton.SetActive(false);
+      unselectButton.SetActive(false);
+    } else {
       rotate = true;
       SmallObjects smallObject = obj.transform.parent.Find("Object").GetComponent<SmallObjects>();
       smallObject.checkBought();
@@ -44,21 +50,25 @@ public class ObjectDetail : MonoBehaviour {
       selected.GetComponent<Renderer>().sharedMaterial = smallObject.activeMaterial;
 
       selected.transform.Find("Effect").gameObject.SetActive(true);
+
+      selectButton.SetActive(true);
+      unselectButton.SetActive(true);
+
       if (obj.isActive()) {
         selectButton.SetActive(false);
         unselectButton.GetComponent<ObjectUnselectButton>().setObject(obj);
-        buyButtonByCube.SetActive(false);
-        buyButtonByGoldencube.SetActive(false);
       } else {
         selectButton.GetComponent<ObjectSelectButton>().setObject(obj);
         unselectButton.SetActive(false);
-        buyButtonByCube.SetActive(false);
-        buyButtonByGoldencube.SetActive(false);
       }
+    }
+
+    if (level >= 3) {
+      buyButtonByCube.SetActive(false);
+      buyButtonByGoldencube.SetActive(false);
     } else {
-      rotate = false;
-      selectButton.SetActive(false);
-      unselectButton.SetActive(false);
+      buyButtonByCube.SetActive(true);
+      buyButtonByGoldencube.SetActive(true);
       buyButtonByCube.GetComponent<ObjectBuyButton>().setObject(obj);
       buyButtonByGoldencube.GetComponent<ObjectBuyButton>().setObject(obj);
     }

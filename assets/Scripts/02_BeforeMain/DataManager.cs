@@ -195,20 +195,23 @@ public class DataManager : MonoBehaviour {
   }
 
   private Dictionary<string, string> stringToStringDict(string s) {
-     Dictionary<string, string> dict = new Dictionary<string, string>();
+    Dictionary<string, string> dict = new Dictionary<string, string>();
 
-     if (s == null) {
-         Debug.LogWarning("Could not create dictionary, because string is null!");
-         return dict;
-     }
+    if (s == null) {
+      Debug.LogWarning("Could not create dictionary, because string is null!");
+      return dict;
+    }
 
-     string[] tokens = s.Split(new char[] { '=', ',' }, StringSplitOptions.RemoveEmptyEntries);
+    string[] tokens = s.Split(new char[] { '=', ',' }, StringSplitOptions.RemoveEmptyEntries);
+    for (int i = 0; i < tokens.Length; i += 2) {
+      if (tokens.Length == 1) {
+        dict.Add(tokens[i], "");
+      } else {
+        dict.Add(tokens[i], tokens[i + 1]);
+      }
+    }
 
-     for (int i = 0; i < tokens.Length; i += 2) {
-         dict.Add(tokens[i], tokens[i + 1]);
-     }
-
-     return dict;
+    return dict;
   }
 
   private Dictionary<string, DateTime> stringToDateTimeDict(string s) {

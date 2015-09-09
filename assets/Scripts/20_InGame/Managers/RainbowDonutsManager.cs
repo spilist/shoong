@@ -9,7 +9,9 @@ public class RainbowDonutsManager : ObjectsManager {
   public float minSpawnInterval = 8;
   public float maxSpawnInterval = 12;
 
-  public int numRoadRides = 3;
+  public int[] numRoadRidesPerLevel;
+  public int[] speedPerRide;
+  private int numRoadRides;
   public int nextDonutRadius = 100;
   public float rotateDuring = 0.2f;
   public int rotateAngularSpeed = 50;
@@ -25,6 +27,10 @@ public class RainbowDonutsManager : ObjectsManager {
   private Vector3 origin;
   private Vector3 destination;
   private float drawingDistance;
+
+  override public void initRest() {
+    numRoadRides = numRoadRidesPerLevel[DataManager.dm.getInt("RainbowDonutsLevel") - 1];
+  }
 
   override public float getTumble(string objTag) {
     return tumble;
@@ -50,6 +56,7 @@ public class RainbowDonutsManager : ObjectsManager {
     if (rideCount == 0) QuestManager.qm.addCountToQuest("RideRainbow");
 
     if (rideCount < numRoadRides) {
+      ridingSpeed = speedPerRide[rideCount];
       rideCount++;
       player.rainbowEffect.Play();
       player.rainbowEffect.GetComponent<AudioSource>().Play();

@@ -4,7 +4,9 @@ using System.Collections;
 public class ComboPartsManager : ObjectsManager {
   public GameObject comboPartPrefab;
   public GameObject comboPartPrefab_next;
-  public int fullComboCount = 4;
+
+  public int[] fullComboCountPerLevel;
+
   public int comboBonusScale = 5;
   public float radius = 20;
   public int respawnInterval_min = 10;
@@ -17,6 +19,11 @@ public class ComboPartsManager : ObjectsManager {
   private GameObject next;
   private int comboCount = 0;
   private int boosterCount = 0;
+  private int fullComboCount;
+
+  override public void initRest() {
+    fullComboCount = fullComboCountPerLevel[DataManager.dm.getInt("ComboPartsLevel") - 1];
+  }
 
   override public void run() {
     comboCount = 0;
@@ -60,9 +67,12 @@ public class ComboPartsManager : ObjectsManager {
     trying = true;
     secondShot = false;
 
+    if (comboCount == fullComboCountPerLevel[0]) {
+      QuestManager.qm.addCountToQuest("ComboParts");
+    }
+
     if (comboCount == fullComboCount) {
       QuestManager.qm.addCountToQuest("CompleteComboParts");
-      QuestManager.qm.addCountToQuest("ComboParts");
       StartCoroutine("startSpawn");
       return;
     }

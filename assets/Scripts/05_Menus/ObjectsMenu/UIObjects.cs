@@ -11,6 +11,8 @@ public class UIObjects : MenusBehavior {
   public int cubePrice = 10000;
   public int goldenCubePrice = 1000;
 
+  public int[] prices;
+
   void Start() {
     objectsMenu = GameObject.Find("ObjectsMenu").GetComponent<ObjectsMenu>();
     objectCategory = transform.parent.parent.name;
@@ -40,7 +42,7 @@ public class UIObjects : MenusBehavior {
   }
 
   public int getPrice(string which) {
-    if (which == "golden") return goldenCubePrice;
-    else return cubePrice;
+    int price = prices[DataManager.dm.getInt(transform.parent.name + "Level")];
+    return (which == "golden") ? price / 100 : price;
   }
 }

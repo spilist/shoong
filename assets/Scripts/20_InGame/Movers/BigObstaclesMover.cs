@@ -2,12 +2,10 @@
 using System.Collections;
 
 public class BigObstaclesMover : ObjectsMover {
-  private PlayerMover playerMover;
   private bool isNearPlayer = false;
 
   protected override void initializeRest() {
     canBeMagnetized = false;
-    playerMover = player.GetComponent<PlayerMover>();
   }
 
   protected override float strength() {
@@ -16,23 +14,23 @@ public class BigObstaclesMover : ObjectsMover {
 
   public override void destroyObject(bool destroyEffect = true) {
     if (destroyEffect) {
-      Instantiate(playerMover.obstacleDestroy, transform.position, transform.rotation);
+      Instantiate(player.obstacleDestroy, transform.position, transform.rotation);
     }
     Destroy(gameObject);
 
-    if (isNearPlayer) playerMover.nearAsteroid(false);
+    if (isNearPlayer) player.nearAsteroid(false);
   }
 
   public override void encounterPlayer() {
-    Instantiate(playerMover.obstacleDestroy, transform.position, transform.rotation);
+    Instantiate(player.obstacleDestroy, transform.position, transform.rotation);
     QuestManager.qm.addCountToQuest("DestroyAsteroid");
 
-    if (playerMover.isUnstoppable()) {
+    if (player.isUnstoppable()) {
       QuestManager.qm.addCountToQuest("DestroyAsteroidsBeforeUnstoppableEnd");
       QuestManager.qm.addCountToQuest("SpecialParts");
-    } else if (playerMover.isRidingMonster()) {
+    } else if (player.isRidingMonster()) {
       QuestManager.qm.addCountToQuest("Monster");
-    } else if (playerMover.isUsingRainbow()) {
+    } else if (player.isUsingRainbow()) {
       QuestManager.qm.addCountToQuest("RainbowDonuts");
     }
 
@@ -45,5 +43,14 @@ public class BigObstaclesMover : ObjectsMover {
 
   public void nearPlayer(bool enter = true) {
     isNearPlayer = enter;
+  }
+
+  override public bool dangerous() {
+    if (player.isUnstoppable() || player.isUsingRainbow()) return false;
+    else return true;
+  }
+
+  override public int cubesWhenEncounter() {
+    return ((BasicObjectsManager)objectsManager).cubesByBigObstacle;
   }
 }

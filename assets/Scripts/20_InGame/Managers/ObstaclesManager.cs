@@ -4,6 +4,7 @@ using System.Collections;
 
 public class ObstaclesManager : MonoBehaviour {
   public GameObject[] obstacles;
+  public int cubesWhenEncounter = 30;
   public float strength = 1;
   public float speed = 60;
   public float tumble = 1;

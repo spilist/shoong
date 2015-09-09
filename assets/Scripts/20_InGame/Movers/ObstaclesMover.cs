@@ -28,7 +28,7 @@ public class ObstaclesMover : ObjectsMover {
 
   public override void destroyObject(bool destroyEffect = true) {
     if (destroyEffect) {
-      Instantiate(player.GetComponent<PlayerMover>().obstacleDestroy, transform.position, transform.rotation);
+      Instantiate(player.obstacleDestroy, transform.position, transform.rotation);
     }
     Destroy(gameObject);
 
@@ -38,7 +38,7 @@ public class ObstaclesMover : ObjectsMover {
   }
 
   public override void encounterPlayer() {
-    Instantiate(player.GetComponent<PlayerMover>().obstacleDestroy, transform.position, transform.rotation);
+    Instantiate(player.obstacleDestroy, transform.position, transform.rotation);
     QuestManager.qm.addCountToQuest("DestroyFallingStar");
 
     Destroy(gameObject);
@@ -55,5 +55,14 @@ public class ObstaclesMover : ObjectsMover {
 
   public void nearPlayer(bool enter = true) {
     avoiding = enter;
+  }
+
+  override public bool dangerous() {
+    if (player.isUnstoppable() || player.isUsingRainbow()) return false;
+    else return true;
+  }
+
+  override public int cubesWhenEncounter() {
+    return obm.cubesWhenEncounter;
   }
 }

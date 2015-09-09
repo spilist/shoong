@@ -17,7 +17,7 @@ public class ScoreManager : MonoBehaviour {
   public GameObject contactCollider;
   public GameObject barsCanvas;
   public Renderer partsCollector;
-  public GameObject unstoppableSphere;
+  public GameObject getBlackhole;
   public TouchInputHandler inputHandler;
   private bool isScoring = false;
 
@@ -60,7 +60,7 @@ public class ScoreManager : MonoBehaviour {
     foreach (Transform tr in partsCollector.transform) {
       tr.gameObject.SetActive(false);
     }
-    unstoppableSphere.SetActive(false);
+    getBlackhole.SetActive(false);
     barsCanvas.SetActive(false);
     contactCollider.SetActive(false);
     QuestManager.qm.hideOnGoingQuests();

@@ -62,11 +62,14 @@ public class ObjectBuyButton : MenusBehavior {
   override public void activateSelf() {
     if (!affordable) return;
 
-    cubes.buy(price);
-    DataManager.dm.setBool(objectName, true);
-    selectedObj.buy();
+    if (DataManager.dm.getInt(objectName + "Level") == 0) {
+      DataManager.dm.setBool(objectName, true);
+      string tutorialsNotDone = DataManager.dm.getString("ObjectTutorialsNotDone");
+      DataManager.dm.setString("ObjectTutorialsNotDone", (tutorialsNotDone + " " + objectName).Trim());
+    }
+    DataManager.dm.increment(objectName + "Level");
 
-    string tutorialsNotDone = DataManager.dm.getString("ObjectTutorialsNotDone");
-    DataManager.dm.setString("ObjectTutorialsNotDone", (tutorialsNotDone + " " + objectName).Trim());
+    cubes.buy(price);
+    selectedObj.buy();
   }
 }

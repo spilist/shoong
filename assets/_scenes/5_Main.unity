@@ -2182,7 +2182,7 @@ MonoBehaviour:
   cubesCount: {fileID: 589887829}
   scoreManager: {fileID: 1422286122}
   obstacleDestroy: {fileID: 190966, guid: 06a9d910a6ef7477eb37b2d7cddcfa88, type: 2}
-  unstoppableSphere: {fileID: 851953042}
+  getBlackhole: {fileID: 851953042}
   cubesWhenDestroyBigObstacle: 15
   cubesWhenDestroySmallObstacle: 30
   cubesWhenDestroyMonster: 100
@@ -2200,7 +2200,7 @@ MonoBehaviour:
   unstoppableEffect_two: {fileID: 1934776454}
   getSpecialEnergyEffect: {fileID: 1355077822}
   getComboParts: {fileID: 1384869938}
-  getBlackhole: {fileID: 1552135347}
+  getBlackholeEffect: {fileID: 1552135347}
   rainbowEffect: {fileID: 1056094478}
   chargedEffect: {fileID: 2085521110}
   boosterSpeedUpAmount: 60
@@ -2871,7 +2871,7 @@ MonoBehaviour:
   countByTime: 0
   doNotShow: 0
   tutorial: 1
-  description: "\uD050\uBE0C \uD0F1\uD0F1\uBCFC 6\uBC88 \uC5F0\uC18D \uD295\uAE30\uAE30"
+  description: "\uD050\uBE0C \uD0F1\uD0F1\uBCFC 4\uBC88 \uC5F0\uC18D \uD295\uAE30\uAE30"
   numbersToComplete: 1
   goldenCubesWhenComplete: 1
 --- !u!1 &121058731
@@ -14538,6 +14538,7 @@ GameObject:
   - 23: {fileID: 548683916}
   - 33: {fileID: 548683915}
   - 65: {fileID: 548683914}
+  - 114: {fileID: 548683917}
   m_Layer: 17
   m_Name: CreateButton
   m_TagString: CharacterCreateMenu
@@ -14606,6 +14607,18 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!114 &548683917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 548683912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04d1e4ff83e344c2ab093563cdcc4568, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playTouchSound: 1
 --- !u!1 &552014890
 GameObject:
   m_ObjectHideFlags: 0
@@ -16497,16 +16510,15 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 620051370}
-  m_LocalRotation: {x: -.707106829, y: 0, z: 0, w: .707106709}
+  m_LocalRotation: {x: -1.15202326e-07, y: .707106709, z: -.707106829, w: -1.15202312e-07}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 5}
-  m_Children:
-  - {fileID: 632875135}
+  m_Children: []
   m_Father: {fileID: 1211708157}
   m_RootOrder: 4
   m_AnchorMin: {x: 0, y: .5}
   m_AnchorMax: {x: 0, y: .5}
-  m_AnchoredPosition: {x: 161, y: -192}
+  m_AnchoredPosition: {x: -125, y: -192}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0, y: 1}
 --- !u!65 &620051372
@@ -16519,15 +16531,15 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 55, y: .999999702, z: 14.9999952}
-  m_Center: {x: 0, y: -1.0000608, z: 1.52587891e-05}
+  m_Size: {x: 24, y: 2.00000024, z: 13.9999962}
+  m_Center: {x: 3.81469727e-06, y: -.500060916, z: 2.98023153e-08}
 --- !u!33 &620051373
 MeshFilter:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 620051370}
-  m_Mesh: {fileID: 4300028, guid: 7d4e33b83f6a046ab845e77e3044ffcc, type: 3}
+  m_Mesh: {fileID: 4300064, guid: 7d4e33b83f6a046ab845e77e3044ffcc, type: 3}
 --- !u!23 &620051374
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -17822,72 +17834,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 632609195}
---- !u!1 &632875134
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 224: {fileID: 632875135}
-  - 222: {fileID: 632875137}
-  - 114: {fileID: 632875136}
-  m_Layer: 17
-  m_Name: Text
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &632875135
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 632875134}
-  m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106709}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: .25, y: .25, z: .25}
-  m_Children: []
-  m_Father: {fileID: 620051371}
-  m_RootOrder: 0
-  m_AnchorMin: {x: 0, y: .5}
-  m_AnchorMax: {x: 0, y: .5}
-  m_AnchoredPosition: {x: 0, y: 90}
-  m_SizeDelta: {x: 220, y: 30}
-  m_Pivot: {x: .5, y: .5}
---- !u!114 &632875136
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 632875134}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 20
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
-    m_Alignment: 4
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: "\uC624\uBE0C\uC81D\uD2B8 \uCD9C\uD604 \uD574\uC81C"
---- !u!222 &632875137
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 632875134}
 --- !u!1 &633213474
 GameObject:
   m_ObjectHideFlags: 0
@@ -18099,8 +18045,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resetAll: 0
-  resetCube: 10000
-  resetGoldenCube: 0
+  resetCube: 0
+  resetGoldenCube: 100000
 --- !u!4 &638403303
 Transform:
   m_ObjectHideFlags: 0
@@ -18358,7 +18304,7 @@ MonoBehaviour:
   countByTime: 0
   doNotShow: 0
   tutorial: 1
-  description: "\uD658\uC601 \uBD80\uD488 4\uCF64\uBCF4 \uC131\uACF5"
+  description: "\uD658\uC601 \uBD80\uD488 3\uCF64\uBCF4 \uC131\uACF5"
   numbersToComplete: 1
   goldenCubesWhenComplete: 1
 --- !u!1 &667805690
@@ -18612,16 +18558,15 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 685215970}
-  m_LocalRotation: {x: -.707106829, y: 0, z: 0, w: .707106709}
+  m_LocalRotation: {x: -1.15202326e-07, y: .707106709, z: -.707106829, w: -1.15202312e-07}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 5}
-  m_Children:
-  - {fileID: 718753803}
+  m_Children: []
   m_Father: {fileID: 1211708157}
   m_RootOrder: 3
   m_AnchorMin: {x: 0, y: .5}
   m_AnchorMax: {x: 0, y: .5}
-  m_AnchoredPosition: {x: 161, y: -192}
+  m_AnchoredPosition: {x: -125, y: -192}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0, y: 1}
 --- !u!33 &685215972
@@ -18630,7 +18575,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 685215970}
-  m_Mesh: {fileID: 4300022, guid: 7d4e33b83f6a046ab845e77e3044ffcc, type: 3}
+  m_Mesh: {fileID: 4300062, guid: 7d4e33b83f6a046ab845e77e3044ffcc, type: 3}
 --- !u!65 &685215973
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -18641,8 +18586,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 55, y: .999999702, z: 14.9999952}
-  m_Center: {x: 0, y: -1.0000608, z: 1.52587891e-05}
+  m_Size: {x: 24, y: 2.00000024, z: 13.9999962}
+  m_Center: {x: 3.81469727e-06, y: -.500060916, z: 2.98023153e-08}
 --- !u!114 &685215974
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19145,72 +19090,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 714900423}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &718753802
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 224: {fileID: 718753803}
-  - 222: {fileID: 718753805}
-  - 114: {fileID: 718753804}
-  m_Layer: 17
-  m_Name: Text
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &718753803
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 718753802}
-  m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106709}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: .25, y: .25000006, z: .25000006}
-  m_Children: []
-  m_Father: {fileID: 685215971}
-  m_RootOrder: 0
-  m_AnchorMin: {x: 0, y: .5}
-  m_AnchorMax: {x: 0, y: .5}
-  m_AnchoredPosition: {x: 0, y: 90}
-  m_SizeDelta: {x: 222.100006, y: 30}
-  m_Pivot: {x: .5, y: .5}
---- !u!114 &718753804
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 718753802}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 20
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
-    m_Alignment: 4
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: "\uC624\uBE0C\uC81D\uD2B8 \uCD9C\uD604\uC2DC\uD0A4\uAE30"
---- !u!222 &718753805
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 718753802}
 --- !u!1 &723740914
 GameObject:
   m_ObjectHideFlags: 0
@@ -22119,6 +21998,7 @@ MonoBehaviour:
     \uD558\uC9C0\uB9CC,  \uC57D\uD574\uC9C0\uACE0 \uB098\uBA74 \uC804\uC138\uC5ED\uC804."
   cubePrice: 30000
   goldenCubePrice: 300
+  prices: 3075000060ea0000c0d40100
 --- !u!1 &775777494
 GameObject:
   m_ObjectHideFlags: 0
@@ -22830,7 +22710,7 @@ GameObject:
   - 199: {fileID: 851953051}
   - 82: {fileID: 851953050}
   m_Layer: 11
-  m_Name: UnstoppableSphere
+  m_Name: GetBlackholeSphere
   m_TagString: UnstoppableSphere
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22915,6 +22795,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c9cf425be7e419bb201f9169f5881f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  radiusPerLevel: 500000006400000096000000
 --- !u!122 &851953049
 Halo:
   m_ObjectHideFlags: 0
@@ -24328,6 +24209,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreManager: {fileID: 1422286122}
+  back: {fileID: 1410312525}
   totalCubes: {fileID: 1768431855}
   cubes: {fileID: 750202313}
   goldenCubes: {fileID: 2127701742}
@@ -24410,7 +24292,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 377921e57c28848819f6ecf806471fdc, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -29619,7 +29501,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1174462706
 RectTransform:
   m_ObjectHideFlags: 0
@@ -30798,6 +30680,7 @@ MonoBehaviour:
     \uBE68\uC544\uB4E4\uC785\uB2C8\uB2E4. "
   cubePrice: 20000
   goldenCubePrice: 200
+  prices: 204e0000409c000080380100
 --- !u!1 &1251782787
 GameObject:
   m_ObjectHideFlags: 0
@@ -31497,6 +31380,7 @@ MonoBehaviour:
   description: "\uC548\uC5D0 \uC800\uC7A5\uB41C \uD050\uBE0C\uB97C \uC804\uBD80 \uBA39\uC5B4\uBD05\uC2DC\uB2E4."
   cubePrice: 5000
   goldenCubePrice: 50
+  prices: c40900008813000010270000
 --- !u!65 &1316902508
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -37058,7 +36942,7 @@ MonoBehaviour:
   contactCollider: {fileID: 1298175622}
   barsCanvas: {fileID: 1289803595}
   partsCollector: {fileID: 1270861827}
-  unstoppableSphere: {fileID: 851953042}
+  getBlackhole: {fileID: 851953042}
   inputHandler: {fileID: 1801634119}
   inGameUI: {fileID: 2134279968}
   gameOverUI: {fileID: 868146740}
@@ -40016,7 +39900,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1488355725
 RectTransform:
   m_ObjectHideFlags: 0
@@ -41669,7 +41553,7 @@ GameObject:
   - 114: {fileID: 1552135350}
   - 82: {fileID: 1552135351}
   m_Layer: 9
-  m_Name: GetBlackHole
+  m_Name: GetBlackHoleEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44257,6 +44141,7 @@ MonoBehaviour:
   playTouchSound: 1
   description: "\uCE90\uB9AD\uD130 \uBF51\uAE30"
   createMenu: {fileID: 1025396004}
+  menusOverlay: {fileID: 1839461442}
 --- !u!33 &1674791326
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -44695,7 +44580,7 @@ MeshRenderer:
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
-  m_ReflectionProbeUsage: 0
+  m_ReflectionProbeUsage: 1
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
@@ -44734,6 +44619,7 @@ MonoBehaviour:
     \uD30C\uAD34\uD558\uACE0 \uD050\uBE0C\uB97C \uC5BB\uC73C\uC138\uC694."
   cubePrice: 5000
   goldenCubePrice: 50
+  prices: 8813000010270000204e0000
 --- !u!1 &1768431852
 GameObject:
   m_ObjectHideFlags: 0
@@ -53024,6 +52910,7 @@ MonoBehaviour:
     \uB5A0\uB098\uC694."
   cubePrice: 10000
   goldenCubePrice: 100
+  prices: 10270000204e0000409c0000
 --- !u!65 &1927849503
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -54402,7 +54289,8 @@ MonoBehaviour:
   tumble: 5
   minSpawnInterval: 8
   maxSpawnInterval: 12
-  numRoadRides: 2
+  numRoadRidesPerLevel: 010000000200000004000000
+  speedPerRide: 5e010000c2010000260200008a020000
   nextDonutRadius: 300
   rotateDuring: .800000012
   rotateAngularSpeed: 1000
@@ -54430,7 +54318,7 @@ MonoBehaviour:
   strength: 0
   comboPartPrefab: {fileID: 164108, guid: a6fcdda2fbd1d4fe0b8a15b6d19364a9, type: 2}
   comboPartPrefab_next: {fileID: 192146, guid: d357428246b5f4e5fb2b54651d371984, type: 2}
-  fullComboCount: 4
+  fullComboCountPerLevel: 030000000400000006000000
   comboBonusScale: 5
   radius: 50
   respawnInterval_min: 8
@@ -54534,10 +54422,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   strength: 1
   cubeDispenserPrefab: {fileID: 148822, guid: de23a7876221f4b818e7bfdccf294c71, type: 2}
-  fullComboCount: 6
+  fullComboCountPerLevel: 040000000600000008000000
+  destroyAfterPerLevel:
+  - 3.5
+  - 4
+  - 4.5
   respawnInterval_min: 5
   respawnInterval_max: 15
-  destroyAfterSeconds: 4
   cubesPerContact: 10
   reboundDuring: .100000001
   destroy: {fileID: 19849298, guid: b3ce2718fb37c492f9d26f509fc35908, type: 2}
@@ -54603,10 +54494,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   strength: 0
+  destroyBonusPerLevel:
+  - 1
+  - 1.20000005
+  - 1.5
   special: {fileID: 189520, guid: dccc40739d6254de9aaa62d3c75f9b0d, type: 2}
   tumble: 3
   minSpawnInterval: 10
   maxSpawnInterval: 20
+  bonus: 0
 --- !u!114 &1991538114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54733,6 +54629,7 @@ MonoBehaviour:
     \uBD80\uD488\uC73C\uB85C \uBCC0\uD569\uB2C8\uB2E4."
   cubePrice: 500
   goldenCubePrice: 5
+  prices: f4010000e8030000d0070000
 --- !u!65 &2002636512
 BoxCollider:
   m_ObjectHideFlags: 0

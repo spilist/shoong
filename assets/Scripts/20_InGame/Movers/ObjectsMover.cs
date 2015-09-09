@@ -9,7 +9,7 @@ public class ObjectsMover : MonoBehaviour {
   protected bool canBeMagnetized = true;
   protected bool isMagnetized = false;
 
-  protected GameObject player;
+  protected PlayerMover player;
 
   protected BlackholeManager blm;
   protected GameObject blackhole;
@@ -20,7 +20,7 @@ public class ObjectsMover : MonoBehaviour {
   protected Rigidbody rb;
 
   void Start() {
-    player = GameObject.Find("Player");
+    player = GameObject.Find("Player").GetComponent<PlayerMover>();
 
     objectsManager = (ObjectsManager) GameObject.Find("Field Objects").GetComponent(getManager());
     blm = GameObject.Find("Field Objects").GetComponent<BlackholeManager>();
@@ -137,5 +137,13 @@ public class ObjectsMover : MonoBehaviour {
 
   virtual public string getManager() {
     return "BasicObjectsManager";
+  }
+
+  virtual public bool dangerous() {
+    return false;
+  }
+
+  virtual public int cubesWhenEncounter() {
+    return objectsManager.cubesWhenEncounter();
   }
 }

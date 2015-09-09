@@ -79,7 +79,7 @@ public class MonsterMover : ObjectsMover {
       rb.velocity = direction * player.GetComponent<Rigidbody>().velocity.magnitude * 1.5f;
     } else if (weak) {
       rb.velocity = -direction * speed_weaken;
-    } else if (player.GetComponent<PlayerMover>().isUnstoppable()) {
+    } else if (player.isUnstoppable()) {
       rb.velocity = -direction * speed_runaway;
     } else {
       rb.velocity = direction * speed_chase;
@@ -99,7 +99,7 @@ public class MonsterMover : ObjectsMover {
 
   public override void destroyObject(bool destroyEffect = true) {
     if (isInsideBlackhole && QuestManager.qm.doingQuest("DestroyMonsterByBlackhole")) {
-      if (player.GetComponent<PlayerMover>().isUsingBlackhole()) {
+      if (player.isUsingBlackhole()) {
         QuestManager.qm.addCountToQuest("DestroyMonsterByBlackhole");
       }
     }
@@ -116,6 +116,10 @@ public class MonsterMover : ObjectsMover {
   override public void encounterPlayer() {
     QuestManager.qm.addCountToQuest("DestroyMonster");
 
+    if (player.isUsingRainbow()) {
+      QuestManager.qm.addCountToQuest("DestroyMonsterByRainbow");
+    }
+
     Destroy(gameObject);
     monm.indicator.stopIndicate();
     monm.stopWarning();
@@ -125,5 +129,18 @@ public class MonsterMover : ObjectsMover {
 
   override public string getManager() {
     return "MonsterManager";
+  }
+
+  override public bool dangerous() {
+    if (weak || player.isUnstoppable() || player.isUsingRainbow() || player.isExitedBlackhole()) return false;
+    else return true;
+  }
+
+  override public int cubesWhenEncounter() {
+    return monm.cubesWhenDestroy;
+  }
+
+  public bool rideable() {
+    return weak || player.isExitedBlackhole();
   }
 }
