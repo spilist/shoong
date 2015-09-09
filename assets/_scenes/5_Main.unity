@@ -2868,7 +2868,7 @@ MonoBehaviour:
   countByTime: 0
   doNotShow: 0
   tutorial: 1
-  description: "\uD050\uBE0C \uD0F1\uD0F1\uBCFC 4\uBC88 \uC5F0\uC18D \uD295\uAE30\uAE30"
+  description: "\uD050\uBE0C \uD0F1\uD0F1\uBCFC 5\uBC88 \uC5F0\uC18D \uD295\uAE30\uAE30"
   numbersToComplete: 1
   goldenCubesWhenComplete: 1
 --- !u!1 &121058731
@@ -54493,7 +54493,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   strength: 1
   cubeDispenserPrefab: {fileID: 148822, guid: de23a7876221f4b818e7bfdccf294c71, type: 2}
-  fullComboCountPerLevel: 040000000600000008000000
+  fullComboCountPerLevel: 050000000600000008000000
   destroyAfterPerLevel:
   - 3.5
   - 4
