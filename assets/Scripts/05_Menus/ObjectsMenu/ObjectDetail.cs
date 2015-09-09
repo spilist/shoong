@@ -11,6 +11,7 @@ public class ObjectDetail : MonoBehaviour {
   public GameObject unselectButton;
   public GameObject buyButtonByCube;
   public GameObject buyButtonByGoldencube;
+  public Text objLevel;
 
   private GameObject selected;
   private bool rotate = false;
@@ -37,6 +38,7 @@ public class ObjectDetail : MonoBehaviour {
 
   public void checkBought(UIObjects obj) {
     int level = DataManager.dm.getInt(selected.name + "Level");
+    objLevel.text = "LV " + level.ToString();
 
     if (level == 0) {
       rotate = false;
