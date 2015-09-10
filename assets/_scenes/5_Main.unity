@@ -43338,6 +43338,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c55c8e133eb0c47e28e0cc77e0aaaeb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chargeEffect: {fileID: 1196581382}
+  originalChargeEffectScale: 5
+  chargingEffectDuration: .5
   chargedDuration: 2.5
   autoDecreaseRate: .100000001
   getAmountbyParts: 4
