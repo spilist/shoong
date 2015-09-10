@@ -11294,7 +11294,7 @@ MonoBehaviour:
   countByTime: 0
   doNotShow: 0
   tutorial: 0
-  description: "\uBB34\uC801 \uC9C0\uC18D\uC2DC\uAC04 \uC548\uC5D0 \uC6B4\uC11D \uD30C\uAD34"
+  description: "\uAC15\uCCA0 \uC9C0\uC18D\uC2DC\uAC04 \uC548\uC5D0 \uC6B4\uC11D \uD30C\uAD34"
   numbersToComplete: 3
   goldenCubesWhenComplete: 2
 --- !u!1 &440487357
@@ -16367,7 +16367,7 @@ ParticleSystemRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_Materials:
-  - {fileID: 2100000, guid: fc9f9acfaa3f54f31aa1b8faedbeac43, type: 2}
+  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -18248,7 +18248,7 @@ MonoBehaviour:
   countByTime: 0
   doNotShow: 0
   tutorial: 1
-  description: "\uBB34\uC801 \uC0C1\uD0DC\uC5D0\uC11C \uC6B4\uC11D \uD30C\uAD34"
+  description: "\uAC15\uCCA0 \uC0C1\uD0DC\uC5D0\uC11C \uC6B4\uC11D \uD30C\uAD34"
   numbersToComplete: 1
   goldenCubesWhenComplete: 1
 --- !u!1 &659385098
@@ -19258,7 +19258,7 @@ ParticleSystemRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2a9494af006fe4f8aa5f6c6c1b6b4a09, type: 2}
+  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -19370,10 +19370,10 @@ ParticleSystem:
       maxGradient:
         key0:
           serializedVersion: 2
-          rgba: 4281329919
+          rgba: 4292138196
         key1:
           serializedVersion: 2
-          rgba: 4291034893
+          rgba: 4282908654
         key2:
           serializedVersion: 2
           rgba: 12844813
@@ -19461,7 +19461,7 @@ ParticleSystem:
         rgba: 4285453348
       minMaxState: 1
     startSize:
-      scalar: 6.05000019
+      scalar: 3
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -19476,7 +19476,7 @@ ParticleSystem:
         serializedVersion: 2
         m_Curve:
         - time: 0
-          value: .960330546
+          value: 1
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -20497,7 +20497,7 @@ ParticleSystemRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2a9494af006fe4f8aa5f6c6c1b6b4a09, type: 2}
+  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -20609,10 +20609,10 @@ ParticleSystem:
       maxGradient:
         key0:
           serializedVersion: 2
-          rgba: 4281329919
+          rgba: 4292138196
         key1:
           serializedVersion: 2
-          rgba: 4291034893
+          rgba: 4282908654
         key2:
           serializedVersion: 2
           rgba: 12844813
@@ -20700,7 +20700,7 @@ ParticleSystem:
         rgba: 4285453348
       minMaxState: 1
     startSize:
-      scalar: 6.05000019
+      scalar: 3
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -20715,7 +20715,7 @@ ParticleSystem:
         serializedVersion: 2
         m_Curve:
         - time: 0
-          value: .960330546
+          value: 1
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -29479,6 +29479,21 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+--- !u!1 &1173977213 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 139500, guid: 09f2c8fd298564fe598290a7fc1917aa, type: 2}
+  m_PrefabInternal: {fileID: 1431105927}
+--- !u!114 &1173977216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1173977213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6e43e5ec2dda449dbd8b0fa4847f785, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1174462705
 GameObject:
   m_ObjectHideFlags: 0
@@ -30188,7 +30203,7 @@ MonoBehaviour:
   countByTime: 0
   doNotShow: 0
   tutorial: 0
-  description: "\uBB34\uC801 \uC0C1\uD0DC\uB85C \uBE14\uB799\uD640 \uB4E4\uC5B4\uAC00\uAE30"
+  description: "\uAC15\uCCA0 \uC0C1\uD0DC\uB85C \uBE14\uB799\uD640 \uB4E4\uC5B4\uAC00\uAE30"
   numbersToComplete: 1
   goldenCubesWhenComplete: 2
 --- !u!1 &1211019733
@@ -32976,7 +32991,7 @@ ParticleSystem:
         rgba: 4278251757
       maxColor:
         serializedVersion: 2
-        rgba: 4279169111
+        rgba: 4290624957
       minMaxState: 2
     startSize:
       scalar: 12
@@ -38350,6 +38365,10 @@ Prefab:
     - target: {fileID: 450178, guid: 09f2c8fd298564fe598290a7fc1917aa, type: 2}
       propertyPath: m_LocalScale.z
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 19845320, guid: 09f2c8fd298564fe598290a7fc1917aa, type: 2}
+      propertyPath: EmissionModule.rate.scalar
+      value: 150
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 09f2c8fd298564fe598290a7fc1917aa, type: 2}
@@ -44698,9 +44717,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playTouchSound: 1
-  objectName: "\uCD08\uD569\uAE08 \uBC30\uD130\uB9AC"
-  description: "\uBAA8\uB4E0 \uAC78 \uBD80\uC234\uBC84\uB9BD\uB2C8\uB2E4. \uBE14\uB799\uD640\uB9CC
-    \uBE7C\uACE0\uC694."
+  objectName: "\uAC15\uCCA0 \uBC30\uD130\uB9AC"
+  description: "\uBAA8\uB4E0 \uAC78 \uBD80\uC234\uBC84\uB9B4 \uC218 \uC788\uC2B5\uB2C8\uB2E4.
+    \uBE14\uB799\uD640\uB9CC \uBE7C\uACE0\uC694."
   cubePrice: 5000
   goldenCubePrice: 50
   prices: 8813000010270000204e0000
@@ -54588,8 +54607,8 @@ MonoBehaviour:
   - 1.5
   special: {fileID: 189520, guid: dccc40739d6254de9aaa62d3c75f9b0d, type: 2}
   tumble: 3
-  minSpawnInterval: 0
-  maxSpawnInterval: 0
+  minSpawnInterval: 10
+  maxSpawnInterval: 15
   bonus: 0
 --- !u!114 &1991538114
 MonoBehaviour:
