@@ -95,6 +95,9 @@ public class DataManager : MonoBehaviour {
     bools["robotcogi"] = true;
 
     PlayerPrefs.SetString("SelectedCharacter", "robotcogi");
+    PlayerPrefs.SetString("TutorialsNotDone", "");
+    PlayerPrefs.SetString("MainObjects", "");
+    PlayerPrefs.SetString("SubObjects", "");
 
     data = new SaveData();
   }
@@ -197,8 +200,8 @@ public class DataManager : MonoBehaviour {
   private Dictionary<string, string> stringToStringDict(string s) {
     Dictionary<string, string> dict = new Dictionary<string, string>();
 
-    if (s == null) {
-      Debug.LogWarning("Could not create dictionary, because string is null!");
+    if (s == null || s == "") {
+      Debug.Log("Could not create dictionary, because string is null or empty. Returning empty dict.");
       return dict;
     }
 

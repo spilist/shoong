@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class BeforeMain : MonoBehaviour {
+  public Text copyright;
   public Text tips;
   public float tipShowAfter = 0.3f;
   public float tipAlphaChangeDuration = 0.2f;
@@ -92,6 +93,7 @@ public class BeforeMain : MonoBehaviour {
       } else {
         tipColor.a = Mathf.MoveTowards(tipColor.a, 1, Time.deltaTime / tipAlphaChangeDuration);
         tips.color = tipColor;
+        copyright.color = tipColor;
       }
     }
 	}

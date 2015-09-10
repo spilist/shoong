@@ -21,6 +21,7 @@ public class ComboPartMover : ObjectsMover {
     cpm.eatenByPlayer();
     player.getComboParts.Play();
     player.getComboParts.GetComponent<AudioSource>().Play ();
+    Destroy(gameObject);
   }
 
   override public int cubesWhenEncounter() {

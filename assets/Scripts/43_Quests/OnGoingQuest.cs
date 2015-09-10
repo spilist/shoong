@@ -212,11 +212,11 @@ public class OnGoingQuest : MonoBehaviour {
       DataManager.dm.setDateTime("LastQuestCompletedAt", DateTime.Now);
 
       if (tutorial) {
-        string tutorialsNotDone = DataManager.dm.getString("ObjectTutorialsNotDone");
+        string tutorialsNotDone = PlayerPrefs.GetString("ObjectTutorialsNotDone");
         tutorialsNotDone = tutorialsNotDone.Replace(questName, "").Trim();
         tutorialsNotDone = tutorialsNotDone.Replace("  ", " ").Trim();
 
-        DataManager.dm.setString("ObjectTutorialsNotDone", tutorialsNotDone);
+        PlayerPrefs.SetString("ObjectTutorialsNotDone", tutorialsNotDone);
       }
 
       if (DataManager.dm.getBool("FirstQuestComplete")) {

@@ -6,6 +6,9 @@ public class BeforeIdle : MonoBehaviour {
   public SpawnManager spawnManager;
   public MeshRenderer titleFilter;
   public GameObject title;
+  public Text copyright;
+  private Color copyrightColor;
+  private float copyrightChangeTo;
 
   public GameObject character;
   private Color characterColor;
@@ -89,6 +92,11 @@ public class BeforeIdle : MonoBehaviour {
       titlePosX = Mathf.MoveTowards(titlePosX, titleMoveTo, Time.deltaTime / movingDuration * distance);
       title.GetComponent<RectTransform>().anchoredPosition = new Vector2(titlePosX, title.GetComponent<RectTransform>().anchoredPosition.y);
 
+      if (titleMoveTo == 800) {
+        copyrightColor.a = Mathf.MoveTowards(copyrightColor.a, copyrightChangeTo, Time.deltaTime / movingDuration);
+        copyright.color = copyrightColor;
+      }
+
       if (titlePosX == titleMoveTo) {
         titleMoving = false;
       }
@@ -122,6 +130,7 @@ public class BeforeIdle : MonoBehaviour {
       } else {
         tipColor.a = Mathf.MoveTowards(tipColor.a, 1, Time.deltaTime / tipAlphaChangeDuration);
         tips.color = tipColor;
+        copyright.color = tipColor;
       }
     }
   }
@@ -134,12 +143,15 @@ public class BeforeIdle : MonoBehaviour {
     if (hiding) {
       titleMoveTo = 800;
       titlePosX = title.GetComponent<RectTransform>().anchoredPosition.x;
+      copyrightColor = copyright.color;
+      copyrightChangeTo = 0;
     } else {
       titleMoveTo = 0;
       titlePosX = -title.GetComponent<RectTransform>().anchoredPosition.x;
     }
     titleMoving = true;
     distance = Mathf.Abs(titlePosX - titleMoveTo);
+
   }
 
   public void playAgain() {

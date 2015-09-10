@@ -46,6 +46,8 @@ public class PlayerMover : MonoBehaviour {
   public ParticleSystem rainbowEffect;
   public ParticleSystem chargedEffect;
 
+  public Material metalMat;
+
   public float boosterSpeedUpAmount = 60;
   public float maxBoosterSpeed = 100;
   public float boosterSpeedDecreaseBase = 70;
@@ -53,7 +55,6 @@ public class PlayerMover : MonoBehaviour {
 
 	public GameObject particles;
 
-	public float unstoppable_speed = 120;
   public int strengthen_during = 8;
   public float reboundSpeed = 300;
 
@@ -100,8 +101,8 @@ public class PlayerMover : MonoBehaviour {
       speed = rdm.ridingSpeed;
     } else if (isRebounding()) {
       speed = reboundSpeed;
-    } else if (unstoppable) {
-      speed = unstoppable_speed;
+    // } else if (unstoppable) {
+      // speed = unstoppable_speed;
     } else {
 			speed = comboBar.getSpeed();
     }
@@ -123,7 +124,9 @@ public class PlayerMover : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other) {
-		ObjectsMover mover = other.gameObject.GetComponent<ObjectsMover>();
+		if (other.tag == "BlackholeGravitySphere") return;
+
+    ObjectsMover mover = other.gameObject.GetComponent<ObjectsMover>();
 
     if (mover.dangerous()) {
       scoreManager.gameOver();
@@ -200,8 +203,9 @@ public class PlayerMover : MonoBehaviour {
     if (unstoppable) {
       unstoppableEffect.Play();
       unstoppableEffect.GetComponent<AudioSource>().Play ();
-      unstoppableEffect_two.Play();
+      // unstoppableEffect_two.Play();
       unstoppableEffect_two.GetComponent<AudioSource>().Play ();
+      changeCharacter(originalMesh, metalMat);
     }
 
     if (exitedBlackhole) {
@@ -225,9 +229,10 @@ public class PlayerMover : MonoBehaviour {
       spawnManager.runManager("SpecialParts");
       unstoppable = false;
       unstoppableEffect.Stop();
-      unstoppableEffect_two.Stop();
+      // unstoppableEffect_two.Stop();
       unstoppableEffect_two.GetComponent<AudioSource>().Stop ();
       QuestManager.qm.addCountToQuest("DestroyAsteroidsBeforeUnstoppableEnd", 0);
+      changeCharacter(originalMesh, originalMaterial);
     }
 
     if (reboundingByBlackhole) {
@@ -371,9 +376,9 @@ public class PlayerMover : MonoBehaviour {
     QuestManager.qm.addCountToQuest("NoBooster", 0);
     QuestManager.qm.addCountToQuest("UseBooster");
 
-    if (!unstoppable) {
+    // if (!unstoppable) {
       energyBar.loseByShoot();
-    }
+    // }
 
     rotatePlayerBody();
 

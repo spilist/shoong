@@ -18,10 +18,10 @@ public class ObjectSelectButton : MenusBehavior {
   }
 
   override public void activateSelf() {
-    string selectedObjString = DataManager.dm.getString(category);
+    string selectedObjString = PlayerPrefs.GetString(category);
     if (selectedObjString.Split(' ').Length == 3) return;
 
-    DataManager.dm.setString(category, (selectedObjString + " " + objName).Trim());
+    PlayerPrefs.SetString(category, (selectedObjString + " " + objName).Trim());
     selectedObj.setActive(true);
   }
 }

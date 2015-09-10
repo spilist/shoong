@@ -8,8 +8,8 @@ public class MenusController : MonoBehaviour {
   public GameObject menuButtons;
   public GameObject idleUI;
   public GameObject inGameUI;
+  public GameObject beforeIdleUI;
   public GameObject barsCanvas;
-  public GameObject title;
   public BeforeIdle beforeIdle;
 
   public AudioClip UITouchSound;
@@ -48,13 +48,13 @@ public class MenusController : MonoBehaviour {
   public void toggleMenuAndUI() {
     if (notYetStarted) {
       idleUI.SetActive(!idleUI.activeSelf);
+      beforeIdleUI.SetActive(!beforeIdleUI.activeSelf);
     }
     menuOn = !menuOn;
     backButton.SetActive(!backButton.activeSelf);
     menuButtons.SetActive(!menuButtons.activeSelf);
     currentlyOn.SetActive(!currentlyOn.activeSelf);
     menusOverlay.SetActive(!menusOverlay.activeSelf);
-    title.SetActive(!title.activeSelf);
   }
 
   public void gameStart() {

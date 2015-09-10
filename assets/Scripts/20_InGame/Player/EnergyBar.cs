@@ -13,9 +13,13 @@ public class EnergyBar : MonoBehaviour {
   private bool isChangingRest = false;
   private bool gameStarted = false;
   private bool charged = true;
+  public Transform chargeEffect;
+  public float originalChargeEffectScale = 5;
+  private float chargeEffectScale;
+  public float chargingEffectDuration = 0.5f;
   private float chargedCount = 0;
-
   public float chargedDuration = 2.5f;
+
   public float autoDecreaseRate = 0.05f;
   public int getAmountbyParts = 10;
   public float getRate = 2f;
@@ -34,16 +38,23 @@ public class EnergyBar : MonoBehaviour {
 
     color_healthy = image.color;
     color_danger = new Color(1, 0, 0, color_healthy.a);
+    chargeEffectScale = originalChargeEffectScale;
+    chargeEffect.localScale = originalChargeEffectScale * Vector3.one;
   }
 
   void Update () {
     if (gameStarted) {
       if (charged) {
-        if (chargedCount < chargedDuration) chargedCount += Time.deltaTime;
-        else {
+        if (chargedCount < chargingEffectDuration) {
+          chargeEffectScale = Mathf.MoveTowards(chargeEffectScale, 1, Time.deltaTime * (originalChargeEffectScale - 1) / chargingEffectDuration);
+          chargeEffect.localScale = chargeEffectScale * Vector3.one;
+        }
+
+        if (chargedCount >= chargedDuration) {
           chargedCount = 0;
           charged = false;
         }
+        chargedCount += Time.deltaTime;
       } else {
         if (isChanging) {
           change();
@@ -76,7 +87,7 @@ public class EnergyBar : MonoBehaviour {
   }
 
   void autoDecrease() {
-    if (player.isUnstoppable() || player.isUsingRainbow()) return;
+    if (player.isUsingRainbow()) return;
     image.fillAmount = Mathf.MoveTowards(image.fillAmount, 0, Time.deltaTime * autoDecreaseRate);
   }
 

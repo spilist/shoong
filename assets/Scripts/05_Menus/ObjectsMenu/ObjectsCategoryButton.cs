@@ -39,7 +39,7 @@ public class ObjectsCategoryButton : MenusBehavior {
   }
 
   void checkSelection() {
-    string selectedObjectString = DataManager.dm.getString(category);
+    string selectedObjectString = PlayerPrefs.GetString(category);
     if (selectedObjectString == "") return;
 
     string[] objs = selectedObjectString.Split(' ');

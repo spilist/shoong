@@ -2200,12 +2200,12 @@ MonoBehaviour:
   getBlackholeEffect: {fileID: 1552135347}
   rainbowEffect: {fileID: 1056094478}
   chargedEffect: {fileID: 2085521110}
+  metalMat: {fileID: 2100000, guid: d19ae5f122c6344ad809f0cb588d6db9, type: 2}
   boosterSpeedUpAmount: 60
   maxBoosterSpeed: 100
   boosterSpeedDecreaseBase: 70
   boosterSpeedDecreasePerTime: 20
   particles: {fileID: 178344, guid: b185d52f68bf5499e81f948bbbf1bd8c, type: 2}
-  unstoppable_speed: 120
   strengthen_during: 8
   reboundSpeed: 160
   unstoppable_respawn:
@@ -16747,10 +16747,10 @@ ParticleSystem:
         m_NumAlphaKeys: 2
       minColor:
         serializedVersion: 2
-        rgba: 4278251757
+        rgba: 4286764757
       maxColor:
         serializedVersion: 2
-        rgba: 4279169111
+        rgba: 4292598747
       minMaxState: 2
     startSize:
       scalar: 5
@@ -19113,8 +19113,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -32}
   m_LocalScale: {x: .349999994, y: .349999994, z: 1}
-  m_Children:
-  - {fileID: 1374463137}
+  m_Children: []
   m_Father: {fileID: 1366368660}
   m_RootOrder: 1
   m_AnchorMin: {x: .5, y: .5}
@@ -19259,7 +19258,7 @@ ParticleSystemRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_Materials:
-  - {fileID: 2100000, guid: 97ac694a1b6284abaa0f9baa72a5e316, type: 2}
+  - {fileID: 2100000, guid: 2a9494af006fe4f8aa5f6c6c1b6b4a09, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -20498,7 +20497,7 @@ ParticleSystemRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_Materials:
-  - {fileID: 2100000, guid: 97ac694a1b6284abaa0f9baa72a5e316, type: 2}
+  - {fileID: 2100000, guid: 2a9494af006fe4f8aa5f6c6c1b6b4a09, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -27741,8 +27740,8 @@ MonoBehaviour:
   menuButtons: {fileID: 85813355}
   idleUI: {fileID: 1817731073}
   inGameUI: {fileID: 2134279968}
+  beforeIdleUI: {fileID: 1366368659}
   barsCanvas: {fileID: 1289803595}
-  title: {fileID: 723740914}
   beforeIdle: {fileID: 1366368665}
   UITouchSound: {fileID: 8300000, guid: 3b7a828a646174088aa48ee1db9c439c, type: 3}
 --- !u!1 &1086984976
@@ -34078,6 +34077,7 @@ RectTransform:
   - {fileID: 723740915}
   - {fileID: 1199078786}
   - {fileID: 1498015742}
+  - {fileID: 1374463137}
   m_Father: {fileID: 507386076}
   m_RootOrder: 1
   m_AnchorMin: {x: 0, y: 0}
@@ -34153,6 +34153,7 @@ MonoBehaviour:
   spawnManager: {fileID: 1991538111}
   titleFilter: {fileID: 1330183105}
   title: {fileID: 723740914}
+  copyright: {fileID: 1374463138}
   character: {fileID: 1199078785}
   characterMovingDuration: .600000024
   characterMoveStart: -800
@@ -35303,14 +35304,14 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1374463136}
   m_LocalRotation: {x: 0, y: 2.98023224e-08, z: -2.10734257e-08, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: .000183105469}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -32}
+  m_LocalScale: {x: .349999994, y: .349999994, z: 1}
   m_Children: []
-  m_Father: {fileID: 723740915}
-  m_RootOrder: 0
+  m_Father: {fileID: 1366368660}
+  m_RootOrder: 4
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 0, y: -1070}
+  m_AnchoredPosition: {x: 0, y: -240}
   m_SizeDelta: {x: 1600, y: 400}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1374463138
@@ -38337,6 +38338,18 @@ Prefab:
     - target: {fileID: 139500, guid: 09f2c8fd298564fe598290a7fc1917aa, type: 2}
       propertyPath: m_Name
       value: ChargedEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 450178, guid: 09f2c8fd298564fe598290a7fc1917aa, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 450178, guid: 09f2c8fd298564fe598290a7fc1917aa, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 450178, guid: 09f2c8fd298564fe598290a7fc1917aa, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 09f2c8fd298564fe598290a7fc1917aa, type: 2}
@@ -41485,7 +41498,7 @@ GameObject:
   - 82: {fileID: 1540096019}
   - 114: {fileID: 1540096020}
   m_Layer: 10
-  m_Name: Unstoppable
+  m_Name: MetalEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44682,9 +44695,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playTouchSound: 1
-  objectName: "\uBB34\uC801 \uBC30\uD130\uB9AC"
-  description: "\uBB34\uC801 \uC0C1\uD0DC\uAC00 \uB418\uC5B4 \uBC29\uD574\uBB3C\uB4E4\uC744
-    \uD30C\uAD34\uD558\uACE0 \uD050\uBE0C\uB97C \uC5BB\uC73C\uC138\uC694."
+  objectName: "\uCD08\uD569\uAE08 \uBC30\uD130\uB9AC"
+  description: "\uBAA8\uB4E0 \uAC78 \uBD80\uC234\uBC84\uB9BD\uB2C8\uB2E4. \uBE14\uB799\uD640\uB9CC
+    \uBE7C\uACE0\uC694."
   cubePrice: 5000
   goldenCubePrice: 50
   prices: 8813000010270000204e0000
@@ -52866,7 +52879,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activeMesh: {fileID: 4300000, guid: 0ecc368de93f8436caa3d781a771541c, type: 3}
-  activeMaterial: {fileID: 2100000, guid: a92bb96032e524a76bf8fcffafdbcca8, type: 2}
+  activeMaterial: {fileID: 2100000, guid: 7d033d459cc064a0684e43d6d1bcd656, type: 2}
 --- !u!23 &1918549632
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -54572,8 +54585,8 @@ MonoBehaviour:
   - 1.5
   special: {fileID: 189520, guid: dccc40739d6254de9aaa62d3c75f9b0d, type: 2}
   tumble: 3
-  minSpawnInterval: 10
-  maxSpawnInterval: 20
+  minSpawnInterval: 0
+  maxSpawnInterval: 0
   bonus: 0
 --- !u!114 &1991538114
 MonoBehaviour:

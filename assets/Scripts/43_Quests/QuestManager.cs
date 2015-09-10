@@ -46,7 +46,7 @@ public class QuestManager : MonoBehaviour {
     }
 
     // if there is not completed tutorial quest, show it
-    string tutorialsNotDone = DataManager.dm.getString("ObjectTutorialsNotDone");
+    string tutorialsNotDone = PlayerPrefs.GetString("ObjectTutorialsNotDone");
     if (tutorialsNotDone.Trim() != "") {
       foreach (string obj in tutorialsNotDone.Split(null)) {
         Quest tutorial = objectTutorials.Find(obj.Trim()).GetComponent<Quest>();
