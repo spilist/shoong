@@ -92,7 +92,7 @@ public class BeforeMain : MonoBehaviour {
             PlayerPrefs.SetString("CharacterRotation", rot.ToString().TrimStart('(').TrimEnd(')'));
             PlayerPrefs.SetString("CharacterAngVal", angVal.ToString().TrimStart('(').TrimEnd(')'));
 
-            Application.LoadLevel("5_Main");
+            Application.LoadLevelAsync("5_Main");
           }
         }
       }

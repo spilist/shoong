@@ -37054,7 +37054,7 @@ MonoBehaviour:
   doNotShow: 0
   tutorial: 0
   description: "\uBD80\uC2A4\uD130 \uC5C6\uC774 \uBC84\uD2F0\uAE30"
-  numbersToComplete: 10
+  numbersToComplete: 12
   goldenCubesWhenComplete: 2
 --- !u!1 &1405439384
 GameObject:
