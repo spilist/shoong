@@ -66,6 +66,14 @@ public class ObstaclesMover : ObjectsMover {
   }
 
   override public int cubesWhenEncounter() {
-    return player.isUnstoppable()? (int) (obm.cubesWhenEncounter * spm.bonus) : obm.cubesWhenEncounter;
+    return obm.cubesWhenEncounter;
+  }
+
+  override public int bonusCubes() {
+    return player.isUnstoppable()? (int) (obm.cubesWhenEncounter * spm.bonus) : 0;
+  }
+
+  override public bool isNegativeObject() {
+    return true;
   }
 }

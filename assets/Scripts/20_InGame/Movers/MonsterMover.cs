@@ -140,7 +140,15 @@ public class MonsterMover : ObjectsMover {
   }
 
   override public int cubesWhenEncounter() {
-    return player.isUnstoppable()? (int) (monm.cubesWhenDestroy * spm.bonus) : monm.cubesWhenDestroy;
+    return monm.cubesWhenDestroy;
+  }
+
+  override public int bonusCubes() {
+    return player.isUnstoppable()? (int) (monm.cubesWhenDestroy * spm.bonus) : 0;
+  }
+
+  override public bool isNegativeObject() {
+    return true;
   }
 
   public bool rideable() {

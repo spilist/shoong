@@ -150,4 +150,16 @@ public class ObjectsMover : MonoBehaviour {
   virtual public int cubesWhenEncounter() {
     return objectsManager.cubesWhenEncounter();
   }
+
+  virtual public int bonusCubes() {
+    if (tag == "Part") {
+      return player.isNearAsteroid()? player.nearAsteroidBonus : 0;
+    } else {
+      return 0;
+    }
+  }
+
+  virtual public bool isNegativeObject() {
+    return false;
+  }
 }

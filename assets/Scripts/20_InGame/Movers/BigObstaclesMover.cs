@@ -4,10 +4,13 @@ using System.Collections;
 public class BigObstaclesMover : ObjectsMover {
   private bool isNearPlayer = false;
   private SpecialPartsManager spm;
+  private int cubes;
+  private bool collideChecked = false;
 
   protected override void initializeRest() {
     canBeMagnetized = false;
     spm = objectsManager.GetComponent<SpecialPartsManager>();
+    cubes = ((BasicObjectsManager)objectsManager).cubesByBigObstacle;
   }
 
   protected override float strength() {
@@ -18,12 +21,17 @@ public class BigObstaclesMover : ObjectsMover {
     if (destroyEffect) {
       Instantiate(player.obstacleDestroy, transform.position, transform.rotation);
     }
-    Destroy(gameObject);
 
     if (isNearPlayer) player.nearAsteroid(false);
+
+    Destroy(gameObject);
   }
 
   public override void encounterPlayer() {
+    if (!collideChecked) return;
+
+    collideChecked = false;
+
     Instantiate(player.obstacleDestroy, transform.position, transform.rotation);
     QuestManager.qm.addCountToQuest("DestroyAsteroid");
 
@@ -36,6 +44,8 @@ public class BigObstaclesMover : ObjectsMover {
       QuestManager.qm.addCountToQuest("RainbowDonuts");
     }
 
+    if (isNearPlayer) player.nearAsteroid(false);
+
     Destroy(gameObject);
   }
 
@@ -44,7 +54,12 @@ public class BigObstaclesMover : ObjectsMover {
   }
 
   public void nearPlayer(bool enter = true) {
+    if (collideChecked == enter) return;
+    else collideChecked = enter;
+
     isNearPlayer = enter;
+
+    player.nearAsteroid(enter);
   }
 
   override public bool dangerous() {
@@ -53,7 +68,14 @@ public class BigObstaclesMover : ObjectsMover {
   }
 
   override public int cubesWhenEncounter() {
-    int cubes = ((BasicObjectsManager)objectsManager).cubesByBigObstacle;
-    return player.isUnstoppable()? (int) (cubes * spm.bonus) : cubes;
+    return cubes;
+  }
+
+  override public int bonusCubes() {
+    return player.isUnstoppable()? (int) (cubes * spm.bonus) : 0;
+  }
+
+  override public bool isNegativeObject() {
+    return true;
   }
 }

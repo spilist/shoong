@@ -11,11 +11,13 @@ public class ShowChangeText : MonoBehaviour {
   private float disappearStartPosY;
   private bool show = false;
   private Renderer icon;
+  private Text plus;
   private float stayCount = 0;
 
   public int sign = 1;
   public string changeDirection;
   public bool hasIcon = true;
+  public bool hasBonus = false;
 
   public float stayDuring = 0;
   public float disappearDuring = 1;
@@ -77,6 +79,13 @@ public class ShowChangeText : MonoBehaviour {
 
       icon.transform.localScale += Vector3.one * iconChangeAmount;
       icon.GetComponent<RectTransform>().anchoredPosition = new Vector3(-icon.transform.localScale.x, 0, 0);
+
+      if (hasBonus) {
+        plus = transform.Find("Plus").GetComponent<Text>();
+        plus.fontSize = (int) (text.fontSize * 1.5f);
+
+        plus.GetComponent<RectTransform>().anchoredPosition = new Vector3(-icon.transform.localScale.x * 1.5f - 5, 0, 0);
+      }
     }
   }
 }

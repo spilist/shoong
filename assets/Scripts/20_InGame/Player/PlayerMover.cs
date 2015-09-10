@@ -11,6 +11,7 @@ public class PlayerMover : MonoBehaviour {
   public GameObject getBlackhole;
   public int cubesAsItIsUntill = 20;
   public int restCubesChangePer = 5;
+  public int nearAsteroidBonus = 10;
   private Hashtable cubesWhenDestroy;
 
   private float speed;
@@ -138,12 +139,10 @@ public class PlayerMover : MonoBehaviour {
       return;
     }
 
-    int cubes = mover.cubesWhenEncounter();
-
-    goodPartsEncounter(mover, cubes, mover.tag == "RainbowDonut");
+    goodPartsEncounter(mover, mover.cubesWhenEncounter(), mover.bonusCubes());
 	}
 
-  public void goodPartsEncounter(ObjectsMover mover, int howMany, bool rainbow = false) {
+  public void goodPartsEncounter(ObjectsMover mover, int howMany, int bonus = 0) {
     int instantiateCount;
     if (howMany < cubesAsItIsUntill) {
       instantiateCount = howMany;
@@ -156,17 +155,30 @@ public class PlayerMover : MonoBehaviour {
       if (e == 0) {
         cube.GetComponent<ParticleMover>().triggerCubesGet(howMany);
       }
-      if (rainbow) {
+      if (mover.tag == "RainbowDonut") {
         cube.GetComponent<Renderer>().material.SetColor("_TintColor", rdm.rainbowColors[e]);
       }
     }
-    cubesCount.addCount(howMany);
-    energyBar.getHealthbyParts(howMany);
+
+    if (bonus > 0) {
+      for (int e = 0; e < bonus; e++) {
+        GameObject cube = (GameObject) Instantiate(particles, mover.transform.position, mover.transform.rotation);
+        if (e == 0) {
+          cube.GetComponent<ParticleMover>().triggerCubesGet(bonus);
+        }
+        if (unstoppable && mover.isNegativeObject()) {
+          cube.GetComponent<Renderer>().sharedMaterial = metalMat;
+        }
+      }
+    }
+
+    cubesCount.addCount(howMany, bonus);
+    energyBar.getHealthbyParts(howMany + bonus);
     getEnergy.Play ();
     comboBar.addCombo();
 
     mover.encounterPlayer();
-    QuestManager.qm.addCountToQuest("GetCube", howMany);
+    QuestManager.qm.addCountToQuest("GetCube", howMany + bonus);
   }
 
   public void contactCubeDispenser(Transform tr, int howMany, Collision collision, float reboundDuring) {
@@ -317,8 +329,6 @@ public class PlayerMover : MonoBehaviour {
   }
 
   public void contactBlackholeWhileRainbow(Collision collision) {
-    QuestManager.qm.addCountToQuest("ReboundByBlackhole");
-
     reboundingByBlackhole = true;
     isInsideBlackhole = false;
     processCollision(collision);
@@ -436,9 +446,9 @@ public class PlayerMover : MonoBehaviour {
     rotatePlayerBody();
   }
 
-  public void nearAsteroid(bool enter = true) {
-    if (enter) nearAsteroidCounter++;
-    else nearAsteroidCounter--;
+  public void nearAsteroid(bool enter = true, int amount = 1) {
+    if (enter) nearAsteroidCounter += amount;
+    else nearAsteroidCounter -= amount;
   }
 
   public bool isNearAsteroid() {

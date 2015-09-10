@@ -11,7 +11,6 @@ public class QuestCollider : MonoBehaviour {
 
   void OnTriggerEnter(Collider other) {
     if (other.tag == "Obstacle_big") {
-      player.nearAsteroid();
       other.GetComponent<BigObstaclesMover>().nearPlayer();
     } else if (other.tag == "Obstacle") {
       other.GetComponent<ObstaclesMover>().nearPlayer();
@@ -20,7 +19,6 @@ public class QuestCollider : MonoBehaviour {
 
   void OnTriggerExit(Collider other) {
    if (other.tag == "Obstacle_big") {
-      player.nearAsteroid(false);
       other.GetComponent<BigObstaclesMover>().nearPlayer(false);
     } else if (other.tag == "Obstacle") {
       other.GetComponent<ObstaclesMover>().nearPlayer(false);

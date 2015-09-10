@@ -11,6 +11,7 @@ public class CubesCount : MonoBehaviour {
   public Text cubesHighscoreText;
   public ComboBar comboBar;
   public GameObject howManyCubesGet;
+  public GameObject howManyBonusCubesGet;
 
   void Start() {
     countText = GetComponent<Text>();
@@ -18,17 +19,22 @@ public class CubesCount : MonoBehaviour {
     cubesHighscoreText.text = cubesHighscore.ToString();
   }
 
-
   public void addCount() {
     addCount(comboBar.getComboRatio());
   }
 
-  public void addCount(int cubesGet) {
-    count += cubesGet;
+  public void addCount(int cubesGet, int bonus = 0) {
+    count += cubesGet + bonus;
 
     GameObject cubesGetInstance = Instantiate(howManyCubesGet);
     cubesGetInstance.transform.SetParent(comboBar.transform, false);
     cubesGetInstance.GetComponent<ShowChangeText>().run(cubesGet);
+
+    if (bonus > 0) {
+      GameObject bonusInstance = Instantiate(howManyBonusCubesGet);
+      bonusInstance.transform.SetParent(comboBar.transform, false);
+      bonusInstance.GetComponent<ShowChangeText>().run(bonus);
+    }
   }
 
   public int getCount() {
