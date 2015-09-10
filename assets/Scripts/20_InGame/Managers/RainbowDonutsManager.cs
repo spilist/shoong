@@ -18,6 +18,8 @@ public class RainbowDonutsManager : ObjectsManager {
   public int ridingSpeed = 200;
   public int cubesPerRide = 7;
   public Color[] rainbowColors;
+  public float pitchStart = 0.9f;
+  public float pitchIncrease = 0.1f;
 
   private int rideCount = 0;
   public GameObject rainbowDonut;
@@ -57,9 +59,13 @@ public class RainbowDonutsManager : ObjectsManager {
 
     if (rideCount < numRoadRides) {
       ridingSpeed = speedPerRide[rideCount];
-      rideCount++;
+
       player.rainbowEffect.Play();
-      player.rainbowEffect.GetComponent<AudioSource>().Play();
+      AudioSource rainbowEffect = player.rainbowEffect.GetComponent<AudioSource>();
+      rainbowEffect.pitch = pitchStart + rideCount * pitchIncrease;
+      rainbowEffect.Play ();
+
+      rideCount++;
       StartCoroutine("rideRainbow");
     } else {
       player.rainbowEffect.Stop();

@@ -18,13 +18,15 @@ public class ComboPartMover : ObjectsMover {
   }
 
   override public void encounterPlayer() {
-    cpm.eatenByPlayer();
     player.getComboParts.Play();
-    player.getComboParts.GetComponent<AudioSource>().Play ();
+    AudioSource getComboParts = player.getComboParts.GetComponent<AudioSource>();
+    getComboParts.pitch = cpm.pitchStart + cpm.getComboCount() * cpm.pitchIncrease;
+    getComboParts.Play ();
+    cpm.eatenByPlayer();
     Destroy(gameObject);
   }
 
   override public int cubesWhenEncounter() {
-    return cpm.getComboCount() * cpm.comboBonusScale;
+    return (cpm.getComboCount() + 1) * cpm.comboBonusScale;
   }
 }

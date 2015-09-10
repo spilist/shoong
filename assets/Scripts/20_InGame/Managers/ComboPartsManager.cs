@@ -12,6 +12,8 @@ public class ComboPartsManager : ObjectsManager {
   public int respawnInterval_min = 10;
   public int respawnInterval_max = 15;
   public float tumble = 3;
+  public float pitchStart = 0.4f;
+  public float pitchIncrease = 0.05f;
 
   private bool trying = false;
   private bool secondShot = false;

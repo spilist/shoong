@@ -10,6 +10,8 @@ public class CubeDispenserManager : ObjectsManager {
   public int cubesPerContact = 10;
   public float reboundDuring = 0.2f;
 	public ParticleSystem destroy;
+  public float pitchStart = 0.9f;
+  public float pitchIncrease = 0.05f;
 
   private GameObject cubeDispenser;
   private int comboCount = 0;
@@ -50,6 +52,10 @@ public class CubeDispenserManager : ObjectsManager {
       QuestManager.qm.addCountToQuest("CompleteCubeDispenser");
       StartCoroutine("respawn");
     }
+  }
+
+  public int getComboCount() {
+    return comboCount;
   }
 
   IEnumerator destroyAfterTry() {

@@ -26,9 +26,13 @@ public class CubeDispenserMover : ObjectsMover {
         playerMover.goodPartsEncounter(this, cdm.cubesPerContact * 4);
       } else {
         playerMover.contactCubeDispenser(transform, cdm.cubesPerContact, collision, cdm.reboundDuring);
-        cdm.contact();
+
         reaction.Play();
-		reaction.GetComponent<AudioSource>().Play();
+        AudioSource sound = reaction.GetComponent<AudioSource>();
+        sound.pitch = cdm.pitchStart + cdm.getComboCount() * cdm.pitchIncrease;
+        sound.Play ();
+
+        cdm.contact();
       }
     }
   }
