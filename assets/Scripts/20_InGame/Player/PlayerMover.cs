@@ -86,7 +86,7 @@ public class PlayerMover : MonoBehaviour {
     comboBar = transform.parent.Find("Bars Canvas").GetComponent<ComboBar>();
     stBar = transform.parent.Find("Bars Canvas/StrengthenTimeBar").GetComponent<StrengthenTimeBar>();
 
-    rotatePlayerBody();
+    rotatePlayerBody(true);
 
     Vector2 randomV = Random.insideUnitCircle;
     randomV.Normalize();
@@ -346,8 +346,16 @@ public class PlayerMover : MonoBehaviour {
     direction.Normalize();
   }
 
-  public void rotatePlayerBody() {
-    GetComponent<Rigidbody>().angularVelocity = Random.onUnitSphere * tumble;
+  public void rotatePlayerBody(bool continuous = false) {
+    if (continuous) {
+      string[] rots = PlayerPrefs.GetString("CharacterRotation").Split(',');
+      transform.rotation = Quaternion.Euler(float.Parse(rots[0]), float.Parse(rots[1]), float.Parse(rots[2]));
+
+      string[] angVals = PlayerPrefs.GetString("CharacterAngVal").Split(',');
+      GetComponent<Rigidbody>().angularVelocity = new Vector3(float.Parse(angVals[0]), float.Parse(angVals[1]), float.Parse(angVals[2]));
+    } else {
+      GetComponent<Rigidbody>().angularVelocity = Random.onUnitSphere * tumble;
+    }
   }
 
   public Vector3 getDirection() {

@@ -79,10 +79,19 @@ public class BeforeMain : MonoBehaviour {
         character.GetComponent<RectTransform>().anchoredPosition = new Vector2(characterPosX, character.GetComponent<RectTransform>().anchoredPosition.y);
 
         if (characterPosX == 0) {
+          if (character.GetComponent<Rigidbody>().angularVelocity == Vector3.zero) {
+            character.GetComponent<Rigidbody>().angularVelocity = Random.onUnitSphere * 4;
+          }
+
           if (boosterStayCount < boosterStayDuration) {
             boosterStayCount += Time.deltaTime;
           } else {
             characterMoving = false;
+            Vector3 rot = character.transform.rotation.eulerAngles;
+            Vector3 angVal = character.GetComponent<Rigidbody>().angularVelocity;
+            PlayerPrefs.SetString("CharacterRotation", rot.ToString().TrimStart('(').TrimEnd(')'));
+            PlayerPrefs.SetString("CharacterAngVal", angVal.ToString().TrimStart('(').TrimEnd(')'));
+
             Application.LoadLevel("5_Main");
           }
         }

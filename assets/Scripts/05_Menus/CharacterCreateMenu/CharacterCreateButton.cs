@@ -15,8 +15,10 @@ public class CharacterCreateButton : MenusBehavior {
   public GameObject createdCharacter;
   public Text characterName;
   public GameObject isNewCharacter;
-  public AudioSource nextChance;
+  public GameObject nextChance;
 
+  public ShareButton shareButton;
+  public CharacterSelectButton selectButton;
   public GameObject backButton;
   public GameObject cubesYouHave;
   public GameObject goldenCubesYouHave;
@@ -52,6 +54,9 @@ public class CharacterCreateButton : MenusBehavior {
     congraturation.GetComponent<ParticleSystem>().Stop();
     congraturation.gameObject.SetActive(false);
     isNewCharacter.SetActive(false);
+    shareButton.gameObject.SetActive(false);
+    selectButton.gameObject.SetActive(false);
+    GetComponent<RectTransform>().anchoredPosition = new Vector2(0, GetComponent<RectTransform>().anchoredPosition.y);
   }
 
   void checkAffordable() {
@@ -103,7 +108,10 @@ public class CharacterCreateButton : MenusBehavior {
   }
 
   void turnOnOff(bool val) {
-    backButton.SetActive(val);
+    shareButton.gameObject.SetActive(val);
+    selectButton.gameObject.SetActive(val);
+    backButton.GetComponent<Renderer>().enabled = val;
+    backButton.GetComponent<Collider>().enabled = val;
     cubesYouHave.SetActive(val);
     goldenCubesYouHave.SetActive(val);
     GetComponent<Renderer>().enabled = val;
@@ -151,20 +159,24 @@ public class CharacterCreateButton : MenusBehavior {
 
     characterName.text = getCharacterName(createdCharacterName);
     characterName.enabled = true;
+    selectButton.setCharacter(createdCharacterName);
 
     if (newCharacter) {
       isNewCharacter.SetActive(true);
       DataManager.dm.setBool(createdCharacterName, true);
       DataManager.dm.increment("NumCharactersHave");
     } else {
-      nextChance.Play();
+      nextChance.SetActive(true);
     }
 
     yield return new WaitForSeconds(showUIsAfter);
 
     turnOnOff(true);
-    running = false;
+    GetComponent<RectTransform>().anchoredPosition = new Vector2(240, GetComponent<RectTransform>().anchoredPosition.y);
+
     checkAffordable();
+
+    running = false;
   }
 
   void OnDisable() {

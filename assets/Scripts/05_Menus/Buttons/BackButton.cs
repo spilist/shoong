@@ -48,4 +48,8 @@ public class BackButton : MenusBehavior {
     current.SetActive(true);
     gameObject.SetActive(true);
   }
+
+  void OnDisable() {
+    inside = false;
+  }
 }

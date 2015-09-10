@@ -60,6 +60,12 @@ public class BeforeIdle : MonoBehaviour {
     tips.text = tips.transform.GetChild(DataManager.dm.getInt("LastTipIndex")).GetComponent<Tip>().description;
 
     spawnManager.preload();
+
+    string[] rots = PlayerPrefs.GetString("CharacterRotation").Split(',');
+    character.transform.rotation = Quaternion.Euler(float.Parse(rots[0]), float.Parse(rots[1]), float.Parse(rots[2]));
+
+    string[] angVals = PlayerPrefs.GetString("CharacterAngVal").Split(',');
+    character.GetComponent<Rigidbody>().angularVelocity = new Vector3(float.Parse(angVals[0]), float.Parse(angVals[1]), float.Parse(angVals[2]));
   }
 
   void Update() {
@@ -83,7 +89,11 @@ public class BeforeIdle : MonoBehaviour {
         if (filterColor.a == filterChangeTo) {
           filterChanging = false;
           showTip = false;
-          if (filterChangeTo == 0) titleFilter.gameObject.SetActive(false);
+          if (filterChangeTo == 0) {
+            titleFilter.gameObject.SetActive(false);
+            character.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+            character.transform.localRotation = Quaternion.Euler(0, 90, 0);
+          }
         }
       }
     }
@@ -116,10 +126,19 @@ public class BeforeIdle : MonoBehaviour {
         character.GetComponent<RectTransform>().anchoredPosition = new Vector2(characterPosX, character.GetComponent<RectTransform>().anchoredPosition.y);
 
         if (characterPosX == 0) {
+          if (character.GetComponent<Rigidbody>().angularVelocity == Vector3.zero) {
+            character.GetComponent<Rigidbody>().angularVelocity = Random.onUnitSphere * 4;
+          }
+
           if (boosterStayCount < boosterStayDuration) {
             boosterStayCount += Time.deltaTime;
           } else {
             characterMoving = false;
+            Vector3 rot = character.transform.rotation.eulerAngles;
+            Vector3 angVal = character.GetComponent<Rigidbody>().angularVelocity;
+            PlayerPrefs.SetString("CharacterRotation", rot.ToString().TrimStart('(').TrimEnd(')'));
+            PlayerPrefs.SetString("CharacterAngVal", angVal.ToString().TrimStart('(').TrimEnd(')'));
+
             Application.LoadLevel(Application.loadedLevel);
           }
         }
