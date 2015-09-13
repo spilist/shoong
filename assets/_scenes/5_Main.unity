@@ -36803,7 +36803,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 5ab91a2740f8b4476a8946f20def321f, type: 3}
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_Volume: .75
   m_Pitch: .400000006
   Loop: 0
@@ -44153,7 +44153,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 2
+  m_Radius: 3
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &1644889233
 MeshFilter:
@@ -44174,7 +44174,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 91418583}
-  collideRadius: 2
+  collideRadius: 3
 --- !u!1 &1648289392
 GameObject:
   m_ObjectHideFlags: 0
@@ -55158,7 +55158,7 @@ MonoBehaviour:
   - {fileID: 131058, guid: b2e788ee7ee7747ae89b9fd021c3b05b, type: 2}
   - {fileID: 119532, guid: 8de9923715b8e4769a343553e0193937, type: 2}
   - {fileID: 190242, guid: d8430bbeb85c44b9b9b8df1654f1e53b, type: 2}
-  max_obstacles: 3
+  max_obstacles: 10
   speed_parts: 0
   speed_obstacles: 15
   tumble_parts: 1
@@ -55183,8 +55183,8 @@ MonoBehaviour:
   - .5
   special: {fileID: 189520, guid: dccc40739d6254de9aaa62d3c75f9b0d, type: 2}
   tumble: 3
-  minSpawnInterval: 0
-  maxSpawnInterval: 0
+  minSpawnInterval: 10
+  maxSpawnInterval: 15
   bonus: 0
 --- !u!114 &1991538114
 MonoBehaviour:

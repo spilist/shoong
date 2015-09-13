@@ -65,7 +65,7 @@ public class ObjectBuyButton : MenusBehavior {
     if (DataManager.dm.getInt(objectName + "Level") == 0) {
       DataManager.dm.setBool(objectName, true);
       string tutorialsNotDone = PlayerPrefs.GetString("ObjectTutorialsNotDone");
-      PlayerPrefs.GetString("ObjectTutorialsNotDone", (tutorialsNotDone + " " + objectName).Trim());
+      PlayerPrefs.SetString("ObjectTutorialsNotDone", (tutorialsNotDone + " " + objectName).Trim());
     }
     DataManager.dm.increment(objectName + "Level");
 

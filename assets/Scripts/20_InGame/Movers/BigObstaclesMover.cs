@@ -18,6 +18,10 @@ public class BigObstaclesMover : ObjectsMover {
   }
 
   public override void destroyObject(bool destroyEffect = true) {
+    foreach (Collider collider in GetComponents<Collider>()) {
+      collider.enabled = false;
+    }
+
     if (destroyEffect) {
       Instantiate(player.obstacleDestroy, transform.position, transform.rotation);
     }
@@ -28,9 +32,9 @@ public class BigObstaclesMover : ObjectsMover {
   }
 
   public override void encounterPlayer() {
-    if (!collideChecked) return;
-
-    collideChecked = false;
+    foreach (Collider collider in GetComponents<Collider>()) {
+      collider.enabled = false;
+    }
 
     Instantiate(player.obstacleDestroy, transform.position, transform.rotation);
     QuestManager.qm.addCountToQuest("DestroyAsteroid");
