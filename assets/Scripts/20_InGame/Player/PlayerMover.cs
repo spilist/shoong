@@ -525,7 +525,7 @@ public class PlayerMover : MonoBehaviour {
     if (scoreManager.isGameOver()) return;
 
     if (effectName == "Whew") {
-      boosterspeed += 200;
+      boosterspeed += 140;
       booster.Play();
       afterStrengthenStart();
       // audio needed

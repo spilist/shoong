@@ -2342,7 +2342,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 5ab91a2740f8b4476a8946f20def321f, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: .379999995
+  m_Volume: .25
   m_Pitch: .899999976
   Loop: 0
   Mute: 0
@@ -34910,7 +34910,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: ec71e0a0c0f71104b9d05146deb78dc9, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: .170000002
+  m_Volume: .0900000036
   m_Pitch: 1.39999998
   Loop: 0
   Mute: 0
@@ -59548,9 +59548,9 @@ MonoBehaviour:
   tumble: 5
   minSpawnInterval: 8
   maxSpawnInterval: 12
-  numRoadRidesPerLevel: 020000000400000007000000
-  speedPerRide: 90010000c2010000f401000026020000580200008a020000bc020000
-  nextDonutRadius: 120
+  numRoadRidesPerLevel: 020000000400000006000000
+  speedPerRide: 84030000b6030000e80300001a0400004c0400007e040000
+  nextDonutRadius: 300
   rotateDuring: .400000006
   rotateAngularSpeed: 1000
   ridingSpeed: 400
@@ -59580,7 +59580,7 @@ MonoBehaviour:
   strength: 0
   comboPartPrefab: {fileID: 164108, guid: a6fcdda2fbd1d4fe0b8a15b6d19364a9, type: 2}
   comboPartPrefab_next: {fileID: 192146, guid: d357428246b5f4e5fb2b54651d371984, type: 2}
-  fullComboCountPerLevel: 030000000400000006000000
+  fullComboCountPerLevel: 030000000400000005000000
   comboBonusScale: 5
   radius: 50
   respawnInterval_min: 8
@@ -59634,8 +59634,8 @@ MonoBehaviour:
   blackhole_prefab: {fileID: 117910, guid: bbcd82bb603674de8b6cb8bab02b2b62, type: 2}
   blackholeGravitySphere_prefab: {fileID: 162082, guid: 2cc8b66773d8e4032bade512e7e76b8e,
     type: 2}
-  minSpawnInterval: 15
-  maxSpawnInterval: 25
+  minSpawnInterval: 10
+  maxSpawnInterval: 40
   spawnRadius: 100
   gravity: 50
   pullUser: 80
@@ -59659,8 +59659,8 @@ MonoBehaviour:
   speed_runaway: 60
   speed_weaken: 20
   tumble: 5
-  minSpawnInterval: 25
-  maxSpawnInterval: 35
+  minSpawnInterval: 20
+  maxSpawnInterval: 60
   spawnRadius: 200
   detectDistance: 200
   minLifeTime: 8
@@ -59670,19 +59670,19 @@ MonoBehaviour:
   shrinkSpeed: 1
   minimonPrefab: {fileID: 147296, guid: 3838bf770901046ef94d4e70d8066d50, type: 2}
   numMinimonRespawn: 4
-  minimonAdditionalSpeed: 10
+  minimonAdditionalSpeed: 15
   minimonStartTimeByMonster: .5
   minimonStartTimeByPlayer: .5
   minimonStartSpeedByMonster: 80
-  minimonStartSpeedByPlayer: 160
+  minimonStartSpeedByPlayer: 240
   minimonTumble: 10
   minimonLifeTime: 4
-  cubesWhenDestroyMinimon: 10
-  numsMinimonSpawn: 010000000200000004000000
+  cubesWhenDestroyMinimon: 8
+  numsMinimonSpawn: 010000000200000003000000
   numMinimonSpawn: 0
   maxEnlargeCount: 50
   enlargeScalePerMinimon: .00999999978
-  enlargeSpeedPerMinimon: 4
+  enlargeSpeedPerMinimon: 2
   minimonDestroyEffect: {fileID: 19885190, guid: 46089bf9ed3c44683abd20a8e16a7bee,
     type: 2}
   weakenedOutlineColor: {r: .0784313753, g: .909803927, b: .360784322, a: .533333361}
@@ -59704,7 +59704,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   strength: 1
   cubeDispenserPrefab: {fileID: 148822, guid: de23a7876221f4b818e7bfdccf294c71, type: 2}
-  fullComboCountPerLevel: 050000000600000008000000
+  fullComboCountPerLevel: 050000000600000007000000
   destroyAfterPerLevel:
   - 3.5
   - 4
@@ -59782,12 +59782,12 @@ MonoBehaviour:
   strength: 0
   destroyBonusPerLevel:
   - 0
-  - .400000006
   - 1
+  - 2
   special: {fileID: 189520, guid: dccc40739d6254de9aaa62d3c75f9b0d, type: 2}
   tumble: 3
   minSpawnInterval: 10
-  maxSpawnInterval: 15
+  maxSpawnInterval: 20
   bonus: 0
 --- !u!114 &1991538114
 MonoBehaviour:
@@ -59818,10 +59818,10 @@ MonoBehaviour:
   gcCount: {fileID: 966334536}
   destroyEffect: {fileID: 19856956, guid: c37d1083178cd45a3ac690547aa860e0, type: 2}
   getEffect: {fileID: 1299656069}
-  tumble: 5
-  speed: 60
-  spawnInterval_min: 10
-  spawnInterval_max: 100
+  tumble: 3
+  speed: 75
+  spawnInterval_min: 20
+  spawnInterval_max: 120
   respawnAfter: 120
   numGoldenCubesGet: 10
   spawnRadius: 210
