@@ -12,6 +12,7 @@ public class CubeDispenserManager : ObjectsManager {
 	public ParticleSystem destroy;
   public float pitchStart = 0.9f;
   public float pitchIncrease = 0.05f;
+  public Material activeMat;
 
   private GameObject cubeDispenser;
   private int comboCount = 0;
@@ -39,6 +40,7 @@ public class CubeDispenserManager : ObjectsManager {
 	public void contact() {
     if (notContactYet) {
       notContactYet = false;
+      cubeDispenser.GetComponent<Renderer>().sharedMaterial = activeMat;
       StartCoroutine("destroyAfterTry");
     }
     comboCount++;
@@ -46,6 +48,7 @@ public class CubeDispenserManager : ObjectsManager {
 
     if (comboCount == fullComboCountPerLevel[0]) {
       QuestManager.qm.addCountToQuest("CubeDispenser");
+      player.showEffect("Great");
     }
 
     if (comboCount == fullComboCount) {

@@ -65,15 +65,21 @@ public class ObjectsMover : MonoBehaviour {
     ObjectsMover other = collision.collider.gameObject.GetComponent<ObjectsMover>();
 
     if (other != null) {
-      if (strength() == other.strength()) {
-        processCollision(collision);
-      } else if (strength() > other.strength()) {
-        other.destroyObject();
+      if (beforeCollision(other)) {
+        if (strength() == other.strength()) {
+          processCollision(collision);
+        } else if (strength() > other.strength()) {
+          other.destroyObject();
+        }
+        rb.velocity = direction * speed;
       }
-      rb.velocity = direction * speed;
     }
 
     doSomethingSpecial(collision);
+  }
+
+  virtual protected bool beforeCollision(ObjectsMover other) {
+    return true;
   }
 
   virtual protected void doSomethingSpecial(Collision collision) {
@@ -99,6 +105,9 @@ public class ObjectsMover : MonoBehaviour {
     Destroy(gameObject);
   }
 
+  virtual public void destroyByMonster() {
+  }
+
   virtual public void encounterPlayer() {
     if (tag == "Part") {
       player.GetComponent<AudioSource>().Play ();
@@ -107,13 +116,13 @@ public class ObjectsMover : MonoBehaviour {
       if (player.isUsingRainbow()) QuestManager.qm.addCountToQuest("GetPartsOnRainbow");
       if (player.isNearAsteroid()) {
         QuestManager.qm.addCountToQuest("GetPartsNearAsteroid");
-        player.showEffect("Great");
+        player.showEffect("Wow");
       }
     }
     Destroy(gameObject);
   }
 
-  public void setMagnetized() {
+  virtual public void setMagnetized() {
     if (canBeMagnetized) isMagnetized = true;
   }
 

@@ -15,6 +15,8 @@ public class ParticleMover : MonoBehaviour {
 	private PartsCollector partsCollector;
 
 	private bool isTriggeringCubesGet = false;
+	private bool generatedByPlayer = true;
+
 	private int howMany = 0;
 
 	void Start () {
@@ -49,13 +51,13 @@ public class ParticleMover : MonoBehaviour {
 	void OnTriggerStay(Collider other) {
 		if (other.tag == "PartCollector" && timeelapsed) {
 			Destroy (gameObject);
-			partsCollector.effect(isTriggeringCubesGet, howMany);
+			partsCollector.effect(isTriggeringCubesGet, howMany, generatedByPlayer);
 		}
 	}
 
-	public void triggerCubesGet(int count) {
+	public void triggerCubesGet(int count, bool playerGeneration = true) {
 		isTriggeringCubesGet = true;
+		generatedByPlayer = playerGeneration;
 		howMany = count;
 	}
-
 }

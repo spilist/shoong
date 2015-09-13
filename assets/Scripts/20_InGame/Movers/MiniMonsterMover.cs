@@ -105,4 +105,8 @@ public class MiniMonsterMover : ObjectsMover {
   public bool isTimeElapsed() {
     return timeElapsed;
   }
+
+  override public void setMagnetized() {
+    if (timeElapsed) isMagnetized = true;
+  }
 }

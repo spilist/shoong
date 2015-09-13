@@ -58,6 +58,7 @@ public class RainbowDonutsManager : ObjectsManager {
     if (rideCount == 0) {
       player.showEffect("Rainbow");
       QuestManager.qm.addCountToQuest("RideRainbow");
+      QuestManager.qm.addCountToQuest("RainbowDonuts");
     }
 
     if (rideCount < numRoadRides) {

@@ -89,7 +89,7 @@ public class MonsterMover : ObjectsMover {
     direction = player.transform.position - transform.position;
     float distance = direction.magnitude;
     direction /= distance;
-    if (distance > monm.detectDistance){
+    if (distance > monm.detectDistance) {
       rb.velocity = direction * speed_chase * 2;
     } else if (isMagnetized) {
       rb.velocity = direction * player.GetComponent<Rigidbody>().velocity.magnitude * 1.5f;

@@ -68,7 +68,7 @@ public class MonsterManager : ObjectsManager {
     Vector3 spawnPos = new Vector3(screenPos.x + playerTransform.position.x, playerTransform.position.y, screenPos.y + playerTransform.position.z);
 
     GameObject newInstance = (GameObject) Instantiate(monster, spawnPos, Quaternion.identity);
-    newInstance.transform.parent = gameObject.transform;
+    newInstance.transform.parent = transform;
 
     StartCoroutine("startWarning");
   }

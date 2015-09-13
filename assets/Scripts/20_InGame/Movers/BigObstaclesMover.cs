@@ -31,6 +31,11 @@ public class BigObstaclesMover : ObjectsMover {
     Destroy(gameObject);
   }
 
+  public override void destroyByMonster() {
+    QuestManager.qm.addCountToQuest("DestroyAsteroid");
+    QuestManager.qm.addCountToQuest("Monster");
+  }
+
   public override void encounterPlayer() {
     foreach (Collider collider in GetComponents<Collider>()) {
       collider.enabled = false;
@@ -44,8 +49,6 @@ public class BigObstaclesMover : ObjectsMover {
       QuestManager.qm.addCountToQuest("SpecialParts");
     } else if (player.isRidingMonster()) {
       QuestManager.qm.addCountToQuest("Monster");
-    } else if (player.isUsingRainbow()) {
-      QuestManager.qm.addCountToQuest("RainbowDonuts");
     }
 
     if (isNearPlayer) player.nearAsteroid(false);

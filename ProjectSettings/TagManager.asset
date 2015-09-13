@@ -36,6 +36,7 @@ TagManager:
   - GameOverActions
   - PatternPart
   - MiniMonster
+  - GoldenCube
   layers:
   - Default
   - TransparentFX

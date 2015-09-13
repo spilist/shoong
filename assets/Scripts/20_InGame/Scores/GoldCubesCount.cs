@@ -36,6 +36,7 @@ public class GoldCubesCount : MonoBehaviour {
     moveBackTo = cubes.preferredWidth + offset;
     showCount = 0;
     moveStatus = 1;
+    GetComponent<AudioSource>().Play();
   }
 
   public int getCount() {

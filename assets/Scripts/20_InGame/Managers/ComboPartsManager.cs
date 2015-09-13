@@ -75,6 +75,7 @@ public class ComboPartsManager : ObjectsManager {
 
     if (comboCount == fullComboCount) {
       QuestManager.qm.addCountToQuest("CompleteComboParts");
+      player.showEffect("Great");
       StartCoroutine("startSpawn");
       return;
     }

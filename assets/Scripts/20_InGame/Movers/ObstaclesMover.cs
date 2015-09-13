@@ -36,10 +36,14 @@ public class ObstaclesMover : ObjectsMover {
     }
     Destroy(gameObject);
 
-    if (avoiding) {
+    if (avoiding && !alreadyChecked) {
       QuestManager.qm.addCountToQuest("AvoidFallingStar");
       player.showEffect("Whew");
     }
+  }
+
+  public override void destroyByMonster() {
+    QuestManager.qm.addCountToQuest("DestroyFallingStar");
   }
 
   public override void encounterPlayer() {
@@ -61,7 +65,7 @@ public class ObstaclesMover : ObjectsMover {
   public void nearPlayer(bool enter = true) {
     avoiding = enter;
 
-    if (!alreadyChecked) alreadyChecked = true;
+    if (!enter && !alreadyChecked) alreadyChecked = true;
   }
 
   public bool isAlreadyChecked() {

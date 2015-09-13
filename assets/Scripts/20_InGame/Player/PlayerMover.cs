@@ -104,6 +104,8 @@ public class PlayerMover : MonoBehaviour {
 
     rb = GetComponent<Rigidbody>();
     rb.velocity = direction * speed;
+
+    getBlackholeEffect.transform.localScale = Vector3.one * getBlackhole.GetComponent<GetBlackhole>().radiusPerLevel[DataManager.dm.getInt("BlackholeLevel") - 1] / getBlackhole.GetComponent<GetBlackhole>().radiusPerLevel[0];
 	}
 
 	void FixedUpdate () {
@@ -143,7 +145,7 @@ public class PlayerMover : MonoBehaviour {
       return;
     }
 
-    if (mover.tag == "Monster" && ((MonsterMover)mover).rideable()) {
+    if (!unstoppable && mover.tag == "Monster" && ((MonsterMover)mover).rideable()) {
       startRiding(mover);
       return;
     }
@@ -154,6 +156,7 @@ public class PlayerMover : MonoBehaviour {
   public void goodPartsEncounter(ObjectsMover mover, int howMany, int bonus = 0) {
     if (ridingMonster && mover.tag != "MiniMonster" && mover.tag != "RainbowDonut") {
       mover.destroyObject();
+      mover.destroyByMonster();
       for (int k = 0; k < monm.numMinimonSpawn; k++) {
         Instantiate(monm.minimonPrefab, transform.position, transform.rotation);
       }
@@ -198,12 +201,15 @@ public class PlayerMover : MonoBehaviour {
       }
     }
 
-    cubesCount.addCount(howMany, bonus);
-    energyBar.getHealthbyParts(howMany + bonus);
+    if (mover.tag != "GoldenCube") addCubeCount(howMany, bonus);
     getEnergy.Play ();
     comboBar.addCombo();
-
     mover.encounterPlayer();
+  }
+
+  public void addCubeCount(int howMany = 1, int bonus = 0) {
+    cubesCount.addCount(howMany, bonus);
+    energyBar.getHealthbyParts(howMany + bonus);
     QuestManager.qm.addCountToQuest("GetCube", howMany + bonus);
   }
 
@@ -266,6 +272,10 @@ public class PlayerMover : MonoBehaviour {
 
     yield return new WaitForSeconds(effectDuration);
 
+    stopStrengthen();
+  }
+
+  public void stopStrengthen() {
     if (unstoppable) {
       spawnManager.runManager("SpecialParts");
       unstoppable = false;

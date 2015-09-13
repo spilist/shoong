@@ -24,6 +24,9 @@ public class SpawnManager : MonoBehaviour {
       tr.gameObject.SetActive(true);
     }
 
+    // spawn GoldenCube
+    GetComponent<GoldenCubeManager>().run();
+
     // start spawn obstacles
     GetComponent<ObstaclesManager>().enabled = true;
 
