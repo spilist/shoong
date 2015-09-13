@@ -6,13 +6,16 @@ public class MonsterMover : ObjectsMover {
   private float speed_chase;
   private float speed_runaway;
   private float speed_weaken;
+  private float lifeTime;
+  private float minimonRespawnTime;
+  private int minimonCount = 0;
 
   private MonsterManager monm;
   private SpecialPartsManager spm;
 
   private float originalScale;
   private bool weak = false;
-  private bool shrinking = true;
+  private bool shrinking = false;
 
   public ParticleSystem aura;
   public ParticleSystem weakenAura;
@@ -22,13 +25,16 @@ public class MonsterMover : ObjectsMover {
     monm = GameObject.Find("Field Objects").GetComponent<MonsterManager>();
     spm = monm.GetComponent<SpecialPartsManager>();
 
-    originalScale = shrinkedScale;
+    originalScale = transform.localScale.x;
     speed_chase = monm.speed_chase;
     speed_runaway = monm.speed_runaway;
     speed_weaken = monm.speed_weaken;
     monm.indicator.startIndicate(gameObject);
     monm.indicator.GetComponent<Image>().color = Color.red;
     m_renderer = GetComponent<Renderer>();
+
+    lifeTime = Random.Range(monm.minLifeTime, monm.maxLifeTime);
+    minimonRespawnTime = lifeTime / monm.numMinimonRespawn;
     StartCoroutine("weakened");
   }
 
@@ -46,7 +52,14 @@ public class MonsterMover : ObjectsMover {
   }
 
   IEnumerator weakened() {
-    yield return new WaitForSeconds(Random.Range(monm.minLifeTime, monm.maxLifeTime));
+    while (minimonCount < monm.numMinimonRespawn) {
+      minimonCount++;
+      shrinking = true;
+      Instantiate(monm.minimonPrefab, transform.position, transform.rotation);
+
+      yield return new WaitForSeconds(minimonRespawnTime);
+    }
+
     weak = true;
     monm.stopWarning();
     weakenAura.Play();
@@ -68,7 +81,7 @@ public class MonsterMover : ObjectsMover {
     if (weak) {
       return 0.5f;
     } else {
-      return objectsManager.strength;
+      return monm.strength;
     }
   }
 
@@ -88,15 +101,12 @@ public class MonsterMover : ObjectsMover {
       rb.velocity = direction * speed_chase;
     }
 
-    if (weak) {
-      if (shrinking) {
-        shrinkedScale = Mathf.MoveTowards(shrinkedScale, monm.shrinkUntil, Time.deltaTime * monm.shrinkSpeed);
-        if (shrinkedScale == monm.shrinkUntil) shrinking = false;
-      } else {
-        shrinkedScale = Mathf.MoveTowards(shrinkedScale, originalScale, Time.deltaTime * monm.restoreSpeed);
-        if (shrinkedScale == originalScale) shrinking = true;
-      }
-      transform.localScale = new Vector3(shrinkedScale, shrinkedScale, shrinkedScale);
+    if (shrinking) {
+      float until = originalScale - (originalScale - monm.shrinkUntil) * minimonCount / monm.numMinimonRespawn;
+      shrinkedScale = Mathf.MoveTowards(shrinkedScale, until, Time.deltaTime * monm.shrinkSpeed);
+      if (shrinkedScale == until) shrinking = false;
+
+      transform.localScale = Vector3.one * shrinkedScale;
     }
   }
 

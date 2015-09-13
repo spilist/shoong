@@ -34,6 +34,8 @@ TagManager:
   - CharacterCreateMenu
   - Blachole
   - GameOverActions
+  - PatternPart
+  - MiniMonster
   layers:
   - Default
   - TransparentFX
@@ -59,7 +61,7 @@ TagManager:
   - SpecialParts
   - RainbowDonuts
   - BigObstacle
-  - 
+  - MinMonster
   - 
   - 
   - 

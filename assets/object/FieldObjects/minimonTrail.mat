@@ -6,8 +6,8 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: minimonster_spawned
-  m_Shader: {fileID: 4800000, guid: 7bf83126e592a4f57aa361c91b298c2b, type: 3}
+  m_Name: minimonTrail
+  m_Shader: {fileID: 200, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
   m_CustomRenderQueue: -1
@@ -19,7 +19,7 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: 7865e2f314e1d4d0faa5b38ba79b7f8a, type: 3}
+          m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -129,8 +129,8 @@ Material:
         second: 0
       data:
         first:
-          name: _Outline
-        second: .75
+          name: _InvFade
+        second: 1
     m_Colors:
       data:
         first:
@@ -139,8 +139,8 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: .886274517, g: .886274517, b: .886274517, a: 1}
+        second: {r: 1, g: 1, b: 1, a: 1}
       data:
         first:
-          name: _OutlineColor
-        second: {r: .909803927, g: .0784313753, b: .164705887, a: .533333361}
+          name: _TintColor
+        second: {r: .22383219, g: .845588207, b: .747844815, a: .389999986}

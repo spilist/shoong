@@ -20,6 +20,26 @@ public class MonsterManager : ObjectsManager {
   public float shrinkUntil = 1.2f;
   public float shrinkSpeed = 2;
   public float restoreSpeed = 0;
+
+  public GameObject minimonPrefab;
+  public int numMinimonRespawn = 4;
+  public int minimonAdditionalSpeed = 20;
+  public float minimonStartTimeByMonster = 0.5f;
+  public float minimonStartTimeByPlayer = 1;
+  public float minimonStartSpeedByMonster = 40;
+  public float minimonStartSpeedByPlayer = 80;
+  public float minimonTumble = 10;
+  public float minimonLifeTime = 4;
+  public int cubesWhenDestroyMinimon = 5;
+  public int[] numsMinimonSpawn;
+  public int numMinimonSpawn;
+
+  public int maxEnlargeCount = 50;
+  public float enlargeScalePerMinimon = 0.01f;
+  public int enlargeSpeedPerMinimon = 2;
+
+  public ParticleSystem minimonDestroyEffect;
+
   public Color weakenedOutlineColor;
   public GameObject monsterFilter;
   public ParticleSystem destroyEffect;
@@ -32,6 +52,7 @@ public class MonsterManager : ObjectsManager {
 
 	void Start () {
     playerTransform = GameObject.Find("Player").transform;
+    numMinimonSpawn = numsMinimonSpawn[DataManager.dm.getInt("MonsterLevel") - 1];
 	}
 
   override public void run() {

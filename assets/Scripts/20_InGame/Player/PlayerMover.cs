@@ -69,6 +69,8 @@ public class PlayerMover : MonoBehaviour {
   private bool ridingMonster = false;
   private Mesh originalMesh;
   private Material originalMaterial;
+  private float originalScale;
+  private int minimonCounter = 0;
 
   private bool isRotatingByRainbow = false;
   private bool isRidingRainbowRoad = false;
@@ -80,6 +82,7 @@ public class PlayerMover : MonoBehaviour {
 	void Start () {
     changeCharacter(PlayerPrefs.GetString("SelectedCharacter"));
 
+    originalScale = transform.localScale.x;
     originalMesh = GetComponent<MeshFilter>().sharedMesh;
     originalMaterial = GetComponent<Renderer>().sharedMaterial;
     energyBar = transform.parent.Find("Bars Canvas/EnergyBar").GetComponent<EnergyBar>();
@@ -102,8 +105,8 @@ public class PlayerMover : MonoBehaviour {
       speed = rdm.ridingSpeed;
     } else if (isRebounding()) {
       speed = reboundSpeed;
-    // } else if (unstoppable) {
-      // speed = unstoppable_speed;
+    } else if (ridingMonster) {
+      speed = comboBar.getSpeed() + minimonCounter * monm.enlargeSpeedPerMinimon;
     } else {
 			speed = comboBar.getSpeed();
     }
@@ -143,6 +146,23 @@ public class PlayerMover : MonoBehaviour {
 	}
 
   public void goodPartsEncounter(ObjectsMover mover, int howMany, int bonus = 0) {
+    if (ridingMonster && mover.tag != "MiniMonster" && mover.tag != "RainbowDonut") {
+      mover.destroyObject();
+      for (int k = 0; k < monm.numMinimonSpawn; k++) {
+        Instantiate(monm.minimonPrefab, transform.position, transform.rotation);
+      }
+      return;
+    }
+
+    if (mover.tag == "MiniMonster") {
+      if (!((MiniMonsterMover)mover).isTimeElapsed()) return;
+
+      if (minimonCounter < monm.maxEnlargeCount) {
+        minimonCounter++;
+        transform.localScale += monm.enlargeScalePerMinimon * Vector3.one;
+      }
+    }
+
     int instantiateCount;
     if (howMany < cubesAsItIsUntill) {
       instantiateCount = howMany;
@@ -270,6 +290,10 @@ public class PlayerMover : MonoBehaviour {
       monsterEffect.Stop();
       monsterEffect.GetComponent<AudioSource>().Stop();
       monm.monsterFilter.SetActive(false);
+      foreach (GameObject mm in GameObject.FindGameObjectsWithTag("MiniMonster")) {
+        mm.GetComponent<MiniMonsterMover>().destroyObject();
+      }
+      transform.localScale = originalScale * Vector3.one;
       monm.run();
     }
   }
@@ -286,6 +310,7 @@ public class PlayerMover : MonoBehaviour {
     }
 
     ridingMonster = true;
+    minimonCounter = 0;
     monm.monsterFilter.SetActive(true);
     ridingEffect.Play();
     ridingEffect.GetComponent<AudioSource>().Play();
