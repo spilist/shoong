@@ -13,6 +13,7 @@ public class EnergyBar : MonoBehaviour {
   private bool isChangingRest = false;
   private bool gameStarted = false;
   private bool charged = true;
+  public float chargedBlinking = 0.3f;
   public Transform chargeEffect;
   public float originalChargeEffectScale = 5;
   private float chargeEffectScale;
@@ -32,12 +33,20 @@ public class EnergyBar : MonoBehaviour {
 
   private Color color_healthy;
   private Color color_danger;
+  private Color color_charged;
+
+  public void startGame() {
+    gameStarted = true;
+    setCharged();
+  }
 
   void Start () {
     image = GetComponent<Image>();
 
     color_healthy = image.color;
     color_danger = new Color(1, 0, 0, color_healthy.a);
+    color_charged = new Color(1, 1, 1, color_healthy.a);
+
     chargeEffectScale = originalChargeEffectScale;
     chargeEffect.localScale = originalChargeEffectScale * Vector3.one;
   }
@@ -53,28 +62,31 @@ public class EnergyBar : MonoBehaviour {
         if (chargedCount >= chargedDuration) {
           chargedCount = 0;
           charged = false;
+          StopCoroutine("indicateCharged");
+          image.color = color_healthy;
         }
         chargedCount += Time.deltaTime;
       } else {
-        if (isChanging) {
-          change();
-        } else if (isChangingRest) {
-          changeRest();
-        } else {
-          autoDecrease();
-        }
-
         if (image.fillAmount > 0.3f) {
           image.color = color_healthy;
         } else {
           image.color = color_danger;
         }
-
-        if (image.fillAmount == 0) {
-          player.scoreManager.gameOver();
-          gameStarted = false;
-        }
       }
+
+      if (isChanging) {
+        change();
+      } else if (isChangingRest) {
+        changeRest();
+      } else {
+        autoDecrease();
+      }
+
+      if (image.fillAmount == 0) {
+        player.scoreManager.gameOver();
+        gameStarted = false;
+      }
+
       energyCurrent.text = (image.fillAmount * 100).ToString("0");
     }
 	}
@@ -87,7 +99,8 @@ public class EnergyBar : MonoBehaviour {
   }
 
   void autoDecrease() {
-    if (player.isUsingRainbow()) return;
+    if (charged || player.isUsingRainbow()) return;
+
     image.fillAmount = Mathf.MoveTowards(image.fillAmount, 0, Time.deltaTime * autoDecreaseRate);
   }
 
@@ -108,12 +121,6 @@ public class EnergyBar : MonoBehaviour {
       restAmount = 0;
       isChangingRest = false;
     }
-  }
-
-  public void startGame() {
-    gameStarted = true;
-    player.chargedEffect.Play();
-    player.chargedEffect.GetComponent<AudioSource>().Play();
   }
 
   void changeHealth (int amount, float rate) {
@@ -156,6 +163,20 @@ public class EnergyBar : MonoBehaviour {
 
   public void setCharged() {
     charged = true;
+    player.chargedEffect.Play();
+    player.chargedEffect.GetComponent<AudioSource>().Play();
+    StartCoroutine("indicateCharged");
+  }
+
+  IEnumerator indicateCharged() {
+    while (charged) {
+      yield return new WaitForSeconds(chargedBlinking);
+      image.color = color_charged;
+
+      yield return new WaitForSeconds(chargedBlinking);
+      image.color = (image.fillAmount > 0.3f) ? color_healthy : color_danger;
+    }
+
   }
 
   public int currentEnergy() {

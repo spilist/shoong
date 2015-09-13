@@ -21,8 +21,11 @@ public class QuestCollider : MonoBehaviour {
    if (other.tag == "Obstacle_big") {
       other.GetComponent<BigObstaclesMover>().nearPlayer(false);
     } else if (other.tag == "Obstacle") {
+      if (other.GetComponent<ObstaclesMover>().isAlreadyChecked()) return;
+
       other.GetComponent<ObstaclesMover>().nearPlayer(false);
       QuestManager.qm.addCountToQuest("AvoidFallingStar");
+      player.showEffect("Whew");
     }
   }
 }

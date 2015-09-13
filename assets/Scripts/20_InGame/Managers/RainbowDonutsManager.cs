@@ -55,7 +55,10 @@ public class RainbowDonutsManager : ObjectsManager {
     erasingRainbowRoad = false;
     if (rainbowRoad != null) Destroy(rainbowRoad.gameObject);
 
-    if (rideCount == 0) QuestManager.qm.addCountToQuest("RideRainbow");
+    if (rideCount == 0) {
+      player.showEffect("Rainbow");
+      QuestManager.qm.addCountToQuest("RideRainbow");
+    }
 
     if (rideCount < numRoadRides) {
       ridingSpeed = speedPerRide[rideCount];
@@ -69,6 +72,7 @@ public class RainbowDonutsManager : ObjectsManager {
       StartCoroutine("rideRainbow");
     } else {
       player.rainbowEffect.Stop();
+      player.afterStrengthenStart();
       StartCoroutine("respawn");
     }
   }

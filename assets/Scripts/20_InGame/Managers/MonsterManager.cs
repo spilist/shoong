@@ -19,7 +19,6 @@ public class MonsterManager : ObjectsManager {
   public float weakenDuration = 5.5f;
   public float shrinkUntil = 1.2f;
   public float shrinkSpeed = 2;
-  public float restoreSpeed = 0;
 
   public GameObject minimonPrefab;
   public int numMinimonRespawn = 4;

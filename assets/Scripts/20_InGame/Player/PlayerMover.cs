@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class PlayerMover : MonoBehaviour {
+  public Transform effects;
   public SpawnManager spawnManager;
 
   public CubesCount cubesCount;
@@ -46,6 +47,7 @@ public class PlayerMover : MonoBehaviour {
   public ParticleSystem getBlackholeEffect;
   public ParticleSystem rainbowEffect;
   public ParticleSystem chargedEffect;
+  public ParticleSystem afterStrengthenEffect;
 
   public Material metalMat;
 
@@ -78,6 +80,10 @@ public class PlayerMover : MonoBehaviour {
   private Rigidbody rb;
 
   private int nearAsteroidCounter = 0;
+
+  public float afterStrengthenDuration = 1;
+  private bool afterStrengthen = false;
+  private float afterStrengthenCount = 0;
 
 	void Start () {
     changeCharacter(PlayerPrefs.GetString("SelectedCharacter"));
@@ -233,6 +239,7 @@ public class PlayerMover : MonoBehaviour {
     }
 
     if (unstoppable) {
+      showEffect("Metal");
       unstoppableEffect.Play();
       unstoppableEffect.GetComponent<AudioSource>().Play ();
       // unstoppableEffect_two.Play();
@@ -241,12 +248,14 @@ public class PlayerMover : MonoBehaviour {
     }
 
     if (exitedBlackhole) {
+      showEffect("Blackhole");
       getBlackhole.SetActive(true);
       getBlackholeEffect.Play();
       getBlackholeEffect.GetComponent<AudioSource>().Play();
     }
 
     if (ridingMonster) {
+      showEffect("Monster");
       energyBar.getFullHealth();
       changeCharacter(monsterMesh, monsterMaterial);
       monsterEffect.Play();
@@ -265,6 +274,8 @@ public class PlayerMover : MonoBehaviour {
       unstoppableEffect_two.GetComponent<AudioSource>().Stop ();
       QuestManager.qm.addCountToQuest("DestroyAsteroidsBeforeUnstoppableEnd", 0);
       changeCharacter(originalMesh, originalMaterial);
+
+      afterStrengthenStart();
     }
 
     if (reboundingByBlackhole) {
@@ -274,6 +285,8 @@ public class PlayerMover : MonoBehaviour {
         isRidingRainbowRoad = false;
         rainbowEffect.Stop();
       }
+
+      afterStrengthenStart();
     }
 
     if (exitedBlackhole) {
@@ -295,6 +308,8 @@ public class PlayerMover : MonoBehaviour {
       }
       transform.localScale = originalScale * Vector3.one;
       monm.run();
+
+      afterStrengthenStart();
     }
   }
 
@@ -419,9 +434,7 @@ public class PlayerMover : MonoBehaviour {
     QuestManager.qm.addCountToQuest("NoBooster", 0);
     QuestManager.qm.addCountToQuest("UseBooster");
 
-    // if (!unstoppable) {
-      energyBar.loseByShoot();
-    // }
+    energyBar.loseByShoot();
 
     rotatePlayerBody();
 
@@ -430,8 +443,10 @@ public class PlayerMover : MonoBehaviour {
 
     direction = dir;
 
-    boosterspeed += boosterSpeedUpAmount;
-    if (boosterspeed > maxBoosterSpeed) boosterspeed = maxBoosterSpeed;
+    if (boosterspeed < maxBoosterSpeed) {
+      boosterspeed += boosterSpeedUpAmount;
+      boosterspeed = boosterspeed > maxBoosterSpeed? maxBoosterSpeed : boosterspeed;
+    }
 
     cpm.tryToGet();
   }
@@ -464,6 +479,14 @@ public class PlayerMover : MonoBehaviour {
       transform.Translate(dir * Time.deltaTime * 30, Space.World);
       transform.Rotate(-Vector3.forward * Time.deltaTime * rdm.rotateAngularSpeed, Space.World);
     }
+
+    if (afterStrengthen) {
+      if (afterStrengthenCount < afterStrengthenDuration) {
+        afterStrengthenCount += Time.deltaTime;
+      } else {
+        afterStrengthen = false;
+      }
+    }
   }
 
   public void setRidingRainbowRoad(bool val) {
@@ -486,5 +509,30 @@ public class PlayerMover : MonoBehaviour {
 
   public bool isNearAsteroid() {
     return nearAsteroidCounter > 0;
+  }
+
+  public void showEffect(string effectName) {
+    if (scoreManager.isGameOver()) return;
+
+    if (effectName == "Whew") {
+      boosterspeed += 200;
+      booster.Play();
+      afterStrengthenStart();
+      // audio needed
+    } else if (effectName == "Charged") {
+      energyBar.setCharged();
+    }
+
+    effects.Find(effectName).gameObject.SetActive(true);
+  }
+
+  public void afterStrengthenStart() {
+    afterStrengthen = true;
+    afterStrengthenCount = 0;
+    afterStrengthenEffect.Play();
+  }
+
+  public bool isAfterStrengthen() {
+    return afterStrengthen;
   }
 }

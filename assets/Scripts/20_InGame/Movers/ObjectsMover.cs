@@ -105,7 +105,10 @@ public class ObjectsMover : MonoBehaviour {
 
       if (isMagnetized) QuestManager.qm.addCountToQuest("Blackhole");
       if (player.isUsingRainbow()) QuestManager.qm.addCountToQuest("GetPartsOnRainbow");
-      if (player.isNearAsteroid()) QuestManager.qm.addCountToQuest("GetPartsNearAsteroid");
+      if (player.isNearAsteroid()) {
+        QuestManager.qm.addCountToQuest("GetPartsNearAsteroid");
+        player.showEffect("Great");
+      }
     }
     Destroy(gameObject);
   }

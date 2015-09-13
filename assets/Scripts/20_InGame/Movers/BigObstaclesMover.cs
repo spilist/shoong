@@ -67,7 +67,7 @@ public class BigObstaclesMover : ObjectsMover {
   }
 
   override public bool dangerous() {
-    if (player.isRidingMonster() || player.isUnstoppable() || player.isUsingRainbow()) return false;
+    if (player.isAfterStrengthen() || player.isRidingMonster() || player.isUnstoppable() || player.isUsingRainbow()) return false;
     else return true;
   }
 

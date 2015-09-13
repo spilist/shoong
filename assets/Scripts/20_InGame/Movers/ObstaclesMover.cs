@@ -5,6 +5,7 @@ public class ObstaclesMover : ObjectsMover {
   ObstaclesManager obm;
   SpecialPartsManager spm;
   private bool avoiding = false;
+  private bool alreadyChecked = false;
 
   protected override void initializeRest() {
     obm = GameObject.Find("Field Objects").GetComponent<ObstaclesManager>();
@@ -37,6 +38,7 @@ public class ObstaclesMover : ObjectsMover {
 
     if (avoiding) {
       QuestManager.qm.addCountToQuest("AvoidFallingStar");
+      player.showEffect("Whew");
     }
   }
 
@@ -58,10 +60,16 @@ public class ObstaclesMover : ObjectsMover {
 
   public void nearPlayer(bool enter = true) {
     avoiding = enter;
+
+    if (!alreadyChecked) alreadyChecked = true;
+  }
+
+  public bool isAlreadyChecked() {
+    return alreadyChecked;
   }
 
   override public bool dangerous() {
-    if (player.isRidingMonster() || player.isUnstoppable() || player.isUsingRainbow()) return false;
+    if (player.isAfterStrengthen() || player.isRidingMonster() || player.isUnstoppable() || player.isUsingRainbow()) return false;
     else return true;
   }
 

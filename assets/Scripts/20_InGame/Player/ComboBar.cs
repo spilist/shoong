@@ -6,7 +6,7 @@ public class ComboBar : MonoBehaviour {
   public Image inner;
   public Image innerBlinking;
 	public ParticleSystem getEnergy;
-  public GameObject player;
+  public PlayerMover player;
 
   public float tintAmount = 0.02f;
 	public float speedraiseamount;
@@ -69,6 +69,10 @@ public class ComboBar : MonoBehaviour {
       getEnergy.emissionRate += emissionRate;
       moverspeed += speedraiseamount;
       changeTrail();
+
+      if (comboCount == 4) {
+        player.showEffect("Charged");
+      }
     }
     StopCoroutine("loseByTime");
     if (gameObject.activeSelf) StartCoroutine("loseByTime");

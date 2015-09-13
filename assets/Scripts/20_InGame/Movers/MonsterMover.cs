@@ -145,7 +145,7 @@ public class MonsterMover : ObjectsMover {
   }
 
   override public bool dangerous() {
-    if (weak || player.isUnstoppable() || player.isUsingRainbow() || player.isExitedBlackhole()) return false;
+    if (weak || player.isAfterStrengthen() || player.isUnstoppable() || player.isUsingRainbow() || player.isExitedBlackhole()) return false;
     else return true;
   }
 
