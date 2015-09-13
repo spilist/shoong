@@ -8,6 +8,7 @@ public class UIObjects : MenusBehavior {
 
   public string objectName;
   public string description;
+  public string upgradeEffect;
   public int cubePrice = 10000;
   public int goldenCubePrice = 1000;
 

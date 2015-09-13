@@ -12,6 +12,7 @@ public class ObjectDetail : MonoBehaviour {
   public GameObject buyButtonByCube;
   public GameObject buyButtonByGoldencube;
   public Text objLevel;
+  public GameObject upgradeInfo;
 
   private GameObject selected;
   private bool rotate = false;
@@ -40,12 +41,21 @@ public class ObjectDetail : MonoBehaviour {
     int level = DataManager.dm.getInt(selected.name + "Level");
     objLevel.text = "LV " + level.ToString();
 
+    Text upgradeLevel = upgradeInfo.transform.Find("Level").GetComponent<Text>();
+    Text upgradeLabel = upgradeInfo.transform.Find("Label").GetComponent<Text>();
+
     if (level == 0) {
       rotate = false;
+      objLevel.gameObject.SetActive(false);
+      upgradeInfo.SetActive(false);
       selectButton.SetActive(false);
       unselectButton.SetActive(false);
     } else {
       rotate = true;
+      objLevel.gameObject.SetActive(true);
+      upgradeInfo.SetActive(true);
+      upgradeInfo.transform.Find("Description").GetComponent<Text>().text = obj.upgradeEffect;
+
       SmallObjects smallObject = obj.transform.parent.Find("Object").GetComponent<SmallObjects>();
       smallObject.checkBought();
       selected.GetComponent<MeshFilter>().sharedMesh = smallObject.activeMesh;
@@ -66,9 +76,15 @@ public class ObjectDetail : MonoBehaviour {
     }
 
     if (level >= 3) {
+      upgradeLevel.text = "MAX";
+      upgradeLabel.text = "upgrade end";
+
       buyButtonByCube.SetActive(false);
       buyButtonByGoldencube.SetActive(false);
     } else {
+      upgradeLevel.text = "LV " + (level + 1).ToString();
+      upgradeLabel.text = "upgrade";
+
       buyButtonByCube.SetActive(true);
       buyButtonByGoldencube.SetActive(true);
       buyButtonByCube.GetComponent<ObjectBuyButton>().setObject(obj);
