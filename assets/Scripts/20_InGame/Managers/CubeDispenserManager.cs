@@ -48,12 +48,12 @@ public class CubeDispenserManager : ObjectsManager {
 
     if (comboCount == fullComboCountPerLevel[0]) {
       QuestManager.qm.addCountToQuest("CubeDispenser");
-      player.showEffect("Great");
     }
 
     if (comboCount == fullComboCount) {
       QuestManager.qm.addCountToQuest("CompleteCubeDispenser");
       StartCoroutine("respawn");
+      player.showEffect("Great");
     }
   }
 

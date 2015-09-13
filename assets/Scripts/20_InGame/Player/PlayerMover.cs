@@ -105,7 +105,7 @@ public class PlayerMover : MonoBehaviour {
     rb = GetComponent<Rigidbody>();
     rb.velocity = direction * speed;
 
-    getBlackholeEffect.transform.localScale = Vector3.one * getBlackhole.GetComponent<GetBlackhole>().radiusPerLevel[DataManager.dm.getInt("BlackholeLevel") - 1] / getBlackhole.GetComponent<GetBlackhole>().radiusPerLevel[0];
+    getBlackholeEffect.transform.localScale = Vector3.one * getBlackhole.GetComponent<GetBlackhole>().radiusPerLevel[DataManager.dm.getInt("BlackholeLevel") - 1] / getBlackhole.GetComponent<GetBlackhole>().radiusPerLevel[1];
 	}
 
 	void FixedUpdate () {

@@ -36,7 +36,7 @@ public class ObstaclesMover : ObjectsMover {
     }
     Destroy(gameObject);
 
-    if (avoiding && !alreadyChecked) {
+    if (avoiding && !alreadyChecked && !player.isRidingMonster()) {
       QuestManager.qm.addCountToQuest("AvoidFallingStar");
       player.showEffect("Whew");
     }
