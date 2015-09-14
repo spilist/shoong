@@ -13,7 +13,8 @@ public class PlayerMover : MonoBehaviour {
   public int cubesAsItIsUntill = 20;
   public int restCubesChangePer = 5;
   public int nearAsteroidBonus = 10;
-  private Hashtable cubesWhenDestroy;
+  public float bonusCubeScaleChange = 0.2f;
+  public float bonusCubeMaxBase = 100;
 
   private float speed;
 	private float boosterspeed = 0;
@@ -62,7 +63,6 @@ public class PlayerMover : MonoBehaviour {
   public float reboundSpeed = 300;
 
   private bool unstoppable = false;
-  public float[] unstoppable_respawn;
 
   public Mesh monsterMesh;
   public Material monsterMaterial;
@@ -89,7 +89,6 @@ public class PlayerMover : MonoBehaviour {
     changeCharacter(PlayerPrefs.GetString("SelectedCharacter"));
 
     originalScale = transform.localScale.x;
-    originalMesh = GetComponent<MeshFilter>().sharedMesh;
     originalMaterial = GetComponent<Renderer>().sharedMaterial;
     energyBar = transform.parent.Find("Bars Canvas/EnergyBar").GetComponent<EnergyBar>();
     comboBar = transform.parent.Find("Bars Canvas").GetComponent<ComboBar>();
@@ -190,41 +189,41 @@ public class PlayerMover : MonoBehaviour {
     }
 
     if (bonus > 0) {
-      for (int e = 0; e < bonus; e++) {
-        GameObject cube = (GameObject) Instantiate(particles, mover.transform.position, mover.transform.rotation);
-        if (e == 0) {
-          cube.GetComponent<ParticleMover>().triggerCubesGet(bonus);
-        }
-        if (unstoppable && mover.isNegativeObject()) {
-          cube.GetComponent<Renderer>().sharedMaterial = metalMat;
-        }
+      GameObject cube = (GameObject) Instantiate(particles, mover.transform.position, mover.transform.rotation);
+      cube.GetComponent<ParticleMover>().triggerCubesGet(bonus);
+      if (unstoppable && mover.isNegativeObject()) {
+        cube.GetComponent<Renderer>().sharedMaterial = metalMat;
       }
+
+      cube.transform.localScale += Mathf.Min(bonus, bonusCubeMaxBase) * bonusCubeScaleChange * Vector3.one;
     }
 
-    if (mover.tag != "GoldenCube") addCubeCount(howMany, bonus);
-    getEnergy.Play ();
-    comboBar.addCombo();
+    if (mover.tag != "GoldenCube") addCubeCount(howMany, bonus, true);
+
     mover.encounterPlayer();
   }
 
-  public void addCubeCount(int howMany = 1, int bonus = 0) {
+  public void addCubeCount(int howMany = 1, int bonus = 0, bool comboAndEnergy = false) {
     cubesCount.addCount(howMany, bonus);
     energyBar.getHealthbyParts(howMany + bonus);
     QuestManager.qm.addCountToQuest("GetCube", howMany + bonus);
+
+    if (comboAndEnergy) {
+      getEnergy.Play ();
+      comboBar.addCombo();
+    }
   }
 
   public void contactCubeDispenser(Transform tr, int howMany, Collision collision, float reboundDuring) {
     for (int e = 0; e < howMany; e++) {
       Instantiate(particles, tr.position, tr.rotation);
     }
-    cubesCount.addCount(howMany);
-    energyBar.getHealthbyParts(howMany);
-    getEnergy.Play ();
-    comboBar.addCombo();
+
+    addCubeCount(howMany, 0, true);
+
     processCollision(collision);
     reboundingByDispenser = true;
     reboundingByDispenserDuring = reboundDuring;
-    QuestManager.qm.addCountToQuest("GetCube", howMany);
     StartCoroutine("stopReboundingByDispenser");
   }
 
@@ -475,6 +474,8 @@ public class PlayerMover : MonoBehaviour {
     booster.transform.localScale = Vector3.one;
     booster.transform.localPosition = Vector3.zero;
     booster.transform.localRotation = Quaternion.identity;
+
+    originalMesh = GetComponent<MeshFilter>().sharedMesh;
   }
 
   public void setRotateByRainbow(bool val) {

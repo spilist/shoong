@@ -2,8 +2,6 @@
 using System.Collections;
 
 public class Blackhole : MonoBehaviour {
-  public ParticleSystem obstacleDestroy;
-
   private BlackholeManager blm;
   private ScoreManager scoreManager;
 
