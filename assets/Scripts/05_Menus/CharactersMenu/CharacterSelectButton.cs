@@ -3,7 +3,7 @@ using System.Collections;
 
 public class CharacterSelectButton : MenusBehavior {
   public MenusController menus;
-  public PlayerMover player;
+  public CharacterChangeManager changeManager;
   public PlayAgainButton playAgain;
   private string characterName;
 
@@ -13,7 +13,7 @@ public class CharacterSelectButton : MenusBehavior {
 
   override public void activateSelf() {
     PlayerPrefs.SetString("SelectedCharacter", characterName);
-    player.changeCharacter(characterName);
+    changeManager.changeCharacter(characterName);
 
     // if using banner, same as play again button
     if (menus.isMenuOn()) {

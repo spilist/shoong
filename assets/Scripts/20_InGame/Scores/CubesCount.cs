@@ -35,6 +35,8 @@ public class CubesCount : MonoBehaviour {
       bonusInstance.transform.SetParent(comboBar.transform, false);
       bonusInstance.GetComponent<ShowChangeText>().run(bonus);
     }
+
+    QuestManager.qm.addCountToQuest("GetCube", cubesGet + bonus);
   }
 
   public int getCount() {

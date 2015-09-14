@@ -64,15 +64,15 @@ public class RainbowDonutsManager : ObjectsManager {
     if (rideCount < numRoadRides) {
       ridingSpeed = speedPerRide[rideCount];
 
-      player.rainbowEffect.Play();
-      AudioSource rainbowEffect = player.rainbowEffect.GetComponent<AudioSource>();
+      changeManager.rainbowEffect.Play();
+      AudioSource rainbowEffect = changeManager.rainbowEffect.GetComponent<AudioSource>();
       rainbowEffect.pitch = pitchStart + rideCount * pitchIncrease;
       rainbowEffect.Play ();
 
       rideCount++;
       StartCoroutine("rideRainbow");
     } else {
-      player.rainbowEffect.Stop();
+      changeManager.rainbowEffect.Stop();
       player.afterStrengthenStart();
       StartCoroutine("respawn");
     }

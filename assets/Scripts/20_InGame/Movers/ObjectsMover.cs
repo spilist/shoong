@@ -10,6 +10,7 @@ public class ObjectsMover : MonoBehaviour {
   protected bool isMagnetized = false;
 
   protected PlayerMover player;
+  protected CharacterChangeManager changeManager;
 
   protected BlackholeManager blm;
   protected GameObject blackhole;
@@ -21,6 +22,7 @@ public class ObjectsMover : MonoBehaviour {
 
   void Start() {
     player = GameObject.Find("Player").GetComponent<PlayerMover>();
+    changeManager = player.GetComponent<CharacterChangeManager>();
 
     objectsManager = (ObjectsManager) GameObject.Find("Field Objects").GetComponent(getManager());
     blm = GameObject.Find("Field Objects").GetComponent<BlackholeManager>();
@@ -51,6 +53,7 @@ public class ObjectsMover : MonoBehaviour {
       shrinkedScale = Mathf.MoveTowards(shrinkedScale, 0f, Time.deltaTime);
       transform.localScale = new Vector3(shrinkedScale, shrinkedScale, shrinkedScale);
     } else if (isMagnetized) {
+      if (player.scoreManager.isGameOver()) return;
       Vector3 heading =  player.transform.position - transform.position;
       heading /= heading.magnitude;
       rb.velocity = heading * player.GetComponent<Rigidbody>().velocity.magnitude * 1.5f;

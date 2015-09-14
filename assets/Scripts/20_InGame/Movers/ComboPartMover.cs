@@ -18,8 +18,8 @@ public class ComboPartMover : ObjectsMover {
   }
 
   override public void encounterPlayer() {
-    player.getComboParts.Play();
-    AudioSource getComboParts = player.getComboParts.GetComponent<AudioSource>();
+    changeManager.getComboParts.Play();
+    AudioSource getComboParts = changeManager.getComboParts.GetComponent<AudioSource>();
     getComboParts.pitch = cpm.pitchStart + cpm.getComboCount() * cpm.pitchIncrease;
     getComboParts.Play ();
     cpm.eatenByPlayer();

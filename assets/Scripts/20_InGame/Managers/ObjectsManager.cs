@@ -4,6 +4,7 @@ using System.Collections;
 public class ObjectsManager : MonoBehaviour {
   protected SpawnManager spawnManager;
   protected PlayerMover player;
+  protected CharacterChangeManager changeManager;
   protected bool skipInterval = false;
   protected ComboBar comboBar;
 
@@ -12,6 +13,7 @@ public class ObjectsManager : MonoBehaviour {
   void OnEnable() {
     spawnManager = gameObject.GetComponent<SpawnManager>();
     player = GameObject.Find("Player").GetComponent<PlayerMover>();
+    changeManager = player.GetComponent<CharacterChangeManager>();
     comboBar = GameObject.Find("Bars Canvas").GetComponent<ComboBar>();
 
     initRest();

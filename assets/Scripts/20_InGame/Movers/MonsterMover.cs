@@ -77,14 +77,6 @@ public class MonsterMover : ObjectsMover {
     return weak;
   }
 
-  protected override float strength() {
-    if (weak) {
-      return 0.5f;
-    } else {
-      return monm.strength;
-    }
-  }
-
   protected override void normalMovement() {
     direction = player.transform.position - transform.position;
     float distance = direction.magnitude;

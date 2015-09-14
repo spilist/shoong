@@ -2212,6 +2212,7 @@ GameObject:
   - 81: {fileID: 91418590}
   - 114: {fileID: 91418583}
   - 96: {fileID: 91418584}
+  - 114: {fileID: 91418591}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -2247,18 +2248,6 @@ MonoBehaviour:
   monm: {fileID: 1991538109}
   rdm: {fileID: 1991538105}
   blm: {fileID: 1991538108}
-  playerParticlesParent: {fileID: 678200079}
-  booster: {fileID: 131396333}
-  getEnergy: {fileID: 317572741}
-  unstoppableEffect: {fileID: 621705455}
-  unstoppableEffect_two: {fileID: 1934776454}
-  getSpecialEnergyEffect: {fileID: 1355077822}
-  getComboParts: {fileID: 1384869938}
-  getBlackholeEffect: {fileID: 1552135347}
-  rainbowEffect: {fileID: 1056094478}
-  chargedEffect: {fileID: 2085521110}
-  afterStrengthenEffect: {fileID: 1585486385}
-  metalMat: {fileID: 2100000, guid: d19ae5f122c6344ad809f0cb588d6db9, type: 2}
   boosterSpeedUpAmount: 60
   maxBoosterSpeed: 100
   boosterSpeedDecreaseBase: 70
@@ -2266,10 +2255,6 @@ MonoBehaviour:
   particles: {fileID: 178344, guid: b185d52f68bf5499e81f948bbbf1bd8c, type: 2}
   strengthen_during: 8
   reboundSpeed: 160
-  monsterMesh: {fileID: 4300000, guid: 78464716239464853a9a5be83b950c56, type: 3}
-  monsterMaterial: {fileID: 2100000, guid: b302d2c5d7c544297ac46144f54931e3, type: 2}
-  ridingEffect: {fileID: 1830827565}
-  monsterEffect: {fileID: 1426521853}
   afterStrengthenDuration: 1
 --- !u!96 &91418584
 TrailRenderer:
@@ -2456,6 +2441,34 @@ AudioListener:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 91418582}
   m_Enabled: 1
+--- !u!114 &91418591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 91418582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c55220cdcdad94d36a59fafc03d624b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterMesh: {fileID: 4300006, guid: 024abba1006f2417bb858a4d6fb882d5, type: 3}
+  monsterMaterial: {fileID: 2100000, guid: b302d2c5d7c544297ac46144f54931e3, type: 2}
+  metalMat: {fileID: 2100000, guid: d19ae5f122c6344ad809f0cb588d6db9, type: 2}
+  originalMaterial: {fileID: 2100000, guid: 9b422acddcdd24ad994ef6f9b89c8c5d, type: 2}
+  playerParticlesParent: {fileID: 678200079}
+  ridingEffect: {fileID: 1830827565}
+  monsterEffect: {fileID: 1426521853}
+  booster: {fileID: 131396333}
+  getEnergy: {fileID: 317572741}
+  unstoppableEffect: {fileID: 621705455}
+  unstoppableEffect_two: {fileID: 1934776454}
+  getSpecialEnergyEffect: {fileID: 1355077822}
+  getComboParts: {fileID: 1384869938}
+  getBlackholeEffect: {fileID: 1552135347}
+  rainbowEffect: {fileID: 1056094478}
+  chargedEffect: {fileID: 2085521110}
+  afterStrengthenEffect: {fileID: 1585486385}
 --- !u!1 &96157825
 GameObject:
   m_ObjectHideFlags: 0
@@ -18241,7 +18254,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playTouchSound: 1
   menus: {fileID: 1082642569}
-  player: {fileID: 91418583}
+  changeManager: {fileID: 0}
   playAgain: {fileID: 0}
 --- !u!1001 &635746624
 Prefab:
@@ -40213,7 +40226,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playTouchSound: 1
   menus: {fileID: 1082642569}
-  player: {fileID: 91418583}
+  changeManager: {fileID: 0}
   playAgain: {fileID: 1431479375}
 --- !u!65 &1405439388
 BoxCollider:

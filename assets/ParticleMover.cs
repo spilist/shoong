@@ -8,11 +8,15 @@ public class ParticleMover : MonoBehaviour {
 	public float speed = 30;
 	public float time = 1;
 	public float tumble = 1;
+	public float baseSpeed = 200;
+	private bool rainbow = false;
 	private float randomScale;
 	private float random;
 	private Vector3 direction;
 	private bool timeelapsed = false;
 	private PartsCollector partsCollector;
+	private Rigidbody playerRb;
+	private Rigidbody rb;
 
 	private bool isTriggeringCubesGet = false;
 	private bool generatedByPlayer = true;
@@ -23,28 +27,35 @@ public class ParticleMover : MonoBehaviour {
 		random = Random.Range (minScale, maxScale);
 		randomScale = transform.localScale.x * random;
 
+		rb = GetComponent<Rigidbody>();
+
 		transform.localScale = randomScale * Vector3.one;
 
-		GetComponent<Rigidbody>().angularVelocity = Random.onUnitSphere * tumble;
+		rb.angularVelocity = Random.onUnitSphere * tumble;
 
 		Vector2 randomV = Random.insideUnitCircle;
 		randomV.Normalize();
 		direction = new Vector3(randomV.x, 0, randomV.y);
-		GetComponent<Rigidbody> ().velocity = direction * speed * random;
+		rb.velocity = direction * speed * random;
 
 		partsCollector = GameObject.Find("PartsCollector").GetComponent<PartsCollector>();
+		playerRb = GameObject.Find("Player").GetComponent<Rigidbody>();
 	}
 
-	void Update () {
+	void FixedUpdate () {
 		if(time > 0) {
 			// Reduce the remaining time by time passed since last update (frame)
 			time -= Time.deltaTime;
 		} else {
 			timeelapsed = true;
 
-			Vector3 heading =  GameObject.FindWithTag("PartCollector").transform.position - transform.position;
+			Vector3 heading =  partsCollector.transform.position - transform.position;
 			heading /= heading.magnitude;
-			GetComponent<Rigidbody>().velocity = heading * GameObject.Find("Player").GetComponent<Rigidbody>().velocity.magnitude * 3;
+			if (rainbow) {
+				rb.velocity = heading * playerRb.velocity.magnitude * 3;
+			} else {
+				rb.velocity = heading * (baseSpeed + playerRb.velocity.magnitude * 2) ;
+			}
 		}
 	}
 
@@ -59,5 +70,9 @@ public class ParticleMover : MonoBehaviour {
 		isTriggeringCubesGet = true;
 		generatedByPlayer = playerGeneration;
 		howMany = count;
+	}
+
+	public void setRainbow() {
+		rainbow = true;
 	}
 }

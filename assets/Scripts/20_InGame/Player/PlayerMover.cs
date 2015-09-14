@@ -38,20 +38,6 @@ public class PlayerMover : MonoBehaviour {
   private ComboBar comboBar;
   private StrengthenTimeBar stBar;
 
-  public Transform playerParticlesParent;
-  public ParticleSystem booster;
-  public ParticleSystem getEnergy;
-  public ParticleSystem unstoppableEffect;
-  public ParticleSystem unstoppableEffect_two;
-  public ParticleSystem getSpecialEnergyEffect;
-	public ParticleSystem getComboParts;
-  public ParticleSystem getBlackholeEffect;
-  public ParticleSystem rainbowEffect;
-  public ParticleSystem chargedEffect;
-  public ParticleSystem afterStrengthenEffect;
-
-  public Material metalMat;
-
   public float boosterSpeedUpAmount = 60;
   public float maxBoosterSpeed = 100;
   public float boosterSpeedDecreaseBase = 70;
@@ -64,13 +50,7 @@ public class PlayerMover : MonoBehaviour {
 
   private bool unstoppable = false;
 
-  public Mesh monsterMesh;
-  public Material monsterMaterial;
-  public ParticleSystem ridingEffect;
-  public ParticleSystem monsterEffect;
   private bool ridingMonster = false;
-  private Mesh originalMesh;
-  private Material originalMaterial;
   private float originalScale;
   private int minimonCounter = 0;
 
@@ -84,12 +64,15 @@ public class PlayerMover : MonoBehaviour {
   public float afterStrengthenDuration = 1;
   private bool afterStrengthen = false;
   private float afterStrengthenCount = 0;
+  private float reboundingCount = 0;
+
+  private CharacterChangeManager changeManager;
 
 	void Start () {
-    changeCharacter(PlayerPrefs.GetString("SelectedCharacter"));
+    changeManager = GetComponent<CharacterChangeManager>();
+    changeManager.changeCharacter(PlayerPrefs.GetString("SelectedCharacter"));
 
     originalScale = transform.localScale.x;
-    originalMaterial = GetComponent<Renderer>().sharedMaterial;
     energyBar = transform.parent.Find("Bars Canvas/EnergyBar").GetComponent<EnergyBar>();
     comboBar = transform.parent.Find("Bars Canvas").GetComponent<ComboBar>();
     stBar = transform.parent.Find("Bars Canvas/StrengthenTimeBar").GetComponent<StrengthenTimeBar>();
@@ -104,7 +87,8 @@ public class PlayerMover : MonoBehaviour {
     rb = GetComponent<Rigidbody>();
     rb.velocity = direction * speed;
 
-    getBlackholeEffect.transform.localScale = Vector3.one * getBlackhole.GetComponent<GetBlackhole>().radiusPerLevel[DataManager.dm.getInt("BlackholeLevel") - 1] / getBlackhole.GetComponent<GetBlackhole>().radiusPerLevel[1];
+    changeManager.getBlackholeEffect.transform.localScale = Vector3.one * getBlackhole.GetComponent<GetBlackhole>().radiusPerLevel[DataManager.dm.getInt("BlackholeLevel") - 1] / getBlackhole.GetComponent<GetBlackhole>().radiusPerLevel[1];
+
 	}
 
 	void FixedUpdate () {
@@ -115,27 +99,30 @@ public class PlayerMover : MonoBehaviour {
     } else if (ridingMonster) {
       speed = comboBar.getSpeed() + minimonCounter * monm.enlargeSpeedPerMinimon;
     } else {
-			speed = comboBar.getSpeed();
+      speed = comboBar.getSpeed();
     }
 
     speed += boosterspeed;
 
     if (boosterspeed > 0) {
-			boosterspeed -= speed / boosterSpeedDecreaseBase + boosterSpeedDecreasePerTime * Time.deltaTime;
-		} else if (boosterspeed <= 0){
-			boosterspeed = 0;
-		}
+      boosterspeed -= speed / boosterSpeedDecreaseBase + boosterSpeedDecreasePerTime * Time.deltaTime;
+    } else if (boosterspeed <= 0){
+      boosterspeed = 0;
+    }
 
     if (isInsideBlackhole && !isUsingRainbow()) {
       Vector3 heading = blackhole.transform.position - transform.position;
-      heading /= heading.magnitude;
-      rb.AddForce(heading * blm.pullUser, ForceMode.VelocityChange);
+      if (heading.magnitude < 1) rb.isKinematic = true;
+      else {
+        heading /= heading.magnitude;
+        rb.AddForce(heading * blm.pullUser, ForceMode.VelocityChange);
+      }
     }
     rb.velocity = direction * speed;
 	}
 
 	void OnTriggerEnter(Collider other) {
-		if (other.tag == "BlackholeGravitySphere") return;
+    if (other.tag == "BlackholeGravitySphere" || other.tag == "Blackhole") return;
 
     ObjectsMover mover = other.gameObject.GetComponent<ObjectsMover>();
 
@@ -185,6 +172,7 @@ public class PlayerMover : MonoBehaviour {
       }
       if (mover.tag == "RainbowDonut") {
         cube.GetComponent<Renderer>().material.SetColor("_TintColor", rdm.rainbowColors[e]);
+        cube.GetComponent<ParticleMover>().setRainbow();
       }
     }
 
@@ -192,7 +180,7 @@ public class PlayerMover : MonoBehaviour {
       GameObject cube = (GameObject) Instantiate(particles, mover.transform.position, mover.transform.rotation);
       cube.GetComponent<ParticleMover>().triggerCubesGet(bonus);
       if (unstoppable && mover.isNegativeObject()) {
-        cube.GetComponent<Renderer>().sharedMaterial = metalMat;
+        cube.GetComponent<Renderer>().sharedMaterial = changeManager.metalMat;
       }
 
       cube.transform.localScale += Mathf.Min(bonus, bonusCubeMaxBase) * bonusCubeScaleChange * Vector3.one;
@@ -206,10 +194,9 @@ public class PlayerMover : MonoBehaviour {
   public void addCubeCount(int howMany = 1, int bonus = 0, bool comboAndEnergy = false) {
     cubesCount.addCount(howMany, bonus);
     energyBar.getHealthbyParts(howMany + bonus);
-    QuestManager.qm.addCountToQuest("GetCube", howMany + bonus);
 
     if (comboAndEnergy) {
-      getEnergy.Play ();
+      changeManager.getEnergy.Play ();
       comboBar.addCombo();
     }
   }
@@ -223,16 +210,91 @@ public class PlayerMover : MonoBehaviour {
 
     processCollision(collision);
     reboundingByDispenser = true;
+    reboundingCount = 0;
     reboundingByDispenserDuring = reboundDuring;
-    StartCoroutine("stopReboundingByDispenser");
   }
 
-  IEnumerator stopReboundingByDispenser() {
-    yield return new WaitForSeconds(reboundingByDispenserDuring);
-    reboundingByDispenser = false;
+  public void processCollision(Collision collision) {
+    ContactPoint contact = collision.contacts[0];
+    Vector3 normal = contact.normal;
+    direction = Vector3.Reflect(direction, -normal).normalized;
+    direction.y = 0;
+    direction.Normalize();
   }
 
-  IEnumerator strengthen() {
+  public void rotatePlayerBody(bool continuous = false) {
+    if (continuous) {
+      string[] rots = PlayerPrefs.GetString("CharacterRotation").Split(',');
+      transform.rotation = Quaternion.Euler(float.Parse(rots[0]), float.Parse(rots[1]), float.Parse(rots[2]));
+
+      string[] angVals = PlayerPrefs.GetString("CharacterAngVal").Split(',');
+      GetComponent<Rigidbody>().angularVelocity = new Vector3(float.Parse(angVals[0]), float.Parse(angVals[1]), float.Parse(angVals[2]));
+    } else {
+      GetComponent<Rigidbody>().angularVelocity = Random.onUnitSphere * tumble;
+    }
+  }
+
+  public Vector3 getDirection() {
+    return direction;
+  }
+
+  public void shootBooster(Vector3 dir){
+    QuestManager.qm.addCountToQuest("NoBooster", 0);
+    QuestManager.qm.addCountToQuest("UseBooster");
+
+    energyBar.loseByShoot();
+
+    rotatePlayerBody();
+
+    changeManager.booster.Play();
+    changeManager.booster.GetComponent<AudioSource>().Play();
+
+    direction = dir;
+
+    if (boosterspeed < maxBoosterSpeed) {
+      boosterspeed += boosterSpeedUpAmount;
+      boosterspeed = boosterspeed > maxBoosterSpeed? maxBoosterSpeed : boosterspeed;
+    }
+
+    cpm.tryToGet();
+  }
+
+  public void setRotateByRainbow(bool val) {
+    rainbowPosition = rdm.rainbowDonut.transform.position;
+    GetComponent<Rigidbody>().isKinematic = val;
+    isRotatingByRainbow = val;
+  }
+
+  public void setDirection(Vector3 dir) {
+    direction = dir;
+    rotatePlayerBody();
+  }
+
+  public void nearAsteroid(bool enter = true, int amount = 1) {
+    if (enter) nearAsteroidCounter += amount;
+    else nearAsteroidCounter -= amount;
+  }
+
+  public bool isNearAsteroid() {
+    return nearAsteroidCounter > 0;
+  }
+
+  public void showEffect(string effectName) {
+    if (scoreManager.isGameOver()) return;
+
+    if (effectName == "Whew") {
+      boosterspeed += 140;
+      changeManager.booster.Play();
+      afterStrengthenStart();
+      // audio needed
+    } else if (effectName == "Charged") {
+      energyBar.setCharged();
+    }
+
+    effects.Find(effectName).gameObject.SetActive(true);
+  }
+
+  public IEnumerator strengthen() {
     if (scoreManager.isGameOver()) yield break;
 
     int effectDuration;
@@ -245,26 +307,20 @@ public class PlayerMover : MonoBehaviour {
 
     if (unstoppable) {
       showEffect("Metal");
-      unstoppableEffect.Play();
-      unstoppableEffect.GetComponent<AudioSource>().Play ();
-      // unstoppableEffect_two.Play();
-      unstoppableEffect_two.GetComponent<AudioSource>().Play ();
-      changeCharacter(originalMesh, metalMat);
+      changeManager.changeCharacterToMetal();
     }
 
     if (exitedBlackhole) {
       showEffect("Blackhole");
       getBlackhole.SetActive(true);
-      getBlackholeEffect.Play();
-      getBlackholeEffect.GetComponent<AudioSource>().Play();
+      changeManager.getBlackholeEffect.Play();
+      changeManager.getBlackholeEffect.GetComponent<AudioSource>().Play();
     }
 
     if (ridingMonster) {
       showEffect("Monster");
       energyBar.getFullHealth();
-      changeCharacter(monsterMesh, monsterMaterial);
-      monsterEffect.Play();
-      monsterEffect.GetComponent<AudioSource>().Play();
+      changeManager.changeCharacterToMonster();
     }
 
     stBar.startStrengthen(effectDuration);
@@ -278,11 +334,11 @@ public class PlayerMover : MonoBehaviour {
     if (unstoppable) {
       spawnManager.runManager("SpecialParts");
       unstoppable = false;
-      unstoppableEffect.Stop();
+      changeManager.unstoppableEffect.Stop();
       // unstoppableEffect_two.Stop();
-      unstoppableEffect_two.GetComponent<AudioSource>().Stop ();
+      changeManager.unstoppableEffect_two.GetComponent<AudioSource>().Stop ();
       QuestManager.qm.addCountToQuest("DestroyAsteroidsBeforeUnstoppableEnd", 0);
-      changeCharacter(originalMesh, originalMaterial);
+      changeManager.changeCharacterToOriginal();
 
       afterStrengthenStart();
     }
@@ -292,7 +348,7 @@ public class PlayerMover : MonoBehaviour {
       getBlackhole.SetActive(false);
       if (isRidingRainbowRoad) {
         isRidingRainbowRoad = false;
-        rainbowEffect.Stop();
+        changeManager.rainbowEffect.Stop();
       }
 
       afterStrengthenStart();
@@ -307,10 +363,10 @@ public class PlayerMover : MonoBehaviour {
     if (ridingMonster) {
       energyBar.getFullHealth();
       ridingMonster = false;
-      changeCharacter(originalMesh, originalMaterial);
-      ridingEffect.Play();
-      monsterEffect.Stop();
-      monsterEffect.GetComponent<AudioSource>().Stop();
+      changeManager.changeCharacterToOriginal();
+      changeManager.ridingEffect.Play();
+      changeManager.monsterEffect.Stop();
+      changeManager.monsterEffect.GetComponent<AudioSource>().Stop();
       monm.monsterFilter.SetActive(false);
       foreach (GameObject mm in GameObject.FindGameObjectsWithTag("MiniMonster")) {
         mm.GetComponent<MiniMonsterMover>().destroyObject();
@@ -322,7 +378,7 @@ public class PlayerMover : MonoBehaviour {
     }
   }
 
-  void startRiding(ObjectsMover obMover) {
+  public void startRiding(ObjectsMover obMover) {
     QuestManager.qm.addCountToQuest("RideMonster");
 
     if (energyBar.currentEnergy() <= 30) {
@@ -336,8 +392,8 @@ public class PlayerMover : MonoBehaviour {
     ridingMonster = true;
     minimonCounter = 0;
     monm.monsterFilter.SetActive(true);
-    ridingEffect.Play();
-    ridingEffect.GetComponent<AudioSource>().Play();
+    changeManager.ridingEffect.Play();
+    changeManager.ridingEffect.GetComponent<AudioSource>().Play();
     Destroy(obMover.gameObject);
     monm.stopWarning();
     StopCoroutine("strengthen");
@@ -346,7 +402,7 @@ public class PlayerMover : MonoBehaviour {
 
   public void startUnstoppable() {
     unstoppable = true;
-  	StopCoroutine("strengthen");
+    StopCoroutine("strengthen");
     StartCoroutine("strengthen");
   }
 
@@ -387,28 +443,14 @@ public class PlayerMover : MonoBehaviour {
     StartCoroutine("strengthen");
   }
 
-  public void processCollision(Collision collision) {
-    ContactPoint contact = collision.contacts[0];
-    Vector3 normal = contact.normal;
-    direction = Vector3.Reflect(direction, -normal).normalized;
-    direction.y = 0;
-    direction.Normalize();
+  public void afterStrengthenStart() {
+    afterStrengthen = true;
+    afterStrengthenCount = 0;
+    changeManager.afterStrengthenEffect.Play();
   }
 
-  public void rotatePlayerBody(bool continuous = false) {
-    if (continuous) {
-      string[] rots = PlayerPrefs.GetString("CharacterRotation").Split(',');
-      transform.rotation = Quaternion.Euler(float.Parse(rots[0]), float.Parse(rots[1]), float.Parse(rots[2]));
-
-      string[] angVals = PlayerPrefs.GetString("CharacterAngVal").Split(',');
-      GetComponent<Rigidbody>().angularVelocity = new Vector3(float.Parse(angVals[0]), float.Parse(angVals[1]), float.Parse(angVals[2]));
-    } else {
-      GetComponent<Rigidbody>().angularVelocity = Random.onUnitSphere * tumble;
-    }
-  }
-
-  public Vector3 getDirection() {
-    return direction;
+  public bool isAfterStrengthen() {
+    return afterStrengthen;
   }
 
   public bool isUnstoppable() {
@@ -427,61 +469,16 @@ public class PlayerMover : MonoBehaviour {
     return exitedBlackhole;
   }
 
-  public void getSpecialEnergyPlay() {
-    getSpecialEnergyEffect.Play();
-  }
-
-  public EnergyBar getEnergyBar() {
-    return energyBar;
-  }
-
   public bool isRebounding() {
     return reboundingByBlackhole || reboundingByDispenser;
   }
 
-  public void shootBooster(Vector3 dir){
-    QuestManager.qm.addCountToQuest("NoBooster", 0);
-    QuestManager.qm.addCountToQuest("UseBooster");
-
-    energyBar.loseByShoot();
-
-    rotatePlayerBody();
-
-    booster.Play();
-    booster.GetComponent<AudioSource>().Play();
-
-    direction = dir;
-
-    if (boosterspeed < maxBoosterSpeed) {
-      boosterspeed += boosterSpeedUpAmount;
-      boosterspeed = boosterspeed > maxBoosterSpeed? maxBoosterSpeed : boosterspeed;
-    }
-
-    cpm.tryToGet();
+  public void setRidingRainbowRoad(bool val) {
+    isRidingRainbowRoad = val;
   }
 
-  public void changeCharacter(Mesh mesh, Material material) {
-    GetComponent<MeshFilter>().sharedMesh = mesh;
-    GetComponent<Renderer>().sharedMaterial = material;
-  }
-
-  public void changeCharacter(string characterName) {
-    GameObject play_characters = Resources.Load<GameObject>("_characters/play_characters");
-    GetComponent<MeshFilter>().sharedMesh = play_characters.transform.FindChild(characterName).GetComponent<MeshFilter>().sharedMesh;
-
-    booster = Instantiate(Resources.Load(characterName + "/Booster", typeof(ParticleSystem))) as ParticleSystem;
-    booster.transform.parent = playerParticlesParent;
-    booster.transform.localScale = Vector3.one;
-    booster.transform.localPosition = Vector3.zero;
-    booster.transform.localRotation = Quaternion.identity;
-
-    originalMesh = GetComponent<MeshFilter>().sharedMesh;
-  }
-
-  public void setRotateByRainbow(bool val) {
-    rainbowPosition = rdm.rainbowDonut.transform.position;
-    GetComponent<Rigidbody>().isKinematic = val;
-    isRotatingByRainbow = val;
+  public bool isUsingRainbow() {
+    return isRotatingByRainbow || isRidingRainbowRoad;
   }
 
   void Update() {
@@ -498,52 +495,13 @@ public class PlayerMover : MonoBehaviour {
         afterStrengthen = false;
       }
     }
-  }
 
-  public void setRidingRainbowRoad(bool val) {
-    isRidingRainbowRoad = val;
-  }
-
-  public bool isUsingRainbow() {
-    return isRotatingByRainbow || isRidingRainbowRoad;
-  }
-
-  public void setDirection(Vector3 dir) {
-    direction = dir;
-    rotatePlayerBody();
-  }
-
-  public void nearAsteroid(bool enter = true, int amount = 1) {
-    if (enter) nearAsteroidCounter += amount;
-    else nearAsteroidCounter -= amount;
-  }
-
-  public bool isNearAsteroid() {
-    return nearAsteroidCounter > 0;
-  }
-
-  public void showEffect(string effectName) {
-    if (scoreManager.isGameOver()) return;
-
-    if (effectName == "Whew") {
-      boosterspeed += 140;
-      booster.Play();
-      afterStrengthenStart();
-      // audio needed
-    } else if (effectName == "Charged") {
-      energyBar.setCharged();
+    if (reboundingByDispenser) {
+      if (reboundingCount < reboundingByDispenserDuring) {
+        reboundingCount += Time.deltaTime;
+      } else {
+        reboundingByDispenser = false;
+      }
     }
-
-    effects.Find(effectName).gameObject.SetActive(true);
-  }
-
-  public void afterStrengthenStart() {
-    afterStrengthen = true;
-    afterStrengthenCount = 0;
-    afterStrengthenEffect.Play();
-  }
-
-  public bool isAfterStrengthen() {
-    return afterStrengthen;
   }
 }

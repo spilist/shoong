@@ -27,6 +27,7 @@ public class EnergyBar : MonoBehaviour {
   public int shootAmount = -10;
   public float loseRate = 1;
   public PlayerMover player;
+  private CharacterChangeManager changeManager;
   public Text energyCurrent;
   public GameObject loseEnergy;
   public GameObject getEnergy;
@@ -49,6 +50,8 @@ public class EnergyBar : MonoBehaviour {
 
     chargeEffectScale = originalChargeEffectScale;
     chargeEffect.localScale = originalChargeEffectScale * Vector3.one;
+
+    changeManager = player.GetComponent<CharacterChangeManager>();
   }
 
   void Update () {
@@ -148,12 +151,8 @@ public class EnergyBar : MonoBehaviour {
       showEnergyInstance.GetComponent<ShowChangeText>().run(amount);
   }
 
-  public void getHealthbyParts() {
-    changeHealth(getAmountbyParts, getRate);
-  }
-
-  public void getHealthbyParts(int combo) {
-    changeHealth(getAmountbyParts * combo, getRate * combo);
+  public void getHealthbyParts(int amount) {
+    changeHealth(getAmountbyParts * amount, getRate * amount);
   }
 
   public void loseByShoot() {
@@ -163,8 +162,8 @@ public class EnergyBar : MonoBehaviour {
 
   public void setCharged() {
     charged = true;
-    player.chargedEffect.Play();
-    player.chargedEffect.GetComponent<AudioSource>().Play();
+    changeManager.chargedEffect.Play();
+    changeManager.chargedEffect.GetComponent<AudioSource>().Play();
     StartCoroutine("indicateCharged");
   }
 
