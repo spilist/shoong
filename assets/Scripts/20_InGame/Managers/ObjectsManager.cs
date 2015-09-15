@@ -35,7 +35,7 @@ public class ObjectsManager : MonoBehaviour {
     return 0;
   }
 
-  virtual public void skipRespawnInterval() {
+  public void skipRespawnInterval() {
     skipInterval = true;
   }
 

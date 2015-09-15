@@ -1,8 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SpecialPartMover : ObjectsMover {
+public class SummonPartMover : ObjectsMover {
+  SummonPartsManager summonManager;
+
   override protected void initializeRest() {
+    summonManager = (SummonPartsManager) objectsManager;
     canBeMagnetized = false;
   }
 
@@ -18,12 +21,14 @@ public class SpecialPartMover : ObjectsMover {
   }
 
   override public void encounterPlayer() {
-    changeManager.getSpecialEnergyEffect.Play();
-    player.startUnstoppable();
     Destroy(gameObject);
+
+    // encouter effect
+    // showEffect("Summon")
+    summonManager.startSummon();
   }
 
   override public string getManager() {
-    return "SpecialPartsManager";
+    return "SummonPartsManager";
   }
 }

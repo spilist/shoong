@@ -43,7 +43,7 @@ public class BasicObjectsManager : ObjectsManager {
   override public float getSpeed(string objTag) {
     float speed = 0;
 
-    if (objTag == "Part") speed = speed_parts;
+    if (objTag == "Part" || objTag == "SummonedPart") speed = speed_parts;
     else if (objTag == "Obstacle_big") speed = speed_obstacles;
 
     return speed;
@@ -52,7 +52,7 @@ public class BasicObjectsManager : ObjectsManager {
   override public float getTumble(string objTag) {
     float tumble = 0;
 
-    if (objTag == "Part") tumble = tumble_parts;
+    if (objTag == "Part" || objTag == "SummonedPart") tumble = tumble_parts;
     else if (objTag == "Obstacle_big") tumble = tumble_obstacles;
 
     return tumble;

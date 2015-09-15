@@ -167,7 +167,7 @@ public class ObjectsMover : MonoBehaviour {
   }
 
   virtual public int bonusCubes() {
-    if (tag == "Part") {
+    if (tag == "Part" || tag == "SummonedPart") {
       return player.isNearAsteroid()? player.nearAsteroidBonus : 0;
     } else {
       return 0;

@@ -37,6 +37,8 @@ TagManager:
   - PatternPart
   - MiniMonster
   - GoldenCube
+  - SummonPart
+  - SummonedPart
   layers:
   - Default
   - TransparentFX

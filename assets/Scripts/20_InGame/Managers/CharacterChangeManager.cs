@@ -26,7 +26,7 @@ public class CharacterChangeManager : MonoBehaviour {
   public ParticleSystem chargedEffect;
   public ParticleSystem afterStrengthenEffect;
 
-  void Start() {
+  void OnEnable() {
     mFilter = GetComponent<MeshFilter>();
     mRenderer = GetComponent<Renderer>();
   }

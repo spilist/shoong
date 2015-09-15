@@ -26989,6 +26989,33 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+--- !u!1 &971147082
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 971147083}
+  m_Layer: 9
+  m_Name: SummonedParts
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &971147083
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 971147082}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1991538104}
+  m_RootOrder: 0
 --- !u!1 &975181075
 GameObject:
   m_ObjectHideFlags: 0
@@ -59521,6 +59548,7 @@ GameObject:
   - 114: {fileID: 1991538105}
   - 114: {fileID: 1991538114}
   - 114: {fileID: 1991538115}
+  - 114: {fileID: 1991538116}
   m_Layer: 9
   m_Name: Field Objects
   m_TagString: Untagged
@@ -59537,7 +59565,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 971147083}
   m_Father: {fileID: 1701025775}
   m_RootOrder: 5
 --- !u!114 &1991538105
@@ -59840,6 +59869,40 @@ MonoBehaviour:
   detectDistance: 100
   generateCubePer: .300000012
   energyCubePrefab: {fileID: 178344, guid: b185d52f68bf5499e81f948bbbf1bd8c, type: 2}
+--- !u!114 &1991538116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1991538103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4a6f13ade371487798c0f090d96ca5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  strength: 0
+  summonPartPrefab: {fileID: 170554, guid: b66c990df6fbf411ca4af8720e5bb73b, type: 2}
+  summonedPartsTransformParent: {fileID: 971147083}
+  summonedParts: {fileID: 192090, guid: 16bbe96ae2882b4478d909a3bab22e21, type: 2}
+  partsDestroyEffect: {fileID: 0}
+  summonedPartsDestroyEffect: {fileID: 158326, guid: 7a4903aebeaf1440d95d69b1daac37af,
+    type: 2}
+  tumble: 5
+  minSpawnInterval: 8
+  maxSpawnInterval: 12
+  startSpawnRadius: 50
+  numSpawnX: 4
+  distanceBtwX: 30
+  numSpawnZ: 6
+  distanceBtwZ: 30
+  summonedPartLifetime: 3
+  blinkAfter: 1.79999995
+  blinkColorAlpha: .300000012
+  blinkOutlineColor: {r: 1, g: 1, b: 1, a: .572000027}
+  showDurationStart: .349999994
+  showDurationDecrease: .100000001
+  emptyDurationStart: .150000006
+  emptyDurationDecrease: .0500000007
 --- !u!1 &1997391145
 GameObject:
   m_ObjectHideFlags: 0

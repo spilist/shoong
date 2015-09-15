@@ -37,10 +37,6 @@ public class BlackholeManager : ObjectsManager {
     blackholeGravity.GetComponent<BlackholeGravitySphere>().setBlackhole(blackhole);
   }
 
-  override public void skipRespawnInterval() {
-    skipInterval = true;
-  }
-
   public GameObject getBlackhole() {
     return blackhole;
   }

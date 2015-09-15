@@ -35,8 +35,4 @@ public class SpecialPartsManager : ObjectsManager {
 
     spawnManager.spawn(special);
   }
-
-  override public void skipRespawnInterval() {
-    skipInterval = true;
-  }
 }
