@@ -2453,7 +2453,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c55220cdcdad94d36a59fafc03d624b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monsterMesh: {fileID: 4300006, guid: 024abba1006f2417bb858a4d6fb882d5, type: 3}
+  monsterMesh: {fileID: 4300000, guid: 78464716239464853a9a5be83b950c56, type: 3}
   monsterMaterial: {fileID: 2100000, guid: b302d2c5d7c544297ac46144f54931e3, type: 2}
   metalMat: {fileID: 2100000, guid: d19ae5f122c6344ad809f0cb588d6db9, type: 2}
   originalMaterial: {fileID: 2100000, guid: 9b422acddcdd24ad994ef6f9b89c8c5d, type: 2}
@@ -3330,7 +3330,7 @@ ParticleSystem:
     serializedVersion: 2
     enabled: 1
     type: 1
-    radius: 8
+    radius: 4
     angle: 25
     length: 5
     boxX: 1
@@ -18860,7 +18860,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c29316fd68134f6a8504287e1c8cfcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resetAll: 0
+  resetAll: 1
   resetCube: 10000
   resetGoldenCube: 10000
 --- !u!4 &638403303
@@ -59415,7 +59415,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activeMesh: {fileID: 4300000, guid: 23604ec780ae74faebe91c59144b2055, type: 3}
-  activeMaterial: {fileID: 2100000, guid: 7d033d459cc064a0684e43d6d1bcd656, type: 2}
+  activeMaterial: {fileID: 2100000, guid: 1d4dd41d737f447cb89a363b9474c644, type: 2}
 --- !u!23 &1918549632
 MeshRenderer:
   m_ObjectHideFlags: 0
