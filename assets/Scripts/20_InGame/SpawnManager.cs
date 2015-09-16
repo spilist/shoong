@@ -34,8 +34,6 @@ public class SpawnManager : MonoBehaviour {
     //   showingHidden = true;
     // }
 
-    GetComponent<SummonPartsManager>().run();
-
     // spawn selected objects
     string mainObjectsString = PlayerPrefs.GetString("MainObjects").Trim();
     if (mainObjectsString != "") {

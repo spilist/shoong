@@ -95,7 +95,7 @@ public class DataManager : MonoBehaviour {
     bools["robotcogi"] = true;
 
     PlayerPrefs.SetString("SelectedCharacter", "robotcogi");
-    PlayerPrefs.SetString("TutorialsNotDone", "");
+    PlayerPrefs.SetString("ObjectTutorialsNotDone", "");
     PlayerPrefs.SetString("MainObjects", "");
     PlayerPrefs.SetString("SubObjects", "");
 

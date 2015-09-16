@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: e6104eb868db24ec6b7a4f22c1c2e0c7
-timeCreated: 1436422854
+guid: 8a22f0f8e467e47d3bf17a959ccaa215
+timeCreated: 1442372628
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
@@ -8,33 +8,41 @@ ModelImporter:
     100000: //RootNode
     100002: parts_brokenhandle_1
     100004: parts_brokenhandle_2
-    100006: parts_cylinder3
-    100008: parts_cylinder_1
-    100010: parts_cylinder_2
-    100012: parts_seat
-    100014: parts_toilet
+    100006: parts_brokenlasergun
+    100008: parts_cylinder3
+    100010: parts_cylinder_1
+    100012: parts_cylinder_2
+    100014: parts_microoven
+    100016: parts_seat
+    100018: parts_toilet
     400000: //RootNode
     400002: parts_brokenhandle_1
     400004: parts_brokenhandle_2
-    400006: parts_cylinder3
-    400008: parts_cylinder_1
-    400010: parts_cylinder_2
-    400012: parts_seat
-    400014: parts_toilet
+    400006: parts_brokenlasergun
+    400008: parts_cylinder3
+    400010: parts_cylinder_1
+    400012: parts_cylinder_2
+    400014: parts_microoven
+    400016: parts_seat
+    400018: parts_toilet
     2300000: parts_brokenhandle_1
     2300002: parts_brokenhandle_2
-    2300004: parts_cylinder3
-    2300006: parts_cylinder_1
-    2300008: parts_cylinder_2
-    2300010: parts_seat
-    2300012: parts_toilet
+    2300004: parts_brokenlasergun
+    2300006: parts_cylinder3
+    2300008: parts_cylinder_1
+    2300010: parts_cylinder_2
+    2300012: parts_microoven
+    2300014: parts_seat
+    2300016: parts_toilet
     3300000: parts_brokenhandle_1
     3300002: parts_brokenhandle_2
-    3300004: parts_cylinder3
-    3300006: parts_cylinder_1
-    3300008: parts_cylinder_2
-    3300010: parts_seat
-    3300012: parts_toilet
+    3300004: parts_brokenlasergun
+    3300006: parts_cylinder3
+    3300008: parts_cylinder_1
+    3300010: parts_cylinder_2
+    3300012: parts_microoven
+    3300014: parts_seat
+    3300016: parts_toilet
     4300000: parts_cylinder3
     4300002: parts_cylinder_1
     4300004: parts_seat
@@ -42,6 +50,8 @@ ModelImporter:
     4300008: parts_toilet
     4300010: parts_brokenhandle_2
     4300012: parts_cylinder_2
+    4300014: parts_brokenlasergun
+    4300016: parts_microoven
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -100,7 +110,7 @@ ModelImporter:
     feetSpacing: 0
     rootMotionBoneName: 
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   additionalBone: 0
   userData: 
   assetBundleName: 

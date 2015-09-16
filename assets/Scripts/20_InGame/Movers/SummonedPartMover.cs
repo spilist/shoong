@@ -47,8 +47,8 @@ public class SummonedPartMover : ObjectsMover {
   }
 
   IEnumerator destroyAfter() {
-    yield return new WaitForSeconds(summonManager.blinkAfter);
-    float duration = summonManager.summonedPartLifetime - summonManager.blinkAfter;
+    yield return new WaitForSeconds(summonManager.summonedPartLifetime - summonManager.blinkBeforeDestroy);
+    float duration = summonManager.blinkBeforeDestroy;
     float showDuring = summonManager.showDurationStart;
     float emptyDuring = summonManager.emptyDurationStart;
     float showDurationDecrease = summonManager.showDurationDecrease;

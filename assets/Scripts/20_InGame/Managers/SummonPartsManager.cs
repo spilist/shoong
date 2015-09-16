@@ -3,10 +3,12 @@ using System.Collections;
 
 public class SummonPartsManager : ObjectsManager {
 	public GameObject summonPartPrefab;
+  public GameObject summonedPartPrefab;
   public Transform summonedPartsTransformParent;
-  public GameObject summonedParts;
-  public GameObject partsDestroyEffect;
   public GameObject summonedPartsDestroyEffect;
+
+  public int[] numSpawnZPerLevel;
+  public float[] summonedPartLifetimePerLevel;
 
   public float tumble = 5;
   public float minSpawnInterval = 8;
@@ -19,7 +21,7 @@ public class SummonPartsManager : ObjectsManager {
   public float distanceBtwZ = 30;
 
   public float summonedPartLifetime = 3;
-  public float blinkAfter = 1.8f;
+  public float blinkBeforeDestroy = 1.2f;
   public float blinkColorAlpha = 0.5f;
   public Color blinkOutlineColor;
 
@@ -28,11 +30,22 @@ public class SummonPartsManager : ObjectsManager {
   public float emptyDurationStart = 0.15f;
   public float emptyDurationDecrease = 0.05f;
 
-  private SummonPartMover summonPart;
+  private GameObject summonPart;
+  private Mesh[] summonMeshes;
+  private Mesh summonMesh;
   private int getCount = 0;
 
   override public void initRest() {
     skipInterval = true;
+    int level = DataManager.dm.getInt("SummonPartsLevel") - 1;
+    numSpawnZ = numSpawnZPerLevel[level];
+    summonedPartLifetime = summonedPartLifetimePerLevel[level];
+
+    summonMeshes = new Mesh[GetComponent<BasicObjectsManager>().normalParts.childCount];
+    int count = 0;
+    foreach (Transform tr in GetComponent<BasicObjectsManager>().normalParts) {
+      summonMeshes[count++] = tr.GetComponent<MeshFilter>().sharedMesh;
+    }
   }
 
   override public float getTumble(string objTag) {
@@ -49,7 +62,11 @@ public class SummonPartsManager : ObjectsManager {
     }
 
     skipInterval = false;
-    summonPart = spawnManager.spawn(summonPartPrefab).GetComponent<SummonPartMover>();
+    summonPart = spawnManager.spawn(summonPartPrefab);
+    summonMesh = summonMeshes[Random.Range(0, summonMeshes.Length)];
+    foreach (Transform tr in summonPart.transform) {
+      tr.GetComponent<MeshFilter>().sharedMesh = summonMesh;
+    }
   }
 
   public void startSummon() {
@@ -63,11 +80,11 @@ public class SummonPartsManager : ObjectsManager {
     summonedPartsTransformParent.position = origin;
     summonedPartsTransformParent.localEulerAngles = new Vector3 (0, angle, 0);
 
-    GameObject partToSummon = summonedParts.transform.GetChild(Random.Range(0, summonedParts.transform.childCount)).gameObject;
     for (int i = 0; i < numSpawnX; i++) {
       for (int j = 0; j < numSpawnZ; j++) {
         Vector3 spawnPos = new Vector3(distanceBtwX * i - distanceBtwX * (numSpawnX - 1) / 2, 0, distanceBtwZ * j);
-        GameObject instance = (GameObject) Instantiate(partToSummon, spawnPos, Quaternion.identity);
+        GameObject instance = (GameObject) Instantiate(summonedPartPrefab, spawnPos, Quaternion.identity);
+        instance.GetComponent<MeshFilter>().sharedMesh = summonMesh;
         instance.transform.SetParent(summonedPartsTransformParent, false);
       }
     }
@@ -78,8 +95,10 @@ public class SummonPartsManager : ObjectsManager {
   public void increaseSummonedPartGetcount() {
     getCount++;
 
+    QuestManager.qm.addCountToQuest("SummonParts");
+
     if (getCount == numSpawnX * numSpawnZ) {
-      // quest
+      QuestManager.qm.addCountToQuest("CompleteSummonParts");
       player.showEffect("Great");
     }
   }

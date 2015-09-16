@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class BasicObjectsManager : ObjectsManager {
-  public GameObject[] parts;
+  public Transform normalParts;
   public int max_parts = 50;
   public GameObject partsDestroy;
 
@@ -19,9 +19,15 @@ public class BasicObjectsManager : ObjectsManager {
   public int cubesByBigObstacle = 15;
 
   private bool respawn = false;
+  private GameObject[] partsPrefab;
 
   override public void run() {
-    spawnManager.spawnRandom(parts, max_parts);
+    partsPrefab = new GameObject[normalParts.childCount];
+    int count = 0;
+    foreach (Transform tr in normalParts) {
+      partsPrefab[count++] = tr.gameObject;
+    }
+    spawnManager.spawnRandom(partsPrefab, max_parts);
     spawnManager.spawnRandom(obstacles_big, max_obstacles);
     foreach (Transform tr in transform) {
       tr.gameObject.SetActive(false);
@@ -31,7 +37,7 @@ public class BasicObjectsManager : ObjectsManager {
   void Update() {
     if (respawn) {
       if (GameObject.FindGameObjectsWithTag("Part").Length < max_parts) {
-        spawnManager.spawnRandom(parts, 1);
+        spawnManager.spawnRandom(partsPrefab, 1);
       }
 
       if (GameObject.FindGameObjectsWithTag("Obstacle_big").Length < max_obstacles) {

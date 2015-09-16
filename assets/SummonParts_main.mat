@@ -6,10 +6,10 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: combopart
-  m_Shader: {fileID: 4800000, guid: 7bf83126e592a4f57aa361c91b298c2b, type: 3}
+  m_Name: SummonParts_main
+  m_Shader: {fileID: 34, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
-  m_LightmapFlags: 5
+  m_LightmapFlags: 1
   m_CustomRenderQueue: -1
   stringTagMap: {}
   m_SavedProperties:
@@ -19,7 +19,7 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: 4b332b1686a504f88a670a65f69ad17d, type: 3}
+          m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -78,6 +78,13 @@ Material:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Illum
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
     m_Floats:
       data:
         first:
@@ -91,6 +98,10 @@ Material:
         first:
           name: _Cutoff
         second: .5
+      data:
+        first:
+          name: _Shininess
+        second: .439999998
       data:
         first:
           name: _Parallax
@@ -127,10 +138,6 @@ Material:
         first:
           name: _Metallic
         second: 0
-      data:
-        first:
-          name: _Outline
-        second: .75
     m_Colors:
       data:
         first:
@@ -139,8 +146,12 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: .882352948, g: .882352948, b: .882352948, a: 1}
+        second: {r: .470588207, g: .470588207, b: .470588207, a: 1}
       data:
         first:
-          name: _OutlineColor
-        second: {r: .882352948, g: .05190311, b: .447082639, a: .677999973}
+          name: _SpecColor
+        second: {r: .544117689, g: .544117689, b: .544117689, a: 1}
+      data:
+        first:
+          name: _Emission
+        second: {r: .194474474, g: .600534141, b: .801470578, a: 0}

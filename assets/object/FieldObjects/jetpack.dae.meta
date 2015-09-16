@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 9086b4b28ade89d408b965e4bcee6282
-timeCreated: 1432219909
+guid: 916ae3c15e90c430e82a3452b0bd64ef
+timeCreated: 1442372628
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Matrix_24
+    4300000: jetpack
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -20,6 +20,10 @@ ModelImporter:
     bakeSimulation: 0
     optimizeGameObjects: 0
     motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
     animationCompression: 1
     animationRotationError: .5
     animationPositionError: .5

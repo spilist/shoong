@@ -7,10 +7,13 @@ public class ObjectsCategoryButton : MenusBehavior {
   private ObjectsMenu objectsMenu;
   private string category;
   private Text objSelectionCount;
+  private Text objSelectionLimit;
 
   void OnEnable() {
     objSelectionCount = transform.Find("SelectionCount").GetComponent<Text>();
+    objSelectionLimit = transform.Find("SelectionLimit").GetComponent<Text>();
     category = name.Replace("Button", "");
+    objSelectionLimit.text = "/" + transform.parent.Find(category).childCount.ToString();
     checkSelection();
   }
 
@@ -19,7 +22,7 @@ public class ObjectsCategoryButton : MenusBehavior {
 
     transform.Find("Text").GetComponent<Text>().color = objectsMenu.activeColor;
     objSelectionCount.color = objectsMenu.activeColor;
-    transform.Find("SelectionLimit").GetComponent<Text>().color = objectsMenu.activeColor;
+    objSelectionLimit.color = objectsMenu.activeColor;
 
     another.transform.Find("Text").GetComponent<Text>().color = objectsMenu.inactiveColor;
     another.transform.Find("SelectionCount").GetComponent<Text>().color = objectsMenu.inactiveColor;

@@ -61,16 +61,17 @@ public class ObjectDetail : MonoBehaviour {
       selected.GetComponent<MeshFilter>().sharedMesh = smallObject.activeMesh;
       selected.GetComponent<Renderer>().sharedMaterial = smallObject.activeMaterial;
 
-      selected.transform.Find("Effect").gameObject.SetActive(true);
 
       selectButton.SetActive(true);
       unselectButton.SetActive(true);
 
       if (obj.isActive()) {
         selectButton.SetActive(false);
+        selected.transform.Find("Effect").gameObject.SetActive(true);
         unselectButton.GetComponent<ObjectUnselectButton>().setObject(obj);
       } else {
         selectButton.GetComponent<ObjectSelectButton>().setObject(obj);
+        selected.transform.Find("Effect").gameObject.SetActive(false);
         unselectButton.SetActive(false);
       }
     }

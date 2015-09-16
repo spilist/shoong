@@ -12,6 +12,14 @@ ModelImporter:
     100008: parts_combo
     100010: //RootNode
     100012: Rainbow
+    100014: parts_brokenhandle_1
+    100016: parts_brokenhandle_2
+    100018: parts_cylinder_1
+    100020: parts_cylinder_2
+    100022: parts_toilet
+    100024: illusionpart
+    100026: jetpack
+    100028: metalbattery
     400000: Blackhole
     400002: Cube_Dispenser
     400004: monster
@@ -19,24 +27,56 @@ ModelImporter:
     400008: parts_combo
     400010: //RootNode
     400012: Rainbow
+    400014: parts_brokenhandle_1
+    400016: parts_brokenhandle_2
+    400018: parts_cylinder_1
+    400020: parts_cylinder_2
+    400022: parts_toilet
+    400024: illusionpart
+    400026: jetpack
+    400028: metalbattery
     2300000: Blackhole
     2300002: Cube_Dispenser
     2300004: monster
     2300006: parts_battery_2
     2300008: parts_combo
     2300010: Rainbow
+    2300012: parts_brokenhandle_1
+    2300014: parts_brokenhandle_2
+    2300016: parts_cylinder_1
+    2300018: parts_cylinder_2
+    2300020: parts_toilet
+    2300022: illusionpart
+    2300024: jetpack
+    2300026: metalbattery
     3300000: Blackhole
     3300002: Cube_Dispenser
     3300004: monster
     3300006: parts_battery_2
     3300008: parts_combo
     3300010: Rainbow
+    3300012: parts_brokenhandle_1
+    3300014: parts_brokenhandle_2
+    3300016: parts_cylinder_1
+    3300018: parts_cylinder_2
+    3300020: parts_toilet
+    3300022: illusionpart
+    3300024: jetpack
+    3300026: metalbattery
     4300000: parts_battery_2
     4300002: parts_combo
     4300004: Cube_Dispenser
     4300006: monster
     4300008: Blackhole
     4300010: Rainbow
+    4300012: parts_cylinder_1
+    4300014: parts_brokenhandle_1
+    4300016: parts_toilet
+    4300018: parts_brokenhandle_2
+    4300020: parts_cylinder_2
+    4300022: metalbattery
+    4300024: jetpack
+    4300026: illusionpart
     9500000: //RootNode
   materials:
     importMaterials: 1

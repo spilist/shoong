@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 2b60a5446e24ba3499f372374a8ad4b2
-timeCreated: 1432219950
+guid: 23604ec780ae74faebe91c59144b2055
+timeCreated: 1442372627
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Matrix_22
+    4300000: metalbattery
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -20,6 +20,10 @@ ModelImporter:
     bakeSimulation: 0
     optimizeGameObjects: 0
     motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
     animationCompression: 1
     animationRotationError: .5
     animationPositionError: .5
