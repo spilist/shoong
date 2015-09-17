@@ -75,8 +75,8 @@ GameObject:
   - 33: {fileID: 3377934}
   - 23: {fileID: 2375254}
   - 54: {fileID: 5433160}
-  - 136: {fileID: 13691576}
   - 114: {fileID: 11465874}
+  - 136: {fileID: 13691576}
   - 136: {fileID: 13698234}
   m_Layer: 23
   m_Name: Asteroid_big_1
@@ -482,7 +482,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 143254}

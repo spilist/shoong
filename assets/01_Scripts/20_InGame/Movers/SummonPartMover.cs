@@ -10,7 +10,6 @@ public class SummonPartMover : ObjectsMover {
   }
 
   override protected void afterEncounter() {
-    // sound
     summonManager.startSummon();
   }
 

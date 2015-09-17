@@ -39,6 +39,8 @@ TagManager:
   - GoldenCube
   - SummonPart
   - SummonedPart
+  - ForceField
+  - EMP
   layers:
   - Default
   - TransparentFX
@@ -66,7 +68,7 @@ TagManager:
   - BigObstacle
   - MinMonster
   - QuestCollider
-  - 
+  - ForceField
   - 
   - 
   - 

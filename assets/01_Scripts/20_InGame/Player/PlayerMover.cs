@@ -47,7 +47,7 @@ public class PlayerMover : MonoBehaviour {
   public float reboundSpeed = 300;
 
   private bool unstoppable = false;
-
+  private bool usingEMP = false;
   private bool ridingMonster = false;
   private float originalScale;
   private int minimonCounter = 0;
@@ -251,7 +251,7 @@ public class PlayerMover : MonoBehaviour {
 
   public void setRotateByRainbow(bool val) {
     rainbowPosition = rdm.instance.transform.position;
-    GetComponent<Rigidbody>().isKinematic = val;
+    rb.isKinematic = val;
     isRotatingByRainbow = val;
   }
 
@@ -361,6 +361,10 @@ public class PlayerMover : MonoBehaviour {
     } else if (obj == "Monster") {
       ridingMonster = true;
       minimonCounter = 0;
+    } else if (obj == "EMP") {
+      usingEMP = true;
+      rb.isKinematic = true;
+      return;
     }
 
     StopCoroutine("strengthen");
@@ -414,6 +418,21 @@ public class PlayerMover : MonoBehaviour {
 
   public bool isUsingRainbow() {
     return isRotatingByRainbow || isRidingRainbowRoad;
+  }
+
+  public bool isUsingEMP() {
+    return usingEMP;
+  }
+
+  public void stopEMP() {
+    rb.isKinematic = false;
+    usingEMP = false;
+    rotatePlayerBody();
+    showEffect("Charged");
+  }
+
+  public bool uncontrollable() {
+    return isRebounding() || isUsingRainbow() || usingEMP;
   }
 
   void Update() {

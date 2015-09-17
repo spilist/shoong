@@ -40,7 +40,7 @@ public class TouchInputHandler : MonoBehaviour
         return;
       }
 
-      if (player.isRebounding() || player.isUsingRainbow()) return;
+      if (player.uncontrollable()) return;
 
 			if (!gameStarted) {
 				beforeIdle.moveTitle();

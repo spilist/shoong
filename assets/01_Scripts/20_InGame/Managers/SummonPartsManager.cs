@@ -3,7 +3,6 @@ using System.Collections;
 
 public class SummonPartsManager : ObjectsManager {
   public GameObject summonedPartPrefab;
-  public Transform summonedPartsTransformParent;
   public GameObject summonedPartsDestroyEffect;
 
   public int[] numSpawnZPerLevel;
@@ -57,15 +56,17 @@ public class SummonPartsManager : ObjectsManager {
     Vector3 playerPos = player.transform.position;
     Vector3 origin = new Vector3(playerPos.x + dir.x * startSpawnRadius, 0, playerPos.z + dir.z * startSpawnRadius);
 
-    summonedPartsTransformParent.position = origin;
-    summonedPartsTransformParent.localEulerAngles = new Vector3 (0, angle, 0);
+    GameObject obj = new GameObject();
+    obj.transform.SetParent(transform);
+    obj.transform.position = origin;
+    obj.transform.localEulerAngles = new Vector3 (0, angle, 0);
 
     for (int i = 0; i < numSpawnX; i++) {
       for (int j = 0; j < numSpawnZ; j++) {
         Vector3 spawnPos = new Vector3(distanceBtwX * i - distanceBtwX * (numSpawnX - 1) / 2, 0, distanceBtwZ * j);
         GameObject instance = (GameObject) Instantiate(summonedPartPrefab, spawnPos, Quaternion.identity);
         instance.GetComponent<MeshFilter>().sharedMesh = summonMesh;
-        instance.transform.SetParent(summonedPartsTransformParent, false);
+        instance.transform.SetParent(obj.transform, false);
       }
     }
 

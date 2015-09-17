@@ -12,21 +12,19 @@ public class SpawnManager : MonoBehaviour {
 
   public void Start() {
     GetComponent<NormalPartsManager>().enabled = true;
-    GetComponent<AsteroidManager>().enabled = true;
   }
 
   public void run() {
-    // stop following user, activate inactivated basic objects
     GetComponent<FollowTarget>().enabled = false;
-    foreach (Transform tr in transform) {
-      tr.gameObject.SetActive(true);
-    }
 
     // start spawn obstacles
+    GetComponent<AsteroidManager>().enabled = true;
     GetComponent<MeteroidManager>().enabled = true;
 
     // spawn GoldenCube
     GetComponent<GoldenCubeManager>().enabled = true;
+
+    runManager("EMP");
 
     // spawn selected objects
     string mainObjectsString = PlayerPrefs.GetString("MainObjects").Trim();
@@ -60,8 +58,7 @@ public class SpawnManager : MonoBehaviour {
 
   public void spawnRandom(GameObject[] targets, int numSpawn) {
     for (int i = 0; i < numSpawn; i++) {
-      GameObject instance = spawn(targets[Random.Range(0, targets.Length)]);
-      instance.SetActive(false);
+      spawn(targets[Random.Range(0, targets.Length)]);
     }
   }
 
