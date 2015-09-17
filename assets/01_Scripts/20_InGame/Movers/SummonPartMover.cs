@@ -9,22 +9,8 @@ public class SummonPartMover : ObjectsMover {
     canBeMagnetized = false;
   }
 
-  override public void destroyObject(bool destroyEffect = true) {
-    Destroy(gameObject);
-
-    if (destroyEffect) {
-      // destroyEffect
-    }
-
-    objectsManager.skipRespawnInterval();
-    objectsManager.run();
-  }
-
-  override public void encounterPlayer() {
-    Destroy(gameObject);
-
-    // encouter effect
-    // showEffect("Summon")
+  override protected void afterEncounter() {
+    // sound
     summonManager.startSummon();
   }
 

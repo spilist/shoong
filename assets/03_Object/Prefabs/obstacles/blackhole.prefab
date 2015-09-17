@@ -14,7 +14,7 @@ GameObject:
   - 135: {fileID: 13562994}
   - 114: {fileID: 11432574}
   m_Layer: 18
-  m_Name: blackhole
+  m_Name: Blackhole
   m_TagString: Blackhole
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -89,7 +89,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d70a08238d904e4b80cd6018e42b53e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstacleDestroy: {fileID: 19845298, guid: 06a9d910a6ef7477eb37b2d7cddcfa88, type: 2}
 --- !u!135 &13562994
 SphereCollider:
   m_ObjectHideFlags: 1

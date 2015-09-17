@@ -10,14 +10,9 @@ public class RainbowDonutMover : ObjectsMover {
     rdm = (RainbowDonutsManager) objectsManager;
   }
 
-	override public void destroyObject(bool destroyEffect = true) {
-    Destroy(gameObject);
-    objectsManager.run();
-  }
-
-  override public void encounterPlayer() {
-    rdm.startRidingRainbow();
+  override public void encounterPlayer(bool destroy = true) {
     GetComponent<Collider>().enabled = false;
+    rdm.startRidingRainbow();
     StartCoroutine("rideRainbow");
   }
 
@@ -36,9 +31,5 @@ public class RainbowDonutMover : ObjectsMover {
     if (rotatingFast) {
       transform.Rotate(-Vector3.forward * Time.deltaTime * rdm.rotateAngularSpeed, Space.World);
     }
-  }
-
-  override public int cubesWhenEncounter() {
-    return rdm.cubesPerRide;
   }
 }

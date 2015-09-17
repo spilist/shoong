@@ -13,15 +13,9 @@ public class CharacterChangeManager : MonoBehaviour {
   private Renderer mRenderer;
 
   public Transform playerParticlesParent;
-  public ParticleSystem ridingEffect;
-  public ParticleSystem monsterEffect;
   public ParticleSystem booster;
-  public ParticleSystem getEnergy;
-  public ParticleSystem unstoppableEffect;
-  public ParticleSystem unstoppableEffect_two;
-  public ParticleSystem getSpecialEnergyEffect;
   public ParticleSystem getComboParts;
-  public ParticleSystem getBlackholeEffect;
+  // public ParticleSystem getBlackholeEffect;
   public ParticleSystem rainbowEffect;
   public ParticleSystem chargedEffect;
   public ParticleSystem afterStrengthenEffect;
@@ -38,16 +32,10 @@ public class CharacterChangeManager : MonoBehaviour {
 
   public void changeCharacterToMonster() {
     changeCharacter(monsterMesh, monsterMaterial);
-    monsterEffect.Play();
-    monsterEffect.GetComponent<AudioSource>().Play();
   }
 
   public void changeCharacterToMetal() {
     changeCharacter(originalMesh, metalMat);
-    unstoppableEffect.Play();
-    unstoppableEffect.GetComponent<AudioSource>().Play ();
-      // unstoppableEffect_two.Play();
-    unstoppableEffect_two.GetComponent<AudioSource>().Play ();
   }
 
   public void changeCharacterToOriginal() {

@@ -3,7 +3,8 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class ElapsedTime : MonoBehaviour {
-	public BasicObjectsManager bom;
+	public NormalPartsManager npm;
+	public AsteroidManager asm;
 
 	public static ElapsedTime time;
 	public int addObstaclePer = 20;
@@ -25,12 +26,12 @@ public class ElapsedTime : MonoBehaviour {
 
 			if (prevObstacleCounter < Mathf.Floor(now/addObstaclePer)) {
 				prevObstacleCounter++;
-				bom.max_obstacles++;
+				asm.max_obstacles++;
 			}
 
 			if (prevPartCounter < Mathf.Floor(now/removePartPer)) {
 				prevPartCounter++;
-				bom.max_parts--;
+				npm.max_parts--;
 			}
 		}
 	}

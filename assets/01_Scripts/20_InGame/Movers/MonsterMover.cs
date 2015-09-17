@@ -3,7 +3,6 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class MonsterMover : ObjectsMover {
-  private float speed_chase;
   private float speed_runaway;
   private float speed_weaken;
   private float lifeTime;
@@ -17,38 +16,25 @@ public class MonsterMover : ObjectsMover {
   private bool weak = false;
   private bool shrinking = false;
 
-  public ParticleSystem aura;
-  public ParticleSystem weakenAura;
   private Renderer m_renderer;
 
   protected override void initializeRest() {
-    monm = GameObject.Find("Field Objects").GetComponent<MonsterManager>();
-    spm = monm.GetComponent<SpecialPartsManager>();
+    monm = (MonsterManager)objectsManager;
+    spm = GameObject.Find("Field Objects").GetComponent<SpecialPartsManager>();
 
     originalScale = transform.localScale.x;
-    speed_chase = monm.speed_chase;
     speed_runaway = monm.speed_runaway;
     speed_weaken = monm.speed_weaken;
+
     monm.indicator.startIndicate(gameObject);
     monm.indicator.GetComponent<Image>().color = Color.red;
-    m_renderer = GetComponent<Renderer>();
 
     lifeTime = Random.Range(monm.minLifeTime, monm.maxLifeTime);
     minimonRespawnTime = lifeTime / monm.numMinimonRespawn;
+
+    m_renderer = GetComponent<Renderer>();
+
     StartCoroutine("weakened");
-  }
-
-  protected override float getSpeed() {
-    return speed_chase;
-  }
-
-  protected override float getTumble() {
-    return monm.tumble;
-  }
-
-  protected override Vector3 getDirection() {
-    Vector3 dir = player.transform.position - transform.position;
-    return dir / dir.magnitude;
   }
 
   IEnumerator weakened() {
@@ -62,9 +48,10 @@ public class MonsterMover : ObjectsMover {
 
     weak = true;
     monm.stopWarning();
-    weakenAura.Play();
-    weakenAura.GetComponent<AudioSource> ().Play ();
-    aura.Stop();
+
+    transform.Find("Aura").gameObject.SetActive(false);
+    transform.Find("Weaken Aura").gameObject.SetActive(true);
+
     m_renderer.material.SetColor("_OutlineColor", monm.weakenedOutlineColor);
     m_renderer.material.SetFloat("_Outline", 0.75f);
     monm.indicator.GetComponent<Image>().color = monm.weakenedOutlineColor;
@@ -73,16 +60,11 @@ public class MonsterMover : ObjectsMover {
     destroyObject();
   }
 
-  public bool isWeak() {
-    return weak;
-  }
-
   protected override void normalMovement() {
-    direction = player.transform.position - transform.position;
-    float distance = direction.magnitude;
-    direction /= distance;
+    direction = getDirection();
+    float distance = Vector3.Distance(player.transform.position, transform.position);
     if (distance > monm.detectDistance) {
-      rb.velocity = direction * speed_chase * 2;
+      rb.velocity = direction * speed * 2;
     } else if (isMagnetized) {
       rb.velocity = direction * player.GetComponent<Rigidbody>().velocity.magnitude * 1.5f;
     } else if (weak) {
@@ -90,7 +72,7 @@ public class MonsterMover : ObjectsMover {
     } else if (player.isUnstoppable()) {
       rb.velocity = -direction * speed_runaway;
     } else {
-      rb.velocity = direction * speed_chase;
+      rb.velocity = direction * speed;
     }
 
     if (shrinking) {
@@ -102,34 +84,51 @@ public class MonsterMover : ObjectsMover {
     }
   }
 
-  public override void destroyObject(bool destroyEffect = true) {
-    if (isInsideBlackhole && QuestManager.qm.doingQuest("DestroyMonsterByBlackhole")) {
-      if (player.isUsingBlackhole()) {
-        QuestManager.qm.addCountToQuest("DestroyMonsterByBlackhole");
-      }
+  override protected void afterDestroy() {
+    if (isInsideBlackhole && QuestManager.qm.doingQuest("DestroyMonsterByBlackhole") && player.isUsingBlackhole()) {
+      QuestManager.qm.addCountToQuest("DestroyMonsterByBlackhole");
     }
 
-    Destroy(gameObject);
     monm.indicator.stopIndicate();
     monm.stopWarning();
-    if (destroyEffect) {
-      Instantiate(monm.destroyEffect, transform.position, transform.rotation);
-    }
-    monm.run();
   }
 
-  override public void encounterPlayer() {
-    QuestManager.qm.addCountToQuest("DestroyMonster");
-
-    if (player.isUsingRainbow()) {
-      QuestManager.qm.addCountToQuest("DestroyMonsterByRainbow");
+  override public void encounterPlayer(bool destroy = true) {
+    foreach (Collider collider in GetComponents<Collider>()) {
+      collider.enabled = false;
     }
-
     Destroy(gameObject);
+
     monm.indicator.stopIndicate();
     monm.stopWarning();
-    Instantiate(monm.destroyEffect, transform.position, transform.rotation);
-    monm.run();
+
+    if (rideable()) {
+      objectsManager.objEncounterEffectForPlayer.Play();
+      objectsManager.objEncounterEffectForPlayer.GetComponent<AudioSource>().Play();
+
+      objectsManager.strengthenPlayerEffect.SetActive(true);
+      player.strengthenBy(tag);
+
+      monm.monsterFilter.SetActive(true);
+      QuestManager.qm.addCountToQuest("RideMonster");
+      if (player.isExitedBlackhole()) {
+        QuestManager.qm.addCountToQuest("RideMonsterByBlackhole");
+      }
+
+      if (player.energyBar.currentEnergy() <= 30) {
+        QuestManager.qm.addCountToQuest("RideMonsterWithLowEnergy");
+      }
+    }
+    else {
+      QuestManager.qm.addCountToQuest("DestroyMonster");
+
+      if (player.isUsingRainbow()) {
+        QuestManager.qm.addCountToQuest("DestroyMonsterByRainbow");
+      }
+
+      Instantiate(objectsManager.objEncounterEffect, transform.position, transform.rotation);
+      monm.run();
+    }
   }
 
   override public string getManager() {
@@ -137,23 +136,19 @@ public class MonsterMover : ObjectsMover {
   }
 
   override public bool dangerous() {
-    if (weak || player.isAfterStrengthen() || player.isUnstoppable() || player.isUsingRainbow() || player.isExitedBlackhole()) return false;
+    if (rideable() || player.isAfterStrengthen() || player.isUnstoppable() || player.isUsingRainbow()) return false;
     else return true;
   }
 
   override public int cubesWhenEncounter() {
-    return monm.cubesWhenDestroy;
+    return rideable()? 0 : objectsManager.cubesWhenEncounter();
   }
 
   override public int bonusCubes() {
-    return player.isUnstoppable()? (int) (monm.cubesWhenDestroy * spm.bonus) : 0;
-  }
-
-  override public bool isNegativeObject() {
-    return true;
+    return player.isUnstoppable()? (int) (cubesWhenEncounter() * spm.bonus) : 0;
   }
 
   public bool rideable() {
-    return weak || player.isExitedBlackhole();
+    return !player.isUnstoppable() && (weak || player.isExitedBlackhole());
   }
 }

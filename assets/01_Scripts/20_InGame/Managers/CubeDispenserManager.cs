@@ -2,7 +2,6 @@
 using System.Collections;
 
 public class CubeDispenserManager : ObjectsManager {
-  public GameObject cubeDispenserPrefab;
   public int[] fullComboCountPerLevel;
   public float[] destroyAfterPerLevel;
   public int respawnInterval_min = 10;
@@ -14,12 +13,9 @@ public class CubeDispenserManager : ObjectsManager {
   public float pitchIncrease = 0.05f;
   public Material activeMat;
 
-  private GameObject cubeDispenser;
-  private int comboCount = 0;
-  private float decreaseEmissionAmount;
-  private bool notContactYet = true;
-  private bool respawnRunning = false;
-  private int fullComboCount;
+  public float decreaseEmissionAmount;
+  private bool trying = false;
+  public int fullComboCount;
   private float destroyAfterSeconds;
 
   override public void initRest() {
@@ -28,58 +24,30 @@ public class CubeDispenserManager : ObjectsManager {
     destroyAfterSeconds = destroyAfterPerLevel[level];
   }
 
-  override public void run() {
-    comboCount = 0;
-    notContactYet = true;
-    respawnRunning = false;
-    decreaseEmissionAmount = cubeDispenserPrefab.GetComponent<ParticleSystem>().emissionRate / fullComboCount;
-
-    cubeDispenser = spawnManager.spawn(cubeDispenserPrefab);
+  override protected void afterSpawn() {
+    trying = false;
+    decreaseEmissionAmount = objPrefab.GetComponent<ParticleSystem>().emissionRate / fullComboCount;
+    objEncounterEffectForPlayer = instance.transform.Find("Reaction").GetComponent<ParticleSystem>();
   }
 
-	public void contact() {
-    if (notContactYet) {
-      notContactYet = false;
-      cubeDispenser.GetComponent<Renderer>().sharedMaterial = activeMat;
+  public void checkTrying() {
+    if (!trying) {
+      trying = true;
+      instance.GetComponent<Renderer>().sharedMaterial = activeMat;
       StartCoroutine("destroyAfterTry");
     }
-    comboCount++;
-    cubeDispenser.GetComponent<ParticleSystem>().emissionRate -= decreaseEmissionAmount;
-
-    if (comboCount == fullComboCountPerLevel[0]) {
-      QuestManager.qm.addCountToQuest("CubeDispenser");
-    }
-
-    if (comboCount == fullComboCount) {
-      QuestManager.qm.addCountToQuest("CompleteCubeDispenser");
-      StartCoroutine("respawn");
-      player.showEffect("Great");
-    }
-  }
-
-  public int getComboCount() {
-    return comboCount;
   }
 
   IEnumerator destroyAfterTry() {
     yield return new WaitForSeconds(destroyAfterSeconds);
-    StartCoroutine("respawn");
+
+    if (instance == null) yield break;
+
+    instance.GetComponent<ObjectsMover>().destroyObject();
   }
 
-  public void destroyInstances() {
-    StartCoroutine("respawn");
-  }
-
-  IEnumerator respawn() {
-    if (!respawnRunning) {
-      respawnRunning = true;
-			Instantiate (destroy, cubeDispenser.transform.position, cubeDispenser.transform.rotation);
-      // particle instantiate
-      Destroy(cubeDispenser);
-      if (!notContactYet) {
-        yield return new WaitForSeconds(Random.Range(respawnInterval_min, respawnInterval_max));
-      }
-      run();
-    }
+  override protected float spawnInterval() {
+    if (!trying) return 0;
+    else return Random.Range(minSpawnInterval, maxSpawnInterval);
   }
 }

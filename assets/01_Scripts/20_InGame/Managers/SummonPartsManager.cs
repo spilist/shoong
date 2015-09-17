@@ -2,17 +2,12 @@
 using System.Collections;
 
 public class SummonPartsManager : ObjectsManager {
-	public GameObject summonPartPrefab;
   public GameObject summonedPartPrefab;
   public Transform summonedPartsTransformParent;
   public GameObject summonedPartsDestroyEffect;
 
   public int[] numSpawnZPerLevel;
   public float[] summonedPartLifetimePerLevel;
-
-  public float tumble = 5;
-  public float minSpawnInterval = 8;
-  public float maxSpawnInterval = 12;
 
   public int startSpawnRadius = 50;
   public int numSpawnX = 4;
@@ -30,7 +25,6 @@ public class SummonPartsManager : ObjectsManager {
   public float emptyDurationStart = 0.15f;
   public float emptyDurationDecrease = 0.05f;
 
-  private GameObject summonPart;
   private Mesh[] summonMeshes;
   private Mesh summonMesh;
   private int getCount = 0;
@@ -41,30 +35,16 @@ public class SummonPartsManager : ObjectsManager {
     numSpawnZ = numSpawnZPerLevel[level];
     summonedPartLifetime = summonedPartLifetimePerLevel[level];
 
-    summonMeshes = new Mesh[GetComponent<BasicObjectsManager>().normalParts.childCount];
+    summonMeshes = new Mesh[GetComponent<NormalPartsManager>().objPrefab.transform.childCount];
     int count = 0;
-    foreach (Transform tr in GetComponent<BasicObjectsManager>().normalParts) {
+    foreach (Transform tr in GetComponent<NormalPartsManager>().objPrefab.transform) {
       summonMeshes[count++] = tr.GetComponent<MeshFilter>().sharedMesh;
     }
   }
 
-  override public float getTumble(string objTag) {
-    return tumble;
-  }
-
-  override public void run() {
-    StartCoroutine(respawn());
-  }
-
-  IEnumerator respawn() {
-    if (!skipInterval) {
-      yield return new WaitForSeconds(summonedPartLifetime + Random.Range(minSpawnInterval, maxSpawnInterval));
-    }
-
-    skipInterval = false;
-    summonPart = spawnManager.spawn(summonPartPrefab);
+  override protected void afterSpawn() {
     summonMesh = summonMeshes[Random.Range(0, summonMeshes.Length)];
-    foreach (Transform tr in summonPart.transform) {
+    foreach (Transform tr in instance.transform) {
       tr.GetComponent<MeshFilter>().sharedMesh = summonMesh;
     }
   }

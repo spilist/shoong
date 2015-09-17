@@ -11,19 +11,19 @@ public class QuestCollider : MonoBehaviour {
 
   void OnTriggerEnter(Collider other) {
     if (other.tag == "Obstacle_big") {
-      other.GetComponent<BigObstaclesMover>().nearPlayer();
+      other.GetComponent<AsteroidMover>().nearPlayer();
     } else if (other.tag == "Obstacle") {
-      other.GetComponent<ObstaclesMover>().nearPlayer();
+      other.GetComponent<MeteroidMover>().nearPlayer();
     }
   }
 
   void OnTriggerExit(Collider other) {
    if (other.tag == "Obstacle_big") {
-      other.GetComponent<BigObstaclesMover>().nearPlayer(false);
+      other.GetComponent<AsteroidMover>().nearPlayer(false);
     } else if (other.tag == "Obstacle") {
-      if (other.GetComponent<ObstaclesMover>().isAlreadyChecked() || player.isRidingMonster()) return;
+      if (other.GetComponent<MeteroidMover>().isAlreadyChecked() || player.isRidingMonster()) return;
 
-      other.GetComponent<ObstaclesMover>().nearPlayer(false);
+      other.GetComponent<MeteroidMover>().nearPlayer(false);
       QuestManager.qm.addCountToQuest("AvoidFallingStar");
       player.showEffect("Whew");
     }

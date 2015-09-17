@@ -10,11 +10,10 @@ public class ObjectsMover : MonoBehaviour {
   protected bool isMagnetized = false;
 
   protected PlayerMover player;
-  protected CharacterChangeManager changeManager;
 
   protected BlackholeManager blm;
-  protected GameObject blackhole;
   protected bool isInsideBlackhole = false;
+  protected bool destroyed = false;
   protected float shrinkedScale;
 
   protected ObjectsManager objectsManager;
@@ -22,9 +21,9 @@ public class ObjectsMover : MonoBehaviour {
 
   void Start() {
     player = GameObject.Find("Player").GetComponent<PlayerMover>();
-    changeManager = player.GetComponent<CharacterChangeManager>();
 
     objectsManager = (ObjectsManager) GameObject.Find("Field Objects").GetComponent(getManager());
+
     blm = GameObject.Find("Field Objects").GetComponent<BlackholeManager>();
 
     shrinkedScale = transform.localScale.x;
@@ -40,15 +39,36 @@ public class ObjectsMover : MonoBehaviour {
     rb.velocity = direction * speed;
   }
 
+  virtual public string getManager() {
+    return "";
+  }
+
+  virtual protected void initializeRest() {}
+
+  virtual protected float strength() {
+    return objectsManager.strength;
+  }
+
+  virtual protected float getSpeed() {
+    return objectsManager.getSpeed();
+  }
+
+  virtual protected float getTumble() {
+    return objectsManager.getTumble();
+  }
+
+  virtual protected Vector3 getDirection() {
+    return objectsManager.getDirection();
+  }
+
   void FixedUpdate() {
     if (isInsideBlackhole) {
-      if (blackhole == null) {
+      if (blm.instance == null) {
         destroyObject(false);
         return;
       }
-      Vector3 heading = blackhole.transform.position - transform.position;
-      heading /= heading.magnitude;
-      rb.velocity = heading * blm.gravity;
+
+      rb.velocity = blm.headingToBlackhole(transform) * blm.gravity;
 
       shrinkedScale = Mathf.MoveTowards(shrinkedScale, 0f, Time.deltaTime);
       transform.localScale = new Vector3(shrinkedScale, shrinkedScale, shrinkedScale);
@@ -62,35 +82,30 @@ public class ObjectsMover : MonoBehaviour {
     }
   }
 
+  virtual protected void normalMovement() {}
+
+  virtual protected bool beforeCollide(ObjectsMover other) {
+    return true;
+  }
+
   void OnCollisionEnter(Collision collision) {
     if (isMagnetized) return;
 
     ObjectsMover other = collision.collider.gameObject.GetComponent<ObjectsMover>();
 
     if (other != null) {
-      if (beforeCollision(other)) {
+      if (other.tag == "Blackhole") return;
+
+      if (beforeCollide(other)) {
         if (strength() == other.strength()) {
           processCollision(collision);
-        } else if (strength() > other.strength()) {
-          other.destroyObject();
+        } else if (strength() < other.strength()) {
+          destroyObject();
         }
         rb.velocity = direction * speed;
       }
     }
-
-    doSomethingSpecial(collision);
-  }
-
-  virtual protected bool beforeCollision(ObjectsMover other) {
-    return true;
-  }
-
-  virtual protected void doSomethingSpecial(Collision collision) {
-    return;
-  }
-
-  virtual protected float strength() {
-    return objectsManager.strength;
+    afterCollide(collision);
   }
 
   void processCollision(Collision collision) {
@@ -101,65 +116,81 @@ public class ObjectsMover : MonoBehaviour {
     direction.Normalize();
   }
 
+  virtual protected void afterCollide(Collision collision) {}
+
+  virtual protected bool beforeDestroy() {
+    if (destroyed) {
+      return false;
+    } else {
+      destroyed = true;
+      return true;
+    }
+  }
+
   virtual public void destroyObject(bool destroyEffect = true) {
-    if (destroyEffect) {
-      Instantiate(((BasicObjectsManager)objectsManager).partsDestroy, transform.position, transform.rotation);
+    if (!beforeDestroy()) return;
+
+    foreach (Collider collider in GetComponents<Collider>()) {
+      collider.enabled = false;
     }
     Destroy(gameObject);
+
+    if (destroyEffect && objectsManager.objDestroyEffect != null) {
+      Instantiate(objectsManager.objDestroyEffect, transform.position, transform.rotation);
+    }
+
+    afterDestroy();
+
+    objectsManager.runImmediately();
   }
 
-  virtual public void destroyByMonster() {
+  virtual protected void afterDestroy() {}
+
+  virtual protected bool beforeEncounter() {
+    return true;
   }
 
-  virtual public void encounterPlayer() {
-    if (tag == "Part") {
-      player.GetComponent<AudioSource>().Play ();
+  virtual public void encounterPlayer(bool destroy = true) {
+    if (!beforeEncounter()) return;
 
-      if (isMagnetized) QuestManager.qm.addCountToQuest("Blackhole");
-      if (player.isUsingRainbow()) QuestManager.qm.addCountToQuest("GetPartsOnRainbow");
-      if (player.isNearAsteroid()) {
-        QuestManager.qm.addCountToQuest("GetPartsNearAsteroid");
-        player.showEffect("Wow");
+    if (destroy) {
+      foreach (Collider collider in GetComponents<Collider>()) {
+        collider.enabled = false;
+      }
+      Destroy(gameObject);
+    }
+
+    if (objectsManager.objEncounterEffect != null) {
+      Instantiate(objectsManager.objEncounterEffect, transform.position, transform.rotation);
+    }
+
+    if (objectsManager.objEncounterEffectForPlayer != null) {
+      objectsManager.objEncounterEffectForPlayer.Play();
+      if (objectsManager.objEncounterEffectForPlayer.GetComponent<AudioSource>() != null) {
+        objectsManager.objEncounterEffectForPlayer.GetComponent<AudioSource>().Play();
       }
     }
-    Destroy(gameObject);
+
+    if (objectsManager.strengthenPlayerEffect != null) {
+      objectsManager.strengthenPlayerEffect.SetActive(true);
+      player.strengthenBy(tag);
+    }
+
+    if (!isNegativeObject()) {
+      player.transform.parent.Find("Bars Canvas").GetComponent<ComboBar>().addCombo();
+    }
+
+    afterEncounter();
   }
+
+  virtual protected void afterEncounter() {}
 
   virtual public void setMagnetized() {
     if (canBeMagnetized) isMagnetized = true;
   }
 
-  virtual public void insideBlackhole() {
+  public void insideBlackhole() {
     isInsideBlackhole = true;
-    blackhole = blm.getBlackhole();
-  }
-
-  virtual protected float getSpeed() {
-    return objectsManager.getSpeed(tag);
-  }
-
-  virtual protected float getTumble() {
-    return objectsManager.getTumble(tag);
-  }
-
-  virtual protected Vector3 getDirection() {
-    Vector2 randomV = Random.insideUnitCircle;
-    Vector3 dir = new Vector3(randomV.x, 0, randomV.y);
-    return dir.normalized;
-  }
-
-  virtual protected void initializeRest() {
-  }
-
-  virtual protected void normalMovement() {
-  }
-
-  virtual public string getManager() {
-    return "BasicObjectsManager";
-  }
-
-  virtual public bool dangerous() {
-    return false;
   }
 
   virtual public int cubesWhenEncounter() {
@@ -167,14 +198,17 @@ public class ObjectsMover : MonoBehaviour {
   }
 
   virtual public int bonusCubes() {
-    if (tag == "Part" || tag == "SummonedPart") {
-      return player.isNearAsteroid()? player.nearAsteroidBonus : 0;
-    } else {
-      return 0;
-    }
+    return 0;
+  }
+
+  virtual public void destroyByMonster() {
+  }
+
+  virtual public bool dangerous() {
+    return false;
   }
 
   virtual public bool isNegativeObject() {
-    return false;
+    return objectsManager.isNegative;
   }
 }

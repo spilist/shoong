@@ -3,49 +3,49 @@ using System.Collections;
 
 public class CubeDispenserMover : ObjectsMover {
   private CubeDispenserManager cdm;
-  private ParticleSystem reaction;
+  private int comboCount = 0;
 
   protected override void initializeRest() {
     canBeMagnetized = false;
-    cdm = GameObject.Find("Field Objects").GetComponent<CubeDispenserManager>();
-    reaction = transform.Find("Reaction").GetComponent<ParticleSystem>();
+    cdm = (CubeDispenserManager)objectsManager;
   }
 
-  protected override float getSpeed() {
-    return 0;
-  }
-
-  protected override float getTumble() {
-    return 0.5f;
-  }
-
-  override protected void doSomethingSpecial(Collision collision) {
+  override protected void afterCollide(Collision collision) {
     if (collision.collider.tag == "ContactCollider") {
-      PlayerMover playerMover = player.GetComponent<PlayerMover>();
-      if (playerMover.isUsingRainbow()) {
-        playerMover.goodPartsEncounter(this, cdm.cubesPerContact * 4);
+      if (player.isUsingRainbow()) {
+        player.goodPartsEncounter(this, cdm.cubesPerContact * 4);
       } else {
-        playerMover.contactCubeDispenser(transform, cdm.cubesPerContact, collision, cdm.reboundDuring);
+        player.contactCubeDispenser(transform, cdm.cubesPerContact, collision, cdm.reboundDuring);
 
-        reaction.Play();
-        AudioSource sound = reaction.GetComponent<AudioSource>();
-        sound.pitch = cdm.pitchStart + cdm.getComboCount() * cdm.pitchIncrease;
-        sound.Play ();
-
-        cdm.contact();
+        encounterPlayer(false);
       }
     }
   }
 
-  override public void destroyObject(bool destroyEffect = true) {
-    cdm.destroyInstances();
+  override protected bool beforeEncounter() {
+    cdm.checkTrying();
+
+    objectsManager.objEncounterEffectForPlayer.GetComponent<AudioSource>().pitch = cdm.pitchStart + comboCount * cdm.pitchIncrease;
+
+    GetComponent<ParticleSystem>().emissionRate -= cdm.decreaseEmissionAmount;
+
+    comboCount++;
+
+    if (comboCount == cdm.fullComboCountPerLevel[0]) {
+      QuestManager.qm.addCountToQuest("CubeDispenser");
+    }
+
+    if (comboCount == cdm.fullComboCount) {
+      QuestManager.qm.addCountToQuest("CompleteCubeDispenser");
+      destroyObject();
+      player.showEffect("Great");
+      return false;
+    }
+
+    return true;
   }
 
   override public string getManager() {
     return "CubeDispenserManager";
-  }
-
-  override public void encounterPlayer() {
-    cdm.destroyInstances();
   }
 }

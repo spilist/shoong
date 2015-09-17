@@ -59,8 +59,6 @@ public class BeforeIdle : MonoBehaviour {
 
     tips.text = tips.transform.GetChild(DataManager.dm.getInt("LastTipIndex")).GetComponent<Tip>().description;
 
-    spawnManager.preload();
-
     string[] rots = PlayerPrefs.GetString("CharacterRotation").Split(',');
     character.transform.rotation = Quaternion.Euler(float.Parse(rots[0]), float.Parse(rots[1]), float.Parse(rots[2]));
 

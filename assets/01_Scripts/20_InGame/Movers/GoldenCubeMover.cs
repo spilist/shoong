@@ -6,18 +6,10 @@ public class GoldenCubeMover : ObjectsMover {
   private bool detected = false;
 
   protected override void initializeRest() {
-    gcm = objectsManager.GetComponent<GoldenCubeManager>();
+    gcm = (GoldenCubeManager)objectsManager;
   }
 
-  protected override float getSpeed() {
-    return 0;
-  }
-
-  protected override float getTumble() {
-    return gcm.tumble;
-  }
-
-  protected override bool beforeCollision(ObjectsMover other) {
+  protected override bool beforeCollide(ObjectsMover other) {
     if (other.tag == "Obstacle") {
       destroyObject();
       return false;
@@ -36,8 +28,6 @@ public class GoldenCubeMover : ObjectsMover {
         detected = true;
         StartCoroutine("generateCube");
       }
-    } else if (isMagnetized) {
-      rb.velocity = direction * player.GetComponent<Rigidbody>().velocity.magnitude * 1.5f;
     }
   }
 
@@ -49,30 +39,13 @@ public class GoldenCubeMover : ObjectsMover {
     }
   }
 
-  public override void destroyObject(bool destroyEffect = true) {
-    Destroy(gameObject);
-    if (destroyEffect) {
-      Instantiate(gcm.destroyEffect, transform.position, transform.rotation);
-    }
-
-    gcm.respawn();
-  }
-
-  override public void encounterPlayer() {
-    Destroy(gameObject);
-    gcm.getEffect.Play();
-
-    gcm.gcCount.add(gcm.numGoldenCubesGet);
+  override protected void afterEncounter() {
+    gcm.gcCount.add(gcm.cubesWhenEncounter());
     player.showEffect("GoldenCube");
-
-    gcm.respawn();
+    objectsManager.run();
   }
 
   override public string getManager() {
     return "GoldenCubeManager";
-  }
-
-  override public int cubesWhenEncounter() {
-    return gcm.numGoldenCubesGet;
   }
 }

@@ -19,18 +19,19 @@ public class SummonedPartMover : ObjectsMover {
     StartCoroutine("destroyAfter");
   }
 
-  override public void destroyObject(bool destroyEffect = true) {
+  override public void destroyObject (bool destroyEffect = true) {
+    foreach (Collider collider in GetComponents<Collider>()) {
+      collider.enabled = false;
+    }
     Destroy(gameObject);
 
     if (destroyEffect) {
-      Instantiate(summonManager.summonedPartsDestroyEffect, transform.position, transform.rotation);
+      Instantiate(objectsManager.objDestroyEffect, transform.position, transform.rotation);
     }
   }
 
-  override public void encounterPlayer() {
+  override protected void afterEncounter() {
     summonManager.increaseSummonedPartGetcount();
-
-    player.GetComponent<AudioSource>().Play ();
 
     if (isMagnetized) QuestManager.qm.addCountToQuest("Blackhole");
     if (player.isUsingRainbow()) QuestManager.qm.addCountToQuest("GetPartsOnRainbow");
@@ -38,8 +39,6 @@ public class SummonedPartMover : ObjectsMover {
       QuestManager.qm.addCountToQuest("GetPartsNearAsteroid");
       player.showEffect("Wow");
     }
-
-    Destroy(gameObject);
   }
 
   override public string getManager() {

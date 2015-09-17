@@ -5,28 +5,25 @@ public class ComboPartMover : ObjectsMover {
   ComboPartsManager cpm;
 
   override protected void initializeRest() {
-    cpm = GameObject.Find("Field Objects").GetComponent<ComboPartsManager>();
+    cpm = (ComboPartsManager)objectsManager;
     canBeMagnetized = false;
-  }
-
-  override public void destroyObject(bool destroyEffect = true) {
-    cpm.destroyInstances();
   }
 
   override public string getManager() {
     return "ComboPartsManager";
   }
 
-  override public void encounterPlayer() {
-    changeManager.getComboParts.Play();
-    AudioSource getComboParts = changeManager.getComboParts.GetComponent<AudioSource>();
-    getComboParts.pitch = cpm.pitchStart + cpm.getComboCount() * cpm.pitchIncrease;
-    getComboParts.Play ();
-    cpm.eatenByPlayer();
-    Destroy(gameObject);
+  override protected void afterDestroy() {
+    Destroy(cpm.nextInstance);
   }
 
-  override public int cubesWhenEncounter() {
-    return (cpm.getComboCount() + 1) * cpm.comboBonusScale;
+  override protected bool beforeEncounter() {
+    objectsManager.objEncounterEffectForPlayer.GetComponent<AudioSource>().pitch = cpm.pitchStart + cpm.getComboCount() * cpm.pitchIncrease;
+
+    return true;
+  }
+
+  override protected void afterEncounter() {
+    cpm.eatenByPlayer();
   }
 }

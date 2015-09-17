@@ -9,14 +9,14 @@ public class MiniMonsterMover : ObjectsMover {
   private float speed_chase;
 
   protected override void initializeRest() {
-    monm = GameObject.Find("Field Objects").GetComponent<MonsterManager>();
-    spm = monm.GetComponent<SpecialPartsManager>();
+    monm = (MonsterManager)objectsManager;
+    spm = GameObject.Find("Field Objects").GetComponent<SpecialPartsManager>();
 
     if (player.isRidingMonster()) {
       time = monm.minimonStartTimeByPlayer;
     } else {
       time = monm.minimonStartTimeByMonster;
-      speed_chase = monm.speed_chase + monm.minimonAdditionalSpeed;
+      speed_chase = monm.speed + monm.minimonAdditionalSpeed;
     }
 
     StartCoroutine("destroyByTime");
@@ -34,10 +34,6 @@ public class MiniMonsterMover : ObjectsMover {
     Vector2 randomV = Random.insideUnitCircle;
     randomV.Normalize();
     return new Vector3(randomV.x, 0, randomV.y);
-  }
-
-  protected override float strength() {
-    return monm.strength;
   }
 
   protected override void normalMovement() {
@@ -68,6 +64,10 @@ public class MiniMonsterMover : ObjectsMover {
   }
 
   public override void destroyObject(bool destroyEffect = true) {
+    foreach (Collider collider in GetComponents<Collider>()) {
+      collider.enabled = false;
+    }
+
     if (destroyEffect) {
       Instantiate(monm.minimonDestroyEffect, transform.position, transform.rotation);
     }
@@ -84,7 +84,11 @@ public class MiniMonsterMover : ObjectsMover {
     else return true;
   }
 
-  override public void encounterPlayer() {
+  override public void encounterPlayer(bool destroy = true) {
+    foreach (Collider collider in GetComponents<Collider>()) {
+      collider.enabled = false;
+    }
+
     QuestManager.qm.addCountToQuest("GetMiniMonster");
     Destroy(gameObject);
     Instantiate(monm.minimonDestroyEffect, transform.position, transform.rotation);
@@ -96,10 +100,6 @@ public class MiniMonsterMover : ObjectsMover {
 
   override public int bonusCubes() {
     return player.isUnstoppable()? (int) (monm.cubesWhenDestroyMinimon * spm.bonus) : 0;
-  }
-
-  override public bool isNegativeObject() {
-    return true;
   }
 
   public bool isTimeElapsed() {

@@ -81,7 +81,7 @@ GameObject:
   - 114: {fileID: 11492656}
   m_Layer: 0
   m_Name: SummonPart
-  m_TagString: Untagged
+  m_TagString: SummonPart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

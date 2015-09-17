@@ -8,8 +8,6 @@ public class PlayerMover : MonoBehaviour {
 
   public CubesCount cubesCount;
   public ScoreManager scoreManager;
-  public GameObject obstacleDestroy;
-  public GameObject getBlackhole;
   public int cubesAsItIsUntill = 20;
   public int restCubesChangePer = 5;
   public int nearAsteroidBonus = 10;
@@ -34,7 +32,7 @@ public class PlayerMover : MonoBehaviour {
   private bool reboundingByDispenser = false;
   private float reboundingByDispenserDuring = 0;
 
-  private EnergyBar energyBar;
+  public EnergyBar energyBar;
   private ComboBar comboBar;
   private StrengthenTimeBar stBar;
 
@@ -86,10 +84,6 @@ public class PlayerMover : MonoBehaviour {
 
     rb = GetComponent<Rigidbody>();
     rb.velocity = direction * speed;
-
-    if (DataManager.dm.getBool("Blackhole")) {
-      changeManager.getBlackholeEffect.transform.localScale = Vector3.one * getBlackhole.GetComponent<GetBlackhole>().radiusPerLevel[DataManager.dm.getInt("BlackholeLevel") - 1] / getBlackhole.GetComponent<GetBlackhole>().radiusPerLevel[1];
-    }
 	}
 
 	void FixedUpdate () {
@@ -112,7 +106,7 @@ public class PlayerMover : MonoBehaviour {
     }
 
     if (isInsideBlackhole && !isUsingRainbow()) {
-      Vector3 heading = blackhole.transform.position - transform.position;
+      Vector3 heading = blm.instance.transform.position - transform.position;
       if (heading.magnitude < 1) rb.isKinematic = true;
       else {
         heading /= heading.magnitude;
@@ -123,17 +117,15 @@ public class PlayerMover : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other) {
-    if (other.tag == "BlackholeGravitySphere" || other.tag == "Blackhole") return;
+    if (other.tag == "BlackholeGravitySphere") {
+      isInsideBlackhole = true;
+      return;
+    }
 
     ObjectsMover mover = other.gameObject.GetComponent<ObjectsMover>();
 
     if (mover.dangerous()) {
       scoreManager.gameOver();
-      return;
-    }
-
-    if (!unstoppable && mover.tag == "Monster" && ((MonsterMover)mover).rideable()) {
-      startRiding(mover);
       return;
     }
 
@@ -159,47 +151,44 @@ public class PlayerMover : MonoBehaviour {
       }
     }
 
-    int instantiateCount;
-    if (howMany < cubesAsItIsUntill) {
-      instantiateCount = howMany;
-    } else {
-      instantiateCount = cubesAsItIsUntill + Mathf.RoundToInt((howMany - cubesAsItIsUntill) / (float) restCubesChangePer);
-    }
-
-    for (int e = 0; e < instantiateCount; e++) {
-      GameObject cube = (GameObject) Instantiate(particles, mover.transform.position, mover.transform.rotation);
-      if (e == 0) {
-        cube.GetComponent<ParticleMover>().triggerCubesGet(howMany);
-      }
-      if (mover.tag == "RainbowDonut") {
-        cube.GetComponent<Renderer>().material.SetColor("_TintColor", rdm.rainbowColors[e]);
-        cube.GetComponent<ParticleMover>().setRainbow();
-      }
-    }
-
-    if (bonus > 0) {
-      GameObject cube = (GameObject) Instantiate(particles, mover.transform.position, mover.transform.rotation);
-      cube.GetComponent<ParticleMover>().triggerCubesGet(bonus);
-      if (unstoppable && mover.isNegativeObject()) {
-        cube.GetComponent<Renderer>().sharedMaterial = changeManager.metalMat;
+    if (howMany > 0) {
+      int instantiateCount;
+      if (howMany < cubesAsItIsUntill) {
+        instantiateCount = howMany;
+      } else {
+        instantiateCount = cubesAsItIsUntill + Mathf.RoundToInt((howMany - cubesAsItIsUntill) / (float) restCubesChangePer);
       }
 
-      cube.transform.localScale += Mathf.Min(bonus, bonusCubeMaxBase) * bonusCubeScaleChange * Vector3.one;
-    }
+      for (int e = 0; e < instantiateCount; e++) {
+        GameObject cube = (GameObject) Instantiate(particles, mover.transform.position, mover.transform.rotation);
+        if (e == 0) {
+          cube.GetComponent<ParticleMover>().triggerCubesGet(howMany);
+        }
+        if (mover.tag == "RainbowDonut") {
+          cube.GetComponent<Renderer>().material.SetColor("_TintColor", rdm.rainbowColors[e]);
+          cube.GetComponent<ParticleMover>().setRainbow();
+        }
+      }
 
-    if (mover.tag != "GoldenCube") addCubeCount(howMany, bonus, true);
+      if (bonus > 0) {
+        GameObject cube = (GameObject) Instantiate(particles, mover.transform.position, mover.transform.rotation);
+        cube.GetComponent<ParticleMover>().triggerCubesGet(bonus);
+        if (unstoppable && mover.isNegativeObject()) {
+          cube.GetComponent<Renderer>().sharedMaterial = changeManager.metalMat;
+        }
+
+        cube.transform.localScale += Mathf.Min(bonus, bonusCubeMaxBase) * bonusCubeScaleChange * Vector3.one;
+      }
+
+      if (mover.tag != "GoldenCube") addCubeCount(howMany, bonus);
+    }
 
     mover.encounterPlayer();
   }
 
-  public void addCubeCount(int howMany = 1, int bonus = 0, bool comboAndEnergy = false) {
+  public void addCubeCount(int howMany = 1, int bonus = 0) {
     cubesCount.addCount(howMany, bonus);
     energyBar.getHealthbyParts(howMany + bonus);
-
-    if (comboAndEnergy) {
-      changeManager.getEnergy.Play ();
-      comboBar.addCombo();
-    }
   }
 
   public void contactCubeDispenser(Transform tr, int howMany, Collision collision, float reboundDuring) {
@@ -207,7 +196,7 @@ public class PlayerMover : MonoBehaviour {
       Instantiate(particles, tr.position, tr.rotation);
     }
 
-    addCubeCount(howMany, 0, true);
+    addCubeCount(howMany, 0);
 
     processCollision(collision);
     reboundingByDispenser = true;
@@ -261,7 +250,7 @@ public class PlayerMover : MonoBehaviour {
   }
 
   public void setRotateByRainbow(bool val) {
-    rainbowPosition = rdm.rainbowDonut.transform.position;
+    rainbowPosition = rdm.instance.transform.position;
     GetComponent<Rigidbody>().isKinematic = val;
     isRotatingByRainbow = val;
   }
@@ -301,7 +290,6 @@ public class PlayerMover : MonoBehaviour {
     int effectDuration;
     if (reboundingByBlackhole) {
       effectDuration = blm.reboundDuring;
-      getBlackhole.SetActive(true);
     } else {
       effectDuration = strengthen_during;
     }
@@ -313,9 +301,6 @@ public class PlayerMover : MonoBehaviour {
 
     if (exitedBlackhole) {
       showEffect("Blackhole");
-      getBlackhole.SetActive(true);
-      changeManager.getBlackholeEffect.Play();
-      changeManager.getBlackholeEffect.GetComponent<AudioSource>().Play();
     }
 
     if (ridingMonster) {
@@ -335,9 +320,6 @@ public class PlayerMover : MonoBehaviour {
     if (unstoppable) {
       spawnManager.runManager("SpecialParts");
       unstoppable = false;
-      changeManager.unstoppableEffect.Stop();
-      // unstoppableEffect_two.Stop();
-      changeManager.unstoppableEffect_two.GetComponent<AudioSource>().Stop ();
       QuestManager.qm.addCountToQuest("DestroyAsteroidsBeforeUnstoppableEnd", 0);
       changeManager.changeCharacterToOriginal();
 
@@ -346,10 +328,8 @@ public class PlayerMover : MonoBehaviour {
 
     if (reboundingByBlackhole) {
       reboundingByBlackhole = false;
-      getBlackhole.SetActive(false);
       if (isRidingRainbowRoad) {
         isRidingRainbowRoad = false;
-        changeManager.rainbowEffect.Stop();
       }
 
       afterStrengthenStart();
@@ -357,7 +337,6 @@ public class PlayerMover : MonoBehaviour {
 
     if (exitedBlackhole) {
       exitedBlackhole = false;
-      getBlackhole.SetActive(false);
       blm.run();
     }
 
@@ -365,13 +344,7 @@ public class PlayerMover : MonoBehaviour {
       energyBar.getFullHealth();
       ridingMonster = false;
       changeManager.changeCharacterToOriginal();
-      changeManager.ridingEffect.Play();
-      changeManager.monsterEffect.Stop();
-      changeManager.monsterEffect.GetComponent<AudioSource>().Stop();
-      monm.monsterFilter.SetActive(false);
-      foreach (GameObject mm in GameObject.FindGameObjectsWithTag("MiniMonster")) {
-        mm.GetComponent<MiniMonsterMover>().destroyObject();
-      }
+      monm.stopRiding();
       transform.localScale = originalScale * Vector3.one;
       monm.run();
 
@@ -379,69 +352,30 @@ public class PlayerMover : MonoBehaviour {
     }
   }
 
-  public void startRiding(ObjectsMover obMover) {
-    QuestManager.qm.addCountToQuest("RideMonster");
-
-    if (energyBar.currentEnergy() <= 30) {
-      QuestManager.qm.addCountToQuest("RideMonsterWithLowEnergy");
+  public void strengthenBy(string obj) {
+    if (obj == "SpecialPart") {
+      unstoppable = true;
+    } else if (obj == "Blackhole") {
+      isInsideBlackhole = false;
+      exitedBlackhole = true;
+    } else if (obj == "Monster") {
+      ridingMonster = true;
+      minimonCounter = 0;
     }
 
-    if (exitedBlackhole) {
-      QuestManager.qm.addCountToQuest("RideMonsterByBlackhole");
+    StopCoroutine("strengthen");
+    StartCoroutine("strengthen");
+  }
+
+  public void contactBlackhole(Collision collision) {
+    if (unstoppable) {
+      QuestManager.qm.addCountToQuest("ReboundByBlackhole");
+    } else if (isUsingRainbow()) {
+      rdm.destroyInstances();
     }
 
-    ridingMonster = true;
-    minimonCounter = 0;
-    monm.monsterFilter.SetActive(true);
-    changeManager.ridingEffect.Play();
-    changeManager.ridingEffect.GetComponent<AudioSource>().Play();
-    Destroy(obMover.gameObject);
-    monm.stopWarning();
-    StopCoroutine("strengthen");
-    StartCoroutine("strengthen");
-  }
-
-  public void startUnstoppable() {
-    unstoppable = true;
-    StopCoroutine("strengthen");
-    StartCoroutine("strengthen");
-  }
-
-  public void insideBlackhole() {
-    isInsideBlackhole = true;
-    blackhole = blm.getBlackhole();
-  }
-
-  public void outsideBlackhole() {
-    QuestManager.qm.addCountToQuest("ExitBlackhole");
-
-    isInsideBlackhole = false;
-    exitedBlackhole = true;
-    Destroy(blackhole);
-
-    StopCoroutine("strengthen");
-    StartCoroutine("strengthen");
-  }
-
-  public void contactBlackholeWhileUnstoppable(Collision collision) {
-    QuestManager.qm.addCountToQuest("ReboundByBlackhole");
-
-    reboundingByBlackhole = true;
-    isInsideBlackhole = false;
     processCollision(collision);
-
-    StopCoroutine("strengthen");
-    StartCoroutine("strengthen");
-  }
-
-  public void contactBlackholeWhileRainbow(Collision collision) {
     reboundingByBlackhole = true;
-    isInsideBlackhole = false;
-    processCollision(collision);
-    rdm.destroyInstances();
-
-    StopCoroutine("strengthen");
-    StartCoroutine("strengthen");
   }
 
   public void afterStrengthenStart() {

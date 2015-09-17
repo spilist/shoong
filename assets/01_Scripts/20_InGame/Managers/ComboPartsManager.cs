@@ -2,66 +2,51 @@
 using System.Collections;
 
 public class ComboPartsManager : ObjectsManager {
-  public GameObject comboPartPrefab;
-  public GameObject comboPartPrefab_next;
+  public GameObject objPrefab_next;
 
   public int[] fullComboCountPerLevel;
 
   public int comboBonusScale = 5;
   public float radius = 20;
-  public int respawnInterval_min = 10;
-  public int respawnInterval_max = 15;
-  public float tumble = 3;
+
   public float pitchStart = 0.4f;
   public float pitchIncrease = 0.05f;
 
   private bool trying = false;
   private bool secondShot = false;
-  private GameObject current;
-  private GameObject next;
+
+  public GameObject nextInstance;
   private int comboCount = 0;
-  private int boosterCount = 0;
   private int fullComboCount;
 
   override public void initRest() {
     fullComboCount = fullComboCountPerLevel[DataManager.dm.getInt("ComboPartsLevel") - 1];
+    skipInterval = true;
   }
 
-  override public void run() {
+  override protected void afterSpawn() {
+    trying = false;
     comboCount = 0;
-    boosterCount = 0;
-    current = spawnManager.spawn(comboPartPrefab);
+
     Vector2 randomV = Random.insideUnitCircle;
     randomV.Normalize();
-
-    Vector3 currentV = current.transform.position;
-
+    Vector3 currentV = instance.transform.position;
     Vector3 spawnPosition = new Vector3(currentV.x + randomV.x * radius, 0, currentV.z + randomV.y * radius);
 
-    Quaternion spawnRotation = Quaternion.identity;
-    next = (GameObject) Instantiate (comboPartPrefab_next, spawnPosition, spawnRotation);
-    next.transform.parent = transform;
-    next.GetComponent<OffsetFixer>().setParent(current);
+    nextInstance = (GameObject) Instantiate (objPrefab_next, spawnPosition, Quaternion.identity);
+    nextInstance.transform.parent = transform;
+    nextInstance.GetComponent<OffsetFixer>().setParent(instance);
   }
 
   public void tryToGet() {
     if (trying) {
       if (secondShot) {
         secondShot = false;
-        destroyInstances();
+        if (instance != null) instance.GetComponent<ComboPartMover>().destroyObject();
       } else {
         secondShot = true;
-        boosterCount++;
       }
     }
-  }
-
-  IEnumerator startSpawn() {
-    if (trying) {
-      trying = false;
-      yield return new WaitForSeconds(Random.Range(respawnInterval_min, respawnInterval_max));
-    }
-    run();
   }
 
   public void eatenByPlayer() {
@@ -76,41 +61,38 @@ public class ComboPartsManager : ObjectsManager {
     if (comboCount == fullComboCount) {
       QuestManager.qm.addCountToQuest("CompleteComboParts");
       player.showEffect("Great");
-      StartCoroutine("startSpawn");
+      run();
       return;
     }
 
-    Vector3 spawnPos = next.transform.position;
-    Quaternion spawnRotation = next.transform.rotation;
+    Vector3 spawnPos = nextInstance.transform.position;
+    Quaternion spawnRotation = nextInstance.transform.rotation;
 
-    current = (GameObject) Instantiate (comboPartPrefab, spawnPos, spawnRotation);
-    current.transform.parent = transform;
+    instance = (GameObject) Instantiate (objPrefab, spawnPos, spawnRotation);
+    instance.transform.parent = transform;
 
-    Destroy(next);
+    Destroy(nextInstance);
 
     if (comboCount + 1 < fullComboCount) {
       Vector2 randomV = Random.insideUnitCircle;
       randomV.Normalize();
       Vector3 nextSpawnPos = new Vector3(spawnPos.x + randomV.x * radius, 0, spawnPos.z + randomV.y * radius);
-      next = (GameObject) Instantiate (comboPartPrefab_next, nextSpawnPos, spawnRotation);
-      next.transform.parent = transform;
-      next.GetComponent<OffsetFixer>().setParent(current);
+      nextInstance = (GameObject) Instantiate (objPrefab_next, nextSpawnPos, spawnRotation);
+      nextInstance.transform.parent = transform;
+      nextInstance.GetComponent<OffsetFixer>().setParent(instance);
     }
-  }
-
-  public void destroyInstances() {
-    foreach (GameObject comboPart in GameObject.FindGameObjectsWithTag("ComboPart")) {
-      Destroy(comboPart);
-    }
-
-    StartCoroutine("startSpawn");
   }
 
   public int getComboCount() {
     return comboCount;
   }
 
-  override public float getTumble(string objTag) {
-    return tumble;
+  override public int cubesWhenEncounter() {
+    return (comboCount + 1) * comboBonusScale;
+  }
+
+  override protected float spawnInterval() {
+    if (!trying) return 0;
+    else return Random.Range(minSpawnInterval, maxSpawnInterval);
   }
 }

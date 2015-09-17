@@ -10,10 +10,10 @@ GameObject:
   - 4: {fileID: 476972}
   - 33: {fileID: 3373308}
   - 23: {fileID: 2358408}
-  - 114: {fileID: 11487100}
   - 54: {fileID: 5475864}
   - 199: {fileID: 19917934}
   - 198: {fileID: 19821560}
+  - 114: {fileID: 11421196}
   m_Layer: 20
   m_Name: IllusionPart_next
   m_TagString: ComboPart
@@ -79,7 +79,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 4
   m_CollisionDetection: 0
---- !u!114 &11487100
+--- !u!114 &11421196
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
