@@ -7,7 +7,6 @@ public class SpawnManager : MonoBehaviour {
   public float generateSpaceRadius = 0.9f;
   public float generateOffset = 0.2f;
   public int overlapDistance = 50;
-  public string[] layersShouldNotOverlap;
   public LayerMask mask;
 
   public void Start() {
@@ -67,11 +66,6 @@ public class SpawnManager : MonoBehaviour {
     Vector3 spawnPosition;
     int count = 0;
 
-    bool overlap = true;
-    if (layersShouldNotOverlap.Contains(LayerMask.LayerToName(target.layer))) {
-      overlap = false;
-    }
-
     do {
       do {
         screenX = Random.Range(-generateSpaceRadius, 1 + generateSpaceRadius);
@@ -79,7 +73,7 @@ public class SpawnManager : MonoBehaviour {
       } while(-generateOffset < screenX && screenX < generateOffset + 1 && -generateOffset < screenY && screenY < generateOffset + 1);
 
       spawnPosition = Camera.main.ViewportToWorldPoint(new Vector3(screenX, screenY, Camera.main.transform.position.y));
-    } while(!overlap && Physics.OverlapSphere(spawnPosition, overlapDistance, mask).Length > 0 && count++ < 100);
+    } while(Physics.OverlapSphere(spawnPosition, overlapDistance, mask).Length > 0 && count++ < 100);
 
     if (count >= 100) Debug.Log("An object is overlapped");
 

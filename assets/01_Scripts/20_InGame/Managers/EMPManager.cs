@@ -7,6 +7,7 @@ public class EMPManager : ObjectsManager {
 
   public int targetRadius;
   public int enlargeSize;
+  public int fieldRotateSpeed = 300;
 
   public float enlargeDuration = 3;
   public float stayDuration = 1;
@@ -56,17 +57,24 @@ public class EMPManager : ObjectsManager {
 
       if (radius == targetRadius) status = 2;
     } else if (status == 2) {
-      if (stayCount < stayDuration) stayCount += Time.deltaTime;
-      else {
-        run();
-        player.stopEMP();
+      if (stayCount < stayDuration) {
+        stayCount += Time.deltaTime;
+      } else {
         targetSize = cameraSize - enlargeSize;
         status = 3;
       }
     } else if (status == 3) {
+      radius = Mathf.MoveTowards(radius, 1, Time.deltaTime * targetRadius / shrinkDuration);
+
+      forceField.transform.localScale = radius * Vector3.one;
+      forceField.transform.Find("Halo").GetComponent<Light>().range = radius;
+
       cameraSize = Mathf.MoveTowards(cameraSize, targetSize, Time.deltaTime * enlargeSize / shrinkDuration);
       Camera.main.orthographicSize = cameraSize;
+
       if (cameraSize == targetSize) {
+        run();
+        player.stopEMP();
         status = 0;
       }
     }

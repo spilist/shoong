@@ -7,7 +7,7 @@ labels:
 - effect
 - glow
 - gaz
-timeCreated: 1438306868
+timeCreated: 1442538734
 licenseType: Free
 SubstanceImporter:
   serializedVersion: 5
@@ -36,7 +36,7 @@ SubstanceImporter:
         texture: {instanceID: 0}
     - name: Flow
       value:
-        scalar[0]: 3333
+        scalar[0]: 4833
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
@@ -122,6 +122,10 @@ SubstanceImporter:
           second: .5
         data:
           first:
+            name: _Shininess
+          second: 1
+        data:
+          first:
             name: _Parallax
           second: .0199999996
         data:
@@ -168,11 +172,19 @@ SubstanceImporter:
         data:
           first:
             name: _Color
-          second: {r: 1, g: 1, b: 1, a: .572000027}
+          second: {r: 0, g: .71034503, b: 1, a: .591000021}
+        data:
+          first:
+            name: _SpecColor
+          second: {r: 1, g: 1, b: 1, a: .927999973}
         data:
           first:
             name: _TintColor
-          second: {r: .367647052, g: .367647052, b: .367647052, a: .291000009}
+          second: {r: 1, g: 1, b: 1, a: .128000006}
+        data:
+          first:
+            name: _Emission
+          second: {r: 0, g: .668965816, b: 1, a: .402999997}
     textureParameters:
     - name: Electric_Liquid_Emissive
       alphaSource: 0
@@ -189,7 +201,7 @@ SubstanceImporter:
       buildTarget: 
       textureWidth: 512
       textureHeight: 512
-      textureFormat: 0
+      textureFormat: 1
       loadingBehavior: 1
   deletedPrototypes: []
   userData: 
