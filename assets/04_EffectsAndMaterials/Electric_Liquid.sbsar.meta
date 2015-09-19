@@ -7,7 +7,7 @@ labels:
 - effect
 - glow
 - gaz
-timeCreated: 1442538734
+timeCreated: 1442627476
 licenseType: Free
 SubstanceImporter:
   serializedVersion: 5
@@ -57,9 +57,9 @@ SubstanceImporter:
         texture: {instanceID: 0}
     - name: Liquid_Color
       value:
-        scalar[0]: .514976203
-        scalar[1]: .864497006
-        scalar[2]: .933823526
+        scalar[0]: .725253344
+        scalar[1]: .536764741
+        scalar[2]: 1
         scalar[3]: 0
         texture: {instanceID: 0}
     - name: Hue_Shift
@@ -126,16 +126,20 @@ SubstanceImporter:
           second: 1
         data:
           first:
+            name: _Glossiness
+          second: .5
+        data:
+          first:
             name: _Parallax
           second: .0199999996
         data:
           first:
-            name: _ZWrite
+            name: _InvFade
           second: 1
         data:
           first:
-            name: _Glossiness
-          second: .5
+            name: _ZWrite
+          second: 1
         data:
           first:
             name: _BumpScale
@@ -160,10 +164,6 @@ SubstanceImporter:
           first:
             name: _Metallic
           second: 0
-        data:
-          first:
-            name: _InvFade
-          second: 1
       colors:
         data:
           first:
@@ -179,12 +179,12 @@ SubstanceImporter:
           second: {r: 1, g: 1, b: 1, a: .927999973}
         data:
           first:
-            name: _TintColor
-          second: {r: 1, g: 1, b: 1, a: .128000006}
-        data:
-          first:
             name: _Emission
           second: {r: 0, g: .668965816, b: 1, a: .402999997}
+        data:
+          first:
+            name: _TintColor
+          second: {r: 1, g: 1, b: 1, a: .128000006}
     textureParameters:
     - name: Electric_Liquid_Emissive
       alphaSource: 0

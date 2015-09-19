@@ -97,16 +97,16 @@ Material:
         second: .699999988
       data:
         first:
+          name: _Glossiness
+        second: .5
+      data:
+        first:
           name: _Parallax
         second: .0199999996
       data:
         first:
           name: _ZWrite
         second: 1
-      data:
-        first:
-          name: _Glossiness
-        second: .5
       data:
         first:
           name: _BumpScale
@@ -147,4 +147,4 @@ Material:
       data:
         first:
           name: _Emission
-        second: {r: .20588237, g: .802839637, b: 1, a: 1}
+        second: {r: .627586186, g: .20588237, b: 1, a: 1}
