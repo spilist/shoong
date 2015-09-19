@@ -41,6 +41,7 @@ TagManager:
   - SummonedPart
   - ForceField
   - EMP
+  - Jetpack
   layers:
   - Default
   - TransparentFX

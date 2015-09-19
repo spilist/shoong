@@ -19,7 +19,9 @@ public class EnergyBar : MonoBehaviour {
   private float chargeEffectScale;
   public float chargingEffectDuration = 0.5f;
   private float chargedCount = 0;
-  public float chargedDuration = 2.5f;
+
+  public float normalChargedDuration = 2.5f;
+  private float chargedDuration;
 
   public float autoDecreaseRate = 0.05f;
   public int getAmountbyParts = 10;
@@ -52,12 +54,13 @@ public class EnergyBar : MonoBehaviour {
     chargeEffect.localScale = originalChargeEffectScale * Vector3.one;
 
     changeManager = player.GetComponent<CharacterChangeManager>();
+    chargedDuration = normalChargedDuration;
   }
 
   void Update () {
     if (gameStarted) {
       if (charged) {
-        if (chargedCount < chargingEffectDuration) {
+        if (chargeEffectScale > 1) {
           chargeEffectScale = Mathf.MoveTowards(chargeEffectScale, 1, Time.deltaTime * (originalChargeEffectScale - 1) / chargingEffectDuration);
           chargeEffect.localScale = chargeEffectScale * Vector3.one;
         }
@@ -160,22 +163,27 @@ public class EnergyBar : MonoBehaviour {
     changeHealth(shootAmount, loseRate);
   }
 
-  public void setCharged() {
+  public void setCharged(bool jetpack = false) {
     charged = true;
-    changeManager.chargedEffect.Play();
-    changeManager.chargedEffect.GetComponent<AudioSource>().Play();
+    chargedCount = 0;
+    if (jetpack) {
+      chargedDuration = 8;
+    } else {
+      chargedDuration = normalChargedDuration;
+      changeManager.chargedEffect.Play();
+      changeManager.chargedEffect.GetComponent<AudioSource>().Play();
+    }
     StartCoroutine("indicateCharged");
   }
 
-  IEnumerator indicateCharged() {
-    while (charged) {
+  public IEnumerator indicateCharged() {
+    while (true) {
       yield return new WaitForSeconds(chargedBlinking);
       image.color = color_charged;
 
       yield return new WaitForSeconds(chargedBlinking);
       image.color = (image.fillAmount > 0.3f) ? color_healthy : color_danger;
     }
-
   }
 
   public int currentEnergy() {

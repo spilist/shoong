@@ -5,6 +5,7 @@ public class CharacterChangeManager : MonoBehaviour {
   public Mesh monsterMesh;
   public Material monsterMaterial;
   public Material metalMat;
+  public Material jetpackMat;
   public Material originalMaterial;
 
   private Mesh originalMesh;
@@ -14,9 +15,6 @@ public class CharacterChangeManager : MonoBehaviour {
 
   public Transform playerParticlesParent;
   public ParticleSystem booster;
-  public ParticleSystem getComboParts;
-  // public ParticleSystem getBlackholeEffect;
-  public ParticleSystem rainbowEffect;
   public ParticleSystem chargedEffect;
   public ParticleSystem afterStrengthenEffect;
 
@@ -25,17 +23,19 @@ public class CharacterChangeManager : MonoBehaviour {
     mRenderer = GetComponent<Renderer>();
   }
 
+  public void changeCharacterTo(string changeTo) {
+    if (changeTo == "Monster") {
+      changeCharacter(monsterMesh, monsterMaterial);
+    } else if (changeTo == "Metal") {
+      changeCharacter(originalMesh, metalMat);
+    } else if (changeTo == "Jetpack") {
+      changeCharacter(originalMesh, jetpackMat);
+    }
+  }
+
   public void changeCharacter(Mesh mesh, Material material) {
     mFilter.sharedMesh = mesh;
     mRenderer.sharedMaterial = material;
-  }
-
-  public void changeCharacterToMonster() {
-    changeCharacter(monsterMesh, monsterMaterial);
-  }
-
-  public void changeCharacterToMetal() {
-    changeCharacter(originalMesh, metalMat);
   }
 
   public void changeCharacterToOriginal() {

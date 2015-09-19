@@ -22,6 +22,7 @@ public class PlayerMover : MonoBehaviour {
   public ComboPartsManager cpm;
   public MonsterManager monm;
   public RainbowDonutsManager rdm;
+  public JetpackManager jpm;
 
   public BlackholeManager blm;
   private GameObject blackhole;
@@ -40,6 +41,7 @@ public class PlayerMover : MonoBehaviour {
   public float maxBoosterSpeed = 100;
   public float boosterSpeedDecreaseBase = 70;
   public float boosterSpeedDecreasePerTime = 20;
+  private float boosterBonus = 1;
 
 	public GameObject particles;
 
@@ -49,6 +51,7 @@ public class PlayerMover : MonoBehaviour {
   private bool unstoppable = false;
   private bool usingEMP = false;
   private bool ridingMonster = false;
+  private bool usingJetpack = false;
   private float originalScale;
   private int minimonCounter = 0;
 
@@ -241,9 +244,9 @@ public class PlayerMover : MonoBehaviour {
 
     direction = dir;
 
-    if (boosterspeed < maxBoosterSpeed) {
-      boosterspeed += boosterSpeedUpAmount;
-      boosterspeed = boosterspeed > maxBoosterSpeed? maxBoosterSpeed : boosterspeed;
+    if (boosterspeed < maxBoosterSpeed * boosterBonus) {
+      boosterspeed += boosterSpeedUpAmount * boosterBonus;
+      boosterspeed = boosterspeed > (maxBoosterSpeed * boosterBonus)? (maxBoosterSpeed * boosterBonus) : boosterspeed;
     }
 
     cpm.tryToGet();
@@ -284,6 +287,33 @@ public class PlayerMover : MonoBehaviour {
     effects.Find(effectName).gameObject.SetActive(true);
   }
 
+  public void strengthenBy(string obj) {
+    if (obj == "SpecialPart") {
+      unstoppable = true;
+    } else if (obj == "Blackhole") {
+      isInsideBlackhole = false;
+      exitedBlackhole = true;
+    } else if (obj == "Monster") {
+      ridingMonster = true;
+      minimonCounter = 0;
+      energyBar.getFullHealth();
+    } else if (obj == "EMP") {
+      usingEMP = true;
+      rb.isKinematic = true;
+      return;
+    } else if (obj == "Jetpack") {
+      usingJetpack = true;
+      energyBar.setCharged(true);
+      // showEffect("Jetpack");
+      boosterBonus = jpm.boosterBonusScale;
+      changeManager.booster.GetComponent<ParticleSystem>().emissionRate *= boosterBonus;
+    }
+
+    StopCoroutine("strengthen");
+    StartCoroutine("strengthen");
+  }
+
+
   public IEnumerator strengthen() {
     if (scoreManager.isGameOver()) yield break;
 
@@ -294,21 +324,6 @@ public class PlayerMover : MonoBehaviour {
       effectDuration = strengthen_during;
     }
 
-    if (unstoppable) {
-      showEffect("Metal");
-      changeManager.changeCharacterToMetal();
-    }
-
-    if (exitedBlackhole) {
-      showEffect("Blackhole");
-    }
-
-    if (ridingMonster) {
-      showEffect("Monster");
-      energyBar.getFullHealth();
-      changeManager.changeCharacterToMonster();
-    }
-
     stBar.startStrengthen(effectDuration);
 
     yield return new WaitForSeconds(effectDuration);
@@ -317,11 +332,18 @@ public class PlayerMover : MonoBehaviour {
   }
 
   public void stopStrengthen() {
+    if (usingJetpack) {
+      usingJetpack = false;
+      changeManager.booster.GetComponent<ParticleSystem>().emissionRate /= boosterBonus;
+      boosterBonus = 1;
+      spawnManager.runManager("Jetpack");
+    }
+
     if (unstoppable) {
-      spawnManager.runManager("SpecialParts");
       unstoppable = false;
+      spawnManager.runManager("SpecialParts");
+
       QuestManager.qm.addCountToQuest("DestroyAsteroidsBeforeUnstoppableEnd", 0);
-      changeManager.changeCharacterToOriginal();
 
       afterStrengthenStart();
     }
@@ -337,38 +359,18 @@ public class PlayerMover : MonoBehaviour {
 
     if (exitedBlackhole) {
       exitedBlackhole = false;
-      blm.run();
+      spawnManager.runManager("Blackhole");
     }
 
     if (ridingMonster) {
       energyBar.getFullHealth();
       ridingMonster = false;
-      changeManager.changeCharacterToOriginal();
       monm.stopRiding();
       transform.localScale = originalScale * Vector3.one;
-      monm.run();
+      spawnManager.runManager("Monster");
 
       afterStrengthenStart();
     }
-  }
-
-  public void strengthenBy(string obj) {
-    if (obj == "SpecialPart") {
-      unstoppable = true;
-    } else if (obj == "Blackhole") {
-      isInsideBlackhole = false;
-      exitedBlackhole = true;
-    } else if (obj == "Monster") {
-      ridingMonster = true;
-      minimonCounter = 0;
-    } else if (obj == "EMP") {
-      usingEMP = true;
-      rb.isKinematic = true;
-      return;
-    }
-
-    StopCoroutine("strengthen");
-    StartCoroutine("strengthen");
   }
 
   public void contactBlackhole(Collision collision) {
