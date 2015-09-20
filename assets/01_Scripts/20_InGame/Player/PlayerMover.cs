@@ -235,6 +235,10 @@ public class PlayerMover : MonoBehaviour {
     QuestManager.qm.addCountToQuest("NoBooster", 0);
     QuestManager.qm.addCountToQuest("UseBooster");
 
+    if (usingJetpack) {
+      QuestManager.qm.addCountToQuest("Jetpack");
+    }
+
     energyBar.loseByShoot();
 
     rotatePlayerBody();
@@ -394,6 +398,10 @@ public class PlayerMover : MonoBehaviour {
     return afterStrengthen;
   }
 
+  public bool isUsingJetpack() {
+    return usingJetpack;
+  }
+
   public bool isUnstoppable() {
     return unstoppable;
   }
@@ -431,6 +439,7 @@ public class PlayerMover : MonoBehaviour {
     usingEMP = false;
     rotatePlayerBody();
     showEffect("Charged");
+    QuestManager.qm.addCountToQuest("DestroyAsteroidAndFallingStarByEMP", 0);
   }
 
   public bool uncontrollable() {

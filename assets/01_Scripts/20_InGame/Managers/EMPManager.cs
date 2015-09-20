@@ -24,8 +24,6 @@ public class EMPManager : ObjectsManager {
 	override public void initRest() {
     int level = DataManager.dm.getInt("EMPLevel") - 1;
 
-    level = 2;
-
     targetRadius = forceFieldRadiusPerLevel[level];
     enlargeSize = cameraEnlargeSizePerLevel[level];
 

@@ -5,8 +5,13 @@ public class CharacterChangeManager : MonoBehaviour {
   public Mesh monsterMesh;
   public Material monsterMaterial;
   public Material metalMat;
-  public Material jetpackMat;
   public Material originalMaterial;
+  public Color originalColor;
+
+  public Color jetpackColor;
+
+  public float colorChangeDuration_1 = 0.2f;
+  public float colorChangeDuration_2 = 0.5f;
 
   private Mesh originalMesh;
 
@@ -29,7 +34,18 @@ public class CharacterChangeManager : MonoBehaviour {
     } else if (changeTo == "Metal") {
       changeCharacter(originalMesh, metalMat);
     } else if (changeTo == "Jetpack") {
-      changeCharacter(originalMesh, jetpackMat);
+      // characterBlinkCoroutine = StartCoroutine(characterBlinkingWith(jetpackColor));
+      mRenderer.sharedMaterial.SetColor("_ReflectColor", jetpackColor);
+    }
+  }
+
+  IEnumerator characterBlinkingWith(Color color) {
+    while (true) {
+      mRenderer.sharedMaterial.SetColor("_ReflectColor", color);
+      yield return new WaitForSeconds(colorChangeDuration_2);
+
+      mRenderer.sharedMaterial.SetColor("_ReflectColor", originalColor);
+      yield return new WaitForSeconds(colorChangeDuration_1);
     }
   }
 
@@ -40,6 +56,7 @@ public class CharacterChangeManager : MonoBehaviour {
 
   public void changeCharacterToOriginal() {
     changeCharacter(originalMesh, originalMaterial);
+    mRenderer.sharedMaterial.SetColor("_ReflectColor", originalColor);
   }
 
   public void changeCharacter(string characterName) {

@@ -63,6 +63,7 @@ GameObject:
   - 4: {fileID: 473774}
   - 33: {fileID: 3354286}
   - 23: {fileID: 2369480}
+  - 114: {fileID: 11420852}
   m_Layer: 0
   m_Name: Shell
   m_TagString: EMP
@@ -198,6 +199,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 4
   m_CollisionDetection: 0
+--- !u!114 &11420852
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 173206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed32fde79d527420193b811ab198bd84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 100
 --- !u!114 &11422262
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1373,6 +1386,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_ReflectionProbeUsage
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: speed
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

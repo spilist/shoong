@@ -7,6 +7,10 @@ public class ChangeEffect : MonoBehaviour {
 
   public string changeTo;
   public string effectName;
+  public float targetScale;
+
+  private float originalScale;
+  private float scale;
 
   void OnEnable() {
     if (player == null) {
@@ -21,11 +25,29 @@ public class ChangeEffect : MonoBehaviour {
     if (effectName != "") {
       player.showEffect(effectName);
     }
+
+    if (targetScale != 0) {
+      originalScale = transform.localScale.x;
+      scale = originalScale;
+    }
+  }
+
+  void Update() {
+    if (targetScale != 0) {
+      if (scale != targetScale) {
+        scale = Mathf.MoveTowards(scale, targetScale, Time.deltaTime * (originalScale - targetScale) / 0.5f);
+        transform.localScale = scale * Vector3.one;
+      }
+    }
   }
 
   void OnDisable() {
     if (changeTo != "") {
       cm.changeCharacterToOriginal();
+    }
+
+    if (targetScale != 0) {
+      transform.localScale = originalScale * Vector3.one;
     }
   }
 }

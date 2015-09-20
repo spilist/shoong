@@ -4,6 +4,8 @@ using System.Collections;
 public class ForceField : MonoBehaviour {
   public GameObject energyCube;
   public EMPManager empManager;
+  public PlayerMover player;
+  public ComboBar comboBar;
 
   private ProceduralMaterial mat;
   private int rotatingSpeed;
@@ -23,7 +25,18 @@ public class ForceField : MonoBehaviour {
     for (int e = 0; e < mover.cubesWhenEncounter(); e++) {
       GameObject cube = (GameObject) Instantiate(energyCube, other.transform.position, other.transform.rotation);
       if (e == 0) {
-        cube.GetComponent<ParticleMover>().triggerCubesGet(mover.cubesWhenEncounter(), false);
+        cube.GetComponent<ParticleMover>().triggerCubesGet(mover.cubesWhenEncounter());
+        player.addCubeCount(mover.cubesWhenEncounter());
+      }
+    }
+
+    if (!mover.isNegativeObject()) {
+      comboBar.addCombo();
+    } else {
+      if (mover.tag == "Obstacle_big") {
+        QuestManager.qm.addCountToQuest("DestroyAsteroidAndFallingStarByEMP");
+      } else if (mover.tag == "Monster") {
+        QuestManager.qm.addCountToQuest("DestroyMonsterByEMP");
       }
     }
 

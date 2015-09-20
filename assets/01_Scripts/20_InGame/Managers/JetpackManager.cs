@@ -15,9 +15,6 @@ public class JetpackManager : ObjectsManager {
   override public void initRest() {
     int level = DataManager.dm.getInt("JetpackLevel") - 1;
 
-    level = 2;
-
     boosterBonusScale = boosterBonusScalePerLevel[level];
-    skipInterval = true;
   }
 }

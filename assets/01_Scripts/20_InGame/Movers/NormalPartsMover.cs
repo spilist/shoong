@@ -10,6 +10,8 @@ public class NormalPartsMover : ObjectsMover {
       player.showEffect("Wow");
     }
 
+    if (player.isUsingJetpack()) QuestManager.qm.addCountToQuest("GetPartsOnJetpack");
+
     objectsManager.run();
   }
 
