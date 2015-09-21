@@ -16,8 +16,8 @@ public class MiniMonsterMover : ObjectsMover {
       time = monm.minimonStartTimeByPlayer;
     } else {
       time = monm.minimonStartTimeByMonster;
-      speed_chase = monm.speed + monm.minimonAdditionalSpeed;
     }
+    speed_chase = monm.speed + monm.minimonAdditionalSpeed;
 
     StartCoroutine("destroyByTime");
   }
@@ -50,7 +50,7 @@ public class MiniMonsterMover : ObjectsMover {
         rb.velocity = direction * speed_chase * 2;
       } else if (isMagnetized) {
         rb.velocity = direction * player.GetComponent<Rigidbody>().velocity.magnitude * 1.5f;
-      } else if (player.isRidingMonster()) {
+      } else if (player.isRidingMonster() && player.GetComponent<Rigidbody>().velocity.magnitude != 0) {
         rb.velocity = direction * player.GetComponent<Rigidbody>().velocity.magnitude * 1.5f;
       } else {
         rb.velocity = direction * speed_chase;

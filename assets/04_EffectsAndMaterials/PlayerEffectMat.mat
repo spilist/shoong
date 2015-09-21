@@ -6,10 +6,10 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: play_characters
-  m_Shader: {fileID: 24, guid: 0000000000000000f000000000000000, type: 0}
+  m_Name: PlayerEffectMat
+  m_Shader: {fileID: 34, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
-  m_LightmapFlags: 1
+  m_LightmapFlags: 5
   m_CustomRenderQueue: -1
   stringTagMap: {}
   m_SavedProperties:
@@ -19,7 +19,7 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: 14f16407031b042b69e94b8ffd93b3c2, type: 3}
+          m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -78,27 +78,6 @@ Material:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _Illum
-        second:
-          m_Texture: {fileID: 2800000, guid: b1d7fee26e54cc3498f6267f072a45b9, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _Cube
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _LightMap
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
     m_Floats:
       data:
         first:
@@ -115,7 +94,7 @@ Material:
       data:
         first:
           name: _Shininess
-        second: 1
+        second: .699999988
       data:
         first:
           name: _Parallax
@@ -160,16 +139,12 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: .880406559, g: .872900963, b: .867647052, a: 1}
+        second: {r: .600000024, g: .835294127, b: 1, a: .70588237}
       data:
         first:
           name: _SpecColor
-        second: {r: .305904001, g: .331546068, b: .338235319, a: 1}
+        second: {r: 0, g: 0, b: 0, a: 0}
       data:
         first:
           name: _Emission
-        second: {r: .160784319, g: .160784319, b: .160784319, a: 0}
-      data:
-        first:
-          name: _ReflectColor
-        second: {r: .117647052, g: .117647052, b: .117647052, a: 0}
+        second: {r: 0, g: 1, b: 1, a: 0}

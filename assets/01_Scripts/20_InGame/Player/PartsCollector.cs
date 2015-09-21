@@ -19,24 +19,44 @@ public class PartsCollector : MonoBehaviour {
   private float offset;
   private float scaleDifference;
 	private float emissionDifference;
+  private Rigidbody rb;
+
+  private Vector3 pastPlayerPos;
 
   void Start() {
     offset = startOffset;
 		emissionDifference = maxEmission - startEmission;
     scaleDifference = maxScale - startScale;
+    rb = GetComponent<Rigidbody>();
   }
 
   void Update() {
-    Vector3 heading = new Vector3 (player.transform.position.x - player.getDirection().x * offset - transform.position.x, 0, player.transform.position.z - player.getDirection().z * offset - transform.position.z);
-
-    if (heading.magnitude < 5.0f) {
-      heading /= heading.magnitude;
-      GetComponent<Rigidbody> ().velocity = heading * player.GetComponent<Rigidbody>().velocity.magnitude;
+    if (player.isUsingDopple()) {
+      if (pastPlayerPos != player.transform.position) {
+        followUserOnDopple();
+        pastPlayerPos = player.transform.position;
+      }
     } else {
-      heading /= heading.magnitude;
-      GetComponent<Rigidbody> ().velocity = heading * player.GetComponent<Rigidbody>().velocity.magnitude * 1.3f;
+      Vector3 heading = new Vector3 (player.transform.position.x - player.getDirection().x * offset - transform.position.x, 0, player.transform.position.z - player.getDirection().z * offset - transform.position.z);
+
+      if (heading.magnitude < 5.0f) {
+        heading /= heading.magnitude;
+        rb.velocity = heading * player.GetComponent<Rigidbody>().velocity.magnitude;
+      } else {
+        heading /= heading.magnitude;
+        rb.velocity = heading * player.GetComponent<Rigidbody>().velocity.magnitude * 1.3f;
+      }
     }
+
 		transform.rotation = player.transform.rotation;
+  }
+
+  public void followUserOnDopple() {
+    Vector2 randomV = Random.insideUnitCircle;
+    randomV.Normalize();
+    Vector3 dir = new Vector3(randomV.x, 0, randomV.y);
+    transform.position = new Vector3 (player.transform.position.x - dir.x * offset, 0, player.transform.position.z - dir.z * offset);
+    rb.velocity = Vector3.zero;
   }
 
 	public void effect(bool triggerCubesGet, int count, bool playerGeneration){

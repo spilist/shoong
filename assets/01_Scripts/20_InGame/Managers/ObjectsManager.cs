@@ -17,9 +17,9 @@ public class ObjectsManager : MonoBehaviour {
   public bool isNegative = false;
 
   protected SpawnManager spawnManager;
-  protected PlayerMover player;
+  public PlayerMover player;
   protected bool skipInterval = false;
-  protected ComboBar comboBar;
+  public ComboBar comboBar;
 
   public GameObject instance;
 

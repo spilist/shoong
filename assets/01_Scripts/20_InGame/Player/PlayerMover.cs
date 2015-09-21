@@ -52,6 +52,7 @@ public class PlayerMover : MonoBehaviour {
   private bool usingEMP = false;
   private bool ridingMonster = false;
   private bool usingJetpack = false;
+  private bool usingDopple = false;
   private float originalScale;
   private int minimonCounter = 0;
 
@@ -78,8 +79,6 @@ public class PlayerMover : MonoBehaviour {
     comboBar = transform.parent.Find("Bars Canvas").GetComponent<ComboBar>();
     stBar = transform.parent.Find("Bars Canvas/StrengthenTimeBar").GetComponent<StrengthenTimeBar>();
 
-    rotatePlayerBody(true);
-
     Vector2 randomV = Random.insideUnitCircle;
     randomV.Normalize();
     direction = new Vector3(randomV.x, 0, randomV.y);
@@ -87,6 +86,7 @@ public class PlayerMover : MonoBehaviour {
 
     rb = GetComponent<Rigidbody>();
     rb.velocity = direction * speed;
+    rotatePlayerBody(true);
 	}
 
 	void FixedUpdate () {
@@ -116,7 +116,12 @@ public class PlayerMover : MonoBehaviour {
         rb.AddForce(heading * blm.pullUser, ForceMode.VelocityChange);
       }
     }
-    rb.velocity = direction * speed;
+
+    if (usingDopple) {
+      rb.velocity = Vector3.zero;
+    } else {
+      rb.velocity = direction * speed;
+    }
 	}
 
 	void OnTriggerEnter(Collider other) {
@@ -135,23 +140,32 @@ public class PlayerMover : MonoBehaviour {
     goodPartsEncounter(mover, mover.cubesWhenEncounter(), mover.bonusCubes());
 	}
 
+  public bool absorbMinimon(ObjectsMover mover) {
+    if (!((MiniMonsterMover)mover).isTimeElapsed()) return false;
+
+    if (minimonCounter < monm.maxEnlargeCount) {
+      minimonCounter++;
+      transform.localScale += monm.enlargeScalePerMinimon * Vector3.one;
+    }
+    return true;
+  }
+
+  public void generateMinimon(ObjectsMover mover) {
+    mover.destroyObject();
+    mover.destroyByMonster();
+    for (int k = 0; k < monm.numMinimonSpawn; k++) {
+      Instantiate(monm.minimonPrefab, transform.position, transform.rotation);
+    }
+  }
+
   public void goodPartsEncounter(ObjectsMover mover, int howMany, int bonus = 0) {
     if (ridingMonster && mover.tag != "MiniMonster" && mover.tag != "RainbowDonut") {
-      mover.destroyObject();
-      mover.destroyByMonster();
-      for (int k = 0; k < monm.numMinimonSpawn; k++) {
-        Instantiate(monm.minimonPrefab, transform.position, transform.rotation);
-      }
+      generateMinimon(mover);
       return;
     }
 
     if (mover.tag == "MiniMonster") {
-      if (!((MiniMonsterMover)mover).isTimeElapsed()) return;
-
-      if (minimonCounter < monm.maxEnlargeCount) {
-        minimonCounter++;
-        transform.localScale += monm.enlargeScalePerMinimon * Vector3.one;
-      }
+      if (!absorbMinimon(mover)) return;
     }
 
     if (howMany > 0) {
@@ -221,9 +235,9 @@ public class PlayerMover : MonoBehaviour {
       transform.rotation = Quaternion.Euler(float.Parse(rots[0]), float.Parse(rots[1]), float.Parse(rots[2]));
 
       string[] angVals = PlayerPrefs.GetString("CharacterAngVal").Split(',');
-      GetComponent<Rigidbody>().angularVelocity = new Vector3(float.Parse(angVals[0]), float.Parse(angVals[1]), float.Parse(angVals[2]));
+      rb.angularVelocity = new Vector3(float.Parse(angVals[0]), float.Parse(angVals[1]), float.Parse(angVals[2]));
     } else {
-      GetComponent<Rigidbody>().angularVelocity = Random.onUnitSphere * tumble;
+      rb.angularVelocity = Random.onUnitSphere * tumble;
     }
   }
 
@@ -231,7 +245,15 @@ public class PlayerMover : MonoBehaviour {
     return direction;
   }
 
-  public void shootBooster(Vector3 dir){
+  public void teleport(Vector3 pos) {
+    if (changeManager.isTeleporting()) return;
+
+    // energyBar.loseByTeleport();
+    changeManager.teleport(pos);
+    cpm.tryToGet();
+  }
+
+  public void shootBooster(){
     QuestManager.qm.addCountToQuest("NoBooster", 0);
     QuestManager.qm.addCountToQuest("UseBooster");
 
@@ -241,12 +263,8 @@ public class PlayerMover : MonoBehaviour {
 
     energyBar.loseByShoot();
 
-    rotatePlayerBody();
-
     changeManager.booster.Play();
     changeManager.booster.GetComponent<AudioSource>().Play();
-
-    direction = dir;
 
     if (boosterspeed < maxBoosterSpeed * boosterBonus) {
       boosterspeed += boosterSpeedUpAmount * boosterBonus;
@@ -311,6 +329,8 @@ public class PlayerMover : MonoBehaviour {
       // showEffect("Jetpack");
       boosterBonus = jpm.boosterBonusScale;
       changeManager.booster.GetComponent<ParticleSystem>().emissionRate *= boosterBonus;
+    } else if (obj == "Dopple") {
+      usingDopple = true;
     }
 
     StopCoroutine("strengthen");
@@ -375,6 +395,12 @@ public class PlayerMover : MonoBehaviour {
 
       afterStrengthenStart();
     }
+
+    if (usingDopple) {
+      usingDopple = false;
+      Camera.main.GetComponent<CameraMover>().setSlowly(false);
+      spawnManager.runManager("Dopple");
+    }
   }
 
   public void contactBlackhole(Collision collision) {
@@ -432,6 +458,10 @@ public class PlayerMover : MonoBehaviour {
 
   public bool isUsingEMP() {
     return usingEMP;
+  }
+
+  public bool isUsingDopple() {
+    return usingDopple;
   }
 
   public void stopEMP() {

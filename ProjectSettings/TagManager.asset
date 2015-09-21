@@ -42,6 +42,7 @@ TagManager:
   - ForceField
   - EMP
   - Jetpack
+  - Dopple
   layers:
   - Default
   - TransparentFX

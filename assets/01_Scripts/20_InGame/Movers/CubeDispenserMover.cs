@@ -13,7 +13,7 @@ public class CubeDispenserMover : ObjectsMover {
   override protected void afterCollide(Collision collision) {
     if (collision.collider.tag == "ContactCollider") {
       if (player.isUsingRainbow()) {
-        player.goodPartsEncounter(this, cdm.cubesPerContact * 4);
+        player.goodPartsEncounter(this, cdm.cubesPerContact * cdm.fullComboCount);
       } else {
         player.contactCubeDispenser(transform, cdm.cubesPerContact, collision, cdm.reboundDuring);
 
@@ -47,5 +47,9 @@ public class CubeDispenserMover : ObjectsMover {
 
   override public string getManager() {
     return "CubeDispenserManager";
+  }
+
+  override public int cubesWhenEncounter() {
+    return cdm.cubesPerContact * cdm.fullComboCount;
   }
 }

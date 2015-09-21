@@ -52,11 +52,18 @@ public class TouchInputHandler : MonoBehaviour
 
 			Vector3 touchPosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.transform.position.y);
 			Vector3 worldTouchPosition = Camera.main.ScreenToWorldPoint(touchPosition);
-			Vector3 heading = worldTouchPosition - player.transform.position;
+      Vector3 heading = worldTouchPosition - player.transform.position;
 			direction = heading / heading.magnitude;
 
-			player.shootBooster(direction);
-			Instantiate(touchEffect, worldTouchPosition, Quaternion.Euler(90, 0, 0));
+      player.setDirection(direction);
+
+      if (player.isUsingDopple()) {
+        player.teleport(worldTouchPosition);
+      } else {
+  			player.shootBooster();
+      }
+
+      Instantiate(touchEffect, worldTouchPosition, Quaternion.Euler(90, 0, 0));
 		}
 	}
 
