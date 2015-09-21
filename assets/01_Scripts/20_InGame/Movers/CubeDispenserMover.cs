@@ -4,10 +4,29 @@ using System.Collections;
 public class CubeDispenserMover : ObjectsMover {
   private CubeDispenserManager cdm;
   private int comboCount = 0;
+  private int brokenCount = 0;
 
   protected override void initializeRest() {
     canBeMagnetized = false;
     cdm = (CubeDispenserManager)objectsManager;
+  }
+
+  public void tryBreak() {
+    if (brokenCount == 2) {
+      destroyObject();
+      player.setTrapped(false);
+      return;
+    }
+
+    Camera.main.GetComponent<CameraMover>().shake();
+    cdm.tryBreak();
+
+    GetComponent<MeshFilter>().sharedMesh = cdm.brokenMeshes[brokenCount];
+    brokenCount++;
+  }
+
+  override protected void afterDestroy() {
+    player.setTrapped(false);
   }
 
   override protected void afterCollide(Collision collision) {
@@ -34,6 +53,10 @@ public class CubeDispenserMover : ObjectsMover {
     if (comboCount == cdm.fullComboCountPerLevel[0]) {
       QuestManager.qm.addCountToQuest("CubeDispenser");
     }
+
+    if (comboCount == cdm.fullComboCount - 2) GetComponent<MeshFilter>().sharedMesh = cdm.brokenMeshes[0];
+
+    if (comboCount == cdm.fullComboCount - 1) GetComponent<MeshFilter>().sharedMesh = cdm.brokenMeshes[1];
 
     if (comboCount == cdm.fullComboCount) {
       QuestManager.qm.addCountToQuest("CompleteCubeDispenser");

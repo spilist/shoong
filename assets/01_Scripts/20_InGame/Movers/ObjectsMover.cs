@@ -127,7 +127,7 @@ public class ObjectsMover : MonoBehaviour {
     }
   }
 
-  virtual public void destroyObject(bool destroyEffect = true) {
+  virtual public void destroyObject(bool destroyEffect = true, bool byPlayer = false) {
     if (!beforeDestroy()) return;
 
     foreach (Collider collider in GetComponents<Collider>()) {
@@ -141,7 +141,11 @@ public class ObjectsMover : MonoBehaviour {
 
     afterDestroy();
 
-    objectsManager.runImmediately();
+    if (byPlayer) {
+      objectsManager.run();
+    } else {
+      objectsManager.runImmediately();
+    }
   }
 
   virtual protected void afterDestroy() {}

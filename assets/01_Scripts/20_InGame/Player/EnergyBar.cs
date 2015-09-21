@@ -158,9 +158,14 @@ public class EnergyBar : MonoBehaviour {
     changeHealth(getAmountbyParts * amount, getRate * amount);
   }
 
-  public void loseByShoot() {
+  public void loseByShoot(int amount = 0) {
     if (charged) return;
-    changeHealth(shootAmount, loseRate);
+
+    if (amount == 0) {
+      changeHealth(shootAmount, loseRate);
+    } else {
+      changeHealth(amount, loseRate);
+    }
   }
 
   public void setCharged(bool jetpack = false) {

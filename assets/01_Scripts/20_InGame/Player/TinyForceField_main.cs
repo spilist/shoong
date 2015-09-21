@@ -3,6 +3,7 @@ using System.Collections;
 
 public class TinyForceField_main : MonoBehaviour {
   DoppleManager dpm;
+  float dispenserSize = 0;
 
   void Start () {
     dpm = GameObject.Find("Field Objects").GetComponent<DoppleManager>();
@@ -10,6 +11,8 @@ public class TinyForceField_main : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other) {
     ObjectsMover mover = other.GetComponent<ObjectsMover>();
+    if (mover.tag == "Blackhole") return;
+
     if (dpm.player.isRidingMonster()) {
       if (mover.tag == "MiniMonster") {
         if (!dpm.player.absorbMinimon(mover)) return;
@@ -18,9 +21,18 @@ public class TinyForceField_main : MonoBehaviour {
       } else {
         dpm.player.generateMinimon(mover);
       }
-    }
-    else {
+    } else if (dpm.player.isTrapped()) {
+      dispenserSize = mover.GetComponent<Collider>().bounds.size.x;
+      mover.GetComponent<CubeDispenserMover>().tryBreak();
+      return;
+    } else {
       instantiateCube(mover);
+    }
+  }
+
+  void Update() {
+    if (dpm.player.isTrapped() && dispenserSize > 0 && GetComponent<Collider>().bounds.size.x > dispenserSize) {
+      Destroy(transform.parent.gameObject);
     }
   }
 
@@ -43,6 +55,6 @@ public class TinyForceField_main : MonoBehaviour {
       // }
     }
 
-    mover.destroyObject();
+    mover.destroyObject(true, true);
   }
 }

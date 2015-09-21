@@ -12,6 +12,7 @@ public class BlackholeManager : ObjectsManager {
   public float[] lifetimePerLevel;
 
   public int reboundDuring = 2;
+  public int teleportRadius = 100;
 
   override public void initRest() {
     objEncounterEffectForPlayer.transform.localScale = Vector3.one * radiusPerLevel[DataManager.dm.getInt("BlackholeLevel") - 1] / radiusPerLevel[1];

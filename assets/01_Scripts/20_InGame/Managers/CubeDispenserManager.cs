@@ -2,6 +2,8 @@
 using System.Collections;
 
 public class CubeDispenserManager : ObjectsManager {
+  public Mesh[] brokenMeshes;
+
   public int[] fullComboCountPerLevel;
   public float[] destroyAfterPerLevel;
   public int respawnInterval_min = 10;
@@ -35,6 +37,13 @@ public class CubeDispenserManager : ObjectsManager {
       trying = true;
       instance.GetComponent<Renderer>().sharedMaterial = activeMat;
       StartCoroutine("destroyAfterTry");
+    }
+  }
+
+  public void tryBreak() {
+    if (!trying) {
+      trying = true;
+      instance.GetComponent<Renderer>().sharedMaterial = activeMat;
     }
   }
 

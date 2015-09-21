@@ -6,6 +6,7 @@ public class DoppleManager : ObjectsManager {
   public GameObject forceFieldPrefab;
   public float[] forceFieldSizePerLevel;
   public float targetSize;
+  public int loseEnergyAmount = 20;
 
   public float waveAwakeDuration = 0.3f;
 

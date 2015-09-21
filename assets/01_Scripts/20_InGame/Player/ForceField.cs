@@ -40,7 +40,7 @@ public class ForceField : MonoBehaviour {
       }
     }
 
-    mover.destroyObject();
+    mover.destroyObject(true, true);
   }
 
   void OnDisable() {

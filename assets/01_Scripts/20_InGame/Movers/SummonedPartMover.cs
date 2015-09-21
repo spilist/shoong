@@ -19,7 +19,7 @@ public class SummonedPartMover : ObjectsMover {
     StartCoroutine("destroyAfter");
   }
 
-  override public void destroyObject (bool destroyEffect = true) {
+  override public void destroyObject (bool destroyEffect = true, bool byPlayer = false) {
     foreach (Collider collider in GetComponents<Collider>()) {
       collider.enabled = false;
     }

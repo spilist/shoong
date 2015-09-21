@@ -23,6 +23,7 @@ public class PlayerMover : MonoBehaviour {
   public MonsterManager monm;
   public RainbowDonutsManager rdm;
   public JetpackManager jpm;
+  public DoppleManager dpm;
 
   public BlackholeManager blm;
   private GameObject blackhole;
@@ -69,6 +70,9 @@ public class PlayerMover : MonoBehaviour {
   private float reboundingCount = 0;
 
   private CharacterChangeManager changeManager;
+  public Collider contactCollider;
+  public GameObject playerDopple;
+  private bool trapped = false;
 
 	void Start () {
     changeManager = GetComponent<CharacterChangeManager>();
@@ -108,7 +112,7 @@ public class PlayerMover : MonoBehaviour {
       boosterspeed = 0;
     }
 
-    if (isInsideBlackhole && !isUsingRainbow()) {
+    if (isInsideBlackhole && !isUsingRainbow() && !usingDopple) {
       Vector3 heading = blm.instance.transform.position - transform.position;
       if (heading.magnitude < 1) rb.isKinematic = true;
       else {
@@ -125,6 +129,11 @@ public class PlayerMover : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other) {
+    if (other.tag == "Blackhole") {
+      scoreManager.gameOver();
+      return;
+    }
+
     if (other.tag == "BlackholeGravitySphere") {
       isInsideBlackhole = true;
       return;
@@ -135,6 +144,19 @@ public class PlayerMover : MonoBehaviour {
     if (mover.dangerous()) {
       scoreManager.gameOver();
       return;
+    }
+
+    if (ridingMonster && mover.tag != "MiniMonster" && mover.tag != "RainbowDonut") {
+      generateMinimon(mover);
+      return;
+    }
+
+    if (mover.tag == "MiniMonster") {
+      if (!absorbMinimon(mover)) return;
+    }
+
+    if (mover.tag == "CubeDispenser") {
+      if (!unstoppable && !isUsingRainbow()) return;
     }
 
     goodPartsEncounter(mover, mover.cubesWhenEncounter(), mover.bonusCubes());
@@ -151,7 +173,7 @@ public class PlayerMover : MonoBehaviour {
   }
 
   public void generateMinimon(ObjectsMover mover) {
-    mover.destroyObject();
+    mover.destroyObject(true, true);
     mover.destroyByMonster();
     for (int k = 0; k < monm.numMinimonSpawn; k++) {
       Instantiate(monm.minimonPrefab, transform.position, transform.rotation);
@@ -159,15 +181,6 @@ public class PlayerMover : MonoBehaviour {
   }
 
   public void goodPartsEncounter(ObjectsMover mover, int howMany, int bonus = 0) {
-    if (ridingMonster && mover.tag != "MiniMonster" && mover.tag != "RainbowDonut") {
-      generateMinimon(mover);
-      return;
-    }
-
-    if (mover.tag == "MiniMonster") {
-      if (!absorbMinimon(mover)) return;
-    }
-
     if (howMany > 0) {
       int instantiateCount;
       if (howMany < cubesAsItIsUntill) {
@@ -245,12 +258,41 @@ public class PlayerMover : MonoBehaviour {
     return direction;
   }
 
-  public void teleport(Vector3 pos) {
-    if (changeManager.isTeleporting()) return;
+  public void setTrapped(bool val) {
+    trapped = val;
+  }
 
-    // energyBar.loseByTeleport();
+  public void teleport(Vector3 pos) {
+    if (changeManager.isTeleporting() || scoreManager.isGameOver()) return;
+
+    GameObject[] cubeDispensers = GameObject.FindGameObjectsWithTag("CubeDispenser");
+    GameObject cubeDispenser = null;
+    float distance1 = 0;
+    float distance2 = Mathf.Infinity;
+
+    if (cubeDispensers.Length > 0) {
+      cubeDispenser = cubeDispensers[0];
+      distance1 = (GetComponent<SphereCollider>().radius * transform.localScale.x) + (cubeDispenser.GetComponent<SphereCollider>().radius * cubeDispenser.transform.localScale.x);
+      distance2 = Vector3.Distance(cubeDispenser.transform.position, pos);
+    }
+
+    if (trapped) {
+      if (distance2 > distance1) {
+        GameObject instance = (GameObject) Instantiate(playerDopple, pos, transform.rotation);
+        instance.GetComponent<PlayerDopple>().run(GetComponent<MeshFilter>().sharedMesh, GetComponent<Renderer>().sharedMaterial);
+        return;
+      }
+    }
+
+    if (distance2 <= distance1 && cubeDispenser != null) {
+      pos = cubeDispenser.transform.position;
+      trapped = true;
+    }
+
+    energyBar.loseByShoot(-dpm.loseEnergyAmount);
     changeManager.teleport(pos);
     cpm.tryToGet();
+
   }
 
   public void shootBooster(){
@@ -331,6 +373,7 @@ public class PlayerMover : MonoBehaviour {
       changeManager.booster.GetComponent<ParticleSystem>().emissionRate *= boosterBonus;
     } else if (obj == "Dopple") {
       usingDopple = true;
+      contactCollider.enabled = false;
     }
 
     StopCoroutine("strengthen");
@@ -398,15 +441,15 @@ public class PlayerMover : MonoBehaviour {
 
     if (usingDopple) {
       usingDopple = false;
+      contactCollider.enabled = true;
+      trapped = false;
       Camera.main.GetComponent<CameraMover>().setSlowly(false);
       spawnManager.runManager("Dopple");
     }
   }
 
   public void contactBlackhole(Collision collision) {
-    if (unstoppable) {
-      QuestManager.qm.addCountToQuest("ReboundByBlackhole");
-    } else if (isUsingRainbow()) {
+    if (isUsingRainbow()) {
       rdm.destroyInstances();
     }
 
@@ -462,6 +505,10 @@ public class PlayerMover : MonoBehaviour {
 
   public bool isUsingDopple() {
     return usingDopple;
+  }
+
+  public bool isTrapped() {
+    return trapped;
   }
 
   public void stopEMP() {

@@ -63,7 +63,7 @@ public class MiniMonsterMover : ObjectsMover {
     destroyObject();
   }
 
-  public override void destroyObject(bool destroyEffect = true) {
+  public override void destroyObject(bool destroyEffect = true, bool byPlayer = false) {
     foreach (Collider collider in GetComponents<Collider>()) {
       collider.enabled = false;
     }
