@@ -123,6 +123,7 @@ public class RainbowDonutsManager : ObjectsManager {
     drawingRainbowRoad = false;
     Destroy(rainbowRoad.gameObject);
     Destroy(instance);
+    objEncounterEffectForPlayer.Stop();
     run();
   }
 

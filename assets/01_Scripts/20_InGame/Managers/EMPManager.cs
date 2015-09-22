@@ -12,6 +12,7 @@ public class EMPManager : ObjectsManager {
   public float enlargeDuration = 3;
   public float stayDuration = 1;
   public float shrinkDuration = 1;
+  public float shakeAmount = 5;
 
   private GameObject forceField;
 
@@ -40,6 +41,7 @@ public class EMPManager : ObjectsManager {
   }
 
   public void generateForceField() {
+    Camera.main.GetComponent<CameraMover>().shakeUntilStop(shakeAmount);
     status = 1;
   }
 
@@ -73,6 +75,7 @@ public class EMPManager : ObjectsManager {
       if (cameraSize == targetSize) {
         run();
         player.stopEMP();
+        Camera.main.GetComponent<CameraMover>().stopShake();
         status = 0;
       }
     }

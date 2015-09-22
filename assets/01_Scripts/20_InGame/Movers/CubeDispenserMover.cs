@@ -49,14 +49,15 @@ public class CubeDispenserMover : ObjectsMover {
     GetComponent<ParticleSystem>().emissionRate -= cdm.decreaseEmissionAmount;
 
     comboCount++;
+    Camera.main.GetComponent<CameraMover>().shake(cdm.shakeDurationByHit, cdm.shakeAmountByHit);
 
     if (comboCount == cdm.fullComboCountPerLevel[0]) {
       QuestManager.qm.addCountToQuest("CubeDispenser");
     }
 
-    if (comboCount == cdm.fullComboCount - 2) GetComponent<MeshFilter>().sharedMesh = cdm.brokenMeshes[0];
+    if (comboCount == cdm.fullComboCount - 4) GetComponent<MeshFilter>().sharedMesh = cdm.brokenMeshes[0];
 
-    if (comboCount == cdm.fullComboCount - 1) GetComponent<MeshFilter>().sharedMesh = cdm.brokenMeshes[1];
+    if (comboCount == cdm.fullComboCount - 2) GetComponent<MeshFilter>().sharedMesh = cdm.brokenMeshes[1];
 
     if (comboCount == cdm.fullComboCount) {
       QuestManager.qm.addCountToQuest("CompleteCubeDispenser");

@@ -65737,6 +65737,7 @@ MonoBehaviour:
   - 1.14999998
   reboundDuring: 2
   teleportRadius: 100
+  shakeAmount: 3
 --- !u!114 &1991538109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65836,6 +65837,8 @@ MonoBehaviour:
   pitchStart: .899999976
   pitchIncrease: .0500000007
   activeMat: {fileID: 2100000, guid: 52560eb15b0ed41a6a6af15921bb4929, type: 2}
+  shakeDurationByHit: .300000012
+  shakeAmountByHit: .5
   decreaseEmissionAmount: 0
   fullComboCount: 0
 --- !u!114 &1991538111
@@ -66067,6 +66070,7 @@ MonoBehaviour:
   enlargeDuration: .5
   stayDuration: 1
   shrinkDuration: .5
+  shakeAmount: 15
 --- !u!114 &1991538119
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -129,11 +129,6 @@ public class PlayerMover : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other) {
-    if (other.tag == "Blackhole") {
-      scoreManager.gameOver();
-      return;
-    }
-
     if (other.tag == "BlackholeGravitySphere") {
       isInsideBlackhole = true;
       return;
@@ -420,7 +415,7 @@ public class PlayerMover : MonoBehaviour {
       if (isRidingRainbowRoad) {
         isRidingRainbowRoad = false;
       }
-
+      Camera.main.GetComponent<CameraMover>().stopShake();
       afterStrengthenStart();
     }
 
@@ -452,7 +447,7 @@ public class PlayerMover : MonoBehaviour {
     if (isUsingRainbow()) {
       rdm.destroyInstances();
     }
-
+    Camera.main.GetComponent<CameraMover>().shakeUntilStop(blm.shakeAmount);
     processCollision(collision);
     reboundingByBlackhole = true;
   }

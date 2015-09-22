@@ -14,6 +14,8 @@ public class CubeDispenserManager : ObjectsManager {
   public float pitchStart = 0.9f;
   public float pitchIncrease = 0.05f;
   public Material activeMat;
+  public float shakeDurationByHit = 0.3f;
+  public float shakeAmountByHit = 0.5f;
 
   public float decreaseEmissionAmount;
   private bool trying = false;
