@@ -47,6 +47,8 @@ public class TinyForceField_main : MonoBehaviour {
 
     if (!mover.isNegativeObject()) {
       dpm.comboBar.addCombo();
+      dpm.getEnergy.Play();
+      dpm.getEnergy.GetComponent<AudioSource>().Play();
     } else {
       // if (mover.tag == "Obstacle_big") {
       //   QuestManager.qm.addCountToQuest("DestroyAsteroidAndFallingStarByEMP");
@@ -56,5 +58,6 @@ public class TinyForceField_main : MonoBehaviour {
     }
 
     mover.destroyObject(true, true);
+
   }
 }

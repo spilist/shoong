@@ -27,16 +27,10 @@ public class QuestManager : MonoBehaviour {
   private OnGoingQuest ogq;
 
 	void Start() {
-    if (qm == null) {
-      DontDestroyOnLoad(gameObject);
-      qm = this;
-      questsList = transform.Find("QuestsList");
-      objectTutorials = transform.Find("ObjectTutorials");
-      onGoingQuests = transform.Find("OnGoingQuests");
-    } else if (qm != this) {
-      Destroy(gameObject);
-      return;
-    }
+    qm = this;
+    questsList = transform.Find("QuestsList");
+    objectTutorials = transform.Find("ObjectTutorials");
+    onGoingQuests = transform.Find("OnGoingQuests");
   }
 
   public void generateQuest() {

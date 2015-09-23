@@ -2,11 +2,14 @@
 using System.Collections;
 
 public class DoppleManager : ObjectsManager {
+  public ParticleSystem getEnergy;
   public GameObject energyCube;
   public GameObject forceFieldPrefab;
   public float[] forceFieldSizePerLevel;
   public float targetSize;
   public int loseEnergyAmount = 20;
+  public AudioClip teleportSound;
+  public AudioClip cannotTeleportWarningSound;
 
   public float waveAwakeDuration = 0.3f;
 

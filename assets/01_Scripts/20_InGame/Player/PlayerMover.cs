@@ -260,6 +260,15 @@ public class PlayerMover : MonoBehaviour {
   public void teleport(Vector3 pos) {
     if (changeManager.isTeleporting() || scoreManager.isGameOver()) return;
 
+    if (energyBar.currentEnergy() < dpm.loseEnergyAmount) {
+      AudioSource.PlayClipAtPoint(dpm.cannotTeleportWarningSound, transform.position);
+      Camera.main.GetComponent<CameraMover>().shake();
+      return;
+    }
+
+    AudioSource.PlayClipAtPoint(dpm.teleportSound, transform.position);
+    energyBar.loseByShoot(-dpm.loseEnergyAmount);
+
     GameObject[] cubeDispensers = GameObject.FindGameObjectsWithTag("CubeDispenser");
     GameObject cubeDispenser = null;
     float distance1 = 0;
@@ -284,7 +293,6 @@ public class PlayerMover : MonoBehaviour {
       trapped = true;
     }
 
-    energyBar.loseByShoot(-dpm.loseEnergyAmount);
     changeManager.teleport(pos);
     cpm.tryToGet();
 

@@ -50,6 +50,7 @@ public class ScoreManager : MonoBehaviour {
 
     inputHandler.stopReact();
     QuestManager.qm.checkQuestComplete();
+    AudioManager.am.changeVolume("Main", "Small");
 
     playerExplosion.Play ();
     playerExplosion.GetComponent<AudioSource>().Play();

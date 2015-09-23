@@ -47,6 +47,7 @@ public class TouchInputHandler : MonoBehaviour
         menus.gameStart();
         spawnManager.run();
         QuestManager.qm.generateQuest();
+        AudioManager.am.changeVolume("Main", "Max");
 				gameStarted = true;
 			}
 
