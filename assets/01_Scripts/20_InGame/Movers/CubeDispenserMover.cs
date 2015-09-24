@@ -14,6 +14,7 @@ public class CubeDispenserMover : ObjectsMover {
   public void tryBreak() {
     if (brokenCount == 2) {
       destroyObject();
+      player.goodPartsEncounter(this, cdm.cubesPerContact * cdm.fullComboCount);
       player.setTrapped(false);
       return;
     }

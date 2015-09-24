@@ -5721,7 +5721,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 769bb7c0fea23094b8c8ae4851f203e5, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: .400000006
+  m_Volume: .0500000007
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -55405,7 +55405,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 91418583}
-  collideRadius: 2
+  collideRadius: 3
 --- !u!1 &1648289392
 GameObject:
   m_ObjectHideFlags: 0
@@ -66392,6 +66392,7 @@ MonoBehaviour:
   targetSize: 0
   loseEnergyAmount: 15
   teleportSound: {fileID: 8300000, guid: 06f4fb62da1cc475ba87a41b6952dc8b, type: 3}
+  teleportSoundVolume: .5
   cannotTeleportWarningSound: {fileID: 8300000, guid: 6175d64a3d350574aa82124734e3a684,
     type: 3}
   waveAwakeDuration: .0199999996

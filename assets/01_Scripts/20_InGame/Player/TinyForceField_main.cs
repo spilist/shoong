@@ -27,6 +27,7 @@ public class TinyForceField_main : MonoBehaviour {
       return;
     } else {
       instantiateCube(mover);
+      mover.destroyObject(true, true);
     }
   }
 
@@ -37,6 +38,8 @@ public class TinyForceField_main : MonoBehaviour {
   }
 
   void instantiateCube(ObjectsMover mover) {
+    if (mover.noCubesByDestroy()) return;
+
     for (int e = 0; e < mover.cubesWhenEncounter(); e++) {
       GameObject cube = (GameObject) Instantiate(dpm.energyCube, mover.transform.position, mover.transform.rotation);
       if (e == 0) {
@@ -50,14 +53,13 @@ public class TinyForceField_main : MonoBehaviour {
       dpm.getEnergy.Play();
       dpm.getEnergy.GetComponent<AudioSource>().Play();
     } else {
-      // if (mover.tag == "Obstacle_big") {
-      //   QuestManager.qm.addCountToQuest("DestroyAsteroidAndFallingStarByEMP");
-      // } else if (mover.tag == "Monster") {
-      //   QuestManager.qm.addCountToQuest("DestroyMonsterByEMP");
-      // }
+      if (mover.tag == "Obstacle_big") {
+        QuestManager.qm.addCountToQuest("DestroyAsteroid");
+      } else if (mover.tag == "Monster") {
+        QuestManager.qm.addCountToQuest("DestroyMonster");
+      } else if (mover.tag == "Obstacle") {
+        QuestManager.qm.addCountToQuest("DestroyFallingStar");
+      }
     }
-
-    mover.destroyObject(true, true);
-
   }
 }

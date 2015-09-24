@@ -48,4 +48,8 @@ public class GoldenCubeMover : ObjectsMover {
   override public string getManager() {
     return "GoldenCubeManager";
   }
+
+  virtual public bool noCubesByDestroy() {
+    return true;
+  }
 }

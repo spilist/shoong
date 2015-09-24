@@ -27,7 +27,7 @@ public class CameraMover : MonoBehaviour {
         originalPos = new Vector3(player.position.x, transform.position.y, player.position.z);
       }
 
-      transform.position = originalPos + Random.insideUnitSphere * shakeAmount;
+      transform.position = new Vector3(originalPos.x + Random.insideUnitSphere.x * shakeAmount, originalPos.y, originalPos.z + Random.insideUnitSphere.z * shakeAmount);
       shakeCount -= Time.deltaTime;
 
       if (!shakeContinuously && shakeCount < 0) stopShake();

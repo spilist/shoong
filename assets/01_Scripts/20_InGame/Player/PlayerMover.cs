@@ -121,7 +121,7 @@ public class PlayerMover : MonoBehaviour {
       }
     }
 
-    if (usingDopple) {
+    if (!isRidingRainbowRoad && (usingDopple || trapped)) {
       rb.velocity = Vector3.zero;
     } else {
       rb.velocity = direction * speed;
@@ -266,7 +266,7 @@ public class PlayerMover : MonoBehaviour {
       return;
     }
 
-    AudioSource.PlayClipAtPoint(dpm.teleportSound, transform.position);
+    AudioSource.PlayClipAtPoint(dpm.teleportSound, transform.position, dpm.teleportSoundVolume);
     energyBar.loseByShoot(-dpm.loseEnergyAmount);
 
     GameObject[] cubeDispensers = GameObject.FindGameObjectsWithTag("CubeDispenser");
@@ -444,8 +444,7 @@ public class PlayerMover : MonoBehaviour {
 
     if (usingDopple) {
       usingDopple = false;
-      contactCollider.enabled = true;
-      trapped = false;
+      if (!trapped) contactCollider.enabled = true;
       Camera.main.GetComponent<CameraMover>().setSlowly(false);
       spawnManager.runManager("Dopple");
     }

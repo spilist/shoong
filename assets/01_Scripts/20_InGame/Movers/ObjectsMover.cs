@@ -215,4 +215,8 @@ public class ObjectsMover : MonoBehaviour {
   virtual public bool isNegativeObject() {
     return objectsManager.isNegative;
   }
+
+  virtual public bool noCubesByDestroy() {
+    return false;
+  }
 }

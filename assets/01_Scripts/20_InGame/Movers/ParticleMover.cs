@@ -15,6 +15,7 @@ public class ParticleMover : MonoBehaviour {
 	private Vector3 direction;
 	private bool timeelapsed = false;
 	private PartsCollector partsCollector;
+	private PlayerMover player;
 	private Rigidbody playerRb;
 	private Rigidbody rb;
 
@@ -39,7 +40,8 @@ public class ParticleMover : MonoBehaviour {
 		rb.velocity = direction * speed * random;
 
 		partsCollector = GameObject.Find("PartsCollector").GetComponent<PartsCollector>();
-		playerRb = GameObject.Find("Player").GetComponent<Rigidbody>();
+		player = GameObject.Find("Player").GetComponent<PlayerMover>();
+		playerRb = player.GetComponent<Rigidbody>();
 	}
 
 	void FixedUpdate () {
@@ -51,7 +53,7 @@ public class ParticleMover : MonoBehaviour {
 
 			Vector3 heading =  partsCollector.transform.position - transform.position;
 			heading /= heading.magnitude;
-			if (rainbow) {
+			if (rainbow && player.isUsingRainbow()) {
 				rb.velocity = heading * playerRb.velocity.magnitude * 3;
 			} else {
 				rb.velocity = heading * (baseSpeed + playerRb.velocity.magnitude * 2) ;

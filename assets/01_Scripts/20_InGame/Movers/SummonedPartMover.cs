@@ -28,6 +28,8 @@ public class SummonedPartMover : ObjectsMover {
     if (destroyEffect) {
       Instantiate(objectsManager.objDestroyEffect, transform.position, transform.rotation);
     }
+
+    if (byPlayer) summonManager.increaseSummonedPartGetcount();
   }
 
   override protected void afterEncounter() {

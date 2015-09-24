@@ -35,8 +35,12 @@ public class ForceField : MonoBehaviour {
     } else {
       if (mover.tag == "Obstacle_big") {
         QuestManager.qm.addCountToQuest("DestroyAsteroidAndFallingStarByEMP");
+        QuestManager.qm.addCountToQuest("DestroyAsteroid");
       } else if (mover.tag == "Monster") {
         QuestManager.qm.addCountToQuest("DestroyMonsterByEMP");
+        QuestManager.qm.addCountToQuest("DestroyMonster");
+      } else if (mover.tag == "Obstacle") {
+        QuestManager.qm.addCountToQuest("DestroyFallingStar");
       }
     }
 
