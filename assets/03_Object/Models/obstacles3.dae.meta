@@ -1,0 +1,167 @@
+fileFormatVersion: 2
+guid: a5dec3affc6944bf0af01c90e775af2a
+timeCreated: 1443079788
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: Asteroid_big_1
+    100002: Asteroid_big_2
+    100004: Asteroid_big_3
+    100006: Asteroid_big_4
+    100008: Asteroid_big_5
+    100010: Asteroid_small_1
+    100012: Asteroid_small_2
+    100014: Asteroid_small_3
+    100016: Asteroid_small_4
+    100018: Asteroid_small_5
+    100020: Asteroid_small_6
+    100022: Asteroid_small_7
+    100024: Asteroid_small_8
+    100026: Meteoroid1_1
+    100028: Meteoroid1_2
+    100030: Meteoroid1_3
+    100032: Meteoroid2_1
+    100034: Meteoroid2_2
+    100036: Meteoroid2_3
+    100038: //RootNode
+    400000: Asteroid_big_1
+    400002: Asteroid_big_2
+    400004: Asteroid_big_3
+    400006: Asteroid_big_4
+    400008: Asteroid_big_5
+    400010: Asteroid_small_1
+    400012: Asteroid_small_2
+    400014: Asteroid_small_3
+    400016: Asteroid_small_4
+    400018: Asteroid_small_5
+    400020: Asteroid_small_6
+    400022: Asteroid_small_7
+    400024: Asteroid_small_8
+    400026: Meteoroid1_1
+    400028: Meteoroid1_2
+    400030: Meteoroid1_3
+    400032: Meteoroid2_1
+    400034: Meteoroid2_2
+    400036: Meteoroid2_3
+    400038: //RootNode
+    2300000: Asteroid_big_1
+    2300002: Asteroid_big_2
+    2300004: Asteroid_big_3
+    2300006: Asteroid_big_4
+    2300008: Asteroid_big_5
+    2300010: Asteroid_small_1
+    2300012: Asteroid_small_2
+    2300014: Asteroid_small_3
+    2300016: Asteroid_small_4
+    2300018: Asteroid_small_5
+    2300020: Asteroid_small_6
+    2300022: Asteroid_small_7
+    2300024: Asteroid_small_8
+    2300026: Meteoroid1_1
+    2300028: Meteoroid1_2
+    2300030: Meteoroid1_3
+    2300032: Meteoroid2_1
+    2300034: Meteoroid2_2
+    2300036: Meteoroid2_3
+    3300000: Asteroid_big_1
+    3300002: Asteroid_big_2
+    3300004: Asteroid_big_3
+    3300006: Asteroid_big_4
+    3300008: Asteroid_big_5
+    3300010: Asteroid_small_1
+    3300012: Asteroid_small_2
+    3300014: Asteroid_small_3
+    3300016: Asteroid_small_4
+    3300018: Asteroid_small_5
+    3300020: Asteroid_small_6
+    3300022: Asteroid_small_7
+    3300024: Asteroid_small_8
+    3300026: Meteoroid1_1
+    3300028: Meteoroid1_2
+    3300030: Meteoroid1_3
+    3300032: Meteoroid2_1
+    3300034: Meteoroid2_2
+    3300036: Meteoroid2_3
+    4300000: Asteroid_big_4
+    4300002: Asteroid_small_1
+    4300004: Asteroid_small_2
+    4300006: Asteroid_small_3
+    4300008: Asteroid_small_5
+    4300010: Asteroid_small_8
+    4300012: Asteroid_small_4
+    4300014: Asteroid_small_6
+    4300016: Asteroid_small_7
+    4300018: Meteoroid2_1
+    4300020: Meteoroid2_2
+    4300022: Meteoroid2_3
+    4300024: Meteoroid1_3
+    4300026: Meteoroid1_2
+    4300028: Meteoroid1_1
+    4300030: Asteroid_big_2
+    4300032: Asteroid_big_1
+    4300034: Asteroid_big_5
+    4300036: Asteroid_big_3
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

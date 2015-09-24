@@ -4,6 +4,7 @@ using System.Collections;
 public class AsteroidMover : ObjectsMover {
   private bool isNearPlayer = false;
   private SpecialPartsManager spm;
+  private AsteroidManager asm;
   private bool collideChecked = false;
 
   override public string getManager() {
@@ -12,6 +13,7 @@ public class AsteroidMover : ObjectsMover {
 
   override protected void initializeRest() {
     canBeMagnetized = false;
+    asm = (AsteroidManager)objectsManager;
     spm = GameObject.Find("Field Objects").GetComponent<SpecialPartsManager>();
   }
 

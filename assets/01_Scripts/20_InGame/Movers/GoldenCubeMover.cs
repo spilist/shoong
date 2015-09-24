@@ -49,7 +49,7 @@ public class GoldenCubeMover : ObjectsMover {
     return "GoldenCubeManager";
   }
 
-  virtual public bool noCubesByDestroy() {
+  override public bool noCubesByDestroy() {
     return true;
   }
 }

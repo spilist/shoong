@@ -34,6 +34,8 @@ public class CharacterChangeManager : MonoBehaviour {
   private float alpha = 0;
   private float stayCount = 0;
 
+  // public float afterStrengthenDuration
+
   void OnEnable() {
     mFilter = GetComponent<MeshFilter>();
     mRenderer = GetComponent<Renderer>();
@@ -110,6 +112,10 @@ public class CharacterChangeManager : MonoBehaviour {
       changeCharacter(originalMesh, playerEffectMat);
     }
   }
+
+  // public IEnumerator afterStrengthen() {
+
+  // }
 
   public void changeCharacter(Mesh mesh, Material material) {
     mFilter.sharedMesh = mesh;

@@ -463,6 +463,7 @@ public class PlayerMover : MonoBehaviour {
     afterStrengthen = true;
     afterStrengthenCount = 0;
     changeManager.afterStrengthenEffect.Play();
+    // StartCoroutine(changeManager.afterStrengthen());
   }
 
   public bool isAfterStrengthen() {
