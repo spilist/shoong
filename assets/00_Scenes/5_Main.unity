@@ -64990,7 +64990,7 @@ MonoBehaviour:
   objEncounterEffectForPlayer: {fileID: 0}
   strengthenPlayerEffect: {fileID: 0}
   strength: 2
-  speed: 15
+  speed: 10
   tumble: .5
   minSpawnInterval: 0
   maxSpawnInterval: 0
@@ -65001,14 +65001,14 @@ MonoBehaviour:
   instance: {fileID: 0}
   brokenAsteroidsPrefab: {fileID: 185578, guid: afcfdbb6ab4984dbdb7caea16971a310,
     type: 2}
-  brokenTumble: 20
+  brokenTumble: 30
   minBrokenSpawn: 6
   maxBrokenSpawn: 8
-  minBrokenSize: 2
-  maxBrokenSize: 4
+  minBrokenSize: .5
+  maxBrokenSize: 1
   minBrokenSpeed: 200
-  maxBrokenSpeed: 300
-  max_obstacles: 3
+  maxBrokenSpeed: 400
+  max_obstacles: 4
 --- !u!114 &1991538113
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65287,7 +65287,7 @@ MonoBehaviour:
   objEncounterEffectForPlayer: {fileID: 0}
   strengthenPlayerEffect: {fileID: 0}
   strength: .899999976
-  speed: 30
+  speed: 15
   tumble: 2
   minSpawnInterval: 0
   maxSpawnInterval: 0
@@ -65296,7 +65296,7 @@ MonoBehaviour:
   player: {fileID: 0}
   comboBar: {fileID: 0}
   instance: {fileID: 0}
-  max_obstacles: 3
+  max_obstacles: 6
 --- !u!1 &1997391145
 GameObject:
   m_ObjectHideFlags: 0

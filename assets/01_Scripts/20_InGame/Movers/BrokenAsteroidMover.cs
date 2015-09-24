@@ -22,10 +22,10 @@ public class BrokenAsteroidMover : MonoBehaviour {
 
     if (large) {
       targetScale = 15;
-      duration = 2;
+      duration = 1f;
     } else {
       targetScale = 0;
-      duration = 4;
+      duration = 4f;
     }
 
     diff = Mathf.Abs(targetScale - scale);
