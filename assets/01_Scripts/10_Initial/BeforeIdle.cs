@@ -6,6 +6,7 @@ public class BeforeIdle : MonoBehaviour {
   public SpawnManager spawnManager;
   public MeshRenderer titleFilter;
   public GameObject title;
+  public GameObject powerBoostUI;
   public Text copyright;
   private Color copyrightColor;
   private float copyrightChangeTo;
@@ -107,6 +108,8 @@ public class BeforeIdle : MonoBehaviour {
 
       if (titlePosX == titleMoveTo) {
         titleMoving = false;
+
+        if (copyright.color.a == 0) powerBoostUI.SetActive(true);
       }
     }
 

@@ -150,8 +150,9 @@ public class EnergyBar : MonoBehaviour {
     } else {
       showEnergyInstance = (GameObject) Instantiate(loseEnergy);
     }
-      showEnergyInstance.transform.SetParent(transform.parent.transform, false);
-      showEnergyInstance.GetComponent<ShowChangeText>().run(amount);
+
+    showEnergyInstance.transform.SetParent(transform.parent.transform, false);
+    showEnergyInstance.GetComponent<ShowChangeText>().run(amount);
   }
 
   public void getHealthbyParts(int amount) {

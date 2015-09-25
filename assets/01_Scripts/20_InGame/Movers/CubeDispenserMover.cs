@@ -13,7 +13,7 @@ public class CubeDispenserMover : ObjectsMover {
 
   public void tryBreak() {
     if (brokenCount == 2) {
-      destroyObject();
+      destroyObject(true, true);
       player.goodPartsEncounter(this, cdm.cubesPerContact * cdm.fullComboCount);
       player.setTrapped(false);
       return;
@@ -62,7 +62,7 @@ public class CubeDispenserMover : ObjectsMover {
 
     if (comboCount == cdm.fullComboCount) {
       QuestManager.qm.addCountToQuest("CompleteCubeDispenser");
-      destroyObject();
+      destroyObject(true, true);
       player.showEffect("Great");
       return false;
     }

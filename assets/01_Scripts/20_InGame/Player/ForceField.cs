@@ -17,7 +17,6 @@ public class ForceField : MonoBehaviour {
 
   void Update() {
     transform.Rotate(-Vector3.up * Time.deltaTime * rotatingSpeed);
-
   }
 
   void OnTriggerEnter(Collider other) {
@@ -33,7 +32,7 @@ public class ForceField : MonoBehaviour {
     if (!mover.isNegativeObject()) {
       comboBar.addCombo();
     } else {
-      if (mover.tag == "Obstacle_big") {
+      if (mover.tag == "Obstacle_big" || mover.tag == "Obstacle_small") {
         QuestManager.qm.addCountToQuest("DestroyAsteroidAndFallingStarByEMP");
         QuestManager.qm.addCountToQuest("DestroyAsteroid");
       } else if (mover.tag == "Monster") {

@@ -9,7 +9,6 @@ public class ComboBar : MonoBehaviour {
   public PlayerMover player;
 
   public float tintAmount = 0.02f;
-	public float speedraiseamount;
 
   private int comboCount = 0;
   private Color comboBarTintColor;
@@ -23,18 +22,13 @@ public class ComboBar : MonoBehaviour {
   public float emptyDurationStart = 0.25f;
   public float emptyDurationDecrease = 0.05f;
 
-  public float originalSpeed = 45;
   public int emissionRate = 100;
   public Color[] comboBarColors;
-
-  private float moverspeed;
 
 	void OnEnable () {
 		comboBarTintColor = inner.material.GetColor ("_TintColor");
 		comboBarTintColor_empty = new Color(comboBarTintColor.r, comboBarTintColor.g, comboBarTintColor.b, comboBarTintColorEmptyAlpha);
     comboBarTintColor_full = new Color(comboBarTintColor.r, comboBarTintColor.g, comboBarTintColor.b, 1);
-
-    moverspeed = originalSpeed;
 	}
 
   IEnumerator loseByTime() {
@@ -57,7 +51,6 @@ public class ComboBar : MonoBehaviour {
     comboCount = 0;
     inner.fillAmount = 0;
     getEnergy.emissionRate = 0;
-    moverspeed = originalSpeed;
   }
 
   public void addCombo() {
@@ -66,7 +59,6 @@ public class ComboBar : MonoBehaviour {
       inner.fillAmount += 0.25f;
       inner.material.SetColor("_TintColor",comboBarTintColor_full);
       getEnergy.emissionRate += emissionRate;
-      moverspeed += speedraiseamount;
 
       if (comboCount == 4) {
         player.showEffect("Charged");
@@ -78,10 +70,6 @@ public class ComboBar : MonoBehaviour {
 
   public int getComboRatio() {
     return (comboCount + 1);
-  }
-
-  public float getSpeed() {
-    return moverspeed;
   }
 
   void OnDisable() {

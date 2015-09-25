@@ -30,6 +30,8 @@ public class ChangeEffect : MonoBehaviour {
       originalScale = transform.localScale.x;
       scale = originalScale;
     }
+
+    if (player.isOnPowerBoost()) gameObject.SetActive(false);
   }
 
   void Update() {

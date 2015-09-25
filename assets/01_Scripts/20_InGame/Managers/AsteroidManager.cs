@@ -2,16 +2,20 @@
 using System.Collections;
 
 public class AsteroidManager : ObjectsManager {
-  public GameObject brokenAsteroidsPrefab;
-  public int brokenTumble = 20;
-  public int minBrokenSpawn = 3;
-  public int maxBrokenSpawn = 5;
+  public int brokenTumble = 30;
+  public int minBrokenSpawn = 6;
+  public int maxBrokenSpawn = 8;
   public float minBrokenSize = 0.5f;
-  public float maxBrokenSize = 1.5f;
-  public int minBrokenSpeed = 400;
-  public int maxBrokenSpeed = 1200;
+  public float maxBrokenSize = 1f;
+  public int minBrokenSpeed = 200;
+  public int maxBrokenSpeed = 400;
 
-  public int max_obstacles = 3;
+  public float minSizeAfterBreak = 5;
+  public float maxSizeAfterBreak = 10;
+  public float destroyLargeAfter = 0.5f;
+  public float destroySmallAfter = 4;
+
+  public int max_obstacles = 4;
   private GameObject[] asteroidsPrefab;
 
   override public void initRest() {

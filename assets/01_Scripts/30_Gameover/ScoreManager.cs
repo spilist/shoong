@@ -113,6 +113,12 @@ public class ScoreManager : MonoBehaviour {
     gameOverButtons.SetActive(true);
   }
 
+  public void setButtonsAvailable() {
+    foreach (GameObject obj in GameObject.FindGameObjectsWithTag("GameOverActions")) {
+      obj.GetComponent<Collider>().enabled = true;
+    }
+  }
+
   public bool isGameOver() {
     return gameOverStatus > 0;
   }

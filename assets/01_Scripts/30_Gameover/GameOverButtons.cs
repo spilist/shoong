@@ -2,6 +2,7 @@
 using System.Collections;
 
 public class GameOverButtons : MonoBehaviour {
+  public ScoreManager scoreManager;
   public float moveDuration = 0.2f;
   private int status = 0;
   private float positionY;
@@ -20,6 +21,7 @@ public class GameOverButtons : MonoBehaviour {
 
       if (positionY == 0) {
         status++;
+        scoreManager.setButtonsAvailable();
       }
     }
 	}

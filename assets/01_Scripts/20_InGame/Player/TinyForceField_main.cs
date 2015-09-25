@@ -53,7 +53,7 @@ public class TinyForceField_main : MonoBehaviour {
       dpm.getEnergy.Play();
       dpm.getEnergy.GetComponent<AudioSource>().Play();
     } else {
-      if (mover.tag == "Obstacle_big") {
+      if (mover.tag == "Obstacle_big" || mover.tag == "Obstacle_small") {
         QuestManager.qm.addCountToQuest("DestroyAsteroid");
       } else if (mover.tag == "Monster") {
         QuestManager.qm.addCountToQuest("DestroyMonster");

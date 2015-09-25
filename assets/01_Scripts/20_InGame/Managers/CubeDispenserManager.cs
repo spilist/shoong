@@ -26,6 +26,7 @@ public class CubeDispenserManager : ObjectsManager {
     int level = DataManager.dm.getInt("CubeDispenserLevel") - 1;
     fullComboCount = fullComboCountPerLevel[level];
     destroyAfterSeconds = destroyAfterPerLevel[level];
+    skipInterval = true;
   }
 
   override protected void afterSpawn() {
@@ -37,6 +38,7 @@ public class CubeDispenserManager : ObjectsManager {
   public void checkTrying() {
     if (!trying) {
       trying = true;
+      skipInterval = false;
       instance.GetComponent<Renderer>().sharedMaterial = activeMat;
       StartCoroutine("destroyAfterTry");
     }
@@ -45,6 +47,7 @@ public class CubeDispenserManager : ObjectsManager {
   public void tryBreak() {
     if (!trying) {
       trying = true;
+      skipInterval = false;
       instance.GetComponent<Renderer>().sharedMaterial = activeMat;
     }
   }
@@ -54,11 +57,6 @@ public class CubeDispenserManager : ObjectsManager {
 
     if (instance == null) yield break;
 
-    instance.GetComponent<ObjectsMover>().destroyObject();
-  }
-
-  override protected float spawnInterval() {
-    if (!trying) return 0;
-    else return Random.Range(minSpawnInterval, maxSpawnInterval);
+    instance.GetComponent<ObjectsMover>().destroyObject(true, true);
   }
 }

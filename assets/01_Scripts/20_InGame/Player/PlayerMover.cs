@@ -3,6 +3,9 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class PlayerMover : MonoBehaviour {
+  public float baseSpeed = 45;
+  public float speedRaisePercombo = 7;
+
   public Transform effects;
   public SpawnManager spawnManager;
 
@@ -74,6 +77,9 @@ public class PlayerMover : MonoBehaviour {
   public GameObject playerDopple;
   private bool trapped = false;
 
+  public PowerBoost powerBoost;
+  private bool usingPowerBoost = false;
+
 	void Start () {
     changeManager = GetComponent<CharacterChangeManager>();
     changeManager.changeCharacter(PlayerPrefs.GetString("SelectedCharacter"));
@@ -86,7 +92,7 @@ public class PlayerMover : MonoBehaviour {
     Vector2 randomV = Random.insideUnitCircle;
     randomV.Normalize();
     direction = new Vector3(randomV.x, 0, randomV.y);
-    speed = comboBar.getSpeed();
+    speed = baseSpeed;
 
     rb = GetComponent<Rigidbody>();
     rb.velocity = direction * speed;
@@ -94,14 +100,18 @@ public class PlayerMover : MonoBehaviour {
 	}
 
 	void FixedUpdate () {
-    if (isRidingRainbowRoad) {
+    if (usingPowerBoost) {
+      speed = powerBoost.baseSpeed;
+    } else if (usingEMP) {
+      speed = 0;
+    } else if (isRidingRainbowRoad) {
       speed = rdm.ridingSpeed;
     } else if (isRebounding()) {
       speed = reboundSpeed;
     } else if (ridingMonster) {
-      speed = comboBar.getSpeed() + minimonCounter * monm.enlargeSpeedPerMinimon;
+      speed = baseSpeed + minimonCounter * monm.enlargeSpeedPerMinimon;
     } else {
-      speed = comboBar.getSpeed();
+      speed = baseSpeed + comboBar.getComboRatio() * speedRaisePercombo;
     }
 
     speed += boosterspeed;
@@ -288,7 +298,7 @@ public class PlayerMover : MonoBehaviour {
       }
     }
 
-    if (distance2 <= distance1 && cubeDispenser != null) {
+    if (cubeDispenser != null && !unstoppable && distance2 <= distance1) {
       pos = cubeDispenser.transform.position;
       trapped = true;
     }
@@ -311,12 +321,44 @@ public class PlayerMover : MonoBehaviour {
     changeManager.booster.Play();
     changeManager.booster.GetComponent<AudioSource>().Play();
 
-    if (boosterspeed < maxBoosterSpeed * boosterBonus) {
-      boosterspeed += boosterSpeedUpAmount * boosterBonus;
-      boosterspeed = boosterspeed > (maxBoosterSpeed * boosterBonus)? (maxBoosterSpeed * boosterBonus) : boosterspeed;
+    if (boosterspeed < maxBooster() * boosterBonus) {
+      boosterspeed += boosterSpeedUp() * boosterBonus;
+      boosterspeed = boosterspeed > (maxBooster() * boosterBonus)? (maxBooster() * boosterBonus) : boosterspeed;
     }
 
+    if (usingPowerBoost) Camera.main.GetComponent<CameraMover>().shake(powerBoost.shakeDuration, powerBoost.shakeAmount);
+
     cpm.tryToGet();
+  }
+
+  public bool isOnPowerBoost() {
+    return usingPowerBoost;
+  }
+
+  public void startPowerBoost() {
+    usingPowerBoost = true;
+    GetComponent<Renderer>().enabled = false;
+    GetComponent<Collider>().enabled = false;
+    changeManager.changeCharacterToOriginal();
+    stopStrengthen();
+  }
+
+  public void stopPowerBoost() {
+    usingPowerBoost = false;
+    GetComponent<Renderer>().enabled = true;
+    GetComponent<Collider>().enabled = true;
+    energyBar.getFullHealth();
+    afterStrengthenStart();
+  }
+
+  float maxBooster() {
+    if (usingPowerBoost) return powerBoost.maxBoosterSpeed;
+    else return maxBoosterSpeed;
+  }
+
+  float boosterSpeedUp() {
+    if (usingPowerBoost) return powerBoost.boosterSpeedUpAmount;
+    else return boosterSpeedUpAmount;
   }
 
   public void setRotateByRainbow(bool val) {
@@ -340,7 +382,7 @@ public class PlayerMover : MonoBehaviour {
   }
 
   public void showEffect(string effectName) {
-    if (scoreManager.isGameOver()) return;
+    if (usingPowerBoost || scoreManager.isGameOver()) return;
 
     if (effectName == "Whew") {
       boosterspeed += 140;
@@ -348,13 +390,18 @@ public class PlayerMover : MonoBehaviour {
       afterStrengthenStart();
       // audio needed
     } else if (effectName == "Charged") {
-      energyBar.setCharged();
+      if (!usingJetpack) energyBar.setCharged();
     }
 
     effects.Find(effectName).gameObject.SetActive(true);
   }
 
   public void strengthenBy(string obj) {
+    if (usingPowerBoost) {
+      changeManager.changeCharacterToOriginal();
+      return;
+    }
+
     if (obj == "SpecialPart") {
       unstoppable = true;
     } else if (obj == "Blackhole") {
@@ -371,12 +418,13 @@ public class PlayerMover : MonoBehaviour {
     } else if (obj == "Jetpack") {
       usingJetpack = true;
       energyBar.setCharged(true);
-      // showEffect("Jetpack");
       boosterBonus = jpm.boosterBonusScale;
-      changeManager.booster.GetComponent<ParticleSystem>().emissionRate *= boosterBonus;
+      changeManager.booster.GetComponent<ParticleSystem>().emissionRate *= (boosterBonus * 2);
+      changeManager.booster.transform.localScale = (boosterBonus * 2) * Vector3.one;
     } else if (obj == "Dopple") {
       usingDopple = true;
       contactCollider.enabled = false;
+      energyBar.getFullHealth();
     }
 
     StopCoroutine("strengthen");
@@ -404,7 +452,8 @@ public class PlayerMover : MonoBehaviour {
   public void stopStrengthen() {
     if (usingJetpack) {
       usingJetpack = false;
-      changeManager.booster.GetComponent<ParticleSystem>().emissionRate /= boosterBonus;
+      changeManager.booster.GetComponent<ParticleSystem>().emissionRate /= (boosterBonus * 2);
+      changeManager.booster.transform.localScale = Vector3.one;
       boosterBonus = 1;
       spawnManager.runManager("Jetpack");
     }
@@ -444,6 +493,7 @@ public class PlayerMover : MonoBehaviour {
 
     if (usingDopple) {
       usingDopple = false;
+      energyBar.getFullHealth();
       if (!trapped) contactCollider.enabled = true;
       Camera.main.GetComponent<CameraMover>().setSlowly(false);
       spawnManager.runManager("Dopple");
@@ -460,10 +510,11 @@ public class PlayerMover : MonoBehaviour {
   }
 
   public void afterStrengthenStart() {
+    if (usingPowerBoost) return;
+
     afterStrengthen = true;
     afterStrengthenCount = 0;
     changeManager.afterStrengthenEffect.Play();
-    // StartCoroutine(changeManager.afterStrengthen());
   }
 
   public bool isAfterStrengthen() {
@@ -495,7 +546,7 @@ public class PlayerMover : MonoBehaviour {
   }
 
   public void setRidingRainbowRoad(bool val) {
-    isRidingRainbowRoad = val;
+    if (!usingEMP) isRidingRainbowRoad = val;
   }
 
   public bool isUsingRainbow() {

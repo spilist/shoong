@@ -21,11 +21,11 @@ public class BrokenAsteroidMover : MonoBehaviour {
     large = Random.Range(0, 100) > 50;
 
     if (large) {
-      targetScale = 15;
-      duration = 1f;
+      targetScale = Random.Range(asm.minSizeAfterBreak, asm.maxSizeAfterBreak);
+      duration = asm.destroyLargeAfter;
     } else {
       targetScale = 0;
-      duration = 4f;
+      duration = asm.destroySmallAfter;
     }
 
     diff = Mathf.Abs(targetScale - scale);

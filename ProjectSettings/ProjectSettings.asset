@@ -264,11 +264,11 @@ PlayerSettings:
     2: CROSS_PLATFORM_INPUT
     4: 
     7: 
-    14: MOBILE_INPUT
-    15: CROSS_PLATFORM_INPUT;MOBILE_INPUT
-    16: CROSS_PLATFORM_INPUT;MOBILE_INPUT
-    17: MOBILE_INPUT
-    20: MOBILE_INPUT
+    14: 
+    15: CROSS_PLATFORM_INPUT
+    16: CROSS_PLATFORM_INPUT
+    17: 
+    20: 
   metroPackageName: Gongnori_Prototype
   metroPackageLogo: 
   metroPackageLogo140: 

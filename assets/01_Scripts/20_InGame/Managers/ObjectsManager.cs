@@ -22,6 +22,7 @@ public class ObjectsManager : MonoBehaviour {
   public ComboBar comboBar;
 
   public GameObject instance;
+  public bool forceSpawnAtStart = false;
 
   void OnEnable() {
     spawnManager = gameObject.GetComponent<SpawnManager>();
@@ -29,6 +30,11 @@ public class ObjectsManager : MonoBehaviour {
     comboBar = GameObject.Find("Bars Canvas").GetComponent<ComboBar>();
 
     initRest();
+
+    if (forceSpawnAtStart) {
+      minSpawnInterval = 0;
+      maxSpawnInterval = 0;
+    }
   }
 
   virtual public void initRest() {}

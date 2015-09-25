@@ -3,6 +3,8 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class CubesCount : MonoBehaviour {
+  public PowerBoost powerBoost;
+
   public int increaseSpeed = 2;
   private int count = 0;
   private float currentCount = 0;
@@ -27,16 +29,18 @@ public class CubesCount : MonoBehaviour {
     count += cubesGet + bonus;
 
     GameObject cubesGetInstance = Instantiate(howManyCubesGet);
-    cubesGetInstance.transform.SetParent(comboBar.transform, false);
+    cubesGetInstance.transform.SetParent(transform.parent.transform, false);
     cubesGetInstance.GetComponent<ShowChangeText>().run(cubesGet);
 
     if (bonus > 0) {
       GameObject bonusInstance = Instantiate(howManyBonusCubesGet);
-      bonusInstance.transform.SetParent(comboBar.transform, false);
+      bonusInstance.transform.SetParent(transform.parent.transform, false);
       bonusInstance.GetComponent<ShowChangeText>().run(bonus);
     }
 
     QuestManager.qm.addCountToQuest("GetCube", cubesGet + bonus);
+
+    powerBoost.addGuage((cubesGet + bonus) * powerBoost.guagePerCube);
   }
 
   public int getCount() {

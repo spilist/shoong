@@ -6,6 +6,7 @@ public class CharacterCreateBannerButton : BannerButton {
   public GameObject menusOverlay;
 
   override public void activateSelf() {
+
     menusOverlay.SetActive(true);
     back.useBannerMenu(this, gameOverUI, createMenu.gameObject);
   }

@@ -52,4 +52,8 @@ public class GoldenCubeMover : ObjectsMover {
   override public bool noCubesByDestroy() {
     return true;
   }
+
+  override protected float getSpeed() {
+    return 0;
+  }
 }

@@ -2,6 +2,9 @@
 using System.Collections;
 
 public class UIEffect : MonoBehaviour {
+  public PowerBoost powerBoost;
+  public int guageForEffect;
+
   public float startScale = 0.1f;
   public float stayScale = 1;
   public float smallScale = 0.6f;
@@ -18,6 +21,8 @@ public class UIEffect : MonoBehaviour {
     foreach (Transform tr in transform.parent) {
       if (tr.gameObject != gameObject) tr.gameObject.SetActive(false);
     }
+
+    powerBoost.addGuageWithEffect(guageForEffect);
 
     transform.localScale = startScale * Vector3.one;
     scale = startScale;
