@@ -6,8 +6,6 @@ public class SpawnManager : MonoBehaviour {
   public int showHiddensInHowManyGames = 100;
   public float generateSpaceRadius = 0.9f;
   public float generateOffset = 0.2f;
-  public int overlapDistance = 50;
-  public LayerMask mask;
 
   public void Start() {
     GetComponent<NormalPartsManager>().enabled = true;
@@ -67,6 +65,9 @@ public class SpawnManager : MonoBehaviour {
     Vector3 spawnPosition;
     int count = 0;
 
+    LayerMask mask = (int) Mathf.Pow(2, target.gameObject.layer);
+    float radius = target.GetComponent<ObjectsMover>().getBoundingSize();
+
     do {
       do {
         screenX = Random.Range(-generateSpaceRadius, 1 + generateSpaceRadius);
@@ -74,9 +75,9 @@ public class SpawnManager : MonoBehaviour {
       } while(-generateOffset < screenX && screenX < generateOffset + 1 && -generateOffset < screenY && screenY < generateOffset + 1);
 
       spawnPosition = Camera.main.ViewportToWorldPoint(new Vector3(screenX, screenY, Camera.main.transform.position.y));
-    } while(Physics.OverlapSphere(spawnPosition, overlapDistance, mask).Length > 0 && count++ < 100);
+    } while(Physics.OverlapSphere(spawnPosition, radius, mask).Length > 0 && count++ < 100);
 
-    if (count >= 100) Debug.Log("An object is overlapped");
+    if (count >= 100) Debug.Log(target.name + " is overlapped");
 
     return spawnPosition;
   }

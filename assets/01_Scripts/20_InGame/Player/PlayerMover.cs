@@ -340,6 +340,9 @@ public class PlayerMover : MonoBehaviour {
     GetComponent<Renderer>().enabled = false;
     GetComponent<Collider>().enabled = false;
     changeManager.changeCharacterToOriginal();
+    rdm.destroyInstances();
+    isRotatingByRainbow = false;
+    isRidingRainbowRoad = false;
     stopStrengthen();
   }
 
@@ -369,6 +372,7 @@ public class PlayerMover : MonoBehaviour {
 
   public void setDirection(Vector3 dir) {
     direction = dir;
+    if (usingPowerBoost) powerBoost.setDir(dir);
     rotatePlayerBody();
   }
 

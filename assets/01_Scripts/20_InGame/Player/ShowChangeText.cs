@@ -74,10 +74,7 @@ public class ShowChangeText : MonoBehaviour {
       icon = transform.Find("Icon").GetComponent<Renderer>();
       iconColor = icon.material.color;
 
-      float iconChangeAmount = ((amount / changeBase) - 1) * changeScale;
-      iconChangeAmount = Mathf.Min(iconChangeAmount, changeScale * maxScale);
-
-      icon.transform.localScale += Vector3.one * iconChangeAmount;
+      icon.transform.localScale += Vector3.one * changeAmount;
       icon.GetComponent<RectTransform>().anchoredPosition = new Vector3(-icon.transform.localScale.x, 0, 0);
 
       if (hasBonus) {

@@ -79,6 +79,9 @@ public class PowerBoost : MonoBehaviour {
   private bool powerBoostRunning = false;
   private bool changeTextAlpha = false;
 
+  private Vector3 direction;
+  public int rotatingSpeed = 100;
+
 	void Start () {
     powerBoostParticle = transform.Find("Particle").GetComponent<ParticleSystem>();
     guageColor = powerBoostGuage.material.GetColor("_TintColor");
@@ -105,6 +108,8 @@ public class PowerBoost : MonoBehaviour {
 
   void startPowerBoost() {
     if (isTransforming) return;
+
+    QuestManager.qm.addCountToQuest("DoSuperHeat");
 
     GetComponent<MeshFilter>().sharedMesh = player.GetComponent<MeshFilter>().sharedMesh;
     afterImagePrefab.GetComponent<MeshFilter>().sharedMesh = GetComponent<MeshFilter>().sharedMesh;
@@ -153,7 +158,8 @@ public class PowerBoost : MonoBehaviour {
     transform.localScale = Vector3.one * bigSize;
 
     player.GetComponent<Rigidbody>().isKinematic = false;
-    player.rotatePlayerBody();
+    setDir(player.getDirection());
+    // player.rotatePlayerBody();
 
     isTransforming = false;
     powerBoostRunning = true;
@@ -206,9 +212,14 @@ public class PowerBoost : MonoBehaviour {
     stopPowerBoost();
   }
 
+  public void setDir(Vector3 dir) {
+    direction = dir;
+  }
+
   void Update() {
     transform.position = player.transform.position;
-    transform.rotation = player.transform.rotation;
+    // transform.rotation = player.transform.rotation;
+    transform.Rotate(direction * Time.deltaTime * rotatingSpeed);
 
     if (transformStatus > 0) {
       if (transformStatus == 1) {
@@ -309,5 +320,9 @@ public class PowerBoost : MonoBehaviour {
     }
 
     mover.destroyObject(true, true);
+  }
+
+  public bool isOnPowerBoost() {
+    return powerBoostRunning;
   }
 }

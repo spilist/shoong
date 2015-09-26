@@ -25,6 +25,18 @@ public class AsteroidManager : ObjectsManager {
     int count = 0;
     foreach (Transform tr in objPrefab.transform) {
       asteroidsPrefab[count++] = tr.gameObject;
+
+      float radius;
+      if (tr.GetComponent<Renderer>() != null) {
+        radius = tr.GetComponent<Renderer>().bounds.extents.magnitude;
+      } else {
+        Bounds bounds = new Bounds(Vector3.zero, Vector3.zero);
+        foreach (Transform tra in tr) {
+          bounds.Encapsulate(tra.GetComponent<Renderer>().bounds);
+        }
+        radius = bounds.extents.magnitude;
+      }
+      tr.GetComponent<ObjectsMover>().setBoundingSize(radius);
     }
 
     spawnManager.spawnRandom(asteroidsPrefab, max_obstacles);

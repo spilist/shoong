@@ -120,8 +120,8 @@ public class RainbowDonutsManager : ObjectsManager {
     StopCoroutine("rideRainbow");
     erasingRainbowRoad = false;
     drawingRainbowRoad = false;
-    Destroy(rainbowRoad.gameObject);
-    Destroy(instance);
+    if (rainbowRoad != null) Destroy(rainbowRoad.gameObject);
+    if (instance != null) Destroy(instance);
     objEncounterEffectForPlayer.Stop();
     run();
   }

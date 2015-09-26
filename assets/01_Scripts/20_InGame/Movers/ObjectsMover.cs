@@ -18,6 +18,7 @@ public class ObjectsMover : MonoBehaviour {
 
   protected ObjectsManager objectsManager;
   protected Rigidbody rb;
+  protected float boundingSize = 50;
 
   void Start() {
     player = GameObject.Find("Player").GetComponent<PlayerMover>();
@@ -37,6 +38,14 @@ public class ObjectsMover : MonoBehaviour {
     rb = GetComponent<Rigidbody>();
     rb.angularVelocity = Random.onUnitSphere * tumble;
     rb.velocity = direction * speed;
+  }
+
+  public void setBoundingSize(float val) {
+    boundingSize = val;
+  }
+
+  public float getBoundingSize() {
+    return boundingSize;
   }
 
   virtual public string getManager() {
