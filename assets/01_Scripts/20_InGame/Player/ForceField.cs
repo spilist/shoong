@@ -42,7 +42,6 @@ public class ForceField : MonoBehaviour {
         QuestManager.qm.addCountToQuest("DestroyFallingStar");
       }
     }
-
     mover.destroyObject(true, true);
   }
 

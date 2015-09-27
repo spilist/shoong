@@ -30,13 +30,14 @@ public class SmallAsteroidManager : ObjectsManager {
     spawnManager.spawnRandom(smallAsteroidsPrefab, max_obstacles);
   }
 
-  override public void run() {
-    if (GameObject.FindGameObjectsWithTag("Obstacle_big").Length < max_obstacles) {
-      spawnManager.spawn(smallAsteroidsPrefab[Random.Range(0, smallAsteroidsPrefab.Length)]);
-    }
-  }
+  override public void run() {}
 
-  override public void runImmediately() {
-    run();
+  override public void runImmediately() {}
+
+  public void respawn() {
+    int count = max_obstacles - GameObject.FindGameObjectsWithTag("Obstacle_small").Length;
+    if (count > 0) {
+      spawnManager.spawnRandom(smallAsteroidsPrefab, count);
+    }
   }
 }

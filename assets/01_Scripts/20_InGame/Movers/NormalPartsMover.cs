@@ -11,8 +11,6 @@ public class NormalPartsMover : ObjectsMover {
     }
 
     if (player.isUsingJetpack()) QuestManager.qm.addCountToQuest("GetPartsOnJetpack");
-
-    objectsManager.run();
   }
 
   override public string getManager() {

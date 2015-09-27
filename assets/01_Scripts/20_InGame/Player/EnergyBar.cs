@@ -105,7 +105,7 @@ public class EnergyBar : MonoBehaviour {
   }
 
   void autoDecrease() {
-    if (charged || player.isUsingRainbow() || player.isUsingEMP()) return;
+    if (charged || player.isUsingRainbow() || player.isUsingEMP() || player.isOnPowerBoost()) return;
 
     image.fillAmount = Mathf.MoveTowards(image.fillAmount, 0, Time.deltaTime * autoDecreaseRate);
   }

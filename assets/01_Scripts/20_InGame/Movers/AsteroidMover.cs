@@ -36,8 +36,6 @@ public class AsteroidMover : ObjectsMover {
     }
 
     if (isNearPlayer) player.nearAsteroid(false);
-
-    objectsManager.run();
   }
 
   public void nearPlayer(bool enter = true) {

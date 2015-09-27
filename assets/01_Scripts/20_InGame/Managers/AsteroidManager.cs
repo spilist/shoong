@@ -42,13 +42,14 @@ public class AsteroidManager : ObjectsManager {
     spawnManager.spawnRandom(asteroidsPrefab, max_obstacles);
   }
 
-  override public void run() {
-    if (GameObject.FindGameObjectsWithTag("Obstacle_big").Length < max_obstacles) {
-      spawnManager.spawn(asteroidsPrefab[Random.Range(0, asteroidsPrefab.Length)]);
-    }
-  }
+  override public void run() {}
 
-  override public void runImmediately() {
-    run();
+  override public void runImmediately() {}
+
+  public void respawn() {
+    int count = max_obstacles - GameObject.FindGameObjectsWithTag("Obstacle_big").Length;
+    if (count > 0) {
+      spawnManager.spawnRandom(asteroidsPrefab, count);
+    }
   }
 }

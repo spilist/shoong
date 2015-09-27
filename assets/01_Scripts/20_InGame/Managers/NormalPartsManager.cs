@@ -14,13 +14,14 @@ public class NormalPartsManager : ObjectsManager {
     spawnManager.spawnRandom(partsPrefab, max_parts);
   }
 
-  override public void run() {
-    if (GameObject.FindGameObjectsWithTag("Part").Length < max_parts) {
-      spawnManager.spawn(partsPrefab[Random.Range(0, partsPrefab.Length)]);
-    }
-  }
+  override public void run() {}
 
-  override public void runImmediately() {
-    run();
+  override public void runImmediately() {}
+
+  public void respawn() {
+    int count = max_parts - GameObject.FindGameObjectsWithTag("Part").Length;
+    if (count > 0) {
+      spawnManager.spawnRandom(partsPrefab, count);
+    }
   }
 }

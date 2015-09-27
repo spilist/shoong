@@ -340,9 +340,12 @@ public class PlayerMover : MonoBehaviour {
     GetComponent<Renderer>().enabled = false;
     GetComponent<Collider>().enabled = false;
     changeManager.changeCharacterToOriginal();
-    rdm.destroyInstances();
-    isRotatingByRainbow = false;
-    isRidingRainbowRoad = false;
+
+    if (isUsingRainbow()) {
+      rdm.destroyInstances();
+      isRotatingByRainbow = false;
+      isRidingRainbowRoad = false;
+    }
     stopStrengthen();
   }
 
