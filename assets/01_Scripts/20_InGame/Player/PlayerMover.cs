@@ -318,15 +318,17 @@ public class PlayerMover : MonoBehaviour {
 
     energyBar.loseByShoot();
 
-    changeManager.booster.Play();
-    changeManager.booster.GetComponent<AudioSource>().Play();
+    if (usingPowerBoost) {
+      Camera.main.GetComponent<CameraMover>().shake(powerBoost.shakeDuration, powerBoost.shakeAmount);
+    } else {
+      changeManager.booster.Play();
+      changeManager.booster.GetComponent<AudioSource>().Play();
+    }
 
     if (boosterspeed < maxBooster() * boosterBonus) {
       boosterspeed += boosterSpeedUp() * boosterBonus;
       boosterspeed = boosterspeed > (maxBooster() * boosterBonus)? (maxBooster() * boosterBonus) : boosterspeed;
     }
-
-    if (usingPowerBoost) Camera.main.GetComponent<CameraMover>().shake(powerBoost.shakeDuration, powerBoost.shakeAmount);
 
     cpm.tryToGet();
   }
@@ -340,6 +342,7 @@ public class PlayerMover : MonoBehaviour {
     GetComponent<Renderer>().enabled = false;
     GetComponent<Collider>().enabled = false;
     changeManager.changeCharacterToOriginal();
+    energyBar.getFullHealth();
 
     if (isUsingRainbow()) {
       rdm.destroyInstances();
