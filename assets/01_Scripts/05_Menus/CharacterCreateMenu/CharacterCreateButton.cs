@@ -54,6 +54,7 @@ public class CharacterCreateButton : MenusBehavior {
     congraturation.GetComponent<ParticleSystem>().Stop();
     congraturation.gameObject.SetActive(false);
     isNewCharacter.SetActive(false);
+    nextChance.SetActive(false);
     shareButton.gameObject.SetActive(false);
     selectButton.gameObject.SetActive(false);
     GetComponent<RectTransform>().anchoredPosition = new Vector2(0, GetComponent<RectTransform>().anchoredPosition.y);

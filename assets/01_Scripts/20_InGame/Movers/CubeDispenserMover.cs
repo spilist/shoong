@@ -32,7 +32,7 @@ public class CubeDispenserMover : ObjectsMover {
 
   override protected void afterCollide(Collision collision) {
     if (collision.collider.tag == "ContactCollider") {
-      if (player.isUsingRainbow()) {
+      if (player.isUsingRainbow() || player.isUnstoppable()) {
         player.goodPartsEncounter(this, cdm.cubesPerContact * cdm.fullComboCount);
       } else {
         player.contactCubeDispenser(transform, cdm.cubesPerContact, collision, cdm.reboundDuring);

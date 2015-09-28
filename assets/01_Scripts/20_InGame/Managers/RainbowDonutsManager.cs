@@ -130,11 +130,6 @@ public class RainbowDonutsManager : ObjectsManager {
     return rideCount;
   }
 
-  override protected float spawnInterval() {
-    if (rideCount == 0) return 0;
-    else return Random.Range(minSpawnInterval, maxSpawnInterval);
-  }
-
   override public int cubesWhenEncounter() {
     return cubesPerRide;
   }

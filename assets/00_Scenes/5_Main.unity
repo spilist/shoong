@@ -35339,7 +35339,7 @@ MonoBehaviour:
   m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: .999899983
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 0
 --- !u!222 &1094098732
@@ -53756,7 +53756,7 @@ Transform:
   m_PrefabParentObject: {fileID: 451376, guid: 4c9406b8460314547bf9b2aaf13e8547, type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1552135346}
-  m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106709}
+  m_LocalRotation: {x: 0, y: .707106829, z: 0, w: .707106709}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: .800000012, y: .800000012, z: .800000012}
   m_Children: []
@@ -67118,7 +67118,7 @@ MonoBehaviour:
   player: {fileID: 0}
   comboBar: {fileID: 0}
   instance: {fileID: 0}
-  forceSpawnAtStart: 0
+  forceSpawnAtStart: 1
   destroyBonusPerLevel:
   - 0
   - 1
@@ -67301,14 +67301,14 @@ MonoBehaviour:
   strength: .5
   speed: 15
   tumble: 5
-  minSpawnInterval: 0
-  maxSpawnInterval: 0
+  minSpawnInterval: 5
+  maxSpawnInterval: 15
   cubesByEncounter: 0
   isNegative: 0
   player: {fileID: 0}
   comboBar: {fileID: 0}
   instance: {fileID: 0}
-  forceSpawnAtStart: 0
+  forceSpawnAtStart: 1
   boosterBonusScalePerLevel:
   - 1.10000002
   - 1.5
