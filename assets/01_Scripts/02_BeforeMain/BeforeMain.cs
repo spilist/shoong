@@ -92,7 +92,10 @@ public class BeforeMain : MonoBehaviour {
             PlayerPrefs.SetString("CharacterRotation", rot.ToString().TrimStart('(').TrimEnd(')'));
             PlayerPrefs.SetString("CharacterAngVal", angVal.ToString().TrimStart('(').TrimEnd(')'));
 
-            Application.LoadLevelAsync("5_Main");
+            // Wait until GPGS authenticate is finished
+            DataManager.npbm.authenticate((bool _success)=>{      
+              Application.LoadLevelAsync("5_Main");
+            });
           }
         }
       }

@@ -3,9 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
+using System.Collections;
 
 public class DataManager : MonoBehaviour {
   public static DataManager dm;
+  public static NPBManager npbm;
   private string datapath;
 
   private Dictionary<string, int> ints;
@@ -55,6 +57,9 @@ public class DataManager : MonoBehaviour {
     }
 
     DataManager.dm.setInt("ShowCharacterCreateCount", 0);
+	
+    npbm = GetComponent<NPBManager>();
+    npbm.init();
   }
 
   bool load() {
