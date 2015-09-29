@@ -5,7 +5,8 @@ public class MenusController : MonoBehaviour {
   public ScoreManager scoreManager;
   public GameObject menusOverlay;
   public GameObject backButton;
-  public GameObject menuButtons;
+  public GameObject menuButtonsLeft;
+  public GameObject menuButtonsRight;
   public GameObject idleUI;
   public GameObject inGameUI;
   public GameObject beforeIdleUI;
@@ -52,7 +53,8 @@ public class MenusController : MonoBehaviour {
     }
     menuOn = !menuOn;
     backButton.SetActive(!backButton.activeSelf);
-    menuButtons.SetActive(!menuButtons.activeSelf);
+    menuButtonsLeft.SetActive(!menuButtonsLeft.activeSelf);
+    menuButtonsRight.SetActive(!menuButtonsRight.activeSelf);
     currentlyOn.SetActive(!currentlyOn.activeSelf);
     menusOverlay.SetActive(!menusOverlay.activeSelf);
   }
@@ -61,7 +63,8 @@ public class MenusController : MonoBehaviour {
     notYetStarted = false;
     inGameUI.SetActive(true);
     idleUI.SetActive(false);
-    menuButtons.SetActive(false);
+    menuButtonsLeft.SetActive(false);
+    menuButtonsRight.SetActive(false);
 
     barsCanvas.GetComponent<Canvas>().enabled = true;
     barsCanvas.transform.Find("EnergyBar").GetComponent<EnergyBar>().startGame();
@@ -79,25 +82,30 @@ public class MenusController : MonoBehaviour {
     currentlyOn = newCurrent;
   }
 
-  public bool isDraggable() {
-    return currentlyOn.GetComponent<Draggable>() != null;
+  public string draggableDirection() {
+    if (currentlyOn.GetComponent<Draggable>() == null) return "";
+    else return currentlyOn.GetComponent<Draggable>().direction;
   }
 
   public GameObject draggable() {
     return currentlyOn.GetComponent<Draggable>().draggable();
   }
 
-  public float leftDragEnd() {
-    return currentlyOn.GetComponent<Draggable>().leftDragEnd();
-  }
-
-  public float rightDragEnd() {
-    return currentlyOn.GetComponent<Draggable>().rightDragEnd();
+  public float dragEnd(string where) {
+    Draggable draggable = currentlyOn.GetComponent<Draggable>();
+    if (where == "left") return draggable.leftDragEnd();
+    else if (where == "right") return draggable.rightDragEnd();
+    else if (where == "top") return draggable.topDragEnd();
+    else return draggable.bottomDragEnd();
   }
 
   public void returnToEnd(string where) {
-    if (where == "left") currentlyOn.GetComponent<Draggable>().returnToLeftEnd();
-    else currentlyOn.GetComponent<Draggable>().returnToRightEnd();
+    Draggable draggable = currentlyOn.GetComponent<Draggable>();
+
+    if (where == "left") draggable.returnToLeftEnd();
+    else if (where == "right") draggable.returnToRightEnd();
+    else if (where == "top") draggable.returnToTopEnd();
+    else draggable.returnToBottomEnd();
   }
 
   public bool gameStarted() {

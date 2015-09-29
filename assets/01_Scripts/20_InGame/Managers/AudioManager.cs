@@ -34,7 +34,11 @@ public class AudioManager : MonoBehaviour {
     main = transform.Find("Main").GetComponent<AudioSource>();
     powerBoost = transform.Find("PowerBoost").GetComponent<AudioSource>();
 
-    main.volume = mainSmallVolume;
+    if (DataManager.dm.getBool("BGMOffSetting")) {
+      main.volume = 0;
+    } else {
+      main.volume = mainSmallVolume;
+    }
 	}
 
   void Update() {
@@ -58,15 +62,24 @@ public class AudioManager : MonoBehaviour {
   }
 
   public void startPowerBoost() {
+    if (DataManager.dm.getBool("BGMOffSetting") || AudioListener.volume == 0) return;
+
     powerBoost.gameObject.SetActive(true);
     changeVolume("PowerBoost", "Max");
     changeVolume("Main", "Min");
   }
 
   public void stopPowerBoost() {
+    if (DataManager.dm.getBool("BGMOffSetting") || AudioListener.volume == 0) return;
+
     main.gameObject.SetActive(true);
     changeVolume("PowerBoost", "Min");
     changeVolume("Main", "Max");
+  }
+
+  public void muteBGM(bool mute) {
+    if (mute) main.volume = 0;
+    else main.volume = mainSmallVolume;
   }
 
   public void changeVolume(string what, string level) {

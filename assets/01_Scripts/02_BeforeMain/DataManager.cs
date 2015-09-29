@@ -21,7 +21,9 @@ public class DataManager : MonoBehaviour {
   public int resetCube = 0;
   public int resetGoldenCube = 0;
 
-	void Awake() {
+  public int normalFrameRate = 60;
+
+  void Awake() {
     if (dm != null && dm != this) {
       Destroy(gameObject);
       return;
@@ -40,6 +42,9 @@ public class DataManager : MonoBehaviour {
     dateTimes = new Dictionary<string, DateTime>();
 
     if (resetAll || !load()) reset();
+
+    Application.targetFrameRate = getInt("BatterySavingSetting");
+    if (getBool("MuteAudioSetting")) AudioListener.volume = 0;
   }
 
   bool load() {
@@ -87,6 +92,7 @@ public class DataManager : MonoBehaviour {
     strings.Clear();
     dateTimes.Clear();
 
+    ints["BatterySavingSetting"] = 60;
     ints["CubeNow"] = resetCube;
     ints["CubeTotal"] = resetCube;
     ints["GoldenCubeNow"] = resetGoldenCube;

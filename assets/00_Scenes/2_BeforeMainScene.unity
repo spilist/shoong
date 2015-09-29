@@ -924,6 +924,7 @@ MonoBehaviour:
   resetAll: 0
   resetCube: 1000000
   resetGoldenCube: 100000
+  normalFrameRate: 60
 --- !u!4 &1467429886
 Transform:
   m_ObjectHideFlags: 0

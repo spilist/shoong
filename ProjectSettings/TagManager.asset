@@ -44,6 +44,10 @@ TagManager:
   - Jetpack
   - Dopple
   - PowerBoost
+  - SettingsMenu
+  - Settings_About
+  - Settings_Tips
+  - Settings_Stats
   layers:
   - Default
   - TransparentFX

@@ -16,6 +16,8 @@ public class TouchInputHandler : MonoBehaviour
 	private bool react = true;
 	private bool dragging = false;
 	private Vector3 direction;
+  private float lastMousePosition_y;
+  private float endMousePosition_y;
   private float lastMousePosition_x;
   private float endMousePosition_x;
   private Vector3 lastDraggablePosition;
@@ -69,25 +71,38 @@ public class TouchInputHandler : MonoBehaviour
 	}
 
 	void OnMouseDown() {
-    if (menus.isMenuOn() && menus.isDraggable()) {
-	    lastMousePosition_x = Input.mousePosition.x;
+    if (menus.isMenuOn() && menus.draggableDirection() != "") {
+      lastMousePosition_x = Input.mousePosition.x;
+	    lastMousePosition_y = Input.mousePosition.y;
       lastDraggablePosition = Camera.main.WorldToScreenPoint(menus.draggable().transform.position);
       dragging = true;
 		}
   }
 
   void OnMouseDrag() {
-    if (menus.isMenuOn() && menus.isDraggable()) {
-      float positionX = menus.draggable().transform.localPosition.x;
-  		Vector3 movement;
-    	if (positionX == menus.leftDragEnd() || positionX == menus.rightDragEnd()) {
-    		endMousePosition_x = Input.mousePosition.x;
-    	}
-    	if (positionX > menus.leftDragEnd() || positionX < menus.rightDragEnd()) {
-    		movement = new Vector3((Input.mousePosition.x - endMousePosition_x)/5f + (endMousePosition_x - lastMousePosition_x), 0, 0);
-    	} else {
-    		movement = new Vector3(Input.mousePosition.x - lastMousePosition_x, 0, 0);
-    	}
+    if (menus.isMenuOn() && menus.draggableDirection() != "") {
+  		Vector3 movement = Vector3.zero;
+      if (menus.draggableDirection() == "LeftRight") {
+        float positionX = menus.draggable().transform.localPosition.x;
+      	if (positionX == menus.dragEnd("left") || positionX == menus.dragEnd("right")) {
+      		endMousePosition_x = Input.mousePosition.x;
+      	}
+      	if (positionX > menus.dragEnd("left") || positionX < menus.dragEnd("right")) {
+      		movement = new Vector3((Input.mousePosition.x - endMousePosition_x)/5f + (endMousePosition_x - lastMousePosition_x), 0, 0);
+      	} else {
+      		movement = new Vector3(Input.mousePosition.x - lastMousePosition_x, 0, 0);
+      	}
+      } else {
+        float positionY = menus.draggable().transform.localPosition.y;
+        if (positionY == menus.dragEnd("top") || positionY == menus.dragEnd("bottom")) {
+          endMousePosition_y = Input.mousePosition.y;
+        }
+        if (positionY > menus.dragEnd("top") || positionY < menus.dragEnd("bottom")) {
+          movement = new Vector3(0, (Input.mousePosition.y - endMousePosition_y)/5f + (endMousePosition_y - lastMousePosition_y), 0);
+        } else {
+          movement = new Vector3(0, Input.mousePosition.y - lastMousePosition_y, 0);
+        }
+      }
 
       menus.draggable().transform.position = Camera.main.ScreenToWorldPoint(lastDraggablePosition + movement);
     }
@@ -96,12 +111,22 @@ public class TouchInputHandler : MonoBehaviour
   void OnMouseUp() {
   	if (menus.isMenuOn() && dragging) {
   		dragging = false;
-  		float positionX = menus.draggable().transform.localPosition.x;
-  		if (positionX > menus.leftDragEnd()) {
-  			menus.returnToEnd("left");
-			} else if (positionX < menus.rightDragEnd()) {
-				menus.returnToEnd("right");
-			}
+
+      if (menus.draggableDirection() == "LeftRight") {
+    		float positionX = menus.draggable().transform.localPosition.x;
+    		if (positionX > menus.dragEnd("left")) {
+    			menus.returnToEnd("left");
+  			} else if (positionX < menus.dragEnd("right")) {
+  				menus.returnToEnd("right");
+  			}
+      } else {
+        float positionY = menus.draggable().transform.localPosition.y;
+        if (positionY > menus.dragEnd("top")) {
+          menus.returnToEnd("top");
+        } else if (positionY < menus.dragEnd("bottom")) {
+          menus.returnToEnd("bottom");
+        }
+      }
   	}
   }
 

@@ -3,13 +3,26 @@ using System.Collections;
 
 public class Draggable : MonoBehaviour {
   public GameObject whatToDrag;
+  public string direction;
+
+  protected bool returningToTop = false;
+  protected bool returningToBottom = false;
   protected bool returningToLeft = false;
   protected bool returningToRight = false;
   public int returningSpeed = 500;
   float positionX = 0;
+  float positionY = 0;
 
   public GameObject draggable() {
     return whatToDrag;
+  }
+
+  virtual public float topDragEnd() {
+    return 0;
+  }
+
+  virtual public float bottomDragEnd() {
+    return 0;
   }
 
   virtual public float leftDragEnd() {
@@ -20,12 +33,22 @@ public class Draggable : MonoBehaviour {
     return 0;
   }
 
-  virtual public void returnToLeftEnd() {
+  public void returnToTopEnd() {
+    positionY = whatToDrag.transform.localPosition.y;
+    returningToTop = true;
+  }
+
+  public void returnToBottomEnd() {
+    positionY = whatToDrag.transform.localPosition.y;
+    returningToBottom = true;
+  }
+
+  public void returnToLeftEnd() {
     positionX = whatToDrag.transform.localPosition.x;
     returningToLeft = true;
   }
 
-  virtual public void returnToRightEnd() {
+  public void returnToRightEnd() {
     positionX = whatToDrag.transform.localPosition.x;
     returningToRight = true;
   }
@@ -39,6 +62,14 @@ public class Draggable : MonoBehaviour {
       positionX = Mathf.MoveTowards(positionX, rightDragEnd(), Time.deltaTime * returningSpeed);
       whatToDrag.transform.localPosition = new Vector3(positionX, whatToDrag.transform.localPosition.y, whatToDrag.transform.localPosition.z);
       if (positionX == rightDragEnd()) returningToRight = false;
+    } else if (returningToTop) {
+      positionY = Mathf.MoveTowards(positionY, topDragEnd(), Time.deltaTime * returningSpeed);
+      whatToDrag.transform.localPosition = new Vector3(whatToDrag.transform.localPosition.x, positionY, whatToDrag.transform.localPosition.z);
+      if (positionY == topDragEnd()) returningToTop = false;
+    } else if (returningToBottom) {
+      positionY = Mathf.MoveTowards(positionY, bottomDragEnd(), Time.deltaTime * returningSpeed);
+      whatToDrag.transform.localPosition = new Vector3(whatToDrag.transform.localPosition.x, positionY, whatToDrag.transform.localPosition.z);
+      if (positionY == bottomDragEnd()) returningToBottom = false;
     }
   }
 }
