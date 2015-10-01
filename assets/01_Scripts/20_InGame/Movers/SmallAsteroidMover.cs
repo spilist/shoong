@@ -4,7 +4,7 @@ using System.Collections;
 public class SmallAsteroidMover : ObjectsMover {
 private bool isNearPlayer = false;
   private SpecialPartsManager spm;
-  private SmallAsteroidManager ssm;
+  // private SmallAsteroidManager ssm;
   private bool collideChecked = false;
 
   override public string getManager() {
@@ -13,7 +13,7 @@ private bool isNearPlayer = false;
 
   override protected void initializeRest() {
     canBeMagnetized = false;
-    ssm = (SmallAsteroidManager)objectsManager;
+    // ssm = (SmallAsteroidManager)objectsManager;
     spm = GameObject.Find("Field Objects").GetComponent<SpecialPartsManager>();
   }
 
@@ -48,7 +48,7 @@ private bool isNearPlayer = false;
   }
 
   override public bool dangerous() {
-    if (player.isAfterStrengthen() || player.isRidingMonster() || player.isUnstoppable() || player.isUsingRainbow() || player.isUsingDopple()) return false;
+    if (player.isInvincible()) return false;
     else return true;
   }
 

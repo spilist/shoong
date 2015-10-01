@@ -150,6 +150,8 @@ public class PlayerMover : MonoBehaviour {
 
     ObjectsMover mover = other.gameObject.GetComponent<ObjectsMover>();
 
+    if (mover == null) return;
+
     if (mover.dangerous()) {
       scoreManager.gameOver(mover.tag);
       return;
@@ -674,5 +676,9 @@ public class PlayerMover : MonoBehaviour {
     DataManager.dm.setBestInt("BestBoosters", numBoosters);
     DataManager.dm.setBestInt("BestNumDestroyObstacles", numDestroyObstacles);
     DataManager.dm.setBestInt("BestNumUseObjects", numUseObjects);
+  }
+
+  public bool isInvincible() {
+    return afterStrengthen || ridingMonster || unstoppable || isUsingRainbow() || changeManager.isTeleporting();
   }
 }

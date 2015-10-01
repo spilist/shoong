@@ -57,6 +57,8 @@ public class ScoreManager : MonoBehaviour {
       DataManager.dm.increment("DeathByMonster");
     } else if (reason == "Trap") {
       DataManager.dm.increment("DeathByTrap");
+    } else if (reason == "Dopple") {
+      DataManager.dm.increment("DeathByDopple");
     }
 
     StartCoroutine("startGameOver");

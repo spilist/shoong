@@ -2,6 +2,7 @@
 using System.Collections;
 
 public class TinyForceField : MonoBehaviour {
+  public bool byPlayer = false;
   DoppleManager dpm;
 
   private float duration;
@@ -18,7 +19,8 @@ public class TinyForceField : MonoBehaviour {
 
 	void Start () {
     dpm = GameObject.Find("Field Objects").GetComponent<DoppleManager>();
-    transform.localScale = Vector3.one * dpm.targetSize;
+
+    transform.localScale = Vector3.one * dpm.getTargetSize(byPlayer);
     duration = dpm.waveAwakeDuration;
 
     main = transform.Find("Main");

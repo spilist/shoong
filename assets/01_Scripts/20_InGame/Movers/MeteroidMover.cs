@@ -51,7 +51,7 @@ public class MeteroidMover : ObjectsMover {
   }
 
   override public bool dangerous() {
-    if (player.isAfterStrengthen() || player.isRidingMonster() || player.isUnstoppable() || player.isUsingRainbow()  || player.isUsingDopple()) return false;
+    if (player.isInvincible()) return false;
     else return true;
   }
 

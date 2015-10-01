@@ -14,8 +14,6 @@ public class CharacterChangeManager : MonoBehaviour {
   public Color[] doppleMetalColors;
 
   public Material originalMaterial;
-  public Color originalColor;
-
   private Mesh originalMesh;
 
   private MeshFilter mFilter;
@@ -33,8 +31,6 @@ public class CharacterChangeManager : MonoBehaviour {
   private float alphaOrigin;
   private float alpha = 0;
   private float stayCount = 0;
-
-  // public float afterStrengthenDuration
 
   void OnEnable() {
     mFilter = GetComponent<MeshFilter>();
@@ -126,7 +122,6 @@ public class CharacterChangeManager : MonoBehaviour {
     teleportingStatus = 0;
     changeCharacter(originalMesh, originalMaterial);
     StopCoroutine("characterBlinking");
-    // mRenderer.sharedMaterial.SetColor("_ReflectColor", originalColor);
   }
 
   public void changeCharacter(string characterName) {

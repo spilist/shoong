@@ -52,3 +52,4 @@ int,DeathByMeteroid,유성에 죽음
 int,DeathByBlackhole,블랙홀에 죽음
 int,DeathByMonster,몬스터에 죽음
 int,DeathByTrap,갇혀 죽음
+int,DeathByDopple,순간이동장치에게 죽음

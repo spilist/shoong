@@ -391,6 +391,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9ab111b1c549423f9ec84fa8c9c2e31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  byPlayer: 1
 --- !u!114 &11492676
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -681,6 +682,10 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: byPlayer
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

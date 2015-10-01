@@ -2561,7 +2561,6 @@ MonoBehaviour:
   - {r: .254901975, g: .254901975, b: .254901975, a: .70588237}
   - {r: .615686297, g: .650980413, b: 1, a: 0}
   originalMaterial: {fileID: 2100000, guid: 9b422acddcdd24ad994ef6f9b89c8c5d, type: 2}
-  originalColor: {r: .113725491, g: .113725491, b: .113725491, a: 0}
   playerParticlesParent: {fileID: 678200079}
   booster: {fileID: 131396333}
   chargedEffect: {fileID: 2085521110}
@@ -69009,7 +69008,7 @@ MonoBehaviour:
   instance: {fileID: 0}
   forceSpawnAtStart: 0
   objPrefab_next: {fileID: 192146, guid: d357428246b5f4e5fb2b54651d371984, type: 2}
-  fullComboCountPerLevel: 030000000400000005000000
+  fullComboCountPerLevel: 030000000400000006000000
   comboBonusScale: 5
   radius: 50
   pitchStart: .400000006
@@ -69185,7 +69184,7 @@ MonoBehaviour:
   brokenMeshes:
   - {fileID: 4300002, guid: adeac5a1dbc17406db69c3e813cc95ef, type: 3}
   - {fileID: 4300004, guid: adeac5a1dbc17406db69c3e813cc95ef, type: 3}
-  fullComboCountPerLevel: 050000000600000007000000
+  fullComboCountPerLevel: 030000000500000007000000
   destroyAfterPerLevel:
   - 3.5
   - 4
@@ -69520,6 +69519,8 @@ MonoBehaviour:
   getEnergy: {fileID: 317572741}
   energyCube: {fileID: 178344, guid: b185d52f68bf5499e81f948bbbf1bd8c, type: 2}
   forceFieldPrefab: {fileID: 175312, guid: c461f9df261eb41ff961769c46f81139, type: 2}
+  forceFieldByDopplePrefab: {fileID: 139776, guid: 5ebc0722331894005b24bbd0c1b32848,
+    type: 2}
   forceFieldSizePerLevel:
   - .75
   - 1
@@ -69531,6 +69532,10 @@ MonoBehaviour:
   cannotTeleportWarningSound: {fileID: 8300000, guid: 6175d64a3d350574aa82124734e3a684,
     type: 3}
   waveAwakeDuration: .0199999996
+  blinkInterval: 3
+  blinkRadius: 50
+  teleportingDuration: .0500000007
+  originalColor: {r: .600000024, g: .835294127, b: 1, a: .70588237}
 --- !u!114 &1991538121
 MonoBehaviour:
   m_ObjectHideFlags: 0

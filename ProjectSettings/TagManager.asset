@@ -48,6 +48,7 @@ TagManager:
   - Settings_About
   - Settings_Tips
   - Settings_Stats
+  - TinyForceFieldByDopple
   layers:
   - Default
   - TransparentFX
@@ -77,7 +78,7 @@ TagManager:
   - QuestCollider
   - ForceField
   - PowerBoost
-  - 
+  - ForceFieldByDopple
   - 
   - 
   - 
