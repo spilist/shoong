@@ -31,7 +31,7 @@ public class ShowStats : VerticalScrollingMenu {
     accumulatedHeight += heading.preferredHeight + spaceBetweenHeadingAndContents;
     contents.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, - accumulatedHeight);
 
-    string data = Resources.Load(what).ToString();
+    string data = Resources.Load(what).ToString().Trim();
     string[] lines = data.Split('\n');
     foreach (string line in lines) {
       string[] lineData = line.Split(',');
