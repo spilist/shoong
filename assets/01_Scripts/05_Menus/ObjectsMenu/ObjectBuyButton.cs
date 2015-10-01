@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System;
 
 public class ObjectBuyButton : MenusBehavior {
   public string which;
@@ -62,12 +63,15 @@ public class ObjectBuyButton : MenusBehavior {
   override public void activateSelf() {
     if (!affordable) return;
 
-    if (DataManager.dm.getInt(objectName + "Level") == 0) {
+    string objLevel = objectName + "Level";
+    if (DataManager.dm.getInt(objLevel) == 0) {
       DataManager.dm.setBool(objectName, true);
       string tutorialsNotDone = PlayerPrefs.GetString("ObjectTutorialsNotDone");
       PlayerPrefs.SetString("ObjectTutorialsNotDone", (tutorialsNotDone + " " + objectName).Trim());
     }
-    DataManager.dm.increment(objectName + "Level");
+    DataManager.dm.increment(objLevel);
+
+    DataManager.dm.setDateTime(objLevel + DataManager.dm.getInt(objLevel), DateTime.Now);
 
     cubes.buy(price);
     selectedObj.buy();

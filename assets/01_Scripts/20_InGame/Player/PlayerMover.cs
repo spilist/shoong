@@ -353,6 +353,10 @@ public class PlayerMover : MonoBehaviour {
     DataManager.dm.increment("TotalBoosters");
   }
 
+  public int getNumBoosters() {
+    return numBoosters;
+  }
+
   public bool isOnPowerBoost() {
     return usingPowerBoost;
   }

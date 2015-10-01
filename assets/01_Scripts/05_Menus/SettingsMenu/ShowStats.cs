@@ -1,14 +1,19 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System;
 
 public class ShowStats : VerticalScrollingMenu {
+  public bool admin;
+
   public Text bestHeading;
   public Text bestContents;
   public Text averageHeading;
   public Text averageContents;
   public Text totalHeading;
   public Text totalContents;
+  public Text adminHeading;
+  public Text adminContents;
 
   public int spaceBetweenHeadingAndContents = 15;
   public int spaceBetweenCategories = 20;
@@ -19,9 +24,16 @@ public class ShowStats : VerticalScrollingMenu {
       tr.GetComponent<RectTransform>().sizeDelta = new Vector2(newWidth, tr.GetComponent<RectTransform>().sizeDelta.y);
     }
 
+    if (admin) {
+      adminHeading.gameObject.SetActive(true);
+      adminContents.gameObject.SetActive(true);
+      fillText("AdminOnly", adminHeading, adminContents);
+    }
+
     fillText("Best", bestHeading, bestContents);
     fillText("Average", averageHeading, averageContents);
     fillText("Total", totalHeading, totalContents);
+
 
     scrollTarget.sizeDelta = new Vector2(newWidth, accumulatedHeight);
 	}
@@ -31,7 +43,7 @@ public class ShowStats : VerticalScrollingMenu {
     accumulatedHeight += heading.preferredHeight + spaceBetweenHeadingAndContents;
     contents.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, - accumulatedHeight);
 
-    string data = Resources.Load(what).ToString().Trim();
+    string data = Resources.Load("_StatsMatching/" + what).ToString().Trim();
     string[] lines = data.Split('\n');
     foreach (string line in lines) {
       string[] lineData = line.Split(',');
@@ -52,7 +64,8 @@ public class ShowStats : VerticalScrollingMenu {
     } else if (type == "float") {
       value = DataManager.dm.getFloat(variable).ToString("0.00");
     } else if (type == "DateTime") {
-      value = DataManager.dm.getDateTime(variable).ToString();
+      if (DataManager.dm.getDateTime(variable) == DateTime.MinValue) value = "구매 안함";
+      else value = DataManager.dm.getDateTime(variable).ToString();
     }
 
     return value;

@@ -1,9 +1,0 @@
-float,QuestCompleteRate,임무 성공률
-float,AverageTime,평균 유영 시간
-float,AverageCPS,평균 초당 큐브 획득
-float,AverageCubes,평균 큐브 획득
-float,AverageGoldenCubes,평균 황금큐브 획득
-float,AverageBoosters,평균 부스터 사용
-float,AverageSuperheats,평균 수퍼히트
-float,AverageNumDestroyObstacles,평균 장애물 파괴
-float,AverageNumUseObjects,평균 오브젝트 이용

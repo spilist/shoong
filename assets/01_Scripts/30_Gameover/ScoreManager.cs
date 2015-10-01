@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System;
 
 public class ScoreManager : MonoBehaviour {
   public MenusController menus;
@@ -142,6 +143,13 @@ public class ScoreManager : MonoBehaviour {
   void save() {
     if (isSaved) return;
 
+    int daysPassed = (int)(DateTime.Now.Date - DataManager.dm.getDateTime("FirstPlayDate").Date).TotalDays;
+    if (0 < daysPassed && daysPassed <= 7) {
+      if (DataManager.dm.getInt("NumPlay_" + daysPassed) == 0) {
+        DataManager.dm.setInt("NumPlay_" + daysPassed, DataManager.dm.getInt("TotalNumPlays") - DataManager.dm.getInt("NumPlay_" + (daysPassed - 1)));
+      }
+    }
+
     isSaved = true;
     int count = cubesCount.getCount();
     DataManager.dm.increment("CurrentCubes", count);
@@ -166,6 +174,12 @@ public class ScoreManager : MonoBehaviour {
     DataManager.dm.setAverage("AverageNumUseObjects", "TotalNumUseObjects");
     DataManager.dm.setFloat("AverageCPS", 100 * DataManager.dm.getInt("TotalCubes") / (float) DataManager.dm.getInt("TotalTime"));
 
+    int numPlay = DataManager.dm.getInt("TotalNumPlays");
+    if (numPlay <= 10) {
+      DataManager.dm.setInt("PlayTime_" + numPlay, time);
+      DataManager.dm.setInt("CubesGet_" + numPlay, count);
+      DataManager.dm.setInt("NumBooster_" + numPlay, player.GetComponent<PlayerMover>().getNumBoosters());
+    }
   }
 
   void OnDisable() {

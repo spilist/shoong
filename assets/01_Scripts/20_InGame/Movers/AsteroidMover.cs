@@ -48,7 +48,7 @@ public class AsteroidMover : ObjectsMover {
   }
 
   override public bool dangerous() {
-    if (player.isAfterStrengthen() || player.isRidingMonster() || player.isUnstoppable() || player.isUsingRainbow()) return false;
+    if (player.isAfterStrengthen() || player.isRidingMonster() || player.isUnstoppable() || player.isUsingRainbow()  || player.isUsingDopple()) return false;
     else return true;
   }
 

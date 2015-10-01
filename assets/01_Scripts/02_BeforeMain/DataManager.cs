@@ -45,6 +45,10 @@ public class DataManager : MonoBehaviour {
 
     Application.targetFrameRate = getInt("BatterySavingSetting");
     if (getBool("MuteAudioSetting")) AudioListener.volume = 0;
+
+    if (getDateTime("FirstPlayDate") == DateTime.MinValue) {
+      setDateTime("FirstPlayDate", DateTime.Now);
+    }
   }
 
   bool load() {

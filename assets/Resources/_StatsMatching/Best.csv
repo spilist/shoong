@@ -1,0 +1,7 @@
+int,BestTime,최장시간 유영
+float,BestCPS,최고 초당 큐브 획득
+int,BestCubes,최다 큐브 획득량
+int,BestBoosters,최대 부스터 사용
+int,BestNumSuperheats,최다 수퍼히트
+int,BestNumDestroyObstacles,최다 장애물 파괴
+int,BestNumUseObjects,최다 오브젝트 이용

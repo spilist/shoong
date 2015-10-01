@@ -1,0 +1,86 @@
+int,play_beardedfrog,수염개구리 플레이
+int,play_bender,벤더 플레이
+int,play_butterfly,나비 플레이
+int,play_cat,슈퍼캣 플레이
+int,play_chameleon,모로고로 플레이
+int,play_cottoncandy,솜사탕 플레이
+int,play_crab,오염된 게 플레이
+int,play_deathstar,데쓰스타 플레이
+int,play_leonplant,레옹화분 플레이
+int,play_minimonster,미니몬 플레이
+int,play_paperplane,종이비행기 플레이
+int,play_robotcogi,로봇코기 플레이
+int,play_soju,쐬주 플레이
+int,play_tyranno,티라노 플레이
+int,play_vacuumrobot,청소로봇 플레이
+int,NumWatchAds,광고 본 횟수
+int,NumShare,공유한 횟수
+int,NumCharacterCreate,캐릭터 뽑기 횟수
+DateTime,FirstPlayDate,첫 플레이 날짜
+int,NumPlay_1,1일차 플레이 횟수
+int,NumPlay_2,2일차 플레이 횟수
+int,NumPlay_3,3일차 플레이 횟수
+int,NumPlay_4,4일차 플레이 횟수
+int,NumPlay_5,5일차 플레이 횟수
+int,NumPlay_6,6일차 플레이 횟수
+int,NumPlay_7,7일차 플레이 횟수
+int,PlayTime_1,1회차 유영시간
+int,PlayTime_2,2회차 유영시간
+int,PlayTime_3,3회차 유영시간
+int,PlayTime_4,4회차 유영시간
+int,PlayTime_5,5회차 유영시간
+int,PlayTime_6,6회차 유영시간
+int,PlayTime_7,7회차 유영시간
+int,PlayTime_8,8회차 유영시간
+int,PlayTime_9,9회차 유영시간
+int,PlayTime_10,10회차 유영시간
+int,CubesGet_1,1회차 큐브 획득
+int,CubesGet_2,2회차 큐브 획득
+int,CubesGet_3,3회차 큐브 획득
+int,CubesGet_4,4회차 큐브 획득
+int,CubesGet_5,5회차 큐브 획득
+int,CubesGet_6,6회차 큐브 획득
+int,CubesGet_7,7회차 큐브 획득
+int,CubesGet_8,8회차 큐브 획득
+int,CubesGet_9,9회차 큐브 획득
+int,CubesGet_10,10회차 큐브 획득
+int,NumBooster_1,1회차 부스터 사용
+int,NumBooster_2,2회차 부스터 사용
+int,NumBooster_3,3회차 부스터 사용
+int,NumBooster_4,4회차 부스터 사용
+int,NumBooster_5,5회차 부스터 사용
+int,NumBooster_6,6회차 부스터 사용
+int,NumBooster_7,7회차 부스터 사용
+int,NumBooster_8,8회차 부스터 사용
+int,NumBooster_9,9회차 부스터 사용
+int,NumBooster_10,10회차 부스터 사용
+DateTime,JetpackLevel1,제트팩 레벨 1 구매 시각
+DateTime,JetpackLevel2,제트팩 레벨 2 구매 시각
+DateTime,JetpackLevel3,제트팩 레벨 3 구매 시각
+DateTime,SpecialPartsLevel1,메탈 레벨 1 구매 시각
+DateTime,SpecialPartsLevel2,메탈 레벨 2 구매 시각
+DateTime,SpecialPartsLevel3,메탈 레벨 3 구매 시각
+DateTime,BlackholeLevel1,블랙홀 레벨 1 구매 시각
+DateTime,BlackholeLevel2,블랙홀 레벨 2 구매 시각
+DateTime,BlackholeLevel3,블랙홀 레벨 3 구매 시각
+DateTime,MonsterLevel1,몬스터 레벨 1 구매 시각
+DateTime,MonsterLevel2,몬스터 레벨 2 구매 시각
+DateTime,MonsterLevel3,몬스터 레벨 3 구매 시각
+DateTime,DoppleLevel1,순간이동 레벨 1 구매 시각
+DateTime,DoppleLevel2,순간이동 레벨 2 구매 시각
+DateTime,DoppleLevel3,순간이동 레벨 3 구매 시각
+DateTime,ComboPartsLevel1,환영부품 레벨 1 구매 시각
+DateTime,ComboPartsLevel2,환영부품 레벨 2 구매 시각
+DateTime,ComboPartsLevel3,환영부품 레벨 3 구매 시각
+DateTime,CubeDispenserLevel1,큐브저장고 레벨 1 구매 시각
+DateTime,CubeDispenserLevel2,큐브저장고 레벨 2 구매 시각
+DateTime,CubeDispenserLevel3,큐브저장고 레벨 3 구매 시각
+DateTime,SummonPartsLevel1,소환부품 레벨 1 구매 시각
+DateTime,SummonPartsLevel2,소환부품 레벨 2 구매 시각
+DateTime,SummonPartsLevel3,소환부품 레벨 3 구매 시각
+DateTime,RainbowDonutsLevel1,무지개 레벨 1 구매 시각
+DateTime,RainbowDonutsLevel2,무지개 레벨 2 구매 시각
+DateTime,RainbowDonutsLevel3,무지개 레벨 3 구매 시각
+DateTime,EMPLevel1,EMP 레벨 1 구매 시각
+DateTime,EMPLevel2,EMP 레벨 2 구매 시각
+DateTime,EMPLevel3,EMP 레벨 3 구매 시각

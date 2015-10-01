@@ -140,7 +140,7 @@ public class MonsterMover : ObjectsMover {
   }
 
   override public bool dangerous() {
-    if (rideable() || player.isAfterStrengthen() || player.isUnstoppable() || player.isUsingRainbow()) return false;
+    if (rideable() || player.isAfterStrengthen() || player.isUnstoppable() || player.isUsingRainbow() || player.isUsingDopple()) return false;
     else return true;
   }
 

@@ -80,7 +80,7 @@ public class MiniMonsterMover : ObjectsMover {
   }
 
   override public bool dangerous() {
-    if (player.isAfterStrengthen() || player.isRidingMonster() || player.isUnstoppable() || player.isUsingRainbow() || player.isExitedBlackhole()) return false;
+    if (player.isAfterStrengthen() || player.isRidingMonster() || player.isUnstoppable() || player.isUsingRainbow() || player.isExitedBlackhole() || player.isUsingDopple()) return false;
     else return true;
   }
 

@@ -94,6 +94,8 @@ public class CharacterCreateButton : MenusBehavior {
   override public void activateSelf() {
     if (!affordable || running) return;
 
+    DataManager.dm.increment("NumCharacterCreate");
+
     running = true;
     resetAll();
     turnOnOff(false);
