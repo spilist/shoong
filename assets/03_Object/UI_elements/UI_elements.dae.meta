@@ -43,6 +43,18 @@ ModelImporter:
     100070: button_red_blank_narrow_short_1
     100072: icon_upgrade
     100074: button_gray_object_check
+    100076: button_alarm_off
+    100078: button_alarm_on
+    100080: button_batterysaver_off
+    100082: button_batterysaver_on
+    100084: button_morogoro
+    100086: button_music_off
+    100088: button_music_on
+    100090: button_restorepurchase
+    100092: button_sound_off
+    100094: button_sound_on
+    100096: button_statitics
+    100098: button_tip
     400000: active_object
     400002: button_back
     400004: button_blank_leftright
@@ -81,6 +93,18 @@ ModelImporter:
     400070: button_red_blank_narrow_short_1
     400072: icon_upgrade
     400074: button_gray_object_check
+    400076: button_alarm_off
+    400078: button_alarm_on
+    400080: button_batterysaver_off
+    400082: button_batterysaver_on
+    400084: button_morogoro
+    400086: button_music_off
+    400088: button_music_on
+    400090: button_restorepurchase
+    400092: button_sound_off
+    400094: button_sound_on
+    400096: button_statitics
+    400098: button_tip
     2300000: active_object
     2300002: button_back
     2300004: button_blank_leftright
@@ -118,6 +142,18 @@ ModelImporter:
     2300068: button_red_blank_narrow_short_1
     2300070: icon_upgrade
     2300072: button_gray_object_check
+    2300074: button_alarm_off
+    2300076: button_alarm_on
+    2300078: button_batterysaver_off
+    2300080: button_batterysaver_on
+    2300082: button_morogoro
+    2300084: button_music_off
+    2300086: button_music_on
+    2300088: button_restorepurchase
+    2300090: button_sound_off
+    2300092: button_sound_on
+    2300094: button_statitics
+    2300096: button_tip
     3300000: active_object
     3300002: button_back
     3300004: button_blank_leftright
@@ -155,6 +191,18 @@ ModelImporter:
     3300068: button_red_blank_narrow_short_1
     3300070: icon_upgrade
     3300072: button_gray_object_check
+    3300074: button_alarm_off
+    3300076: button_alarm_on
+    3300078: button_batterysaver_off
+    3300080: button_batterysaver_on
+    3300082: button_morogoro
+    3300084: button_music_off
+    3300086: button_music_on
+    3300088: button_restorepurchase
+    3300090: button_sound_off
+    3300092: button_sound_on
+    3300094: button_statitics
+    3300096: button_tip
     4300000: button_back
     4300002: button_select
     4300004: button_character
@@ -192,6 +240,18 @@ ModelImporter:
     4300068: button_red_blank_narrow_short_1
     4300070: icon_upgrade
     4300072: button_gray_object_check
+    4300074: button_tip
+    4300076: button_statitics
+    4300078: button_music_on
+    4300080: button_sound_on
+    4300082: button_restorepurchase
+    4300084: button_batterysaver_on
+    4300086: button_alarm_on
+    4300088: button_morogoro
+    4300090: button_music_off
+    4300092: button_sound_off
+    4300094: button_batterysaver_off
+    4300096: button_alarm_off
     9500000: //RootNode
   materials:
     importMaterials: 1

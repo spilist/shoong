@@ -17,7 +17,7 @@ private bool isNearPlayer = false;
     spm = GameObject.Find("Field Objects").GetComponent<SpecialPartsManager>();
   }
 
-  override protected void afterDestroy() {
+  override protected void afterDestroy(bool byPlayer) {
     if (isNearPlayer) player.nearAsteroid(false);
   }
 

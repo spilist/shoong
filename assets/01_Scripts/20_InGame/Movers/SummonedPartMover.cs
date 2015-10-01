@@ -75,4 +75,8 @@ public class SummonedPartMover : ObjectsMover {
 
     destroyObject();
   }
+
+  override public bool hasEncounterEffect() {
+    return false;
+  }
 }

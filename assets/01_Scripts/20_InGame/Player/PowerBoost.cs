@@ -82,6 +82,8 @@ public class PowerBoost : MonoBehaviour {
   private Vector3 direction;
   public int rotatingSpeed = 100;
 
+  private int superHeatCount = 0;
+
 	void Start () {
     powerBoostParticle = transform.Find("Particle").GetComponent<ParticleSystem>();
     guageColor = powerBoostGuage.material.GetColor("_TintColor");
@@ -109,7 +111,10 @@ public class PowerBoost : MonoBehaviour {
   void startPowerBoost() {
     if (isTransforming) return;
 
+    superHeatCount++;
+
     QuestManager.qm.addCountToQuest("DoSuperHeat");
+    DataManager.dm.increment("TotalSuperheats");
 
     GetComponent<MeshFilter>().sharedMesh = player.GetComponent<MeshFilter>().sharedMesh;
     afterImagePrefab.GetComponent<MeshFilter>().sharedMesh = GetComponent<MeshFilter>().sharedMesh;
@@ -324,5 +329,9 @@ public class PowerBoost : MonoBehaviour {
 
   public bool isOnPowerBoost() {
     return powerBoostRunning;
+  }
+
+  void OnDisable() {
+    DataManager.dm.setBestInt("BestNumSuperheats", superHeatCount);
   }
 }

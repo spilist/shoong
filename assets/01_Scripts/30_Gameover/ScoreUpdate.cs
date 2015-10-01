@@ -47,11 +47,11 @@ public class ScoreUpdate : MonoBehaviour {
   void Start() {
     cubeDifference = cubesCount.getCount();
 
-    totalNum = DataManager.dm.getInt("CubeTotal");
+    totalNum = DataManager.dm.getInt("TotalCubes");
     totalCubes.text = totalNum.ToString();
     totalChangeTo = (int) totalNum + cubeDifference;
 
-    cubeNum = DataManager.dm.getInt("CubeNow");
+    cubeNum = DataManager.dm.getInt("CurrentCubes");
     cubes.text = cubeNum.ToString();
     cubeChangeTo = (int) cubeNum + cubeDifference;
 
@@ -65,14 +65,16 @@ public class ScoreUpdate : MonoBehaviour {
       duration = Mathf.Max(scoreUpdateMaxDuration * (float) cubeDifference / scoreUpdateMaxStandard, scoreUpdateMinDuration);
     }
 
-    highscoreNum = DataManager.dm.getInt("CubeHighscore");
+    highscoreNum = DataManager.dm.getInt("BestCubes");
     cubesHighscoreNumber.text = highscoreNum.ToString();
 
     cubeCurrentNum = 0;
     cubesCurrentScore.text = "0";
 
     elapsedTime.transform.Find("Number").GetComponent<Text>().text = ElapsedTime.time.now.ToString();
-    CPS.transform.Find("Number").GetComponent<Text>().text = ((float) cubeDifference / ElapsedTime.time.now).ToString("0.00");
+    float cps_ = ((float) cubeDifference / ElapsedTime.time.now);
+    CPS.transform.Find("Number").GetComponent<Text>().text = cps_.ToString("0.00");
+    DataManager.dm.setBestFloat("BestCPS", cps_);
 
     string result = QuestManager.qm.questResult;
     if (result == "FirstQuestComplete") {
@@ -83,6 +85,7 @@ public class ScoreUpdate : MonoBehaviour {
       questResult.transform.Find("Complete").gameObject.SetActive(true);
       questResult.transform.Find("Complete").GetComponent<Text>().text = QuestManager.qm.questReward.ToString();
       questResult.transform.Find("Failed").gameObject.SetActive(false);
+      DataManager.dm.increment("TotalQuestCompletes");
     } else {
       questResult.transform.Find("Complete").gameObject.SetActive(false);
       questResult.transform.Find("Failed").gameObject.SetActive(true);

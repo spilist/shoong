@@ -89,7 +89,12 @@ public class EnergyBar : MonoBehaviour {
       }
 
       if (image.fillAmount == 0) {
-        player.scoreManager.gameOver();
+        if (player.isTrapped()) {
+          player.scoreManager.gameOver("Trap");
+        } else {
+          player.scoreManager.gameOver("NoEnergy");
+        }
+
         gameStarted = false;
       }
 

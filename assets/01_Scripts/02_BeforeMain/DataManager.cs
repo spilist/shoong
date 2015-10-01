@@ -93,10 +93,10 @@ public class DataManager : MonoBehaviour {
     dateTimes.Clear();
 
     ints["BatterySavingSetting"] = 60;
-    ints["CubeNow"] = resetCube;
-    ints["CubeTotal"] = resetCube;
-    ints["GoldenCubeNow"] = resetGoldenCube;
-    ints["GoldenCubeTotal"] = resetGoldenCube;
+    ints["CurrentCubes"] = resetCube;
+    ints["TotalCubes"] = resetCube;
+    ints["CurrentGoldenCubes"] = resetGoldenCube;
+    ints["TotalGoldenCubes"] = resetGoldenCube;
     ints["NumCharactersHave"] = 1;
     bools["robotcogi"] = true;
 
@@ -117,11 +117,23 @@ public class DataManager : MonoBehaviour {
   }
 
   public void increment(string id, int value = 1) {
-    ints[id] = ints.ContainsKey(id) ? ints[id] + value : value;
+    setInt(id, ints.ContainsKey(id) ? ints[id] + value : value);
+  }
+
+  public void setBestInt(string id, int value) {
+    if (value > getInt(id)) setInt(id, value);
   }
 
   public void setFloat(string id, float value) {
     floats[id] = value;
+  }
+
+  public void setAverage(string id, string child) {
+    setFloat(id, getInt(child) / (float) ints["TotalNumPlays"]);
+  }
+
+  public void setBestFloat(string id, float value) {
+    if (value > getFloat(id)) setFloat(id, value);
   }
 
   public float getFloat(string id) {

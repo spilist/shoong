@@ -41,7 +41,23 @@ public class ScoreManager : MonoBehaviour {
     }
   }
 
-  public void gameOver() {
+  public void gameOver(string reason) {
+    if (reason == "NoEnergy") {
+      DataManager.dm.increment("DeathByNoEnergy");
+    } else if (reason == "Obstacle_small") {
+      DataManager.dm.increment("DeathBySmallAsteroid");
+    } else if (reason == "Obstacle_big") {
+      DataManager.dm.increment("DeathByAsteroid");
+    } else if (reason == "Obstacle") {
+      DataManager.dm.increment("DeathByMeteroid");
+    } else if (reason == "Blackhole") {
+      DataManager.dm.increment("DeathByBlackhole");
+    } else if (reason == "Monster") {
+      DataManager.dm.increment("DeathByMonster");
+    } else if (reason == "Trap") {
+      DataManager.dm.increment("DeathByTrap");
+    }
+
     StartCoroutine("startGameOver");
   }
 
@@ -128,16 +144,28 @@ public class ScoreManager : MonoBehaviour {
 
     isSaved = true;
     int count = cubesCount.getCount();
-    DataManager.dm.increment("CubeNow", count);
-    DataManager.dm.increment("CubeTotal", count);
-    if (count > DataManager.dm.getInt("CubeHighscore")) {
-      DataManager.dm.setInt("CubeHighscore", count);
-    }
+    DataManager.dm.increment("CurrentCubes", count);
+    DataManager.dm.increment("TotalCubes", count);
+    DataManager.dm.setBestInt("BestCubes", count);
 
-    DataManager.dm.increment("GoldenCubeNow", QuestManager.qm.questReward);
-    DataManager.dm.increment("GoldenCubeTotal", QuestManager.qm.questReward);
+    DataManager.dm.increment("CurrentGoldenCubes", QuestManager.qm.questReward);
+    DataManager.dm.increment("TotalGoldenCubes", QuestManager.qm.questReward);
 
-    DataManager.dm.setInt("TimeTotal", ElapsedTime.time.now);
+    int time = ElapsedTime.time.now;
+    DataManager.dm.increment("TotalTime", time);
+    DataManager.dm.setBestInt("BestTime", time);
+
+    DataManager.dm.increment("TotalNumPlays");
+    DataManager.dm.setAverage("QuestCompleteRate", "TotalQuestCompletes");
+    DataManager.dm.setAverage("AverageTime", "TotalTime");
+    DataManager.dm.setAverage("AverageCubes", "TotalCubes");
+    DataManager.dm.setAverage("AverageGoldenCubes", "TotalGoldenCubes");
+    DataManager.dm.setAverage("AverageBoosters", "TotalBoosters");
+    DataManager.dm.setAverage("AverageSuperheats", "TotalSuperheats");
+    DataManager.dm.setAverage("AverageNumDestroyObstacles", "TotalNumDestroyObstacles");
+    DataManager.dm.setAverage("AverageNumUseObjects", "TotalNumUseObjects");
+    DataManager.dm.setFloat("AverageCPS", 100 * DataManager.dm.getInt("TotalCubes") / (float) DataManager.dm.getInt("TotalTime"));
+
   }
 
   void OnDisable() {

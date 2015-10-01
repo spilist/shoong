@@ -12,7 +12,7 @@ public class CharacterCreateBannerButton : BannerButton {
   }
 
   override public bool available() {
-    return DataManager.dm.getInt("CubeNow") >= createMenu.price();
+    return DataManager.dm.getInt("CurrentCubes") >= createMenu.price();
   }
 
   override public void goBack() {

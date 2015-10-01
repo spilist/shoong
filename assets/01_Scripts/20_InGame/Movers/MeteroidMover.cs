@@ -25,7 +25,7 @@ public class MeteroidMover : ObjectsMover {
     }
   }
 
-  override protected void afterDestroy() {
+  override protected void afterDestroy(bool byPlayer) {
     if (avoiding && !alreadyChecked && !player.isRidingMonster()) {
       QuestManager.qm.addCountToQuest("AvoidFallingStar");
       player.showEffect("Whew");

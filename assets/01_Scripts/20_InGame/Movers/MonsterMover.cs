@@ -84,7 +84,7 @@ public class MonsterMover : ObjectsMover {
     }
   }
 
-  override protected void afterDestroy() {
+  override protected void afterDestroy(bool byPlayer) {
     if (isInsideBlackhole && QuestManager.qm.doingQuest("DestroyMonsterByBlackhole") && player.isUsingBlackhole()) {
       QuestManager.qm.addCountToQuest("DestroyMonsterByBlackhole");
     }
@@ -118,6 +118,8 @@ public class MonsterMover : ObjectsMover {
       if (player.energyBar.currentEnergy() <= 30) {
         QuestManager.qm.addCountToQuest("RideMonsterWithLowEnergy");
       }
+
+      player.encounterObject(tag);
     }
     else {
       QuestManager.qm.addCountToQuest("DestroyMonster");
@@ -128,6 +130,8 @@ public class MonsterMover : ObjectsMover {
 
       Instantiate(objectsManager.objEncounterEffect, transform.position, transform.rotation);
       monm.run();
+
+      player.destroyObject(tag);
     }
   }
 

@@ -13,7 +13,7 @@ public class ComboPartMover : ObjectsMover {
     return "ComboPartsManager";
   }
 
-  override protected void afterDestroy() {
+  override protected void afterDestroy(bool byPlayer) {
     Destroy(cpm.nextInstance);
   }
 

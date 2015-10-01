@@ -60,6 +60,7 @@ public class TinyForceField_main : MonoBehaviour {
       } else if (mover.tag == "Obstacle") {
         QuestManager.qm.addCountToQuest("DestroyFallingStar");
       }
+      DataManager.dm.increment("NumDestroyObstaclesWithBlink");
     }
   }
 }

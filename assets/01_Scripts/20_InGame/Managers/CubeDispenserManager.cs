@@ -40,6 +40,7 @@ public class CubeDispenserManager : ObjectsManager {
       trying = true;
       skipInterval = false;
       instance.GetComponent<Renderer>().sharedMaterial = activeMat;
+      player.encounterObject("CubeDispenser");
       StartCoroutine("destroyAfterTry");
     }
   }

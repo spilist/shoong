@@ -148,16 +148,17 @@ public class ObjectsMover : MonoBehaviour {
       Instantiate(objectsManager.objDestroyEffect, transform.position, transform.rotation);
     }
 
-    afterDestroy();
+    afterDestroy(byPlayer);
 
     if (byPlayer) {
       objectsManager.run();
+      if (isNegativeObject()) player.destroyObject(tag);
     } else {
       objectsManager.runImmediately();
     }
   }
 
-  virtual protected void afterDestroy() {}
+  virtual protected void afterDestroy(bool byPlayer) {}
 
   virtual protected bool beforeEncounter() {
     return true;
@@ -193,6 +194,12 @@ public class ObjectsMover : MonoBehaviour {
       player.transform.parent.Find("Bars Canvas").GetComponent<ComboBar>().addCombo();
     }
 
+    if (hasEncounterEffect()) {
+      player.encounterObject(tag);
+    } else if (isNegativeObject()) {
+      player.destroyObject(tag);
+    }
+
     afterEncounter();
   }
 
@@ -223,6 +230,10 @@ public class ObjectsMover : MonoBehaviour {
 
   virtual public bool isNegativeObject() {
     return objectsManager.isNegative;
+  }
+
+  virtual public bool hasEncounterEffect() {
+    return objectsManager.hasEncounterEffect;
   }
 
   virtual public bool noCubesByDestroy() {

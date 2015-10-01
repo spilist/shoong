@@ -15,6 +15,7 @@ public class ObjectsManager : MonoBehaviour {
   public float maxSpawnInterval = 12;
   public int cubesByEncounter;
   public bool isNegative = false;
+  public bool hasEncounterEffect = true;
 
   protected SpawnManager spawnManager;
   public PlayerMover player;

@@ -922,8 +922,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resetAll: 0
-  resetCube: 1000000
-  resetGoldenCube: 100000
+  resetCube: 0
+  resetGoldenCube: 0
   normalFrameRate: 60
 --- !u!4 &1467429886
 Transform:

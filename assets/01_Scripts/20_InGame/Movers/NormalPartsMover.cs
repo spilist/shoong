@@ -3,8 +3,16 @@ using System.Collections;
 
 public class NormalPartsMover : ObjectsMover {
   override protected void afterEncounter() {
-    if (isMagnetized) QuestManager.qm.addCountToQuest("Blackhole");
-    if (player.isUsingRainbow()) QuestManager.qm.addCountToQuest("GetPartsOnRainbow");
+    if (isMagnetized) {
+      QuestManager.qm.addCountToQuest("Blackhole");
+      DataManager.dm.increment("NumPartsAbsorbedWithBlackhole");
+    }
+
+    if (player.isUsingRainbow()) {
+      QuestManager.qm.addCountToQuest("GetPartsOnRainbow");
+      DataManager.dm.increment("NumPartsGetOnRainbow");
+    }
+
     if (player.isNearAsteroid()) {
       QuestManager.qm.addCountToQuest("GetPartsNearAsteroid");
       player.showEffect("Wow");

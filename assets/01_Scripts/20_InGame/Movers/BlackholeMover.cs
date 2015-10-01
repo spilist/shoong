@@ -3,7 +3,6 @@ using System.Collections;
 
 public class BlackholeMover : ObjectsMover {
   private ScoreManager scoreManager;
-  private bool isContact = false;
 
   override protected void initializeRest() {
     scoreManager = GameObject.Find("ScoreManager").GetComponent<ScoreManager>();
@@ -14,10 +13,9 @@ public class BlackholeMover : ObjectsMover {
     GameObject other = collision.collider.gameObject;
     if (other.tag == "ContactCollider") {
       if (dangerous()) {
-        scoreManager.gameOver();
+        scoreManager.gameOver("Blackhole");
       } else {
         player.contactBlackhole(collision);
-        isContact = true;
         encounterPlayer();
       }
     } else {
@@ -26,12 +24,12 @@ public class BlackholeMover : ObjectsMover {
     }
   }
 
-  override protected void afterDestroy() {
+  override protected void afterDestroy(bool byPlayer) {
     Destroy(blm.blackholeGravity);
   }
 
   override protected void afterEncounter() {
-    if (!isContact) QuestManager.qm.addCountToQuest("ExitBlackhole");
+    QuestManager.qm.addCountToQuest("ExitBlackhole");
 
     Destroy(blm.blackholeGravity);
   }

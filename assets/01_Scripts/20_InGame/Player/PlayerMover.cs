@@ -80,6 +80,10 @@ public class PlayerMover : MonoBehaviour {
   public PowerBoost powerBoost;
   private bool usingPowerBoost = false;
 
+  private int numBoosters = 0;
+  private int numDestroyObstacles = 0;
+  private int numUseObjects = 0;
+
 	void Start () {
     changeManager = GetComponent<CharacterChangeManager>();
     changeManager.changeCharacter(PlayerPrefs.GetString("SelectedCharacter"));
@@ -147,7 +151,7 @@ public class PlayerMover : MonoBehaviour {
     ObjectsMover mover = other.gameObject.GetComponent<ObjectsMover>();
 
     if (mover.dangerous()) {
-      scoreManager.gameOver();
+      scoreManager.gameOver(mover.tag);
       return;
     }
 
@@ -183,6 +187,7 @@ public class PlayerMover : MonoBehaviour {
     for (int k = 0; k < monm.numMinimonSpawn; k++) {
       Instantiate(monm.minimonPrefab, transform.position, transform.rotation);
     }
+    DataManager.dm.increment("NumSpawnMinimonster", monm.numMinimonSpawn);
   }
 
   public void goodPartsEncounter(ObjectsMover mover, int howMany, int bonus = 0) {
@@ -205,11 +210,17 @@ public class PlayerMover : MonoBehaviour {
         }
       }
 
+      if (mover.isNegativeObject()) {
+        if (isUsingRainbow()) DataManager.dm.increment("NumDestroyObstaclesOnRainbow");
+        else if (unstoppable) DataManager.dm.increment("NumDestroyObstaclesWithMetal");
+      }
+
       if (bonus > 0) {
         GameObject cube = (GameObject) Instantiate(particles, mover.transform.position, mover.transform.rotation);
         cube.GetComponent<ParticleMover>().triggerCubesGet(bonus);
         if (unstoppable && mover.isNegativeObject()) {
           cube.GetComponent<Renderer>().sharedMaterial = changeManager.metalMat;
+          DataManager.dm.increment("TotalBonusesWithMetal", bonus);
         }
 
         cube.transform.localScale += Mathf.Min(bonus, bonusCubeMaxBase) * bonusCubeScaleChange * Vector3.one;
@@ -264,6 +275,9 @@ public class PlayerMover : MonoBehaviour {
   }
 
   public void setTrapped(bool val) {
+    if (trapped && !val) {
+      DataManager.dm.increment("NumExitCubeDispenser");
+    }
     trapped = val;
   }
 
@@ -301,9 +315,11 @@ public class PlayerMover : MonoBehaviour {
     if (cubeDispenser != null && !unstoppable && distance2 <= distance1) {
       pos = cubeDispenser.transform.position;
       trapped = true;
+      DataManager.dm.increment("NumTrappedInCubeDispenser");
     }
 
     changeManager.teleport(pos);
+    DataManager.dm.increment("TotalBlinks");
     cpm.tryToGet();
 
   }
@@ -314,6 +330,7 @@ public class PlayerMover : MonoBehaviour {
 
     if (usingJetpack) {
       QuestManager.qm.addCountToQuest("Jetpack");
+      DataManager.dm.increment("NumBoostersWithJetpack");
     }
 
     energyBar.loseByShoot();
@@ -331,6 +348,9 @@ public class PlayerMover : MonoBehaviour {
     }
 
     cpm.tryToGet();
+
+    numBoosters++;
+    DataManager.dm.increment("TotalBoosters");
   }
 
   public bool isOnPowerBoost() {
@@ -398,9 +418,15 @@ public class PlayerMover : MonoBehaviour {
       boosterspeed += 140;
       changeManager.booster.Play();
       afterStrengthenStart();
+      DataManager.dm.increment("TotalWhew");
       // audio needed
     } else if (effectName == "Charged") {
       if (!usingJetpack) energyBar.setCharged();
+      DataManager.dm.increment("TotalCharged");
+    } else if (effectName == "Wow") {
+      DataManager.dm.increment("TotalWow");
+    } else if (effectName == "Great") {
+      DataManager.dm.increment("TotalGreat");
     }
 
     effects.Find(effectName).gameObject.SetActive(true);
@@ -513,6 +539,7 @@ public class PlayerMover : MonoBehaviour {
   public void contactBlackhole(Collision collision) {
     if (isUsingRainbow()) {
       rdm.destroyInstances();
+      DataManager.dm.increment("NumReboundByBlackholeOnRainbow");
     }
     Camera.main.GetComponent<CameraMover>().shakeUntilStop(blm.shakeAmount);
     processCollision(collision);
@@ -609,5 +636,39 @@ public class PlayerMover : MonoBehaviour {
         reboundingByDispenser = false;
       }
     }
+  }
+
+  public void destroyObject(string tag) {
+    numDestroyObstacles++;
+    DataManager.dm.increment("TotalNumDestroyObstacles");
+
+    if (tag == "Obstacle_small") DataManager.dm.increment("NumDestroySmallAsteroids");
+    else if (tag == "Obstacle_big") DataManager.dm.increment("NumDestroyAsteroids");
+    else if (tag == "Obstacle") DataManager.dm.increment("NumDestroyMeteroids");
+    else if (tag == "Blackhole") DataManager.dm.increment("NumDestroyBlackholes");
+    else if (tag == "Monster") DataManager.dm.increment("NumDestroyMonsters");
+  }
+
+  public void encounterObject(string tag) {
+    numUseObjects++;
+    DataManager.dm.increment("TotalNumUseObjects");
+
+    if (tag == "Jetpack") DataManager.dm.increment("NumUseJetpack");
+    else if (tag == "SpecialPart") DataManager.dm.increment("NumUseMetal");
+    else if (tag == "Blackhole") DataManager.dm.increment("NumExitBlackhole");
+    else if (tag == "Monster") DataManager.dm.increment("NumRideMonster");
+    else if (tag == "Dopple") DataManager.dm.increment("NumMeetDopple");
+    else if (tag == "ComboPart") DataManager.dm.increment("NumGenerateIllusion");
+    else if (tag == "CubeDispenser") DataManager.dm.increment("NumBumpCubeDispenser");
+    else if (tag == "SummonPart") DataManager.dm.increment("NumSummon");
+    else if (tag == "RainbowDonut") DataManager.dm.increment("NumRideRainbow");
+    else if (tag == "EMP") DataManager.dm.increment("NumGenerateForcefield");
+    else Debug.LogError("Exception? " + tag);
+  }
+
+  void OnDisable() {
+    DataManager.dm.setBestInt("BestBoosters", numBoosters);
+    DataManager.dm.setBestInt("BestNumDestroyObstacles", numDestroyObstacles);
+    DataManager.dm.setBestInt("BestNumUseObjects", numUseObjects);
   }
 }

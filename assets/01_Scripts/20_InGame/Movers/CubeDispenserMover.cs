@@ -26,8 +26,10 @@ public class CubeDispenserMover : ObjectsMover {
     brokenCount++;
   }
 
-  override protected void afterDestroy() {
+  override protected void afterDestroy(bool byPlayer) {
     player.setTrapped(false);
+
+    if (byPlayer && comboCount != cdm.fullComboCount) DataManager.dm.increment("NumDestroyCubeDispenser");
   }
 
   override protected void afterCollide(Collision collision) {
@@ -64,6 +66,7 @@ public class CubeDispenserMover : ObjectsMover {
       QuestManager.qm.addCountToQuest("CompleteCubeDispenser");
       destroyObject(true, true);
       player.showEffect("Great");
+      DataManager.dm.increment("NumCompleteCubeDispenser");
       return false;
     }
 

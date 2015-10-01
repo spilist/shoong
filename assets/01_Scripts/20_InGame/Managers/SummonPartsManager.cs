@@ -77,10 +77,12 @@ public class SummonPartsManager : ObjectsManager {
     getCount++;
 
     QuestManager.qm.addCountToQuest("SummonParts");
+    DataManager.dm.increment("NumSummonedPartsGet");
 
     if (getCount == numSpawnX * numSpawnZ) {
       QuestManager.qm.addCountToQuest("CompleteSummonParts");
       player.showEffect("Great");
+      DataManager.dm.increment("NumCompleteSummon");
     }
   }
 }

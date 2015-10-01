@@ -41,8 +41,12 @@ public class ForceField : MonoBehaviour {
       } else if (mover.tag == "Obstacle") {
         QuestManager.qm.addCountToQuest("DestroyFallingStar");
       }
+
+      DataManager.dm.increment("NumDestroyObstaclesByForcefield");
     }
     mover.destroyObject(true, true);
+
+    DataManager.dm.increment("NumCubesGetByForcefield", mover.cubesWhenEncounter());
   }
 
   void OnDisable() {
