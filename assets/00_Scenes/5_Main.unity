@@ -69840,7 +69840,7 @@ MonoBehaviour:
   cannotTeleportWarningSound: {fileID: 8300000, guid: 6175d64a3d350574aa82124734e3a684,
     type: 3}
   waveAwakeDuration: .0199999996
-  blinkInterval: 3
+  blinkInterval: 2
   blinkRadius: 50
   teleportingDuration: .0500000007
   originalColor: {r: .600000024, g: .835294127, b: 1, a: .70588237}

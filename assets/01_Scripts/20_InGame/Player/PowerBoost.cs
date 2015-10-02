@@ -333,5 +333,7 @@ public class PowerBoost : MonoBehaviour {
 
   void OnDisable() {
     DataManager.dm.setBestInt("BestNumSuperheats", superHeatCount);
+    guageColor.a = guageTargetAlphaUp;
+    powerBoostGuage.material.SetColor("_TintColor", guageColor);
   }
 }
