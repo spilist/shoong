@@ -168,6 +168,7 @@ public class CharacterCreateButton : MenusBehavior {
       isNewCharacter.SetActive(true);
       DataManager.dm.setBool(createdCharacterName, true);
       DataManager.dm.increment("NumCharactersHave");
+      DataManager.dm.save();
     } else {
       nextChance.SetActive(true);
     }

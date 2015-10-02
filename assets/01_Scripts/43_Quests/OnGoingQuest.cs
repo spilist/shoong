@@ -209,7 +209,7 @@ public class OnGoingQuest : MonoBehaviour {
     countByTime = false;
 
     if (isComplete) {
-      DataManager.dm.setDateTime("LastQuestCompletedAt", DateTime.Now);
+      DataManager.dm.setDateTime("LastQuestCompletedAt");
 
       if (tutorial) {
         string tutorialsNotDone = PlayerPrefs.GetString("ObjectTutorialsNotDone");

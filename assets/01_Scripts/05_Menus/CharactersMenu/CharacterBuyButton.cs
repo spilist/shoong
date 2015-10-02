@@ -38,5 +38,7 @@ public class CharacterBuyButton : MenusBehavior {
     DataManager.dm.setBool(characterName, true);
     DataManager.dm.increment("NumCharactersHave");
     transform.parent.Find("Characters/" + characterName).GetComponent<UICharacters>().buy();
+
+    DataManager.dm.save();
   }
 }

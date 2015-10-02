@@ -18,13 +18,13 @@ public class CubesYouHave : MonoBehaviour {
 
   public void buy(int price) {
     cubes.text = (int.Parse(cubes.text) - price).ToString();
-    DataManager.dm.setInt("Current" + which, int.Parse(cubes.text));
+    DataManager.dm.increment("Current" + which, -price);
   }
 
   public void add(int amount) {
     cubes.text = (int.Parse(cubes.text) + amount).ToString();
 
-    DataManager.dm.setInt("Current" + which, int.Parse(cubes.text));
+    DataManager.dm.increment("Current" + which, amount);
     DataManager.dm.increment("Total" + which, amount);
   }
 }

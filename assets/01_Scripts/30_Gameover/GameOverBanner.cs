@@ -22,7 +22,10 @@ public class GameOverBanner : MonoBehaviour {
 
   void Update() {
     if (waiting) {
-      if (waitingTarget.moveDone()) waiting = false;
+      if (waitingTarget.moveDone()) {
+        waiting = false;
+        status++;
+      }
     } else {
       if (status == 1) {
         scaleY = Mathf.MoveTowards(scaleY, expandTo, Time.deltaTime * expandTo / expandDuration);
@@ -53,10 +56,11 @@ public class GameOverBanner : MonoBehaviour {
 
     if (another == null) {
       status++;
+      // isLast = false;
+      isLast = true;
     } else {
       waiting = true;
       waitingTarget = another.GetComponent<GameOverBanner>();
-      waitingTarget.isLast = false;
     }
 
     bannerButton.transform.SetParent(contents.transform, false);

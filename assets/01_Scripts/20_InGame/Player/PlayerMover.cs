@@ -589,7 +589,9 @@ public class PlayerMover : MonoBehaviour {
   }
 
   public void setRidingRainbowRoad(bool val) {
-    if (!usingEMP) isRidingRainbowRoad = val;
+    if (usingEMP && !val) return;
+
+    isRidingRainbowRoad = val;
   }
 
   public bool isUsingRainbow() {
@@ -679,6 +681,6 @@ public class PlayerMover : MonoBehaviour {
   }
 
   public bool isInvincible() {
-    return afterStrengthen || ridingMonster || unstoppable || isUsingRainbow() || changeManager.isTeleporting();
+    return afterStrengthen || ridingMonster || unstoppable || isRebounding() || isUsingRainbow() || changeManager.isTeleporting();
   }
 }

@@ -42,13 +42,19 @@ public class DataManager : MonoBehaviour {
     dateTimes = new Dictionary<string, DateTime>();
 
     if (resetAll || !load()) reset();
+    initializeAtGameStart();
+  }
 
+  void initializeAtGameStart() {
     Application.targetFrameRate = getInt("BatterySavingSetting");
+
     if (getBool("MuteAudioSetting")) AudioListener.volume = 0;
 
     if (getDateTime("FirstPlayDate") == DateTime.MinValue) {
-      setDateTime("FirstPlayDate", DateTime.Now);
+      setDateTime("FirstPlayDate");
     }
+
+    DataManager.dm.setInt("ShowCharacterCreateCount", 0);
   }
 
   bool load() {
@@ -160,12 +166,20 @@ public class DataManager : MonoBehaviour {
     return strings.ContainsKey(id) ? strings[id] : "";
   }
 
+  public void setDateTime(string id) {
+    setDateTime(id, DateTime.Now);
+  }
+
   public void setDateTime(string id, DateTime value) {
     dateTimes[id] = value;
   }
 
   public DateTime getDateTime(string id) {
     return dateTimes.ContainsKey(id) ? dateTimes[id] : DateTime.MinValue;
+  }
+
+  public bool isAnotherDay(string id) {
+    return (DateTime.Now.Date - getDateTime(id).Date).TotalDays > 0;
   }
 
   private Dictionary<string, int> stringToIntDict(string s) {

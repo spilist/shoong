@@ -144,7 +144,7 @@ public class ScoreUpdate : MonoBehaviour {
       goldenCubes.text = goldenCubeNum.ToString("0");
       if (goldenCubeNum == goldenCubeDifference) {
         updateStatus++;
-        scoreManager.scoringEnd();
+        scoreManager.showBanner();
       }
     }
   }

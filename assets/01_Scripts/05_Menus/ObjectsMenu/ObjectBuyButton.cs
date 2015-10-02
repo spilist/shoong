@@ -71,9 +71,11 @@ public class ObjectBuyButton : MenusBehavior {
     }
     DataManager.dm.increment(objLevel);
 
-    DataManager.dm.setDateTime(objLevel + DataManager.dm.getInt(objLevel), DateTime.Now);
+    DataManager.dm.setDateTime(objLevel + DataManager.dm.getInt(objLevel));
 
     cubes.buy(price);
     selectedObj.buy();
+
+    DataManager.dm.save();
   }
 }

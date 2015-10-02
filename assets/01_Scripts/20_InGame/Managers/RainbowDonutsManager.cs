@@ -57,6 +57,7 @@ public class RainbowDonutsManager : ObjectsManager {
     } else {
       objEncounterEffectForPlayer.Stop();
       player.afterStrengthenStart();
+      player.setRidingRainbowRoad(false);
       run();
     }
   }

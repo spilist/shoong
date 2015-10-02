@@ -27,10 +27,12 @@ public class ScoreManager : MonoBehaviour {
   public GameObject gameOverUI;
   public GameObject gameOverBannerPrefab;
   public Transform bannerButtonsList;
+  public Transform randomBannerButtonsList;
   public float[] bannerPos;
   public GameObject gameOverButtons;
 
   private bool isSaved = false;
+  private int boosterCount;
 
   void Update() {
     if (gameOverStatus == 1) {
@@ -75,6 +77,7 @@ public class ScoreManager : MonoBehaviour {
     playerExplosion.GetComponent<AudioSource>().Play();
     player.GetComponent<MeshRenderer>().enabled = false;
     player.GetComponent<SphereCollider>().enabled = false;
+    boosterCount = player.GetComponent<PlayerMover>().getNumBoosters();
     partsCollector.enabled = false;
     foreach (Transform tr in partsCollector.transform) {
       tr.gameObject.SetActive(false);
@@ -95,15 +98,38 @@ public class ScoreManager : MonoBehaviour {
     gameOverStatus++;
   }
 
-  public void scoringEnd() {
+  public void showBanner() {
     save();
 
     BannerButton[] availableBanners = new BannerButton[bannerButtonsList.childCount];
     int availableBannerCount = 0;
     foreach (Transform tr in bannerButtonsList) {
       BannerButton bannerButton = tr.GetComponent<BannerButton>();
-      if (bannerButton.available()) {
+      if (bannerButton.available(1)) {
         availableBanners[availableBannerCount++] = bannerButton;
+      }
+      if (availableBannerCount >= 2) break;
+    }
+
+    if (availableBannerCount < 2) {
+      int spaceLeft = 2 - availableBannerCount;
+
+      BannerButton[] randomBanners = new BannerButton[randomBannerButtonsList.childCount];
+      int count = 0;
+      foreach (Transform tr in randomBannerButtonsList) {
+        BannerButton bannerButton = tr.GetComponent<BannerButton>();
+        if (bannerButton.available(spaceLeft)) {
+          randomBanners[count++] = bannerButton;
+        }
+      }
+
+      while (spaceLeft > 0) {
+        BannerButton picked = randomBanners[UnityEngine.Random.Range(0, count)];
+        if (!picked.picked && picked.requiredSpace <= spaceLeft) {
+          availableBanners[availableBannerCount++] = picked;
+          picked.picked = true;
+          spaceLeft--;
+        }
       }
     }
 
@@ -180,7 +206,7 @@ public class ScoreManager : MonoBehaviour {
     if (numPlay <= 10) {
       DataManager.dm.setInt("PlayTime_" + numPlay, time);
       DataManager.dm.setInt("CubesGet_" + numPlay, count);
-      DataManager.dm.setInt("NumBooster_" + numPlay, player.GetComponent<PlayerMover>().getNumBoosters());
+      DataManager.dm.setInt("NumBooster_" + numPlay, boosterCount);
     }
   }
 
