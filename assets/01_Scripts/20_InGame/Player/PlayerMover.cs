@@ -589,8 +589,6 @@ public class PlayerMover : MonoBehaviour {
   }
 
   public void setRidingRainbowRoad(bool val) {
-    if (usingEMP && !val) return;
-
     isRidingRainbowRoad = val;
   }
 

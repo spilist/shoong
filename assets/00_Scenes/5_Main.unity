@@ -69745,15 +69745,19 @@ MonoBehaviour:
   comboBar: {fileID: 0}
   instance: {fileID: 0}
   forceSpawnAtStart: 0
-  forceFieldRadiusPerLevel: 5e010000c201000026020000
-  cameraEnlargeSizePerLevel: 14000000280000003c000000
+  forceFieldRadiusPerLevel: 2c0100009001000026020000
+  cameraEnlargeSizePerLevel: 0f000000230000003c000000
+  cameraShakeAmountPerLevel:
+  - 5
+  - 10
+  - 20
   targetRadius: 0
   enlargeSize: 0
+  shakeAmount: 15
   fieldRotateSpeed: 1500
   enlargeDuration: .5
   stayDuration: 1
   shrinkDuration: .5
-  shakeAmount: 15
 --- !u!114 &1991538119
 MonoBehaviour:
   m_ObjectHideFlags: 0

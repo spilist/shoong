@@ -55,7 +55,7 @@ public class ComboPartsManager : ObjectsManager {
     secondShot = false;
 
     if (comboCount == 1) {
-      player.encounterObject(tag);
+      player.encounterObject("ComboPart");
     }
 
     if (comboCount == fullComboCountPerLevel[0]) {

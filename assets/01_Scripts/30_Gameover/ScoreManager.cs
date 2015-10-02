@@ -123,7 +123,7 @@ public class ScoreManager : MonoBehaviour {
         }
       }
 
-      while (spaceLeft > 0) {
+      while (count > 0 && spaceLeft > 0) {
         BannerButton picked = randomBanners[UnityEngine.Random.Range(0, count)];
         if (!picked.picked && picked.requiredSpace <= spaceLeft) {
           availableBanners[availableBannerCount++] = picked;

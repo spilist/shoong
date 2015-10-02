@@ -4,15 +4,16 @@ using System.Collections;
 public class EMPManager : ObjectsManager {
   public int[] forceFieldRadiusPerLevel;
   public int[] cameraEnlargeSizePerLevel;
+  public float[] cameraShakeAmountPerLevel;
 
   public int targetRadius;
   public int enlargeSize;
-  public int fieldRotateSpeed = 300;
+  public float shakeAmount;
 
+  public int fieldRotateSpeed = 300;
   public float enlargeDuration = 3;
   public float stayDuration = 1;
   public float shrinkDuration = 1;
-  public float shakeAmount = 5;
 
   private GameObject forceField;
 
@@ -27,6 +28,7 @@ public class EMPManager : ObjectsManager {
 
     targetRadius = forceFieldRadiusPerLevel[level];
     enlargeSize = cameraEnlargeSizePerLevel[level];
+    shakeAmount = cameraShakeAmountPerLevel[level];
 
     skipInterval = true;
     forceField = strengthenPlayerEffect;

@@ -45,6 +45,8 @@ public class RainbowDonutsManager : ObjectsManager {
       player.encounterObject("RainbowDonut");
     }
 
+    player.setRidingRainbowRoad(false);
+
     if (rideCount < numRoadRides) {
       ridingSpeed = speedPerRide[rideCount];
 
@@ -57,7 +59,6 @@ public class RainbowDonutsManager : ObjectsManager {
     } else {
       objEncounterEffectForPlayer.Stop();
       player.afterStrengthenStart();
-      player.setRidingRainbowRoad(false);
       run();
     }
   }
@@ -84,10 +85,6 @@ public class RainbowDonutsManager : ObjectsManager {
     player.setDirection(dir);
     player.setRidingRainbowRoad(true);
     erasingRainbowRoad = true;
-
-    yield return new WaitForSeconds((float)nextDonutRadius / (float)ridingSpeed);
-
-    player.setRidingRainbowRoad(false);
   }
 
   Vector3 getRandomDirection() {
