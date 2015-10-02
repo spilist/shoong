@@ -69390,11 +69390,11 @@ MonoBehaviour:
   blackholeGravity: {fileID: 0}
   gravity: 50
   pullUser: 80
-  radiusPerLevel: 500000006400000096000000
+  radiusPerLevel: 5a00000082000000b4000000
   lifetimePerLevel:
-  - .600000024
-  - .75
-  - 1.14999998
+  - .675000012
+  - .975000024
+  - 1.38
   reboundDuring: 2
   teleportRadius: 100
   shakeAmount: 3
@@ -69488,7 +69488,7 @@ MonoBehaviour:
   brokenMeshes:
   - {fileID: 4300002, guid: adeac5a1dbc17406db69c3e813cc95ef, type: 3}
   - {fileID: 4300004, guid: adeac5a1dbc17406db69c3e813cc95ef, type: 3}
-  fullComboCountPerLevel: 030000000500000007000000
+  fullComboCountPerLevel: 030000000500000008000000
   destroyAfterPerLevel:
   - 3.5
   - 4
