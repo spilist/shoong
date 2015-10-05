@@ -6,6 +6,7 @@ public class ElapsedTime : MonoBehaviour {
 	public NormalPartsManager npm;
 	public AsteroidManager asm;
 	public SmallAsteroidManager sam;
+	public DangerousEMPManager dem;
 
 	public static ElapsedTime time;
 
@@ -17,6 +18,7 @@ public class ElapsedTime : MonoBehaviour {
 	private int prevObstacleCounter = 0;
 	private int prevSmallObstacleCounter = 0;
 	private int prevPartCounter = 0;
+	private bool spawnDangerousEMP = false;
 
 	void OnEnable() {
 		time = this;
@@ -28,24 +30,25 @@ public class ElapsedTime : MonoBehaviour {
 			yield return new WaitForSeconds(1);
 			now++;
 
-			if (prevObstacleCounter < Mathf.Floor(now/addObstaclePer)) {
-				prevObstacleCounter++;
-				asm.max_obstacles++;
-			}
+			// if (prevObstacleCounter < Mathf.Floor(now/addObstaclePer)) {
+			// 	prevObstacleCounter++;
+			// 	asm.max_obstacles++;
+			// }
 
-			if (prevSmallObstacleCounter < Mathf.Floor(now/addSmallObstaclePer)) {
-				prevSmallObstacleCounter++;
-				sam.max_obstacles++;
-			}
+			// if (prevSmallObstacleCounter < Mathf.Floor(now/addSmallObstaclePer)) {
+			// 	prevSmallObstacleCounter++;
+			// 	sam.max_obstacles++;
+			// }
 
-			if (prevPartCounter < Mathf.Floor(now/removePartPer)) {
-				prevPartCounter++;
-				npm.max_parts--;
-			}
+			// if (prevPartCounter < Mathf.Floor(now/removePartPer)) {
+			// 	prevPartCounter++;
+			// 	npm.max_parts--;
+			// }
 
 			asm.respawn();
 			sam.respawn();
 			npm.respawn();
+			if (spawnDangerousEMP) dem.respawn();
 		}
 	}
 
@@ -55,5 +58,9 @@ public class ElapsedTime : MonoBehaviour {
 
 	void OnDestroy() {
 		time = null;
+	}
+
+	public void startSpawnDangerousEMP() {
+		spawnDangerousEMP = true;
 	}
 }

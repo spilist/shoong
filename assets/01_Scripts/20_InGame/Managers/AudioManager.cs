@@ -6,6 +6,8 @@ public class AudioManager : MonoBehaviour {
 
   public float mainIngameVolume = 0.3f;
   public float mainSmallVolume = 0.05f;
+  public float mainOriginalPitch = 1;
+  public float mainPitchIncrease = 0.05f;
   public float powerBoostVolumeOn = 0.5f;
   public float volumeChangeDuration = 0.5f;
 
@@ -80,6 +82,10 @@ public class AudioManager : MonoBehaviour {
   public void muteBGM(bool mute) {
     if (mute) main.volume = 0;
     else main.volume = mainSmallVolume;
+  }
+
+  public void setPitch(int level) {
+    main.pitch = mainOriginalPitch + mainPitchIncrease * level;
   }
 
   public void changeVolume(string what, string level) {

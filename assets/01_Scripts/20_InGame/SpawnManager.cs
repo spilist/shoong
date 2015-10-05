@@ -22,7 +22,6 @@ public class SpawnManager : MonoBehaviour {
     // spawn GoldenCube
     GetComponent<GoldenCubeManager>().enabled = true;
 
-
     // spawn selected objects
     string mainObjectsString = PlayerPrefs.GetString("MainObjects").Trim();
     if (mainObjectsString != "") {

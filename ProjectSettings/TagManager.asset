@@ -52,6 +52,7 @@ TagManager:
   - DangerousEMP
   - CombinedObject_0
   - CombinedObject_1
+  - DangerousEMPField
   layers:
   - Default
   - TransparentFX
@@ -81,7 +82,7 @@ TagManager:
   - QuestCollider
   - ForceField
   - PowerBoost
-  - ForceFieldByDopple
+  - DangerousField
   - 
   - 
   - 

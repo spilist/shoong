@@ -4,12 +4,18 @@ using System.Collections;
 
 public class MeteroidManager : ObjectsManager {
   private GameObject[] meteroidsPrefab;
+  public GameObject biggerMeteroids;
+  private GameObject[] biggerMeteroidsPrefab;
+  public float biggerMeteroidStrength = 2.5f;
+  public float biggerMeteroidSpeed = 400;
+  public float biggerMeteroidTumble = 20;
 
   public float warnPlayerDuring = 1;
   public float spawnRadius = 400;
   public int scatterAmount = 30;
   public int lineDistance = 1000;
   public GameObject fallingStarWarningLinePrefab;
+  public GameObject biggerFallingStarWarningLinePrefab;
   public GameObject fallingStarSoundWarningPrefab;
 
   public float shortenRespawnPer = 10;
@@ -18,6 +24,7 @@ public class MeteroidManager : ObjectsManager {
 
   private Vector3 obstacleDirection;
   private Vector3 destination;
+  private bool phaseStarted = false;
 
   override public void initRest() {
     isNegative = true;
@@ -28,7 +35,17 @@ public class MeteroidManager : ObjectsManager {
       meteroidsPrefab[count++] = tr.gameObject;
     }
 
+    biggerMeteroidsPrefab = new GameObject[biggerMeteroids.transform.childCount];
+    count = 0;
+    foreach (Transform tr in biggerMeteroids.transform) {
+      biggerMeteroidsPrefab[count++] = tr.gameObject;
+    }
+
     StartCoroutine("spawnObstacle");
+  }
+
+  public void startPhase() {
+    phaseStarted = true;
   }
 
   override public void run() {}
@@ -48,7 +65,15 @@ public class MeteroidManager : ObjectsManager {
       obstacleDirection.Normalize();
       destination = spawnPos + obstacleDirection * lineDistance;
 
-      GameObject warningLine = (GameObject) Instantiate (fallingStarWarningLinePrefab);
+      bool normal = true;
+      if (phaseStarted) {
+        normal = Random.Range(0, 100) < 50;
+      }
+
+      GameObject warningLine;
+      if (normal) warningLine = (GameObject) Instantiate (fallingStarWarningLinePrefab);
+      else warningLine = (GameObject) Instantiate (biggerFallingStarWarningLinePrefab);
+
       warningLine.GetComponent<FallingstarWarningLine>().run(spawnPos - 100 * obstacleDirection, destination, lineDistance + 100, warnPlayerDuring);
 
       Instantiate (fallingStarSoundWarningPrefab);
@@ -56,7 +81,11 @@ public class MeteroidManager : ObjectsManager {
       yield return new WaitForSeconds(warnPlayerDuring);
 
       warningLine.GetComponent<FallingstarWarningLine>().erase();
-      GameObject obstacle = (GameObject) Instantiate(meteroidsPrefab[Random.Range(0, meteroidsPrefab.Length)], spawnPos, Quaternion.identity);
+
+      GameObject obstacle;
+      if (normal) obstacle = (GameObject) Instantiate(meteroidsPrefab[Random.Range(0, meteroidsPrefab.Length)], spawnPos, Quaternion.identity);
+      else obstacle = (GameObject) Instantiate(biggerMeteroidsPrefab[Random.Range(0, meteroidsPrefab.Length)], spawnPos, Quaternion.identity);
+
       obstacle.transform.parent = transform;
     }
   }

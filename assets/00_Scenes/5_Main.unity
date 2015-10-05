@@ -2762,7 +2762,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99cb96ccfa29a497e8001f7899b3556d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  phaseManager: {fileID: 1406922906}
+  phaseManager: {fileID: 894246143}
   powerBoostBackground: {fileID: 861830372}
   superImage: {fileID: 1927798533}
   heatImage: {fileID: 1147100448}
@@ -2795,7 +2795,7 @@ MonoBehaviour:
   bigSize: 6
   maxGuage: 1000
   guagePerCube: .5
-  boostDuration: 1
+  boostDuration: 8
   guageAlphaUpDuration: .5
   guageAlphaDownDuration: .5
   guageTargetAlphaUp: .670000017
@@ -14510,10 +14510,10 @@ MonoBehaviour:
   doNotShow: 0
   conditionNotRequired: 0
   showConditions:
-  - SpecialParts
+  - RainbowDonut
   - Blackhole
-  description: "\uBB34\uC801 \uC0C1\uD0DC\uC5D0\uC11C\uB294 \uBE14\uB799\uD640\uC5D0
-    \uBE68\uB824\uAC00\uB3C4 \uC8FD\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4."
+  description: "\uBB34\uC9C0\uAC1C\uB97C \uD0C0\uBA74 \uBE14\uB799\uD640\uC5D0 \uC8FD\uC9C0
+    \uC54A\uC2B5\uB2C8\uB2E4."
 --- !u!222 &472324038
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -30334,6 +30334,68 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 91418582}
   copyRotation: 0
+--- !u!1 &894246142
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 894246144}
+  - 114: {fileID: 894246143}
+  m_Layer: 0
+  m_Name: PhaseManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &894246143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 894246142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32117b6bc59844119b6e551628235a96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  npm: {fileID: 1991538117}
+  EMFilter: {fileID: 1767020063}
+  ntm: {fileID: 1991538107}
+  ntm2: {fileID: 1991538122}
+  meteroidFilter: {fileID: 211912680}
+  meteroidFilterAlpha1: .0799999982
+  meteroidFilterAlpha2: .119999997
+  meteroidFilterChangeDuration1: 3
+  meteroidFilterChangeDuration2: 2
+  dem: {fileID: 1991538123}
+  phaseIndicator: {fileID: 1406922903}
+  phaseText: {fileID: 1367745761}
+  textPerLevel:
+  - "\uC790\uAE30\uC7A5 \uBD88\uC548\uC815\uD654"
+  - "\uAC70\uB300 \uC720\uC131 \uCD9C\uD604"
+  - "\uD3ED\uBC1C \uC704\uD5D8 \uC9C0\uC5ED"
+  - "\uC720\uC131\uC6B0"
+  - "\uBBF8\uD655\uC778 \uBE44\uD589 \uBB3C\uCCB4"
+  originalPosX: -220
+  showPosX: -480
+  showAfter: .5
+  changingDuration: .200000003
+  showDuration: 3
+--- !u!4 &894246144
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 894246142}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
 --- !u!1 &895225983
 GameObject:
   m_ObjectHideFlags: 0
@@ -36922,7 +36984,7 @@ MonoBehaviour:
   m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0
+  m_FillAmount: .999899983
   m_FillClockwise: 1
   m_FillOrigin: 0
 --- !u!222 &1094098732
@@ -47725,9 +47787,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 224: {fileID: 1406922903}
-  - 114: {fileID: 1406922906}
   m_Layer: 5
-  m_Name: PhaseManager
+  m_Name: PhaseIndicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47752,39 +47813,6 @@ RectTransform:
   m_AnchoredPosition: {x: -220, y: 102}
   m_SizeDelta: {x: 1000, y: 100}
   m_Pivot: {x: 0, y: .5}
---- !u!114 &1406922906
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1406922902}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32117b6bc59844119b6e551628235a96, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  npm: {fileID: 1991538117}
-  EMFilter: {fileID: 1767020063}
-  ntm: {fileID: 1991538107}
-  ntm2: {fileID: 1991538122}
-  meteroidFilter: {fileID: 211912680}
-  meteroidFilterAlpha1: .0799999982
-  meteroidFilterAlpha2: .119999997
-  meteroidFilterChangeDuration1: 3
-  meteroidFilterChangeDuration2: 2
-  dem: {fileID: 1991538123}
-  phaseText: {fileID: 1367745761}
-  textPerLevel:
-  - "\uC790\uAE30\uC7A5 \uBD88\uC548\uC815\uD654"
-  - "\uAC70\uB300 \uC720\uC131 \uCD9C\uD604"
-  - "\uBC84\uB824\uC9C4 \uD3ED\uD0C4 \uCD9C\uD604"
-  - "\uC720\uC131\uC6B0"
-  - "\uBBF8\uD655\uC778 \uBE44\uD589 \uBB3C\uCCB4"
-  originalPosX: -220
-  showPosX: -480
-  showAfter: .5
-  changingDuration: .200000003
-  showDuration: 3
 --- !u!1 &1409252109
 GameObject:
   m_ObjectHideFlags: 0
@@ -53927,7 +53955,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uBB34\uC801 \uC0C1\uD0DC\uC5D0\uC11C\uB294 \uBE14\uB799\uD640\uC5D0 \uBE68\uB824\uAC00\uB3C4
+  m_Text: "\uBB34\uC9C0\uAC1C\uB97C \uD0C0\uBA74 \uBE14\uB799\uD640\uC5D0 \uBE68\uB824\uAC00\uB3C4
     \uC8FD\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4."
 --- !u!222 &1498015744
 CanvasRenderer:
@@ -73139,7 +73167,7 @@ MonoBehaviour:
   player: {fileID: 0}
   comboBar: {fileID: 0}
   instance: {fileID: 0}
-  forceSpawnAtStart: 1
+  forceSpawnAtStart: 0
   destroyBonusPerLevel:
   - 0
   - 1
@@ -73340,7 +73368,7 @@ MonoBehaviour:
   player: {fileID: 0}
   comboBar: {fileID: 0}
   instance: {fileID: 0}
-  forceSpawnAtStart: 1
+  forceSpawnAtStart: 0
   boosterBonusScalePerLevel:
   - 1.10000002
   - 1.5
@@ -73494,8 +73522,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objPrefab: {fileID: 108358, guid: ed3edd2867d2d42c99d6c99c3f96987e, type: 2}
-  objDestroyEffect: {fileID: 0}
-  objEncounterEffect: {fileID: 0}
+  objDestroyEffect: {fileID: 139520, guid: b60b7b3d957cf4c13bf86d902b4fb80f, type: 2}
+  objEncounterEffect: {fileID: 139520, guid: b60b7b3d957cf4c13bf86d902b4fb80f, type: 2}
   objEncounterEffectForPlayer: {fileID: 0}
   strengthenPlayerEffect: {fileID: 0}
   strength: -1
@@ -73516,6 +73544,11 @@ MonoBehaviour:
   maxScale: 25
   startDuration: 1
   decreaseDurationPerPulse: .100000001
+  empScale: 70
+  empRotatingSpeed: 500
+  enlargeDuration: .100000001
+  stayDuration: 1
+  shrinkDuration: .100000001
 --- !u!1 &1997391145
 GameObject:
   m_ObjectHideFlags: 0
@@ -75235,7 +75268,7 @@ GameObject:
   - 114: {fileID: 2086294876}
   - 114: {fileID: 2086294870}
   m_Layer: 26
-  m_Name: ForceField
+  m_Name: EMP Field
   m_TagString: ForceField
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

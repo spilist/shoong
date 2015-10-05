@@ -221,8 +221,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uBB34\uC801 \uC0C1\uD0DC\uC5D0\uC11C\uB294 \uBE14\uB799\uD640\uC5D0 \uBE68\uB824\uAC00\uB3C4
-    \uC8FD\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4."
+  m_Text: "\uBB34\uC9C0\uAC1C\uB97C \uD0C0\uBA74 \uBE14\uB799\uD640\uC5D0 \uC8FD\uC9C0
+    \uC54A\uC2B5\uB2C8\uB2E4."
 --- !u!222 &150080076
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2394,10 +2394,10 @@ MonoBehaviour:
   doNotShow: 0
   conditionNotRequired: 0
   showConditions:
-  - SpecialParts
+  - RainbowDonut
   - Blackhole
-  description: "\uBB34\uC801 \uC0C1\uD0DC\uC5D0\uC11C\uB294 \uBE14\uB799\uD640\uC5D0
-    \uBE68\uB824\uAC00\uB3C4 \uC8FD\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4."
+  description: "\uBB34\uC9C0\uAC1C\uB97C \uD0C0\uBA74 \uBE14\uB799\uD640\uC5D0 \uC8FD\uC9C0
+    \uC54A\uC2B5\uB2C8\uB2E4."
 --- !u!1 &2073201874
 GameObject:
   m_ObjectHideFlags: 0

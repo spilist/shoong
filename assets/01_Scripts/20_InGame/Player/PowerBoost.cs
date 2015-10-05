@@ -4,6 +4,7 @@ using System.Collections;
 using UnityStandardAssets.ImageEffects;
 
 public class PowerBoost : MonoBehaviour {
+  public PhaseManager phaseManager;
   public PowerBoostBackground powerBoostBackground;
   public RectTransform superImage;
   public RectTransform heatImage;
@@ -196,6 +197,8 @@ public class PowerBoost : MonoBehaviour {
     transform.localScale = Vector3.one;
     superImage.anchoredPosition = new Vector2(startSuperPos, 0);
     heatImage.anchoredPosition = new Vector2(startHeatPos, 0);
+
+    phaseManager.nextPhase();
   }
 
   IEnumerator generateAfterImage() {
