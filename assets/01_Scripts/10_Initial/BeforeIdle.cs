@@ -140,7 +140,7 @@ public class BeforeIdle : MonoBehaviour {
             PlayerPrefs.SetString("CharacterRotation", rot.ToString().TrimStart('(').TrimEnd(')'));
             PlayerPrefs.SetString("CharacterAngVal", angVal.ToString().TrimStart('(').TrimEnd(')'));
 
-            AudioManager.am.setPitch(0);
+            // AudioManager.am.setPitch(0);
             Application.LoadLevelAsync(Application.loadedLevel);
           }
         }

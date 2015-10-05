@@ -61968,7 +61968,7 @@ MeshRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_Materials:
-  - {fileID: 193139059, guid: 9d8c79f1a342edf4dadfcaae44e1c75c, type: 3}
+  - {fileID: 142123590, guid: 9d8c79f1a342edf4dadfcaae44e1c75c, type: 3}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -72306,7 +72306,7 @@ MeshRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_Materials:
-  - {fileID: 193139059, guid: 9d8c79f1a342edf4dadfcaae44e1c75c, type: 3}
+  - {fileID: 142123590, guid: 9d8c79f1a342edf4dadfcaae44e1c75c, type: 3}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -72790,6 +72790,7 @@ GameObject:
   - 114: {fileID: 1991538123}
   - 114: {fileID: 1991538105}
   - 114: {fileID: 1991538114}
+  - 114: {fileID: 1991538124}
   m_Layer: 9
   m_Name: Field Objects
   m_TagString: Untagged
@@ -73549,6 +73550,41 @@ MonoBehaviour:
   enlargeDuration: .100000001
   stayDuration: 1
   shrinkDuration: .100000001
+--- !u!114 &1991538124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1991538103}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 444896ada696347dc97655283cc94b1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objPrefab: {fileID: 175286, guid: c686fe84f109345a68ca524483736f13, type: 2}
+  objDestroyEffect: {fileID: 0}
+  objEncounterEffect: {fileID: 0}
+  objEncounterEffectForPlayer: {fileID: 0}
+  strengthenPlayerEffect: {fileID: 0}
+  strength: 10
+  speed: 60
+  tumble: 5
+  minSpawnInterval: 8
+  maxSpawnInterval: 12
+  cubesByEncounter: 0
+  isNegative: 1
+  hasEncounterEffect: 0
+  player: {fileID: 0}
+  comboBar: {fileID: 0}
+  instance: {fileID: 0}
+  forceSpawnAtStart: 0
+  laserPrefab: {fileID: 0}
+  speedIncreaseAmount: 10
+  speedIncreasePer: 5
+  shootLaserPer: 10
+  chargeTime: .5
+  laserSpeed: 250
+  laserSpeedIncreaseAmount: 5
 --- !u!1 &1997391145
 GameObject:
   m_ObjectHideFlags: 0

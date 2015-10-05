@@ -51,7 +51,7 @@ public class PhaseManager : MonoBehaviour {
     posX = originalPosX;
     stayCount = 0;
 
-    if (level < 6) AudioManager.am.setPitch(level);
+    // if (level < 6) AudioManager.am.setPitch(level);
 
     if (level == 1) {
       npm.startPhase();
