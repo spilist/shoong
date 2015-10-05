@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: PlayerEffectMat
+  m_Name: DoppleCubeMaterial
   m_Shader: {fileID: 34, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
@@ -139,12 +139,12 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: .600000024, g: .835294127, b: 1, a: .70588237}
+        second: {r: .41843152, g: .261461914, b: .911764681, a: .697000027}
       data:
         first:
           name: _SpecColor
-        second: {r: 0, g: 0, b: 0, a: 0}
+        second: {r: 1, g: 1, b: 1, a: 0}
       data:
         first:
           name: _Emission
-        second: {r: 0, g: 1, b: 1, a: 0}
+        second: {r: .13927336, g: .609784067, b: .676470578, a: 0}

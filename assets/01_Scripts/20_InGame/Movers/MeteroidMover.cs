@@ -34,10 +34,16 @@ public class MeteroidMover : ObjectsMover {
 
   public override void destroyByMonster() {
     QuestManager.qm.addCountToQuest("DestroyFallingStar");
+    if (player.isUsingDopple()) {
+      QuestManager.qm.addCountToQuest("DestroyFallingStarByDopple");
+    }
   }
 
   override protected void afterEncounter() {
     QuestManager.qm.addCountToQuest("DestroyFallingStar");
+    if (player.isUsingDopple()) {
+      QuestManager.qm.addCountToQuest("DestroyFallingStarByDopple");
+    }
   }
 
   public void nearPlayer(bool enter = true) {

@@ -16,21 +16,11 @@ public class DoppleManager : ObjectsManager {
 
   public float blinkInterval = 3;
   public int blinkRadius = 50;
-  public float teleportingDuration = 0.05f;
-  public Color originalColor;
 
   override public void initRest() {
     int level = DataManager.dm.getInt("DoppleLevel") - 1;
 
-    level = 2;
-
     targetSize = forceFieldSizePerLevel[level];
-
-    skipInterval = true;
-  }
-
-  override protected void afterSpawn() {
-    instance.GetComponent<MeshFilter>().sharedMesh = player.GetComponent<MeshFilter>().sharedMesh;
   }
 
   public float getTargetSize(bool byPlayer) {

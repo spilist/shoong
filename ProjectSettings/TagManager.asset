@@ -49,6 +49,9 @@ TagManager:
   - Settings_Tips
   - Settings_Stats
   - TinyForceFieldByDopple
+  - DangerousEMP
+  - CombinedObject_0
+  - CombinedObject_1
   layers:
   - Default
   - TransparentFX

@@ -16,7 +16,7 @@ public class BlackholeManager : ObjectsManager {
   public float shakeAmount = 3;
 
   override public void initRest() {
-    objEncounterEffectForPlayer.transform.localScale = Vector3.one * radiusPerLevel[DataManager.dm.getInt("BlackholeLevel") - 1] / radiusPerLevel[1];
+    objEncounterEffectForPlayer.transform.localScale = Vector3.one * radiusPerLevel[DataManager.dm.getInt("BlackholeLevel") - 1] / radiusPerLevel[0];
   }
 
   override protected void afterSpawn() {

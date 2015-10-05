@@ -119,6 +119,10 @@ public class MonsterMover : ObjectsMover {
         QuestManager.qm.addCountToQuest("RideMonsterWithLowEnergy");
       }
 
+      if (player.isUsingDopple()) {
+        QuestManager.qm.addCountToQuest("RideMonsterByDopple");
+      }
+
       player.encounterObject(tag);
     }
     else {

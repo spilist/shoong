@@ -2,8 +2,10 @@
 using System.Collections;
 
 public class SmallObjects : MonoBehaviour {
+  public bool combined = false;
   public Mesh activeMesh;
   public Material activeMaterial;
+  public Material activeMaterial2;
   private UIObjects obj;
   private Quaternion originalRotation;
 
@@ -25,8 +27,27 @@ public class SmallObjects : MonoBehaviour {
 
   public void checkBought() {
     if (DataManager.dm.getBool(transform.parent.name)) {
-      GetComponent<MeshFilter>().sharedMesh = activeMesh;
-      GetComponent<Renderer>().sharedMaterial = activeMaterial;
+      if (combined) {
+        foreach (Transform tr in transform) {
+          if (tr.tag == "CombinedObject_0") tr.GetComponent<Renderer>().sharedMaterial = activeMaterial;
+          else if (tr.tag == "CombinedObject_1") tr.GetComponent<Renderer>().sharedMaterial = activeMaterial2;
+        }
+      } else {
+        GetComponent<MeshFilter>().sharedMesh = activeMesh;
+        GetComponent<Renderer>().sharedMaterial = activeMaterial;
+      }
+    }
+  }
+
+  public void changeDetail(GameObject selected) {
+    if (combined) {
+      foreach (Transform tr in selected.transform) {
+        if (tr.tag == "CombinedObject_0") tr.GetComponent<Renderer>().sharedMaterial = activeMaterial;
+        else if (tr.tag == "CombinedObject_1") tr.GetComponent<Renderer>().sharedMaterial = activeMaterial2;
+      }
+    } else {
+      selected.GetComponent<MeshFilter>().sharedMesh = activeMesh;
+      selected.GetComponent<Renderer>().sharedMaterial = activeMaterial;
     }
   }
 }

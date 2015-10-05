@@ -86,6 +86,8 @@ public class ObjectsMover : MonoBehaviour {
       Vector3 heading =  player.transform.position - transform.position;
       heading /= heading.magnitude;
       rb.velocity = heading * player.GetComponent<Rigidbody>().velocity.magnitude * 1.5f;
+      rb.AddForce(heading * blm.pullUser, ForceMode.VelocityChange);
+
     } else {
       normalMovement();
     }

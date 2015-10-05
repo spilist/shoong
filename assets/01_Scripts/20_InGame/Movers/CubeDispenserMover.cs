@@ -16,6 +16,7 @@ public class CubeDispenserMover : ObjectsMover {
       destroyObject(true, true);
       player.goodPartsEncounter(this, cdm.cubesPerContact * cdm.fullComboCount);
       player.setTrapped(false);
+      QuestManager.qm.addCountToQuest("ExitCubeDispenser");
       return;
     }
 

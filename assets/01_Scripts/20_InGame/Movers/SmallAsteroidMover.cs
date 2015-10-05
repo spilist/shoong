@@ -33,6 +33,8 @@ private bool isNearPlayer = false;
       QuestManager.qm.addCountToQuest("SpecialParts");
     } else if (player.isRidingMonster()) {
       QuestManager.qm.addCountToQuest("Monster");
+    } else if (player.isUsingDopple()) {
+      QuestManager.qm.addCountToQuest("Dopple");
     }
 
     if (isNearPlayer) player.nearAsteroid(false);

@@ -459,7 +459,6 @@ public class PlayerMover : MonoBehaviour {
       return;
     } else if (obj == "Jetpack") {
       usingJetpack = true;
-      energyBar.setCharged(true);
       boosterBonus = jpm.boosterBonusScale;
       changeManager.booster.GetComponent<ParticleSystem>().emissionRate *= (boosterBonus * 2);
       changeManager.booster.transform.localScale = (boosterBonus * 2) * Vector3.one;
@@ -483,6 +482,8 @@ public class PlayerMover : MonoBehaviour {
     } else {
       effectDuration = strengthen_during;
     }
+
+    if (usingJetpack) energyBar.setCharged(true);
 
     stBar.startStrengthen(effectDuration);
 
@@ -539,6 +540,7 @@ public class PlayerMover : MonoBehaviour {
       if (!trapped) contactCollider.enabled = true;
       Camera.main.GetComponent<CameraMover>().setSlowly(false);
       spawnManager.runManager("Dopple");
+      afterStrengthenStart();
     }
   }
 

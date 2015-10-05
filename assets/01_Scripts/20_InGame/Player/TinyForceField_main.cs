@@ -55,10 +55,12 @@ public class TinyForceField_main : MonoBehaviour {
     } else {
       if (mover.tag == "Obstacle_big" || mover.tag == "Obstacle_small") {
         QuestManager.qm.addCountToQuest("DestroyAsteroid");
+        QuestManager.qm.addCountToQuest("Dopple");
       } else if (mover.tag == "Monster") {
         QuestManager.qm.addCountToQuest("DestroyMonster");
       } else if (mover.tag == "Obstacle") {
         QuestManager.qm.addCountToQuest("DestroyFallingStar");
+        QuestManager.qm.addCountToQuest("DestroyFallingStarByDopple");
       }
       DataManager.dm.increment("NumDestroyObstaclesWithBlink");
     }

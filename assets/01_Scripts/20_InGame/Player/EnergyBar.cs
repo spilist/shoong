@@ -184,6 +184,7 @@ public class EnergyBar : MonoBehaviour {
       changeManager.chargedEffect.Play();
       changeManager.chargedEffect.GetComponent<AudioSource>().Play();
     }
+    StopCoroutine("indicateCharged");
     StartCoroutine("indicateCharged");
   }
 

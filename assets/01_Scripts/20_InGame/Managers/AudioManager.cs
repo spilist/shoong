@@ -32,7 +32,7 @@ public class AudioManager : MonoBehaviour {
     am = this;
 
     main = transform.Find("Main").GetComponent<AudioSource>();
-    powerBoost = transform.Find("PowerBoost").GetComponent<AudioSource>();
+    powerBoost = transform.Find("SuperHeat").GetComponent<AudioSource>();
 
     if (DataManager.dm.getBool("BGMOffSetting")) {
       main.volume = 0;
@@ -83,6 +83,8 @@ public class AudioManager : MonoBehaviour {
   }
 
   public void changeVolume(string what, string level) {
+    if (DataManager.dm.getBool("BGMOffSetting") || AudioListener.volume == 0) return;
+
     if (what == "Main") {
       changeMainVolume = true;
       mainVolume = main.volume;

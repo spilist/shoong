@@ -51,25 +51,24 @@ public class ObjectDetail : MonoBehaviour {
       selectButton.SetActive(false);
       unselectButton.SetActive(false);
     } else {
-      rotate = true;
       objLevel.gameObject.SetActive(true);
       upgradeInfo.SetActive(true);
       upgradeInfo.transform.Find("Description").GetComponent<Text>().text = obj.upgradeEffect;
 
       SmallObjects smallObject = obj.transform.parent.Find("Object").GetComponent<SmallObjects>();
       smallObject.checkBought();
-      selected.GetComponent<MeshFilter>().sharedMesh = smallObject.activeMesh;
-      selected.GetComponent<Renderer>().sharedMaterial = smallObject.activeMaterial;
-
+      smallObject.changeDetail(selected);
 
       selectButton.SetActive(true);
       unselectButton.SetActive(true);
 
       if (obj.isActive()) {
+        rotate = true;
         selectButton.SetActive(false);
         selected.transform.Find("Effect").gameObject.SetActive(true);
         unselectButton.GetComponent<ObjectUnselectButton>().setObject(obj);
       } else {
+        rotate = false;
         selectButton.GetComponent<ObjectSelectButton>().setObject(obj);
         selected.transform.Find("Effect").gameObject.SetActive(false);
         unselectButton.SetActive(false);
