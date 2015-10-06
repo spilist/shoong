@@ -315,16 +315,14 @@ public class PowerBoost : MonoBehaviour {
       }
     }
 
-    if (!mover.isNegativeObject()) {
-      comboBar.addCombo();
-    } else {
-      if (mover.tag == "Obstacle_big" || mover.tag == "Obstacle_small") {
-        QuestManager.qm.addCountToQuest("DestroyAsteroid");
-      } else if (mover.tag == "Monster") {
-        QuestManager.qm.addCountToQuest("DestroyMonster");
-      } else if (mover.tag == "Obstacle") {
-        QuestManager.qm.addCountToQuest("DestroyFallingStar");
-      }
+    comboBar.addCombo();
+
+    if (mover.tag == "Obstacle_big" || mover.tag == "Obstacle_small") {
+      QuestManager.qm.addCountToQuest("DestroyAsteroid");
+    } else if (mover.tag == "Monster") {
+      QuestManager.qm.addCountToQuest("DestroyMonster");
+    } else if (mover.tag == "Obstacle") {
+      QuestManager.qm.addCountToQuest("DestroyFallingStar");
     }
 
     mover.destroyObject(true, true);

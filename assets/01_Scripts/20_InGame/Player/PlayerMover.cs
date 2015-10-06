@@ -367,6 +367,7 @@ public class PlayerMover : MonoBehaviour {
     usingPowerBoost = true;
     GetComponent<Renderer>().enabled = false;
     GetComponent<Collider>().enabled = false;
+    isInsideBlackhole = false;
     changeManager.changeCharacterToOriginal();
     energyBar.getFullHealth();
 
@@ -616,6 +617,7 @@ public class PlayerMover : MonoBehaviour {
     usingEMP = false;
     rotatePlayerBody();
     showEffect("Charged");
+    afterStrengthenStart();
     QuestManager.qm.addCountToQuest("DestroyAsteroidAndFallingStarByEMP", 0);
   }
 

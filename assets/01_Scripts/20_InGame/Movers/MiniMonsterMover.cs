@@ -80,7 +80,7 @@ public class MiniMonsterMover : ObjectsMover {
   }
 
   override public bool dangerous() {
-    if (player.isInvincible()) return false;
+    if (player.isInvincible() || player.isUsingBlackhole()) return false;
     else return true;
   }
 

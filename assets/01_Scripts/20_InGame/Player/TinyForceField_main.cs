@@ -48,8 +48,9 @@ public class TinyForceField_main : MonoBehaviour {
       }
     }
 
+    dpm.comboBar.addCombo();
+
     if (!mover.isNegativeObject()) {
-      dpm.comboBar.addCombo();
       dpm.getEnergy.Play();
       dpm.getEnergy.GetComponent<AudioSource>().Play();
     } else {

@@ -192,9 +192,7 @@ public class ObjectsMover : MonoBehaviour {
       player.strengthenBy(tag);
     }
 
-    if (!isNegativeObject()) {
-      player.transform.parent.Find("Bars Canvas").GetComponent<ComboBar>().addCombo();
-    }
+    player.transform.parent.Find("Bars Canvas").GetComponent<ComboBar>().addCombo();
 
     if (hasEncounterEffect()) {
       player.encounterObject(tag);
