@@ -53,6 +53,8 @@ TagManager:
   - CombinedObject_0
   - CombinedObject_1
   - DangerousEMPField
+  - Alienship
+  - AlienshipLaser
   layers:
   - Default
   - TransparentFX
@@ -83,7 +85,7 @@ TagManager:
   - ForceField
   - PowerBoost
   - DangerousField
-  - 
+  - Alienship
   - 
   - 
   m_SortingLayers:

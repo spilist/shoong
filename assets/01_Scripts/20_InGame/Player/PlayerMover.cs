@@ -382,6 +382,7 @@ public class PlayerMover : MonoBehaviour {
     usingPowerBoost = false;
     GetComponent<Renderer>().enabled = true;
     GetComponent<Collider>().enabled = true;
+    rotatePlayerBody();
     energyBar.getFullHealth();
     afterStrengthenStart();
   }

@@ -30371,6 +30371,7 @@ MonoBehaviour:
   meteroidFilterChangeDuration1: 3
   meteroidFilterChangeDuration2: 2
   dem: {fileID: 1991538123}
+  asm: {fileID: 1991538124}
   phaseIndicator: {fileID: 1406922903}
   phaseText: {fileID: 1367745761}
   textPerLevel:
@@ -36984,7 +36985,7 @@ MonoBehaviour:
   m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: .999899983
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 0
 --- !u!222 &1094098732
@@ -72924,7 +72925,7 @@ MonoBehaviour:
   forceSpawnAtStart: 0
   biggerMeteroids: {fileID: 177696, guid: 7dc9fcd4d69684bbea3ed2eaac9bb7a5, type: 2}
   biggerMeteroidStrength: 2.5
-  biggerMeteroidSpeed: 400
+  biggerMeteroidSpeed: 320
   biggerMeteroidTumble: 20
   warnPlayerDuring: .5
   spawnRadius: 200
@@ -73299,8 +73300,8 @@ MonoBehaviour:
   instance: {fileID: 0}
   forceSpawnAtStart: 0
   max_parts: 60
-  minUnstableSpeed: 10
-  maxUnstableSpeed: 30
+  minUnstableSpeed: 5
+  maxUnstableSpeed: 15
 --- !u!114 &1991538118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73496,7 +73497,7 @@ MonoBehaviour:
   forceSpawnAtStart: 0
   biggerMeteroids: {fileID: 177696, guid: 7dc9fcd4d69684bbea3ed2eaac9bb7a5, type: 2}
   biggerMeteroidStrength: 2.5
-  biggerMeteroidSpeed: 400
+  biggerMeteroidSpeed: 320
   biggerMeteroidTumble: 20
   warnPlayerDuring: .5
   spawnRadius: 200
@@ -73540,7 +73541,7 @@ MonoBehaviour:
   instance: {fileID: 0}
   forceSpawnAtStart: 0
   time: {fileID: 980455324}
-  max_emp: 3
+  max_emp: 5
   minScale: 15
   maxScale: 25
   startDuration: 1
@@ -73567,10 +73568,10 @@ MonoBehaviour:
   objEncounterEffectForPlayer: {fileID: 0}
   strengthenPlayerEffect: {fileID: 0}
   strength: 10
-  speed: 60
-  tumble: 5
-  minSpawnInterval: 8
-  maxSpawnInterval: 12
+  speed: 80
+  tumble: 50
+  minSpawnInterval: 5
+  maxSpawnInterval: 5
   cubesByEncounter: 0
   isNegative: 1
   hasEncounterEffect: 0
@@ -73578,13 +73579,21 @@ MonoBehaviour:
   comboBar: {fileID: 0}
   instance: {fileID: 0}
   forceSpawnAtStart: 0
-  laserPrefab: {fileID: 0}
-  speedIncreaseAmount: 10
-  speedIncreasePer: 5
-  shootLaserPer: 10
-  chargeTime: .5
-  laserSpeed: 250
-  laserSpeedIncreaseAmount: 5
+  laserPrefab: {fileID: 140848, guid: ee9b8d5623d8a4cb2a1aed0140e7d797, type: 2}
+  laserWarningLinePrefab: {fileID: 149728, guid: 1a32e5133a7bd4c099bbab27e21edf87,
+    type: 2}
+  spawnRadius: 200
+  headFollowingSpeed: 100
+  speedIncreaseAmount: 5
+  speedIncreasePer: 3
+  shootLaserPer: 8
+  chargeTime: 1
+  laserRadius: 20
+  laserLength: 500
+  laserShootingDuration: .100000001
+  laserStayDuration: .5
+  laserShrinkingDuration: .100000001
+  laserRotatingSpeed: 1000
 --- !u!1 &1997391145
 GameObject:
   m_ObjectHideFlags: 0

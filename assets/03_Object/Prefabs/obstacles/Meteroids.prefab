@@ -16,7 +16,7 @@ GameObject:
   - 199: {fileID: 19904522}
   - 114: {fileID: 11417482}
   - 82: {fileID: 8242516}
-  m_Layer: 0
+  m_Layer: 23
   m_Name: Meteoroid1_3
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   - 199: {fileID: 19906032}
   - 114: {fileID: 11477164}
   - 82: {fileID: 8230980}
-  m_Layer: 0
+  m_Layer: 23
   m_Name: Meteoroid1_1
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -62,7 +62,7 @@ GameObject:
   - 199: {fileID: 19908878}
   - 114: {fileID: 11432062}
   - 82: {fileID: 8284312}
-  m_Layer: 0
+  m_Layer: 23
   m_Name: Meteoroid2_1
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -85,7 +85,7 @@ GameObject:
   - 199: {fileID: 19974248}
   - 114: {fileID: 11450884}
   - 82: {fileID: 8253608}
-  m_Layer: 0
+  m_Layer: 23
   m_Name: Meteoroid1_2
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -108,7 +108,7 @@ GameObject:
   - 199: {fileID: 19930550}
   - 114: {fileID: 11407628}
   - 82: {fileID: 8245864}
-  m_Layer: 0
+  m_Layer: 23
   m_Name: Meteoroid2_3
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -123,7 +123,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 420790}
-  m_Layer: 0
+  m_Layer: 23
   m_Name: Meteroids
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -146,7 +146,7 @@ GameObject:
   - 199: {fileID: 19982788}
   - 114: {fileID: 11491400}
   - 82: {fileID: 8286800}
-  m_Layer: 0
+  m_Layer: 23
   m_Name: Meteoroid2_2
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -944,6 +944,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2968ff343918b42168230ef658afc639, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bigger: 0
 --- !u!114 &11417482
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -955,6 +956,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2968ff343918b42168230ef658afc639, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bigger: 0
 --- !u!114 &11432062
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -966,6 +968,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2968ff343918b42168230ef658afc639, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bigger: 0
 --- !u!114 &11450884
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -977,6 +980,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2968ff343918b42168230ef658afc639, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bigger: 0
 --- !u!114 &11477164
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -988,6 +992,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2968ff343918b42168230ef658afc639, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bigger: 0
 --- !u!114 &11491400
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -999,6 +1004,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2968ff343918b42168230ef658afc639, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bigger: 0
 --- !u!135 &13500448
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -7466,6 +7472,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 05dd56a748ad74e92964277e6190f9be, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 23
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 152204}

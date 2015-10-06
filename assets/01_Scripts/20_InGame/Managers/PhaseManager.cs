@@ -20,6 +20,7 @@ public class PhaseManager : MonoBehaviour {
   private Color meteroidFilterColor;
 
   public DangerousEMPManager dem;
+  public AlienshipManager asm;
 
   public RectTransform phaseIndicator;
   public Text phaseText;
@@ -69,7 +70,7 @@ public class PhaseManager : MonoBehaviour {
       meteroidFilterTargetAlpha = meteroidFilterAlpha2;
       meteroidFilterChangeDuration = meteroidFilterChangeDuration2;
     } else if (level == 5) {
-
+      asm.enabled = true;
     }
   }
 
