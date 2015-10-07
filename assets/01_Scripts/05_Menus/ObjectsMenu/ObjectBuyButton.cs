@@ -8,31 +8,12 @@ public class ObjectBuyButton : MenusBehavior {
   public CubesYouHave cubes;
   public Color notAffordableTextColor;
   public Text priceText;
-  public Mesh originalMesh;
-  public Mesh blinkingMesh;
-  public float blinkingSeconds = 0.4f;
   public BuyButtonsCubeIconPosition icon;
 
   private UIObjects selectedObj;
   private int price;
   private string objectName;
   private bool affordable = true;
-
-	void Start () {
-    playTouchSound = false;
-	}
-
-  IEnumerator blinkButton() {
-    while(true) {
-      GetComponent<MeshFilter>().sharedMesh = originalMesh;
-
-      yield return new WaitForSeconds(blinkingSeconds);
-
-      GetComponent<MeshFilter>().sharedMesh = blinkingMesh;
-
-      yield return new WaitForSeconds(blinkingSeconds);
-    }
-  }
 
 	public void setObject(UIObjects obj) {
     gameObject.SetActive(true);
@@ -46,16 +27,12 @@ public class ObjectBuyButton : MenusBehavior {
     if (cubes.youHave() < price) {
       affordable = false;
       priceText.color = notAffordableTextColor;
-      StopCoroutine("blinkButton");
-      if (which == "normal") {
-        GetComponent<MeshFilter>().sharedMesh = originalMesh;
-      }
+      stopBlink();
     } else {
       affordable = true;
       priceText.color = new Color(255, 255, 255);
       if (which == "normal") {
-        StopCoroutine("blinkButton");
-        StartCoroutine("blinkButton");
+        startBlink();
       }
     }
   }

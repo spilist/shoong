@@ -55,6 +55,7 @@ ModelImporter:
     100094: button_sound_on
     100096: button_statitics
     100098: button_tip
+    100100: button_grey_ad_bonus
     400000: active_object
     400002: button_back
     400004: button_blank_leftright
@@ -105,6 +106,7 @@ ModelImporter:
     400094: button_sound_on
     400096: button_statitics
     400098: button_tip
+    400100: button_grey_ad_bonus
     2300000: active_object
     2300002: button_back
     2300004: button_blank_leftright
@@ -154,6 +156,7 @@ ModelImporter:
     2300092: button_sound_on
     2300094: button_statitics
     2300096: button_tip
+    2300098: button_grey_ad_bonus
     3300000: active_object
     3300002: button_back
     3300004: button_blank_leftright
@@ -203,6 +206,7 @@ ModelImporter:
     3300092: button_sound_on
     3300094: button_statitics
     3300096: button_tip
+    3300098: button_grey_ad_bonus
     4300000: button_back
     4300002: button_select
     4300004: button_character
@@ -252,6 +256,7 @@ ModelImporter:
     4300092: button_sound_off
     4300094: button_batterysaver_off
     4300096: button_alarm_off
+    4300098: button_grey_ad_bonus
     9500000: //RootNode
   materials:
     importMaterials: 1

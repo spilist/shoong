@@ -3111,7 +3111,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc8ae749e8da24e548afde50812e3682, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeMesh: {fileID: 4300022, guid: 7d4e33b83f6a046ab845e77e3044ffcc, type: 3}
+  inactiveMesh: {fileID: 0}
+  blinkingMesh: {fileID: 4300028, guid: 7d4e33b83f6a046ab845e77e3044ffcc, type: 3}
+  blinkingSeconds: .400000006
   playTouchSound: 1
+  blinkOnStart: 0
   characters: {fileID: 552014891}
   characterCube: {fileID: 714900423}
   gathering: {fileID: 1512218220}
@@ -3128,9 +3133,6 @@ MonoBehaviour:
   cubesYouHave: {fileID: 545979715}
   goldenCubesYouHave: {fileID: 1928310596}
   notAffordableTextColor: {r: .513725519, g: .513725519, b: .513725519, a: 1}
-  originalMesh: {fileID: 4300022, guid: 7d4e33b83f6a046ab845e77e3044ffcc, type: 3}
-  blinkingMesh: {fileID: 4300028, guid: 7d4e33b83f6a046ab845e77e3044ffcc, type: 3}
-  blinkingSeconds: .400000006
   originalSize: 200
   shrinkSize: 100
   totalSeconds: 3
@@ -10207,7 +10209,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e68bb61d5fb37471abfa0af9578835a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeMesh: {fileID: 0}
+  inactiveMesh: {fileID: 0}
+  blinkingMesh: {fileID: 0}
+  blinkingSeconds: .400000006
   playTouchSound: 1
+  blinkOnStart: 0
   another: {fileID: 1227587710}
 --- !u!1 &211912679
 GameObject:
@@ -13573,8 +13580,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 686212e7a972945beb15d31c59a10dff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeMesh: {fileID: 0}
+  inactiveMesh: {fileID: 0}
+  blinkingMesh: {fileID: 0}
+  blinkingSeconds: .400000006
   playTouchSound: 0
-  linkTo: www.google.com
+  blinkOnStart: 0
+  linkTo: http://google.com
 --- !u!1 &335624706
 GameObject:
   m_ObjectHideFlags: 0
@@ -18161,7 +18173,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04d1e4ff83e344c2ab093563cdcc4568, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeMesh: {fileID: 0}
+  inactiveMesh: {fileID: 0}
+  blinkingMesh: {fileID: 0}
+  blinkingSeconds: .400000006
   playTouchSound: 1
+  blinkOnStart: 0
 --- !u!1 &552014890
 GameObject:
   m_ObjectHideFlags: 0
@@ -18276,10 +18293,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81fff6edda5804dd98fbd2d8f5848155, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeMesh: {fileID: 4300078, guid: 7d4e33b83f6a046ab845e77e3044ffcc, type: 3}
+  inactiveMesh: {fileID: 4300090, guid: 7d4e33b83f6a046ab845e77e3044ffcc, type: 3}
+  blinkingMesh: {fileID: 0}
+  blinkingSeconds: .400000006
   playTouchSound: 1
+  blinkOnStart: 0
   settingName: BGMOff
-  onMesh: {fileID: 4300078, guid: 7d4e33b83f6a046ab845e77e3044ffcc, type: 3}
-  offMesh: {fileID: 4300090, guid: 7d4e33b83f6a046ab845e77e3044ffcc, type: 3}
 --- !u!23 &552354262
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -20027,7 +20047,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4d832278b190421e8a2402bc55159cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeMesh: {fileID: 0}
+  inactiveMesh: {fileID: 0}
+  blinkingMesh: {fileID: 0}
+  blinkingSeconds: .400000006
   playTouchSound: 1
+  blinkOnStart: 0
   objectName: "\uACE0\uC7A5\uB09C \uC790\uAE30\uC7A5 \uCD9C\uB825\uAE30"
   description: "\uC790\uAE30\uC7A5\uC744 \uD65C\uC6A9\uD574 \uB113\uC740 \uC9C0\uC5ED\uC758
     \uD050\uBE0C\uB97C \uD68D\uB4DD\uD558\uC138\uC694."
@@ -20454,7 +20479,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 066bb6e74087b490a835f160ded05a03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeMesh: {fileID: 0}
+  inactiveMesh: {fileID: 0}
+  blinkingMesh: {fileID: 0}
+  blinkingSeconds: .400000006
   playTouchSound: 1
+  blinkOnStart: 0
 --- !u!4 &621705454
 Transform:
   m_ObjectHideFlags: 0
@@ -21795,7 +21825,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23ae3153f0d004244a807408cd11b281, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeMesh: {fileID: 0}
+  inactiveMesh: {fileID: 0}
+  blinkingMesh: {fileID: 0}
+  blinkingSeconds: .400000006
   playTouchSound: 1
+  blinkOnStart: 0
   menus: {fileID: 1082642569}
   changeManager: {fileID: 91418591}
   playAgain: {fileID: 1431479375}
@@ -22463,9 +22498,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db17e463754b14a9a88929a7b4e53ee0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeMesh: {fileID: 4300062, guid: 7d4e33b83f6a046ab845e77e3044ffcc, type: 3}
+  inactiveMesh: {fileID: 4300072, guid: 7d4e33b83f6a046ab845e77e3044ffcc, type: 3}
+  blinkingMesh: {fileID: 0}
+  blinkingSeconds: .400000006
   playTouchSound: 0
-  originalMesh: {fileID: 4300062, guid: 7d4e33b83f6a046ab845e77e3044ffcc, type: 3}
-  reachedLimitMesh: {fileID: 4300072, guid: 7d4e33b83f6a046ab845e77e3044ffcc, type: 3}
+  blinkOnStart: 0
   errorSound: {fileID: 8300000, guid: f456331f54b714e6c8014b90393d67cb, type: 3}
 --- !u!23 &685215975
 MeshRenderer:
@@ -27356,7 +27394,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4d832278b190421e8a2402bc55159cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeMesh: {fileID: 0}
+  inactiveMesh: {fileID: 0}
+  blinkingMesh: {fileID: 0}
+  blinkingSeconds: .400000006
   playTouchSound: 1
+  blinkOnStart: 0
   objectName: "\uC6B0\uC8FC \uBAAC\uC2A4\uD130"
   description: "\uC6B0\uC8FC\uB97C \uB5A0\uB3CC\uBA70 \uB2F9\uC2E0\uC744 \uC7A1\uC544\uBA39\uC73C\uB824
     \uD558\uC9C0\uB9CC,  \uC57D\uD574\uC9C0\uACE0 \uB098\uBA74 \uC804\uC138\uC5ED\uC804."
@@ -31111,7 +31154,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4d832278b190421e8a2402bc55159cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeMesh: {fileID: 0}
+  inactiveMesh: {fileID: 0}
+  blinkingMesh: {fileID: 0}
+  blinkingSeconds: .400000006
   playTouchSound: 1
+  blinkOnStart: 0
   objectName: "\uBC84\uB824\uC9C4 \uC81C\uD2B8\uD329"
   description: "\uB204\uAD70\uAC00\uAC00 \uB0A8\uAE34 \uC81C\uD2B8\uD329\uC744 \uB2EC\uACE0
     \uC6B0\uC8FC\uB97C \uB9C8\uC74C\uAECF \uB204\uBCBC\uBCF4\uC138\uC694."
@@ -31362,7 +31410,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4d832278b190421e8a2402bc55159cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeMesh: {fileID: 0}
+  inactiveMesh: {fileID: 0}
+  blinkingMesh: {fileID: 0}
+  blinkingSeconds: .400000006
   playTouchSound: 1
+  blinkOnStart: 0
   objectName: "\uBD88\uC548\uC815\uD55C \uCC28\uC6D0\uBD80\uD488"
   description: "\uC218\uC2ED\uAC1C \uCC28\uC6D0\uC5D0\uC11C \uBD80\uD488\uB4E4\uC774
     \uC3DF\uC544\uC9D1\uB2C8\uB2E4."
@@ -33547,7 +33600,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86697ed42d96b4d60a7b2614db27c413, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeMesh: {fileID: 0}
+  inactiveMesh: {fileID: 0}
+  blinkingMesh: {fileID: 0}
+  blinkingSeconds: .400000006
   playTouchSound: 1
+  blinkOnStart: 0
 --- !u!1 &1015476138
 GameObject:
   m_ObjectHideFlags: 0
@@ -39260,14 +39318,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8be3b37f38ba0495aade5bbb342bd6f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playTouchSound: 1
+  activeMesh: {fileID: 0}
+  inactiveMesh: {fileID: 0}
+  blinkingMesh: {fileID: 0}
+  blinkingSeconds: .400000006
+  playTouchSound: 0
+  blinkOnStart: 0
   which: golden
   cubes: {fileID: 1928310598}
   notAffordableTextColor: {r: .513725519, g: .513725519, b: .513725519, a: 1}
   priceText: {fileID: 1306473452}
-  originalMesh: {fileID: 0}
-  blinkingMesh: {fileID: 0}
-  blinkingSeconds: .400000006
   icon: {fileID: 1881522958}
 --- !u!23 &1174462711
 MeshRenderer:
@@ -41432,7 +41492,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e68bb61d5fb37471abfa0af9578835a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeMesh: {fileID: 0}
+  inactiveMesh: {fileID: 0}
+  blinkingMesh: {fileID: 0}
+  blinkingSeconds: .400000006
   playTouchSound: 1
+  blinkOnStart: 0
   another: {fileID: 204315613}
 --- !u!65 &1227587715
 BoxCollider:
@@ -41560,7 +41625,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4d832278b190421e8a2402bc55159cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeMesh: {fileID: 0}
+  inactiveMesh: {fileID: 0}
+  blinkingMesh: {fileID: 0}
+  blinkingSeconds: .400000006
   playTouchSound: 1
+  blinkOnStart: 0
   objectName: "\uBE14\uB799\uD640"
   description: "\uD0C8\uCD9C\uD558\uC138\uC694! \uC8FC\uBCC0\uC758 \uBAA8\uB4E0 \uAC83\uB4E4\uC744
     \uBE68\uC544\uB4E4\uC785\uB2C8\uB2E4. "
@@ -42007,7 +42077,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4d832278b190421e8a2402bc55159cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeMesh: {fileID: 0}
+  inactiveMesh: {fileID: 0}
+  blinkingMesh: {fileID: 0}
+  blinkingSeconds: .400000006
   playTouchSound: 1
+  blinkOnStart: 0
   objectName: "\uAC1C\uC778\uC6A9 \uC21C\uAC04\uC774\uB3D9\uAE30"
   description: "\uC124\uBA85"
   upgradeEffect: "\uD30C\uB3D9 \uC0DD\uC131 \uBC94\uC704 \uC99D\uAC00"
@@ -42234,8 +42309,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 686212e7a972945beb15d31c59a10dff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeMesh: {fileID: 0}
+  inactiveMesh: {fileID: 0}
+  blinkingMesh: {fileID: 0}
+  blinkingSeconds: .400000006
   playTouchSound: 0
-  linkTo: www.google.com
+  blinkOnStart: 0
+  linkTo: http://google.com
 --- !u!4 &1285032819
 Transform:
   m_ObjectHideFlags: 0
@@ -42754,7 +42834,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8af9bb3f711cd4f0f9510c1913efe83c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeMesh: {fileID: 4300048, guid: 7d4e33b83f6a046ab845e77e3044ffcc, type: 3}
+  inactiveMesh: {fileID: 4300098, guid: 7d4e33b83f6a046ab845e77e3044ffcc, type: 3}
+  blinkingMesh: {fileID: 4300050, guid: 7d4e33b83f6a046ab845e77e3044ffcc, type: 3}
+  blinkingSeconds: .400000006
   playTouchSound: 0
+  blinkOnStart: 1
   description: "\uD669\uAE08\uD050\uBE0C \uC5BB\uAE30"
   requiredSpace: 1
   picked: 0
@@ -42875,7 +42960,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4d832278b190421e8a2402bc55159cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeMesh: {fileID: 0}
+  inactiveMesh: {fileID: 0}
+  blinkingMesh: {fileID: 0}
+  blinkingSeconds: .400000006
   playTouchSound: 1
+  blinkOnStart: 0
   objectName: "\uD050\uBE0C \uC800\uC7A5\uACE0"
   description: "\uC548\uC5D0 \uC800\uC7A5\uB41C \uD050\uBE0C\uB97C \uC804\uBD80 \uBA39\uC5B4\uBD05\uC2DC\uB2E4."
   upgradeEffect: "\uD050\uBE0C \uC800\uC7A5\uB7C9 \uC99D\uAC00"
@@ -43288,10 +43378,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bb3aba27cb714482bb8d5c9314be404, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeMesh: {fileID: 4300086, guid: 7d4e33b83f6a046ab845e77e3044ffcc, type: 3}
+  inactiveMesh: {fileID: 4300096, guid: 7d4e33b83f6a046ab845e77e3044ffcc, type: 3}
+  blinkingMesh: {fileID: 0}
+  blinkingSeconds: .400000006
   playTouchSound: 1
+  blinkOnStart: 0
   settingName: 
-  onMesh: {fileID: 4300086, guid: 7d4e33b83f6a046ab845e77e3044ffcc, type: 3}
-  offMesh: {fileID: 4300096, guid: 7d4e33b83f6a046ab845e77e3044ffcc, type: 3}
 --- !u!23 &1339036439
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -44888,7 +44981,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64eb87d006c3148ccb16a2f6e9e588d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeMesh: {fileID: 0}
+  inactiveMesh: {fileID: 0}
+  blinkingMesh: {fileID: 0}
+  blinkingSeconds: .400000006
   playTouchSound: 0
+  blinkOnStart: 0
   description: "\uAC8C\uC784\uC744 \uD3C9\uAC00\uD574\uC8FC\uC138\uC694"
   requiredSpace: 1
   picked: 0
@@ -46378,10 +46476,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24393773a0700427ab24c22a07c6ad4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeMesh: {fileID: 4300080, guid: 7d4e33b83f6a046ab845e77e3044ffcc, type: 3}
+  inactiveMesh: {fileID: 4300092, guid: 7d4e33b83f6a046ab845e77e3044ffcc, type: 3}
+  blinkingMesh: {fileID: 0}
+  blinkingSeconds: .400000006
   playTouchSound: 1
+  blinkOnStart: 0
   settingName: MuteAudio
-  onMesh: {fileID: 4300080, guid: 7d4e33b83f6a046ab845e77e3044ffcc, type: 3}
-  offMesh: {fileID: 4300092, guid: 7d4e33b83f6a046ab845e77e3044ffcc, type: 3}
 --- !u!23 &1374786361
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -47992,7 +48093,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23ae3153f0d004244a807408cd11b281, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeMesh: {fileID: 0}
+  inactiveMesh: {fileID: 0}
+  blinkingMesh: {fileID: 0}
+  blinkingSeconds: .400000006
   playTouchSound: 1
+  blinkOnStart: 0
   menus: {fileID: 1082642569}
   changeManager: {fileID: 91418591}
   playAgain: {fileID: 1431479375}
@@ -49363,7 +49469,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d21e7edfe69b045dfa22b4656a315cc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeMesh: {fileID: 0}
+  inactiveMesh: {fileID: 0}
+  blinkingMesh: {fileID: 0}
+  blinkingSeconds: .400000006
   playTouchSound: 1
+  blinkOnStart: 0
   menus: {fileID: 1082642569}
 --- !u!1 &1412352767
 GameObject:
@@ -51227,7 +51338,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1589bcaa1743f460f865dc385e5b504b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeMesh: {fileID: 0}
+  inactiveMesh: {fileID: 0}
+  blinkingMesh: {fileID: 0}
+  blinkingSeconds: .400000006
   playTouchSound: 0
+  blinkOnStart: 0
   beforeIdle: {fileID: 1366368665}
 --- !u!1 &1447138049
 GameObject:
@@ -53981,14 +54097,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8be3b37f38ba0495aade5bbb342bd6f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playTouchSound: 1
+  activeMesh: {fileID: 4300058, guid: 7d4e33b83f6a046ab845e77e3044ffcc, type: 3}
+  inactiveMesh: {fileID: 0}
+  blinkingMesh: {fileID: 4300066, guid: 7d4e33b83f6a046ab845e77e3044ffcc, type: 3}
+  blinkingSeconds: .400000006
+  playTouchSound: 0
+  blinkOnStart: 0
   which: normal
   cubes: {fileID: 545979717}
   notAffordableTextColor: {r: .513725519, g: .513725519, b: .513725519, a: 1}
   priceText: {fileID: 685884384}
-  originalMesh: {fileID: 4300058, guid: 7d4e33b83f6a046ab845e77e3044ffcc, type: 3}
-  blinkingMesh: {fileID: 4300066, guid: 7d4e33b83f6a046ab845e77e3044ffcc, type: 3}
-  blinkingSeconds: .400000006
   icon: {fileID: 57842499}
 --- !u!65 &1488355727
 BoxCollider:
@@ -54324,7 +54442,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86697ed42d96b4d60a7b2614db27c413, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeMesh: {fileID: 0}
+  inactiveMesh: {fileID: 0}
+  blinkingMesh: {fileID: 0}
+  blinkingSeconds: .400000006
   playTouchSound: 1
+  blinkOnStart: 0
 --- !u!65 &1505273306
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -58746,7 +58869,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b79e30ec2f8214d5fbdb9949030b9f5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeMesh: {fileID: 0}
+  inactiveMesh: {fileID: 0}
+  blinkingMesh: {fileID: 0}
+  blinkingSeconds: .400000006
   playTouchSound: 1
+  blinkOnStart: 0
   scoreManager: {fileID: 1422286122}
   pauseFilter: {fileID: 537339453}
   pauseStatus: {fileID: 510864196}
@@ -58844,7 +58972,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04d1e4ff83e344c2ab093563cdcc4568, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeMesh: {fileID: 0}
+  inactiveMesh: {fileID: 0}
+  blinkingMesh: {fileID: 0}
+  blinkingSeconds: .400000006
   playTouchSound: 1
+  blinkOnStart: 0
 --- !u!23 &1576182590
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -60325,7 +60458,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f3e3858ac9114dafacd77c84efae7ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeMesh: {fileID: 0}
+  inactiveMesh: {fileID: 0}
+  blinkingMesh: {fileID: 0}
+  blinkingSeconds: .400000006
   playTouchSound: 1
+  blinkOnStart: 0
   description: "\uCE90\uB9AD\uD130 \uBF51\uAE30"
   requiredSpace: 1
   picked: 0
@@ -62555,7 +62693,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4d832278b190421e8a2402bc55159cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeMesh: {fileID: 0}
+  inactiveMesh: {fileID: 0}
+  blinkingMesh: {fileID: 0}
+  blinkingSeconds: .400000006
   playTouchSound: 1
+  blinkOnStart: 0
   objectName: "\uAC15\uCCA0 \uBC30\uD130\uB9AC"
   description: "\uBAA8\uB4E0 \uAC78 \uBD80\uC234\uBC84\uB9B4 \uC218 \uC788\uC2B5\uB2C8\uB2E4.
     \uBE14\uB799\uD640\uB9CC \uBE7C\uACE0\uC694."
@@ -69281,7 +69424,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc4c3bc4f330044f4a3ada94129c8dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeMesh: {fileID: 0}
+  inactiveMesh: {fileID: 0}
+  blinkingMesh: {fileID: 0}
+  blinkingSeconds: .400000006
   playTouchSound: 1
+  blinkOnStart: 0
   goldenCubes: {fileID: 1928310598}
   notAffordableTextColor: {r: .513725519, g: .513725519, b: .513725519, a: 1}
   priceText: {fileID: 335624708}
@@ -72387,7 +72535,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4d832278b190421e8a2402bc55159cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeMesh: {fileID: 0}
+  inactiveMesh: {fileID: 0}
+  blinkingMesh: {fileID: 0}
+  blinkingSeconds: .400000006
   playTouchSound: 1
+  blinkOnStart: 0
   objectName: "\uBB34\uC9C0\uAC1C \uB3C4\uB11B"
   description: "\uC3D9 \uB4E4\uC5B4\uAC00 \uBB34\uC9C0\uAC1C \uAE38\uC744 \uB530\uB77C
     \uB5A0\uB098\uC694."
@@ -72726,10 +72879,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b5a9a867dcc54d21bd17a5a83cc8bc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeMesh: {fileID: 4300084, guid: 7d4e33b83f6a046ab845e77e3044ffcc, type: 3}
+  inactiveMesh: {fileID: 4300094, guid: 7d4e33b83f6a046ab845e77e3044ffcc, type: 3}
+  blinkingMesh: {fileID: 0}
+  blinkingSeconds: .400000006
   playTouchSound: 1
+  blinkOnStart: 0
   settingName: BatterySaving
-  onMesh: {fileID: 4300084, guid: 7d4e33b83f6a046ab845e77e3044ffcc, type: 3}
-  offMesh: {fileID: 4300094, guid: 7d4e33b83f6a046ab845e77e3044ffcc, type: 3}
   batterySavingFrameRate: 25
 --- !u!23 &1959054577
 MeshRenderer:
@@ -73954,7 +74110,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4d832278b190421e8a2402bc55159cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeMesh: {fileID: 0}
+  inactiveMesh: {fileID: 0}
+  blinkingMesh: {fileID: 0}
+  blinkingSeconds: .400000006
   playTouchSound: 1
+  blinkOnStart: 0
   objectName: "\uD658\uC601 \uC0DD\uC131\uAE30"
   description: "\uC791\uB3D9\uC2DC\uD0AC \uB54C\uB9C8\uB2E4 \uB2E4\uC74C \uD658\uC601\uC744
     \uB9CC\uB4E4\uC5B4\uB0C5\uB2C8\uB2E4."
@@ -74397,8 +74558,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 686212e7a972945beb15d31c59a10dff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeMesh: {fileID: 0}
+  inactiveMesh: {fileID: 0}
+  blinkingMesh: {fileID: 0}
+  blinkingSeconds: .400000006
   playTouchSound: 0
-  linkTo: www.google.com
+  blinkOnStart: 0
+  linkTo: http://google.com
 --- !u!1 &2073951468
 GameObject:
   m_ObjectHideFlags: 0
@@ -76016,7 +76182,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04d1e4ff83e344c2ab093563cdcc4568, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeMesh: {fileID: 0}
+  inactiveMesh: {fileID: 0}
+  blinkingMesh: {fileID: 0}
+  blinkingSeconds: .400000006
   playTouchSound: 1
+  blinkOnStart: 0
 --- !u!23 &2111377104
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -76108,7 +76279,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04d1e4ff83e344c2ab093563cdcc4568, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeMesh: {fileID: 0}
+  inactiveMesh: {fileID: 0}
+  blinkingMesh: {fileID: 0}
+  blinkingSeconds: .400000006
   playTouchSound: 1
+  blinkOnStart: 0
 --- !u!23 &2117742422
 MeshRenderer:
   m_ObjectHideFlags: 0

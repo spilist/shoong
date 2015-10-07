@@ -2,19 +2,10 @@
 using System.Collections;
 
 public class ObjectSelectButton : MenusBehavior {
-  public Mesh originalMesh;
-  public Mesh reachedLimitMesh;
-
   public AudioClip errorSound;
   private UIObjects selectedObj;
   private string objName;
   private string category;
-  private MeshFilter filter;
-
-  void Awake() {
-    playTouchSound = false;
-    filter = GetComponent<MeshFilter>();
-  }
 
   public void setObject(UIObjects obj) {
     gameObject.SetActive(true);
@@ -23,9 +14,10 @@ public class ObjectSelectButton : MenusBehavior {
     category = obj.transform.parent.parent.name;
 
     if (limitReached()) {
-      filter.sharedMesh = reachedLimitMesh;
+      filter.sharedMesh = inactiveMesh;
     } else {
-      filter.sharedMesh = originalMesh;
+      Debug.Log(filter);
+      filter.sharedMesh = activeMesh;
     }
   }
 

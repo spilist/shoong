@@ -3,14 +3,10 @@ using System.Collections;
 
 public class OnOffButton : MenusBehavior {
   protected bool clicked = false;
-  private MeshFilter filter;
 
   public string settingName;
-  public Mesh onMesh;
-  public Mesh offMesh;
 
   void Start() {
-    filter = GetComponent<MeshFilter>();
     clicked = DataManager.dm.getBool(settingName + "Setting");
     applyStatus();
   }
@@ -23,9 +19,9 @@ public class OnOffButton : MenusBehavior {
 
   void applyStatus() {
     if (clicked) {
-      filter.sharedMesh = offMesh;
+      filter.sharedMesh = inactiveMesh;
     } else {
-      filter.sharedMesh = onMesh;
+      filter.sharedMesh = activeMesh;
     }
   }
 }

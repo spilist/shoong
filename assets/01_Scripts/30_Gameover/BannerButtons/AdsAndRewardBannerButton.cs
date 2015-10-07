@@ -24,6 +24,9 @@ public class AdsAndRewardBannerButton : BannerButton {
     DataManager.dm.increment("DailyAdsCount");
     DataManager.dm.setInt("LastNumPlayAdsSeen", DataManager.dm.getInt("TotalNumPlays"));
     DataManager.dm.setDateTime("LastDateTimeAdsSeen");
+
+    stopBlink();
+    filter.sharedMesh = inactiveMesh;
   }
 
   override public bool available(int spaceLeft) {
