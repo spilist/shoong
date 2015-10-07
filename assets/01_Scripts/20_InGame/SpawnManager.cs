@@ -68,12 +68,11 @@ public class SpawnManager : MonoBehaviour {
     float radius = target.GetComponent<ObjectsMover>().getBoundingSize();
 
     float offset_ = offset(target.tag);
-    float generateRadius = generateSpaceRadius + offset_;
 
     do {
       do {
-        screenX = Random.Range(-generateRadius, 1 + generateRadius);
-        screenY = Random.Range(-generateRadius, 1 + generateRadius);
+        screenX = Random.Range(-generateSpaceRadius, 1 + generateSpaceRadius);
+        screenY = Random.Range(-generateSpaceRadius, 1 + generateSpaceRadius);
       } while(-offset_ < screenX && screenX < offset_ + 1 && -offset_ < screenY && screenY < offset_ + 1);
 
       spawnPosition = Camera.main.ViewportToWorldPoint(new Vector3(screenX, screenY, Camera.main.transform.position.y));

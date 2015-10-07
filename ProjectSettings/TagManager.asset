@@ -55,6 +55,7 @@ TagManager:
   - DangerousEMPField
   - Alienship
   - AlienshipLaser
+  - LinkButton
   layers:
   - Default
   - TransparentFX

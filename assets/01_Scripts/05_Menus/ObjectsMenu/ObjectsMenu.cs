@@ -23,6 +23,10 @@ public class ObjectsMenu : MonoBehaviour {
 
     transform.Find("MainObjectsButton").GetComponent<MenusBehavior>().activateSelf();
     showEmptyDescription("MainObjects");
+
+    float screenWidth = transform.parent.GetComponent<RectTransform>().rect.width;
+    float screenHeight = transform.parent.GetComponent<RectTransform>().rect.height;
+    GetComponent<RectTransform>().sizeDelta = new Vector2(screenWidth, screenHeight);
   }
 
   void OnDisable() {

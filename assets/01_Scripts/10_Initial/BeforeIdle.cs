@@ -101,7 +101,7 @@ public class BeforeIdle : MonoBehaviour {
       titlePosX = Mathf.MoveTowards(titlePosX, titleMoveTo, Time.deltaTime / movingDuration * distance);
       title.GetComponent<RectTransform>().anchoredPosition = new Vector2(titlePosX, title.GetComponent<RectTransform>().anchoredPosition.y);
 
-      if (titleMoveTo == 800) {
+      if (titleMoveTo == -characterMoveStart) {
         copyrightColor.a = Mathf.MoveTowards(copyrightColor.a, copyrightChangeTo, Time.deltaTime / movingDuration);
         copyright.color = copyrightColor;
       }
@@ -162,7 +162,7 @@ public class BeforeIdle : MonoBehaviour {
 
   public void moveTitle(bool hiding = true) {
     if (hiding) {
-      titleMoveTo = 800;
+      titleMoveTo = -characterMoveStart;
       titlePosX = title.GetComponent<RectTransform>().anchoredPosition.x;
       copyrightColor = copyright.color;
       copyrightChangeTo = 0;

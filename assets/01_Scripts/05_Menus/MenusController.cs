@@ -28,9 +28,13 @@ public class MenusController : MonoBehaviour {
       string menuButtons = hit.transform.parent.name;
 
       if (menuButtons == "MenuButtonsLeft" || menuButtons == "MenuButtonsRight") {
-        currentlyOn = transform.Find(hitTag).gameObject;
-        toggleMenuAndUI();
-        AudioSource.PlayClipAtPoint(UITouchSound, hit.transform.position);
+        if (hitTag == "LinkButton") {
+          hit.transform.GetComponent<MenusBehavior>().activateSelf();
+        } else {
+          currentlyOn = transform.Find(hitTag).gameObject;
+          toggleMenuAndUI();
+          AudioSource.PlayClipAtPoint(UITouchSound, hit.transform.position);
+        }
       } else if (hitTag == "PauseButton" || (isMenuOn() && layer == "MenusBehavior") || (scoreManager.isGameOver() && layer == "MenusBehavior")) {
         if (beforeIdle.isLoading()) return "";
 
