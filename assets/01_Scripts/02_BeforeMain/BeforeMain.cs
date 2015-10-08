@@ -93,9 +93,11 @@ public class BeforeMain : MonoBehaviour {
             PlayerPrefs.SetString("CharacterAngVal", angVal.ToString().TrimStart('(').TrimEnd(')'));
 
             // Wait until GPGS authenticate is finished
-            DataManager.npbm.authenticate((bool _success)=>{      
+
+            DataManager.gpgsManager.authenticate((bool _success)=>{      
               Application.LoadLevelAsync("5_Main");
             });
+
           }
         }
       }

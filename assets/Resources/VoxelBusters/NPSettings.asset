@@ -24,7 +24,7 @@ MonoBehaviour:
       m_usesNotificationService: 1
       m_usesSharing: 1
       m_usesTwitter: 0
-      m_usesGameServices: 1
+      m_usesGameServices: 0
   m_networkConnectivitySettings:
     m_ipAddress: 8.8.8.8
     m_editor:

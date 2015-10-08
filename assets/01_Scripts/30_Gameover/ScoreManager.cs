@@ -62,7 +62,6 @@ public class ScoreManager : MonoBehaviour {
     } else if (reason == "Dopple") {
       DataManager.dm.increment("DeathByDopple");
     }
-    DataManager.npbm.am.reportAchievements();
     StartCoroutine("startGameOver");
   }
 
@@ -208,6 +207,9 @@ public class ScoreManager : MonoBehaviour {
       DataManager.dm.setInt("CubesGet_" + numPlay, count);
       DataManager.dm.setInt("NumBooster_" + numPlay, boosterCount);
     }
+
+    
+    DataManager.gpgsManager.am.reportAchievements();
   }
 
   void OnDisable() {

@@ -12,7 +12,7 @@ public static class AchievementConstants {
     achievementIdDict.Add("CgkI85jcudQLEAIQEg", "TotalCubes");
     achievementIdDict.Add("CgkI85jcudQLEAIQEw", "TotalCubes");
 
-    achievements.Add("TotalCubes", new AchievementObject("", 0, 10));
+    achievements.Add("TotalCubes", new AchievementObject("CgkI85jcudQLEAIQEQ", 0, 10));
     //achievements.Add("TotalCubes", new AchievementObject(20));
     //achievements.Add("TotalCubes", new AchievementObject(30));
   }

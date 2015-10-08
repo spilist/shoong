@@ -15,6 +15,7 @@ public class NPBManager : MonoBehaviour {
   
   public void authenticate(System.Action<bool> onCompletion) {
     // Authenticate to GPGS
+    /*
     if (NPBinding.GameServices.LocalUser.IsAuthenticated == false &&
         isAuthenticating == false) {
       isAuthenticating = true;
@@ -29,6 +30,7 @@ public class NPBManager : MonoBehaviour {
         onCompletion(_success);
       });
     }
+    */
   }
 
 

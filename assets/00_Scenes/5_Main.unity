@@ -21875,8 +21875,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resetAll: 0
-  resetCube: 100000
-  resetGoldenCube: 10000
+  resetCube: 0
+  resetGoldenCube: 0
   normalFrameRate: 50
 --- !u!4 &638403303
 Transform:
@@ -21898,7 +21898,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 638403301}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b3d669611776724587448d336ca8280, type: 3}
+  m_Script: {fileID: 11500000, guid: 68098e84a5a62cb48aeceaa833efed5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &638923787
@@ -42318,16 +42318,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1284365878}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 686212e7a972945beb15d31c59a10dff, type: 3}
+  m_Script: {fileID: 11500000, guid: f074b64479ce5394abca000f4be5afec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   activeMesh: {fileID: 0}
   inactiveMesh: {fileID: 0}
   blinkingMesh: {fileID: 0}
   blinkingSeconds: .400000006
-  playTouchSound: 0
+  playTouchSound: 1
   blinkOnStart: 0
-  linkTo: http://google.com
 --- !u!4 &1285032819
 Transform:
   m_ObjectHideFlags: 0
@@ -74567,16 +74566,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 2068284237}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 686212e7a972945beb15d31c59a10dff, type: 3}
+  m_Script: {fileID: 11500000, guid: 3327a0f40df4e144abe8e7d2d502157e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   activeMesh: {fileID: 0}
   inactiveMesh: {fileID: 0}
   blinkingMesh: {fileID: 0}
   blinkingSeconds: .400000006
-  playTouchSound: 0
+  playTouchSound: 1
   blinkOnStart: 0
-  linkTo: http://google.com
 --- !u!1 &2073951468
 GameObject:
   m_ObjectHideFlags: 0

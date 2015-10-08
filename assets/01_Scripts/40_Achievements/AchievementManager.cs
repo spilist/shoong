@@ -6,7 +6,8 @@ using VoxelBusters.NativePlugins;
 
 public class AchievementManager {  
   // Initialize and start queue processing coroutine
-  public void init() {    
+  public void init() {
+    AchievementConstants.init();
   }
 
   public bool checkAchievement (string key, int val) {
@@ -36,6 +37,11 @@ public class AchievementManager {
   }
   
   public void reportAchievements() {
+    foreach(AchievementObject ach in AchievementConstants.achievements.Values) {
+      if (ach.notReported == true)
+        ach.report();
+    }
+    /*
     NPBinding.GameServices.LoadAchievements((Achievement[] _achievements)=>{      
       if (_achievements == null)
       {
@@ -57,6 +63,7 @@ public class AchievementManager {
         }
       }
     });
+    */
   }
 
 }

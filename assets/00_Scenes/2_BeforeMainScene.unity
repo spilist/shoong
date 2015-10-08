@@ -965,8 +965,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resetAll: 0
-  resetCube: 10000
-  resetGoldenCube: 100000
+  resetCube: 0
+  resetGoldenCube: 0
   normalFrameRate: 50
 --- !u!4 &1467429886
 Transform:
@@ -988,7 +988,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1467429884}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b3d669611776724587448d336ca8280, type: 3}
+  m_Script: {fileID: 11500000, guid: 68098e84a5a62cb48aeceaa833efed5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1500819698
