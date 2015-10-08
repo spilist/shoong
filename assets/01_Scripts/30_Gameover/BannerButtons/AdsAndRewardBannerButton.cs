@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 using System;
+using UnityEngine.Advertisements;
 
 public class AdsAndRewardBannerButton : BannerButton {
   public Text goldenCubeText;
@@ -13,20 +14,27 @@ public class AdsAndRewardBannerButton : BannerButton {
 
 	override public void activateSelf() {
     Debug.Log("Show ADs");
+    if(Advertisement.isReady("rewardedVideoZone")){ Advertisement.Show("rewardedVideoZone", new ShowOptions {
+        resultCallback = result => {
+            Debug.Log(result.ToString());
+            if (result == ShowResult.Finished) {
+            // after ads end, show goldencube get effect
+            DataManager.dm.increment("CurrentGoldenCubes", goldenCubePerAds);
+            DataManager.dm.increment("TotalGoldenCubes", goldenCubePerAds);
+            
+            goldenCubeText.text = (int.Parse(goldenCubeText.text) + goldenCubePerAds).ToString();
+            
+            DataManager.dm.increment("DailyAdsCount");
+            DataManager.dm.setInt("LastNumPlayAdsSeen", DataManager.dm.getInt("TotalNumPlays"));
+            DataManager.dm.setDateTime("LastDateTimeAdsSeen");
+            
+            stopBlink();
+            filter.sharedMesh = inactiveMesh;
+          }
+        }
+      });
+    }
 
-    // after ads end, show goldencube get effect
-
-    DataManager.dm.increment("CurrentGoldenCubes", goldenCubePerAds);
-    DataManager.dm.increment("TotalGoldenCubes", goldenCubePerAds);
-
-    goldenCubeText.text = (int.Parse(goldenCubeText.text) + goldenCubePerAds).ToString();
-
-    DataManager.dm.increment("DailyAdsCount");
-    DataManager.dm.setInt("LastNumPlayAdsSeen", DataManager.dm.getInt("TotalNumPlays"));
-    DataManager.dm.setDateTime("LastDateTimeAdsSeen");
-
-    stopBlink();
-    filter.sharedMesh = inactiveMesh;
   }
 
   override public bool available(int spaceLeft) {

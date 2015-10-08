@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Advertisements;
 using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization.Formatters.Binary;
@@ -45,6 +46,7 @@ public class DataManager : MonoBehaviour {
     
     gpgsManager = GetComponent<GPGSManager>();
     gpgsManager.init();
+    Advertisement.Initialize("72081");
 
     if (resetAll || !load()) reset();
     initializeAtGameStart();
