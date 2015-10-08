@@ -62,7 +62,7 @@ public class ScoreManager : MonoBehaviour {
     } else if (reason == "Dopple") {
       DataManager.dm.increment("DeathByDopple");
     }
-
+    DataManager.npbm.am.reportAchievements();
     StartCoroutine("startGameOver");
   }
 

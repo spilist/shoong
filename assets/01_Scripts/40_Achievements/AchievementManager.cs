@@ -1,93 +1,62 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System;
 using System.Collections.Generic;
+using VoxelBusters.NativePlugins;
 
-public class AchievementManager : MonoBehaviour {
-  public const int TYPE_INT = 0;
-  public const int TYPE_FLOAT = 1;
-  public const int TYPE_BOOL = 2;
-  public const int TYPE_STRING = 3;
-  public const int TYPE_DATETIME = 4;
-  private Dictionary<string, Achievement> achievements;
-  
-  // referred for queue tasks http://answers.unity3d.com/questions/200176/multithreading-and-messaging.html
-  private Queue<Task> checkQueue;
-  private object _queueLock;
-  private bool isProcAchieveCheckRunning;
-
-  public void init() {
-    // Initialize achievement data
-    achievements = new Dictionary<string, Achievement>();
-    
-    // Initialize achievement processing queue
-    checkQueue = new Queue<Task>();
-    _queueLock = new System.Object();
-    
-    // Activate achievement processor
-    isProcAchieveCheckRunning = true;
-    StartCoroutine("procAchieveCheck");
+public class AchievementManager {  
+  // Initialize and start queue processing coroutine
+  public void init() {    
   }
 
-  
-  public void queueAchieveCheck(string key, System.Object value, int type) {
-    checkQueue.Enqueue(()=>achieveCheck(key, value, type));
+  public bool checkAchievement (string key, int val) {
+    if (AchievementConstants.achievements.ContainsKey(key))
+      return AchievementConstants.achievements[key].check(val);
+    return false;
+  }
+  public bool checkAchievement (string key, float val) {
+    if (AchievementConstants.achievements.ContainsKey(key))
+      return AchievementConstants.achievements[key].check(val);
+    return false;
+  }
+  public bool checkAchievement (string key, bool val) {   
+    if (AchievementConstants.achievements.ContainsKey(key)) 
+      return AchievementConstants.achievements[key].check(val);
+    return false;
+  }
+  public bool checkAchievement (string key, string val) {  
+    if (AchievementConstants.achievements.ContainsKey(key)) 
+      return AchievementConstants.achievements[key].check(val);
+    return false;
+  }
+  public bool checkAchievement (string key, DateTime val) {  
+    if (AchievementConstants.achievements.ContainsKey(key))  
+      return AchievementConstants.achievements[key].check(val);
+    return false;
   }
   
-  private void achieveCheck(string key, System.Object value, int type) {
-    //AchieveConstants.match(key, value, type);
-  }
-  
-  private IEnumerator procAchieveCheck() {
-    while (isProcAchieveCheckRunning) {
-      lock (_queueLock) {
-        if (checkQueue.Count > 0) {
-          checkQueue.Dequeue()();
+  public void reportAchievements() {
+    NPBinding.GameServices.LoadAchievements((Achievement[] _achievements)=>{      
+      if (_achievements == null)
+      {
+        Debug.Log("Couldn't load achievement list.");
+        return;
+      }
+      
+      int _achievementCount = _achievements.Length;
+      Debug.Log(string.Format("Successfully loaded achievement list. Count={0}.", _achievementCount));
+      
+      for (int _iter = 0; _iter < _achievementCount; _iter++)
+      {
+        Achievement achievement = _achievements[_iter];
+        Debug.Log(string.Format("[Index {0}]: {1}", _iter, achievement));
+
+        string key = AchievementConstants.achievementIdDict[achievement.Identifier];
+        if (AchievementConstants.achievements.ContainsKey(key)) {
+          AchievementConstants.achievements[key].report();
         }
       }
-      yield return new WaitForSeconds(1f);
-    }
-    yield break;
+    });
   }
 
-  public void match(string key, System.Object value, int type) {
-    try {
-      switch (type) {
-        case TYPE_INT:
-          int valInt = (int) value;
-          break;
-        case TYPE_FLOAT:
-          float valFloat = (float) value;
-          break;
-        case TYPE_BOOL:
-          bool valBool = (bool) value;
-          break;
-        case TYPE_STRING:
-          string valString = (string) value;
-          break;
-        case TYPE_DATETIME:
-          DateTime valDateTime = (DateTime) value;
-          break;
-        default:
-          Debug.LogError("doAchieveCheck: Could not recognize type argument: " + type);
-          break;
-      }
-    } catch (InvalidCastException e) {
-      Debug.LogError("Failed to check achievement because of the key/type mismatch: " + e.Message);
-    }
-  }
-
-  class Achievement {
-    string key;
-    System.Object goalVal;
-    int type;
-
-    Quest nextQuest;
-
-    public Achievement (string key, System.Object val, int type) {
-      this.key = key;
-      this.goalVal = val;
-      this.type = type;
-    }
-  }
 }

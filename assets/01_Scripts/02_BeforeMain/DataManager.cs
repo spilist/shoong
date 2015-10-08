@@ -42,6 +42,10 @@ public class DataManager : MonoBehaviour {
     bools = new Dictionary<string, bool>();
     strings = new Dictionary<string, string>();
     dateTimes = new Dictionary<string, DateTime>();
+    
+    npbm = GetComponent<NPBManager>();    
+    npbm.init();
+    npbm.am.init();
 
     if (resetAll || !load()) reset();
     initializeAtGameStart();
@@ -58,8 +62,6 @@ public class DataManager : MonoBehaviour {
 
     DataManager.dm.setInt("ShowCharacterCreateCount", 0);
 	
-    npbm = GetComponent<NPBManager>();
-    npbm.init();
   }
 
   bool load() {
@@ -124,6 +126,7 @@ public class DataManager : MonoBehaviour {
   }
 
   public void setInt(string id, int value) {
+    npbm.am.checkAchievement(id, value);
     ints[id] = value;
   }
 
@@ -140,6 +143,7 @@ public class DataManager : MonoBehaviour {
   }
 
   public void setFloat(string id, float value) {
+    npbm.am.checkAchievement(id, value);
     floats[id] = value;
   }
 
@@ -156,6 +160,7 @@ public class DataManager : MonoBehaviour {
   }
 
   public void setBool(string id, bool value) {
+    npbm.am.checkAchievement(id, value);
     bools[id] = value;
   }
 
@@ -164,6 +169,7 @@ public class DataManager : MonoBehaviour {
   }
 
   public void setString(string id, string value) {
+    npbm.am.checkAchievement(id, value);
     strings[id] = value;
   }
 
@@ -172,6 +178,7 @@ public class DataManager : MonoBehaviour {
   }
 
   public void setDateTime(string id) {
+    npbm.am.checkAchievement(id, DateTime.Now);
     setDateTime(id, DateTime.Now);
   }
 
