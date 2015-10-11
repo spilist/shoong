@@ -14,7 +14,7 @@ public class CubeDispenserMover : ObjectsMover {
   public void tryBreak() {
     if (brokenCount == 2) {
       destroyObject(true, true);
-      player.goodPartsEncounter(this, cdm.cubesPerContact * cdm.fullComboCount);
+      player.goodPartsEncounter(this, cdm.cubesByEncounter * cdm.fullComboCount);
       player.setTrapped(false);
       QuestManager.qm.addCountToQuest("ExitCubeDispenser");
       return;
@@ -36,9 +36,9 @@ public class CubeDispenserMover : ObjectsMover {
   override protected void afterCollide(Collision collision) {
     if (collision.collider.tag == "ContactCollider") {
       if (player.isUsingRainbow() || player.isUnstoppable()) {
-        player.goodPartsEncounter(this, cdm.cubesPerContact * cdm.fullComboCount);
+        player.goodPartsEncounter(this, cdm.cubesByEncounter * cdm.fullComboCount);
       } else {
-        player.contactCubeDispenser(transform, cdm.cubesPerContact, collision, cdm.reboundDuring);
+        player.contactCubeDispenser(transform, cdm.cubesByEncounter, collision, cdm.reboundDuring);
 
         encounterPlayer(false);
       }
@@ -79,6 +79,6 @@ public class CubeDispenserMover : ObjectsMover {
   }
 
   override public int cubesWhenEncounter() {
-    return cdm.cubesPerContact * cdm.fullComboCount;
+    return cdm.cubesByEncounter * cdm.fullComboCount;
   }
 }

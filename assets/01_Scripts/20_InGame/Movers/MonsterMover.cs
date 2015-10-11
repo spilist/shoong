@@ -66,7 +66,7 @@ public class MonsterMover : ObjectsMover {
     if (distance > monm.detectDistance) {
       rb.velocity = direction * speed * 2;
     } else if (isMagnetized) {
-      rb.velocity = direction * player.GetComponent<Rigidbody>().velocity.magnitude * 1.5f;
+      rb.velocity = direction * player.getSpeed() * 1.5f;
     } else if (weak) {
       rb.velocity = -direction * speed_weaken;
     } else if (player.isUnstoppable()) {

@@ -3,11 +3,11 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class PlayerMover : MonoBehaviour {
-  public float baseSpeed = 45;
-  public float speedRaisePercombo = 7;
+  public float baseSpeed = 80;
 
   public Transform effects;
   public SpawnManager spawnManager;
+  public SpeedMeter speedMeter;
 
   public CubesCount cubesCount;
   public ScoreManager scoreManager;
@@ -38,7 +38,6 @@ public class PlayerMover : MonoBehaviour {
   private float reboundingByDispenserDuring = 0;
 
   public EnergyBar energyBar;
-  private ComboBar comboBar;
   private StrengthenTimeBar stBar;
 
   public float boosterSpeedUpAmount = 60;
@@ -90,7 +89,6 @@ public class PlayerMover : MonoBehaviour {
 
     originalScale = transform.localScale.x;
     energyBar = transform.parent.Find("Bars Canvas/EnergyBar").GetComponent<EnergyBar>();
-    comboBar = transform.parent.Find("Bars Canvas").GetComponent<ComboBar>();
     stBar = transform.parent.Find("Bars Canvas/StrengthenTimeBar").GetComponent<StrengthenTimeBar>();
 
     Vector2 randomV = Random.insideUnitCircle;
@@ -115,7 +113,7 @@ public class PlayerMover : MonoBehaviour {
     } else if (ridingMonster) {
       speed = baseSpeed + minimonCounter * monm.enlargeSpeedPerMinimon;
     } else {
-      speed = baseSpeed + comboBar.getComboRatio() * speedRaisePercombo;
+      speed = baseSpeed;
     }
 
     speed += boosterspeed;
@@ -141,6 +139,10 @@ public class PlayerMover : MonoBehaviour {
       rb.velocity = direction * speed;
     }
 	}
+
+  public float getSpeed() {
+    return rb.velocity.magnitude;
+  }
 
 	void OnTriggerEnter(Collider other) {
     if (other.tag == "BlackholeGravitySphere") {
@@ -344,9 +346,9 @@ public class PlayerMover : MonoBehaviour {
       changeManager.booster.GetComponent<AudioSource>().Play();
     }
 
-    if (boosterspeed < maxBooster() * boosterBonus) {
+    if (boosterspeed < maxBooster()) {
       boosterspeed += boosterSpeedUp() * boosterBonus;
-      boosterspeed = boosterspeed > (maxBooster() * boosterBonus)? (maxBooster() * boosterBonus) : boosterspeed;
+      boosterspeed = boosterspeed > maxBooster() ? maxBooster() : boosterspeed;
     }
 
     cpm.tryToGet();
@@ -377,6 +379,7 @@ public class PlayerMover : MonoBehaviour {
       isRidingRainbowRoad = false;
     }
     stopStrengthen();
+    speedMeter.updateMaximum();
   }
 
   public void stopPowerBoost() {
@@ -386,11 +389,12 @@ public class PlayerMover : MonoBehaviour {
     rotatePlayerBody();
     energyBar.getFullHealth();
     afterStrengthenStart();
+    speedMeter.updateMaximum();
   }
 
-  float maxBooster() {
+  public float maxBooster() {
     if (usingPowerBoost) return powerBoost.maxBoosterSpeed;
-    else return maxBoosterSpeed;
+    else return maxBoosterSpeed * boosterBonus;
   }
 
   float boosterSpeedUp() {
@@ -464,6 +468,7 @@ public class PlayerMover : MonoBehaviour {
       boosterBonus = jpm.boosterBonusScale;
       changeManager.booster.GetComponent<ParticleSystem>().emissionRate *= (boosterBonus * 2);
       changeManager.booster.transform.localScale = (boosterBonus * 2) * Vector3.one;
+      speedMeter.updateMaximum();
     } else if (obj == "Dopple") {
       usingDopple = true;
       contactCollider.enabled = false;
@@ -501,6 +506,7 @@ public class PlayerMover : MonoBehaviour {
       changeManager.booster.transform.localScale = Vector3.one;
       boosterBonus = 1;
       spawnManager.runManager("Jetpack");
+      speedMeter.updateMaximum();
     }
 
     if (unstoppable) {

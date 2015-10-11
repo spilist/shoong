@@ -11,7 +11,6 @@ public class CubesCount : MonoBehaviour {
   private Text countText;
   private int cubesHighscore = 0;
   public Text cubesHighscoreText;
-  public ComboBar comboBar;
   public GameObject howManyCubesGet;
   public GameObject howManyBonusCubesGet;
   public GameObject cubesGetOnSuperheat;
@@ -20,10 +19,6 @@ public class CubesCount : MonoBehaviour {
     countText = GetComponent<Text>();
     cubesHighscore = DataManager.dm.getInt("BestCubes");
     cubesHighscoreText.text = cubesHighscore.ToString();
-  }
-
-  public void addCount() {
-    addCount(comboBar.getComboRatio());
   }
 
   public void addCount(int cubesGet, int bonus = 0) {

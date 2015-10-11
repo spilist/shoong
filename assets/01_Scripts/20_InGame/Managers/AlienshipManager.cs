@@ -34,7 +34,7 @@ public class AlienshipManager : ObjectsManager {
     if (player.isUsingEMP()) {
       return 0;
     } else if (Vector3.Distance(player.transform.position, instance.transform.position) < 10) {
-      return player.GetComponent<Rigidbody>().velocity.magnitude;
+      return player.getSpeed();
     }
     else {
       int timeUnit = (int) Mathf.Floor((ElapsedTime.time.now - timeSpawned) / speedIncreasePer);

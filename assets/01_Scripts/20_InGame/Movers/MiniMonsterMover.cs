@@ -49,9 +49,9 @@ public class MiniMonsterMover : ObjectsMover {
       if (distance > monm.detectDistance) {
         rb.velocity = direction * speed_chase * 2;
       } else if (isMagnetized) {
-        rb.velocity = direction * player.GetComponent<Rigidbody>().velocity.magnitude * 1.5f;
-      } else if (player.isRidingMonster() && player.GetComponent<Rigidbody>().velocity.magnitude != 0) {
-        rb.velocity = direction * player.GetComponent<Rigidbody>().velocity.magnitude * 1.5f;
+        rb.velocity = direction * player.getSpeed() * 1.5f;
+      } else if (player.isRidingMonster() && player.getSpeed() != 0) {
+        rb.velocity = direction * player.getSpeed() * 1.5f;
       } else {
         rb.velocity = direction * speed_chase;
       }

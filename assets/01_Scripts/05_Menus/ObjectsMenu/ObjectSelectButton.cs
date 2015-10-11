@@ -16,7 +16,6 @@ public class ObjectSelectButton : MenusBehavior {
     if (limitReached()) {
       filter.sharedMesh = inactiveMesh;
     } else {
-      Debug.Log(filter);
       filter.sharedMesh = activeMesh;
     }
   }

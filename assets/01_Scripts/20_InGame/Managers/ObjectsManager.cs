@@ -20,7 +20,6 @@ public class ObjectsManager : MonoBehaviour {
   protected SpawnManager spawnManager;
   public PlayerMover player;
   protected bool skipInterval = false;
-  public ComboBar comboBar;
 
   public GameObject instance;
   public bool forceSpawnAtStart = false;
@@ -28,7 +27,6 @@ public class ObjectsManager : MonoBehaviour {
   void OnEnable() {
     spawnManager = gameObject.GetComponent<SpawnManager>();
     player = GameObject.Find("Player").GetComponent<PlayerMover>();
-    comboBar = GameObject.Find("Bars Canvas").GetComponent<ComboBar>();
 
     initRest();
 
@@ -90,8 +88,7 @@ public class ObjectsManager : MonoBehaviour {
   }
 
   virtual public int cubesWhenEncounter() {
-    if (isNegative) return cubesByEncounter;
-    else return comboBar.getComboRatio();
+    return cubesByEncounter;
   }
 
 }

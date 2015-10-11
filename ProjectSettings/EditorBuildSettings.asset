@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: assets/00_Scenes/0_SplashScreen.unity
+    path: Assets/00_Scenes/0_SplashScreen.unity
   - enabled: 1
-    path: assets/00_Scenes/2_BeforeMainScene.unity
+    path: Assets/00_Scenes/2_BeforeMainScene.unity
   - enabled: 1
-    path: assets/00_Scenes/5_Main.unity
+    path: Assets/00_Scenes/5_Main.unity

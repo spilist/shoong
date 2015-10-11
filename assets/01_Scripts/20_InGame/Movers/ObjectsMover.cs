@@ -85,7 +85,7 @@ public class ObjectsMover : MonoBehaviour {
       if (player.scoreManager.isGameOver()) return;
       Vector3 heading =  player.transform.position - transform.position;
       heading /= heading.magnitude;
-      rb.velocity = heading * player.GetComponent<Rigidbody>().velocity.magnitude * 1.5f;
+      rb.velocity = heading * player.getSpeed() * 1.5f;
       rb.AddForce(heading * blm.pullUser, ForceMode.VelocityChange);
 
     } else {
@@ -191,8 +191,6 @@ public class ObjectsMover : MonoBehaviour {
       objectsManager.strengthenPlayerEffect.SetActive(true);
       player.strengthenBy(tag);
     }
-
-    player.transform.parent.Find("Bars Canvas").GetComponent<ComboBar>().addCombo();
 
     if (hasEncounterEffect()) {
       player.encounterObject(tag);

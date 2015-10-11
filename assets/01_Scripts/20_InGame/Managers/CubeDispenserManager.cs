@@ -8,7 +8,6 @@ public class CubeDispenserManager : ObjectsManager {
   public float[] destroyAfterPerLevel;
   public int respawnInterval_min = 10;
   public int respawnInterval_max = 15;
-  public int cubesPerContact = 10;
   public float reboundDuring = 0.2f;
 	public ParticleSystem destroy;
   public float pitchStart = 0.9f;

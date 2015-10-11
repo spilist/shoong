@@ -34,7 +34,6 @@ public class PowerBoost : MonoBehaviour {
 
   public GameObject energyCube;
   public PlayerMover player;
-  public ComboBar comboBar;
 
   public GameObject afterImagePrefab;
   public Color[] afterImageMainColors;
@@ -126,7 +125,6 @@ public class PowerBoost : MonoBehaviour {
     superXPos = superImage.anchoredPosition.x;
     heatXPos = heatImage.anchoredPosition.x;
 
-    comboBar.GetComponent<Canvas>().enabled = false;
     GetComponent<Renderer>().enabled = true;
     GetComponent<Collider>().enabled = true;
 
@@ -182,7 +180,6 @@ public class PowerBoost : MonoBehaviour {
 
   void stopPowerBoost() {
     player.stopPowerBoost();
-    comboBar.GetComponent<Canvas>().enabled = true;
     GetComponent<Renderer>().enabled = false;
     GetComponent<Collider>().enabled = false;
     powerBoostRunning = false;
@@ -314,8 +311,6 @@ public class PowerBoost : MonoBehaviour {
         player.addCubeCount(mover.cubesWhenEncounter());
       }
     }
-
-    comboBar.addCombo();
 
     if (mover.tag == "Obstacle_big" || mover.tag == "Obstacle_small") {
       QuestManager.qm.addCountToQuest("DestroyAsteroid");

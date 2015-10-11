@@ -13,7 +13,6 @@ public class RainbowDonutsManager : ObjectsManager {
   public float rotateDuring = 0.2f;
   public int rotateAngularSpeed = 50;
   public int ridingSpeed = 200;
-  public int cubesPerRide = 7;
   public Color[] rainbowColors;
   public float pitchStart = 0.9f;
   public float pitchIncrease = 0.1f;
@@ -127,9 +126,5 @@ public class RainbowDonutsManager : ObjectsManager {
 
   public int gerRideCount() {
     return rideCount;
-  }
-
-  override public int cubesWhenEncounter() {
-    return cubesPerRide;
   }
 }

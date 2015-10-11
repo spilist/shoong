@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: partscollector
-  m_Shader: {fileID: 30, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 34, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _ALPHAPREMULTIPLY_ON _EMISSION _EMISSIVE_ONOFF_ON
   m_LightmapFlags: 1
   m_CustomRenderQueue: 3000
@@ -40,6 +40,13 @@ Material:
       data:
         first:
           name: _DecalTex
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Emissive
         second:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
@@ -116,13 +123,6 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _Emissive
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
           name: _Cube
         second:
           m_Texture: {fileID: 0}
@@ -144,18 +144,26 @@ Material:
       data:
         first:
           name: _Shininess
-        second: .0700000003
+        second: .150000006
+      data:
+        first:
+          name: _Outline
+        second: .00249999994
+      data:
+        first:
+          name: _Glossiness
+        second: 0
       data:
         first:
           name: _Parallax
         second: .0199999996
       data:
         first:
-          name: _ZWrite
-        second: 0
+          name: _InvFade
+        second: .00999999978
       data:
         first:
-          name: _Glossiness
+          name: _ZWrite
         second: 0
       data:
         first:
@@ -183,24 +191,12 @@ Material:
         second: 0
       data:
         first:
-          name: _InvFade
-        second: .00999999978
-      data:
-        first:
-          name: _Outline
-        second: .00249999994
-      data:
-        first:
           name: _Specular_Power
         second: 1
       data:
         first:
           name: _Emissive_OnOff
         second: 1
-      data:
-        first:
-          name: _Outline_Width
-        second: .0500000007
       data:
         first:
           name: _Pulse_Speed
@@ -221,6 +217,10 @@ Material:
         first:
           name: _Fresnel_Width
         second: 1.5
+      data:
+        first:
+          name: _Outline_Width
+        second: .0500000007
     m_Colors:
       data:
         first:
@@ -233,27 +233,31 @@ Material:
       data:
         first:
           name: _SpecColor
-        second: {r: .5, g: .5, b: .5, a: 1}
-      data:
-        first:
-          name: _TintColor
-        second: {r: 1, g: 1, b: 1, a: .0469999984}
+        second: {r: .380622834, g: .613984048, b: .647058845, a: 1}
       data:
         first:
           name: _OutlineColor
         second: {r: 0, g: .958620548, b: 1, a: .352999985}
       data:
         first:
-          name: _Outline_Color
-        second: {r: 1, g: .600000024, b: 0, a: 1}
+          name: _Emission
+        second: {r: 0, g: 0, b: 0, a: 0}
+      data:
+        first:
+          name: _TintColor
+        second: {r: 1, g: 1, b: 1, a: .0469999984}
+      data:
+        first:
+          name: _EmisColor
+        second: {r: .200000003, g: .200000003, b: .200000003, a: 0}
       data:
         first:
           name: _Fresnel_Color
         second: {r: 1, g: .600000024, b: 0, a: 1}
       data:
         first:
-          name: _EmisColor
-        second: {r: .200000003, g: .200000003, b: .200000003, a: 0}
+          name: _Outline_Color
+        second: {r: 1, g: .600000024, b: 0, a: 1}
       data:
         first:
           name: _ReflectColor

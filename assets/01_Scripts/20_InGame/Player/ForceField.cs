@@ -5,7 +5,6 @@ public class ForceField : MonoBehaviour {
   public GameObject energyCube;
   public EMPManager empManager;
   public PlayerMover player;
-  public ComboBar comboBar;
 
   private ProceduralMaterial mat;
   private int rotatingSpeed;
@@ -29,9 +28,7 @@ public class ForceField : MonoBehaviour {
       }
     }
 
-    if (!mover.isNegativeObject()) {
-      comboBar.addCombo();
-    } else {
+    if (mover.isNegativeObject()) {
       if (mover.tag == "Obstacle_big" || mover.tag == "Obstacle_small") {
         QuestManager.qm.addCountToQuest("DestroyAsteroidAndFallingStarByEMP");
         QuestManager.qm.addCountToQuest("DestroyAsteroid");

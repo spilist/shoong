@@ -41,10 +41,10 @@ public class PartsCollector : MonoBehaviour {
 
       if (heading.magnitude < 5.0f) {
         heading /= heading.magnitude;
-        rb.velocity = heading * player.GetComponent<Rigidbody>().velocity.magnitude;
+        rb.velocity = heading * player.getSpeed();
       } else {
         heading /= heading.magnitude;
-        rb.velocity = heading * player.GetComponent<Rigidbody>().velocity.magnitude * 1.3f;
+        rb.velocity = heading * player.getSpeed() * 1.3f;
       }
     }
 

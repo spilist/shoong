@@ -6,7 +6,6 @@ public class ComboPartsManager : ObjectsManager {
 
   public int[] fullComboCountPerLevel;
 
-  public int comboBonusScale = 5;
   public float radius = 20;
 
   public float pitchStart = 0.4f;
@@ -93,7 +92,7 @@ public class ComboPartsManager : ObjectsManager {
   }
 
   override public int cubesWhenEncounter() {
-    return (comboCount + 1) * comboBonusScale;
+    return (comboCount + 1) * cubesByEncounter;
   }
 
   override protected float spawnInterval() {
