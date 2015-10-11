@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class SpeedMeter : MonoBehaviour {
+  public Superheat superheat;
   public PlayerMover player;
   public Text current;
   public Text maximum;
@@ -23,15 +24,16 @@ public class SpeedMeter : MonoBehaviour {
 	}
 
   void setMaximum(int val) {
-    maximum.text = " / " + val.ToString("0");
+    maximum.text = "/" + val.ToString("0");
   }
 
   void setMaximum(float val) {
-    maximum.text = " / " + val.ToString("0");
+    maximum.text = "/" + val.ToString("0");
   }
 
   public void updateMaximum() {
-    setMaximum(player.baseSpeed + player.maxBooster());
+    if (player.isOnPowerBoost()) setMaximum(superheat.baseSpeed + player.maxBooster());
+    else setMaximum(player.baseSpeed + player.maxBooster());
   }
 
   bool largerThanMax() {

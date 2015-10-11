@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class CubesCount : MonoBehaviour {
-  public PowerBoost powerBoost;
+  public Superheat superheat;
 
   public int increaseSpeed = 2;
   private int count = 0;
@@ -24,7 +24,7 @@ public class CubesCount : MonoBehaviour {
   public void addCount(int cubesGet, int bonus = 0) {
     count += cubesGet + bonus;
 
-    if (powerBoost.isOnPowerBoost()) {
+    if (superheat.isOnPowerBoost()) {
       GameObject instance = Instantiate(cubesGetOnSuperheat);
       instance.transform.SetParent(transform.parent.transform, false);
       instance.GetComponent<ShowChangeText>().run(cubesGet);
@@ -38,7 +38,6 @@ public class CubesCount : MonoBehaviour {
         bonusInstance.transform.SetParent(transform.parent.transform, false);
         bonusInstance.GetComponent<ShowChangeText>().run(bonus);
       }
-      powerBoost.addGuage((cubesGet + bonus) * powerBoost.guagePerCube);
     }
   }
 

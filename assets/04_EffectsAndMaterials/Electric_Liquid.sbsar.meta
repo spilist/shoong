@@ -7,7 +7,7 @@ labels:
 - effect
 - glow
 - gaz
-timeCreated: 1444094571
+timeCreated: 1444567415
 licenseType: Free
 SubstanceImporter:
   serializedVersion: 5
@@ -126,16 +126,20 @@ SubstanceImporter:
           second: 1
         data:
           first:
+            name: _Glossiness
+          second: .5
+        data:
+          first:
             name: _Parallax
           second: .0199999996
         data:
           first:
-            name: _ZWrite
+            name: _InvFade
           second: 1
         data:
           first:
-            name: _Glossiness
-          second: .5
+            name: _ZWrite
+          second: 1
         data:
           first:
             name: _BumpScale
@@ -160,10 +164,6 @@ SubstanceImporter:
           first:
             name: _Metallic
           second: 0
-        data:
-          first:
-            name: _InvFade
-          second: 1
       colors:
         data:
           first:
@@ -179,12 +179,12 @@ SubstanceImporter:
           second: {r: 1, g: 1, b: 1, a: .927999973}
         data:
           first:
-            name: _TintColor
-          second: {r: 1, g: 0, b: 0, a: .266000003}
-        data:
-          first:
             name: _Emission
           second: {r: 0, g: .668965816, b: 1, a: .402999997}
+        data:
+          first:
+            name: _TintColor
+          second: {r: 1, g: 0, b: 0, a: 1}
     textureParameters:
     - name: DangerousEMP_Emissive
       alphaSource: 0
@@ -313,16 +313,20 @@ SubstanceImporter:
           second: .5
         data:
           first:
+            name: _Glossiness
+          second: .5
+        data:
+          first:
             name: _Parallax
           second: .0199999996
         data:
           first:
-            name: _ZWrite
+            name: _InvFade
           second: 1
         data:
           first:
-            name: _Glossiness
-          second: .5
+            name: _ZWrite
+          second: 1
         data:
           first:
             name: _BumpScale
@@ -347,10 +351,6 @@ SubstanceImporter:
           first:
             name: _Metallic
           second: 0
-        data:
-          first:
-            name: _InvFade
-          second: 1
       colors:
         data:
           first:
@@ -496,16 +496,20 @@ SubstanceImporter:
           second: 1
         data:
           first:
+            name: _Glossiness
+          second: .5
+        data:
+          first:
             name: _Parallax
           second: .0199999996
         data:
           first:
-            name: _ZWrite
+            name: _InvFade
           second: 1
         data:
           first:
-            name: _Glossiness
-          second: .5
+            name: _ZWrite
+          second: 1
         data:
           first:
             name: _BumpScale
@@ -530,10 +534,6 @@ SubstanceImporter:
           first:
             name: _Metallic
           second: 0
-        data:
-          first:
-            name: _InvFade
-          second: 1
       colors:
         data:
           first:
@@ -549,12 +549,12 @@ SubstanceImporter:
           second: {r: 1, g: 1, b: 1, a: .927999973}
         data:
           first:
-            name: _TintColor
-          second: {r: 1, g: 1, b: 1, a: .125490203}
-        data:
-          first:
             name: _Emission
           second: {r: 0, g: .668965816, b: 1, a: .402999997}
+        data:
+          first:
+            name: _TintColor
+          second: {r: 1, g: 1, b: 1, a: .125490203}
     textureParameters:
     - name: EMP_ForceField_Emissive
       alphaSource: 0
@@ -687,16 +687,20 @@ SubstanceImporter:
           second: 1
         data:
           first:
+            name: _Glossiness
+          second: .5
+        data:
+          first:
             name: _Parallax
           second: .0199999996
         data:
           first:
-            name: _ZWrite
+            name: _InvFade
           second: 1
         data:
           first:
-            name: _Glossiness
-          second: .5
+            name: _ZWrite
+          second: 1
         data:
           first:
             name: _BumpScale
@@ -721,10 +725,6 @@ SubstanceImporter:
           first:
             name: _Metallic
           second: 0
-        data:
-          first:
-            name: _InvFade
-          second: 1
       colors:
         data:
           first:
@@ -740,12 +740,12 @@ SubstanceImporter:
           second: {r: 1, g: 1, b: 1, a: .927999973}
         data:
           first:
-            name: _TintColor
-          second: {r: 1, g: 0, b: 0, a: .266000003}
-        data:
-          first:
             name: _Emission
           second: {r: 0, g: .668965816, b: 1, a: .402999997}
+        data:
+          first:
+            name: _TintColor
+          second: {r: 1, g: 0, b: 0, a: .266000003}
     textureParameters:
     - name: LaserCapsule_Emissive
       alphaSource: 0
@@ -878,16 +878,20 @@ SubstanceImporter:
           second: 1
         data:
           first:
+            name: _Glossiness
+          second: .5
+        data:
+          first:
             name: _Parallax
           second: .0199999996
         data:
           first:
-            name: _ZWrite
+            name: _InvFade
           second: 1
         data:
           first:
-            name: _Glossiness
-          second: .5
+            name: _ZWrite
+          second: 1
         data:
           first:
             name: _BumpScale
@@ -912,10 +916,6 @@ SubstanceImporter:
           first:
             name: _Metallic
           second: 0
-        data:
-          first:
-            name: _InvFade
-          second: 1
       colors:
         data:
           first:
@@ -931,12 +931,12 @@ SubstanceImporter:
           second: {r: 1, g: 1, b: 1, a: .927999973}
         data:
           first:
-            name: _TintColor
-          second: {r: .655172348, g: 0, b: 1, a: .266000003}
-        data:
-          first:
             name: _Emission
           second: {r: 0, g: .668965816, b: 1, a: .402999997}
+        data:
+          first:
+            name: _TintColor
+          second: {r: .655172348, g: 0, b: 1, a: .266000003}
     textureParameters:
     - name: LaserCapsuleShell_Emissive
       alphaSource: 0
@@ -1121,16 +1121,16 @@ SubstanceImporter:
           second: .5
         data:
           first:
+            name: _Glossiness
+          second: .5
+        data:
+          first:
             name: _Parallax
           second: .0199999996
         data:
           first:
             name: _ZWrite
           second: 1
-        data:
-          first:
-            name: _Glossiness
-          second: .5
         data:
           first:
             name: _BumpScale
@@ -1300,16 +1300,20 @@ SubstanceImporter:
           second: .100000001
         data:
           first:
+            name: _Glossiness
+          second: .5
+        data:
+          first:
             name: _Parallax
           second: .0199999996
         data:
           first:
-            name: _ZWrite
+            name: _InvFade
           second: 1
         data:
           first:
-            name: _Glossiness
-          second: .5
+            name: _ZWrite
+          second: 1
         data:
           first:
             name: _BumpScale
@@ -1334,10 +1338,6 @@ SubstanceImporter:
           first:
             name: _Metallic
           second: 0
-        data:
-          first:
-            name: _InvFade
-          second: 1
       colors:
         data:
           first:
@@ -1353,12 +1353,12 @@ SubstanceImporter:
           second: {r: 0, g: 0, b: 0, a: 0}
         data:
           first:
-            name: _TintColor
-          second: {r: .727941155, g: .390105635, b: .171280265, a: 0}
-        data:
-          first:
             name: _Emission
           second: {r: .536764741, g: .146031588, b: .146031588, a: 0}
+        data:
+          first:
+            name: _TintColor
+          second: {r: .727941155, g: .390105635, b: .171280265, a: 0}
     textureParameters:
     - name: Superheat_Emissive
       alphaSource: 0

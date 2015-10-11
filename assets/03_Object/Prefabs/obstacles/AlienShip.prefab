@@ -160,7 +160,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: aed538b02966a2c4bac1a01be3d2ecdb, type: 3}
   m_PlayOnAwake: 1
   m_Volume: .800000012
-  m_Pitch: .800000012
+  m_Pitch: 1
   Loop: 0
   Mute: 0
   Priority: 128
@@ -1422,6 +1422,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Layer
       value: 29
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Pitch
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

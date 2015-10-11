@@ -2,7 +2,6 @@
 using System.Collections;
 
 public class PowerBoostAfterImageMover : MonoBehaviour {
-  float appearAfter;
   float duration;
   Renderer mRenderer;
   Color color;
@@ -10,9 +9,8 @@ public class PowerBoostAfterImageMover : MonoBehaviour {
   float alpha;
   bool startFade = false;
 
-  public void run(float appearAfter, float duration, Color mainColor, Color emissiveColor, float scale) {
+  public void run(float duration, Color mainColor, Color emissiveColor, float scale) {
     this.duration = duration;
-    this.appearAfter = appearAfter;
 
     mRenderer = GetComponent<Renderer>();
     mRenderer.material.color = mainColor;
@@ -22,11 +20,6 @@ public class PowerBoostAfterImageMover : MonoBehaviour {
     alpha = color.a;
     originalAlpha = alpha;
     transform.localScale = scale * Vector3.one;
-    StartCoroutine("appear");
-  }
-
-  IEnumerator appear() {
-    yield return new WaitForSeconds(appearAfter);
     mRenderer.enabled = true;
     startFade = true;
   }

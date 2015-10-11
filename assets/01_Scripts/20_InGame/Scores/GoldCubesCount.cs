@@ -3,6 +3,10 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class GoldCubesCount : MonoBehaviour {
+  public PlayerMover player;
+  public ParticleSystem getEffect;
+  public Text effectAmountText;
+
   public float moveTo;
   public float moveDuration = 0.5f;
   public float showDuration = 2;
@@ -37,6 +41,10 @@ public class GoldCubesCount : MonoBehaviour {
     showCount = 0;
     moveStatus = 1;
     GetComponent<AudioSource>().Play();
+
+    player.showEffect("GoldenCube");
+    getEffect.Play();
+    effectAmountText.text = amount.ToString();
   }
 
   public int getCount() {

@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class PhaseManager : MonoBehaviour {
+  public GoldCubesCount gcCount;
   public NormalPartsManager npm;
   public GameObject EMFilter;
 
@@ -46,7 +47,13 @@ public class PhaseManager : MonoBehaviour {
 
 	public void nextPhase() {
     level++;
+
     status++;
+    if (level > 6) {
+      asm.run();
+      level = 6;
+    }
+
     phaseText.text = textPerLevel[level - 1];
     pos = phaseIndicator.anchoredPosition;
     posX = originalPosX;
@@ -55,21 +62,23 @@ public class PhaseManager : MonoBehaviour {
     // if (level < 6) AudioManager.am.setPitch(level);
 
     if (level == 1) {
+      ntm.enabled = true;
+    } else if (level == 2) {
       npm.startPhase();
       EMFilter.SetActive(true);
-    } else if (level == 2) {
+    } else if (level == 3) {
       ntm.startPhase();
       meteroidFilter.gameObject.SetActive(true);
       meteroidFilterColor = meteroidFilter.material.GetColor("_TintColor");
       meteroidFilterTargetAlpha = meteroidFilterAlpha1;
       meteroidFilterChangeDuration = meteroidFilterChangeDuration1;
-    } else if (level == 3) {
-      dem.enabled = true;
     } else if (level == 4) {
+      dem.enabled = true;
+    } else if (level == 5) {
       ntm2.enabled = true;
       meteroidFilterTargetAlpha = meteroidFilterAlpha2;
       meteroidFilterChangeDuration = meteroidFilterChangeDuration2;
-    } else if (level == 5) {
+    } else if (level == 6) {
       asm.enabled = true;
     }
   }
@@ -79,6 +88,7 @@ public class PhaseManager : MonoBehaviour {
       if (stayCount < showAfter) stayCount += Time.deltaTime;
       else {
         stayCount = 0;
+        gcCount.add(level);
         status++;
       }
     } else if (status == 2) {

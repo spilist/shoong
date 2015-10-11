@@ -16,7 +16,7 @@ public class DangerousEMPManager : ObjectsManager {
   public float shrinkDuration = 0.1f;
 
   override public void initRest() {
-    for (int i = 0; i < max_emp; i++) spawnManager.spawn(objPrefab);
+    spawnManager.spawn(objPrefab);
     time.startSpawnDangerousEMP();
   }
 
@@ -27,7 +27,7 @@ public class DangerousEMPManager : ObjectsManager {
   public void respawn() {
     int count = max_emp - GameObject.FindGameObjectsWithTag("DangerousEMP").Length;
     if (count > 0) {
-      for (int i = 0; i < max_emp; i++) spawnManager.spawn(objPrefab);
+      spawnManager.spawn(objPrefab);
     }
   }
 }

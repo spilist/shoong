@@ -89,7 +89,20 @@ public class AlienshipMover : ObjectsMover {
 
   public void laserEnd() {
     shootingStatus = 1;
-    rb.isKinematic = false;
+    if (rb != null) rb.isKinematic = false;
     laserCanon.SetActive(false);
+  }
+
+  override public void destroyObject(bool destroyEffect = true, bool byPlayer = false) {
+    foreach (Collider collider in GetComponents<Collider>()) {
+      collider.enabled = false;
+    }
+    Destroy(gameObject);
+
+    if (destroyEffect && objectsManager.objDestroyEffect != null) {
+      Instantiate(objectsManager.objDestroyEffect, transform.position, transform.rotation);
+    }
+
+    player.destroyObject(tag);
   }
 }

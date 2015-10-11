@@ -61,7 +61,7 @@ public class AlienshipLaserMover : MonoBehaviour {
 
     if (other.tag == "Alienship") return;
 
-    other.GetComponent<ObjectsMover>().destroyObject();
+    if (other.GetComponent<ObjectsMover>() != null) other.GetComponent<ObjectsMover>().destroyObject();
   }
 }
 

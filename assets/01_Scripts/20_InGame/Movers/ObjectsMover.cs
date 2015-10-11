@@ -100,7 +100,7 @@ public class ObjectsMover : MonoBehaviour {
   }
 
   void OnCollisionEnter(Collision collision) {
-    if (isMagnetized) return;
+    // if (isMagnetized) return;
 
     ObjectsMover other = collision.collider.gameObject.GetComponent<ObjectsMover>();
 

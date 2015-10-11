@@ -41,7 +41,6 @@ public class GoldenCubeMover : ObjectsMover {
 
   override protected void afterEncounter() {
     gcm.gcCount.add(gcm.cubesWhenEncounter());
-    player.showEffect("GoldenCube");
     objectsManager.run();
   }
 

@@ -29,11 +29,15 @@ public class SummonedPartMover : ObjectsMover {
       Instantiate(objectsManager.objDestroyEffect, transform.position, transform.rotation);
     }
 
-    if (byPlayer) summonManager.increaseSummonedPartGetcount();
+    if (byPlayer) {
+      summonManager.increaseSummonedPartGetcount();
+      summonManager.superheat.checkCollected(GetComponent<MeshFilter>().sharedMesh);
+    }
   }
 
   override protected void afterEncounter() {
     summonManager.increaseSummonedPartGetcount();
+    summonManager.superheat.checkCollected(GetComponent<MeshFilter>().sharedMesh);
 
     if (player.isNearAsteroid()) {
       player.showEffect("Wow");

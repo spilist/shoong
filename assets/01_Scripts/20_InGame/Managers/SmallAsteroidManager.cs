@@ -21,10 +21,28 @@ public class SmallAsteroidManager : ObjectsManager {
   override public void initRest() {
     isNegative = true;
 
-    smallAsteroidsPrefab = new GameObject[objPrefab.transform.childCount];
-    int count = 0;
-    foreach (Transform tr in objPrefab.transform) {
-      smallAsteroidsPrefab[count++] = tr.gameObject;
+    if (objPrefab.transform.childCount > 0) {
+      smallAsteroidsPrefab = new GameObject[objPrefab.transform.childCount];
+      int count = 0;
+      foreach (Transform tr in objPrefab.transform) {
+        smallAsteroidsPrefab[count++] = tr.gameObject;
+
+        float radius;
+        if (tr.GetComponent<Renderer>() != null) {
+          radius = tr.GetComponent<Renderer>().bounds.extents.magnitude;
+        } else {
+          Bounds bounds = new Bounds(Vector3.zero, Vector3.zero);
+          foreach (Transform tra in tr) {
+            bounds.Encapsulate(tra.GetComponent<Renderer>().bounds);
+          }
+          radius = bounds.extents.magnitude;
+        }
+        tr.GetComponent<ObjectsMover>().setBoundingSize(radius);
+      }
+    } else {
+      smallAsteroidsPrefab = new GameObject[1];
+      smallAsteroidsPrefab[0] = objPrefab;
+      objPrefab.GetComponent<ObjectsMover>().setBoundingSize(objPrefab.GetComponent<Renderer>().bounds.extents.magnitude);
     }
 
     spawnManager.spawnRandom(smallAsteroidsPrefab, max_obstacles);

@@ -75,7 +75,7 @@ public class PlayerMover : MonoBehaviour {
   public GameObject playerDopple;
   private bool trapped = false;
 
-  public PowerBoost powerBoost;
+  public Superheat superheat;
   private bool usingPowerBoost = false;
 
   private int numBoosters = 0;
@@ -100,7 +100,7 @@ public class PlayerMover : MonoBehaviour {
 
 	void FixedUpdate () {
     if (usingPowerBoost) {
-      speed = powerBoost.baseSpeed;
+      speed = superheat.baseSpeed;
     } else if (usingEMP) {
       speed = 0;
     } else if (isRidingRainbowRoad) {
@@ -323,7 +323,7 @@ public class PlayerMover : MonoBehaviour {
     }
 
     if (usingPowerBoost) {
-      Camera.main.GetComponent<CameraMover>().shake(powerBoost.shakeDuration, powerBoost.shakeAmount);
+      Camera.main.GetComponent<CameraMover>().shake(superheat.shakeDuration, superheat.shakeAmount);
     } else {
       changeManager.booster.Play();
       changeManager.booster.GetComponent<AudioSource>().Play();
@@ -374,12 +374,12 @@ public class PlayerMover : MonoBehaviour {
   }
 
   public float maxBooster() {
-    if (usingPowerBoost) return powerBoost.maxBoosterSpeed;
+    if (usingPowerBoost) return superheat.maxBoosterSpeed;
     else return maxBoosterSpeed * boosterBonus;
   }
 
   float boosterSpeedUp() {
-    if (usingPowerBoost) return powerBoost.boosterSpeedUpAmount;
+    if (usingPowerBoost) return superheat.boosterSpeedUpAmount;
     else return boosterSpeedUpAmount;
   }
 
@@ -391,7 +391,7 @@ public class PlayerMover : MonoBehaviour {
 
   public void setDirection(Vector3 dir) {
     direction = dir;
-    if (usingPowerBoost) powerBoost.setDir(dir);
+    if (usingPowerBoost) superheat.setDir(dir);
     rotatePlayerBody();
   }
 
@@ -593,7 +593,6 @@ public class PlayerMover : MonoBehaviour {
     rb.isKinematic = false;
     usingEMP = false;
     rotatePlayerBody();
-    showEffect("Charged");
     afterStrengthenStart();
   }
 

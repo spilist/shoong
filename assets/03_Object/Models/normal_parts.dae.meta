@@ -24,6 +24,8 @@ ModelImporter:
     100032: parts_robotarm
     100034: parts_robothead
     100036: parts_usb
+    100038: parts_digitalclock
+    100040: parts_mouse
     400000: //RootNode
     400002: parts_brokenhandle_1
     400004: parts_brokenhandle_2
@@ -43,6 +45,8 @@ ModelImporter:
     400032: parts_robotarm
     400034: parts_robothead
     400036: parts_usb
+    400038: parts_digitalclock
+    400040: parts_mouse
     2300000: parts_brokenhandle_1
     2300002: parts_brokenhandle_2
     2300004: parts_brokenlasergun
@@ -61,6 +65,8 @@ ModelImporter:
     2300030: parts_robotarm
     2300032: parts_robothead
     2300034: parts_usb
+    2300036: parts_digitalclock
+    2300038: parts_mouse
     3300000: parts_brokenhandle_1
     3300002: parts_brokenhandle_2
     3300004: parts_brokenlasergun
@@ -79,6 +85,8 @@ ModelImporter:
     3300030: parts_robotarm
     3300032: parts_robothead
     3300034: parts_usb
+    3300036: parts_digitalclock
+    3300038: parts_mouse
     4300000: parts_cylinder3
     4300002: parts_cylinder_1
     4300004: parts_seat
@@ -97,6 +105,8 @@ ModelImporter:
     4300030: parts_nucacoke
     4300032: parts_lasersword
     4300034: parts_portalgun
+    4300036: parts_mouse
+    4300038: parts_digitalclock
     9500000: //RootNode
   materials:
     importMaterials: 1

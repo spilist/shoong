@@ -32,4 +32,10 @@ public class StrengthenTimeBar : MonoBehaviour {
     }
     stb.stopStrengthen();
   }
+
+  public void stop() {
+    StopCoroutine("startDecrase");
+    image.fillAmount = 0;
+    stb.stopStrengthen();
+  }
 }

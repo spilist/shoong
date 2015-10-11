@@ -106,6 +106,7 @@ MonoBehaviour:
   sign: 1
   changeDirection: 
   hasIcon: 1
+  hasBonus: 0
   stayDuring: .5
   disappearDuring: .5
   disappearLengthY: 100
@@ -187,7 +188,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_LocalPosition.z
-      value: -20
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: maxScale

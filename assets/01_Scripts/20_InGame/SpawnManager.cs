@@ -18,11 +18,9 @@ public class SpawnManager : MonoBehaviour {
     // start spawn obstacles
     GetComponent<AsteroidManager>().enabled = true;
     GetComponent<SmallAsteroidManager>().enabled = true;
-    GetComponent<MeteroidManager>().enabled = true;
 
     // spawn GoldenCube
     GetComponent<GoldenCubeManager>().enabled = true;
-
     // spawn selected objects
     string mainObjectsString = PlayerPrefs.GetString("MainObjects").Trim();
     if (mainObjectsString != "") {

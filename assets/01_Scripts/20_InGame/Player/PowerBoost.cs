@@ -69,7 +69,6 @@ public class PowerBoost : MonoBehaviour {
   private int alphaChangeStatus = 0;
 
   public float generatePer = 0.5f;
-  public float appearAfter = 0.05f;
   public float afterImageDuration = 1;
 
   public float baseSpeed = 200;
@@ -206,7 +205,7 @@ public class PowerBoost : MonoBehaviour {
 
       if (index >= afterImageMainColors.Length) index = 0;
 
-      afterImage.run(appearAfter, afterImageDuration, afterImageMainColors[index], afterImageEmissiveColors[index], transform.localScale.x);
+      afterImage.run(afterImageDuration, afterImageMainColors[index], afterImageEmissiveColors[index], transform.localScale.x);
       index++;
 
       yield return new WaitForSeconds(generatePer);

@@ -101,18 +101,18 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: d9fe15ec1f554a14784b4a97bb6de41d, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 9fd72a3a356a84d409fc05286cd2a57a, type: 3}
   m_PlayOnAwake: 1
   m_Volume: .699999988
-  m_Pitch: 1
+  m_Pitch: 1.5
   Loop: 0
   Mute: 0
   Priority: 128
   DopplerLevel: 0
   MinDistance: 1
-  MaxDistance: 100
+  MaxDistance: 200
   Pan2D: 0
-  rolloffMode: 2
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -145,7 +145,7 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - time: 0
-      value: .277777791
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -259,7 +259,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: d9fe15ec1f554a14784b4a97bb6de41d, type: 3}
+      objectReference: {fileID: 8300000, guid: 9fd72a3a356a84d409fc05286cd2a57a, type: 3}
     - target: {fileID: 0}
       propertyPath: m_PlayOnAwake
       value: 1
@@ -274,11 +274,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: MaxDistance
-      value: 100
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: rolloffMode
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: rolloffCustomCurve.m_Curve.Array.data[0].outSlope
@@ -294,11 +294,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: spreadCustomCurve.m_Curve.Array.data[0].value
-      value: .277777791
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Volume
       value: .699999988
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Pitch
+      value: 1.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

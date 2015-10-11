@@ -2,6 +2,7 @@
 using System.Collections;
 
 public class SummonPartsManager : ObjectsManager {
+  public Superheat superheat;
   public GameObject summonedPartPrefab;
   public GameObject summonedPartsDestroyEffect;
 

@@ -21,7 +21,6 @@ public class AlienshipManager : ObjectsManager {
   private int timeSpawned;
 
   override public void initRest() {
-    skipInterval = true;
     run();
   }
 
