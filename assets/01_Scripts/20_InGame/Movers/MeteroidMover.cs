@@ -45,33 +45,11 @@ public class MeteroidMover : ObjectsMover {
         return;
       }
     }
-
-    if (QuestManager.qm.doingQuest("FallingStarReboundByCubeDispenser") && collision.collider.gameObject.tag == "CubeDispenser") {
-      Vector2 pos = Camera.main.WorldToViewportPoint(transform.position);
-      if (pos.x >= 0.0f && pos.x <= 1.0f && pos.y >= 0.0f && pos.y <= 1.0f) {
-        QuestManager.qm.addCountToQuest("FallingStarReboundByCubeDispenser");
-      }
-    }
   }
 
   override protected void afterDestroy(bool byPlayer) {
     if (avoiding && !alreadyChecked && !player.isRidingMonster()) {
-      QuestManager.qm.addCountToQuest("AvoidFallingStar");
       player.showEffect("Whew");
-    }
-  }
-
-  public override void destroyByMonster() {
-    QuestManager.qm.addCountToQuest("DestroyFallingStar");
-    if (player.isUsingDopple()) {
-      QuestManager.qm.addCountToQuest("DestroyFallingStarByDopple");
-    }
-  }
-
-  override protected void afterEncounter() {
-    QuestManager.qm.addCountToQuest("DestroyFallingStar");
-    if (player.isUsingDopple()) {
-      QuestManager.qm.addCountToQuest("DestroyFallingStarByDopple");
     }
   }
 

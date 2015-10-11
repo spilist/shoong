@@ -35,10 +35,7 @@ public class SummonedPartMover : ObjectsMover {
   override protected void afterEncounter() {
     summonManager.increaseSummonedPartGetcount();
 
-    if (isMagnetized) QuestManager.qm.addCountToQuest("Blackhole");
-    if (player.isUsingRainbow()) QuestManager.qm.addCountToQuest("GetPartsOnRainbow");
     if (player.isNearAsteroid()) {
-      QuestManager.qm.addCountToQuest("GetPartsNearAsteroid");
       player.showEffect("Wow");
     }
   }

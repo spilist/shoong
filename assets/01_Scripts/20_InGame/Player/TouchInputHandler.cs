@@ -48,7 +48,6 @@ public class TouchInputHandler : MonoBehaviour
 				beforeIdle.moveTitle();
         menus.gameStart();
         spawnManager.run();
-        QuestManager.qm.generateQuest();
         AudioManager.am.changeVolume("Main", "Max");
 
         DataManager.dm.increment("play_" + PlayerPrefs.GetString("SelectedCharacter"));

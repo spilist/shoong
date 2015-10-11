@@ -40,8 +40,6 @@ public class CubesCount : MonoBehaviour {
       }
       powerBoost.addGuage((cubesGet + bonus) * powerBoost.guagePerCube);
     }
-
-    QuestManager.qm.addCountToQuest("GetCube", cubesGet + bonus);
   }
 
   public int getCount() {

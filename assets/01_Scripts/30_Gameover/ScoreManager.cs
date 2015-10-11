@@ -70,7 +70,6 @@ public class ScoreManager : MonoBehaviour {
     gameOverStatus++;
 
     inputHandler.stopReact();
-    QuestManager.qm.checkQuestComplete();
     AudioManager.am.changeVolume("Main", "Small");
 
     playerExplosion.Play ();
@@ -85,7 +84,6 @@ public class ScoreManager : MonoBehaviour {
     player.GetComponent<PlayerMover>().stopStrengthen();
     barsCanvas.SetActive(false);
     contactCollider.SetActive(false);
-    QuestManager.qm.hideOnGoingQuests();
 
     yield return new WaitForSeconds(showPlayerExplosionDuring);
     if (!isScoring) scoreUpdate();
@@ -184,8 +182,8 @@ public class ScoreManager : MonoBehaviour {
     DataManager.dm.increment("TotalCubes", count);
     DataManager.dm.setBestInt("BestCubes", count);
 
-    DataManager.dm.increment("CurrentGoldenCubes", QuestManager.qm.questReward);
-    DataManager.dm.increment("TotalGoldenCubes", QuestManager.qm.questReward);
+    // DataManager.dm.increment("CurrentGoldenCubes", QuestManager.qm.questReward);
+    // DataManager.dm.increment("TotalGoldenCubes", QuestManager.qm.questReward);
 
     int time = ElapsedTime.time.now;
     DataManager.dm.increment("TotalTime", time);

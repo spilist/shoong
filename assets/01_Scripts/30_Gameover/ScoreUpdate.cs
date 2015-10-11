@@ -57,7 +57,8 @@ public class ScoreUpdate : MonoBehaviour {
 
     goldenCubeNum = (int) goldenCubesCount.getCount();
     goldenCubes.text = goldenCubeNum.ToString();
-    goldenCubeDifference = (int) goldenCubeNum + QuestManager.qm.questReward;
+    goldenCubeDifference = (int) goldenCubeNum;
+    // goldenCubeDifference = (int) goldenCubeNum + QuestManager.qm.questReward;
 
     if (cubeDifference >= scoreUpdateMaxStandard) {
       duration = scoreUpdateMaxDuration;
@@ -76,20 +77,20 @@ public class ScoreUpdate : MonoBehaviour {
     CPS.transform.Find("Number").GetComponent<Text>().text = cps_.ToString("0.00");
     DataManager.dm.setBestFloat("BestCPS", cps_);
 
-    string result = QuestManager.qm.questResult;
-    if (result == "FirstQuestComplete") {
-      questResult.transform.Find("Description").GetComponent<Text>().text = "일일 퀘스트 보상";
-    }
+    // string result = QuestManager.qm.questResult;
+    // if (result == "FirstQuestComplete") {
+    //   questResult.transform.Find("Description").GetComponent<Text>().text = "일일 퀘스트 보상";
+    // }
 
-    if (QuestManager.qm.questReward > 0) {
-      questResult.transform.Find("Complete").gameObject.SetActive(true);
-      questResult.transform.Find("Complete").GetComponent<Text>().text = QuestManager.qm.questReward.ToString();
-      questResult.transform.Find("Failed").gameObject.SetActive(false);
-      DataManager.dm.increment("TotalQuestCompletes");
-    } else {
-      questResult.transform.Find("Complete").gameObject.SetActive(false);
+    // if (QuestManager.qm.questReward > 0) {
+    //   questResult.transform.Find("Complete").gameObject.SetActive(true);
+    //   questResult.transform.Find("Complete").GetComponent<Text>().text = QuestManager.qm.questReward.ToString();
+    //   questResult.transform.Find("Failed").gameObject.SetActive(false);
+    //   DataManager.dm.increment("TotalQuestCompletes");
+    // } else {
+    //   questResult.transform.Find("Complete").gameObject.SetActive(false);
       questResult.transform.Find("Failed").gameObject.SetActive(true);
-    }
+    // }
 
     updateStatus++;
     GetComponent<AudioSource>().Play();
@@ -135,10 +136,10 @@ public class ScoreUpdate : MonoBehaviour {
       move(CPS, questResult);
     } else if (updateStatus == 6) {
       move(questResult);
-      if (!goleCubeSoundPlayed && QuestManager.qm.questReward > 0) {
-        goldenCubes.GetComponent<AudioSource>().Play();
-        goleCubeSoundPlayed = true;
-      }
+      // if (!goleCubeSoundPlayed && QuestManager.qm.questReward > 0) {
+      //   goldenCubes.GetComponent<AudioSource>().Play();
+      //   goleCubeSoundPlayed = true;
+      // }
     } else if (updateStatus == 7) {
       goldenCubeNum = Mathf.MoveTowards(goldenCubeNum, goldenCubeDifference, Time.deltaTime * goldenCubeDifference / 0.5f);
       goldenCubes.text = goldenCubeNum.ToString("0");

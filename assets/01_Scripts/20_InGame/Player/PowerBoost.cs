@@ -113,7 +113,6 @@ public class PowerBoost : MonoBehaviour {
 
     superHeatCount++;
 
-    QuestManager.qm.addCountToQuest("DoSuperHeat");
     DataManager.dm.increment("TotalSuperheats");
 
     GetComponent<MeshFilter>().sharedMesh = player.GetComponent<MeshFilter>().sharedMesh;
@@ -310,14 +309,6 @@ public class PowerBoost : MonoBehaviour {
         cube.GetComponent<ParticleMover>().triggerCubesGet(mover.cubesWhenEncounter());
         player.addCubeCount(mover.cubesWhenEncounter());
       }
-    }
-
-    if (mover.tag == "Obstacle_big" || mover.tag == "Obstacle_small") {
-      QuestManager.qm.addCountToQuest("DestroyAsteroid");
-    } else if (mover.tag == "Monster") {
-      QuestManager.qm.addCountToQuest("DestroyMonster");
-    } else if (mover.tag == "Obstacle") {
-      QuestManager.qm.addCountToQuest("DestroyFallingStar");
     }
 
     mover.destroyObject(true, true);

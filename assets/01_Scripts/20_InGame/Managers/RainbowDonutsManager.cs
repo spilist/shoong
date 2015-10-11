@@ -39,8 +39,6 @@ public class RainbowDonutsManager : ObjectsManager {
     if (rainbowRoad != null) Destroy(rainbowRoad.gameObject);
 
     if (rideCount == 0) {
-      QuestManager.qm.addCountToQuest("RideRainbow");
-      QuestManager.qm.addCountToQuest("RainbowDonuts");
       player.encounterObject("RainbowDonut");
     }
 

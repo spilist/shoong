@@ -16,7 +16,6 @@ public class CubeDispenserMover : ObjectsMover {
       destroyObject(true, true);
       player.goodPartsEncounter(this, cdm.cubesByEncounter * cdm.fullComboCount);
       player.setTrapped(false);
-      QuestManager.qm.addCountToQuest("ExitCubeDispenser");
       return;
     }
 
@@ -55,16 +54,11 @@ public class CubeDispenserMover : ObjectsMover {
     comboCount++;
     Camera.main.GetComponent<CameraMover>().shake(cdm.shakeDurationByHit, cdm.shakeAmountByHit);
 
-    if (comboCount == cdm.fullComboCountPerLevel[0]) {
-      QuestManager.qm.addCountToQuest("CubeDispenser");
-    }
-
     if (comboCount == cdm.fullComboCount - 4) GetComponent<MeshFilter>().sharedMesh = cdm.brokenMeshes[0];
 
     if (comboCount == cdm.fullComboCount - 2) GetComponent<MeshFilter>().sharedMesh = cdm.brokenMeshes[1];
 
     if (comboCount == cdm.fullComboCount) {
-      QuestManager.qm.addCountToQuest("CompleteCubeDispenser");
       destroyObject(true, true);
       player.showEffect("Great");
       DataManager.dm.increment("NumCompleteCubeDispenser");

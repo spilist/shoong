@@ -329,11 +329,7 @@ public class PlayerMover : MonoBehaviour {
   }
 
   public void shootBooster(){
-    QuestManager.qm.addCountToQuest("NoBooster", 0);
-    QuestManager.qm.addCountToQuest("UseBooster");
-
     if (usingJetpack) {
-      QuestManager.qm.addCountToQuest("Jetpack");
       DataManager.dm.increment("NumBoostersWithJetpack");
     }
 
@@ -512,9 +508,6 @@ public class PlayerMover : MonoBehaviour {
     if (unstoppable) {
       unstoppable = false;
       spawnManager.runManager("SpecialParts");
-
-      QuestManager.qm.addCountToQuest("DestroyAsteroidsBeforeUnstoppableEnd", 0);
-
       afterStrengthenStart();
     }
 
@@ -624,7 +617,6 @@ public class PlayerMover : MonoBehaviour {
     rotatePlayerBody();
     showEffect("Charged");
     afterStrengthenStart();
-    QuestManager.qm.addCountToQuest("DestroyAsteroidAndFallingStarByEMP", 0);
   }
 
   public bool uncontrollable() {

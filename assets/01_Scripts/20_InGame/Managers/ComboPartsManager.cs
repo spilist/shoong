@@ -57,12 +57,7 @@ public class ComboPartsManager : ObjectsManager {
       player.encounterObject("ComboPart");
     }
 
-    if (comboCount == fullComboCountPerLevel[0]) {
-      QuestManager.qm.addCountToQuest("ComboParts");
-    }
-
     if (comboCount == fullComboCount) {
-      QuestManager.qm.addCountToQuest("CompleteComboParts");
       DataManager.dm.increment("NumCompleteIllusion");
       player.showEffect("Great");
       run();

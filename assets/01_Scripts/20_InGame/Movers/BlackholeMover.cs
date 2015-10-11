@@ -29,8 +29,6 @@ public class BlackholeMover : ObjectsMover {
   }
 
   override protected void afterEncounter() {
-    QuestManager.qm.addCountToQuest("ExitBlackhole");
-
     Destroy(blm.blackholeGravity);
   }
 

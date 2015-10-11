@@ -89,7 +89,6 @@ public class MiniMonsterMover : ObjectsMover {
       collider.enabled = false;
     }
 
-    QuestManager.qm.addCountToQuest("GetMiniMonster");
     Destroy(gameObject);
     Instantiate(monm.minimonDestroyEffect, transform.position, transform.rotation);
   }

@@ -85,10 +85,6 @@ public class MonsterMover : ObjectsMover {
   }
 
   override protected void afterDestroy(bool byPlayer) {
-    if (isInsideBlackhole && QuestManager.qm.doingQuest("DestroyMonsterByBlackhole") && player.isUsingBlackhole()) {
-      QuestManager.qm.addCountToQuest("DestroyMonsterByBlackhole");
-    }
-
     monm.indicator.stopIndicate();
     monm.stopWarning();
   }
@@ -110,28 +106,9 @@ public class MonsterMover : ObjectsMover {
       player.strengthenBy(tag);
 
       monm.monsterFilter.SetActive(true);
-      QuestManager.qm.addCountToQuest("RideMonster");
-      if (player.isExitedBlackhole()) {
-        QuestManager.qm.addCountToQuest("RideMonsterByBlackhole");
-      }
-
-      if (player.energyBar.currentEnergy() <= 30) {
-        QuestManager.qm.addCountToQuest("RideMonsterWithLowEnergy");
-      }
-
-      if (player.isUsingDopple()) {
-        QuestManager.qm.addCountToQuest("RideMonsterByDopple");
-      }
-
       player.encounterObject(tag);
     }
     else {
-      QuestManager.qm.addCountToQuest("DestroyMonster");
-
-      if (player.isUsingRainbow()) {
-        QuestManager.qm.addCountToQuest("DestroyMonsterByRainbow");
-      }
-
       Instantiate(objectsManager.objEncounterEffect, transform.position, transform.rotation);
       monm.run();
 

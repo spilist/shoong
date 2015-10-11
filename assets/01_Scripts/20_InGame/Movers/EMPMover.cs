@@ -11,7 +11,6 @@ public class EMPMover : ObjectsMover {
 
   override protected void afterEncounter() {
     empManager.generateForceField();
-    QuestManager.qm.addCountToQuest("EMP");
   }
 
   override public string getManager() {

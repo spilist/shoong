@@ -21,22 +21,7 @@ private bool isNearPlayer = false;
     if (isNearPlayer) player.nearAsteroid(false);
   }
 
-  override public void destroyByMonster() {
-    QuestManager.qm.addCountToQuest("DestroyAsteroid");
-    QuestManager.qm.addCountToQuest("Monster");
-  }
-
   override protected void afterEncounter() {
-    QuestManager.qm.addCountToQuest("DestroyAsteroid");
-    if (player.isUnstoppable()) {
-      QuestManager.qm.addCountToQuest("DestroyAsteroidsBeforeUnstoppableEnd");
-      QuestManager.qm.addCountToQuest("SpecialParts");
-    } else if (player.isRidingMonster()) {
-      QuestManager.qm.addCountToQuest("Monster");
-    } else if (player.isUsingDopple()) {
-      QuestManager.qm.addCountToQuest("Dopple");
-    }
-
     if (isNearPlayer) player.nearAsteroid(false);
   }
 

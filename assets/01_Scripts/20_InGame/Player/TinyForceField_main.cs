@@ -17,7 +17,6 @@ public class TinyForceField_main : MonoBehaviour {
       if (mover.tag == "MiniMonster") {
         if (!dpm.player.absorbMinimon(mover)) return;
         instantiateCube(mover);
-        QuestManager.qm.addCountToQuest("GetMiniMonster");
       } else {
         dpm.player.generateMinimon(mover);
       }
@@ -52,15 +51,6 @@ public class TinyForceField_main : MonoBehaviour {
       dpm.getEnergy.Play();
       dpm.getEnergy.GetComponent<AudioSource>().Play();
     } else {
-      if (mover.tag == "Obstacle_big" || mover.tag == "Obstacle_small") {
-        QuestManager.qm.addCountToQuest("DestroyAsteroid");
-        QuestManager.qm.addCountToQuest("Dopple");
-      } else if (mover.tag == "Monster") {
-        QuestManager.qm.addCountToQuest("DestroyMonster");
-      } else if (mover.tag == "Obstacle") {
-        QuestManager.qm.addCountToQuest("DestroyFallingStar");
-        QuestManager.qm.addCountToQuest("DestroyFallingStarByDopple");
-      }
       DataManager.dm.increment("NumDestroyObstaclesWithBlink");
     }
   }
