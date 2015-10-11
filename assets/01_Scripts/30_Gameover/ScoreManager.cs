@@ -45,9 +45,7 @@ public class ScoreManager : MonoBehaviour {
   }
 
   public void gameOver(string reason) {
-    if (reason == "NoEnergy") {
-      DataManager.dm.increment("DeathByNoEnergy");
-    } else if (reason == "Obstacle_small") {
+    if (reason == "Obstacle_small") {
       DataManager.dm.increment("DeathBySmallAsteroid");
     } else if (reason == "Obstacle_big") {
       DataManager.dm.increment("DeathByAsteroid");
@@ -57,8 +55,6 @@ public class ScoreManager : MonoBehaviour {
       DataManager.dm.increment("DeathByBlackhole");
     } else if (reason == "Monster") {
       DataManager.dm.increment("DeathByMonster");
-    } else if (reason == "Trap") {
-      DataManager.dm.increment("DeathByTrap");
     } else if (reason == "Dopple") {
       DataManager.dm.increment("DeathByDopple");
     }

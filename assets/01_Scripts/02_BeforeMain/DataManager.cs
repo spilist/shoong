@@ -330,32 +330,3 @@ class SaveData {
   public string strings = "";
   public string dateTimes = "";
 }
-
-// cubes_by.Add("part", 0);
-// cubes_by.Add("comboPart", 0);
-// cubes_by.Add("destroying_obstacle", 0);
-// cubes_by.Add("destroying_monster", 0);
-// cubes_by.Add("cubeDispenser", 0);
-
-//     num_deaths_by.Add("no_energy", 0);
-// num_deaths_by.Add("target_obstacle", 0);
-// num_deaths_by.Add("big_obstacle", 0);
-// num_deaths_by.Add("blackhole", 0);
-// num_deaths_by.Add("monster", 0);
-
-// num_destroys.Add("blackhole", 0);
-// num_destroys.Add("monster", 0);
-// num_destroys.Add("obstacle", 0);
-
-// num_use_objects.Add("exit_blackhole", 0);
-// num_use_objects.Add("rebound_by_blackhole", 0);
-// num_use_objects.Add("absorb_monster", 0);
-// num_use_objects.Add("ride_weakened_monster", 0);
-// num_use_objects.Add("unstoppable", 0);
-// num_use_objects.Add("unstoppable_with_absorb", 0);
-// num_use_objects.Add("unstoppable_with_monster", 0);
-// num_use_objects.Add("unstoppable_with_absorb_and_monster", 0);
-// num_use_objects.Add("absorb_with_monster", 0);
-// num_use_objects.Add("combopart_maxcombo", 0);
-// num_use_objects.Add("cubedispenser_maxcombo", 0);
-// num_use_objects.Add("RainbowDonuts", 0);

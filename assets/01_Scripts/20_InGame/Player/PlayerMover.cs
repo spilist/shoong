@@ -37,8 +37,7 @@ public class PlayerMover : MonoBehaviour {
   private bool reboundingByDispenser = false;
   private float reboundingByDispenserDuring = 0;
 
-  public EnergyBar energyBar;
-  private StrengthenTimeBar stBar;
+  public StrengthenTimeBar stBar;
 
   public float boosterSpeedUpAmount = 60;
   public float maxBoosterSpeed = 100;
@@ -88,8 +87,6 @@ public class PlayerMover : MonoBehaviour {
     changeManager.changeCharacter(PlayerPrefs.GetString("SelectedCharacter"));
 
     originalScale = transform.localScale.x;
-    energyBar = transform.parent.Find("Bars Canvas/EnergyBar").GetComponent<EnergyBar>();
-    stBar = transform.parent.Find("Bars Canvas/StrengthenTimeBar").GetComponent<StrengthenTimeBar>();
 
     Vector2 randomV = Random.insideUnitCircle;
     randomV.Normalize();
@@ -238,7 +235,6 @@ public class PlayerMover : MonoBehaviour {
 
   public void addCubeCount(int howMany = 1, int bonus = 0) {
     cubesCount.addCount(howMany, bonus);
-    energyBar.getHealthbyParts(howMany + bonus);
   }
 
   public void contactCubeDispenser(Transform tr, int howMany, Collision collision, float reboundDuring) {
@@ -288,14 +284,7 @@ public class PlayerMover : MonoBehaviour {
   public void teleport(Vector3 pos) {
     if (changeManager.isTeleporting() || scoreManager.isGameOver()) return;
 
-    if (energyBar.currentEnergy() < dpm.loseEnergyAmount) {
-      AudioSource.PlayClipAtPoint(dpm.cannotTeleportWarningSound, transform.position);
-      Camera.main.GetComponent<CameraMover>().shake();
-      return;
-    }
-
     AudioSource.PlayClipAtPoint(dpm.teleportSound, transform.position, dpm.teleportSoundVolume);
-    energyBar.loseByShoot(-dpm.loseEnergyAmount);
 
     GameObject[] cubeDispensers = GameObject.FindGameObjectsWithTag("CubeDispenser");
     GameObject cubeDispenser = null;
@@ -333,8 +322,6 @@ public class PlayerMover : MonoBehaviour {
       DataManager.dm.increment("NumBoostersWithJetpack");
     }
 
-    energyBar.loseByShoot();
-
     if (usingPowerBoost) {
       Camera.main.GetComponent<CameraMover>().shake(powerBoost.shakeDuration, powerBoost.shakeAmount);
     } else {
@@ -367,7 +354,6 @@ public class PlayerMover : MonoBehaviour {
     GetComponent<Collider>().enabled = false;
     isInsideBlackhole = false;
     changeManager.changeCharacterToOriginal();
-    energyBar.getFullHealth();
 
     if (isUsingRainbow()) {
       rdm.destroyInstances();
@@ -383,7 +369,6 @@ public class PlayerMover : MonoBehaviour {
     GetComponent<Renderer>().enabled = true;
     GetComponent<Collider>().enabled = true;
     rotatePlayerBody();
-    energyBar.getFullHealth();
     afterStrengthenStart();
     speedMeter.updateMaximum();
   }
@@ -428,9 +413,6 @@ public class PlayerMover : MonoBehaviour {
       afterStrengthenStart();
       DataManager.dm.increment("TotalWhew");
       // audio needed
-    } else if (effectName == "Charged") {
-      if (!usingJetpack) energyBar.setCharged();
-      DataManager.dm.increment("TotalCharged");
     } else if (effectName == "Wow") {
       DataManager.dm.increment("TotalWow");
     } else if (effectName == "Great") {
@@ -454,7 +436,6 @@ public class PlayerMover : MonoBehaviour {
     } else if (obj == "Monster") {
       ridingMonster = true;
       minimonCounter = 0;
-      energyBar.getFullHealth();
     } else if (obj == "EMP") {
       usingEMP = true;
       rb.isKinematic = true;
@@ -468,7 +449,6 @@ public class PlayerMover : MonoBehaviour {
     } else if (obj == "Dopple") {
       usingDopple = true;
       contactCollider.enabled = false;
-      energyBar.getFullHealth();
     }
 
     StopCoroutine("strengthen");
@@ -486,8 +466,6 @@ public class PlayerMover : MonoBehaviour {
       effectDuration = strengthen_during;
     }
 
-    if (usingJetpack) energyBar.setCharged(true);
-
     stBar.startStrengthen(effectDuration);
 
     yield return new WaitForSeconds(effectDuration);
@@ -503,6 +481,8 @@ public class PlayerMover : MonoBehaviour {
       boosterBonus = 1;
       spawnManager.runManager("Jetpack");
       speedMeter.updateMaximum();
+
+      // something about time
     }
 
     if (unstoppable) {
@@ -526,7 +506,6 @@ public class PlayerMover : MonoBehaviour {
     }
 
     if (ridingMonster) {
-      energyBar.getFullHealth();
       ridingMonster = false;
       monm.stopRiding();
       transform.localScale = originalScale * Vector3.one;
@@ -537,7 +516,6 @@ public class PlayerMover : MonoBehaviour {
 
     if (usingDopple) {
       usingDopple = false;
-      energyBar.getFullHealth();
       if (!trapped) contactCollider.enabled = true;
       Camera.main.GetComponent<CameraMover>().setSlowly(false);
       spawnManager.runManager("Dopple");

@@ -24,7 +24,6 @@ public class QuestCollider : MonoBehaviour {
       if (other.GetComponent<MeteroidMover>().isAlreadyChecked() || player.isRidingMonster()) return;
 
       other.GetComponent<MeteroidMover>().nearPlayer(false);
-      QuestManager.qm.addCountToQuest("AvoidFallingStar");
       player.showEffect("Whew");
     }
   }

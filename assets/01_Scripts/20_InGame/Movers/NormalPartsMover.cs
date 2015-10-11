@@ -2,6 +2,12 @@
 using System.Collections;
 
 public class NormalPartsMover : ObjectsMover {
+  private NormalPartsManager npm;
+
+  protected override void initializeRest() {
+    npm = (NormalPartsManager)objectsManager;
+  }
+
   override protected void afterEncounter() {
     if (isMagnetized) {
       DataManager.dm.increment("NumPartsAbsorbedWithBlackhole");
@@ -14,6 +20,12 @@ public class NormalPartsMover : ObjectsMover {
     if (player.isNearAsteroid()) {
       player.showEffect("Wow");
     }
+
+    npm.superheat.checkCollected(GetComponent<MeshFilter>().sharedMesh);
+  }
+
+  override protected void afterDestroy(bool byPlayer) {
+    if (byPlayer) npm.superheat.checkCollected(GetComponent<MeshFilter>().sharedMesh);
   }
 
   override public string getManager() {

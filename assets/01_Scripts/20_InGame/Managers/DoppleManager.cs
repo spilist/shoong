@@ -8,7 +8,6 @@ public class DoppleManager : ObjectsManager {
   public GameObject forceFieldByDopplePrefab;
   public float[] forceFieldSizePerLevel;
   public float targetSize;
-  public int loseEnergyAmount = 20;
   public AudioClip teleportSound;
   public float teleportSoundVolume = 0.5f;
   public AudioClip cannotTeleportWarningSound;
