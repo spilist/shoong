@@ -45,7 +45,8 @@ public class TouchInputHandler : MonoBehaviour
       if (player.uncontrollable()) return;
 
 			if (!gameStarted) {
-				beforeIdle.moveTitle();
+				ElapsedTime.time.startTime();
+        beforeIdle.moveTitle();
         menus.gameStart();
         spawnManager.run();
         AudioManager.am.changeVolume("Main", "Max");

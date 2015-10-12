@@ -45,6 +45,7 @@ public class ScoreManager : MonoBehaviour {
   }
 
   public void gameOver(string reason) {
+    ElapsedTime.time.stopTime();
     if (reason == "Obstacle_small") {
       DataManager.dm.increment("DeathBySmallAsteroid");
     } else if (reason == "Obstacle_big") {

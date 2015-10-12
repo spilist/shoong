@@ -19,7 +19,8 @@ public class PlayerMover : MonoBehaviour {
 
   private float speed;
 	private float boosterspeed = 0;
-  public float tumble;
+  public float minTumble;
+  private float tumble;
   private Vector3 direction;
 
   public ComboPartsManager cpm;
@@ -266,6 +267,7 @@ public class PlayerMover : MonoBehaviour {
       string[] angVals = PlayerPrefs.GetString("CharacterAngVal").Split(',');
       rb.angularVelocity = new Vector3(float.Parse(angVals[0]), float.Parse(angVals[1]), float.Parse(angVals[2]));
     } else {
+      tumble = (cubesCount.getCPS() > minTumble) ? cubesCount.getCPS() : minTumble;
       rb.angularVelocity = Random.onUnitSphere * tumble;
     }
   }

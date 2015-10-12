@@ -10,6 +10,7 @@ public class AudioManager : MonoBehaviour {
   public float mainPitchIncrease = 0.05f;
   public float powerBoostVolumeOn = 0.5f;
   public float volumeChangeDuration = 0.5f;
+  public float powerBoostStartOn = 5;
 
   private AudioSource main;
   private float mainVolume;
@@ -35,6 +36,7 @@ public class AudioManager : MonoBehaviour {
 
     main = transform.Find("Main").GetComponent<AudioSource>();
     powerBoost = transform.Find("SuperHeat").GetComponent<AudioSource>();
+    powerBoost.time = powerBoostStartOn;
 
     if (DataManager.dm.getBool("BGMOffSetting")) {
       main.volume = 0;

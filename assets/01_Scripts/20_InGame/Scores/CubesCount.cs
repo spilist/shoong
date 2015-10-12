@@ -45,6 +45,10 @@ public class CubesCount : MonoBehaviour {
     return count;
   }
 
+  public float getCPS() {
+    return (float) count / ElapsedTime.time.now;
+  }
+
   void Update() {
     if (currentCount < count) {
       currentCount = Mathf.MoveTowards(currentCount, count, Time.deltaTime * (count - currentCount) * increaseSpeed);

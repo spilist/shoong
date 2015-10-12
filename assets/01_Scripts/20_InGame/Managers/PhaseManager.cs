@@ -45,6 +45,10 @@ public class PhaseManager : MonoBehaviour {
     diff = Mathf.Abs(showPosX - originalPosX);
   }
 
+  public int phase() {
+    return level;
+  }
+
 	public void nextPhase() {
     level++;
 
