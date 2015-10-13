@@ -470,7 +470,7 @@ public class PlayerMover : MonoBehaviour {
       effectDuration = strengthen_during;
     }
 
-    stBar.startStrengthen(effectDuration);
+    // stBar.startStrengthen(effectDuration);
 
     yield return new WaitForSeconds(effectDuration);
 

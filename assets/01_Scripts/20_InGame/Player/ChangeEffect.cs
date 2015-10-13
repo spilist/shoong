@@ -18,12 +18,12 @@ public class ChangeEffect : MonoBehaviour {
       cm = player.GetComponent<CharacterChangeManager>();
     }
 
-    if (changeTo != "") {
-      cm.changeCharacterTo(changeTo);
-    }
-
     if (effectName != "") {
       player.showEffect(effectName);
+    }
+
+    if (changeTo != "") {
+      cm.changeCharacterTo(changeTo);
     }
 
     if (targetScale != 0) {

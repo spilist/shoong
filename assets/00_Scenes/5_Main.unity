@@ -2692,7 +2692,7 @@ MonoBehaviour:
   boosterSpeedDecreaseBase: 60
   boosterSpeedDecreasePerTime: 20
   particles: {fileID: 178344, guid: b185d52f68bf5499e81f948bbbf1bd8c, type: 2}
-  strengthen_during: 8
+  strengthen_during: 6
   reboundSpeed: 160
   afterStrengthenDuration: 1
   contactCollider: {fileID: 1298175624}
@@ -3022,24 +3022,24 @@ MonoBehaviour:
   sizeChangeInterval: .100000001
   middleSize: 3
   bigSize: 6
-  boostDuration: 4
+  boostDuration: 6
   generatePer: .5
   afterImageDuration: 1
   baseSpeed: 200
   boosterSpeedUpAmount: 250
   maxBoosterSpeed: 400
   rotatingSpeed: 1000
-  guageAlphaUp: 1
+  guageAlphaUp: .600000024
   guageAlphaDown: .200000003
   guageAlphaChangeDuration: 1
-  guageIconAlphaOrigin: .5
+  iconAlphaStayDuration: 2
+  iconAlphaStayCount: 0
   guageScaleUp: 4
   guageIcon: {fileID: 1214422668}
   guage: {fileID: 1201305542}
   guageShell: {fileID: 18300320}
   maxGuage: 1000
   guagePerCube: .5
-  guageScaleInSuperheat: 2
 --- !u!135 &98551110
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -44619,7 +44619,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
-  m_FillAmount: 0
+  m_FillAmount: .899999976
   m_FillClockwise: 1
   m_FillOrigin: 2
 --- !u!222 &1201305543
@@ -69545,6 +69545,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33243e08b60ecb548ba7b3d6944ba969, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  superheat: {fileID: 98551109}
   player: {fileID: 91418583}
   ptb: {fileID: 2048063065}
   touchEffect: {fileID: 19869282, guid: 685937296cad741c18018a97b8d10789, type: 2}

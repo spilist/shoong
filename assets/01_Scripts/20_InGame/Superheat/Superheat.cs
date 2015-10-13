@@ -59,11 +59,10 @@ public class Superheat : MonoBehaviour {
   private Color guageColor;
   private bool guageAlphaGoingUp = true;
   private float guageAlpha;
+  private bool guageTurnedOn = false;
 
-  public float guageIconAlphaOrigin = 0.5f;
-  private Color guageIconColor;
-  private float guageIconAlpha;
-  private bool iconAlphaChanging = false;
+  public float iconAlphaStayDuration = 2;
+  public float iconAlphaStayCount;
 
   public float guageScaleUp = 4;
   public Image guageIcon;
@@ -72,15 +71,17 @@ public class Superheat : MonoBehaviour {
 
   public float maxGuage = 1000;
   public float guagePerCube = 0.5f;
-  public float guageScaleInSuperheat = 2;
 
 	void Start() {
     superheatParticle = transform.Find("Particle").GetComponent<ParticleSystem>();
 
     guageColor = guage.color;
-    guageAlpha = guageColor.a;
+    guageAlpha = guageAlphaDown;
+  }
 
-    guageIconColor = guageIcon.color;
+  public void startGame() {
+    GetComponent<MeshFilter>().sharedMesh = player.GetComponent<MeshFilter>().sharedMesh;
+    afterImagePrefab.GetComponent<MeshFilter>().sharedMesh = GetComponent<MeshFilter>().sharedMesh;
   }
 
   void Update() {
@@ -108,43 +109,48 @@ public class Superheat : MonoBehaviour {
     if (superheatRunning) {
       guage.fillAmount = Mathf.MoveTowards(guage.fillAmount, 0, Time.deltaTime / boostDuration);
     } else {
-      if (guageAlphaGoingUp) {
-        guageAlpha = Mathf.MoveTowards(guageAlpha, guageAlphaUp, Time.deltaTime * (guageAlphaUp - guageAlphaDown) / guageAlphaChangeDuration);
-        guageColor.a = guageAlpha;
-        guage.color = guageColor;
-        if (guageAlpha == guageAlphaUp) guageAlphaGoingUp = false;
-      } else {
-        guageAlpha = Mathf.MoveTowards(guageAlpha, guageAlphaDown, Time.deltaTime * (guageAlphaUp - guageAlphaDown) / guageAlphaChangeDuration);
-        guageColor.a = guageAlpha;
-        guage.color = guageColor;
-        if (guageAlpha == guageAlphaDown) guageAlphaGoingUp = true;
-      }
-
-      if (iconAlphaChanging) {
-        guageIconAlpha = Mathf.MoveTowards(guageIconAlpha, guageIconAlphaOrigin, Time.deltaTime * (1 - guageIconAlphaOrigin) / guageAlphaChangeDuration);
-        guageIconColor.a = guageIconAlpha;
-        guageIcon.color = guageIconColor;
-        if (guageIconAlpha == guageIconAlphaOrigin) {
-          iconAlphaChanging = false;
+      if (guageTurnedOn) {
+        if (iconAlphaStayCount > 0) {
+          iconAlphaStayCount -= Time.deltaTime;
+        } else {
+          guageTurnedOn = false;
+          guageColor.a = guageAlphaDown;
+          guage.color = guageColor;
+          guageIcon.color = guageColor;
+          guageAlphaGoingUp = true;
           guageIcon.transform.Find("Particle").gameObject.SetActive(false);
+        }
+      } else {
+        if (guageAlphaGoingUp) {
+          guageAlpha = Mathf.MoveTowards(guageAlpha, guageAlphaUp, Time.deltaTime * (guageAlphaUp - guageAlphaDown) / guageAlphaChangeDuration);
+          guageColor.a = guageAlpha;
+          guage.color = guageColor;
+          guageIcon.color = guageColor;
+          if (guageAlpha == guageAlphaUp) guageAlphaGoingUp = false;
+        } else {
+          guageAlpha = Mathf.MoveTowards(guageAlpha, guageAlphaDown, Time.deltaTime * (guageAlphaUp - guageAlphaDown) / guageAlphaChangeDuration);
+          guageColor.a = guageAlpha;
+          guage.color = guageColor;
+          guageIcon.color = guageColor;
+          if (guageAlpha == guageAlphaDown) guageAlphaGoingUp = true;
         }
       }
     }
   }
 
   public void addGuageWithEffect(float val) {
-    if (!iconAlphaChanging) {
-      guageIconColor.a = 1;
-      guageIcon.color = guageIconColor;
-      guageIconAlpha = 1;
-      guageIcon.transform.Find("Particle").gameObject.SetActive(true);
-      iconAlphaChanging = true;
-    }
+    guageTurnedOn = true;
+    guageColor.a = 1;
+    guage.color = guageColor;
+    guageIcon.color = guageColor;
+    guageIcon.transform.Find("Particle").gameObject.SetActive(true);
+    iconAlphaStayCount = iconAlphaStayDuration;
+
     addGuage(val);
   }
 
   public void addGuage(float val) {
-    if (superheatRunning) val *= guageScaleInSuperheat;
+    if (superheatRunning) return;
     guage.fillAmount += val / maxGuage;
 
     if (!superheatRunning && guage.fillAmount == 1) startSuperheat();
@@ -161,14 +167,12 @@ public class Superheat : MonoBehaviour {
     guageIcon.transform.localScale = guageScaleUp * Vector3.one;
     guage.transform.localScale = guageScaleUp * Vector3.one;
     guageShell.transform.localScale = guageScaleUp * Vector3.one;
-    guageIconColor.a = 1;
-    guageIcon.color = guageIconColor;
+    guageColor.a = guageAlphaUp;
+    guageIcon.color = guageColor;
+    guage.color = guageColor;
     guageIcon.transform.Find("Particle").gameObject.SetActive(true);
 
     DataManager.dm.increment("TotalSuperheats");
-
-    GetComponent<MeshFilter>().sharedMesh = player.GetComponent<MeshFilter>().sharedMesh;
-    afterImagePrefab.GetComponent<MeshFilter>().sharedMesh = GetComponent<MeshFilter>().sharedMesh;
 
     player.startPowerBoost();
     isTransforming = true;
@@ -238,8 +242,10 @@ public class Superheat : MonoBehaviour {
     guage.transform.localScale = Vector3.one;
     guageShell.transform.localScale = Vector3.one;
     guageIcon.transform.Find("Particle").gameObject.SetActive(false);
-    guageIconColor.a = guageIconAlphaOrigin;
-    guageIcon.color = guageIconColor;
+    guageColor.a = guageAlphaDown;
+    guage.color = guageColor;
+    guageIcon.color = guageColor;
+    guageAlphaGoingUp = true;
 
     transform.localScale = Vector3.one;
     superImage.anchoredPosition = new Vector2(startSuperPos, 0);

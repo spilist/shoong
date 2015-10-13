@@ -55,7 +55,6 @@ public class RainbowDonutsManager : ObjectsManager {
       objEncounterEffectForPlayer.GetComponent<AudioSource>().Play();
 
       rideCount++;
-      superheat.addGuageWithEffect(guageAmount);
       StartCoroutine("rideRainbow");
     } else {
       objEncounterEffectForPlayer.Stop();
@@ -79,6 +78,8 @@ public class RainbowDonutsManager : ObjectsManager {
     } while(Physics.OverlapSphere(destination, 50, blackholeGravityMask).Length > 0);
 
     drawingRainbowRoad = true;
+
+    superheat.addGuageWithEffect(guageAmount);
 
     yield return new WaitForSeconds(rotateDuring);
 
