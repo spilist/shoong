@@ -3029,9 +3029,9 @@ MonoBehaviour:
   boosterSpeedUpAmount: 250
   maxBoosterSpeed: 400
   rotatingSpeed: 1000
-  guageAlphaUp: .600000024
-  guageAlphaDown: .200000003
-  guageAlphaChangeDuration: 1
+  guageAlphaUp: .800000012
+  guageAlphaDown: .400000006
+  guageAlphaChangeDuration: .800000012
   iconAlphaStayDuration: 2
   iconAlphaStayCount: 0
   guageScaleUp: 4
@@ -39752,7 +39752,7 @@ ParticleSystem:
         rgba: 4294967295
       maxColor:
         serializedVersion: 2
-        rgba: 4279186771
+        rgba: 4278210703
       minMaxState: 0
     startSize:
       scalar: 5
@@ -44613,7 +44613,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: b9c84955814664cd6b76a166e49c7ad2, type: 2}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: .600000024}
   m_Sprite: {fileID: 21300000, guid: 8f845f6bfd7af4b688439ec6fec928a7, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
@@ -44867,8 +44867,8 @@ MonoBehaviour:
   m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: .501960814}
+  m_Material: {fileID: 2100000, guid: b9c84955814664cd6b76a166e49c7ad2, type: 2}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Sprite: {fileID: 21300000, guid: b3cacf87d855f43a1bce2fe1d7d141da, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -67883,7 +67883,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 603a1c64f438d4bf38712e3180e53359, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parallax: 150
+  parallax: 180
 --- !u!23 &1767020066
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -78637,14 +78637,14 @@ MonoBehaviour:
   tumble: 3
   minSpawnInterval: 8
   maxSpawnInterval: 12
-  cubesByEncounter: 5
+  cubesByEncounter: 10
   isNegative: 0
   hasEncounterEffect: 0
   player: {fileID: 0}
   instance: {fileID: 0}
   forceSpawnAtStart: 0
   objPrefab_next: {fileID: 192146, guid: d357428246b5f4e5fb2b54651d371984, type: 2}
-  fullComboCountPerLevel: 030000000400000006000000
+  fullComboCountPerLevel: 020000000300000005000000
   radius: 50
   pitchStart: .400000006
   pitchIncrease: .0500000007
@@ -78666,10 +78666,10 @@ MonoBehaviour:
   objEncounterEffectForPlayer: {fileID: 0}
   strengthenPlayerEffect: {fileID: 0}
   strength: 1
-  speed: 320
+  speed: 260
   tumble: 10
-  minSpawnInterval: 3
-  maxSpawnInterval: 7
+  minSpawnInterval: 1
+  maxSpawnInterval: 5
   cubesByEncounter: 30
   isNegative: 1
   hasEncounterEffect: 0
@@ -78812,7 +78812,7 @@ MonoBehaviour:
   tumble: .5
   minSpawnInterval: 8
   maxSpawnInterval: 12
-  cubesByEncounter: 10
+  cubesByEncounter: 15
   isNegative: 0
   hasEncounterEffect: 0
   player: {fileID: 0}
@@ -78821,7 +78821,7 @@ MonoBehaviour:
   brokenMeshes:
   - {fileID: 4300002, guid: adeac5a1dbc17406db69c3e813cc95ef, type: 3}
   - {fileID: 4300004, guid: adeac5a1dbc17406db69c3e813cc95ef, type: 3}
-  fullComboCountPerLevel: 030000000500000008000000
+  fullComboCountPerLevel: 020000000300000005000000
   destroyAfterPerLevel:
   - 3.5
   - 4
@@ -79228,10 +79228,10 @@ MonoBehaviour:
   objEncounterEffectForPlayer: {fileID: 0}
   strengthenPlayerEffect: {fileID: 0}
   strength: 1
-  speed: 320
+  speed: 260
   tumble: 10
-  minSpawnInterval: 3
-  maxSpawnInterval: 7
+  minSpawnInterval: 1
+  maxSpawnInterval: 5
   cubesByEncounter: 30
   isNegative: 1
   hasEncounterEffect: 0

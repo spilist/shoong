@@ -7,7 +7,7 @@ labels:
 - effect
 - glow
 - gaz
-timeCreated: 1444567415
+timeCreated: 1444739865
 licenseType: Free
 SubstanceImporter:
   serializedVersion: 5
@@ -179,12 +179,12 @@ SubstanceImporter:
           second: {r: 1, g: 1, b: 1, a: .927999973}
         data:
           first:
-            name: _Emission
-          second: {r: 0, g: .668965816, b: 1, a: .402999997}
-        data:
-          first:
             name: _TintColor
           second: {r: 1, g: 0, b: 0, a: 1}
+        data:
+          first:
+            name: _Emission
+          second: {r: 0, g: .668965816, b: 1, a: .402999997}
     textureParameters:
     - name: DangerousEMP_Emissive
       alphaSource: 0
@@ -199,9 +199,9 @@ SubstanceImporter:
     buildTargetSettings:
     - serializedVersion: 2
       buildTarget: 
-      textureWidth: 1024
-      textureHeight: 1024
-      textureFormat: 1
+      textureWidth: 512
+      textureHeight: 512
+      textureFormat: 0
       loadingBehavior: 1
   - serializedVersion: 16
     name: EMFieldFilter
@@ -296,7 +296,7 @@ SubstanceImporter:
             name: _MainTex
           second:
             texture: {instanceID: 0}
-            scale: {x: 1, y: 1}
+            scale: {x: .5, y: .5}
             offset: {x: 0, y: 0}
       floats:
         data:
@@ -363,7 +363,7 @@ SubstanceImporter:
         data:
           first:
             name: _TintColor
-          second: {r: 0, g: .635294139, b: .949019611, a: .0392156877}
+          second: {r: .0295198914, g: .393691391, b: .573529422, a: .108999997}
     textureParameters:
     - name: EMFieldFilter_Emissive
       alphaSource: 0
@@ -380,7 +380,7 @@ SubstanceImporter:
       buildTarget: 
       textureWidth: 1024
       textureHeight: 1024
-      textureFormat: 1
+      textureFormat: 0
       loadingBehavior: 1
   - serializedVersion: 16
     name: EMP_ForceField
@@ -549,12 +549,12 @@ SubstanceImporter:
           second: {r: 1, g: 1, b: 1, a: .927999973}
         data:
           first:
-            name: _Emission
-          second: {r: 0, g: .668965816, b: 1, a: .402999997}
-        data:
-          first:
             name: _TintColor
           second: {r: 1, g: 1, b: 1, a: .125490203}
+        data:
+          first:
+            name: _Emission
+          second: {r: 0, g: .668965816, b: 1, a: .402999997}
     textureParameters:
     - name: EMP_ForceField_Emissive
       alphaSource: 0
@@ -569,9 +569,9 @@ SubstanceImporter:
     buildTargetSettings:
     - serializedVersion: 2
       buildTarget: 
-      textureWidth: 1024
-      textureHeight: 1024
-      textureFormat: 1
+      textureWidth: 512
+      textureHeight: 512
+      textureFormat: 0
       loadingBehavior: 1
   - serializedVersion: 16
     name: LaserCapsule
@@ -740,12 +740,12 @@ SubstanceImporter:
           second: {r: 1, g: 1, b: 1, a: .927999973}
         data:
           first:
-            name: _Emission
-          second: {r: 0, g: .668965816, b: 1, a: .402999997}
-        data:
-          first:
             name: _TintColor
           second: {r: 1, g: 0, b: 0, a: .266000003}
+        data:
+          first:
+            name: _Emission
+          second: {r: 0, g: .668965816, b: 1, a: .402999997}
     textureParameters:
     - name: LaserCapsule_Emissive
       alphaSource: 0
@@ -760,9 +760,9 @@ SubstanceImporter:
     buildTargetSettings:
     - serializedVersion: 2
       buildTarget: 
-      textureWidth: 1024
-      textureHeight: 1024
-      textureFormat: 1
+      textureWidth: 512
+      textureHeight: 512
+      textureFormat: 0
       loadingBehavior: 1
   - serializedVersion: 16
     name: LaserCapsuleShell
@@ -931,12 +931,12 @@ SubstanceImporter:
           second: {r: 1, g: 1, b: 1, a: .927999973}
         data:
           first:
-            name: _Emission
-          second: {r: 0, g: .668965816, b: 1, a: .402999997}
-        data:
-          first:
             name: _TintColor
           second: {r: .655172348, g: 0, b: 1, a: .266000003}
+        data:
+          first:
+            name: _Emission
+          second: {r: 0, g: .668965816, b: 1, a: .402999997}
     textureParameters:
     - name: LaserCapsuleShell_Emissive
       alphaSource: 0
@@ -951,9 +951,9 @@ SubstanceImporter:
     buildTargetSettings:
     - serializedVersion: 2
       buildTarget: 
-      textureWidth: 1024
-      textureHeight: 1024
-      textureFormat: 1
+      textureWidth: 512
+      textureHeight: 512
+      textureFormat: 0
       loadingBehavior: 1
   - serializedVersion: 16
     name: LaserShell
@@ -1353,12 +1353,12 @@ SubstanceImporter:
           second: {r: 0, g: 0, b: 0, a: 0}
         data:
           first:
-            name: _Emission
-          second: {r: .536764741, g: .146031588, b: .146031588, a: 0}
-        data:
-          first:
             name: _TintColor
           second: {r: .727941155, g: .390105635, b: .171280265, a: 0}
+        data:
+          first:
+            name: _Emission
+          second: {r: .536764741, g: .146031588, b: .146031588, a: 0}
     textureParameters:
     - name: Superheat_Emissive
       alphaSource: 0
@@ -1375,7 +1375,7 @@ SubstanceImporter:
       buildTarget: 
       textureWidth: 1024
       textureHeight: 1024
-      textureFormat: 1
+      textureFormat: 0
       loadingBehavior: 1
   deletedPrototypes: []
   userData: 
