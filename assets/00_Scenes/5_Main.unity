@@ -3040,6 +3040,7 @@ MonoBehaviour:
   guageShell: {fileID: 18300320}
   maxGuage: 1000
   guagePerCube: .5
+  guageSpeedStandard: 200
 --- !u!135 &98551110
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -31799,7 +31800,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gcCount: {fileID: 966334536}
   npm: {fileID: 1991538117}
-  EMFilter: {fileID: 1767020063}
+  EMFilter: {fileID: 1767020066}
+  EMFilterTargetAlpha: .109999999
   ntm: {fileID: 1991538107}
   ntm2: {fileID: 1991538122}
   meteroidFilter: {fileID: 211912680}
@@ -44619,7 +44621,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
-  m_FillAmount: .899999976
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 2
 --- !u!222 &1201305543
@@ -78682,7 +78684,7 @@ MonoBehaviour:
   biggerMeteroidTumble: 20
   warnPlayerDuring: .5
   spawnRadius: 200
-  scatterAmount: 30
+  scatterAmount: 10
   lineDistance: 600
   fallingStarWarningLinePrefab: {fileID: 125686, guid: d2657da8f1ab74d79b03574cca181388,
     type: 2}

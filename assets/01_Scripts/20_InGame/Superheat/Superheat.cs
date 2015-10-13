@@ -71,6 +71,8 @@ public class Superheat : MonoBehaviour {
 
   public float maxGuage = 1000;
   public float guagePerCube = 0.5f;
+  public float guageSpeedStandard = 200;
+  private float targetGuage;
 
 	void Start() {
     superheatParticle = transform.Find("Particle").GetComponent<ParticleSystem>();
@@ -109,6 +111,8 @@ public class Superheat : MonoBehaviour {
     if (superheatRunning) {
       guage.fillAmount = Mathf.MoveTowards(guage.fillAmount, 0, Time.deltaTime / boostDuration);
     } else {
+      guage.fillAmount = Mathf.MoveTowards(guage.fillAmount, targetGuage, Time.deltaTime / (maxGuage / guageSpeedStandard));
+
       if (guageTurnedOn) {
         if (iconAlphaStayCount > 0) {
           iconAlphaStayCount -= Time.deltaTime;
@@ -151,7 +155,7 @@ public class Superheat : MonoBehaviour {
 
   public void addGuage(float val) {
     if (superheatRunning) return;
-    guage.fillAmount += val / maxGuage;
+    targetGuage += val / maxGuage;
 
     if (!superheatRunning && guage.fillAmount == 1) startSuperheat();
   }
@@ -233,6 +237,7 @@ public class Superheat : MonoBehaviour {
     GetComponent<Renderer>().enabled = false;
     GetComponent<Collider>().enabled = false;
     superheatRunning = false;
+    targetGuage = 0;
 
     superheatParticle.Stop();
     powerBoostBackground.stopPowerBoost();

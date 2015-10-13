@@ -95,7 +95,7 @@ public class MeteroidManager : ObjectsManager {
   }
 
   Vector3 playerPosScattered() {
-    return new Vector3(player.transform.position.x + Random.Range(-scatterAmount, scatterAmount), player.transform.position.y, player.transform.position.z + Random.Range(-scatterAmount, scatterAmount));
+    return player.transform.position + player.getDirection() * player.getSpeed() + new Vector3(Random.Range(-scatterAmount, scatterAmount), 0, Random.Range(-scatterAmount, scatterAmount));
   }
 
   override public Vector3 getDirection() {

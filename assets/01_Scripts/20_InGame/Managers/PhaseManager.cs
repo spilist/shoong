@@ -5,7 +5,10 @@ using System.Collections;
 public class PhaseManager : MonoBehaviour {
   public GoldCubesCount gcCount;
   public NormalPartsManager npm;
-  public GameObject EMFilter;
+  public Renderer EMFilter;
+  public float EMFilterTargetAlpha = 0.11f;
+  private Color EMFilterColor;
+  private float EMFilterAlpha;
 
   public MeteroidManager ntm;
   public MeteroidManager2 ntm2;
@@ -69,7 +72,8 @@ public class PhaseManager : MonoBehaviour {
       ntm.enabled = true;
     } else if (level == 2) {
       npm.startPhase();
-      EMFilter.SetActive(true);
+      EMFilter.gameObject.SetActive(true);
+      EMFilterColor = EMFilter.material.GetColor("_TintColor");
     } else if (level == 3) {
       ntm.startPhase();
       meteroidFilter.gameObject.SetActive(true);
@@ -92,7 +96,7 @@ public class PhaseManager : MonoBehaviour {
       if (stayCount < showAfter) stayCount += Time.deltaTime;
       else {
         stayCount = 0;
-        gcCount.add(level);
+        gcCount.add(1);
         status++;
       }
     } else if (status == 2) {
@@ -115,7 +119,13 @@ public class PhaseManager : MonoBehaviour {
       }
     }
 
-    if (level >= 2) {
+    if (EMFilter.gameObject.activeSelf) {
+      EMFilterAlpha = Mathf.MoveTowards(EMFilterAlpha, EMFilterTargetAlpha, Time.deltaTime * EMFilterTargetAlpha);
+      EMFilterColor.a = EMFilterAlpha;
+      EMFilter.sharedMaterial.SetColor("_TintColor", EMFilterColor);
+    }
+
+    if (meteroidFilter.gameObject.activeSelf) {
       if (meteroidFilterAlphaGoingUp) {
         meteroidFilterAlpha = Mathf.MoveTowards(meteroidFilterAlpha, meteroidFilterTargetAlpha, Time.deltaTime * meteroidFilterTargetAlpha / meteroidFilterChangeDuration);
         meteroidFilterColor.a = meteroidFilterAlpha;
@@ -134,15 +144,20 @@ public class PhaseManager : MonoBehaviour {
   }
 
   void OnDisable() {
+    if (meteroidFilter != null && EMFilter.gameObject.activeSelf) {
+      EMFilterColor.a = 0;
+      EMFilter.sharedMaterial.SetColor("_TintColor", EMFilterColor);
+    }
+
     if (meteroidFilter != null && meteroidFilter.gameObject.activeSelf) {
       meteroidFilterColor.a = 0;
-      meteroidFilter.material.color = meteroidFilterColor;
+      meteroidFilter.sharedMaterial.SetColor("_TintColor", meteroidFilterColor);
     }
   }
 
   public int getPhaseBonus() {
-    int bonus = 0;
-    for (int i = 0; i <= level; i++) bonus += i;
-    return bonus;
+    // int bonus = 0;
+    // for (int i = 0; i <= level; i++) bonus += i;
+    return level;
   }
 }
