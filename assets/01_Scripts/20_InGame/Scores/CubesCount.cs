@@ -24,7 +24,7 @@ public class CubesCount : MonoBehaviour {
   public void addCount(int cubesGet, int bonus = 0) {
     count += cubesGet + bonus;
 
-    if (superheat.isOnPowerBoost()) {
+    if (superheat.isOnSuperheat()) {
       GameObject instance = Instantiate(cubesGetOnSuperheat);
       instance.transform.SetParent(transform.parent.transform, false);
       instance.GetComponent<ShowChangeText>().run(cubesGet);
@@ -39,6 +39,8 @@ public class CubesCount : MonoBehaviour {
         bonusInstance.GetComponent<ShowChangeText>().run(bonus);
       }
     }
+
+    superheat.addGuage((cubesGet + bonus) * superheat.guagePerCube);
   }
 
   public int getCount() {

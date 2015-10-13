@@ -4,12 +4,17 @@ using System.Collections;
 
 public class Superheat : MonoBehaviour {
   public bool forceSuperheat = false;
-  public bool forceSuperheatWhenCollect = false;
+  public PartsToBeCollected ptb;
   public StrengthenTimeBar stb;
-  public PhaseManager phaseManager;
   public PowerBoostBackground powerBoostBackground;
   public RectTransform superImage;
   public RectTransform heatImage;
+  public PlayerMover player;
+  public GameObject energyCube;
+  public GameObject afterImagePrefab;
+  public Color[] afterImageMainColors;
+  public Color[] afterImageEmissiveColors;
+  private ParticleSystem superheatParticle;
 
   public int startSuperPos = -895;
   public int slowSuperPos = 5;
@@ -30,12 +35,6 @@ public class Superheat : MonoBehaviour {
   public float shakeDuration = 0.5f;
   public float shakeAmount = 3f;
 
-  public GameObject energyCube;
-  public GameObject afterImagePrefab;
-  public Color[] afterImageMainColors;
-  public Color[] afterImageEmissiveColors;
-  private ParticleSystem powerBoostParticle;
-
   public float sizeChangeInterval = 0.1f;
   public int middleSize = 3;
   public int bigSize = 6;
@@ -48,75 +47,45 @@ public class Superheat : MonoBehaviour {
   public float baseSpeed = 200;
   public float boosterSpeedUpAmount = 250;
   public float maxBoosterSpeed = 400;
-  private bool powerBoostRunning = false;
+  private bool superheatRunning = false;
   private Vector3 direction;
   public int rotatingSpeed = 1000;
 
   private int superHeatCount = 0;
 
-  public Transform toBeCollected;
-  public int partsRotatingSpeed = 5;
-
-  public PlayerMover player;
-  public Transform UInormalParts;
-  public Material inactiveMat;
-  public Material activeMat;
-  public Color inactiveGuageColor;
-  public Color activeGuageColor;
-  public int[] numGuages;
-  public int numPartsToCollect;
-
-  public float guageScaleUp = 4;
-  public Image guageIcon;
-  public Image guageShell;
-  public Image guage;
-  public Image guageBlinkingEnds;
-  public Image guageBlinkingMiddle;
-  private Image guageBlinking;
-  public Sprite[] shells;
-  public Sprite[] glows;
-  public Sprite[] middles;
-  public float guageAlphaChangeDuration = 0.5f;
+  public float guageAlphaUp = 1;
+  public float guageAlphaDown = 0.2f;
+  public float guageAlphaChangeDuration = 1;
   private Color guageColor;
   private bool guageAlphaGoingUp = true;
   private float guageAlpha;
 
-  public int speedIncreasePerCollect = 1;
-  public float pitchIncreasePerCollect = 0.1f;
-  public AudioSource collectSound;
-  public AudioSource collectCompleteSound;
+  public float guageIconAlphaOrigin = 0.5f;
+  private Color guageIconColor;
+  private float guageIconAlpha;
+  private bool iconAlphaChanging = false;
 
-  private Mesh[] partsMeshes;
-  private int collectCount = 0;
-  private int currentGuageNum = 0;
-  private int phaseLevel = 0;
-  private int phaseBonus = 0;
+  public float guageScaleUp = 4;
+  public Image guageIcon;
+  public Image guage;
+  public Image guageShell;
+
+  public float maxGuage = 1000;
+  public float guagePerCube = 0.5f;
+  public float guageScaleInSuperheat = 2;
 
 	void Start() {
-    powerBoostParticle = transform.Find("Particle").GetComponent<ParticleSystem>();
+    superheatParticle = transform.Find("Particle").GetComponent<ParticleSystem>();
 
-    partsMeshes = new Mesh[UInormalParts.childCount];
-    int count = 0;
-    foreach (Transform tr in UInormalParts) {
-      partsMeshes[count++] = tr.GetComponent<MeshFilter>().sharedMesh;
-    }
-
-    guageColor = inactiveGuageColor;
+    guageColor = guage.color;
     guageAlpha = guageColor.a;
-    guageBlinking = guageBlinkingEnds;
-  }
 
-  public void startGame() {
-    generateNewCollects();
+    guageIconColor = guageIcon.color;
   }
 
   void Update() {
     transform.position = player.transform.position;
     transform.Rotate(direction * Time.deltaTime * rotatingSpeed);
-
-    if (toBeCollected.gameObject.activeSelf) {
-      toBeCollected.Rotate(0, 0, Time.deltaTime * partsRotatingSpeed);
-    }
 
     if (transformStatus > 0) {
       if (transformStatus == 1) {
@@ -136,101 +105,49 @@ public class Superheat : MonoBehaviour {
       heatImage.anchoredPosition = new Vector2(heatXPos, 0);
     }
 
-    if (powerBoostRunning) {
+    if (superheatRunning) {
       guage.fillAmount = Mathf.MoveTowards(guage.fillAmount, 0, Time.deltaTime / boostDuration);
     } else {
       if (guageAlphaGoingUp) {
-        guageAlpha = Mathf.MoveTowards(guageAlpha, activeGuageColor.a, Time.deltaTime * (activeGuageColor.a - inactiveGuageColor.a) / guageAlphaChangeDuration);
+        guageAlpha = Mathf.MoveTowards(guageAlpha, guageAlphaUp, Time.deltaTime * (guageAlphaUp - guageAlphaDown) / guageAlphaChangeDuration);
         guageColor.a = guageAlpha;
-        guageBlinking.color = guageColor;
-        if (guageAlpha == activeGuageColor.a) guageAlphaGoingUp = false;
+        guage.color = guageColor;
+        if (guageAlpha == guageAlphaUp) guageAlphaGoingUp = false;
       } else {
-        guageAlpha = Mathf.MoveTowards(guageAlpha, inactiveGuageColor.a, Time.deltaTime * (activeGuageColor.a - inactiveGuageColor.a) / guageAlphaChangeDuration);
+        guageAlpha = Mathf.MoveTowards(guageAlpha, guageAlphaDown, Time.deltaTime * (guageAlphaUp - guageAlphaDown) / guageAlphaChangeDuration);
         guageColor.a = guageAlpha;
-        guageBlinking.color = guageColor;
-        if (guageAlpha == inactiveGuageColor.a) guageAlphaGoingUp = true;
+        guage.color = guageColor;
+        if (guageAlpha == guageAlphaDown) guageAlphaGoingUp = true;
       }
-    }
-  }
 
-  public void generateNewCollects() {
-    toBeCollected.gameObject.SetActive(true);
-
-    int count = 0;
-    foreach (Transform tr in toBeCollected.Find("Parts")) {
-      if (count < numPartsToCollect) {
-        tr.GetComponent<MeshFilter>().sharedMesh = getRandomMesh();
-        tr.GetComponent<Renderer>().sharedMaterial = inactiveMat;
-        tr.GetComponent<ParticleSystem>().Stop();
-      } else {
-        tr.gameObject.SetActive(false);
-      }
-      count++;
-    }
-
-    collectCount = 0;
-  }
-
-  Mesh getRandomMesh() {
-    return partsMeshes[Random.Range(0, partsMeshes.Length)];
-  }
-
-  public void checkCollected(Mesh mesh) {
-    if (forceSuperheat && !powerBoostRunning) {
-      startSuperheat();
-      return;
-    }
-
-    foreach (Transform tr in toBeCollected.Find("Parts")) {
-      if (!tr.gameObject.activeSelf) continue;
-
-      if (tr.GetComponent<Renderer>().sharedMaterial == inactiveMat && tr.GetComponent<MeshFilter>().sharedMesh == mesh) {
-        tr.GetComponent<Renderer>().sharedMaterial = activeMat;
-        tr.GetComponent<ParticleSystem>().Play();
-        addCollect();
-        return;
-      }
-    }
-  }
-
-  void addCollect() {
-    collectCount++;
-    if (collectCount < numPartsToCollect) {
-      collectSound.Play();
-      collectSound.pitch += pitchIncreasePerCollect;
-    } else {
-      collectCompleteSound.Play();
-      completeCollect();
-    }
-  }
-
-  void completeCollect() {
-    currentGuageNum++;
-
-    if (numGuages[phaseLevel] == currentGuageNum || forceSuperheatWhenCollect) {
-      startSuperheat();
-    } else {
-      if (currentGuageNum + 1 == numGuages[phaseLevel]) {
-        guageBlinkingEnds.fillClockwise = false;
-        guageBlinking = guageBlinkingEnds;
-        guageBlinkingEnds.gameObject.SetActive(true);
-        guageBlinkingMiddle.gameObject.SetActive(false);
-      } else {
-        if (guageBlinkingMiddle.gameObject.activeSelf) {
-          guageBlinkingMiddle.transform.localEulerAngles -= new Vector3(0, 0, 360.0f / numGuages[phaseLevel]);
-        } else {
-          guageBlinking = guageBlinkingMiddle;
-          guageBlinkingEnds.gameObject.SetActive(false);
-          guageBlinkingMiddle.gameObject.SetActive(true);
+      if (iconAlphaChanging) {
+        guageIconAlpha = Mathf.MoveTowards(guageIconAlpha, guageIconAlphaOrigin, Time.deltaTime * (1 - guageIconAlphaOrigin) / guageAlphaChangeDuration);
+        guageIconColor.a = guageIconAlpha;
+        guageIcon.color = guageIconColor;
+        if (guageIconAlpha == guageIconAlphaOrigin) {
+          iconAlphaChanging = false;
+          guageIcon.transform.Find("Particle").gameObject.SetActive(false);
         }
       }
-
-      guage.fillAmount += 1.0f / numGuages[phaseLevel];
-      player.baseSpeed += speedIncreasePerCollect;
-      generateNewCollects();
     }
+  }
 
-    collectSound.pitch -= pitchIncreasePerCollect * 5;
+  public void addGuageWithEffect(float val) {
+    if (!iconAlphaChanging) {
+      guageIconColor.a = 1;
+      guageIcon.color = guageIconColor;
+      guageIconAlpha = 1;
+      guageIcon.transform.Find("Particle").gameObject.SetActive(true);
+      iconAlphaChanging = true;
+    }
+    addGuage(val);
+  }
+
+  public void addGuage(float val) {
+    if (superheatRunning) val *= guageScaleInSuperheat;
+    guage.fillAmount += val / maxGuage;
+
+    if (!superheatRunning && guage.fillAmount == 1) startSuperheat();
   }
 
   void startSuperheat() {
@@ -239,18 +156,17 @@ public class Superheat : MonoBehaviour {
     superHeatCount++;
     guage.fillAmount = 1;
     stb.stop();
-
-    ElapsedTime.time.stopCountLimit(false);
+    ptb.show(false);
 
     guageIcon.transform.localScale = guageScaleUp * Vector3.one;
     guage.transform.localScale = guageScaleUp * Vector3.one;
     guageShell.transform.localScale = guageScaleUp * Vector3.one;
+    guageIconColor.a = 1;
+    guageIcon.color = guageIconColor;
     guageIcon.transform.Find("Particle").gameObject.SetActive(true);
 
     DataManager.dm.increment("TotalSuperheats");
 
-    guageBlinkingEnds.gameObject.SetActive(false);
-    toBeCollected.gameObject.SetActive(false);
     GetComponent<MeshFilter>().sharedMesh = player.GetComponent<MeshFilter>().sharedMesh;
     afterImagePrefab.GetComponent<MeshFilter>().sharedMesh = GetComponent<MeshFilter>().sharedMesh;
 
@@ -301,58 +217,39 @@ public class Superheat : MonoBehaviour {
     setDir(player.getDirection());
 
     isTransforming = false;
-    powerBoostRunning = true;
+    superheatRunning = true;
     AudioManager.am.startPowerBoost();
-    powerBoostParticle.Play();
+    superheatParticle.Play();
     StartCoroutine("generateAfterImage");
   }
 
   void stopSuperheat() {
+    ptb.show(true);
     player.stopPowerBoost();
     GetComponent<Renderer>().enabled = false;
     GetComponent<Collider>().enabled = false;
-    powerBoostRunning = false;
+    superheatRunning = false;
 
-    powerBoostParticle.Stop();
+    superheatParticle.Stop();
     powerBoostBackground.stopPowerBoost();
     AudioManager.am.stopPowerBoost();
 
-    toBeCollected.gameObject.SetActive(true);
     guageIcon.transform.localScale = Vector3.one;
     guage.transform.localScale = Vector3.one;
     guageShell.transform.localScale = Vector3.one;
     guageIcon.transform.Find("Particle").gameObject.SetActive(false);
+    guageIconColor.a = guageIconAlphaOrigin;
+    guageIcon.color = guageIconColor;
 
     transform.localScale = Vector3.one;
     superImage.anchoredPosition = new Vector2(startSuperPos, 0);
     heatImage.anchoredPosition = new Vector2(startHeatPos, 0);
-
-    currentGuageNum = 0;
-
-    if (phaseLevel < numGuages.Length - 1) {
-      phaseLevel++;
-    }
-    phaseManager.nextPhase();
-    guageShell.sprite = shells[phaseLevel];
-    guage.sprite = glows[phaseLevel];
-    guageBlinkingEnds.sprite = glows[phaseLevel];
-    guageBlinkingEnds.fillAmount = 1.0f / numGuages[phaseLevel];
-    guageBlinkingEnds.fillClockwise = true;
-    guageBlinkingEnds.gameObject.SetActive(true);
-    guageBlinkingMiddle.sprite = middles[phaseLevel];
-    guageBlinkingMiddle.transform.localEulerAngles = Vector3.zero;
-
-    generateNewCollects();
-    phaseBonus += phaseLevel;
-
-    ElapsedTime.time.resetCount();
   }
 
   IEnumerator generateAfterImage() {
     int index = 0;
-    float count = 0;
 
-    while (count < boostDuration) {
+    while (guage.fillAmount > 0) {
       PowerBoostAfterImageMover afterImage = ((GameObject)Instantiate(afterImagePrefab, transform.position, transform.rotation)).GetComponent<PowerBoostAfterImageMover>();
 
       if (index >= afterImageMainColors.Length) index = 0;
@@ -361,7 +258,6 @@ public class Superheat : MonoBehaviour {
       index++;
 
       yield return new WaitForSeconds(generatePer);
-      count += generatePer;
     }
 
     stopSuperheat();
@@ -386,15 +282,11 @@ public class Superheat : MonoBehaviour {
     mover.destroyObject(true, true);
   }
 
-  public bool isOnPowerBoost() {
-    return powerBoostRunning;
+  public bool isOnSuperheat() {
+    return superheatRunning || isTransforming;
   }
 
   void OnDisable() {
     DataManager.dm.setBestInt("BestNumSuperheats", superHeatCount);
-  }
-
-  public int getPhaseBonus() {
-    return phaseBonus;
   }
 }

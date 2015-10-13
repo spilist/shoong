@@ -59,7 +59,7 @@ public class ComboPartsManager : ObjectsManager {
 
     if (comboCount == fullComboCount) {
       DataManager.dm.increment("NumCompleteIllusion");
-      player.showEffect("Great");
+      player.showEffect("Great", DataManager.dm.getInt("ComboPartsLevel"));
       run();
       return;
     }

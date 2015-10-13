@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class ScoreUpdate : MonoBehaviour {
-  public Superheat superheat;
+  public PhaseManager phaseManager;
   public ScoreManager scoreManager;
   public BackButton back;
 
@@ -75,7 +75,7 @@ public class ScoreUpdate : MonoBehaviour {
     CPS.transform.Find("Number").GetComponent<Text>().text = cps_.ToString("0.00");
     DataManager.dm.setBestFloat("BestCPS", cps_);
 
-    phaseBonus.transform.Find("Number").GetComponent<Text>().text = superheat.getPhaseBonus().ToString();
+    phaseBonus.transform.Find("Number").GetComponent<Text>().text = phaseManager.getPhaseBonus().ToString();
 
     updateStatus++;
     GetComponent<AudioSource>().Play();

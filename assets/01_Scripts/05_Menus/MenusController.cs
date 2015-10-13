@@ -2,7 +2,6 @@
 using System.Collections;
 
 public class MenusController : MonoBehaviour {
-  public Superheat superheat;
   public ScoreManager scoreManager;
   public GameObject menusOverlay;
   public GameObject backButton;
@@ -72,7 +71,6 @@ public class MenusController : MonoBehaviour {
     menuButtonsRight.SetActive(false);
 
     barsCanvas.GetComponent<Canvas>().enabled = true;
-    superheat.startGame();
   }
 
   public bool isMenuOn() {

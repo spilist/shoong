@@ -11,7 +11,7 @@ public class RainbowDonutMover : ObjectsMover {
   }
 
   override public void encounterPlayer(bool destroy = true) {
-    if (player.isOnPowerBoost()) return;
+    if (player.isOnSuperheat()) return;
     GetComponent<Collider>().enabled = false;
     rdm.startRidingRainbow();
     StartCoroutine("rideRainbow");

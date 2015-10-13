@@ -21,11 +21,11 @@ public class NormalPartsMover : ObjectsMover {
       player.showEffect("Wow");
     }
 
-    npm.superheat.checkCollected(GetComponent<MeshFilter>().sharedMesh);
+    npm.ptb.checkCollected(GetComponent<MeshFilter>().sharedMesh);
   }
 
   override protected void afterDestroy(bool byPlayer) {
-    if (byPlayer) npm.superheat.checkCollected(GetComponent<MeshFilter>().sharedMesh);
+    if (byPlayer) npm.ptb.checkCollected(GetComponent<MeshFilter>().sharedMesh);
   }
 
   override public string getManager() {

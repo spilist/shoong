@@ -2,6 +2,8 @@
 using System.Collections;
 
 public class RainbowDonutsManager : ObjectsManager {
+  public Superheat superheat;
+  public int guageAmount = 20;
   public LayerMask blackholeGravityMask;
 
   public GameObject rainbowRoadPrefab;
@@ -16,6 +18,7 @@ public class RainbowDonutsManager : ObjectsManager {
   public Color[] rainbowColors;
   public float pitchStart = 0.9f;
   public float pitchIncrease = 0.1f;
+  public int superheatGuagePerRide = 20;
 
   private int rideCount = 0;
   private bool drawingRainbowRoad = false;
@@ -52,6 +55,7 @@ public class RainbowDonutsManager : ObjectsManager {
       objEncounterEffectForPlayer.GetComponent<AudioSource>().Play();
 
       rideCount++;
+      superheat.addGuageWithEffect(guageAmount);
       StartCoroutine("rideRainbow");
     } else {
       objEncounterEffectForPlayer.Stop();

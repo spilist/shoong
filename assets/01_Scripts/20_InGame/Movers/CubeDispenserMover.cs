@@ -60,7 +60,7 @@ public class CubeDispenserMover : ObjectsMover {
 
     if (comboCount == cdm.fullComboCount) {
       destroyObject(true, true);
-      player.showEffect("Great");
+      player.showEffect("Great", DataManager.dm.getInt("CubeDispenserLevel"));
       DataManager.dm.increment("NumCompleteCubeDispenser");
       return false;
     }

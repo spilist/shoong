@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class SummonPartsManager : ObjectsManager {
-  public Superheat superheat;
+  public PartsToBeCollected ptb;
   public GameObject summonedPartPrefab;
   public GameObject summonedPartsDestroyEffect;
 
@@ -80,7 +80,7 @@ public class SummonPartsManager : ObjectsManager {
     DataManager.dm.increment("NumSummonedPartsGet");
 
     if (getCount == numSpawnX * numSpawnZ) {
-      player.showEffect("Great");
+      player.showEffect("Great", DataManager.dm.getInt("SummonPartsLevel"));
       DataManager.dm.increment("NumCompleteSummon");
     }
   }

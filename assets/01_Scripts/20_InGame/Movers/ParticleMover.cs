@@ -38,7 +38,7 @@ public class ParticleMover : MonoBehaviour {
 		direction = new Vector3(randomV.x, 0, randomV.y);
 		rb.velocity = direction * speed * random;
 
-		partsCollector = GameObject.Find("PartsCollector").GetComponent<PartsCollector>();
+		partsCollector = GameObject.Find("CubeCollector").GetComponent<PartsCollector>();
 		player = GameObject.Find("Player").GetComponent<PlayerMover>();
 	}
 

@@ -31,7 +31,7 @@ public class ChangeEffect : MonoBehaviour {
       scale = originalScale;
     }
 
-    if (player.isOnPowerBoost()) gameObject.SetActive(false);
+    if (player.isOnSuperheat()) gameObject.SetActive(false);
   }
 
   void Update() {

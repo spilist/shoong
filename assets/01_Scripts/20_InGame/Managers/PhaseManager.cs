@@ -139,4 +139,10 @@ public class PhaseManager : MonoBehaviour {
       meteroidFilter.material.color = meteroidFilterColor;
     }
   }
+
+  public int getPhaseBonus() {
+    int bonus = 0;
+    for (int i = 0; i <= level; i++) bonus += i;
+    return bonus;
+  }
 }

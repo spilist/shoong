@@ -5,6 +5,7 @@ using System;
 public class TouchInputHandler : MonoBehaviour
 {
 	public PlayerMover player;
+  public PartsToBeCollected ptb;
 	public ParticleSystem touchEffect;
 
   public BeforeIdle beforeIdle;
@@ -46,6 +47,7 @@ public class TouchInputHandler : MonoBehaviour
 
 			if (!gameStarted) {
 				ElapsedTime.time.startTime();
+        ptb.generateNew();
         beforeIdle.moveTitle();
         menus.gameStart();
         spawnManager.run();

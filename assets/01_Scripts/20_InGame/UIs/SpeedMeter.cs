@@ -32,7 +32,7 @@ public class SpeedMeter : MonoBehaviour {
   }
 
   public void updateMaximum() {
-    if (player.isOnPowerBoost()) setMaximum(superheat.baseSpeed + player.maxBooster());
+    if (player.isOnSuperheat()) setMaximum(superheat.baseSpeed + player.maxBooster());
     else setMaximum(player.baseSpeed + player.maxBooster());
   }
 

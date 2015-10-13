@@ -2,6 +2,9 @@
 using System.Collections;
 
 public class EMPManager : ObjectsManager {
+  public Superheat superheat;
+  public int guageAmount = 20;
+
   public int[] forceFieldRadiusPerLevel;
   public int[] cameraEnlargeSizePerLevel;
   public float[] cameraShakeAmountPerLevel;
@@ -45,6 +48,7 @@ public class EMPManager : ObjectsManager {
   public void generateForceField() {
     Camera.main.GetComponent<CameraMover>().shakeUntilStop(shakeAmount);
     status = 1;
+    superheat.addGuageWithEffect(guageAmount);
   }
 
   void Update() {

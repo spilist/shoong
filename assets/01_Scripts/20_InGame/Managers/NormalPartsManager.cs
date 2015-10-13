@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class NormalPartsManager : ObjectsManager {
-  public Superheat superheat;
+  public PartsToBeCollected ptb;
   public int max_parts = 60;
   public float minUnstableSpeed = 5;
   public float maxUnstableSpeed = 20;

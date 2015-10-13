@@ -19,7 +19,7 @@ public class DoppleMover : ObjectsMover {
   }
 
   override protected void afterEncounter() {
-    if (player.isOnPowerBoost()) return;
+    if (player.isOnSuperheat()) return;
 
     Instantiate(dpm.forceFieldPrefab, transform.position, Quaternion.identity);
     Camera.main.GetComponent<CameraMover>().setSlowly(true);

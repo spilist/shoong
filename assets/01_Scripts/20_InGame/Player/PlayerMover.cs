@@ -346,7 +346,7 @@ public class PlayerMover : MonoBehaviour {
     return numBoosters;
   }
 
-  public bool isOnPowerBoost() {
+  public bool isOnSuperheat() {
     return usingPowerBoost;
   }
 
@@ -406,7 +406,7 @@ public class PlayerMover : MonoBehaviour {
     return nearAsteroidCounter > 0;
   }
 
-  public void showEffect(string effectName) {
+  public void showEffect(string effectName, int scale = 1) {
     if (usingPowerBoost || scoreManager.isGameOver()) return;
 
     if (effectName == "Whew") {
@@ -421,7 +421,9 @@ public class PlayerMover : MonoBehaviour {
       DataManager.dm.increment("TotalGreat");
     }
 
-    effects.Find(effectName).gameObject.SetActive(true);
+    UIEffect effect = effects.Find(effectName).GetComponent<UIEffect>();
+    effect.gameObject.SetActive(true);
+    effect.addGuage(scale);
   }
 
   public void strengthenBy(string obj) {
@@ -630,9 +632,18 @@ public class PlayerMover : MonoBehaviour {
     numDestroyObstacles++;
     DataManager.dm.increment("TotalNumDestroyObstacles");
 
-    if (tag == "Obstacle_small") DataManager.dm.increment("NumDestroySmallAsteroids");
-    else if (tag == "Obstacle_big") DataManager.dm.increment("NumDestroyAsteroids");
-    else if (tag == "Obstacle") DataManager.dm.increment("NumDestroyMeteroids");
+    if (tag == "Obstacle_small") {
+      DataManager.dm.increment("NumDestroySmallAsteroids");
+      superheat.addGuageWithEffect(20);
+    }
+    else if (tag == "Obstacle_big") {
+      DataManager.dm.increment("NumDestroyAsteroids");
+      superheat.addGuageWithEffect(20);
+    }
+    else if (tag == "Obstacle") {
+      DataManager.dm.increment("NumDestroyMeteroids");
+      superheat.addGuageWithEffect(40);
+    }
     else if (tag == "Blackhole") DataManager.dm.increment("NumDestroyBlackholes");
     else if (tag == "Monster") DataManager.dm.increment("NumDestroyMonsters");
   }
