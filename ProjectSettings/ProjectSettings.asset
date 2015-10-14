@@ -89,7 +89,7 @@ PlayerSettings:
   ForceInternetPermission: 0
   ForceSDCardPermission: 0
   CreateWallpaper: 0
-  APKExpansionFiles: 1
+  APKExpansionFiles: 0
   preloadShaders: 1
   StripUnusedMeshComponents: 1
   iPhoneSdkVersion: 988
@@ -122,7 +122,7 @@ PlayerSettings:
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
   AndroidKeystoreName: shoong_key.keystore
-  AndroidKeyaliasName: 
+  AndroidKeyaliasName: shoong_key
   AndroidTVCompatibility: 0
   AndroidIsGame: 1
   androidEnableBanner: 1
