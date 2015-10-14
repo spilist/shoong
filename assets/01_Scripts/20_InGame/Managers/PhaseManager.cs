@@ -12,6 +12,7 @@ public class PhaseManager : MonoBehaviour {
 
   public MeteroidManager ntm;
   public MeteroidManager2 ntm2;
+  public MeteroidManager3 ntm3;
   public Renderer meteroidFilter;
   public float meteroidFilterAlpha1 = 0.08f;
   public float meteroidFilterAlpha2 = 0.12f;
@@ -84,6 +85,7 @@ public class PhaseManager : MonoBehaviour {
       dem.enabled = true;
     } else if (level == 5) {
       ntm2.enabled = true;
+      ntm3.enabled = true;
       meteroidFilterTargetAlpha = meteroidFilterAlpha2;
       meteroidFilterChangeDuration = meteroidFilterChangeDuration2;
     } else if (level == 6) {

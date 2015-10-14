@@ -4,9 +4,19 @@ using System.Collections;
 
 public class ElapsedTime : MonoBehaviour {
 	public PhaseManager phaseManager;
-	public int[] limitPerLevel;
-	private int timeLimit;
-	public Text timeLimitText;
+	public RectTransform progressCharacter;
+	public int[] reqProgressPerPhase;
+	public int progressPerSecond = 10;
+	public float progressPerCube = 0.5f;
+	public float progressChangeSpeed = 5f;
+	public int progressStart = 30;
+	public int progressEnd = 390;
+	private bool progressChanging = false;
+	private float guageChangeAmount = 0;
+	private float currentProgress;
+	private float progressScale;
+	private int distance;
+	private int reqProgress;
 
 	public NormalPartsManager npm;
 	public AsteroidManager asm;
@@ -15,69 +25,67 @@ public class ElapsedTime : MonoBehaviour {
 
 	public static ElapsedTime time;
 
-	public int addObstaclePer = 40;
-	public int addSmallObstaclePer = 30;
-	public int removePartPer = 10;
 	public int now = 0;
 
-	private int prevObstacleCounter = 0;
-	private int prevSmallObstacleCounter = 0;
-	private int prevPartCounter = 0;
 	private bool spawnDangerousEMP = false;
-	private bool isCountingLimit = false;
 
 	void Awake() {
 		time = this;
+		distance = progressEnd - progressStart;
 	}
 
 	public void startTime() {
-		resetCount();
+		progressCharacter.GetComponent<MeshFilter>().sharedMesh = GameObject.Find("Player").GetComponent<MeshFilter>().sharedMesh;
+		resetProgress();
 		StartCoroutine("startElapse");
 	}
 
-	public void resetCount() {
-		isCountingLimit = true;
-		if (limitPerLevel.Length <= phaseManager.phase()) {
-			isCountingLimit = false;
-			timeLimitText.gameObject.SetActive(false);
+	public void resetProgress() {
+		progressChanging = true;
+		if (phaseManager.phase() >= reqProgressPerPhase.Length) {
+			progressChanging = false;
+			progressCharacter.transform.parent.gameObject.SetActive(false);
 		} else {
-			timeLimit = limitPerLevel[phaseManager.phase()];
-			timeLimitText.text = timeLimit.ToString();
+			reqProgress = reqProgressPerPhase[phaseManager.phase()];
+			progressScale = (float)distance / reqProgress;
+			progressCharacter.anchoredPosition = new Vector2(progressStart, 0);
+			currentProgress = progressStart;
 		}
 	}
 
-	public void stopCountLimit(bool val) {
-		isCountingLimit = val;
+	public void addProgressByCube(int cubes) {
+		addProgress(cubes * progressPerCube);
+	}
+
+	void addProgress(float val) {
+		guageChangeAmount += val * progressScale;
+	}
+
+	public void startProgress(bool val) {
+		progressChanging = val;
+	}
+
+	void Update() {
+		if (progressChanging && currentProgress <= progressEnd) {
+			currentProgress = Mathf.MoveTowards(currentProgress, progressEnd, Time.deltaTime * distance * progressPerSecond / reqProgress);
+			currentProgress = Mathf.MoveTowards(currentProgress, currentProgress + guageChangeAmount, Time.deltaTime * distance / progressChangeSpeed);
+			guageChangeAmount = Mathf.MoveTowards(guageChangeAmount, 0, Time.deltaTime * distance / progressChangeSpeed);
+			progressCharacter.anchoredPosition = new Vector2(currentProgress, 0);
+		}
+
+		if (currentProgress >= progressEnd) {
+			progressChanging = false;
+			phaseManager.nextPhase();
+			asm.max_obstacles++;
+			sam.max_obstacles++;
+			resetProgress();
+		}
 	}
 
 	IEnumerator startElapse() {
 		while(true) {
 			yield return new WaitForSeconds(1);
 			now++;
- 			if (isCountingLimit) {
-	 			if (timeLimit > 0) {
-					timeLimit--;
-					timeLimitText.text = timeLimit.ToString();
-				} else {
-					phaseManager.nextPhase();
-					resetCount();
-				}
- 			}
-
-			// if (prevObstacleCounter < Mathf.Floor(now/addObstaclePer)) {
-			// 	prevObstacleCounter++;
-			// 	asm.max_obstacles++;
-			// }
-
-			// if (prevSmallObstacleCounter < Mathf.Floor(now/addSmallObstaclePer)) {
-			// 	prevSmallObstacleCounter++;
-			// 	sam.max_obstacles++;
-			// }
-
-			// if (prevPartCounter < Mathf.Floor(now/removePartPer)) {
-			// 	prevPartCounter++;
-			// 	npm.max_parts--;
-			// }
 
 			asm.respawn();
 			sam.respawn();

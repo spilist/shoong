@@ -41,6 +41,7 @@ public class CubesCount : MonoBehaviour {
     }
 
     superheat.addGuage((cubesGet + bonus) * superheat.guagePerCube);
+    ElapsedTime.time.addProgressByCube(cubesGet + bonus);
   }
 
   public int getCount() {

@@ -86,8 +86,12 @@ public class MeteroidManager2 : ObjectsManager {
     return new Vector3(screenPos.x + player.transform.position.x, player.transform.position.y, screenPos.y + player.transform.position.z);
   }
 
+  // Vector3 playerPosScattered() {
+  //   return new Vector3(player.transform.position.x + Random.Range(-scatterAmount, scatterAmount), player.transform.position.y, player.transform.position.z + Random.Range(-scatterAmount, scatterAmount));
+  // }
+
   Vector3 playerPosScattered() {
-    return new Vector3(player.transform.position.x + Random.Range(-scatterAmount, scatterAmount), player.transform.position.y, player.transform.position.z + Random.Range(-scatterAmount, scatterAmount));
+    return player.transform.position + player.getDirection() * player.getSpeed() + new Vector3(Random.Range(-scatterAmount, scatterAmount), 0, Random.Range(-scatterAmount, scatterAmount));
   }
 
   override public Vector3 getDirection() {
