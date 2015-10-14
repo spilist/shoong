@@ -34451,7 +34451,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   phaseManager: {fileID: 894246143}
   progressCharacter: {fileID: 893396114}
-  reqProgressPerPhase: 90010000f401000058020000bc0200002003000084030000
+  reqProgressPerPhase: 2c01000090010000f401000058020000bc02000020030000
   progressPerSecond: 10
   progressPerCube: .5
   progressChangeSpeed: 5
@@ -78733,7 +78733,7 @@ MonoBehaviour:
   objEncounterEffectForPlayer: {fileID: 0}
   strengthenPlayerEffect: {fileID: 0}
   strength: 1
-  speed: 240
+  speed: 260
   tumble: 10
   minSpawnInterval: 1
   maxSpawnInterval: 4
@@ -79295,7 +79295,7 @@ MonoBehaviour:
   objEncounterEffectForPlayer: {fileID: 0}
   strengthenPlayerEffect: {fileID: 0}
   strength: 1
-  speed: 240
+  speed: 260
   tumble: 10
   minSpawnInterval: 1
   maxSpawnInterval: 4
