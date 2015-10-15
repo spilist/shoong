@@ -7,7 +7,7 @@ labels:
 - effect
 - glow
 - gaz
-timeCreated: 1444867284
+timeCreated: 1444870495
 licenseType: Free
 SubstanceImporter:
   serializedVersion: 5
@@ -126,16 +126,16 @@ SubstanceImporter:
           second: 1
         data:
           first:
-            name: _Glossiness
-          second: .5
-        data:
-          first:
             name: _Parallax
           second: .0199999996
         data:
           first:
             name: _ZWrite
           second: 1
+        data:
+          first:
+            name: _Glossiness
+          second: .5
         data:
           first:
             name: _BumpScale
@@ -313,16 +313,16 @@ SubstanceImporter:
           second: .5
         data:
           first:
-            name: _Glossiness
-          second: .5
-        data:
-          first:
             name: _Parallax
           second: .0199999996
         data:
           first:
             name: _ZWrite
           second: 1
+        data:
+          first:
+            name: _Glossiness
+          second: .5
         data:
           first:
             name: _BumpScale
@@ -363,7 +363,7 @@ SubstanceImporter:
         data:
           first:
             name: _TintColor
-          second: {r: .0295198914, g: .393691391, b: .573529422, a: .101960786}
+          second: {r: .0295198914, g: .393691391, b: .573529422, a: 0}
     textureParameters:
     - name: EMFieldFilter_Emissive
       alphaSource: 0
@@ -496,16 +496,16 @@ SubstanceImporter:
           second: 1
         data:
           first:
-            name: _Glossiness
-          second: .5
-        data:
-          first:
             name: _Parallax
           second: .0199999996
         data:
           first:
             name: _ZWrite
           second: 1
+        data:
+          first:
+            name: _Glossiness
+          second: .5
         data:
           first:
             name: _BumpScale
@@ -687,16 +687,16 @@ SubstanceImporter:
           second: 1
         data:
           first:
-            name: _Glossiness
-          second: .5
-        data:
-          first:
             name: _Parallax
           second: .0199999996
         data:
           first:
             name: _ZWrite
           second: 1
+        data:
+          first:
+            name: _Glossiness
+          second: .5
         data:
           first:
             name: _BumpScale
@@ -878,16 +878,16 @@ SubstanceImporter:
           second: 1
         data:
           first:
-            name: _Glossiness
-          second: .5
-        data:
-          first:
             name: _Parallax
           second: .0199999996
         data:
           first:
             name: _ZWrite
           second: 1
+        data:
+          first:
+            name: _Glossiness
+          second: .5
         data:
           first:
             name: _BumpScale
@@ -1121,16 +1121,16 @@ SubstanceImporter:
           second: .5
         data:
           first:
-            name: _Glossiness
-          second: .5
-        data:
-          first:
             name: _Parallax
           second: .0199999996
         data:
           first:
             name: _ZWrite
           second: 1
+        data:
+          first:
+            name: _Glossiness
+          second: .5
         data:
           first:
             name: _BumpScale
@@ -1300,16 +1300,16 @@ SubstanceImporter:
           second: .100000001
         data:
           first:
-            name: _Glossiness
-          second: .5
-        data:
-          first:
             name: _Parallax
           second: .0199999996
         data:
           first:
             name: _ZWrite
           second: 1
+        data:
+          first:
+            name: _Glossiness
+          second: .5
         data:
           first:
             name: _BumpScale

@@ -78874,7 +78874,7 @@ MonoBehaviour:
   objEncounterEffectForPlayer: {fileID: 0}
   strengthenPlayerEffect: {fileID: 0}
   strength: 2
-  speed: 10
+  speed: 15
   tumble: .5
   minSpawnInterval: 0
   maxSpawnInterval: 0
@@ -79288,7 +79288,7 @@ MonoBehaviour:
   instance: {fileID: 0}
   forceSpawnAtStart: 0
   time: {fileID: 980455324}
-  max_emp: 8
+  max_emp: 10
   minScale: 15
   maxScale: 25
   startDuration: .800000012
