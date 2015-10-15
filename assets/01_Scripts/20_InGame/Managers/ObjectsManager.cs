@@ -18,6 +18,7 @@ public class ObjectsManager : MonoBehaviour {
   public bool hasEncounterEffect = true;
 
   protected SpawnManager spawnManager;
+  public SuperheatPartManager shm;
   public PlayerMover player;
   protected bool skipInterval = false;
 
@@ -26,14 +27,15 @@ public class ObjectsManager : MonoBehaviour {
 
   void OnEnable() {
     spawnManager = gameObject.GetComponent<SpawnManager>();
+    shm = gameObject.GetComponent<SuperheatPartManager>();
     player = GameObject.Find("Player").GetComponent<PlayerMover>();
-
-    initRest();
 
     if (forceSpawnAtStart) {
       minSpawnInterval = 0;
       maxSpawnInterval = 0;
     }
+
+    initRest();
   }
 
   virtual public void initRest() {}

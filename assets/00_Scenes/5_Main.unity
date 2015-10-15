@@ -1926,9 +1926,9 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 56492712}
-  m_LocalRotation: {x: 0, y: .382683456, z: 0, w: .923879504}
+  m_LocalRotation: {x: .0382558778, y: .955316007, z: -.142772943, w: .255976051}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_Children:
   - {fileID: 126330264}
   m_Father: {fileID: 29481224}
@@ -3567,7 +3567,7 @@ RectTransform:
   m_GameObject: {fileID: 126330263}
   m_LocalRotation: {x: -2.98023224e-08, y: -.382683456, z: 0, w: .923879504}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 56492713}
   m_RootOrder: 0
@@ -3753,7 +3753,7 @@ ParticleSystem:
         rgba: 4287365371
       minMaxState: 2
     startSize:
-      scalar: 3
+      scalar: 4
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -3768,7 +3768,7 @@ ParticleSystem:
         serializedVersion: 2
         m_Curve:
         - time: 0
-          value: .666666687
+          value: .75
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -22993,9 +22993,9 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 629491245}
-  m_LocalRotation: {x: 0, y: .382683456, z: 0, w: .923879504}
+  m_LocalRotation: {x: .0382558778, y: .955316007, z: -.142772943, w: .255976051}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 7, y: 7, z: 7}
+  m_LocalScale: {x: 4.5, y: 4.5, z: 4.5}
   m_Children: []
   m_Father: {fileID: 677216458}
   m_RootOrder: 0
@@ -23011,7 +23011,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 629491245}
-  m_Mesh: {fileID: 4300026, guid: 024abba1006f2417bb858a4d6fb882d5, type: 3}
+  m_Mesh: {fileID: 4300026, guid: 8a22f0f8e467e47d3bf17a959ccaa215, type: 3}
 --- !u!23 &629491248
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -23049,7 +23049,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   combined: 0
-  activeMesh: {fileID: 4300000, guid: 5d7177a3097ea4910ad8b20b66ef8542, type: 3}
+  activeMesh: {fileID: 4300026, guid: 8a22f0f8e467e47d3bf17a959ccaa215, type: 3}
   activeMaterial: {fileID: 2100000, guid: 78316b2e78c3d43398c3151665c2836a, type: 2}
   activeMaterial2: {fileID: 0}
 --- !u!1 &632609195
@@ -78539,6 +78539,7 @@ GameObject:
   - 114: {fileID: 1991538107}
   - 114: {fileID: 1991538122}
   - 114: {fileID: 1991538115}
+  - 114: {fileID: 1991538125}
   - 114: {fileID: 1991538119}
   - 114: {fileID: 1991538113}
   - 114: {fileID: 1991538108}
@@ -78595,6 +78596,7 @@ MonoBehaviour:
   cubesByEncounter: 7
   isNegative: 0
   hasEncounterEffect: 0
+  shm: {fileID: 0}
   player: {fileID: 0}
   instance: {fileID: 0}
   forceSpawnAtStart: 0
@@ -78645,9 +78647,18 @@ MonoBehaviour:
   cubesByEncounter: 10
   isNegative: 0
   hasEncounterEffect: 0
+  shm: {fileID: 0}
   player: {fileID: 0}
   instance: {fileID: 0}
   forceSpawnAtStart: 0
+  ptb: {fileID: 2048063065}
+  normalParts: {fileID: 469330, guid: ce95c585031f840b0b5cffa6a71612d0, type: 2}
+  goldenCubePrefab: {fileID: 117384, guid: 50f32b0368e944945a1410e747cc30ce, type: 2}
+  gcCount: {fileID: 966334536}
+  goldCubesGet: 10
+  goldenCubeChance: 10
+  superheatPartPrefab: {fileID: 178724, guid: 10f2508b2281a4f35bc75f3e2629f9b7, type: 2}
+  superheatPartChance: 50
   objPrefab_next: {fileID: 192146, guid: d357428246b5f4e5fb2b54651d371984, type: 2}
   fullComboCountPerLevel: 020000000300000005000000
   radius: 50
@@ -78678,6 +78689,7 @@ MonoBehaviour:
   cubesByEncounter: 30
   isNegative: 1
   hasEncounterEffect: 0
+  shm: {fileID: 0}
   player: {fileID: 0}
   instance: {fileID: 0}
   forceSpawnAtStart: 0
@@ -78722,6 +78734,7 @@ MonoBehaviour:
   cubesByEncounter: 0
   isNegative: 1
   hasEncounterEffect: 1
+  shm: {fileID: 0}
   player: {fileID: 0}
   instance: {fileID: 0}
   forceSpawnAtStart: 0
@@ -78762,6 +78775,7 @@ MonoBehaviour:
   cubesByEncounter: 100
   isNegative: 1
   hasEncounterEffect: 1
+  shm: {fileID: 0}
   player: {fileID: 0}
   instance: {fileID: 0}
   forceSpawnAtStart: 0
@@ -78820,6 +78834,7 @@ MonoBehaviour:
   cubesByEncounter: 15
   isNegative: 0
   hasEncounterEffect: 0
+  shm: {fileID: 0}
   player: {fileID: 0}
   instance: {fileID: 0}
   forceSpawnAtStart: 0
@@ -78881,6 +78896,7 @@ MonoBehaviour:
   cubesByEncounter: 15
   isNegative: 1
   hasEncounterEffect: 0
+  shm: {fileID: 0}
   player: {fileID: 0}
   instance: {fileID: 0}
   forceSpawnAtStart: 0
@@ -78920,6 +78936,7 @@ MonoBehaviour:
   cubesByEncounter: 5
   isNegative: 0
   hasEncounterEffect: 1
+  shm: {fileID: 0}
   player: {fileID: 0}
   instance: {fileID: 0}
   forceSpawnAtStart: 0
@@ -78965,6 +78982,7 @@ MonoBehaviour:
   cubesByEncounter: 10
   isNegative: 0
   hasEncounterEffect: 0
+  shm: {fileID: 0}
   player: {fileID: 0}
   instance: {fileID: 0}
   forceSpawnAtStart: 0
@@ -78998,6 +79016,7 @@ MonoBehaviour:
   cubesByEncounter: 5
   isNegative: 0
   hasEncounterEffect: 1
+  shm: {fileID: 0}
   player: {fileID: 0}
   instance: {fileID: 0}
   forceSpawnAtStart: 0
@@ -79047,6 +79066,7 @@ MonoBehaviour:
   cubesByEncounter: 5
   isNegative: 0
   hasEncounterEffect: 0
+  shm: {fileID: 0}
   player: {fileID: 0}
   instance: {fileID: 0}
   forceSpawnAtStart: 0
@@ -79078,6 +79098,7 @@ MonoBehaviour:
   cubesByEncounter: 5
   isNegative: 0
   hasEncounterEffect: 1
+  shm: {fileID: 0}
   player: {fileID: 0}
   instance: {fileID: 0}
   forceSpawnAtStart: 0
@@ -79120,6 +79141,7 @@ MonoBehaviour:
   cubesByEncounter: 5
   isNegative: 0
   hasEncounterEffect: 1
+  shm: {fileID: 0}
   player: {fileID: 0}
   instance: {fileID: 0}
   forceSpawnAtStart: 0
@@ -79157,6 +79179,7 @@ MonoBehaviour:
   cubesByEncounter: 5
   isNegative: 0
   hasEncounterEffect: 1
+  shm: {fileID: 0}
   player: {fileID: 0}
   instance: {fileID: 0}
   forceSpawnAtStart: 0
@@ -79201,6 +79224,7 @@ MonoBehaviour:
   cubesByEncounter: 10
   isNegative: 1
   hasEncounterEffect: 0
+  shm: {fileID: 0}
   player: {fileID: 0}
   instance: {fileID: 0}
   forceSpawnAtStart: 0
@@ -79240,6 +79264,7 @@ MonoBehaviour:
   cubesByEncounter: 30
   isNegative: 1
   hasEncounterEffect: 0
+  shm: {fileID: 0}
   player: {fileID: 0}
   instance: {fileID: 0}
   forceSpawnAtStart: 0
@@ -79284,6 +79309,7 @@ MonoBehaviour:
   cubesByEncounter: 10
   isNegative: 1
   hasEncounterEffect: 0
+  shm: {fileID: 0}
   player: {fileID: 0}
   instance: {fileID: 0}
   forceSpawnAtStart: 0
@@ -79322,6 +79348,7 @@ MonoBehaviour:
   cubesByEncounter: 0
   isNegative: 1
   hasEncounterEffect: 0
+  shm: {fileID: 0}
   player: {fileID: 0}
   instance: {fileID: 0}
   forceSpawnAtStart: 0
@@ -79340,6 +79367,36 @@ MonoBehaviour:
   laserStayDuration: .5
   laserShrinkingDuration: .100000001
   laserRotatingSpeed: 1000
+--- !u!114 &1991538125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1991538103}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04e0f99a33ef140f9a446b512cd54bc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objPrefab: {fileID: 178724, guid: 10f2508b2281a4f35bc75f3e2629f9b7, type: 2}
+  objDestroyEffect: {fileID: 158326, guid: 7a4903aebeaf1440d95d69b1daac37af, type: 2}
+  objEncounterEffect: {fileID: 154526, guid: b04bed1b0acbd492f962c0467fc30f90, type: 2}
+  objEncounterEffectForPlayer: {fileID: 0}
+  strengthenPlayerEffect: {fileID: 0}
+  strength: 0
+  speed: 0
+  tumble: 1
+  minSpawnInterval: 8
+  maxSpawnInterval: 12
+  cubesByEncounter: 10
+  isNegative: 0
+  hasEncounterEffect: 0
+  shm: {fileID: 0}
+  player: {fileID: 0}
+  instance: {fileID: 0}
+  forceSpawnAtStart: 0
+  superheat: {fileID: 98551109}
+  guageForEncounter: 100
 --- !u!1 &1997391145
 GameObject:
   m_ObjectHideFlags: 0

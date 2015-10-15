@@ -12,10 +12,10 @@ GameObject:
   - 23: {fileID: 2394322}
   - 198: {fileID: 19828956}
   - 199: {fileID: 19936444}
-  - 65: {fileID: 6534072}
   - 54: {fileID: 5451160}
   - 114: {fileID: 11428976}
   - 96: {fileID: 9670636}
+  - 135: {fileID: 13568968}
   m_Layer: 9
   m_Name: GoldenCube
   m_TagString: GoldenCube
@@ -81,18 +81,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 4
   m_CollisionDetection: 0
---- !u!65 &6534072
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 117384}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.00000024, y: 1.00000036, z: 1.00000036}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!96 &9670636
 TrailRenderer:
   m_ObjectHideFlags: 1
@@ -149,6 +137,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15abbf099835d476db59f5875e3fe9ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!135 &13568968
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 117384}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: .800000012
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!198 &19828956
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -1304,6 +1304,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_EndWidth
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Radius
+      value: .800000012
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

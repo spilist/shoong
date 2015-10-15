@@ -57,6 +57,7 @@ TagManager:
   - AlienshipLaser
   - LinkButton
   - TimeMonster
+  - SuperheatPart
   layers:
   - Default
   - TransparentFX

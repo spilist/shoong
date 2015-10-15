@@ -2,6 +2,17 @@
 using System.Collections;
 
 public class ComboPartsManager : ObjectsManager {
+  public PartsToBeCollected ptb;
+  public Transform normalParts;
+
+  public GameObject goldenCubePrefab;
+  public GoldCubesCount gcCount;
+  public int goldCubesGet = 10;
+  public int goldenCubeChance = 1;
+
+  public GameObject superheatPartPrefab;
+  public int superheatPartChance = 5;
+
   public GameObject objPrefab_next;
 
   public int[] fullComboCountPerLevel;
@@ -17,13 +28,20 @@ public class ComboPartsManager : ObjectsManager {
   public GameObject nextInstance;
   private int comboCount = 0;
   private int fullComboCount;
+  private Mesh[] partsMeshes;
 
   override public void initRest() {
     fullComboCount = fullComboCountPerLevel[DataManager.dm.getInt("ComboPartsLevel") - 1];
     skipInterval = true;
+    partsMeshes = new Mesh[normalParts.childCount];
+    int count = 0;
+    foreach (Transform tr in normalParts) {
+      partsMeshes[count++] = tr.GetComponent<MeshFilter>().sharedMesh;
+    }
   }
 
   override protected void afterSpawn() {
+    instance.GetComponent<MeshFilter>().sharedMesh = getRandomMesh();
     trying = false;
     comboCount = 0;
 
@@ -35,6 +53,28 @@ public class ComboPartsManager : ObjectsManager {
     nextInstance = (GameObject) Instantiate (objPrefab_next, spawnPosition, Quaternion.identity);
     nextInstance.transform.parent = transform;
     nextInstance.GetComponent<OffsetFixer>().setParent(instance);
+
+    int random = Random.Range(0, 100);
+    if (random < goldenCubeChance) {
+      changeObject(nextInstance, goldenCubePrefab);
+    } else if (random < superheatPartChance) {
+      changeObject(nextInstance, superheatPartPrefab);
+    } else {
+      nextInstance.GetComponent<MeshFilter>().sharedMesh = getRandomMesh();
+    }
+  }
+
+  Mesh getRandomMesh() {
+    return partsMeshes[Random.Range(0, partsMeshes.Length)];
+  }
+
+  void changeObject(GameObject obj, GameObject changeTo) {
+    obj.GetComponent<MeshFilter>().sharedMesh = changeTo.GetComponent<MeshFilter>().sharedMesh;
+    obj.transform.localScale = changeTo.transform.localScale;
+  }
+
+  bool compareEqualMesh(GameObject obj1, GameObject obj2) {
+    return obj1.GetComponent<MeshFilter>().sharedMesh == obj2.GetComponent<MeshFilter>().sharedMesh;
   }
 
   public void tryToGet() {
@@ -66,9 +106,19 @@ public class ComboPartsManager : ObjectsManager {
 
     Vector3 spawnPos = nextInstance.transform.position;
     Quaternion spawnRotation = nextInstance.transform.rotation;
-
     instance = (GameObject) Instantiate (objPrefab, spawnPos, spawnRotation);
     instance.transform.parent = transform;
+    changeObject(instance, nextInstance);
+
+    if (compareEqualMesh(nextInstance, goldenCubePrefab)) {
+      instance.GetComponent<Renderer>().sharedMaterial = goldenCubePrefab.GetComponent<Renderer>().sharedMaterial;
+      instance.GetComponent<SphereCollider>().radius = goldenCubePrefab.GetComponent<SphereCollider>().radius;
+      instance.GetComponent<ComboPartMover>().setGolden();
+    } else if (compareEqualMesh(nextInstance, superheatPartPrefab)) {
+      instance.GetComponent<Renderer>().sharedMaterial = superheatPartPrefab.GetComponent<Renderer>().sharedMaterial;
+      instance.GetComponent<SphereCollider>().radius = superheatPartPrefab.GetComponent<SphereCollider>().radius;
+      instance.GetComponent<ComboPartMover>().setSuper();
+    }
 
     Destroy(nextInstance);
 
@@ -79,6 +129,15 @@ public class ComboPartsManager : ObjectsManager {
       nextInstance = (GameObject) Instantiate (objPrefab_next, nextSpawnPos, spawnRotation);
       nextInstance.transform.parent = transform;
       nextInstance.GetComponent<OffsetFixer>().setParent(instance);
+
+      int random = Random.Range(0, 100);
+      if (random < goldenCubeChance) {
+        changeObject(nextInstance, goldenCubePrefab);
+      } else if (random < superheatPartChance) {
+        changeObject(nextInstance, superheatPartPrefab);
+      } else {
+        nextInstance.GetComponent<MeshFilter>().sharedMesh = getRandomMesh();
+      }
     }
   }
 

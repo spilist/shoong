@@ -2,7 +2,17 @@
 using System.Collections;
 
 public class ComboPartMover : ObjectsMover {
+  bool isGoldenCube = false;
+  bool isSuperheatPart = false;
   ComboPartsManager cpm;
+
+  public void setGolden() {
+    isGoldenCube = true;
+  }
+
+  public void setSuper() {
+    isSuperheatPart = true;
+  }
 
   override protected void initializeRest() {
     cpm = (ComboPartsManager)objectsManager;
@@ -24,6 +34,13 @@ public class ComboPartMover : ObjectsMover {
   }
 
   override protected void afterEncounter() {
+    if (isGoldenCube) {
+      cpm.gcCount.add(cpm.goldCubesGet);
+    } else if (isSuperheatPart) {
+      cpm.shm.add();
+    } else {
+      cpm.ptb.checkCollected(GetComponent<MeshFilter>().sharedMesh);
+    }
     cpm.eatenByPlayer();
   }
 }
