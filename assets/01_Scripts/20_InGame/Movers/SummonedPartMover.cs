@@ -8,15 +8,27 @@ public class SummonedPartMover : ObjectsMover {
   Color color_empty;
   Color outlineColor_full;
   Color outlineColor_empty;
+  bool isGoldenCube = false;
+  bool isSuperheatPart = false;
 
   override protected void initializeRest() {
     summonManager = (SummonPartsManager) objectsManager;
     mRenderer = GetComponent<Renderer>();
     color_full = mRenderer.material.color;
     color_empty = new Color(color_full.r, color_full.g, color_full.b, summonManager.blinkColorAlpha);
-    outlineColor_full = mRenderer.material.GetColor("_OutlineColor");
+    if (!isGoldenCube && !isSuperheatPart) {
+      outlineColor_full = mRenderer.material.GetColor("_OutlineColor");
+    }
     outlineColor_empty = summonManager.blinkOutlineColor;
     StartCoroutine("destroyAfter");
+  }
+
+  public void setGolden() {
+    isGoldenCube = true;
+  }
+
+  public void setSuper() {
+    isSuperheatPart = true;
   }
 
   override public void destroyObject (bool destroyEffect = true, bool byPlayer = false) {
@@ -31,13 +43,25 @@ public class SummonedPartMover : ObjectsMover {
 
     if (byPlayer) {
       summonManager.increaseSummonedPartGetcount();
-      summonManager.ptb.checkCollected(GetComponent<MeshFilter>().sharedMesh);
+      if (isGoldenCube) {
+        summonManager.gcCount.add(summonManager.goldCubesGet);
+      } else if (isSuperheatPart) {
+        summonManager.shm.add();
+      } else {
+        summonManager.ptb.checkCollected(GetComponent<MeshFilter>().sharedMesh);
+      }
     }
   }
 
   override protected void afterEncounter() {
     summonManager.increaseSummonedPartGetcount();
-    summonManager.ptb.checkCollected(GetComponent<MeshFilter>().sharedMesh);
+    if (isGoldenCube) {
+      summonManager.gcCount.add(summonManager.goldCubesGet);
+    } else if (isSuperheatPart) {
+      summonManager.shm.add();
+    } else {
+      summonManager.ptb.checkCollected(GetComponent<MeshFilter>().sharedMesh);
+    }
 
     if (player.isNearAsteroid()) {
       player.showEffect("Wow");
@@ -58,14 +82,18 @@ public class SummonedPartMover : ObjectsMover {
 
     while (duration > 0) {
       mRenderer.material.color = color_full;
-      mRenderer.material.SetColor("_OutlineColor", outlineColor_full);
+      if (!isGoldenCube && !isSuperheatPart) {
+        mRenderer.material.SetColor("_OutlineColor", outlineColor_full);
+        mRenderer.material.SetFloat("_Outline", 0.75f);
+      }
 
-      mRenderer.material.SetFloat("_Outline", 0.75f);
       yield return new WaitForSeconds (showDuring);
 
       mRenderer.material.color = color_empty;
-      mRenderer.material.SetColor("_OutlineColor", outlineColor_empty);
-      mRenderer.material.SetFloat("_Outline", 0);
+      if (!isGoldenCube && !isSuperheatPart) {
+        mRenderer.material.SetColor("_OutlineColor", outlineColor_empty);
+        mRenderer.material.SetFloat("_Outline", 0);
+      }
       yield return new WaitForSeconds (emptyDuring);
 
       duration -= showDuring + emptyDuring;

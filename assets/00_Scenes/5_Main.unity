@@ -78656,9 +78656,9 @@ MonoBehaviour:
   goldenCubePrefab: {fileID: 117384, guid: 50f32b0368e944945a1410e747cc30ce, type: 2}
   gcCount: {fileID: 966334536}
   goldCubesGet: 10
-  goldenCubeChance: 10
+  goldenCubeChance: 1
   superheatPartPrefab: {fileID: 178724, guid: 10f2508b2281a4f35bc75f3e2629f9b7, type: 2}
-  superheatPartChance: 50
+  superheatPartChance: 5
   objPrefab_next: {fileID: 192146, guid: d357428246b5f4e5fb2b54651d371984, type: 2}
   fullComboCountPerLevel: 020000000300000005000000
   radius: 50
@@ -79042,6 +79042,12 @@ MonoBehaviour:
   showDurationDecrease: .100000001
   emptyDurationStart: .150000006
   emptyDurationDecrease: .0500000007
+  goldenCubePrefab: {fileID: 117384, guid: 50f32b0368e944945a1410e747cc30ce, type: 2}
+  gcCount: {fileID: 966334536}
+  goldCubesGet: 1
+  goldenCubeChance: 90
+  superheatPartPrefab: {fileID: 178724, guid: 10f2508b2281a4f35bc75f3e2629f9b7, type: 2}
+  superheatPartChance: 10
 --- !u!114 &1991538117
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79385,7 +79391,7 @@ MonoBehaviour:
   strengthenPlayerEffect: {fileID: 0}
   strength: 0
   speed: 0
-  tumble: 1
+  tumble: 10
   minSpawnInterval: 8
   maxSpawnInterval: 12
   cubesByEncounter: 10

@@ -25,6 +25,14 @@ public class SummonPartsManager : ObjectsManager {
   public float emptyDurationStart = 0.15f;
   public float emptyDurationDecrease = 0.05f;
 
+  public GameObject goldenCubePrefab;
+  public GoldCubesCount gcCount;
+  public int goldCubesGet = 10;
+  public int goldenCubeChance = 1;
+
+  public GameObject superheatPartPrefab;
+  public int superheatPartChance = 10;
+
   private Mesh[] summonMeshes;
   private Mesh summonMesh;
   private int getCount = 0;
@@ -65,13 +73,32 @@ public class SummonPartsManager : ObjectsManager {
     for (int i = 0; i < numSpawnX; i++) {
       for (int j = 0; j < numSpawnZ; j++) {
         Vector3 spawnPos = new Vector3(distanceBtwX * i - distanceBtwX * (numSpawnX - 1) / 2, 0, distanceBtwZ * j);
+
         GameObject instance = (GameObject) Instantiate(summonedPartPrefab, spawnPos, Quaternion.identity);
-        instance.GetComponent<MeshFilter>().sharedMesh = summonMesh;
         instance.transform.SetParent(obj.transform, false);
+
+        int random = Random.Range(0, 200);
+        if (random < goldenCubeChance) {
+          changeObject(instance, goldenCubePrefab);
+        } else if (random < superheatPartChance) {
+          changeObject(instance, superheatPartPrefab);
+        } else {
+          instance.GetComponent<MeshFilter>().sharedMesh = summonMesh;
+        }
       }
     }
 
     run();
+  }
+
+  void changeObject(GameObject obj, GameObject changeTo) {
+    obj.GetComponent<MeshFilter>().sharedMesh = changeTo.GetComponent<MeshFilter>().sharedMesh;
+    obj.transform.localScale = changeTo.transform.localScale;
+    obj.GetComponent<Renderer>().sharedMaterial = changeTo.GetComponent<Renderer>().sharedMaterial;
+    obj.GetComponent<SphereCollider>().radius = changeTo.GetComponent<SphereCollider>().radius;
+
+    if (changeTo == goldenCubePrefab) obj.GetComponent<SummonedPartMover>().setGolden();
+    else if (changeTo == superheatPartPrefab) obj.GetComponent<SummonedPartMover>().setSuper();
   }
 
   public void increaseSummonedPartGetcount() {
