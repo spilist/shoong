@@ -79044,10 +79044,10 @@ MonoBehaviour:
   emptyDurationDecrease: .0500000007
   goldenCubePrefab: {fileID: 117384, guid: 50f32b0368e944945a1410e747cc30ce, type: 2}
   gcCount: {fileID: 966334536}
-  goldCubesGet: 1
-  goldenCubeChance: 90
+  goldCubesGet: 10
+  goldenCubeChance: 1
   superheatPartPrefab: {fileID: 178724, guid: 10f2508b2281a4f35bc75f3e2629f9b7, type: 2}
-  superheatPartChance: 10
+  superheatPartChance: 5
 --- !u!114 &1991538117
 MonoBehaviour:
   m_ObjectHideFlags: 0

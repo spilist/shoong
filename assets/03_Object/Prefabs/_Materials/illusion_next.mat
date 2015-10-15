@@ -39,21 +39,7 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _Emissive
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
           name: _ParallaxMap
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _DiffuseMapCutoutA
         second:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
@@ -89,6 +75,20 @@ Material:
       data:
         first:
           name: _MetallicGlossMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Emissive
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _DiffuseMapCutoutA
         second:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
@@ -151,40 +151,12 @@ Material:
         second: 0
       data:
         first:
-          name: _Outline
-        second: .000500000024
-      data:
-        first:
-          name: _HighlightSurface
-        second: .5
-      data:
-        first:
-          name: _Emissive
-        second: .5
-      data:
-        first:
           name: _Glossiness
         second: .5
       data:
         first:
-          name: _OutlineOnOff
-        second: 0
-      data:
-        first:
-          name: _OutlineWidth
-        second: .300000012
-      data:
-        first:
           name: _Parallax
         second: .0199999996
-      data:
-        first:
-          name: _InvFade
-        second: 1
-      data:
-        first:
-          name: _LineWidth
-        second: .200000003
       data:
         first:
           name: _ZWrite
@@ -213,6 +185,34 @@ Material:
         first:
           name: _Metallic
         second: 0
+      data:
+        first:
+          name: _Emissive
+        second: .5
+      data:
+        first:
+          name: _Outline
+        second: .000500000024
+      data:
+        first:
+          name: _HighlightSurface
+        second: .5
+      data:
+        first:
+          name: _OutlineOnOff
+        second: 0
+      data:
+        first:
+          name: _OutlineWidth
+        second: .300000012
+      data:
+        first:
+          name: _InvFade
+        second: 1
+      data:
+        first:
+          name: _LineWidth
+        second: .200000003
       data:
         first:
           name: _Specular_Power
@@ -269,7 +269,7 @@ Material:
       data:
         first:
           name: _TintColor
-        second: {r: .705882311, g: .077854611, b: .428684026, a: .115999997}
+        second: {r: .705882311, g: .077854611, b: .428684026, a: .0719999969}
       data:
         first:
           name: _LineColor
