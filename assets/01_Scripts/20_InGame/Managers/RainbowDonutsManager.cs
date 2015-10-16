@@ -12,8 +12,8 @@ public class RainbowDonutsManager : ObjectsManager {
   public Material superRainbowMat;
   public int superChance = 10;
   public int guageAmountSuper = 50;
-  private bool isGolden = false;
-  private bool isSuper = false;
+  public bool isGolden = false;
+  public bool isSuper = false;
 
   public LayerMask blackholeGravityMask;
 
@@ -106,7 +106,7 @@ public class RainbowDonutsManager : ObjectsManager {
     drawingRainbowRoad = true;
 
     if (isGolden) {
-      gcCount.add(cubesByEncounter);
+      gcCount.add(cubesByEncounter, false);
     } else if (isSuper) {
       superheat.addGuageWithEffect(guageAmountSuper);
     } else {

@@ -21,6 +21,20 @@ public class CubeDispenserManager : ObjectsManager {
   public int fullComboCount;
   private float destroyAfterSeconds;
 
+  public int chanceBase = 200;
+  public Material goldenActiveMat;
+  public Material goldenInactiveMat;
+  public int goldenChance = 1;
+  public GoldCubesCount gcCount;
+  public int goldenCubeAmount = 10;
+  public Material superActiveMat;
+  public Material superInactiveMat;
+  public int superChance = 10;
+  public Superheat superheat;
+  public int guageAmountSuper = 50;
+  private bool isGolden = false;
+  private bool isSuper = false;
+
   override public void initRest() {
     int level = DataManager.dm.getInt("CubeDispenserLevel") - 1;
     fullComboCount = fullComboCountPerLevel[level];
@@ -32,13 +46,36 @@ public class CubeDispenserManager : ObjectsManager {
     trying = false;
     decreaseEmissionAmount = objPrefab.GetComponent<ParticleSystem>().emissionRate / fullComboCount;
     objEncounterEffectForPlayer = instance.transform.Find("Reaction").GetComponent<ParticleSystem>();
+
+    int random = Random.Range(0, chanceBase);
+    if (random < goldenChance) {
+      isGolden = true;
+      isSuper = false;
+      instance.GetComponent<Renderer>().sharedMaterial = goldenInactiveMat;
+      instance.GetComponent<CubeDispenserMover>().setGolden();
+    } else if (random < superChance) {
+      isGolden = false;
+      isSuper = true;
+      instance.GetComponent<Renderer>().sharedMaterial = superInactiveMat;
+      instance.GetComponent<CubeDispenserMover>().setSuper();
+    } else {
+      isGolden = false;
+      isSuper = false;
+    }
   }
 
   public void checkTrying() {
     if (!trying) {
       trying = true;
       skipInterval = false;
-      instance.GetComponent<Renderer>().sharedMaterial = activeMat;
+
+      if (isGolden) {
+        instance.GetComponent<Renderer>().sharedMaterial = goldenActiveMat;
+      } else if (isSuper) {
+        instance.GetComponent<Renderer>().sharedMaterial = superActiveMat;
+      } else {
+        instance.GetComponent<Renderer>().sharedMaterial = activeMat;
+      }
       player.encounterObject("CubeDispenser");
       StartCoroutine("destroyAfterTry");
     }
@@ -48,7 +85,13 @@ public class CubeDispenserManager : ObjectsManager {
     if (!trying) {
       trying = true;
       skipInterval = false;
-      instance.GetComponent<Renderer>().sharedMaterial = activeMat;
+      if (isGolden) {
+        instance.GetComponent<Renderer>().sharedMaterial = goldenActiveMat;
+      } else if (isSuper) {
+        instance.GetComponent<Renderer>().sharedMaterial = superActiveMat;
+      } else {
+        instance.GetComponent<Renderer>().sharedMaterial = activeMat;
+      }
     }
   }
 

@@ -5,10 +5,21 @@ public class CubeDispenserMover : ObjectsMover {
   private CubeDispenserManager cdm;
   private int comboCount = 0;
   private int brokenCount = 0;
+  private bool isSuper = false;
+  private bool isGolden = false;
 
   protected override void initializeRest() {
     canBeMagnetized = false;
     cdm = (CubeDispenserManager)objectsManager;
+    GetComponent<ParticleSystem>().Play(false);
+  }
+
+  public void setGolden() {
+    isGolden = true;
+  }
+
+  public void setSuper() {
+    isSuper = true;
   }
 
   public void tryBreak() {
@@ -37,7 +48,13 @@ public class CubeDispenserMover : ObjectsMover {
       if (player.isUsingRainbow() || player.isUnstoppable()) {
         player.goodPartsEncounter(this, cdm.cubesByEncounter * cdm.fullComboCount);
       } else {
-        player.contactCubeDispenser(transform, cdm.cubesByEncounter, collision, cdm.reboundDuring);
+        player.contactCubeDispenser(transform, cdm.cubesByEncounter, collision, cdm.reboundDuring, isGolden);
+
+        if (isGolden) {
+          cdm.gcCount.add(cdm.goldenCubeAmount, false);
+        } else if (isSuper) {
+          cdm.superheat.addGuageWithEffect(cdm.guageAmountSuper);
+        }
 
         encounterPlayer(false);
       }

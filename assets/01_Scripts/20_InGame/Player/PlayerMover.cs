@@ -47,6 +47,8 @@ public class PlayerMover : MonoBehaviour {
   private float boosterBonus = 1;
 
 	public GameObject particles;
+  public Color goldenCubeParticleColor;
+  public Color goldenCubeParticleTrailColor;
 
   public int strengthen_during = 8;
   public float reboundSpeed = 300;
@@ -207,7 +209,14 @@ public class PlayerMover : MonoBehaviour {
           cube.GetComponent<ParticleMover>().triggerCubesGet(howMany);
         }
         if (mover.tag == "RainbowDonut") {
-          cube.GetComponent<Renderer>().material.SetColor("_TintColor", rdm.rainbowColors[e]);
+          if (rdm.isGolden) {
+            cube.GetComponent<Renderer>().material.SetColor("_TintColor", goldenCubeParticleColor);
+            cube.GetComponent<TrailRenderer>().material.SetColor("_TintColor", goldenCubeParticleTrailColor);
+          } else {
+            cube.GetComponent<Renderer>().material.SetColor("_TintColor", rdm.rainbowColors[e]);
+            cube.GetComponent<TrailRenderer>().material.SetColor("_TintColor", rdm.rainbowColors[e]);
+          }
+
           cube.GetComponent<ParticleMover>().setRainbow();
         }
       }
@@ -238,12 +247,18 @@ public class PlayerMover : MonoBehaviour {
     cubesCount.addCount(howMany, bonus);
   }
 
-  public void contactCubeDispenser(Transform tr, int howMany, Collision collision, float reboundDuring) {
+  public void contactCubeDispenser(Transform tr, int howMany, Collision collision, float reboundDuring, bool isGolden) {
     for (int e = 0; e < howMany; e++) {
-      Instantiate(particles, tr.position, tr.rotation);
+      GameObject cube = (GameObject) Instantiate(particles, tr.position, tr.rotation);
+      if (isGolden) {
+        cube.GetComponent<Renderer>().material.SetColor("_TintColor", goldenCubeParticleColor);
+        cube.GetComponent<TrailRenderer>().material.SetColor("_TintColor", goldenCubeParticleTrailColor);
+      } else if (e == 0) {
+        cube.GetComponent<ParticleMover>().triggerCubesGet(howMany);
+      }
     }
 
-    addCubeCount(howMany, 0);
+    if (!isGolden) addCubeCount(howMany, 0);
 
     processCollision(collision);
     reboundingByDispenser = true;

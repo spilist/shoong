@@ -30,7 +30,7 @@ public class GoldCubesCount : MonoBehaviour {
     tr.anchoredPosition += new Vector2(positionX, 0);
   }
 
-  public void add(int amount = 1) {
+  public void add(int amount = 1, bool withEffect = true) {
     count += amount;
     cubes.text = count.ToString();
 
@@ -43,7 +43,7 @@ public class GoldCubesCount : MonoBehaviour {
     GetComponent<AudioSource>().Play();
 
     player.showEffect("GoldenCube");
-    getEffect.Play();
+    if (withEffect) getEffect.Play();
     effectAmountText.text = amount.ToString();
   }
 

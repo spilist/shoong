@@ -2692,6 +2692,8 @@ MonoBehaviour:
   boosterSpeedDecreaseBase: 60
   boosterSpeedDecreasePerTime: 20
   particles: {fileID: 178344, guid: b185d52f68bf5499e81f948bbbf1bd8c, type: 2}
+  goldenCubeParticleColor: {r: 1, g: .929411769, b: 0, a: .498039216}
+  goldenCubeParticleTrailColor: {r: 1, g: .886274517, b: 0, a: .121568628}
   strengthen_during: 6
   reboundSpeed: 160
   afterStrengthenDuration: 1
@@ -16610,7 +16612,7 @@ MeshRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_Materials:
-  - {fileID: 2100000, guid: a9f492b1bc159478c8c5ca85e56828a2, type: 2}
+  - {fileID: 2100000, guid: ab0141c9309dc4086ab5372fae92de3d, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -21580,7 +21582,7 @@ MeshRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_Materials:
-  - {fileID: 2100000, guid: a9f492b1bc159478c8c5ca85e56828a2, type: 2}
+  - {fileID: 2100000, guid: ab0141c9309dc4086ab5372fae92de3d, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -31577,7 +31579,7 @@ MeshRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_Materials:
-  - {fileID: 2100000, guid: a9f492b1bc159478c8c5ca85e56828a2, type: 2}
+  - {fileID: 2100000, guid: ab0141c9309dc4086ab5372fae92de3d, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -36251,7 +36253,7 @@ MeshRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_Materials:
-  - {fileID: 2100000, guid: a9f492b1bc159478c8c5ca85e56828a2, type: 2}
+  - {fileID: 2100000, guid: ab0141c9309dc4086ab5372fae92de3d, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -40985,7 +40987,7 @@ MeshRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_Materials:
-  - {fileID: 2100000, guid: a9f492b1bc159478c8c5ca85e56828a2, type: 2}
+  - {fileID: 2100000, guid: ab0141c9309dc4086ab5372fae92de3d, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -42382,7 +42384,7 @@ MeshRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_Materials:
-  - {fileID: 2100000, guid: a9f492b1bc159478c8c5ca85e56828a2, type: 2}
+  - {fileID: 2100000, guid: ab0141c9309dc4086ab5372fae92de3d, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -54809,7 +54811,7 @@ MeshRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_Materials:
-  - {fileID: 2100000, guid: a9f492b1bc159478c8c5ca85e56828a2, type: 2}
+  - {fileID: 2100000, guid: ab0141c9309dc4086ab5372fae92de3d, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -76115,7 +76117,7 @@ Prefab:
     - target: {fileID: 2379152, guid: 687c694e3e0c84920afaa2510449ab32, type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: a9f492b1bc159478c8c5ca85e56828a2, type: 2}
+      objectReference: {fileID: 2100000, guid: ab0141c9309dc4086ab5372fae92de3d, type: 2}
     - target: {fileID: 3317570, guid: 687c694e3e0c84920afaa2510449ab32, type: 2}
       propertyPath: m_Mesh
       value: 
@@ -78303,7 +78305,7 @@ MeshRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_Materials:
-  - {fileID: 2100000, guid: a9f492b1bc159478c8c5ca85e56828a2, type: 2}
+  - {fileID: 2100000, guid: ab0141c9309dc4086ab5372fae92de3d, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -78609,6 +78611,8 @@ MonoBehaviour:
   superRainbowMat: {fileID: 2100000, guid: 25ccef770527743988de0092eda0c38c, type: 2}
   superChance: 10
   guageAmountSuper: 50
+  isGolden: 0
+  isSuper: 0
   blackholeGravityMask:
     serializedVersion: 2
     m_Bits: 8912896
@@ -78860,11 +78864,22 @@ MonoBehaviour:
   destroy: {fileID: 19849298, guid: b3ce2718fb37c492f9d26f509fc35908, type: 2}
   pitchStart: .899999976
   pitchIncrease: .0500000007
-  activeMat: {fileID: 2100000, guid: 52560eb15b0ed41a6a6af15921bb4929, type: 2}
+  activeMat: {fileID: 2100000, guid: 46169ca8443124e49afb9e28615dd637, type: 2}
   shakeDurationByHit: .300000012
   shakeAmountByHit: .5
   decreaseEmissionAmount: 0
   fullComboCount: 0
+  chanceBase: 200
+  goldenActiveMat: {fileID: 2100000, guid: 5cb3f0efcb50c4eda849f9f15b436eff, type: 2}
+  goldenInactiveMat: {fileID: 2100000, guid: 91d86ee1c162044a5bb70697c616575d, type: 2}
+  goldenChance: 1
+  gcCount: {fileID: 966334536}
+  goldenCubeAmount: 10
+  superActiveMat: {fileID: 2100000, guid: 274ff44dcaa9b43aaa1b3762a585d88b, type: 2}
+  superInactiveMat: {fileID: 2100000, guid: c652fe12f3a8c4431907746ff149cfba, type: 2}
+  superChance: 10
+  superheat: {fileID: 98551109}
+  guageAmountSuper: 50
 --- !u!114 &1991538111
 MonoBehaviour:
   m_ObjectHideFlags: 0
