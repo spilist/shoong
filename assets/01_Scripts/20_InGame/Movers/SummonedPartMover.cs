@@ -4,22 +4,12 @@ using System.Collections;
 public class SummonedPartMover : ObjectsMover {
   SummonPartsManager summonManager;
   Renderer mRenderer;
-  Color color_full;
-  Color color_empty;
-  Color outlineColor_full;
-  Color outlineColor_empty;
   bool isGoldenCube = false;
   bool isSuperheatPart = false;
 
   override protected void initializeRest() {
     summonManager = (SummonPartsManager) objectsManager;
     mRenderer = GetComponent<Renderer>();
-    color_full = mRenderer.material.color;
-    color_empty = new Color(color_full.r, color_full.g, color_full.b, summonManager.blinkColorAlpha);
-    if (!isGoldenCube && !isSuperheatPart) {
-      outlineColor_full = mRenderer.material.GetColor("_OutlineColor");
-    }
-    outlineColor_empty = summonManager.blinkOutlineColor;
     StartCoroutine("destroyAfter");
   }
 
@@ -81,19 +71,11 @@ public class SummonedPartMover : ObjectsMover {
     float emptyDurationDecrease = summonManager.emptyDurationDecrease;
 
     while (duration > 0) {
-      mRenderer.material.color = color_full;
-      if (!isGoldenCube && !isSuperheatPart) {
-        mRenderer.material.SetColor("_OutlineColor", outlineColor_full);
-        mRenderer.material.SetFloat("_Outline", 0.75f);
-      }
+      mRenderer.enabled = true;
 
       yield return new WaitForSeconds (showDuring);
 
-      mRenderer.material.color = color_empty;
-      if (!isGoldenCube && !isSuperheatPart) {
-        mRenderer.material.SetColor("_OutlineColor", outlineColor_empty);
-        mRenderer.material.SetFloat("_Outline", 0);
-      }
+      mRenderer.enabled = false;
       yield return new WaitForSeconds (emptyDuring);
 
       duration -= showDuring + emptyDuring;

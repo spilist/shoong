@@ -52,10 +52,12 @@ public class RainbowDonutsManager : ObjectsManager {
       isGolden = true;
       isSuper = false;
       instance.GetComponent<Renderer>().sharedMaterial = goldenRainbowMat;
+      instance.transform.Find("GoldenEffect").gameObject.SetActive(true);
     } else if (random < superChance) {
       isGolden = false;
       isSuper = true;
       instance.GetComponent<Renderer>().sharedMaterial = superRainbowMat;
+      instance.transform.Find("HeatEffect").gameObject.SetActive(true);
     } else {
       isGolden = false;
       isSuper = false;
@@ -139,8 +141,10 @@ public class RainbowDonutsManager : ObjectsManager {
         instance.transform.parent = transform;
         if (isGolden) {
           instance.GetComponent<Renderer>().sharedMaterial = goldenRainbowMat;
+          instance.transform.Find("GoldenEffect").gameObject.SetActive(true);
         } else if (isSuper) {
           instance.GetComponent<Renderer>().sharedMaterial = superRainbowMat;
+          instance.transform.Find("HeatEffect").gameObject.SetActive(true);
         }
       }
     }

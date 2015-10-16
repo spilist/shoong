@@ -58,6 +58,8 @@ public class ComboPartsManager : ObjectsManager {
     int random = Random.Range(0, chanceBase);
     if (random < goldenCubeChance) {
       changeObject(nextInstance, goldenCubePrefab);
+      nextInstance.transform.Find("BasicEffect").gameObject.SetActive(false);
+      nextInstance.transform.Find("GoldenEffect").gameObject.SetActive(true);
     } else if (random < superheatPartChance) {
       changeObject(nextInstance, superheatPartPrefab);
     } else {
@@ -115,6 +117,8 @@ public class ComboPartsManager : ObjectsManager {
       instance.GetComponent<Renderer>().sharedMaterial = goldenCubePrefab.GetComponent<Renderer>().sharedMaterial;
       instance.GetComponent<SphereCollider>().radius = goldenCubePrefab.GetComponent<SphereCollider>().radius;
       instance.GetComponent<ComboPartMover>().setGolden();
+      instance.transform.Find("BasicEffect").gameObject.SetActive(false);
+      instance.transform.Find("GoldenEffect").gameObject.SetActive(true);
     } else if (compareEqualMesh(nextInstance, superheatPartPrefab)) {
       instance.GetComponent<Renderer>().sharedMaterial = superheatPartPrefab.GetComponent<Renderer>().sharedMaterial;
       instance.GetComponent<SphereCollider>().radius = superheatPartPrefab.GetComponent<SphereCollider>().radius;

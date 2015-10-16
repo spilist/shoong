@@ -17,8 +17,6 @@ public class SummonPartsManager : ObjectsManager {
 
   public float summonedPartLifetime = 3;
   public float blinkBeforeDestroy = 1.2f;
-  public float blinkColorAlpha = 0.5f;
-  public Color blinkOutlineColor;
 
   public float showDurationStart = 0.35f;
   public float showDurationDecrease = 0.1f;
@@ -81,10 +79,13 @@ public class SummonPartsManager : ObjectsManager {
         int random = Random.Range(0, chanceBase);
         if (random < goldenCubeChance) {
           changeObject(instance, goldenCubePrefab);
+          instance.transform.Find("GoldenEffect").gameObject.SetActive(true);
         } else if (random < superheatPartChance) {
           changeObject(instance, superheatPartPrefab);
+          instance.transform.Find("HeatEffect").gameObject.SetActive(true);
         } else {
           instance.GetComponent<MeshFilter>().sharedMesh = summonMesh;
+          instance.transform.Find("BasicEffect").gameObject.SetActive(true);
         }
       }
     }

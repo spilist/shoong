@@ -81,20 +81,6 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _Emissive
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _DiffuseMapCutoutA
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
           name: _Illum
         second:
           m_Texture: {fileID: 0}
@@ -102,7 +88,7 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _SpecGlossMap
+          name: _Emissive
         second:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
@@ -124,6 +110,20 @@ Material:
       data:
         first:
           name: _Normal
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _SpecGlossMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _DiffuseMapCutoutA
         second:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
@@ -151,16 +151,16 @@ Material:
         second: 0
       data:
         first:
-          name: _Glossiness
-        second: .5
-      data:
-        first:
           name: _Parallax
         second: .0199999996
       data:
         first:
           name: _ZWrite
         second: 0
+      data:
+        first:
+          name: _Glossiness
+        second: .5
       data:
         first:
           name: _BumpScale
@@ -187,32 +187,16 @@ Material:
         second: 0
       data:
         first:
-          name: _Emissive
-        second: .5
+          name: _InvFade
+        second: 1
       data:
         first:
           name: _Outline
         second: .000500000024
       data:
         first:
-          name: _HighlightSurface
+          name: _Emissive
         second: .5
-      data:
-        first:
-          name: _OutlineOnOff
-        second: 0
-      data:
-        first:
-          name: _OutlineWidth
-        second: .300000012
-      data:
-        first:
-          name: _InvFade
-        second: 1
-      data:
-        first:
-          name: _LineWidth
-        second: .200000003
       data:
         first:
           name: _Specular_Power
@@ -241,6 +225,22 @@ Material:
         first:
           name: _Fresnel_Width
         second: 5
+      data:
+        first:
+          name: _HighlightSurface
+        second: .5
+      data:
+        first:
+          name: _OutlineOnOff
+        second: 0
+      data:
+        first:
+          name: _OutlineWidth
+        second: .300000012
+      data:
+        first:
+          name: _LineWidth
+        second: .200000003
     m_Colors:
       data:
         first:
@@ -260,6 +260,14 @@ Material:
         second: {r: .382352948, g: .37180528, b: 0, a: 0}
       data:
         first:
+          name: _TintColor
+        second: {r: .845588207, g: .180309266, b: .414303929, a: .0719999969}
+      data:
+        first:
+          name: _Fresnel_Color
+        second: {r: 1, g: .600000024, b: 0, a: 1}
+      data:
+        first:
           name: _DiffuseColor
         second: {r: 1, g: 1, b: 1, a: 1}
       data:
@@ -268,17 +276,9 @@ Material:
         second: {r: 1, g: 1, b: 1, a: 1}
       data:
         first:
-          name: _TintColor
-        second: {r: .705882311, g: .077854611, b: .428684026, a: .0719999969}
-      data:
-        first:
           name: _LineColor
         second: {r: 1, g: 1, b: 1, a: 1}
       data:
         first:
           name: _GridColor
         second: {r: 1, g: 1, b: 1, a: 0}
-      data:
-        first:
-          name: _Fresnel_Color
-        second: {r: 1, g: .600000024, b: 0, a: 1}

@@ -5745,7 +5745,7 @@ MeshRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_Materials:
-  - {fileID: 2100000, guid: a9f492b1bc159478c8c5ca85e56828a2, type: 2}
+  - {fileID: 2100000, guid: ab0141c9309dc4086ab5372fae92de3d, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -11383,7 +11383,7 @@ Prefab:
     - target: {fileID: 2379152, guid: 687c694e3e0c84920afaa2510449ab32, type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: a9f492b1bc159478c8c5ca85e56828a2, type: 2}
+      objectReference: {fileID: 2100000, guid: ab0141c9309dc4086ab5372fae92de3d, type: 2}
     - target: {fileID: 3317570, guid: 687c694e3e0c84920afaa2510449ab32, type: 2}
       propertyPath: m_Mesh
       value: 
@@ -78670,7 +78670,7 @@ MonoBehaviour:
   goldCubesGet: 10
   goldenCubeChance: 1
   superheatPartPrefab: {fileID: 178724, guid: 10f2508b2281a4f35bc75f3e2629f9b7, type: 2}
-  superheatPartChance: 5
+  superheatPartChance: 100
   objPrefab_next: {fileID: 192146, guid: d357428246b5f4e5fb2b54651d371984, type: 2}
   fullComboCountPerLevel: 020000000300000005000000
   radius: 50
@@ -79059,8 +79059,6 @@ MonoBehaviour:
   distanceBtwZ: 30
   summonedPartLifetime: 3
   blinkBeforeDestroy: 1.20000005
-  blinkColorAlpha: .300000012
-  blinkOutlineColor: {r: 1, g: 1, b: 1, a: .572000027}
   showDurationStart: .349999994
   showDurationDecrease: .100000001
   emptyDurationStart: .150000006
@@ -79071,7 +79069,7 @@ MonoBehaviour:
   goldCubesGet: 10
   goldenCubeChance: 1
   superheatPartPrefab: {fileID: 178724, guid: 10f2508b2281a4f35bc75f3e2629f9b7, type: 2}
-  superheatPartChance: 5
+  superheatPartChance: 10
 --- !u!114 &1991538117
 MonoBehaviour:
   m_ObjectHideFlags: 0

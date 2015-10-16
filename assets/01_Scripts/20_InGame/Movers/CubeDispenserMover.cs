@@ -7,19 +7,28 @@ public class CubeDispenserMover : ObjectsMover {
   private int brokenCount = 0;
   private bool isSuper = false;
   private bool isGolden = false;
+  private ParticleSystem inside;
 
   protected override void initializeRest() {
     canBeMagnetized = false;
     cdm = (CubeDispenserManager)objectsManager;
-    GetComponent<ParticleSystem>().Play(false);
   }
 
   public void setGolden() {
     isGolden = true;
+    inside = transform.Find("GoldenInside").GetComponent<ParticleSystem>();
+    inside.gameObject.SetActive(true);
   }
 
   public void setSuper() {
     isSuper = true;
+    inside = transform.Find("HeatInside").GetComponent<ParticleSystem>();
+    inside.gameObject.SetActive(true);
+  }
+
+  public void setNormal() {
+    inside = transform.Find("BasicInside").GetComponent<ParticleSystem>();
+    inside.gameObject.SetActive(true);
   }
 
   public void tryBreak() {
@@ -66,7 +75,7 @@ public class CubeDispenserMover : ObjectsMover {
 
     objectsManager.objEncounterEffectForPlayer.GetComponent<AudioSource>().pitch = cdm.pitchStart + comboCount * cdm.pitchIncrease;
 
-    GetComponent<ParticleSystem>().emissionRate -= cdm.decreaseEmissionAmount;
+    inside.emissionRate -= cdm.decreaseEmissionAmount;
 
     comboCount++;
     Camera.main.GetComponent<CameraMover>().shake(cdm.shakeDurationByHit, cdm.shakeAmountByHit);

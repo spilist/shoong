@@ -42,7 +42,6 @@ public class ScoreUpdate : MonoBehaviour {
   private bool newHighscore = false;
   private float positionX;
   private float distance;
-  private bool goleCubeSoundPlayed = false;
 
   void Start() {
     cubeDifference = cubesCount.getCount();

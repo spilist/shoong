@@ -44,8 +44,7 @@ public class CubeDispenserManager : ObjectsManager {
 
   override protected void afterSpawn() {
     trying = false;
-    decreaseEmissionAmount = objPrefab.GetComponent<ParticleSystem>().emissionRate / fullComboCount;
-    objEncounterEffectForPlayer = instance.transform.Find("Reaction").GetComponent<ParticleSystem>();
+    decreaseEmissionAmount = objPrefab.transform.Find("BasicInside").GetComponent<ParticleSystem>().emissionRate / fullComboCount;
 
     int random = Random.Range(0, chanceBase);
     if (random < goldenChance) {
@@ -53,14 +52,18 @@ public class CubeDispenserManager : ObjectsManager {
       isSuper = false;
       instance.GetComponent<Renderer>().sharedMaterial = goldenInactiveMat;
       instance.GetComponent<CubeDispenserMover>().setGolden();
+      objEncounterEffectForPlayer = instance.transform.Find("GoldenReaction").GetComponent<ParticleSystem>();
     } else if (random < superChance) {
       isGolden = false;
       isSuper = true;
       instance.GetComponent<Renderer>().sharedMaterial = superInactiveMat;
       instance.GetComponent<CubeDispenserMover>().setSuper();
+      objEncounterEffectForPlayer = instance.transform.Find("HeatReaction").GetComponent<ParticleSystem>();
     } else {
       isGolden = false;
       isSuper = false;
+      instance.GetComponent<CubeDispenserMover>().setNormal();
+      objEncounterEffectForPlayer = instance.transform.Find("BasicReaction").GetComponent<ParticleSystem>();
     }
   }
 
