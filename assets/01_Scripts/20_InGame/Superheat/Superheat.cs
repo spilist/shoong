@@ -73,6 +73,7 @@ public class Superheat : MonoBehaviour {
   public float guagePerCube = 0.5f;
   public float guageSpeedStandard = 200;
   private float targetGuage;
+  public int showHeatWhenLargerThan = 100;
 
 	void Start() {
     superheatParticle = transform.Find("Particle").GetComponent<ParticleSystem>();
@@ -151,6 +152,9 @@ public class Superheat : MonoBehaviour {
     iconAlphaStayCount = iconAlphaStayDuration;
 
     addGuage(val);
+    if (val >= showHeatWhenLargerThan) {
+      player.showEffect("Heat");
+    }
   }
 
   public void addGuage(float val) {

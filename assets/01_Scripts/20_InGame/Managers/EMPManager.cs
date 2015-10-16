@@ -26,6 +26,15 @@ public class EMPManager : ObjectsManager {
   private int status;
   private float stayCount;
 
+  public int chanceBase = 200;
+  public int goldenChance = 1;
+  public int goldCubesGet = 1;
+  public int superChance = 10;
+  public int guageAmountSuper = 10;
+  private bool isGolden = false;
+  private bool isSuper = false;
+  private Material shellMat;
+
 	override public void initRest() {
     int level = DataManager.dm.getInt("EMPLevel") - 1;
 
@@ -43,12 +52,37 @@ public class EMPManager : ObjectsManager {
     stayCount = 0;
     cameraSize = Camera.main.orthographicSize;
     targetSize = cameraSize + enlargeSize;
+
+    int random = Random.Range(0, chanceBase);
+    if (random < goldenChance) {
+      isGolden = true;
+      isSuper = false;
+      instance.transform.Find("GoldenShell").gameObject.SetActive(true);
+      instance.transform.Find("GoldenCore").gameObject.SetActive(true);
+      instance.transform.Find("GoldenParticles").gameObject.SetActive(true);
+      shellMat = instance.transform.Find("GoldenShell").GetComponent<Renderer>().sharedMaterial;
+    } else if (random < superChance) {
+      isGolden = false;
+      isSuper = true;
+      instance.transform.Find("HeatShell").gameObject.SetActive(true);
+      instance.transform.Find("HeatCore").gameObject.SetActive(true);
+      instance.transform.Find("HeatParticles").gameObject.SetActive(true);
+      shellMat = instance.transform.Find("HeatShell").GetComponent<Renderer>().sharedMaterial;
+    } else {
+      isGolden = false;
+      isSuper = false;
+      instance.transform.Find("BasicShell").gameObject.SetActive(true);
+      instance.transform.Find("BasicCore").gameObject.SetActive(true);
+      instance.transform.Find("BasicParticles").gameObject.SetActive(true);
+      shellMat = instance.transform.Find("BasicShell").GetComponent<Renderer>().sharedMaterial;
+    }
   }
 
   public void generateForceField() {
     Camera.main.GetComponent<CameraMover>().shakeUntilStop(shakeAmount);
     status = 1;
     superheat.addGuageWithEffect(guageAmount);
+    forceField.GetComponent<ForceField>().setProperty(shellMat, isSuper, isGolden);
   }
 
   void Update() {

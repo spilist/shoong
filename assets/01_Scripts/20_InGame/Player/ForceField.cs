@@ -6,12 +6,25 @@ public class ForceField : MonoBehaviour {
   public EMPManager empManager;
   public PlayerMover player;
 
+  public Superheat superheat;
+  public GoldCubesCount gcCount;
+
   private ProceduralMaterial mat;
   private int rotatingSpeed;
+  private bool isSuper;
+  private bool isGolden;
+  private int count = 0;
 
   void Start() {
-    mat = GetComponent<Renderer>().sharedMaterial as ProceduralMaterial;
     rotatingSpeed = empManager.fieldRotateSpeed;
+  }
+
+  public void setProperty(Material mat, bool isSuper, bool isGolden) {
+    GetComponent<Renderer>().sharedMaterial = mat;
+    this.mat = GetComponent<Renderer>().sharedMaterial as ProceduralMaterial;
+    this.isSuper = isSuper;
+    this.isGolden = isGolden;
+    count = 0;
   }
 
   void Update() {
@@ -19,13 +32,23 @@ public class ForceField : MonoBehaviour {
   }
 
   void OnTriggerEnter(Collider other) {
+    count++;
+
     ObjectsMover mover = other.GetComponent<ObjectsMover>();
-    for (int e = 0; e < mover.cubesWhenEncounter(); e++) {
+
+    if (isGolden) {
       GameObject cube = (GameObject) Instantiate(energyCube, other.transform.position, other.transform.rotation);
-      if (e == 0) {
-        cube.GetComponent<ParticleMover>().triggerCubesGet(mover.cubesWhenEncounter());
-        player.addCubeCount(mover.cubesWhenEncounter());
+      cube.GetComponent<Renderer>().material.SetColor("_TintColor", player.goldenCubeParticleColor);
+      cube.GetComponent<TrailRenderer>().material.SetColor("_TintColor", player.goldenCubeParticleTrailColor);
+    } else {
+      for (int e = 0; e < mover.cubesWhenEncounter(); e++) {
+        GameObject cube = (GameObject) Instantiate(energyCube, other.transform.position, other.transform.rotation);
+        if (e == 0) {
+          cube.GetComponent<ParticleMover>().triggerCubesGet(mover.cubesWhenEncounter());
+        }
       }
+      player.addCubeCount(mover.cubesWhenEncounter());
+      DataManager.dm.increment("NumCubesGetByForcefield", mover.cubesWhenEncounter());
     }
 
     if (mover.isNegativeObject()) {
@@ -33,10 +56,12 @@ public class ForceField : MonoBehaviour {
     }
     mover.destroyObject(true, true);
 
-    DataManager.dm.increment("NumCubesGetByForcefield", mover.cubesWhenEncounter());
   }
 
   void OnDisable() {
+    if (isGolden) gcCount.add(empManager.goldCubesGet * count);
+    else if (isSuper) superheat.addGuageWithEffect(empManager.guageAmountSuper * count);
+
     transform.localScale = Vector3.one;
     transform.Find("Halo").GetComponent<Light>().range = 1;
 
