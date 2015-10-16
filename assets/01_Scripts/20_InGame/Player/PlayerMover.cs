@@ -437,6 +437,7 @@ public class PlayerMover : MonoBehaviour {
     }
 
     UIEffect effect = effects.Find(effectName).GetComponent<UIEffect>();
+    if (effect.gameObject.activeSelf) effect.gameObject.SetActive(false);
     effect.gameObject.SetActive(true);
     effect.addGuage(scale);
   }
