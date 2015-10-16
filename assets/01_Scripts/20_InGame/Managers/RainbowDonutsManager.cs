@@ -4,6 +4,17 @@ using System.Collections;
 public class RainbowDonutsManager : ObjectsManager {
   public Superheat superheat;
   public int guageAmount = 20;
+
+  public int chanceBase = 200;
+  public Material goldenRainbowMat;
+  public int goldenChance = 1;
+  public GoldCubesCount gcCount;
+  public Material superRainbowMat;
+  public int superChance = 10;
+  public int guageAmountSuper = 50;
+  private bool isGolden = false;
+  private bool isSuper = false;
+
   public LayerMask blackholeGravityMask;
 
   public GameObject rainbowRoadPrefab;
@@ -35,6 +46,20 @@ public class RainbowDonutsManager : ObjectsManager {
 
   override protected void afterSpawn() {
     rideCount = 0;
+
+    int random = Random.Range(0, chanceBase);
+    if (random < goldenChance) {
+      isGolden = true;
+      isSuper = false;
+      instance.GetComponent<Renderer>().sharedMaterial = goldenRainbowMat;
+    } else if (random < superChance) {
+      isGolden = false;
+      isSuper = true;
+      instance.GetComponent<Renderer>().sharedMaterial = superRainbowMat;
+    } else {
+      isGolden = false;
+      isSuper = false;
+    }
   }
 
   public void startRidingRainbow() {
@@ -55,6 +80,7 @@ public class RainbowDonutsManager : ObjectsManager {
       objEncounterEffectForPlayer.GetComponent<AudioSource>().Play();
 
       rideCount++;
+
       StartCoroutine("rideRainbow");
     } else {
       objEncounterEffectForPlayer.Stop();
@@ -79,7 +105,13 @@ public class RainbowDonutsManager : ObjectsManager {
 
     drawingRainbowRoad = true;
 
-    superheat.addGuageWithEffect(guageAmount);
+    if (isGolden) {
+      gcCount.add(cubesByEncounter);
+    } else if (isSuper) {
+      superheat.addGuageWithEffect(guageAmountSuper);
+    } else {
+      superheat.addGuageWithEffect(guageAmount);
+    }
 
     yield return new WaitForSeconds(rotateDuring);
 
@@ -105,6 +137,11 @@ public class RainbowDonutsManager : ObjectsManager {
         drawingRainbowRoad = false;
         instance = (GameObject) Instantiate(objPrefab, destination, Quaternion.identity);
         instance.transform.parent = transform;
+        if (isGolden) {
+          instance.GetComponent<Renderer>().sharedMaterial = goldenRainbowMat;
+        } else if (isSuper) {
+          instance.GetComponent<Renderer>().sharedMaterial = superRainbowMat;
+        }
       }
     }
 

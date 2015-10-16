@@ -5,6 +5,7 @@ public class ComboPartsManager : ObjectsManager {
   public PartsToBeCollected ptb;
   public Transform normalParts;
 
+  public int chanceBase = 100;
   public GameObject goldenCubePrefab;
   public GoldCubesCount gcCount;
   public int goldCubesGet = 10;
@@ -54,7 +55,7 @@ public class ComboPartsManager : ObjectsManager {
     nextInstance.transform.parent = transform;
     nextInstance.GetComponent<OffsetFixer>().setParent(instance);
 
-    int random = Random.Range(0, 100);
+    int random = Random.Range(0, chanceBase);
     if (random < goldenCubeChance) {
       changeObject(nextInstance, goldenCubePrefab);
     } else if (random < superheatPartChance) {

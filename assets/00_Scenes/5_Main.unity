@@ -78602,6 +78602,13 @@ MonoBehaviour:
   forceSpawnAtStart: 0
   superheat: {fileID: 98551109}
   guageAmount: 20
+  chanceBase: 200
+  goldenRainbowMat: {fileID: 2100000, guid: bebff4c88f0cd4369b19c2281be089f8, type: 2}
+  goldenChance: 1
+  gcCount: {fileID: 966334536}
+  superRainbowMat: {fileID: 2100000, guid: 25ccef770527743988de0092eda0c38c, type: 2}
+  superChance: 10
+  guageAmountSuper: 50
   blackholeGravityMask:
     serializedVersion: 2
     m_Bits: 8912896
@@ -78653,6 +78660,7 @@ MonoBehaviour:
   forceSpawnAtStart: 0
   ptb: {fileID: 2048063065}
   normalParts: {fileID: 469330, guid: ce95c585031f840b0b5cffa6a71612d0, type: 2}
+  chanceBase: 100
   goldenCubePrefab: {fileID: 117384, guid: 50f32b0368e944945a1410e747cc30ce, type: 2}
   gcCount: {fileID: 966334536}
   goldCubesGet: 10
@@ -79042,6 +79050,7 @@ MonoBehaviour:
   showDurationDecrease: .100000001
   emptyDurationStart: .150000006
   emptyDurationDecrease: .0500000007
+  chanceBase: 200
   goldenCubePrefab: {fileID: 117384, guid: 50f32b0368e944945a1410e747cc30ce, type: 2}
   gcCount: {fileID: 966334536}
   goldCubesGet: 10

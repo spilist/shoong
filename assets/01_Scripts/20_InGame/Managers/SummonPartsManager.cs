@@ -25,6 +25,7 @@ public class SummonPartsManager : ObjectsManager {
   public float emptyDurationStart = 0.15f;
   public float emptyDurationDecrease = 0.05f;
 
+  public int chanceBase = 200;
   public GameObject goldenCubePrefab;
   public GoldCubesCount gcCount;
   public int goldCubesGet = 10;
@@ -77,7 +78,7 @@ public class SummonPartsManager : ObjectsManager {
         GameObject instance = (GameObject) Instantiate(summonedPartPrefab, spawnPos, Quaternion.identity);
         instance.transform.SetParent(obj.transform, false);
 
-        int random = Random.Range(0, 200);
+        int random = Random.Range(0, chanceBase);
         if (random < goldenCubeChance) {
           changeObject(instance, goldenCubePrefab);
         } else if (random < superheatPartChance) {
