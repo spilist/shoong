@@ -38,8 +38,6 @@ public class PlayerMover : MonoBehaviour {
   private bool reboundingByDispenser = false;
   private float reboundingByDispenserDuring = 0;
 
-  public StrengthenTimeBar stBar;
-
   public float boosterSpeedUpAmount = 60;
   public float maxBoosterSpeed = 100;
   public float boosterSpeedDecreaseBase = 70;

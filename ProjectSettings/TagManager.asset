@@ -58,6 +58,7 @@ TagManager:
   - LinkButton
   - TimeMonster
   - SuperheatPart
+  - SuperheatBonusCollider
   layers:
   - Default
   - TransparentFX

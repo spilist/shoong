@@ -2,6 +2,7 @@
 using System.Collections;
 
 public class MenusController : MonoBehaviour {
+  public Superheat superheat;
   public ScoreManager scoreManager;
   public GameObject menusOverlay;
   public GameObject backButton;
@@ -26,7 +27,6 @@ public class MenusController : MonoBehaviour {
       string hitTag = hit.transform.tag;
       string layer = LayerMask.LayerToName(hit.transform.gameObject.layer);
       string menuButtons = hit.transform.parent.name;
-
       if (menuButtons == "MenuButtonsLeft" || menuButtons == "MenuButtonsRight") {
         if (hitTag == "LinkButton") {
           hit.transform.GetComponent<MenusBehavior>().activateSelf();
@@ -43,6 +43,8 @@ public class MenusController : MonoBehaviour {
           AudioSource.PlayClipAtPoint(UITouchSound, hit.transform.position);
         }
         mb.activateSelf();
+      } else if (hitTag == "SuperheatBonusCollider") {
+        superheat.addBonus();
       }
       return hitTag;
     } else {

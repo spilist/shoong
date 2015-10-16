@@ -5,10 +5,10 @@ using System.Collections;
 public class Superheat : MonoBehaviour {
   public bool forceSuperheat = false;
   public PartsToBeCollected ptb;
-  public StrengthenTimeBar stb;
   public PowerBoostBackground powerBoostBackground;
   public RectTransform superImage;
   public RectTransform heatImage;
+  public Text touchIt;
   public PlayerMover player;
   public GameObject energyCube;
   public GameObject afterImagePrefab;
@@ -53,6 +53,7 @@ public class Superheat : MonoBehaviour {
 
   private int superHeatCount = 0;
 
+  public float guageAlphaTurnedOn = 0.6f;
   public float guageAlphaUp = 1;
   public float guageAlphaDown = 0.2f;
   public float guageAlphaChangeDuration = 1;
@@ -67,7 +68,12 @@ public class Superheat : MonoBehaviour {
   public float guageScaleUp = 4;
   public Image guageIcon;
   public Image guage;
+  public Image bonusGuage;
   public Image guageShell;
+  public GameObject superheatBonusCollider;
+  public int maxNumTouch = 10;
+  private float targetBonusGuage;
+  public float bonusGuageSpeedStandard = 400;
 
   public float maxGuage = 1000;
   public float guagePerCube = 0.5f;
@@ -95,11 +101,19 @@ public class Superheat : MonoBehaviour {
       if (transformStatus == 1) {
         superXPos = Mathf.MoveTowards(superXPos, slowSuperPos, Time.deltaTime * Mathf.Abs(startSuperPos - slowSuperPos) / superheatFastDuration);
         heatXPos = Mathf.MoveTowards(heatXPos, slowHeatPos, Time.deltaTime * Mathf.Abs(startHeatPos - slowHeatPos) / superheatFastDuration);
-        if (superXPos == slowSuperPos) transformStatus++;
+        if (superXPos == slowSuperPos) {
+          transformStatus++;
+          superheatBonusCollider.SetActive(true);
+          touchIt.gameObject.SetActive(true);
+        }
       } else if (transformStatus == 2) {
         superXPos = Mathf.MoveTowards(superXPos, fastSuperPos, Time.deltaTime * Mathf.Abs(fastSuperPos - slowSuperPos) / superheatSlowDuration);
         heatXPos = Mathf.MoveTowards(heatXPos, fastHeatPos, Time.deltaTime * Mathf.Abs(fastHeatPos - slowHeatPos) / superheatSlowDuration);
-        if (superXPos == fastSuperPos) transformStatus++;
+        if (superXPos == fastSuperPos) {
+          transformStatus++;
+          superheatBonusCollider.SetActive(false);
+          touchIt.gameObject.SetActive(false);
+        }
       } else if (transformStatus == 3) {
         superXPos = Mathf.MoveTowards(superXPos, endSuperPos, Time.deltaTime * Mathf.Abs(fastSuperPos - endSuperPos) / superheatFastDuration);
         heatXPos = Mathf.MoveTowards(heatXPos, endHeatPos, Time.deltaTime * Mathf.Abs(fastHeatPos - endHeatPos) / superheatFastDuration);
@@ -109,9 +123,18 @@ public class Superheat : MonoBehaviour {
       heatImage.anchoredPosition = new Vector2(heatXPos, 0);
     }
 
+    if (canGetBonus()) {
+      bonusGuage.fillAmount = Mathf.MoveTowards(bonusGuage.fillAmount, targetBonusGuage, Time.deltaTime / (maxGuage / bonusGuageSpeedStandard));
+    }
+
     if (superheatRunning) {
-      guage.fillAmount = Mathf.MoveTowards(guage.fillAmount, 0, Time.deltaTime / boostDuration);
+      if (bonusGuage.fillAmount > 0) {
+        bonusGuage.fillAmount = Mathf.MoveTowards(bonusGuage.fillAmount, 0, Time.deltaTime / boostDuration);
+      } else {
+        guage.fillAmount = Mathf.MoveTowards(guage.fillAmount, 0, Time.deltaTime / boostDuration);
+      }
     } else {
+      if (isTransforming) return;
       guage.fillAmount = Mathf.MoveTowards(guage.fillAmount, targetGuage, Time.deltaTime / (maxGuage / guageSpeedStandard));
 
       if (guageTurnedOn) {
@@ -144,6 +167,7 @@ public class Superheat : MonoBehaviour {
   }
 
   public void addGuageWithEffect(float val) {
+    if (superheatRunning) return;
     guageTurnedOn = true;
     guageColor.a = 1;
     guage.color = guageColor;
@@ -162,6 +186,17 @@ public class Superheat : MonoBehaviour {
     targetGuage += val / maxGuage;
 
     if (!superheatRunning && guage.fillAmount == 1) startSuperheat();
+
+    if (forceSuperheat) {
+      guage.fillAmount = 1;
+      targetGuage = 1;
+      startSuperheat();
+    }
+  }
+
+  public void addBonus() {
+    targetBonusGuage += 1.0f / maxNumTouch;
+    Camera.main.GetComponent<CameraMover>().shake(0.1f, 7);
   }
 
   void startSuperheat() {
@@ -169,13 +204,12 @@ public class Superheat : MonoBehaviour {
 
     superHeatCount++;
     guage.fillAmount = 1;
-    stb.stop();
     ptb.show(false);
 
     guageIcon.transform.localScale = guageScaleUp * Vector3.one;
     guage.transform.localScale = guageScaleUp * Vector3.one;
     guageShell.transform.localScale = guageScaleUp * Vector3.one;
-    guageColor.a = guageAlphaUp;
+    guageColor.a = guageAlphaTurnedOn;
     guageIcon.color = guageColor;
     guage.color = guageColor;
     guageIcon.transform.Find("Particle").gameObject.SetActive(true);
@@ -242,6 +276,7 @@ public class Superheat : MonoBehaviour {
     GetComponent<Collider>().enabled = false;
     superheatRunning = false;
     targetGuage = 0;
+    targetBonusGuage = 0;
 
     superheatParticle.Stop();
     powerBoostBackground.stopPowerBoost();
@@ -303,5 +338,9 @@ public class Superheat : MonoBehaviour {
 
   void OnDisable() {
     DataManager.dm.setBestInt("BestNumSuperheats", superHeatCount);
+  }
+
+  public bool canGetBonus() {
+    return transformStatus == 2;
   }
 }
