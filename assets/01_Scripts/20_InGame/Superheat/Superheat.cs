@@ -9,12 +9,18 @@ public class Superheat : MonoBehaviour {
   public RectTransform superImage;
   public RectTransform heatImage;
   public Text touchIt;
+  public RectTransform touchItEffect;
   public PlayerMover player;
   public GameObject energyCube;
   public GameObject afterImagePrefab;
   public Color[] afterImageMainColors;
   public Color[] afterImageEmissiveColors;
   private ParticleSystem superheatParticle;
+
+  public int touchItEffectOriginalSize = 500;
+  public int touchItEffectShrinkedSize = 350;
+  private float touchItShrinkDuration;
+  private float touchItSize;
 
   public int startSuperPos = -895;
   public int slowSuperPos = 5;
@@ -67,6 +73,7 @@ public class Superheat : MonoBehaviour {
 
   public float guageScaleUp = 4;
   public Image guageIcon;
+  public GameObject bonusGuageIcon;
   public Image guage;
   public Image bonusGuage;
   public Image guageShell;
@@ -86,6 +93,7 @@ public class Superheat : MonoBehaviour {
 
     guageColor = guage.color;
     guageAlpha = guageAlphaDown;
+    touchItShrinkDuration = superheatSlowDuration / maxNumTouch;
   }
 
   public void startGame() {
@@ -95,7 +103,8 @@ public class Superheat : MonoBehaviour {
 
   void Update() {
     transform.position = player.transform.position;
-    transform.Rotate(direction * Time.deltaTime * rotatingSpeed);
+
+    if (superheatRunning) transform.Rotate(direction * Time.deltaTime * rotatingSpeed);
 
     if (transformStatus > 0) {
       if (transformStatus == 1) {
@@ -105,14 +114,26 @@ public class Superheat : MonoBehaviour {
           transformStatus++;
           superheatBonusCollider.SetActive(true);
           touchIt.gameObject.SetActive(true);
+          touchItEffect.gameObject.SetActive(true);
+          touchItSize = touchItEffectOriginalSize;
         }
       } else if (transformStatus == 2) {
         superXPos = Mathf.MoveTowards(superXPos, fastSuperPos, Time.deltaTime * Mathf.Abs(fastSuperPos - slowSuperPos) / superheatSlowDuration);
         heatXPos = Mathf.MoveTowards(heatXPos, fastHeatPos, Time.deltaTime * Mathf.Abs(fastHeatPos - slowHeatPos) / superheatSlowDuration);
+
+        touchItSize = Mathf.MoveTowards(touchItSize, touchItEffectShrinkedSize, Time.deltaTime * (touchItEffectOriginalSize - touchItEffectShrinkedSize) / touchItShrinkDuration);
+        touchItEffect.sizeDelta = touchItSize * Vector2.one;
+
+        if (touchItSize == touchItEffectShrinkedSize) {
+          touchItSize = touchItEffectOriginalSize;
+        }
+
         if (superXPos == fastSuperPos) {
           transformStatus++;
           superheatBonusCollider.SetActive(false);
           touchIt.gameObject.SetActive(false);
+          touchItEffect.gameObject.SetActive(false);
+          touchItEffect.sizeDelta = touchItEffectOriginalSize * Vector2.one;
         }
       } else if (transformStatus == 3) {
         superXPos = Mathf.MoveTowards(superXPos, endSuperPos, Time.deltaTime * Mathf.Abs(fastSuperPos - endSuperPos) / superheatFastDuration);
@@ -125,12 +146,14 @@ public class Superheat : MonoBehaviour {
 
     if (canGetBonus()) {
       bonusGuage.fillAmount = Mathf.MoveTowards(bonusGuage.fillAmount, targetBonusGuage, Time.deltaTime / (maxGuage / bonusGuageSpeedStandard));
+      if (bonusGuage.fillAmount == 1) bonusGuageIcon.SetActive(true);
     }
 
     if (superheatRunning) {
       if (bonusGuage.fillAmount > 0) {
         bonusGuage.fillAmount = Mathf.MoveTowards(bonusGuage.fillAmount, 0, Time.deltaTime / boostDuration);
       } else {
+        bonusGuageIcon.SetActive(false);
         guage.fillAmount = Mathf.MoveTowards(guage.fillAmount, 0, Time.deltaTime / boostDuration);
       }
     } else {
@@ -167,7 +190,7 @@ public class Superheat : MonoBehaviour {
   }
 
   public void addGuageWithEffect(float val) {
-    if (superheatRunning) return;
+    if (superheatRunning || isTransforming) return;
     guageTurnedOn = true;
     guageColor.a = 1;
     guage.color = guageColor;
@@ -182,7 +205,7 @@ public class Superheat : MonoBehaviour {
   }
 
   public void addGuage(float val) {
-    if (superheatRunning) return;
+    if (superheatRunning || isTransforming) return;
     targetGuage += val / maxGuage;
 
     if (!superheatRunning && guage.fillAmount == 1) startSuperheat();
