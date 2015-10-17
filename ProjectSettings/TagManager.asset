@@ -60,6 +60,8 @@ TagManager:
   - SuperheatPart
   - SuperheatBonusCollider
   - ObjectsMenu_objects
+  - Magnet
+  - MagnetArea
   layers:
   - Default
   - TransparentFX
@@ -91,7 +93,7 @@ TagManager:
   - PowerBoost
   - DangerousField
   - Alienship
-  - TimeMonster
+  - MagnetArea
   - 
   m_SortingLayers:
   - name: Default

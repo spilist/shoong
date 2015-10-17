@@ -12,7 +12,6 @@ public class BlackholeManager : ObjectsManager {
   public float[] lifetimePerLevel;
 
   public int reboundDuring = 2;
-  public int teleportRadius = 100;
   public float shakeAmount = 3;
 
   override public void initRest() {

@@ -56,6 +56,7 @@ public class PlayerMover : MonoBehaviour {
   private bool ridingMonster = false;
   private bool usingJetpack = false;
   private bool usingDopple = false;
+  private bool usingMagnet = false;
   private float originalScale;
   private int minimonCounter = 0;
 
@@ -82,6 +83,10 @@ public class PlayerMover : MonoBehaviour {
   private int numBoosters = 0;
   private int numDestroyObstacles = 0;
   private int numUseObjects = 0;
+
+  // private int magnetStatus = 0;
+  // private Transform magnetOrigin;
+  // private int magnetPower;
 
 	void Start () {
     changeManager = GetComponent<CharacterChangeManager>();
@@ -130,6 +135,15 @@ public class PlayerMover : MonoBehaviour {
         rb.AddForce(heading * blm.pullUser, ForceMode.VelocityChange);
       }
     }
+    // else if (magnetStatus != 0 && !isUsingRainbow() && !usingDopple) {
+    //   Vector3 heading = magnetOrigin.position - transform.position;
+    //   if (heading.magnitude < 1) rb.isKinematic = true;
+    //   else {
+    //     heading /= heading.magnitude;
+    //     int force = magnetStatus == 1 ? magnetPower : -magnetPower;
+    //     rb.AddForce(heading * force, ForceMode.VelocityChange);
+    //   }
+    // }
 
     if (!isRidingRainbowRoad && (usingDopple || trapped)) {
       rb.velocity = Vector3.zero;
@@ -147,6 +161,8 @@ public class PlayerMover : MonoBehaviour {
       isInsideBlackhole = true;
       return;
     }
+
+    if (other.tag == "MagnetArea") return;
 
     ObjectsMover mover = other.gameObject.GetComponent<ObjectsMover>();
 
@@ -446,6 +462,8 @@ public class PlayerMover : MonoBehaviour {
 
     if (obj == "SpecialPart") {
       unstoppable = true;
+    } else if (obj == "Magnet") {
+      usingMagnet = true;
     } else if (obj == "Blackhole") {
       isInsideBlackhole = false;
       exitedBlackhole = true;
@@ -517,6 +535,11 @@ public class PlayerMover : MonoBehaviour {
       spawnManager.runManager("Blackhole");
     }
 
+    if (usingMagnet) {
+      usingMagnet = false;
+      spawnManager.runManager("Magnet");
+    }
+
     if (ridingMonster) {
       ridingMonster = false;
       monm.stopRiding();
@@ -575,6 +598,10 @@ public class PlayerMover : MonoBehaviour {
 
   public bool isExitedBlackhole() {
     return exitedBlackhole;
+  }
+
+  public bool isUsingMagnet() {
+    return usingMagnet;
   }
 
   public bool isRebounding() {
@@ -672,6 +699,7 @@ public class PlayerMover : MonoBehaviour {
     else if (tag == "SummonPart") DataManager.dm.increment("NumSummon");
     else if (tag == "RainbowDonut") DataManager.dm.increment("NumRideRainbow");
     else if (tag == "EMP") DataManager.dm.increment("NumGenerateForcefield");
+    else if (tag == "Magnet") DataManager.dm.increment("Magnet");
     else Debug.LogError("Exception? " + tag);
   }
 
@@ -697,5 +725,19 @@ public class PlayerMover : MonoBehaviour {
       gcCount.add(10);
       cube.transform.localScale += 10 * bonusCubeScaleChange * Vector3.one;
     }
+  }
+
+  // public void magnetized(bool pull, Transform magnetOrigin, int power) {
+  //   magnetStatus = pull ? 1 : 2;
+  //   this.magnetOrigin = magnetOrigin;
+  //   magnetPower = power;
+  // }
+
+  // public void magnetizeEnd() {
+  //   magnetStatus = 0;
+  // }
+
+  public bool canBeMagnetized() {
+    return !(isRebounding() || isUsingRainbow() || changeManager.isTeleporting());
   }
 }

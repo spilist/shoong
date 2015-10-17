@@ -134,6 +134,6 @@ public class MonsterMover : ObjectsMover {
   }
 
   public bool rideable() {
-    return !player.isUnstoppable() && (weak || player.isExitedBlackhole());
+    return !player.isUnstoppable() && (weak || player.isUsingMagnet());
   }
 }

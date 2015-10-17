@@ -19,6 +19,9 @@ public class ObjectsMover : MonoBehaviour {
   protected ObjectsManager objectsManager;
   protected Rigidbody rb;
   protected float boundingSize = 50;
+  // protected Transform magnetOrigin;
+  // protected int magnetStatus = 0;
+  // protected int magnetPower;
 
   void Start() {
     player = GameObject.Find("Player").GetComponent<PlayerMover>();
@@ -39,6 +42,20 @@ public class ObjectsMover : MonoBehaviour {
     rb.angularVelocity = Random.onUnitSphere * tumble;
     rb.velocity = direction * speed;
   }
+
+  // virtual public void magnetized(bool pull, Transform magnetOrigin, int power) {
+  //   if (!canBeMagnetized) return;
+
+  //   magnetStatus = pull ? 1 : 2;
+  //   this.magnetOrigin = magnetOrigin;
+  //   magnetPower = power;
+  // }
+
+  // public void magnetizeEnd() {
+  //   if (!canBeMagnetized) return;
+
+  //   magnetStatus = 0;
+  // }
 
   public void setBoundingSize(float val) {
     boundingSize = val;
