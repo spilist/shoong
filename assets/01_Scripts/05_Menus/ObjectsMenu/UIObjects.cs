@@ -2,6 +2,10 @@
 using System.Collections;
 
 public class UIObjects : MenusBehavior {
+  public int maxLevel = 3;
+  public bool isCollector = false;
+  public bool isGoldOnly = false;
+  public bool isCubeOnly = false;
   private ObjectsMenu objectsMenu;
   private string objectCategory;
   private ObjectsCategoryButton categoryButton;
@@ -27,7 +31,8 @@ public class UIObjects : MenusBehavior {
   }
 
   public bool isActive() {
-    return transform.parent.Find("ActiveBox").gameObject.activeSelf;
+    if (isCollector) return true;
+    else return transform.parent.Find("ActiveBox").gameObject.activeSelf;
   }
 
   public void setActive(bool value) {

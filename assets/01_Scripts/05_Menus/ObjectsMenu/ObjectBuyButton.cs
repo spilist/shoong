@@ -4,6 +4,7 @@ using System.Collections;
 using System;
 
 public class ObjectBuyButton : MenusBehavior {
+  public PartsCollector partsCollector;
   public string which;
   public CubesYouHave cubes;
   public Color notAffordableTextColor;
@@ -45,6 +46,8 @@ public class ObjectBuyButton : MenusBehavior {
       DataManager.dm.setBool(objectName, true);
       string tutorialsNotDone = PlayerPrefs.GetString("ObjectTutorialsNotDone");
       PlayerPrefs.SetString("ObjectTutorialsNotDone", (tutorialsNotDone + " " + objectName).Trim());
+
+      if (objectName == "GoldenCollector") partsCollector.checkEnchant();
     }
     DataManager.dm.increment(objLevel);
 

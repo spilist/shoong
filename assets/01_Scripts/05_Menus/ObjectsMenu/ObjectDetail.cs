@@ -13,6 +13,9 @@ public class ObjectDetail : MonoBehaviour {
   public GameObject buyButtonByGoldencube;
   public Text objLevel;
   public GameObject upgradeInfo;
+  public int oneButtonOnlyPosition = 150;
+  public int cubeOriginalPosition = 62;
+  public int goldOriginalPosition = 245;
 
   private GameObject selected;
   private bool rotate = false;
@@ -40,6 +43,7 @@ public class ObjectDetail : MonoBehaviour {
   public void checkBought(UIObjects obj) {
     int level = DataManager.dm.getInt(selected.name + "Level");
     objLevel.text = "LV " + level.ToString();
+    objLevel.transform.Find("Percent").gameObject.SetActive(false);
 
     Text upgradeLevel = upgradeInfo.transform.Find("Level").GetComponent<Text>();
     Text upgradeLabel = upgradeInfo.transform.Find("Label").GetComponent<Text>();
@@ -59,23 +63,25 @@ public class ObjectDetail : MonoBehaviour {
       smallObject.checkBought();
       smallObject.changeDetail(selected);
 
-      selectButton.SetActive(true);
-      unselectButton.SetActive(true);
+      if (!obj.isCollector) {
+        selectButton.SetActive(true);
+        unselectButton.SetActive(true);
+      }
 
       if (obj.isActive()) {
         rotate = true;
         selectButton.SetActive(false);
-        selected.transform.Find("Effect").gameObject.SetActive(true);
+        if (selected.transform.Find("Effect") != null) selected.transform.Find("Effect").gameObject.SetActive(true);
         unselectButton.GetComponent<ObjectUnselectButton>().setObject(obj);
       } else {
         rotate = false;
         selectButton.GetComponent<ObjectSelectButton>().setObject(obj);
-        selected.transform.Find("Effect").gameObject.SetActive(false);
+        if (selected.transform.Find("Effect") != null) selected.transform.Find("Effect").gameObject.SetActive(false);
         unselectButton.SetActive(false);
       }
     }
 
-    if (level >= 3) {
+    if (level >= obj.maxLevel) {
       upgradeLevel.text = "MAX";
       upgradeLabel.text = "upgrade end";
 
@@ -89,6 +95,31 @@ public class ObjectDetail : MonoBehaviour {
       buyButtonByGoldencube.SetActive(true);
       buyButtonByCube.GetComponent<ObjectBuyButton>().setObject(obj);
       buyButtonByGoldencube.GetComponent<ObjectBuyButton>().setObject(obj);
+    }
+
+    if (obj.isCollector) {
+      rotate = true;
+    }
+
+    if (obj.isGoldOnly) {
+      buyButtonByCube.SetActive(false);
+      buyButtonByGoldencube.GetComponent<RectTransform>().anchoredPosition = new Vector2(oneButtonOnlyPosition, buyButtonByGoldencube.GetComponent<RectTransform>().anchoredPosition.y);
+
+      if (level > 0) {
+        objLevel.text = "cube\n+50%%";
+        objLevel.transform.Find("Percent").gameObject.SetActive(true);
+        buyButtonByGoldencube.SetActive(false);
+        upgradeInfo.SetActive(false);
+      }
+    } else if (obj.isCubeOnly) {
+      buyButtonByGoldencube.SetActive(false);
+      buyButtonByCube.GetComponent<RectTransform>().anchoredPosition = new Vector2(oneButtonOnlyPosition, buyButtonByCube.GetComponent<RectTransform>().anchoredPosition.y);
+      objLevel.text = "LV " + (level - 1) + "\n+" + (level - 1) * 5 + "%%";
+      objLevel.transform.Find("Percent").gameObject.SetActive(true);
+      upgradeLevel.text = "LV " + level.ToString();
+    } else {
+      buyButtonByCube.GetComponent<RectTransform>().anchoredPosition = new Vector2(cubeOriginalPosition, buyButtonByCube.GetComponent<RectTransform>().anchoredPosition.y);
+      buyButtonByGoldencube.GetComponent<RectTransform>().anchoredPosition = new Vector2(goldOriginalPosition, buyButtonByGoldencube.GetComponent<RectTransform>().anchoredPosition.y);
     }
   }
 

@@ -108,6 +108,7 @@ public class DataManager : MonoBehaviour {
     ints["CurrentGoldenCubes"] = resetGoldenCube;
     ints["TotalGoldenCubes"] = resetGoldenCube;
     ints["NumCharactersHave"] = 1;
+    ints["NormalCollectorLevel"] = 1;
     bools["robotcogi"] = true;
 
     PlayerPrefs.SetString("SelectedCharacter", "robotcogi");

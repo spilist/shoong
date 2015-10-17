@@ -59,6 +59,7 @@ TagManager:
   - TimeMonster
   - SuperheatPart
   - SuperheatBonusCollider
+  - ObjectsMenu_objects
   layers:
   - Default
   - TransparentFX

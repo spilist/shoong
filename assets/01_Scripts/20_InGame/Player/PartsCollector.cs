@@ -8,6 +8,7 @@ public class PartsCollector : MonoBehaviour {
 	public ParticleSystem particleeffect;
   public GameObject howManyCubesGet;
   public Text cubesCount;
+  public Material enchanted;
 
   public int maxCubesGet = 2000;
 	public int maxEmission = 1000;
@@ -28,6 +29,13 @@ public class PartsCollector : MonoBehaviour {
 		emissionDifference = maxEmission - startEmission;
     scaleDifference = maxScale - startScale;
     rb = GetComponent<Rigidbody>();
+    checkEnchant();
+  }
+
+  public void checkEnchant() {
+    if (DataManager.dm.getBool("GoldenCollector")) {
+      GetComponent<Renderer>().sharedMaterial = enchanted;
+    }
   }
 
   void Update() {

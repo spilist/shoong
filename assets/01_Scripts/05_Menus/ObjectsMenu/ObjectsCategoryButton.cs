@@ -3,36 +3,34 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class ObjectsCategoryButton : MenusBehavior {
-  public GameObject another;
+  public bool hasSelection = true;
   private ObjectsMenu objectsMenu;
   private string category;
   private Text objSelectionCount;
   private Text objSelectionLimit;
 
   void OnEnable() {
-    objSelectionCount = transform.Find("SelectionCount").GetComponent<Text>();
-    objSelectionLimit = transform.Find("SelectionLimit").GetComponent<Text>();
     category = name.Replace("Button", "");
-    checkSelection();
+
+    if (hasSelection) {
+      objSelectionCount = transform.Find("SelectionCount").GetComponent<Text>();
+      objSelectionLimit = transform.Find("SelectionLimit").GetComponent<Text>();
+      checkSelection();
+    }
   }
 
   override public void activateSelf() {
     objectsMenu = transform.parent.GetComponent<ObjectsMenu>();
 
     transform.Find("Text").GetComponent<Text>().color = objectsMenu.activeColor;
-    objSelectionCount.color = objectsMenu.activeColor;
-    objSelectionLimit.color = objectsMenu.activeColor;
-
-    another.transform.Find("Text").GetComponent<Text>().color = objectsMenu.inactiveColor;
-    another.transform.Find("SelectionCount").GetComponent<Text>().color = objectsMenu.inactiveColor;
-    another.transform.Find("SelectionLimit").GetComponent<Text>().color = objectsMenu.inactiveColor;
-
-    objectsMenu.showEmptyDescription(category);
-    transform.parent.Find(category).gameObject.SetActive(true);
-    transform.parent.Find(another.name.Replace("Button", "")).gameObject.SetActive(false);
+    if (hasSelection) {
+      objSelectionCount.color = objectsMenu.activeColor;
+      objSelectionLimit.color = objectsMenu.activeColor;
+    }
 
     objectsMenu.resetAll(category);
-    checkSelection();
+
+    if (hasSelection) checkSelection();
   }
 
   public void changeSelectionCount(int amount) {

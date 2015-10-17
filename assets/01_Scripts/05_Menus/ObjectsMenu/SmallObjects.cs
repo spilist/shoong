@@ -2,6 +2,7 @@
 using System.Collections;
 
 public class SmallObjects : MonoBehaviour {
+  public bool isCollector = false;
   public bool combined = false;
   public Mesh activeMesh;
   public Material activeMaterial;
@@ -18,7 +19,7 @@ public class SmallObjects : MonoBehaviour {
   void Update () {
     if (obj.isActive()) {
       transform.Rotate(-Vector3.forward * Time.deltaTime * 150, Space.World);
-      transform.parent.Find("Effect").gameObject.SetActive(true);
+      if (!isCollector) transform.parent.Find("Effect").gameObject.SetActive(true);
     } else {
       transform.localRotation = originalRotation;
       transform.parent.Find("Effect").gameObject.SetActive(false);

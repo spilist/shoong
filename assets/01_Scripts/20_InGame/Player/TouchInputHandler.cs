@@ -4,7 +4,7 @@ using System;
 
 public class TouchInputHandler : MonoBehaviour
 {
-	public Superheat superheat;
+  public Superheat superheat;
   public PlayerMover player;
   public PartsToBeCollected ptb;
 	public ParticleSystem touchEffect;

@@ -11,7 +11,7 @@ public class ObjectUnselectButton : MenusBehavior {
   }
 
   public void setObject(UIObjects obj) {
-    gameObject.SetActive(true);
+    if (!obj.isCollector) gameObject.SetActive(true);
     selectedObj = obj;
     objName = obj.transform.parent.name;
     category = obj.transform.parent.parent.name;
