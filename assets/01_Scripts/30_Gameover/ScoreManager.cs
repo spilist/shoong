@@ -14,6 +14,18 @@ public class ScoreManager : MonoBehaviour {
   // for gameover effect
   public float showPlayerExplosionDuring = 2;
   public ParticleSystem playerExplosion;
+  public GameObject characterDebris;
+  public int debrisTumble = 30;
+  public int numDebrisSpawn = 10;
+  public float minDebrisSize = 0.5f;
+  public float maxDebrisSize = 1f;
+  public int minDebrisSpeed = 200;
+  public int maxDebrisSpeed = 400;
+  public float minSizeAfterBreak = 5;
+  public float maxSizeAfterBreak = 10;
+  public float destroyLargeAfter = 0.5f;
+  public float destroySmallAfter = 4;
+
   public GameObject player;
   public GameObject contactCollider;
   public GameObject barsCanvas;
@@ -74,8 +86,11 @@ public class ScoreManager : MonoBehaviour {
     inputHandler.stopReact();
     AudioManager.am.changeVolume("Main", "Small");
 
-    playerExplosion.Play ();
-    playerExplosion.GetComponent<AudioSource>().Play();
+    Instantiate(characterDebris, player.transform.position, Quaternion.identity);
+
+    // playerExplosion.Play ();
+    // playerExplosion.GetComponent<AudioSource>().Play();
+    player.GetComponent<Rigidbody>().isKinematic = true;
     player.GetComponent<MeshRenderer>().enabled = false;
     player.GetComponent<SphereCollider>().enabled = false;
     boosterCount = player.GetComponent<PlayerMover>().getNumBoosters();

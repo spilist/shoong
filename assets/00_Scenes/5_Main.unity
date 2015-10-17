@@ -56408,6 +56408,17 @@ MonoBehaviour:
   goldCubesCount: {fileID: 966334536}
   showPlayerExplosionDuring: 3
   playerExplosion: {fileID: 1917855184}
+  characterDebris: {fileID: 176606, guid: 6ed2e118b4a8f453d8102dd45ef6cb8f, type: 2}
+  debrisTumble: 30
+  numDebrisSpawn: 14
+  minDebrisSize: .5
+  maxDebrisSize: 1
+  minDebrisSpeed: 100
+  maxDebrisSpeed: 200
+  minSizeAfterBreak: 5
+  maxSizeAfterBreak: 10
+  destroyLargeAfter: 1
+  destroySmallAfter: 4
   player: {fileID: 91418582}
   contactCollider: {fileID: 1298175622}
   barsCanvas: {fileID: 1289803595}
