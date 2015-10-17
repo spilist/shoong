@@ -87,7 +87,7 @@ public class CameraMover : MonoBehaviour {
     slowly = val;
   }
 
-  public void shake(float duration = 0, float amount = 0.7f) {
+  public void shake(float duration = 0, float amount = 4) {
     if (duration == 0) {
       shakeCount = shakeDuring;
     } else {
@@ -99,7 +99,7 @@ public class CameraMover : MonoBehaviour {
     originalPos = transform.position;
   }
 
-  public void shakeUntilStop(float amount = 0.7f) {
+  public void shakeUntilStop(float amount = 4) {
     shaking = true;
     shakeContinuously = true;
     shakeAmount = amount;

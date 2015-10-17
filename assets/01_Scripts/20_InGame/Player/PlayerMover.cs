@@ -7,7 +7,7 @@ public class PlayerMover : MonoBehaviour {
 
   public Transform effects;
   public SpawnManager spawnManager;
-  public SpeedMeter speedMeter;
+  public GoldCubesCount gcCount;
 
   public CubesCount cubesCount;
   public ScoreManager scoreManager;
@@ -222,6 +222,8 @@ public class PlayerMover : MonoBehaviour {
       if (mover.isNegativeObject()) {
         if (isUsingRainbow()) DataManager.dm.increment("NumDestroyObstaclesOnRainbow");
         else if (unstoppable) DataManager.dm.increment("NumDestroyObstaclesWithMetal");
+
+        generateGoldCube(mover);
       }
 
       if (bonus > 0) {
@@ -337,9 +339,7 @@ public class PlayerMover : MonoBehaviour {
       DataManager.dm.increment("NumBoostersWithJetpack");
     }
 
-    if (usingPowerBoost) {
-      Camera.main.GetComponent<CameraMover>().shake(superheat.shakeDuration, superheat.shakeAmount);
-    } else {
+    if (!usingPowerBoost) {
       changeManager.booster.Play();
       changeManager.booster.GetComponent<AudioSource>().Play();
     }
@@ -376,7 +376,6 @@ public class PlayerMover : MonoBehaviour {
       isRidingRainbowRoad = false;
     }
     stopStrengthen();
-    speedMeter.updateMaximum();
   }
 
   public void stopPowerBoost() {
@@ -385,7 +384,6 @@ public class PlayerMover : MonoBehaviour {
     GetComponent<Collider>().enabled = true;
     rotatePlayerBody();
     afterStrengthenStart();
-    speedMeter.updateMaximum();
   }
 
   public float maxBooster() {
@@ -463,7 +461,6 @@ public class PlayerMover : MonoBehaviour {
       boosterBonus = jpm.boosterBonusScale;
       changeManager.booster.GetComponent<ParticleSystem>().emissionRate *= (boosterBonus * 2);
       changeManager.booster.transform.localScale = (boosterBonus * 2) * Vector3.one;
-      speedMeter.updateMaximum();
     } else if (obj == "Dopple") {
       usingDopple = true;
       contactCollider.enabled = false;
@@ -498,9 +495,6 @@ public class PlayerMover : MonoBehaviour {
       changeManager.booster.transform.localScale = Vector3.one;
       boosterBonus = 1;
       spawnManager.runManager("Jetpack");
-      speedMeter.updateMaximum();
-
-      // something about time
     }
 
     if (unstoppable) {
@@ -642,24 +636,26 @@ public class PlayerMover : MonoBehaviour {
     }
   }
 
-  public void destroyObject(string tag) {
+  public void destroyObject(string tag, int gaugeGain = 0) {
     numDestroyObstacles++;
     DataManager.dm.increment("TotalNumDestroyObstacles");
 
     if (tag == "Obstacle_small") {
       DataManager.dm.increment("NumDestroySmallAsteroids");
-      superheat.addGuageWithEffect(20);
+      superheat.addGuageWithEffect(gaugeGain);
     }
     else if (tag == "Obstacle_big") {
       DataManager.dm.increment("NumDestroyAsteroids");
-      superheat.addGuageWithEffect(20);
+      superheat.addGuageWithEffect(gaugeGain);
     }
     else if (tag == "Obstacle") {
       DataManager.dm.increment("NumDestroyMeteroids");
-      superheat.addGuageWithEffect(40);
+      superheat.addGuageWithEffect(gaugeGain);
     }
     else if (tag == "Blackhole") DataManager.dm.increment("NumDestroyBlackholes");
     else if (tag == "Monster") DataManager.dm.increment("NumDestroyMonsters");
+
+    if (!usingEMP) Camera.main.GetComponent<CameraMover>().shake();
   }
 
   public void encounterObject(string tag) {
@@ -687,5 +683,19 @@ public class PlayerMover : MonoBehaviour {
 
   public bool isInvincible() {
     return afterStrengthen || ridingMonster || unstoppable || isRebounding() || isUsingRainbow() || changeManager.isTeleporting();
+  }
+
+  public void generateGoldCube(ObjectsMover obj) {
+    string tag = obj.tag;
+    Vector3 position = obj.transform.position;
+
+    int random = Random.Range(0, 200);
+    if ((random < 4 && tag == "Obstacle") || (random < 1 && (tag == "Obstacle_small" || tag == "Obstacle_big"))) {
+      GameObject cube = (GameObject) Instantiate(particles, position, Quaternion.identity);
+      cube.GetComponent<Renderer>().material.SetColor("_TintColor", goldenCubeParticleColor);
+      cube.GetComponent<TrailRenderer>().material.SetColor("_TintColor", goldenCubeParticleTrailColor);
+      gcCount.add(10);
+      cube.transform.localScale += 10 * bonusCubeScaleChange * Vector3.one;
+    }
   }
 }

@@ -40,7 +40,7 @@ public class MeteroidMover : ObjectsMover {
 
   override protected void afterCollide(Collision collision) {
     if (collision.collider.tag == tag) {
-      if (bigger && collision.collider.GetComponent<MeteroidMover>().bigger) {
+      if (bigger == collision.collider.GetComponent<MeteroidMover>().bigger) {
         destroyObject();
         return;
       }

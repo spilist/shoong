@@ -52,6 +52,7 @@ public class TinyForceField_main : MonoBehaviour {
       dpm.getEnergy.GetComponent<AudioSource>().Play();
     } else {
       DataManager.dm.increment("NumDestroyObstaclesWithBlink");
+      dpm.player.generateGoldCube(mover);
     }
   }
 }

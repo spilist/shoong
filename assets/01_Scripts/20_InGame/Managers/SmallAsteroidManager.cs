@@ -17,6 +17,7 @@ public class SmallAsteroidManager : ObjectsManager {
 
   public int max_obstacles = 6;
   private GameObject[] smallAsteroidsPrefab;
+  private bool unstable = false;
 
   override public void initRest() {
     isNegative = true;
@@ -57,5 +58,19 @@ public class SmallAsteroidManager : ObjectsManager {
     if (count > 0) {
       spawnManager.spawnRandom(smallAsteroidsPrefab, count);
     }
+  }
+
+  public void startPhase() {
+    unstable = true;
+  }
+
+  override public float getSpeed() {
+    if (unstable) return speed * 2;
+    else return speed;
+  }
+
+  override public float getTumble() {
+    if (unstable) return tumble * 2;
+    else return tumble;
   }
 }

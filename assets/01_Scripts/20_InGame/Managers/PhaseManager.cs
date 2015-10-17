@@ -5,6 +5,8 @@ using System.Collections;
 public class PhaseManager : MonoBehaviour {
   public GoldCubesCount gcCount;
   public NormalPartsManager npm;
+  public AsteroidManager atm;
+  public SmallAsteroidManager ssm;
   public Renderer EMFilter;
   public float EMFilterTargetAlpha = 0.11f;
   private Color EMFilterColor;
@@ -72,6 +74,8 @@ public class PhaseManager : MonoBehaviour {
       ntm.enabled = true;
     } else if (level == 2) {
       npm.startPhase();
+      atm.startPhase();
+      ssm.startPhase();
       EMFilter.gameObject.SetActive(true);
       EMFilterColor = EMFilter.material.GetColor("_TintColor");
     } else if (level == 3) {

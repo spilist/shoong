@@ -58,6 +58,7 @@ public class CubeDispenserMover : ObjectsMover {
         player.goodPartsEncounter(this, cdm.cubesByEncounter * cdm.fullComboCount);
       } else {
         player.contactCubeDispenser(transform, cdm.cubesByEncounter, collision, cdm.reboundDuring, isGolden);
+        Camera.main.GetComponent<CameraMover>().shake();
 
         if (isGolden) {
           cdm.gcCount.add(cdm.goldenCubeAmount, false);

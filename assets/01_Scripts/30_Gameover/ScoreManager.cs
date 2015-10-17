@@ -31,6 +31,9 @@ public class ScoreManager : MonoBehaviour {
   public float[] bannerPos;
   public GameObject gameOverButtons;
 
+  public float gameOverShakeDuration = 1;
+  public float gameOverShakeAmount = 8;
+
   private bool isSaved = false;
   private int boosterCount;
 
@@ -45,6 +48,8 @@ public class ScoreManager : MonoBehaviour {
   }
 
   public void gameOver(string reason) {
+    Camera.main.GetComponent<CameraMover>().shake(gameOverShakeDuration, gameOverShakeAmount);
+
     ElapsedTime.time.stopTime();
     if (reason == "Obstacle_small") {
       DataManager.dm.increment("DeathBySmallAsteroid");

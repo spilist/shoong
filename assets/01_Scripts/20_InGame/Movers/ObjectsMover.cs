@@ -154,7 +154,7 @@ public class ObjectsMover : MonoBehaviour {
 
     if (byPlayer) {
       objectsManager.run();
-      if (isNegativeObject()) player.destroyObject(tag);
+      if (isNegativeObject()) player.destroyObject(tag, gaugeWhenDestroy());
     } else {
       objectsManager.runImmediately();
     }
@@ -195,7 +195,7 @@ public class ObjectsMover : MonoBehaviour {
     if (hasEncounterEffect()) {
       player.encounterObject(tag);
     } else if (isNegativeObject()) {
-      player.destroyObject(tag);
+      player.destroyObject(tag, gaugeWhenDestroy());
     }
 
     afterEncounter();
@@ -236,5 +236,9 @@ public class ObjectsMover : MonoBehaviour {
 
   virtual public bool noCubesByDestroy() {
     return false;
+  }
+
+  public int gaugeWhenDestroy() {
+    return objectsManager.gaugeWhenDestroy;
   }
 }

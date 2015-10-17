@@ -351,8 +351,10 @@ public class Superheat : MonoBehaviour {
         player.addCubeCount(mover.cubesWhenEncounter());
       }
     }
+    player.generateGoldCube(mover);
 
     mover.destroyObject(true, true);
+
   }
 
   public bool isOnSuperheat() {

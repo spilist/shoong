@@ -24,6 +24,7 @@ public class ObjectsManager : MonoBehaviour {
 
   public GameObject instance;
   public bool forceSpawnAtStart = false;
+  public int gaugeWhenDestroy = 0;
 
   void OnEnable() {
     spawnManager = gameObject.GetComponent<SpawnManager>();

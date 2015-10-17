@@ -3081,10 +3081,10 @@ MonoBehaviour:
   fastHeatPos: 5
   endHeatPos: -895
   superheatFastDuration: .100000001
-  superheatSlowDuration: 130
+  superheatSlowDuration: 1.29999995
   shakeDuration: .5
   shakeAmount: 4
-  sizeChangeInterval: 15
+  sizeChangeInterval: .150000006
   middleSize: 3
   bigSize: 6
   boostDuration: 3
@@ -31986,6 +31986,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gcCount: {fileID: 966334536}
   npm: {fileID: 1991538117}
+  atm: {fileID: 1991538112}
+  ssm: {fileID: 1991538121}
   EMFilter: {fileID: 1767020066}
   EMFilterTargetAlpha: .109999999
   ntm: {fileID: 1991538107}
@@ -53582,6 +53584,8 @@ MonoBehaviour:
   - -20
   - -130
   gameOverButtons: {fileID: 741547521}
+  gameOverShakeDuration: 1
+  gameOverShakeAmount: 8
 --- !u!4 &1422286123
 Transform:
   m_ObjectHideFlags: 0
@@ -78930,6 +78934,7 @@ MonoBehaviour:
   player: {fileID: 0}
   instance: {fileID: 0}
   forceSpawnAtStart: 0
+  gaugeWhenDestroy: 0
   superheat: {fileID: 98551109}
   guageAmount: 20
   chanceBase: 200
@@ -78990,6 +78995,7 @@ MonoBehaviour:
   player: {fileID: 0}
   instance: {fileID: 0}
   forceSpawnAtStart: 0
+  gaugeWhenDestroy: 0
   ptb: {fileID: 2048063065}
   normalParts: {fileID: 469330, guid: ce95c585031f840b0b5cffa6a71612d0, type: 2}
   chanceBase: 100
@@ -79033,6 +79039,7 @@ MonoBehaviour:
   player: {fileID: 0}
   instance: {fileID: 0}
   forceSpawnAtStart: 0
+  gaugeWhenDestroy: 40
   biggerMeteroids: {fileID: 177696, guid: 7dc9fcd4d69684bbea3ed2eaac9bb7a5, type: 2}
   biggerMeteroidStrength: 2.5
   biggerMeteroidSpeed: 320
@@ -79078,6 +79085,7 @@ MonoBehaviour:
   player: {fileID: 0}
   instance: {fileID: 0}
   forceSpawnAtStart: 0
+  gaugeWhenDestroy: 0
   blackholeGravitySpherePrefab: {fileID: 162082, guid: 2cc8b66773d8e4032bade512e7e76b8e,
     type: 2}
   blackholeGravity: {fileID: 0}
@@ -79119,6 +79127,7 @@ MonoBehaviour:
   player: {fileID: 0}
   instance: {fileID: 0}
   forceSpawnAtStart: 0
+  gaugeWhenDestroy: 0
   speed_runaway: 60
   speed_weaken: 20
   spawnRadius: 200
@@ -79178,6 +79187,7 @@ MonoBehaviour:
   player: {fileID: 0}
   instance: {fileID: 0}
   forceSpawnAtStart: 0
+  gaugeWhenDestroy: 0
   brokenMeshes:
   - {fileID: 4300002, guid: adeac5a1dbc17406db69c3e813cc95ef, type: 3}
   - {fileID: 4300004, guid: adeac5a1dbc17406db69c3e813cc95ef, type: 3}
@@ -79251,6 +79261,7 @@ MonoBehaviour:
   player: {fileID: 0}
   instance: {fileID: 0}
   forceSpawnAtStart: 0
+  gaugeWhenDestroy: 20
   brokenTumble: 30
   minBrokenSpawn: 6
   maxBrokenSpawn: 8
@@ -79291,6 +79302,7 @@ MonoBehaviour:
   player: {fileID: 0}
   instance: {fileID: 0}
   forceSpawnAtStart: 0
+  gaugeWhenDestroy: 0
   destroyBonusPerLevel:
   - 0
   - 1
@@ -79337,6 +79349,7 @@ MonoBehaviour:
   player: {fileID: 0}
   instance: {fileID: 0}
   forceSpawnAtStart: 0
+  gaugeWhenDestroy: 0
   gcCount: {fileID: 966334536}
   respawnAfter: 120
   spawnRadius: 210
@@ -79371,6 +79384,7 @@ MonoBehaviour:
   player: {fileID: 0}
   instance: {fileID: 0}
   forceSpawnAtStart: 0
+  gaugeWhenDestroy: 0
   ptb: {fileID: 2048063065}
   summonedPartPrefab: {fileID: 192090, guid: 16bbe96ae2882b4478d909a3bab22e21, type: 2}
   summonedPartsDestroyEffect: {fileID: 158326, guid: 7a4903aebeaf1440d95d69b1daac37af,
@@ -79426,6 +79440,7 @@ MonoBehaviour:
   player: {fileID: 0}
   instance: {fileID: 0}
   forceSpawnAtStart: 0
+  gaugeWhenDestroy: 0
   ptb: {fileID: 2048063065}
   max_parts: 60
   minUnstableSpeed: 10
@@ -79458,6 +79473,7 @@ MonoBehaviour:
   player: {fileID: 0}
   instance: {fileID: 0}
   forceSpawnAtStart: 0
+  gaugeWhenDestroy: 0
   superheat: {fileID: 98551109}
   guageAmount: 20
   forceFieldRadiusPerLevel: 2c0100009001000026020000
@@ -79506,6 +79522,7 @@ MonoBehaviour:
   player: {fileID: 0}
   instance: {fileID: 0}
   forceSpawnAtStart: 0
+  gaugeWhenDestroy: 0
   boosterBonusScalePerLevel:
   - 1.10000002
   - 1.5
@@ -79544,6 +79561,7 @@ MonoBehaviour:
   player: {fileID: 0}
   instance: {fileID: 0}
   forceSpawnAtStart: 0
+  gaugeWhenDestroy: 0
   getEnergy: {fileID: 317572741}
   energyCube: {fileID: 178344, guid: b185d52f68bf5499e81f948bbbf1bd8c, type: 2}
   forceFieldPrefab: {fileID: 175312, guid: c461f9df261eb41ff961769c46f81139, type: 2}
@@ -79589,6 +79607,7 @@ MonoBehaviour:
   player: {fileID: 0}
   instance: {fileID: 0}
   forceSpawnAtStart: 0
+  gaugeWhenDestroy: 20
   brokenTumble: 30
   minBrokenSpawn: 6
   maxBrokenSpawn: 8
@@ -79629,6 +79648,7 @@ MonoBehaviour:
   player: {fileID: 0}
   instance: {fileID: 0}
   forceSpawnAtStart: 0
+  gaugeWhenDestroy: 40
   biggerMeteroids: {fileID: 177696, guid: 7dc9fcd4d69684bbea3ed2eaac9bb7a5, type: 2}
   biggerMeteroidStrength: 2.5
   biggerMeteroidSpeed: 320
@@ -79674,6 +79694,7 @@ MonoBehaviour:
   player: {fileID: 0}
   instance: {fileID: 0}
   forceSpawnAtStart: 0
+  gaugeWhenDestroy: 0
   time: {fileID: 980455324}
   max_emp: 10
   minScale: 15
@@ -79713,6 +79734,7 @@ MonoBehaviour:
   player: {fileID: 0}
   instance: {fileID: 0}
   forceSpawnAtStart: 0
+  gaugeWhenDestroy: 0
   laserPrefab: {fileID: 140848, guid: ee9b8d5623d8a4cb2a1aed0140e7d797, type: 2}
   laserWarningLinePrefab: {fileID: 149728, guid: 1a32e5133a7bd4c099bbab27e21edf87,
     type: 2}
@@ -79756,6 +79778,7 @@ MonoBehaviour:
   player: {fileID: 0}
   instance: {fileID: 0}
   forceSpawnAtStart: 0
+  gaugeWhenDestroy: 0
   superheat: {fileID: 98551109}
   guageForEncounter: 100
 --- !u!1 &1997391145

@@ -53,6 +53,7 @@ public class ForceField : MonoBehaviour {
 
     if (mover.isNegativeObject()) {
       DataManager.dm.increment("NumDestroyObstaclesByForcefield");
+      player.generateGoldCube(mover);
     }
     mover.destroyObject(true, true);
 
