@@ -84,10 +84,6 @@ public class PlayerMover : MonoBehaviour {
   private int numDestroyObstacles = 0;
   private int numUseObjects = 0;
 
-  // private int magnetStatus = 0;
-  // private Transform magnetOrigin;
-  // private int magnetPower;
-
 	void Start () {
     changeManager = GetComponent<CharacterChangeManager>();
     changeManager.changeCharacter(PlayerPrefs.GetString("SelectedCharacter"));
@@ -135,15 +131,6 @@ public class PlayerMover : MonoBehaviour {
         rb.AddForce(heading * blm.pullUser, ForceMode.VelocityChange);
       }
     }
-    // else if (magnetStatus != 0 && !isUsingRainbow() && !usingDopple) {
-    //   Vector3 heading = magnetOrigin.position - transform.position;
-    //   if (heading.magnitude < 1) rb.isKinematic = true;
-    //   else {
-    //     heading /= heading.magnitude;
-    //     int force = magnetStatus == 1 ? magnetPower : -magnetPower;
-    //     rb.AddForce(heading * force, ForceMode.VelocityChange);
-    //   }
-    // }
 
     if (!isRidingRainbowRoad && (usingDopple || trapped)) {
       rb.velocity = Vector3.zero;
@@ -499,8 +486,6 @@ public class PlayerMover : MonoBehaviour {
       effectDuration = strengthen_during;
     }
 
-    // stBar.startStrengthen(effectDuration);
-
     yield return new WaitForSeconds(effectDuration);
 
     stopStrengthen();
@@ -726,16 +711,6 @@ public class PlayerMover : MonoBehaviour {
       cube.transform.localScale += 10 * bonusCubeScaleChange * Vector3.one;
     }
   }
-
-  // public void magnetized(bool pull, Transform magnetOrigin, int power) {
-  //   magnetStatus = pull ? 1 : 2;
-  //   this.magnetOrigin = magnetOrigin;
-  //   magnetPower = power;
-  // }
-
-  // public void magnetizeEnd() {
-  //   magnetStatus = 0;
-  // }
 
   public bool canBeMagnetized() {
     return !(isRebounding() || isUsingRainbow() || changeManager.isTeleporting());

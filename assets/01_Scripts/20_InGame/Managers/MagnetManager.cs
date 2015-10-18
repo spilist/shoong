@@ -2,12 +2,7 @@
 using System.Collections;
 
 public class MagnetManager : ObjectsManager {
-  public float pullPushDuration = 3;
-  public float pauseDuration = 0.5f;
-
-  public int powerToParts = 50;
-  public int powerToPlayer_pull = 80;
-  public int powerToPlayer_push = 40;
+  public int power = 50;
 
   public int[] radiusPerLevel;
   public float[] lifetimePerLevel;
@@ -17,5 +12,4 @@ public class MagnetManager : ObjectsManager {
 
     objEncounterEffectForPlayer.transform.localScale = Vector3.one * radiusPerLevel[level] / radiusPerLevel[0];
   }
-
 }
