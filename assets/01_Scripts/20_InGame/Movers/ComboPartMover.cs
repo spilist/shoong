@@ -16,7 +16,6 @@ public class ComboPartMover : ObjectsMover {
 
   override protected void initializeRest() {
     cpm = (ComboPartsManager)objectsManager;
-    canBeMagnetized = false;
   }
 
   override public string getManager() {

@@ -8,8 +8,9 @@ public class MagnetManager : ObjectsManager {
   public float[] lifetimePerLevel;
 
   override public void initRest() {
-    int level = DataManager.dm.getInt("MagnetLevel") - 1;
+  }
 
+  override public void adjustForLevel(int level) {
     objEncounterEffectForPlayer.transform.localScale = Vector3.one * radiusPerLevel[level] / radiusPerLevel[0];
   }
 }

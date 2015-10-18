@@ -62,6 +62,8 @@ TagManager:
   - ObjectsMenu_objects
   - Magnet
   - MagnetArea
+  - Transformer
+  - TransformerSphere
   layers:
   - Default
   - TransparentFX

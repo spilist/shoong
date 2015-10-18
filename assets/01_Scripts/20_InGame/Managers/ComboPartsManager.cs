@@ -32,13 +32,16 @@ public class ComboPartsManager : ObjectsManager {
   private Mesh[] partsMeshes;
 
   override public void initRest() {
-    fullComboCount = fullComboCountPerLevel[DataManager.dm.getInt("ComboPartsLevel") - 1];
     skipInterval = true;
     partsMeshes = new Mesh[normalParts.childCount];
     int count = 0;
     foreach (Transform tr in normalParts) {
       partsMeshes[count++] = tr.GetComponent<MeshFilter>().sharedMesh;
     }
+  }
+
+  override public void adjustForLevel(int level) {
+    fullComboCount = fullComboCountPerLevel[level];
   }
 
   override protected void afterSpawn() {

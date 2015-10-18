@@ -25,6 +25,10 @@ public class ObjectsManager : MonoBehaviour {
   public GameObject instance;
   public bool forceSpawnAtStart = false;
   public int gaugeWhenDestroy = 0;
+  public bool hasLevel = false;
+  public string nameForLevel;
+  public int level;
+  protected bool noMoreRespawn = false;
 
   void OnEnable() {
     spawnManager = gameObject.GetComponent<SpawnManager>();
@@ -36,6 +40,11 @@ public class ObjectsManager : MonoBehaviour {
       maxSpawnInterval = 0;
     }
 
+    if (hasLevel) {
+      level = DataManager.dm.getInt(nameForLevel + "Level") - 1;
+      if (level < 0) level = 0;
+      adjustForLevel(level);
+    }
     initRest();
   }
 
@@ -48,12 +57,27 @@ public class ObjectsManager : MonoBehaviour {
     StartCoroutine(respawnRoutine());
   }
 
+  public void runByTransform(Vector3 pos, int level) {
+    noMoreRespawn = true;
+    if (instance != null) {
+      instance.GetComponent<ObjectsMover>().destroyObject(false, false);
+    }
+    instance = (GameObject) Instantiate (objPrefab, pos, Quaternion.identity);
+    instance.transform.parent = transform;
+    adjustForLevel(level);
+    afterSpawn();
+  }
+
   virtual public void runImmediately() {
     skipInterval = true;
     StartCoroutine(respawnRoutine());
   }
 
-  virtual public IEnumerator respawnRoutine() {
+  virtual public void adjustForLevel(int level) {}
+
+  protected IEnumerator respawnRoutine() {
+    if (noMoreRespawn) yield break;
+
     yield return new WaitForSeconds(spawnInterval());
 
     skipInterval = false;

@@ -49,9 +49,15 @@ public class SpawnManager : MonoBehaviour {
     obm.run();
   }
 
+  public void runManagerAt(string objName, Vector3 pos, int level) {
+    (GetComponent(objName + "Manager") as MonoBehaviour).enabled = true;
+    ObjectsManager obm = (ObjectsManager)GetComponent(objName + "Manager");
+    obm.runByTransform(pos, level);
+  }
+
   public GameObject spawn(GameObject target) {
     GameObject newInstance = (GameObject) Instantiate (target, getSpawnPosition(target), Quaternion.identity);
-    newInstance.transform.parent = gameObject.transform;
+    newInstance.transform.parent = transform;
     return newInstance;
   }
 

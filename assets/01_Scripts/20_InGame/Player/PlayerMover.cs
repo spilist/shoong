@@ -53,6 +53,7 @@ public class PlayerMover : MonoBehaviour {
   private bool usingJetpack = false;
   private bool usingDopple = false;
   private bool usingMagnet = false;
+  private bool usingTransformer = false;
   private float originalScale;
   private int minimonCounter = 0;
 
@@ -439,14 +440,11 @@ public class PlayerMover : MonoBehaviour {
       usingEMP = true;
       rb.isKinematic = true;
       return;
-    } else if (obj == "Jetpack") {
-      usingJetpack = true;
-      boosterBonus = jpm.boosterBonusScale;
-      changeManager.booster.GetComponent<ParticleSystem>().emissionRate *= (boosterBonus * 2);
-      changeManager.booster.transform.localScale = (boosterBonus * 2) * Vector3.one;
     } else if (obj == "Dopple") {
       usingDopple = true;
       contactCollider.enabled = false;
+    } else if (obj == "Transformer") {
+      usingTransformer = true;
     }
 
     StopCoroutine("strengthen");
@@ -470,12 +468,9 @@ public class PlayerMover : MonoBehaviour {
   }
 
   public void stopStrengthen() {
-    if (usingJetpack) {
-      usingJetpack = false;
-      changeManager.booster.GetComponent<ParticleSystem>().emissionRate /= (boosterBonus * 2);
-      changeManager.booster.transform.localScale = Vector3.one;
-      boosterBonus = 1;
-      spawnManager.runManager("Jetpack");
+    if (usingTransformer) {
+      usingTransformer = false;
+      spawnManager.runManager("Transformer");
     }
 
     if (unstoppable) {
@@ -574,6 +569,10 @@ public class PlayerMover : MonoBehaviour {
     return usingDopple;
   }
 
+  public bool isUsingTransformer() {
+    return usingTransformer;
+  }
+
   public bool isTrapped() {
     return trapped;
   }
@@ -649,6 +648,7 @@ public class PlayerMover : MonoBehaviour {
     else if (tag == "RainbowDonut") DataManager.dm.increment("NumRideRainbow");
     else if (tag == "EMP") DataManager.dm.increment("NumGenerateForcefield");
     else if (tag == "Magnet") DataManager.dm.increment("Magnet");
+    else if (tag == "Transformer") DataManager.dm.increment("Transformer");
     else Debug.LogError("Exception? " + tag);
   }
 

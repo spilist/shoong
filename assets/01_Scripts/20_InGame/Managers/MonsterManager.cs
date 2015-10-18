@@ -46,8 +46,11 @@ public class MonsterManager : ObjectsManager {
   public float warningBlinkSeconds = 0.7f;
 
 	override public void initRest() {
-    numMinimonSpawn = numsMinimonSpawn[DataManager.dm.getInt("MonsterLevel") - 1];
     isNegative = true;
+  }
+
+  override public void adjustForLevel(int level) {
+    numMinimonSpawn = numsMinimonSpawn[level];
   }
 
   override public void runImmediately() {
@@ -62,7 +65,9 @@ public class MonsterManager : ObjectsManager {
     Vector3 spawnPos = new Vector3(screenPos.x + player.transform.position.x, player.transform.position.y, screenPos.y + player.transform.position.z);
     instance = (GameObject) Instantiate(objPrefab, spawnPos, Quaternion.identity);
     instance.transform.parent = transform;
+  }
 
+  override protected void afterSpawn() {
     StartCoroutine("startWarning");
   }
 

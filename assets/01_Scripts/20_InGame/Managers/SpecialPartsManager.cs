@@ -6,6 +6,9 @@ public class SpecialPartsManager : ObjectsManager {
   public float bonus;
 
   override public void initRest() {
-    bonus = destroyBonusPerLevel[DataManager.dm.getInt("SpecialPartsLevel") - 1];
+  }
+
+  override public void adjustForLevel(int level) {
+    bonus = destroyBonusPerLevel[level];
   }
 }

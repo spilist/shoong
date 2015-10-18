@@ -36,10 +36,12 @@ public class CubeDispenserManager : ObjectsManager {
   private bool isSuper = false;
 
   override public void initRest() {
-    int level = DataManager.dm.getInt("CubeDispenserLevel") - 1;
+    skipInterval = true;
+  }
+
+  override public void adjustForLevel(int level) {
     fullComboCount = fullComboCountPerLevel[level];
     destroyAfterSeconds = destroyAfterPerLevel[level];
-    skipInterval = true;
   }
 
   override protected void afterSpawn() {

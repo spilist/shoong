@@ -6,7 +6,6 @@ public class EMPMover : ObjectsMover {
 
 	override protected void initializeRest() {
     empManager = (EMPManager) objectsManager;
-    canBeMagnetized = false;
   }
 
   override protected void afterEncounter() {

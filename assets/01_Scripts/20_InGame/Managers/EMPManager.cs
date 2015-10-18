@@ -36,14 +36,14 @@ public class EMPManager : ObjectsManager {
   private Material shellMat;
 
 	override public void initRest() {
-    int level = DataManager.dm.getInt("EMPLevel") - 1;
+    skipInterval = true;
+    forceField = strengthenPlayerEffect;
+  }
 
+  override public void adjustForLevel(int level) {
     targetRadius = forceFieldRadiusPerLevel[level];
     enlargeSize = cameraEnlargeSizePerLevel[level];
     shakeAmount = cameraShakeAmountPerLevel[level];
-
-    skipInterval = true;
-    forceField = strengthenPlayerEffect;
   }
 
   override protected void afterSpawn() {

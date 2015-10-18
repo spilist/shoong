@@ -38,15 +38,17 @@ public class SummonPartsManager : ObjectsManager {
 
   override public void initRest() {
     skipInterval = true;
-    int level = DataManager.dm.getInt("SummonPartsLevel") - 1;
-    numSpawnZ = numSpawnZPerLevel[level];
-    summonedPartLifetime = summonedPartLifetimePerLevel[level];
 
     summonMeshes = new Mesh[GetComponent<NormalPartsManager>().objPrefab.transform.childCount];
     int count = 0;
     foreach (Transform tr in GetComponent<NormalPartsManager>().objPrefab.transform) {
       summonMeshes[count++] = tr.GetComponent<MeshFilter>().sharedMesh;
     }
+  }
+
+  override public void adjustForLevel(int level) {
+    numSpawnZ = numSpawnZPerLevel[level];
+    summonedPartLifetime = summonedPartLifetimePerLevel[level];
   }
 
   override protected void afterSpawn() {

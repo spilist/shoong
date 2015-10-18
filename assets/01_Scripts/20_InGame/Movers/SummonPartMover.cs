@@ -6,7 +6,6 @@ public class SummonPartMover : ObjectsMover {
 
   override protected void initializeRest() {
     summonManager = (SummonPartsManager) objectsManager;
-    canBeMagnetized = false;
   }
 
   override protected void afterEncounter() {

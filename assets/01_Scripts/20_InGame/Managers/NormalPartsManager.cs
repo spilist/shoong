@@ -7,7 +7,7 @@ public class NormalPartsManager : ObjectsManager {
   public float minUnstableSpeed = 5;
   public float maxUnstableSpeed = 20;
 
-  private GameObject[] partsPrefab;
+  public GameObject[] partsPrefab;
   private bool unstable = false;
 
   override public void initRest() {

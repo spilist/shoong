@@ -15,12 +15,4 @@ public class MagnetMover : ObjectsMover {
   override public string getManager() {
     return "MagnetManager";
   }
-
-  // override protected void afterDestroy(bool byPlayer) {
-  //   player.magnetizeEnd();
-  // }
-
-  // override protected void afterEncounter() {
-  //   player.magnetizeEnd();
-  // }
 }

@@ -22,6 +22,12 @@ public class ObjectsMover : MonoBehaviour {
   public float boundingSize = 50;
   protected Vector3 headingToBlackhole;
 
+  protected bool isTransforming = false;
+  protected float transformDuration;
+  protected string transformResult;
+  protected GameObject transformParticle;
+  protected int transformLevel;
+
   void Start() {
     player = GameObject.Find("Player").GetComponent<PlayerMover>();
 
@@ -83,9 +89,40 @@ public class ObjectsMover : MonoBehaviour {
       shrinkedScale = Mathf.MoveTowards(shrinkedScale, 0f, Time.deltaTime * originalScale);
       transform.localScale = shrinkedScale * Vector3.one;
       if (shrinkedScale == 0) destroyObject(false);
-    } else {
+    } else if (isTransforming) {
+      shrinkedScale = Mathf.MoveTowards(shrinkedScale, 0f, Time.deltaTime * originalScale / transformDuration);
+      transform.localScale = shrinkedScale * Vector3.one;
+      if (shrinkedScale == 0) {
+        GameObject trParticle = (GameObject) Instantiate(transformParticle, transform.position, Quaternion.identity);
+        if (transformResult == "") {
+          NormalPartsManager npm = objectsManager.GetComponent<NormalPartsManager>();
+          GameObject prefab = npm.partsPrefab[Random.Range(0, npm.partsPrefab.Length)];
+          Instantiate(prefab, transform.position, Quaternion.identity);
+          trParticle.transform.Find("Normal").gameObject.SetActive(true);
+        } else {
+          objectsManager.GetComponent<SpawnManager>().runManagerAt(transformResult, transform.position, transformLevel);
+          trParticle.transform.Find("Better").gameObject.SetActive(true);
+        }
+        destroyObject(false);
+      }
+    }
+    else {
       normalMovement();
     }
+  }
+
+  public IEnumerator transformed(Vector3 startPos, GameObject transformLaser, float laserDuration, float duration, GameObject transformParticle, string what, int level) {
+
+    GameObject laser = (GameObject) Instantiate(transformLaser, startPos, Quaternion.identity);
+    laser.GetComponent<TransformLaser>().shoot(transform.position, laserDuration);
+
+    yield return new WaitForSeconds(laserDuration);
+
+    isTransforming = true;
+    transformDuration = duration;
+    transformResult = what;
+    this.transformParticle = transformParticle;
+    transformLevel = level;
   }
 
   virtual protected void normalMovement() {}

@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 467448}
   - 33: {fileID: 3335326}
   - 23: {fileID: 2389796}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sub(4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27,7 +27,7 @@ GameObject:
   - 4: {fileID: 449166}
   - 33: {fileID: 3323938}
   - 23: {fileID: 2397834}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sub(1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - 4: {fileID: 422792}
   - 33: {fileID: 3339178}
   - 23: {fileID: 2345878}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sub(2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61,7 +61,7 @@ GameObject:
   - 4: {fileID: 434806}
   - 33: {fileID: 3315480}
   - 23: {fileID: 2334766}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sub(3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79,7 +79,7 @@ GameObject:
   - 54: {fileID: 5497408}
   - 135: {fileID: 13525886}
   - 114: {fileID: 11492656}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SummonPart
   m_TagString: SummonPart
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - 4: {fileID: 466366}
   - 33: {fileID: 3321388}
   - 23: {fileID: 2354346}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Main
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -361,6 +361,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33809e178cb104815bfc45fac29a8724, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boundingSize: 50
 --- !u!135 &13525886
 SphereCollider:
   m_ObjectHideFlags: 1

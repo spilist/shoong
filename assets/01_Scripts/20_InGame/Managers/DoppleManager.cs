@@ -17,8 +17,9 @@ public class DoppleManager : ObjectsManager {
   public int blinkRadius = 50;
 
   override public void initRest() {
-    int level = DataManager.dm.getInt("DoppleLevel") - 1;
+  }
 
+  override public void adjustForLevel(int level) {
     targetSize = forceFieldSizePerLevel[level];
   }
 

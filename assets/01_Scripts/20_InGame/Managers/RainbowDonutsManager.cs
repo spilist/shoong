@@ -40,8 +40,11 @@ public class RainbowDonutsManager : ObjectsManager {
   private float drawingDistance;
 
   override public void initRest() {
-    numRoadRides = numRoadRidesPerLevel[DataManager.dm.getInt("RainbowDonutsLevel") - 1];
     skipInterval = true;
+  }
+
+  override public void adjustForLevel(int level) {
+    numRoadRides = numRoadRidesPerLevel[level];
   }
 
   override protected void afterSpawn() {

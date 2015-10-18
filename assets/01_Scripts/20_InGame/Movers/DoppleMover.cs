@@ -9,7 +9,6 @@ public class DoppleMover : ObjectsMover {
 
   override protected void initializeRest() {
     dpm = (DoppleManager) objectsManager;
-    canBeMagnetized = false;
     radius = dpm.blinkRadius;
     teleportingSound = GetComponent<AudioSource>();
   }

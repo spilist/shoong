@@ -11,6 +11,8 @@ public class TinyForceField_main : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other) {
     ObjectsMover mover = other.GetComponent<ObjectsMover>();
+    if (mover == null) return;
+
     if (mover.tag == "Blackhole") return;
 
     if (dpm.player.isRidingMonster()) {
