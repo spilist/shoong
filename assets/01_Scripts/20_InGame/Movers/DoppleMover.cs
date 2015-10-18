@@ -43,4 +43,8 @@ public class DoppleMover : ObjectsMover {
       blink();
     }
   }
+
+  override public int cubesWhenDestroy() {
+    return 50;
+  }
 }

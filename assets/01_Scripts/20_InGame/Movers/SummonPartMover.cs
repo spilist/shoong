@@ -15,4 +15,8 @@ public class SummonPartMover : ObjectsMover {
   override public string getManager() {
     return "SummonPartsManager";
   }
+
+  override public int cubesWhenDestroy() {
+    return summonManager.numSpawnX * summonManager.numSpawnZ * 5;
+  }
 }

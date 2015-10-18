@@ -49,7 +49,7 @@ public class TransformerSphere : MonoBehaviour {
     if (other.tag == "Obstacle_big" || other.tag == "Obstacle_small") {
       ObjectsMover mover = other.GetComponent<ObjectsMover>();
 
-      StartCoroutine(mover.transformed(transform.position, transformLaser, laserShootDuration, transformDuration, transformParticle, transformResult(), level));
+      mover.transformed(transform.position, transformLaser, laserShootDuration, transformDuration, transformParticle, transformResult(), level);
     }
   }
 

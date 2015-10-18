@@ -42,4 +42,13 @@ public class ComboPartMover : ObjectsMover {
     }
     cpm.eatenByPlayer();
   }
+
+  override public int cubesWhenDestroy() {
+    int count = 0;
+    for (int i = cpm.comboCount; i < cpm.fullComboCount; i++) {
+      count += (i + 1);
+    }
+
+    return count * cpm.cubesByEncounter;
+  }
 }

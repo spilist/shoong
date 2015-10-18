@@ -19,8 +19,7 @@ public class PlayerMover : MonoBehaviour {
 
   private float speed;
 	private float boosterspeed = 0;
-  public float minTumble;
-  private float tumble;
+  public float tumble = 4;
   private Vector3 direction;
 
   public ComboPartsManager cpm;
@@ -178,16 +177,20 @@ public class PlayerMover : MonoBehaviour {
     DataManager.dm.increment("NumSpawnMinimonster", monm.numMinimonSpawn);
   }
 
-  public void goodPartsEncounter(ObjectsMover mover, int howMany, int bonus = 0) {
-    if (howMany > 0) {
-      int instantiateCount;
-      if (howMany < cubesAsItIsUntill) {
-        instantiateCount = howMany;
-      } else {
-        instantiateCount = cubesAsItIsUntill + Mathf.RoundToInt((howMany - cubesAsItIsUntill) / (float) restCubesChangePer);
-      }
+  public int numCubesInstantiate(int howMany) {
+    int instantiateCount;
+    if (howMany < cubesAsItIsUntill) {
+      instantiateCount = howMany;
+    } else {
+      instantiateCount = cubesAsItIsUntill + Mathf.RoundToInt((howMany - cubesAsItIsUntill) / (float) restCubesChangePer);
+    }
 
-      for (int e = 0; e < instantiateCount; e++) {
+    return instantiateCount;
+  }
+
+  public void goodPartsEncounter(ObjectsMover mover, int howMany, int bonus = 0, bool encounterPlayer = true) {
+    if (howMany > 0) {
+      for (int e = 0; e < numCubesInstantiate(howMany); e++) {
         GameObject cube = (GameObject) Instantiate(particles, mover.transform.position, mover.transform.rotation);
         if (e == 0) {
           cube.GetComponent<ParticleMover>().triggerCubesGet(howMany);
@@ -226,7 +229,8 @@ public class PlayerMover : MonoBehaviour {
       if (mover.tag != "GoldenCube") addCubeCount(howMany, bonus);
     }
 
-    mover.encounterPlayer();
+    if (encounterPlayer) mover.encounterPlayer();
+    else mover.destroyObject(true, true);
   }
 
   public void addCubeCount(int howMany = 1, int bonus = 0) {
@@ -268,7 +272,6 @@ public class PlayerMover : MonoBehaviour {
       string[] angVals = PlayerPrefs.GetString("CharacterAngVal").Split(',');
       rb.angularVelocity = new Vector3(float.Parse(angVals[0]), float.Parse(angVals[1]), float.Parse(angVals[2]));
     } else {
-      tumble = (cubesCount.getCPS() > minTumble) ? cubesCount.getCPS() : minTumble;
       rb.angularVelocity = Random.onUnitSphere * tumble;
     }
   }
@@ -519,6 +522,9 @@ public class PlayerMover : MonoBehaviour {
     Camera.main.GetComponent<CameraMover>().shakeUntilStop(blm.shakeAmount);
     processCollision(collision);
     reboundingByBlackhole = true;
+
+    StopCoroutine("strengthen");
+    StartCoroutine("strengthen");
   }
 
   public void afterStrengthenStart() {
@@ -578,9 +584,11 @@ public class PlayerMover : MonoBehaviour {
   }
 
   public void stopEMP() {
-    rb.isKinematic = false;
+    if (!usingPowerBoost) {
+      rb.isKinematic = false;
+      rotatePlayerBody();
+    }
     usingEMP = false;
-    rotatePlayerBody();
     afterStrengthenStart();
   }
 

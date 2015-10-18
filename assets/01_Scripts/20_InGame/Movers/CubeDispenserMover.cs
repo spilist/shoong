@@ -49,7 +49,17 @@ public class CubeDispenserMover : ObjectsMover {
   override protected void afterDestroy(bool byPlayer) {
     player.setTrapped(false);
 
-    if (byPlayer && comboCount != cdm.fullComboCount) DataManager.dm.increment("NumDestroyCubeDispenser");
+    if (byPlayer) {
+      if (comboCount != cdm.fullComboCount) {
+        DataManager.dm.increment("NumDestroyCubeDispenser");
+      }
+
+      if (isGolden) {
+        cdm.gcCount.add(cdm.goldenCubeAmount * cdm.fullComboCount, false);
+      } else if (isSuper) {
+        cdm.superheat.addGuageWithEffect(cdm.guageAmountSuper * cdm.fullComboCount);
+      }
+    }
   }
 
   override protected void afterCollide(Collision collision) {
@@ -100,6 +110,14 @@ public class CubeDispenserMover : ObjectsMover {
   }
 
   override public int cubesWhenEncounter() {
-    return cdm.cubesByEncounter * cdm.fullComboCount;
+    return cdm.cubesByEncounter * restCount();
+  }
+
+  override public int cubesWhenDestroy() {
+    return cdm.cubesByEncounter * restCount();
+  }
+
+  public int restCount() {
+    return cdm.fullComboCount - comboCount;
   }
 }

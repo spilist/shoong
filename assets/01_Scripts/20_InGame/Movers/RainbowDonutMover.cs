@@ -17,6 +17,16 @@ public class RainbowDonutMover : ObjectsMover {
     StartCoroutine("rideRainbow");
   }
 
+  override protected void afterDestroy(bool byPlayer) {
+    if (byPlayer) {
+      if (rdm.isGolden) {
+        rdm.gcCount.add(cubesWhenEncounter() * rdm.numRoadRides, false);
+      } else if (rdm.isSuper) {
+        rdm.superheat.addGuageWithEffect(rdm.guageAmountSuper * rdm.numRoadRides);
+      }
+    }
+  }
+
   override public string getManager() {
     return "RainbowDonutsManager";
   }
@@ -32,5 +42,9 @@ public class RainbowDonutMover : ObjectsMover {
     if (rotatingFast) {
       transform.Rotate(-Vector3.forward * Time.deltaTime * rdm.rotateAngularSpeed, Space.World);
     }
+  }
+
+  override public int cubesWhenDestroy() {
+    return cubesWhenEncounter() * rdm.numRoadRides;
   }
 }

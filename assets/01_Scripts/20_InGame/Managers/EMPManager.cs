@@ -2,6 +2,7 @@
 using System.Collections;
 
 public class EMPManager : ObjectsManager {
+  public GoldCubesCount gcCount;
   public Superheat superheat;
   public int guageAmount = 20;
 
@@ -31,8 +32,8 @@ public class EMPManager : ObjectsManager {
   public int goldCubesGet = 1;
   public int superChance = 10;
   public int guageAmountSuper = 10;
-  private bool isGolden = false;
-  private bool isSuper = false;
+  public bool isGolden = false;
+  public bool isSuper = false;
   private Material shellMat;
 
 	override public void initRest() {
@@ -44,6 +45,14 @@ public class EMPManager : ObjectsManager {
     targetRadius = forceFieldRadiusPerLevel[level];
     enlargeSize = cameraEnlargeSizePerLevel[level];
     shakeAmount = cameraShakeAmountPerLevel[level];
+    if (level == 0) {
+      goldenChance = 0;
+      superChance = 0;
+    }
+
+    if (level == 1) {
+      goldenChance = 0;
+    }
   }
 
   override protected void afterSpawn() {

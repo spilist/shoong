@@ -8,4 +8,8 @@ public class SpecialPartMover : ObjectsMover {
   override public string getManager() {
     return "SpecialPartsManager";
   }
+
+  override public int cubesWhenDestroy() {
+    return 50;
+  }
 }

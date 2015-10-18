@@ -16,7 +16,7 @@ GameObject:
   - 199: {fileID: 19928736}
   - 114: {fileID: 11437968}
   - 82: {fileID: 8286582}
-  m_Layer: 9
+  m_Layer: 23
   m_Name: Meteoroid2_1
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   - 199: {fileID: 19942166}
   - 114: {fileID: 11499230}
   - 82: {fileID: 8244378}
-  m_Layer: 9
+  m_Layer: 23
   m_Name: Meteoroid1_2
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -62,7 +62,7 @@ GameObject:
   - 199: {fileID: 19932468}
   - 114: {fileID: 11448936}
   - 82: {fileID: 8254380}
-  m_Layer: 9
+  m_Layer: 23
   m_Name: Meteoroid2_2
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -100,7 +100,7 @@ GameObject:
   - 199: {fileID: 19973440}
   - 114: {fileID: 11465510}
   - 82: {fileID: 8247958}
-  m_Layer: 9
+  m_Layer: 23
   m_Name: Meteoroid1_1
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -123,7 +123,7 @@ GameObject:
   - 199: {fileID: 19990418}
   - 114: {fileID: 11403844}
   - 82: {fileID: 8240956}
-  m_Layer: 9
+  m_Layer: 23
   m_Name: Meteoroid2_3
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -146,7 +146,7 @@ GameObject:
   - 199: {fileID: 19992402}
   - 114: {fileID: 11421904}
   - 82: {fileID: 8275564}
-  m_Layer: 9
+  m_Layer: 23
   m_Name: Meteoroid1_3
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -944,6 +944,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2968ff343918b42168230ef658afc639, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boundingSize: 50
   bigger: 1
 --- !u!114 &11421904
 MonoBehaviour:
@@ -956,6 +957,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2968ff343918b42168230ef658afc639, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boundingSize: 50
   bigger: 1
 --- !u!114 &11437968
 MonoBehaviour:
@@ -968,6 +970,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2968ff343918b42168230ef658afc639, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boundingSize: 50
   bigger: 1
 --- !u!114 &11448936
 MonoBehaviour:
@@ -980,6 +983,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2968ff343918b42168230ef658afc639, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boundingSize: 50
   bigger: 1
 --- !u!114 &11465510
 MonoBehaviour:
@@ -992,6 +996,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2968ff343918b42168230ef658afc639, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boundingSize: 50
   bigger: 1
 --- !u!114 &11499230
 MonoBehaviour:
@@ -1004,6 +1009,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2968ff343918b42168230ef658afc639, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boundingSize: 50
   bigger: 1
 --- !u!135 &13536358
 SphereCollider:
@@ -7494,7 +7500,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Layer
-      value: 9
+      value: 23
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

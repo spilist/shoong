@@ -8,11 +8,25 @@ public class EMPMover : ObjectsMover {
     empManager = (EMPManager) objectsManager;
   }
 
+  override protected void afterDestroy(bool byPlayer) {
+    if (byPlayer) {
+      if (empManager.isGolden) {
+        empManager.gcCount.add(cubesWhenDestroy(), false);
+      } else if (empManager.isSuper) {
+        empManager.superheat.addGuageWithEffect(cubesWhenDestroy());
+      }
+    }
+  }
+
   override protected void afterEncounter() {
     empManager.generateForceField();
   }
 
   override public string getManager() {
     return "EMPManager";
+  }
+
+  override public int cubesWhenDestroy() {
+    return 50;
   }
 }

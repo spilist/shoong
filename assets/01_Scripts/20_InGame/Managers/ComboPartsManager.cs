@@ -27,8 +27,8 @@ public class ComboPartsManager : ObjectsManager {
   private bool secondShot = false;
 
   public GameObject nextInstance;
-  private int comboCount = 0;
-  private int fullComboCount;
+  public int comboCount = 0;
+  public int fullComboCount;
   private Mesh[] partsMeshes;
 
   override public void initRest() {
@@ -42,6 +42,14 @@ public class ComboPartsManager : ObjectsManager {
 
   override public void adjustForLevel(int level) {
     fullComboCount = fullComboCountPerLevel[level];
+    if (level == 0) {
+      goldenCubeChance = 0;
+      superheatPartChance = 0;
+    }
+
+    if (level == 1) {
+      goldenCubeChance = 0;
+    }
   }
 
   override protected void afterSpawn() {

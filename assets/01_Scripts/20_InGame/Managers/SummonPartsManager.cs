@@ -49,13 +49,21 @@ public class SummonPartsManager : ObjectsManager {
   override public void adjustForLevel(int level) {
     numSpawnZ = numSpawnZPerLevel[level];
     summonedPartLifetime = summonedPartLifetimePerLevel[level];
+    if (level == 0) {
+      goldenCubeChance = 0;
+      superheatPartChance = 0;
+    }
+
+    if (level == 1) {
+      goldenCubeChance = 0;
+    }
+  }
+
+  Mesh randomMesh() {
+    return summonMeshes[Random.Range(0, summonMeshes.Length)];
   }
 
   override protected void afterSpawn() {
-    summonMesh = summonMeshes[Random.Range(0, summonMeshes.Length)];
-    foreach (Transform tr in instance.transform) {
-      tr.GetComponent<MeshFilter>().sharedMesh = summonMesh;
-    }
   }
 
   public void startSummon() {
@@ -86,7 +94,7 @@ public class SummonPartsManager : ObjectsManager {
           changeObject(instance, superheatPartPrefab);
           instance.transform.Find("HeatEffect").gameObject.SetActive(true);
         } else {
-          instance.GetComponent<MeshFilter>().sharedMesh = summonMesh;
+          instance.GetComponent<MeshFilter>().sharedMesh = randomMesh();
           instance.transform.Find("BasicEffect").gameObject.SetActive(true);
         }
       }

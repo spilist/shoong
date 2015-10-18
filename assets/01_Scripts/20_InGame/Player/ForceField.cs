@@ -35,28 +35,20 @@ public class ForceField : MonoBehaviour {
     count++;
 
     ObjectsMover mover = other.GetComponent<ObjectsMover>();
+    if (mover.tag == "Blackhole") return;
 
     if (isGolden) {
       GameObject cube = (GameObject) Instantiate(energyCube, other.transform.position, other.transform.rotation);
       cube.GetComponent<Renderer>().material.SetColor("_TintColor", player.goldenCubeParticleColor);
       cube.GetComponent<TrailRenderer>().material.SetColor("_TintColor", player.goldenCubeParticleTrailColor);
     } else {
-      for (int e = 0; e < mover.cubesWhenEncounter(); e++) {
-        GameObject cube = (GameObject) Instantiate(energyCube, other.transform.position, other.transform.rotation);
-        if (e == 0) {
-          cube.GetComponent<ParticleMover>().triggerCubesGet(mover.cubesWhenEncounter());
-        }
-      }
-      player.addCubeCount(mover.cubesWhenEncounter());
-      DataManager.dm.increment("NumCubesGetByForcefield", mover.cubesWhenEncounter());
+      player.goodPartsEncounter(mover, mover.cubesWhenDestroy(), 0, false);
+      DataManager.dm.increment("NumCubesGetByForcefield", mover.cubesWhenDestroy());
     }
 
     if (mover.isNegativeObject()) {
       DataManager.dm.increment("NumDestroyObstaclesByForcefield");
-      player.generateGoldCube(mover);
     }
-    mover.destroyObject(true, true);
-
   }
 
   void OnDisable() {

@@ -42,8 +42,8 @@ public class Superheat : MonoBehaviour {
   public float shakeAmount = 3f;
 
   public float sizeChangeInterval = 0.1f;
-  public int middleSize = 3;
-  public int bigSize = 6;
+  public float middleSize = 3;
+  public float bigSize = 6.5f;
   private bool isTransforming = false;
   public int boostDuration = 8;
 
@@ -160,6 +160,8 @@ public class Superheat : MonoBehaviour {
       if (isTransforming) return;
       guage.fillAmount = Mathf.MoveTowards(guage.fillAmount, targetGuage, Time.deltaTime / (maxGuage / guageSpeedStandard));
 
+      if (guage.fillAmount == 1) startSuperheat();
+
       if (guageTurnedOn) {
         if (iconAlphaStayCount > 0) {
           iconAlphaStayCount -= Time.deltaTime;
@@ -191,6 +193,8 @@ public class Superheat : MonoBehaviour {
 
   public void addGuageWithEffect(float val) {
     if (superheatRunning || isTransforming) return;
+    if (val == 0) return;
+
     guageTurnedOn = true;
     guageColor.a = 1;
     guage.color = guageColor;
@@ -207,8 +211,6 @@ public class Superheat : MonoBehaviour {
   public void addGuage(float val) {
     if (superheatRunning || isTransforming) return;
     targetGuage += val / maxGuage;
-
-    if (!superheatRunning && guage.fillAmount == 1) startSuperheat();
 
     if (forceSuperheat) {
       guage.fillAmount = 1;
@@ -343,18 +345,7 @@ public class Superheat : MonoBehaviour {
   void OnTriggerEnter(Collider other) {
     ObjectsMover mover = other.GetComponent<ObjectsMover>();
     if (mover == null) return;
-
-    for (int e = 0; e < mover.cubesWhenEncounter(); e++) {
-      GameObject cube = (GameObject) Instantiate(energyCube, other.transform.position, other.transform.rotation);
-      if (e == 0) {
-        cube.GetComponent<ParticleMover>().triggerCubesGet(mover.cubesWhenEncounter());
-        player.addCubeCount(mover.cubesWhenEncounter());
-      }
-    }
-    player.generateGoldCube(mover);
-
-    mover.destroyObject(true, true);
-
+    player.goodPartsEncounter(mover, mover.cubesWhenDestroy(), 0, false);
   }
 
   public bool isOnSuperheat() {

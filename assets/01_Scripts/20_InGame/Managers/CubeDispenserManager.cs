@@ -42,6 +42,14 @@ public class CubeDispenserManager : ObjectsManager {
   override public void adjustForLevel(int level) {
     fullComboCount = fullComboCountPerLevel[level];
     destroyAfterSeconds = destroyAfterPerLevel[level];
+    if (level == 0) {
+      goldenChance = 0;
+      superChance = 0;
+    }
+
+    if (level == 1) {
+      goldenChance = 0;
+    }
   }
 
   override protected void afterSpawn() {

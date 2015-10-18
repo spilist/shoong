@@ -111,11 +111,15 @@ public class ObjectsMover : MonoBehaviour {
     }
   }
 
-  public IEnumerator transformed(Vector3 startPos, GameObject transformLaser, float laserDuration, float duration, GameObject transformParticle, string what, int level) {
+  public void transformed(Vector3 startPos, GameObject transformLaser, float laserDuration, float duration, GameObject transformParticle, string what, int level) {
 
     GameObject laser = (GameObject) Instantiate(transformLaser, startPos, Quaternion.identity);
     laser.GetComponent<TransformLaser>().shoot(transform.position, laserDuration);
 
+    StartCoroutine(startTransform(laserDuration, duration, transformParticle, what, level));
+  }
+
+  IEnumerator startTransform(float laserDuration, float duration, GameObject transformParticle, string what, int level) {
     yield return new WaitForSeconds(laserDuration);
 
     isTransforming = true;
@@ -247,6 +251,10 @@ public class ObjectsMover : MonoBehaviour {
 
   virtual public int cubesWhenEncounter() {
     return objectsManager.cubesWhenEncounter();
+  }
+
+  virtual public int cubesWhenDestroy() {
+    return 0;
   }
 
   virtual public int bonusCubes() {

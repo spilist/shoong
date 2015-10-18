@@ -41,20 +41,13 @@ public class TinyForceField_main : MonoBehaviour {
   void instantiateCube(ObjectsMover mover) {
     if (mover.noCubesByDestroy()) return;
 
-    for (int e = 0; e < mover.cubesWhenEncounter(); e++) {
-      GameObject cube = (GameObject) Instantiate(dpm.energyCube, mover.transform.position, mover.transform.rotation);
-      if (e == 0) {
-        cube.GetComponent<ParticleMover>().triggerCubesGet(mover.cubesWhenEncounter());
-        dpm.player.addCubeCount(mover.cubesWhenEncounter());
-      }
-    }
+    dpm.player.goodPartsEncounter(mover, mover.cubesWhenDestroy(), 0, false);
 
     if (!mover.isNegativeObject()) {
       dpm.getEnergy.Play();
       dpm.getEnergy.GetComponent<AudioSource>().Play();
     } else {
       DataManager.dm.increment("NumDestroyObstaclesWithBlink");
-      dpm.player.generateGoldCube(mover);
     }
   }
 }

@@ -8,4 +8,8 @@ public class TransformerMover : ObjectsMover {
   override public string getManager() {
     return "TransformerManager";
   }
+
+  override public int cubesWhenDestroy() {
+    return 50;
+  }
 }

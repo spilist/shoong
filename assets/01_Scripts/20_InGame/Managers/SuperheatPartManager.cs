@@ -10,6 +10,7 @@ public class SuperheatPartManager : ObjectsManager {
   }
 
   public void add(bool withEffect = true) {
+    if (player.isOnSuperheat()) return;
     superheat.addGuageWithEffect(guageForEncounter);
     if (withEffect) {
       Instantiate(objEncounterEffect, player.transform.position, Quaternion.identity);

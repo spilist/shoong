@@ -19,7 +19,7 @@ public class TransformerArea : MonoBehaviour {
 	void OnTriggerEnter(Collider other) {
     if (other.tag == "Obstacle_big" || other.tag == "Obstacle_small") {
       ObjectsMover mover = other.GetComponent<ObjectsMover>();
-      if (mover!= null) StartCoroutine(mover.transformed(transform.position, transformLaser, laserShootDuration, transformDuration, transformParticle, "", 0));
+      if (mover!= null) mover.transformed(transform.position, transformLaser, laserShootDuration, transformDuration, transformParticle, "", 0);
     }
   }
 }

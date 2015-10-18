@@ -15,4 +15,8 @@ public class MagnetMover : ObjectsMover {
   override public string getManager() {
     return "MagnetManager";
   }
+
+  override public int cubesWhenDestroy() {
+    return 50;
+  }
 }

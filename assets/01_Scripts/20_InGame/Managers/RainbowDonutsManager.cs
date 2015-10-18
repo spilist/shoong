@@ -21,7 +21,7 @@ public class RainbowDonutsManager : ObjectsManager {
 
   public int[] numRoadRidesPerLevel;
   public int[] speedPerRide;
-  private int numRoadRides;
+  public int numRoadRides;
   public int nextDonutRadius = 100;
   public float rotateDuring = 0.2f;
   public int rotateAngularSpeed = 50;
@@ -45,6 +45,14 @@ public class RainbowDonutsManager : ObjectsManager {
 
   override public void adjustForLevel(int level) {
     numRoadRides = numRoadRidesPerLevel[level];
+    if (level == 0) {
+      goldenChance = 0;
+      superChance = 0;
+    }
+
+    if (level == 1) {
+      goldenChance = 0;
+    }
   }
 
   override protected void afterSpawn() {

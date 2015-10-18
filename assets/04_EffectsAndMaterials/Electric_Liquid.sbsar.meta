@@ -7,7 +7,7 @@ labels:
 - effect
 - glow
 - gaz
-timeCreated: 1444994145
+timeCreated: 1445168014
 licenseType: Free
 SubstanceImporter:
   serializedVersion: 5
@@ -936,7 +936,7 @@ SubstanceImporter:
         data:
           first:
             name: _TintColor
-          second: {r: 1, g: .600000024, b: 0, a: .172000006}
+          second: {r: 1, g: .458999991, b: 0, a: .172000006}
     textureParameters:
     - name: EMP_ForceField_Heat_Emissive
       alphaSource: 0
