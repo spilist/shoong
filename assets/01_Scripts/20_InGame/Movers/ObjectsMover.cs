@@ -10,25 +10,22 @@ public class ObjectsMover : MonoBehaviour {
   protected bool isMagnetized = false;
 
   protected PlayerMover player;
+  protected int gravity;
+  protected float originalScale;
 
-  protected BlackholeManager blm;
   protected bool isInsideBlackhole = false;
   protected bool destroyed = false;
   protected float shrinkedScale;
 
   protected ObjectsManager objectsManager;
   protected Rigidbody rb;
-  protected float boundingSize = 50;
-  // protected Transform magnetOrigin;
-  // protected int magnetStatus = 0;
-  // protected int magnetPower;
+  public float boundingSize = 50;
+  protected Vector3 headingToBlackhole;
 
   void Start() {
     player = GameObject.Find("Player").GetComponent<PlayerMover>();
 
     objectsManager = (ObjectsManager) GameObject.Find("Field Objects").GetComponent(getManager());
-
-    blm = GameObject.Find("Field Objects").GetComponent<BlackholeManager>();
 
     shrinkedScale = transform.localScale.x;
 
@@ -41,21 +38,9 @@ public class ObjectsMover : MonoBehaviour {
     rb = GetComponent<Rigidbody>();
     rb.angularVelocity = Random.onUnitSphere * tumble;
     rb.velocity = direction * speed;
+
+    originalScale = transform.localScale.x;
   }
-
-  // virtual public void magnetized(bool pull, Transform magnetOrigin, int power) {
-  //   if (!canBeMagnetized) return;
-
-  //   magnetStatus = pull ? 1 : 2;
-  //   this.magnetOrigin = magnetOrigin;
-  //   magnetPower = power;
-  // }
-
-  // public void magnetizeEnd() {
-  //   if (!canBeMagnetized) return;
-
-  //   magnetStatus = 0;
-  // }
 
   public void setBoundingSize(float val) {
     boundingSize = val;
@@ -88,23 +73,16 @@ public class ObjectsMover : MonoBehaviour {
   }
 
   void FixedUpdate() {
-    if (isInsideBlackhole) {
-      if (blm.instance == null) {
-        destroyObject(false);
-        return;
-      }
-
-      rb.velocity = blm.headingToBlackhole(transform) * blm.gravity;
-
-      shrinkedScale = Mathf.MoveTowards(shrinkedScale, 0f, Time.deltaTime);
-      transform.localScale = new Vector3(shrinkedScale, shrinkedScale, shrinkedScale);
-    } else if (isMagnetized) {
+    if (isMagnetized) {
       if (player.scoreManager.isGameOver()) return;
       Vector3 heading =  player.transform.position - transform.position;
       heading /= heading.magnitude;
       rb.velocity = heading * player.getSpeed() * 1.5f;
-      rb.AddForce(heading * blm.pullUser, ForceMode.VelocityChange);
-
+    } else if (isInsideBlackhole) {
+      rb.velocity = headingToBlackhole * gravity;
+      shrinkedScale = Mathf.MoveTowards(shrinkedScale, 0f, Time.deltaTime * originalScale);
+      transform.localScale = shrinkedScale * Vector3.one;
+      if (shrinkedScale == 0) destroyObject(false);
     } else {
       normalMovement();
     }
@@ -224,8 +202,10 @@ public class ObjectsMover : MonoBehaviour {
     if (canBeMagnetized) isMagnetized = true;
   }
 
-  public void insideBlackhole() {
+  public void insideBlackhole(int gravity, Vector3 heading) {
     isInsideBlackhole = true;
+    this.gravity = gravity;
+    headingToBlackhole = heading / heading.magnitude;
   }
 
   virtual public int cubesWhenEncounter() {

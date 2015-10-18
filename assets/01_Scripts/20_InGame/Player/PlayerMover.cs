@@ -28,13 +28,9 @@ public class PlayerMover : MonoBehaviour {
   public RainbowDonutsManager rdm;
   public JetpackManager jpm;
   public DoppleManager dpm;
-
   public BlackholeManager blm;
-  private GameObject blackhole;
-  private bool isInsideBlackhole = false;
-  private bool exitedBlackhole = false;
-  private bool reboundingByBlackhole = false;
 
+  private bool reboundingByBlackhole = false;
   private bool reboundingByDispenser = false;
   private float reboundingByDispenserDuring = 0;
 
@@ -123,15 +119,6 @@ public class PlayerMover : MonoBehaviour {
       boosterspeed = 0;
     }
 
-    if (isInsideBlackhole && !isUsingRainbow() && !usingDopple) {
-      Vector3 heading = blm.instance.transform.position - transform.position;
-      if (heading.magnitude < 1) rb.isKinematic = true;
-      else {
-        heading /= heading.magnitude;
-        rb.AddForce(heading * blm.pullUser, ForceMode.VelocityChange);
-      }
-    }
-
     if (!isRidingRainbowRoad && (usingDopple || trapped)) {
       rb.velocity = Vector3.zero;
     } else {
@@ -144,32 +131,27 @@ public class PlayerMover : MonoBehaviour {
   }
 
 	void OnTriggerEnter(Collider other) {
-    if (other.tag == "BlackholeGravitySphere") {
-      isInsideBlackhole = true;
-      return;
-    }
-
-    if (other.tag == "MagnetArea") return;
+    string tag = other.tag;
 
     ObjectsMover mover = other.gameObject.GetComponent<ObjectsMover>();
 
     if (mover == null) return;
 
     if (mover.dangerous()) {
-      scoreManager.gameOver(mover.tag);
+      scoreManager.gameOver(tag);
       return;
     }
 
-    if (ridingMonster && mover.tag != "MiniMonster" && mover.tag != "RainbowDonut") {
+    if (ridingMonster && tag != "MiniMonster" && tag != "RainbowDonut") {
       generateMinimon(mover);
       return;
     }
 
-    if (mover.tag == "MiniMonster") {
+    if (tag == "MiniMonster") {
       if (!absorbMinimon(mover)) return;
     }
 
-    if (mover.tag == "CubeDispenser") {
+    if (tag == "CubeDispenser") {
       if (!unstoppable && !isUsingRainbow()) return;
     }
 
@@ -370,7 +352,6 @@ public class PlayerMover : MonoBehaviour {
     usingPowerBoost = true;
     GetComponent<Renderer>().enabled = false;
     GetComponent<Collider>().enabled = false;
-    isInsideBlackhole = false;
     changeManager.changeCharacterToOriginal();
 
     if (isUsingRainbow()) {
@@ -451,9 +432,6 @@ public class PlayerMover : MonoBehaviour {
       unstoppable = true;
     } else if (obj == "Magnet") {
       usingMagnet = true;
-    } else if (obj == "Blackhole") {
-      isInsideBlackhole = false;
-      exitedBlackhole = true;
     } else if (obj == "Monster") {
       ridingMonster = true;
       minimonCounter = 0;
@@ -515,11 +493,6 @@ public class PlayerMover : MonoBehaviour {
       afterStrengthenStart();
     }
 
-    if (exitedBlackhole) {
-      exitedBlackhole = false;
-      spawnManager.runManager("Blackhole");
-    }
-
     if (usingMagnet) {
       usingMagnet = false;
       spawnManager.runManager("Magnet");
@@ -575,14 +548,6 @@ public class PlayerMover : MonoBehaviour {
 
   public bool isRidingMonster() {
     return ridingMonster;
-  }
-
-  public bool isUsingBlackhole() {
-    return exitedBlackhole || isInsideBlackhole;
-  }
-
-  public bool isExitedBlackhole() {
-    return exitedBlackhole;
   }
 
   public bool isUsingMagnet() {
@@ -676,7 +641,6 @@ public class PlayerMover : MonoBehaviour {
 
     if (tag == "Jetpack") DataManager.dm.increment("NumUseJetpack");
     else if (tag == "SpecialPart") DataManager.dm.increment("NumUseMetal");
-    else if (tag == "Blackhole") DataManager.dm.increment("NumExitBlackhole");
     else if (tag == "Monster") DataManager.dm.increment("NumRideMonster");
     else if (tag == "Dopple") DataManager.dm.increment("NumMeetDopple");
     else if (tag == "ComboPart") DataManager.dm.increment("NumGenerateIllusion");

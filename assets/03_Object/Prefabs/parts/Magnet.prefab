@@ -46,6 +46,8 @@ GameObject:
   - 33: {fileID: 3369096}
   - 23: {fileID: 2385718}
   - 114: {fileID: 11464108}
+  - 114: {fileID: 11455234}
+  - 135: {fileID: 13524290}
   m_Layer: 30
   m_Name: Area
   m_TagString: Untagged
@@ -80,7 +82,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 180950}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 37.5999985, y: 0, z: 0}
+  m_LocalPosition: {x: 100.300003, y: 0, z: -20.1000004}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 434480}
@@ -212,6 +214,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6e43e5ec2dda449dbd8b0fa4847f785, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11455234
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 147232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b27aea7b01f74fd49030952b6793980, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11464108
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -235,6 +248,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   power: 0
+--- !u!135 &13524290
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 147232}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: .5
+  m_Center: {x: 5.96046448e-08, y: 0, z: 0}
 --- !u!136 &13603556
 CapsuleCollider:
   m_ObjectHideFlags: 1

@@ -4,7 +4,7 @@ using System.Collections;
 public class DangerousEMPField : MonoBehaviour {
   PlayerMover player;
   DangerousEMPManager dem;
-  int maxScale;
+  float maxScale;
   int rotatingSpeed;
   float enlargeDuration;
   float stayDuration;

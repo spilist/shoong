@@ -17,6 +17,7 @@ public class ScoreUpdate : MonoBehaviour {
   public GameObject elapsedTime;
   public GameObject CPS;
   public GameObject phaseBonus;
+  public GameObject collectorBonus;
 
   public CubesCount cubesCount;
   public GoldCubesCount goldenCubesCount;
@@ -37,6 +38,7 @@ public class ScoreUpdate : MonoBehaviour {
   private float goldenCubeNum;
   private float highscoreNum;
   private float duration;
+  private int bonusAmount;
 
   private int updateStatus = 0;
   private bool newHighscore = false;
@@ -76,6 +78,10 @@ public class ScoreUpdate : MonoBehaviour {
 
     phaseBonus.transform.Find("Number").GetComponent<Text>().text = phaseManager.getPhaseBonus().ToString();
 
+    float bonusScale = ((DataManager.dm.getInt("NormalCollectorLevel") - 1) * 5 + DataManager.dm.getInt("GoldenCollectorLevel") * 50) / 100f;
+    bonusAmount = (int) Mathf.Floor(cubeDifference * bonusScale);
+
+    collectorBonus.transform.Find("Number").GetComponent<Text>().text = bonusAmount.ToString();
     updateStatus++;
     GetComponent<AudioSource>().Play();
   }
@@ -119,8 +125,20 @@ public class ScoreUpdate : MonoBehaviour {
     } else if (updateStatus == 5) {
       move(CPS, phaseBonus);
     } else if (updateStatus == 6) {
-      move(phaseBonus);
+      move(phaseBonus, collectorBonus);
     } else if (updateStatus == 7) {
+      move(collectorBonus);
+    } else if (updateStatus == 8) {
+      totalNum = Mathf.MoveTowards(totalNum, totalChangeTo, Time.deltaTime * bonusAmount / duration);
+      totalCubes.text = totalNum.ToString("0");
+
+      cubeNum = Mathf.MoveTowards(cubeNum, cubeChangeTo, Time.deltaTime * bonusAmount / duration);
+      cubes.text = cubeNum.ToString("0");
+      if (totalNum == totalChangeTo) {
+        updateStatus++;
+        GetComponent<AudioSource>().Stop();
+      }
+    } else if (updateStatus == 9) {
       scoreManager.showBanner();
       updateStatus++;
     }
@@ -134,6 +152,10 @@ public class ScoreUpdate : MonoBehaviour {
       if (nextTarget != null) {
         positionX = nextTarget.GetComponent<RectTransform>().anchoredPosition.x;
         distance = positionX;
+      } else {
+        totalChangeTo += bonusAmount;
+        cubeChangeTo += bonusAmount;
+        GetComponent<AudioSource>().Play();
       }
     }
   }

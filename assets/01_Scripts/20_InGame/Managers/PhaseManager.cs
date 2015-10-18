@@ -13,7 +13,6 @@ public class PhaseManager : MonoBehaviour {
   private float EMFilterAlpha;
 
   public MeteroidManager ntm;
-  public MeteroidManager2 ntm2;
   public Renderer meteroidFilter;
   public float meteroidFilterAlpha1 = 0.08f;
   public float meteroidFilterAlpha2 = 0.12f;
@@ -26,6 +25,7 @@ public class PhaseManager : MonoBehaviour {
   private Color meteroidFilterColor;
 
   public DangerousEMPManager dem;
+  public BlackholeManager blm;
   public AlienshipManager asm;
 
   public RectTransform phaseIndicator;
@@ -58,40 +58,42 @@ public class PhaseManager : MonoBehaviour {
     level++;
 
     status++;
-    if (level > 6) {
-      asm.run();
-      level = 6;
+    if (level > textPerLevel.Length) {
+      level = textPerLevel.Length;
     }
 
-    phaseText.text = textPerLevel[level - 1];
+    string levelName = textPerLevel[level - 1];
+    phaseText.text = levelName;
     pos = phaseIndicator.anchoredPosition;
     posX = originalPosX;
     stayCount = 0;
 
-    // if (level < 6) AudioManager.am.setPitch(level);
-
-    if (level == 1) {
+    if (levelName == "유성 출현") {
       ntm.enabled = true;
-    } else if (level == 2) {
+    } else if (levelName == "자기장 불안정화") {
       npm.startPhase();
       atm.startPhase();
       ssm.startPhase();
       EMFilter.gameObject.SetActive(true);
       EMFilterColor = EMFilter.material.GetColor("_TintColor");
-    } else if (level == 3) {
+    } else if (levelName == "유성 거대화") {
       ntm.startPhase();
       meteroidFilter.gameObject.SetActive(true);
       meteroidFilterColor = meteroidFilter.material.GetColor("_TintColor");
       meteroidFilterTargetAlpha = meteroidFilterAlpha1;
       meteroidFilterChangeDuration = meteroidFilterChangeDuration1;
-    } else if (level == 4) {
+    } else if (levelName == "폭발 위험 지역") {
       dem.enabled = true;
-    } else if (level == 5) {
-      ntm2.enabled = true;
+    } else if (levelName == "유성우") {
+      ntm.startSecond();
       meteroidFilterTargetAlpha = meteroidFilterAlpha2;
       meteroidFilterChangeDuration = meteroidFilterChangeDuration2;
-    } else if (level == 6) {
+    } else if (levelName == "미확인 비행 물체") {
       asm.enabled = true;
+    } else if (levelName == "블랙홀 출현") {
+      blm.enabled = true;
+    } else if (levelName == "대폭발 위험 지역") {
+      dem.startLarger();
     }
   }
 

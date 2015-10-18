@@ -2,29 +2,32 @@
 using System.Collections;
 
 public class BlackholeManager : ObjectsManager {
-  public GameObject blackholeGravitySpherePrefab;
-  public GameObject blackholeGravity;
-
   public int gravity = 50;
-  public int pullUser = 50;
-
-  public int[] radiusPerLevel;
-  public float[] lifetimePerLevel;
+  public int gravityToUser = 130;
+  public int gravityScale = 10;
 
   public int reboundDuring = 2;
   public float shakeAmount = 3;
+  public int max_blackhole = 2;
 
   override public void initRest() {
-    objEncounterEffectForPlayer.transform.localScale = Vector3.one * radiusPerLevel[DataManager.dm.getInt("BlackholeLevel") - 1] / radiusPerLevel[0];
+    spawnManager.spawn(objPrefab);
+    ElapsedTime.time.startBlackhole();
   }
 
-  override protected void afterSpawn() {
-    blackholeGravity = (GameObject) Instantiate(blackholeGravitySpherePrefab, instance.transform.position, Quaternion.Euler(90, 0, 0));
-    blackholeGravity.transform.parent = transform;
-  }
+  override public void run() {}
+
+  override public void runImmediately() {}
 
   public Vector3 headingToBlackhole(Transform tr) {
     Vector3 heading = instance.transform.position - tr.position;
     return heading / heading.magnitude;
+  }
+
+  public void respawn() {
+    int count = max_blackhole - GameObject.FindGameObjectsWithTag("Blackhole").Length;
+    if (count > 0) {
+      spawnManager.spawn(objPrefab);
+    }
   }
 }

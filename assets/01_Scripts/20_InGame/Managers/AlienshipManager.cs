@@ -42,6 +42,8 @@ public class AlienshipManager : ObjectsManager {
   }
 
   override protected void spawn() {
+    if (player == null) return;
+
     Vector2 screenPos = Random.insideUnitCircle;
     screenPos.Normalize();
     screenPos *= spawnRadius;

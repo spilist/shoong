@@ -3,30 +3,38 @@ using System.Collections;
 
 public class BlackholeGravitySphere : MonoBehaviour {
   private BlackholeManager blm;
+  private PlayerMover player;
+  int gravity;
+  int gravityToUser;
+  float gravityScale;
+  float counter = 0;
 
   void Start() {
     blm = GameObject.Find("Field Objects").GetComponent<BlackholeManager>();
+    player = blm.player;
+    gravity = blm.gravity;
+    gravityScale = blm.gravityScale;
+    gravityToUser = blm.gravityToUser;
   }
 
-  // void LateUpdate() {
-  //   if (startFollow) {
-  //     if (blackhole == null) {
-  //       Destroy(gameObject);
-  //     } else {
-  //       transform.position = new Vector3 (blackhole.transform.position.x, transform.position.y, blackhole.transform.position.z);
-  //     }
-  //   }
-  // }
-
   void OnTriggerEnter(Collider other) {
-    if (other.tag != "Player") {
-      other.gameObject.GetComponent<ObjectsMover>().insideBlackhole();
-    }
+    if (other.tag == "Player") return;
+    other.GetComponent<ObjectsMover>().insideBlackhole(gravity, transform.parent.position - other.transform.position);
+  }
+
+  void OnTriggerStay(Collider other) {
+    string tag = other.tag;
+    if (tag != "Player") return;
+    if (!player.canBeMagnetized()) return;
+
+    Vector3 heading = transform.parent.position - other.transform.position;
+    heading /= heading.magnitude;
+
+    counter += Time.deltaTime;
+    other.GetComponent<Rigidbody>().AddForce(heading * (gravityToUser + counter * gravityScale), ForceMode.VelocityChange);
   }
 
   void OnTriggerExit(Collider other) {
-    if (other.tag == "Player") {
-      blm.instance.GetComponent<BlackholeMover>().encounterPlayer();
-    }
+    if (other.tag == "Player") counter = 0;
   }
 }

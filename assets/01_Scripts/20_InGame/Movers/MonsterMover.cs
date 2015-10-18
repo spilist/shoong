@@ -12,7 +12,6 @@ public class MonsterMover : ObjectsMover {
   private MonsterManager monm;
   private SpecialPartsManager spm;
 
-  private float originalScale;
   private bool weak = false;
   private bool shrinking = false;
 
@@ -22,7 +21,6 @@ public class MonsterMover : ObjectsMover {
     monm = (MonsterManager)objectsManager;
     spm = GameObject.Find("Field Objects").GetComponent<SpecialPartsManager>();
 
-    originalScale = transform.localScale.x;
     speed_runaway = monm.speed_runaway;
     speed_weaken = monm.speed_weaken;
 

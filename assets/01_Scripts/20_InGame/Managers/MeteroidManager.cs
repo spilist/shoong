@@ -48,6 +48,10 @@ public class MeteroidManager : ObjectsManager {
     phaseStarted = true;
   }
 
+  public void startSecond() {
+    StartCoroutine("spawnObstacle");
+  }
+
   override public void run() {}
 
   override public void runImmediately() {}
@@ -65,13 +69,8 @@ public class MeteroidManager : ObjectsManager {
       obstacleDirection.Normalize();
       destination = spawnPos + obstacleDirection * lineDistance;
 
-      bool normal = true;
-      if (phaseStarted) {
-        normal = Random.Range(0, 100) < 50;
-      }
-
       GameObject warningLine;
-      if (normal) warningLine = (GameObject) Instantiate (fallingStarWarningLinePrefab);
+      if (!phaseStarted) warningLine = (GameObject) Instantiate (fallingStarWarningLinePrefab);
       else warningLine = (GameObject) Instantiate (biggerFallingStarWarningLinePrefab);
 
       warningLine.GetComponent<FallingstarWarningLine>().run(spawnPos - 100 * obstacleDirection, destination, lineDistance + 100, warnPlayerDuring);
@@ -83,7 +82,7 @@ public class MeteroidManager : ObjectsManager {
       warningLine.GetComponent<FallingstarWarningLine>().erase();
 
       GameObject obstacle;
-      if (normal) obstacle = (GameObject) Instantiate(meteroidsPrefab[Random.Range(0, meteroidsPrefab.Length)], spawnPos, Quaternion.identity);
+      if (!phaseStarted) obstacle = (GameObject) Instantiate(meteroidsPrefab[Random.Range(0, meteroidsPrefab.Length)], spawnPos, Quaternion.identity);
       else obstacle = (GameObject) Instantiate(biggerMeteroidsPrefab[Random.Range(0, meteroidsPrefab.Length)], spawnPos, Quaternion.identity);
 
       obstacle.transform.parent = transform;

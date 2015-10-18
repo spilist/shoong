@@ -9,6 +9,7 @@ public class ScoreManager : MonoBehaviour {
 
   // for score managing
   public CubesCount cubesCount;
+  public Text bonusCount;
   public GoldCubesCount goldCubesCount;
 
   // for gameover effect
@@ -60,8 +61,6 @@ public class ScoreManager : MonoBehaviour {
   }
 
   public void gameOver(string reason) {
-    Camera.main.GetComponent<CameraMover>().shake(gameOverShakeDuration, gameOverShakeAmount);
-
     ElapsedTime.time.stopTime();
     if (reason == "Obstacle_small") {
       DataManager.dm.increment("DeathBySmallAsteroid");
@@ -77,6 +76,13 @@ public class ScoreManager : MonoBehaviour {
       DataManager.dm.increment("DeathByDopple");
     }
 
+    if (reason == "Blackhole") {
+      playerExplosion.GetComponent<AudioSource>().Play();
+    } else {
+      Camera.main.GetComponent<CameraMover>().shake(gameOverShakeDuration, gameOverShakeAmount);
+      Instantiate(characterDebris, player.transform.position, Quaternion.identity);
+    }
+
     StartCoroutine("startGameOver");
   }
 
@@ -86,10 +92,7 @@ public class ScoreManager : MonoBehaviour {
     inputHandler.stopReact();
     AudioManager.am.changeVolume("Main", "Small");
 
-    Instantiate(characterDebris, player.transform.position, Quaternion.identity);
-
     // playerExplosion.Play ();
-    // playerExplosion.GetComponent<AudioSource>().Play();
     player.GetComponent<Rigidbody>().isKinematic = true;
     player.GetComponent<MeshRenderer>().enabled = false;
     player.GetComponent<SphereCollider>().enabled = false;
@@ -194,7 +197,7 @@ public class ScoreManager : MonoBehaviour {
     }
 
     isSaved = true;
-    int count = cubesCount.getCount();
+    int count = cubesCount.getCount() + int.Parse(bonusCount.text);
     DataManager.dm.increment("CurrentCubes", count);
     DataManager.dm.increment("TotalCubes", count);
     DataManager.dm.setBestInt("BestCubes", count);

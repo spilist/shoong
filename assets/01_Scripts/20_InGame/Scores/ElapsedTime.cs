@@ -22,12 +22,14 @@ public class ElapsedTime : MonoBehaviour {
 	public AsteroidManager asm;
 	public SmallAsteroidManager sam;
 	public DangerousEMPManager dem;
+	public BlackholeManager blm;
 
 	public static ElapsedTime time;
 
 	public int now = 0;
 
 	private bool spawnDangerousEMP = false;
+	private bool spawnBlackhole = false;
 
 	void Awake() {
 		time = this;
@@ -76,8 +78,6 @@ public class ElapsedTime : MonoBehaviour {
 		if (currentProgress >= progressEnd) {
 			progressChanging = false;
 			phaseManager.nextPhase();
-			asm.max_obstacles++;
-			sam.max_obstacles++;
 			resetProgress();
 		}
 	}
@@ -91,6 +91,7 @@ public class ElapsedTime : MonoBehaviour {
 			sam.respawn();
 			npm.respawn();
 			if (spawnDangerousEMP) dem.respawn();
+			if (spawnBlackhole) blm.respawn();
 		}
 	}
 
@@ -100,5 +101,9 @@ public class ElapsedTime : MonoBehaviour {
 
 	public void startSpawnDangerousEMP() {
 		spawnDangerousEMP = true;
+	}
+
+	public void startBlackhole() {
+		spawnBlackhole = true;
 	}
 }

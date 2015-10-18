@@ -24,14 +24,6 @@ public class BlackholeMover : ObjectsMover {
     }
   }
 
-  override protected void afterDestroy(bool byPlayer) {
-    Destroy(blm.blackholeGravity);
-  }
-
-  override protected void afterEncounter() {
-    Destroy(blm.blackholeGravity);
-  }
-
   override public bool dangerous() {
     if (player.isUsingRainbow()) return false;
     return true;
