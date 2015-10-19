@@ -52,6 +52,20 @@ public class DangerousEMPMover : ObjectsMover {
     unstable = true;
   }
 
+  override public void destroyObject(bool destroyEffect = true, bool byPlayer = false) {
+    foreach (Collider collider in GetComponents<Collider>()) {
+      collider.enabled = false;
+    }
+    Destroy(gameObject);
+
+    if (byPlayer) {
+      player.destroyObject(tag, gaugeWhenDestroy());
+      Instantiate(dem.particleDestroyByPlayer, transform.position, Quaternion.identity);
+    } else if (destroyEffect) {
+      Instantiate(objectsManager.objDestroyEffect, transform.position, transform.rotation);
+    }
+  }
+
   override public int bonusCubes() {
     return player.isUnstoppable()? (int) (cubesWhenEncounter() * spm.bonus) : 0;
   }
@@ -81,5 +95,9 @@ public class DangerousEMPMover : ObjectsMover {
         startDuration -= decreaseDurationPerPulse;
       }
     }
+  }
+
+  override public int cubesWhenDestroy() {
+    return cubesWhenEncounter();
   }
 }

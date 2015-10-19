@@ -35,4 +35,8 @@ public class NormalPartsMover : ObjectsMover {
   override public int bonusCubes() {
     return player.isNearAsteroid()? player.nearAsteroidBonus : 0;
   }
+
+  override public int cubesWhenDestroy() {
+    return cubesWhenEncounter();
+  }
 }

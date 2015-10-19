@@ -2,6 +2,7 @@
 using System.Collections;
 
 public class DangerousEMPManager : ObjectsManager {
+  public GameObject particleDestroyByPlayer;
   public int max_emp = 3;
 
   public float minScale = 15;

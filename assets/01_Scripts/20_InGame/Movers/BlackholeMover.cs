@@ -33,4 +33,8 @@ public class BlackholeMover : ObjectsMover {
   override public string getManager() {
     return "BlackholeManager";
   }
+
+  override public int cubesWhenDestroy() {
+    return cubesWhenEncounter();
+  }
 }

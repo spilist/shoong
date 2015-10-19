@@ -103,7 +103,9 @@ public class PlayerMover : MonoBehaviour {
       speed = 0;
     } else if (isRidingRainbowRoad) {
       speed = rdm.ridingSpeed;
-    } else if (isRebounding()) {
+    } else if (reboundingByBlackhole) {
+      speed = blm.reboundingSpeed;
+    } else if (reboundingByDispenser) {
       speed = reboundSpeed;
     } else if (ridingMonster) {
       speed = baseSpeed + minimonCounter * monm.enlargeSpeedPerMinimon;
@@ -195,7 +197,7 @@ public class PlayerMover : MonoBehaviour {
         if (e == 0) {
           cube.GetComponent<ParticleMover>().triggerCubesGet(howMany);
         }
-        if (mover.tag == "RainbowDonut") {
+        if (encounterPlayer && mover.tag == "RainbowDonut") {
           if (rdm.isGolden) {
             cube.GetComponent<Renderer>().material.SetColor("_TintColor", goldenCubeParticleColor);
             cube.GetComponent<TrailRenderer>().material.SetColor("_TintColor", goldenCubeParticleTrailColor);
@@ -638,6 +640,7 @@ public class PlayerMover : MonoBehaviour {
     }
     else if (tag == "Blackhole") DataManager.dm.increment("NumDestroyBlackholes");
     else if (tag == "Monster") DataManager.dm.increment("NumDestroyMonsters");
+    else if (tag == "DangerousEMP") DataManager.dm.increment("NumDestroyDangerousEMP");
 
     if (!usingEMP) Camera.main.GetComponent<CameraMover>().shake();
   }

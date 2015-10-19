@@ -160,7 +160,10 @@ public class Superheat : MonoBehaviour {
       if (isTransforming) return;
       guage.fillAmount = Mathf.MoveTowards(guage.fillAmount, targetGuage, Time.deltaTime / (maxGuage / guageSpeedStandard));
 
-      if (guage.fillAmount == 1) startSuperheat();
+      if (guage.fillAmount == 1) {
+        startSuperheat();
+        return;
+      }
 
       if (guageTurnedOn) {
         if (iconAlphaStayCount > 0) {

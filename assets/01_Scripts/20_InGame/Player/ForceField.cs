@@ -41,6 +41,7 @@ public class ForceField : MonoBehaviour {
       GameObject cube = (GameObject) Instantiate(energyCube, other.transform.position, other.transform.rotation);
       cube.GetComponent<Renderer>().material.SetColor("_TintColor", player.goldenCubeParticleColor);
       cube.GetComponent<TrailRenderer>().material.SetColor("_TintColor", player.goldenCubeParticleTrailColor);
+      mover.destroyObject(true, true);
     } else {
       player.goodPartsEncounter(mover, mover.cubesWhenDestroy(), 0, false);
       DataManager.dm.increment("NumCubesGetByForcefield", mover.cubesWhenDestroy());
