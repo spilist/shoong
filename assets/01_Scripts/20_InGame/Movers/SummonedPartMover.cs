@@ -90,4 +90,8 @@ public class SummonedPartMover : ObjectsMover {
   override public bool hasEncounterEffect() {
     return false;
   }
+
+  override public int bonusCubes() {
+    return player.isNearAsteroid()? player.nearAsteroidBonus : 0;
+  }
 }

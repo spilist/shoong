@@ -51,4 +51,8 @@ public class ComboPartMover : ObjectsMover {
 
     return count * cpm.cubesByEncounter;
   }
+
+  override public int bonusCubes() {
+    return player.isNearAsteroid()? player.nearAsteroidBonus : 0;
+  }
 }

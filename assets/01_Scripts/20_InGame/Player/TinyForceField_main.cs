@@ -41,7 +41,8 @@ public class TinyForceField_main : MonoBehaviour {
   void instantiateCube(ObjectsMover mover) {
     if (mover.noCubesByDestroy()) return;
 
-    dpm.player.goodPartsEncounter(mover, mover.cubesWhenDestroy(), 0, false);
+    int bonus = mover.isNegativeObject() ? mover.bonusCubes() : 0;
+    dpm.player.goodPartsEncounter(mover, mover.cubesWhenDestroy(), bonus, false);
 
     if (!mover.isNegativeObject()) {
       dpm.getEnergy.Play();

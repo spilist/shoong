@@ -4,7 +4,6 @@ using System.Collections;
 public class MeteroidMover : ObjectsMover {
   public bool bigger = false;
 
-  private SpecialPartsManager spm;
   private bool avoiding = false;
   private bool alreadyChecked = false;
 
@@ -13,8 +12,6 @@ public class MeteroidMover : ObjectsMover {
   }
 
   protected override void initializeRest() {
-    spm = GameObject.Find("Field Objects").GetComponent<SpecialPartsManager>();
-
     canBeMagnetized = false;
   }
 
@@ -66,9 +63,5 @@ public class MeteroidMover : ObjectsMover {
   override public bool dangerous() {
     if (player.isInvincible()) return false;
     else return true;
-  }
-
-  override public int bonusCubes() {
-    return player.isUnstoppable()? (int) (cubesWhenEncounter() * spm.bonus) : 0;
   }
 }

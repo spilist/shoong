@@ -2,6 +2,7 @@
 using System.Collections;
 
 public class ObjectsManager : MonoBehaviour {
+  public bool forceSpawnAtStart = false;
   public GameObject objPrefab;
   public GameObject objDestroyEffect;
   public GameObject objEncounterEffect;
@@ -23,7 +24,6 @@ public class ObjectsManager : MonoBehaviour {
   protected bool skipInterval = false;
 
   public GameObject instance;
-  public bool forceSpawnAtStart = false;
   public int gaugeWhenDestroy = 0;
   public bool hasLevel = false;
   public string nameForLevel;

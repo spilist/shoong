@@ -2,7 +2,6 @@
 using System.Collections;
 
 public class DangerousEMPMover : ObjectsMover {
-  private SpecialPartsManager spm;
   private DangerousEMPManager dem;
 
   Transform shellTr;
@@ -27,7 +26,6 @@ public class DangerousEMPMover : ObjectsMover {
 
   protected override void initializeRest() {
     dem = (DangerousEMPManager)objectsManager;
-    spm = GameObject.Find("Field Objects").GetComponent<SpecialPartsManager>();
 
     canBeMagnetized = false;
 
@@ -66,10 +64,6 @@ public class DangerousEMPMover : ObjectsMover {
     }
   }
 
-  override public int bonusCubes() {
-    return player.isUnstoppable()? (int) (cubesWhenEncounter() * spm.bonus) : 0;
-  }
-
   void Update() {
     if (!unstable) return;
 
@@ -95,9 +89,5 @@ public class DangerousEMPMover : ObjectsMover {
         startDuration -= decreaseDurationPerPulse;
       }
     }
-  }
-
-  override public int cubesWhenDestroy() {
-    return cubesWhenEncounter();
   }
 }

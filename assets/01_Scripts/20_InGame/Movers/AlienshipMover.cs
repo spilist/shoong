@@ -105,8 +105,4 @@ public class AlienshipMover : ObjectsMover {
 
     player.destroyObject(tag);
   }
-
-  override public int cubesWhenDestroy() {
-    return cubesWhenEncounter();
-  }
 }

@@ -18,6 +18,7 @@ public class ObjectsMover : MonoBehaviour {
   protected float shrinkedScale;
 
   protected ObjectsManager objectsManager;
+  protected SpecialPartsManager spm;
   protected Rigidbody rb;
   public float boundingSize = 50;
   protected Vector3 headingToBlackhole;
@@ -32,7 +33,7 @@ public class ObjectsMover : MonoBehaviour {
     player = GameObject.Find("Player").GetComponent<PlayerMover>();
 
     objectsManager = (ObjectsManager) GameObject.Find("Field Objects").GetComponent(getManager());
-
+    spm = objectsManager.GetComponent<SpecialPartsManager>();
     shrinkedScale = transform.localScale.x;
 
     initializeRest();
@@ -254,11 +255,12 @@ public class ObjectsMover : MonoBehaviour {
   }
 
   virtual public int cubesWhenDestroy() {
-    return 0;
+    return objectsManager.cubesWhenEncounter();
   }
 
   virtual public int bonusCubes() {
-    return 0;
+    if (isNegativeObject() && player.isUnstoppable()) return (int) (cubesWhenEncounter() * spm.bonus);
+    else return 0;
   }
 
   virtual public void destroyByMonster() {

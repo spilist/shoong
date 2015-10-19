@@ -2,20 +2,20 @@
 using System.Collections;
 
 public class SuperheatPartMover : ObjectsMover {
-  private SuperheatPartManager spm;
+  private SuperheatPartManager superm;
 
   protected override void initializeRest() {
-    spm = (SuperheatPartManager)objectsManager;
+    superm = (SuperheatPartManager)objectsManager;
   }
 
   override protected void afterEncounter() {
-    spm.add(false);
+    superm.add(false);
     objectsManager.run();
   }
 
   override protected void afterDestroy(bool byPlayer) {
     if (byPlayer) {
-      spm.add();
+      superm.add();
     }
   }
 

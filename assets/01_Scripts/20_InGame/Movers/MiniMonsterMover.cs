@@ -3,14 +3,12 @@ using System.Collections;
 
 public class MiniMonsterMover : ObjectsMover {
 	private MonsterManager monm;
-  private SpecialPartsManager spm;
   private float time;
   private bool timeElapsed = false;
   private float speed_chase;
 
   protected override void initializeRest() {
     monm = (MonsterManager)objectsManager;
-    spm = GameObject.Find("Field Objects").GetComponent<SpecialPartsManager>();
 
     if (player.isRidingMonster()) {
       time = monm.minimonStartTimeByPlayer;
@@ -95,10 +93,6 @@ public class MiniMonsterMover : ObjectsMover {
 
   override public int cubesWhenEncounter() {
     return monm.cubesWhenDestroyMinimon;
-  }
-
-  override public int bonusCubes() {
-    return player.isUnstoppable()? (int) (monm.cubesWhenDestroyMinimon * spm.bonus) : 0;
   }
 
   public bool isTimeElapsed() {

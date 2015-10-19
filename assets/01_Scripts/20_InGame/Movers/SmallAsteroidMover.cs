@@ -3,8 +3,6 @@ using System.Collections;
 
 public class SmallAsteroidMover : ObjectsMover {
 private bool isNearPlayer = false;
-  private SpecialPartsManager spm;
-  // private SmallAsteroidManager ssm;
   private bool collideChecked = false;
 
   override public string getManager() {
@@ -13,8 +11,6 @@ private bool isNearPlayer = false;
 
   override protected void initializeRest() {
     canBeMagnetized = false;
-    // ssm = (SmallAsteroidManager)objectsManager;
-    spm = GameObject.Find("Field Objects").GetComponent<SpecialPartsManager>();
   }
 
   override protected void afterDestroy(bool byPlayer) {
@@ -37,9 +33,5 @@ private bool isNearPlayer = false;
   override public bool dangerous() {
     if (player.isInvincible()) return false;
     else return true;
-  }
-
-  override public int bonusCubes() {
-    return player.isUnstoppable()? (int) (cubesWhenEncounter() * spm.bonus) : 0;
   }
 }

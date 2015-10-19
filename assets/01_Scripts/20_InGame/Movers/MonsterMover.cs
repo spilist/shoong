@@ -10,7 +10,6 @@ public class MonsterMover : ObjectsMover {
   private int minimonCount = 0;
 
   private MonsterManager monm;
-  private SpecialPartsManager spm;
 
   private bool weak = false;
   private bool shrinking = false;
@@ -19,7 +18,6 @@ public class MonsterMover : ObjectsMover {
 
   protected override void initializeRest() {
     monm = (MonsterManager)objectsManager;
-    spm = GameObject.Find("Field Objects").GetComponent<SpecialPartsManager>();
 
     speed_runaway = monm.speed_runaway;
     speed_weaken = monm.speed_weaken;
@@ -67,7 +65,7 @@ public class MonsterMover : ObjectsMover {
       rb.velocity = direction * player.getSpeed() * 1.5f;
     } else if (weak) {
       rb.velocity = -direction * speed_weaken;
-    } else if (player.isUnstoppable()) {
+    } else if (player.isUnstoppable() || player.isUsingMagnet() || player.isUsingDopple()) {
       rb.velocity = -direction * speed_runaway;
     } else {
       rb.velocity = direction * speed;
@@ -128,7 +126,7 @@ public class MonsterMover : ObjectsMover {
   }
 
   override public int bonusCubes() {
-    return player.isUnstoppable()? (int) (cubesWhenEncounter() * spm.bonus) : 0;
+    return player.isUnstoppable()? (int) (cubesWhenDestroy() * spm.bonus) : 0;
   }
 
   public bool rideable() {
