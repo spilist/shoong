@@ -2,14 +2,18 @@
 using System.Collections;
 
 public class PartsToBeCollected : MonoBehaviour {
+  public GameObject boundary;
   public Superheat superheat;
   public int rotatingSpeed = -20;
   public Transform normalParts;
   public Material inactiveMat;
   public Material activeMat;
-	public int numPartsToCollect = 5;
+  public int numPartsToCollect = 5;
   public float guagePerCollect = 200;
   public float pitchIncreasePerCollect = 0.05f;
+  public int indicatorRotatingSpeed = 10;
+  public float indicatorShrinkedWidth = 130;
+  public float indicatorShrinkDuration = 0.2f;
 
   public AudioSource collectSound;
   public AudioSource collectCompleteSound;
@@ -27,10 +31,22 @@ public class PartsToBeCollected : MonoBehaviour {
 
   public void show(bool val) {
     gameObject.SetActive(val);
+    boundary.SetActive(val);
+  }
+
+  public bool isMeshCollectable(Mesh mesh) {
+    foreach (Transform tr in transform.Find("Parts")) {
+      if (!tr.gameObject.activeSelf) continue;
+
+      if (tr.GetComponent<Renderer>().sharedMaterial == inactiveMat && tr.GetComponent<MeshFilter>().sharedMesh == mesh) {
+        return true;
+      }
+    }
+    return false;
   }
 
   public void generateNew() {
-    if (!superheat.isOnSuperheat()) gameObject.SetActive(true);
+    if (!superheat.isOnSuperheat()) show(true);
 
     int count = 0;
     foreach (Transform tr in transform.Find("Parts")) {

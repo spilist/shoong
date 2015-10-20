@@ -15,6 +15,7 @@ public class SummonedPartMover : ObjectsMover {
 
   public void setGolden() {
     isGoldenCube = true;
+    objectsManager.objDestroyEffect = summonManager.goldCubeDestroyParticle;
   }
 
   public void setSuper() {

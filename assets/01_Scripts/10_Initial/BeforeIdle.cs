@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class BeforeIdle : MonoBehaviour {
+  public FlyingCharacters flyingCharacters;
   public SpawnManager spawnManager;
   public MeshRenderer titleFilter;
   public GameObject title;
@@ -12,6 +13,7 @@ public class BeforeIdle : MonoBehaviour {
   private float copyrightChangeTo;
 
   public GameObject character;
+  public Text totalCubes;
   private Color characterColor;
   public float characterMovingDuration = 0.6f;
   private float characterPosX;
@@ -65,6 +67,8 @@ public class BeforeIdle : MonoBehaviour {
 
     string[] angVals = PlayerPrefs.GetString("CharacterAngVal").Split(',');
     character.GetComponent<Rigidbody>().angularVelocity = new Vector3(float.Parse(angVals[0]), float.Parse(angVals[1]), float.Parse(angVals[2]));
+
+    totalCubes.text = DataManager.dm.getInt("TotalCubes").ToString();
   }
 
   void Update() {
@@ -92,6 +96,7 @@ public class BeforeIdle : MonoBehaviour {
             titleFilter.gameObject.SetActive(false);
             character.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
             character.transform.localRotation = Quaternion.Euler(0, 90, 0);
+            flyingCharacters.reset();
           }
         }
       }

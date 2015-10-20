@@ -26,6 +26,7 @@ public class SummonPartsManager : ObjectsManager {
   public int chanceBase = 200;
   public GameObject goldenCubePrefab;
   public GoldCubesCount gcCount;
+  public GameObject goldCubeDestroyParticle;
   public int goldCubesGet = 10;
   public int goldenCubeChance = 1;
 

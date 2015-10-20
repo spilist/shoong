@@ -45,7 +45,7 @@ public class MeteroidMover : ObjectsMover {
   }
 
   override protected void afterDestroy(bool byPlayer) {
-    if (avoiding && !alreadyChecked && !player.isRidingMonster()) {
+    if (!byPlayer && avoiding && !alreadyChecked && !player.isRidingMonster()) {
       player.showEffect("Whew");
     }
   }
@@ -53,7 +53,7 @@ public class MeteroidMover : ObjectsMover {
   public void nearPlayer(bool enter = true) {
     avoiding = enter;
 
-    if (!enter && !alreadyChecked) alreadyChecked = true;
+    if (!avoiding && !alreadyChecked) alreadyChecked = true;
   }
 
   public bool isAlreadyChecked() {

@@ -9,7 +9,7 @@ public class ForceField : MonoBehaviour {
   public Superheat superheat;
   public GoldCubesCount gcCount;
 
-  private ProceduralMaterial mat;
+  // private ProceduralMaterial mat;
   private int rotatingSpeed;
   private bool isSuper;
   private bool isGolden;
@@ -21,7 +21,7 @@ public class ForceField : MonoBehaviour {
 
   public void setProperty(Material mat, bool isSuper, bool isGolden) {
     GetComponent<Renderer>().sharedMaterial = mat;
-    this.mat = GetComponent<Renderer>().sharedMaterial as ProceduralMaterial;
+    // this.mat = GetComponent<Renderer>().sharedMaterial as ProceduralMaterial;
     this.isSuper = isSuper;
     this.isGolden = isGolden;
     count = 0;
@@ -59,7 +59,7 @@ public class ForceField : MonoBehaviour {
     transform.localScale = Vector3.one;
     transform.Find("Halo").GetComponent<Light>().range = 1;
 
-    mat.SetProceduralFloat("$randomseed", Random.Range(0, 1000));
-    mat.RebuildTextures();
+    // mat.SetProceduralFloat("$randomseed", Random.Range(0, 1000));
+    // mat.RebuildTextures();
   }
 }

@@ -8,6 +8,7 @@ public class ComboPartsManager : ObjectsManager {
   public int chanceBase = 100;
   public GameObject goldenCubePrefab;
   public GoldCubesCount gcCount;
+  public GameObject goldCubeDestroyParticle;
   public int goldCubesGet = 10;
   public int goldenCubeChance = 1;
 

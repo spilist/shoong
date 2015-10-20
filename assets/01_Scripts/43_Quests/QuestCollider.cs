@@ -12,14 +12,18 @@ public class QuestCollider : MonoBehaviour {
   void OnTriggerEnter(Collider other) {
     if (other.tag == "Obstacle_big") {
       other.GetComponent<AsteroidMover>().nearPlayer();
+    } else if (other.tag == "Obstacle_small") {
+      other.GetComponent<SmallAsteroidMover>().nearPlayer();
     } else if (other.tag == "Obstacle") {
       other.GetComponent<MeteroidMover>().nearPlayer();
     }
   }
 
   void OnTriggerExit(Collider other) {
-   if (other.tag == "Obstacle_big") {
+    if (other.tag == "Obstacle_big") {
       other.GetComponent<AsteroidMover>().nearPlayer(false);
+    } else if (other.tag == "Obstacle_small") {
+      other.GetComponent<SmallAsteroidMover>().nearPlayer(false);
     } else if (other.tag == "Obstacle") {
       if (other.GetComponent<MeteroidMover>().isAlreadyChecked() || player.isRidingMonster()) return;
 

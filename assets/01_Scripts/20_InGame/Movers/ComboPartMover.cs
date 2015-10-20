@@ -8,6 +8,7 @@ public class ComboPartMover : ObjectsMover {
 
   public void setGolden() {
     isGoldenCube = true;
+    objectsManager.objDestroyEffect = cpm.goldCubeDestroyParticle;
   }
 
   public void setSuper() {

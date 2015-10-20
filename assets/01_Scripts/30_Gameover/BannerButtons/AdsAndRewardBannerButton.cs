@@ -10,8 +10,11 @@ public class AdsAndRewardBannerButton : BannerButton {
   public int showAdsPerGame = 10;
   public int showAdsPerMinutes = 10;
   public int dailyLimit = 5;
+  private bool active = true;
 
 	override public void activateSelf() {
+    if (!active) return;
+
     Debug.Log("Show ADs");
 
     // after ads end, show goldencube get effect
@@ -27,6 +30,8 @@ public class AdsAndRewardBannerButton : BannerButton {
 
     stopBlink();
     filter.sharedMesh = inactiveMesh;
+    active = false;
+    playTouchSound = false;
   }
 
   override public bool available(int spaceLeft) {

@@ -39,6 +39,7 @@ public class GameOverBanner : MonoBehaviour {
 
         if (positionX == positionXEnd) {
           status++;
+          contents.transform.GetChild(0).GetComponent<BannerButton>().startPop();
           if (isLast) scoreManager.bannerEnd();
         }
       }

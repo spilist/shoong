@@ -5,13 +5,16 @@ public class PowerBoostBackground : MonoBehaviour {
   public float alphaChangeUpDuration = 0.1f;
   public float alphaChangeDownDuration = 0.5f;
 
-  private ProceduralMaterial mat;
+  // private ProceduralMaterial mat;
+  private Material mat;
+
   Color color;
   float alpha = 0;
   int fadeStatus = 0;
 
 	void Start () {
-    mat = GetComponent<Renderer>().material as ProceduralMaterial;
+    mat = GetComponent<Renderer>().material;
+    // mat = GetComponent<Renderer>().material as ProceduralMaterial;
     color = mat.GetColor("_TintColor");
     color.a = 0;
     mat.SetColor("_TintColor", color);
@@ -45,8 +48,8 @@ public class PowerBoostBackground : MonoBehaviour {
 	}
 
   void OnDisable() {
-    mat.SetProceduralFloat("$randomseed", Random.Range(0, 1000));
-    mat.RebuildTextures();
+    // mat.SetProceduralFloat("$randomseed", Random.Range(0, 1000));
+    // mat.RebuildTextures();
     fadeStatus = 0;
   }
 }

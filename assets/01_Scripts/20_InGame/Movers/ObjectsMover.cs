@@ -28,6 +28,7 @@ public class ObjectsMover : MonoBehaviour {
   protected string transformResult;
   protected GameObject transformParticle;
   protected int transformLevel;
+  protected GameObject indicator;
 
   void Start() {
     player = GameObject.Find("Player").GetComponent<PlayerMover>();
@@ -47,6 +48,23 @@ public class ObjectsMover : MonoBehaviour {
     rb.velocity = direction * speed;
 
     originalScale = transform.localScale.x;
+  }
+
+  public bool hasIndicator() {
+    return indicator != null;
+  }
+
+  public void setIndicator(GameObject indicator) {
+    this.indicator = indicator;
+    indicator.GetComponent<PartsToCollectIndicator>().run(transform, GetComponent<MeshFilter>().sharedMesh);
+  }
+
+  public void showIndicator() {
+    indicator.SetActive(true);
+  }
+
+  public void hideIndicator() {
+    indicator.SetActive(false);
   }
 
   public void setBoundingSize(float val) {
@@ -284,5 +302,9 @@ public class ObjectsMover : MonoBehaviour {
 
   public int gaugeWhenDestroy() {
     return objectsManager.gaugeWhenDestroy;
+  }
+
+  void OnDestroy() {
+    if (indicator != null) Destroy(indicator);
   }
 }
