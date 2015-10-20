@@ -344,6 +344,7 @@ public class PlayerMover : MonoBehaviour {
 
     numBoosters++;
     DataManager.dm.increment("TotalBoosters");
+    rotatePlayerBody();
   }
 
   public int getNumBoosters() {
@@ -395,7 +396,6 @@ public class PlayerMover : MonoBehaviour {
   public void setDirection(Vector3 dir) {
     direction = dir;
     if (usingPowerBoost) superheat.setDir(dir);
-    rotatePlayerBody();
   }
 
   public void nearAsteroid(bool enter = true, int amount = 1) {

@@ -31,7 +31,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 46051bef365c14d06a8913813ccf00dd, type: 3}
+    m_Font: {fileID: 12800000, guid: 2cc782470beff4fb98f85e64bd300e10, type: 3}
     m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
@@ -85,7 +85,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_FontData.m_Font
       value: 
-      objectReference: {fileID: 12800000, guid: 46051bef365c14d06a8913813ccf00dd,
+      objectReference: {fileID: 12800000, guid: 2cc782470beff4fb98f85e64bd300e10,
         type: 3}
     - target: {fileID: 0}
       propertyPath: m_FontData.m_FontSize

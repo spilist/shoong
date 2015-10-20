@@ -64,6 +64,15 @@ TagManager:
   - MagnetArea
   - Transformer
   - TransformerSphere
+  - TransformerCollider
+  - FlyingCharacter
+  - ControlPanel_circle_right
+  - StickPanel_movement
+  - StickPanel_booster
+  - Settings_changeControl
+  - ControlPanel_circle_left
+  - ControlPanel_packman_left
+  - ControlPanel_packman_right
   layers:
   - Default
   - TransparentFX

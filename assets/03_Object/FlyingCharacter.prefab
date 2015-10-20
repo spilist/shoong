@@ -13,9 +13,9 @@ GameObject:
   - 54: {fileID: 5451692}
   - 135: {fileID: 13597128}
   - 114: {fileID: 11443952}
-  m_Layer: 10
+  m_Layer: 4
   m_Name: FlyingCharacter
-  m_TagString: Player
+  m_TagString: FlyingCharacter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31,7 +31,7 @@ GameObject:
   - 198: {fileID: 19830010}
   - 199: {fileID: 19997644}
   - 82: {fileID: 8295066}
-  m_Layer: 10
+  m_Layer: 4
   m_Name: Booster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1291,7 +1291,15 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_TagString
+      value: FlyingCharacter
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 103454}
