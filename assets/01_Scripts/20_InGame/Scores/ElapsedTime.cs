@@ -4,7 +4,11 @@ using System.Collections;
 
 public class ElapsedTime : MonoBehaviour {
 	public PhaseManager phaseManager;
-	public RectTransform progressCharacter;
+	public Transform phaseStars;
+	public GameObject phaseStarPrefab;
+	public float distanceBetweenStars = 50;
+	private Image phaseStar;
+
 	public int[] reqProgressPerPhase;
 	public int progressPerSecond = 10;
 	public float progressPerCube = 0.5f;
@@ -37,7 +41,6 @@ public class ElapsedTime : MonoBehaviour {
 	}
 
 	public void startTime() {
-		progressCharacter.GetComponent<MeshFilter>().sharedMesh = GameObject.Find("Player").GetComponent<MeshFilter>().sharedMesh;
 		resetProgress();
 		StartCoroutine("startElapse");
 	}
@@ -46,13 +49,16 @@ public class ElapsedTime : MonoBehaviour {
 		progressChanging = true;
 		if (phaseManager.phase() >= reqProgressPerPhase.Length) {
 			progressChanging = false;
-			progressCharacter.transform.parent.gameObject.SetActive(false);
 		} else {
 			reqProgress = reqProgressPerPhase[phaseManager.phase()];
 			progressScale = (float)distance / reqProgress;
-			progressCharacter.anchoredPosition = new Vector2(progressStart, 0);
 			currentProgress = progressStart;
 		}
+
+		GameObject obj = (GameObject) Instantiate(phaseStarPrefab);
+		obj.transform.SetParent(phaseStars, false);
+		obj.GetComponent<RectTransform>().anchoredPosition += new Vector2(phaseManager.phase() * distanceBetweenStars, 0);
+		phaseStar = obj.GetComponent<Image>();
 	}
 
 	public void addProgressByCube(int cubes) {
@@ -72,7 +78,7 @@ public class ElapsedTime : MonoBehaviour {
 			currentProgress = Mathf.MoveTowards(currentProgress, progressEnd, Time.deltaTime * distance * progressPerSecond / reqProgress);
 			currentProgress = Mathf.MoveTowards(currentProgress, currentProgress + guageChangeAmount, Time.deltaTime * distance / progressChangeSpeed);
 			guageChangeAmount = Mathf.MoveTowards(guageChangeAmount, 0, Time.deltaTime * distance / progressChangeSpeed);
-			progressCharacter.anchoredPosition = new Vector2(currentProgress, 0);
+			phaseStar.fillAmount = currentProgress / progressEnd;
 		}
 
 		if (currentProgress >= progressEnd) {

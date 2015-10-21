@@ -22,10 +22,8 @@ public class PlayerMover : MonoBehaviour {
   public float tumble = 4;
   private Vector3 direction;
 
-  public ComboPartsManager cpm;
   public MonsterManager monm;
   public RainbowDonutsManager rdm;
-  public JetpackManager jpm;
   public DoppleManager dpm;
   public BlackholeManager blm;
 
@@ -321,8 +319,6 @@ public class PlayerMover : MonoBehaviour {
 
     changeManager.teleport(pos);
     DataManager.dm.increment("TotalBlinks");
-    cpm.tryToGet();
-
   }
 
   public void shootBooster(){
@@ -339,8 +335,6 @@ public class PlayerMover : MonoBehaviour {
       boosterspeed += boosterSpeedUp() * boosterBonus;
       boosterspeed = boosterspeed > maxBooster() ? maxBooster() : boosterspeed;
     }
-
-    cpm.tryToGet();
 
     numBoosters++;
     DataManager.dm.increment("TotalBoosters");

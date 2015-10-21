@@ -5,6 +5,14 @@ public class ComboPartsManager : ObjectsManager {
   public PartsToBeCollected ptb;
   public Transform normalParts;
 
+  public float illusionLifeTime = 3;
+  public float blinkBeforeDestroy = 1.2f;
+
+  public float showDurationStart = 0.35f;
+  public float showDurationDecrease = 0.1f;
+  public float emptyDurationStart = 0.15f;
+  public float emptyDurationDecrease = 0.05f;
+
   public int chanceBase = 100;
   public GameObject goldenCubePrefab;
   public GoldCubesCount gcCount;
@@ -25,7 +33,6 @@ public class ComboPartsManager : ObjectsManager {
   public float pitchIncrease = 0.05f;
 
   private bool trying = false;
-  private bool secondShot = false;
 
   public GameObject nextInstance;
   public int comboCount = 0;
@@ -92,21 +99,9 @@ public class ComboPartsManager : ObjectsManager {
     return obj1.GetComponent<MeshFilter>().sharedMesh == obj2.GetComponent<MeshFilter>().sharedMesh;
   }
 
-  public void tryToGet() {
-    if (trying) {
-      if (secondShot) {
-        secondShot = false;
-        if (instance != null) instance.GetComponent<ComboPartMover>().destroyObject();
-      } else {
-        secondShot = true;
-      }
-    }
-  }
-
   public void eatenByPlayer() {
     comboCount++;
     trying = true;
-    secondShot = false;
 
     if (comboCount == 1) {
       player.encounterObject("ComboPart");
@@ -124,6 +119,7 @@ public class ComboPartsManager : ObjectsManager {
     instance = (GameObject) Instantiate (objPrefab, spawnPos, spawnRotation);
     instance.transform.parent = transform;
     changeObject(instance, nextInstance);
+    instance.GetComponent<ComboPartMover>().setDestroyAfter();
 
     if (compareEqualMesh(nextInstance, goldenCubePrefab)) {
       instance.GetComponent<Renderer>().sharedMaterial = goldenCubePrefab.GetComponent<Renderer>().sharedMaterial;
