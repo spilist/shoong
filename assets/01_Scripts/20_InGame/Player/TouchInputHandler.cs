@@ -28,7 +28,8 @@ public class TouchInputHandler : MonoBehaviour
   private float endMousePosition_x;
   private Vector3 lastDraggablePosition;
   private string controlMethod;
-  private int fingerId = 0;
+
+  private GameObject lastHitObject;
 
   void Update() {
 		if (Application.platform == RuntimePlatform.Android) {
@@ -123,12 +124,36 @@ public class TouchInputHandler : MonoBehaviour
             player.shootBooster();
           }
         }
-      } else if (controlMethod == "Stick") {
-        if (result == "StickPanel_booster") {
-          player.shootBooster();
+      }
+      //  else if (controlMethod == "Stick") {
+      //   if (result == "StickPanel_booster") {
+      //     player.shootBooster();
+      //   }
+      // }
+		}
+
+    if (controlMethod == "Stick") {
+      for (var i = 0; i < Input.touchCount; ++i) {
+        Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(i).position);
+        RaycastHit hit;
+        if ( Physics.Raycast(ray, out hit) ) {
+          GameObject hitObject = hit.transform.gameObject;
+
+          if (Input.GetTouch(i).phase == TouchPhase.Began) {
+            // lastHitObject = hitObject;
+            hitObject.SendMessage("OnPointerDown");
+          }
+
+          if (Input.GetTouch(i).phase == TouchPhase.Ended) {
+            // if (lastHitObject == hitObject) {
+            //   hitObject.SendMessage("OnPointerUpAsButton");
+            // }
+            hitObject.SendMessage("OnPointerUp");
+            // lastHitObject = null;
+          }
         }
       }
-		}
+    }
 	}
 
 	void OnMouseDown() {
@@ -193,13 +218,7 @@ public class TouchInputHandler : MonoBehaviour
   }
 
   public Vector3 setPlayerDirection(Transform origin) {
-    Vector2 touchPosition;
-    if (controlMethod == "Stick") {
-      // if (fingerId != 0 && fingerId == Input.GetTouch(0).fingerId) return
-      touchPosition = Input.GetTouch(0).position;
-    } else {
-      touchPosition = Input.mousePosition;
-    }
+    Vector2 touchPosition = Input.mousePosition;
 
     Vector3 worldTouchPosition = Camera.main.ScreenToWorldPoint(new Vector3(touchPosition.x, touchPosition.y, Camera.main.transform.position.y));
     Vector3 originPosition = new Vector3(origin.position.x, 0, origin.position.z);
@@ -209,10 +228,6 @@ public class TouchInputHandler : MonoBehaviour
     player.setDirection(direction);
 
     return worldTouchPosition;
-  }
-
-  public void setTouchId(int id) {
-    fingerId = id;
   }
 
 	public void stopReact() {

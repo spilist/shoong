@@ -4,6 +4,7 @@ using System.Collections;
 public class Panel : MonoBehaviour {
 	public string controlMethod;
   public TouchInputHandler handler;
+  public PlayerMover player;
   public Transform character;
   private bool stickMoving = false;
 
@@ -14,20 +15,22 @@ public class Panel : MonoBehaviour {
   }
 
   void Update() {
-    if (stickMoving) {
+    if (stickMoving && Input.touchCount == 1) {
       handler.setPlayerDirection(character);
     }
   }
 
-  void OnMouseDown() {
+  void OnPointerDown() {
     if (tag == "StickPanel_movement") {
-      if (Input.touchCount > 0) {
-        stickMoving = true;
-      }
+      stickMoving = true;
+    }
+
+    if (tag == "StickPanel_booster") {
+      player.shootBooster();
     }
   }
 
-  void OnMouseUp() {
+  void OnPointerUp() {
     stickMoving = false;
   }
 }

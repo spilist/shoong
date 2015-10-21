@@ -3,12 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class PartsToCollectIndicator : MonoBehaviour {
-  private Image img;
-  // private RectTransform rectTr;
-  // private float originalWidth;
-  // private float shrinkedWidth;
-  // private float width;
-  // private float shrinkDuration;
+  private Renderer mRenderer;
   private int rotatingSpeed;
 
   private PartsToBeCollected ptb;
@@ -16,22 +11,20 @@ public class PartsToCollectIndicator : MonoBehaviour {
   private Mesh checkMesh;
 
   void Start() {
-    // rectTr = GetComponent<RectTransform>();
-    img = GetComponent<Image>();
-    // originalWidth = rectTr.sizeDelta.x;
-    // width = originalWidth;
+    mRenderer = GetComponent<Renderer>();
   }
 
   public void run(Transform tr, Mesh mesh) {
-    ptb = GameObject.Find("PartsToBeCollected").GetComponent<PartsToBeCollected>();
-    // shrinkedWidth = ptb.indicatorShrinkedWidth;
-    // shrinkDuration = ptb.indicatorShrinkDuration;
+    GameObject ptbObj = GameObject.Find("PartsToBeCollected");
+    if (ptbObj == null) return;
+
+    ptb = ptbObj.GetComponent<PartsToBeCollected>();
     rotatingSpeed = ptb.indicatorRotatingSpeed;
     followTr = tr;
     checkMesh = mesh;
   }
 
-  void Update() {
+  void LateUpdate() {
     if (followTr == null) Destroy(gameObject);
     else {
       if (ptb.isMeshCollectable(checkMesh)) {
@@ -39,10 +32,6 @@ public class PartsToCollectIndicator : MonoBehaviour {
 
         transform.position = new Vector3(followTr.position.x, transform.position.y, followTr.position.z);
         transform.Rotate(0, 0, Time.deltaTime * rotatingSpeed);
-
-        // width = Mathf.MoveTowards(width, shrinkedWidth, Time.deltaTime * (originalWidth - shrinkedWidth) / shrinkDuration);
-        // rectTr.sizeDelta = width * Vector2.one;
-        // if (width == shrinkedWidth) width = originalWidth;
       } else {
         showImg(false);
       }
@@ -50,6 +39,6 @@ public class PartsToCollectIndicator : MonoBehaviour {
   }
 
   void showImg(bool val) {
-    if (img.enabled != val) img.enabled = val;
+    if (mRenderer.enabled != val) mRenderer.enabled = val;
   }
 }

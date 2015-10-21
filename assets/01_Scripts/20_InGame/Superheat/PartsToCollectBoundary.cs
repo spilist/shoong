@@ -12,8 +12,7 @@ public class PartsToCollectBoundary : MonoBehaviour {
       if (mover.hasIndicator()) {
         mover.showIndicator();
       } else {
-        GameObject indicator = (GameObject)Instantiate(indicatorToCollect, mover.transform.position, Quaternion.identity);
-        indicator.transform.SetParent(inGameUI, false);
+        GameObject indicator = (GameObject)Instantiate(indicatorToCollect);
         mover.setIndicator(indicator);
       }
     }

@@ -8,6 +8,12 @@ public class ElapsedTime : MonoBehaviour {
 	public GameObject phaseStarPrefab;
 	public float distanceBetweenStars = 50;
 	private Image phaseStar;
+	private int popStatus = 0;
+	public float startScale = 0.1f;
+	public float largeScale = 1.2f;
+	public float smallScale = 0.6f;
+	public float changeTime = 0.1f;
+	private float starScale;
 
 	public int[] reqProgressPerPhase;
 	public int progressPerSecond = 10;
@@ -59,6 +65,8 @@ public class ElapsedTime : MonoBehaviour {
 		obj.transform.SetParent(phaseStars, false);
 		obj.GetComponent<RectTransform>().anchoredPosition += new Vector2(phaseManager.phase() * distanceBetweenStars, 0);
 		phaseStar = obj.GetComponent<Image>();
+		popStatus = 1;
+		starScale = startScale;
 	}
 
 	public void addProgressByCube(int cubes) {
@@ -78,7 +86,7 @@ public class ElapsedTime : MonoBehaviour {
 			currentProgress = Mathf.MoveTowards(currentProgress, progressEnd, Time.deltaTime * distance * progressPerSecond / reqProgress);
 			currentProgress = Mathf.MoveTowards(currentProgress, currentProgress + guageChangeAmount, Time.deltaTime * distance / progressChangeSpeed);
 			guageChangeAmount = Mathf.MoveTowards(guageChangeAmount, 0, Time.deltaTime * distance / progressChangeSpeed);
-			phaseStar.fillAmount = currentProgress / progressEnd;
+			// phaseStar.fillAmount = currentProgress / progressEnd;
 		}
 
 		if (currentProgress >= progressEnd) {
@@ -86,6 +94,20 @@ public class ElapsedTime : MonoBehaviour {
 			phaseManager.nextPhase();
 			resetProgress();
 		}
+
+		if (popStatus > 0) {
+      if (popStatus == 1) {
+        changeScale(largeScale, largeScale - startScale);
+      } else if (popStatus == 2) {
+        changeScale(smallScale, smallScale - largeScale);
+      } else if (popStatus == 3) {
+        changeScale(1, 1 - smallScale);
+      } else if (popStatus == 4) {
+      	popStatus = 0;
+      }
+
+      phaseStar.transform.localScale = starScale * Vector3.one;
+    }
 	}
 
 	IEnumerator startElapse() {
@@ -112,4 +134,9 @@ public class ElapsedTime : MonoBehaviour {
 	public void startBlackhole() {
 		spawnBlackhole = true;
 	}
+
+	void changeScale(float targetScale, float difference) {
+    starScale = Mathf.MoveTowards(starScale, targetScale, Time.deltaTime * Mathf.Abs(difference) / changeTime);
+    if (starScale == targetScale) popStatus++;
+  }
 }

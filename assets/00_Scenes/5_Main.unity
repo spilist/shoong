@@ -25865,7 +25865,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_Sprite: {fileID: 21300000, guid: 946a2d431f4f644a5ac2bb43b0224209, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
@@ -25893,6 +25893,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controlMethod: Stick
   handler: {fileID: 0}
+  player: {fileID: 91418583}
   character: {fileID: 0}
 --- !u!1 &685215970
 GameObject:
@@ -26318,7 +26319,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inGameUI: {fileID: 2134279969}
-  indicatorToCollect: {fileID: 104966, guid: fea914ad041bd4c1abfacfc5ec46e529, type: 2}
+  indicatorToCollect: {fileID: 129232, guid: cc3d12dfbccec43dba0ee757f254b06a, type: 2}
 --- !u!114 &713807496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31231,6 +31232,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controlMethod: Packman
   handler: {fileID: 0}
+  player: {fileID: 0}
   character: {fileID: 0}
 --- !u!1 &784850296
 GameObject:
@@ -34322,6 +34324,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controlMethod: Circle
   handler: {fileID: 0}
+  player: {fileID: 0}
   character: {fileID: 0}
 --- !u!4 &903503708
 Transform:
@@ -51333,7 +51336,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1346587199
 RectTransform:
   m_ObjectHideFlags: 0
@@ -51404,6 +51407,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controlMethod: Stick
   handler: {fileID: 1801634119}
+  player: {fileID: 0}
   character: {fileID: 1236479425}
 --- !u!1 &1357137652
 GameObject:
@@ -65316,6 +65320,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controlMethod: Packman
   handler: {fileID: 0}
+  player: {fileID: 0}
   character: {fileID: 0}
 --- !u!1 &1607078839
 GameObject:
@@ -79510,6 +79515,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controlMethod: Circle
   handler: {fileID: 0}
+  player: {fileID: 0}
   character: {fileID: 0}
 --- !u!1 &1881103577
 GameObject:
@@ -85931,7 +85937,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 178956, guid: 04fbb3727378e41e081127391a3b6d69, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 04fbb3727378e41e081127391a3b6d69, type: 2}
@@ -86133,8 +86139,6 @@ MonoBehaviour:
   guagePerCollect: 200
   pitchIncreasePerCollect: .0500000007
   indicatorRotatingSpeed: -20
-  indicatorShrinkedWidth: 130
-  indicatorShrinkDuration: .5
   collectSound: {fileID: 463180077}
   collectCompleteSound: {fileID: 1774752850}
 --- !u!1 &2068284237

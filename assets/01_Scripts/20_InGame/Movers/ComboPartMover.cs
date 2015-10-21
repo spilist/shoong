@@ -79,12 +79,12 @@ public class ComboPartMover : ObjectsMover {
 
     while (duration > 0) {
       mRenderer.enabled = true;
-      mRenderer_next.enabled = true;
+      if (mRenderer_next != null) mRenderer_next.enabled = true;
 
       yield return new WaitForSeconds (showDuring);
 
       mRenderer.enabled = false;
-      mRenderer_next.enabled = false;
+      if (mRenderer_next != null) mRenderer_next.enabled = false;
 
       yield return new WaitForSeconds (emptyDuring);
 

@@ -12,8 +12,6 @@ public class PartsToBeCollected : MonoBehaviour {
   public float guagePerCollect = 200;
   public float pitchIncreasePerCollect = 0.05f;
   public int indicatorRotatingSpeed = 10;
-  public float indicatorShrinkedWidth = 130;
-  public float indicatorShrinkDuration = 0.2f;
 
   public AudioSource collectSound;
   public AudioSource collectCompleteSound;
