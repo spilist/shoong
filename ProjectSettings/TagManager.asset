@@ -73,6 +73,8 @@ TagManager:
   - ControlPanel_circle_left
   - ControlPanel_packman_left
   - ControlPanel_packman_right
+  - FlyingBoundary
+  - ChangeBehavior
   layers:
   - Default
   - TransparentFX

@@ -6,9 +6,19 @@ public class FlyingCharacters : MonoBehaviour {
   public Transform allCharacters;
   public GameObject characterPrefab;
 
+  public float minSpawnInterval = 1;
+  public float maxSpawnInterval = 3;
+
   public float spawnRadius = 200;
   public int speed = 200;
+  public int baseSpeed = 50;
   public int tumble = 5;
+
+  public int minBoosterAmount = 40;
+  public int maxBoosterAmonut = 120;
+  public int boosterSpeedDecreaseBase = 70;
+  public int boosterSpeedDecreasePerTime = 20;
+  public float delayAfterMove = 0.5f;
 
   private bool first = true;
   private Mesh[] characterMeshes;
@@ -28,37 +38,45 @@ public class FlyingCharacters : MonoBehaviour {
     foreach (Transform character in allCharacters) {
       if (DataManager.dm.getBool(character.name) && character.name != PlayerPrefs.GetString("SelectedCharacter")) {
         characterMeshes[charactersCount++] = character.GetComponent<MeshFilter>().sharedMesh;
-        charactersCount++;
       }
     }
 
-    showNewCharacter();
+    StartCoroutine("showNewCharacter");
   }
 
   Mesh randomMesh() {
     return characterMeshes[Random.Range(0, charactersCount)];
   }
 
-  public void showNewCharacter() {
-    Vector2 screenPos = Random.insideUnitCircle;
-    screenPos.Normalize();
-    screenPos *= spawnRadius;
+  IEnumerator showNewCharacter() {
+    while (true) {
+      Vector2 screenPos = Random.insideUnitCircle;
+      screenPos.Normalize();
+      screenPos *= spawnRadius;
 
-    Vector3 spawnPos = screenToWorld(screenPos);
-    Vector3 direction = playerPos() - spawnPos;
-    direction.Normalize();
+      Vector3 spawnPos = screenToWorld(screenPos);
+      Vector3 direction = playerPos() - spawnPos;
+      direction.Normalize();
 
-    GameObject instance = (GameObject) Instantiate(characterPrefab, spawnPos, Quaternion.identity);
-    instance.transform.parent = transform;
-    instance.GetComponent<MeshFilter>().sharedMesh = randomMesh();
-    instance.GetComponent<FlyingCharacterMover>().run(direction, speed, tumble);
+      GameObject instance = (GameObject) Instantiate(characterPrefab, spawnPos, Quaternion.identity);
+      instance.transform.parent = transform;
+      instance.GetComponent<MeshFilter>().sharedMesh = randomMesh();
+      instance.GetComponent<FlyingCharacterMover>().run(this, direction);
+
+      yield return new WaitForSeconds(Random.Range(minSpawnInterval, maxSpawnInterval));
+    }
   }
 
   Vector3 screenToWorld(Vector3 screenPos) {
-    return new Vector3(screenPos.x + player.transform.position.x, player.transform.position.y, screenPos.y + player.transform.position.z);
+    return new Vector3(screenPos.x + player.transform.position.x, transform.position.y, screenPos.y + player.transform.position.z);
   }
 
   Vector3 playerPos() {
-    return player.transform.position + player.getDirection() * player.getSpeed();
+    return player.transform.position;
+    // return player.transform.position + player.getDirection() * player.getSpeed();
+  }
+
+  void OnDisable() {
+    StopCoroutine("showNewCharacter");
   }
 }

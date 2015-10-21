@@ -21906,6 +21906,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 936221359}
+  - {fileID: 976401523}
   m_Father: {fileID: 1817731074}
   m_RootOrder: 5
   m_AnchorMin: {x: .5, y: .5}
@@ -21927,9 +21928,17 @@ MonoBehaviour:
   player: {fileID: 91418583}
   allCharacters: {fileID: 400016, guid: 06ea95d279c7341edb83769ec8c7baed, type: 3}
   characterPrefab: {fileID: 103454, guid: f5fb649f47d1a4dbe94d8c89f4fbe94b, type: 2}
+  minSpawnInterval: 1
+  maxSpawnInterval: 3
   spawnRadius: 200
   speed: 200
+  baseSpeed: 50
   tumble: 5
+  minBoosterAmount: 40
+  maxBoosterAmonut: 120
+  boosterSpeedDecreaseBase: 70
+  boosterSpeedDecreasePerTime: 20
+  delayAfterMove: .5
 --- !u!1 &566110653
 GameObject:
   m_ObjectHideFlags: 0
@@ -35960,14 +35969,13 @@ GameObject:
   - 4: {fileID: 936221359}
   - 33: {fileID: 936221363}
   - 114: {fileID: 936221361}
-  - 114: {fileID: 936221360}
   - 65: {fileID: 936221362}
   - 65: {fileID: 936221366}
   - 65: {fileID: 936221365}
   - 65: {fileID: 936221364}
   m_Layer: 4
   m_Name: Boundary
-  m_TagString: Boundary
+  m_TagString: FlyingBoundary
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35984,18 +35992,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 565486536}
   m_RootOrder: 0
---- !u!114 &936221360
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 936221358}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 524932d78c69b4dc0a93a616df474e57, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  flyingCharacter: {fileID: 565486537}
 --- !u!114 &936221361
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36806,6 +36802,52 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: "\uC288\uD37C\uCEA3"
   price: 100
+--- !u!1 &976401522
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 976401523}
+  - 136: {fileID: 976401524}
+  m_Layer: 4
+  m_Name: ChangeBehaviorCollider
+  m_TagString: ChangeBehavior
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &976401523
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 976401522}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 565486536}
+  m_RootOrder: 1
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: .5, y: .5}
+--- !u!136 &976401524
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 976401522}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 200
+  m_Height: 700
+  m_Direction: 0
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &978985098
 GameObject:
   m_ObjectHideFlags: 0
@@ -36998,6 +37040,10 @@ MonoBehaviour:
   phaseStars: {fileID: 155100441}
   phaseStarPrefab: {fileID: 178956, guid: 04fbb3727378e41e081127391a3b6d69, type: 2}
   distanceBetweenStars: 50
+  startScale: .100000001
+  largeScale: 1.20000005
+  smallScale: .600000024
+  changeTime: .100000001
   reqProgressPerPhase: 2c01000090010000f401000058020000bc0200002003000084030000e8030000
   progressPerSecond: 10
   progressPerCube: .5
@@ -85937,7 +85983,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 178956, guid: 04fbb3727378e41e081127391a3b6d69, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 04fbb3727378e41e081127391a3b6d69, type: 2}
