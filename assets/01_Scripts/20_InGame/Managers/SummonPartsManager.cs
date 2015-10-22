@@ -1,10 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class SummonPartsManager : ObjectsManager {
   public PartsToBeCollected ptb;
   public GameObject summonedPartPrefab;
+  public List<GameObject> summonedPartPool;
   public GameObject summonedPartsDestroyEffect;
+  public List<GameObject> summonedPartDestroyPool;
+  public int summonPoolAmount = 20;
 
   public int[] numSpawnZPerLevel;
   public float[] summonedPartLifetimePerLevel;
@@ -36,15 +40,31 @@ public class SummonPartsManager : ObjectsManager {
   private Mesh[] summonMeshes;
   private Mesh summonMesh;
   private int getCount = 0;
+  private GameObject parentObj;
 
   override public void initRest() {
     skipInterval = true;
 
-    summonMeshes = new Mesh[GetComponent<NormalPartsManager>().objPrefab.transform.childCount];
+    summonMeshes = new Mesh[GetComponent<NormalPartsManager>().meshes.childCount];
     int count = 0;
-    foreach (Transform tr in GetComponent<NormalPartsManager>().objPrefab.transform) {
+    foreach (Transform tr in GetComponent<NormalPartsManager>().meshes) {
       summonMeshes[count++] = tr.GetComponent<MeshFilter>().sharedMesh;
     }
+
+    summonedPartPool = new List<GameObject>();
+    summonedPartDestroyPool = new List<GameObject>();
+    for (int i = 0; i < summonPoolAmount; ++i) {
+      GameObject obj = (GameObject) Instantiate(summonedPartPrefab);
+      obj.SetActive(false);
+      summonedPartPool.Add(obj);
+
+      obj = (GameObject) Instantiate(summonedPartsDestroyEffect);
+      obj.SetActive(false);
+      summonedPartDestroyPool.Add(obj);
+    }
+
+    parentObj = new GameObject();
+    parentObj.transform.SetParent(transform);
   }
 
   override public void adjustForLevel(int level) {
@@ -64,9 +84,6 @@ public class SummonPartsManager : ObjectsManager {
     return summonMeshes[Random.Range(0, summonMeshes.Length)];
   }
 
-  override protected void afterSpawn() {
-  }
-
   public void startSummon() {
     getCount = 0;
 
@@ -75,27 +92,34 @@ public class SummonPartsManager : ObjectsManager {
     Vector3 playerPos = player.transform.position;
     Vector3 origin = new Vector3(playerPos.x + dir.x * startSpawnRadius, 0, playerPos.z + dir.z * startSpawnRadius);
 
-    GameObject obj = new GameObject();
-    obj.transform.SetParent(transform);
-    obj.transform.position = origin;
-    obj.transform.localEulerAngles = new Vector3 (0, angle, 0);
+    parentObj.transform.position = origin;
+    parentObj.transform.localEulerAngles = new Vector3 (0, angle, 0);
 
     for (int i = 0; i < numSpawnX; i++) {
       for (int j = 0; j < numSpawnZ; j++) {
         Vector3 spawnPos = new Vector3(distanceBtwX * i - distanceBtwX * (numSpawnX - 1) / 2, 0, distanceBtwZ * j);
 
-        GameObject instance = (GameObject) Instantiate(summonedPartPrefab, spawnPos, Quaternion.identity);
-        instance.transform.SetParent(obj.transform, false);
+        GameObject instance = getPooledObj(summonedPartPool, summonedPartPrefab);
+        instance.SetActive(true);
+        instance.transform.SetParent(parentObj.transform, false);
+        instance.transform.localPosition = spawnPos;
 
         int random = Random.Range(0, chanceBase);
         if (random < goldenCubeChance) {
           changeObject(instance, goldenCubePrefab);
           instance.transform.Find("GoldenEffect").gameObject.SetActive(true);
+          instance.transform.Find("HeatEffect").gameObject.SetActive(false);
+          instance.transform.Find("BasicEffect").gameObject.SetActive(false);
         } else if (random < superheatPartChance) {
           changeObject(instance, superheatPartPrefab);
+          instance.transform.Find("GoldenEffect").gameObject.SetActive(false);
           instance.transform.Find("HeatEffect").gameObject.SetActive(true);
+          instance.transform.Find("BasicEffect").gameObject.SetActive(false);
         } else {
+          instance.transform.localScale = summonedPartPrefab.transform.localScale;
           instance.GetComponent<MeshFilter>().sharedMesh = randomMesh();
+          instance.transform.Find("GoldenEffect").gameObject.SetActive(false);
+          instance.transform.Find("HeatEffect").gameObject.SetActive(false);
           instance.transform.Find("BasicEffect").gameObject.SetActive(true);
         }
       }
@@ -112,6 +136,7 @@ public class SummonPartsManager : ObjectsManager {
 
     if (changeTo == goldenCubePrefab) obj.GetComponent<SummonedPartMover>().setGolden();
     else if (changeTo == superheatPartPrefab) obj.GetComponent<SummonedPartMover>().setSuper();
+    else obj.GetComponent<SummonedPartMover>().setNormal();
   }
 
   public void increaseSummonedPartGetcount() {

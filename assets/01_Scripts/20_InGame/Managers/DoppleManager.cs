@@ -1,11 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class DoppleManager : ObjectsManager {
   public ParticleSystem getEnergy;
   public GameObject energyCube;
   public GameObject forceFieldPrefab;
+  public List<GameObject> goodFieldPool;
   public GameObject forceFieldByDopplePrefab;
+  public List<GameObject> badFieldPool;
+  public int fieldAmount = 30;
+
   public float[] forceFieldSizePerLevel;
   public float targetSize;
   public AudioClip teleportSound;
@@ -17,6 +22,18 @@ public class DoppleManager : ObjectsManager {
   public int blinkRadius = 50;
 
   override public void initRest() {
+    goodFieldPool = new List<GameObject>();
+    badFieldPool = new List<GameObject>();
+
+    for (int i = 0; i < fieldAmount; ++i) {
+      GameObject obj = (GameObject) Instantiate(forceFieldPrefab);
+      obj.SetActive(false);
+      goodFieldPool.Add(obj);
+
+      obj = (GameObject) Instantiate(forceFieldByDopplePrefab);
+      obj.SetActive(false);
+      badFieldPool.Add(obj);
+    }
   }
 
   override public void adjustForLevel(int level) {
@@ -26,6 +43,11 @@ public class DoppleManager : ObjectsManager {
   public float getTargetSize(bool byPlayer) {
     if (byPlayer) return targetSize;
     else return forceFieldSizePerLevel[0];
+  }
+
+  public void goodFieldAt(Vector3 pos) {
+    GameObject obj = getPooledObj(goodFieldPool, forceFieldPrefab, pos);
+    obj.SetActive(true);
   }
 
 }

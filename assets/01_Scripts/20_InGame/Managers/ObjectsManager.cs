@@ -1,8 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class ObjectsManager : MonoBehaviour {
   public bool forceSpawnAtStart = false;
+  public int objAmount = 1;
+  public List<GameObject> objPool;
+  public List<GameObject> objDestroyEffectPool;
+  public List<GameObject> objEncounterEffectPool;
   public GameObject objPrefab;
   public GameObject objDestroyEffect;
   public GameObject objEncounterEffect;
@@ -30,7 +35,10 @@ public class ObjectsManager : MonoBehaviour {
   public int level;
   protected bool noMoreRespawn = false;
 
+  virtual protected void beforeInit() {}
+
   void OnEnable() {
+    beforeInit();
     spawnManager = gameObject.GetComponent<SpawnManager>();
     shm = gameObject.GetComponent<SuperheatPartManager>();
     player = GameObject.Find("Player").GetComponent<PlayerMover>();
@@ -45,7 +53,60 @@ public class ObjectsManager : MonoBehaviour {
       if (level < 0) level = 0;
       adjustForLevel(level);
     }
+
+    objPool = new List<GameObject>();
+    for (int i = 0; i < objAmount; ++i) {
+      GameObject obj = (GameObject) Instantiate(objPrefab);
+      obj.SetActive(false);
+      obj.transform.parent = transform;
+      objPool.Add(obj);
+    }
+
+    if (objDestroyEffect != null) {
+      objDestroyEffectPool = new List<GameObject>();
+      for (int i = 0; i < objAmount; ++i) {
+        GameObject obj = (GameObject) Instantiate(objDestroyEffect);
+        obj.SetActive(false);
+        objDestroyEffectPool.Add(obj);
+      }
+    }
+
+    if (objEncounterEffect != null) {
+      objEncounterEffectPool = new List<GameObject>();
+      for (int i = 0; i < objAmount; ++i) {
+        GameObject obj = (GameObject) Instantiate(objEncounterEffect);
+        obj.SetActive(false);
+        objEncounterEffectPool.Add(obj);
+      }
+    }
+
     initRest();
+  }
+
+  public void spawnPooledObjs(List<GameObject> list, GameObject prefab, int count) {
+    for (int i = 0; i < count; i++) {
+      GameObject obj = getPooledObj(list, prefab, spawnManager.getSpawnPosition(prefab));
+      obj.SetActive(true);
+    }
+  }
+
+  public GameObject getPooledObj(List<GameObject> list, GameObject prefab, Vector3 pos) {
+    GameObject obj = getPooledObj(list, prefab);
+    obj.transform.position = pos;
+    return obj;
+  }
+
+  public GameObject getPooledObj(List<GameObject> list, GameObject prefab) {
+    for (int i = 0; i < list.Count; i++) {
+      if (!list[i].activeInHierarchy) {
+        return list[i];
+      }
+    }
+
+    GameObject obj = (GameObject) Instantiate(prefab);
+    obj.transform.parent = transform;
+    list.Add(obj);
+    return obj;
   }
 
   virtual public void initRest() {}
@@ -62,8 +123,8 @@ public class ObjectsManager : MonoBehaviour {
     if (instance != null) {
       instance.GetComponent<ObjectsMover>().destroyObject(false, false);
     }
-    instance = (GameObject) Instantiate (objPrefab, pos, Quaternion.identity);
-    instance.transform.parent = transform;
+    instance = getPooledObj(objPool, objPrefab, pos);
+    instance.SetActive(true);
     adjustForLevel(level);
     afterSpawn();
   }
@@ -86,13 +147,21 @@ public class ObjectsManager : MonoBehaviour {
     afterSpawn();
   }
 
+  virtual public void respawn() {
+    int count = objAmount - GameObject.FindGameObjectsWithTag(objPrefab.tag).Length;
+    if (count > 0) {
+      spawnPooledObjs(objPool, objPrefab, count);
+    }
+  }
+
   virtual protected float spawnInterval() {
     if (skipInterval) return 0;
     else return Random.Range(minSpawnInterval, maxSpawnInterval);
   }
 
   virtual protected void spawn() {
-    instance = spawnManager.spawn(objPrefab);
+    instance = getPooledObj(objPool, objPrefab, spawnManager.getSpawnPosition(objPrefab));
+    instance.SetActive(true);
   }
 
   virtual protected void afterSpawn() {}

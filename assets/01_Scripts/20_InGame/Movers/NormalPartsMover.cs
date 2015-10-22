@@ -3,9 +3,15 @@ using System.Collections;
 
 public class NormalPartsMover : ObjectsMover {
   private NormalPartsManager npm;
+  private MeshFilter filter;
 
   protected override void initializeRest() {
     npm = (NormalPartsManager)objectsManager;
+    filter = GetComponent<MeshFilter>();
+  }
+
+  protected override void afterEnable() {
+    filter.sharedMesh = npm.getRandomMesh();
   }
 
   override protected void afterEncounter() {
@@ -21,11 +27,11 @@ public class NormalPartsMover : ObjectsMover {
       player.showEffect("Wow");
     }
 
-    npm.ptb.checkCollected(GetComponent<MeshFilter>().sharedMesh);
+    npm.ptb.checkCollected(filter.sharedMesh);
   }
 
   override protected void afterDestroy(bool byPlayer) {
-    if (byPlayer) npm.ptb.checkCollected(GetComponent<MeshFilter>().sharedMesh);
+    if (byPlayer) npm.ptb.checkCollected(filter.sharedMesh);
   }
 
   override public string getManager() {

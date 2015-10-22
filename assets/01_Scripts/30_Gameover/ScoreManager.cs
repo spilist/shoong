@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 using System;
 
 public class ScoreManager : MonoBehaviour {
@@ -15,7 +16,9 @@ public class ScoreManager : MonoBehaviour {
   // for gameover effect
   public float showPlayerExplosionDuring = 2;
   public ParticleSystem playerExplosion;
+  public Transform debrisTransform;
   public GameObject characterDebris;
+  public List<GameObject> characterDebrisPool;
   public int debrisTumble = 30;
   public int numDebrisSpawn = 10;
   public float minDebrisSize = 0.5f;
@@ -50,6 +53,15 @@ public class ScoreManager : MonoBehaviour {
   private bool isSaved = false;
   private int boosterCount;
 
+  void Start() {
+    characterDebrisPool = new List<GameObject>();
+    for (int i = 0; i < numDebrisSpawn; ++i) {
+      GameObject obj = (GameObject) Instantiate(characterDebris);
+      obj.SetActive(false);
+      characterDebrisPool.Add(obj);
+    }
+  }
+
   void Update() {
     if (gameOverStatus == 1) {
       if (Input.GetMouseButtonDown(0)) scoreUpdate();
@@ -57,6 +69,31 @@ public class ScoreManager : MonoBehaviour {
       if (Input.GetMouseButtonDown(0)) {
         if (!beforeIdle.isLoading() && menus.touched() != "GameOverActions") return;
       }
+    }
+  }
+
+  GameObject getDebris() {
+    for (int i = 0; i < characterDebrisPool.Count; i++) {
+      if (!characterDebrisPool[i].activeInHierarchy) {
+        return characterDebrisPool[i];
+      }
+    }
+
+    GameObject obj = (GameObject) Instantiate(characterDebris);
+    characterDebrisPool.Add(obj);
+    return obj;
+  }
+
+  void showCharacterDebris() {
+    Camera.main.GetComponent<CameraMover>().shake(gameOverShakeDuration, gameOverShakeAmount);
+
+    for (int howMany = numDebrisSpawn; howMany > 0; howMany--) {
+      GameObject debris = getDebris();
+      debris.transform.position = player.transform.position;
+      debris.transform.localScale = UnityEngine.Random.Range(minDebrisSize, maxDebrisSize) * Vector3.one;
+      debris.GetComponent<MeshFilter>().sharedMesh = debrisTransform.GetChild(UnityEngine.Random.Range(0, debrisTransform.childCount)).GetComponent<MeshFilter>().sharedMesh;
+      debris.SetActive(true);
+      if (howMany == numDebrisSpawn) debris.GetComponent<AudioSource>().Play();
     }
   }
 
@@ -79,8 +116,7 @@ public class ScoreManager : MonoBehaviour {
     if (reason == "Blackhole") {
       playerExplosion.GetComponent<AudioSource>().Play();
     } else {
-      Camera.main.GetComponent<CameraMover>().shake(gameOverShakeDuration, gameOverShakeAmount);
-      Instantiate(characterDebris, player.transform.position, Quaternion.identity);
+      showCharacterDebris();
     }
 
     StartCoroutine("startGameOver");

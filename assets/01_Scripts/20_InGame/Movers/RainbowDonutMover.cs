@@ -10,6 +10,12 @@ public class RainbowDonutMover : ObjectsMover {
     rdm = (RainbowDonutsManager) objectsManager;
   }
 
+  override protected void afterEnable() {
+    rotatingFast = false;
+    GetComponent<Collider>().enabled = true;
+    GetComponent<Rigidbody>().isKinematic = false;
+  }
+
   override public void encounterPlayer(bool destroy = true) {
     if (player.isOnSuperheat()) return;
     GetComponent<Collider>().enabled = false;
@@ -35,7 +41,7 @@ public class RainbowDonutMover : ObjectsMover {
     rotatingFast = true;
     GetComponent<Rigidbody>().isKinematic = true;
     yield return new WaitForSeconds(rdm.rotateDuring);
-    Destroy(gameObject);
+    gameObject.SetActive(false);
   }
 
   void Update() {

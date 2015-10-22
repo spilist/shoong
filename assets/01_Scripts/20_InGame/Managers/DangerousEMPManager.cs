@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class DangerousEMPManager : ObjectsManager {
   public GameObject particleDestroyByPlayer;
-  public int max_emp = 3;
+  public List<GameObject> particleDestroyByPlayerPool;
 
   public float minScale = 15;
   public float maxScale = 25;
@@ -18,19 +19,27 @@ public class DangerousEMPManager : ObjectsManager {
   public float enlargeScale = 2;
 
   override public void initRest() {
-    spawnManager.spawn(objPrefab);
     ElapsedTime.time.startSpawnDangerousEMP();
+
+    particleDestroyByPlayerPool = new List<GameObject>();
+    for (int i = 0; i < objAmount; ++i) {
+      GameObject obj = (GameObject) Instantiate(particleDestroyByPlayer);
+      obj.SetActive(false);
+      particleDestroyByPlayerPool.Add(obj);
+    }
+
+    respawn();
   }
 
   override public void run() {}
 
   override public void runImmediately() {}
 
-  public void respawn() {
-    int count = max_emp - GameObject.FindGameObjectsWithTag("DangerousEMP").Length;
+  override public void respawn() {
+    int count = objAmount - GameObject.FindGameObjectsWithTag("DangerousEMP").Length;
     if (count > 0) {
-      GameObject obj = (GameObject) spawnManager.spawn(objPrefab);
-      if (larger) obj.transform.localScale *= enlargeScale;
+      GameObject obj = getPooledObj(objPool, objPrefab, spawnManager.getSpawnPosition(objPrefab));
+      if (larger) obj.transform.localScale = enlargeScale * Vector3.one;
     }
   }
 

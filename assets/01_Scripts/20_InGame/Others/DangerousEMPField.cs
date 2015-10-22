@@ -23,9 +23,13 @@ public class DangerousEMPField : MonoBehaviour {
     enlargeDuration = dem.enlargeDuration;
     stayDuration = dem.stayDuration;
     shrinkDuration = dem.shrinkDuration;
-
-    status = 1;
 	}
+
+  void OnEnable() {
+    radius = 0;
+    stayCount = 0;
+    status = 1;
+  }
 
 	void Update () {
     transform.Rotate(-Vector3.up * Time.deltaTime * rotatingSpeed);
@@ -51,7 +55,7 @@ public class DangerousEMPField : MonoBehaviour {
 
       if (radius == 0) {
         status = 0;
-        Destroy(gameObject);
+        gameObject.SetActive(false);
       }
     }
 	}

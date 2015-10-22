@@ -1,10 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class FlyingCharacters : MonoBehaviour {
   public PlayerMover player;
   public Transform allCharacters;
   public GameObject characterPrefab;
+  public List<GameObject> characterPool;
+  public int characterAmount = 20;
 
   public float minSpawnInterval = 1;
   public float maxSpawnInterval = 3;
@@ -28,6 +31,29 @@ public class FlyingCharacters : MonoBehaviour {
     if (first) return;
 
     reset();
+  }
+
+  void Start() {
+    characterPool = new List<GameObject>();
+    for (int i = 0; i < characterAmount; ++i) {
+      GameObject obj = (GameObject) Instantiate(characterPrefab);
+      obj.SetActive(false);
+      obj.transform.parent = transform;
+      characterPool.Add(obj);
+    }
+  }
+
+  GameObject getCharacter() {
+    for (int i = 0; i < characterPool.Count; i++) {
+      if (!characterPool[i].activeInHierarchy) {
+        return characterPool[i];
+      }
+    }
+
+    GameObject obj = (GameObject) Instantiate(characterPrefab);
+    obj.transform.parent = transform;
+    characterPool.Add(obj);
+    return obj;
   }
 
   public void reset() {
@@ -58,8 +84,10 @@ public class FlyingCharacters : MonoBehaviour {
       Vector3 direction = playerPos() - spawnPos;
       direction.Normalize();
 
-      GameObject instance = (GameObject) Instantiate(characterPrefab, spawnPos, Quaternion.identity);
+      GameObject instance = getCharacter();
       instance.transform.parent = transform;
+      instance.transform.position = spawnPos;
+      instance.SetActive(true);
       instance.GetComponent<MeshFilter>().sharedMesh = randomMesh();
       instance.GetComponent<FlyingCharacterMover>().run(this, direction);
 

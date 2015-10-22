@@ -20,7 +20,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &472308
 Transform:
   m_ObjectHideFlags: 1
@@ -147,11 +147,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e3432ecfc8d34f9084558c2a24608fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startScale: 2
   minScale: 1.5
   maxScale: 2.5
   speed: 80
-  time: .300000012
+  startTime: .300000012
   tumble: 10
+  baseSpeed: 200
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -262,6 +264,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Time
       value: .5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: startTime
+      value: .300000012
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

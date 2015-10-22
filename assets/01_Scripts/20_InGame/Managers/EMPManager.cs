@@ -66,20 +66,49 @@ public class EMPManager : ObjectsManager {
     if (random < goldenChance) {
       isGolden = true;
       isSuper = false;
+
       instance.transform.Find("GoldenShell").gameObject.SetActive(true);
       instance.transform.Find("GoldenCore").gameObject.SetActive(true);
       instance.transform.Find("GoldenParticles").gameObject.SetActive(true);
+
+      instance.transform.Find("HeatShell").gameObject.SetActive(false);
+      instance.transform.Find("HeatCore").gameObject.SetActive(false);
+      instance.transform.Find("HeatParticles").gameObject.SetActive(false);
+
+      instance.transform.Find("BasicShell").gameObject.SetActive(false);
+      instance.transform.Find("BasicCore").gameObject.SetActive(false);
+      instance.transform.Find("BasicParticles").gameObject.SetActive(false);
+
       shellMat = instance.transform.Find("GoldenShell").GetComponent<Renderer>().sharedMaterial;
     } else if (random < superChance) {
       isGolden = false;
       isSuper = true;
+
+      instance.transform.Find("GoldenShell").gameObject.SetActive(false);
+      instance.transform.Find("GoldenCore").gameObject.SetActive(false);
+      instance.transform.Find("GoldenParticles").gameObject.SetActive(false);
+
       instance.transform.Find("HeatShell").gameObject.SetActive(true);
       instance.transform.Find("HeatCore").gameObject.SetActive(true);
       instance.transform.Find("HeatParticles").gameObject.SetActive(true);
+
+      instance.transform.Find("BasicShell").gameObject.SetActive(false);
+      instance.transform.Find("BasicCore").gameObject.SetActive(false);
+      instance.transform.Find("BasicParticles").gameObject.SetActive(false);
+
       shellMat = instance.transform.Find("HeatShell").GetComponent<Renderer>().sharedMaterial;
     } else {
       isGolden = false;
       isSuper = false;
+
+      instance.transform.Find("GoldenShell").gameObject.SetActive(false);
+      instance.transform.Find("GoldenCore").gameObject.SetActive(false);
+      instance.transform.Find("GoldenParticles").gameObject.SetActive(false);
+
+      instance.transform.Find("HeatShell").gameObject.SetActive(false);
+      instance.transform.Find("HeatCore").gameObject.SetActive(false);
+      instance.transform.Find("HeatParticles").gameObject.SetActive(false);
+
       instance.transform.Find("BasicShell").gameObject.SetActive(true);
       instance.transform.Find("BasicCore").gameObject.SetActive(true);
       instance.transform.Find("BasicParticles").gameObject.SetActive(true);

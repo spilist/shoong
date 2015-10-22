@@ -8,16 +8,19 @@ public class CharacterDebrisMover : MonoBehaviour {
   float diff;
   bool large;
   float duration;
+  Rigidbody rb;
 
-  void Start () {
+  void Awake() {
     scoreManager = GameObject.Find("ScoreManager").GetComponent<ScoreManager>();
+    rb = GetComponent<Rigidbody>();
+  }
 
+  void OnEnable () {
     int speed = Random.Range(scoreManager.minDebrisSpeed, scoreManager.maxDebrisSpeed);
 
-    GetComponent<Rigidbody>().velocity = Random.onUnitSphere * speed;
-    GetComponent<Rigidbody>().angularVelocity = Random.onUnitSphere * scoreManager.debrisTumble;
+    rb.velocity = Random.onUnitSphere * speed;
+    rb.angularVelocity = Random.onUnitSphere * scoreManager.debrisTumble;
 
-    scale = transform.localScale.x;
     large = Random.Range(0, 100) > 50;
 
     if (large) {
@@ -29,12 +32,13 @@ public class CharacterDebrisMover : MonoBehaviour {
     }
 
     diff = Mathf.Abs(targetScale - scale);
+    scale = 1;
   }
 
   void Update () {
     scale = Mathf.MoveTowards(scale, targetScale, Time.deltaTime * diff / duration);
     transform.localScale = scale * Vector3.one;
 
-    if ( (large && scale >= targetScale) || (!large && scale <= targetScale)) Destroy(gameObject);
+    if ( (large && scale >= targetScale) || (!large && scale <= targetScale)) gameObject.SetActive(false);
   }
 }

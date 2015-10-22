@@ -10,7 +10,7 @@ public class PartsToCollectIndicator : MonoBehaviour {
   private Transform followTr;
   private Mesh checkMesh;
 
-  void Start() {
+  void Awake() {
     mRenderer = GetComponent<Renderer>();
   }
 
@@ -24,8 +24,8 @@ public class PartsToCollectIndicator : MonoBehaviour {
     checkMesh = mesh;
   }
 
-  void LateUpdate() {
-    if (followTr == null) Destroy(gameObject);
+  void Update() {
+    if (followTr == null || !followTr.gameObject.activeSelf) gameObject.SetActive(false);
     else {
       if (ptb.isMeshCollectable(checkMesh)) {
         showImg(true);

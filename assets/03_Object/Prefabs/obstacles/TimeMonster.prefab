@@ -19,7 +19,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &426362
 Transform:
   m_ObjectHideFlags: 1
@@ -89,6 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0773a654e42cb4908988db0de51f4627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boundingSize: 50
 --- !u!135 &13549734
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -127,6 +128,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_TagString
       value: TimeMonster
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

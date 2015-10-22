@@ -14,21 +14,41 @@ public class CubeDispenserMover : ObjectsMover {
     cdm = (CubeDispenserManager)objectsManager;
   }
 
+  override protected void afterEnable() {
+    comboCount = 0;
+    brokenCount = 0;
+  }
+
   public void setGolden() {
     isGolden = true;
+    isSuper = false;
+
     inside = transform.Find("GoldenInside").GetComponent<ParticleSystem>();
     inside.gameObject.SetActive(true);
+
+    transform.Find("HeatInside").gameObject.SetActive(false);
+    transform.Find("BasicInside").gameObject.SetActive(false);
   }
 
   public void setSuper() {
+    isGolden = false;
     isSuper = true;
     inside = transform.Find("HeatInside").GetComponent<ParticleSystem>();
     inside.gameObject.SetActive(true);
+
+    transform.Find("GoldenInside").gameObject.SetActive(false);
+    transform.Find("BasicInside").gameObject.SetActive(false);
   }
 
   public void setNormal() {
+    isGolden = false;
+    isSuper = false;
+
     inside = transform.Find("BasicInside").GetComponent<ParticleSystem>();
     inside.gameObject.SetActive(true);
+
+    transform.Find("HeatInside").gameObject.SetActive(false);
+    transform.Find("GoldenInside").gameObject.SetActive(false);
   }
 
   public void tryBreak() {

@@ -17,6 +17,7 @@ public class TransformLaser : MonoBehaviour {
 
     this.duration = duration;
     status = 1;
+    length = 0;
   }
 
   void Update() {
@@ -25,10 +26,8 @@ public class TransformLaser : MonoBehaviour {
       transform.localScale = new Vector3(length, transform.localScale.y, transform.localScale.z);
       if (length == targetLength) {
         status++;
-        Destroy(gameObject);
+        gameObject.SetActive(false);
       }
-    // } else if (stauts == 2) {
-
     }
   }
 }

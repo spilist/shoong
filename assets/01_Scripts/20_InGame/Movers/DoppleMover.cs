@@ -20,7 +20,7 @@ public class DoppleMover : ObjectsMover {
   override protected void afterEncounter() {
     if (player.isOnSuperheat()) return;
 
-    Instantiate(dpm.forceFieldPrefab, transform.position, Quaternion.identity);
+    dpm.goodFieldAt(transform.position);
     Camera.main.GetComponent<CameraMover>().setSlowly(true);
   }
 
@@ -33,7 +33,8 @@ public class DoppleMover : ObjectsMover {
     Vector3 teleportTo = new Vector3(currentV.x + randomV.x * radius, 0, currentV.z + randomV.y * radius);
     transform.position = teleportTo;
     teleportingSound.Play();
-    Instantiate(dpm.forceFieldByDopplePrefab, teleportTo, Quaternion.identity);
+    GameObject obj = dpm.getPooledObj(dpm.badFieldPool, dpm.forceFieldByDopplePrefab, teleportTo);
+    obj.SetActive(true);
   }
 
   void Update() {

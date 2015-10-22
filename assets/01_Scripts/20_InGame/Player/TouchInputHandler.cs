@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 using System;
+using System.Collections.Generic;
 
 public class TouchInputHandler : MonoBehaviour
 {
@@ -11,12 +12,15 @@ public class TouchInputHandler : MonoBehaviour
   public Transform controlPanelCharacter_packman_right;
   public PlayerMover player;
   public PartsToBeCollected ptb;
-	public ParticleSystem touchEffect;
 
   public BeforeIdle beforeIdle;
   public SpawnManager spawnManager;
-	public MenusController menus;
+  public MenusController menus;
   public PauseButton pause;
+
+	public GameObject touchEffect;
+  public int touchEffectAmount = 30;
+  public List<GameObject> touchEffectPool;
 
 	private bool gameStarted = false;
 	private bool react = true;
@@ -30,6 +34,15 @@ public class TouchInputHandler : MonoBehaviour
   private string controlMethod;
 
   private GameObject lastHitObject;
+
+  void Awake() {
+    touchEffectPool = new List<GameObject>();
+    for (int i = 0; i < touchEffectAmount; ++i) {
+      GameObject obj = (GameObject) Instantiate(touchEffect);
+      obj.SetActive(false);
+      touchEffectPool.Add(obj);
+    }
+  }
 
   void Update() {
 		if (Application.platform == RuntimePlatform.Android) {
@@ -59,7 +72,7 @@ public class TouchInputHandler : MonoBehaviour
 
       if (player.uncontrollable()) return;
 
-			if (result == "Ground" && !gameStarted) {
+			if ((result == "Ground" || result == "ChangeBehavior") && !gameStarted) {
 				ElapsedTime.time.startTime();
         ptb.generateNew();
         superheat.startGame();
@@ -83,7 +96,7 @@ public class TouchInputHandler : MonoBehaviour
             player.teleport(worldTouchPosition);
           } else {
             player.shootBooster();
-            Instantiate(touchEffect, worldTouchPosition, Quaternion.Euler(90, 0, 0));
+            spawnTouchEffect(worldTouchPosition);
           }
         }
       } else if (controlMethod == "Circle" || controlMethod == "Packman") {
@@ -236,6 +249,24 @@ public class TouchInputHandler : MonoBehaviour
 
   bool reactAble() {
     return !beforeIdle.isLoading() && react;
+  }
+
+  void spawnTouchEffect(Vector3 pos) {
+    GameObject effect = null;
+    for (int i = 0; i < touchEffectPool.Count; i++) {
+      if (!touchEffectPool[i].activeInHierarchy) {
+        effect = touchEffectPool[i];
+        break;
+      }
+    }
+
+    if (effect == null) {
+      effect = (GameObject) Instantiate(touchEffect);
+      touchEffectPool.Add(effect);
+    }
+
+    effect.transform.position = pos;
+    effect.SetActive(true);
   }
 }
 

@@ -21,7 +21,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &439750
 Transform:
   m_ObjectHideFlags: 1
@@ -91,6 +91,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fbbd345f0ec94b5da67315f10a3bba0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boundingSize: 50
 --- !u!135 &13577926
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -1210,6 +1211,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_LocalScale.z
       value: 1.79999995
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class ComboPartsManager : ObjectsManager {
   public PartsToBeCollected ptb;
-  public Transform normalParts;
 
   public float illusionLifeTime = 3;
   public float blinkBeforeDestroy = 1.2f;
@@ -24,6 +24,7 @@ public class ComboPartsManager : ObjectsManager {
   public int superheatPartChance = 5;
 
   public GameObject objPrefab_next;
+  public List<GameObject> objNextPool;
 
   public int[] fullComboCountPerLevel;
 
@@ -41,10 +42,19 @@ public class ComboPartsManager : ObjectsManager {
 
   override public void initRest() {
     skipInterval = true;
-    partsMeshes = new Mesh[normalParts.childCount];
+
+    partsMeshes = new Mesh[GetComponent<NormalPartsManager>().meshes.childCount];
     int count = 0;
-    foreach (Transform tr in normalParts) {
+    foreach (Transform tr in GetComponent<NormalPartsManager>().meshes) {
       partsMeshes[count++] = tr.GetComponent<MeshFilter>().sharedMesh;
+    }
+
+    objNextPool = new List<GameObject>();
+    for (int i = 0; i < objAmount; ++i) {
+      GameObject obj = (GameObject) Instantiate(objPrefab_next);
+      obj.SetActive(false);
+      obj.transform.parent = transform;
+      objNextPool.Add(obj);
     }
   }
 
@@ -70,8 +80,8 @@ public class ComboPartsManager : ObjectsManager {
     Vector3 currentV = instance.transform.position;
     Vector3 spawnPosition = new Vector3(currentV.x + randomV.x * radius, 0, currentV.z + randomV.y * radius);
 
-    nextInstance = (GameObject) Instantiate (objPrefab_next, spawnPosition, Quaternion.identity);
-    nextInstance.transform.parent = transform;
+    nextInstance = getPooledObj(objNextPool, objPrefab_next, spawnPosition);
+    nextInstance.SetActive(true);
     nextInstance.GetComponent<OffsetFixer>().setParent(instance);
 
     int random = Random.Range(0, chanceBase);
@@ -81,8 +91,13 @@ public class ComboPartsManager : ObjectsManager {
       nextInstance.transform.Find("GoldenEffect").gameObject.SetActive(true);
     } else if (random < superheatPartChance) {
       changeObject(nextInstance, superheatPartPrefab);
+      nextInstance.transform.Find("BasicEffect").gameObject.SetActive(false);
+      nextInstance.transform.Find("GoldenEffect").gameObject.SetActive(false);
     } else {
+      nextInstance.transform.localScale = objPrefab.transform.localScale;
       nextInstance.GetComponent<MeshFilter>().sharedMesh = getRandomMesh();
+      nextInstance.transform.Find("BasicEffect").gameObject.SetActive(true);
+      nextInstance.transform.Find("GoldenEffect").gameObject.SetActive(false);
     }
   }
 
@@ -116,40 +131,46 @@ public class ComboPartsManager : ObjectsManager {
 
     Vector3 spawnPos = nextInstance.transform.position;
     Quaternion spawnRotation = nextInstance.transform.rotation;
-    instance = (GameObject) Instantiate (objPrefab, spawnPos, spawnRotation);
-    instance.transform.parent = transform;
+    instance = getPooledObj(objPool, objPrefab, spawnPos);
+    instance.transform.rotation = spawnRotation;
+    instance.SetActive(true);
     changeObject(instance, nextInstance);
     instance.GetComponent<ComboPartMover>().setDestroyAfter();
 
     if (compareEqualMesh(nextInstance, goldenCubePrefab)) {
-      instance.GetComponent<Renderer>().sharedMaterial = goldenCubePrefab.GetComponent<Renderer>().sharedMaterial;
-      instance.GetComponent<SphereCollider>().radius = goldenCubePrefab.GetComponent<SphereCollider>().radius;
       instance.GetComponent<ComboPartMover>().setGolden();
-      instance.transform.Find("BasicEffect").gameObject.SetActive(false);
-      instance.transform.Find("GoldenEffect").gameObject.SetActive(true);
     } else if (compareEqualMesh(nextInstance, superheatPartPrefab)) {
-      instance.GetComponent<Renderer>().sharedMaterial = superheatPartPrefab.GetComponent<Renderer>().sharedMaterial;
-      instance.GetComponent<SphereCollider>().radius = superheatPartPrefab.GetComponent<SphereCollider>().radius;
       instance.GetComponent<ComboPartMover>().setSuper();
+    } else {
+      instance.GetComponent<ComboPartMover>().setNormal();
     }
 
-    Destroy(nextInstance);
+    nextInstance.SetActive(false);
+    nextInstance = null;
 
     if (comboCount + 1 < fullComboCount) {
       Vector2 randomV = Random.insideUnitCircle;
       randomV.Normalize();
       Vector3 nextSpawnPos = new Vector3(spawnPos.x + randomV.x * radius, 0, spawnPos.z + randomV.y * radius);
-      nextInstance = (GameObject) Instantiate (objPrefab_next, nextSpawnPos, spawnRotation);
-      nextInstance.transform.parent = transform;
+      nextInstance = getPooledObj(objNextPool, objPrefab_next, nextSpawnPos);
+      nextInstance.SetActive(true);
+      nextInstance.transform.rotation = spawnRotation;
       nextInstance.GetComponent<OffsetFixer>().setParent(instance);
 
       int random = Random.Range(0, 100);
       if (random < goldenCubeChance) {
         changeObject(nextInstance, goldenCubePrefab);
+        nextInstance.transform.Find("BasicEffect").gameObject.SetActive(false);
+        nextInstance.transform.Find("GoldenEffect").gameObject.SetActive(true);
       } else if (random < superheatPartChance) {
         changeObject(nextInstance, superheatPartPrefab);
+        nextInstance.transform.Find("BasicEffect").gameObject.SetActive(false);
+        nextInstance.transform.Find("GoldenEffect").gameObject.SetActive(false);
       } else {
+        nextInstance.transform.localScale = objPrefab.transform.localScale;
         nextInstance.GetComponent<MeshFilter>().sharedMesh = getRandomMesh();
+        nextInstance.transform.Find("BasicEffect").gameObject.SetActive(true);
+        nextInstance.transform.Find("GoldenEffect").gameObject.SetActive(false);
       }
     }
   }

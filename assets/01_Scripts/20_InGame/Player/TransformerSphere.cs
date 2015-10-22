@@ -3,8 +3,6 @@ using System.Collections;
 
 public class TransformerSphere : MonoBehaviour {
   public TransformerManager tfm;
-  private GameObject transformParticle;
-  private GameObject transformLaser;
 
   public string[] subs;
   public string[] mains;
@@ -14,8 +12,6 @@ public class TransformerSphere : MonoBehaviour {
   private int subRatio;
   private int mainRatio;
   private int level;
-  private float transformDuration;
-  private float laserShootDuration;
 
 	void OnEnable() {
     subRatio = tfm.subRatio;
@@ -39,17 +35,13 @@ public class TransformerSphere : MonoBehaviour {
     }
 
     level = tfm.level;
-    transformDuration = tfm.transformDuration;
-    laserShootDuration = tfm.laserShootDuration;
-    transformParticle = tfm.transformParticle;
-    transformLaser = tfm.transformLaser;
   }
 
   void OnTriggerEnter(Collider other) {
     if (other.tag == "Obstacle_big" || other.tag == "Obstacle_small") {
       ObjectsMover mover = other.GetComponent<ObjectsMover>();
 
-      mover.transformed(transform.position, transformLaser, laserShootDuration, transformDuration, transformParticle, transformResult(), level);
+      mover.transformed(transform.position, transformResult(), level);
     }
   }
 

@@ -34,7 +34,7 @@ public class GoldenCubeMover : ObjectsMover {
   IEnumerator generateCube() {
     while (!player.scoreManager.isGameOver()) {
       yield return new WaitForSeconds(gcm.generateCubePer);
-      GameObject cube = (GameObject) Instantiate(gcm.energyCubePrefab, transform.position, transform.rotation);
+      GameObject cube = gcm.getPooledObj(gcm.cubePool, gcm.energyCubePrefab, transform.position);
       cube.GetComponent<ParticleMover>().triggerCubesGet(1, false);
     }
   }

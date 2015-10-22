@@ -2,15 +2,16 @@
 using System.Collections;
 
 public class ParticleMover : MonoBehaviour {
+	public float startScale = 2;
 	public float minScale = 2;
 	public float maxScale = 3;
 
 	public float speed = 30;
-	public float time = 1;
+	public float startTime = 0.5f;
+	private float time;
 	public float tumble = 1;
 	public float baseSpeed = 200;
 	private bool rainbow = false;
-	private float randomScale;
 	private float random;
 	private Vector3 direction;
 	private bool timeelapsed = false;
@@ -23,13 +24,16 @@ public class ParticleMover : MonoBehaviour {
 
 	private int howMany = 0;
 
-	void Start () {
-		random = Random.Range (minScale, maxScale);
-		randomScale = transform.localScale.x * random;
-
+	void Awake() {
 		rb = GetComponent<Rigidbody>();
+		partsCollector = GameObject.Find("CubeCollector").GetComponent<PartsCollector>();
+		player = GameObject.Find("Player").GetComponent<PlayerMover>();
+	}
 
-		transform.localScale = randomScale * Vector3.one;
+	void OnEnable () {
+		random = Random.Range (minScale, maxScale);
+
+		transform.localScale = startScale * random * Vector3.one;
 
 		rb.angularVelocity = Random.onUnitSphere * tumble;
 
@@ -38,13 +42,15 @@ public class ParticleMover : MonoBehaviour {
 		direction = new Vector3(randomV.x, 0, randomV.y);
 		rb.velocity = direction * speed * random;
 
-		partsCollector = GameObject.Find("CubeCollector").GetComponent<PartsCollector>();
-		player = GameObject.Find("Player").GetComponent<PlayerMover>();
+		time = startTime;
+		isTriggeringCubesGet = false;
+		generatedByPlayer = true;
+		timeelapsed = false;
+		rainbow = false;
 	}
 
 	void FixedUpdate () {
 		if(time > 0) {
-			// Reduce the remaining time by time passed since last update (frame)
 			time -= Time.deltaTime;
 		} else {
 			timeelapsed = true;
@@ -61,7 +67,7 @@ public class ParticleMover : MonoBehaviour {
 
 	void OnTriggerStay(Collider other) {
 		if (other.tag == "PartCollector" && timeelapsed) {
-			Destroy (gameObject);
+			gameObject.SetActive(false);
 			partsCollector.effect(isTriggeringCubesGet, howMany, generatedByPlayer);
 		}
 	}

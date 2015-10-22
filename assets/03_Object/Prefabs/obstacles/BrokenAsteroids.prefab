@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &155134
 GameObject:
   m_ObjectHideFlags: 0
@@ -37,7 +37,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &185578
 GameObject:
   m_ObjectHideFlags: 0
@@ -46,7 +46,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 484650}
-  - 114: {fileID: 11466794}
   - 82: {fileID: 8242450}
   m_Layer: 0
   m_Name: BrokenAsteroids
@@ -276,18 +275,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9eb8c7404ea0748ceb204ffa79a03ae2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &11466794
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 185578}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c77a58a5f7822483e86f4567a7dcaf5e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  what: big
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -305,7 +292,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Pitch

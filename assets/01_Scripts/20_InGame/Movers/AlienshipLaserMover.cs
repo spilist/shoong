@@ -32,7 +32,6 @@ public class AlienshipLaserMover : MonoBehaviour {
   }
 
 	void Update () {
-
     if (status == 1) {
       radius = Mathf.MoveTowards(radius, targetRadius, Time.deltaTime * targetRadius / shootingDuration);
       length = Mathf.MoveTowards(length, targetLength, Time.deltaTime * targetLength / shootingDuration);
@@ -48,7 +47,7 @@ public class AlienshipLaserMover : MonoBehaviour {
       transform.localScale = new Vector3(length, radius, radius);
       if (radius == 0) {
         father.laserEnd();
-        Destroy(gameObject);
+        gameObject.SetActive(false);
       }
     }
 	}

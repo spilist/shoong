@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &156132
 GameObject:
   m_ObjectHideFlags: 0
@@ -100,8 +100,8 @@ MonoBehaviour:
   hasBonus: 1
   stayDuring: .5
   disappearDuring: .5
-  disappearLengthY: 100
-  disappearLengthX: 100
+  baseDisappearLengthY: 100
+  baseDisappearLengthX: 100
   changeBase: 1
   changeScale: .5
   maxScale: 50
@@ -236,6 +236,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_AnchoredPosition.y
       value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

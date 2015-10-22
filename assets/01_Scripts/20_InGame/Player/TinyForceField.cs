@@ -16,12 +16,10 @@ public class TinyForceField : MonoBehaviour {
   private float enlargeMainUntil;
   private float enlargeDiff;
   private float mainScale;
+  private float originalMainScale;
 
-	void Start () {
+	void Awake () {
     dpm = GameObject.Find("Field Objects").GetComponent<DoppleManager>();
-
-    transform.localScale = Vector3.one * dpm.getTargetSize(byPlayer);
-    duration = dpm.waveAwakeDuration;
 
     main = transform.Find("Main");
 
@@ -32,12 +30,17 @@ public class TinyForceField : MonoBehaviour {
       wavesObj[count++] = tr.gameObject;
     }
 
-    mainScale = main.transform.localScale.x;
-    enlargeMainUntil = wavesObj[count - 1].transform.localScale.x /2f * mainScale;
-    enlargeDiff = enlargeMainUntil - mainScale;
+    duration = dpm.waveAwakeDuration;
+    originalMainScale = main.transform.localScale.x;
+    enlargeMainUntil = wavesObj[waves.childCount - 1].transform.localScale.x /2f * originalMainScale;
+    enlargeDiff = enlargeMainUntil - originalMainScale;
+  }
 
+  void OnEnable() {
+    transform.localScale = Vector3.one * dpm.getTargetSize(byPlayer);
+    mainScale = originalMainScale;
     StartCoroutine("turnOnInConsquence");
-	}
+  }
 
   IEnumerator turnOnInConsquence() {
     startEnlarge = true;
@@ -48,7 +51,7 @@ public class TinyForceField : MonoBehaviour {
       if (i > 2) wavesObj[i - 3].SetActive(false);
       yield return new WaitForSeconds(duration);
     }
-    Destroy(gameObject);
+    gameObject.SetActive(false);
   }
 
   void Update() {
@@ -58,6 +61,14 @@ public class TinyForceField : MonoBehaviour {
 
       wavesScale = Mathf.MoveTowards(wavesScale, enlargeWavesUntil, Time.deltaTime / (duration * (waves.childCount + 2)));
       waves.localScale = wavesScale * Vector3.one;
+    }
+  }
+
+  void OnDisable() {
+    startEnlarge = false;
+    main.gameObject.SetActive(false);
+    foreach (Transform tr in waves) {
+      tr.gameObject.SetActive(false);
     }
   }
 }

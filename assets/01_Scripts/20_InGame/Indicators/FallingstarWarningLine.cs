@@ -32,7 +32,7 @@ public class FallingstarWarningLine : MonoBehaviour {
       outer.SetPosition(0, nextPos);
       if (erasingDistance == distanceToDest) {
         isErasing = false;
-        Destroy(gameObject);
+        gameObject.SetActive(false);
       }
     }
   }

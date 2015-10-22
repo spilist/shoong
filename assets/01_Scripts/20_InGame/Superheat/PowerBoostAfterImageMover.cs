@@ -30,7 +30,10 @@ public class PowerBoostAfterImageMover : MonoBehaviour {
       alpha = Mathf.MoveTowards(alpha, 0, Time.deltaTime * originalAlpha / duration);
       color.a = alpha;
       mRenderer.material.color = color;
-      if (alpha == 0) Destroy(gameObject);
+      if (alpha == 0) {
+        startFade = false;
+        gameObject.SetActive(false);
+      }
     }
 	}
 }

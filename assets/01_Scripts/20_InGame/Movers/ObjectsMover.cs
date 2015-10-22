@@ -19,6 +19,7 @@ public class ObjectsMover : MonoBehaviour {
 
   protected ObjectsManager objectsManager;
   protected SpecialPartsManager spm;
+  protected TransformerManager tfm;
   protected Rigidbody rb;
   public float boundingSize = 50;
   protected Vector3 headingToBlackhole;
@@ -30,25 +31,30 @@ public class ObjectsMover : MonoBehaviour {
   protected int transformLevel;
   protected GameObject indicator;
 
-  void Start() {
+  void Awake() {
     player = GameObject.Find("Player").GetComponent<PlayerMover>();
 
     objectsManager = (ObjectsManager) GameObject.Find("Field Objects").GetComponent(getManager());
     spm = objectsManager.GetComponent<SpecialPartsManager>();
+    tfm = objectsManager.GetComponent<TransformerManager>();
+
     shrinkedScale = transform.localScale.x;
-
+    rb = GetComponent<Rigidbody>();
+    originalScale = transform.localScale.x;
     initializeRest();
+  }
 
+  void OnEnable() {
     speed = getSpeed();
     tumble = getTumble();
     direction = getDirection();
 
-    rb = GetComponent<Rigidbody>();
     rb.angularVelocity = Random.onUnitSphere * tumble;
     rb.velocity = direction * speed;
-
-    originalScale = transform.localScale.x;
+    afterEnable();
   }
+
+  virtual protected void afterEnable() {}
 
   public bool hasIndicator() {
     return indicator != null;
@@ -60,11 +66,11 @@ public class ObjectsMover : MonoBehaviour {
   }
 
   public void showIndicator() {
-    indicator.SetActive(true);
+    indicator.GetComponent<Renderer>().enabled = true;
   }
 
   public void hideIndicator() {
-    indicator.SetActive(false);
+    indicator.GetComponent<Renderer>().enabled = false;
   }
 
   public void setBoundingSize(float val) {
@@ -109,17 +115,19 @@ public class ObjectsMover : MonoBehaviour {
       transform.localScale = shrinkedScale * Vector3.one;
       if (shrinkedScale == 0) destroyObject(false);
     } else if (isTransforming) {
-      shrinkedScale = Mathf.MoveTowards(shrinkedScale, 0f, Time.deltaTime * originalScale / transformDuration);
+      shrinkedScale = Mathf.MoveTowards(shrinkedScale, 0f, Time.deltaTime * originalScale / tfm.transformDuration);
       transform.localScale = shrinkedScale * Vector3.one;
       if (shrinkedScale == 0) {
-        GameObject trParticle = (GameObject) Instantiate(transformParticle, transform.position, Quaternion.identity);
+        GameObject trParticle = tfm.getParticle(transform.position);
+        trParticle.SetActive(true);
+
         if (transformResult == "") {
-          NormalPartsManager npm = objectsManager.GetComponent<NormalPartsManager>();
-          GameObject prefab = npm.partsPrefab[Random.Range(0, npm.partsPrefab.Length)];
-          Instantiate(prefab, transform.position, Quaternion.identity);
+          objectsManager.GetComponent<NormalPartsManager>().spawnNormal(transform.position);
           trParticle.transform.Find("Normal").gameObject.SetActive(true);
+          trParticle.transform.Find("Better").gameObject.SetActive(false);
         } else {
           objectsManager.GetComponent<SpawnManager>().runManagerAt(transformResult, transform.position, transformLevel);
+          trParticle.transform.Find("Normal").gameObject.SetActive(false);
           trParticle.transform.Find("Better").gameObject.SetActive(true);
         }
         destroyObject(false);
@@ -130,21 +138,20 @@ public class ObjectsMover : MonoBehaviour {
     }
   }
 
-  public void transformed(Vector3 startPos, GameObject transformLaser, float laserDuration, float duration, GameObject transformParticle, string what, int level) {
+  public void transformed(Vector3 startPos, string what, int level) {
 
-    GameObject laser = (GameObject) Instantiate(transformLaser, startPos, Quaternion.identity);
-    laser.GetComponent<TransformLaser>().shoot(transform.position, laserDuration);
+    GameObject laser = tfm.getLaser(startPos);
+    laser.SetActive(true);
+    laser.GetComponent<TransformLaser>().shoot(transform.position, tfm.laserShootDuration);
 
-    StartCoroutine(startTransform(laserDuration, duration, transformParticle, what, level));
+    StartCoroutine(startTransform(what, level));
   }
 
-  IEnumerator startTransform(float laserDuration, float duration, GameObject transformParticle, string what, int level) {
-    yield return new WaitForSeconds(laserDuration);
+  IEnumerator startTransform(string what, int level) {
+    yield return new WaitForSeconds(tfm.laserShootDuration);
 
     isTransforming = true;
-    transformDuration = duration;
     transformResult = what;
-    this.transformParticle = transformParticle;
     transformLevel = level;
   }
 
@@ -155,8 +162,6 @@ public class ObjectsMover : MonoBehaviour {
   }
 
   void OnCollisionEnter(Collision collision) {
-    // if (isMagnetized) return;
-
     ObjectsMover other = collision.collider.gameObject.GetComponent<ObjectsMover>();
 
     if (other != null) {
@@ -199,10 +204,11 @@ public class ObjectsMover : MonoBehaviour {
     foreach (Collider collider in GetComponents<Collider>()) {
       collider.enabled = false;
     }
-    Destroy(gameObject);
+
+    gameObject.SetActive(false);
 
     if (destroyEffect && objectsManager.objDestroyEffect != null) {
-      Instantiate(objectsManager.objDestroyEffect, transform.position, transform.rotation);
+      showDestroyEffect();
     }
 
     afterDestroy(byPlayer);
@@ -221,6 +227,11 @@ public class ObjectsMover : MonoBehaviour {
     return true;
   }
 
+  virtual public void showDestroyEffect() {
+    GameObject obj = objectsManager.getPooledObj(objectsManager.objDestroyEffectPool, objectsManager.objDestroyEffect, transform.position);
+    obj.SetActive(true);
+  }
+
   virtual public void encounterPlayer(bool destroy = true) {
     if (!beforeEncounter()) return;
 
@@ -228,11 +239,11 @@ public class ObjectsMover : MonoBehaviour {
       foreach (Collider collider in GetComponents<Collider>()) {
         collider.enabled = false;
       }
-      Destroy(gameObject);
+      gameObject.SetActive(false);
     }
 
     if (objectsManager.objEncounterEffect != null) {
-      Instantiate(objectsManager.objEncounterEffect, transform.position, transform.rotation);
+      showEncounterEffect();
     }
 
     if (objectsManager.objEncounterEffectForPlayer != null) {
@@ -254,6 +265,11 @@ public class ObjectsMover : MonoBehaviour {
     }
 
     afterEncounter();
+  }
+
+  virtual public void showEncounterEffect() {
+    GameObject obj = objectsManager.getPooledObj(objectsManager.objEncounterEffectPool, objectsManager.objEncounterEffect, transform.position);
+    obj.SetActive(true);
   }
 
   virtual protected void afterEncounter() {}
@@ -281,9 +297,6 @@ public class ObjectsMover : MonoBehaviour {
     else return 0;
   }
 
-  virtual public void destroyByMonster() {
-  }
-
   virtual public bool dangerous() {
     return false;
   }
@@ -304,7 +317,21 @@ public class ObjectsMover : MonoBehaviour {
     return objectsManager.gaugeWhenDestroy;
   }
 
-  void OnDestroy() {
-    if (indicator != null) Destroy(indicator);
+  void OnDisable() {
+    isMagnetized = false;
+    transform.localScale = originalScale * Vector3.one;
+    shrinkedScale = originalScale;
+    isInsideBlackhole = false;
+    destroyed = false;
+    isTransforming = false;
+
+    foreach (Collider collider in GetComponents<Collider>()) {
+      collider.enabled = true;
+    }
+
+    if (indicator != null) {
+      indicator.SetActive(false);
+      indicator = null;
+    }
   }
 }

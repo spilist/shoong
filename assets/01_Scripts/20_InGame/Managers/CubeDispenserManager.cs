@@ -111,7 +111,7 @@ public class CubeDispenserManager : ObjectsManager {
   IEnumerator destroyAfterTry() {
     yield return new WaitForSeconds(destroyAfterSeconds);
 
-    if (instance == null) yield break;
+    if (instance == null || !instance.activeSelf) yield break;
 
     instance.GetComponent<ObjectsMover>().destroyObject(true, true);
   }

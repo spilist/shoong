@@ -8,10 +8,15 @@ public class ComboPartMover : ObjectsMover {
   ComboPartsManager cpm;
   Renderer mRenderer;
   Renderer mRenderer_next;
+  SphereCollider sCollider;
 
   override protected void initializeRest() {
     cpm = (ComboPartsManager)objectsManager;
     mRenderer = GetComponent<Renderer>();
+    sCollider = GetComponent<SphereCollider>();
+  }
+
+  override protected void afterEnable() {
     if (cpm.nextInstance != null) mRenderer_next = cpm.nextInstance.GetComponent<Renderer>();
 
     if (willBeDestroyed) StartCoroutine("destroyAfter");
@@ -19,11 +24,37 @@ public class ComboPartMover : ObjectsMover {
 
   public void setGolden() {
     isGoldenCube = true;
+    isSuperheatPart = false;
     objectsManager.objDestroyEffect = cpm.goldCubeDestroyParticle;
+
+    mRenderer.sharedMaterial = cpm.goldenCubePrefab.GetComponent<Renderer>().sharedMaterial;
+    sCollider.radius = cpm.goldenCubePrefab.GetComponent<SphereCollider>().radius;
+    transform.Find("BasicEffect").gameObject.SetActive(false);
+    transform.Find("GoldenEffect").gameObject.SetActive(true);
   }
 
   public void setSuper() {
+    isGoldenCube = false;
     isSuperheatPart = true;
+    objectsManager.objDestroyEffect = cpm.objDestroyEffect;
+
+    mRenderer.sharedMaterial = cpm.superheatPartPrefab.GetComponent<Renderer>().sharedMaterial;
+    sCollider.radius = cpm.superheatPartPrefab.GetComponent<SphereCollider>().radius;
+    transform.Find("BasicEffect").gameObject.SetActive(false);
+    transform.Find("GoldenEffect").gameObject.SetActive(false);
+  }
+
+  public void setNormal() {
+    if (isGoldenCube || isSuperheatPart) {
+      isGoldenCube = false;
+      isSuperheatPart = false;
+      objectsManager.objDestroyEffect = cpm.objDestroyEffect;
+
+      mRenderer.sharedMaterial = cpm.objPrefab.GetComponent<Renderer>().sharedMaterial;
+      sCollider.radius = cpm.objPrefab.GetComponent<SphereCollider>().radius;
+      transform.Find("BasicEffect").gameObject.SetActive(true);
+      transform.Find("GoldenEffect").gameObject.SetActive(false);
+    }
   }
 
   public void setDestroyAfter() {
@@ -35,7 +66,8 @@ public class ComboPartMover : ObjectsMover {
   }
 
   override protected void afterDestroy(bool byPlayer) {
-    Destroy(cpm.nextInstance);
+    willBeDestroyed = false;
+    if (cpm.nextInstance != null) cpm.nextInstance.SetActive(false);
   }
 
   override protected bool beforeEncounter() {
@@ -45,6 +77,7 @@ public class ComboPartMover : ObjectsMover {
   }
 
   override protected void afterEncounter() {
+    willBeDestroyed = false;
     if (isGoldenCube) {
       cpm.gcCount.add(cpm.goldCubesGet);
     } else if (isSuperheatPart) {
@@ -69,7 +102,6 @@ public class ComboPartMover : ObjectsMover {
   }
 
   public IEnumerator destroyAfter() {
-    Debug.Log(cpm);
     yield return new WaitForSeconds(cpm.illusionLifeTime - cpm.blinkBeforeDestroy);
     float duration = cpm.blinkBeforeDestroy;
     float showDuring = cpm.showDurationStart;

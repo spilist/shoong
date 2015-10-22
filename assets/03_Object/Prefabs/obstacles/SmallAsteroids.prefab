@@ -14,7 +14,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &119124
 GameObject:
   m_ObjectHideFlags: 0
@@ -682,6 +682,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88463c994d00440e88b51f5b21e9be99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boundingSize: 50
 --- !u!114 &11448348
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -693,6 +694,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88463c994d00440e88b51f5b21e9be99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boundingSize: 50
 --- !u!114 &11453450
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -704,6 +706,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88463c994d00440e88b51f5b21e9be99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boundingSize: 50
 --- !u!114 &11455456
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -715,6 +718,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88463c994d00440e88b51f5b21e9be99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boundingSize: 50
 --- !u!114 &11473274
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -726,6 +730,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88463c994d00440e88b51f5b21e9be99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boundingSize: 50
 --- !u!114 &11488492
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -737,6 +742,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88463c994d00440e88b51f5b21e9be99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boundingSize: 50
 --- !u!114 &11497918
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -748,6 +754,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88463c994d00440e88b51f5b21e9be99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boundingSize: 50
 --- !u!114 &11499274
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -759,6 +766,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88463c994d00440e88b51f5b21e9be99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boundingSize: 50
 --- !u!136 &13602014
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -868,6 +876,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_LocalScale.z
       value: 2.29999995
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

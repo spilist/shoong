@@ -15,6 +15,11 @@ public class MeteroidMover : ObjectsMover {
     canBeMagnetized = false;
   }
 
+  override protected void afterEnable() {
+    avoiding = false;
+    alreadyChecked = false;
+  }
+
   override protected float strength() {
     if (bigger) return ((MeteroidManager)objectsManager).biggerMeteroidStrength;
     else return objectsManager.strength;

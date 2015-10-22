@@ -2448,7 +2448,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &64786155
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3101,6 +3101,11 @@ MonoBehaviour:
   boosterSpeedDecreaseBase: 60
   boosterSpeedDecreasePerTime: 20
   particles: {fileID: 178344, guid: b185d52f68bf5499e81f948bbbf1bd8c, type: 2}
+  cubePool: []
+  cubeAmount: 50
+  originalCubeMat: {fileID: 2100000, guid: badf03f0d5c054dc4b3b3b3df9ee6e20, type: 2}
+  cubeOriginalColor: {r: 0, g: .65882355, b: .690196097, a: .737254918}
+  cubeOriginalTrailColor: {r: .0745098069, g: .650980413, b: .843137264, a: .121568628}
   goldenCubeParticleColor: {r: 1, g: .929411769, b: 0, a: .498039216}
   goldenCubeParticleTrailColor: {r: 1, g: .886274517, b: 0, a: .121568628}
   strengthen_during: 6
@@ -3190,7 +3195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c55220cdcdad94d36a59fafc03d624b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tinyForceFieldPrefab: {fileID: 175312, guid: c461f9df261eb41ff961769c46f81139, type: 2}
+  dpm: {fileID: 1991538120}
   monsterMesh: {fileID: 4300000, guid: 78464716239464853a9a5be83b950c56, type: 3}
   monsterMaterial: {fileID: 2100000, guid: b302d2c5d7c544297ac46144f54931e3, type: 2}
   metalMat: {fileID: 2100000, guid: d19ae5f122c6344ad809f0cb588d6db9, type: 2}
@@ -3411,8 +3416,8 @@ MonoBehaviour:
   touchIt: {fileID: 1300313093}
   touchItEffect: {fileID: 892718243}
   player: {fileID: 91418583}
-  energyCube: {fileID: 178344, guid: b185d52f68bf5499e81f948bbbf1bd8c, type: 2}
   afterImagePrefab: {fileID: 197148, guid: 548fc754942dd4391ad89bb54cc0e9c4, type: 2}
+  afterImageCount: 50
   afterImageMainColors:
   - {r: 1, g: .427450985, b: .117647059, a: .227450982}
   - {r: .90196079, g: .800000012, b: .223529413, a: .200000003}
@@ -6298,109 +6303,6 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!1001 &141281979
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 2134279969}
-    m_Modifications:
-    - target: {fileID: 22449440, guid: 1afee8ce7a54f4af597a4df1a8e26203, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22449440, guid: 1afee8ce7a54f4af597a4df1a8e26203, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22449440, guid: 1afee8ce7a54f4af597a4df1a8e26203, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22449440, guid: 1afee8ce7a54f4af597a4df1a8e26203, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22449440, guid: 1afee8ce7a54f4af597a4df1a8e26203, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22449440, guid: 1afee8ce7a54f4af597a4df1a8e26203, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22449440, guid: 1afee8ce7a54f4af597a4df1a8e26203, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 22449440, guid: 1afee8ce7a54f4af597a4df1a8e26203, type: 2}
-      propertyPath: m_RootOrder
-      value: 17
-      objectReference: {fileID: 0}
-    - target: {fileID: 22449440, guid: 1afee8ce7a54f4af597a4df1a8e26203, type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: -13.1999998
-      objectReference: {fileID: 0}
-    - target: {fileID: 22449440, guid: 1afee8ce7a54f4af597a4df1a8e26203, type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: 60.7000008
-      objectReference: {fileID: 0}
-    - target: {fileID: 22449440, guid: 1afee8ce7a54f4af597a4df1a8e26203, type: 2}
-      propertyPath: m_SizeDelta.x
-      value: 350
-      objectReference: {fileID: 0}
-    - target: {fileID: 22449440, guid: 1afee8ce7a54f4af597a4df1a8e26203, type: 2}
-      propertyPath: m_SizeDelta.y
-      value: 150
-      objectReference: {fileID: 0}
-    - target: {fileID: 22449440, guid: 1afee8ce7a54f4af597a4df1a8e26203, type: 2}
-      propertyPath: m_AnchorMin.x
-      value: .5
-      objectReference: {fileID: 0}
-    - target: {fileID: 22449440, guid: 1afee8ce7a54f4af597a4df1a8e26203, type: 2}
-      propertyPath: m_AnchorMin.y
-      value: .5
-      objectReference: {fileID: 0}
-    - target: {fileID: 22449440, guid: 1afee8ce7a54f4af597a4df1a8e26203, type: 2}
-      propertyPath: m_AnchorMax.x
-      value: .5
-      objectReference: {fileID: 0}
-    - target: {fileID: 22449440, guid: 1afee8ce7a54f4af597a4df1a8e26203, type: 2}
-      propertyPath: m_AnchorMax.y
-      value: .5
-      objectReference: {fileID: 0}
-    - target: {fileID: 22449440, guid: 1afee8ce7a54f4af597a4df1a8e26203, type: 2}
-      propertyPath: m_Pivot.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22449440, guid: 1afee8ce7a54f4af597a4df1a8e26203, type: 2}
-      propertyPath: m_Pivot.y
-      value: .5
-      objectReference: {fileID: 0}
-    - target: {fileID: 108266, guid: 1afee8ce7a54f4af597a4df1a8e26203, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 11455114, guid: 1afee8ce7a54f4af597a4df1a8e26203, type: 2}
-      propertyPath: disappearLengthX
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 11455114, guid: 1afee8ce7a54f4af597a4df1a8e26203, type: 2}
-      propertyPath: changeScale
-      value: .5
-      objectReference: {fileID: 0}
-    - target: {fileID: 11430950, guid: 1afee8ce7a54f4af597a4df1a8e26203, type: 2}
-      propertyPath: m_Text
-      value: 100
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 1afee8ce7a54f4af597a4df1a8e26203, type: 2}
-  m_IsPrefabParent: 0
---- !u!224 &141281980 stripped
-RectTransform:
-  m_PrefabParentObject: {fileID: 22449440, guid: 1afee8ce7a54f4af597a4df1a8e26203,
-    type: 2}
-  m_PrefabInternal: {fileID: 141281979}
 --- !u!1 &145544898
 GameObject:
   m_ObjectHideFlags: 0
@@ -21928,6 +21830,8 @@ MonoBehaviour:
   player: {fileID: 91418583}
   allCharacters: {fileID: 400016, guid: 06ea95d279c7341edb83769ec8c7baed, type: 3}
   characterPrefab: {fileID: 103454, guid: f5fb649f47d1a4dbe94d8c89f4fbe94b, type: 2}
+  characterPool: []
+  characterAmount: 20
   minSpawnInterval: 1
   maxSpawnInterval: 3
   spawnRadius: 200
@@ -22199,6 +22103,10 @@ MonoBehaviour:
   howManyCubesGet: {fileID: 108266, guid: 1afee8ce7a54f4af597a4df1a8e26203, type: 2}
   howManyBonusCubesGet: {fileID: 148746, guid: 5532efb61343048a585bb8932fab354f, type: 2}
   cubesGetOnSuperheat: {fileID: 186928, guid: 9cf52ddd240d14b899e8ab04b8e9b3de, type: 2}
+  cubePool: []
+  bonusCubePool: []
+  cubeOnSuperheatPool: []
+  cubeAmount: 20
 --- !u!1 &590414426
 GameObject:
   m_ObjectHideFlags: 0
@@ -26329,6 +26237,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inGameUI: {fileID: 2134279969}
   indicatorToCollect: {fileID: 129232, guid: cc3d12dfbccec43dba0ee757f254b06a, type: 2}
+  indicatorPool: []
+  indicatorAmount: 20
 --- !u!114 &713807496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29084,11 +28994,6 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!224 &737845654 stripped
-RectTransform:
-  m_PrefabParentObject: {fileID: 22468580, guid: 5532efb61343048a585bb8932fab354f,
-    type: 2}
-  m_PrefabInternal: {fileID: 1217594514}
 --- !u!1 &741547521
 GameObject:
   m_ObjectHideFlags: 0
@@ -33744,7 +33649,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 17.2000008, y: -115}
+  m_AnchoredPosition: {x: 17.2000008, y: -130}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &874182959
@@ -49115,92 +49020,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1214422666}
---- !u!1001 &1217594514
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 2134279969}
-    m_Modifications:
-    - target: {fileID: 22468580, guid: 5532efb61343048a585bb8932fab354f, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22468580, guid: 5532efb61343048a585bb8932fab354f, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22468580, guid: 5532efb61343048a585bb8932fab354f, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: -100
-      objectReference: {fileID: 0}
-    - target: {fileID: 22468580, guid: 5532efb61343048a585bb8932fab354f, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22468580, guid: 5532efb61343048a585bb8932fab354f, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22468580, guid: 5532efb61343048a585bb8932fab354f, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22468580, guid: 5532efb61343048a585bb8932fab354f, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 22468580, guid: 5532efb61343048a585bb8932fab354f, type: 2}
-      propertyPath: m_RootOrder
-      value: 18
-      objectReference: {fileID: 0}
-    - target: {fileID: 22468580, guid: 5532efb61343048a585bb8932fab354f, type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22468580, guid: 5532efb61343048a585bb8932fab354f, type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: 70
-      objectReference: {fileID: 0}
-    - target: {fileID: 22468580, guid: 5532efb61343048a585bb8932fab354f, type: 2}
-      propertyPath: m_SizeDelta.x
-      value: 350
-      objectReference: {fileID: 0}
-    - target: {fileID: 22468580, guid: 5532efb61343048a585bb8932fab354f, type: 2}
-      propertyPath: m_SizeDelta.y
-      value: 150
-      objectReference: {fileID: 0}
-    - target: {fileID: 22468580, guid: 5532efb61343048a585bb8932fab354f, type: 2}
-      propertyPath: m_AnchorMin.x
-      value: .5
-      objectReference: {fileID: 0}
-    - target: {fileID: 22468580, guid: 5532efb61343048a585bb8932fab354f, type: 2}
-      propertyPath: m_AnchorMin.y
-      value: .5
-      objectReference: {fileID: 0}
-    - target: {fileID: 22468580, guid: 5532efb61343048a585bb8932fab354f, type: 2}
-      propertyPath: m_AnchorMax.x
-      value: .5
-      objectReference: {fileID: 0}
-    - target: {fileID: 22468580, guid: 5532efb61343048a585bb8932fab354f, type: 2}
-      propertyPath: m_AnchorMax.y
-      value: .5
-      objectReference: {fileID: 0}
-    - target: {fileID: 22468580, guid: 5532efb61343048a585bb8932fab354f, type: 2}
-      propertyPath: m_Pivot.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22468580, guid: 5532efb61343048a585bb8932fab354f, type: 2}
-      propertyPath: m_Pivot.y
-      value: .5
-      objectReference: {fileID: 0}
-    - target: {fileID: 148746, guid: 5532efb61343048a585bb8932fab354f, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 5532efb61343048a585bb8932fab354f, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &1223434895
 GameObject:
   m_ObjectHideFlags: 0
@@ -55280,7 +55099,9 @@ MonoBehaviour:
   goldCubesCount: {fileID: 966334536}
   showPlayerExplosionDuring: 1.5
   playerExplosion: {fileID: 1917855184}
-  characterDebris: {fileID: 176606, guid: 6ed2e118b4a8f453d8102dd45ef6cb8f, type: 2}
+  debrisTransform: {fileID: 489364, guid: 6ed2e118b4a8f453d8102dd45ef6cb8f, type: 2}
+  characterDebris: {fileID: 175436, guid: fdaceadeb32cf479fbbf966feb959836, type: 2}
+  characterDebrisPool: []
   debrisTumble: 30
   numDebrisSpawn: 14
   minDebrisSize: .5
@@ -70624,97 +70445,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 100
---- !u!1001 &1738275108
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 2134279969}
-    m_Modifications:
-    - target: {fileID: 22440190, guid: 9cf52ddd240d14b899e8ab04b8e9b3de, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22440190, guid: 9cf52ddd240d14b899e8ab04b8e9b3de, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22440190, guid: 9cf52ddd240d14b899e8ab04b8e9b3de, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: -100
-      objectReference: {fileID: 0}
-    - target: {fileID: 22440190, guid: 9cf52ddd240d14b899e8ab04b8e9b3de, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22440190, guid: 9cf52ddd240d14b899e8ab04b8e9b3de, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22440190, guid: 9cf52ddd240d14b899e8ab04b8e9b3de, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22440190, guid: 9cf52ddd240d14b899e8ab04b8e9b3de, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 22440190, guid: 9cf52ddd240d14b899e8ab04b8e9b3de, type: 2}
-      propertyPath: m_RootOrder
-      value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 22440190, guid: 9cf52ddd240d14b899e8ab04b8e9b3de, type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22440190, guid: 9cf52ddd240d14b899e8ab04b8e9b3de, type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: 157.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 22440190, guid: 9cf52ddd240d14b899e8ab04b8e9b3de, type: 2}
-      propertyPath: m_SizeDelta.x
-      value: 350
-      objectReference: {fileID: 0}
-    - target: {fileID: 22440190, guid: 9cf52ddd240d14b899e8ab04b8e9b3de, type: 2}
-      propertyPath: m_SizeDelta.y
-      value: 150
-      objectReference: {fileID: 0}
-    - target: {fileID: 22440190, guid: 9cf52ddd240d14b899e8ab04b8e9b3de, type: 2}
-      propertyPath: m_AnchorMin.x
-      value: .5
-      objectReference: {fileID: 0}
-    - target: {fileID: 22440190, guid: 9cf52ddd240d14b899e8ab04b8e9b3de, type: 2}
-      propertyPath: m_AnchorMin.y
-      value: .5
-      objectReference: {fileID: 0}
-    - target: {fileID: 22440190, guid: 9cf52ddd240d14b899e8ab04b8e9b3de, type: 2}
-      propertyPath: m_AnchorMax.x
-      value: .5
-      objectReference: {fileID: 0}
-    - target: {fileID: 22440190, guid: 9cf52ddd240d14b899e8ab04b8e9b3de, type: 2}
-      propertyPath: m_AnchorMax.y
-      value: .5
-      objectReference: {fileID: 0}
-    - target: {fileID: 22440190, guid: 9cf52ddd240d14b899e8ab04b8e9b3de, type: 2}
-      propertyPath: m_Pivot.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22440190, guid: 9cf52ddd240d14b899e8ab04b8e9b3de, type: 2}
-      propertyPath: m_Pivot.y
-      value: .5
-      objectReference: {fileID: 0}
-    - target: {fileID: 186928, guid: 9cf52ddd240d14b899e8ab04b8e9b3de, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 9cf52ddd240d14b899e8ab04b8e9b3de, type: 2}
-  m_IsPrefabParent: 0
---- !u!224 &1738275109 stripped
-RectTransform:
-  m_PrefabParentObject: {fileID: 22440190, guid: 9cf52ddd240d14b899e8ab04b8e9b3de,
-    type: 2}
-  m_PrefabInternal: {fileID: 1738275108}
 --- !u!1 &1743083059
 GameObject:
   m_ObjectHideFlags: 0
@@ -73760,11 +73490,13 @@ MonoBehaviour:
   controlPanelCharacter_packman_right: {fileID: 1189346489}
   player: {fileID: 91418583}
   ptb: {fileID: 2048063065}
-  touchEffect: {fileID: 19869282, guid: 685937296cad741c18018a97b8d10789, type: 2}
   beforeIdle: {fileID: 1366368665}
   spawnManager: {fileID: 1991538111}
   menus: {fileID: 1082642569}
   pause: {fileID: 1567307131}
+  touchEffect: {fileID: 125576, guid: 685937296cad741c18018a97b8d10789, type: 2}
+  touchEffectAmount: 30
+  touchEffectPool: []
 --- !u!114 &1801634120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -84648,6 +84380,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceSpawnAtStart: 0
+  objAmount: 1
+  objPool: []
+  objDestroyEffectPool: []
+  objEncounterEffectPool: []
   objPrefab: {fileID: 145992, guid: 8dda1ea4426a74d1d9d0e64e93097cbd, type: 2}
   objDestroyEffect: {fileID: 0}
   objEncounterEffect: {fileID: 0}
@@ -84683,6 +84419,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8912896
   rainbowRoadPrefab: {fileID: 173076, guid: af846d2fda9ca46229d31f23fc80dd18, type: 2}
+  roadPool: []
   numRoadRidesPerLevel: 020000000400000006000000
   speedPerRide: 84030000b6030000e80300001a0400004c0400007e040000
   numRoadRides: 0
@@ -84713,6 +84450,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceSpawnAtStart: 0
+  objAmount: 1
+  objPool: []
+  objDestroyEffectPool: []
+  objEncounterEffectPool: []
   objPrefab: {fileID: 164108, guid: a6fcdda2fbd1d4fe0b8a15b6d19364a9, type: 2}
   objDestroyEffect: {fileID: 158326, guid: 7a4903aebeaf1440d95d69b1daac37af, type: 2}
   objEncounterEffect: {fileID: 0}
@@ -84734,7 +84475,6 @@ MonoBehaviour:
   nameForLevel: ComboParts
   level: 0
   ptb: {fileID: 2048063065}
-  normalParts: {fileID: 469330, guid: ce95c585031f840b0b5cffa6a71612d0, type: 2}
   illusionLifeTime: 3
   blinkBeforeDestroy: 1.20000005
   showDurationStart: .349999994
@@ -84744,12 +84484,14 @@ MonoBehaviour:
   chanceBase: 100
   goldenCubePrefab: {fileID: 117384, guid: 50f32b0368e944945a1410e747cc30ce, type: 2}
   gcCount: {fileID: 966334536}
-  goldCubeDestroyParticle: {fileID: 0}
+  goldCubeDestroyParticle: {fileID: 116864, guid: c37d1083178cd45a3ac690547aa860e0,
+    type: 2}
   goldCubesGet: 10
   goldenCubeChance: 1
   superheatPartPrefab: {fileID: 178724, guid: 10f2508b2281a4f35bc75f3e2629f9b7, type: 2}
   superheatPartChance: 5
   objPrefab_next: {fileID: 192146, guid: d357428246b5f4e5fb2b54651d371984, type: 2}
+  objNextPool: []
   fullComboCountPerLevel: 020000000300000005000000
   radius: 50
   pitchStart: .400000006
@@ -84769,7 +84511,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceSpawnAtStart: 0
-  objPrefab: {fileID: 152204, guid: 8853a505e8ec74ae8b1980f30e507d5c, type: 2}
+  objAmount: 10
+  objPool: []
+  objDestroyEffectPool: []
+  objEncounterEffectPool: []
+  objPrefab: {fileID: 195232, guid: e7a68d4e24a084b4591ac3ac09bf2340, type: 2}
   objDestroyEffect: {fileID: 190966, guid: 06a9d910a6ef7477eb37b2d7cddcfa88, type: 2}
   objEncounterEffect: {fileID: 190966, guid: 06a9d910a6ef7477eb37b2d7cddcfa88, type: 2}
   objEncounterEffectForPlayer: {fileID: 0}
@@ -84789,7 +84535,9 @@ MonoBehaviour:
   hasLevel: 0
   nameForLevel: 
   level: 0
-  biggerMeteroids: {fileID: 177696, guid: 7dc9fcd4d69684bbea3ed2eaac9bb7a5, type: 2}
+  meshes: {fileID: 420790, guid: 8853a505e8ec74ae8b1980f30e507d5c, type: 2}
+  biggerMeteroid: {fileID: 131752, guid: de76bd63e3eae4154a9433ec3ca2a12d, type: 2}
+  biggerPool: []
   biggerMeteroidStrength: 2.5
   biggerMeteroidSpeed: 320
   biggerMeteroidTumble: 20
@@ -84799,10 +84547,13 @@ MonoBehaviour:
   lineDistance: 600
   fallingStarWarningLinePrefab: {fileID: 125686, guid: d2657da8f1ab74d79b03574cca181388,
     type: 2}
+  warningPool: []
   biggerFallingStarWarningLinePrefab: {fileID: 153324, guid: c5a05dc8b0d8f476d8e01dbb22c7fc26,
     type: 2}
+  biggerWarningPool: []
   fallingStarSoundWarningPrefab: {fileID: 122456, guid: 32ffe4a364250467bba5659a4276cfd9,
     type: 2}
+  soundWarningPool: []
   shortenRespawnPer: 10
   shortenRespawnAmount: .100000001
   addSpeedAmount: 4
@@ -84818,6 +84569,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceSpawnAtStart: 0
+  objAmount: 3
+  objPool: []
+  objDestroyEffectPool: []
+  objEncounterEffectPool: []
   objPrefab: {fileID: 117910, guid: bbcd82bb603674de8b6cb8bab02b2b62, type: 2}
   objDestroyEffect: {fileID: 0}
   objEncounterEffect: {fileID: 0}
@@ -84843,7 +84598,6 @@ MonoBehaviour:
   gravityScale: 10
   reboundDuring: 2
   shakeAmount: 3
-  max_blackhole: 3
   reboundingSpeed: 1000
 --- !u!114 &1991538109
 MonoBehaviour:
@@ -84857,6 +84611,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceSpawnAtStart: 0
+  objAmount: 1
+  objPool: []
+  objDestroyEffectPool: []
+  objEncounterEffectPool: []
   objPrefab: {fileID: 187024, guid: b82e156aa96e74e6ab2dfef6ffcc7bcf, type: 2}
   objDestroyEffect: {fileID: 133796, guid: 46089bf9ed3c44683abd20a8e16a7bee, type: 2}
   objEncounterEffect: {fileID: 133796, guid: 46089bf9ed3c44683abd20a8e16a7bee, type: 2}
@@ -84887,6 +84645,8 @@ MonoBehaviour:
   shrinkUntil: .699999988
   shrinkSpeed: 1
   minimonPrefab: {fileID: 147296, guid: 3838bf770901046ef94d4e70d8066d50, type: 2}
+  minimonPool: []
+  minimonDestroyPool: []
   numMinimonRespawn: 4
   minimonAdditionalSpeed: 15
   minimonStartTimeByMonster: .5
@@ -84901,8 +84661,7 @@ MonoBehaviour:
   maxEnlargeCount: 50
   enlargeScalePerMinimon: .00999999978
   enlargeSpeedPerMinimon: 2
-  minimonDestroyEffect: {fileID: 19870966, guid: d690697fab92647e6bea32f8fd206664,
-    type: 2}
+  minimonDestroyEffect: {fileID: 115814, guid: d690697fab92647e6bea32f8fd206664, type: 2}
   weakenedOutlineColor: {r: .0784313753, g: .909803927, b: .360784322, a: .533333361}
   monsterFilter: {fileID: 1997391145}
   indicator: {fileID: 2131139023}
@@ -84920,6 +84679,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceSpawnAtStart: 0
+  objAmount: 1
+  objPool: []
+  objDestroyEffectPool: []
+  objEncounterEffectPool: []
   objPrefab: {fileID: 189106, guid: bd32928049f4147048d0aafcb6011af6, type: 2}
   objDestroyEffect: {fileID: 189290, guid: b3ce2718fb37c492f9d26f509fc35908, type: 2}
   objEncounterEffect: {fileID: 0}
@@ -84997,9 +84760,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceSpawnAtStart: 0
+  objAmount: 4
+  objPool: []
+  objDestroyEffectPool: []
+  objEncounterEffectPool: []
   objPrefab: {fileID: 150936, guid: c12d22440072f4d81ae8465ddd7cc855, type: 2}
-  objDestroyEffect: {fileID: 185578, guid: afcfdbb6ab4984dbdb7caea16971a310, type: 2}
-  objEncounterEffect: {fileID: 185578, guid: afcfdbb6ab4984dbdb7caea16971a310, type: 2}
+  objDestroyEffect: {fileID: 131700, guid: 46d99a54bbdde47e88eb0e03dc80237c, type: 2}
+  objEncounterEffect: {fileID: 131700, guid: 46d99a54bbdde47e88eb0e03dc80237c, type: 2}
   objEncounterEffectForPlayer: {fileID: 0}
   strengthenPlayerEffect: {fileID: 0}
   strength: 2
@@ -85028,7 +84795,7 @@ MonoBehaviour:
   maxSizeAfterBreak: 10
   destroyLargeAfter: .5
   destroySmallAfter: 4
-  max_obstacles: 4
+  brokenMeshes: {fileID: 484650, guid: afcfdbb6ab4984dbdb7caea16971a310, type: 2}
 --- !u!114 &1991538113
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -85041,6 +84808,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceSpawnAtStart: 0
+  objAmount: 1
+  objPool: []
+  objDestroyEffectPool: []
+  objEncounterEffectPool: []
   objPrefab: {fileID: 189520, guid: dccc40739d6254de9aaa62d3c75f9b0d, type: 2}
   objDestroyEffect: {fileID: 158326, guid: 7a4903aebeaf1440d95d69b1daac37af, type: 2}
   objEncounterEffect: {fileID: 0}
@@ -85091,6 +84862,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceSpawnAtStart: 0
+  objAmount: 1
+  objPool: []
+  objDestroyEffectPool: []
+  objEncounterEffectPool: []
   objPrefab: {fileID: 117384, guid: 50f32b0368e944945a1410e747cc30ce, type: 2}
   objDestroyEffect: {fileID: 116864, guid: c37d1083178cd45a3ac690547aa860e0, type: 2}
   objEncounterEffect: {fileID: 0}
@@ -85117,6 +84892,8 @@ MonoBehaviour:
   detectDistance: 100
   generateCubePer: .300000012
   energyCubePrefab: {fileID: 178344, guid: b185d52f68bf5499e81f948bbbf1bd8c, type: 2}
+  cubeAmount: 30
+  cubePool: []
 --- !u!114 &1991538116
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -85129,6 +84906,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceSpawnAtStart: 0
+  objAmount: 1
+  objPool: []
+  objDestroyEffectPool: []
+  objEncounterEffectPool: []
   objPrefab: {fileID: 170554, guid: b66c990df6fbf411ca4af8720e5bb73b, type: 2}
   objDestroyEffect: {fileID: 158326, guid: 7a4903aebeaf1440d95d69b1daac37af, type: 2}
   objEncounterEffect: {fileID: 0}
@@ -85151,8 +84932,11 @@ MonoBehaviour:
   level: 0
   ptb: {fileID: 2048063065}
   summonedPartPrefab: {fileID: 192090, guid: 16bbe96ae2882b4478d909a3bab22e21, type: 2}
+  summonedPartPool: []
   summonedPartsDestroyEffect: {fileID: 158326, guid: 7a4903aebeaf1440d95d69b1daac37af,
     type: 2}
+  summonedPartDestroyPool: []
+  summonPoolAmount: 20
   numSpawnZPerLevel: 030000000400000005000000
   summonedPartLifetimePerLevel:
   - 3
@@ -85172,7 +84956,8 @@ MonoBehaviour:
   chanceBase: 200
   goldenCubePrefab: {fileID: 117384, guid: 50f32b0368e944945a1410e747cc30ce, type: 2}
   gcCount: {fileID: 966334536}
-  goldCubeDestroyParticle: {fileID: 0}
+  goldCubeDestroyParticle: {fileID: 116864, guid: c37d1083178cd45a3ac690547aa860e0,
+    type: 2}
   goldCubesGet: 10
   goldenCubeChance: 1
   superheatPartPrefab: {fileID: 178724, guid: 10f2508b2281a4f35bc75f3e2629f9b7, type: 2}
@@ -85189,7 +84974,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceSpawnAtStart: 0
-  objPrefab: {fileID: 143296, guid: ce95c585031f840b0b5cffa6a71612d0, type: 2}
+  objAmount: 60
+  objPool: []
+  objDestroyEffectPool: []
+  objEncounterEffectPool: []
+  objPrefab: {fileID: 101786, guid: ba524a7769bc34372970ec9cf89920d8, type: 2}
   objDestroyEffect: {fileID: 158326, guid: 7a4903aebeaf1440d95d69b1daac37af, type: 2}
   objEncounterEffect: {fileID: 0}
   objEncounterEffectForPlayer: {fileID: 317572741}
@@ -85209,8 +84998,8 @@ MonoBehaviour:
   hasLevel: 0
   nameForLevel: 
   level: 0
+  meshes: {fileID: 469330, guid: ce95c585031f840b0b5cffa6a71612d0, type: 2}
   ptb: {fileID: 2048063065}
-  max_parts: 60
   minUnstableSpeed: 10
   maxUnstableSpeed: 20
   partsPrefab: []
@@ -85226,6 +85015,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceSpawnAtStart: 0
+  objAmount: 1
+  objPool: []
+  objDestroyEffectPool: []
+  objEncounterEffectPool: []
   objPrefab: {fileID: 155682, guid: 5f189f3ef090540f6850da37ee3e59e1, type: 2}
   objDestroyEffect: {fileID: 0}
   objEncounterEffect: {fileID: 0}
@@ -85281,6 +85074,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceSpawnAtStart: 0
+  objAmount: 1
+  objPool: []
+  objDestroyEffectPool: []
+  objEncounterEffectPool: []
   objPrefab: {fileID: 175320, guid: 1362d0f6b94a74d3889e52e629b61cc5, type: 2}
   objDestroyEffect: {fileID: 158326, guid: 7a4903aebeaf1440d95d69b1daac37af, type: 2}
   objEncounterEffect: {fileID: 0}
@@ -85307,7 +85104,10 @@ MonoBehaviour:
   laserShootDuration: .100000001
   transformDuration: .200000003
   transformLaser: {fileID: 187434, guid: f6e1add9fecea448c8755b2fd2af5cd5, type: 2}
+  laserPool: []
   transformParticle: {fileID: 192076, guid: 71f31b91d7b964538adaaf9145237778, type: 2}
+  particlePool: []
+  laserAmount: 10
 --- !u!114 &1991538120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -85320,6 +85120,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceSpawnAtStart: 0
+  objAmount: 1
+  objPool: []
+  objDestroyEffectPool: []
+  objEncounterEffectPool: []
   objPrefab: {fileID: 150102, guid: 81e2d55c10afa40c2b9dc30f45edf1e4, type: 2}
   objDestroyEffect: {fileID: 158326, guid: 7a4903aebeaf1440d95d69b1daac37af, type: 2}
   objEncounterEffect: {fileID: 0}
@@ -85343,8 +85147,11 @@ MonoBehaviour:
   getEnergy: {fileID: 317572741}
   energyCube: {fileID: 178344, guid: b185d52f68bf5499e81f948bbbf1bd8c, type: 2}
   forceFieldPrefab: {fileID: 175312, guid: c461f9df261eb41ff961769c46f81139, type: 2}
+  goodFieldPool: []
   forceFieldByDopplePrefab: {fileID: 139776, guid: 5ebc0722331894005b24bbd0c1b32848,
     type: 2}
+  badFieldPool: []
+  fieldAmount: 30
   forceFieldSizePerLevel:
   - .75
   - 1
@@ -85369,9 +85176,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceSpawnAtStart: 0
+  objAmount: 6
+  objPool: []
+  objDestroyEffectPool: []
+  objEncounterEffectPool: []
   objPrefab: {fileID: 110936, guid: 4acea45691e994a5fa1609aa8f6d4059, type: 2}
-  objDestroyEffect: {fileID: 153772, guid: 62e2117daecdc40d5a0b09caa67b04e1, type: 2}
-  objEncounterEffect: {fileID: 153772, guid: 62e2117daecdc40d5a0b09caa67b04e1, type: 2}
+  objDestroyEffect: {fileID: 100394, guid: 6d663734c3fd54a6b9451df7119a0c2d, type: 2}
+  objEncounterEffect: {fileID: 100394, guid: 6d663734c3fd54a6b9451df7119a0c2d, type: 2}
   objEncounterEffectForPlayer: {fileID: 0}
   strengthenPlayerEffect: {fileID: 0}
   strength: 2
@@ -85400,7 +85211,7 @@ MonoBehaviour:
   maxSizeAfterBreak: 10
   destroyLargeAfter: .5
   destroySmallAfter: 4
-  max_obstacles: 6
+  brokenMeshes: {fileID: 476238, guid: 62e2117daecdc40d5a0b09caa67b04e1, type: 2}
 --- !u!114 &1991538123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -85413,6 +85224,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceSpawnAtStart: 0
+  objAmount: 10
+  objPool: []
+  objDestroyEffectPool: []
+  objEncounterEffectPool: []
   objPrefab: {fileID: 108358, guid: ed3edd2867d2d42c99d6c99c3f96987e, type: 2}
   objDestroyEffect: {fileID: 139520, guid: b60b7b3d957cf4c13bf86d902b4fb80f, type: 2}
   objEncounterEffect: {fileID: 139520, guid: b60b7b3d957cf4c13bf86d902b4fb80f, type: 2}
@@ -85435,7 +85250,7 @@ MonoBehaviour:
   level: 0
   particleDestroyByPlayer: {fileID: 190966, guid: 06a9d910a6ef7477eb37b2d7cddcfa88,
     type: 2}
-  max_emp: 10
+  particleDestroyByPlayerPool: []
   minScale: 15
   maxScale: 25
   startDuration: .800000012
@@ -85458,6 +85273,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceSpawnAtStart: 0
+  objAmount: 10
+  objPool: []
+  objDestroyEffectPool: []
+  objEncounterEffectPool: []
   objPrefab: {fileID: 175286, guid: c686fe84f109345a68ca524483736f13, type: 2}
   objDestroyEffect: {fileID: 0}
   objEncounterEffect: {fileID: 0}
@@ -85481,6 +85300,9 @@ MonoBehaviour:
   laserPrefab: {fileID: 140848, guid: ee9b8d5623d8a4cb2a1aed0140e7d797, type: 2}
   laserWarningLinePrefab: {fileID: 149728, guid: 1a32e5133a7bd4c099bbab27e21edf87,
     type: 2}
+  laserPool: []
+  laserWarningPool: []
+  laserPoolAmount: 30
   spawnRadius: 200
   headFollowingSpeed: 100
   speedIncreaseAmount: 5
@@ -85505,6 +85327,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceSpawnAtStart: 0
+  objAmount: 1
+  objPool: []
+  objDestroyEffectPool: []
+  objEncounterEffectPool: []
   objPrefab: {fileID: 178724, guid: 10f2508b2281a4f35bc75f3e2629f9b7, type: 2}
   objDestroyEffect: {fileID: 158326, guid: 7a4903aebeaf1440d95d69b1daac37af, type: 2}
   objEncounterEffect: {fileID: 154526, guid: b04bed1b0acbd492f962c0467fc30f90, type: 2}
@@ -85539,6 +85365,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceSpawnAtStart: 0
+  objAmount: 1
+  objPool: []
+  objDestroyEffectPool: []
+  objEncounterEffectPool: []
   objPrefab: {fileID: 180950, guid: 0f9c962fa323d4d87ad6451daafdcc00, type: 2}
   objDestroyEffect: {fileID: 139784, guid: 8214acc41bcca411eb523a83f2ef812a, type: 2}
   objEncounterEffect: {fileID: 0}
@@ -89372,9 +89202,6 @@ RectTransform:
   - {fileID: 966334535}
   - {fileID: 1357137653}
   - {fileID: 1406922903}
-  - {fileID: 1738275109}
-  - {fileID: 141281980}
-  - {fileID: 737845654}
   m_Father: {fileID: 507386076}
   m_RootOrder: 3
   m_AnchorMin: {x: 0, y: 0}

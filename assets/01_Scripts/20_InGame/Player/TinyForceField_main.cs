@@ -34,7 +34,7 @@ public class TinyForceField_main : MonoBehaviour {
 
   void Update() {
     if (dpm.player.isTrapped() && dispenserSize > 0 && GetComponent<Collider>().bounds.size.x > dispenserSize) {
-      Destroy(transform.parent.gameObject);
+      transform.parent.gameObject.SetActive(false);
     }
   }
 

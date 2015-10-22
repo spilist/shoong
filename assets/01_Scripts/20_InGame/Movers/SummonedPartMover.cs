@@ -10,26 +10,42 @@ public class SummonedPartMover : ObjectsMover {
   override protected void initializeRest() {
     summonManager = (SummonPartsManager) objectsManager;
     mRenderer = GetComponent<Renderer>();
+  }
+
+  override protected void afterEnable() {
+    mRenderer.enabled = true;
     StartCoroutine("destroyAfter");
   }
 
   public void setGolden() {
     isGoldenCube = true;
+    isSuperheatPart = false;
     objectsManager.objDestroyEffect = summonManager.goldCubeDestroyParticle;
   }
 
   public void setSuper() {
+    isGoldenCube = false;
     isSuperheatPart = true;
+    objectsManager.objDestroyEffect = summonManager.objDestroyEffect;
+  }
+
+  public void setNormal() {
+    if (isGoldenCube || isSuperheatPart) {
+      isGoldenCube = false;
+      isSuperheatPart = false;
+      objectsManager.objDestroyEffect = summonManager.objDestroyEffect;
+    }
   }
 
   override public void destroyObject (bool destroyEffect = true, bool byPlayer = false) {
     foreach (Collider collider in GetComponents<Collider>()) {
       collider.enabled = false;
     }
-    Destroy(gameObject);
+
+    gameObject.SetActive(false);
 
     if (destroyEffect) {
-      Instantiate(objectsManager.objDestroyEffect, transform.position, transform.rotation);
+      showDestroyEffect();
     }
 
     if (byPlayer) {

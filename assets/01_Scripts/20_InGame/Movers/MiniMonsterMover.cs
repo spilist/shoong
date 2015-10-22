@@ -9,13 +9,16 @@ public class MiniMonsterMover : ObjectsMover {
 
   protected override void initializeRest() {
     monm = (MonsterManager)objectsManager;
+    speed_chase = monm.speed + monm.minimonAdditionalSpeed;
+  }
 
+  override protected void afterEnable() {
     if (player.isRidingMonster()) {
       time = monm.minimonStartTimeByPlayer;
     } else {
       time = monm.minimonStartTimeByMonster;
     }
-    speed_chase = monm.speed + monm.minimonAdditionalSpeed;
+    timeElapsed = false;
 
     StartCoroutine("destroyByTime");
   }
@@ -67,10 +70,10 @@ public class MiniMonsterMover : ObjectsMover {
     }
 
     if (destroyEffect) {
-      Instantiate(monm.minimonDestroyEffect, transform.position, transform.rotation);
+      monm.destroyMinimon(transform.position);
     }
 
-    Destroy(gameObject);
+    gameObject.SetActive(false);
   }
 
   override public string getManager() {
@@ -87,8 +90,8 @@ public class MiniMonsterMover : ObjectsMover {
       collider.enabled = false;
     }
 
-    Destroy(gameObject);
-    Instantiate(monm.minimonDestroyEffect, transform.position, transform.rotation);
+    monm.destroyMinimon(transform.position);
+    gameObject.SetActive(false);
   }
 
   override public int cubesWhenEncounter() {

@@ -5,7 +5,6 @@ using System.Collections;
 public class MonsterMover : ObjectsMover {
   private float speed_runaway;
   private float speed_weaken;
-  private float lifeTime;
   private float minimonRespawnTime;
   private int minimonCount = 0;
 
@@ -15,6 +14,7 @@ public class MonsterMover : ObjectsMover {
   private bool shrinking = false;
 
   private Renderer m_renderer;
+  private Color originalColor;
 
   protected override void initializeRest() {
     monm = (MonsterManager)objectsManager;
@@ -22,13 +22,24 @@ public class MonsterMover : ObjectsMover {
     speed_runaway = monm.speed_runaway;
     speed_weaken = monm.speed_weaken;
 
-    monm.indicator.startIndicate(gameObject);
-    monm.indicator.GetComponent<Image>().color = Color.red;
-
-    lifeTime = Random.Range(monm.minLifeTime, monm.maxLifeTime);
+    float lifeTime = Random.Range(monm.minLifeTime, monm.maxLifeTime);
     minimonRespawnTime = lifeTime / monm.numMinimonRespawn;
 
     m_renderer = GetComponent<Renderer>();
+    originalColor = m_renderer.material.GetColor("_OutlineColor");
+  }
+
+  override protected void afterEnable() {
+    monm.indicator.startIndicate(gameObject);
+    monm.indicator.GetComponent<Image>().color = Color.red;
+    minimonCount = 0;
+    weak = false;
+    shrinking = false;
+    transform.Find("Aura").gameObject.SetActive(true);
+    transform.Find("Weaken Aura").gameObject.SetActive(false);
+
+    m_renderer.material.SetColor("_OutlineColor", originalColor);
+    m_renderer.material.SetFloat("_Outline", 1.5f);
 
     StartCoroutine("weakened");
   }
@@ -37,7 +48,7 @@ public class MonsterMover : ObjectsMover {
     while (minimonCount < monm.numMinimonRespawn) {
       minimonCount++;
       shrinking = true;
-      Instantiate(monm.minimonPrefab, transform.position, transform.rotation);
+      monm.spawnMinimon(transform.position);
 
       yield return new WaitForSeconds(minimonRespawnTime);
     }
@@ -83,16 +94,19 @@ public class MonsterMover : ObjectsMover {
   override protected void afterDestroy(bool byPlayer) {
     monm.indicator.stopIndicate();
     monm.stopWarning();
+    StopCoroutine("weakened");
   }
 
   override public void encounterPlayer(bool destroy = true) {
     foreach (Collider collider in GetComponents<Collider>()) {
       collider.enabled = false;
     }
-    Destroy(gameObject);
+
+    gameObject.SetActive(false);
 
     monm.indicator.stopIndicate();
     monm.stopWarning();
+    StopCoroutine("weakened");
 
     if (rideable()) {
       objectsManager.objEncounterEffectForPlayer.Play();
@@ -105,7 +119,7 @@ public class MonsterMover : ObjectsMover {
       player.encounterObject(tag);
     }
     else {
-      Instantiate(objectsManager.objEncounterEffect, transform.position, transform.rotation);
+      showEncounterEffect();
       monm.run();
 
       player.destroyObject(tag);

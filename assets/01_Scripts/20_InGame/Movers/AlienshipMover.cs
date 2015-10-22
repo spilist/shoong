@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class AlienshipMover : ObjectsMover {
   private AlienshipManager asm;
@@ -7,8 +8,6 @@ public class AlienshipMover : ObjectsMover {
   private float chargeTime;
   private int headFollowingSpeed;
   private GameObject laserCanon;
-  private GameObject laserPrefab;
-  private GameObject laserWarningPrefab;
 
   private GameObject laserWarning;
 
@@ -27,9 +26,9 @@ public class AlienshipMover : ObjectsMover {
     headFollowingSpeed = asm.headFollowingSpeed;
 
     laserCanon = transform.Find("LaserCanon").gameObject;
-    laserPrefab = asm.laserPrefab;
-    laserWarningPrefab = asm.laserWarningLinePrefab;
-    laserWarningPrefab.transform.localScale = new Vector3(asm.laserLength, asm.laserRadius, asm.laserRadius);
+  }
+
+  protected override void afterEnable() {
     angleY = transform.eulerAngles.y;
     shootingStatus = 1;
   }
@@ -70,7 +69,8 @@ public class AlienshipMover : ObjectsMover {
         shootingStatus++;
         rb.isKinematic = true;
         laserCanon.SetActive(true);
-        laserWarning = (GameObject) Instantiate(laserWarningPrefab, laserCanon.transform.position, Quaternion.identity);
+        laserWarning = asm.getLaserWarning(laserCanon.transform.position);
+        laserWarning.SetActive(true);
         laserWarning.transform.eulerAngles = new Vector3(0, angleY - 90, 0);
       }
     } else if (shootingStatus == 2) {
@@ -79,9 +79,10 @@ public class AlienshipMover : ObjectsMover {
         stayCount += Time.deltaTime;
       } else {
         stayCount = 0;
-        AlienshipLaserMover laser = ((GameObject)Instantiate(laserPrefab, laserWarning.transform.position, Quaternion.identity)).GetComponent<AlienshipLaserMover>();
-        laser.set(laserWarning.transform.eulerAngles.y, asm, this);
-        Destroy(laserWarning);
+        GameObject laser = asm.getLaser(laserWarning.transform.position);
+        laser.SetActive(true);
+        laser.GetComponent<AlienshipLaserMover>().set(laserWarning.transform.eulerAngles.y, asm, this);
+        laserWarning.SetActive(false);
         shootingStatus = 0;
       }
     }
@@ -91,18 +92,5 @@ public class AlienshipMover : ObjectsMover {
     shootingStatus = 1;
     if (rb != null) rb.isKinematic = false;
     laserCanon.SetActive(false);
-  }
-
-  override public void destroyObject(bool destroyEffect = true, bool byPlayer = false) {
-    foreach (Collider collider in GetComponents<Collider>()) {
-      collider.enabled = false;
-    }
-    Destroy(gameObject);
-
-    if (destroyEffect && objectsManager.objDestroyEffect != null) {
-      Instantiate(objectsManager.objDestroyEffect, transform.position, transform.rotation);
-    }
-
-    player.destroyObject(tag);
   }
 }

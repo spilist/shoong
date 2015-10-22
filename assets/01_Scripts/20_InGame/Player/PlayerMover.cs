@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
 
 public class PlayerMover : MonoBehaviour {
@@ -38,6 +39,11 @@ public class PlayerMover : MonoBehaviour {
   private float boosterBonus = 1;
 
 	public GameObject particles;
+  public List<GameObject> cubePool;
+  public int cubeAmount = 50;
+  public Material originalCubeMat;
+  public Color cubeOriginalColor;
+  public Color cubeOriginalTrailColor;
   public Color goldenCubeParticleColor;
   public Color goldenCubeParticleTrailColor;
 
@@ -92,7 +98,26 @@ public class PlayerMover : MonoBehaviour {
     rb = GetComponent<Rigidbody>();
     rb.velocity = direction * speed;
     rotatePlayerBody(true);
+
+    cubePool = new List<GameObject>();
+    for (int i = 0; i < cubeAmount; ++i) {
+      GameObject obj = (GameObject) Instantiate(particles);
+      obj.SetActive(false);
+      cubePool.Add(obj);
+    }
 	}
+
+  GameObject generateCube() {
+    for (int i = 0; i < cubePool.Count; i++) {
+      if (!cubePool[i].activeInHierarchy) {
+        return cubePool[i];
+      }
+    }
+
+    GameObject obj = (GameObject) Instantiate(particles);
+    cubePool.Add(obj);
+    return obj;
+  }
 
 	void FixedUpdate () {
     if (usingPowerBoost) {
@@ -170,10 +195,8 @@ public class PlayerMover : MonoBehaviour {
 
   public void generateMinimon(ObjectsMover mover) {
     mover.destroyObject(true, true);
-    mover.destroyByMonster();
-    for (int k = 0; k < monm.numMinimonSpawn; k++) {
-      Instantiate(monm.minimonPrefab, transform.position, transform.rotation);
-    }
+    monm.spawnMinimon(transform.position, monm.numMinimonSpawn);
+
     DataManager.dm.increment("NumSpawnMinimonster", monm.numMinimonSpawn);
   }
 
@@ -191,7 +214,8 @@ public class PlayerMover : MonoBehaviour {
   public void goodPartsEncounter(ObjectsMover mover, int howMany, int bonus = 0, bool encounterPlayer = true) {
     if (howMany > 0) {
       for (int e = 0; e < numCubesInstantiate(howMany); e++) {
-        GameObject cube = (GameObject) Instantiate(particles, mover.transform.position, mover.transform.rotation);
+        GameObject cube = generateCube();
+        cube.transform.position = mover.transform.position;
         if (e == 0) {
           cube.GetComponent<ParticleMover>().triggerCubesGet(howMany);
         }
@@ -203,9 +227,12 @@ public class PlayerMover : MonoBehaviour {
             cube.GetComponent<Renderer>().material.SetColor("_TintColor", rdm.rainbowColors[e]);
             cube.GetComponent<TrailRenderer>().material.SetColor("_TintColor", rdm.rainbowColors[e]);
           }
-
           cube.GetComponent<ParticleMover>().setRainbow();
+        } else {
+          cube.GetComponent<Renderer>().material.SetColor("_TintColor", cubeOriginalColor);
+          cube.GetComponent<TrailRenderer>().material.SetColor("_TintColor", cubeOriginalTrailColor);
         }
+        cube.SetActive(true);
       }
 
       if (mover.isNegativeObject()) {
@@ -216,14 +243,18 @@ public class PlayerMover : MonoBehaviour {
       }
 
       if (bonus > 0) {
-        GameObject cube = (GameObject) Instantiate(particles, mover.transform.position, mover.transform.rotation);
+        GameObject cube = generateCube();
+        cube.SetActive(true);
+        cube.transform.position = mover.transform.position;
         cube.GetComponent<ParticleMover>().triggerCubesGet(bonus);
         if (unstoppable && mover.isNegativeObject()) {
           cube.GetComponent<Renderer>().sharedMaterial = changeManager.metalMat;
           DataManager.dm.increment("TotalBonusesWithMetal", bonus);
+        } else {
+          cube.GetComponent<Renderer>().sharedMaterial = originalCubeMat;
         }
 
-        cube.transform.localScale += Mathf.Min(bonus, bonusCubeMaxBase) * bonusCubeScaleChange * Vector3.one;
+        cube.transform.localScale = (cube.GetComponent<ParticleMover>().startScale + Mathf.Min(bonus, bonusCubeMaxBase)) * bonusCubeScaleChange * Vector3.one;
       }
 
       if (mover.tag != "GoldenCube") addCubeCount(howMany, bonus);
@@ -239,11 +270,19 @@ public class PlayerMover : MonoBehaviour {
 
   public void contactCubeDispenser(Transform tr, int howMany, Collision collision, float reboundDuring, bool isGolden) {
     for (int e = 0; e < howMany; e++) {
-      GameObject cube = (GameObject) Instantiate(particles, tr.position, tr.rotation);
+      GameObject cube = generateCube();
+      cube.SetActive(true);
+      cube.transform.position = tr.position;
+
       if (isGolden) {
         cube.GetComponent<Renderer>().material.SetColor("_TintColor", goldenCubeParticleColor);
         cube.GetComponent<TrailRenderer>().material.SetColor("_TintColor", goldenCubeParticleTrailColor);
-      } else if (e == 0) {
+      } else {
+        cube.GetComponent<Renderer>().material.SetColor("_TintColor", cubeOriginalColor);
+        cube.GetComponent<TrailRenderer>().material.SetColor("_TintColor", cubeOriginalTrailColor);
+      }
+
+      if (e == 0) {
         cube.GetComponent<ParticleMover>().triggerCubesGet(howMany);
       }
     }

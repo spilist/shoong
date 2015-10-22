@@ -11,6 +11,7 @@ GameObject:
   - 198: {fileID: 19856956}
   - 199: {fileID: 19954760}
   - 114: {fileID: 11486478}
+  - 114: {fileID: 11444090}
   m_Layer: 9
   m_Name: DestroyGoldenCubeEffect
   m_TagString: Untagged
@@ -30,6 +31,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &11444090
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 116864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee37065ea5a7246d3a7ed1acf1cee3a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifetime: 1
 --- !u!114 &11486478
 MonoBehaviour:
   m_ObjectHideFlags: 1

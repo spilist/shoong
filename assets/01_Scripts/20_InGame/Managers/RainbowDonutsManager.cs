@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class RainbowDonutsManager : ObjectsManager {
   public Superheat superheat;
@@ -18,6 +19,7 @@ public class RainbowDonutsManager : ObjectsManager {
   public LayerMask blackholeGravityMask;
 
   public GameObject rainbowRoadPrefab;
+  public List<GameObject> roadPool;
 
   public int[] numRoadRidesPerLevel;
   public int[] speedPerRide;
@@ -41,6 +43,13 @@ public class RainbowDonutsManager : ObjectsManager {
 
   override public void initRest() {
     skipInterval = true;
+
+    roadPool = new List<GameObject>();
+    for (int i = 0; i < objAmount; ++i) {
+      GameObject obj = (GameObject) Instantiate(rainbowRoadPrefab);
+      obj.SetActive(false);
+      roadPool.Add(obj);
+    }
   }
 
   override public void adjustForLevel(int level) {
@@ -64,20 +73,25 @@ public class RainbowDonutsManager : ObjectsManager {
       isSuper = false;
       instance.GetComponent<Renderer>().sharedMaterial = goldenRainbowMat;
       instance.transform.Find("GoldenEffect").gameObject.SetActive(true);
+      instance.transform.Find("HeatEffect").gameObject.SetActive(false);
     } else if (random < superChance) {
       isGolden = false;
       isSuper = true;
       instance.GetComponent<Renderer>().sharedMaterial = superRainbowMat;
+      instance.transform.Find("GoldenEffect").gameObject.SetActive(false);
       instance.transform.Find("HeatEffect").gameObject.SetActive(true);
     } else {
       isGolden = false;
       isSuper = false;
+      instance.GetComponent<Renderer>().sharedMaterial = objPrefab.GetComponent<Renderer>().sharedMaterial;
+      instance.transform.Find("GoldenEffect").gameObject.SetActive(false);
+      instance.transform.Find("HeatEffect").gameObject.SetActive(false);
     }
   }
 
   public void startRidingRainbow() {
     erasingRainbowRoad = false;
-    if (rainbowRoad != null) Destroy(rainbowRoad.gameObject);
+    if (rainbowRoad != null && rainbowRoad.gameObject.activeSelf) rainbowRoad.gameObject.SetActive(false);
 
     if (rideCount == 0) {
       player.encounterObject("RainbowDonut");
@@ -105,7 +119,8 @@ public class RainbowDonutsManager : ObjectsManager {
   IEnumerator rideRainbow() {
     player.setRotateByRainbow(true);
 
-    rainbowRoad = ((GameObject) Instantiate(rainbowRoadPrefab)).GetComponent<LineRenderer>();
+    rainbowRoad = getPooledObj(roadPool, rainbowRoadPrefab).GetComponent<LineRenderer>();
+    rainbowRoad.gameObject.SetActive(true);
     origin = instance.transform.position;
     rainbowRoad.SetPosition(0, origin);
     drawingDistance = 0;
@@ -148,14 +163,20 @@ public class RainbowDonutsManager : ObjectsManager {
 
       if (drawingDistance == nextDonutRadius) {
         drawingRainbowRoad = false;
-        instance = (GameObject) Instantiate(objPrefab, destination, Quaternion.identity);
-        instance.transform.parent = transform;
+        instance = getPooledObj(objPool, objPrefab, destination);
+        instance.SetActive(true);
         if (isGolden) {
           instance.GetComponent<Renderer>().sharedMaterial = goldenRainbowMat;
           instance.transform.Find("GoldenEffect").gameObject.SetActive(true);
+          instance.transform.Find("HeatEffect").gameObject.SetActive(false);
         } else if (isSuper) {
           instance.GetComponent<Renderer>().sharedMaterial = superRainbowMat;
+          instance.transform.Find("GoldenEffect").gameObject.SetActive(false);
           instance.transform.Find("HeatEffect").gameObject.SetActive(true);
+        } else {
+          instance.GetComponent<Renderer>().sharedMaterial = objPrefab.GetComponent<Renderer>().sharedMaterial;
+          instance.transform.Find("GoldenEffect").gameObject.SetActive(false);
+          instance.transform.Find("HeatEffect").gameObject.SetActive(false);
         }
       }
     }
@@ -173,8 +194,8 @@ public class RainbowDonutsManager : ObjectsManager {
     StopCoroutine("rideRainbow");
     erasingRainbowRoad = false;
     drawingRainbowRoad = false;
-    if (rainbowRoad != null) Destroy(rainbowRoad.gameObject);
-    if (instance != null) Destroy(instance);
+    if (rainbowRoad != null) rainbowRoad.gameObject.SetActive(false);
+    if (instance != null) instance.SetActive(false);
     objEncounterEffectForPlayer.Stop();
     run();
   }

@@ -69,10 +69,6 @@ public class PartsCollector : MonoBehaviour {
 
 	public void effect(bool triggerCubesGet, int count, bool playerGeneration){
     if (triggerCubesGet) {
-      // GameObject cubesGetInstance = Instantiate(howManyCubesGet);
-      // cubesGetInstance.transform.SetParent(transform.parent.Find("Bars Canvas"), false);
-      // cubesGetInstance.transform.position = transform.position;
-      // cubesGetInstance.GetComponent<ShowChangeText>().run(count);
       increaseSize(count);
     }
 
@@ -82,7 +78,6 @@ public class PartsCollector : MonoBehaviour {
 
     collecteffect.Play ();
     GetComponent<AudioSource>().Play();
-    // cubesCount.text = (int.Parse(cubesCount.text) + 1).ToString();
 	}
 
   public void increaseSize(int partsGet) {

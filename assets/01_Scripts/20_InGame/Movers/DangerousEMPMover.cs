@@ -15,6 +15,7 @@ public class DangerousEMPMover : ObjectsMover {
   float decreaseDurationPerPulse;
   Renderer shellRenderer;
   Color color;
+  Color originalColor;
   float colorCode = 0;
   float colorChangeDuration;
   bool unstable = false;
@@ -35,18 +36,21 @@ public class DangerousEMPMover : ObjectsMover {
     decreaseDurationPerPulse = dem.decreaseDurationPerPulse;
     diff = maxScale - minScale;
 
-    scale = minScale;
-
     shellTr = transform.Find("Shell");
     shellRenderer = shellTr.GetComponent<Renderer>();
-    color = shellRenderer.sharedMaterial.GetColor("_TintColor");
+    originalColor = shellRenderer.sharedMaterial.GetColor("_TintColor");
 
     float duration = startDuration;
     while (duration > 0) {
       colorChangeDuration += duration;
       duration -= decreaseDurationPerPulse;
     }
+  }
 
+  protected override void afterEnable() {
+    scale = minScale;
+    color = originalColor;
+    startDuration = dem.startDuration;
     unstable = true;
   }
 
@@ -54,13 +58,16 @@ public class DangerousEMPMover : ObjectsMover {
     foreach (Collider collider in GetComponents<Collider>()) {
       collider.enabled = false;
     }
-    Destroy(gameObject);
+
+    gameObject.SetActive(false);
 
     if (byPlayer) {
+      GameObject effect = dem.getPooledObj(dem.particleDestroyByPlayerPool, dem.particleDestroyByPlayer, transform.position);
+      effect.SetActive(true);
       player.destroyObject(tag, gaugeWhenDestroy());
-      Instantiate(dem.particleDestroyByPlayer, transform.position, Quaternion.identity);
     } else if (destroyEffect) {
-      Instantiate(objectsManager.objDestroyEffect, transform.position, transform.rotation);
+      GameObject effect = dem.getPooledObj(dem.objDestroyEffectPool, dem.objDestroyEffect, transform.position);
+      effect.SetActive(true);
     }
   }
 

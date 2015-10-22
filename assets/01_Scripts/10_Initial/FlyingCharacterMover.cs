@@ -44,7 +44,7 @@ public class FlyingCharacterMover : MonoBehaviour {
 
     if (tag == "FlyingBoundary") {
       if (randomMoving) {
-        Destroy(gameObject);
+        gameObject.SetActive(false);
       }
     } else if (tag == "ChangeBehavior") {
       randomMoving = true;

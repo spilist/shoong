@@ -13,7 +13,8 @@ public class SuperheatPartManager : ObjectsManager {
     if (player.isOnSuperheat()) return;
     superheat.addGuageWithEffect(guageForEncounter);
     if (withEffect) {
-      Instantiate(objEncounterEffect, player.transform.position, Quaternion.identity);
+      GameObject obj = getPooledObj(objEncounterEffectPool, objEncounterEffect, player.transform.position);
+      obj.SetActive(true);
     }
   }
 }

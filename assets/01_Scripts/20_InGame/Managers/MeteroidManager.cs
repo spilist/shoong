@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 
 public class MeteroidManager : ObjectsManager {
-  private GameObject[] meteroidsPrefab;
-  public GameObject biggerMeteroids;
-  private GameObject[] biggerMeteroidsPrefab;
+  public Transform meshes;
+  public GameObject biggerMeteroid;
+  public List<GameObject> biggerPool;
+
   public float biggerMeteroidStrength = 2.5f;
   public float biggerMeteroidSpeed = 400;
   public float biggerMeteroidTumble = 20;
@@ -15,8 +17,11 @@ public class MeteroidManager : ObjectsManager {
   public int scatterAmount = 30;
   public int lineDistance = 1000;
   public GameObject fallingStarWarningLinePrefab;
+  public List<GameObject> warningPool;
   public GameObject biggerFallingStarWarningLinePrefab;
+  public List<GameObject> biggerWarningPool;
   public GameObject fallingStarSoundWarningPrefab;
+  public List<GameObject> soundWarningPool;
 
   public float shortenRespawnPer = 10;
   public float shortenRespawnAmount = 0.1f;
@@ -27,18 +32,28 @@ public class MeteroidManager : ObjectsManager {
   private bool phaseStarted = false;
 
   override public void initRest() {
-    isNegative = true;
+    biggerPool = new List<GameObject>();
+    warningPool = new List<GameObject>();
+    biggerWarningPool = new List<GameObject>();
+    soundWarningPool = new List<GameObject>();
 
-    meteroidsPrefab = new GameObject[objPrefab.transform.childCount];
-    int count = 0;
-    foreach (Transform tr in objPrefab.transform) {
-      meteroidsPrefab[count++] = tr.gameObject;
-    }
+    for (int i = 0; i < objAmount; ++i) {
+      GameObject obj = (GameObject) Instantiate(biggerMeteroid);
+      obj.SetActive(false);
+      obj.transform.parent = transform;
+      biggerPool.Add(obj);
 
-    biggerMeteroidsPrefab = new GameObject[biggerMeteroids.transform.childCount];
-    count = 0;
-    foreach (Transform tr in biggerMeteroids.transform) {
-      biggerMeteroidsPrefab[count++] = tr.gameObject;
+      obj = (GameObject) Instantiate(fallingStarWarningLinePrefab);
+      obj.SetActive(false);
+      warningPool.Add(obj);
+
+      obj = (GameObject) Instantiate(biggerFallingStarWarningLinePrefab);
+      obj.SetActive(false);
+      biggerWarningPool.Add(obj);
+
+      obj = (GameObject) Instantiate(fallingStarSoundWarningPrefab);
+      obj.SetActive(false);
+      soundWarningPool.Add(obj);
     }
 
     StartCoroutine("spawnObstacle");
@@ -56,6 +71,16 @@ public class MeteroidManager : ObjectsManager {
 
   override public void runImmediately() {}
 
+  GameObject getWarningLine() {
+    if (phaseStarted) return getPooledObj(biggerWarningPool, biggerFallingStarWarningLinePrefab);
+    else return getPooledObj(warningPool, fallingStarWarningLinePrefab);
+  }
+
+  GameObject getObstacle(Vector3 pos) {
+    if (phaseStarted) return getPooledObj(biggerPool, biggerMeteroid, pos);
+    else return getPooledObj(objPool, objPrefab, pos);
+  }
+
   IEnumerator spawnObstacle() {
     while(true) {
       yield return new WaitForSeconds(spawnInterval());
@@ -69,23 +94,19 @@ public class MeteroidManager : ObjectsManager {
       obstacleDirection.Normalize();
       destination = spawnPos + obstacleDirection * lineDistance;
 
-      GameObject warningLine;
-      if (!phaseStarted) warningLine = (GameObject) Instantiate (fallingStarWarningLinePrefab);
-      else warningLine = (GameObject) Instantiate (biggerFallingStarWarningLinePrefab);
-
+      GameObject warningLine = getWarningLine();
+      warningLine.SetActive(true);
       warningLine.GetComponent<FallingstarWarningLine>().run(spawnPos - 100 * obstacleDirection, destination, lineDistance + 100, warnPlayerDuring);
 
-      Instantiate (fallingStarSoundWarningPrefab);
+      getPooledObj(soundWarningPool, fallingStarSoundWarningPrefab).SetActive(true);
 
       yield return new WaitForSeconds(warnPlayerDuring);
 
       warningLine.GetComponent<FallingstarWarningLine>().erase();
 
-      GameObject obstacle;
-      if (!phaseStarted) obstacle = (GameObject) Instantiate(meteroidsPrefab[Random.Range(0, meteroidsPrefab.Length)], spawnPos, Quaternion.identity);
-      else obstacle = (GameObject) Instantiate(biggerMeteroidsPrefab[Random.Range(0, meteroidsPrefab.Length)], spawnPos, Quaternion.identity);
-
-      obstacle.transform.parent = transform;
+      GameObject obstacle = getObstacle(spawnPos);
+      obstacle.SetActive(true);
+      obstacle.GetComponent<MeshFilter>().sharedMesh = getRandomMesh();
     }
   }
 
@@ -101,14 +122,18 @@ public class MeteroidManager : ObjectsManager {
     return obstacleDirection;
   }
 
-  override protected float spawnInterval() {
-    int timeUnit = (int) Mathf.Floor(ElapsedTime.time.now / shortenRespawnPer);
-
-    return Random.Range(Mathf.Max(0, minSpawnInterval - timeUnit * shortenRespawnAmount), Mathf.Max(0, maxSpawnInterval - timeUnit * shortenRespawnAmount));
+  public Mesh getRandomMesh() {
+    return meshes.GetChild(Random.Range(0, meshes.childCount)).GetComponent<MeshFilter>().sharedMesh;
   }
 
-  override public float getSpeed() {
-    int timeUnit = (int) Mathf.Floor(ElapsedTime.time.now / shortenRespawnPer);
-    return (speed + timeUnit * addSpeedAmount);
-  }
+  // override protected float spawnInterval() {
+  //   int timeUnit = (int) Mathf.Floor(ElapsedTime.time.now / shortenRespawnPer);
+
+  //   return Random.Range(Mathf.Max(0, minSpawnInterval - timeUnit * shortenRespawnAmount), Mathf.Max(0, maxSpawnInterval - timeUnit * shortenRespawnAmount));
+  // }
+
+  // override public float getSpeed() {
+  //   int timeUnit = (int) Mathf.Floor(ElapsedTime.time.now / shortenRespawnPer);
+  //   return (speed + timeUnit * addSpeedAmount);
+  // }
 }

@@ -1,9 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class AlienshipManager : ObjectsManager {
   public GameObject laserPrefab;
   public GameObject laserWarningLinePrefab;
+  public List<GameObject> laserPool;
+  public List<GameObject> laserWarningPool;
+  public int laserPoolAmount = 30;
 
   public int spawnRadius = 200;
   public int headFollowingSpeed = 100;
@@ -21,7 +25,26 @@ public class AlienshipManager : ObjectsManager {
   private int timeSpawned;
 
   override public void initRest() {
+    laserPool = new List<GameObject>();
+    laserWarningPool = new List<GameObject>();
+    for (int i = 0; i < laserPoolAmount; ++i) {
+      GameObject laser = (GameObject) Instantiate(laserPrefab);
+      laser.SetActive(false);
+      laserPool.Add(laser);
+
+      GameObject laserWarning = (GameObject) Instantiate(laserWarningLinePrefab);
+      laserWarning.SetActive(false);
+      laserWarningPool.Add(laserWarning);
+    }
     run();
+  }
+
+  public GameObject getLaser(Vector3 pos) {
+    return getPooledObj(laserPool, laserPrefab, pos);
+  }
+
+  public GameObject getLaserWarning(Vector3 pos) {
+    return getPooledObj(laserWarningPool, laserWarningLinePrefab, pos);
   }
 
   override public Vector3 getDirection() {
@@ -48,8 +71,8 @@ public class AlienshipManager : ObjectsManager {
     screenPos.Normalize();
     screenPos *= spawnRadius;
     Vector3 spawnPos = new Vector3(screenPos.x + player.transform.position.x, player.transform.position.y, screenPos.y + player.transform.position.z);
-    instance = (GameObject) Instantiate(objPrefab, spawnPos, Quaternion.LookRotation(player.transform.position - spawnPos));
-    instance.transform.parent = transform;
+    instance = getPooledObj(objPool, objPrefab, spawnPos);
+    instance.transform.rotation = Quaternion.LookRotation(player.transform.position - spawnPos);
   }
 
   override protected void afterSpawn() {

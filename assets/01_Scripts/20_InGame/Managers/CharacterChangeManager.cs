@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class CharacterChangeManager : MonoBehaviour {
-  public GameObject tinyForceFieldPrefab;
+  public DoppleManager dpm;
 
   public Mesh monsterMesh;
   public Material monsterMaterial;
@@ -64,7 +64,7 @@ public class CharacterChangeManager : MonoBehaviour {
         alpha = 0;
         color.a = alpha;
         mRenderer.sharedMaterial.color = color;
-        Instantiate(tinyForceFieldPrefab, teleportTo, Quaternion.identity);
+        dpm.goodFieldAt(teleportTo);
         teleportingStatus++;
       }
     } else if (teleportingStatus == 3) {
@@ -108,10 +108,6 @@ public class CharacterChangeManager : MonoBehaviour {
       changeCharacter(originalMesh, playerEffectMat);
     }
   }
-
-  // public IEnumerator afterStrengthen() {
-
-  // }
 
   public void changeCharacter(Mesh mesh, Material material) {
     mFilter.sharedMesh = mesh;

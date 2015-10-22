@@ -55,18 +55,6 @@ public class SpawnManager : MonoBehaviour {
     obm.runByTransform(pos, level);
   }
 
-  public GameObject spawn(GameObject target) {
-    GameObject newInstance = (GameObject) Instantiate (target, getSpawnPosition(target), Quaternion.identity);
-    newInstance.transform.parent = transform;
-    return newInstance;
-  }
-
-  public void spawnRandom(GameObject[] targets, int numSpawn) {
-    for (int i = 0; i < numSpawn; i++) {
-      spawn(targets[Random.Range(0, targets.Length)]);
-    }
-  }
-
   public Vector3 getSpawnPosition(GameObject target) {
     float screenX, screenY;
     Vector3 spawnPosition;

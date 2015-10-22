@@ -21,12 +21,36 @@ public class ShowChangeText : MonoBehaviour {
 
   public float stayDuring = 0;
   public float disappearDuring = 1;
-  public float disappearLengthY = 18;
-  public float disappearLengthX = 10;
+  public float baseDisappearLengthY = 100;
+  public float baseDisappearLengthX = 100;
+  private float disappearLengthY;
+  private float disappearLengthX;
+
   private float directionVariable = 1;
   public float changeBase;
   public float changeScale;
   public float maxScale;
+
+  private float originalX;
+  private float originalY;
+  private Color originalColor;
+  private Color originalIconColor;
+  private int originalFontSize;
+  private float originalIconSize;
+
+  void Awake() {
+    text = GetComponent<Text>();
+    originalX = GetComponent<RectTransform>().anchoredPosition.x;
+    originalY = GetComponent<RectTransform>().anchoredPosition.y;
+    originalColor = text.color;
+    originalFontSize = text.fontSize;
+
+    if (hasIcon) {
+      icon = transform.Find("Icon").GetComponent<Renderer>();
+      originalIconColor = icon.material.color;
+      originalIconSize = icon.transform.localScale.x;
+    }
+  }
 
   void Update() {
     if (show) {
@@ -44,23 +68,34 @@ public class ShowChangeText : MonoBehaviour {
       position.x = Mathf.MoveTowards(position.x, disappearStartPosX + disappearLengthX * directionVariable, Time.deltaTime * disappearLengthX * Random.Range(0.5f, 1.5f));
       position.y = Mathf.MoveTowards(position.y, disappearStartPosY + disappearLengthY * sign, Time.deltaTime * disappearLengthY);
       GetComponent<RectTransform>().anchoredPosition = position;
-      if (color.a == 0) Destroy(gameObject);
+      if (color.a == 0) {
+        show = false;
+        gameObject.SetActive(false);
+      }
+    }
+  }
+
+  void OnDisable() {
+    GetComponent<RectTransform>().anchoredPosition = new Vector2(originalX, originalY);
+    position = new Vector2(originalX, originalY);
+    stayCount = 0;
+    text.color = originalColor;
+    if (hasIcon) {
+      icon.material.color = originalIconColor;
     }
   }
 
   public void run(int val) {
     int amount = Mathf.Abs(val);
 
-    text = GetComponent<Text>();
-    color = text.color;
-    position = GetComponent<RectTransform>().anchoredPosition;
-    disappearStartPosX = position.x;
-    disappearStartPosY = position.y;
+    color = originalColor;
+    disappearStartPosX = originalX;
+    disappearStartPosY = originalY;
     show = true;
     text.text = changeDirection + amount.ToString();
 
-    disappearLengthX = Random.Range(0, disappearLengthX);
-    disappearLengthY = Random.Range(disappearLengthY * 0.8f, disappearLengthY * 1.2f);
+    disappearLengthX = Random.Range(0, baseDisappearLengthX);
+    disappearLengthY = Random.Range(baseDisappearLengthY * 0.8f, baseDisappearLengthY * 1.2f);
 
     if (Random.Range(0, 100) < 50) {
       directionVariable = -1;
@@ -68,13 +103,12 @@ public class ShowChangeText : MonoBehaviour {
 
     float changeAmount = ((amount / changeBase) - 1) * changeScale;
     changeAmount = Mathf.Min(changeAmount, changeScale * maxScale);
-    text.fontSize += (int) changeAmount;
+    text.fontSize = originalFontSize + (int) changeAmount;
 
     if (hasIcon) {
-      icon = transform.Find("Icon").GetComponent<Renderer>();
-      iconColor = icon.material.color;
+      iconColor = originalIconColor;
 
-      icon.transform.localScale += Vector3.one * changeAmount;
+      icon.transform.localScale = Vector3.one * (originalIconSize + changeAmount);
       icon.GetComponent<RectTransform>().anchoredPosition = new Vector3(-icon.transform.localScale.x, 0, 0);
 
       if (hasBonus) {

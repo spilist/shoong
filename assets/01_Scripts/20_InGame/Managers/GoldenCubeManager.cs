@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class GoldenCubeManager : ObjectsManager {
   public GoldCubesCount gcCount;
@@ -11,10 +12,19 @@ public class GoldenCubeManager : ObjectsManager {
 
   public float generateCubePer = 0.3f;
   public GameObject energyCubePrefab;
+  public int cubeAmount = 30;
+  public List<GameObject> cubePool;
 
   private bool firstSpawn = true;
 
   override public void initRest() {
+    cubePool = new List<GameObject>();
+    for (int i = 0; i < cubeAmount; ++i) {
+      GameObject obj = (GameObject) Instantiate(energyCubePrefab);
+      obj.SetActive(false);
+      cubePool.Add(obj);
+    }
+
     run();
   }
 
@@ -24,8 +34,7 @@ public class GoldenCubeManager : ObjectsManager {
     screenPos *= spawnRadius;
     Vector3 spawnPos = new Vector3(screenPos.x + player.transform.position.x, player.transform.position.y, screenPos.y + player.transform.position.z);
 
-    instance = (GameObject) Instantiate(objPrefab, spawnPos, Quaternion.identity);
-    instance.transform.parent = transform;
+    instance = getPooledObj(objPool, objPrefab, spawnPos);
   }
 
   override protected float spawnInterval() {

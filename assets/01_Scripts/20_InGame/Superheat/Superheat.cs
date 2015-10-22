@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Superheat : MonoBehaviour {
   public bool forceSuperheat = false;
@@ -11,8 +12,9 @@ public class Superheat : MonoBehaviour {
   public Text touchIt;
   public RectTransform touchItEffect;
   public PlayerMover player;
-  public GameObject energyCube;
   public GameObject afterImagePrefab;
+  private List<GameObject> afterImagePool;
+  public int afterImageCount = 50;
   public Color[] afterImageMainColors;
   public Color[] afterImageEmissiveColors;
   private ParticleSystem superheatParticle;
@@ -94,11 +96,21 @@ public class Superheat : MonoBehaviour {
     guageColor = guage.color;
     guageAlpha = guageAlphaDown;
     touchItShrinkDuration = superheatSlowDuration / maxNumTouch;
+
+    afterImagePool = new List<GameObject>();
+    for (int i = 0; i < afterImageCount; ++i) {
+      GameObject obj = (GameObject) Instantiate(afterImagePrefab);
+      obj.SetActive(false);
+      afterImagePool.Add(obj);
+    }
   }
 
   public void startGame() {
     GetComponent<MeshFilter>().sharedMesh = player.GetComponent<MeshFilter>().sharedMesh;
-    afterImagePrefab.GetComponent<MeshFilter>().sharedMesh = GetComponent<MeshFilter>().sharedMesh;
+
+    for (int i = 0; i < afterImagePool.Count; i++) {
+      afterImagePool[i].GetComponent<MeshFilter>().sharedMesh = GetComponent<MeshFilter>().sharedMesh;
+    }
   }
 
   void Update() {
@@ -324,15 +336,30 @@ public class Superheat : MonoBehaviour {
     heatImage.anchoredPosition = new Vector2(startHeatPos, 0);
   }
 
+  GameObject getAfterImage() {
+    for (int i = 0; i < afterImagePool.Count; i++) {
+      if (!afterImagePool[i].activeInHierarchy) {
+        return afterImagePool[i];
+      }
+    }
+
+    GameObject obj = (GameObject) Instantiate(afterImagePrefab);
+    afterImagePool.Add(obj);
+    return obj;
+  }
+
   IEnumerator generateAfterImage() {
     int index = 0;
 
     while (guage.fillAmount > 0) {
-      PowerBoostAfterImageMover afterImage = ((GameObject)Instantiate(afterImagePrefab, transform.position, transform.rotation)).GetComponent<PowerBoostAfterImageMover>();
+      GameObject afterImage = getAfterImage();
+      afterImage.transform.position = transform.position;
+      afterImage.transform.rotation = transform.rotation;
+      afterImage.SetActive(true);
 
       if (index >= afterImageMainColors.Length) index = 0;
 
-      afterImage.run(afterImageDuration, afterImageMainColors[index], afterImageEmissiveColors[index], transform.localScale.x);
+      afterImage.GetComponent<PowerBoostAfterImageMover>().run(afterImageDuration, afterImageMainColors[index], afterImageEmissiveColors[index], transform.localScale.x);
       index++;
 
       yield return new WaitForSeconds(generatePer);
