@@ -89,7 +89,7 @@ public class ElapsedTime : MonoBehaviour {
 			// phaseStar.fillAmount = currentProgress / progressEnd;
 		}
 
-		if (currentProgress >= progressEnd) {
+		if (progressChanging && currentProgress >= progressEnd) {
 			progressChanging = false;
 			phaseManager.nextPhase();
 			resetProgress();

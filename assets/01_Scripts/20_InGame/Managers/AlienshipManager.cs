@@ -73,6 +73,7 @@ public class AlienshipManager : ObjectsManager {
     Vector3 spawnPos = new Vector3(screenPos.x + player.transform.position.x, player.transform.position.y, screenPos.y + player.transform.position.z);
     instance = getPooledObj(objPool, objPrefab, spawnPos);
     instance.transform.rotation = Quaternion.LookRotation(player.transform.position - spawnPos);
+    instance.SetActive(true);
   }
 
   override protected void afterSpawn() {

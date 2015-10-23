@@ -84974,7 +84974,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceSpawnAtStart: 0
-  objAmount: 60
+  objAmount: 30
   objPool: []
   objDestroyEffectPool: []
   objEncounterEffectPool: []
@@ -85224,7 +85224,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceSpawnAtStart: 0
-  objAmount: 10
+  objAmount: 5
   objPool: []
   objDestroyEffectPool: []
   objEncounterEffectPool: []
@@ -85273,7 +85273,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceSpawnAtStart: 0
-  objAmount: 10
+  objAmount: 5
   objPool: []
   objDestroyEffectPool: []
   objEncounterEffectPool: []

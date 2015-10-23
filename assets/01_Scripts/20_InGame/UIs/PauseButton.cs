@@ -59,6 +59,10 @@ public class PauseButton : MenusBehavior {
     return paused;
   }
 
+  public bool isResuming() {
+    return resuming;
+  }
+
   void OnApplicationPause() {
     activateSelf();
   }

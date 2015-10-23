@@ -124,8 +124,8 @@ public class ObjectsManager : MonoBehaviour {
       instance.GetComponent<ObjectsMover>().destroyObject(false, false);
     }
     instance = getPooledObj(objPool, objPrefab, pos);
-    instance.SetActive(true);
     adjustForLevel(level);
+    instance.SetActive(true);
     afterSpawn();
   }
 

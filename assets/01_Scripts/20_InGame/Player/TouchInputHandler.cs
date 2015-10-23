@@ -59,6 +59,8 @@ public class TouchInputHandler : MonoBehaviour
     }
 
     if (reactAble() && Input.GetMouseButtonDown(0)) {
+      if (pause.isResuming()) return;
+
       string result = menus.touched();
 
       if (menus.isMenuOn()) return;
