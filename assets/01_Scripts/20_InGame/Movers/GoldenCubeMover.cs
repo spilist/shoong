@@ -10,12 +10,15 @@ public class GoldenCubeMover : ObjectsMover {
   }
 
   protected override bool beforeCollide(ObjectsMover other) {
-    if (other.tag == "Obstacle") {
-      destroyObject();
+    if (other.tag == "CubeDispenser") {
       return false;
     } else {
       return true;
     }
+  }
+
+  protected override void afterCollide(Collision collision) {
+    if (collision.collider.tag == "CubeDispenser") processCollision(collision);
   }
 
   protected override void normalMovement() {

@@ -22,6 +22,7 @@ public class ObjectsManager : MonoBehaviour {
   public int cubesByEncounter;
   public bool isNegative = false;
   public bool hasEncounterEffect = true;
+  public bool canKillPlayer = false;
 
   protected SpawnManager spawnManager;
   public SuperheatPartManager shm;

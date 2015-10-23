@@ -27,6 +27,9 @@ public class PlayerMover : MonoBehaviour {
   public RainbowDonutsManager rdm;
   public DoppleManager dpm;
   public BlackholeManager blm;
+  public IceDebrisManager icm;
+  private float icedDuration;
+  private float icedSpeedFactor;
 
   private bool reboundingByBlackhole = false;
   private bool reboundingByDispenser = false;
@@ -57,6 +60,7 @@ public class PlayerMover : MonoBehaviour {
   private bool usingDopple = false;
   private bool usingMagnet = false;
   private bool usingTransformer = false;
+  private bool iced = false;
   private float originalScale;
   private int minimonCounter = 0;
 
@@ -138,6 +142,10 @@ public class PlayerMover : MonoBehaviour {
 
     speed += boosterspeed;
 
+    if (iced && !uncontrollable()) {
+      speed *= icedSpeedFactor;
+    }
+
     if (boosterspeed > 0) {
       boosterspeed -= speed / boosterSpeedDecreaseBase + boosterSpeedDecreasePerTime * Time.deltaTime;
     } else if (boosterspeed <= 0){
@@ -163,7 +171,11 @@ public class PlayerMover : MonoBehaviour {
     if (mover == null) return;
 
     if (mover.dangerous()) {
-      scoreManager.gameOver(tag);
+      if (mover.canKillPlayer()) {
+        scoreManager.gameOver(tag);
+      } else {
+        mover.encounterPlayer();
+      }
       return;
     }
 
@@ -399,6 +411,7 @@ public class PlayerMover : MonoBehaviour {
       isRotatingByRainbow = false;
       isRidingRainbowRoad = false;
     }
+    iced = false;
     stopStrengthen();
   }
 
@@ -461,28 +474,33 @@ public class PlayerMover : MonoBehaviour {
     effect.addGuage(scale);
   }
 
-  public void strengthenBy(string obj) {
+  public void effectedBy(string objTag) {
     if (usingPowerBoost) {
       changeManager.changeCharacterToOriginal();
       return;
     }
 
-    if (obj == "SpecialPart") {
+    if (objTag == "SpecialPart") {
       unstoppable = true;
-    } else if (obj == "Magnet") {
+    } else if (objTag == "Magnet") {
       usingMagnet = true;
-    } else if (obj == "Monster") {
+    } else if (objTag == "Monster") {
       ridingMonster = true;
       minimonCounter = 0;
-    } else if (obj == "EMP") {
+    } else if (objTag == "EMP") {
       usingEMP = true;
       rb.isKinematic = true;
       return;
-    } else if (obj == "Dopple") {
+    } else if (objTag == "Dopple") {
       usingDopple = true;
       contactCollider.enabled = false;
-    } else if (obj == "Transformer") {
+    } else if (objTag == "Transformer") {
       usingTransformer = true;
+    } else if (objTag == "IceDebris") {
+      iced = true;
+      icedDuration = icm.speedRestoreDuring;
+      icedSpeedFactor = icm.playerSpeedReduceTo;
+      return;
     }
 
     StopCoroutine("strengthen");
@@ -651,6 +669,16 @@ public class PlayerMover : MonoBehaviour {
         reboundingCount += Time.deltaTime;
       } else {
         reboundingByDispenser = false;
+      }
+    }
+
+    if (iced) {
+      if (icedDuration > 0) {
+        icedDuration -= Time.deltaTime;
+        icedSpeedFactor = Mathf.MoveTowards(icedSpeedFactor, 1, Time.deltaTime * (1 - icm.playerSpeedReduceTo) / icm.speedRestoreDuring);
+      } else {
+        iced = false;
+        icm.strengthenPlayerEffect.SetActive(false);
       }
     }
   }

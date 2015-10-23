@@ -75,6 +75,7 @@ TagManager:
   - ControlPanel_packman_right
   - FlyingBoundary
   - ChangeBehavior
+  - IceDebris
   layers:
   - Default
   - TransparentFX

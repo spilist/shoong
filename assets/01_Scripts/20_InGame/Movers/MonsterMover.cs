@@ -113,7 +113,7 @@ public class MonsterMover : ObjectsMover {
       objectsManager.objEncounterEffectForPlayer.GetComponent<AudioSource>().Play();
 
       objectsManager.strengthenPlayerEffect.SetActive(true);
-      player.strengthenBy(tag);
+      player.effectedBy(tag);
 
       monm.monsterFilter.SetActive(true);
       player.encounterObject(tag);

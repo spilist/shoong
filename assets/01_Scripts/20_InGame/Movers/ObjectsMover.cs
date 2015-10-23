@@ -179,7 +179,7 @@ public class ObjectsMover : MonoBehaviour {
     afterCollide(collision);
   }
 
-  void processCollision(Collision collision) {
+  protected void processCollision(Collision collision) {
     ContactPoint contact = collision.contacts[0];
     Vector3 normal = contact.normal;
     direction = Vector3.Reflect(direction, -normal).normalized;
@@ -255,12 +255,12 @@ public class ObjectsMover : MonoBehaviour {
 
     if (objectsManager.strengthenPlayerEffect != null) {
       objectsManager.strengthenPlayerEffect.SetActive(true);
-      player.strengthenBy(tag);
+      player.effectedBy(tag);
     }
 
     if (hasEncounterEffect()) {
       player.encounterObject(tag);
-    } else if (isNegativeObject()) {
+    } else if (isNegativeObject() && !dangerous()) {
       player.destroyObject(tag, gaugeWhenDestroy());
     }
 
@@ -299,6 +299,10 @@ public class ObjectsMover : MonoBehaviour {
 
   virtual public bool dangerous() {
     return false;
+  }
+
+  virtual public bool canKillPlayer() {
+    return objectsManager.canKillPlayer;
   }
 
   virtual public bool isNegativeObject() {
