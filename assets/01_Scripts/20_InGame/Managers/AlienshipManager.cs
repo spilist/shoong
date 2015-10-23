@@ -47,11 +47,6 @@ public class AlienshipManager : ObjectsManager {
     return getPooledObj(laserWarningPool, laserWarningLinePrefab, pos);
   }
 
-  override public Vector3 getDirection() {
-    Vector3 dir = player.transform.position - instance.transform.position;
-    return dir / dir.magnitude;
-  }
-
   override public float getSpeed() {
     if (player.isUsingEMP()) {
       return 0;

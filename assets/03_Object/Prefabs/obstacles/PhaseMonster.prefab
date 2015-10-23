@@ -12,10 +12,10 @@ GameObject:
   - 23: {fileID: 2332798}
   - 54: {fileID: 5449376}
   - 114: {fileID: 11479106}
-  - 135: {fileID: 13549734}
-  m_Layer: 30
-  m_Name: TimeMonster
-  m_TagString: TimeMonster
+  - 135: {fileID: 13502878}
+  m_Layer: 16
+  m_Name: PhaseMonster
+  m_TagString: PhaseMonster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26,8 +26,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 122466}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -26.5, y: 12.5, z: 42.5}
+  m_LocalRotation: {x: .565768003, y: -.475469649, z: -.449830174, w: -.501485884}
+  m_LocalPosition: {x: 55.1086884, y: 33.0703125, z: -1.28597212}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -42,7 +42,7 @@ MeshRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_Materials:
-  - {fileID: 2100000, guid: b53fe34fef00940eb8e9cb2bb5e8317a, type: 2}
+  - {fileID: 2100000, guid: 99889f084dcf74e9e82333c1fc47136d, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -62,7 +62,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 122466}
-  m_Mesh: {fileID: 4300000, guid: 0e370fc6f6b504af6ba876a396975499, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 70e52229131c0490db094070a2c9789b, type: 3}
 --- !u!54 &5449376
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -90,7 +90,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boundingSize: 50
---- !u!135 &13549734
+--- !u!135 &13502878
 SphereCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -100,7 +100,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 13.5
+  m_Radius: 6.50000238
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &100100000
 Prefab:
@@ -123,16 +123,24 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Layer
-      value: 30
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_TagString
-      value: TimeMonster
+      value: PhaseMonster
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 99889f084dcf74e9e82333c1fc47136d, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: 70e52229131c0490db094070a2c9789b, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 122466}

@@ -50,6 +50,11 @@ public class AlienshipMover : ObjectsMover {
     return 0;
   }
 
+  override protected Vector3 getDirection() {
+    Vector3 dir = player.transform.position - transform.position;
+    return dir / dir.magnitude;
+  }
+
   void Update() {
     if (shootingStatus == 1) {
       direction = getDirection();

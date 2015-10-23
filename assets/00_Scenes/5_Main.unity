@@ -85581,6 +85581,7 @@ GameObject:
   - 114: {fileID: 1991538123}
   - 114: {fileID: 1991538108}
   - 114: {fileID: 1991538124}
+  - 114: {fileID: 1991538127}
   m_Layer: 9
   m_Name: Field Objects
   m_TagString: Untagged
@@ -86688,6 +86689,47 @@ MonoBehaviour:
   - .675000012
   - .975000024
   - 1.38
+--- !u!114 &1991538127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1991538103}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54798c5e1936d479db5433d801801368, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  forceSpawnAtStart: 0
+  objAmount: 10
+  objPool: []
+  objDestroyEffectPool: []
+  objEncounterEffectPool: []
+  objPrefab: {fileID: 122466, guid: 450360a9394bf427c8c05179e00cc990, type: 2}
+  objDestroyEffect: {fileID: 0}
+  objEncounterEffect: {fileID: 0}
+  objEncounterEffectForPlayer: {fileID: 0}
+  strengthenPlayerEffect: {fileID: 0}
+  strength: 3
+  speed: 80
+  tumble: 10
+  minSpawnInterval: 8
+  maxSpawnInterval: 8
+  cubesByEncounter: 0
+  isNegative: 1
+  hasEncounterEffect: 0
+  canKillPlayer: 1
+  shm: {fileID: 0}
+  player: {fileID: 0}
+  instance: {fileID: 0}
+  gaugeWhenDestroy: 0
+  hasLevel: 0
+  nameForLevel: 
+  level: 0
+  startSpawnAmount: 2
+  speed_runaway: 60
+  detectDistance: 200
+  spawnRadius: 200
 --- !u!1 &1997391145
 GameObject:
   m_ObjectHideFlags: 0
