@@ -30,7 +30,7 @@ public class SummonPartsManager : ObjectsManager {
   public int chanceBase = 200;
   public GameObject goldenCubePrefab;
   public GoldCubesCount gcCount;
-  public GameObject goldCubeDestroyParticle;
+  public GoldenCubeManager gcManager;
   public int goldCubesGet = 10;
   public int goldenCubeChance = 1;
 
@@ -53,6 +53,7 @@ public class SummonPartsManager : ObjectsManager {
 
     summonedPartPool = new List<GameObject>();
     summonedPartDestroyPool = new List<GameObject>();
+    summonedPartDestroyPool = new List<GameObject>();
     for (int i = 0; i < summonPoolAmount; ++i) {
       GameObject obj = (GameObject) Instantiate(summonedPartPrefab);
       obj.SetActive(false);
@@ -65,6 +66,10 @@ public class SummonPartsManager : ObjectsManager {
 
     parentObj = new GameObject();
     parentObj.transform.SetParent(transform);
+  }
+
+  public void goldenDestroyEffect(Vector3 pos) {
+    gcManager.goldenDestroyEffect(pos);
   }
 
   override public void adjustForLevel(int level) {

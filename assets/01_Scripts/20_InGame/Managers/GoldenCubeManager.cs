@@ -44,4 +44,9 @@ public class GoldenCubeManager : ObjectsManager {
     }
     else return respawnAfter;
   }
+
+  public void goldenDestroyEffect(Vector3 pos) {
+    GameObject obj = getPooledObj(objDestroyEffectPool, objDestroyEffect, pos);
+    obj.SetActive(true);
+  }
 }

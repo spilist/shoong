@@ -40,7 +40,7 @@ public class ComboPartMover : ObjectsMover {
 
     mRenderer.sharedMaterial = cpm.superheatPartPrefab.GetComponent<Renderer>().sharedMaterial;
     sCollider.radius = cpm.superheatPartPrefab.GetComponent<SphereCollider>().radius;
-    transform.Find("BasicEffect").gameObject.SetActive(false);
+    transform.Find("BasicEffect").gameObject.SetActive(true);
     transform.Find("GoldenEffect").gameObject.SetActive(false);
   }
 

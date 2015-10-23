@@ -84706,6 +84706,7 @@ MonoBehaviour:
   brokenMeshes:
   - {fileID: 4300002, guid: adeac5a1dbc17406db69c3e813cc95ef, type: 3}
   - {fileID: 4300004, guid: adeac5a1dbc17406db69c3e813cc95ef, type: 3}
+  originalMesh: {fileID: 4300008, guid: 024abba1006f2417bb858a4d6fb882d5, type: 3}
   fullComboCountPerLevel: 020000000300000005000000
   destroyAfterPerLevel:
   - 3.5
@@ -84717,9 +84718,11 @@ MonoBehaviour:
   destroy: {fileID: 19849298, guid: b3ce2718fb37c492f9d26f509fc35908, type: 2}
   pitchStart: .899999976
   pitchIncrease: .0500000007
+  inactiveMat: {fileID: 2100000, guid: e2d9f194e69b341948a7f177b362529a, type: 2}
   activeMat: {fileID: 2100000, guid: 46169ca8443124e49afb9e28615dd637, type: 2}
   shakeDurationByHit: .300000012
   shakeAmountByHit: .5
+  originalEmissionRate: 30
   decreaseEmissionAmount: 0
   fullComboCount: 0
   chanceBase: 200
@@ -84956,8 +84959,7 @@ MonoBehaviour:
   chanceBase: 200
   goldenCubePrefab: {fileID: 117384, guid: 50f32b0368e944945a1410e747cc30ce, type: 2}
   gcCount: {fileID: 966334536}
-  goldCubeDestroyParticle: {fileID: 116864, guid: c37d1083178cd45a3ac690547aa860e0,
-    type: 2}
+  gcManager: {fileID: 1991538115}
   goldCubesGet: 10
   goldenCubeChance: 1
   superheatPartPrefab: {fileID: 178724, guid: 10f2508b2281a4f35bc75f3e2629f9b7, type: 2}

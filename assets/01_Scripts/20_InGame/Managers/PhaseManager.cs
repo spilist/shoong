@@ -56,7 +56,6 @@ public class PhaseManager : MonoBehaviour {
 
 	public void nextPhase() {
     level++;
-
     status++;
     if (level > textPerLevel.Length) {
       level = textPerLevel.Length;

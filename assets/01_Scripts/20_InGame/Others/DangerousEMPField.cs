@@ -14,21 +14,21 @@ public class DangerousEMPField : MonoBehaviour {
   int status = 0;
   float stayCount = 0;
 
-	void Start () {
+	void Awake () {
     player = GameObject.Find("Player").GetComponent<PlayerMover>();
 
     dem = GameObject.Find("Field Objects").GetComponent<DangerousEMPManager>();
-    maxScale = dem.empScale;
     rotatingSpeed = dem.empRotatingSpeed;
     enlargeDuration = dem.enlargeDuration;
     stayDuration = dem.stayDuration;
     shrinkDuration = dem.shrinkDuration;
-	}
+  }
 
   void OnEnable() {
     radius = 0;
     stayCount = 0;
     status = 1;
+    maxScale = dem.empScale;
   }
 
 	void Update () {

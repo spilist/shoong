@@ -17,6 +17,7 @@ public class CubeDispenserMover : ObjectsMover {
   override protected void afterEnable() {
     comboCount = 0;
     brokenCount = 0;
+    GetComponent<MeshFilter>().sharedMesh = cdm.originalMesh;
   }
 
   public void setGolden() {
@@ -28,6 +29,7 @@ public class CubeDispenserMover : ObjectsMover {
 
     transform.Find("HeatInside").gameObject.SetActive(false);
     transform.Find("BasicInside").gameObject.SetActive(false);
+    inside.emissionRate = cdm.originalEmissionRate;
   }
 
   public void setSuper() {
@@ -38,6 +40,7 @@ public class CubeDispenserMover : ObjectsMover {
 
     transform.Find("GoldenInside").gameObject.SetActive(false);
     transform.Find("BasicInside").gameObject.SetActive(false);
+    inside.emissionRate = cdm.originalEmissionRate;
   }
 
   public void setNormal() {
@@ -49,6 +52,7 @@ public class CubeDispenserMover : ObjectsMover {
 
     transform.Find("HeatInside").gameObject.SetActive(false);
     transform.Find("GoldenInside").gameObject.SetActive(false);
+    inside.emissionRate = cdm.originalEmissionRate;
   }
 
   public void tryBreak() {

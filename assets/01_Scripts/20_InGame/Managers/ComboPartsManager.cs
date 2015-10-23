@@ -91,7 +91,7 @@ public class ComboPartsManager : ObjectsManager {
       nextInstance.transform.Find("GoldenEffect").gameObject.SetActive(true);
     } else if (random < superheatPartChance) {
       changeObject(nextInstance, superheatPartPrefab);
-      nextInstance.transform.Find("BasicEffect").gameObject.SetActive(false);
+      nextInstance.transform.Find("BasicEffect").gameObject.SetActive(true);
       nextInstance.transform.Find("GoldenEffect").gameObject.SetActive(false);
     } else {
       nextInstance.transform.localScale = objPrefab.transform.localScale;
@@ -164,7 +164,7 @@ public class ComboPartsManager : ObjectsManager {
         nextInstance.transform.Find("GoldenEffect").gameObject.SetActive(true);
       } else if (random < superheatPartChance) {
         changeObject(nextInstance, superheatPartPrefab);
-        nextInstance.transform.Find("BasicEffect").gameObject.SetActive(false);
+        nextInstance.transform.Find("BasicEffect").gameObject.SetActive(true);
         nextInstance.transform.Find("GoldenEffect").gameObject.SetActive(false);
       } else {
         nextInstance.transform.localScale = objPrefab.transform.localScale;

@@ -20,20 +20,17 @@ public class SummonedPartMover : ObjectsMover {
   public void setGolden() {
     isGoldenCube = true;
     isSuperheatPart = false;
-    objectsManager.objDestroyEffect = summonManager.goldCubeDestroyParticle;
   }
 
   public void setSuper() {
     isGoldenCube = false;
     isSuperheatPart = true;
-    objectsManager.objDestroyEffect = summonManager.objDestroyEffect;
   }
 
   public void setNormal() {
     if (isGoldenCube || isSuperheatPart) {
       isGoldenCube = false;
       isSuperheatPart = false;
-      objectsManager.objDestroyEffect = summonManager.objDestroyEffect;
     }
   }
 
@@ -45,7 +42,11 @@ public class SummonedPartMover : ObjectsMover {
     gameObject.SetActive(false);
 
     if (destroyEffect) {
-      showDestroyEffect();
+      if (isGoldenCube) {
+        summonManager.goldenDestroyEffect(transform.position);
+      } else {
+        showDestroyEffect();
+      }
     }
 
     if (byPlayer) {

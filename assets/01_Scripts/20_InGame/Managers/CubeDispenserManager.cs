@@ -3,18 +3,21 @@ using System.Collections;
 
 public class CubeDispenserManager : ObjectsManager {
   public Mesh[] brokenMeshes;
+  public Mesh originalMesh;
 
   public int[] fullComboCountPerLevel;
   public float[] destroyAfterPerLevel;
   public int respawnInterval_min = 10;
   public int respawnInterval_max = 15;
   public float reboundDuring = 0.2f;
-	public ParticleSystem destroy;
+  public ParticleSystem destroy;
   public float pitchStart = 0.9f;
   public float pitchIncrease = 0.05f;
+  public Material inactiveMat;
   public Material activeMat;
   public float shakeDurationByHit = 0.3f;
   public float shakeAmountByHit = 0.5f;
+  public int originalEmissionRate = 30;
 
   public float decreaseEmissionAmount;
   private bool trying = false;
@@ -72,6 +75,7 @@ public class CubeDispenserManager : ObjectsManager {
     } else {
       isGolden = false;
       isSuper = false;
+      instance.GetComponent<Renderer>().sharedMaterial = inactiveMat;
       instance.GetComponent<CubeDispenserMover>().setNormal();
       objEncounterEffectForPlayer = instance.transform.Find("BasicReaction").GetComponent<ParticleSystem>();
     }
