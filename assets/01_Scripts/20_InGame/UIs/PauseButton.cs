@@ -3,7 +3,6 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class PauseButton : MenusBehavior {
-	public ScoreManager scoreManager;
   public GameObject pauseFilter;
   public GameObject pauseStatus;
 
@@ -19,7 +18,7 @@ public class PauseButton : MenusBehavior {
   }
 
   override public void activateSelf() {
-    if (!gameObject.activeSelf || resuming || scoreManager.isGameOver()) return;
+    if (!gameObject.activeSelf || resuming || ScoreManager.sm.isGameOver()) return;
 
     paused = true;
     Time.timeScale = 0;

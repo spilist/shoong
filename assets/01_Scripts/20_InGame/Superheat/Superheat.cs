@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 public class Superheat : MonoBehaviour {
   public bool forceSuperheat = false;
-  public PartsToBeCollected ptb;
+  // public PartsToBeCollected ptb;
   public PowerBoostBackground powerBoostBackground;
   public RectTransform superImage;
   public RectTransform heatImage;
@@ -244,7 +244,7 @@ public class Superheat : MonoBehaviour {
 
     superHeatCount++;
     guage.fillAmount = 1;
-    ptb.show(false);
+    // ptb.show(false);
 
     guageIcon.transform.localScale = guageScaleUp * Vector3.one;
     guage.transform.localScale = guageScaleUp * Vector3.one;
@@ -310,7 +310,7 @@ public class Superheat : MonoBehaviour {
   }
 
   void stopSuperheat() {
-    ptb.show(true);
+    // ptb.show(true);
     player.stopPowerBoost();
     GetComponent<Renderer>().enabled = false;
     GetComponent<Collider>().enabled = false;

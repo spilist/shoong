@@ -2,7 +2,6 @@
 using System.Collections;
 
 public class CharacterDebrisMover : MonoBehaviour {
-  ScoreManager scoreManager;
 	float scale;
   float targetScale;
   float diff;
@@ -11,24 +10,23 @@ public class CharacterDebrisMover : MonoBehaviour {
   Rigidbody rb;
 
   void Awake() {
-    scoreManager = GameObject.Find("ScoreManager").GetComponent<ScoreManager>();
     rb = GetComponent<Rigidbody>();
   }
 
   void OnEnable () {
-    int speed = Random.Range(scoreManager.minDebrisSpeed, scoreManager.maxDebrisSpeed);
+    int speed = Random.Range(ScoreManager.sm.minDebrisSpeed, ScoreManager.sm.maxDebrisSpeed);
 
     rb.velocity = Random.onUnitSphere * speed;
-    rb.angularVelocity = Random.onUnitSphere * scoreManager.debrisTumble;
+    rb.angularVelocity = Random.onUnitSphere * ScoreManager.sm.debrisTumble;
 
     large = Random.Range(0, 100) > 50;
 
     if (large) {
-      targetScale = Random.Range(scoreManager.minSizeAfterBreak, scoreManager.maxSizeAfterBreak);
-      duration = scoreManager.destroyLargeAfter;
+      targetScale = Random.Range(ScoreManager.sm.minSizeAfterBreak, ScoreManager.sm.maxSizeAfterBreak);
+      duration = ScoreManager.sm.destroyLargeAfter;
     } else {
       targetScale = 0;
-      duration = scoreManager.destroySmallAfter;
+      duration = ScoreManager.sm.destroySmallAfter;
     }
 
     diff = Mathf.Abs(targetScale - scale);

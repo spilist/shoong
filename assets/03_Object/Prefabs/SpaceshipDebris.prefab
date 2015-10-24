@@ -10,12 +10,11 @@ GameObject:
   - 4: {fileID: 448410}
   - 33: {fileID: 3366616}
   - 23: {fileID: 2386644}
-  - 95: {fileID: 9559848}
   - 54: {fileID: 5473586}
   - 135: {fileID: 13550110}
-  m_Layer: 0
-  m_Name: Spaceship-Ok
-  m_TagString: Untagged
+  m_Layer: 31
+  m_Name: SpaceshipDebris
+  m_TagString: SpaceShipDebris
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -42,7 +41,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 97f26fc4b306e5843bf949968858e945, type: 2}
+  - {fileID: 2100000, guid: ebac7fa23eee2466f98e0717e6d40bb2, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -62,7 +61,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 116456}
-  m_Mesh: {fileID: 4300000, guid: 0d31f4a50d1e09c429974769d36fe17e, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 1b0edd80e8d124b0783a3e73d181dccf, type: 3}
 --- !u!54 &5473586
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -72,29 +71,12 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: .0500000007
-  m_UseGravity: 1
+  m_AngularDrag: 0
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 4
   m_CollisionDetection: 0
---- !u!95 &9559848
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 116456}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 0d31f4a50d1e09c429974769d36fe17e, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!135 &13550110
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -113,7 +95,35 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_TagString
+      value: SpaceShipDebris
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ebac7fa23eee2466f98e0717e6d40bb2, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: 1b0edd80e8d124b0783a3e73d181dccf, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 116456}

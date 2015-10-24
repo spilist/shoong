@@ -2,8 +2,10 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class ElapsedTime : MonoBehaviour {
-	public PhaseManager phaseManager;
+public class TimeManager : MonoBehaviour {
+	public TimeMonsterManager tmm;
+	public Text timeLimitText;
+	private int timeLimit;
 	public Transform phaseStars;
 	public GameObject phaseStarPrefab;
 	public float distanceBetweenStars = 50;
@@ -34,7 +36,7 @@ public class ElapsedTime : MonoBehaviour {
 	public DangerousEMPManager dem;
 	public BlackholeManager blm;
 
-	public static ElapsedTime time;
+	public static TimeManager time;
 
 	public int now = 0;
 
@@ -47,23 +49,23 @@ public class ElapsedTime : MonoBehaviour {
 	}
 
 	public void startTime() {
-		resetProgress();
+		// resetProgress();
 		StartCoroutine("startElapse");
 	}
 
 	public void resetProgress() {
 		progressChanging = true;
-		if (phaseManager.phase() >= reqProgressPerPhase.Length) {
+		if (PhaseManager.pm.phase() >= reqProgressPerPhase.Length) {
 			progressChanging = false;
 		} else {
-			reqProgress = reqProgressPerPhase[phaseManager.phase()];
+			reqProgress = reqProgressPerPhase[PhaseManager.pm.phase()];
 			progressScale = (float)distance / reqProgress;
 			currentProgress = progressStart;
 		}
 
 		GameObject obj = (GameObject) Instantiate(phaseStarPrefab);
 		obj.transform.SetParent(phaseStars, false);
-		obj.GetComponent<RectTransform>().anchoredPosition += new Vector2(phaseManager.phase() * distanceBetweenStars, 0);
+		obj.GetComponent<RectTransform>().anchoredPosition += new Vector2(PhaseManager.pm.phase() * distanceBetweenStars, 0);
 		phaseStar = obj.GetComponent<Image>();
 		popStatus = 1;
 		starScale = startScale;
@@ -91,7 +93,7 @@ public class ElapsedTime : MonoBehaviour {
 
 		if (progressChanging && currentProgress >= progressEnd) {
 			progressChanging = false;
-			phaseManager.nextPhase();
+			PhaseManager.pm.nextPhase();
 			resetProgress();
 		}
 
@@ -115,12 +117,36 @@ public class ElapsedTime : MonoBehaviour {
 			yield return new WaitForSeconds(1);
 			now++;
 
+			if (hasLimit()) {
+				if (timeLimit > 0) {
+					timeLimit--;
+					timeLimitText.text = timeLimit.ToString();
+				} else if (!tmm.isSpawned()) {
+					tmm.spawnMonster();
+					timeLimitText.color = Color.red;
+					timeLimitText.text = "Hurry Up!";
+				}
+			}
+
 			asm.respawn();
 			sam.respawn();
 			npm.respawn();
 			if (spawnDangerousEMP) dem.respawn();
 			if (spawnBlackhole) blm.respawn();
 		}
+	}
+
+	public void setLimit(bool val) {
+		timeLimitText.gameObject.SetActive(val);
+		if (val) {
+			timeLimit = 10;
+			timeLimitText.text = timeLimit.ToString();
+			timeLimitText.color = Color.white;
+		}
+	}
+
+	public bool hasLimit() {
+		return timeLimitText.gameObject.activeSelf;
 	}
 
 	public void stopTime() {

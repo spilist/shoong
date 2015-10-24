@@ -20,7 +20,6 @@ public class ParticleMover : MonoBehaviour {
 	private Rigidbody rb;
 
 	private bool isTriggeringCubesGet = false;
-	private bool generatedByPlayer = true;
 
 	private int howMany = 0;
 
@@ -44,7 +43,6 @@ public class ParticleMover : MonoBehaviour {
 
 		time = startTime;
 		isTriggeringCubesGet = false;
-		generatedByPlayer = true;
 		timeelapsed = false;
 		rainbow = false;
 	}
@@ -68,13 +66,12 @@ public class ParticleMover : MonoBehaviour {
 	void OnTriggerStay(Collider other) {
 		if (other.tag == "PartCollector" && timeelapsed) {
 			gameObject.SetActive(false);
-			partsCollector.effect(isTriggeringCubesGet, howMany, generatedByPlayer);
+			if (isTriggeringCubesGet) partsCollector.effect(howMany);
 		}
 	}
 
-	public void triggerCubesGet(int count, bool playerGeneration = true) {
+	public void triggerCubesGet(int count) {
 		isTriggeringCubesGet = true;
-		generatedByPlayer = playerGeneration;
 		howMany = count;
 	}
 

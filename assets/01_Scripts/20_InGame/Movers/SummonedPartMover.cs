@@ -55,9 +55,10 @@ public class SummonedPartMover : ObjectsMover {
         summonManager.gcCount.add(summonManager.goldCubesGet);
       } else if (isSuperheatPart) {
         summonManager.shm.add();
-      } else {
-        summonManager.ptb.checkCollected(GetComponent<MeshFilter>().sharedMesh);
       }
+      // else {
+      //   summonManager.ptb.checkCollected(GetComponent<MeshFilter>().sharedMesh);
+      // }
     }
   }
 

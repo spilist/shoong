@@ -3,7 +3,11 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class PhaseManager : MonoBehaviour {
+  public static PhaseManager pm;
+
   public GoldCubesCount gcCount;
+  public IceDebrisManager icm;
+  public PhaseMonsterManager pmm;
   public NormalPartsManager npm;
   public AsteroidManager atm;
   public SmallAsteroidManager ssm;
@@ -45,6 +49,10 @@ public class PhaseManager : MonoBehaviour {
   private float posX;
   private float diff;
 
+  void Awake() {
+    pm = this;
+  }
+
   void Start() {
     level = 0;
     diff = Mathf.Abs(showPosX - originalPosX);
@@ -67,8 +75,20 @@ public class PhaseManager : MonoBehaviour {
     posX = originalPosX;
     stayCount = 0;
 
-    if (levelName == "유성 출현") {
+    if (levelName == "IceDebris") {
+      icm.enabled = true;
+    } else if (levelName == "Minimon 1") {
+      pmm.enabled = true;
+    } else if (levelName == "Blakchole") {
+      blm.enabled = true;
+    } else if (levelName == "Meteroid") {
       ntm.enabled = true;
+    } else if (levelName == "Bomb") {
+      dem.enabled = true;
+    } else if (levelName == "UFO") {
+      asm.enabled = true;
+    } else if (levelName == "BigBomb") {
+      dem.startLarger();
     } else if (levelName == "자기장 불안정화") {
       npm.startPhase();
       atm.startPhase();
@@ -87,12 +107,6 @@ public class PhaseManager : MonoBehaviour {
       ntm.startSecond();
       meteroidFilterTargetAlpha = meteroidFilterAlpha2;
       meteroidFilterChangeDuration = meteroidFilterChangeDuration2;
-    } else if (levelName == "미확인 비행 물체") {
-      asm.enabled = true;
-    } else if (levelName == "블랙홀 출현") {
-      blm.enabled = true;
-    } else if (levelName == "대폭발 위험 지역") {
-      dem.startLarger();
     }
   }
 

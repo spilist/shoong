@@ -12,6 +12,8 @@ public class MeteroidManager : ObjectsManager {
   public float biggerMeteroidSpeed = 400;
   public float biggerMeteroidTumble = 20;
 
+  public int reboundDuring = 1;
+  public int reboundSpeed = 160;
   public float warnPlayerDuring = 1;
   public float spawnRadius = 400;
   public int scatterAmount = 30;
@@ -127,13 +129,13 @@ public class MeteroidManager : ObjectsManager {
   }
 
   // override protected float spawnInterval() {
-  //   int timeUnit = (int) Mathf.Floor(ElapsedTime.time.now / shortenRespawnPer);
+  //   int timeUnit = (int) Mathf.Floor(TimeManager.time.now / shortenRespawnPer);
 
   //   return Random.Range(Mathf.Max(0, minSpawnInterval - timeUnit * shortenRespawnAmount), Mathf.Max(0, maxSpawnInterval - timeUnit * shortenRespawnAmount));
   // }
 
   // override public float getSpeed() {
-  //   int timeUnit = (int) Mathf.Floor(ElapsedTime.time.now / shortenRespawnPer);
+  //   int timeUnit = (int) Mathf.Floor(TimeManager.time.now / shortenRespawnPer);
   //   return (speed + timeUnit * addSpeedAmount);
   // }
 }

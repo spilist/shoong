@@ -27,12 +27,12 @@ public class NormalPartsMover : ObjectsMover {
       player.showEffect("Wow");
     }
 
-    npm.ptb.checkCollected(filter.sharedMesh);
+    // npm.ptb.checkCollected(filter.sharedMesh);
   }
 
-  override protected void afterDestroy(bool byPlayer) {
-    if (byPlayer) npm.ptb.checkCollected(filter.sharedMesh);
-  }
+  // override protected void afterDestroy(bool byPlayer) {
+  //   if (byPlayer) npm.ptb.checkCollected(filter.sharedMesh);
+  // }
 
   override public string getManager() {
     return "NormalPartsManager";

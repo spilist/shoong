@@ -19,7 +19,7 @@ public class DangerousEMPManager : ObjectsManager {
   public float enlargeScale = 2;
 
   override public void initRest() {
-    ElapsedTime.time.startSpawnDangerousEMP();
+    TimeManager.time.startSpawnDangerousEMP();
 
     particleDestroyByPlayerPool = new List<GameObject>();
     for (int i = 0; i < objAmount; ++i) {

@@ -11,20 +11,9 @@ public class GoldenCubeManager : ObjectsManager {
   public float detectDistance = 200;
 
   public float generateCubePer = 0.3f;
-  public GameObject energyCubePrefab;
-  public int cubeAmount = 30;
-  public List<GameObject> cubePool;
-
   private bool firstSpawn = true;
 
   override public void initRest() {
-    cubePool = new List<GameObject>();
-    for (int i = 0; i < cubeAmount; ++i) {
-      GameObject obj = (GameObject) Instantiate(energyCubePrefab);
-      obj.SetActive(false);
-      cubePool.Add(obj);
-    }
-
     run();
   }
 

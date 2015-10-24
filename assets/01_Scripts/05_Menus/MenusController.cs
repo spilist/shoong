@@ -3,7 +3,6 @@ using System.Collections;
 
 public class MenusController : MonoBehaviour {
   public Superheat superheat;
-  public ScoreManager scoreManager;
   public GameObject menusOverlay;
   public GameObject backButton;
   public GameObject menuButtonsLeft;
@@ -35,7 +34,7 @@ public class MenusController : MonoBehaviour {
           toggleMenuAndUI();
           AudioSource.PlayClipAtPoint(UITouchSound, hit.transform.position);
         }
-      } else if (hitTag == "PauseButton" || (isMenuOn() && layer == "MenusBehavior") || (scoreManager.isGameOver() && layer == "MenusBehavior")) {
+      } else if (hitTag == "PauseButton" || (isMenuOn() && layer == "MenusBehavior") || (ScoreManager.sm.isGameOver() && layer == "MenusBehavior")) {
         if (beforeIdle.isLoading()) return "";
 
         MenusBehavior mb = hit.transform.GetComponent<MenusBehavior>();

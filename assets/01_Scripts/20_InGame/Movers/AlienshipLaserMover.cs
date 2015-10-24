@@ -54,7 +54,7 @@ public class AlienshipLaserMover : MonoBehaviour {
 
   void OnTriggerEnter(Collider other) {
     if (other.tag == "Player") {
-      other.GetComponent<PlayerMover>().scoreManager.gameOver("Alienship");
+      ScoreManager.sm.gameOver("Alienship");
       return;
     }
 

@@ -76,6 +76,8 @@ TagManager:
   - FlyingBoundary
   - ChangeBehavior
   - IceDebris
+  - SpaceShipDebris
+  - TimeMonster
   layers:
   - Default
   - TransparentFX
@@ -108,7 +110,7 @@ TagManager:
   - DangerousField
   - Alienship
   - MagnetArea
-  - 
+  - OnlyCharacter
   m_SortingLayers:
   - name: Default
     uniqueID: 0

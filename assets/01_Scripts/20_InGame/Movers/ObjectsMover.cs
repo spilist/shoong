@@ -105,7 +105,7 @@ public class ObjectsMover : MonoBehaviour {
 
   void FixedUpdate() {
     if (isMagnetized) {
-      if (player.scoreManager.isGameOver()) return;
+      if (ScoreManager.sm.isGameOver()) return;
       Vector3 heading =  player.transform.position - transform.position;
       heading /= heading.magnitude;
       rb.velocity = heading * player.getSpeed() * 1.5f;

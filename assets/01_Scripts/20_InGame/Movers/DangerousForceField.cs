@@ -11,7 +11,7 @@ public class DangerousForceField : MonoBehaviour {
 	void OnTriggerEnter(Collider other) {
     if (other.tag == "Player") {
       if (!player.isInvincible()) {
-        player.scoreManager.gameOver("Dopple");
+        ScoreManager.sm.gameOver("Dopple");
         return;
       }
     }

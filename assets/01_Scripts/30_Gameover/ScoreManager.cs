@@ -5,11 +5,12 @@ using System.Collections.Generic;
 using System;
 
 public class ScoreManager : MonoBehaviour {
+  public static ScoreManager sm;
+
   public MenusController menus;
   public BeforeIdle beforeIdle;
 
   // for score managing
-  public CubesCount cubesCount;
   public Text bonusCount;
   public GoldCubesCount goldCubesCount;
 
@@ -52,6 +53,10 @@ public class ScoreManager : MonoBehaviour {
 
   private bool isSaved = false;
   private int boosterCount;
+
+  void Awake() {
+    sm = this;
+  }
 
   void Start() {
     characterDebrisPool = new List<GameObject>();
@@ -98,8 +103,10 @@ public class ScoreManager : MonoBehaviour {
   }
 
   public void gameOver(string reason) {
-    ElapsedTime.time.stopTime();
-    if (reason == "Obstacle_small") {
+    TimeManager.time.stopTime();
+    if (reason == "NoEnergy") {
+      DataManager.dm.increment("DeathByLowEnergy");
+    } else if (reason == "Obstacle_small") {
       DataManager.dm.increment("DeathBySmallAsteroid");
     } else if (reason == "Obstacle_big") {
       DataManager.dm.increment("DeathByAsteroid");
@@ -111,9 +118,16 @@ public class ScoreManager : MonoBehaviour {
       DataManager.dm.increment("DeathByMonster");
     } else if (reason == "Dopple") {
       DataManager.dm.increment("DeathByDopple");
+    } else if (reason == "Trap") {
+      DataManager.dm.increment("DeathByTrap");
+    } else if (reason == "TimeMonster") {
+      DataManager.dm.increment("DeathByTimeMonster");
     }
 
-    if (reason == "Blackhole") {
+    if (reason == "NoEnergy") {
+      playerExplosion.Play ();
+      playerExplosion.GetComponent<AudioSource>().Play();
+    } else if (reason == "Blackhole") {
       playerExplosion.GetComponent<AudioSource>().Play();
     } else {
       showCharacterDebris();
@@ -233,7 +247,7 @@ public class ScoreManager : MonoBehaviour {
     }
 
     isSaved = true;
-    int count = cubesCount.getCount();
+    int count = CubeManager.cm.getCount();
     DataManager.dm.increment("CurrentCubes", count + int.Parse(bonusCount.text));
     DataManager.dm.increment("TotalCubes", count + int.Parse(bonusCount.text));
     DataManager.dm.setBestInt("BestCubes", count);
@@ -241,7 +255,7 @@ public class ScoreManager : MonoBehaviour {
     // DataManager.dm.increment("CurrentGoldenCubes", QuestManager.qm.questReward);
     // DataManager.dm.increment("TotalGoldenCubes", QuestManager.qm.questReward);
 
-    int time = ElapsedTime.time.now;
+    int time = TimeManager.time.now;
     DataManager.dm.increment("TotalTime", time);
     DataManager.dm.setBestInt("BestTime", time);
 

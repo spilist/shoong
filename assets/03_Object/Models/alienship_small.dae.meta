@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 0d31f4a50d1e09c429974769d36fe17e
-timeCreated: 1432220555
+guid: 210dcd652e3304a2eaf3fd255ad6d0e6
+timeCreated: 1445656497
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: spaceship
+    4300000: AlienShip
     9500000: //RootNode
   materials:
     importMaterials: 1

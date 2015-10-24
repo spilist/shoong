@@ -2,10 +2,7 @@
 using System.Collections;
 
 public class BlackholeMover : ObjectsMover {
-  private ScoreManager scoreManager;
-
   override protected void initializeRest() {
-    scoreManager = GameObject.Find("ScoreManager").GetComponent<ScoreManager>();
     canBeMagnetized = false;
 	}
 
@@ -13,7 +10,7 @@ public class BlackholeMover : ObjectsMover {
     GameObject other = collision.collider.gameObject;
     if (other.tag == "ContactCollider") {
       if (dangerous()) {
-        scoreManager.gameOver("Blackhole");
+        ScoreManager.sm.gameOver("Blackhole");
       } else {
         player.contactBlackhole(collision);
         encounterPlayer();

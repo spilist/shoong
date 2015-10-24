@@ -75,8 +75,9 @@ public class TouchInputHandler : MonoBehaviour
       if (player.uncontrollable()) return;
 
 			if ((result == "Ground" || result == "ChangeBehavior") && !gameStarted) {
-				ElapsedTime.time.startTime();
-        ptb.generateNew();
+				TimeManager.time.startTime();
+        EnergyManager.energy.turnEnergy(true);
+        // ptb.generateNew();
         superheat.startGame();
         beforeIdle.moveTitle();
         menus.gameStart();

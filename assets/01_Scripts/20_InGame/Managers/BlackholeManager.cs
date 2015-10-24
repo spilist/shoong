@@ -11,7 +11,7 @@ public class BlackholeManager : ObjectsManager {
   public int reboundingSpeed = 1000;
 
   override public void initRest() {
-    ElapsedTime.time.startBlackhole();
+    TimeManager.time.startBlackhole();
     spawnPooledObjs(objPool, objPrefab, objAmount);
   }
 

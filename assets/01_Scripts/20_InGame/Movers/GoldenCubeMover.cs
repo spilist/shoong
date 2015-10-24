@@ -29,16 +29,7 @@ public class GoldenCubeMover : ObjectsMover {
       rb.velocity = -direction * gcm.speed;
       if (!detected) {
         detected = true;
-        StartCoroutine("generateCube");
       }
-    }
-  }
-
-  IEnumerator generateCube() {
-    while (!player.scoreManager.isGameOver()) {
-      yield return new WaitForSeconds(gcm.generateCubePer);
-      GameObject cube = gcm.getPooledObj(gcm.cubePool, gcm.energyCubePrefab, transform.position);
-      cube.GetComponent<ParticleMover>().triggerCubesGet(1, false);
     }
   }
 

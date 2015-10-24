@@ -3,7 +3,6 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class GameOverBanner : MonoBehaviour {
-  private ScoreManager scoreManager;
   public int expandTo = 75;
   public float expandDuration = 0.2f;
   public float moveDuration = 0.2f;
@@ -40,7 +39,7 @@ public class GameOverBanner : MonoBehaviour {
         if (positionX == positionXEnd) {
           status++;
           contents.transform.GetChild(0).GetComponent<BannerButton>().startPop();
-          if (isLast) scoreManager.bannerEnd();
+          if (isLast) ScoreManager.sm.bannerEnd();
         }
       }
     }
@@ -65,7 +64,6 @@ public class GameOverBanner : MonoBehaviour {
     }
 
     bannerButton.transform.SetParent(contents.transform, false);
-    scoreManager = GameObject.Find("ScoreManager").GetComponent<ScoreManager>();
   }
 
   public bool moveDone() {

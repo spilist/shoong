@@ -54,7 +54,7 @@ public class AlienshipManager : ObjectsManager {
       return player.getSpeed();
     }
     else {
-      int timeUnit = (int) Mathf.Floor((ElapsedTime.time.now - timeSpawned) / speedIncreasePer);
+      int timeUnit = (int) Mathf.Floor((TimeManager.time.now - timeSpawned) / speedIncreasePer);
       return (speed + timeUnit * speedIncreaseAmount);
     }
   }
@@ -72,6 +72,6 @@ public class AlienshipManager : ObjectsManager {
   }
 
   override protected void afterSpawn() {
-    timeSpawned = ElapsedTime.time.now;
+    timeSpawned = TimeManager.time.now;
   }
 }

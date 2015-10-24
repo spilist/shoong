@@ -10,8 +10,6 @@ public class PlayerMover : MonoBehaviour {
   public SpawnManager spawnManager;
   public GoldCubesCount gcCount;
 
-  public CubesCount cubesCount;
-  public ScoreManager scoreManager;
   public int cubesAsItIsUntill = 20;
   public int restCubesChangePer = 5;
   public int nearAsteroidBonus = 10;
@@ -28,12 +26,15 @@ public class PlayerMover : MonoBehaviour {
   public DoppleManager dpm;
   public BlackholeManager blm;
   public IceDebrisManager icm;
+  public MeteroidManager mtm;
   private float icedDuration;
   private float icedSpeedFactor;
 
   private bool reboundingByBlackhole = false;
   private bool reboundingByDispenser = false;
+  private bool reboundingByMeteroid = false;
   private float reboundingByDispenserDuring = 0;
+  private float reboundingByMeteroidDuring = 0;
 
   public float boosterSpeedUpAmount = 60;
   public float maxBoosterSpeed = 100;
@@ -134,6 +135,8 @@ public class PlayerMover : MonoBehaviour {
       speed = blm.reboundingSpeed;
     } else if (reboundingByDispenser) {
       speed = reboundSpeed;
+    } else if (reboundingByMeteroid) {
+      speed = mtm.reboundSpeed;
     } else if (ridingMonster) {
       speed = baseSpeed + minimonCounter * monm.enlargeSpeedPerMinimon;
     } else {
@@ -166,13 +169,19 @@ public class PlayerMover : MonoBehaviour {
 	void OnTriggerEnter(Collider other) {
     string tag = other.tag;
 
+    if (tag == "SpaceShipDebris") {
+      CubeManager.cm.resetProgress();
+      Destroy(other.gameObject);
+      return;
+    }
+
     ObjectsMover mover = other.gameObject.GetComponent<ObjectsMover>();
 
     if (mover == null) return;
 
     if (mover.dangerous()) {
       if (mover.canKillPlayer()) {
-        scoreManager.gameOver(tag);
+        ScoreManager.sm.gameOver(tag);
       } else {
         mover.encounterPlayer();
       }
@@ -277,7 +286,7 @@ public class PlayerMover : MonoBehaviour {
   }
 
   public void addCubeCount(int howMany = 1, int bonus = 0) {
-    cubesCount.addCount(howMany, bonus);
+    CubeManager.cm.addCount(howMany, bonus);
   }
 
   public void contactCubeDispenser(Transform tr, int howMany, Collision collision, float reboundDuring, bool isGolden) {
@@ -305,6 +314,12 @@ public class PlayerMover : MonoBehaviour {
     reboundingByDispenser = true;
     reboundingCount = 0;
     reboundingByDispenserDuring = reboundDuring;
+  }
+
+  public void contactMeteroid(Collision collision) {
+    processCollision(collision);
+    reboundingByMeteroid = true;
+    reboundingByMeteroidDuring = mtm.reboundDuring;
   }
 
   public void processCollision(Collision collision) {
@@ -339,7 +354,7 @@ public class PlayerMover : MonoBehaviour {
   }
 
   public void teleport(Vector3 pos) {
-    if (changeManager.isTeleporting() || scoreManager.isGameOver()) return;
+    if (changeManager.isTeleporting() || ScoreManager.sm.isGameOver()) return;
 
     AudioSource.PlayClipAtPoint(dpm.teleportSound, transform.position, dpm.teleportSoundVolume);
 
@@ -454,7 +469,7 @@ public class PlayerMover : MonoBehaviour {
   }
 
   public void showEffect(string effectName, int scale = 1) {
-    if (usingPowerBoost || scoreManager.isGameOver()) return;
+    if (usingPowerBoost || ScoreManager.sm.isGameOver()) return;
 
     if (effectName == "Whew") {
       boosterspeed += 140;
@@ -509,7 +524,7 @@ public class PlayerMover : MonoBehaviour {
 
 
   public IEnumerator strengthen() {
-    if (scoreManager.isGameOver()) yield break;
+    if (ScoreManager.sm.isGameOver()) yield break;
 
     int effectDuration;
     if (reboundingByBlackhole) {
@@ -646,7 +661,7 @@ public class PlayerMover : MonoBehaviour {
   }
 
   public bool uncontrollable() {
-    return isRebounding() || isUsingRainbow() || usingEMP;
+    return isRebounding() || isUsingRainbow() || usingEMP || reboundingByMeteroid;
   }
 
   void Update() {
@@ -669,6 +684,14 @@ public class PlayerMover : MonoBehaviour {
         reboundingCount += Time.deltaTime;
       } else {
         reboundingByDispenser = false;
+      }
+    }
+
+    if (reboundingByMeteroid) {
+      if (reboundingByMeteroidDuring > 0) {
+        reboundingByMeteroidDuring -= Time.deltaTime;
+      } else {
+        reboundingByMeteroid = false;
       }
     }
 

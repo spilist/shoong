@@ -3,8 +3,6 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class ScoreUpdate : MonoBehaviour {
-  public PhaseManager phaseManager;
-  public ScoreManager scoreManager;
   public BackButton back;
 
   public Text totalCubes;
@@ -19,7 +17,6 @@ public class ScoreUpdate : MonoBehaviour {
   public GameObject phaseBonus;
   public GameObject collectorBonus;
 
-  public CubesCount cubesCount;
   public GoldCubesCount goldenCubesCount;
   public Color newHighscoreColor;
   public int scoreUpdateMaxStandard = 1000;
@@ -46,7 +43,7 @@ public class ScoreUpdate : MonoBehaviour {
   private float distance;
 
   void Start() {
-    cubeDifference = cubesCount.getCount();
+    cubeDifference = CubeManager.cm.getCount();
 
     totalNum = DataManager.dm.getInt("TotalCubes");
     totalCubes.text = totalNum.ToString();
@@ -71,12 +68,12 @@ public class ScoreUpdate : MonoBehaviour {
     cubeCurrentNum = 0;
     cubesCurrentScore.text = "0";
 
-    elapsedTime.transform.Find("Number").GetComponent<Text>().text = ElapsedTime.time.now.ToString();
-    float cps_ = ((float) cubeDifference / ElapsedTime.time.now);
+    elapsedTime.transform.Find("Number").GetComponent<Text>().text = TimeManager.time.now.ToString();
+    float cps_ = ((float) cubeDifference / TimeManager.time.now);
     CPS.transform.Find("Number").GetComponent<Text>().text = cps_.ToString("0.00");
     DataManager.dm.setBestFloat("BestCPS", cps_);
 
-    phaseBonus.transform.Find("Number").GetComponent<Text>().text = phaseManager.getPhaseBonus().ToString();
+    phaseBonus.transform.Find("Number").GetComponent<Text>().text = PhaseManager.pm.getPhaseBonus().ToString();
 
     float bonusScale = ((DataManager.dm.getInt("NormalCollectorLevel") - 1) * 5 + DataManager.dm.getInt("GoldenCollectorLevel") * 50) / 100f;
     bonusAmount = (int) Mathf.Floor(cubeDifference * bonusScale);
@@ -139,7 +136,7 @@ public class ScoreUpdate : MonoBehaviour {
         GetComponent<AudioSource>().Stop();
       }
     } else if (updateStatus == 9) {
-      scoreManager.showBanner();
+      ScoreManager.sm.showBanner();
       updateStatus++;
     }
   }

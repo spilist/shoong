@@ -82,9 +82,10 @@ public class ComboPartMover : ObjectsMover {
       cpm.gcCount.add(cpm.goldCubesGet);
     } else if (isSuperheatPart) {
       cpm.shm.add();
-    } else {
-      cpm.ptb.checkCollected(GetComponent<MeshFilter>().sharedMesh);
     }
+    // else {
+    //   cpm.ptb.checkCollected(GetComponent<MeshFilter>().sharedMesh);
+    // }
     cpm.eatenByPlayer();
   }
 
