@@ -3,7 +3,6 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class StrengthenTimeBar : MonoBehaviour {
-  public PlayerMover player;
   public StrengthenTimeBlinkingBar stb;
 
   private Image image;
@@ -12,7 +11,7 @@ public class StrengthenTimeBar : MonoBehaviour {
 
 	void Start () {
     image = GetComponent<Image>();
-    decreaseAmount = 1f / player.strengthen_during;
+    decreaseAmount = 1f / Player.pl.strengthen_during;
 	}
 
   public void startStrengthen(int duration) {

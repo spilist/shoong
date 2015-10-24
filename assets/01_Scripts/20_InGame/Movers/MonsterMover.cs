@@ -98,10 +98,6 @@ public class MonsterMover : ObjectsMover {
   }
 
   override public void encounterPlayer(bool destroy = true) {
-    foreach (Collider collider in GetComponents<Collider>()) {
-      collider.enabled = false;
-    }
-
     gameObject.SetActive(false);
 
     monm.indicator.stopIndicate();

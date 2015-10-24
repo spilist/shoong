@@ -22,27 +22,31 @@ public class ObjectsManager : MonoBehaviour {
   public int cubesByEncounter;
   public bool isNegative = false;
   public bool hasEncounterEffect = true;
-  public bool canKillPlayer = false;
 
   protected SpawnManager spawnManager;
   public SuperheatPartManager shm;
-  public PlayerMover player;
   protected bool skipInterval = false;
 
   public GameObject instance;
   public int gaugeWhenDestroy = 0;
+  public int loseEnergyWhenEncounter;
+  public float bounceDuration;
   public bool hasLevel = false;
   public string nameForLevel;
   public int level;
   protected bool noMoreRespawn = false;
+  public Player player;
 
   virtual protected void beforeInit() {}
+
+  void Awake() {
+    player = Player.pl;
+  }
 
   void OnEnable() {
     beforeInit();
     spawnManager = gameObject.GetComponent<SpawnManager>();
     shm = gameObject.GetComponent<SuperheatPartManager>();
-    player = GameObject.Find("Player").GetComponent<PlayerMover>();
 
     if (forceSpawnAtStart) {
       minSpawnInterval = 0;

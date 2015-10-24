@@ -133,9 +133,9 @@ public class ComboPartsManager : ObjectsManager {
     Quaternion spawnRotation = nextInstance.transform.rotation;
     instance = getPooledObj(objPool, objPrefab, spawnPos);
     instance.transform.rotation = spawnRotation;
+    instance.GetComponent<ComboPartMover>().setDestroyAfter();
     instance.SetActive(true);
     changeObject(instance, nextInstance);
-    instance.GetComponent<ComboPartMover>().setDestroyAfter();
 
     if (compareEqualMesh(nextInstance, goldenCubePrefab)) {
       instance.GetComponent<ComboPartMover>().setGolden();

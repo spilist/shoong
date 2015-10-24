@@ -4,7 +4,6 @@ using System.Collections;
 public class Panel : MonoBehaviour {
 	public string controlMethod;
   public TouchInputHandler handler;
-  public PlayerMover player;
   public Transform character;
   private bool stickMoving = false;
 
@@ -26,7 +25,7 @@ public class Panel : MonoBehaviour {
     }
 
     if (tag == "StickPanel_booster") {
-      player.shootBooster();
+      Player.pl.shootBooster();
     }
   }
 

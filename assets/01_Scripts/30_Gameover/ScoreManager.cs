@@ -31,7 +31,6 @@ public class ScoreManager : MonoBehaviour {
   public float destroyLargeAfter = 0.5f;
   public float destroySmallAfter = 4;
 
-  public GameObject player;
   public GameObject contactCollider;
   public GameObject barsCanvas;
   public Renderer partsCollector;
@@ -94,7 +93,7 @@ public class ScoreManager : MonoBehaviour {
 
     for (int howMany = numDebrisSpawn; howMany > 0; howMany--) {
       GameObject debris = getDebris();
-      debris.transform.position = player.transform.position;
+      debris.transform.position = Player.pl.transform.position;
       debris.transform.localScale = UnityEngine.Random.Range(minDebrisSize, maxDebrisSize) * Vector3.one;
       debris.GetComponent<MeshFilter>().sharedMesh = debrisTransform.GetChild(UnityEngine.Random.Range(0, debrisTransform.childCount)).GetComponent<MeshFilter>().sharedMesh;
       debris.SetActive(true);
@@ -143,15 +142,15 @@ public class ScoreManager : MonoBehaviour {
     AudioManager.am.changeVolume("Main", "Small");
 
     // playerExplosion.Play ();
-    player.GetComponent<Rigidbody>().isKinematic = true;
-    player.GetComponent<MeshRenderer>().enabled = false;
-    player.GetComponent<SphereCollider>().enabled = false;
-    boosterCount = player.GetComponent<PlayerMover>().getNumBoosters();
+    Player.pl.GetComponent<Rigidbody>().isKinematic = true;
+    Player.pl.GetComponent<MeshRenderer>().enabled = false;
+    Player.pl.GetComponent<SphereCollider>().enabled = false;
+    boosterCount = Player.pl.getNumBoosters();
     partsCollector.enabled = false;
     foreach (Transform tr in partsCollector.transform) {
       tr.gameObject.SetActive(false);
     }
-    player.GetComponent<PlayerMover>().stopStrengthen();
+    Player.pl.stopStrengthen();
     barsCanvas.SetActive(false);
     contactCollider.SetActive(false);
 

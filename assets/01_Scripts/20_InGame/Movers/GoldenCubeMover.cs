@@ -9,16 +9,13 @@ public class GoldenCubeMover : ObjectsMover {
     gcm = (GoldenCubeManager)objectsManager;
   }
 
-  protected override bool beforeCollide(ObjectsMover other) {
-    if (other.tag == "CubeDispenser") {
+  protected override bool beforeCollide(Collision collision) {
+    if (collision.collider.tag == "CubeDispenser") {
+      processCollision(collision);
       return false;
     } else {
       return true;
     }
-  }
-
-  protected override void afterCollide(Collision collision) {
-    if (collision.collider.tag == "CubeDispenser") processCollision(collision);
   }
 
   protected override void normalMovement() {

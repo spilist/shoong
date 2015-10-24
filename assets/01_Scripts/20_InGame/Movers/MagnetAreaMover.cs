@@ -10,7 +10,7 @@ public class MagnetAreaMover : MonoBehaviour {
 
   void OnTriggerStay(Collider other) {
     string tag = other.tag;
-    if (tag == "Player" && !other.GetComponent<PlayerMover>().canBeMagnetized()) return;
+    if (tag == "Player" && !Player.pl.canBeMagnetized()) return;
 
     Vector3 heading = other.transform.position - transform.parent.position;
     heading /= heading.magnitude;

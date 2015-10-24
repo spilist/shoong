@@ -3,7 +3,6 @@ using System.Collections;
 
 public class BlackholeGravitySphere : MonoBehaviour {
   private BlackholeManager blm;
-  private PlayerMover player;
   int gravity;
   int gravityToUser;
   float gravityScale;
@@ -11,7 +10,6 @@ public class BlackholeGravitySphere : MonoBehaviour {
 
   void Start() {
     blm = GameObject.Find("Field Objects").GetComponent<BlackholeManager>();
-    player = blm.player;
     gravity = blm.gravity;
     gravityScale = blm.gravityScale;
     gravityToUser = blm.gravityToUser;
@@ -25,7 +23,7 @@ public class BlackholeGravitySphere : MonoBehaviour {
   void OnTriggerStay(Collider other) {
     string tag = other.tag;
     if (tag != "Player") return;
-    if (!player.canBeMagnetized()) return;
+    if (!Player.pl.canBeMagnetized()) return;
 
     Vector3 heading = transform.parent.position - other.transform.position;
     heading /= heading.magnitude;

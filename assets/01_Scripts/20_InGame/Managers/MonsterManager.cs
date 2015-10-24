@@ -30,6 +30,8 @@ public class MonsterManager : ObjectsManager {
   public float minimonStartSpeedByPlayer = 80;
   public float minimonTumble = 10;
   public float minimonLifeTime = 4;
+  public int minimonLoseEnergy = 10;
+  public float minimonBounceDuration = 0.05f;
 
   public int cubesWhenDestroyMinimon = 5;
   public int[] numsMinimonSpawn;

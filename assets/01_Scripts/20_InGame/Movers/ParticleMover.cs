@@ -16,17 +16,11 @@ public class ParticleMover : MonoBehaviour {
 	private Vector3 direction;
 	private bool timeelapsed = false;
 	private PartsCollector partsCollector;
-	private PlayerMover player;
 	private Rigidbody rb;
-
-	private bool isTriggeringCubesGet = false;
-
-	private int howMany = 0;
 
 	void Awake() {
 		rb = GetComponent<Rigidbody>();
 		partsCollector = GameObject.Find("CubeCollector").GetComponent<PartsCollector>();
-		player = GameObject.Find("Player").GetComponent<PlayerMover>();
 	}
 
 	void OnEnable () {
@@ -42,7 +36,6 @@ public class ParticleMover : MonoBehaviour {
 		rb.velocity = direction * speed * random;
 
 		time = startTime;
-		isTriggeringCubesGet = false;
 		timeelapsed = false;
 		rainbow = false;
 	}
@@ -55,24 +48,23 @@ public class ParticleMover : MonoBehaviour {
 
 			Vector3 heading =  partsCollector.transform.position - transform.position;
 			heading /= heading.magnitude;
-			if (rainbow && player.isUsingRainbow()) {
-				rb.velocity = heading * player.getSpeed() * 3;
+			if (rainbow && Player.pl.isUsingRainbow()) {
+				rb.velocity = heading * Player.pl.getSpeed() * 3;
 			} else {
-				rb.velocity = heading * (baseSpeed + player.getSpeed() * 2) ;
+				rb.velocity = heading * (baseSpeed + Player.pl.getSpeed() * 2) ;
+			}
+
+			if (Vector3.Distance(Player.pl.transform.position, transform.position) > 300) {
+				gameObject.SetActive(false);
 			}
 		}
 	}
 
-	void OnTriggerStay(Collider other) {
+	void OnTriggerStay (Collider other) {
 		if (other.tag == "PartCollector" && timeelapsed) {
 			gameObject.SetActive(false);
-			if (isTriggeringCubesGet) partsCollector.effect(howMany);
+			partsCollector.effect();
 		}
-	}
-
-	public void triggerCubesGet(int count) {
-		isTriggeringCubesGet = true;
-		howMany = count;
 	}
 
 	public void setRainbow() {

@@ -10,7 +10,6 @@ public class TouchInputHandler : MonoBehaviour
   public Transform controlPanelCharacter_circle_right;
   public Transform controlPanelCharacter_packman_left;
   public Transform controlPanelCharacter_packman_right;
-  public PlayerMover player;
   public PartsToBeCollected ptb;
 
   public BeforeIdle beforeIdle;
@@ -72,11 +71,11 @@ public class TouchInputHandler : MonoBehaviour
         }
       }
 
-      if (player.uncontrollable()) return;
+      if (Player.pl.uncontrollable()) return;
 
 			if ((result == "Ground" || result == "ChangeBehavior") && !gameStarted) {
 				TimeManager.time.startTime();
-        EnergyManager.energy.turnEnergy(true);
+        EnergyManager.em.turnEnergy(true);
         // ptb.generateNew();
         superheat.startGame();
         beforeIdle.moveTitle();
@@ -93,12 +92,12 @@ public class TouchInputHandler : MonoBehaviour
 
       if (controlMethod == "Touch") {
         if (result == "Ground") {
-          Vector3 worldTouchPosition = setPlayerDirection(player.transform);
+          Vector3 worldTouchPosition = setPlayerDirection(Player.pl.transform);
 
-          if (player.isUsingDopple()) {
-            player.teleport(worldTouchPosition);
+          if (Player.pl.isUsingDopple()) {
+            Player.pl.teleport(worldTouchPosition);
           } else {
-            player.shootBooster();
+            Player.pl.shootBooster();
             spawnTouchEffect(worldTouchPosition);
           }
         }
@@ -106,44 +105,44 @@ public class TouchInputHandler : MonoBehaviour
         if (result == "ControlPanel_circle_left") {
           setPlayerDirection(controlPanelCharacter_circle_left);
 
-          if (player.isUsingDopple()) {
+          if (Player.pl.isUsingDopple()) {
             // change needed
-            // player.teleport(worldTouchPosition);
+            // Player.pl.teleport(worldTouchPosition);
           } else {
-            player.shootBooster();
+            Player.pl.shootBooster();
           }
         } else if (result == "ControlPanel_circle_right") {
           setPlayerDirection(controlPanelCharacter_circle_right);
 
-          if (player.isUsingDopple()) {
+          if (Player.pl.isUsingDopple()) {
             // change needed
-            // player.teleport(worldTouchPosition);
+            // Player.pl.teleport(worldTouchPosition);
           } else {
-            player.shootBooster();
+            Player.pl.shootBooster();
           }
         } else if (result == "ControlPanel_packman_left") {
           setPlayerDirection(controlPanelCharacter_packman_left);
 
-          if (player.isUsingDopple()) {
+          if (Player.pl.isUsingDopple()) {
             // change needed
-            // player.teleport(worldTouchPosition);
+            // Player.pl.teleport(worldTouchPosition);
           } else {
-            player.shootBooster();
+            Player.pl.shootBooster();
           }
         } else if (result == "ControlPanel_packman_right") {
           setPlayerDirection(controlPanelCharacter_packman_right);
 
-          if (player.isUsingDopple()) {
+          if (Player.pl.isUsingDopple()) {
             // change needed
-            // player.teleport(worldTouchPosition);
+            // Player.pl.teleport(worldTouchPosition);
           } else {
-            player.shootBooster();
+            Player.pl.shootBooster();
           }
         }
       }
       //  else if (controlMethod == "Stick") {
       //   if (result == "StickPanel_booster") {
-      //     player.shootBooster();
+      //     Player.pl.shootBooster();
       //   }
       // }
 		}
@@ -241,7 +240,7 @@ public class TouchInputHandler : MonoBehaviour
     Vector3 heading = worldTouchPosition - originPosition;
     direction = heading / heading.magnitude;
 
-    player.setDirection(direction);
+    Player.pl.setDirection(direction);
 
     return worldTouchPosition;
   }

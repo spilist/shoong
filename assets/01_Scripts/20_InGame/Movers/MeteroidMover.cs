@@ -55,6 +55,10 @@ public class MeteroidMover : ObjectsMover {
     }
   }
 
+  override protected void afterCollidePlayer() {
+    destroyObject();
+  }
+
   public void nearPlayer(bool enter = true) {
     avoiding = enter;
 

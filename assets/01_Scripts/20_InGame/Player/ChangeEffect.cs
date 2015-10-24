@@ -3,7 +3,6 @@ using System.Collections;
 
 public class ChangeEffect : MonoBehaviour {
   private CharacterChangeManager cm;
-  private PlayerMover player;
 
   public string changeTo;
   public string effectName;
@@ -13,13 +12,10 @@ public class ChangeEffect : MonoBehaviour {
   private float scale;
 
   void OnEnable() {
-    if (player == null) {
-      player = GameObject.Find("Player").GetComponent<PlayerMover>();
-      cm = player.GetComponent<CharacterChangeManager>();
-    }
+    cm = Player.pl.GetComponent<CharacterChangeManager>();
 
     if (effectName != "") {
-      player.showEffect(effectName);
+      Player.pl.showEffect(effectName);
     }
 
     if (changeTo != "") {
@@ -31,7 +27,7 @@ public class ChangeEffect : MonoBehaviour {
       scale = originalScale;
     }
 
-    if (player.isOnSuperheat()) gameObject.SetActive(false);
+    if (Player.pl.isOnSuperheat()) gameObject.SetActive(false);
   }
 
   void Update() {

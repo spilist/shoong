@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class FlyingCharacters : MonoBehaviour {
-  public PlayerMover player;
   public Transform allCharacters;
   public GameObject characterPrefab;
   public List<GameObject> characterPool;
@@ -96,12 +95,11 @@ public class FlyingCharacters : MonoBehaviour {
   }
 
   Vector3 screenToWorld(Vector3 screenPos) {
-    return new Vector3(screenPos.x + player.transform.position.x, transform.position.y, screenPos.y + player.transform.position.z);
+    return new Vector3(screenPos.x + Player.pl.transform.position.x, transform.position.y, screenPos.y + Player.pl.transform.position.z);
   }
 
   Vector3 playerPos() {
-    return player.transform.position;
-    // return player.transform.position + player.getDirection() * player.getSpeed();
+    return Player.pl.transform.position;
   }
 
   void OnDisable() {

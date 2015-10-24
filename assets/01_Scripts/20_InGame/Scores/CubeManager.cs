@@ -5,21 +5,12 @@ using System.Collections.Generic;
 
 public class CubeManager : MonoBehaviour {
   public static CubeManager cm;
-  public TimeMonsterManager tmm;
-  public OffscreenObjectIndicator spaceShipIndicator;
-  public Superheat superheat;
-  public Transform cuberNeedsMore;
   public PartsCollector cuber;
-  public PlayerMover player;
-  public GameObject spaceShipDebris;
-  private Text currentCubesText;
-  private Text requiredCubesText;
-  private int currentCubes = 0;
-  private float currentCubesCount = 0;
-  private int requiredCubes;
+  public Transform inGameUI;
+  public Superheat superheat;
 
-  public int increaseSpeed = 2;
   private int totalCount = 0;
+  public int increaseSpeed = 5;
   public Text cubesCount;
   private float currentCount = 0;
   private int cubesHighscore = 0;
@@ -47,64 +38,19 @@ public class CubeManager : MonoBehaviour {
     for (int i = 0; i < cubeAmount; ++i) {
       GameObject obj = (GameObject) Instantiate(howManyCubesGet);
       obj.SetActive(false);
-      obj.transform.SetParent(transform.parent, false);
+      obj.transform.SetParent(inGameUI, false);
       cubePool.Add(obj);
 
       obj = (GameObject) Instantiate(howManyBonusCubesGet);
       obj.SetActive(false);
-      obj.transform.SetParent(transform.parent, false);
+      obj.transform.SetParent(inGameUI, false);
       bonusCubePool.Add(obj);
 
       obj = (GameObject) Instantiate(cubesGetOnSuperheat);
       obj.SetActive(false);
-      obj.transform.SetParent(transform.parent, false);
+      obj.transform.SetParent(inGameUI, false);
       cubeOnSuperheatPool.Add(obj);
     }
-
-    currentCubesText = cuberNeedsMore.Find("Current").GetComponent<Text>();
-    requiredCubesText = cuberNeedsMore.Find("Required").GetComponent<Text>();
-    resetProgress(false);
-  }
-
-  public void resetProgress(bool nextPhase = true) {
-    if (nextPhase) {
-      cuberNeedsMore.gameObject.SetActive(true);
-      PhaseManager.pm.nextPhase();
-      TimeManager.time.setLimit(false);
-      spaceShipIndicator.stopIndicate();
-      tmm.stopMonster();
-    }
-    requiredCubes = 10;
-    cuber.setUserFollow(true, requiredCubes);
-    currentCubesText.text = "0";
-    requiredCubesText.text = "/" + requiredCubes;
-  }
-
-  void startFindNextDebris() {
-    currentCubes = 0;
-    currentCubesCount = 0;
-
-    cuberNeedsMore.gameObject.SetActive(false);
-
-    Vector2 screenPos = Random.insideUnitCircle;
-    screenPos.Normalize();
-    screenPos *= 1000;
-
-    Vector3 spawnPos = screenToWorld(screenPos);
-    GameObject debris = (GameObject) Instantiate(spaceShipDebris, spawnPos, Quaternion.identity);
-    spaceShipIndicator.startIndicate(debris);
-    cuber.transform.position = spawnPos;
-    cuber.setUserFollow(false);
-
-    TimeManager.time.setLimit(true);
-  }
-
-  bool isCuberCharging() {
-    return cuberNeedsMore.gameObject.activeSelf;
-  }
-
-  Vector3 screenToWorld(Vector3 screenPos) {
-    return new Vector3(screenPos.x + player.transform.position.x, player.transform.position.y, screenPos.y + player.transform.position.z);
   }
 
   GameObject getPooledObj(List<GameObject> list, GameObject prefab) {
@@ -123,11 +69,6 @@ public class CubeManager : MonoBehaviour {
   public void addCount(int cubesGet, int bonus = 0) {
     totalCount += cubesGet + bonus;
 
-    if (isCuberCharging()) {
-      currentCubes += cubesGet + bonus;
-      currentCubes = currentCubes > requiredCubes ? requiredCubes : currentCubes;
-    }
-
     if (superheat.isOnSuperheat()) {
       GameObject instance = getPooledObj(cubeOnSuperheatPool, cubesGetOnSuperheat);
       instance.SetActive(true);
@@ -145,8 +86,9 @@ public class CubeManager : MonoBehaviour {
     }
 
     superheat.addGuage((cubesGet + bonus) * superheat.guagePerCube);
-    EnergyManager.energy.getHealthByCubes(cubesGet + bonus);
+    EnergyManager.em.getHealthByCubes(cubesGet + bonus);
     TimeManager.time.addProgressByCube(cubesGet + bonus);
+    cuber.addEmission(cubesGet + bonus);
   }
 
   public int getCount() {
@@ -160,16 +102,6 @@ public class CubeManager : MonoBehaviour {
 
       if (currentCount > cubesHighscore) {
         cubesHighscoreText.text = currentCount.ToString("0");
-      }
-    }
-
-    if (isCuberCharging()) {
-      if (currentCubesCount < currentCubes) {
-        currentCubesCount = Mathf.MoveTowards(currentCubesCount, currentCubes, Time.deltaTime * (currentCubes - currentCubesCount) * increaseSpeed);
-        currentCubesText.text = currentCubesCount.ToString("0");
-        if (int.Parse(currentCubesText.text) >= requiredCubes) {
-          startFindNextDebris();
-        }
       }
     }
   }

@@ -33,7 +33,6 @@ public class PowerBoost : MonoBehaviour {
   private ParticleSystem powerBoostParticle;
 
   public GameObject energyCube;
-  public PlayerMover player;
 
   public GameObject afterImagePrefab;
   public Color[] afterImageMainColors;
@@ -114,10 +113,10 @@ public class PowerBoost : MonoBehaviour {
 
     DataManager.dm.increment("TotalSuperheats");
 
-    GetComponent<MeshFilter>().sharedMesh = player.GetComponent<MeshFilter>().sharedMesh;
+    GetComponent<MeshFilter>().sharedMesh = Player.pl.GetComponent<MeshFilter>().sharedMesh;
     afterImagePrefab.GetComponent<MeshFilter>().sharedMesh = GetComponent<MeshFilter>().sharedMesh;
 
-    player.startPowerBoost();
+    Player.pl.startPowerBoost();
     isTransforming = true;
     transformStatus = 1;
     superXPos = superImage.anchoredPosition.x;
@@ -126,7 +125,7 @@ public class PowerBoost : MonoBehaviour {
     GetComponent<Renderer>().enabled = true;
     GetComponent<Collider>().enabled = true;
 
-    player.GetComponent<Rigidbody>().isKinematic = true;
+    Player.pl.GetComponent<Rigidbody>().isKinematic = true;
     powerBoostBackground.startPowerBoost();
     StartCoroutine("superHeat");
   }
@@ -159,9 +158,9 @@ public class PowerBoost : MonoBehaviour {
     yield return new WaitForSeconds(sizeChangeInterval);
     transform.localScale = Vector3.one * bigSize;
 
-    player.GetComponent<Rigidbody>().isKinematic = false;
-    setDir(player.getDirection());
-    // player.rotatePlayerBody();
+    Player.pl.GetComponent<Rigidbody>().isKinematic = false;
+    setDir(Player.pl.getDirection());
+    // Player.pl.rotatePlayerBody();
 
     isTransforming = false;
     powerBoostRunning = true;
@@ -177,7 +176,7 @@ public class PowerBoost : MonoBehaviour {
   }
 
   void stopPowerBoost() {
-    player.stopPowerBoost();
+    Player.pl.stopPowerBoost();
     GetComponent<Renderer>().enabled = false;
     GetComponent<Collider>().enabled = false;
     powerBoostRunning = false;
@@ -220,8 +219,8 @@ public class PowerBoost : MonoBehaviour {
   }
 
   void Update() {
-    transform.position = player.transform.position;
-    // transform.rotation = player.transform.rotation;
+    transform.position = Player.pl.transform.position;
+    // transform.rotation = Player.pl.transform.rotation;
     transform.Rotate(direction * Time.deltaTime * rotatingSpeed);
 
     if (transformStatus > 0) {
@@ -303,10 +302,9 @@ public class PowerBoost : MonoBehaviour {
   void OnTriggerEnter(Collider other) {
     ObjectsMover mover = other.GetComponent<ObjectsMover>();
     for (int e = 0; e < mover.cubesWhenEncounter(); e++) {
-      GameObject cube = (GameObject) Instantiate(energyCube, other.transform.position, other.transform.rotation);
+      Instantiate(energyCube, other.transform.position, other.transform.rotation);
       if (e == 0) {
-        cube.GetComponent<ParticleMover>().triggerCubesGet(mover.cubesWhenEncounter());
-        player.addCubeCount(mover.cubesWhenEncounter());
+        Player.pl.addCubeCount(mover.cubesWhenEncounter());
       }
     }
 

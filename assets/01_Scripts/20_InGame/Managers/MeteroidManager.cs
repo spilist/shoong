@@ -12,8 +12,6 @@ public class MeteroidManager : ObjectsManager {
   public float biggerMeteroidSpeed = 400;
   public float biggerMeteroidTumble = 20;
 
-  public int reboundDuring = 1;
-  public int reboundSpeed = 160;
   public float warnPlayerDuring = 1;
   public float spawnRadius = 400;
   public int scatterAmount = 30;

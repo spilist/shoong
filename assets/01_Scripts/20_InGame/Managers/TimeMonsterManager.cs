@@ -29,6 +29,9 @@ public class TimeMonsterManager : ObjectsManager {
   }
 
   public void stopMonster() {
+    if (!spawned) return;
+
+    spawned = false;
     instance.SetActive(false);
   }
 }

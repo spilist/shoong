@@ -2,7 +2,6 @@
 using System.Collections;
 
 public class QuestCollider : MonoBehaviour {
-  public PlayerMover player;
   public float collideRadius = 1.5f;
 
   void OnEnable() {
@@ -25,10 +24,10 @@ public class QuestCollider : MonoBehaviour {
     } else if (other.tag == "Obstacle_small") {
       other.GetComponent<SmallAsteroidMover>().nearPlayer(false);
     } else if (other.tag == "Obstacle") {
-      if (other.GetComponent<MeteroidMover>().isAlreadyChecked() || player.isRidingMonster()) return;
+      if (other.GetComponent<MeteroidMover>().isAlreadyChecked() || Player.pl.isRidingMonster()) return;
 
       other.GetComponent<MeteroidMover>().nearPlayer(false);
-      player.showEffect("Whew");
+      Player.pl.showEffect("Whew");
     }
   }
 }

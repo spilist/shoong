@@ -16,6 +16,7 @@ public class AlienshipManager : ObjectsManager {
   public int shootLaserPer = 10;
   public float chargeTime = 0.5f;
 
+  public int laserLoseEnergy = 70;
   public int laserRadius = 20;
   public int laserLength = 500;
   public float laserShootingDuration = 0.5f;

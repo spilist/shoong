@@ -6,29 +6,30 @@ public class TimeManager : MonoBehaviour {
 	public TimeMonsterManager tmm;
 	public Text timeLimitText;
 	private int timeLimit;
-	public Transform phaseStars;
-	public GameObject phaseStarPrefab;
-	public float distanceBetweenStars = 50;
-	private Image phaseStar;
-	private int popStatus = 0;
-	public float startScale = 0.1f;
-	public float largeScale = 1.2f;
-	public float smallScale = 0.6f;
-	public float changeTime = 0.1f;
-	private float starScale;
+	public Transform cuberNeedsMore;
+	public PartsCollector cuber;
+	private Text currentEnergyText;
+  private Text requiredEnergyText;
+  public OffscreenObjectIndicator spaceShipIndicator;
+  public GameObject spaceShipDebris;
+  private float addGuageAmount = 0;
+  private float currentEnergyCount = 0;
+  private int requiredEnergy;
 
-	public int[] reqProgressPerPhase;
+	// public Transform phaseStars;
+	// public GameObject phaseStarPrefab;
+	// public float distanceBetweenStars = 50;
+	// private Image phaseStar;
+	// private int popStatus = 0;
+	// public float startScale = 0.1f;
+	// public float largeScale = 1.2f;
+	// public float smallScale = 0.6f;
+	// public float changeTime = 0.1f;
+	// private float starScale;
+
 	public int progressPerSecond = 10;
 	public float progressPerCube = 0.5f;
 	public float progressChangeSpeed = 5f;
-	public int progressStart = 30;
-	public int progressEnd = 390;
-	private bool progressChanging = false;
-	private float guageChangeAmount = 0;
-	private float currentProgress;
-	private float progressScale;
-	private int distance;
-	private int reqProgress;
 
 	public NormalPartsManager npm;
 	public AsteroidManager asm;
@@ -45,71 +46,100 @@ public class TimeManager : MonoBehaviour {
 
 	void Awake() {
 		time = this;
-		distance = progressEnd - progressStart;
+		currentEnergyText = cuberNeedsMore.Find("Current").GetComponent<Text>();
+    requiredEnergyText = cuberNeedsMore.Find("Required").GetComponent<Text>();
 	}
 
 	public void startTime() {
-		// resetProgress();
+		resetProgress(false);
 		StartCoroutine("startElapse");
 	}
 
-	public void resetProgress() {
-		progressChanging = true;
-		if (PhaseManager.pm.phase() >= reqProgressPerPhase.Length) {
-			progressChanging = false;
-		} else {
-			reqProgress = reqProgressPerPhase[PhaseManager.pm.phase()];
-			progressScale = (float)distance / reqProgress;
-			currentProgress = progressStart;
+	public void resetProgress(bool nextPhase = true) {
+		if (nextPhase) {
+      setLimit(false);
+      spaceShipIndicator.stopIndicate();
+      tmm.stopMonster();
+      PhaseManager.pm.nextPhase();
+      EnergyManager.em.getFullHealth();
 		}
 
-		GameObject obj = (GameObject) Instantiate(phaseStarPrefab);
-		obj.transform.SetParent(phaseStars, false);
-		obj.GetComponent<RectTransform>().anchoredPosition += new Vector2(PhaseManager.pm.phase() * distanceBetweenStars, 0);
-		phaseStar = obj.GetComponent<Image>();
-		popStatus = 1;
-		starScale = startScale;
+		cuberNeedsMore.gameObject.SetActive(true);
+		addGuageAmount = 0;
+    currentEnergyCount = 0;
+
+		requiredEnergy = PhaseManager.pm.cuberNeedsPerLevel[PhaseManager.pm.phase()];
+    cuber.setUserFollow(true, requiredEnergy);
+    currentEnergyText.text = "0";
+    requiredEnergyText.text = "/" + requiredEnergy;
+
+		// GameObject obj = (GameObject) Instantiate(phaseStarPrefab);
+		// obj.transform.SetParent(phaseStars, false);
+		// obj.GetComponent<RectTransform>().anchoredPosition += new Vector2(PhaseManager.pm.phase() * distanceBetweenStars, 0);
+		// phaseStar = obj.GetComponent<Image>();
+		// popStatus = 1;
+		// starScale = startScale;
 	}
+
+	void startFindNextDebris() {
+    cuberNeedsMore.gameObject.SetActive(false);
+
+    Vector2 screenPos = Random.insideUnitCircle;
+    screenPos.Normalize();
+    screenPos *= PhaseManager.pm.debrisDistancesPerLevel[PhaseManager.pm.phase()];;
+
+    Vector3 spawnPos = screenToWorld(screenPos);
+    GameObject debris = (GameObject) Instantiate(spaceShipDebris, spawnPos, Quaternion.identity);
+    spaceShipIndicator.startIndicate(debris);
+    cuber.transform.position = spawnPos;
+    cuber.setUserFollow(false);
+
+    setLimit(true);
+  }
+
+  bool isCuberCharging() {
+    return cuberNeedsMore.gameObject.activeSelf;
+  }
+
+  Vector3 screenToWorld(Vector3 screenPos) {
+    return new Vector3(screenPos.x + Player.pl.transform.position.x, Player.pl.transform.position.y, screenPos.y + Player.pl.transform.position.z);
+  }
 
 	public void addProgressByCube(int cubes) {
 		addProgress(cubes * progressPerCube);
 	}
 
 	void addProgress(float val) {
-		guageChangeAmount += val * progressScale;
-	}
-
-	public void startProgress(bool val) {
-		progressChanging = val;
+		addGuageAmount += val;
 	}
 
 	void Update() {
-		if (progressChanging && currentProgress <= progressEnd) {
-			currentProgress = Mathf.MoveTowards(currentProgress, progressEnd, Time.deltaTime * distance * progressPerSecond / reqProgress);
-			currentProgress = Mathf.MoveTowards(currentProgress, currentProgress + guageChangeAmount, Time.deltaTime * distance / progressChangeSpeed);
-			guageChangeAmount = Mathf.MoveTowards(guageChangeAmount, 0, Time.deltaTime * distance / progressChangeSpeed);
-			// phaseStar.fillAmount = currentProgress / progressEnd;
+		if (isCuberCharging()) {
+			if (currentEnergyCount <= requiredEnergy) {
+				currentEnergyCount = Mathf.MoveTowards(currentEnergyCount, requiredEnergy, Time.deltaTime * progressPerSecond);
+				currentEnergyCount = Mathf.MoveTowards(currentEnergyCount, currentEnergyCount + addGuageAmount, Time.deltaTime * requiredEnergy / progressChangeSpeed);
+				addGuageAmount = Mathf.MoveTowards(addGuageAmount, 0, Time.deltaTime * requiredEnergy / progressChangeSpeed);
+				currentEnergyText.text = currentEnergyCount.ToString("0");
+			}
+
+			if (currentEnergyCount >= requiredEnergy) {
+				startFindNextDebris();
+			}
 		}
 
-		if (progressChanging && currentProgress >= progressEnd) {
-			progressChanging = false;
-			PhaseManager.pm.nextPhase();
-			resetProgress();
-		}
+		// if (popStatus > 0) {
+  //     if (popStatus == 1) {
+  //       changeScale(largeScale, largeScale - startScale);
+  //     } else if (popStatus == 2) {
+  //       changeScale(smallScale, smallScale - largeScale);
+  //     } else if (popStatus == 3) {
+  //       changeScale(1, 1 - smallScale);
+  //     } else if (popStatus == 4) {
+  //     	popStatus = 0;
+  //     }
 
-		if (popStatus > 0) {
-      if (popStatus == 1) {
-        changeScale(largeScale, largeScale - startScale);
-      } else if (popStatus == 2) {
-        changeScale(smallScale, smallScale - largeScale);
-      } else if (popStatus == 3) {
-        changeScale(1, 1 - smallScale);
-      } else if (popStatus == 4) {
-      	popStatus = 0;
-      }
-
-      phaseStar.transform.localScale = starScale * Vector3.one;
-    }
+  //     phaseStar.transform.localScale = starScale * Vector3.one;
+  //   }
 	}
 
 	IEnumerator startElapse() {
@@ -139,7 +169,7 @@ public class TimeManager : MonoBehaviour {
 	public void setLimit(bool val) {
 		timeLimitText.gameObject.SetActive(val);
 		if (val) {
-			timeLimit = 10;
+			timeLimit = PhaseManager.pm.timeLimitPerLevel[PhaseManager.pm.phase()];
 			timeLimitText.text = timeLimit.ToString();
 			timeLimitText.color = Color.white;
 		}
@@ -161,8 +191,8 @@ public class TimeManager : MonoBehaviour {
 		spawnBlackhole = true;
 	}
 
-	void changeScale(float targetScale, float difference) {
-    starScale = Mathf.MoveTowards(starScale, targetScale, Time.deltaTime * Mathf.Abs(difference) / changeTime);
-    if (starScale == targetScale) popStatus++;
-  }
+	// void changeScale(float targetScale, float difference) {
+ //    starScale = Mathf.MoveTowards(starScale, targetScale, Time.deltaTime * Mathf.Abs(difference) / changeTime);
+ //    if (starScale == targetScale) popStatus++;
+ //  }
 }

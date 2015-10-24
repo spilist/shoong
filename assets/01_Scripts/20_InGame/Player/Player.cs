@@ -3,7 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 
-public class PlayerMover : MonoBehaviour {
+public class Player : MonoBehaviour {
+  public static Player pl;
   public float baseSpeed = 80;
 
   public Transform effects;
@@ -31,10 +32,11 @@ public class PlayerMover : MonoBehaviour {
   private float icedSpeedFactor;
 
   private bool reboundingByBlackhole = false;
-  private bool reboundingByDispenser = false;
-  private bool reboundingByMeteroid = false;
-  private float reboundingByDispenserDuring = 0;
-  private float reboundingByMeteroidDuring = 0;
+  private bool bouncing = false;
+  private bool bouncingByDispenser = false;
+  private float bounceDuration = 0;
+  public float shakeBase = 10;
+  public float shakeDuring = 0.5f;
 
   public float boosterSpeedUpAmount = 60;
   public float maxBoosterSpeed = 100;
@@ -75,7 +77,6 @@ public class PlayerMover : MonoBehaviour {
   public float afterStrengthenDuration = 1;
   private bool afterStrengthen = false;
   private float afterStrengthenCount = 0;
-  private float reboundingCount = 0;
 
   private CharacterChangeManager changeManager;
   public Collider contactCollider;
@@ -89,7 +90,11 @@ public class PlayerMover : MonoBehaviour {
   private int numDestroyObstacles = 0;
   private int numUseObjects = 0;
 
-	void Start () {
+	void Awake() {
+    pl = this;
+  }
+
+  void Start () {
     changeManager = GetComponent<CharacterChangeManager>();
     changeManager.changeCharacter(PlayerPrefs.GetString("SelectedCharacter"));
 
@@ -133,10 +138,10 @@ public class PlayerMover : MonoBehaviour {
       speed = rdm.ridingSpeed;
     } else if (reboundingByBlackhole) {
       speed = blm.reboundingSpeed;
-    } else if (reboundingByDispenser) {
+    } else if (bouncing) {
       speed = reboundSpeed;
-    } else if (reboundingByMeteroid) {
-      speed = mtm.reboundSpeed;
+    } else if (bouncingByDispenser) {
+      speed = reboundSpeed / 2f;
     } else if (ridingMonster) {
       speed = baseSpeed + minimonCounter * monm.enlargeSpeedPerMinimon;
     } else {
@@ -145,7 +150,7 @@ public class PlayerMover : MonoBehaviour {
 
     speed += boosterspeed;
 
-    if (iced && !uncontrollable()) {
+    if (iced && !uncontrollable() && !bouncing) {
       speed *= icedSpeedFactor;
     }
 
@@ -170,7 +175,7 @@ public class PlayerMover : MonoBehaviour {
     string tag = other.tag;
 
     if (tag == "SpaceShipDebris") {
-      CubeManager.cm.resetProgress();
+      TimeManager.time.resetProgress();
       Destroy(other.gameObject);
       return;
     }
@@ -180,11 +185,15 @@ public class PlayerMover : MonoBehaviour {
     if (mover == null) return;
 
     if (mover.dangerous()) {
-      if (mover.canKillPlayer()) {
-        ScoreManager.sm.gameOver(tag);
-      } else {
-        mover.encounterPlayer();
+      if (mover.tag == "TimeMonster") {
+        ScoreManager.sm.gameOver("TimeMonster");
       }
+      // mover.encounterPlayer();
+      // if (mover.canKillPlayer()) {
+      //   ScoreManager.sm.gameOver(tag);
+      // } else {
+      //   mover.encounterPlayer();
+      // }
       return;
     }
 
@@ -237,9 +246,7 @@ public class PlayerMover : MonoBehaviour {
       for (int e = 0; e < numCubesInstantiate(howMany); e++) {
         GameObject cube = generateCube();
         cube.transform.position = mover.transform.position;
-        if (e == 0) {
-          cube.GetComponent<ParticleMover>().triggerCubesGet(howMany);
-        }
+        cube.SetActive(true);
         if (encounterPlayer && mover.tag == "RainbowDonut") {
           if (rdm.isGolden) {
             cube.GetComponent<Renderer>().material.SetColor("_TintColor", goldenCubeParticleColor);
@@ -253,7 +260,6 @@ public class PlayerMover : MonoBehaviour {
           cube.GetComponent<Renderer>().material.SetColor("_TintColor", cubeOriginalColor);
           cube.GetComponent<TrailRenderer>().material.SetColor("_TintColor", cubeOriginalTrailColor);
         }
-        cube.SetActive(true);
       }
 
       if (mover.isNegativeObject()) {
@@ -265,9 +271,8 @@ public class PlayerMover : MonoBehaviour {
 
       if (bonus > 0) {
         GameObject cube = generateCube();
-        cube.SetActive(true);
         cube.transform.position = mover.transform.position;
-        cube.GetComponent<ParticleMover>().triggerCubesGet(bonus);
+        cube.SetActive(true);
         if (unstoppable && mover.isNegativeObject()) {
           cube.GetComponent<Renderer>().sharedMaterial = changeManager.metalMat;
           DataManager.dm.increment("TotalBonusesWithMetal", bonus);
@@ -292,7 +297,6 @@ public class PlayerMover : MonoBehaviour {
   public void contactCubeDispenser(Transform tr, int howMany, Collision collision, float reboundDuring, bool isGolden) {
     for (int e = 0; e < howMany; e++) {
       GameObject cube = generateCube();
-      cube.SetActive(true);
       cube.transform.position = tr.position;
 
       if (isGolden) {
@@ -303,23 +307,27 @@ public class PlayerMover : MonoBehaviour {
         cube.GetComponent<TrailRenderer>().material.SetColor("_TintColor", cubeOriginalTrailColor);
       }
 
-      if (e == 0) {
-        cube.GetComponent<ParticleMover>().triggerCubesGet(howMany);
-      }
+      cube.SetActive(true);
     }
 
     if (!isGolden) addCubeCount(howMany, 0);
 
     processCollision(collision);
-    reboundingByDispenser = true;
-    reboundingCount = 0;
-    reboundingByDispenserDuring = reboundDuring;
+    bouncingByDispenser = true;
+    this.bounceDuration = reboundDuring;
   }
 
-  public void contactMeteroid(Collision collision) {
+  public void bounce(float bounceDuration, Collision collision) {
+    if (bounceDuration == 0) return;
+
     processCollision(collision);
-    reboundingByMeteroid = true;
-    reboundingByMeteroidDuring = mtm.reboundDuring;
+    bouncing = true;
+    this.bounceDuration = bounceDuration;
+  }
+
+  public void loseEnergy(int amount, string tag) {
+    Camera.main.GetComponent<CameraMover>().shake(shakeDuring, shakeBase * amount / 100);
+    EnergyManager.em.loseEnergy(amount, tag);
   }
 
   public void processCollision(Collision collision) {
@@ -427,6 +435,7 @@ public class PlayerMover : MonoBehaviour {
       isRidingRainbowRoad = false;
     }
     iced = false;
+    icm.strengthenPlayerEffect.SetActive(false);
     stopStrengthen();
   }
 
@@ -624,7 +633,7 @@ public class PlayerMover : MonoBehaviour {
   }
 
   public bool isRebounding() {
-    return reboundingByBlackhole || reboundingByDispenser;
+    return reboundingByBlackhole;
   }
 
   public void setRidingRainbowRoad(bool val) {
@@ -661,7 +670,7 @@ public class PlayerMover : MonoBehaviour {
   }
 
   public bool uncontrollable() {
-    return isRebounding() || isUsingRainbow() || usingEMP || reboundingByMeteroid;
+    return isRebounding() || isUsingRainbow() || usingEMP || bouncing;
   }
 
   void Update() {
@@ -679,19 +688,19 @@ public class PlayerMover : MonoBehaviour {
       }
     }
 
-    if (reboundingByDispenser) {
-      if (reboundingCount < reboundingByDispenserDuring) {
-        reboundingCount += Time.deltaTime;
+    if (bouncingByDispenser) {
+      if (bounceDuration > 0) {
+        bounceDuration -= Time.deltaTime;
       } else {
-        reboundingByDispenser = false;
+        bouncingByDispenser = false;
       }
     }
 
-    if (reboundingByMeteroid) {
-      if (reboundingByMeteroidDuring > 0) {
-        reboundingByMeteroidDuring -= Time.deltaTime;
+    if (bouncing) {
+      if (bounceDuration > 0) {
+        bounceDuration -= Time.deltaTime;
       } else {
-        reboundingByMeteroid = false;
+        bouncing = false;
       }
     }
 

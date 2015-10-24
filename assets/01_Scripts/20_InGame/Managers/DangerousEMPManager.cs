@@ -17,6 +17,8 @@ public class DangerousEMPManager : ObjectsManager {
   public float shrinkDuration = 0.1f;
   private bool larger = false;
   public float enlargeScale = 2;
+  public int loseEnergyBigger = 50;
+  public float bounceDuringBigger = 0.5f;
 
   override public void initRest() {
     TimeManager.time.startSpawnDangerousEMP();

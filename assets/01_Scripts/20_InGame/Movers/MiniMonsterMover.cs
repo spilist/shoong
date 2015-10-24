@@ -65,9 +65,6 @@ public class MiniMonsterMover : ObjectsMover {
   }
 
   public override void destroyObject(bool destroyEffect = true, bool byPlayer = false) {
-    foreach (Collider collider in GetComponents<Collider>()) {
-      collider.enabled = false;
-    }
 
     if (destroyEffect) {
       monm.destroyMinimon(transform.position);
@@ -86,9 +83,6 @@ public class MiniMonsterMover : ObjectsMover {
   }
 
   override public void encounterPlayer(bool destroy = true) {
-    foreach (Collider collider in GetComponents<Collider>()) {
-      collider.enabled = false;
-    }
 
     monm.destroyMinimon(transform.position);
     gameObject.SetActive(false);

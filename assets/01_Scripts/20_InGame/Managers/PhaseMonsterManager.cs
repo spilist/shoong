@@ -2,13 +2,18 @@
 using System.Collections;
 
 public class PhaseMonsterManager : ObjectsManager {
-  public int startSpawnAmount = 2;
-  public int speed_runaway = 60;
+  public float slowStayDuration = 1;
+  public float increaseSpeedDuration = 2;
+  public int increaseSpeedUntil = 140;
+  // public float chargeDuration = 0.5f;
+  // public float rushDuration = 1;
+  // public float rushSpeed = 400;
   public int detectDistance = 200;
   public int spawnRadius = 200;
+  public float offScreenSpeedScale = 0.8f;
 
   override public void initRest() {
-    for (int i = 0; i < startSpawnAmount; i++) spawn();
+    for (int i = 0; i < objAmount; i++) spawn();
   }
 
   override protected void spawn() {

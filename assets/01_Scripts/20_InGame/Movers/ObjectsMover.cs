@@ -9,7 +9,6 @@ public class ObjectsMover : MonoBehaviour {
   protected bool canBeMagnetized = true;
   protected bool isMagnetized = false;
 
-  protected PlayerMover player;
   protected int gravity;
   protected float originalScale;
 
@@ -30,10 +29,9 @@ public class ObjectsMover : MonoBehaviour {
   protected GameObject transformParticle;
   protected int transformLevel;
   protected GameObject indicator;
+  public Player player;
 
   void Awake() {
-    player = GameObject.Find("Player").GetComponent<PlayerMover>();
-
     objectsManager = (ObjectsManager) GameObject.Find("Field Objects").GetComponent(getManager());
     spm = objectsManager.GetComponent<SpecialPartsManager>();
     tfm = objectsManager.GetComponent<TransformerManager>();
@@ -41,6 +39,7 @@ public class ObjectsMover : MonoBehaviour {
     shrinkedScale = transform.localScale.x;
     rb = GetComponent<Rigidbody>();
     originalScale = transform.localScale.x;
+    player = Player.pl;
     initializeRest();
   }
 
@@ -51,6 +50,7 @@ public class ObjectsMover : MonoBehaviour {
 
     rb.angularVelocity = Random.onUnitSphere * tumble;
     rb.velocity = direction * speed;
+
     afterEnable();
   }
 
@@ -106,9 +106,9 @@ public class ObjectsMover : MonoBehaviour {
   void FixedUpdate() {
     if (isMagnetized) {
       if (ScoreManager.sm.isGameOver()) return;
-      Vector3 heading =  player.transform.position - transform.position;
+      Vector3 heading =  Player.pl.transform.position - transform.position;
       heading /= heading.magnitude;
-      rb.velocity = heading * player.getSpeed() * 1.5f;
+      rb.velocity = heading * Player.pl.getSpeed() * 1.5f;
     } else if (isInsideBlackhole) {
       rb.velocity = headingToBlackhole * gravity;
       shrinkedScale = Mathf.MoveTowards(shrinkedScale, 0f, Time.deltaTime * originalScale);
@@ -157,17 +157,32 @@ public class ObjectsMover : MonoBehaviour {
 
   virtual protected void normalMovement() {}
 
-  virtual protected bool beforeCollide(ObjectsMover other) {
+  virtual protected bool beforeCollide(Collision collision) {
+    if (collision.collider.tag == "ContactCollider" && dangerous()) {
+      Player.pl.loseEnergy(objectsManager.loseEnergyWhenEncounter, tag);
+      Player.pl.bounce(objectsManager.bounceDuration, collision);
+
+      if (objectsManager.strengthenPlayerEffect != null) {
+        objectsManager.strengthenPlayerEffect.SetActive(true);
+        Player.pl.effectedBy(tag);
+      }
+
+      afterCollidePlayer();
+      return false;
+    }
+
     return true;
   }
 
+  virtual protected void afterCollidePlayer() {}
+
   void OnCollisionEnter(Collision collision) {
-    ObjectsMover other = collision.collider.gameObject.GetComponent<ObjectsMover>();
+    if (beforeCollide(collision)) {
+      ObjectsMover other = collision.collider.gameObject.GetComponent<ObjectsMover>();
 
-    if (other != null) {
-      if (other.tag == "Blackhole") return;
+      if (other != null) {
+        if (other.tag == "Blackhole") return;
 
-      if (beforeCollide(other)) {
         if (strength() == other.strength()) {
           processCollision(collision);
         } else if (strength() < other.strength()) {
@@ -201,10 +216,6 @@ public class ObjectsMover : MonoBehaviour {
   virtual public void destroyObject(bool destroyEffect = true, bool byPlayer = false) {
     if (!beforeDestroy()) return;
 
-    foreach (Collider collider in GetComponents<Collider>()) {
-      collider.enabled = false;
-    }
-
     gameObject.SetActive(false);
 
     if (destroyEffect && objectsManager.objDestroyEffect != null) {
@@ -215,7 +226,7 @@ public class ObjectsMover : MonoBehaviour {
 
     if (byPlayer) {
       objectsManager.run();
-      if (isNegativeObject()) player.destroyObject(tag, gaugeWhenDestroy());
+      if (isNegativeObject()) Player.pl.destroyObject(tag, gaugeWhenDestroy());
     } else {
       objectsManager.runImmediately();
     }
@@ -236,9 +247,6 @@ public class ObjectsMover : MonoBehaviour {
     if (!beforeEncounter()) return;
 
     if (destroy) {
-      foreach (Collider collider in GetComponents<Collider>()) {
-        collider.enabled = false;
-      }
       gameObject.SetActive(false);
     }
 
@@ -255,13 +263,13 @@ public class ObjectsMover : MonoBehaviour {
 
     if (objectsManager.strengthenPlayerEffect != null) {
       objectsManager.strengthenPlayerEffect.SetActive(true);
-      player.effectedBy(tag);
+      Player.pl.effectedBy(tag);
     }
 
     if (hasEncounterEffect()) {
-      player.encounterObject(tag);
+      Player.pl.encounterObject(tag);
     } else if (isNegativeObject() && !dangerous()) {
-      player.destroyObject(tag, gaugeWhenDestroy());
+      Player.pl.destroyObject(tag, gaugeWhenDestroy());
     }
 
     afterEncounter();
@@ -293,16 +301,12 @@ public class ObjectsMover : MonoBehaviour {
   }
 
   virtual public int bonusCubes() {
-    if (isNegativeObject() && player.isUnstoppable()) return (int) (cubesWhenEncounter() * spm.bonus);
+    if (isNegativeObject() && Player.pl.isUnstoppable()) return (int) (cubesWhenEncounter() * spm.bonus);
     else return 0;
   }
 
   virtual public bool dangerous() {
     return false;
-  }
-
-  virtual public bool canKillPlayer() {
-    return objectsManager.canKillPlayer;
   }
 
   virtual public bool isNegativeObject() {
@@ -328,10 +332,6 @@ public class ObjectsMover : MonoBehaviour {
     isInsideBlackhole = false;
     destroyed = false;
     isTransforming = false;
-
-    foreach (Collider collider in GetComponents<Collider>()) {
-      collider.enabled = true;
-    }
 
     if (indicator != null) {
       indicator.SetActive(false);

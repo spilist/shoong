@@ -11,7 +11,6 @@ public class Superheat : MonoBehaviour {
   public RectTransform heatImage;
   public Text touchIt;
   public RectTransform touchItEffect;
-  public PlayerMover player;
   public GameObject afterImagePrefab;
   private List<GameObject> afterImagePool;
   public int afterImageCount = 50;
@@ -106,7 +105,7 @@ public class Superheat : MonoBehaviour {
   }
 
   public void startGame() {
-    GetComponent<MeshFilter>().sharedMesh = player.GetComponent<MeshFilter>().sharedMesh;
+    GetComponent<MeshFilter>().sharedMesh = Player.pl.GetComponent<MeshFilter>().sharedMesh;
 
     for (int i = 0; i < afterImagePool.Count; i++) {
       afterImagePool[i].GetComponent<MeshFilter>().sharedMesh = GetComponent<MeshFilter>().sharedMesh;
@@ -114,7 +113,7 @@ public class Superheat : MonoBehaviour {
   }
 
   void Update() {
-    transform.position = player.transform.position;
+    transform.position = Player.pl.transform.position;
 
     if (superheatRunning) transform.Rotate(direction * Time.deltaTime * rotatingSpeed);
 
@@ -219,7 +218,7 @@ public class Superheat : MonoBehaviour {
 
     addGuage(val);
     if (val >= showHeatWhenLargerThan) {
-      player.showEffect("Heat");
+      Player.pl.showEffect("Heat");
     }
   }
 
@@ -256,7 +255,7 @@ public class Superheat : MonoBehaviour {
 
     DataManager.dm.increment("TotalSuperheats");
 
-    player.startPowerBoost();
+    Player.pl.startPowerBoost();
     isTransforming = true;
     transformStatus = 1;
     superXPos = superImage.anchoredPosition.x;
@@ -265,7 +264,7 @@ public class Superheat : MonoBehaviour {
     GetComponent<Renderer>().enabled = true;
     GetComponent<Collider>().enabled = true;
 
-    player.GetComponent<Rigidbody>().isKinematic = true;
+    Player.pl.GetComponent<Rigidbody>().isKinematic = true;
     powerBoostBackground.startPowerBoost();
 
     StartCoroutine("superHeat");
@@ -299,8 +298,8 @@ public class Superheat : MonoBehaviour {
     yield return new WaitForSeconds(sizeChangeInterval);
     transform.localScale = Vector3.one * bigSize;
 
-    player.GetComponent<Rigidbody>().isKinematic = false;
-    setDir(player.getDirection());
+    Player.pl.GetComponent<Rigidbody>().isKinematic = false;
+    setDir(Player.pl.getDirection());
 
     isTransforming = false;
     superheatRunning = true;
@@ -311,7 +310,7 @@ public class Superheat : MonoBehaviour {
 
   void stopSuperheat() {
     // ptb.show(true);
-    player.stopPowerBoost();
+    Player.pl.stopPowerBoost();
     GetComponent<Renderer>().enabled = false;
     GetComponent<Collider>().enabled = false;
     superheatRunning = false;
@@ -373,9 +372,15 @@ public class Superheat : MonoBehaviour {
   }
 
   void OnTriggerEnter(Collider other) {
+    if (other.tag == "SpaceShipDebris") {
+      TimeManager.time.resetProgress();
+      Destroy(other.gameObject);
+      return;
+    }
+
     ObjectsMover mover = other.GetComponent<ObjectsMover>();
     if (mover == null) return;
-    player.goodPartsEncounter(mover, mover.cubesWhenDestroy(), 0, false);
+    Player.pl.goodPartsEncounter(mover, mover.cubesWhenDestroy(), 0, false);
   }
 
   public bool isOnSuperheat() {

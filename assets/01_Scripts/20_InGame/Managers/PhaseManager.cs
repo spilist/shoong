@@ -5,6 +5,11 @@ using System.Collections;
 public class PhaseManager : MonoBehaviour {
   public static PhaseManager pm;
 
+  public string[] textPerLevel;
+  public int[] cuberNeedsPerLevel;
+  public int[] debrisDistancesPerLevel;
+  public int[] timeLimitPerLevel;
+
   public GoldCubesCount gcCount;
   public IceDebrisManager icm;
   public PhaseMonsterManager pmm;
@@ -34,7 +39,6 @@ public class PhaseManager : MonoBehaviour {
 
   public RectTransform phaseIndicator;
   public Text phaseText;
-  public string[] textPerLevel;
   public float originalPosX = -220;
   public float showPosX = -480;
 
@@ -79,7 +83,7 @@ public class PhaseManager : MonoBehaviour {
       icm.enabled = true;
     } else if (levelName == "Minimon 1") {
       pmm.enabled = true;
-    } else if (levelName == "Blakchole") {
+    } else if (levelName == "Blackhole") {
       blm.enabled = true;
     } else if (levelName == "Meteroid") {
       ntm.enabled = true;

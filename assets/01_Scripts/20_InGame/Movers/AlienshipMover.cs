@@ -88,7 +88,7 @@ public class AlienshipMover : ObjectsMover {
         laser.SetActive(true);
         laser.GetComponent<AlienshipLaserMover>().set(laserWarning.transform.eulerAngles.y, asm, this);
         laserWarning.SetActive(false);
-        shootingStatus = 0;
+        shootingStatus = 1;
       }
     }
   }

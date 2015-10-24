@@ -4,7 +4,6 @@ using System.Collections;
 
 public class SpeedMeter : MonoBehaviour {
   public Superheat superheat;
-  public PlayerMover player;
   public Text current;
   public Text maximum;
 
@@ -13,11 +12,11 @@ public class SpeedMeter : MonoBehaviour {
 
 	void Start () {
     current.text = "0";
-    setMaximum(player.baseSpeed + player.maxBooster());
+    setMaximum(Player.pl.baseSpeed + Player.pl.maxBooster());
 	}
 
 	void Update () {
-    current.text = player.getSpeed().ToString("0");
+    current.text = Player.pl.getSpeed().ToString("0");
 
     if (largerThanMax()) current.color = largerCurrentColor;
     else current.color = origCurrentColor;
@@ -32,8 +31,8 @@ public class SpeedMeter : MonoBehaviour {
   }
 
   public void updateMaximum() {
-    if (player.isOnSuperheat()) setMaximum(superheat.baseSpeed + player.maxBooster());
-    else setMaximum(player.baseSpeed + player.maxBooster());
+    if (Player.pl.isOnSuperheat()) setMaximum(superheat.baseSpeed + Player.pl.maxBooster());
+    else setMaximum(Player.pl.baseSpeed + Player.pl.maxBooster());
   }
 
   bool largerThanMax() {

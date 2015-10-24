@@ -3,7 +3,6 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class PartsCollector : MonoBehaviour {
-	public PlayerMover player;
 	public ParticleSystem collecteffect;
 	public ParticleSystem particleeffect;
   public GameObject howManyCubesGet;
@@ -46,7 +45,7 @@ public class PartsCollector : MonoBehaviour {
   }
 
   float getAngle() {
-    Vector3 dir = player.transform.position - transform.position;
+    Vector3 dir = Player.pl.transform.position - transform.position;
     dir = dir / dir.magnitude;
     Quaternion rotation = Quaternion.LookRotation(dir);
     float targetAngle = rotation.eulerAngles.y;
@@ -56,20 +55,20 @@ public class PartsCollector : MonoBehaviour {
 
   void Update() {
     if (followingUser) {
-      if (player.isUsingDopple()) {
-        if (pastPlayerPos != player.transform.position) {
+      if (Player.pl.isUsingDopple()) {
+        if (pastPlayerPos != Player.pl.transform.position) {
           followUserOnDopple();
-          pastPlayerPos = player.transform.position;
+          pastPlayerPos = Player.pl.transform.position;
         }
       } else {
-        Vector3 heading = new Vector3 (player.transform.position.x - player.getDirection().x * offset - transform.position.x, 0, player.transform.position.z - player.getDirection().z * offset - transform.position.z);
+        Vector3 heading = new Vector3 (Player.pl.transform.position.x - Player.pl.getDirection().x * offset - transform.position.x, 0, Player.pl.transform.position.z - Player.pl.getDirection().z * offset - transform.position.z);
 
         if (heading.magnitude < 5.0f) {
           heading /= heading.magnitude;
-          rb.velocity = heading * player.getSpeed();
+          rb.velocity = heading * Player.pl.getSpeed();
         } else {
           heading /= heading.magnitude;
-          rb.velocity = heading * player.getSpeed() * 1.3f;
+          rb.velocity = heading * Player.pl.getSpeed() * 1.3f;
         }
       }
 
@@ -83,15 +82,20 @@ public class PartsCollector : MonoBehaviour {
     Vector2 randomV = Random.insideUnitCircle;
     randomV.Normalize();
     Vector3 dir = new Vector3(randomV.x, 0, randomV.y);
-    transform.position = new Vector3 (player.transform.position.x - dir.x * offset, 0, player.transform.position.z - dir.z * offset);
+    transform.position = new Vector3 (Player.pl.transform.position.x - dir.x * offset, 0, Player.pl.transform.position.z - dir.z * offset);
     rb.velocity = Vector3.zero;
   }
 
-	public void effect(int count) {
-		if (particleeffect.emissionRate < maxEmission) {
-			particleeffect.emissionRate += 1 * (maxEmission * count / (float) cubeRequired);
-  	}
+	public void effect() {
+		if (!followingUser) return;
+
     collecteffect.Play ();
     GetComponent<AudioSource>().Play();
+  }
+
+  public void addEmission(int count) {
+    if (particleeffect.emissionRate < maxEmission) {
+			particleeffect.emissionRate += 1 * (maxEmission * count / (float) cubeRequired);
+  	}
   }
 }

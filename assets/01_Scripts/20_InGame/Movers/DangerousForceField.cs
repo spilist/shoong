@@ -2,15 +2,9 @@
 using System.Collections;
 
 public class DangerousForceField : MonoBehaviour {
-  PlayerMover player;
-
-	void Start () {
-    player = GameObject.Find("Player").GetComponent<PlayerMover>();
-	}
-
 	void OnTriggerEnter(Collider other) {
     if (other.tag == "Player") {
-      if (!player.isInvincible()) {
+      if (!Player.pl.isInvincible()) {
         ScoreManager.sm.gameOver("Dopple");
         return;
       }

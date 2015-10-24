@@ -2,7 +2,6 @@
 using System.Collections;
 
 public class DangerousEMPField : MonoBehaviour {
-  PlayerMover player;
   DangerousEMPManager dem;
   float maxScale;
   int rotatingSpeed;
@@ -15,8 +14,6 @@ public class DangerousEMPField : MonoBehaviour {
   float stayCount = 0;
 
 	void Awake () {
-    player = GameObject.Find("Player").GetComponent<PlayerMover>();
-
     dem = GameObject.Find("Field Objects").GetComponent<DangerousEMPManager>();
     rotatingSpeed = dem.empRotatingSpeed;
     enlargeDuration = dem.enlargeDuration;
@@ -62,7 +59,7 @@ public class DangerousEMPField : MonoBehaviour {
 
   void OnTriggerEnter(Collider other) {
     if (other.tag == "Player") {
-      if (!player.isInvincible()) {
+      if (!Player.pl.isInvincible()) {
         ScoreManager.sm.gameOver("EMP");
         return;
       }

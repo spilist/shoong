@@ -6,7 +6,6 @@ public class ComboBar : MonoBehaviour {
   public Image inner;
   public Image innerBlinking;
 	public ParticleSystem getEnergy;
-  public PlayerMover player;
 
   public float tintAmount = 0.02f;
 
@@ -61,7 +60,7 @@ public class ComboBar : MonoBehaviour {
       getEnergy.emissionRate += emissionRate;
 
       if (comboCount == 4) {
-        player.showEffect("Charged");
+        Player.pl.showEffect("Charged");
       }
     }
     StopCoroutine("loseByTime");

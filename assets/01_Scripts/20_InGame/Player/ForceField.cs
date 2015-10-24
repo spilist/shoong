@@ -4,7 +4,6 @@ using System.Collections;
 public class ForceField : MonoBehaviour {
   public GameObject energyCube;
   public EMPManager empManager;
-  public PlayerMover player;
 
   public Superheat superheat;
   public GoldCubesCount gcCount;
@@ -39,11 +38,11 @@ public class ForceField : MonoBehaviour {
 
     if (isGolden) {
       GameObject cube = (GameObject) Instantiate(energyCube, other.transform.position, other.transform.rotation);
-      cube.GetComponent<Renderer>().material.SetColor("_TintColor", player.goldenCubeParticleColor);
-      cube.GetComponent<TrailRenderer>().material.SetColor("_TintColor", player.goldenCubeParticleTrailColor);
+      cube.GetComponent<Renderer>().material.SetColor("_TintColor", Player.pl.goldenCubeParticleColor);
+      cube.GetComponent<TrailRenderer>().material.SetColor("_TintColor", Player.pl.goldenCubeParticleTrailColor);
       mover.destroyObject(true, true);
     } else {
-      player.goodPartsEncounter(mover, mover.cubesWhenDestroy(), 0, false);
+      Player.pl.goodPartsEncounter(mover, mover.cubesWhenDestroy(), 0, false);
       DataManager.dm.increment("NumCubesGetByForcefield", mover.cubesWhenDestroy());
     }
 

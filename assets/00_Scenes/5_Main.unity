@@ -253,7 +253,7 @@ RectTransform:
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children: []
   m_Father: {fileID: 1289803596}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -415,10 +415,10 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1289803596}
-  m_RootOrder: 4
-  m_AnchorMin: {x: .5, y: .5}
-  m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 0, y: -214}
+  m_RootOrder: 5
+  m_AnchorMin: {x: .5, y: 0}
+  m_AnchorMax: {x: .5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 86}
   m_SizeDelta: {x: 490.299988, y: 169.960007}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &18300320
@@ -3039,9 +3039,9 @@ Transform:
   m_PrefabParentObject: {fileID: 461702, guid: 6445a758711d444458987bf84e00a78d, type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 91418582}
-  m_LocalRotation: {x: .500000119, y: .5, z: .5, w: .49999994}
+  m_LocalRotation: {x: -.527724504, y: -.540484011, z: .26311484, w: -.60012871}
   m_LocalPosition: {x: 0, y: -0, z: 0}
-  m_LocalScale: {x: 1.10000002, y: 1.10000002, z: 1.10000002}
+  m_LocalScale: {x: 1.20000005, y: 1.20000005, z: 1.20000005}
   m_Children:
   - {fileID: 678200079}
   m_Father: {fileID: 1701025775}
@@ -3096,6 +3096,8 @@ MonoBehaviour:
   blm: {fileID: 1991538108}
   icm: {fileID: 1991538122}
   mtm: {fileID: 0}
+  shakeBase: 10
+  shakeDuring: .5
   boosterSpeedUpAmount: 75
   maxBoosterSpeed: 100
   boosterSpeedDecreaseBase: 60
@@ -3109,7 +3111,7 @@ MonoBehaviour:
   goldenCubeParticleColor: {r: 1, g: .929411769, b: 0, a: .498039216}
   goldenCubeParticleTrailColor: {r: 1, g: .886274517, b: 0, a: .121568628}
   strengthen_during: 6
-  reboundSpeed: 160
+  reboundSpeed: 320
   afterStrengthenDuration: 1
   contactCollider: {fileID: 1298175624}
   playerDopple: {fileID: 146242, guid: c2d782534ed3b4197aa101a7d17d90b9, type: 2}
@@ -3175,7 +3177,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 91418582}
-  m_Mesh: {fileID: 4300034, guid: 06ea95d279c7341edb83769ec8c7baed, type: 3}
+  m_Mesh: {fileID: 4300002, guid: 06ea95d279c7341edb83769ec8c7baed, type: 3}
 --- !u!81 &91418590
 AudioListener:
   m_ObjectHideFlags: 0
@@ -3414,7 +3416,6 @@ MonoBehaviour:
   heatImage: {fileID: 1147100448}
   touchIt: {fileID: 1300313093}
   touchItEffect: {fileID: 892718243}
-  player: {fileID: 91418583}
   afterImagePrefab: {fileID: 197148, guid: 548fc754942dd4391ad89bb54cc0e9c4, type: 2}
   afterImageCount: 50
   afterImageMainColors:
@@ -14099,10 +14100,10 @@ MonoBehaviour:
   gauge: {fileID: 493085440}
   gaugeShell: {fileID: 1480176267}
   gaugeIcon: {fileID: 1683774461}
-  autoDecreaseRate: .0500000007
+  mustDienIn: 15
   getAmountbyCubes: 1
   getRate: 2
-  player: {fileID: 91418583}
+  loseRate: 1
 --- !u!1 &227621890
 GameObject:
   m_ObjectHideFlags: 0
@@ -17180,7 +17181,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &493085439
 RectTransform:
   m_ObjectHideFlags: 0
@@ -17193,10 +17194,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1289803596}
   m_RootOrder: 2
-  m_AnchorMin: {x: .5, y: .5}
-  m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 200}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 197.199997, y: -39}
+  m_SizeDelta: {x: 345.799988, y: 435.600006}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &493085440
 MonoBehaviour:
@@ -17211,14 +17212,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Sprite: {fileID: 21300000, guid: bdf85dca888ad4d4ba1dac19d6721e39, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5a2f9b3027c774118ac63f93f8092e1e, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 0
+  m_FillMethod: 0
+  m_FillAmount: 1
   m_FillClockwise: 0
-  m_FillOrigin: 2
+  m_FillOrigin: 0
 --- !u!222 &493085441
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -22035,7 +22036,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5c86adc302a0406fa2f79b7dc39f507, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 91418583}
   allCharacters: {fileID: 400016, guid: 06ea95d279c7341edb83769ec8c7baed, type: 3}
   characterPrefab: {fileID: 103454, guid: f5fb649f47d1a4dbe94d8c89f4fbe94b, type: 2}
   characterPool: []
@@ -22235,12 +22235,12 @@ GameObject:
   m_Component:
   - 224: {fileID: 580384591}
   m_Layer: 5
-  m_Name: CuberNeedsMoreCube
+  m_Name: CuberNeedsMoreEnergy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &580384591
 RectTransform:
   m_ObjectHideFlags: 0
@@ -24528,6 +24528,67 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 667805690}
+--- !u!1 &668867476
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 668867477}
+  - 222: {fileID: 668867479}
+  - 114: {fileID: 668867478}
+  m_Layer: 10
+  m_Name: StrengthenBar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &668867477
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 668867476}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1289803596}
+  m_RootOrder: 4
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
+  m_AnchoredPosition: {x: 0, y: 51.5}
+  m_SizeDelta: {x: 150, y: 200}
+  m_Pivot: {x: .5, y: .5}
+--- !u!114 &668867478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 668867476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 55f36d0a31f784ec29ea8eb503868822, type: 3}
+  m_Type: 3
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 0
+  m_FillAmount: 0
+  m_FillClockwise: 0
+  m_FillOrigin: 0
+--- !u!222 &668867479
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 668867476}
 --- !u!1 &669072805
 GameObject:
   m_ObjectHideFlags: 0
@@ -26031,7 +26092,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controlMethod: Stick
   handler: {fileID: 0}
-  player: {fileID: 91418583}
   character: {fileID: 0}
 --- !u!1 &685215970
 GameObject:
@@ -30496,7 +30556,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8eaf17df6df8f4450b6402c46e76a39a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 91418583}
   collideRadius: 3
 --- !u!114 &747492154
 MonoBehaviour:
@@ -31366,7 +31425,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controlMethod: Packman
   handler: {fileID: 0}
-  player: {fileID: 0}
   character: {fileID: 0}
 --- !u!1 &784850296
 GameObject:
@@ -34261,6 +34319,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32117b6bc59844119b6e551628235a96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  textPerLevel:
+  - IceDebris
+  - Minimon 1
+  - Blackhole
+  - Meteroid
+  - Bomb
+  - BigBomb
+  - UFO
+  cuberNeedsPerLevel: c8000000fa0000002c0100005e01000090010000c2010000f401000026020000
+  debrisDistancesPerLevel: e8030000e8030000e8030000e8030000e8030000e8030000e8030000e8030000
+  timeLimitPerLevel: 0f0000000f0000000f0000000f0000000f0000000f0000000f0000000f000000
   gcCount: {fileID: 966334536}
   icm: {fileID: 1991538122}
   pmm: {fileID: 1991538127}
@@ -34280,14 +34349,6 @@ MonoBehaviour:
   asm: {fileID: 1991538124}
   phaseIndicator: {fileID: 1406922903}
   phaseText: {fileID: 1367745761}
-  textPerLevel:
-  - IceDebris
-  - Minimon 1
-  - Blackhole
-  - Meteroid
-  - Bomb
-  - BigBomb
-  - UFO
   originalPosX: -220
   showPosX: -480
   showAfter: .5
@@ -34398,7 +34459,7 @@ RectTransform:
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children: []
   m_Father: {fileID: 1289803596}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -34522,7 +34583,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controlMethod: Circle
   handler: {fileID: 0}
-  player: {fileID: 0}
   character: {fileID: 0}
 --- !u!4 &903503708
 Transform:
@@ -34710,12 +34770,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b2a1c6c01ea844e8a42f4c1cbd02792, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spaceShipIndicator: {fileID: 332116613}
-  superheat: {fileID: 98551109}
-  cuberNeedsMore: {fileID: 580384591}
   cuber: {fileID: 1270861830}
-  player: {fileID: 91418583}
-  spaceShipDebris: {fileID: 116456, guid: 017b3d34b4db2a64c876302bfb8973bf, type: 2}
+  inGameUI: {fileID: 2134279969}
+  superheat: {fileID: 98551109}
   increaseSpeed: 5
   cubesCount: {fileID: 589887826}
   cubesHighscoreText: {fileID: 57075064}
@@ -36862,7 +36919,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f71d117628a204ff6aaacf14aa800d56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 91418583}
   getEffect: {fileID: 298288788}
   effectAmountText: {fileID: 256755161}
   moveTo: -50
@@ -37282,19 +37338,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tmm: {fileID: 1991538128}
   timeLimitText: {fileID: 1939494015}
-  phaseStars: {fileID: 155100441}
-  phaseStarPrefab: {fileID: 178956, guid: 04fbb3727378e41e081127391a3b6d69, type: 2}
-  distanceBetweenStars: 50
-  startScale: .100000001
-  largeScale: 1.20000005
-  smallScale: .600000024
-  changeTime: .100000001
-  reqProgressPerPhase: 2c01000090010000f401000058020000bc0200002003000084030000e8030000
+  cuberNeedsMore: {fileID: 580384591}
+  cuber: {fileID: 1270861830}
+  spaceShipIndicator: {fileID: 332116613}
+  spaceShipDebris: {fileID: 116456, guid: 017b3d34b4db2a64c876302bfb8973bf, type: 2}
   progressPerSecond: 10
   progressPerCube: .5
   progressChangeSpeed: 5
-  progressStart: 30
-  progressEnd: 390
   npm: {fileID: 1991538117}
   asm: {fileID: 1991538112}
   sam: {fileID: 1991538121}
@@ -49187,10 +49237,10 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1289803596}
-  m_RootOrder: 5
-  m_AnchorMin: {x: .5, y: .5}
-  m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 0, y: -214}
+  m_RootOrder: 6
+  m_AnchorMin: {x: .5, y: 0}
+  m_AnchorMax: {x: .5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 86}
   m_SizeDelta: {x: 490.299988, y: 169.960007}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1201305542
@@ -49392,7 +49442,7 @@ RectTransform:
   m_Children:
   - {fileID: 1092268070}
   m_Father: {fileID: 1289803596}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -51023,8 +51073,8 @@ GameObject:
   - 114: {fileID: 1270861830}
   - 54: {fileID: 1270861831}
   - 82: {fileID: 1270861832}
-  - 65: {fileID: 1270861833}
   - 96: {fileID: 1270861828}
+  - 65: {fileID: 1270861833}
   m_Layer: 14
   m_Name: CubeCollector
   m_TagString: PartCollector
@@ -51133,13 +51183,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c31ef49bbf66f462f9beaf7b58dd4df0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 91418583}
   collecteffect: {fileID: 155359882}
   particleeffect: {fileID: 544844248}
   howManyCubesGet: {fileID: 108266, guid: 1afee8ce7a54f4af597a4df1a8e26203, type: 2}
   cubesCount: {fileID: 589887826}
   enchanted: {fileID: 2100000, guid: 65857a1546e444799b77fb96563e99e3, type: 2}
-  maxCubesGet: 2000
+  headFollowingSpeed: 150
   maxEmission: 50
   startOffset: 30
   startEmission: 0
@@ -51234,10 +51283,10 @@ BoxCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1270861825}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 5, y: 6, z: 6}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1272507233
 GameObject:
@@ -51672,6 +51721,7 @@ RectTransform:
   - {fileID: 1480176268}
   - {fileID: 493085439}
   - {fileID: 1683774462}
+  - {fileID: 668867477}
   - {fileID: 18300319}
   - {fileID: 1201305541}
   - {fileID: 900916548}
@@ -51873,7 +51923,7 @@ Transform:
   m_GameObject: {fileID: 1298175622}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 15, y: 15, z: 15}
+  m_LocalScale: {x: 18, y: 18, z: 18}
   m_Children: []
   m_Father: {fileID: 1701025775}
   m_RootOrder: 1
@@ -52906,7 +52956,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controlMethod: Stick
   handler: {fileID: 1801634119}
-  player: {fileID: 0}
   character: {fileID: 1236479425}
 --- !u!1 &1357137652
 GameObject:
@@ -56745,7 +56794,6 @@ MonoBehaviour:
   maxSizeAfterBreak: 10
   destroyLargeAfter: 1
   destroySmallAfter: 4
-  player: {fileID: 91418582}
   contactCollider: {fileID: 1298175622}
   barsCanvas: {fileID: 1289803595}
   partsCollector: {fileID: 1270861827}
@@ -59677,7 +59725,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1480176268
 RectTransform:
   m_ObjectHideFlags: 0
@@ -59690,10 +59738,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1289803596}
   m_RootOrder: 1
-  m_AnchorMin: {x: .5, y: .5}
-  m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 200}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 197.199997, y: -39}
+  m_SizeDelta: {x: 345.799988, y: 435.600006}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1480176269
 MonoBehaviour:
@@ -59708,7 +59756,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Sprite: {fileID: 21300000, guid: 29cd3e24d0a1242bb90b1b4656bd14d2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8515bf7955bd04e61bb0b9ebe5f8d95b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -66880,7 +66928,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controlMethod: Packman
   handler: {fileID: 0}
-  player: {fileID: 0}
   character: {fileID: 0}
 --- !u!1 &1607078839
 GameObject:
@@ -70394,7 +70441,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1683774462
 RectTransform:
   m_ObjectHideFlags: 0
@@ -70409,8 +70456,8 @@ RectTransform:
   m_RootOrder: 3
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 200}
+  m_AnchoredPosition: {x: -489.700012, y: 168.699997}
+  m_SizeDelta: {x: 300, y: 300}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1683774463
 MonoBehaviour:
@@ -75241,7 +75288,6 @@ MonoBehaviour:
   controlPanelCharacter_circle_right: {fileID: 269120376}
   controlPanelCharacter_packman_left: {fileID: 1371894130}
   controlPanelCharacter_packman_right: {fileID: 1189346489}
-  player: {fileID: 91418583}
   ptb: {fileID: 2048063065}
   beforeIdle: {fileID: 1366368665}
   spawnManager: {fileID: 1991538111}
@@ -81046,7 +81092,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controlMethod: Circle
   handler: {fileID: 0}
-  player: {fileID: 0}
   character: {fileID: 0}
 --- !u!1 &1881103577
 GameObject:
@@ -86178,8 +86223,8 @@ GameObject:
   - 114: {fileID: 1991538117}
   - 114: {fileID: 1991538112}
   - 114: {fileID: 1991538121}
-  - 114: {fileID: 1991538122}
   - 114: {fileID: 1991538107}
+  - 114: {fileID: 1991538122}
   - 114: {fileID: 1991538115}
   - 114: {fileID: 1991538125}
   - 114: {fileID: 1991538113}
@@ -86246,14 +86291,15 @@ MonoBehaviour:
   cubesByEncounter: 7
   isNegative: 0
   hasEncounterEffect: 0
-  canKillPlayer: 0
   shm: {fileID: 0}
-  player: {fileID: 0}
   instance: {fileID: 0}
   gaugeWhenDestroy: 0
+  loseEnergyWhenEncounter: 0
+  bounceDuration: 0
   hasLevel: 1
   nameForLevel: RainbowDonuts
   level: 0
+  player: {fileID: 0}
   superheat: {fileID: 98551109}
   guageAmount: 7
   chanceBase: 200
@@ -86270,7 +86316,7 @@ MonoBehaviour:
     m_Bits: 8912896
   rainbowRoadPrefab: {fileID: 173076, guid: af846d2fda9ca46229d31f23fc80dd18, type: 2}
   roadPool: []
-  numRoadRidesPerLevel: 020000000400000006000000
+  numRoadRidesPerLevel: 020000000300000005000000
   speedPerRide: 84030000b6030000e80300001a0400004c0400007e040000
   numRoadRides: 0
   nextDonutRadius: 300
@@ -86314,17 +86360,18 @@ MonoBehaviour:
   tumble: 3
   minSpawnInterval: 8
   maxSpawnInterval: 12
-  cubesByEncounter: 7
+  cubesByEncounter: 5
   isNegative: 0
   hasEncounterEffect: 0
-  canKillPlayer: 0
   shm: {fileID: 0}
-  player: {fileID: 0}
   instance: {fileID: 0}
   gaugeWhenDestroy: 0
+  loseEnergyWhenEncounter: 0
+  bounceDuration: 0
   hasLevel: 1
   nameForLevel: ComboParts
   level: 0
+  player: {fileID: 0}
   ptb: {fileID: 2048063065}
   illusionLifeTime: 3
   blinkBeforeDestroy: 1.20000005
@@ -86376,25 +86423,24 @@ MonoBehaviour:
   tumble: 10
   minSpawnInterval: 1
   maxSpawnInterval: 4
-  cubesByEncounter: 30
+  cubesByEncounter: 20
   isNegative: 1
   hasEncounterEffect: 0
-  canKillPlayer: 0
   shm: {fileID: 0}
-  player: {fileID: 0}
   instance: {fileID: 0}
   gaugeWhenDestroy: 30
+  loseEnergyWhenEncounter: 30
+  bounceDuration: .300000012
   hasLevel: 0
   nameForLevel: 
   level: 0
+  player: {fileID: 0}
   meshes: {fileID: 420790, guid: 8853a505e8ec74ae8b1980f30e507d5c, type: 2}
   biggerMeteroid: {fileID: 131752, guid: de76bd63e3eae4154a9433ec3ca2a12d, type: 2}
   biggerPool: []
   biggerMeteroidStrength: 2.5
   biggerMeteroidSpeed: 320
   biggerMeteroidTumble: 20
-  reboundDuring: 1
-  reboundSpeed: 160
   warnPlayerDuring: .5
   spawnRadius: 200
   scatterAmount: 0
@@ -86437,17 +86483,18 @@ MonoBehaviour:
   tumble: 5
   minSpawnInterval: 20
   maxSpawnInterval: 40
-  cubesByEncounter: 50
+  cubesByEncounter: 0
   isNegative: 1
   hasEncounterEffect: 0
-  canKillPlayer: 1
   shm: {fileID: 0}
-  player: {fileID: 0}
   instance: {fileID: 0}
   gaugeWhenDestroy: 0
+  loseEnergyWhenEncounter: 100
+  bounceDuration: 0
   hasLevel: 0
   nameForLevel: 
   level: 0
+  player: {fileID: 0}
   gravity: 100
   gravityToUser: 100
   gravityScale: 10
@@ -86480,17 +86527,18 @@ MonoBehaviour:
   tumble: 5
   minSpawnInterval: 20
   maxSpawnInterval: 60
-  cubesByEncounter: 100
+  cubesByEncounter: 50
   isNegative: 1
   hasEncounterEffect: 1
-  canKillPlayer: 1
   shm: {fileID: 0}
-  player: {fileID: 0}
   instance: {fileID: 0}
   gaugeWhenDestroy: 0
+  loseEnergyWhenEncounter: 30
+  bounceDuration: .150000006
   hasLevel: 1
   nameForLevel: Monster
   level: 0
+  player: {fileID: 0}
   speed_runaway: 60
   speed_weaken: 20
   spawnRadius: 200
@@ -86511,6 +86559,8 @@ MonoBehaviour:
   minimonStartSpeedByPlayer: 160
   minimonTumble: 10
   minimonLifeTime: 4
+  minimonLoseEnergy: 10
+  minimonBounceDuration: .0500000007
   cubesWhenDestroyMinimon: 8
   numsMinimonSpawn: 020000000300000004000000
   numMinimonSpawn: 0
@@ -86549,17 +86599,18 @@ MonoBehaviour:
   tumble: .5
   minSpawnInterval: 8
   maxSpawnInterval: 12
-  cubesByEncounter: 15
+  cubesByEncounter: 10
   isNegative: 0
   hasEncounterEffect: 0
-  canKillPlayer: 0
   shm: {fileID: 0}
-  player: {fileID: 0}
   instance: {fileID: 0}
   gaugeWhenDestroy: 0
+  loseEnergyWhenEncounter: 0
+  bounceDuration: 0
   hasLevel: 1
   nameForLevel: CubeDispenser
   level: 0
+  player: {fileID: 0}
   brokenMeshes:
   - {fileID: 4300002, guid: adeac5a1dbc17406db69c3e813cc95ef, type: 3}
   - {fileID: 4300004, guid: adeac5a1dbc17406db69c3e813cc95ef, type: 3}
@@ -86620,7 +86671,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceSpawnAtStart: 0
-  objAmount: 4
+  objAmount: 5
   objPool: []
   objDestroyEffectPool: []
   objEncounterEffectPool: []
@@ -86630,21 +86681,22 @@ MonoBehaviour:
   objEncounterEffectForPlayer: {fileID: 0}
   strengthenPlayerEffect: {fileID: 0}
   strength: 2
-  speed: 15
+  speed: 20
   tumble: .5
   minSpawnInterval: 0
   maxSpawnInterval: 0
   cubesByEncounter: 15
   isNegative: 1
   hasEncounterEffect: 0
-  canKillPlayer: 1
   shm: {fileID: 0}
-  player: {fileID: 0}
   instance: {fileID: 0}
   gaugeWhenDestroy: 10
+  loseEnergyWhenEncounter: 60
+  bounceDuration: .200000003
   hasLevel: 0
   nameForLevel: 
   level: 0
+  player: {fileID: 0}
   brokenTumble: 30
   minBrokenSpawn: 6
   maxBrokenSpawn: 8
@@ -86686,14 +86738,15 @@ MonoBehaviour:
   cubesByEncounter: 0
   isNegative: 0
   hasEncounterEffect: 1
-  canKillPlayer: 0
   shm: {fileID: 0}
-  player: {fileID: 0}
   instance: {fileID: 0}
   gaugeWhenDestroy: 0
+  loseEnergyWhenEncounter: 0
+  bounceDuration: 0
   hasLevel: 1
   nameForLevel: SpecialParts
   level: 0
+  player: {fileID: 0}
   destroyBonusPerLevel:
   - 0
   - 1
@@ -86741,14 +86794,15 @@ MonoBehaviour:
   cubesByEncounter: 10
   isNegative: 0
   hasEncounterEffect: 0
-  canKillPlayer: 0
   shm: {fileID: 0}
-  player: {fileID: 0}
   instance: {fileID: 0}
   gaugeWhenDestroy: 0
+  loseEnergyWhenEncounter: 0
+  bounceDuration: 0
   hasLevel: 0
   nameForLevel: 
   level: 0
+  player: {fileID: 0}
   gcCount: {fileID: 966334536}
   respawnAfter: 120
   spawnRadius: 210
@@ -86783,14 +86837,15 @@ MonoBehaviour:
   cubesByEncounter: 5
   isNegative: 0
   hasEncounterEffect: 1
-  canKillPlayer: 0
   shm: {fileID: 0}
-  player: {fileID: 0}
   instance: {fileID: 0}
   gaugeWhenDestroy: 0
+  loseEnergyWhenEncounter: 0
+  bounceDuration: 0
   hasLevel: 1
   nameForLevel: SummonParts
   level: 0
+  player: {fileID: 0}
   ptb: {fileID: 2048063065}
   summonedPartPrefab: {fileID: 192090, guid: 16bbe96ae2882b4478d909a3bab22e21, type: 2}
   summonedPartPool: []
@@ -86851,14 +86906,15 @@ MonoBehaviour:
   cubesByEncounter: 5
   isNegative: 0
   hasEncounterEffect: 0
-  canKillPlayer: 0
   shm: {fileID: 0}
-  player: {fileID: 0}
   instance: {fileID: 0}
   gaugeWhenDestroy: 0
+  loseEnergyWhenEncounter: 0
+  bounceDuration: 0
   hasLevel: 0
   nameForLevel: 
   level: 0
+  player: {fileID: 0}
   meshes: {fileID: 469330, guid: ce95c585031f840b0b5cffa6a71612d0, type: 2}
   ptb: {fileID: 2048063065}
   minUnstableSpeed: 10
@@ -86890,17 +86946,18 @@ MonoBehaviour:
   tumble: 5
   minSpawnInterval: 8
   maxSpawnInterval: 12
-  cubesByEncounter: 5
+  cubesByEncounter: 0
   isNegative: 0
   hasEncounterEffect: 1
-  canKillPlayer: 0
   shm: {fileID: 0}
-  player: {fileID: 0}
   instance: {fileID: 0}
   gaugeWhenDestroy: 0
+  loseEnergyWhenEncounter: 0
+  bounceDuration: 0
   hasLevel: 1
   nameForLevel: EMP
   level: 0
+  player: {fileID: 0}
   gcCount: {fileID: 966334536}
   superheat: {fileID: 98551109}
   guageAmount: 0
@@ -86953,14 +87010,15 @@ MonoBehaviour:
   cubesByEncounter: 0
   isNegative: 0
   hasEncounterEffect: 1
-  canKillPlayer: 0
   shm: {fileID: 0}
-  player: {fileID: 0}
   instance: {fileID: 0}
   gaugeWhenDestroy: 0
+  loseEnergyWhenEncounter: 0
+  bounceDuration: 0
   hasLevel: 1
   nameForLevel: Transformer
   level: 0
+  player: {fileID: 0}
   subRatio: 20
   mainRatio: 5
   areaRadius: 160
@@ -87000,14 +87058,15 @@ MonoBehaviour:
   cubesByEncounter: 0
   isNegative: 0
   hasEncounterEffect: 1
-  canKillPlayer: 0
   shm: {fileID: 0}
-  player: {fileID: 0}
   instance: {fileID: 0}
   gaugeWhenDestroy: 0
+  loseEnergyWhenEncounter: 30
+  bounceDuration: 0
   hasLevel: 1
   nameForLevel: Dopple
   level: 0
+  player: {fileID: 0}
   getEnergy: {fileID: 317572741}
   energyCube: {fileID: 178344, guid: b185d52f68bf5499e81f948bbbf1bd8c, type: 2}
   forceFieldPrefab: {fileID: 175312, guid: c461f9df261eb41ff961769c46f81139, type: 2}
@@ -87040,7 +87099,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceSpawnAtStart: 0
-  objAmount: 6
+  objAmount: 7
   objPool: []
   objDestroyEffectPool: []
   objEncounterEffectPool: []
@@ -87050,21 +87109,22 @@ MonoBehaviour:
   objEncounterEffectForPlayer: {fileID: 0}
   strengthenPlayerEffect: {fileID: 0}
   strength: 2
-  speed: 25
+  speed: 35
   tumble: 2
   minSpawnInterval: 0
   maxSpawnInterval: 0
   cubesByEncounter: 10
   isNegative: 1
   hasEncounterEffect: 0
-  canKillPlayer: 1
   shm: {fileID: 0}
-  player: {fileID: 0}
   instance: {fileID: 0}
   gaugeWhenDestroy: 10
+  loseEnergyWhenEncounter: 40
+  bounceDuration: .150000006
   hasLevel: 0
   nameForLevel: 
   level: 0
+  player: {fileID: 0}
   brokenTumble: 30
   minBrokenSpawn: 6
   maxBrokenSpawn: 8
@@ -87099,21 +87159,22 @@ MonoBehaviour:
   objEncounterEffectForPlayer: {fileID: 0}
   strengthenPlayerEffect: {fileID: 1248557235}
   strength: .899999976
-  speed: 90
+  speed: 150
   tumble: 10
-  minSpawnInterval: 8
-  maxSpawnInterval: 12
+  minSpawnInterval: 1
+  maxSpawnInterval: 4
   cubesByEncounter: 0
   isNegative: 1
   hasEncounterEffect: 0
-  canKillPlayer: 0
   shm: {fileID: 0}
-  player: {fileID: 0}
   instance: {fileID: 0}
   gaugeWhenDestroy: 0
+  loseEnergyWhenEncounter: 10
+  bounceDuration: 0
   hasLevel: 0
   nameForLevel: 
   level: 0
+  player: {fileID: 0}
   spawnRadius: 200
   playerSpeedReduceTo: .200000003
   speedRestoreDuring: 3
@@ -87143,17 +87204,18 @@ MonoBehaviour:
   tumble: 10
   minSpawnInterval: 8
   maxSpawnInterval: 12
-  cubesByEncounter: 10
+  cubesByEncounter: 0
   isNegative: 1
   hasEncounterEffect: 0
-  canKillPlayer: 1
   shm: {fileID: 0}
-  player: {fileID: 0}
   instance: {fileID: 0}
   gaugeWhenDestroy: 0
+  loseEnergyWhenEncounter: 30
+  bounceDuration: .300000012
   hasLevel: 0
   nameForLevel: 
   level: 0
+  player: {fileID: 0}
   particleDestroyByPlayer: {fileID: 190966, guid: 06a9d910a6ef7477eb37b2d7cddcfa88,
     type: 2}
   particleDestroyByPlayerPool: []
@@ -87167,6 +87229,8 @@ MonoBehaviour:
   stayDuration: 1
   shrinkDuration: .100000001
   enlargeScale: 2
+  loseEnergyBigger: 50
+  bounceDuringBigger: .5
 --- !u!114 &1991538124
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87196,14 +87260,15 @@ MonoBehaviour:
   cubesByEncounter: 50
   isNegative: 1
   hasEncounterEffect: 0
-  canKillPlayer: 1
   shm: {fileID: 0}
-  player: {fileID: 0}
   instance: {fileID: 0}
   gaugeWhenDestroy: 0
+  loseEnergyWhenEncounter: 30
+  bounceDuration: .150000006
   hasLevel: 0
   nameForLevel: 
   level: 0
+  player: {fileID: 0}
   laserPrefab: {fileID: 140848, guid: ee9b8d5623d8a4cb2a1aed0140e7d797, type: 2}
   laserWarningLinePrefab: {fileID: 149728, guid: 1a32e5133a7bd4c099bbab27e21edf87,
     type: 2}
@@ -87216,6 +87281,7 @@ MonoBehaviour:
   speedIncreasePer: 3
   shootLaserPer: 8
   chargeTime: .600000024
+  laserLoseEnergy: 70
   laserRadius: 20
   laserLength: 500
   laserShootingDuration: .100000001
@@ -87251,14 +87317,15 @@ MonoBehaviour:
   cubesByEncounter: 0
   isNegative: 0
   hasEncounterEffect: 0
-  canKillPlayer: 0
   shm: {fileID: 0}
-  player: {fileID: 0}
   instance: {fileID: 0}
   gaugeWhenDestroy: 0
+  loseEnergyWhenEncounter: 0
+  bounceDuration: 0
   hasLevel: 0
   nameForLevel: 
   level: 0
+  player: {fileID: 0}
   superheat: {fileID: 98551109}
   guageForEncounter: 100
 --- !u!114 &1991538126
@@ -87290,14 +87357,15 @@ MonoBehaviour:
   cubesByEncounter: 0
   isNegative: 0
   hasEncounterEffect: 1
-  canKillPlayer: 0
   shm: {fileID: 0}
-  player: {fileID: 0}
   instance: {fileID: 0}
   gaugeWhenDestroy: 0
+  loseEnergyWhenEncounter: 0
+  bounceDuration: 0
   hasLevel: 1
   nameForLevel: Magnet
   level: 0
+  player: {fileID: 0}
   power: 70
   radiusPerLevel: 5a00000082000000b4000000
   lifetimePerLevel:
@@ -87316,7 +87384,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceSpawnAtStart: 0
-  objAmount: 10
+  objAmount: 1
   objPool: []
   objDestroyEffectPool: []
   objEncounterEffectPool: []
@@ -87330,28 +87398,31 @@ MonoBehaviour:
   tumble: 10
   minSpawnInterval: 8
   maxSpawnInterval: 8
-  cubesByEncounter: 0
+  cubesByEncounter: 30
   isNegative: 1
   hasEncounterEffect: 0
-  canKillPlayer: 1
   shm: {fileID: 0}
-  player: {fileID: 0}
   instance: {fileID: 0}
   gaugeWhenDestroy: 0
+  loseEnergyWhenEncounter: 30
+  bounceDuration: .150000006
   hasLevel: 0
   nameForLevel: 
   level: 0
-  startSpawnAmount: 2
-  speed_runaway: 60
+  player: {fileID: 0}
+  slowStayDuration: 1
+  increaseSpeedDuration: 2
+  increaseSpeedUntil: 180
   detectDistance: 200
   spawnRadius: 200
+  offScreenSpeedScale: .800000012
 --- !u!114 &1991538128
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1991538103}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2fab49da668d54f9b9cd0790611de454, type: 3}
   m_Name: 
@@ -87374,14 +87445,15 @@ MonoBehaviour:
   cubesByEncounter: 0
   isNegative: 1
   hasEncounterEffect: 0
-  canKillPlayer: 1
   shm: {fileID: 0}
-  player: {fileID: 0}
   instance: {fileID: 0}
   gaugeWhenDestroy: 0
+  loseEnergyWhenEncounter: 100
+  bounceDuration: 0
   hasLevel: 0
   nameForLevel: 
   level: 0
+  player: {fileID: 0}
   spawnRadius: 250
   speedScale: 1.10000002
 --- !u!1 &1997391145
@@ -89565,7 +89637,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   energyCube: {fileID: 178344, guid: b185d52f68bf5499e81f948bbbf1bd8c, type: 2}
   empManager: {fileID: 1991538118}
-  player: {fileID: 91418583}
   superheat: {fileID: 98551109}
   gcCount: {fileID: 966334536}
 --- !u!1 &2098232689

@@ -15,4 +15,8 @@ public class IceDebrisMover : ObjectsMover {
     if (player.isInvincible()) return false;
     else return true;
   }
+
+  override protected void afterCollidePlayer() {
+    destroyObject();
+  }
 }
