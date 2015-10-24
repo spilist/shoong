@@ -14,17 +14,21 @@ public class Panel : MonoBehaviour {
   }
 
   void Update() {
+    if (Player.pl.uncontrollable()) return;
+
     if (stickMoving && Input.touchCount == 1) {
       handler.setPlayerDirection(character);
     }
   }
 
   void OnPointerDown() {
+    if (Player.pl.uncontrollable()) return;
+
     if (tag == "StickPanel_movement") {
       stickMoving = true;
     }
 
-    if (tag == "StickPanel_booster") {
+    if (Input.touchCount > 1 && tag == "StickPanel_booster") {
       Player.pl.shootBooster();
     }
   }

@@ -95,7 +95,7 @@ public class PartsCollector : MonoBehaviour {
 
   public void addEmission(int count) {
     if (particleeffect.emissionRate < maxEmission) {
-			particleeffect.emissionRate += 1 * (maxEmission * count / (float) cubeRequired);
+			// particleeffect.emissionRate += 1 * (maxEmission * count / (float) cubeRequired);
   	}
   }
 }

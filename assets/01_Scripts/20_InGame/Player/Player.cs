@@ -174,20 +174,20 @@ public class Player : MonoBehaviour {
 	void OnTriggerEnter(Collider other) {
     string tag = other.tag;
 
-    if (tag == "SpaceShipDebris") {
-      TimeManager.time.resetProgress();
-      Destroy(other.gameObject);
-      return;
-    }
+    // if (tag == "SpaceShipDebris") {
+    //   TimeManager.time.resetProgress();
+    //   Destroy(other.gameObject);
+    //   return;
+    // }
 
     ObjectsMover mover = other.gameObject.GetComponent<ObjectsMover>();
 
     if (mover == null) return;
 
     if (mover.dangerous()) {
-      if (mover.tag == "TimeMonster") {
-        ScoreManager.sm.gameOver("TimeMonster");
-      }
+      // if (mover.tag == "TimeMonster") {
+      //   ScoreManager.sm.gameOver("TimeMonster");
+      // }
       // mover.encounterPlayer();
       // if (mover.canKillPlayer()) {
       //   ScoreManager.sm.gameOver(tag);
@@ -498,37 +498,41 @@ public class Player : MonoBehaviour {
     effect.addGuage(scale);
   }
 
-  public void effectedBy(string objTag) {
+  public void effectedBy(string objTag, bool effectOn = true) {
     if (usingPowerBoost) {
       changeManager.changeCharacterToOriginal();
       return;
     }
 
     if (objTag == "SpecialPart") {
-      unstoppable = true;
+      unstoppable = effectOn;
+      if (!effectOn) afterStrengthenStart();
     } else if (objTag == "Magnet") {
-      usingMagnet = true;
+      usingMagnet = effectOn;
     } else if (objTag == "Monster") {
-      ridingMonster = true;
+      ridingMonster = effectOn;
       minimonCounter = 0;
+      EnergyManager.em.getFullHealth();
+      if (!effectOn) afterStrengthenStart();
     } else if (objTag == "EMP") {
-      usingEMP = true;
-      rb.isKinematic = true;
+      usingEMP = effectOn;
+      rb.isKinematic = effectOn;
       return;
     } else if (objTag == "Dopple") {
-      usingDopple = true;
-      contactCollider.enabled = false;
+      usingDopple = effectOn;
+      contactCollider.enabled = !effectOn;
+      if (!effectOn) afterStrengthenStart();
     } else if (objTag == "Transformer") {
-      usingTransformer = true;
+      usingTransformer = effectOn;
     } else if (objTag == "IceDebris") {
-      iced = true;
+      iced = effectOn;
       icedDuration = icm.speedRestoreDuring;
       icedSpeedFactor = icm.playerSpeedReduceTo;
       return;
     }
 
-    StopCoroutine("strengthen");
-    StartCoroutine("strengthen");
+    // StopCoroutine("strengthen");
+    // StartCoroutine("strengthen");
   }
 
 
@@ -555,7 +559,7 @@ public class Player : MonoBehaviour {
 
     if (unstoppable) {
       unstoppable = false;
-      spawnManager.runManager("SpecialParts");
+      // spawnManager.runManager("SpecialParts");
       afterStrengthenStart();
     }
 
@@ -570,7 +574,7 @@ public class Player : MonoBehaviour {
 
     if (usingMagnet) {
       usingMagnet = false;
-      spawnManager.runManager("Magnet");
+      // spawnManager.runManager("Magnet");
     }
 
     if (ridingMonster) {
@@ -670,7 +674,7 @@ public class Player : MonoBehaviour {
   }
 
   public bool uncontrollable() {
-    return isRebounding() || isUsingRainbow() || usingEMP || bouncing;
+    return isRebounding() || isUsingRainbow() || usingEMP || bouncing || bouncingByDispenser;
   }
 
   void Update() {

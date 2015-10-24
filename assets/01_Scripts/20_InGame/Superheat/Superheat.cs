@@ -372,11 +372,11 @@ public class Superheat : MonoBehaviour {
   }
 
   void OnTriggerEnter(Collider other) {
-    if (other.tag == "SpaceShipDebris") {
-      TimeManager.time.resetProgress();
-      Destroy(other.gameObject);
-      return;
-    }
+    // if (other.tag == "SpaceShipDebris") {
+    //   TimeManager.time.resetProgress();
+    //   Destroy(other.gameObject);
+    //   return;
+    // }
 
     ObjectsMover mover = other.GetComponent<ObjectsMover>();
     if (mover == null) return;

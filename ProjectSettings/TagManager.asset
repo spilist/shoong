@@ -78,6 +78,7 @@ TagManager:
   - IceDebris
   - SpaceShipDebris
   - TimeMonster
+  - SkillButton
   layers:
   - Default
   - TransparentFX

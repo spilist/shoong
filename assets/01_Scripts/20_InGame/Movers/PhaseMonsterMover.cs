@@ -12,8 +12,6 @@ public class PhaseMonsterMover : ObjectsMover {
   private int detectDistance;
   private float offScreenSpeedScale;
 
-  private int status = 0;
-
   private float stayCount = 0;
 
 	override public string getManager() {
@@ -34,7 +32,6 @@ public class PhaseMonsterMover : ObjectsMover {
   }
 
   protected override void afterEnable() {
-    status = 1;
     stayCount = 0;
   }
 
