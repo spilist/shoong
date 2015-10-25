@@ -22,10 +22,12 @@ public class CubeManager : MonoBehaviour {
   public List<GameObject> bonusCubePool;
   public List<GameObject> cubeOnSuperheatPool;
   public int cubeAmount = 20;
+  private float bonusRate;
 
   void Awake() {
     cm = this;
     cubesCount.text = "0";
+    bonusRate = 1;
   }
 
   void Start() {
@@ -67,6 +69,7 @@ public class CubeManager : MonoBehaviour {
   }
 
   public void addCount(int cubesGet, int bonus = 0) {
+    cubesGet = (int)Mathf.Round(cubesGet * bonusRate);
     totalCount += cubesGet + bonus;
 
     if (superheat.isOnSuperheat()) {
@@ -93,6 +96,14 @@ public class CubeManager : MonoBehaviour {
 
   public int getCount() {
     return totalCount;
+  }
+
+  public void moreCubes(int val) {
+    bonusRate *= (100 + val) / 100f;
+  }
+
+  public void resetCubeAbility() {
+    bonusRate = 1;
   }
 
   void Update() {

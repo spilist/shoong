@@ -111,7 +111,7 @@ public class ObjectsMover : MonoBehaviour {
       if (ScoreManager.sm.isGameOver()) return;
       Vector3 heading =  Player.pl.transform.position - transform.position;
       heading /= heading.magnitude;
-      rb.velocity = heading * Player.pl.getSpeed() * 1.5f;
+      rb.velocity = heading * (Player.pl.baseSpeed + Player.pl.getSpeed());
     } else if (isInsideBlackhole) {
       rb.velocity = headingToBlackhole * gravity;
       shrinkedScale = Mathf.MoveTowards(shrinkedScale, 0f, Time.deltaTime * originalScale);

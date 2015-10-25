@@ -61,6 +61,10 @@ public class PhaseMonsterMover : ObjectsMover {
     else return true;
   }
 
+  override protected void afterCollidePlayer() {
+    destroyObject();
+  }
+
   override protected void afterEncounter() {
     pmm.run();
   }

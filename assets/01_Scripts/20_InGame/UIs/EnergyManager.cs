@@ -17,10 +17,12 @@ public class EnergyManager : MonoBehaviour {
   private bool isChanging = false;
   private bool isChangingRest = false;
 
-  public float mustDienIn = 15;
+  public float mustDieIn = 15;
+  private float originalDieIn;
   public int getAmountbyCubes = 10;
   public float getRate = 2f;
   public float loseRate = 1;
+  private float lessDamageRate = 1;
 
   private Color color_healthy;
   private Color color_danger;
@@ -30,6 +32,7 @@ public class EnergyManager : MonoBehaviour {
     em = this;
     color_healthy = gauge.color;
     color_danger = new Color(1, 0, 0, color_healthy.a);
+    originalDieIn = mustDieIn;
   }
 
   void Update () {
@@ -80,7 +83,20 @@ public class EnergyManager : MonoBehaviour {
   void autoDecrease() {
     if (Player.pl.isUsingRainbow() || Player.pl.isUsingEMP() || Player.pl.isOnSuperheat()) return;
 
-    gauge.fillAmount = Mathf.MoveTowards(gauge.fillAmount, 0, Time.deltaTime / mustDienIn);
+    gauge.fillAmount = Mathf.MoveTowards(gauge.fillAmount, 0, Time.deltaTime / mustDieIn);
+  }
+
+  public void moreEnergyEfficiency(int val) {
+    mustDieIn *= (100 + val) / 100f;
+  }
+
+  public void lessDamage(int val) {
+    lessDamageRate *= (100 - val) / 100f;
+  }
+
+  public void resetEnergyAbility() {
+    mustDieIn = originalDieIn;
+    lessDamageRate = 1;
   }
 
   void change() {
@@ -92,7 +108,7 @@ public class EnergyManager : MonoBehaviour {
     }
   }
 
-  void changeHealth (int amount, float rate) {
+  void changeHealth (float amount, float rate) {
     if (!energySystemOn) return;
 
     if (isChanging) {
@@ -121,7 +137,7 @@ public class EnergyManager : MonoBehaviour {
   }
 
   public void loseEnergy(int amount, string tag) {
-    changeHealth(-amount, loseRate * amount);
+    changeHealth(-amount * lessDamageRate, loseRate * amount * lessDamageRate);
     lastReason = tag;
   }
 

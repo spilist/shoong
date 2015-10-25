@@ -46,7 +46,8 @@ public class Superheat : MonoBehaviour {
   public float middleSize = 3;
   public float bigSize = 6.5f;
   private bool isTransforming = false;
-  public int boostDuration = 8;
+  public float boostDuration = 8;
+  private float originalBoostDuration;
 
   public float generatePer = 0.5f;
   public float afterImageDuration = 1;
@@ -83,13 +84,19 @@ public class Superheat : MonoBehaviour {
   private float targetBonusGuage;
   public float bonusGuageSpeedStandard = 400;
 
-  public float maxGuage = 1000;
+  public float maxGuage = 1000f;
+  private float originalMaxGuage;
   public float guagePerCube = 0.5f;
   public float guageSpeedStandard = 200;
   private float targetGuage;
   public int showHeatWhenLargerThan = 100;
 
-	void Start() {
+	void Awake() {
+    originalMaxGuage = maxGuage;
+    originalBoostDuration = boostDuration;
+  }
+
+  void Start() {
     superheatParticle = transform.Find("Particle").GetComponent<ParticleSystem>();
 
     guageColor = guage.color;
@@ -393,5 +400,18 @@ public class Superheat : MonoBehaviour {
 
   public bool canGetBonus() {
     return transformStatus == 2;
+  }
+
+  public void fasterSuperheat(int val) {
+    maxGuage *= (100 - val) / 100f;
+  }
+
+  public void longerSuperheat(int val) {
+    boostDuration *= (100 + val) / 100f;
+  }
+
+  public void resetSuperheatAbility() {
+    maxGuage = originalMaxGuage;
+    boostDuration = originalBoostDuration;
   }
 }

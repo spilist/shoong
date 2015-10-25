@@ -2,7 +2,12 @@
 using System.Collections;
 
 public class CharacterChangeManager : MonoBehaviour {
+  public Superheat superheat;
+  public Transform characters;
   public DoppleManager dpm;
+  public Skill_Magnet skill_magnet;
+  public Skill_Monster skill_monster;
+  public Skill_Metal skill_metal;
 
   public Mesh monsterMesh;
   public Material monsterMaterial;
@@ -131,5 +136,21 @@ public class CharacterChangeManager : MonoBehaviour {
     booster.transform.localRotation = Quaternion.identity;
 
     originalMesh = mFilter.sharedMesh;
+
+    resetAllAbility();
+
+    foreach (CharacterAbility ability in characters.Find(characterName).GetComponents<CharacterAbility>()) {
+      ability.apply();
+    }
+  }
+
+  void resetAllAbility() {
+    EnergyManager.em.resetEnergyAbility();
+    Player.pl.resetAbility();
+    superheat.resetSuperheatAbility();
+    CubeManager.cm.resetCubeAbility();
+    skill_magnet.resetAbility();
+    skill_monster.resetAbility();
+    skill_metal.resetAbility();
   }
 }

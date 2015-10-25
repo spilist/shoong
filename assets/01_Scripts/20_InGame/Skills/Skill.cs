@@ -8,12 +8,32 @@ public class Skill : MonoBehaviour {
   public float duration;
   public float coolTime;
   public int level;
+  private float originalDuration;
+  private float originalCoolTime;
 
-  void OnEnable() {
+  void Awake() {
+    originalDuration = duration;
+    originalCoolTime = coolTime;
+  }
+
+  void Start() {
     level = DataManager.dm.getInt(name + "Level") - 1;
     if (level < 0) level = 0;
     adjustForLevel(level);
     afterEnable();
+  }
+
+  public void moreDuration(int val) {
+    duration += val;
+  }
+
+  public void lessCoolTime(int val) {
+    coolTime -= val;
+  }
+
+  virtual public void resetAbility() {
+    duration = originalDuration;
+    coolTime = originalCoolTime;
   }
 
   public GameObject getPooledObj(List<GameObject> list, GameObject prefab, Vector3 pos) {
@@ -41,7 +61,7 @@ public class Skill : MonoBehaviour {
 
   public void activate(bool val) {
     skillObject.SetActive(val);
-    useSkillEffect.transform.rotation = Quaternion.identity;
+    // useSkillEffect.transform.rotation = Quaternion.identity;
     useSkillEffect.SetActive(val);
     Player.pl.effectedBy(name, val);
     afterActivate(val);

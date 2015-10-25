@@ -6,6 +6,9 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour {
   public static Player pl;
   public float baseSpeed = 80;
+  private float originalBaseSpeed;
+  private float speedScale;
+  private string moreSpeedCondition;
 
   public Transform effects;
   public SpawnManager spawnManager;
@@ -91,6 +94,7 @@ public class Player : MonoBehaviour {
 
 	void Awake() {
     pl = this;
+    originalBaseSpeed = baseSpeed;
   }
 
   void Start () {
@@ -179,6 +183,11 @@ public class Player : MonoBehaviour {
 
     if (ridingMonster && tag != "MiniMonster" && tag != "RainbowDonut") {
       generateMinimon(mover);
+      return;
+    }
+
+    if (tag == "IceDebris" || tag == "PhaseMonster") {
+      mover.destroyObject();
       return;
     }
 
@@ -490,6 +499,10 @@ public class Player : MonoBehaviour {
 
     if (objTag == "Metal") {
       unstoppable = effectOn;
+      if (moreSpeedCondition == "Metal") {
+        if (effectOn) baseSpeed *= speedScale;
+        else baseSpeed /= speedScale;
+      }
     } else if (objTag == "Magnet") {
       usingMagnet = effectOn;
     } else if (objTag == "Monster") {
@@ -704,5 +717,20 @@ public class Player : MonoBehaviour {
 
   public bool canBeMagnetized() {
     return !(isRebounding() || isUsingRainbow() || changeManager.isTeleporting());
+  }
+
+  public void fasterSpeed(int val) {
+    baseSpeed *= (100 + val) / 100f;
+  }
+
+  public void moreSpeedOn(int val, string condition) {
+    speedScale *= (100 + val) / 100f;
+    moreSpeedCondition = condition;
+  }
+
+  public void resetAbility() {
+    baseSpeed = originalBaseSpeed;
+    speedScale = 1;
+    moreSpeedCondition = "";
   }
 }

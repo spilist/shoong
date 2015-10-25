@@ -24,7 +24,6 @@ public class SkillManager : MonoBehaviour {
   }
 
   void equip(Skill skill, int slotNumber) {
-    skill.gameObject.SetActive(true);
     SkillButton btn = slots[slotNumber];
     btn.setSkill(skill);
   }
