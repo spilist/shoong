@@ -150,7 +150,6 @@ public class ScoreManager : MonoBehaviour {
     foreach (Transform tr in partsCollector.transform) {
       tr.gameObject.SetActive(false);
     }
-    Player.pl.stopStrengthen();
     barsCanvas.SetActive(false);
     contactCollider.SetActive(false);
 

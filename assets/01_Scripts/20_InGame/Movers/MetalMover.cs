@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SpecialPartMover : ObjectsMover {
+public class MetalMover : ObjectsMover {
   override protected void initializeRest() {
   }
 
   override public string getManager() {
-    return "SpecialPartsManager";
+    return "MetalManager";
   }
 
   override public int cubesWhenDestroy() {

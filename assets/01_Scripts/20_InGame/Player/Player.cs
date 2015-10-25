@@ -53,7 +53,6 @@ public class Player : MonoBehaviour {
   public Color goldenCubeParticleColor;
   public Color goldenCubeParticleTrailColor;
 
-  public int strengthen_during = 8;
   public float reboundSpeed = 300;
 
   private bool unstoppable = false;
@@ -64,7 +63,7 @@ public class Player : MonoBehaviour {
   private bool usingMagnet = false;
   private bool usingTransformer = false;
   private bool iced = false;
-  private float originalScale;
+  public float originalScale;
   private int minimonCounter = 0;
 
   private bool isRotatingByRainbow = false;
@@ -174,28 +173,9 @@ public class Player : MonoBehaviour {
 	void OnTriggerEnter(Collider other) {
     string tag = other.tag;
 
-    // if (tag == "SpaceShipDebris") {
-    //   TimeManager.time.resetProgress();
-    //   Destroy(other.gameObject);
-    //   return;
-    // }
-
     ObjectsMover mover = other.gameObject.GetComponent<ObjectsMover>();
 
-    if (mover == null) return;
-
-    if (mover.dangerous()) {
-      // if (mover.tag == "TimeMonster") {
-      //   ScoreManager.sm.gameOver("TimeMonster");
-      // }
-      // mover.encounterPlayer();
-      // if (mover.canKillPlayer()) {
-      //   ScoreManager.sm.gameOver(tag);
-      // } else {
-      //   mover.encounterPlayer();
-      // }
-      return;
-    }
+    if (mover == null || mover.dangerous()) return;
 
     if (ridingMonster && tag != "MiniMonster" && tag != "RainbowDonut") {
       generateMinimon(mover);
@@ -396,6 +376,11 @@ public class Player : MonoBehaviour {
   }
 
   public void shootBooster(){
+    if (usingDopple) {
+      teleport(transform.position + direction * dpm.blinkDistance);
+      return;
+    }
+
     if (usingJetpack) {
       DataManager.dm.increment("NumBoostersWithJetpack");
     }
@@ -436,7 +421,6 @@ public class Player : MonoBehaviour {
     }
     iced = false;
     icm.strengthenPlayerEffect.SetActive(false);
-    stopStrengthen();
   }
 
   public void stopPowerBoost() {
@@ -504,94 +488,25 @@ public class Player : MonoBehaviour {
       return;
     }
 
-    if (objTag == "SpecialPart") {
+    if (objTag == "Metal") {
       unstoppable = effectOn;
-      if (!effectOn) afterStrengthenStart();
     } else if (objTag == "Magnet") {
       usingMagnet = effectOn;
     } else if (objTag == "Monster") {
       ridingMonster = effectOn;
       minimonCounter = 0;
-      EnergyManager.em.getFullHealth();
-      if (!effectOn) afterStrengthenStart();
     } else if (objTag == "EMP") {
       usingEMP = effectOn;
       rb.isKinematic = effectOn;
-      return;
     } else if (objTag == "Dopple") {
       usingDopple = effectOn;
       contactCollider.enabled = !effectOn;
-      if (!effectOn) afterStrengthenStart();
     } else if (objTag == "Transformer") {
       usingTransformer = effectOn;
     } else if (objTag == "IceDebris") {
       iced = effectOn;
       icedDuration = icm.speedRestoreDuring;
       icedSpeedFactor = icm.playerSpeedReduceTo;
-      return;
-    }
-
-    // StopCoroutine("strengthen");
-    // StartCoroutine("strengthen");
-  }
-
-
-  public IEnumerator strengthen() {
-    if (ScoreManager.sm.isGameOver()) yield break;
-
-    int effectDuration;
-    if (reboundingByBlackhole) {
-      effectDuration = blm.reboundDuring;
-    } else {
-      effectDuration = strengthen_during;
-    }
-
-    yield return new WaitForSeconds(effectDuration);
-
-    stopStrengthen();
-  }
-
-  public void stopStrengthen() {
-    if (usingTransformer) {
-      usingTransformer = false;
-      spawnManager.runManager("Transformer");
-    }
-
-    if (unstoppable) {
-      unstoppable = false;
-      // spawnManager.runManager("SpecialParts");
-      afterStrengthenStart();
-    }
-
-    if (reboundingByBlackhole) {
-      reboundingByBlackhole = false;
-      if (isRidingRainbowRoad) {
-        isRidingRainbowRoad = false;
-      }
-      Camera.main.GetComponent<CameraMover>().stopShake();
-      afterStrengthenStart();
-    }
-
-    if (usingMagnet) {
-      usingMagnet = false;
-      // spawnManager.runManager("Magnet");
-    }
-
-    if (ridingMonster) {
-      ridingMonster = false;
-      monm.stopRiding();
-      transform.localScale = originalScale * Vector3.one;
-      spawnManager.runManager("Monster");
-
-      afterStrengthenStart();
-    }
-
-    if (usingDopple) {
-      usingDopple = false;
-      if (!trapped) contactCollider.enabled = true;
-      Camera.main.GetComponent<CameraMover>().setSlowly(false);
-      spawnManager.runManager("Dopple");
-      afterStrengthenStart();
     }
   }
 
@@ -603,9 +518,7 @@ public class Player : MonoBehaviour {
     Camera.main.GetComponent<CameraMover>().shakeUntilStop(blm.shakeAmount);
     processCollision(collision);
     reboundingByBlackhole = true;
-
-    StopCoroutine("strengthen");
-    StartCoroutine("strengthen");
+    bounceDuration = blm.reboundDuring;
   }
 
   public void afterStrengthenStart() {
@@ -618,6 +531,10 @@ public class Player : MonoBehaviour {
 
   public bool isAfterStrengthen() {
     return afterStrengthen;
+  }
+
+  bool isBouncing() {
+    return bouncing || bouncingByDispenser || reboundingByBlackhole;
   }
 
   public bool isUsingJetpack() {
@@ -692,19 +609,20 @@ public class Player : MonoBehaviour {
       }
     }
 
-    if (bouncingByDispenser) {
+    if (isBouncing()) {
       if (bounceDuration > 0) {
-        bounceDuration -= Time.deltaTime;
+          bounceDuration -= Time.deltaTime;
       } else {
-        bouncingByDispenser = false;
-      }
-    }
-
-    if (bouncing) {
-      if (bounceDuration > 0) {
-        bounceDuration -= Time.deltaTime;
-      } else {
-        bouncing = false;
+        if (reboundingByBlackhole) {
+          reboundingByBlackhole = false;
+          if (isRidingRainbowRoad) isRidingRainbowRoad = false;
+          Camera.main.GetComponent<CameraMover>().stopShake();
+          afterStrengthenStart();
+        } else if (bouncingByDispenser) {
+          bouncingByDispenser = false;
+        } else if (bouncing) {
+          bouncing = false;
+        }
       }
     }
 
@@ -747,7 +665,7 @@ public class Player : MonoBehaviour {
     DataManager.dm.increment("TotalNumUseObjects");
 
     if (tag == "Jetpack") DataManager.dm.increment("NumUseJetpack");
-    else if (tag == "SpecialPart") DataManager.dm.increment("NumUseMetal");
+    else if (tag == "Metal") DataManager.dm.increment("NumUseMetal");
     else if (tag == "Monster") DataManager.dm.increment("NumRideMonster");
     else if (tag == "Dopple") DataManager.dm.increment("NumMeetDopple");
     else if (tag == "ComboPart") DataManager.dm.increment("NumGenerateIllusion");

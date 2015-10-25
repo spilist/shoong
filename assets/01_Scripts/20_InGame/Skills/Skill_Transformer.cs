@@ -2,11 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class TransformerManager : ObjectsManager {
+public class Skill_Transformer : Skill {
   public int subRatio = 20;
-  public int mainRatio = 5;
-
-  public int areaRadius = 160;
   public float laserShootDuration = 0.1f;
   public float transformDuration = 0.2f;
   public GameObject transformLaser;
@@ -15,7 +12,7 @@ public class TransformerManager : ObjectsManager {
   public List<GameObject> particlePool;
   public int laserAmount = 10;
 
-  override public void initRest() {
+  override public void afterEnable() {
     laserPool = new List<GameObject>();
     particlePool = new List<GameObject>();
     for (int i = 0; i < laserAmount; ++i) {
@@ -27,10 +24,6 @@ public class TransformerManager : ObjectsManager {
       obj.SetActive(false);
       particlePool.Add(obj);
     }
-  }
-
-  override protected void afterSpawn() {
-    instance.transform.Find("Area").localScale = (areaRadius / instance.transform.localScale.x) * Vector3.one;
   }
 
   public GameObject getLaser(Vector3 pos) {

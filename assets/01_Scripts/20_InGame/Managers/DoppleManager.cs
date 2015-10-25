@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class DoppleManager : ObjectsManager {
+  public int blinkDistance = 100;
   public ParticleSystem getEnergy;
   public GameObject energyCube;
   public GameObject forceFieldPrefab;

@@ -26,13 +26,13 @@ public class SpawnManager : MonoBehaviour {
     GetComponent<SuperheatPartManager>().enabled = true;
 
     // spawn selected objects
-    string mainObjectsString = PlayerPrefs.GetString("MainObjects").Trim();
-    if (mainObjectsString != "") {
-      string[] mainObjects = mainObjectsString.Split(' ');
-      foreach (string mainObject in mainObjects) {
-        runManager(mainObject);
-      }
-    }
+    // string mainObjectsString = PlayerPrefs.GetString("MainObjects").Trim();
+    // if (mainObjectsString != "") {
+    //   string[] mainObjects = mainObjectsString.Split(' ');
+    //   foreach (string mainObject in mainObjects) {
+    //     runManager(mainObject);
+    //   }
+    // }
 
     string subObjectsString = PlayerPrefs.GetString("SubObjects").Trim();
     if (subObjectsString != "") {

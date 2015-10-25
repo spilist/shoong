@@ -11,7 +11,8 @@ public class StrengthenTimeBar : MonoBehaviour {
 
 	void Start () {
     image = GetComponent<Image>();
-    decreaseAmount = 1f / Player.pl.strengthen_during;
+    // decreaseAmount = 1f / Player.pl.strengthen_during;
+    decreaseAmount = 1f;
 	}
 
   public void startStrengthen(int duration) {

@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class ObjectsCategoryButton : MenusBehavior {
+  public int selectionLimit;
   public bool hasSelection = true;
   private ObjectsMenu objectsMenu;
   private string category;

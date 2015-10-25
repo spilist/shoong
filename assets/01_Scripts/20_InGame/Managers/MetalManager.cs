@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SpecialPartsManager : ObjectsManager {
+public class MetalManager : ObjectsManager {
   public float[] destroyBonusPerLevel;
   public float bonus;
 

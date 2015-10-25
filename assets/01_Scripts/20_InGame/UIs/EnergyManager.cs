@@ -121,7 +121,6 @@ public class EnergyManager : MonoBehaviour {
   }
 
   public void loseEnergy(int amount, string tag) {
-    Debug.Log(amount);
     changeHealth(-amount, loseRate * amount);
     lastReason = tag;
   }

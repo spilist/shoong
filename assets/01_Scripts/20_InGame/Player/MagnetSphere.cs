@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class MagnetSphere : MonoBehaviour {
-  public MagnetManager mm;
+  public Skill_Magnet mm;
 
   void OnEnable() {
     transform.localScale = Vector3.one * mm.radiusPerLevel[mm.level];

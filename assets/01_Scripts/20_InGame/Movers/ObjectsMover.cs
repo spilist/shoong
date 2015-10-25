@@ -17,8 +17,8 @@ public class ObjectsMover : MonoBehaviour {
   protected float shrinkedScale;
 
   protected ObjectsManager objectsManager;
-  protected SpecialPartsManager spm;
-  protected TransformerManager tfm;
+  protected Skill_Metal metalSkill;
+  protected Skill_Transformer transSkill;
   protected Rigidbody rb;
   public float boundingSize = 50;
   protected Vector3 headingToBlackhole;
@@ -33,8 +33,11 @@ public class ObjectsMover : MonoBehaviour {
 
   void Awake() {
     objectsManager = (ObjectsManager) GameObject.Find("Field Objects").GetComponent(getManager());
-    spm = objectsManager.GetComponent<SpecialPartsManager>();
-    tfm = objectsManager.GetComponent<TransformerManager>();
+
+    if (isNegativeObject()) {
+      metalSkill = (Skill_Metal)SkillManager.sm.getSkill("Metal");
+      transSkill = (Skill_Transformer)SkillManager.sm.getSkill("Transformer");
+    }
 
     shrinkedScale = transform.localScale.x;
     rb = GetComponent<Rigidbody>();
@@ -115,10 +118,10 @@ public class ObjectsMover : MonoBehaviour {
       transform.localScale = shrinkedScale * Vector3.one;
       if (shrinkedScale == 0) destroyObject(false);
     } else if (isTransforming) {
-      shrinkedScale = Mathf.MoveTowards(shrinkedScale, 0f, Time.deltaTime * originalScale / tfm.transformDuration);
+      shrinkedScale = Mathf.MoveTowards(shrinkedScale, 0f, Time.deltaTime * originalScale / transSkill.transformDuration);
       transform.localScale = shrinkedScale * Vector3.one;
       if (shrinkedScale == 0) {
-        GameObject trParticle = tfm.getParticle(transform.position);
+        GameObject trParticle = transSkill.getParticle(transform.position);
         trParticle.SetActive(true);
 
         if (transformResult == "") {
@@ -140,15 +143,15 @@ public class ObjectsMover : MonoBehaviour {
 
   public void transformed(Vector3 startPos, string what, int level) {
 
-    GameObject laser = tfm.getLaser(startPos);
+    GameObject laser = transSkill.getLaser(startPos);
     laser.SetActive(true);
-    laser.GetComponent<TransformLaser>().shoot(transform.position, tfm.laserShootDuration);
+    laser.GetComponent<TransformLaser>().shoot(transform.position, transSkill.laserShootDuration);
 
     StartCoroutine(startTransform(what, level));
   }
 
   IEnumerator startTransform(string what, int level) {
-    yield return new WaitForSeconds(tfm.laserShootDuration);
+    yield return new WaitForSeconds(transSkill.laserShootDuration);
 
     isTransforming = true;
     transformResult = what;
@@ -301,7 +304,10 @@ public class ObjectsMover : MonoBehaviour {
   }
 
   virtual public int bonusCubes() {
-    if (isNegativeObject() && Player.pl.isUnstoppable()) return (int) (cubesWhenEncounter() * spm.bonus);
+    if (isNegativeObject() && Player.pl.isUnstoppable()) {
+
+      return (int) (cubesWhenEncounter() * metalSkill.bonus);
+    }
     else return 0;
   }
 

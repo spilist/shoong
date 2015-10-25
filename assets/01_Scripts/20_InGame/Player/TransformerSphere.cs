@@ -2,21 +2,17 @@
 using System.Collections;
 
 public class TransformerSphere : MonoBehaviour {
-  public TransformerManager tfm;
+  public Skill_Transformer tfm;
 
   public string[] subs;
   public string[] mains;
   private string[] subsSpawn;
-  private string[] mainsSpawn;
 
   private int subRatio;
-  private int mainRatio;
   private int level;
 
 	void OnEnable() {
     subRatio = tfm.subRatio;
-    mainRatio = tfm.mainRatio;
-    transform.localScale = tfm.areaRadius * Vector3.one;
 
     string subObjectsString = PlayerPrefs.GetString("SubObjects").Trim();
     int selectedCount = (subObjectsString == "") ? 0 : subObjectsString.Split(' ').Length;
@@ -24,14 +20,6 @@ public class TransformerSphere : MonoBehaviour {
     int count = 0;
     foreach (string obj in subs) {
       if (!subObjectsString.Contains(obj)) subsSpawn[count++] = obj;
-    }
-
-    string mainObjectsString = PlayerPrefs.GetString("MainObjects").Trim();
-    selectedCount = (mainObjectsString == "") ? 0 : mainObjectsString.Split(' ').Length;
-    mainsSpawn = new string[mains.Length - selectedCount];
-    count = 0;
-    foreach (string obj in mains) {
-      if (!mainObjectsString.Contains(obj)) mainsSpawn[count++] = obj;
     }
 
     level = tfm.level;
@@ -48,9 +36,7 @@ public class TransformerSphere : MonoBehaviour {
   string transformResult() {
     int random = Random.Range(0, 100);
     string result = "";
-    if (random < mainRatio) {
-      result = mainsSpawn[Random.Range(0, mainsSpawn.Length)];
-    } else if (random < mainRatio + subRatio) {
+    if (random < subRatio) {
       result = subsSpawn[Random.Range(0, subsSpawn.Length)];
     }
     return result;

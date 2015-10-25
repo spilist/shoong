@@ -81,6 +81,7 @@ public class TouchInputHandler : MonoBehaviour
         beforeIdle.moveTitle();
         menus.gameStart();
         spawnManager.run();
+        SkillManager.sm.startGame();
         AudioManager.am.changeVolume("Main", "Max");
 
         DataManager.dm.increment("play_" + PlayerPrefs.GetString("SelectedCharacter"));
@@ -99,6 +100,13 @@ public class TouchInputHandler : MonoBehaviour
           } else {
             Player.pl.shootBooster();
             spawnTouchEffect(worldTouchPosition);
+          }
+        } else if (result == "SkillButton") {
+          Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+          RaycastHit hit;
+          if ( Physics.Raycast(ray, out hit) ) {
+            GameObject hitObject = hit.transform.gameObject;
+            hitObject.SendMessage("OnPointerDown");
           }
         }
       } else if (controlMethod == "Circle" || controlMethod == "Packman") {
