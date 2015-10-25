@@ -1,0 +1,137 @@
+fileFormatVersion: 2
+guid: 7d2e6986263b84fcb8924aa27696579f
+timeCreated: 1445762404
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: bender_1
+    100002: butterfly_1
+    100004: cat_1
+    100006: chameleon_1
+    100008: //RootNode
+    100010: crab_1
+    100012: deathstar_1
+    100014: hamster_1
+    100016: leonplant_1
+    100018: minimonster_1
+    100020: robotcogi_1
+    100022: soju_1
+    100024: tyranno_1
+    100026: vacuumrobot_1
+    400000: bender_1
+    400002: butterfly_1
+    400004: cat_1
+    400006: chameleon_1
+    400008: //RootNode
+    400010: crab_1
+    400012: deathstar_1
+    400014: hamster_1
+    400016: leonplant_1
+    400018: minimonster_1
+    400020: robotcogi_1
+    400022: soju_1
+    400024: tyranno_1
+    400026: vacuumrobot_1
+    2300000: bender_1
+    2300002: butterfly_1
+    2300004: cat_1
+    2300006: chameleon_1
+    2300008: crab_1
+    2300010: deathstar_1
+    2300012: hamster_1
+    2300014: leonplant_1
+    2300016: minimonster_1
+    2300018: robotcogi_1
+    2300020: soju_1
+    2300022: tyranno_1
+    2300024: vacuumrobot_1
+    3300000: bender_1
+    3300002: butterfly_1
+    3300004: cat_1
+    3300006: chameleon_1
+    3300008: crab_1
+    3300010: deathstar_1
+    3300012: hamster_1
+    3300014: leonplant_1
+    3300016: minimonster_1
+    3300018: robotcogi_1
+    3300020: soju_1
+    3300022: tyranno_1
+    3300024: vacuumrobot_1
+    4300000: cat_1
+    4300002: crab_1
+    4300004: bender_1
+    4300006: vacuumrobot_1
+    4300008: deathstar_1
+    4300010: soju_1
+    4300012: leonplant_1
+    4300014: minimonster_1
+    4300016: robotcogi_1
+    4300018: chameleon_1
+    4300020: butterfly_1
+    4300022: tyranno_1
+    4300024: hamster_1
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

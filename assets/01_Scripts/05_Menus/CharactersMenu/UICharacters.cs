@@ -5,6 +5,9 @@ using System.Collections;
 public class UICharacters : MonoBehaviour {
   public string characterName;
   public int price;
+  public string rarity;
+  public string description;
+  public string description2;
   private CharactersMenu charactersMenu;
   private Vector3 originalPosition;
   private Quaternion originalRotation;
@@ -35,6 +38,19 @@ public class UICharacters : MonoBehaviour {
     }
 	}
 
+  public void setRarity(Text text) {
+    if (rarity == "Common") {
+      text.text = "";
+      text.color = charactersMenu.colorsPerRarity[0];
+    } else if (rarity == "Uncommon") {
+      text.text = "고급";
+      text.color = charactersMenu.colorsPerRarity[1];
+    } else if (rarity == "Rare") {
+      text.text = "희귀";
+      text.color = charactersMenu.colorsPerRarity[2];
+    }
+  }
+
   void select() {
     if (!soundPlayed) {
       soundPlayed = true;
@@ -44,6 +60,11 @@ public class UICharacters : MonoBehaviour {
         AudioSource.PlayClipAtPoint(charactersMenu.characterSelectionSound, transform.position);
       }
       charactersMenu.characterName.text = characterName;
+      setRarity(charactersMenu.rarity);
+
+      charactersMenu.description.text = description;
+      if (description2 != "") charactersMenu.description.text += "\n" + description2;
+
       checkBought();
     }
 

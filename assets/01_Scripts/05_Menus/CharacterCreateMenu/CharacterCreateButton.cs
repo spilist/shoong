@@ -5,8 +5,13 @@ using System.Collections.Generic;
 using System.Linq;
 
 public class CharacterCreateButton : MenusBehavior {
-  public Transform characters;
+  public int uncommonChance = 9;
+  public int rareChance = 1;
+  private List<UICharacters> commons;
+  private List<UICharacters> uncommons;
+  private List<UICharacters> rares;
 
+  public Transform characters;
   public GameObject characterCube;
   public ParticleSystem gathering;
   public ParticleSystem explosion;
@@ -14,6 +19,7 @@ public class CharacterCreateButton : MenusBehavior {
   public ParticleSystem congraturation;
   public GameObject createdCharacter;
   public Text characterName;
+  public Text rarity;
   public GameObject isNewCharacter;
   public GameObject nextChance;
 
@@ -37,9 +43,39 @@ public class CharacterCreateButton : MenusBehavior {
   private Text priceText;
   private CharacterCreateMenu menu;
 
-  void OnEnable() {
+  override public void initializeRest() {
     menu = transform.parent.GetComponent<CharacterCreateMenu>();
     priceText = transform.Find("PriceText").GetComponent<Text>();
+
+    commons = new List<UICharacters>();
+    uncommons = new List<UICharacters>();
+    rares = new List<UICharacters>();
+    foreach (Transform tr in characters) {
+      UICharacters uic = tr.GetComponent<UICharacters>();
+      if (uic.name == "robotcogi") continue;
+
+      if (uic.rarity == "Common") commons.Add(uic);
+      else if (uic.rarity == "Uncommon") uncommons.Add(uic);
+      else if (uic.rarity == "Rare") rares.Add(uic);
+    }
+  }
+
+  UICharacters getRandom() {
+    List<UICharacters> list;
+    int random = Random.Range(0, 100);
+    Debug.Log(random);
+    if (random < rareChance) {
+      list = rares;
+    } else if (random < rareChance + uncommonChance) {
+      list = uncommons;
+    } else {
+      list = commons;
+    }
+
+    return list[Random.Range(0, list.Count)];
+  }
+
+  void OnEnable() {
     resetAll();
     checkAffordable();
   }
@@ -94,7 +130,7 @@ public class CharacterCreateButton : MenusBehavior {
   }
 
   void turnOnOff(bool val) {
-    shareButton.gameObject.SetActive(val);
+    // shareButton.gameObject.SetActive(val);
     selectButton.gameObject.SetActive(val);
     backButton.GetComponent<Renderer>().enabled = val;
     backButton.GetComponent<Collider>().enabled = val;
@@ -116,9 +152,8 @@ public class CharacterCreateButton : MenusBehavior {
     Vector3 originalScale = new Vector3(originalSize, originalSize, originalSize);
     Vector3 shrinkScale = new Vector3(shrinkSize, shrinkSize, shrinkSize);
 
-    int random = Random.Range(1, characters.childCount);
-    string createdCharacterName = characters.GetChild(random).name;
-    bool newCharacter = !DataManager.dm.getBool(createdCharacterName);
+    UICharacters randomCharacter = getRandom();
+    bool newCharacter = !DataManager.dm.getBool(randomCharacter.name);
 
     float duration = totalSeconds;
     float interval = startInterval;
@@ -140,16 +175,17 @@ public class CharacterCreateButton : MenusBehavior {
 
     cubesYouHave.GetComponent<CubesYouHave>().buy(createPrice);
 
-    createdCharacter.GetComponent<MeshFilter>().sharedMesh = Resources.Load<GameObject>("_characters/play_characters").transform.FindChild(createdCharacterName).GetComponent<MeshFilter>().sharedMesh;
+    createdCharacter.GetComponent<MeshFilter>().sharedMesh = randomCharacter.GetComponent<MeshFilter>().sharedMesh;
     createdCharacter.SetActive(true);
 
-    characterName.text = getCharacterName(createdCharacterName);
+    characterName.text = randomCharacter.characterName;
     characterName.enabled = true;
-    selectButton.setCharacter(createdCharacterName);
+    randomCharacter.setRarity(rarity);
+    selectButton.setCharacter(randomCharacter.name);
 
     if (newCharacter) {
       isNewCharacter.SetActive(true);
-      DataManager.dm.setBool(createdCharacterName, true);
+      DataManager.dm.setBool(randomCharacter.name, true);
       DataManager.dm.increment("NumCharactersHave");
       DataManager.dm.save();
     } else {
@@ -173,14 +209,5 @@ public class CharacterCreateButton : MenusBehavior {
 
   public bool isAffordable() {
     return cubesYouHave.GetComponent<CubesYouHave>().youHave() < createPrice;
-  }
-
-  string getCharacterName(string characterCode) {
-    foreach (Transform tr in characters) {
-      UICharacters cha = tr.GetComponent<UICharacters>();
-      if (cha.name == characterCode) return cha.characterName;
-    }
-
-    return "";
   }
 }

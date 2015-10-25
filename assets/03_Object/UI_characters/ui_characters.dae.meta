@@ -21,6 +21,7 @@ ModelImporter:
     100026: ui_cottoncandy
     100028: ui_paperplane
     100030: ui_tyranno
+    100032: ui_hamster
     400000: ui_bender
     400002: ui_butterfly
     400004: ui_cat
@@ -37,6 +38,7 @@ ModelImporter:
     400026: ui_cottoncandy
     400028: ui_paperplane
     400030: ui_tyranno
+    400032: ui_hamster
     2300000: ui_bender
     2300002: ui_butterfly
     2300004: ui_cat
@@ -52,6 +54,7 @@ ModelImporter:
     2300024: ui_cottoncandy
     2300026: ui_paperplane
     2300028: ui_tyranno
+    2300030: ui_hamster
     3300000: ui_bender
     3300002: ui_butterfly
     3300004: ui_cat
@@ -67,6 +70,7 @@ ModelImporter:
     3300024: ui_cottoncandy
     3300026: ui_paperplane
     3300028: ui_tyranno
+    3300030: ui_hamster
     4300000: ui_cat
     4300002: ui_crab
     4300004: ui_bender
@@ -82,6 +86,7 @@ ModelImporter:
     4300024: ui_cottoncandy
     4300026: ui_tyranno
     4300028: ui_paperplane
+    4300030: ui_hamster
     9500000: //RootNode
   materials:
     importMaterials: 1

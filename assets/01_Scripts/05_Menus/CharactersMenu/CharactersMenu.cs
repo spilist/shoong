@@ -10,6 +10,9 @@ public class CharactersMenu : Draggable {
   public CharacterSelectButton selectButton;
   public CharacterBuyButton buyButton;
   public Text characterName;
+  public Text rarity;
+  public Text description;
+  public Color[] colorsPerRarity;
   public int selectWidth = 50;
   public int selectedOffset_y = 15;
   public int selectedOffset_z = 50;
@@ -39,7 +42,7 @@ public class CharactersMenu : Draggable {
     numAllCharacters.text = "/" + charactersCount.ToString();
 
     Vector3 prevSelected = transform.Find("Characters/" + PlayerPrefs.GetString("SelectedCharacter")).transform.localPosition;
-    transform.Find("Characters").transform.localPosition = new Vector3(prevSelected.x, 55, 0);
+    transform.Find("Characters").transform.localPosition = new Vector3(prevSelected.x, 9, 0);
 
     GetComponent<RectTransform>().sizeDelta = transform.parent.GetComponent<RectTransform>().sizeDelta;
   }

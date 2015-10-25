@@ -25,6 +25,7 @@ ModelImporter:
     100034: cottoncandy
     100036: paperplane
     100038: tyranno
+    100040: hamster
     400000: bender
     400002: butterfly
     400004: cat
@@ -45,6 +46,7 @@ ModelImporter:
     400034: cottoncandy
     400036: paperplane
     400038: tyranno
+    400040: hamster
     2300000: bender
     2300002: butterfly
     2300004: cat
@@ -64,6 +66,7 @@ ModelImporter:
     2300032: cottoncandy
     2300034: paperplane
     2300036: tyranno
+    2300038: hamster
     3300000: bender
     3300002: butterfly
     3300004: cat
@@ -83,6 +86,7 @@ ModelImporter:
     3300032: cottoncandy
     3300034: paperplane
     3300036: tyranno
+    3300038: hamster
     4300000: cat
     4300002: crab
     4300004: bender
@@ -102,6 +106,7 @@ ModelImporter:
     4300032: cottoncandy
     4300034: tyranno
     4300036: paperplane
+    4300038: hamster
     9500000: //RootNode
   materials:
     importMaterials: 1

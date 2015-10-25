@@ -15,14 +15,16 @@ public class MenusBehavior : MonoBehaviour {
 
   void Awake() {
     filter = GetComponent<MeshFilter>();
+    initializeRest();
   }
 
   void OnEnable() {
     if (blinkOnStart) startBlink();
   }
 
-  virtual public void activateSelf() {
-  }
+  virtual public void initializeRest() {}
+
+  virtual public void activateSelf() {}
 
 
   protected IEnumerator blinkButton() {
