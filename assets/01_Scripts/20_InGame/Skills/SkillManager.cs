@@ -34,4 +34,10 @@ public class SkillManager : MonoBehaviour {
     }
     return null;
   }
+
+  public void stopSkills() {
+    foreach (SkillButton btn in slots) {
+      btn.deactivate();
+    }
+  }
 }

@@ -5,7 +5,6 @@ public class ForceField : MonoBehaviour {
   public GameObject energyCube;
   public EMPManager empManager;
 
-  public Superheat superheat;
   public GoldCubesCount gcCount;
 
   // private ProceduralMaterial mat;
@@ -53,7 +52,7 @@ public class ForceField : MonoBehaviour {
 
   void OnDisable() {
     if (isGolden) gcCount.add(empManager.goldCubesGet * count);
-    else if (isSuper) superheat.addGuageWithEffect(empManager.guageAmountSuper * count);
+    else if (isSuper) SuperheatManager.sm.addGuageWithEffect(empManager.guageAmountSuper * count);
 
     transform.localScale = Vector3.one;
     transform.Find("Halo").GetComponent<Light>().range = 1;

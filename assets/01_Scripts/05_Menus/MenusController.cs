@@ -2,7 +2,6 @@
 using System.Collections;
 
 public class MenusController : MonoBehaviour {
-  public Superheat superheat;
   public GameObject menusOverlay;
   public GameObject backButton;
   public GameObject menuButtonsLeft;
@@ -42,8 +41,6 @@ public class MenusController : MonoBehaviour {
           AudioSource.PlayClipAtPoint(UITouchSound, hit.transform.position);
         }
         mb.activateSelf();
-      } else if (hitTag == "SuperheatBonusCollider") {
-        superheat.addBonus();
       }
       return hitTag;
     } else {

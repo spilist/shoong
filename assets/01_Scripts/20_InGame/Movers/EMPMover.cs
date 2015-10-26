@@ -13,7 +13,7 @@ public class EMPMover : ObjectsMover {
       if (empManager.isGolden) {
         empManager.gcCount.add(cubesWhenDestroy(), false);
       } else if (empManager.isSuper) {
-        empManager.superheat.addGuageWithEffect(cubesWhenDestroy());
+        SuperheatManager.sm.addGuageWithEffect(cubesWhenDestroy());
       }
     }
   }

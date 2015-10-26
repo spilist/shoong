@@ -2,7 +2,6 @@
 using System.Collections;
 
 public class UIEffect : MonoBehaviour {
-  public Superheat superheat;
   public int guageForEffect;
 
   public float startScale = 0.1f;
@@ -28,7 +27,7 @@ public class UIEffect : MonoBehaviour {
   }
 
   public void addGuage(int scale) {
-    if (guageForEffect > 0) superheat.addGuageWithEffect(guageForEffect * scale);
+    if (guageForEffect > 0) SuperheatManager.sm.addGuageWithEffect(guageForEffect * scale);
   }
 
   void Update() {

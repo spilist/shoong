@@ -33,7 +33,6 @@ public class CubeDispenserManager : ObjectsManager {
   public Material superActiveMat;
   public Material superInactiveMat;
   public int superChance = 10;
-  public Superheat superheat;
   public int guageAmountSuper = 50;
   private bool isGolden = false;
   private bool isSuper = false;

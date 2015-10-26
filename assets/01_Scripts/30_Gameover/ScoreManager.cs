@@ -103,6 +103,9 @@ public class ScoreManager : MonoBehaviour {
 
   public void gameOver(string reason) {
     TimeManager.time.stopTime();
+    SkillManager.sm.stopSkills();
+    Player.pl.stopOtherEffects();
+
     if (reason == "NoEnergy") {
       DataManager.dm.increment("DeathByLowEnergy");
     } else if (reason == "Obstacle_small") {

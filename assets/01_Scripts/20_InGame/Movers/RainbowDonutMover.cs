@@ -28,7 +28,7 @@ public class RainbowDonutMover : ObjectsMover {
       if (rdm.isGolden) {
         rdm.gcCount.add(cubesWhenEncounter() * rdm.numRoadRides, false);
       } else if (rdm.isSuper) {
-        rdm.superheat.addGuageWithEffect(rdm.guageAmountSuper * rdm.numRoadRides);
+        SuperheatManager.sm.addGuageWithEffect(rdm.guageAmountSuper * rdm.numRoadRides);
       }
     }
   }

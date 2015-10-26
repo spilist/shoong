@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class RainbowDonutsManager : ObjectsManager {
-  public Superheat superheat;
   public int guageAmount = 20;
 
   public int chanceBase = 200;
@@ -137,9 +136,9 @@ public class RainbowDonutsManager : ObjectsManager {
     if (isGolden) {
       gcCount.add(cubesByEncounter, false);
     } else if (isSuper) {
-      superheat.addGuageWithEffect(guageAmountSuper);
+      SuperheatManager.sm.addGuageWithEffect(guageAmountSuper);
     } else {
-      superheat.addGuageWithEffect(guageAmount);
+      SuperheatManager.sm.addGuageWithEffect(guageAmount);
     }
 
     yield return new WaitForSeconds(rotateDuring);

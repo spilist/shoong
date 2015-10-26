@@ -216,7 +216,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d70a08238d904e4b80cd6018e42b53e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boundingSize: 500
+  boundingSize: 100
+  player: {fileID: 0}
 --- !u!114 &11461286
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1388,7 +1389,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: boundingSize
-      value: 500
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

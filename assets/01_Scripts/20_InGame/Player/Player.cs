@@ -85,7 +85,6 @@ public class Player : MonoBehaviour {
   public GameObject playerDopple;
   private bool trapped = false;
 
-  public Superheat superheat;
   private bool usingPowerBoost = false;
 
   private int numBoosters = 0;
@@ -134,7 +133,7 @@ public class Player : MonoBehaviour {
 
 	void FixedUpdate () {
     if (usingPowerBoost) {
-      speed = superheat.baseSpeed;
+      speed = SuperheatManager.sm.baseSpeed;
     } else if (usingEMP) {
       speed = 0;
     } else if (isRidingRainbowRoad) {
@@ -421,15 +420,9 @@ public class Player : MonoBehaviour {
     usingPowerBoost = true;
     GetComponent<Renderer>().enabled = false;
     GetComponent<Collider>().enabled = false;
+    SkillManager.sm.stopSkills();
     changeManager.changeCharacterToOriginal();
-
-    if (isUsingRainbow()) {
-      rdm.destroyInstances();
-      isRotatingByRainbow = false;
-      isRidingRainbowRoad = false;
-    }
-    iced = false;
-    icm.strengthenPlayerEffect.SetActive(false);
+    stopOtherEffects();
   }
 
   public void stopPowerBoost() {
@@ -441,12 +434,12 @@ public class Player : MonoBehaviour {
   }
 
   public float maxBooster() {
-    if (usingPowerBoost) return superheat.maxBoosterSpeed;
+    if (usingPowerBoost) return SuperheatManager.sm.maxBoosterSpeed;
     else return maxBoosterSpeed * boosterBonus;
   }
 
   float boosterSpeedUp() {
-    if (usingPowerBoost) return superheat.boosterSpeedUpAmount;
+    if (usingPowerBoost) return SuperheatManager.sm.boosterSpeedUpAmount;
     else return boosterSpeedUpAmount;
   }
 
@@ -458,7 +451,6 @@ public class Player : MonoBehaviour {
 
   public void setDirection(Vector3 dir) {
     direction = dir;
-    if (usingPowerBoost) superheat.setDir(dir);
   }
 
   public void nearAsteroid(bool enter = true, int amount = 1) {
@@ -492,10 +484,7 @@ public class Player : MonoBehaviour {
   }
 
   public void effectedBy(string objTag, bool effectOn = true) {
-    if (usingPowerBoost) {
-      changeManager.changeCharacterToOriginal();
-      return;
-    }
+    if (usingPowerBoost) return;
 
     if (objTag == "Metal") {
       unstoppable = effectOn;
@@ -520,6 +509,24 @@ public class Player : MonoBehaviour {
       iced = effectOn;
       icedDuration = icm.speedRestoreDuring;
       icedSpeedFactor = icm.playerSpeedReduceTo;
+    }
+  }
+
+  public void stopOtherEffects() {
+    iced = false;
+    icedDuration = 0;
+    icedSpeedFactor = 1;
+    icm.strengthenPlayerEffect.SetActive(false);
+
+    bounceDuration = 0;
+    reboundingByBlackhole = false;
+    bouncingByDispenser = false;
+    bouncing = false;
+
+    if (isUsingRainbow()) {
+      rdm.destroyInstances();
+      isRotatingByRainbow = false;
+      isRidingRainbowRoad = false;
     }
   }
 
@@ -656,15 +663,15 @@ public class Player : MonoBehaviour {
 
     if (tag == "Obstacle_small") {
       DataManager.dm.increment("NumDestroySmallAsteroids");
-      superheat.addGuageWithEffect(gaugeGain);
+      SuperheatManager.sm.addGuageWithEffect(gaugeGain);
     }
     else if (tag == "Obstacle_big") {
       DataManager.dm.increment("NumDestroyAsteroids");
-      superheat.addGuageWithEffect(gaugeGain);
+      SuperheatManager.sm.addGuageWithEffect(gaugeGain);
     }
     else if (tag == "Obstacle") {
       DataManager.dm.increment("NumDestroyMeteroids");
-      superheat.addGuageWithEffect(gaugeGain);
+      SuperheatManager.sm.addGuageWithEffect(gaugeGain);
     }
     else if (tag == "Blackhole") DataManager.dm.increment("NumDestroyBlackholes");
     else if (tag == "Monster") DataManager.dm.increment("NumDestroyMonsters");

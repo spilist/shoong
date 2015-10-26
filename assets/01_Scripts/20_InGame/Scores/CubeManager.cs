@@ -7,8 +7,6 @@ public class CubeManager : MonoBehaviour {
   public static CubeManager cm;
   public PartsCollector cuber;
   public Transform inGameUI;
-  public Superheat superheat;
-
   private int totalCount = 0;
   public int increaseSpeed = 5;
   public Text cubesCount;
@@ -72,7 +70,7 @@ public class CubeManager : MonoBehaviour {
     cubesGet = (int)Mathf.Round(cubesGet * bonusRate);
     totalCount += cubesGet + bonus;
 
-    if (superheat.isOnSuperheat()) {
+    if (SuperheatManager.sm.isOnSuperheat()) {
       GameObject instance = getPooledObj(cubeOnSuperheatPool, cubesGetOnSuperheat);
       instance.SetActive(true);
       instance.GetComponent<ShowChangeText>().run(cubesGet);
@@ -88,7 +86,7 @@ public class CubeManager : MonoBehaviour {
       }
     }
 
-    superheat.addGuage((cubesGet + bonus) * superheat.guagePerCube);
+    SuperheatManager.sm.addGuage((cubesGet + bonus) * SuperheatManager.sm.guagePerCube);
     EnergyManager.em.getHealthByCubes(cubesGet + bonus);
     TimeManager.time.addProgressByCube(cubesGet + bonus);
     cuber.addEmission(cubesGet + bonus);

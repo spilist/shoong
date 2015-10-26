@@ -81,7 +81,7 @@ public class CubeDispenserMover : ObjectsMover {
       if (isGolden) {
         cdm.gcCount.add(cdm.goldenCubeAmount * cdm.fullComboCount, false);
       } else if (isSuper) {
-        cdm.superheat.addGuageWithEffect(cdm.guageAmountSuper * cdm.fullComboCount);
+        SuperheatManager.sm.addGuageWithEffect(cdm.guageAmountSuper * cdm.fullComboCount);
       }
     }
   }
@@ -97,7 +97,7 @@ public class CubeDispenserMover : ObjectsMover {
         if (isGolden) {
           cdm.gcCount.add(cdm.goldenCubeAmount, false);
         } else if (isSuper) {
-          cdm.superheat.addGuageWithEffect(cdm.guageAmountSuper);
+          SuperheatManager.sm.addGuageWithEffect(cdm.guageAmountSuper);
         }
 
         encounterPlayer(false);

@@ -2,7 +2,6 @@
 using System.Collections;
 
 public class CharacterChangeManager : MonoBehaviour {
-  public Superheat superheat;
   public Transform characters;
   public DoppleManager dpm;
   public Skill_Magnet skill_magnet;
@@ -147,7 +146,7 @@ public class CharacterChangeManager : MonoBehaviour {
   void resetAllAbility() {
     EnergyManager.em.resetEnergyAbility();
     Player.pl.resetAbility();
-    superheat.resetSuperheatAbility();
+    SuperheatManager.sm.resetSuperheatAbility();
     CubeManager.cm.resetCubeAbility();
     skill_magnet.resetAbility();
     skill_monster.resetAbility();

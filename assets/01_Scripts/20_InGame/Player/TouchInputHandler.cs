@@ -5,7 +5,6 @@ using System.Collections.Generic;
 
 public class TouchInputHandler : MonoBehaviour
 {
-  public Superheat superheat;
   public Transform controlPanelCharacter_circle_left;
   public Transform controlPanelCharacter_circle_right;
   public Transform controlPanelCharacter_packman_left;
@@ -77,7 +76,7 @@ public class TouchInputHandler : MonoBehaviour
 				TimeManager.time.startTime();
         EnergyManager.em.turnEnergy(true);
         // ptb.generateNew();
-        superheat.startGame();
+        SuperheatManager.sm.startGame();
         beforeIdle.moveTitle();
         menus.gameStart();
         spawnManager.run();

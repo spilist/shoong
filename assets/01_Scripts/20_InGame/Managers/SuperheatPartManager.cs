@@ -2,7 +2,6 @@
 using System.Collections;
 
 public class SuperheatPartManager : ObjectsManager {
-  public Superheat superheat;
   public int guageForEncounter = 100;
 
   override public void initRest() {
@@ -11,7 +10,7 @@ public class SuperheatPartManager : ObjectsManager {
 
   public void add(bool withEffect = true) {
     if (player.isOnSuperheat()) return;
-    superheat.addGuageWithEffect(guageForEncounter);
+    SuperheatManager.sm.addGuageWithEffect(guageForEncounter);
     if (withEffect) {
       GameObject obj = getPooledObj(objEncounterEffectPool, objEncounterEffect, player.transform.position);
       obj.SetActive(true);

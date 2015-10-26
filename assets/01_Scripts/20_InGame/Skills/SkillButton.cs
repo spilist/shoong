@@ -65,7 +65,7 @@ public class SkillButton : MonoBehaviour {
   }
 
   void OnPointerDown() {
-    if (Player.pl.uncontrollable()) return;
+    if (Player.pl.uncontrollable() || SuperheatManager.sm.isOnSuperheat()) return;
 
     skill.activate(true);
     sCollider.enabled = false;
@@ -74,13 +74,12 @@ public class SkillButton : MonoBehaviour {
     skillIcon.transform.rotation = originalRotation;
   }
 
-  void deactivate() {
+  public void deactivate() {
+    if (skill == null || !activating) return;
+
     activating = false;
     cooling = true;
     skill.activate(false);
-  }
-
-  void OnDisble() {
-    deactivate();
+    image.fillAmount = 1;
   }
 }

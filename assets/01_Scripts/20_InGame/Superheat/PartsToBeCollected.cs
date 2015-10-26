@@ -3,7 +3,6 @@ using System.Collections;
 
 public class PartsToBeCollected : MonoBehaviour {
   public GameObject boundary;
-  public Superheat superheat;
   public int rotatingSpeed = -20;
   public Transform normalParts;
   public Material inactiveMat;
@@ -44,7 +43,7 @@ public class PartsToBeCollected : MonoBehaviour {
   }
 
   public void generateNew() {
-    if (!superheat.isOnSuperheat()) show(true);
+    if (!SuperheatManager.sm.isOnSuperheat()) show(true);
 
     int count = 0;
     foreach (Transform tr in transform.Find("Parts")) {
@@ -92,7 +91,7 @@ public class PartsToBeCollected : MonoBehaviour {
   }
 
   void completeCollect() {
-    superheat.addGuageWithEffect(guagePerCollect);
+    SuperheatManager.sm.addGuageWithEffect(guagePerCollect);
     generateNew();
     collectSound.pitch -= pitchIncreasePerCollect * numPartsToCollect;
   }

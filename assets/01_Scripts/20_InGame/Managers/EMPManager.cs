@@ -3,7 +3,6 @@ using System.Collections;
 
 public class EMPManager : ObjectsManager {
   public GoldCubesCount gcCount;
-  public Superheat superheat;
   public int guageAmount = 20;
 
   public int[] forceFieldRadiusPerLevel;
@@ -119,7 +118,7 @@ public class EMPManager : ObjectsManager {
   public void generateForceField() {
     Camera.main.GetComponent<CameraMover>().shakeUntilStop(shakeAmount);
     status = 1;
-    superheat.addGuageWithEffect(guageAmount);
+    SuperheatManager.sm.addGuageWithEffect(guageAmount);
     forceField.GetComponent<ForceField>().setProperty(shellMat, isSuper, isGolden);
   }
 
