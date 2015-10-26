@@ -79,6 +79,9 @@ TagManager:
   - SpaceShipDebris
   - TimeMonster
   - SkillButton
+  - SpecialPart
+  - LRPanel_left
+  - LRPanel_right
   layers:
   - Default
   - TransparentFX

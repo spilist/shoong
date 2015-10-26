@@ -22,6 +22,7 @@ public class CameraMover : MonoBehaviour {
 
   private Vector3 pastTargetPosition, pastFollowerPosition;
   private Vector3 pastPosition;
+  private bool paused = false;
 
   void Start () {
     if (!fixAspect) return;
@@ -65,7 +66,7 @@ public class CameraMover : MonoBehaviour {
   }
 
   void Update() {
-    if (shaking) {
+    if (shaking && !paused) {
       if (slowly) {
         originalPos = Vector3.SmoothDamp(originalPos, new Vector3 (player.position.x, transform.position.y, player.position.z), ref velocity, smoothTime, Mathf.Infinity, Time.smoothDeltaTime);
       } else {
@@ -81,6 +82,10 @@ public class CameraMover : MonoBehaviour {
     } else {
       transform.position = new Vector3 (player.position.x, transform.position.y, player.position.z);
     }
+  }
+
+  public void setPaused(bool val) {
+    paused = val;
   }
 
   public void setSlowly(bool val) {
@@ -111,5 +116,7 @@ public class CameraMover : MonoBehaviour {
     shakeContinuously = false;
     transform.position = originalPos;
   }
+
+
 }
 

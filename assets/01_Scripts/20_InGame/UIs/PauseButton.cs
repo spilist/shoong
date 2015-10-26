@@ -21,6 +21,7 @@ public class PauseButton : MenusBehavior {
     if (!gameObject.activeSelf || resuming || ScoreManager.sm.isGameOver()) return;
 
     paused = true;
+    Camera.main.GetComponent<CameraMover>().setPaused(true);
     Time.timeScale = 0;
     pauseFilter.SetActive(true);
     pauseStatus.SetActive(true);
@@ -44,6 +45,7 @@ public class PauseButton : MenusBehavior {
       count--;
     }
 
+    Camera.main.GetComponent<CameraMover>().setPaused(false);
     pauseFilter.SetActive(false);
     pauseStatus.SetActive(false);
     resumingText.gameObject.SetActive(false);

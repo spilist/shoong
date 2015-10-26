@@ -2,7 +2,6 @@
 using System.Collections;
 
 public class ForceField : MonoBehaviour {
-  public GameObject energyCube;
   public EMPManager empManager;
 
   public GoldCubesCount gcCount;
@@ -36,9 +35,10 @@ public class ForceField : MonoBehaviour {
     if (mover.tag == "Blackhole") return;
 
     if (isGolden) {
-      GameObject cube = (GameObject) Instantiate(energyCube, other.transform.position, other.transform.rotation);
-      cube.GetComponent<Renderer>().material.SetColor("_TintColor", Player.pl.goldenCubeParticleColor);
+      GameObject cube = Player.pl.generateCube();
+      cube.GetComponent<Renderer>().sharedMaterial = Player.pl.goldenCubeMat;
       cube.GetComponent<TrailRenderer>().material.SetColor("_TintColor", Player.pl.goldenCubeParticleTrailColor);
+      cube.SetActive(true);
       mover.destroyObject(true, true);
     } else {
       Player.pl.goodPartsEncounter(mover, mover.cubesWhenDestroy(), 0, false);

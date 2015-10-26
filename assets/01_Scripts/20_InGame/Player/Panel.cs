@@ -6,6 +6,8 @@ public class Panel : MonoBehaviour {
   public TouchInputHandler handler;
   public Transform character;
   private bool stickMoving = false;
+  private bool LRMoving = false;
+  private string movingDirection;
 
   void Start() {
     if (DataManager.dm.getString("ControlMethod") != controlMethod) {
@@ -19,6 +21,10 @@ public class Panel : MonoBehaviour {
     if (stickMoving && Input.touchCount == 1) {
       handler.setPlayerDirection(character);
     }
+
+    if (LRMoving && Input.touchCount == 1) {
+      Player.pl.setPerpDirection(movingDirection);
+    }
   }
 
   void OnPointerDown() {
@@ -31,9 +37,19 @@ public class Panel : MonoBehaviour {
     if (Input.touchCount > 1 && tag == "StickPanel_booster") {
       Player.pl.shootBooster();
     }
+
+    if (tag == "LRPanel_left" || tag == "LRPanel_right") {
+      if (Input.touchCount == 1) {
+        LRMoving = true;
+        movingDirection = tag;
+      } else {
+        Player.pl.shootBooster();
+      }
+    }
   }
 
   void OnPointerUp() {
     stickMoving = false;
+    LRMoving = false;
   }
 }

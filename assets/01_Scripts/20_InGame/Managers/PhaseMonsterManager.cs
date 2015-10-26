@@ -11,13 +11,15 @@ public class PhaseMonsterManager : ObjectsManager {
   public int detectDistance = 200;
   public int spawnRadius = 200;
   public float offScreenSpeedScale = 0.8f;
+  public int spawnCount = 1;
 
   override public void initRest() {
-    for (int i = 0; i < objAmount; i++) spawn();
+    for (int i = 0; i < spawnCount; i++) spawn();
   }
 
   override protected void spawn() {
     if (player == null) return;
+    if (spawnCount >= GameObject.FindGameObjectsWithTag(objPrefab.tag).Length) return;
 
     Vector2 screenPos = Random.insideUnitCircle;
     screenPos.Normalize();
@@ -28,6 +30,7 @@ public class PhaseMonsterManager : ObjectsManager {
   }
 
   public void increaseSpawn() {
+    spawnCount++;
     spawn();
   }
 }

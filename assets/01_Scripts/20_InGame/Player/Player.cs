@@ -5,6 +5,12 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour {
   public static Player pl;
+  public int sensitivity;
+  public bool stopping;
+  public float stopSphereRadius = 0.3f;
+  private float stickSpeedScale = 1;
+  // private bool stopping = false;
+  public int stoppingSpeed = 10;
   public float baseSpeed = 80;
   private float originalBaseSpeed;
   private float speedScale;
@@ -30,7 +36,6 @@ public class Player : MonoBehaviour {
   public DoppleManager dpm;
   public BlackholeManager blm;
   public IceDebrisManager icm;
-  public MeteroidManager mtm;
   private float icedDuration;
   private float icedSpeedFactor;
 
@@ -51,9 +56,9 @@ public class Player : MonoBehaviour {
   public List<GameObject> cubePool;
   public int cubeAmount = 50;
   public Material originalCubeMat;
+  public Material goldenCubeMat;
   public Color cubeOriginalColor;
   public Color cubeOriginalTrailColor;
-  public Color goldenCubeParticleColor;
   public Color goldenCubeParticleTrailColor;
 
   public float reboundSpeed = 300;
@@ -119,7 +124,7 @@ public class Player : MonoBehaviour {
     }
 	}
 
-  GameObject generateCube() {
+  public GameObject generateCube() {
     for (int i = 0; i < cubePool.Count; i++) {
       if (!cubePool[i].activeInHierarchy) {
         return cubePool[i];
@@ -132,7 +137,9 @@ public class Player : MonoBehaviour {
   }
 
 	void FixedUpdate () {
-    if (usingPowerBoost) {
+    if (stopping) {
+      speed = Mathf.MoveTowards(speed, 0, Time.fixedDeltaTime * stoppingSpeed);
+    } else if (usingPowerBoost) {
       speed = SuperheatManager.sm.baseSpeed;
     } else if (usingEMP) {
       speed = 0;
@@ -165,12 +172,19 @@ public class Player : MonoBehaviour {
     if (!isRidingRainbowRoad && (usingDopple || trapped)) {
       rb.velocity = Vector3.zero;
     } else {
-      rb.velocity = direction * speed;
+      rb.velocity = direction * speed * stickSpeedScale;
     }
 	}
 
   public float getSpeed() {
     return rb.velocity.magnitude;
+  }
+
+  public void setPerpDirection(string dir) {
+    int sign = (dir == "LRPanel_left") ? 1 : -1;
+
+    Vector3 perp = new Vector3(-direction.z, 0, direction.x) * sign * Time.fixedDeltaTime * sensitivity;
+    direction = (direction + perp).normalized;
   }
 
 	void OnTriggerEnter(Collider other) {
@@ -237,7 +251,7 @@ public class Player : MonoBehaviour {
         cube.SetActive(true);
         if (encounterPlayer && mover.tag == "RainbowDonut") {
           if (rdm.isGolden) {
-            cube.GetComponent<Renderer>().material.SetColor("_TintColor", goldenCubeParticleColor);
+            cube.GetComponent<Renderer>().sharedMaterial = goldenCubeMat;
             cube.GetComponent<TrailRenderer>().material.SetColor("_TintColor", goldenCubeParticleTrailColor);
           } else {
             cube.GetComponent<Renderer>().material.SetColor("_TintColor", rdm.rainbowColors[e]);
@@ -245,6 +259,7 @@ public class Player : MonoBehaviour {
           }
           cube.GetComponent<ParticleMover>().setRainbow();
         } else {
+          cube.GetComponent<Renderer>().sharedMaterial = originalCubeMat;
           cube.GetComponent<Renderer>().material.SetColor("_TintColor", cubeOriginalColor);
           cube.GetComponent<TrailRenderer>().material.SetColor("_TintColor", cubeOriginalTrailColor);
         }
@@ -288,9 +303,10 @@ public class Player : MonoBehaviour {
       cube.transform.position = tr.position;
 
       if (isGolden) {
-        cube.GetComponent<Renderer>().material.SetColor("_TintColor", goldenCubeParticleColor);
+        cube.GetComponent<Renderer>().sharedMaterial = goldenCubeMat;
         cube.GetComponent<TrailRenderer>().material.SetColor("_TintColor", goldenCubeParticleTrailColor);
       } else {
+        cube.GetComponent<Renderer>().sharedMaterial = originalCubeMat;
         cube.GetComponent<Renderer>().material.SetColor("_TintColor", cubeOriginalColor);
         cube.GetComponent<TrailRenderer>().material.SetColor("_TintColor", cubeOriginalTrailColor);
       }
@@ -383,7 +399,14 @@ public class Player : MonoBehaviour {
     DataManager.dm.increment("TotalBlinks");
   }
 
+  public void stopMoving() {
+    stopping = true;
+    stickSpeedScale = 1;
+  }
+
   public void shootBooster(){
+    if (stopping) return;
+
     if (usingDopple) {
       teleport(transform.position + direction * dpm.blinkDistance);
       return;
@@ -449,8 +472,15 @@ public class Player : MonoBehaviour {
     isRotatingByRainbow = val;
   }
 
-  public void setDirection(Vector3 dir) {
-    direction = dir;
+  public void setDirection(Vector3 dir, float magnitude = 1) {
+    if (magnitude < stopSphereRadius) {
+      stopping = true;
+      stickSpeedScale = 1;
+    } else {
+      direction = dir;
+      stickSpeedScale = magnitude > 1 ? 1 : magnitude;
+      stopping = false;
+    }
   }
 
   public void nearAsteroid(bool enter = true, int amount = 1) {
@@ -714,11 +744,13 @@ public class Player : MonoBehaviour {
 
     int random = Random.Range(0, 200);
     if ((random < 4 && tag == "Obstacle") || (random < 1 && (tag == "Obstacle_small" || tag == "Obstacle_big"))) {
-      GameObject cube = (GameObject) Instantiate(particles, position, Quaternion.identity);
-      cube.GetComponent<Renderer>().material.SetColor("_TintColor", goldenCubeParticleColor);
+      GameObject cube = generateCube();
+      cube.transform.position = position;
+      cube.GetComponent<Renderer>().sharedMaterial = goldenCubeMat;
       cube.GetComponent<TrailRenderer>().material.SetColor("_TintColor", goldenCubeParticleTrailColor);
       gcCount.add(10);
-      cube.transform.localScale += 10 * bonusCubeScaleChange * Vector3.one;
+      cube.SetActive(true);
+      cube.transform.localScale += 20 * bonusCubeScaleChange * Vector3.one;
     }
   }
 

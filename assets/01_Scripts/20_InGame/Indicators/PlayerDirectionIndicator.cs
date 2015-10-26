@@ -2,14 +2,12 @@
 using System.Collections;
 
 public class PlayerDirectionIndicator : MonoBehaviour {
-	Vector3 dir;
-
-	void Update () {
+  Vector3 dir;
+  void Update () {
     dir = Player.pl.getDirection();
     float angle = ContAngle(Vector3.forward, dir);
-    Debug.Log(angle);
-    transform.localEulerAngles = new Vector3(0, 0, angle);
-	}
+    transform.localEulerAngles = new Vector3(0, 0, -angle);
+  }
 
   float ContAngle(Vector3 fwd, Vector3 targetDir) {
     float angle = Vector3.Angle(fwd, targetDir);
@@ -31,4 +29,3 @@ public class PlayerDirectionIndicator : MonoBehaviour {
     else return 0;
   }
 }
-

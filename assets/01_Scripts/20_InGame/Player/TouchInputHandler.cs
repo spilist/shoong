@@ -1,14 +1,17 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System;
 using System.Collections.Generic;
 
 public class TouchInputHandler : MonoBehaviour
 {
-  public Transform controlPanelCharacter_circle_left;
-  public Transform controlPanelCharacter_circle_right;
-  public Transform controlPanelCharacter_packman_left;
-  public Transform controlPanelCharacter_packman_right;
+  public Transform controlPanel_circle_left;
+  public Transform controlPanel_circle_right;
+  public Transform controlPanel_packman_left;
+  public Transform controlPanel_packman_right;
+  public Transform stick;
+  private float stickPanelSize;
   public PartsToBeCollected ptb;
 
   public BeforeIdle beforeIdle;
@@ -87,6 +90,7 @@ public class TouchInputHandler : MonoBehaviour
 
 				gameStarted = true;
         controlMethod = DataManager.dm.getString("ControlMethod");
+        stickPanelSize = Vector3.Distance(stick.position, stick.transform.Find("End").position);
         return;
 			}
 
@@ -110,7 +114,7 @@ public class TouchInputHandler : MonoBehaviour
         }
       } else if (controlMethod == "Circle" || controlMethod == "Packman") {
         if (result == "ControlPanel_circle_left") {
-          setPlayerDirection(controlPanelCharacter_circle_left);
+          setPlayerDirection(controlPanel_circle_left);
 
           if (Player.pl.isUsingDopple()) {
             // change needed
@@ -119,7 +123,7 @@ public class TouchInputHandler : MonoBehaviour
             Player.pl.shootBooster();
           }
         } else if (result == "ControlPanel_circle_right") {
-          setPlayerDirection(controlPanelCharacter_circle_right);
+          setPlayerDirection(controlPanel_circle_right);
 
           if (Player.pl.isUsingDopple()) {
             // change needed
@@ -128,7 +132,7 @@ public class TouchInputHandler : MonoBehaviour
             Player.pl.shootBooster();
           }
         } else if (result == "ControlPanel_packman_left") {
-          setPlayerDirection(controlPanelCharacter_packman_left);
+          setPlayerDirection(controlPanel_packman_left);
 
           if (Player.pl.isUsingDopple()) {
             // change needed
@@ -137,7 +141,7 @@ public class TouchInputHandler : MonoBehaviour
             Player.pl.shootBooster();
           }
         } else if (result == "ControlPanel_packman_right") {
-          setPlayerDirection(controlPanelCharacter_packman_right);
+          setPlayerDirection(controlPanel_packman_right);
 
           if (Player.pl.isUsingDopple()) {
             // change needed
@@ -154,7 +158,7 @@ public class TouchInputHandler : MonoBehaviour
       // }
 		}
 
-    if (controlMethod == "Stick") {
+    if (controlMethod == "Stick" || controlMethod == "LR") {
       for (var i = 0; i < Input.touchCount; ++i) {
         Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(i).position);
         RaycastHit hit;
@@ -162,21 +166,47 @@ public class TouchInputHandler : MonoBehaviour
           GameObject hitObject = hit.transform.gameObject;
 
           if (Input.GetTouch(i).phase == TouchPhase.Began) {
-            // lastHitObject = hitObject;
-            hitObject.SendMessage("OnPointerDown");
+            if (hitObject.tag == "Ground") {
+              stick.position = newStickPosition();
+            } else {
+              hitObject.SendMessage("OnPointerDown");
+            }
+          }
+
+          if (Input.GetTouch(i).phase == TouchPhase.Moved && hitObject.tag == "Ground" && Input.touchCount == 1) {
+            setPlayerDirection(stick);
           }
 
           if (Input.GetTouch(i).phase == TouchPhase.Ended) {
-            // if (lastHitObject == hitObject) {
-            //   hitObject.SendMessage("OnPointerUpAsButton");
-            // }
-            hitObject.SendMessage("OnPointerUp");
-            // lastHitObject = null;
+            if (hitObject.tag == "Ground") Player.pl.stopMoving();
+            else hitObject.SendMessage("OnPointerUp");
           }
         }
       }
     }
 	}
+
+  public Vector3 setPlayerDirection(Transform origin) {
+    Vector2 touchPosition = Input.mousePosition;
+
+    Vector3 worldTouchPosition = Camera.main.ScreenToWorldPoint(new Vector3(touchPosition.x, touchPosition.y, Camera.main.transform.position.y));
+    Vector3 originPosition = new Vector3(origin.position.x, 0, origin.position.z);
+    Vector3 heading = worldTouchPosition - originPosition;
+    direction = heading / heading.magnitude;
+    if (controlMethod == "Stick") {
+      Player.pl.setDirection(direction, heading.magnitude / stickPanelSize);
+    } else {
+      Player.pl.setDirection(direction);
+    }
+
+    return worldTouchPosition;
+  }
+
+  Vector3 newStickPosition() {
+    Vector2 touchPosition = Input.mousePosition;
+
+    return Camera.main.ScreenToWorldPoint(new Vector3(touchPosition.x, touchPosition.y, stick.position.y));
+  }
 
 	void OnMouseDown() {
     if (menus.isMenuOn() && menus.draggableDirection() != "") {
@@ -237,19 +267,6 @@ public class TouchInputHandler : MonoBehaviour
       }
     }
 
-  }
-
-  public Vector3 setPlayerDirection(Transform origin) {
-    Vector2 touchPosition = Input.mousePosition;
-
-    Vector3 worldTouchPosition = Camera.main.ScreenToWorldPoint(new Vector3(touchPosition.x, touchPosition.y, Camera.main.transform.position.y));
-    Vector3 originPosition = new Vector3(origin.position.x, 0, origin.position.z);
-    Vector3 heading = worldTouchPosition - originPosition;
-    direction = heading / heading.magnitude;
-
-    Player.pl.setDirection(direction);
-
-    return worldTouchPosition;
   }
 
 	public void stopReact() {
