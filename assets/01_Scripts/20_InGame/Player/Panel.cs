@@ -18,7 +18,7 @@ public class Panel : MonoBehaviour {
   void Update() {
     if (Player.pl.uncontrollable()) return;
 
-    if (stickMoving && Input.touchCount == 1) {
+    if (stickMoving && Input.touchCount > 0) {
       handler.setPlayerDirection(character);
     }
 

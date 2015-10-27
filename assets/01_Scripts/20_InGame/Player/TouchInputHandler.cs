@@ -165,21 +165,31 @@ public class TouchInputHandler : MonoBehaviour
         if ( Physics.Raycast(ray, out hit) ) {
           GameObject hitObject = hit.transform.gameObject;
 
-          if (Input.GetTouch(i).phase == TouchPhase.Began) {
-            if (hitObject.tag == "Ground") {
-              stick.position = newStickPosition();
-            } else {
+          if (controlMethod == "Stick") {
+            if (Input.GetTouch(i).phase == TouchPhase.Began) {
+              if (hitObject.tag == "Ground") {
+                stick.position = newStickPosition();
+              } else {
+                hitObject.SendMessage("OnPointerDown");
+              }
+            }
+
+            if (Input.GetTouch(i).phase == TouchPhase.Moved && hitObject.tag == "Ground") {
+              setPlayerDirection(stick);
+            }
+
+            if (Input.GetTouch(i).phase == TouchPhase.Ended) {
+              if (hitObject.tag == "Ground") Player.pl.stopMoving();
+              else hitObject.SendMessage("OnPointerUp");
+            }
+          } else if (controlMethod == "LR") {
+            if (Input.GetTouch(i).phase == TouchPhase.Began) {
               hitObject.SendMessage("OnPointerDown");
             }
-          }
 
-          if (Input.GetTouch(i).phase == TouchPhase.Moved && hitObject.tag == "Ground" && Input.touchCount == 1) {
-            setPlayerDirection(stick);
-          }
-
-          if (Input.GetTouch(i).phase == TouchPhase.Ended) {
-            if (hitObject.tag == "Ground") Player.pl.stopMoving();
-            else hitObject.SendMessage("OnPointerUp");
+            if (Input.GetTouch(i).phase == TouchPhase.Ended) {
+              hitObject.SendMessage("OnPointerUp");
+            }
           }
         }
       }
@@ -187,7 +197,14 @@ public class TouchInputHandler : MonoBehaviour
 	}
 
   public Vector3 setPlayerDirection(Transform origin) {
-    Vector2 touchPosition = Input.mousePosition;
+    Vector2 touchPosition;
+    if (Player.pl.uncontrollable()) return Vector3.zero;
+
+    if (Input.touchCount > 0) {
+      touchPosition = Input.GetTouch(0).position;
+    } else {
+      touchPosition = Input.mousePosition;
+    }
 
     Vector3 worldTouchPosition = Camera.main.ScreenToWorldPoint(new Vector3(touchPosition.x, touchPosition.y, Camera.main.transform.position.y));
     Vector3 originPosition = new Vector3(origin.position.x, 0, origin.position.z);
