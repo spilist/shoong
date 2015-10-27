@@ -65,14 +65,24 @@ public class SpawnManager : MonoBehaviour {
 
     float offset_ = offset(target.tag);
 
-    do {
-      do {
-        screenX = Random.Range(-generateSpaceRadius, 1 + generateSpaceRadius);
-        screenY = Random.Range(-generateSpaceRadius, 1 + generateSpaceRadius);
-      } while(-offset_ < screenX && screenX < offset_ + 1 && -offset_ < screenY && screenY < offset_ + 1);
+    Vector2 screenPos = Random.insideUnitCircle;
+    screenPos.Normalize();
 
-      spawnPosition = Camera.main.ViewportToWorldPoint(new Vector3(screenX, screenY, Camera.main.transform.position.y));
+    do {
+      screenX = Random.Range(200, 400);
+      screenY = Random.Range(200, 400);
+      screenPos = new Vector2(screenPos.x * screenX, screenPos.y * screenY);
+      spawnPosition = new Vector3(screenPos.x + Player.pl.transform.position.x, Player.pl.transform.position.y, screenPos.y + Player.pl.transform.position.z);
     } while(Physics.OverlapSphere(spawnPosition, radius, mask).Length > 0 && count++ < 100);
+
+    // do {
+    //   do {
+    //     screenX = Random.Range(-generateSpaceRadius, 1 + generateSpaceRadius);
+    //     screenY = Random.Range(-generateSpaceRadius, 1 + generateSpaceRadius);
+    //   } while(-offset_ < screenX && screenX < offset_ + 1 && -offset_ < screenY && screenY < offset_ + 1);
+
+    //   spawnPosition = Camera.main.ViewportToWorldPoint(new Vector3(screenX, screenY, Camera.main.transform.position.y));
+    // } while(Physics.OverlapSphere(spawnPosition, radius, mask).Length > 0 && count++ < 100);
 
     if (count >= 100) Debug.Log(target.name + " is overlapped");
 

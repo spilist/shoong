@@ -2,6 +2,9 @@
 using System.Collections;
 
 public class CameraMover : MonoBehaviour {
+  public bool crossy = false;
+  public Vector3 crossyPos;
+  public Vector3 crossyRot;
   public bool fixAspect = false;
   public float aspectWidth = 1920;
   public float aspectHeight = 1080;
@@ -80,7 +83,13 @@ public class CameraMover : MonoBehaviour {
     } else if (slowly) {
       transform.position = Vector3.SmoothDamp(transform.position, new Vector3 (player.position.x, transform.position.y, player.position.z), ref velocity, smoothTime, Mathf.Infinity, Time.smoothDeltaTime);
     } else {
-      transform.position = new Vector3 (player.position.x, transform.position.y, player.position.z);
+      if (crossy) {
+        transform.position = new Vector3 (crossyPos.x + player.position.x, transform.position.y, player.position.z + crossyPos.z);
+        transform.eulerAngles = crossyRot;
+      } else {
+        transform.position = new Vector3 (player.position.x, transform.position.y, player.position.z);
+        transform.eulerAngles = new Vector3(90, 0, 0);
+      }
     }
   }
 

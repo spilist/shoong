@@ -22,7 +22,7 @@ TagManager:
   - ContactCollider
   - BackButton
   - CubeDispenser
-  - StatsMenu
+  - IdleMenus
   - CharactersMenu
   - UICharacters
   - MenuButtons

@@ -24,12 +24,12 @@ public class MenusController : MonoBehaviour {
     if( Physics.Raycast( ray, out hit, 100 ) ) {
       string hitTag = hit.transform.tag;
       string layer = LayerMask.LayerToName(hit.transform.gameObject.layer);
-      string menuButtons = hit.transform.parent.name;
-      if (menuButtons == "MenuButtonsLeft" || menuButtons == "MenuButtonsRight") {
-        if (hitTag == "LinkButton") {
+
+      if (hitTag == "IdleMenus") {
+        if (hit.transform.GetComponent<MenusBehavior>() != null) {
           hit.transform.GetComponent<MenusBehavior>().activateSelf();
         } else {
-          currentlyOn = transform.Find(hitTag).gameObject;
+          currentlyOn = transform.Find(hit.transform.name).gameObject;
           toggleMenuAndUI();
           AudioSource.PlayClipAtPoint(UITouchSound, hit.transform.position);
         }

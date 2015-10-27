@@ -38,6 +38,9 @@ public class Panel : MonoBehaviour {
   }
 
   void OnPointerUp() {
-    LRMoving = false;
+    if (tag == "LRPanel_left" || tag == "LRPanel_right") {
+      LRMoving = false;
+      Player.pl.playerShip.tiltBack();
+    }
   }
 }

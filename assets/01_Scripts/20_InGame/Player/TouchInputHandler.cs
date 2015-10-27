@@ -59,6 +59,14 @@ public class TouchInputHandler : MonoBehaviour
       }
     }
 
+    if (Input.GetAxis("Horizontal") != 0) {
+      float horiz = Input.GetAxis("Horizontal");
+      string dirStr = horiz < 0 ? "LRPanel_left" : "LRPanel_right";
+      Player.pl.setPerpDirection(dirStr);
+    } else {
+      Player.pl.playerShip.tiltBack();
+    }
+
     if (reactAble() && Input.GetMouseButtonDown(0)) {
       if (pause.isResuming()) return;
 
@@ -72,6 +80,8 @@ public class TouchInputHandler : MonoBehaviour
       }
 
       if (Player.pl.uncontrollable()) return;
+
+      Debug.Log(result);
 
 			if ((result == "Ground" || result == "ChangeBehavior") && !gameStarted) {
 				TimeManager.time.startTime();

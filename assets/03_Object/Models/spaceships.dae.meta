@@ -1,27 +1,22 @@
 fileFormatVersion: 2
-guid: 1b0edd80e8d124b0783a3e73d181dccf
-timeCreated: 1445656497
+guid: a9fe0433341f04f3097317dd0da9d14f
+timeCreated: 1445935360
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
-    100000: spaceship
-    100002: spaceship_1
-    100004: spaceship_2
-    100006: //RootNode
-    400000: spaceship
-    400002: spaceship_1
-    400004: spaceship_2
-    400006: //RootNode
-    2300000: spaceship
-    2300002: spaceship_1
-    2300004: spaceship_2
-    3300000: spaceship
-    3300002: spaceship_1
-    3300004: spaceship_2
-    4300000: spaceship
-    4300002: spaceship_1
-    4300004: spaceship_2
+    100000: SpaceShip
+    100002: SpaceShip_1
+    100004: //RootNode
+    400000: SpaceShip
+    400002: SpaceShip_1
+    400004: //RootNode
+    2300000: SpaceShip
+    2300002: SpaceShip_1
+    3300000: SpaceShip
+    3300002: SpaceShip_1
+    4300000: SpaceShip
+    4300002: SpaceShip_1
     9500000: //RootNode
   materials:
     importMaterials: 1
