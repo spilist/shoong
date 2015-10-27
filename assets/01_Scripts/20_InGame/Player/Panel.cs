@@ -23,24 +23,14 @@ public class Panel : MonoBehaviour {
   void OnPointerDown() {
     if (Player.pl.uncontrollable()) return;
 
-    if (Input.touchCount > 1 && tag == "StickPanel_booster") {
-      Player.pl.shootBooster();
-    }
-
-    if (tag == "LRPanel_left" || tag == "LRPanel_right") {
-      if (Input.touchCount == 1) {
-        LRMoving = true;
-        movingDirection = tag;
-      } else {
-        Player.pl.shootBooster();
-      }
+    if (Input.touchCount == 1) {
+      LRMoving = true;
+      movingDirection = tag;
     }
   }
 
   void OnPointerUp() {
-    if (tag == "LRPanel_left" || tag == "LRPanel_right") {
-      LRMoving = false;
-      Player.pl.playerShip.tiltBack();
-    }
+    LRMoving = false;
+    Player.pl.playerShip.tiltBack();
   }
 }

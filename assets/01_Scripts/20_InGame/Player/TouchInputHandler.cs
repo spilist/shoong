@@ -6,22 +6,12 @@ using System.Collections.Generic;
 
 public class TouchInputHandler : MonoBehaviour
 {
-  public Transform controlPanel_circle_left;
-  public Transform controlPanel_circle_right;
-  public Transform controlPanel_packman_left;
-  public Transform controlPanel_packman_right;
-  public Transform stick;
-  private float stickPanelSize;
-  public PartsToBeCollected ptb;
+  public Collider boundary;
 
   public BeforeIdle beforeIdle;
   public SpawnManager spawnManager;
   public MenusController menus;
   public PauseButton pause;
-
-	public GameObject touchEffect;
-  public int touchEffectAmount = 30;
-  public List<GameObject> touchEffectPool;
 
 	private bool gameStarted = false;
 	private bool react = true;
@@ -32,18 +22,6 @@ public class TouchInputHandler : MonoBehaviour
   private float lastMousePosition_x;
   private float endMousePosition_x;
   private Vector3 lastDraggablePosition;
-  private string controlMethod;
-
-  private GameObject lastHitObject;
-
-  void Awake() {
-    touchEffectPool = new List<GameObject>();
-    for (int i = 0; i < touchEffectAmount; ++i) {
-      GameObject obj = (GameObject) Instantiate(touchEffect);
-      obj.SetActive(false);
-      touchEffectPool.Add(obj);
-    }
-  }
 
   void Update() {
 		if (Application.platform == RuntimePlatform.Android) {
@@ -71,22 +49,19 @@ public class TouchInputHandler : MonoBehaviour
       if (pause.isResuming()) return;
 
       string result = menus.touched();
-
+      Debug.Log(result);
       if (menus.isMenuOn()) return;
 
-			if (pause.isPaused()) {
+			if (result == "nothing" && pause.isPaused()) {
         pause.resume();
         return;
       }
 
       if (Player.pl.uncontrollable()) return;
 
-      Debug.Log(result);
-
-			if ((result == "Ground" || result == "ChangeBehavior") && !gameStarted) {
+			if ((result == "nothing" || result == "ChangeBehavior") && !gameStarted) {
 				TimeManager.time.startTime();
         EnergyManager.em.turnEnergy(true);
-        // ptb.generateNew();
         SuperheatManager.sm.startGame();
         beforeIdle.moveTitle();
         menus.gameStart();
@@ -96,79 +71,23 @@ public class TouchInputHandler : MonoBehaviour
 
         DataManager.dm.increment("play_" + PlayerPrefs.GetString("SelectedCharacter"));
 
+        boundary.enabled = true;
 				gameStarted = true;
-        controlMethod = DataManager.dm.getString("ControlMethod");
-        stickPanelSize = Vector3.Distance(stick.position, stick.transform.Find("End").position);
         return;
 			}
 
-      if (controlMethod == "Touch") {
-        if (result == "Ground") {
-          Vector3 worldTouchPosition = setPlayerDirection(Player.pl.transform);
-
-          if (Player.pl.isUsingDopple()) {
-            Player.pl.teleport(worldTouchPosition);
-          } else {
-            Player.pl.shootBooster();
-            spawnTouchEffect(worldTouchPosition);
-          }
-        } else if (result == "SkillButton") {
-          Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-          RaycastHit hit;
-          if ( Physics.Raycast(ray, out hit) ) {
-            GameObject hitObject = hit.transform.gameObject;
-            hitObject.SendMessage("OnPointerDown");
-          }
-        }
-      } else if (controlMethod == "Circle" || controlMethod == "Packman") {
-        if (result == "ControlPanel_circle_left") {
-          setPlayerDirection(controlPanel_circle_left);
-          Player.pl.shootBooster();
-        } else if (result == "ControlPanel_circle_right") {
-          setPlayerDirection(controlPanel_circle_right);
-          Player.pl.shootBooster();
-        } else if (result == "ControlPanel_packman_left") {
-          setPlayerDirection(controlPanel_packman_left);
-          Player.pl.shootBooster();
-        } else if (result == "ControlPanel_packman_right") {
-          setPlayerDirection(controlPanel_packman_right);
-          Player.pl.shootBooster();
-        }
-      }
-		}
-
-    if (controlMethod == "Stick" || controlMethod == "LR") {
       for (var i = 0; i < Input.touchCount; ++i) {
         Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(i).position);
         RaycastHit hit;
         if ( Physics.Raycast(ray, out hit) ) {
           GameObject hitObject = hit.transform.gameObject;
 
-          if (controlMethod == "Stick") {
-            if (Input.GetTouch(i).phase == TouchPhase.Began) {
-              if (hitObject.tag == "StickPanel_movement") {
-                stick.position = newStickPosition();
-              } else {
-                hitObject.SendMessage("OnPointerDown");
-              }
-            }
+          if (Input.GetTouch(i).phase == TouchPhase.Began) {
+            hitObject.SendMessage("OnPointerDown");
+          }
 
-            if (Input.GetTouch(i).phase == TouchPhase.Moved && (hitObject.tag == "StickPanel_movement" || hitObject.tag == "Ground")) {
-              setPlayerDirection(stick);
-            }
-
-            if (Input.GetTouch(i).phase == TouchPhase.Ended) {
-              if (hitObject.tag == "StickPanel_movement" || hitObject.tag == "Ground") Player.pl.stopMoving();
-              else hitObject.SendMessage("OnPointerUp");
-            }
-          } else if (controlMethod == "LR") {
-            if (Input.GetTouch(i).phase == TouchPhase.Began) {
-              hitObject.SendMessage("OnPointerDown");
-            }
-
-            if (Input.GetTouch(i).phase == TouchPhase.Ended) {
-              hitObject.SendMessage("OnPointerUp");
-            }
+          if (Input.GetTouch(i).phase == TouchPhase.Ended) {
+            hitObject.SendMessage("OnPointerUp");
           }
         }
       }
@@ -189,19 +108,9 @@ public class TouchInputHandler : MonoBehaviour
     Vector3 originPosition = new Vector3(origin.position.x, 0, origin.position.z);
     Vector3 heading = worldTouchPosition - originPosition;
     direction = heading / heading.magnitude;
-    if (controlMethod == "Stick") {
-      Player.pl.setDirection(direction, heading.magnitude / stickPanelSize);
-    } else {
-      Player.pl.setDirection(direction);
-    }
+    Player.pl.setDirection(direction);
 
     return worldTouchPosition;
-  }
-
-  Vector3 newStickPosition() {
-    Vector2 touchPosition = Input.mousePosition;
-
-    return Camera.main.ScreenToWorldPoint(new Vector3(touchPosition.x, touchPosition.y, stick.position.y));
   }
 
 	void OnMouseDown() {
@@ -271,24 +180,6 @@ public class TouchInputHandler : MonoBehaviour
 
   bool reactAble() {
     return !beforeIdle.isLoading() && react;
-  }
-
-  void spawnTouchEffect(Vector3 pos) {
-    GameObject effect = null;
-    for (int i = 0; i < touchEffectPool.Count; i++) {
-      if (!touchEffectPool[i].activeInHierarchy) {
-        effect = touchEffectPool[i];
-        break;
-      }
-    }
-
-    if (effect == null) {
-      effect = (GameObject) Instantiate(touchEffect);
-      touchEffectPool.Add(effect);
-    }
-
-    effect.transform.position = pos;
-    effect.SetActive(true);
   }
 }
 

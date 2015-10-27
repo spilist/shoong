@@ -3,10 +3,8 @@ using System.Collections;
 using System.Linq;
 
 public class SpawnManager : MonoBehaviour {
-  public int showHiddensInHowManyGames = 100;
-  public float generateSpaceRadius = 0.9f;
-  public float generateOffset = 0.2f;
-  public float generateOffsetForAsteroid = 0.6f;
+  public int minSpawnRadius = 200;
+  public int maxSpawnRadius = 400;
 
   public void Start() {
     GetComponent<NormalPartsManager>().enabled = true;
@@ -24,15 +22,6 @@ public class SpawnManager : MonoBehaviour {
 
     // spawn SuperheatPart
     GetComponent<SuperheatPartManager>().enabled = true;
-
-    // spawn selected objects
-    // string mainObjectsString = PlayerPrefs.GetString("MainObjects").Trim();
-    // if (mainObjectsString != "") {
-    //   string[] mainObjects = mainObjectsString.Split(' ');
-    //   foreach (string mainObject in mainObjects) {
-    //     runManager(mainObject);
-    //   }
-    // }
 
     string subObjectsString = PlayerPrefs.GetString("SubObjects").Trim();
     if (subObjectsString != "") {
@@ -63,34 +52,17 @@ public class SpawnManager : MonoBehaviour {
     LayerMask mask = (int) Mathf.Pow(2, target.gameObject.layer);
     float radius = target.GetComponent<ObjectsMover>().getBoundingSize();
 
-    float offset_ = offset(target.tag);
-
     Vector2 screenPos = Random.insideUnitCircle;
     screenPos.Normalize();
 
     do {
-      screenX = Random.Range(200, 400);
-      screenY = Random.Range(200, 400);
-      screenPos = new Vector2(screenPos.x * screenX, screenPos.y * screenY);
-      spawnPosition = new Vector3(screenPos.x + Player.pl.transform.position.x, Player.pl.transform.position.y, screenPos.y + Player.pl.transform.position.z);
+      screenX = Random.Range(minSpawnRadius, maxSpawnRadius);
+      screenY = Random.Range(minSpawnRadius, maxSpawnRadius);
+      spawnPosition = new Vector3(screenPos.x * screenX + Player.pl.transform.position.x, Player.pl.transform.position.y, screenPos.y * screenY + Player.pl.transform.position.z);
     } while(Physics.OverlapSphere(spawnPosition, radius, mask).Length > 0 && count++ < 100);
-
-    // do {
-    //   do {
-    //     screenX = Random.Range(-generateSpaceRadius, 1 + generateSpaceRadius);
-    //     screenY = Random.Range(-generateSpaceRadius, 1 + generateSpaceRadius);
-    //   } while(-offset_ < screenX && screenX < offset_ + 1 && -offset_ < screenY && screenY < offset_ + 1);
-
-    //   spawnPosition = Camera.main.ViewportToWorldPoint(new Vector3(screenX, screenY, Camera.main.transform.position.y));
-    // } while(Physics.OverlapSphere(spawnPosition, radius, mask).Length > 0 && count++ < 100);
 
     if (count >= 100) Debug.Log(target.name + " is overlapped");
 
     return spawnPosition;
-  }
-
-  float offset(string tag) {
-    if (tag == "Obstacle_big") return generateOffsetForAsteroid;
-    else return generateOffset;
   }
 }

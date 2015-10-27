@@ -2,7 +2,6 @@
 using System.Collections;
 
 public class CameraMover : MonoBehaviour {
-  public bool crossy = false;
   public Vector3 crossyPos;
   public Vector3 crossyRot;
   public bool fixAspect = false;
@@ -28,6 +27,8 @@ public class CameraMover : MonoBehaviour {
   private bool paused = false;
 
   void Start () {
+    transform.eulerAngles = crossyRot;
+
     if (!fixAspect) return;
 
     // set the desired aspect ratio (the values in this example are
@@ -73,7 +74,7 @@ public class CameraMover : MonoBehaviour {
       if (slowly) {
         originalPos = Vector3.SmoothDamp(originalPos, new Vector3 (player.position.x, transform.position.y, player.position.z), ref velocity, smoothTime, Mathf.Infinity, Time.smoothDeltaTime);
       } else {
-        originalPos = new Vector3(player.position.x, transform.position.y, player.position.z);
+        originalPos = newPos();
       }
 
       transform.position = new Vector3(originalPos.x + Random.insideUnitSphere.x * shakeAmount, originalPos.y, originalPos.z + Random.insideUnitSphere.z * shakeAmount);
@@ -81,16 +82,14 @@ public class CameraMover : MonoBehaviour {
 
       if (!shakeContinuously && shakeCount < 0) stopShake();
     } else if (slowly) {
-      transform.position = Vector3.SmoothDamp(transform.position, new Vector3 (player.position.x, transform.position.y, player.position.z), ref velocity, smoothTime, Mathf.Infinity, Time.smoothDeltaTime);
+      transform.position = Vector3.SmoothDamp(transform.position, newPos(), ref velocity, smoothTime, Mathf.Infinity, Time.smoothDeltaTime);
     } else {
-      if (crossy) {
-        transform.position = new Vector3 (crossyPos.x + player.position.x, transform.position.y, player.position.z + crossyPos.z);
-        transform.eulerAngles = crossyRot;
-      } else {
-        transform.position = new Vector3 (player.position.x, transform.position.y, player.position.z);
-        transform.eulerAngles = new Vector3(90, 0, 0);
-      }
+        transform.position = newPos();
     }
+  }
+
+  Vector3 newPos() {
+    return new Vector3 (crossyPos.x + player.position.x, transform.position.y, player.position.z + crossyPos.z);
   }
 
   public void setPaused(bool val) {
