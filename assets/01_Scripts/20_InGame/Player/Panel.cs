@@ -3,9 +3,6 @@ using System.Collections;
 
 public class Panel : MonoBehaviour {
 	public string controlMethod;
-  public TouchInputHandler handler;
-  public Transform character;
-  private bool stickMoving = false;
   private bool LRMoving = false;
   private string movingDirection;
 
@@ -18,10 +15,6 @@ public class Panel : MonoBehaviour {
   void Update() {
     if (Player.pl.uncontrollable()) return;
 
-    if (stickMoving && Input.touchCount > 0) {
-      handler.setPlayerDirection(character);
-    }
-
     if (LRMoving && Input.touchCount == 1) {
       Player.pl.setPerpDirection(movingDirection);
     }
@@ -29,10 +22,6 @@ public class Panel : MonoBehaviour {
 
   void OnPointerDown() {
     if (Player.pl.uncontrollable()) return;
-
-    if (tag == "StickPanel_movement") {
-      stickMoving = true;
-    }
 
     if (Input.touchCount > 1 && tag == "StickPanel_booster") {
       Player.pl.shootBooster();
@@ -49,7 +38,6 @@ public class Panel : MonoBehaviour {
   }
 
   void OnPointerUp() {
-    stickMoving = false;
     LRMoving = false;
   }
 }

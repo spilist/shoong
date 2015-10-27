@@ -2,11 +2,15 @@
 using System.Collections;
 
 public class PlayerDirectionIndicator : MonoBehaviour {
+  public int followingSpeed = 150;
   Vector3 dir;
+  float currentAngle = 0;
+
   void Update () {
     dir = Player.pl.getDirection();
-    float angle = ContAngle(Vector3.forward, dir);
-    transform.localEulerAngles = new Vector3(0, 0, -angle);
+    float angle = -ContAngle(Vector3.forward, dir);
+    currentAngle = Mathf.MoveTowards(currentAngle, angle, Time.deltaTime * followingSpeed);
+    transform.localEulerAngles = new Vector3(0, 0, currentAngle);
   }
 
   float ContAngle(Vector3 fwd, Vector3 targetDir) {
@@ -14,10 +18,12 @@ public class PlayerDirectionIndicator : MonoBehaviour {
 
     if (AngleDir(fwd, targetDir, Vector3.up) == -1) {
         angle = 360.0f - angle;
-        if( angle > 359.9999f )
-            angle -= 360.0f;
-        return angle;
-    } else return angle;
+        if( angle > 359.9999f ) angle -= 360.0f;
+    }
+
+    // if (Mathf.Abs(angle - currentAngle) > 180) angle -= 180;
+
+    return angle;
   }
 
   int AngleDir( Vector3 fwd, Vector3 targetDir, Vector3 up) {

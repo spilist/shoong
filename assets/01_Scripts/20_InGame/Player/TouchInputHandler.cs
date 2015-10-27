@@ -66,11 +66,9 @@ public class TouchInputHandler : MonoBehaviour
 
       if (menus.isMenuOn()) return;
 
-      if (result == "Ground" || result == "ControlPanel" || result == "StickPanel_booster") {
-  			if (pause.isPaused()) {
-          pause.resume();
-          return;
-        }
+			if (pause.isPaused()) {
+        pause.resume();
+        return;
       }
 
       if (Player.pl.uncontrollable()) return;
@@ -115,47 +113,18 @@ public class TouchInputHandler : MonoBehaviour
       } else if (controlMethod == "Circle" || controlMethod == "Packman") {
         if (result == "ControlPanel_circle_left") {
           setPlayerDirection(controlPanel_circle_left);
-
-          if (Player.pl.isUsingDopple()) {
-            // change needed
-            // Player.pl.teleport(worldTouchPosition);
-          } else {
-            Player.pl.shootBooster();
-          }
+          Player.pl.shootBooster();
         } else if (result == "ControlPanel_circle_right") {
           setPlayerDirection(controlPanel_circle_right);
-
-          if (Player.pl.isUsingDopple()) {
-            // change needed
-            // Player.pl.teleport(worldTouchPosition);
-          } else {
-            Player.pl.shootBooster();
-          }
+          Player.pl.shootBooster();
         } else if (result == "ControlPanel_packman_left") {
           setPlayerDirection(controlPanel_packman_left);
-
-          if (Player.pl.isUsingDopple()) {
-            // change needed
-            // Player.pl.teleport(worldTouchPosition);
-          } else {
-            Player.pl.shootBooster();
-          }
+          Player.pl.shootBooster();
         } else if (result == "ControlPanel_packman_right") {
           setPlayerDirection(controlPanel_packman_right);
-
-          if (Player.pl.isUsingDopple()) {
-            // change needed
-            // Player.pl.teleport(worldTouchPosition);
-          } else {
-            Player.pl.shootBooster();
-          }
+          Player.pl.shootBooster();
         }
       }
-      //  else if (controlMethod == "Stick") {
-      //   if (result == "StickPanel_booster") {
-      //     Player.pl.shootBooster();
-      //   }
-      // }
 		}
 
     if (controlMethod == "Stick" || controlMethod == "LR") {
@@ -167,19 +136,19 @@ public class TouchInputHandler : MonoBehaviour
 
           if (controlMethod == "Stick") {
             if (Input.GetTouch(i).phase == TouchPhase.Began) {
-              if (hitObject.tag == "Ground") {
+              if (hitObject.tag == "StickPanel_movement") {
                 stick.position = newStickPosition();
               } else {
                 hitObject.SendMessage("OnPointerDown");
               }
             }
 
-            if (Input.GetTouch(i).phase == TouchPhase.Moved && hitObject.tag == "Ground") {
+            if (Input.GetTouch(i).phase == TouchPhase.Moved && (hitObject.tag == "StickPanel_movement" || hitObject.tag == "Ground")) {
               setPlayerDirection(stick);
             }
 
             if (Input.GetTouch(i).phase == TouchPhase.Ended) {
-              if (hitObject.tag == "Ground") Player.pl.stopMoving();
+              if (hitObject.tag == "StickPanel_movement" || hitObject.tag == "Ground") Player.pl.stopMoving();
               else hitObject.SendMessage("OnPointerUp");
             }
           } else if (controlMethod == "LR") {
