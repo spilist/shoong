@@ -105,6 +105,7 @@ public class ScoreManager : MonoBehaviour {
     TimeManager.time.stopTime();
     SkillManager.sm.stopSkills();
     Player.pl.stopOtherEffects();
+    RhythmManager.rm.stopBeat();
 
     if (reason == "NoEnergy") {
       DataManager.dm.increment("DeathByLowEnergy");

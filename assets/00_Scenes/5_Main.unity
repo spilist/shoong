@@ -15631,7 +15631,7 @@ MonoBehaviour:
   gauge: {fileID: 493085440}
   gaugeShell: {fileID: 1480176267}
   gaugeIcon: {fileID: 1683774461}
-  mustDieIn: 150
+  mustDieIn: 15
   getAmountbyCubes: 1
   getRate: 2
   loseRate: 1

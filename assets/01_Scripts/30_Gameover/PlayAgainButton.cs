@@ -6,5 +6,6 @@ public class PlayAgainButton : MenusBehavior {
 
 	override public void activateSelf() {
     beforeIdle.playAgain();
+    AudioManager.am.changeVolume("Main", "Min");
   }
 }
