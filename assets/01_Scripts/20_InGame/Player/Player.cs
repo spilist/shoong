@@ -97,17 +97,19 @@ public class Player : MonoBehaviour {
   private int numUseObjects = 0;
   public PlayerDirectionIndicator dirIndicator;
 
+  private bool beating = false;
+  private float beatingScale;
 
 	void Awake() {
     pl = this;
     originalBaseSpeed = baseSpeed;
+    originalScale = transform.localScale.x;
   }
 
   void Start () {
     changeManager = GetComponent<CharacterChangeManager>();
     changeManager.changeCharacter(PlayerPrefs.GetString("SelectedCharacter"));
 
-    originalScale = transform.localScale.x;
 
     Vector2 randomV = Random.insideUnitCircle;
     randomV.Normalize();
@@ -654,6 +656,11 @@ public class Player : MonoBehaviour {
   }
 
   void Update() {
+    if (beating) {
+      beatingScale = Mathf.MoveTowards(beatingScale, originalScale - RhythmManager.rm.beatScaleDiff, Time.deltaTime * RhythmManager.rm.beatScaleDiff / RhythmManager.rm.invokeCirclePer);
+      transform.localScale = beatingScale * Vector3.one;
+    }
+
     if (isRotatingByRainbow) {
       Vector3 dir = (rainbowPosition - transform.position).normalized;
       transform.Translate(dir * Time.deltaTime * 30, Space.World);
@@ -780,5 +787,10 @@ public class Player : MonoBehaviour {
     baseSpeed = originalBaseSpeed;
     speedScale = 1;
     moreSpeedCondition = "";
+  }
+
+  public void startBeat() {
+    beating = true;
+    beatingScale = originalScale;
   }
 }

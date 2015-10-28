@@ -253,7 +253,7 @@ RectTransform:
   m_LocalScale: {x: 1.20000005, y: 1.20000005, z: 1.20000005}
   m_Children: []
   m_Father: {fileID: 2044945380}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: -2064.0752, y: 396.884735}
@@ -415,7 +415,7 @@ RectTransform:
   m_LocalScale: {x: .300000012, y: .300000012, z: .300000012}
   m_Children: []
   m_Father: {fileID: 2044945380}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_AnchorMin: {x: .5, y: 0}
   m_AnchorMax: {x: .5, y: 0}
   m_AnchoredPosition: {x: -2064.0752, y: 480.884735}
@@ -2184,9 +2184,9 @@ MonoBehaviour:
   circleAmount: 2
   circlePool: []
   bpm: 130
-  beatBase: 2
+  beatBase: 1
   invokeCirclePer: 0
-  boosterOkScale: 3.5
+  boosterOkScale: 4
   isBoosterOK: 0
   currentCircle: {fileID: 0}
 --- !u!1 &56190988
@@ -3296,7 +3296,7 @@ SphereCollider:
   m_GameObject: {fileID: 91418582}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Radius: 7.5
   m_Center: {x: 0, y: 0, z: 0}
@@ -3389,7 +3389,6 @@ MonoBehaviour:
   originalMaterial: {fileID: 2100000, guid: 9b422acddcdd24ad994ef6f9b89c8c5d, type: 2}
   playerParticlesParent: {fileID: 678200079}
   booster: {fileID: 131396333}
-  chargedEffect: {fileID: 0}
   afterStrengthenEffect: {fileID: 1282841668}
   teleportingDuration: .0299999993
 --- !u!1 &96157825
@@ -10381,7 +10380,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 185515560}
   m_Layer: 0
-  m_Name: WasInsideBarsCanvas
+  m_Name: Was In BarsCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10398,7 +10397,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2044945380}
-  m_RootOrder: 10
+  m_RootOrder: 11
 --- !u!1 &188335416
 GameObject:
   m_ObjectHideFlags: 0
@@ -18090,7 +18089,7 @@ Transform:
   m_LocalScale: {x: 120, y: 120, z: 120}
   m_Children: []
   m_Father: {fileID: 2044945380}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!114 &393081738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25390,7 +25389,7 @@ RectTransform:
   - {fileID: 1143204813}
   - {fileID: 803430233}
   m_Father: {fileID: 2044945380}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_AnchorMin: {x: .5, y: 1}
   m_AnchorMax: {x: .5, y: 1}
   m_AnchoredPosition: {x: -2064.0752, y: 450.884674}
@@ -27769,7 +27768,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 673289982}
   m_Layer: 0
-  m_Name: WasInside ObjectPlane
+  m_Name: Was In ObjectPlane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27786,7 +27785,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2044945380}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!1 &675113416
 GameObject:
   m_ObjectHideFlags: 0
@@ -29720,7 +29719,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2044945380}
-  m_RootOrder: 2
+  m_RootOrder: 3
 --- !u!65 &713807494
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -34331,7 +34330,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1701025775}
-  m_RootOrder: 11
+  m_RootOrder: 10
 --- !u!1 &766233418
 GameObject:
   m_ObjectHideFlags: 0
@@ -38868,7 +38867,7 @@ Transform:
   m_LocalScale: {x: 950, y: 250.000031, z: 950}
   m_Children: []
   m_Father: {fileID: 1701025775}
-  m_RootOrder: 12
+  m_RootOrder: 11
 --- !u!114 &892369443
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39175,7 +39174,7 @@ RectTransform:
   m_LocalScale: {x: 1.20000005, y: 1.20000005, z: 1.20000005}
   m_Children: []
   m_Father: {fileID: 2044945380}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: -2064.0752, y: 480.884735}
@@ -41353,7 +41352,7 @@ GameObject:
   m_Component:
   - 224: {fileID: 948475059}
   m_Layer: 5
-  m_Name: WasIn UI > InGame
+  m_Name: Was In UI > InGame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -41370,7 +41369,7 @@ RectTransform:
   m_LocalScale: {x: .266707331, y: .266707331, z: .266707331}
   m_Children: []
   m_Father: {fileID: 2044945380}
-  m_RootOrder: 16
+  m_RootOrder: 17
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: -2064.0752, y: 450.884674}
@@ -41578,7 +41577,7 @@ RectTransform:
   m_Children:
   - {fileID: 893396114}
   m_Father: {fileID: 2044945380}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: -2165.93066, y: 450.884674}
@@ -54266,7 +54265,7 @@ RectTransform:
   m_LocalScale: {x: .300000012, y: .300000012, z: .300000012}
   m_Children: []
   m_Father: {fileID: 2044945380}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_AnchorMin: {x: .5, y: 0}
   m_AnchorMax: {x: .5, y: 0}
   m_AnchoredPosition: {x: -2064.0752, y: 480.884735}
@@ -54448,7 +54447,7 @@ RectTransform:
   m_Children:
   - {fileID: 1092268070}
   m_Father: {fileID: 2044945380}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: -2064.0752, y: 396.884735}
@@ -56157,7 +56156,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1270861826
 Transform:
   m_ObjectHideFlags: 0
@@ -56165,13 +56164,13 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1270861825}
   m_LocalRotation: {x: .411934614, y: .192088246, z: .192088217, w: .869778216}
-  m_LocalPosition: {x: 0, y: 0, z: -30}
+  m_LocalPosition: {x: -2064.0752, y: .884731293, z: -141.742599}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 155359881}
   - {fileID: 544844246}
-  m_Father: {fileID: 1701025775}
-  m_RootOrder: 8
+  m_Father: {fileID: 2044945380}
+  m_RootOrder: 0
 --- !u!23 &1270861827
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -57005,7 +57004,7 @@ SphereCollider:
   m_GameObject: {fileID: 1298175622}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Radius: .5
   m_Center: {x: 0, y: 0, z: 0}
@@ -76333,7 +76332,6 @@ Transform:
   - {fileID: 747492152}
   - {fileID: 98551105}
   - {fileID: 1289803596}
-  - {fileID: 1270861826}
   - {fileID: 1991538104}
   - {fileID: 2086294868}
   - {fileID: 765725197}
@@ -86903,7 +86901,7 @@ RectTransform:
   m_LocalScale: {x: .266707331, y: .266707331, z: .266707331}
   m_Children: []
   m_Father: {fileID: 2044945380}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: -2064.0752, y: 450.884674}
@@ -90131,7 +90129,7 @@ RectTransform:
   m_LocalScale: {x: .266707331, y: .266707331, z: .266707331}
   m_Children: []
   m_Father: {fileID: 2044945380}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_AnchorMin: {x: .5, y: 1}
   m_AnchorMax: {x: .5, y: 1}
   m_AnchoredPosition: {x: -2064.0752, y: 450.884674}
@@ -90240,7 +90238,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1945358479}
   m_Layer: 0
-  m_Name: WasInsidePlayer
+  m_Name: Was In Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -90257,7 +90255,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2044945380}
-  m_RootOrder: 3
+  m_RootOrder: 4
 --- !u!1 &1951847018
 GameObject:
   m_ObjectHideFlags: 0
@@ -92169,7 +92167,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1701025775}
-  m_RootOrder: 9
+  m_RootOrder: 8
 --- !u!114 &1991538105
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -93959,6 +93957,7 @@ Transform:
   m_LocalPosition: {x: 2064.0752, y: -.884731293, z: 111.742599}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1270861826}
   - {fileID: 393081737}
   - {fileID: 673289982}
   - {fileID: 713807493}
@@ -94010,7 +94009,7 @@ RectTransform:
   - {fileID: 1774752849}
   - {fileID: 1137204534}
   m_Father: {fileID: 2044945380}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: -2064.0752, y: 480.884735}
@@ -95445,7 +95444,7 @@ Transform:
   m_Children:
   - {fileID: 1503393549}
   m_Father: {fileID: 1701025775}
-  m_RootOrder: 10
+  m_RootOrder: 9
 --- !u!82 &2086294869
 AudioSource:
   m_ObjectHideFlags: 0
@@ -97244,7 +97243,7 @@ RectTransform:
   m_LocalScale: {x: .266707331, y: .266707331, z: .266707331}
   m_Children: []
   m_Father: {fileID: 2044945380}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: -2053.22021, y: 450.884674}

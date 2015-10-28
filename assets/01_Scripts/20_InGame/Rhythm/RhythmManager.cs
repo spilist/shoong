@@ -9,6 +9,7 @@ public class RhythmManager : MonoBehaviour {
   public int circleAmount = 5;
   public List<GameObject> circlePool;
 
+  public float beatScaleDiff = 0.4f;
   public float bpm;
   public float beatBase;
   public float invokeCirclePer;
@@ -48,6 +49,8 @@ public class RhythmManager : MonoBehaviour {
   }
 
 	void invokeCircle() {
+    Player.pl.startBeat();
+
     GameObject circle = null;
     for (int i = 0; i < circlePool.Count; i++) {
       if (!circlePool[i].activeInHierarchy) {
