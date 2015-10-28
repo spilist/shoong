@@ -410,6 +410,11 @@ public class Player : MonoBehaviour {
   public void shootBooster(){
     if (stopping) return;
 
+    if (!RhythmManager.rm.isBoosterOK) {
+      RhythmManager.rm.currentCircle.SetActive(false);
+      return;
+    }
+
     if (usingDopple) {
       teleport(transform.position + direction * dpm.blinkDistance);
       return;
