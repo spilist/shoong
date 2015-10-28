@@ -25,7 +25,6 @@ public class CharacterChangeManager : MonoBehaviour {
 
   public Transform playerParticlesParent;
   public ParticleSystem booster;
-  public ParticleSystem chargedEffect;
   public ParticleSystem afterStrengthenEffect;
 
   public float teleportingDuration;
@@ -128,11 +127,11 @@ public class CharacterChangeManager : MonoBehaviour {
     GameObject play_characters = Resources.Load<GameObject>("_characters/play_characters");
     mFilter.sharedMesh = play_characters.transform.FindChild(characterName).GetComponent<MeshFilter>().sharedMesh;
 
-    booster = Instantiate(Resources.Load(characterName + "/Booster", typeof(ParticleSystem))) as ParticleSystem;
-    booster.transform.parent = playerParticlesParent;
-    booster.transform.localScale = Vector3.one;
-    booster.transform.localPosition = Vector3.zero;
-    booster.transform.localRotation = Quaternion.identity;
+    // booster = Instantiate(Resources.Load(characterName + "/Booster", typeof(ParticleSystem))) as ParticleSystem;
+    // booster.transform.parent = playerParticlesParent;
+    // booster.transform.localScale = Vector3.one;
+    // booster.transform.localPosition = Vector3.zero;
+    // booster.transform.localRotation = Quaternion.identity;
 
     originalMesh = mFilter.sharedMesh;
 

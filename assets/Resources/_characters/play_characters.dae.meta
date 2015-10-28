@@ -26,6 +26,12 @@ ModelImporter:
     100036: paperplane
     100038: tyranno
     100040: hamster
+    100042: alienwithgun
+    100044: dolphin
+    100046: fruits
+    100048: robotcat
+    100050: toyrobot
+    100052: wilson
     400000: bender
     400002: butterfly
     400004: cat
@@ -47,6 +53,12 @@ ModelImporter:
     400036: paperplane
     400038: tyranno
     400040: hamster
+    400042: alienwithgun
+    400044: dolphin
+    400046: fruits
+    400048: robotcat
+    400050: toyrobot
+    400052: wilson
     2300000: bender
     2300002: butterfly
     2300004: cat
@@ -67,6 +79,12 @@ ModelImporter:
     2300034: paperplane
     2300036: tyranno
     2300038: hamster
+    2300040: alienwithgun
+    2300042: dolphin
+    2300044: fruits
+    2300046: robotcat
+    2300048: toyrobot
+    2300050: wilson
     3300000: bender
     3300002: butterfly
     3300004: cat
@@ -87,6 +105,12 @@ ModelImporter:
     3300034: paperplane
     3300036: tyranno
     3300038: hamster
+    3300040: alienwithgun
+    3300042: dolphin
+    3300044: fruits
+    3300046: robotcat
+    3300048: toyrobot
+    3300050: wilson
     4300000: cat
     4300002: crab
     4300004: bender
@@ -107,6 +131,12 @@ ModelImporter:
     4300034: tyranno
     4300036: paperplane
     4300038: hamster
+    4300040: fruits
+    4300042: toyrobot
+    4300044: dolphin
+    4300046: alienwithgun
+    4300048: wilson
+    4300050: robotcat
     9500000: //RootNode
   materials:
     importMaterials: 1

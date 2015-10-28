@@ -22,6 +22,12 @@ ModelImporter:
     100028: ui_paperplane
     100030: ui_tyranno
     100032: ui_hamster
+    100034: fruits_2
+    100036: toyrobot_2
+    100038: ui_alienwithgun
+    100040: ui_dolphin
+    100042: ui_robotcat
+    100044: ui_wilson
     400000: ui_bender
     400002: ui_butterfly
     400004: ui_cat
@@ -39,6 +45,12 @@ ModelImporter:
     400028: ui_paperplane
     400030: ui_tyranno
     400032: ui_hamster
+    400034: fruits_2
+    400036: toyrobot_2
+    400038: ui_alienwithgun
+    400040: ui_dolphin
+    400042: ui_robotcat
+    400044: ui_wilson
     2300000: ui_bender
     2300002: ui_butterfly
     2300004: ui_cat
@@ -55,6 +67,12 @@ ModelImporter:
     2300026: ui_paperplane
     2300028: ui_tyranno
     2300030: ui_hamster
+    2300032: fruits_2
+    2300034: toyrobot_2
+    2300036: ui_alienwithgun
+    2300038: ui_dolphin
+    2300040: ui_robotcat
+    2300042: ui_wilson
     3300000: ui_bender
     3300002: ui_butterfly
     3300004: ui_cat
@@ -71,6 +89,12 @@ ModelImporter:
     3300026: ui_paperplane
     3300028: ui_tyranno
     3300030: ui_hamster
+    3300032: fruits_2
+    3300034: toyrobot_2
+    3300036: ui_alienwithgun
+    3300038: ui_dolphin
+    3300040: ui_robotcat
+    3300042: ui_wilson
     4300000: ui_cat
     4300002: ui_crab
     4300004: ui_bender
@@ -87,6 +111,12 @@ ModelImporter:
     4300026: ui_tyranno
     4300028: ui_paperplane
     4300030: ui_hamster
+    4300032: fruits_2
+    4300034: toyrobot_2
+    4300036: ui_dolphin
+    4300038: ui_alienwithgun
+    4300040: ui_wilson
+    4300042: ui_robotcat
     9500000: //RootNode
   materials:
     importMaterials: 1

@@ -21,6 +21,12 @@ ModelImporter:
     100026: vacuumrobot_1
     100028: beardedfrog_1
     100030: paperplane_1
+    100032: alienwithgun_1
+    100034: dolphin_1
+    100036: fruits_1
+    100038: robotcat_1
+    100040: toyrobot_1
+    100042: wilson_1
     400000: bender_1
     400002: butterfly_1
     400004: cat_1
@@ -37,6 +43,12 @@ ModelImporter:
     400026: vacuumrobot_1
     400028: beardedfrog_1
     400030: paperplane_1
+    400032: alienwithgun_1
+    400034: dolphin_1
+    400036: fruits_1
+    400038: robotcat_1
+    400040: toyrobot_1
+    400042: wilson_1
     2300000: bender_1
     2300002: butterfly_1
     2300004: cat_1
@@ -52,6 +64,12 @@ ModelImporter:
     2300024: vacuumrobot_1
     2300026: beardedfrog_1
     2300028: paperplane_1
+    2300030: alienwithgun_1
+    2300032: dolphin_1
+    2300034: fruits_1
+    2300036: robotcat_1
+    2300038: toyrobot_1
+    2300040: wilson_1
     3300000: bender_1
     3300002: butterfly_1
     3300004: cat_1
@@ -67,6 +85,12 @@ ModelImporter:
     3300024: vacuumrobot_1
     3300026: beardedfrog_1
     3300028: paperplane_1
+    3300030: alienwithgun_1
+    3300032: dolphin_1
+    3300034: fruits_1
+    3300036: robotcat_1
+    3300038: toyrobot_1
+    3300040: wilson_1
     4300000: cat_1
     4300002: crab_1
     4300004: bender_1
@@ -82,6 +106,12 @@ ModelImporter:
     4300024: hamster_1
     4300026: beardedfrog_1
     4300028: paperplane_1
+    4300030: fruits_1
+    4300032: toyrobot_1
+    4300034: dolphin_1
+    4300036: alienwithgun_1
+    4300038: wilson_1
+    4300040: robotcat_1
     9500000: //RootNode
   materials:
     importMaterials: 1
