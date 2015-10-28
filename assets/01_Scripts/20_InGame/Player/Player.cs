@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour {
   public static Player pl;
-  public int sensitivity;
+  public float sensitivity;
   public bool stopping;
   public float stopSphereRadius = 0.3f;
   private float stickSpeedScale = 1;
@@ -95,6 +95,8 @@ public class Player : MonoBehaviour {
   private int numBoosters = 0;
   private int numDestroyObstacles = 0;
   private int numUseObjects = 0;
+  public PlayerDirectionIndicator dirIndicator;
+
 
 	void Awake() {
     pl = this;
@@ -110,6 +112,7 @@ public class Player : MonoBehaviour {
     Vector2 randomV = Random.insideUnitCircle;
     randomV.Normalize();
     direction = new Vector3(randomV.x, 0, randomV.y);
+    setDirection(direction);
     speed = baseSpeed;
 
     rb = GetComponent<Rigidbody>();
@@ -184,7 +187,7 @@ public class Player : MonoBehaviour {
     int sign = (dir == "LRPanel_left") ? 1 : -1;
 
     Vector3 perp = new Vector3(-direction.z, 0, direction.x) * sign * Time.fixedDeltaTime * sensitivity;
-    direction = (direction + perp).normalized;
+    setDirection((direction + perp).normalized);
   }
 
 	void OnTriggerEnter(Collider other) {
@@ -481,6 +484,7 @@ public class Player : MonoBehaviour {
       stickSpeedScale = magnitude > 1 ? 1 : magnitude;
       stopping = false;
     }
+    dirIndicator.setDirection(dir);
   }
 
   public void nearAsteroid(bool enter = true, int amount = 1) {
