@@ -75,20 +75,20 @@ public class TouchInputHandler : MonoBehaviour
 				gameStarted = true;
         return;
 			}
+    }
 
-      for (var i = 0; i < Input.touchCount; ++i) {
-        Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(i).position);
-        RaycastHit hit;
-        if ( Physics.Raycast(ray, out hit) ) {
-          GameObject hitObject = hit.transform.gameObject;
+    for (var i = 0; i < Input.touchCount; ++i) {
+      Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(i).position);
+      RaycastHit hit;
+      if ( Physics.Raycast(ray, out hit) ) {
+        GameObject hitObject = hit.transform.gameObject;
 
-          if (Input.GetTouch(i).phase == TouchPhase.Began) {
-            hitObject.SendMessage("OnPointerDown");
-          }
+        if (Input.GetTouch(i).phase == TouchPhase.Began) {
+          hitObject.SendMessage("OnPointerDown");
+        }
 
-          if (Input.GetTouch(i).phase == TouchPhase.Ended) {
-            hitObject.SendMessage("OnPointerUp");
-          }
+        if (Input.GetTouch(i).phase == TouchPhase.Ended) {
+          hitObject.SendMessage("OnPointerUp");
         }
       }
     }
