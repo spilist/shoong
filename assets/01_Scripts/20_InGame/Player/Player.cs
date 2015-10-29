@@ -106,9 +106,7 @@ public class Player : MonoBehaviour {
 	}
 
 	void FixedUpdate () {
-    if (stopping) {
-      speed = Mathf.MoveTowards(speed, 0, Time.fixedDeltaTime * stoppingSpeed);
-    } else if (usingPowerBoost) {
+    if (usingPowerBoost) {
       speed = SuperheatManager.sm.baseSpeed;
     } else if (usingEMP) {
       speed = 0;
@@ -120,10 +118,14 @@ public class Player : MonoBehaviour {
       speed = reboundSpeed;
     } else if (bouncingByDispenser) {
       speed = reboundSpeed / 2f;
-    } else if (ridingMonster) {
-      speed = baseSpeed + minimonCounter * monm.enlargeSpeedPerMinimon;
     } else {
-      speed = baseSpeed;
+      if (stopping) {
+        speed = Mathf.MoveTowards(speed, 0, Time.fixedDeltaTime * stoppingSpeed);
+      } else if (ridingMonster) {
+        speed = baseSpeed + minimonCounter * monm.enlargeSpeedPerMinimon;
+      } else {
+        speed = baseSpeed;
+      }
     }
 
     speed += boosterspeed;
@@ -465,6 +467,10 @@ public class Player : MonoBehaviour {
   public void contactBlackhole(Collision collision) {
     if (isUsingRainbow()) {
       rdm.destroyInstances();
+      isRotatingByRainbow = false;
+      isRidingRainbowRoad = false;
+      rb.isKinematic = false;
+      rotatePlayerBody();
       DataManager.dm.increment("NumReboundByBlackholeOnRainbow");
     }
     Camera.main.GetComponent<CameraMover>().shakeUntilStop(blm.shakeAmount);
@@ -568,7 +574,6 @@ public class Player : MonoBehaviour {
       } else {
         if (reboundingByBlackhole) {
           reboundingByBlackhole = false;
-          if (isRidingRainbowRoad) isRidingRainbowRoad = false;
           Camera.main.GetComponent<CameraMover>().stopShake();
           afterStrengthenStart();
         } else if (bouncingByDispenser) {

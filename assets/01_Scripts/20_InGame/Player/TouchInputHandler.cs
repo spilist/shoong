@@ -11,7 +11,9 @@ public class TouchInputHandler : MonoBehaviour
   public Transform controlPanel_packman_left;
   public Transform controlPanel_packman_right;
   public Transform stick;
+  public Transform fingerIndicator;
   private float stickPanelSize;
+  private float fingerIndicatorDistanceLimit;
 
   public BeforeIdle beforeIdle;
   public SpawnManager spawnManager;
@@ -88,7 +90,7 @@ public class TouchInputHandler : MonoBehaviour
 				gameStarted = true;
         controlMethod = DataManager.dm.getString("ControlMethod");
         stickPanelSize = Vector3.Distance(stick.position, stick.transform.Find("End").position);
-        return;
+        fingerIndicatorDistanceLimit = stickPanelSize * 1.5f;
 			}
 
       if (controlMethod == "Touch") {
@@ -132,23 +134,32 @@ public class TouchInputHandler : MonoBehaviour
         RaycastHit hit;
         if ( Physics.Raycast(ray, out hit) ) {
           GameObject hitObject = hit.transform.gameObject;
-
           if (controlMethod == "Stick") {
             if (Input.GetTouch(i).phase == TouchPhase.Began) {
               if (hitObject.tag == "StickPanel_movement") {
                 stick.position = newStickPosition();
+                stick.gameObject.SetActive(true);
               } else {
                 hitObject.SendMessage("OnPointerDown");
               }
             }
 
-            if (Input.GetTouch(i).phase == TouchPhase.Moved && (hitObject.tag == "StickPanel_movement" || hitObject.tag == "Ground")) {
+            if (Input.GetTouch(i).phase == TouchPhase.Moved && hitObject.tag == "StickPanel_movement") {
+            // if (Input.GetTouch(i).phase == TouchPhase.Moved && (hitObject.tag == "StickPanel_movement" || hitObject.tag == "Ground")) {
               setPlayerDirection(stick);
+              fingerIndicator.position = newStickPosition();
+              if (hitObject.tag == "StickPanel_movement") {
+                moveStick();
+              }
             }
 
             if (Input.GetTouch(i).phase == TouchPhase.Ended) {
-              if (hitObject.tag == "StickPanel_movement" || hitObject.tag == "Ground") Player.pl.stopMoving();
-              else hitObject.SendMessage("OnPointerUp");
+              if (hitObject.tag == "StickPanel_movement") {
+              // if (hitObject.tag == "StickPanel_movement" || hitObject.tag == "Ground") {
+                Player.pl.stopMoving();
+                stick.gameObject.SetActive(false);
+                fingerIndicator.position = stick.position;
+              } else hitObject.SendMessage("OnPointerUp");
             }
           } else if (controlMethod == "LR") {
             if (Input.GetTouch(i).phase == TouchPhase.Began) {
@@ -188,9 +199,16 @@ public class TouchInputHandler : MonoBehaviour
   }
 
   Vector3 newStickPosition() {
-    Vector2 touchPosition = Input.mousePosition;
+    Vector2 touchPosition = Input.GetTouch(0).position;
 
     return Camera.main.ScreenToWorldPoint(new Vector3(touchPosition.x, touchPosition.y, stick.position.y));
+  }
+
+  void moveStick() {
+    if (Vector3.Distance(stick.position, fingerIndicator.position) > fingerIndicatorDistanceLimit) {
+      Vector3 dir = fingerIndicator.position - stick.position;
+      stick.Translate(dir * Time.deltaTime, Space.World);
+    }
   }
 
 	void OnMouseDown() {
