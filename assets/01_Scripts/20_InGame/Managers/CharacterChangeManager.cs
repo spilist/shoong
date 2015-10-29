@@ -11,6 +11,10 @@ public class CharacterChangeManager : MonoBehaviour {
   public Mesh monsterMesh;
   public Material monsterMaterial;
   public Material metalMat;
+  public Material redMaterial;
+  public float redDuration = 1;
+  private float redCount = 0;
+  private bool beingRed = false;
 
   public Material playerEffectMat;
   public Color[] metalColors;
@@ -50,6 +54,14 @@ public class CharacterChangeManager : MonoBehaviour {
   }
 
   void Update() {
+    if (beingRed) {
+      if (redCount > 0) redCount -= Time.deltaTime;
+      else {
+        beingRed = false;
+        changeCharacterToOriginal();
+      }
+    }
+
     if (teleportingStatus == 1) {
       alpha = Mathf.MoveTowards(alpha, 0, Time.deltaTime * alphaOrigin / teleportingDuration);
       color.a = alpha;
@@ -115,6 +127,12 @@ public class CharacterChangeManager : MonoBehaviour {
   public void changeCharacter(Mesh mesh, Material material) {
     mFilter.sharedMesh = mesh;
     mRenderer.sharedMaterial = material;
+  }
+
+  public void changeRed() {
+    mRenderer.sharedMaterial = redMaterial;
+    beingRed = true;
+    redCount = redDuration;
   }
 
   public void changeCharacterToOriginal() {

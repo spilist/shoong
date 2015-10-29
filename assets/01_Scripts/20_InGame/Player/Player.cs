@@ -7,6 +7,7 @@ public class Player : MonoBehaviour {
   public static Player pl;
   public float sensitivity;
   public float stopSphereRadius = 0.3f;
+  public float stickPushMaxSpeedAt = 0.8f;
   private float stickSpeedScale = 1;
   private bool stopping = false;
   public int stoppingSpeed = 10;
@@ -232,6 +233,7 @@ public class Player : MonoBehaviour {
 
   public void loseEnergy(int amount, string tag) {
     Camera.main.GetComponent<CameraMover>().shake(shakeDuring, shakeBase * amount / 100);
+    changeManager.changeRed();
     EnergyManager.em.loseEnergy(amount, tag);
   }
 
@@ -380,6 +382,7 @@ public class Player : MonoBehaviour {
       stickSpeedScale = 1;
     } else {
       direction = dir;
+      magnitude /= stickPushMaxSpeedAt;
       stickSpeedScale = magnitude > 1 ? 1 : magnitude;
       stopping = false;
     }
