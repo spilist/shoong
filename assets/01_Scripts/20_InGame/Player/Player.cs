@@ -306,7 +306,7 @@ public class Player : MonoBehaviour {
   }
 
   public void shootBooster(){
-    if (stopping) return;
+    if (stopping || uncontrollable()) return;
 
     if (!RhythmManager.rm.isBoosterOK) {
       RhythmManager.rm.currentCircle.SetActive(false);

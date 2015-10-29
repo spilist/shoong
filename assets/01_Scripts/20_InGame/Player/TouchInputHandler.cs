@@ -13,7 +13,6 @@ public class TouchInputHandler : MonoBehaviour
   public Transform stick;
   public Transform fingerIndicator;
   private float stickPanelSize;
-  private float fingerIndicatorDistanceLimit;
 
   public BeforeIdle beforeIdle;
   public SpawnManager spawnManager;
@@ -34,8 +33,6 @@ public class TouchInputHandler : MonoBehaviour
   private float endMousePosition_x;
   private Vector3 lastDraggablePosition;
   private string controlMethod;
-
-  private GameObject lastHitObject;
 
   void Awake() {
     touchEffectPool = new List<GameObject>();
@@ -72,8 +69,6 @@ public class TouchInputHandler : MonoBehaviour
         return;
       }
 
-      if (Player.pl.uncontrollable()) return;
-
 			if ((result == "Ground" || result == "ChangeBehavior") && !gameStarted) {
 				TimeManager.time.startTime();
         EnergyManager.em.turnEnergy(true);
@@ -90,7 +85,7 @@ public class TouchInputHandler : MonoBehaviour
 				gameStarted = true;
         controlMethod = DataManager.dm.getString("ControlMethod");
         stickPanelSize = Vector3.Distance(stick.position, stick.transform.Find("End").position);
-        fingerIndicatorDistanceLimit = stickPanelSize * 1.5f;
+        stick.gameObject.SetActive(true);
 			}
 
       if (controlMethod == "Touch") {
@@ -146,11 +141,11 @@ public class TouchInputHandler : MonoBehaviour
 
             if (Input.GetTouch(i).phase == TouchPhase.Moved && hitObject.tag == "StickPanel_movement") {
             // if (Input.GetTouch(i).phase == TouchPhase.Moved && (hitObject.tag == "StickPanel_movement" || hitObject.tag == "Ground")) {
-              setPlayerDirection(stick);
               fingerIndicator.position = newStickPosition();
               if (hitObject.tag == "StickPanel_movement") {
                 moveStick();
               }
+              setPlayerDirection(stick, Input.GetTouch(i));
             }
 
             if (Input.GetTouch(i).phase == TouchPhase.Ended) {
@@ -175,9 +170,21 @@ public class TouchInputHandler : MonoBehaviour
     }
 	}
 
+  public void setPlayerDirection(Transform origin, Touch touch) {
+    if (Player.pl.uncontrollable()) return;
+
+    Vector2 touchPosition = touch.position;
+    Vector3 worldTouchPosition = Camera.main.ScreenToWorldPoint(new Vector3(touchPosition.x, touchPosition.y, Camera.main.transform.position.y));
+    Vector3 originPosition = new Vector3(origin.position.x, 0, origin.position.z);
+    Vector3 heading = worldTouchPosition - originPosition;
+    direction = heading / heading.magnitude;
+    Player.pl.setDirection(direction, heading.magnitude / stickPanelSize);
+  }
+
   public Vector3 setPlayerDirection(Transform origin) {
-    Vector2 touchPosition;
     if (Player.pl.uncontrollable()) return Vector3.zero;
+
+    Vector2 touchPosition;
 
     if (Input.touchCount > 0) {
       touchPosition = Input.GetTouch(0).position;
@@ -189,11 +196,7 @@ public class TouchInputHandler : MonoBehaviour
     Vector3 originPosition = new Vector3(origin.position.x, 0, origin.position.z);
     Vector3 heading = worldTouchPosition - originPosition;
     direction = heading / heading.magnitude;
-    if (controlMethod == "Stick") {
-      Player.pl.setDirection(direction, heading.magnitude / stickPanelSize);
-    } else {
-      Player.pl.setDirection(direction);
-    }
+    Player.pl.setDirection(direction);
 
     return worldTouchPosition;
   }
@@ -205,7 +208,7 @@ public class TouchInputHandler : MonoBehaviour
   }
 
   void moveStick() {
-    if (Vector3.Distance(stick.position, fingerIndicator.position) > fingerIndicatorDistanceLimit) {
+    if (Vector3.Distance(stick.position, fingerIndicator.position) > stickPanelSize) {
       Vector3 dir = fingerIndicator.position - stick.position;
       stick.Translate(dir * Time.deltaTime, Space.World);
     }
