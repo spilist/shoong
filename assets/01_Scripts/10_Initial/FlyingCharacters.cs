@@ -23,8 +23,9 @@ public class FlyingCharacters : MonoBehaviour {
   public float delayAfterMove = 0.5f;
 
   private bool first = true;
-  private Mesh[] characterMeshes;
+  private List<Mesh> characterMeshes;
   private int charactersCount;
+  public int activeCount;
 
   void OnEnable () {
     if (first) return;
@@ -40,6 +41,8 @@ public class FlyingCharacters : MonoBehaviour {
       obj.transform.parent = transform;
       characterPool.Add(obj);
     }
+
+    characterMeshes = new List<Mesh>();
   }
 
   GameObject getCharacter() {
@@ -57,38 +60,55 @@ public class FlyingCharacters : MonoBehaviour {
 
   public void reset() {
     first = false;
-    characterMeshes = new Mesh[allCharacters.childCount];
     charactersCount = 0;
 
     foreach (Transform character in allCharacters) {
       if (DataManager.dm.getBool(character.name) && character.name != PlayerPrefs.GetString("SelectedCharacter")) {
-        characterMeshes[charactersCount++] = character.GetComponent<MeshFilter>().sharedMesh;
+        characterMeshes.Add(character.GetComponent<MeshFilter>().sharedMesh);
+        charactersCount++;
       }
     }
 
-    StartCoroutine("showNewCharacter");
+    if (charactersCount > 0) StartCoroutine("showNewCharacter");
+  }
+
+  bool isAlreadyIn(Mesh mesh) {
+    for (int i = 0; i < characterPool.Count; i++) {
+      if (characterPool[i].activeInHierarchy) {
+        if (characterPool[i].GetComponent<MeshFilter>().sharedMesh == mesh) return true;
+      }
+    }
+    return false;
   }
 
   Mesh randomMesh() {
-    return characterMeshes[Random.Range(0, charactersCount)];
+    Mesh mesh;
+    do {
+     mesh = characterMeshes[Random.Range(0, charactersCount)];
+    } while(isAlreadyIn(mesh));
+
+    return mesh;
   }
 
   IEnumerator showNewCharacter() {
     while (true) {
-      Vector2 screenPos = Random.insideUnitCircle;
-      screenPos.Normalize();
-      screenPos *= spawnRadius;
+      if (activeCount < charactersCount) {
+        Vector2 screenPos = Random.insideUnitCircle;
+        screenPos.Normalize();
+        screenPos *= spawnRadius;
 
-      Vector3 spawnPos = screenToWorld(screenPos);
-      Vector3 direction = playerPos() - spawnPos;
-      direction.Normalize();
+        Vector3 spawnPos = screenToWorld(screenPos);
+        Vector3 direction = playerPos() - spawnPos;
+        direction.Normalize();
 
-      GameObject instance = getCharacter();
-      instance.transform.parent = transform;
-      instance.transform.position = spawnPos;
-      instance.SetActive(true);
-      instance.GetComponent<MeshFilter>().sharedMesh = randomMesh();
-      instance.GetComponent<FlyingCharacterMover>().run(this, direction);
+        GameObject instance = getCharacter();
+        instance.transform.parent = transform;
+        instance.transform.position = spawnPos;
+        instance.GetComponent<MeshFilter>().sharedMesh = randomMesh();
+        instance.SetActive(true);
+        instance.GetComponent<FlyingCharacterMover>().run(this, direction);
+        activeCount++;
+      }
 
       yield return new WaitForSeconds(Random.Range(minSpawnInterval, maxSpawnInterval));
     }

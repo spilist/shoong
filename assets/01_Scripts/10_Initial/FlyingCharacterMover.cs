@@ -5,6 +5,8 @@ public class FlyingCharacterMover : MonoBehaviour {
 	private Rigidbody rb;
   private bool randomMoving = false;
 
+  FlyingCharacters flc;
+
   float boosterSpeed = 0;
   int minBoosterSpeed;
   int maxBoosterSpeed;
@@ -21,7 +23,15 @@ public class FlyingCharacterMover : MonoBehaviour {
   float tumble;
   float speed;
 
+  void OnEnable() {
+    randomMoving = false;
+    isWaiting = false;
+    delayCount = 0;
+    boosterSpeed = 0;
+  }
+
   public void run(FlyingCharacters flc, Vector3 dir) {
+    this.flc = flc;
     rb = GetComponent<Rigidbody>();
     tumble = flc.tumble;
     baseSpeed = flc.baseSpeed;
@@ -45,6 +55,7 @@ public class FlyingCharacterMover : MonoBehaviour {
     if (tag == "FlyingBoundary") {
       if (randomMoving) {
         gameObject.SetActive(false);
+        flc.activeCount--;
       }
     } else if (tag == "ChangeBehavior") {
       randomMoving = true;
