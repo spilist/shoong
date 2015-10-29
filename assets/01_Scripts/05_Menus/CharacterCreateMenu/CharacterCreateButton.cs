@@ -26,7 +26,6 @@ public class CharacterCreateButton : MenusBehavior {
   public ShareButton shareButton;
   public CharacterSelectButton selectButton;
   public GameObject backButton;
-  public GameObject cubesYouHave;
   public GameObject goldenCubesYouHave;
   public Color notAffordableTextColor;
 
@@ -63,7 +62,6 @@ public class CharacterCreateButton : MenusBehavior {
   UICharacters getRandom() {
     List<UICharacters> list;
     int random = Random.Range(0, 100);
-    Debug.Log(random);
     if (random < rareChance) {
       list = rares;
     } else if (random < rareChance + uncommonChance) {
@@ -94,11 +92,11 @@ public class CharacterCreateButton : MenusBehavior {
   }
 
   void checkAffordable() {
-    createPrice = menu.price();
+    createPrice = menu.createPrice;
     priceText.text = createPrice.ToString("N0");
     transform.Find("CubeIcon").GetComponent<BuyButtonsCubeIconPosition>().adjust(priceText);
 
-    if (cubesYouHave.GetComponent<CubesYouHave>().youHave() < createPrice) {
+    if (GoldManager.gm.getCount() < createPrice) {
       affordable = false;
       priceText.color = notAffordableTextColor;
       GetComponent<Collider>().enabled = false;
@@ -134,7 +132,6 @@ public class CharacterCreateButton : MenusBehavior {
     selectButton.gameObject.SetActive(val);
     backButton.GetComponent<Renderer>().enabled = val;
     backButton.GetComponent<Collider>().enabled = val;
-    cubesYouHave.SetActive(val);
     goldenCubesYouHave.SetActive(val);
     GetComponent<Renderer>().enabled = val;
     GetComponent<Collider>().enabled = val;
@@ -173,7 +170,8 @@ public class CharacterCreateButton : MenusBehavior {
     }
     characterCube.SetActive(false);
 
-    cubesYouHave.GetComponent<CubesYouHave>().buy(createPrice);
+    GoldManager.gm.buy(createPrice);
+    goldenCubesYouHave.GetComponent<CubesYouHave>().buy(createPrice);
 
     createdCharacter.GetComponent<MeshFilter>().sharedMesh = randomCharacter.GetComponent<MeshFilter>().sharedMesh;
     createdCharacter.SetActive(true);
@@ -203,11 +201,6 @@ public class CharacterCreateButton : MenusBehavior {
   }
 
   void OnDisable() {
-    cubesYouHave.SetActive(false);
     goldenCubesYouHave.SetActive(false);
-  }
-
-  public bool isAffordable() {
-    return cubesYouHave.GetComponent<CubesYouHave>().youHave() < createPrice;
   }
 }

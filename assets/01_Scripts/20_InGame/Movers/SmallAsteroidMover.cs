@@ -50,7 +50,7 @@ public class SmallAsteroidMover : ObjectsMover {
     else return true;
   }
 
-  override public void showDestroyEffect() {
+  override public void showDestroyEffect(bool byPlayer) {
     for (int howMany = Random.Range(minBrokenSpawn, maxBrokenSpawn + 1); howMany > 0; howMany--) {
       GameObject broken = sam.getPooledObj(objectsManager.objDestroyEffectPool, objectsManager.objDestroyEffect, transform.position);
       broken.SetActive(true);
@@ -62,6 +62,6 @@ public class SmallAsteroidMover : ObjectsMover {
   }
 
   override public void showEncounterEffect() {
-    showDestroyEffect();
+    showDestroyEffect(true);
   }
 }

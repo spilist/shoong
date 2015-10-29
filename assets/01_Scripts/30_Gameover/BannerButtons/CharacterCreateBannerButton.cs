@@ -15,7 +15,7 @@ public class CharacterCreateBannerButton : BannerButton {
   override public bool available(int spaceLeft) {
     if (DataManager.dm.getInt("ShowCharacterCreateCount") > showMoreUntil) return false;
 
-    if (DataManager.dm.getInt("CurrentCubes") >= createMenu.price()) {
+    if (GoldManager.gm.getCount() >= createMenu.createPrice) {
       DataManager.dm.increment("ShowCharacterCreateCount");
       return true;
     }

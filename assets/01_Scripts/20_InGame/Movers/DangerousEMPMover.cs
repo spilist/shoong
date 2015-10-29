@@ -60,7 +60,7 @@ public class DangerousEMPMover : ObjectsMover {
     if (byPlayer) {
       GameObject effect = dem.getPooledObj(dem.particleDestroyByPlayerPool, dem.particleDestroyByPlayer, transform.position);
       effect.SetActive(true);
-      player.destroyObject(tag, gaugeWhenDestroy());
+      player.destroyObject(tag);
     } else if (destroyEffect) {
       GameObject effect = dem.getPooledObj(dem.objDestroyEffectPool, dem.objDestroyEffect, transform.position);
       effect.SetActive(true);

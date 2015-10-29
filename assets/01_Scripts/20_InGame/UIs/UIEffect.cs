@@ -2,8 +2,6 @@
 using System.Collections;
 
 public class UIEffect : MonoBehaviour {
-  public int guageForEffect;
-
   public float startScale = 0.1f;
   public float stayScale = 1;
   public float smallScale = 0.6f;
@@ -24,10 +22,6 @@ public class UIEffect : MonoBehaviour {
     transform.localScale = startScale * Vector3.one;
     scale = startScale;
     status++;
-  }
-
-  public void addGuage(int scale) {
-    if (guageForEffect > 0) SuperheatManager.sm.addGuageWithEffect(guageForEffect * scale);
   }
 
   void Update() {

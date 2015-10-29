@@ -6,10 +6,9 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour {
   public static Player pl;
   public float sensitivity;
-  public bool stopping;
   public float stopSphereRadius = 0.3f;
   private float stickSpeedScale = 1;
-  // private bool stopping = false;
+  private bool stopping = false;
   public int stoppingSpeed = 10;
   public float baseSpeed = 80;
   private float originalBaseSpeed;
@@ -18,13 +17,8 @@ public class Player : MonoBehaviour {
 
   public Transform effects;
   public SpawnManager spawnManager;
-  public GoldCubesCount gcCount;
 
-  public int cubesAsItIsUntill = 20;
-  public int restCubesChangePer = 5;
   public int nearAsteroidBonus = 10;
-  public float bonusCubeScaleChange = 0.2f;
-  public float bonusCubeMaxBase = 100;
 
   private float speed;
 	private float boosterspeed = 0;
@@ -52,21 +46,11 @@ public class Player : MonoBehaviour {
   public float boosterSpeedDecreasePerTime = 20;
   private float boosterBonus = 1;
 
-	public GameObject particles;
-  public List<GameObject> cubePool;
-  public int cubeAmount = 50;
-  public Material originalCubeMat;
-  public Material goldenCubeMat;
-  public Color cubeOriginalColor;
-  public Color cubeOriginalTrailColor;
-  public Color goldenCubeParticleTrailColor;
-
   public float reboundSpeed = 300;
 
   private bool unstoppable = false;
   private bool usingEMP = false;
   private bool ridingMonster = false;
-  private bool usingJetpack = false;
   private bool usingDopple = false;
   private bool usingMagnet = false;
   private bool usingTransformer = false;
@@ -110,7 +94,6 @@ public class Player : MonoBehaviour {
     changeManager = GetComponent<CharacterChangeManager>();
     changeManager.changeCharacter(PlayerPrefs.GetString("SelectedCharacter"));
 
-
     Vector2 randomV = Random.insideUnitCircle;
     randomV.Normalize();
     direction = new Vector3(randomV.x, 0, randomV.y);
@@ -120,26 +103,7 @@ public class Player : MonoBehaviour {
     rb = GetComponent<Rigidbody>();
     rb.velocity = direction * speed;
     rotatePlayerBody(true);
-
-    cubePool = new List<GameObject>();
-    for (int i = 0; i < cubeAmount; ++i) {
-      GameObject obj = (GameObject) Instantiate(particles);
-      obj.SetActive(false);
-      cubePool.Add(obj);
-    }
 	}
-
-  public GameObject generateCube() {
-    for (int i = 0; i < cubePool.Count; i++) {
-      if (!cubePool[i].activeInHierarchy) {
-        return cubePool[i];
-      }
-    }
-
-    GameObject obj = (GameObject) Instantiate(particles);
-    cubePool.Add(obj);
-    return obj;
-  }
 
 	void FixedUpdate () {
     if (stopping) {
@@ -237,62 +201,9 @@ public class Player : MonoBehaviour {
     DataManager.dm.increment("NumSpawnMinimonster", monm.numMinimonSpawn);
   }
 
-  public int numCubesInstantiate(int howMany) {
-    int instantiateCount;
-    if (howMany < cubesAsItIsUntill) {
-      instantiateCount = howMany;
-    } else {
-      instantiateCount = cubesAsItIsUntill + Mathf.RoundToInt((howMany - cubesAsItIsUntill) / (float) restCubesChangePer);
-    }
-
-    return instantiateCount;
-  }
-
   public void goodPartsEncounter(ObjectsMover mover, int howMany, int bonus = 0, bool encounterPlayer = true) {
-    if (howMany > 0) {
-      for (int e = 0; e < numCubesInstantiate(howMany); e++) {
-        GameObject cube = generateCube();
-        cube.transform.position = mover.transform.position;
-        cube.SetActive(true);
-        if (encounterPlayer && mover.tag == "RainbowDonut") {
-          if (rdm.isGolden) {
-            cube.GetComponent<Renderer>().sharedMaterial = goldenCubeMat;
-            cube.GetComponent<TrailRenderer>().material.SetColor("_TintColor", goldenCubeParticleTrailColor);
-          } else {
-            cube.GetComponent<Renderer>().material.SetColor("_TintColor", rdm.rainbowColors[e]);
-            cube.GetComponent<TrailRenderer>().material.SetColor("_TintColor", rdm.rainbowColors[e]);
-          }
-          cube.GetComponent<ParticleMover>().setRainbow();
-        } else {
-          cube.GetComponent<Renderer>().sharedMaterial = originalCubeMat;
-          cube.GetComponent<Renderer>().material.SetColor("_TintColor", cubeOriginalColor);
-          cube.GetComponent<TrailRenderer>().material.SetColor("_TintColor", cubeOriginalTrailColor);
-        }
-      }
 
-      if (mover.isNegativeObject()) {
-        if (isUsingRainbow()) DataManager.dm.increment("NumDestroyObstaclesOnRainbow");
-        else if (unstoppable) DataManager.dm.increment("NumDestroyObstaclesWithMetal");
-
-        generateGoldCube(mover);
-      }
-
-      if (bonus > 0) {
-        GameObject cube = generateCube();
-        cube.transform.position = mover.transform.position;
-        cube.SetActive(true);
-        if (unstoppable && mover.isNegativeObject()) {
-          cube.GetComponent<Renderer>().sharedMaterial = changeManager.metalMat;
-          DataManager.dm.increment("TotalBonusesWithMetal", bonus);
-        } else {
-          cube.GetComponent<Renderer>().sharedMaterial = originalCubeMat;
-        }
-
-        cube.transform.localScale = (cube.GetComponent<ParticleMover>().startScale + Mathf.Min(bonus, bonusCubeMaxBase)) * bonusCubeScaleChange * Vector3.one;
-      }
-
-      if (mover.tag != "GoldenCube") addCubeCount(howMany, bonus);
-    }
+    if (mover.tag != "GoldenCube" && (howMany > 0 || bonus > 0)) addCubeCount(howMany, bonus);
 
     if (encounterPlayer) mover.encounterPlayer();
     else mover.destroyObject(true, true);
@@ -302,25 +213,8 @@ public class Player : MonoBehaviour {
     CubeManager.cm.addCount(howMany, bonus);
   }
 
-  public void contactCubeDispenser(Transform tr, int howMany, Collision collision, float reboundDuring, bool isGolden) {
-    for (int e = 0; e < howMany; e++) {
-      GameObject cube = generateCube();
-      cube.transform.position = tr.position;
-
-      if (isGolden) {
-        cube.GetComponent<Renderer>().sharedMaterial = goldenCubeMat;
-        cube.GetComponent<TrailRenderer>().material.SetColor("_TintColor", goldenCubeParticleTrailColor);
-      } else {
-        cube.GetComponent<Renderer>().sharedMaterial = originalCubeMat;
-        cube.GetComponent<Renderer>().material.SetColor("_TintColor", cubeOriginalColor);
-        cube.GetComponent<TrailRenderer>().material.SetColor("_TintColor", cubeOriginalTrailColor);
-      }
-
-      cube.SetActive(true);
-    }
-
-    if (!isGolden) addCubeCount(howMany, 0);
-
+  public void contactCubeDispenser(Transform tr, int howMany, Collision collision, float reboundDuring) {
+    addCubeCount(howMany, 0);
     processCollision(collision);
     bouncingByDispenser = true;
     this.bounceDuration = reboundDuring;
@@ -422,10 +316,6 @@ public class Player : MonoBehaviour {
       return;
     }
 
-    if (usingJetpack) {
-      DataManager.dm.increment("NumBoostersWithJetpack");
-    }
-
     if (!usingPowerBoost) {
       changeManager.booster.Play();
       changeManager.booster.GetComponent<AudioSource>().Play();
@@ -521,7 +411,8 @@ public class Player : MonoBehaviour {
     UIEffect effect = effects.Find(effectName).GetComponent<UIEffect>();
     if (effect.gameObject.activeSelf) effect.gameObject.SetActive(false);
     effect.gameObject.SetActive(true);
-    effect.addGuage(scale);
+
+    // 그레이트시 스케일로 체력 채워준다?
   }
 
   public void effectedBy(string objTag, bool effectOn = true) {
@@ -596,10 +487,6 @@ public class Player : MonoBehaviour {
 
   bool isBouncing() {
     return bouncing || bouncingByDispenser || reboundingByBlackhole;
-  }
-
-  public bool isUsingJetpack() {
-    return usingJetpack;
   }
 
   public bool isUnstoppable() {
@@ -703,21 +590,18 @@ public class Player : MonoBehaviour {
     }
   }
 
-  public void destroyObject(string tag, int gaugeGain = 0) {
+  public void destroyObject(string tag) {
     numDestroyObstacles++;
     DataManager.dm.increment("TotalNumDestroyObstacles");
 
     if (tag == "Obstacle_small") {
       DataManager.dm.increment("NumDestroySmallAsteroids");
-      SuperheatManager.sm.addGuageWithEffect(gaugeGain);
     }
     else if (tag == "Obstacle_big") {
       DataManager.dm.increment("NumDestroyAsteroids");
-      SuperheatManager.sm.addGuageWithEffect(gaugeGain);
     }
     else if (tag == "Obstacle") {
       DataManager.dm.increment("NumDestroyMeteroids");
-      SuperheatManager.sm.addGuageWithEffect(gaugeGain);
     }
     else if (tag == "Blackhole") DataManager.dm.increment("NumDestroyBlackholes");
     else if (tag == "Monster") DataManager.dm.increment("NumDestroyMonsters");
@@ -741,7 +625,7 @@ public class Player : MonoBehaviour {
     else if (tag == "EMP") DataManager.dm.increment("NumGenerateForcefield");
     else if (tag == "Magnet") DataManager.dm.increment("Magnet");
     else if (tag == "Transformer") DataManager.dm.increment("Transformer");
-    else Debug.LogError("Exception? " + tag);
+    else Debug.Log("Encounter Exception? " + tag);
   }
 
   void OnDisable() {
@@ -752,22 +636,6 @@ public class Player : MonoBehaviour {
 
   public bool isInvincible() {
     return afterStrengthen || ridingMonster || unstoppable || isRebounding() || isUsingRainbow() || changeManager.isTeleporting();
-  }
-
-  public void generateGoldCube(ObjectsMover obj) {
-    string tag = obj.tag;
-    Vector3 position = obj.transform.position;
-
-    int random = Random.Range(0, 200);
-    if ((random < 4 && tag == "Obstacle") || (random < 1 && (tag == "Obstacle_small" || tag == "Obstacle_big"))) {
-      GameObject cube = generateCube();
-      cube.transform.position = position;
-      cube.GetComponent<Renderer>().sharedMaterial = goldenCubeMat;
-      cube.GetComponent<TrailRenderer>().material.SetColor("_TintColor", goldenCubeParticleTrailColor);
-      gcCount.add(10);
-      cube.SetActive(true);
-      cube.transform.localScale += 20 * bonusCubeScaleChange * Vector3.one;
-    }
   }
 
   public bool canBeMagnetized() {

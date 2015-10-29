@@ -31,7 +31,7 @@ public class GoldenCubeMover : ObjectsMover {
   }
 
   override protected void afterEncounter() {
-    gcm.gcCount.add(gcm.cubesWhenEncounter());
+    GoldManager.gm.add(transform.position, gcm.cubesWhenEncounter());
     objectsManager.run();
   }
 

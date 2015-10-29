@@ -17,7 +17,6 @@ public class ScoreUpdate : MonoBehaviour {
   public GameObject phaseBonus;
   public GameObject collectorBonus;
 
-  public GoldCubesCount goldenCubesCount;
   public Color newHighscoreColor;
   public int scoreUpdateMaxStandard = 1000;
   public float scoreUpdateMaxDuration = 3;
@@ -53,7 +52,7 @@ public class ScoreUpdate : MonoBehaviour {
     cubes.text = cubeNum.ToString();
     cubeChangeTo = (int) cubeNum + cubeDifference;
 
-    goldenCubeNum = (int) goldenCubesCount.getCount();
+    goldenCubeNum = (int) GoldManager.gm.getCount();
     goldenCubes.text = goldenCubeNum.ToString();
 
     if (cubeDifference >= scoreUpdateMaxStandard) {
@@ -73,7 +72,7 @@ public class ScoreUpdate : MonoBehaviour {
     CPS.transform.Find("Number").GetComponent<Text>().text = cps_.ToString("0.00");
     DataManager.dm.setBestFloat("BestCPS", cps_);
 
-    phaseBonus.transform.Find("Number").GetComponent<Text>().text = PhaseManager.pm.getPhaseBonus().ToString();
+    phaseBonus.transform.Find("Number").GetComponent<Text>().text = "0";
 
     float bonusScale = ((DataManager.dm.getInt("NormalCollectorLevel") - 1) * 5 + DataManager.dm.getInt("GoldenCollectorLevel") * 50) / 100f;
     bonusAmount = (int) Mathf.Floor(cubeDifference * bonusScale);

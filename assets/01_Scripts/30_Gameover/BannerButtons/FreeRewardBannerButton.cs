@@ -5,8 +5,8 @@ using System.Collections;
 
 public class FreeRewardBannerButton : BannerButton {
   public Text goldenCubeText;
-  public int minReward = 10;
-  public int maxReward = 50;
+  public int minReward = 70;
+  public int maxReward = 140;
 
   public float[] nextRewardMinutes;
 

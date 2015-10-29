@@ -11,9 +11,7 @@ public class EMPMover : ObjectsMover {
   override protected void afterDestroy(bool byPlayer) {
     if (byPlayer) {
       if (empManager.isGolden) {
-        empManager.gcCount.add(cubesWhenDestroy(), false);
-      } else if (empManager.isSuper) {
-        SuperheatManager.sm.addGuageWithEffect(cubesWhenDestroy());
+        GoldManager.gm.add(transform.position, cubesWhenDestroy(), false);
       }
     }
   }

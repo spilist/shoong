@@ -3,14 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class GoldenCubeManager : ObjectsManager {
-  public GoldCubesCount gcCount;
-
   public int respawnAfter = 120;
 
   public float spawnRadius = 200;
   public float detectDistance = 200;
 
-  public float generateCubePer = 0.3f;
   private bool firstSpawn = true;
 
   override public void initRest() {
@@ -24,6 +21,7 @@ public class GoldenCubeManager : ObjectsManager {
     Vector3 spawnPos = new Vector3(screenPos.x + player.transform.position.x, player.transform.position.y, screenPos.y + player.transform.position.z);
 
     instance = getPooledObj(objPool, objPrefab, spawnPos);
+    instance.SetActive(true);
   }
 
   override protected float spawnInterval() {

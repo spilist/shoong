@@ -12,7 +12,6 @@ public class ScoreManager : MonoBehaviour {
 
   // for score managing
   public Text bonusCount;
-  public GoldCubesCount goldCubesCount;
 
   // for gameover effect
   public float showPlayerExplosionDuring = 2;

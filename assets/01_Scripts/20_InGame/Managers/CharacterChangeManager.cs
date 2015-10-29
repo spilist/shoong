@@ -145,7 +145,7 @@ public class CharacterChangeManager : MonoBehaviour {
   void resetAllAbility() {
     EnergyManager.em.resetEnergyAbility();
     Player.pl.resetAbility();
-    SuperheatManager.sm.resetSuperheatAbility();
+    // SuperheatManager.sm.resetSuperheatAbility();
     CubeManager.cm.resetCubeAbility();
     skill_magnet.resetAbility();
     skill_monster.resetAbility();

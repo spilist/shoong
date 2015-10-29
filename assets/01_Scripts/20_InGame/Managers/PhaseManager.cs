@@ -10,7 +10,6 @@ public class PhaseManager : MonoBehaviour {
   public int[] debrisDistancesPerLevel;
   public int[] timeLimitPerLevel;
 
-  public GoldCubesCount gcCount;
   public IceDebrisManager icm;
   public PhaseMonsterManager pmm;
   public NormalPartsManager npm;
@@ -119,7 +118,6 @@ public class PhaseManager : MonoBehaviour {
       if (stayCount < showAfter) stayCount += Time.deltaTime;
       else {
         stayCount = 0;
-        gcCount.add(1);
         status++;
       }
     } else if (status == 2) {
@@ -176,11 +174,5 @@ public class PhaseManager : MonoBehaviour {
       meteroidFilterColor.a = 0;
       meteroidFilter.sharedMaterial.SetColor("_TintColor", meteroidFilterColor);
     }
-  }
-
-  public int getPhaseBonus() {
-    // int bonus = 0;
-    // for (int i = 0; i <= level; i++) bonus += i;
-    return level;
   }
 }

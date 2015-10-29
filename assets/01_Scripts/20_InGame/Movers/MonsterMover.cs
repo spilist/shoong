@@ -135,10 +135,6 @@ public class MonsterMover : ObjectsMover {
     return rideable()? 0 : objectsManager.cubesWhenEncounter();
   }
 
-  override public int bonusCubes() {
-    return player.isUnstoppable()? (int) (cubesWhenDestroy() * metalSkill.bonus) : 0;
-  }
-
   public bool rideable() {
     return !player.isUnstoppable() && (weak || player.isUsingMagnet());
   }

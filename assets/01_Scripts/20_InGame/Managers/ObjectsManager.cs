@@ -24,11 +24,9 @@ public class ObjectsManager : MonoBehaviour {
   public bool hasEncounterEffect = true;
 
   protected SpawnManager spawnManager;
-  public SuperheatPartManager shm;
   protected bool skipInterval = false;
 
   public GameObject instance;
-  public int gaugeWhenDestroy = 0;
   public int loseEnergyWhenEncounter;
   public float bounceDuration;
   public bool hasLevel = false;
@@ -46,7 +44,6 @@ public class ObjectsManager : MonoBehaviour {
   void OnEnable() {
     beforeInit();
     spawnManager = gameObject.GetComponent<SpawnManager>();
-    shm = gameObject.GetComponent<SuperheatPartManager>();
 
     if (forceSpawnAtStart) {
       minSpawnInterval = 0;

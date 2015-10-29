@@ -17,7 +17,6 @@ public class ObjectsMover : MonoBehaviour {
   protected float shrinkedScale;
 
   protected ObjectsManager objectsManager;
-  protected Skill_Metal metalSkill;
   protected Skill_Transformer transSkill;
   protected Rigidbody rb;
   public float boundingSize = 50;
@@ -35,7 +34,6 @@ public class ObjectsMover : MonoBehaviour {
     objectsManager = (ObjectsManager) GameObject.Find("Field Objects").GetComponent(getManager());
 
     if (isNegativeObject()) {
-      metalSkill = (Skill_Metal)SkillManager.sm.getSkill("Metal");
       transSkill = (Skill_Transformer)SkillManager.sm.getSkill("Transformer");
     }
 
@@ -221,15 +219,15 @@ public class ObjectsMover : MonoBehaviour {
 
     gameObject.SetActive(false);
 
-    if (destroyEffect && objectsManager.objDestroyEffect != null) {
-      showDestroyEffect();
+    if (destroyEffect) {
+      showDestroyEffect(byPlayer);
     }
 
     afterDestroy(byPlayer);
 
     if (byPlayer) {
       objectsManager.run();
-      if (isNegativeObject()) Player.pl.destroyObject(tag, gaugeWhenDestroy());
+      if (isNegativeObject()) Player.pl.destroyObject(tag);
     } else {
       objectsManager.runImmediately();
     }
@@ -241,7 +239,9 @@ public class ObjectsMover : MonoBehaviour {
     return true;
   }
 
-  virtual public void showDestroyEffect() {
+  virtual public void showDestroyEffect(bool byPlayer) {
+    if (objectsManager.objDestroyEffect == null) return;
+
     GameObject obj = objectsManager.getPooledObj(objectsManager.objDestroyEffectPool, objectsManager.objDestroyEffect, transform.position);
     obj.SetActive(true);
   }
@@ -253,9 +253,7 @@ public class ObjectsMover : MonoBehaviour {
       gameObject.SetActive(false);
     }
 
-    if (objectsManager.objEncounterEffect != null) {
-      showEncounterEffect();
-    }
+    showEncounterEffect();
 
     if (objectsManager.objEncounterEffectForPlayer != null) {
       objectsManager.objEncounterEffectForPlayer.Play();
@@ -272,13 +270,15 @@ public class ObjectsMover : MonoBehaviour {
     if (hasEncounterEffect()) {
       Player.pl.encounterObject(tag);
     } else if (isNegativeObject() && !dangerous()) {
-      Player.pl.destroyObject(tag, gaugeWhenDestroy());
+      Player.pl.destroyObject(tag);
     }
 
     afterEncounter();
   }
 
   virtual public void showEncounterEffect() {
+    if (objectsManager.objEncounterEffect == null) return;
+
     GameObject obj = objectsManager.getPooledObj(objectsManager.objEncounterEffectPool, objectsManager.objEncounterEffect, transform.position);
     obj.SetActive(true);
   }
@@ -304,11 +304,7 @@ public class ObjectsMover : MonoBehaviour {
   }
 
   virtual public int bonusCubes() {
-    if (isNegativeObject() && Player.pl.isUnstoppable()) {
-
-      return (int) (cubesWhenEncounter() * metalSkill.bonus);
-    }
-    else return 0;
+    return 0;
   }
 
   virtual public bool dangerous() {
@@ -325,10 +321,6 @@ public class ObjectsMover : MonoBehaviour {
 
   virtual public bool noCubesByDestroy() {
     return false;
-  }
-
-  public int gaugeWhenDestroy() {
-    return objectsManager.gaugeWhenDestroy;
   }
 
   void OnDisable() {

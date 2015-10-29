@@ -13,7 +13,6 @@ public class PartsCollector : MonoBehaviour {
   public int maxEmission = 1000;
   public float startOffset = 20f;
   public float startEmission = 0;
-  private int cubeRequired;
   private float offset;
 	private float emissionDifference;
   private Rigidbody rb;
@@ -31,16 +30,6 @@ public class PartsCollector : MonoBehaviour {
   public void checkEnchant() {
     if (DataManager.dm.getBool("GoldenCollector")) {
       GetComponent<Renderer>().sharedMaterial = enchanted;
-    }
-  }
-
-  public void setUserFollow(bool val, int cubeRequired = 0) {
-    followingUser = val;
-    if (val) {
-      this.cubeRequired = cubeRequired;
-    } else {
-      rb.velocity = Vector3.zero;
-      particleeffect.emissionRate = 0;
     }
   }
 

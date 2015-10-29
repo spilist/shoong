@@ -5,7 +5,6 @@ public class SummonedPartMover : ObjectsMover {
   SummonPartsManager summonManager;
   Renderer mRenderer;
   bool isGoldenCube = false;
-  bool isSuperheatPart = false;
 
   override protected void initializeRest() {
     summonManager = (SummonPartsManager) objectsManager;
@@ -19,19 +18,16 @@ public class SummonedPartMover : ObjectsMover {
 
   public void setGolden() {
     isGoldenCube = true;
-    isSuperheatPart = false;
-  }
-
-  public void setSuper() {
-    isGoldenCube = false;
-    isSuperheatPart = true;
+    mRenderer.sharedMaterial = GoldManager.gm.goldenMat;
+    transform.Find("GoldenEffect").gameObject.SetActive(true);
+    transform.Find("BasicEffect").gameObject.SetActive(false);
   }
 
   public void setNormal() {
-    if (isGoldenCube || isSuperheatPart) {
-      isGoldenCube = false;
-      isSuperheatPart = false;
-    }
+    isGoldenCube = false;
+    mRenderer.sharedMaterial = summonManager.summonedPartPrefab.GetComponent<Renderer>().sharedMaterial;
+    transform.Find("GoldenEffect").gameObject.SetActive(false);
+    transform.Find("BasicEffect").gameObject.SetActive(true);
   }
 
   override public void destroyObject (bool destroyEffect = true, bool byPlayer = false) {
@@ -40,33 +36,24 @@ public class SummonedPartMover : ObjectsMover {
 
     if (destroyEffect) {
       if (isGoldenCube) {
-        summonManager.goldenDestroyEffect(transform.position);
+        GoldManager.gm.gcm.goldenDestroyEffect(transform.position);
       } else {
-        showDestroyEffect();
+        showDestroyEffect(byPlayer);
       }
     }
 
     if (byPlayer) {
       summonManager.increaseSummonedPartGetcount();
       if (isGoldenCube) {
-        summonManager.gcCount.add(summonManager.goldCubesGet);
-      } else if (isSuperheatPart) {
-        summonManager.shm.add();
+        GoldManager.gm.add(transform.position, summonManager.goldCubesGet);
       }
-      // else {
-      //   summonManager.ptb.checkCollected(GetComponent<MeshFilter>().sharedMesh);
-      // }
     }
   }
 
   override protected void afterEncounter() {
     summonManager.increaseSummonedPartGetcount();
     if (isGoldenCube) {
-      summonManager.gcCount.add(summonManager.goldCubesGet);
-    } else if (isSuperheatPart) {
-      summonManager.shm.add();
-    } else {
-      summonManager.ptb.checkCollected(GetComponent<MeshFilter>().sharedMesh);
+      GoldManager.gm.add(transform.position, summonManager.goldCubesGet);
     }
 
     if (player.isNearAsteroid()) {

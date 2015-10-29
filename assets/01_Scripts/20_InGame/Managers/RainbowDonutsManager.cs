@@ -3,17 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class RainbowDonutsManager : ObjectsManager {
-  public int guageAmount = 20;
-
   public int chanceBase = 200;
   public Material goldenRainbowMat;
   public int goldenChance = 1;
-  public GoldCubesCount gcCount;
-  public Material superRainbowMat;
-  public int superChance = 10;
-  public int guageAmountSuper = 50;
+  public int goldCubesGet = 1;
   public bool isGolden = false;
-  public bool isSuper = false;
 
   public LayerMask blackholeGravityMask;
 
@@ -30,7 +24,6 @@ public class RainbowDonutsManager : ObjectsManager {
   public Color[] rainbowColors;
   public float pitchStart = 0.9f;
   public float pitchIncrease = 0.1f;
-  public int superheatGuagePerRide = 20;
 
   private int rideCount = 0;
   private bool drawingRainbowRoad = false;
@@ -53,14 +46,6 @@ public class RainbowDonutsManager : ObjectsManager {
 
   override public void adjustForLevel(int level) {
     numRoadRides = numRoadRidesPerLevel[level];
-    if (level == 0) {
-      goldenChance = 0;
-      superChance = 0;
-    }
-
-    if (level == 1) {
-      goldenChance = 0;
-    }
   }
 
   override protected void afterSpawn() {
@@ -69,22 +54,12 @@ public class RainbowDonutsManager : ObjectsManager {
     int random = Random.Range(0, chanceBase);
     if (random < goldenChance) {
       isGolden = true;
-      isSuper = false;
       instance.GetComponent<Renderer>().sharedMaterial = goldenRainbowMat;
       instance.transform.Find("GoldenEffect").gameObject.SetActive(true);
-      instance.transform.Find("HeatEffect").gameObject.SetActive(false);
-    } else if (random < superChance) {
-      isGolden = false;
-      isSuper = true;
-      instance.GetComponent<Renderer>().sharedMaterial = superRainbowMat;
-      instance.transform.Find("GoldenEffect").gameObject.SetActive(false);
-      instance.transform.Find("HeatEffect").gameObject.SetActive(true);
     } else {
       isGolden = false;
-      isSuper = false;
       instance.GetComponent<Renderer>().sharedMaterial = objPrefab.GetComponent<Renderer>().sharedMaterial;
       instance.transform.Find("GoldenEffect").gameObject.SetActive(false);
-      instance.transform.Find("HeatEffect").gameObject.SetActive(false);
     }
   }
 
@@ -134,11 +109,7 @@ public class RainbowDonutsManager : ObjectsManager {
     drawingRainbowRoad = true;
 
     if (isGolden) {
-      gcCount.add(cubesByEncounter, false);
-    } else if (isSuper) {
-      SuperheatManager.sm.addGuageWithEffect(guageAmountSuper);
-    } else {
-      SuperheatManager.sm.addGuageWithEffect(guageAmount);
+      GoldManager.gm.add(origin, goldCubesGet, false);
     }
 
     yield return new WaitForSeconds(rotateDuring);
@@ -168,15 +139,9 @@ public class RainbowDonutsManager : ObjectsManager {
         if (isGolden) {
           instance.GetComponent<Renderer>().sharedMaterial = goldenRainbowMat;
           instance.transform.Find("GoldenEffect").gameObject.SetActive(true);
-          instance.transform.Find("HeatEffect").gameObject.SetActive(false);
-        } else if (isSuper) {
-          instance.GetComponent<Renderer>().sharedMaterial = superRainbowMat;
-          instance.transform.Find("GoldenEffect").gameObject.SetActive(false);
-          instance.transform.Find("HeatEffect").gameObject.SetActive(true);
         } else {
           instance.GetComponent<Renderer>().sharedMaterial = objPrefab.GetComponent<Renderer>().sharedMaterial;
           instance.transform.Find("GoldenEffect").gameObject.SetActive(false);
-          instance.transform.Find("HeatEffect").gameObject.SetActive(false);
         }
       }
     }

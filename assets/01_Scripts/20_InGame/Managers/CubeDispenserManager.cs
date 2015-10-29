@@ -28,14 +28,8 @@ public class CubeDispenserManager : ObjectsManager {
   public Material goldenActiveMat;
   public Material goldenInactiveMat;
   public int goldenChance = 1;
-  public GoldCubesCount gcCount;
   public int goldenCubeAmount = 10;
-  public Material superActiveMat;
-  public Material superInactiveMat;
-  public int superChance = 10;
-  public int guageAmountSuper = 50;
   private bool isGolden = false;
-  private bool isSuper = false;
 
   override public void initRest() {
     skipInterval = true;
@@ -44,14 +38,6 @@ public class CubeDispenserManager : ObjectsManager {
   override public void adjustForLevel(int level) {
     fullComboCount = fullComboCountPerLevel[level];
     destroyAfterSeconds = destroyAfterPerLevel[level];
-    if (level == 0) {
-      goldenChance = 0;
-      superChance = 0;
-    }
-
-    if (level == 1) {
-      goldenChance = 0;
-    }
   }
 
   override protected void afterSpawn() {
@@ -61,19 +47,11 @@ public class CubeDispenserManager : ObjectsManager {
     int random = Random.Range(0, chanceBase);
     if (random < goldenChance) {
       isGolden = true;
-      isSuper = false;
       instance.GetComponent<Renderer>().sharedMaterial = goldenInactiveMat;
       instance.GetComponent<CubeDispenserMover>().setGolden();
       objEncounterEffectForPlayer = instance.transform.Find("GoldenReaction").GetComponent<ParticleSystem>();
-    } else if (random < superChance) {
-      isGolden = false;
-      isSuper = true;
-      instance.GetComponent<Renderer>().sharedMaterial = superInactiveMat;
-      instance.GetComponent<CubeDispenserMover>().setSuper();
-      objEncounterEffectForPlayer = instance.transform.Find("HeatReaction").GetComponent<ParticleSystem>();
     } else {
       isGolden = false;
-      isSuper = false;
       instance.GetComponent<Renderer>().sharedMaterial = inactiveMat;
       instance.GetComponent<CubeDispenserMover>().setNormal();
       objEncounterEffectForPlayer = instance.transform.Find("BasicReaction").GetComponent<ParticleSystem>();
@@ -87,8 +65,6 @@ public class CubeDispenserManager : ObjectsManager {
 
       if (isGolden) {
         instance.GetComponent<Renderer>().sharedMaterial = goldenActiveMat;
-      } else if (isSuper) {
-        instance.GetComponent<Renderer>().sharedMaterial = superActiveMat;
       } else {
         instance.GetComponent<Renderer>().sharedMaterial = activeMat;
       }
@@ -103,8 +79,6 @@ public class CubeDispenserManager : ObjectsManager {
       skipInterval = false;
       if (isGolden) {
         instance.GetComponent<Renderer>().sharedMaterial = goldenActiveMat;
-      } else if (isSuper) {
-        instance.GetComponent<Renderer>().sharedMaterial = superActiveMat;
       } else {
         instance.GetComponent<Renderer>().sharedMaterial = activeMat;
       }

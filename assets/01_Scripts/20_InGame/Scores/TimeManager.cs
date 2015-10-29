@@ -47,33 +47,24 @@ public class TimeManager : MonoBehaviour {
 
 	void Awake() {
 		time = this;
-		// currentEnergyText = cuberNeedsMore.Find("Current").GetComponent<Text>();
-  //   requiredProgressText = cuberNeedsMore.Find("Required").GetComponent<Text>();
 	}
 
 	public void startTime() {
 		resetProgress(false);
+    CubeManager.cm.startCount();
 		StartCoroutine("startElapse");
 	}
 
 	public void resetProgress(bool nextPhase = true) {
 		if (nextPhase) {
-      // setLimit(false);
-      // spaceShipIndicator.stopIndicate();
-      // tmm.stopMonster();
       PhaseManager.pm.nextPhase();
-      // EnergyManager.em.getFullHealth();
 		}
 		progressChanging = true;
 
-		// cuberNeedsMore.gameObject.SetActive(true);
 		addGuageAmount = 0;
     currentProgressCount = 0;
 
 		requiredProgress = PhaseManager.pm.cuberNeedsPerLevel[PhaseManager.pm.phase()];
-    // cuber.setUserFollow(true, requiredProgress);
-    // currentEnergyText.text = "0";
-    // requiredProgressText.text = "/" + requiredProgress;
 
 		GameObject obj = (GameObject) Instantiate(phaseStarPrefab);
 		obj.transform.SetParent(phaseStars, false);
@@ -82,26 +73,6 @@ public class TimeManager : MonoBehaviour {
 		popStatus = 1;
 		starScale = startScale;
 	}
-
-	// void startFindNextDebris() {
- //    cuberNeedsMore.gameObject.SetActive(false);
-
- //    Vector2 screenPos = Random.insideUnitCircle;
- //    screenPos.Normalize();
- //    screenPos *= PhaseManager.pm.debrisDistancesPerLevel[PhaseManager.pm.phase()];;
-
- //    Vector3 spawnPos = screenToWorld(screenPos);
- //    GameObject debris = (GameObject) Instantiate(spaceShipDebris, spawnPos, Quaternion.identity);
- //    spaceShipIndicator.startIndicate(debris);
- //    cuber.transform.position = spawnPos;
- //    cuber.setUserFollow(false);
-
- //    setLimit(true);
- //  }
-
-  // bool isCuberCharging() {
-  //   return cuberNeedsMore.gameObject.activeSelf;
-  // }
 
   Vector3 screenToWorld(Vector3 screenPos) {
     return new Vector3(screenPos.x + Player.pl.transform.position.x, Player.pl.transform.position.y, screenPos.y + Player.pl.transform.position.z);
@@ -121,11 +92,9 @@ public class TimeManager : MonoBehaviour {
 				currentProgressCount = Mathf.MoveTowards(currentProgressCount, requiredProgress, Time.deltaTime * progressPerSecond);
 				currentProgressCount = Mathf.MoveTowards(currentProgressCount, currentProgressCount + addGuageAmount, Time.deltaTime * requiredProgress / progressChangeSpeed);
 				addGuageAmount = Mathf.MoveTowards(addGuageAmount, 0, Time.deltaTime * requiredProgress / progressChangeSpeed);
-				// currentEnergyText.text = currentProgressCount.ToString("0");
 			}
 
 			if (currentProgressCount >= requiredProgress) {
-				// startFindNextDebris();
 				resetProgress();
 			}
 		}
@@ -150,37 +119,15 @@ public class TimeManager : MonoBehaviour {
 			yield return new WaitForSeconds(1);
 			now++;
 
-			// if (hasLimit()) {
-			// 	if (timeLimit > 0) {
-			// 		timeLimit--;
-			// 		timeLimitText.text = timeLimit.ToString();
-			// 	} else if (!tmm.isSpawned()) {
-			// 		tmm.spawnMonster();
-			// 		timeLimitText.color = Color.red;
-			// 		timeLimitText.text = "Hurry Up!";
-			// 	}
-			// }
+      CubeManager.cm.addPointsByTime();
 
-			asm.respawn();
+      asm.respawn();
 			sam.respawn();
 			npm.respawn();
 			if (spawnDangerousEMP) dem.respawn();
 			if (spawnBlackhole) blm.respawn();
 		}
 	}
-
-	// public void setLimit(bool val) {
-	// 	timeLimitText.gameObject.SetActive(val);
-	// 	if (val) {
-	// 		timeLimit = PhaseManager.pm.timeLimitPerLevel[PhaseManager.pm.phase()];
-	// 		timeLimitText.text = timeLimit.ToString();
-	// 		timeLimitText.color = Color.white;
-	// 	}
-	// }
-
-	// public bool hasLimit() {
-	// 	return timeLimitText.gameObject.activeSelf;
-	// }
 
 	public void stopTime() {
 		StopCoroutine("startElapse");

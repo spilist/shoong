@@ -5,7 +5,6 @@ using System.Collections.Generic;
 
 public class CubeManager : MonoBehaviour {
   public static CubeManager cm;
-  public PartsCollector cuber;
   public Transform inGameUI;
   private int totalCount = 0;
   public int increaseSpeed = 5;
@@ -15,12 +14,15 @@ public class CubeManager : MonoBehaviour {
   public Text cubesHighscoreText;
   public GameObject howManyCubesGet;
   public GameObject howManyBonusCubesGet;
-  public GameObject cubesGetOnSuperheat;
+  // public GameObject cubesGetOnSuperheat;
   public List<GameObject> cubePool;
   public List<GameObject> bonusCubePool;
-  public List<GameObject> cubeOnSuperheatPool;
+  // public List<GameObject> cubeOnSuperheatPool;
   public int cubeAmount = 20;
+  public int pointsPerSeconds = 10;
   private float bonusRate;
+  private int pointsByTime;
+  private bool gameStarted = false;
 
   void Awake() {
     cm = this;
@@ -34,7 +36,7 @@ public class CubeManager : MonoBehaviour {
 
     cubePool = new List<GameObject>();
     bonusCubePool = new List<GameObject>();
-    cubeOnSuperheatPool = new List<GameObject>();
+    // cubeOnSuperheatPool = new List<GameObject>();
     for (int i = 0; i < cubeAmount; ++i) {
       GameObject obj = (GameObject) Instantiate(howManyCubesGet);
       obj.SetActive(false);
@@ -46,10 +48,10 @@ public class CubeManager : MonoBehaviour {
       obj.transform.SetParent(inGameUI, false);
       bonusCubePool.Add(obj);
 
-      obj = (GameObject) Instantiate(cubesGetOnSuperheat);
-      obj.SetActive(false);
-      obj.transform.SetParent(inGameUI, false);
-      cubeOnSuperheatPool.Add(obj);
+      // obj = (GameObject) Instantiate(cubesGetOnSuperheat);
+      // obj.SetActive(false);
+      // obj.transform.SetParent(inGameUI, false);
+      // cubeOnSuperheatPool.Add(obj);
     }
   }
 
@@ -67,14 +69,16 @@ public class CubeManager : MonoBehaviour {
   }
 
   public void addCount(int cubesGet, int bonus = 0) {
+    EnergyManager.em.getHealthByCubes(cubesGet + bonus);
+
     cubesGet = (int)Mathf.Round(cubesGet * bonusRate);
     totalCount += cubesGet + bonus;
 
-    if (SuperheatManager.sm.isOnSuperheat()) {
-      GameObject instance = getPooledObj(cubeOnSuperheatPool, cubesGetOnSuperheat);
-      instance.SetActive(true);
-      instance.GetComponent<ShowChangeText>().run(cubesGet);
-    } else {
+    // if (SuperheatManager.sm.isOnSuperheat()) {
+    //   GameObject instance = getPooledObj(cubeOnSuperheatPool, cubesGetOnSuperheat);
+    //   instance.SetActive(true);
+    //   instance.GetComponent<ShowChangeText>().run(cubesGet);
+    // } else {
       GameObject instance = getPooledObj(cubePool, howManyCubesGet);
       instance.SetActive(true);
       instance.GetComponent<ShowChangeText>().run(cubesGet);
@@ -84,16 +88,14 @@ public class CubeManager : MonoBehaviour {
         bonusInstance.SetActive(true);
         bonusInstance.GetComponent<ShowChangeText>().run(bonus);
       }
-    }
+    // }
 
-    SuperheatManager.sm.addGuage((cubesGet + bonus) * SuperheatManager.sm.guagePerCube);
-    EnergyManager.em.getHealthByCubes(cubesGet + bonus);
+    // SuperheatManager.sm.addGuage((cubesGet + bonus) * SuperheatManager.sm.guagePerCube);
     TimeManager.time.addProgressByCube(cubesGet + bonus);
-    cuber.addEmission(cubesGet + bonus);
   }
 
   public int getCount() {
-    return totalCount;
+    return totalCount + pointsByTime;
   }
 
   public void moreCubes(int val) {
@@ -105,13 +107,24 @@ public class CubeManager : MonoBehaviour {
   }
 
   void Update() {
-    if (currentCount < totalCount) {
-      currentCount = Mathf.MoveTowards(currentCount, totalCount, Time.deltaTime * (totalCount - currentCount) * increaseSpeed);
-      cubesCount.text = currentCount.ToString("0");
+    if (gameStarted) {
+      if (currentCount < totalCount) {
+        currentCount = Mathf.MoveTowards(currentCount, totalCount, Time.deltaTime * (totalCount - currentCount) * increaseSpeed);
+      }
+
+      cubesCount.text = (currentCount + pointsByTime).ToString("0");
 
       if (currentCount > cubesHighscore) {
-        cubesHighscoreText.text = currentCount.ToString("0");
+        cubesHighscoreText.text = (currentCount + pointsByTime).ToString("0");
       }
     }
+  }
+
+  public void addPointsByTime() {
+    pointsByTime += pointsPerSeconds;
+  }
+
+  public void startCount() {
+    gameStarted = true;
   }
 }

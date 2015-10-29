@@ -3,58 +3,40 @@ using System.Collections;
 
 public class ComboPartMover : ObjectsMover {
   bool isGoldenCube = false;
-  bool isSuperheatPart = false;
   bool willBeDestroyed = false;
   ComboPartsManager cpm;
   Renderer mRenderer;
   Renderer mRenderer_next;
-  SphereCollider sCollider;
 
   override protected void initializeRest() {
     cpm = (ComboPartsManager)objectsManager;
     mRenderer = GetComponent<Renderer>();
-    sCollider = GetComponent<SphereCollider>();
   }
 
   override protected void afterEnable() {
-    if (cpm.nextInstance != null) mRenderer_next = cpm.nextInstance.GetComponent<Renderer>();
+    mRenderer.enabled = true;
+    if (cpm.nextInstance != null) {
+      mRenderer_next = cpm.nextInstance.GetComponent<Renderer>();
+      mRenderer_next.enabled = true;
+    }
 
     if (willBeDestroyed) StartCoroutine("destroyAfter");
   }
 
   public void setGolden() {
     isGoldenCube = true;
-    isSuperheatPart = false;
-    objectsManager.objDestroyEffect = cpm.goldCubeDestroyParticle;
 
-    mRenderer.sharedMaterial = cpm.goldenCubePrefab.GetComponent<Renderer>().sharedMaterial;
-    sCollider.radius = cpm.goldenCubePrefab.GetComponent<SphereCollider>().radius;
+    mRenderer.sharedMaterial = GoldManager.gm.goldenMat;
     transform.Find("BasicEffect").gameObject.SetActive(false);
     transform.Find("GoldenEffect").gameObject.SetActive(true);
   }
 
-  public void setSuper() {
+  public void setNormal() {
     isGoldenCube = false;
-    isSuperheatPart = true;
-    objectsManager.objDestroyEffect = cpm.objDestroyEffect;
 
-    mRenderer.sharedMaterial = cpm.superheatPartPrefab.GetComponent<Renderer>().sharedMaterial;
-    sCollider.radius = cpm.superheatPartPrefab.GetComponent<SphereCollider>().radius;
+    mRenderer.sharedMaterial = cpm.objPrefab.GetComponent<Renderer>().sharedMaterial;
     transform.Find("BasicEffect").gameObject.SetActive(true);
     transform.Find("GoldenEffect").gameObject.SetActive(false);
-  }
-
-  public void setNormal() {
-    if (isGoldenCube || isSuperheatPart) {
-      isGoldenCube = false;
-      isSuperheatPart = false;
-      objectsManager.objDestroyEffect = cpm.objDestroyEffect;
-
-      mRenderer.sharedMaterial = cpm.objPrefab.GetComponent<Renderer>().sharedMaterial;
-      sCollider.radius = cpm.objPrefab.GetComponent<SphereCollider>().radius;
-      transform.Find("BasicEffect").gameObject.SetActive(true);
-      transform.Find("GoldenEffect").gameObject.SetActive(false);
-    }
   }
 
   public void setDestroyAfter() {
@@ -70,6 +52,23 @@ public class ComboPartMover : ObjectsMover {
     if (cpm.nextInstance != null) cpm.nextInstance.SetActive(false);
   }
 
+  override public void showDestroyEffect(bool byPlayer) {
+    if (isGoldenCube) {
+      GoldManager.gm.gcm.goldenDestroyEffect(transform.position);
+      if (byPlayer) GoldManager.gm.add(transform.position, cpm.goldCubesGet);
+    } else {
+      base.showDestroyEffect(byPlayer);
+    }
+  }
+
+  override public void showEncounterEffect() {
+    if (isGoldenCube) {
+      GoldManager.gm.add(transform.position, cpm.goldCubesGet);
+    } else {
+      base.showEncounterEffect();
+    }
+  }
+
   override protected bool beforeEncounter() {
     objectsManager.objEncounterEffectForPlayer.GetComponent<AudioSource>().pitch = cpm.pitchStart + cpm.getComboCount() * cpm.pitchIncrease;
 
@@ -78,14 +77,6 @@ public class ComboPartMover : ObjectsMover {
 
   override protected void afterEncounter() {
     willBeDestroyed = false;
-    if (isGoldenCube) {
-      cpm.gcCount.add(cpm.goldCubesGet);
-    } else if (isSuperheatPart) {
-      cpm.shm.add();
-    }
-    // else {
-    //   cpm.ptb.checkCollected(GetComponent<MeshFilter>().sharedMesh);
-    // }
     cpm.eatenByPlayer();
   }
 

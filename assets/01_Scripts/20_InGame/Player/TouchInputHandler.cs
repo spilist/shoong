@@ -12,7 +12,6 @@ public class TouchInputHandler : MonoBehaviour
   public Transform controlPanel_packman_right;
   public Transform stick;
   private float stickPanelSize;
-  public PartsToBeCollected ptb;
 
   public BeforeIdle beforeIdle;
   public SpawnManager spawnManager;
@@ -76,12 +75,12 @@ public class TouchInputHandler : MonoBehaviour
 			if ((result == "Ground" || result == "ChangeBehavior") && !gameStarted) {
 				TimeManager.time.startTime();
         EnergyManager.em.turnEnergy(true);
-        // ptb.generateNew();
-        SuperheatManager.sm.startGame();
+        // SuperheatManager.sm.startGame();
         beforeIdle.moveTitle();
         menus.gameStart();
         spawnManager.run();
         SkillManager.sm.startGame();
+        GoldManager.gm.startGame();
         AudioManager.am.changeVolume("Main", "Max");
 
         DataManager.dm.increment("play_" + PlayerPrefs.GetString("SelectedCharacter"));

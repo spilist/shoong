@@ -2,9 +2,6 @@
 using System.Collections;
 
 public class EMPManager : ObjectsManager {
-  public GoldCubesCount gcCount;
-  public int guageAmount = 20;
-
   public int[] forceFieldRadiusPerLevel;
   public int[] cameraEnlargeSizePerLevel;
   public float[] cameraShakeAmountPerLevel;
@@ -29,10 +26,7 @@ public class EMPManager : ObjectsManager {
   public int chanceBase = 200;
   public int goldenChance = 1;
   public int goldCubesGet = 1;
-  public int superChance = 10;
-  public int guageAmountSuper = 10;
   public bool isGolden = false;
-  public bool isSuper = false;
   private Material shellMat;
 
 	override public void initRest() {
@@ -44,14 +38,6 @@ public class EMPManager : ObjectsManager {
     targetRadius = forceFieldRadiusPerLevel[level];
     enlargeSize = cameraEnlargeSizePerLevel[level];
     shakeAmount = cameraShakeAmountPerLevel[level];
-    if (level == 0) {
-      goldenChance = 0;
-      superChance = 0;
-    }
-
-    if (level == 1) {
-      goldenChance = 0;
-    }
   }
 
   override protected void afterSpawn() {
@@ -64,49 +50,22 @@ public class EMPManager : ObjectsManager {
     int random = Random.Range(0, chanceBase);
     if (random < goldenChance) {
       isGolden = true;
-      isSuper = false;
 
       instance.transform.Find("GoldenShell").gameObject.SetActive(true);
       instance.transform.Find("GoldenCore").gameObject.SetActive(true);
       instance.transform.Find("GoldenParticles").gameObject.SetActive(true);
-
-      instance.transform.Find("HeatShell").gameObject.SetActive(false);
-      instance.transform.Find("HeatCore").gameObject.SetActive(false);
-      instance.transform.Find("HeatParticles").gameObject.SetActive(false);
 
       instance.transform.Find("BasicShell").gameObject.SetActive(false);
       instance.transform.Find("BasicCore").gameObject.SetActive(false);
       instance.transform.Find("BasicParticles").gameObject.SetActive(false);
 
       shellMat = instance.transform.Find("GoldenShell").GetComponent<Renderer>().sharedMaterial;
-    } else if (random < superChance) {
-      isGolden = false;
-      isSuper = true;
-
-      instance.transform.Find("GoldenShell").gameObject.SetActive(false);
-      instance.transform.Find("GoldenCore").gameObject.SetActive(false);
-      instance.transform.Find("GoldenParticles").gameObject.SetActive(false);
-
-      instance.transform.Find("HeatShell").gameObject.SetActive(true);
-      instance.transform.Find("HeatCore").gameObject.SetActive(true);
-      instance.transform.Find("HeatParticles").gameObject.SetActive(true);
-
-      instance.transform.Find("BasicShell").gameObject.SetActive(false);
-      instance.transform.Find("BasicCore").gameObject.SetActive(false);
-      instance.transform.Find("BasicParticles").gameObject.SetActive(false);
-
-      shellMat = instance.transform.Find("HeatShell").GetComponent<Renderer>().sharedMaterial;
     } else {
       isGolden = false;
-      isSuper = false;
 
       instance.transform.Find("GoldenShell").gameObject.SetActive(false);
       instance.transform.Find("GoldenCore").gameObject.SetActive(false);
       instance.transform.Find("GoldenParticles").gameObject.SetActive(false);
-
-      instance.transform.Find("HeatShell").gameObject.SetActive(false);
-      instance.transform.Find("HeatCore").gameObject.SetActive(false);
-      instance.transform.Find("HeatParticles").gameObject.SetActive(false);
 
       instance.transform.Find("BasicShell").gameObject.SetActive(true);
       instance.transform.Find("BasicCore").gameObject.SetActive(true);
@@ -118,8 +77,7 @@ public class EMPManager : ObjectsManager {
   public void generateForceField() {
     Camera.main.GetComponent<CameraMover>().shakeUntilStop(shakeAmount);
     status = 1;
-    SuperheatManager.sm.addGuageWithEffect(guageAmount);
-    forceField.GetComponent<ForceField>().setProperty(shellMat, isSuper, isGolden);
+    forceField.GetComponent<ForceField>().setProperty(shellMat, isGolden);
   }
 
   void Update() {

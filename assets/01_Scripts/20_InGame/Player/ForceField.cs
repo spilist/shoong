@@ -4,11 +4,7 @@ using System.Collections;
 public class ForceField : MonoBehaviour {
   public EMPManager empManager;
 
-  public GoldCubesCount gcCount;
-
-  // private ProceduralMaterial mat;
   private int rotatingSpeed;
-  private bool isSuper;
   private bool isGolden;
   private int count = 0;
 
@@ -16,10 +12,8 @@ public class ForceField : MonoBehaviour {
     rotatingSpeed = empManager.fieldRotateSpeed;
   }
 
-  public void setProperty(Material mat, bool isSuper, bool isGolden) {
+  public void setProperty(Material mat, bool isGolden) {
     GetComponent<Renderer>().sharedMaterial = mat;
-    // this.mat = GetComponent<Renderer>().sharedMaterial as ProceduralMaterial;
-    this.isSuper = isSuper;
     this.isGolden = isGolden;
     count = 0;
   }
@@ -35,29 +29,13 @@ public class ForceField : MonoBehaviour {
     if (mover.tag == "Blackhole") return;
 
     if (isGolden) {
-      GameObject cube = Player.pl.generateCube();
-      cube.GetComponent<Renderer>().sharedMaterial = Player.pl.goldenCubeMat;
-      cube.GetComponent<TrailRenderer>().material.SetColor("_TintColor", Player.pl.goldenCubeParticleTrailColor);
-      cube.SetActive(true);
-      mover.destroyObject(true, true);
-    } else {
-      Player.pl.goodPartsEncounter(mover, mover.cubesWhenDestroy(), 0, false);
-      DataManager.dm.increment("NumCubesGetByForcefield", mover.cubesWhenDestroy());
+      GoldManager.gm.add(mover.transform.position, empManager.goldCubesGet);
     }
-
-    if (mover.isNegativeObject()) {
-      DataManager.dm.increment("NumDestroyObstaclesByForcefield");
-    }
+    Player.pl.goodPartsEncounter(mover, mover.cubesWhenDestroy(), 0, false);
   }
 
   void OnDisable() {
-    if (isGolden) gcCount.add(empManager.goldCubesGet * count);
-    else if (isSuper) SuperheatManager.sm.addGuageWithEffect(empManager.guageAmountSuper * count);
-
     transform.localScale = Vector3.one;
     transform.Find("Halo").GetComponent<Light>().range = 1;
-
-    // mat.SetProceduralFloat("$randomseed", Random.Range(0, 1000));
-    // mat.RebuildTextures();
   }
 }

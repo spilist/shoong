@@ -5,7 +5,6 @@ public class CubeDispenserMover : ObjectsMover {
   private CubeDispenserManager cdm;
   private int comboCount = 0;
   private int brokenCount = 0;
-  private bool isSuper = false;
   private bool isGolden = false;
   private ParticleSystem inside;
 
@@ -22,35 +21,20 @@ public class CubeDispenserMover : ObjectsMover {
 
   public void setGolden() {
     isGolden = true;
-    isSuper = false;
 
     inside = transform.Find("GoldenInside").GetComponent<ParticleSystem>();
     inside.gameObject.SetActive(true);
 
-    transform.Find("HeatInside").gameObject.SetActive(false);
-    transform.Find("BasicInside").gameObject.SetActive(false);
-    inside.emissionRate = cdm.originalEmissionRate;
-  }
-
-  public void setSuper() {
-    isGolden = false;
-    isSuper = true;
-    inside = transform.Find("HeatInside").GetComponent<ParticleSystem>();
-    inside.gameObject.SetActive(true);
-
-    transform.Find("GoldenInside").gameObject.SetActive(false);
     transform.Find("BasicInside").gameObject.SetActive(false);
     inside.emissionRate = cdm.originalEmissionRate;
   }
 
   public void setNormal() {
     isGolden = false;
-    isSuper = false;
 
     inside = transform.Find("BasicInside").GetComponent<ParticleSystem>();
     inside.gameObject.SetActive(true);
 
-    transform.Find("HeatInside").gameObject.SetActive(false);
     transform.Find("GoldenInside").gameObject.SetActive(false);
     inside.emissionRate = cdm.originalEmissionRate;
   }
@@ -79,9 +63,7 @@ public class CubeDispenserMover : ObjectsMover {
       }
 
       if (isGolden) {
-        cdm.gcCount.add(cdm.goldenCubeAmount * cdm.fullComboCount, false);
-      } else if (isSuper) {
-        SuperheatManager.sm.addGuageWithEffect(cdm.guageAmountSuper * cdm.fullComboCount);
+        GoldManager.gm.add(transform.position, cdm.goldenCubeAmount * cdm.fullComboCount, false);
       }
     }
   }
@@ -91,13 +73,11 @@ public class CubeDispenserMover : ObjectsMover {
       if (player.isUsingRainbow() || player.isUnstoppable()) {
         player.goodPartsEncounter(this, cdm.cubesByEncounter * cdm.fullComboCount);
       } else {
-        player.contactCubeDispenser(transform, cdm.cubesByEncounter, collision, cdm.reboundDuring, isGolden);
+        player.contactCubeDispenser(transform, cdm.cubesByEncounter, collision, cdm.reboundDuring);
         Camera.main.GetComponent<CameraMover>().shake();
 
         if (isGolden) {
-          cdm.gcCount.add(cdm.goldenCubeAmount, false);
-        } else if (isSuper) {
-          SuperheatManager.sm.addGuageWithEffect(cdm.guageAmountSuper);
+          GoldManager.gm.add(transform.position, cdm.goldenCubeAmount, false);
         }
 
         encounterPlayer(false);

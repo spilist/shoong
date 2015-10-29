@@ -3,8 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class ComboPartsManager : ObjectsManager {
-  public PartsToBeCollected ptb;
-
   public float illusionLifeTime = 3;
   public float blinkBeforeDestroy = 1.2f;
 
@@ -14,14 +12,9 @@ public class ComboPartsManager : ObjectsManager {
   public float emptyDurationDecrease = 0.05f;
 
   public int chanceBase = 100;
-  public GameObject goldenCubePrefab;
-  public GoldCubesCount gcCount;
-  public GameObject goldCubeDestroyParticle;
   public int goldCubesGet = 10;
   public int goldenCubeChance = 1;
-
-  public GameObject superheatPartPrefab;
-  public int superheatPartChance = 5;
+  private bool golden = false;
 
   public GameObject objPrefab_next;
   public List<GameObject> objNextPool;
@@ -60,18 +53,11 @@ public class ComboPartsManager : ObjectsManager {
 
   override public void adjustForLevel(int level) {
     fullComboCount = fullComboCountPerLevel[level];
-    if (level == 0) {
-      goldenCubeChance = 0;
-      superheatPartChance = 0;
-    }
-
-    if (level == 1) {
-      goldenCubeChance = 0;
-    }
   }
 
   override protected void afterSpawn() {
     instance.GetComponent<MeshFilter>().sharedMesh = getRandomMesh();
+    instance.GetComponent<ComboPartMover>().setNormal();
     trying = false;
     comboCount = 0;
 
@@ -83,35 +69,22 @@ public class ComboPartsManager : ObjectsManager {
     nextInstance = getPooledObj(objNextPool, objPrefab_next, spawnPosition);
     nextInstance.SetActive(true);
     nextInstance.GetComponent<OffsetFixer>().setParent(instance);
+    nextInstance.GetComponent<MeshFilter>().sharedMesh = getRandomMesh();
 
     int random = Random.Range(0, chanceBase);
     if (random < goldenCubeChance) {
-      changeObject(nextInstance, goldenCubePrefab);
       nextInstance.transform.Find("BasicEffect").gameObject.SetActive(false);
       nextInstance.transform.Find("GoldenEffect").gameObject.SetActive(true);
-    } else if (random < superheatPartChance) {
-      changeObject(nextInstance, superheatPartPrefab);
-      nextInstance.transform.Find("BasicEffect").gameObject.SetActive(true);
-      nextInstance.transform.Find("GoldenEffect").gameObject.SetActive(false);
+      golden = true;
     } else {
-      nextInstance.transform.localScale = objPrefab.transform.localScale;
-      nextInstance.GetComponent<MeshFilter>().sharedMesh = getRandomMesh();
       nextInstance.transform.Find("BasicEffect").gameObject.SetActive(true);
       nextInstance.transform.Find("GoldenEffect").gameObject.SetActive(false);
+      golden = false;
     }
   }
 
   Mesh getRandomMesh() {
     return partsMeshes[Random.Range(0, partsMeshes.Length)];
-  }
-
-  void changeObject(GameObject obj, GameObject changeTo) {
-    obj.GetComponent<MeshFilter>().sharedMesh = changeTo.GetComponent<MeshFilter>().sharedMesh;
-    obj.transform.localScale = changeTo.transform.localScale;
-  }
-
-  bool compareEqualMesh(GameObject obj1, GameObject obj2) {
-    return obj1.GetComponent<MeshFilter>().sharedMesh == obj2.GetComponent<MeshFilter>().sharedMesh;
   }
 
   public void eatenByPlayer() {
@@ -135,15 +108,10 @@ public class ComboPartsManager : ObjectsManager {
     instance.transform.rotation = spawnRotation;
     instance.GetComponent<ComboPartMover>().setDestroyAfter();
     instance.SetActive(true);
-    changeObject(instance, nextInstance);
+    instance.GetComponent<MeshFilter>().sharedMesh = nextInstance.GetComponent<MeshFilter>().sharedMesh;
 
-    if (compareEqualMesh(nextInstance, goldenCubePrefab)) {
-      instance.GetComponent<ComboPartMover>().setGolden();
-    } else if (compareEqualMesh(nextInstance, superheatPartPrefab)) {
-      instance.GetComponent<ComboPartMover>().setSuper();
-    } else {
-      instance.GetComponent<ComboPartMover>().setNormal();
-    }
+    if (golden) instance.GetComponent<ComboPartMover>().setGolden();
+    else instance.GetComponent<ComboPartMover>().setNormal();
 
     nextInstance.SetActive(false);
     nextInstance = null;
@@ -156,19 +124,15 @@ public class ComboPartsManager : ObjectsManager {
       nextInstance.SetActive(true);
       nextInstance.transform.rotation = spawnRotation;
       nextInstance.GetComponent<OffsetFixer>().setParent(instance);
+      nextInstance.GetComponent<MeshFilter>().sharedMesh = getRandomMesh();
 
       int random = Random.Range(0, 100);
       if (random < goldenCubeChance) {
-        changeObject(nextInstance, goldenCubePrefab);
+        golden = true;
         nextInstance.transform.Find("BasicEffect").gameObject.SetActive(false);
         nextInstance.transform.Find("GoldenEffect").gameObject.SetActive(true);
-      } else if (random < superheatPartChance) {
-        changeObject(nextInstance, superheatPartPrefab);
-        nextInstance.transform.Find("BasicEffect").gameObject.SetActive(true);
-        nextInstance.transform.Find("GoldenEffect").gameObject.SetActive(false);
       } else {
-        nextInstance.transform.localScale = objPrefab.transform.localScale;
-        nextInstance.GetComponent<MeshFilter>().sharedMesh = getRandomMesh();
+        golden = false;
         nextInstance.transform.Find("BasicEffect").gameObject.SetActive(true);
         nextInstance.transform.Find("GoldenEffect").gameObject.SetActive(false);
       }

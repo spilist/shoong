@@ -34,7 +34,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!23 &2307444
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -105,7 +105,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sign: 1
   changeDirection: 
-  hasIcon: 1
+  hasIcon: 0
   hasBonus: 0
   stayDuring: .5
   disappearDuring: .5
@@ -225,6 +225,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: stayDuring
       value: .5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: hasIcon
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
