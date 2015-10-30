@@ -17,10 +17,6 @@ public class CharacterStat : MonoBehaviour {
   [BitMask(typeof(SkillFlag))]
   public SkillFlag skillFlags;
 
-  public void apply() {
-    // RhythmManager.rm.setLoop(numNormalRings, numSkillRings);
-  }
-
   public int price() {
     return CharacterManager.cm.pricesPerRarity[(int)rarity];
   }

@@ -138,18 +138,14 @@ public class CharacterChangeManager : MonoBehaviour {
     StopCoroutine("characterBlinking");
   }
 
-  public void changeCharacter(string characterName) {
-    CharacterStat stat = CharacterManager.cm.character(characterName);
-    mFilter.sharedMesh = stat.GetComponent<MeshFilter>().sharedMesh;
-    originalMesh = mFilter.sharedMesh;
+  public void setMesh(Mesh mesh) {
+    mFilter.sharedMesh = mesh;
+    originalMesh = mesh;
 
     // booster = Instantiate(Resources.Load(characterName + "/Booster", typeof(ParticleSystem))) as ParticleSystem;
     // booster.transform.parent = playerParticlesParent;
     // booster.transform.localScale = Vector3.one;
     // booster.transform.localPosition = Vector3.zero;
     // booster.transform.localRotation = Quaternion.identity;
-
-    CharacterManager.cm.resetAllAbility();
-    stat.apply();
   }
 }

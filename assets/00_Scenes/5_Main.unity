@@ -3364,7 +3364,6 @@ MonoBehaviour:
   stoppingSpeed: 150
   baseSpeed: 150
   effects: {fileID: 1753770006}
-  spawnManager: {fileID: 1991538111}
   nearAsteroidBonus: 10
   tumble: 4
   monm: {fileID: 1991538109}
@@ -3374,10 +3373,6 @@ MonoBehaviour:
   icm: {fileID: 1991538122}
   shakeBase: 10
   shakeDuring: .5
-  boosterSpeedUpAmount: 75
-  maxBoosterSpeed: 100
-  boosterSpeedDecreaseBase: 60
-  boosterSpeedDecreasePerTime: 20
   reboundSpeed: 320
   originalScale: 0
   afterStrengthenDuration: 1
@@ -15875,7 +15870,6 @@ MonoBehaviour:
   gaugeShell: {fileID: 1480176267}
   gaugeIcon: {fileID: 1683774461}
   dangerousAt: .300000012
-  mustDieIn: 150
   getAmountbyCubes: 1
   getRate: 2
   loseRate: 1
@@ -19575,7 +19569,7 @@ RectTransform:
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 345.799988, y: 435.600006}
+  m_SizeDelta: {x: 345, y: 435.600006}
   m_Pivot: {x: 0, y: .5}
 --- !u!114 &493085440
 MonoBehaviour:
@@ -20078,7 +20072,7 @@ Transform:
   - {fileID: 1082642565}
   - {fileID: 64786155}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
 --- !u!1 &509610635
 GameObject:
   m_ObjectHideFlags: 0
@@ -55993,7 +55987,7 @@ Transform:
   m_Children:
   - {fileID: 616999376}
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 14
 --- !u!114 &1225838312
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56005,7 +55999,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4affc91fc48f34cd7a1e4e134bb565df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ccm: {fileID: 91418591}
   pricesPerRarity: 64000000f4010000dc050000
+  baseSpeedStandard: 150
+  baseSpeeds: 3c0000001e00000000000000ecffffffd8ffffff
+  boosterPlusSpeedStandard: 75
+  boosterPlusSpeeds: 3c0000001e00000000000000ecffffffd8ffffff
+  boosterMaxSpeedStandard: 100
+  boosterMaxSpeeds: 3c0000001e00000000000000ecffffffd8ffffff
+  boosterSpeedDecreaseStandard: 60
+  boosterSpeedDecreasePerTime: 20
+  boosterSpeedDecreases: c4ffffffe2ffffff000000001400000028000000
+  energyReduceOnTimeStandard: 15
+  energyReduceOnTimes: 280000001400000000000000f1ffffffe2ffffff
+  maxEnergyStandard: 100
+  maxEnergys: 320000001400000000000000f6ffffffecffffff
+  reboundTimeScaleStandard: 1
+  reboundDistances: c4ffffffe2ffffff000000001e0000003c000000
+  damageGetScaleStandard: 1
+  damageGets: ceffffffecffffff000000001400000032000000
 --- !u!1 &1227587710
 GameObject:
   m_ObjectHideFlags: 0
@@ -60227,7 +60239,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1366368660
 RectTransform:
   m_ObjectHideFlags: 0
@@ -66637,7 +66649,7 @@ RectTransform:
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 345.799988, y: 435.600006}
+  m_SizeDelta: {x: 345, y: 435.600006}
   m_Pivot: {x: 0, y: .5}
 --- !u!114 &1480176269
 MonoBehaviour:
@@ -78044,7 +78056,7 @@ Transform:
   - {fileID: 2086294868}
   - {fileID: 892369442}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 16
 --- !u!1 &1708456654
 GameObject:
   m_ObjectHideFlags: 0
@@ -95822,7 +95834,7 @@ Transform:
   - {fileID: 1881103578}
   - {fileID: 948475059}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 17
 --- !u!1 &2048063063
 GameObject:
   m_ObjectHideFlags: 0
@@ -99198,7 +99210,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2134279969
 RectTransform:
   m_ObjectHideFlags: 0

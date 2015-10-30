@@ -11,18 +11,21 @@ public class Player : MonoBehaviour {
   private float stickSpeedScale = 1;
   private bool stopping = false;
   public int stoppingSpeed = 10;
-  public float baseSpeed = 80;
-  private float originalBaseSpeed;
-  private float speedScale;
-  private string moreSpeedCondition;
+
+  public float baseSpeed;
+  private float speed;
+	private float boosterspeed;
+  private float boosterSpeedUpAmount;
+  private float maxBoosterSpeed;
+  private float boosterSpeedDecreaseBase;
+  private float boosterSpeedDecreasePerTime;
+  private float reboundScale;
+  private float boosterBonus = 1;
 
   public Transform effects;
-  public SpawnManager spawnManager;
 
   public int nearAsteroidBonus = 10;
 
-  private float speed;
-	private float boosterspeed = 0;
   public float tumble = 4;
   private Vector3 direction;
 
@@ -40,12 +43,6 @@ public class Player : MonoBehaviour {
   private float bounceDuration = 0;
   public float shakeBase = 10;
   public float shakeDuring = 0.5f;
-
-  public float boosterSpeedUpAmount = 60;
-  public float maxBoosterSpeed = 100;
-  public float boosterSpeedDecreaseBase = 70;
-  public float boosterSpeedDecreasePerTime = 20;
-  private float boosterBonus = 1;
 
   public float reboundSpeed = 300;
 
@@ -84,13 +81,12 @@ public class Player : MonoBehaviour {
 
 	void Awake() {
     pl = this;
-    originalBaseSpeed = baseSpeed;
     originalScale = transform.localScale.x;
   }
 
   void Start () {
     changeManager = GetComponent<CharacterChangeManager>();
-    changeManager.changeCharacter(PlayerPrefs.GetString("SelectedCharacter"));
+    CharacterManager.cm.changeCharacter(PlayerPrefs.GetString("SelectedCharacter"));
 
     Vector2 randomV = Random.insideUnitCircle;
     randomV.Normalize();
@@ -225,11 +221,11 @@ public class Player : MonoBehaviour {
 
     processCollision(collision);
     bouncing = true;
-    this.bounceDuration = bounceDuration;
+    this.bounceDuration = bounceDuration * reboundScale;
   }
 
   public void loseEnergy(int amount, string tag) {
-    Camera.main.GetComponent<CameraMover>().shake(shakeDuring, shakeBase * amount / 100);
+    Camera.main.GetComponent<CameraMover>().shake(shakeDuring * reboundScale, shakeBase * reboundScale * amount / 100);
     changeManager.changeRed();
     EnergyManager.em.loseEnergy(amount, tag);
   }
@@ -425,10 +421,6 @@ public class Player : MonoBehaviour {
 
     if (objTag == "Metal") {
       unstoppable = effectOn;
-      if (moreSpeedCondition == "Metal") {
-        if (effectOn) baseSpeed *= speedScale;
-        else baseSpeed /= speedScale;
-      }
     } else if (objTag == "Magnet") {
       usingMagnet = effectOn;
     } else if (objTag == "Monster") {
@@ -645,19 +637,13 @@ public class Player : MonoBehaviour {
     return !(isRebounding() || isUsingRainbow() || changeManager.isTeleporting());
   }
 
-  public void fasterSpeed(int val) {
-    baseSpeed *= (100 + val) / 100f;
-  }
-
-  public void moreSpeedOn(int val, string condition) {
-    speedScale *= (100 + val) / 100f;
-    moreSpeedCondition = condition;
-  }
-
   public void resetAbility() {
-    baseSpeed = originalBaseSpeed;
-    speedScale = 1;
-    moreSpeedCondition = "";
+    baseSpeed = CharacterManager.cm.baseSpeedStandard;
+    boosterSpeedUpAmount = CharacterManager.cm.boosterPlusSpeedStandard;
+    maxBoosterSpeed = CharacterManager.cm.boosterMaxSpeedStandard;
+    boosterSpeedDecreaseBase = CharacterManager.cm.boosterSpeedDecreaseStandard;
+    boosterSpeedDecreasePerTime = CharacterManager.cm.boosterSpeedDecreasePerTime;
+    reboundScale = CharacterManager.cm.reboundTimeScaleStandard;
   }
 
   public void startBeat() {

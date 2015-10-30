@@ -19,12 +19,14 @@ public class EnergyManager : MonoBehaviour {
   private bool isChanging = false;
   private bool isChangingRest = false;
 
-  public float mustDieIn = 15;
-  private float originalDieIn;
+  private float mustDieIn;
+  private float lessDamageRate;
+  private float maxEnergy;
+  private float energy;
+
   public int getAmountbyCubes = 10;
   public float getRate = 2f;
   public float loseRate = 1;
-  private float lessDamageRate = 1;
 
   private Color color_healthy;
   private Color color_danger;
@@ -34,7 +36,6 @@ public class EnergyManager : MonoBehaviour {
     em = this;
     color_healthy = gauge.color;
     color_danger = new Color(1, 0, 0, color_healthy.a);
-    originalDieIn = mustDieIn;
     takeDamageSound = transform.Find("TakeDamageSound").GetComponent<AudioSource>();
   }
 
@@ -70,7 +71,7 @@ public class EnergyManager : MonoBehaviour {
   public void turnEnergy(bool val) {
     gauge.gameObject.SetActive(val);
     gaugeShell.SetActive(val);
-    // gaugeIcon.SetActive(val);
+    gaugeIcon.SetActive(val);
     energySystemOn = val;
 
     if (val) getFullHealth();
@@ -78,6 +79,7 @@ public class EnergyManager : MonoBehaviour {
 
   public void getFullHealth() {
     gauge.fillAmount = 1;
+    energy = maxEnergy;
     isChanging = false;
     isChangingRest = false;
     restAmount = 0;
@@ -86,24 +88,24 @@ public class EnergyManager : MonoBehaviour {
   void autoDecrease() {
     if (Player.pl.isUsingRainbow() || Player.pl.isUsingEMP() || Player.pl.isOnSuperheat()) return;
 
-    gauge.fillAmount = Mathf.MoveTowards(gauge.fillAmount, 0, Time.deltaTime / mustDieIn);
+    energy = Mathf.MoveTowards(energy, 0, Time.deltaTime * maxEnergy / mustDieIn);
+    gauge.fillAmount = energy / maxEnergy;
   }
 
-  public void moreEnergyEfficiency(int val) {
-    mustDieIn *= (100 + val) / 100f;
-  }
+  public void resetAbility() {
+    mustDieIn = CharacterManager.cm.energyReduceOnTimeStandard;
+    lessDamageRate = CharacterManager.cm.damageGetScaleStandard;
 
-  public void lessDamage(int val) {
-    lessDamageRate *= (100 - val) / 100f;
-  }
-
-  public void resetEnergyAbility() {
-    mustDieIn = originalDieIn;
-    lessDamageRate = 1;
+    maxEnergy = CharacterManager.cm.maxEnergyStandard;
+    float changedWidth = gauge.GetComponent<RectTransform>().sizeDelta.x * maxEnergy / 100.0f;
+    float height = gauge.GetComponent<RectTransform>().sizeDelta.y;
+    gauge.GetComponent<RectTransform>().sizeDelta = new Vector2(changedWidth, height);
+    gaugeShell.GetComponent<RectTransform>().sizeDelta = new Vector2(changedWidth, height);
   }
 
   void change() {
-    gauge.fillAmount = Mathf.MoveTowards(gauge.fillAmount, changeTo, changeRate);
+    energy = Mathf.MoveTowards(energy, maxEnergy * changeTo, changeRate * maxEnergy);
+    gauge.fillAmount = energy / maxEnergy;
 
     if (gauge.fillAmount == changeTo) {
       isChanging = false;
@@ -127,7 +129,7 @@ public class EnergyManager : MonoBehaviour {
 
   void changeRest() {
     if (restAmount != 0 && gauge.fillAmount != 1) {
-      gauge.fillAmount = Mathf.MoveTowards(gauge.fillAmount, gauge.fillAmount + restAmount, restRate);
+      energy = Mathf.MoveTowards(energy, energy + restAmount * maxEnergy, restRate * maxEnergy);
       restAmount = Mathf.MoveTowards(restAmount, 0, restRate);
     } else {
       restAmount = 0;

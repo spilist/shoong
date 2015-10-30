@@ -13,7 +13,7 @@ public class CharacterSelectButton : MenusBehavior {
 
   override public void activateSelf() {
     PlayerPrefs.SetString("SelectedCharacter", characterName);
-    changeManager.changeCharacter(characterName);
+    CharacterManager.cm.changeCharacter(characterName);
 
     // if using banner, same as play again button
     if (menus.isMenuOn()) {
