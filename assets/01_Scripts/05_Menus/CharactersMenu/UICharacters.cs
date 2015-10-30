@@ -8,6 +8,9 @@ public class UICharacters : MonoBehaviour {
   public string rarity;
   public string description;
   public string description2;
+  public int numNormalRings;
+  public int numSkillRings;
+
   private CharactersMenu charactersMenu;
   private Vector3 originalPosition;
   private Quaternion originalRotation;

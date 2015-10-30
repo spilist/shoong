@@ -2150,6 +2150,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 53298669}
   - 114: {fileID: 53298670}
+  - 114: {fileID: 53298671}
   m_Layer: 0
   m_Name: RhythmManager
   m_TagString: Untagged
@@ -2166,7 +2167,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 922884616}
   m_Father: {fileID: 0}
   m_RootOrder: 12
 --- !u!114 &53298670
@@ -2180,18 +2182,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: faf842ab2d53d4d85adc14ee2381079a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rhythmCircles: {fileID: 1665647660}
-  rhythmCircle: {fileID: 148784, guid: 1d56f2064a3a44db8b0e174bd62e7177, type: 2}
-  circleAmount: 2
-  circlePool: []
-  beatScaleDiff: .400000006
+  rhythmRings: {fileID: 1665647660}
+  normalRing: {fileID: 148784, guid: 1d56f2064a3a44db8b0e174bd62e7177, type: 2}
+  skillRing: {fileID: 157310, guid: 4d7eaedd1710044f7841d4a7aa669ec0, type: 2}
+  ringAmount: 2
+  normalRingPool: []
+  skillRingPool: []
+  playerBeatScale: 1.5
   playerBeatDuration: .200000003
   bpm: 130
   beatBase: 2
-  invokeCirclePer: 0
   boosterOkScale: 4
+  invokeRingPer: 0
   isBoosterOK: 0
-  currentCircle: {fileID: 0}
+  isSkillOK: 0
+  currentRing: {fileID: 0}
+--- !u!114 &53298671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 53298668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dc6bf181cdb14aab9c6f511c928132c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  beatWindow: 5
+  beatMask: 0
 --- !u!1 &56190988
 GameObject:
   m_ObjectHideFlags: 0
@@ -3186,6 +3204,7 @@ GameObject:
   - 114: {fileID: 91418583}
   - 114: {fileID: 91418591}
   - 96: {fileID: 91418584}
+  - 111: {fileID: 91418586}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -3285,10 +3304,25 @@ SphereCollider:
   m_GameObject: {fileID: 91418582}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 7.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!111 &91418586
+Animation:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 91418582}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: a003185f1ae5b4be5ae3391a09cbb2e7, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: a003185f1ae5b4be5ae3391a09cbb2e7, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!54 &91418587
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6518,6 +6552,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 146770643}
   - 82: {fileID: 146770644}
+  - 114: {fileID: 146770645}
   m_Layer: 0
   m_Name: Main
   m_TagString: Untagged
@@ -6547,7 +6582,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: af93f26d2506b4f5eb0a44cebbc6dc74, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0
   m_Pitch: 1
   Loop: 1
@@ -6606,6 +6641,19 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+--- !u!114 &146770645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 146770642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91b7313f19d4448c194f6d6daebf9a5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bpm: 130
+  startDelay: .300000012
 --- !u!1 &151261179
 GameObject:
   m_ObjectHideFlags: 0
@@ -15622,7 +15670,7 @@ MonoBehaviour:
   gaugeShell: {fileID: 1480176267}
   gaugeIcon: {fileID: 1683774461}
   dangerousAt: .300000012
-  mustDieIn: 15
+  mustDieIn: 150
   getAmountbyCubes: 1
   getRate: 2
   loseRate: 1
@@ -16028,6 +16076,54 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 256755159}
+--- !u!1 &262383830
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 262383831}
+  - 114: {fileID: 262383832}
+  m_Layer: 0
+  m_Name: off_beat_counter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &262383831
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 262383830}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 922884616}
+  m_RootOrder: 1
+--- !u!114 &262383832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 262383830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d506793ee07e645d28f8aea464882c05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  beatValue: 7
+  beatScalar: 1
+  beatOffset: 5
+  negativeBeatOffset: 0
+  beatType: 1
+  loopTime: 20
+  audioSource: {fileID: 146770644}
+  observers:
+  - {fileID: 0}
 --- !u!1 &266830809
 GameObject:
   m_ObjectHideFlags: 0
@@ -25704,6 +25800,51 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!1 &597843620
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 597843621}
+  - 114: {fileID: 597843622}
+  m_Layer: 0
+  m_Name: pattern_counter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &597843621
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 597843620}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 922884616}
+  m_RootOrder: 3
+--- !u!114 &597843622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 597843620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea09543a04dee4515a80baa90060a389, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  beatValues: 03000000060000000500000005000000
+  beatScalar: 1
+  loopTime: 20
+  audioSource: {fileID: 146770644}
+  observers:
+  - {fileID: 0}
 --- !u!1 &600005597
 GameObject:
   m_ObjectHideFlags: 0
@@ -35204,6 +35345,54 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 825030828}
+--- !u!1 &827700544
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 827700545}
+  - 114: {fileID: 827700546}
+  m_Layer: 0
+  m_Name: up_beat_counter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &827700545
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 827700544}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 922884616}
+  m_RootOrder: 2
+--- !u!114 &827700546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 827700544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d506793ee07e645d28f8aea464882c05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  beatValue: 9
+  beatScalar: 1
+  beatOffset: 3
+  negativeBeatOffset: 1
+  beatType: 4
+  loopTime: 20
+  audioSource: {fileID: 146770644}
+  observers:
+  - {fileID: 0}
 --- !u!1 &828584979
 GameObject:
   m_ObjectHideFlags: 0
@@ -40913,6 +41102,37 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 921626860}
+--- !u!1 &922884615
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 922884616}
+  m_Layer: 0
+  m_Name: _Beat counters
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &922884616
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 922884615}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2099492661}
+  - {fileID: 262383831}
+  - {fileID: 827700545}
+  - {fileID: 597843621}
+  m_Father: {fileID: 53298669}
+  m_RootOrder: 0
 --- !u!1 &924435782
 GameObject:
   m_ObjectHideFlags: 0
@@ -57019,7 +57239,7 @@ SphereCollider:
   m_GameObject: {fileID: 1298175622}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: .5
   m_Center: {x: 0, y: 0, z: 0}
@@ -74459,7 +74679,7 @@ GameObject:
   - 4: {fileID: 1665647660}
   - 114: {fileID: 1665647661}
   m_Layer: 0
-  m_Name: RhythmCircles
+  m_Name: RhythmRings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -95510,6 +95730,54 @@ RectTransform:
   m_AnchoredPosition: {x: -22, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: .5, y: .5}
+--- !u!1 &2099492660
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 2099492661}
+  - 114: {fileID: 2099492662}
+  m_Layer: 0
+  m_Name: down_beat_counter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2099492661
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2099492660}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 922884616}
+  m_RootOrder: 0
+--- !u!114 &2099492662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2099492660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d506793ee07e645d28f8aea464882c05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  beatValue: 7
+  beatScalar: 1
+  beatOffset: 5
+  negativeBeatOffset: 0
+  beatType: 8
+  loopTime: 20
+  audioSource: {fileID: 146770644}
+  observers:
+  - {fileID: 53298668}
 --- !u!1 &2104714903
 GameObject:
   m_ObjectHideFlags: 0

@@ -42,6 +42,7 @@ public class AudioManager : MonoBehaviour {
     } else {
       main.volume = mainSmallVolume;
     }
+
 	}
 
   void Update() {
@@ -76,6 +77,7 @@ public class AudioManager : MonoBehaviour {
     if (DataManager.dm.getBool("BGMOffSetting") || AudioListener.volume == 0) return;
 
     main.gameObject.SetActive(true);
+    main.Play();
     changeVolume("PowerBoost", "Min");
     changeVolume("Main", "Max");
   }

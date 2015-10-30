@@ -155,9 +155,12 @@ public class CharacterChangeManager : MonoBehaviour {
 
     resetAllAbility();
 
-    foreach (CharacterAbility ability in characters.Find(characterName).GetComponents<CharacterAbility>()) {
+    UICharacters uic = characters.Find(characterName).GetComponent<UICharacters>();
+    foreach (CharacterAbility ability in uic.GetComponents<CharacterAbility>()) {
       ability.apply();
     }
+
+    RhythmManager.rm.setLoop(uic.numNormalRings, uic.numSkillRings);
   }
 
   void resetAllAbility() {

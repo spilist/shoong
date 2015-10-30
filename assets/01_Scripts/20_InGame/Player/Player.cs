@@ -82,9 +82,6 @@ public class Player : MonoBehaviour {
   private int numUseObjects = 0;
   public PlayerDirectionIndicator dirIndicator;
 
-  private bool beating = false;
-  private float beatingScale;
-
 	void Awake() {
     pl = this;
     originalBaseSpeed = baseSpeed;
@@ -311,9 +308,10 @@ public class Player : MonoBehaviour {
     if (stopping || uncontrollable()) return;
 
     if (!RhythmManager.rm.isBoosterOK) {
-      RhythmManager.rm.currentCircle.SetActive(false);
+      RhythmManager.rm.ringMissed();
       return;
     }
+    // else ringSuccess() ?
 
     startBeat();
 
@@ -554,12 +552,6 @@ public class Player : MonoBehaviour {
   }
 
   void Update() {
-    if (beating) {
-      beatingScale = Mathf.MoveTowards(beatingScale, originalScale, Time.deltaTime * (RhythmManager.rm.playerBeatScale - originalScale) / RhythmManager.rm.playerBeatDuration);
-      // beatingScale = Mathf.MoveTowards(beatingScale, originalScale - RhythmManager.rm.beatScaleDiff, Time.deltaTime * RhythmManager.rm.beatScaleDiff / RhythmManager.rm.invokeCirclePer);
-      transform.localScale = beatingScale * Vector3.one;
-    }
-
     if (isRotatingByRainbow) {
       Vector3 dir = (rainbowPosition - transform.position).normalized;
       transform.Translate(dir * Time.deltaTime * 30, Space.World);
@@ -669,11 +661,7 @@ public class Player : MonoBehaviour {
   }
 
   public void startBeat() {
-    // beating = true;
-    // beatingScale = RhythmManager.rm.playerBeatScale;
-    transform.localScale = RhythmManager.rm.playerBeatScale * Vector3.one;
-    CancelInvoke("scaleBack");
-    Invoke("scaleBack", RhythmManager.rm.playerBeatDuration);
+    GetComponent<Animation>().Play();
   }
 
   void scaleBack() {

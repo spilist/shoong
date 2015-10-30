@@ -1,81 +1,120 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using SynchronizerData;
 
 public class RhythmManager : MonoBehaviour {
   public static RhythmManager rm;
-  public Transform rhythmCircles;
-  public GameObject rhythmCircle;
-  public int circleAmount = 5;
-  public List<GameObject> circlePool;
+  public Transform rhythmRings;
+  public GameObject normalRing;
+  public GameObject skillRing;
+  public int ringAmount = 2;
+  public List<GameObject> normalRingPool;
+  public List<GameObject> skillRingPool;
 
-  public float playerBeatScale = 1.5f;
-  public float playerBeatDuration = 0.2f;
   public float bpm;
   public float beatBase;
-  public float invokeCirclePer;
   public float boosterOkScale = 1;
+
+  private int numNormalInLoop;
+  private int numSkillInLoop;
+
+  public float samplePeriod;
   public bool isBoosterOK = false;
-  public GameObject currentCircle;
+  public bool isSkillOK = false;
+  public GameObject currentRing;
+  private int ringCount = 0;
+
+  private BeatObserver beatObserver;
+  private bool beating = false;
 
 	void Awake() {
     rm = this;
+    beatObserver = GetComponent<BeatObserver>();
   }
 
   void Start() {
-    circlePool = new List<GameObject>();
-    for (int i = 0; i < circleAmount; ++i) {
-      GameObject obj = (GameObject) Instantiate(rhythmCircle);
+    normalRingPool = new List<GameObject>();
+    skillRingPool = new List<GameObject>();
+    for (int i = 0; i < ringAmount; ++i) {
+      GameObject obj = (GameObject) Instantiate(normalRing);
       obj.SetActive(false);
-      obj.transform.parent = rhythmCircles;
-      circlePool.Add(obj);
+      obj.transform.parent = rhythmRings;
+      normalRingPool.Add(obj);
+
+      obj = (GameObject) Instantiate(skillRing);
+      obj.SetActive(false);
+      obj.transform.parent = rhythmRings;
+      skillRingPool.Add(obj);
     }
 
-    calculateBeat(beatBase);
-    InvokeRepeating("invokeCircle", 0, invokeCirclePer);
+    beating = true;
   }
 
-  void calculateBeat(float val) {
-    invokeCirclePer = val * 60.0f / bpm;
+  public void setPeriod(float val) {
+    samplePeriod = val;
+  }
+
+  void Update () {
+    if (beating && (beatObserver.beatMask & BeatType.DownBeat) == BeatType.DownBeat) {
+      invokeRing();
+    }
   }
 
   public void stopBeat() {
-    CancelInvoke();
+    beating = false;
   }
 
-  public void newBeat(float val) {
-    calculateBeat(val);
-    CancelInvoke();
-    InvokeRepeating("invokeCircle", 0, invokeCirclePer);
-  }
-
-	void invokeCircle() {
-    // Player.pl.startBeat();
-
-    GameObject circle = null;
-    for (int i = 0; i < circlePool.Count; i++) {
-      if (!circlePool[i].activeInHierarchy) {
-        circle = circlePool[i];
+  GameObject getRing(List<GameObject> list, GameObject prefab) {
+    GameObject ring = null;
+    for (int i = 0; i < list.Count; i++) {
+      if (!list[i].activeInHierarchy) {
+        ring = list[i];
         break;
       }
     }
 
-    if (circle == null) {
-      circle = (GameObject) Instantiate(rhythmCircle);
-      circle.transform.parent = rhythmCircles;
-      circlePool.Add(circle);
+    if (ring == null) {
+      ring = (GameObject) Instantiate(prefab);
+      ring.transform.parent = rhythmRings;
+      list.Add(ring);
     }
 
-    circle.transform.localPosition = Vector3.zero;
-    currentCircle = circle;
-    circle.SetActive(true);
+    ring.transform.localPosition = Vector3.zero;
+    currentRing = ring;
+    ring.SetActive(true);
+    return ring;
+  }
+
+	void invokeRing() {
+    if (numSkillInLoop > 0) {
+      int rem = ringCount % (numNormalInLoop + numSkillInLoop);
+      if (rem < numNormalInLoop) {
+        getRing(normalRingPool, normalRing);
+      } else {
+        getRing(skillRingPool, skillRing);
+      }
+      ringCount++;
+    } else {
+      getRing(normalRingPool, normalRing);
+    }
   }
 
   void OnDisable() {
-    CancelInvoke();
+    stopBeat();
   }
 
-  public void boosterOk(bool val) {
-    isBoosterOK = val;
+  public void boosterOk(bool boosterRing, bool skillRing) {
+    isBoosterOK = boosterRing;
+    isSkillOK = skillRing;
+  }
+
+  public void ringMissed() {
+    currentRing.SetActive(false);
+  }
+
+  public void setLoop(int normal, int skill) {
+    numNormalInLoop = normal;
+    numSkillInLoop = skill;
   }
 }
