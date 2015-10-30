@@ -74,6 +74,7 @@ public class TouchInputHandler : MonoBehaviour
 				TimeManager.time.startTime();
         EnergyManager.em.turnEnergy(true);
         // SuperheatManager.sm.startGame();
+        RhythmManager.rm.startGame();
         beforeIdle.moveTitle();
         menus.gameStart();
         spawnManager.run();

@@ -7,9 +7,6 @@ public class UICharacters : MonoBehaviour {
   public CharacterStat stat;
   private int price;
 
-  public string description;
-  public string description2;
-
   private CharactersMenu charactersMenu;
   private Vector3 originalPosition;
   private Quaternion originalRotation;
@@ -70,8 +67,7 @@ public class UICharacters : MonoBehaviour {
       charactersMenu.characterName.text = stat.characterName;
       setRarity(charactersMenu.rarity);
 
-      charactersMenu.description.text = description;
-      if (description2 != "") charactersMenu.description.text += "\n" + description2;
+      charactersMenu.description.text = stat.skillName();
 
       checkBought();
     }

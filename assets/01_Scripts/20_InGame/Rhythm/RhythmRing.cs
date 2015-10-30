@@ -21,7 +21,7 @@ public class RhythmRing : MonoBehaviour {
     boosterOkScale = RhythmManager.rm.boosterOkScale;
 
     if (feverRing) {
-      beat = RhythmManager.rm.samplePeriod / 10f;
+      beat = RhythmManager.rm.samplePeriod / 1f;
     } else {
       beat = RhythmManager.rm.samplePeriod;
     }
@@ -32,7 +32,7 @@ public class RhythmRing : MonoBehaviour {
     transform.localScale = scale * Vector3.one;
     if (!msgSended && scale <= boosterOkScale) {
       msgSended = true;
-      if (!feverRing) RhythmManager.rm.boosterOk(true, skillRing);
+      RhythmManager.rm.boosterOk(true, skillRing);
     }
 
     if (scale == 0) {
@@ -41,7 +41,6 @@ public class RhythmRing : MonoBehaviour {
   }
 
   void OnDisable() {
-    if (feverRing && msgSended) RhythmManager.rm.spawnFeverRing();
-    else RhythmManager.rm.boosterOk(false, false);
+    if (!feverRing) RhythmManager.rm.boosterOk(false, false);
   }
 }

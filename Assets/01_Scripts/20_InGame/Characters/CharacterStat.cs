@@ -20,6 +20,11 @@ public class CharacterStat : MonoBehaviour {
   public int price() {
     return CharacterManager.cm.pricesPerRarity[(int)rarity];
   }
+
+  public string skillName() {
+    string name = skillFlags.ToString();
+    return name == "0" ? "" : name;
+  }
 }
 
 public class BitMaskAttribute : PropertyAttribute {

@@ -21,8 +21,6 @@ public class CharacterManager : MonoBehaviour {
 
   public float boosterSpeedDecreaseStandard;
   private float original_boosterSpeedDecreaseStandard;
-  public float boosterSpeedDecreasePerTime;
-  private float original_boosterSpeedDecreasePerTime;
   public int[] boosterSpeedDecreases;
 
   public float energyReduceOnTimeStandard;
@@ -48,7 +46,6 @@ public class CharacterManager : MonoBehaviour {
     original_boosterPlusSpeedStandard = boosterPlusSpeedStandard;
     original_boosterMaxSpeedStandard = boosterMaxSpeedStandard;
     original_boosterSpeedDecreaseStandard = boosterSpeedDecreaseStandard;
-    original_boosterSpeedDecreasePerTime = boosterSpeedDecreasePerTime;
     original_energyReduceOnTimeStandard = energyReduceOnTimeStandard;
     original_maxEnergyStandard = maxEnergyStandard;
     original_reboundTimeScaleStandard = reboundTimeScaleStandard;
@@ -60,7 +57,6 @@ public class CharacterManager : MonoBehaviour {
     boosterPlusSpeedStandard = original_boosterPlusSpeedStandard;
     boosterMaxSpeedStandard = original_boosterMaxSpeedStandard;
     boosterSpeedDecreaseStandard = original_boosterSpeedDecreaseStandard;
-    boosterSpeedDecreasePerTime = original_boosterSpeedDecreasePerTime;
     energyReduceOnTimeStandard = original_energyReduceOnTimeStandard;
     maxEnergyStandard = original_maxEnergyStandard;
     reboundTimeScaleStandard = original_reboundTimeScaleStandard;
@@ -90,7 +86,6 @@ public class CharacterManager : MonoBehaviour {
     boosterPlusSpeedStandard *= 1 + scale_boosterPlusSpeeds;
     boosterMaxSpeedStandard *= 1 + scale_boosterMaxSpeeds;
     boosterSpeedDecreaseStandard *= 1 + scale_boosterSpeedDecreases;
-    boosterSpeedDecreasePerTime *= 1 + scale_boosterSpeedDecreases;
     reboundTimeScaleStandard *= 1 + scale_reboundDistances;
 
     Player.pl.resetAbility();

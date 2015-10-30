@@ -30,6 +30,7 @@ public class RhythmManager : MonoBehaviour {
 
   private BeatObserver beatObserver;
   private bool beating = false;
+  private bool gameStarted = false;
 
 	void Awake() {
     rm = this;
@@ -60,12 +61,16 @@ public class RhythmManager : MonoBehaviour {
     beating = true;
   }
 
+  public void startGame() {
+    gameStarted = true;
+  }
+
   public void setPeriod(float val) {
     samplePeriod = val;
   }
 
   void Update () {
-    if (beating && (beatObserver.beatMask & BeatType.DownBeat) == BeatType.DownBeat) {
+    if (beating && !Player.pl.uncontrollable() && (beatObserver.beatMask & BeatType.DownBeat) == BeatType.DownBeat) {
       invokeRing();
     }
   }
@@ -96,18 +101,16 @@ public class RhythmManager : MonoBehaviour {
   }
 
 	void invokeRing() {
-    if (numSkillInLoop > 0) {
-      if (!feverTime) {
-        int rem = ringCount % (numNormalInLoop + numSkillInLoop);
-        if (rem < numNormalInLoop) {
-          getRing(normalRingPool, normalRing);
-        } else {
-          getRing(skillRingPool, skillRing);
-        }
-        ringCount++;
-      }
-    } else {
+    if (!gameStarted || numSkillInLoop == 0) {
       getRing(normalRingPool, normalRing);
+    } else if (!feverTime) {
+      int rem = ringCount % (numNormalInLoop + numSkillInLoop);
+      if (rem < numNormalInLoop) {
+        getRing(normalRingPool, normalRing);
+      } else {
+        getRing(skillRingPool, skillRing);
+      }
+      ringCount++;
     }
   }
 
@@ -116,8 +119,12 @@ public class RhythmManager : MonoBehaviour {
   }
 
   public void boosterOk(bool boosterRing, bool skillRing) {
-    isBoosterOK = boosterRing;
-    isSkillOK = skillRing;
+    if (feverTime) {
+      getRing(feverRingPool, feverRing);
+    } else {
+      isBoosterOK = boosterRing;
+      isSkillOK = skillRing;
+    }
   }
 
   public bool canBoost() {
@@ -135,10 +142,6 @@ public class RhythmManager : MonoBehaviour {
 
   public void setFever(bool val) {
     feverTime = val;
-    if (val) spawnFeverRing();
-  }
-
-  public void spawnFeverRing() {
-    getRing(feverRingPool, feverRing);
+    if (val) getRing(feverRingPool, feverRing);
   }
 }

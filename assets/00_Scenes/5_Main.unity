@@ -267,8 +267,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
-  description: "\uC288\uD37C\uD788\uD2B8 \uC9C0\uC18D\uC2DC\uAC04 \uC99D\uAC00"
-  description2: 
 --- !u!23 &3647331
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3365,6 +3363,8 @@ MonoBehaviour:
   stickPushMaxSpeedAt: .800000012
   stoppingSpeed: 150
   baseSpeed: 150
+  speed: 0
+  boosterSpeedDecreasePerTime: 20
   effects: {fileID: 1753770006}
   nearAsteroidBonus: 10
   tumble: 4
@@ -6857,8 +6857,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
-  description: "\uD050\uBE0C \uCD94\uAC00 \uD68D\uB4DD+"
-  description2: "\uC790\uAE30 \uC7A5\uCE58 \uBC94\uC704 \uC99D\uAC00"
 --- !u!1 &155100440
 GameObject:
   m_ObjectHideFlags: 0
@@ -16050,8 +16048,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
-  description: 
-  description2: 
 --- !u!23 &233729130
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -16682,10 +16678,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: Tin Can Robot
   rarity: 2
-  baseSpeed: 3
+  baseSpeed: 2
   boosterPlusSpeed: 1
   boosterMaxSpeed: 2
-  boosterSpeedDecrease: 3
+  boosterSpeedDecrease: 2
   energyReduceOnTime: 1
   maxEnergy: 1
   reboundDistance: 0
@@ -19436,8 +19432,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
-  description: "\uBC1B\uB294 \uB370\uBBF8\uC9C0 \uAC10\uC18C"
-  description2: 
 --- !u!1 &472324035
 GameObject:
   m_ObjectHideFlags: 0
@@ -19975,8 +19969,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
-  description: "\uBC1B\uB294 \uB370\uBBF8\uC9C0 \uAC10\uC18C+"
-  description2: "\uAC15\uCCA0 \uC0C1\uD0DC \uC774\uB3D9\uC18D\uB3C4 \uC99D\uAC00"
 --- !u!1 &503519268
 GameObject:
   m_ObjectHideFlags: 0
@@ -24860,8 +24852,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
-  description: 
-  description2: 
 --- !u!1 &579922197
 GameObject:
   m_ObjectHideFlags: 0
@@ -26147,8 +26137,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
-  description: "\uC288\uD37C\uD788\uD2B8 \uC9C0\uC18D\uC2DC\uAC04 \uC99D\uAC00"
-  description2: 
 --- !u!23 &588841860
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -26634,8 +26622,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
-  description: "\uBC1B\uB294 \uB370\uBBF8\uC9C0 \uAC10\uC18C+"
-  description2: "\uAC15\uCCA0 \uC0C1\uD0DC \uC774\uB3D9\uC18D\uB3C4 \uC99D\uAC00"
 --- !u!23 &606416439
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -28558,8 +28544,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
-  description: 
-  description2: 
 --- !u!1 &644697225
 GameObject:
   m_ObjectHideFlags: 0
@@ -30490,8 +30474,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
-  description: 
-  description2: 
 --- !u!23 &688839007
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -30568,7 +30550,7 @@ MonoBehaviour:
   useSkillEffect: {fileID: 675405685}
   normalRing: 4
   skillRing: 1
-  duration: .5
+  duration: 1
 --- !u!1 &707381357
 GameObject:
   m_ObjectHideFlags: 0
@@ -39468,8 +39450,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
-  description: "\uC774\uB3D9\uC18D\uB3C4 \uC99D\uAC00+"
-  description2: "\uBAAC\uC2A4\uD130 \uC9C0\uC18D\uC2DC\uAC04 \uC99D\uAC00"
 --- !u!1 &860393912
 GameObject:
   m_ObjectHideFlags: 0
@@ -42299,8 +42279,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
-  description: 
-  description2: 
 --- !u!1 &924930994
 GameObject:
   m_ObjectHideFlags: 0
@@ -43311,8 +43289,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
-  description: "\uC288\uD37C\uD788\uD2B8 \uAC8C\uC774\uC9C0 \uCD94\uAC00 \uD68D\uB4DD"
-  description2: 
 --- !u!1 &976401522
 GameObject:
   m_ObjectHideFlags: 0
@@ -49643,8 +49619,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
-  description: "\uC288\uD37C\uD788\uD2B8 \uC9C0\uC18D\uC2DC\uAC04 \uC99D\uAC00"
-  description2: 
 --- !u!23 &1068398462
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -53843,8 +53817,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
-  description: 
-  description2: 
 --- !u!1 &1176685720
 GameObject:
   m_ObjectHideFlags: 0
@@ -55475,8 +55447,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
-  description: "\uD050\uBE0C \uCD94\uAC00 \uD68D\uB4DD"
-  description2: 
 --- !u!23 &1196521605
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -55965,16 +55935,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ccm: {fileID: 91418591}
   pricesPerRarity: 64000000f4010000dc050000
-  baseSpeedStandard: 150
+  baseSpeedStandard: 80
   baseSpeeds: 3c0000001e00000000000000ecffffffd8ffffff
-  boosterPlusSpeedStandard: 75
+  boosterPlusSpeedStandard: 80
   boosterPlusSpeeds: 3c0000001e00000000000000ecffffffd8ffffff
-  boosterMaxSpeedStandard: 100
-  boosterMaxSpeeds: 3c0000001e00000000000000ecffffffd8ffffff
+  boosterMaxSpeedStandard: 120
+  boosterMaxSpeeds: 500000003c000000280000001400000000000000
   boosterSpeedDecreaseStandard: 60
-  boosterSpeedDecreasePerTime: 20
-  boosterSpeedDecreases: c4ffffffe2ffffff000000001400000028000000
-  energyReduceOnTimeStandard: 15
+  boosterSpeedDecreases: c80000006400000000000000ecffffffd8ffffff
+  energyReduceOnTimeStandard: 150
   energyReduceOnTimes: 280000001400000000000000f1ffffffe2ffffff
   maxEnergyStandard: 100
   maxEnergys: 320000001400000000000000f6ffffffecffffff
@@ -69272,7 +69241,7 @@ MonoBehaviour:
   baseSpeed: 2
   boosterPlusSpeed: 2
   boosterMaxSpeed: 2
-  boosterSpeedDecrease: 3
+  boosterSpeedDecrease: 2
   energyReduceOnTime: 2
   maxEnergy: 2
   reboundDistance: 2
@@ -73996,8 +73965,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
-  description: "\uC288\uD37C\uD788\uD2B8 \uC9C0\uC18D\uC2DC\uAC04 \uC99D\uAC00"
-  description2: 
 --- !u!23 &1596742150
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -75506,8 +75473,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
-  description: 
-  description2: 
 --- !u!23 &1625834677
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -76057,8 +76022,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
-  description: 
-  description2: 
 --- !u!1 &1665647659
 GameObject:
   m_ObjectHideFlags: 0
@@ -77646,8 +77609,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
-  description: "\uC5D0\uB108\uC9C0 \uC18C\uBAA8 \uAC10\uC18C"
-  description2: 
 --- !u!1 &1683774461
 GameObject:
   m_ObjectHideFlags: 0
@@ -97489,7 +97450,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   beatValue: 7
   beatScalar: 1
-  beatOffset: 5
+  beatOffset: 7
   negativeBeatOffset: 0
   beatType: 8
   loopTime: 20
@@ -97538,8 +97499,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
-  description: 
-  description2: 
 --- !u!23 &2104714906
 MeshRenderer:
   m_ObjectHideFlags: 0

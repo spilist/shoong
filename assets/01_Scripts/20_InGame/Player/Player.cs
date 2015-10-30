@@ -13,12 +13,12 @@ public class Player : MonoBehaviour {
   public int stoppingSpeed = 10;
 
   public float baseSpeed;
-  private float speed;
+  public float speed;
 	private float boosterspeed;
   private float boosterSpeedUpAmount;
   private float maxBoosterSpeed;
   private float boosterSpeedDecreaseBase;
-  private float boosterSpeedDecreasePerTime;
+  public float boosterSpeedDecreasePerTime = 20;
   private float reboundScale;
   private float speedBoostScale = 1;
   private float maxSpeedBoostScale;
@@ -83,6 +83,7 @@ public class Player : MonoBehaviour {
   private int numDestroyObstacles = 0;
   private int numUseObjects = 0;
   public PlayerDirectionIndicator dirIndicator;
+  private float timeSpaned;
 
 	void Awake() {
     pl = this;
@@ -142,9 +143,10 @@ public class Player : MonoBehaviour {
     if (iced && !uncontrollable() && !bouncing) {
       speed *= icedSpeedFactor;
     }
-
     if (boosterspeed > 0) {
-      boosterspeed -= speed / boosterSpeedDecreaseBase + boosterSpeedDecreasePerTime * Time.fixedDeltaTime;
+      timeSpaned += Time.fixedDeltaTime;
+      boosterspeed -= 80 / boosterSpeedDecreaseBase + boosterSpeedDecreasePerTime * Time.fixedDeltaTime;
+      Debug.Log("End: " + timeSpaned);
     } else if (boosterspeed <= 0){
       boosterspeed = 0;
     }
@@ -322,6 +324,9 @@ public class Player : MonoBehaviour {
       RhythmManager.rm.ringMissed();
       return;
     }
+
+    Debug.Log("Start");
+    timeSpaned = 0;
 
     if (RhythmManager.rm.isSkillOK) {
       SkillManager.sm.activate();
@@ -660,7 +665,6 @@ public class Player : MonoBehaviour {
     boosterSpeedUpAmount = CharacterManager.cm.boosterPlusSpeedStandard;
     maxBoosterSpeed = CharacterManager.cm.boosterMaxSpeedStandard;
     boosterSpeedDecreaseBase = CharacterManager.cm.boosterSpeedDecreaseStandard;
-    boosterSpeedDecreasePerTime = CharacterManager.cm.boosterSpeedDecreasePerTime;
     reboundScale = CharacterManager.cm.reboundTimeScaleStandard;
   }
 
@@ -673,6 +677,7 @@ public class Player : MonoBehaviour {
   }
 
   public void setSpeedBoost(float speedUp, float duration) {
+    speedBoosting = true;
     maxSpeedBoostScale = speedUp;
     speedBoostScale = speedUp;
     speedBoostDuration = duration;
