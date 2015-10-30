@@ -1,15 +1,14 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using AbilityData;
 
 public class UICharacters : MonoBehaviour {
-  public string characterName;
-  public int price;
-  public string rarity;
+  public CharacterStat stat;
+  private int price;
+
   public string description;
   public string description2;
-  public int numNormalRings;
-  public int numSkillRings;
 
   private CharactersMenu charactersMenu;
   private Vector3 originalPosition;
@@ -42,14 +41,16 @@ public class UICharacters : MonoBehaviour {
 	}
 
   public void setRarity(Text text) {
-    if (rarity == "Common") {
-      text.text = "";
+    Rarity rarity = stat.rarity;
+
+    if (rarity == Rarity.Common) {
+      text.text = "Common";
       text.color = charactersMenu.colorsPerRarity[0];
-    } else if (rarity == "Uncommon") {
-      text.text = "고급";
+    } else if (rarity == Rarity.Rare) {
+      text.text = "Rare";
       text.color = charactersMenu.colorsPerRarity[1];
-    } else if (rarity == "Rare") {
-      text.text = "희귀";
+    } else if (rarity == Rarity.Epic) {
+      text.text = "Epic";
       text.color = charactersMenu.colorsPerRarity[2];
     }
   }
@@ -62,7 +63,11 @@ public class UICharacters : MonoBehaviour {
       } else {
         AudioSource.PlayClipAtPoint(charactersMenu.characterSelectionSound, transform.position);
       }
-      charactersMenu.characterName.text = characterName;
+
+      stat = CharacterManager.cm.character(name);
+      price = stat.price();
+
+      charactersMenu.characterName.text = stat.characterName;
       setRarity(charactersMenu.rarity);
 
       charactersMenu.description.text = description;

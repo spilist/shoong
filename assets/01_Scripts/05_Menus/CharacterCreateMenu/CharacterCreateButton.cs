@@ -2,14 +2,14 @@
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
+using AbilityData;
 
 public class CharacterCreateButton : MenusBehavior {
-  public int uncommonChance = 9;
-  public int rareChance = 1;
+  public int rareChance = 12;
+  public int epicChance = 3;
   private List<UICharacters> commons;
-  private List<UICharacters> uncommons;
   private List<UICharacters> rares;
+  private List<UICharacters> epics;
 
   public Transform characters;
   public GameObject characterCube;
@@ -47,25 +47,25 @@ public class CharacterCreateButton : MenusBehavior {
     priceText = transform.Find("PriceText").GetComponent<Text>();
 
     commons = new List<UICharacters>();
-    uncommons = new List<UICharacters>();
     rares = new List<UICharacters>();
+    epics = new List<UICharacters>();
     foreach (Transform tr in characters) {
       UICharacters uic = tr.GetComponent<UICharacters>();
       if (uic.name == "robotcogi") continue;
 
-      if (uic.rarity == "Common") commons.Add(uic);
-      else if (uic.rarity == "Uncommon") uncommons.Add(uic);
-      else if (uic.rarity == "Rare") rares.Add(uic);
+      if (uic.stat.rarity == Rarity.Common) commons.Add(uic);
+      else if (uic.stat.rarity == Rarity.Rare) rares.Add(uic);
+      else if (uic.stat.rarity == Rarity.Epic) epics.Add(uic);
     }
   }
 
   UICharacters getRandom() {
     List<UICharacters> list;
     int random = Random.Range(0, 100);
-    if (random < rareChance) {
+    if (random < epicChance) {
+      list = epics;
+    } else if (random < epicChance + rareChance) {
       list = rares;
-    } else if (random < rareChance + uncommonChance) {
-      list = uncommons;
     } else {
       list = commons;
     }
@@ -176,7 +176,7 @@ public class CharacterCreateButton : MenusBehavior {
     createdCharacter.GetComponent<MeshFilter>().sharedMesh = randomCharacter.GetComponent<MeshFilter>().sharedMesh;
     createdCharacter.SetActive(true);
 
-    characterName.text = randomCharacter.characterName;
+    characterName.text = randomCharacter.stat.characterName;
     characterName.enabled = true;
     randomCharacter.setRarity(rarity);
     selectButton.setCharacter(randomCharacter.name);

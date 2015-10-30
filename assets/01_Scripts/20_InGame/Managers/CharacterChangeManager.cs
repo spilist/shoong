@@ -4,9 +4,6 @@ using System.Collections;
 public class CharacterChangeManager : MonoBehaviour {
   public Transform characters;
   public DoppleManager dpm;
-  public Skill_Magnet skill_magnet;
-  public Skill_Monster skill_monster;
-  public Skill_Metal skill_metal;
 
   public Mesh monsterMesh;
   public Material monsterMaterial;
@@ -142,8 +139,9 @@ public class CharacterChangeManager : MonoBehaviour {
   }
 
   public void changeCharacter(string characterName) {
-    GameObject play_characters = Resources.Load<GameObject>("_characters/play_characters");
-    mFilter.sharedMesh = play_characters.transform.FindChild(characterName).GetComponent<MeshFilter>().sharedMesh;
+    CharacterStat stat = CharacterManager.cm.character(characterName);
+    mFilter.sharedMesh = stat.GetComponent<MeshFilter>().sharedMesh;
+    originalMesh = mFilter.sharedMesh;
 
     // booster = Instantiate(Resources.Load(characterName + "/Booster", typeof(ParticleSystem))) as ParticleSystem;
     // booster.transform.parent = playerParticlesParent;
@@ -151,25 +149,7 @@ public class CharacterChangeManager : MonoBehaviour {
     // booster.transform.localPosition = Vector3.zero;
     // booster.transform.localRotation = Quaternion.identity;
 
-    originalMesh = mFilter.sharedMesh;
-
-    resetAllAbility();
-
-    UICharacters uic = characters.Find(characterName).GetComponent<UICharacters>();
-    foreach (CharacterAbility ability in uic.GetComponents<CharacterAbility>()) {
-      ability.apply();
-    }
-
-    RhythmManager.rm.setLoop(uic.numNormalRings, uic.numSkillRings);
-  }
-
-  void resetAllAbility() {
-    EnergyManager.em.resetEnergyAbility();
-    Player.pl.resetAbility();
-    // SuperheatManager.sm.resetSuperheatAbility();
-    CubeManager.cm.resetCubeAbility();
-    skill_magnet.resetAbility();
-    skill_monster.resetAbility();
-    skill_metal.resetAbility();
+    CharacterManager.cm.resetAllAbility();
+    stat.apply();
   }
 }
