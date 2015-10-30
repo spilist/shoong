@@ -20,7 +20,12 @@ public class Player : MonoBehaviour {
   private float boosterSpeedDecreaseBase;
   private float boosterSpeedDecreasePerTime;
   private float reboundScale;
+  private float speedBoostScale = 1;
+  private float maxSpeedBoostScale;
+  private float speedBoostDuration = 0;
+  private float speedBoostCount = 0;
   private float boosterBonus = 1;
+  private bool speedBoosting = false;
 
   public Transform effects;
 
@@ -124,12 +129,22 @@ public class Player : MonoBehaviour {
 
     speed += boosterspeed;
 
+    if (speedBoosting) {
+      if (speedBoostCount < speedBoostDuration) {
+        speedBoostCount += Time.fixedDeltaTime;
+        speedBoostScale = Mathf.MoveTowards(speedBoostScale, 1, Time.fixedDeltaTime * maxSpeedBoostScale / speedBoostDuration);
+        speed *= speedBoostScale;
+      } else {
+        speedBoosting = false;
+      }
+    }
+
     if (iced && !uncontrollable() && !bouncing) {
       speed *= icedSpeedFactor;
     }
 
     if (boosterspeed > 0) {
-      boosterspeed -= speed / boosterSpeedDecreaseBase + boosterSpeedDecreasePerTime * Time.deltaTime;
+      boosterspeed -= speed / boosterSpeedDecreaseBase + boosterSpeedDecreasePerTime * Time.fixedDeltaTime;
     } else if (boosterspeed <= 0){
       boosterspeed = 0;
     }
@@ -303,11 +318,14 @@ public class Player : MonoBehaviour {
   public void shootBooster(){
     if (stopping || uncontrollable()) return;
 
-    if (!RhythmManager.rm.isBoosterOK) {
+    if (!RhythmManager.rm.canBoost()) {
       RhythmManager.rm.ringMissed();
       return;
     }
-    // else ringSuccess() ?
+
+    if (RhythmManager.rm.isSkillOK) {
+      SkillManager.sm.activate();
+    }
 
     startBeat();
 
@@ -652,5 +670,12 @@ public class Player : MonoBehaviour {
 
   void scaleBack() {
     transform.localScale = originalScale * Vector3.one;
+  }
+
+  public void setSpeedBoost(float speedUp, float duration) {
+    maxSpeedBoostScale = speedUp;
+    speedBoostScale = speedUp;
+    speedBoostDuration = duration;
+    speedBoostCount = 0;
   }
 }

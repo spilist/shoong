@@ -17,7 +17,7 @@ public class ObjectsMover : MonoBehaviour {
   protected float shrinkedScale;
 
   protected ObjectsManager objectsManager;
-  protected Skill_Transformer transSkill;
+  protected Skill_Transform transSkill;
   protected Rigidbody rb;
   public float boundingSize = 50;
   protected Vector3 headingToBlackhole;
@@ -26,7 +26,6 @@ public class ObjectsMover : MonoBehaviour {
   protected float transformDuration;
   protected string transformResult;
   protected GameObject transformParticle;
-  protected int transformLevel;
   protected GameObject indicator;
   public Player player;
 
@@ -34,7 +33,7 @@ public class ObjectsMover : MonoBehaviour {
     objectsManager = (ObjectsManager) GameObject.Find("Field Objects").GetComponent(getManager());
 
     if (isNegativeObject()) {
-      transSkill = (Skill_Transformer)SkillManager.sm.getSkill("Transformer");
+      transSkill = (Skill_Transform)SkillManager.sm.getSkill("Transform");
     }
 
     shrinkedScale = transform.localScale.x;
@@ -127,7 +126,7 @@ public class ObjectsMover : MonoBehaviour {
           trParticle.transform.Find("Normal").gameObject.SetActive(true);
           trParticle.transform.Find("Better").gameObject.SetActive(false);
         } else {
-          objectsManager.GetComponent<SpawnManager>().runManagerAt(transformResult, transform.position, transformLevel);
+          objectsManager.GetComponent<GoldenCubeManager>().spawnGoldenCube(transform.position);
           trParticle.transform.Find("Normal").gameObject.SetActive(false);
           trParticle.transform.Find("Better").gameObject.SetActive(true);
         }
@@ -139,21 +138,20 @@ public class ObjectsMover : MonoBehaviour {
     }
   }
 
-  public void transformed(Vector3 startPos, string what, int level) {
+  public void transformed(Vector3 startPos, string what) {
 
     GameObject laser = transSkill.getLaser(startPos);
     laser.SetActive(true);
     laser.GetComponent<TransformLaser>().shoot(transform.position, transSkill.laserShootDuration);
 
-    StartCoroutine(startTransform(what, level));
+    StartCoroutine(startTransform(what));
   }
 
-  IEnumerator startTransform(string what, int level) {
+  IEnumerator startTransform(string what) {
     yield return new WaitForSeconds(transSkill.laserShootDuration);
 
     isTransforming = true;
     transformResult = what;
-    transformLevel = level;
   }
 
   virtual protected void normalMovement() {}

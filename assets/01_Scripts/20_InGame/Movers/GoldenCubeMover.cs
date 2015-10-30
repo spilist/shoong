@@ -4,9 +4,19 @@ using System.Collections;
 public class GoldenCubeMover : ObjectsMover {
   private GoldenCubeManager gcm;
   private bool detected = false;
+  private bool noRespawn = false;
 
   protected override void initializeRest() {
     gcm = (GoldenCubeManager)objectsManager;
+  }
+
+  override protected void afterEnable() {
+    detected = false;
+    noRespawn = false;
+  }
+
+  public void setNoRespawn() {
+    noRespawn = true;
   }
 
   protected override bool beforeCollide(Collision collision) {
@@ -30,8 +40,28 @@ public class GoldenCubeMover : ObjectsMover {
     }
   }
 
+  override public void destroyObject(bool destroyEffect = true, bool byPlayer = false) {
+
+    gameObject.SetActive(false);
+
+    if (destroyEffect) {
+      showDestroyEffect(byPlayer);
+    }
+
+    if (noRespawn) return;
+
+    if (byPlayer) {
+      objectsManager.run();
+    } else {
+      objectsManager.runImmediately();
+    }
+  }
+
   override protected void afterEncounter() {
     GoldManager.gm.add(transform.position, gcm.cubesWhenEncounter());
+
+    if (noRespawn) return;
+
     objectsManager.run();
   }
 

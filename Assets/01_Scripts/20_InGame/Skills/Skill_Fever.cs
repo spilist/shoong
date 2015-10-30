@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Skill_Metal : Skill {
+public class Skill_Fever : Skill {
   override public void afterActivate(bool val) {
-    if (!val) Player.pl.afterStrengthenStart();
+    RhythmManager.rm.setFever(val);
   }
 }

@@ -77,7 +77,6 @@ public class TouchInputHandler : MonoBehaviour
         beforeIdle.moveTitle();
         menus.gameStart();
         spawnManager.run();
-        SkillManager.sm.startGame();
         GoldManager.gm.startGame();
         AudioManager.am.changeVolume("Main", "Max");
 

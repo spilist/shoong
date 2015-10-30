@@ -8,9 +8,11 @@ public class RhythmManager : MonoBehaviour {
   public Transform rhythmRings;
   public GameObject normalRing;
   public GameObject skillRing;
+  public GameObject feverRing;
   public int ringAmount = 2;
   public List<GameObject> normalRingPool;
   public List<GameObject> skillRingPool;
+  public List<GameObject> feverRingPool;
 
   public float bpm;
   public float beatBase;
@@ -24,6 +26,7 @@ public class RhythmManager : MonoBehaviour {
   public bool isSkillOK = false;
   public GameObject currentRing;
   private int ringCount = 0;
+  private bool feverTime = false;
 
   private BeatObserver beatObserver;
   private bool beating = false;
@@ -36,6 +39,7 @@ public class RhythmManager : MonoBehaviour {
   void Start() {
     normalRingPool = new List<GameObject>();
     skillRingPool = new List<GameObject>();
+    feverRingPool = new List<GameObject>();
     for (int i = 0; i < ringAmount; ++i) {
       GameObject obj = (GameObject) Instantiate(normalRing);
       obj.SetActive(false);
@@ -46,6 +50,11 @@ public class RhythmManager : MonoBehaviour {
       obj.SetActive(false);
       obj.transform.parent = rhythmRings;
       skillRingPool.Add(obj);
+
+      obj = (GameObject) Instantiate(feverRing);
+      obj.SetActive(false);
+      obj.transform.parent = rhythmRings;
+      feverRingPool.Add(obj);
     }
 
     beating = true;
@@ -88,13 +97,15 @@ public class RhythmManager : MonoBehaviour {
 
 	void invokeRing() {
     if (numSkillInLoop > 0) {
-      int rem = ringCount % (numNormalInLoop + numSkillInLoop);
-      if (rem < numNormalInLoop) {
-        getRing(normalRingPool, normalRing);
-      } else {
-        getRing(skillRingPool, skillRing);
+      if (!feverTime) {
+        int rem = ringCount % (numNormalInLoop + numSkillInLoop);
+        if (rem < numNormalInLoop) {
+          getRing(normalRingPool, normalRing);
+        } else {
+          getRing(skillRingPool, skillRing);
+        }
+        ringCount++;
       }
-      ringCount++;
     } else {
       getRing(normalRingPool, normalRing);
     }
@@ -109,6 +120,10 @@ public class RhythmManager : MonoBehaviour {
     isSkillOK = skillRing;
   }
 
+  public bool canBoost() {
+    return feverTime || isBoosterOK;
+  }
+
   public void ringMissed() {
     currentRing.SetActive(false);
   }
@@ -116,5 +131,14 @@ public class RhythmManager : MonoBehaviour {
   public void setLoop(int normal, int skill) {
     numNormalInLoop = normal;
     numSkillInLoop = skill;
+  }
+
+  public void setFever(bool val) {
+    feverTime = val;
+    if (val) spawnFeverRing();
+  }
+
+  public void spawnFeverRing() {
+    getRing(feverRingPool, feverRing);
   }
 }

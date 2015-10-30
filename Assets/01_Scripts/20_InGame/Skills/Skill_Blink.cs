@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Skill_Dopple : Skill {
+public class Skill_Blink : Skill {
   public DoppleManager dpm;
 
-  override public void afterEnable() {
+  override public void afterStart() {
     dpm.enabled = true;
   }
 

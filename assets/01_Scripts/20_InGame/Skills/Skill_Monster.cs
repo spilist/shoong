@@ -6,7 +6,7 @@ public class Skill_Monster : Skill {
   public GameObject monsterFilter;
   public MonsterManager mm;
 
-  override public void afterEnable() {
+  override public void afterStart() {
     mm.enabled = true;
   }
 

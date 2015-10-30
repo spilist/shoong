@@ -141,6 +141,10 @@ public class EnergyManager : MonoBehaviour {
     changeHealth(getAmountbyCubes * amount, getRate * amount);
   }
 
+  public void getEnergy(int amount) {
+    changeHealth(amount, getRate * amount);
+  }
+
   public void loseEnergy(int amount, string tag) {
     changeHealth(-amount * lessDamageRate, loseRate * amount * lessDamageRate);
     lastReason = tag;

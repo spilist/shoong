@@ -36,4 +36,10 @@ public class GoldenCubeManager : ObjectsManager {
     GameObject obj = getPooledObj(objDestroyEffectPool, objDestroyEffect, pos);
     obj.SetActive(true);
   }
+
+  public void spawnGoldenCube(Vector3 pos) {
+    GameObject obj = getPooledObj(objPool, objPrefab, pos);
+    obj.SetActive(true);
+    obj.GetComponent<GoldenCubeMover>().setNoRespawn();
+  }
 }

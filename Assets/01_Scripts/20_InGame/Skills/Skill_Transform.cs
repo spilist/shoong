@@ -2,8 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class Skill_Transformer : Skill {
-  public int subRatio = 20;
+public class Skill_Transform : Skill {
+  public int goldRatio = 30;
   public float laserShootDuration = 0.1f;
   public float transformDuration = 0.2f;
   public GameObject transformLaser;
@@ -12,7 +12,7 @@ public class Skill_Transformer : Skill {
   public List<GameObject> particlePool;
   public int laserAmount = 10;
 
-  override public void afterEnable() {
+  override public void afterStart() {
     laserPool = new List<GameObject>();
     particlePool = new List<GameObject>();
     for (int i = 0; i < laserAmount; ++i) {

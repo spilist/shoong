@@ -3,6 +3,7 @@ using System.Collections;
 
 public class RhythmRing : MonoBehaviour {
   public bool skillRing = false;
+  public bool feverRing = false;
   float beat;
   float startScale;
   float scale;
@@ -17,8 +18,13 @@ public class RhythmRing : MonoBehaviour {
     transform.localScale = startScale * Vector3.one;
     scale = startScale;
     msgSended = false;
-    beat = RhythmManager.rm.samplePeriod;
     boosterOkScale = RhythmManager.rm.boosterOkScale;
+
+    if (feverRing) {
+      beat = RhythmManager.rm.samplePeriod / 10f;
+    } else {
+      beat = RhythmManager.rm.samplePeriod;
+    }
   }
 
   void Update() {
@@ -26,7 +32,7 @@ public class RhythmRing : MonoBehaviour {
     transform.localScale = scale * Vector3.one;
     if (!msgSended && scale <= boosterOkScale) {
       msgSended = true;
-      RhythmManager.rm.boosterOk(true, skillRing);
+      if (!feverRing) RhythmManager.rm.boosterOk(true, skillRing);
     }
 
     if (scale == 0) {
@@ -35,6 +41,7 @@ public class RhythmRing : MonoBehaviour {
   }
 
   void OnDisable() {
-    RhythmManager.rm.boosterOk(false, false);
+    if (feverRing && msgSended) RhythmManager.rm.spawnFeverRing();
+    else RhythmManager.rm.boosterOk(false, false);
   }
 }

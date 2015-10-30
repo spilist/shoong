@@ -5,35 +5,12 @@ using System.Collections.Generic;
 public class Skill : MonoBehaviour {
   public GameObject skillObject;
   public GameObject useSkillEffect;
+  public int normalRing;
+  public int skillRing;
   public float duration;
-  public float coolTime;
-  public int level;
-  private float originalDuration;
-  private float originalCoolTime;
-
-  void Awake() {
-    originalDuration = duration;
-    originalCoolTime = coolTime;
-  }
 
   void Start() {
-    level = DataManager.dm.getInt(name + "Level") - 1;
-    if (level < 0) level = 0;
-    adjustForLevel(level);
-    afterEnable();
-  }
-
-  public void moreDuration(int val) {
-    duration += val;
-  }
-
-  public void lessCoolTime(int val) {
-    coolTime -= val;
-  }
-
-  virtual public void resetAbility() {
-    duration = originalDuration;
-    coolTime = originalCoolTime;
+    afterStart();
   }
 
   public GameObject getPooledObj(List<GameObject> list, GameObject prefab, Vector3 pos) {
@@ -55,17 +32,25 @@ public class Skill : MonoBehaviour {
     return obj;
   }
 
-  virtual public void adjustForLevel(int level) {}
 
-  virtual public void afterEnable() {}
+  virtual public void afterStart() {}
 
   public void activate(bool val) {
-    skillObject.SetActive(val);
-    // useSkillEffect.transform.rotation = Quaternion.identity;
-    useSkillEffect.SetActive(val);
+    if (skillObject != null) skillObject.SetActive(val);
+    if (useSkillEffect != null) useSkillEffect.SetActive(val);
+
+    if (val && duration > 0) Invoke("inactivate", duration);
     Player.pl.effectedBy(name, val);
     afterActivate(val);
   }
 
   virtual public void afterActivate(bool val) {}
+
+  void inactivate() {
+    activate(false);
+  }
+
+  void Disable() {
+    CancelInvoke();
+  }
 }
