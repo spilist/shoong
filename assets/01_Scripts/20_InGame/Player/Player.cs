@@ -315,6 +315,8 @@ public class Player : MonoBehaviour {
       return;
     }
 
+    startBeat();
+
     if (usingDopple) {
       teleport(transform.position + direction * dpm.blinkDistance);
       return;
@@ -553,7 +555,8 @@ public class Player : MonoBehaviour {
 
   void Update() {
     if (beating) {
-      beatingScale = Mathf.MoveTowards(beatingScale, originalScale - RhythmManager.rm.beatScaleDiff, Time.deltaTime * RhythmManager.rm.beatScaleDiff / RhythmManager.rm.invokeCirclePer);
+      beatingScale = Mathf.MoveTowards(beatingScale, originalScale, Time.deltaTime * (RhythmManager.rm.playerBeatScale - originalScale) / RhythmManager.rm.playerBeatDuration);
+      // beatingScale = Mathf.MoveTowards(beatingScale, originalScale - RhythmManager.rm.beatScaleDiff, Time.deltaTime * RhythmManager.rm.beatScaleDiff / RhythmManager.rm.invokeCirclePer);
       transform.localScale = beatingScale * Vector3.one;
     }
 
@@ -666,7 +669,14 @@ public class Player : MonoBehaviour {
   }
 
   public void startBeat() {
-    beating = true;
-    beatingScale = originalScale;
+    // beating = true;
+    // beatingScale = RhythmManager.rm.playerBeatScale;
+    transform.localScale = RhythmManager.rm.playerBeatScale * Vector3.one;
+    CancelInvoke("scaleBack");
+    Invoke("scaleBack", RhythmManager.rm.playerBeatDuration);
+  }
+
+  void scaleBack() {
+    transform.localScale = originalScale * Vector3.one;
   }
 }

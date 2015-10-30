@@ -2185,6 +2185,7 @@ MonoBehaviour:
   circleAmount: 2
   circlePool: []
   beatScaleDiff: .400000006
+  playerBeatDuration: .200000003
   bpm: 130
   beatBase: 2
   invokeCirclePer: 0
@@ -3164,7 +3165,7 @@ Transform:
   m_GameObject: {fileID: 91418582}
   m_LocalRotation: {x: .707106829, y: -5.9604659e-08, z: -2.98023295e-08, w: .707106829}
   m_LocalPosition: {x: 0, y: -0, z: 0}
-  m_LocalScale: {x: 1.39999998, y: 1.39999998, z: 1.39999998}
+  m_LocalScale: {x: 1.10000002, y: 1.10000002, z: 1.10000002}
   m_Children:
   - {fileID: 678200079}
   m_Father: {fileID: 1701025775}
@@ -97179,7 +97180,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2134279969
 RectTransform:
   m_ObjectHideFlags: 0
