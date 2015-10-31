@@ -119,13 +119,11 @@ public class Player : MonoBehaviour {
       if (stopping) {
         speed = Mathf.MoveTowards(speed, 0, Time.fixedDeltaTime * stoppingSpeed);
       } else if (ridingMonster) {
-        speed = baseSpeed + minimonCounter * monm.enlargeSpeedPerMinimon;
+        speed = baseSpeed + minimonCounter * monm.enlargeSpeedPerMinimon + boosterspeed;
       } else {
-        speed = baseSpeed;
+        speed = baseSpeed + boosterspeed;
       }
     }
-
-    speed += boosterspeed;
 
     if (speedBoosting) {
       if (speedBoostCount < speedBoostDuration) {
