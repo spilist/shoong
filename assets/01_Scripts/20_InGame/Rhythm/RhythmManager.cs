@@ -21,7 +21,9 @@ public class RhythmManager : MonoBehaviour {
   public float bpm;
   public float beatBase;
   public float maxBoosterOkScale = 4;
+  public float maxPopScale;
   public float rightBeatScale = 3;
+  public float minPopScale;
   public float minBoosterOkScale = 2;
   public float ringDisppearDuration = 0.5f;
   public float playerScaleUpAmount = 1.2f;
@@ -172,7 +174,6 @@ public class RhythmManager : MonoBehaviour {
     } else {
       isBoosterOK = boosterRing;
       isSkillOK = skillRing;
-      Player.pl.scaleChange(boosterRing, playerScaleUpAmount);
     }
   }
 

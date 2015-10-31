@@ -2330,7 +2330,9 @@ MonoBehaviour:
   bpm: 130
   beatBase: 2
   maxBoosterOkScale: 3
+  maxPopScale: 2
   rightBeatScale: 1.5
+  minPopScale: 1
   minBoosterOkScale: 0
   ringDisppearDuration: .5
   playerScaleUpAmount: 1.39999998

@@ -11,11 +11,15 @@ public class RhythmRing : MonoBehaviour {
   float scale;
   float minBoosterOkScale;
   float maxBoosterOkScale;
+  float minPopScale;
+  float maxPopScale;
   float rightBeatScale;
   float disappearDuration;
+  float playerScaleUpAmount;
   bool maxMsgSended = false;
   bool minMsgSended = false;
   bool disappearing = false;
+  bool afterMin = false;
   float alpha;
   Color color;
   private SpriteRenderer sRenderer;
@@ -28,8 +32,11 @@ public class RhythmRing : MonoBehaviour {
 
     minBoosterOkScale = RhythmManager.rm.minBoosterOkScale;
     maxBoosterOkScale = RhythmManager.rm.maxBoosterOkScale;
+    minPopScale = RhythmManager.rm.minPopScale;
+    maxPopScale = RhythmManager.rm.maxPopScale;
     rightBeatScale = RhythmManager.rm.rightBeatScale;
     disappearDuration = RhythmManager.rm.ringDisppearDuration;
+    playerScaleUpAmount = RhythmManager.rm.playerScaleUpAmount;
   }
 
   void OnEnable() {
@@ -42,6 +49,7 @@ public class RhythmRing : MonoBehaviour {
     maxMsgSended = false;
     minMsgSended = false;
     disappearing = false;
+    afterMin = false;
     skillRing = originalSkillRing;
 
     beat = RhythmManager.rm.samplePeriod;
@@ -66,8 +74,14 @@ public class RhythmRing : MonoBehaviour {
           RhythmManager.rm.boosterOk(true, skillRing);
         }
 
-        if (sRenderer.enabled && scale <= rightBeatScale) {
+        if (sRenderer.enabled && scale <= maxPopScale) {
           sRenderer.enabled = false;
+          Player.pl.scaleChange(true, playerScaleUpAmount);
+        }
+
+        if (!afterMin && scale <= minPopScale) {
+          afterMin = true;
+          Player.pl.scaleChange(false, playerScaleUpAmount);
         }
 
         if (!minMsgSended && scale <= minBoosterOkScale) {
