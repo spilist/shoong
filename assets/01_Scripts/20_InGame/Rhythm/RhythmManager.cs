@@ -239,6 +239,7 @@ public class RhythmManager : MonoBehaviour {
     feverTime = val;
     Player.pl.scaleChange(val, playerScaleUpAmount);
     if (val) {
+      isSkillOK = false;
       getRing(feverRingPool, feverRing);
     }
   }

@@ -58,7 +58,6 @@ public class ObjectsMover : MonoBehaviour {
     shrinkedScale = originalScale;
 
     transformResult = "";
-
     afterEnable();
   }
 
@@ -130,19 +129,18 @@ public class ObjectsMover : MonoBehaviour {
   }
 
   public void transformed(Vector3 startPos, string what) {
-
     GameObject laser = transSkill.getLaser(startPos);
-    laser.SetActive(true);
-    laser.GetComponent<TransformLaser>().shoot(transform.position, transSkill.laserShootDuration);
+    float duration = transSkill.laserShootDuration;
 
-    StartCoroutine(startTransform(what));
+    laser.SetActive(true);
+    laser.GetComponent<TransformLaser>().shoot(transform.position, duration);
+    transformResult = what;
+
+    Invoke("startTransform", duration);
   }
 
-  IEnumerator startTransform(string what) {
-    yield return new WaitForSeconds(transSkill.laserShootDuration);
-
+  void startTransform() {
     isTransforming = true;
-    transformResult = what;
   }
 
   virtual protected void normalMovement() {}

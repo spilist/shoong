@@ -36,4 +36,8 @@ public class SkillManager : MonoBehaviour {
   public bool isBlink() {
     return equiped.name == "Blink";
   }
+
+  public Skill current() {
+    return equiped;
+  }
 }

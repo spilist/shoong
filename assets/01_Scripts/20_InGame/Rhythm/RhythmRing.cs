@@ -68,12 +68,18 @@ public class RhythmRing : MonoBehaviour {
       scale = Mathf.MoveTowards(scale, 0, Time.deltaTime * (startScale - rightBeatScale) / beat);
       transform.localScale = scale * Vector3.one;
 
-      if (!feverRing) {
-        if (!maxMsgSended && scale <= maxBoosterOkScale) {
-          maxMsgSended = true;
-          RhythmManager.rm.boosterOk(true, skillRing);
-        }
+      if (!maxMsgSended && scale <= maxBoosterOkScale) {
+        maxMsgSended = true;
+        RhythmManager.rm.boosterOk(true, skillRing);
+      }
 
+      if (!minMsgSended && scale <= minBoosterOkScale) {
+        minMsgSended = true;
+        RhythmManager.rm.boosterOk(false, false);
+        RhythmManager.rm.afterRing(true);
+      }
+
+      if (!feverRing) {
         if (sRenderer.enabled && scale <= maxPopScale) {
           sRenderer.enabled = false;
           Player.pl.scaleChange(true, playerScaleUpAmount);
@@ -83,16 +89,10 @@ public class RhythmRing : MonoBehaviour {
           afterMin = true;
           Player.pl.scaleChange(false, playerScaleUpAmount);
         }
-
-        if (!minMsgSended && scale <= minBoosterOkScale) {
-          minMsgSended = true;
-          RhythmManager.rm.boosterOk(false, false);
-          RhythmManager.rm.afterRing(true);
-        }
       }
 
       if (scale == 0) {
-        RhythmManager.rm.ringSkipped(skillRing);
+        if (!feverRing) RhythmManager.rm.ringSkipped(skillRing);
         gameObject.SetActive(false);
       }
     }

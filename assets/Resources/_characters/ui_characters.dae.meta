@@ -28,6 +28,9 @@ ModelImporter:
     100040: ui_dolphin
     100042: ui_robotcat
     100044: ui_wilson
+    100046: ui_fruits
+    100048: ui_goldpig
+    100050: ui_toyrobot
     400000: ui_bender
     400002: ui_butterfly
     400004: ui_cat
@@ -51,6 +54,9 @@ ModelImporter:
     400040: ui_dolphin
     400042: ui_robotcat
     400044: ui_wilson
+    400046: ui_fruits
+    400048: ui_goldpig
+    400050: ui_toyrobot
     2300000: ui_bender
     2300002: ui_butterfly
     2300004: ui_cat
@@ -73,6 +79,9 @@ ModelImporter:
     2300038: ui_dolphin
     2300040: ui_robotcat
     2300042: ui_wilson
+    2300044: ui_fruits
+    2300046: ui_goldpig
+    2300048: ui_toyrobot
     3300000: ui_bender
     3300002: ui_butterfly
     3300004: ui_cat
@@ -95,6 +104,9 @@ ModelImporter:
     3300038: ui_dolphin
     3300040: ui_robotcat
     3300042: ui_wilson
+    3300044: ui_fruits
+    3300046: ui_goldpig
+    3300048: ui_toyrobot
     4300000: ui_cat
     4300002: ui_crab
     4300004: ui_bender
@@ -117,6 +129,9 @@ ModelImporter:
     4300038: ui_alienwithgun
     4300040: ui_wilson
     4300042: ui_robotcat
+    4300044: ui_fruits
+    4300046: ui_goldpig
+    4300048: ui_toyrobot
     9500000: //RootNode
   materials:
     importMaterials: 1
