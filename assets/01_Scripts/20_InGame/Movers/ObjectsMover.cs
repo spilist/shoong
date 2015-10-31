@@ -26,7 +26,6 @@ public class ObjectsMover : MonoBehaviour {
   protected float transformDuration;
   protected string transformResult;
   protected GameObject transformParticle;
-  protected GameObject indicator;
   public Player player;
 
   void Awake() {
@@ -55,29 +54,15 @@ public class ObjectsMover : MonoBehaviour {
     isTransforming = false;
     isMagnetized = false;
     isInsideBlackhole = false;
+    transform.localScale = originalScale * Vector3.one;
+    shrinkedScale = originalScale;
+
     transformResult = "";
 
     afterEnable();
   }
 
   virtual protected void afterEnable() {}
-
-  public bool hasIndicator() {
-    return indicator != null;
-  }
-
-  public void setIndicator(GameObject indicator) {
-    this.indicator = indicator;
-    indicator.GetComponent<PartsToCollectIndicator>().run(transform, GetComponent<MeshFilter>().sharedMesh);
-  }
-
-  public void showIndicator() {
-    indicator.GetComponent<Renderer>().enabled = true;
-  }
-
-  public void hideIndicator() {
-    indicator.GetComponent<Renderer>().enabled = false;
-  }
 
   public void setBoundingSize(float val) {
     boundingSize = val;
@@ -325,19 +310,5 @@ public class ObjectsMover : MonoBehaviour {
 
   virtual public bool noCubesByDestroy() {
     return false;
-  }
-
-  void OnDisable() {
-    isMagnetized = false;
-    transform.localScale = originalScale * Vector3.one;
-    shrinkedScale = originalScale;
-    isInsideBlackhole = false;
-    destroyed = false;
-    isTransforming = false;
-
-    if (indicator != null) {
-      indicator.SetActive(false);
-      indicator = null;
-    }
   }
 }

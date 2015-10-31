@@ -11,8 +11,6 @@ public class Skill_Monster : Skill {
   }
 
   override public void afterActivate(bool val) {
-    EnergyManager.em.getFullHealth();
-
     monsterFilter.SetActive(val);
 
     if (!val) {

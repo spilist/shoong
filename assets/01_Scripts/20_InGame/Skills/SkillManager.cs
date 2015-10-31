@@ -14,7 +14,7 @@ public class SkillManager : MonoBehaviour {
   }
 
   public void stopSkills() {
-    equiped.activate(false);
+    if (equiped != null) equiped.activate(false);
   }
 
   public void equip(string skillName) {

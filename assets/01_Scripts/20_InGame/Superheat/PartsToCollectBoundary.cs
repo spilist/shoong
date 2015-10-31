@@ -33,21 +33,21 @@ public class PartsToCollectBoundary : MonoBehaviour {
   void OnTriggerEnter(Collider other) {
     string tag = other.tag;
     if (tag == "Part" || tag == "ComboPart" || tag == "SummonedPart") {
-      ObjectsMover mover = other.GetComponent<ObjectsMover>();
-      if (mover.hasIndicator()) {
-        mover.showIndicator();
-      } else {
-        GameObject indicator = getIndicator();
-        indicator.SetActive(true);
-        mover.setIndicator(indicator);
-      }
+      // ObjectsMover mover = other.GetComponent<ObjectsMover>();
+      // if (mover.hasIndicator()) {
+      //   mover.showIndicator();
+      // } else {
+      //   GameObject indicator = getIndicator();
+      //   indicator.SetActive(true);
+      //   mover.setIndicator(indicator);
+      // }
     }
   }
 
   void OnTriggerExit(Collider other) {
     string tag = other.tag;
     if (tag == "Part" || tag == "ComboPart" || tag == "SummonedPart") {
-      other.GetComponent<ObjectsMover>().hideIndicator();
+      // other.GetComponent<ObjectsMover>().hideIndicator();
     }
   }
 }

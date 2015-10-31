@@ -4,6 +4,7 @@ using System.Collections;
 
 public class EnergyManager : MonoBehaviour {
   public static EnergyManager em;
+  public GameObject dangerousFilter;
   public Image gauge;
   public GameObject gaugeShell;
   public GameObject gaugeIcon;
@@ -43,8 +44,10 @@ public class EnergyManager : MonoBehaviour {
     if (energySystemOn) {
       if (gauge.fillAmount > dangerousAt) {
         gauge.color = color_healthy;
+        dangerousFilter.SetActive(false);
       } else {
         gauge.color = color_danger;
+        dangerousFilter.SetActive(true);
       }
 
       if (isChanging) {

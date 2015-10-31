@@ -65,7 +65,7 @@ public class TouchInputHandler : MonoBehaviour
 
       if (menus.isMenuOn()) return;
 
-			if (pause.isPaused()) {
+			if (result != "PauseButton" && pause.isPaused()) {
         pause.resume();
         return;
       }
@@ -129,7 +129,7 @@ public class TouchInputHandler : MonoBehaviour
           GameObject hitObject = hit.transform.gameObject;
           if (controlMethod == "Stick") {
             if (touch.phase == TouchPhase.Began) {
-              if (hitObject.tag == "StickPanel_movement") {
+              if (hitObject.tag == "StickPanel_movement" && Input.touchCount == 1) {
                 stick.position = newStickPosition();
                 stick.gameObject.SetActive(true);
                 stickFingerId = touch.fingerId;
