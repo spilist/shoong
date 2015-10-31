@@ -9,13 +9,11 @@ public class RhythmManager : MonoBehaviour {
   public Transform rhythmRings;
   public GameObject normalRing;
   public GameObject skillRing;
-  public GameObject feverRing;
   public GameObject failedRhythmPrefab;
   public Transform inGameUI;
   public int ringAmount = 2;
   public List<GameObject> normalRingPool;
   public List<GameObject> skillRingPool;
-  public List<GameObject> feverRingPool;
   public List<GameObject> failedRhythmPool;
 
   public float bpm;
@@ -57,7 +55,6 @@ public class RhythmManager : MonoBehaviour {
   void Start() {
     normalRingPool = new List<GameObject>();
     skillRingPool = new List<GameObject>();
-    feverRingPool = new List<GameObject>();
     failedRhythmPool = new List<GameObject>();
 
     for (int i = 0; i < ringAmount; ++i) {
@@ -70,11 +67,6 @@ public class RhythmManager : MonoBehaviour {
       obj.SetActive(false);
       obj.transform.parent = rhythmRings;
       skillRingPool.Add(obj);
-
-      obj = (GameObject) Instantiate(feverRing);
-      obj.SetActive(false);
-      obj.transform.parent = rhythmRings;
-      feverRingPool.Add(obj);
 
       obj = (GameObject) Instantiate(failedRhythmPrefab);
       obj.SetActive(false);
@@ -169,9 +161,7 @@ public class RhythmManager : MonoBehaviour {
   }
 
   public void boosterOk(bool boosterRing, bool skillRing) {
-    if (feverTime) {
-      getRing(feverRingPool, feverRing);
-    } else {
+    if (!feverTime) {
       isBoosterOK = boosterRing;
       isSkillOK = skillRing;
     }
@@ -240,7 +230,6 @@ public class RhythmManager : MonoBehaviour {
     Player.pl.scaleChange(val, playerScaleUpAmount);
     if (val) {
       isSkillOK = false;
-      getRing(feverRingPool, feverRing);
     }
   }
 

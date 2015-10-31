@@ -4,7 +4,6 @@ using System.Collections;
 public class RhythmRing : MonoBehaviour {
   public bool skillRing = false;
   private bool originalSkillRing;
-  public bool feverRing = false;
   Color originalColor;
   float beat;
   float startScale;
@@ -79,20 +78,18 @@ public class RhythmRing : MonoBehaviour {
         RhythmManager.rm.afterRing(true);
       }
 
-      if (!feverRing) {
-        if (sRenderer.enabled && scale <= maxPopScale) {
-          sRenderer.enabled = false;
-          Player.pl.scaleChange(true, playerScaleUpAmount);
-        }
+      if (sRenderer.enabled && scale <= maxPopScale) {
+        sRenderer.enabled = false;
+        Player.pl.scaleChange(true, playerScaleUpAmount);
+      }
 
-        if (!afterMin && scale <= minPopScale) {
-          afterMin = true;
-          Player.pl.scaleChange(false, playerScaleUpAmount);
-        }
+      if (!afterMin && scale <= minPopScale) {
+        afterMin = true;
+        Player.pl.scaleChange(false, playerScaleUpAmount);
       }
 
       if (scale == 0) {
-        if (!feverRing) RhythmManager.rm.ringSkipped(skillRing);
+        RhythmManager.rm.ringSkipped(skillRing);
         gameObject.SetActive(false);
       }
     }
