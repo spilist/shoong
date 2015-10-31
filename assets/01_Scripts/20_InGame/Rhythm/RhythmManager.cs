@@ -16,8 +16,6 @@ public class RhythmManager : MonoBehaviour {
   public List<GameObject> skillRingPool;
   public List<GameObject> failedRhythmPool;
 
-  public float bpm;
-  public float beatBase;
   public float maxBoosterOkScale = 4;
   public float maxPopScale;
   public float rightBeatScale = 3;

@@ -118,12 +118,12 @@ public class EnergyManager : MonoBehaviour {
     if (!energySystemOn) return;
 
     if (isChanging) {
-      restAmount += changeTo - gauge.fillAmount + amount / 100f;
+      restAmount += changeTo - gauge.fillAmount + amount / maxEnergy;
       restRate = changeRate;
     }
 
     isChanging = true;
-    changeTo = gauge.fillAmount + amount / 100f;
+    changeTo = gauge.fillAmount + amount / maxEnergy;
     changeTo = Mathf.Clamp(changeTo, 0, 1);
     changeRate = Time.deltaTime * rate;
   }

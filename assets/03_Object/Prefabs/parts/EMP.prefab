@@ -576,6 +576,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boundingSize: 50
+  player: {fileID: 0}
 --- !u!114 &11486732
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -774,7 +775,7 @@ ParticleSystem:
         rgba: 4294967295
       maxColor:
         serializedVersion: 2
-        rgba: 3136836765
+        rgba: 3131963476
       minMaxState: 0
     startSize:
       scalar: 2

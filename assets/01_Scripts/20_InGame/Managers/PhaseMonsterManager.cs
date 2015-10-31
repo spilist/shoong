@@ -5,21 +5,16 @@ public class PhaseMonsterManager : ObjectsManager {
   public float slowStayDuration = 1;
   public float increaseSpeedDuration = 2;
   public int increaseSpeedUntil = 140;
-  // public float chargeDuration = 0.5f;
-  // public float rushDuration = 1;
-  // public float rushSpeed = 400;
   public int detectDistance = 200;
   public int spawnRadius = 200;
   public float offScreenSpeedScale = 0.8f;
-  public int spawnCount = 1;
 
   override public void initRest() {
-    for (int i = 0; i < spawnCount; i++) spawn();
+    spawn();
   }
 
   override protected void spawn() {
     if (player == null) return;
-    if (spawnCount >= GameObject.FindGameObjectsWithTag(objPrefab.tag).Length) return;
 
     Vector2 screenPos = Random.insideUnitCircle;
     screenPos.Normalize();
@@ -29,8 +24,7 @@ public class PhaseMonsterManager : ObjectsManager {
     instance.SetActive(true);
   }
 
-  public void increaseSpawn() {
-    spawnCount++;
-    spawn();
+  override protected float spawnInterval() {
+    return Random.Range(minSpawnInterval, maxSpawnInterval);
   }
 }

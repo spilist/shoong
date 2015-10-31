@@ -93,20 +93,16 @@ Material:
         second: .5
       data:
         first:
-          name: _Glossiness
-        second: .5
-      data:
-        first:
           name: _Parallax
         second: .0199999996
       data:
         first:
-          name: _InvFade
+          name: _ZWrite
         second: 1
       data:
         first:
-          name: _ZWrite
-        second: 1
+          name: _Glossiness
+        second: .5
       data:
         first:
           name: _BumpScale
@@ -131,6 +127,10 @@ Material:
         first:
           name: _Metallic
         second: 0
+      data:
+        first:
+          name: _InvFade
+        second: 1
     m_Colors:
       data:
         first:
@@ -143,4 +143,4 @@ Material:
       data:
         first:
           name: _TintColor
-        second: {r: .720588207, g: 0, b: 0, a: .0590000004}
+        second: {r: .720588207, g: 0, b: 0, a: .117647059}

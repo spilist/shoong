@@ -14,7 +14,7 @@ GameObject:
   - 54: {fileID: 5447710}
   - 82: {fileID: 8218404}
   - 65: {fileID: 6552274}
-  m_Layer: 29
+  m_Layer: 23
   m_Name: AlienShip
   m_TagString: Alienship
   m_Icon: {fileID: 0}
@@ -32,7 +32,7 @@ GameObject:
   - 198: {fileID: 19815484}
   - 199: {fileID: 19942244}
   - 82: {fileID: 8209142}
-  m_Layer: 29
+  m_Layer: 23
   m_Name: LaserCanon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1397,7 +1397,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Layer
-      value: 29
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Pitch

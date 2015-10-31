@@ -31,6 +31,7 @@ public class AlienshipMover : ObjectsMover {
   protected override void afterEnable() {
     angleY = transform.eulerAngles.y;
     shootingStatus = 1;
+    stayCount = 0;
   }
 
   protected override void normalMovement() {
@@ -43,7 +44,8 @@ public class AlienshipMover : ObjectsMover {
   }
 
   override public bool dangerous() {
-    return true;
+    if (player.isInvincible()) return false;
+    else return true;
   }
 
   override protected float getTumble() {
@@ -67,7 +69,6 @@ public class AlienshipMover : ObjectsMover {
       transform.Rotate(0, 0, Time.deltaTime * asm.tumble);
 
       if (stayCount < shootLaserPer) {
-        if (player.isUsingEMP()) return;
         stayCount += Time.deltaTime;
       } else {
         stayCount = 0;
@@ -80,7 +81,6 @@ public class AlienshipMover : ObjectsMover {
       }
     } else if (shootingStatus == 2) {
       if (stayCount < chargeTime) {
-        if (player.isUsingEMP()) return;
         stayCount += Time.deltaTime;
       } else {
         stayCount = 0;
@@ -97,5 +97,9 @@ public class AlienshipMover : ObjectsMover {
     shootingStatus = 1;
     if (rb != null) rb.isKinematic = false;
     laserCanon.SetActive(false);
+  }
+
+  override protected void afterEncounter() {
+    asm.run();
   }
 }

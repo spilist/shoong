@@ -2325,11 +2325,9 @@ MonoBehaviour:
   normalRingPool: []
   skillRingPool: []
   failedRhythmPool: []
-  bpm: 130
-  beatBase: 2
-  maxBoosterOkScale: 3
-  maxPopScale: 2
-  rightBeatScale: 1.5
+  maxBoosterOkScale: 4
+  maxPopScale: 3
+  rightBeatScale: 2
   minPopScale: 1
   minBoosterOkScale: 0
   ringDisppearDuration: .5
@@ -20069,7 +20067,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &507386076
 Transform:
   m_ObjectHideFlags: 0
@@ -59920,6 +59918,48 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controlMethod: Stick
+--- !u!1001 &1350418988
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 423108, guid: 5f189f3ef090540f6850da37ee3e59e1, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 26.6311169
+      objectReference: {fileID: 0}
+    - target: {fileID: 423108, guid: 5f189f3ef090540f6850da37ee3e59e1, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 423108, guid: 5f189f3ef090540f6850da37ee3e59e1, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 14.3277025
+      objectReference: {fileID: 0}
+    - target: {fileID: 423108, guid: 5f189f3ef090540f6850da37ee3e59e1, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: .411934614
+      objectReference: {fileID: 0}
+    - target: {fileID: 423108, guid: 5f189f3ef090540f6850da37ee3e59e1, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: .192088246
+      objectReference: {fileID: 0}
+    - target: {fileID: 423108, guid: 5f189f3ef090540f6850da37ee3e59e1, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: .192088217
+      objectReference: {fileID: 0}
+    - target: {fileID: 423108, guid: 5f189f3ef090540f6850da37ee3e59e1, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: .869778216
+      objectReference: {fileID: 0}
+    - target: {fileID: 423108, guid: 5f189f3ef090540f6850da37ee3e59e1, type: 2}
+      propertyPath: m_RootOrder
+      value: 18
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 5f189f3ef090540f6850da37ee3e59e1, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1356369826
 GameObject:
   m_ObjectHideFlags: 0
@@ -95607,7 +95647,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceSpawnAtStart: 0
-  objAmount: 3
+  objAmount: 2
   objPool: []
   objDestroyEffectPool: []
   objEncounterEffectPool: []
@@ -96295,7 +96335,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceSpawnAtStart: 0
-  objAmount: 5
+  objAmount: 1
   objPool: []
   objDestroyEffectPool: []
   objEncounterEffectPool: []
@@ -96307,9 +96347,9 @@ MonoBehaviour:
   strength: 10
   speed: 80
   tumble: 50
-  minSpawnInterval: 5
-  maxSpawnInterval: 5
-  cubesByEncounter: 50
+  minSpawnInterval: 12
+  maxSpawnInterval: 16
+  cubesByEncounter: 100
   isNegative: 1
   hasEncounterEffect: 0
   instance: {fileID: 0}
@@ -96327,10 +96367,9 @@ MonoBehaviour:
   laserPoolAmount: 30
   spawnRadius: 200
   headFollowingSpeed: 100
-  speedIncreaseAmount: 5
-  speedIncreasePer: 3
   shootLaserPer: 8
   chargeTime: .600000024
+  offScreenSpeedScale: .5
   laserLoseEnergy: 50
   laserRadius: 20
   laserLength: 500
@@ -96402,11 +96441,11 @@ MonoBehaviour:
   objEncounterEffectForPlayer: {fileID: 0}
   strengthenPlayerEffect: {fileID: 0}
   strength: 3
-  speed: 80
+  speed: 60
   tumble: 10
-  minSpawnInterval: 8
-  maxSpawnInterval: 8
-  cubesByEncounter: 30
+  minSpawnInterval: 12
+  maxSpawnInterval: 16
+  cubesByEncounter: 50
   isNegative: 1
   hasEncounterEffect: 0
   instance: {fileID: 0}
@@ -96418,11 +96457,10 @@ MonoBehaviour:
   player: {fileID: 0}
   slowStayDuration: 1
   increaseSpeedDuration: 2
-  increaseSpeedUntil: 180
+  increaseSpeedUntil: 140
   detectDistance: 200
   spawnRadius: 200
-  offScreenSpeedScale: .800000012
-  spawnCount: 0
+  offScreenSpeedScale: .5
 --- !u!1 &1993354414
 GameObject:
   m_ObjectHideFlags: 0

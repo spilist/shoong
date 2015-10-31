@@ -191,12 +191,12 @@ Material:
         second: 1
       data:
         first:
-          name: _Outline
-        second: .000500000024
-      data:
-        first:
           name: _Emissive
         second: .5
+      data:
+        first:
+          name: _Outline
+        second: .000500000024
       data:
         first:
           name: _Specular_Power
@@ -256,12 +256,12 @@ Material:
         second: {r: .200000003, g: .200000003, b: .200000003, a: 1}
       data:
         first:
-          name: _OutlineColor
-        second: {r: .382352948, g: .37180528, b: 0, a: 0}
+          name: _TintColor
+        second: {r: .963235319, g: .254974067, b: .504086673, a: .0719999969}
       data:
         first:
-          name: _TintColor
-        second: {r: .845588207, g: .180309266, b: .414303929, a: .0719999969}
+          name: _OutlineColor
+        second: {r: .382352948, g: .37180528, b: 0, a: 0}
       data:
         first:
           name: _Fresnel_Color

@@ -7,7 +7,7 @@ labels:
 - effect
 - glow
 - gaz
-timeCreated: 1445168014
+timeCreated: 1446300794
 licenseType: Free
 SubstanceImporter:
   serializedVersion: 5
@@ -179,12 +179,12 @@ SubstanceImporter:
           second: {r: 1, g: 1, b: 1, a: .927999973}
         data:
           first:
-            name: _Emission
-          second: {r: 0, g: .668965816, b: 1, a: .402999997}
-        data:
-          first:
             name: _TintColor
           second: {r: 1, g: 0, b: 0, a: 1}
+        data:
+          first:
+            name: _Emission
+          second: {r: 0, g: .668965816, b: 1, a: .402999997}
     textureParameters:
     - name: DangerousEMP_Emissive
       alphaSource: 0
@@ -427,8 +427,8 @@ SubstanceImporter:
         texture: {instanceID: 0}
     - name: Liquid_Color
       value:
-        scalar[0]: .725253344
-        scalar[1]: .536764741
+        scalar[0]: .536764741
+        scalar[1]: .980831563
         scalar[2]: 1
         scalar[3]: 0
         texture: {instanceID: 0}
@@ -549,12 +549,12 @@ SubstanceImporter:
           second: {r: 1, g: 1, b: 1, a: .927999973}
         data:
           first:
-            name: _Emission
-          second: {r: 0, g: .668965816, b: 1, a: .402999997}
-        data:
-          first:
             name: _TintColor
           second: {r: 1, g: 1, b: 1, a: .125490203}
+        data:
+          first:
+            name: _Emission
+          second: {r: 0, g: .668965816, b: 1, a: .402999997}
     textureParameters:
     - name: EMP_ForceField_Emissive
       alphaSource: 0
@@ -740,12 +740,12 @@ SubstanceImporter:
           second: {r: 1, g: 1, b: 1, a: .927999973}
         data:
           first:
-            name: _Emission
-          second: {r: 0, g: .668965816, b: 1, a: .402999997}
-        data:
-          first:
             name: _TintColor
           second: {r: 1, g: .724137962, b: 0, a: .172000006}
+        data:
+          first:
+            name: _Emission
+          second: {r: 0, g: .668965816, b: 1, a: .402999997}
     textureParameters:
     - name: EMP_ForceField_Golden_Emissive
       alphaSource: 0
@@ -931,12 +931,12 @@ SubstanceImporter:
           second: {r: 1, g: 1, b: 1, a: .927999973}
         data:
           first:
-            name: _Emission
-          second: {r: 0, g: .668965816, b: 1, a: .402999997}
-        data:
-          first:
             name: _TintColor
           second: {r: 1, g: .458999991, b: 0, a: .172000006}
+        data:
+          first:
+            name: _Emission
+          second: {r: 0, g: .668965816, b: 1, a: .402999997}
     textureParameters:
     - name: EMP_ForceField_Heat_Emissive
       alphaSource: 0
@@ -1122,12 +1122,12 @@ SubstanceImporter:
           second: {r: 1, g: 1, b: 1, a: .927999973}
         data:
           first:
-            name: _Emission
-          second: {r: 0, g: .668965816, b: 1, a: .402999997}
-        data:
-          first:
             name: _TintColor
           second: {r: 1, g: 0, b: 0, a: .266000003}
+        data:
+          first:
+            name: _Emission
+          second: {r: 0, g: .668965816, b: 1, a: .402999997}
     textureParameters:
     - name: LaserCapsule_Emissive
       alphaSource: 0
@@ -1313,12 +1313,12 @@ SubstanceImporter:
           second: {r: 1, g: 1, b: 1, a: .927999973}
         data:
           first:
-            name: _Emission
-          second: {r: 0, g: .668965816, b: 1, a: .402999997}
-        data:
-          first:
             name: _TintColor
           second: {r: .655172348, g: 0, b: 1, a: .266000003}
+        data:
+          first:
+            name: _Emission
+          second: {r: 0, g: .668965816, b: 1, a: .402999997}
     textureParameters:
     - name: LaserCapsuleShell_Emissive
       alphaSource: 0
@@ -1735,12 +1735,12 @@ SubstanceImporter:
           second: {r: 0, g: 0, b: 0, a: 0}
         data:
           first:
-            name: _Emission
-          second: {r: .536764741, g: .146031588, b: .146031588, a: 0}
-        data:
-          first:
             name: _TintColor
           second: {r: .727941155, g: .390105635, b: .171280265, a: 0}
+        data:
+          first:
+            name: _Emission
+          second: {r: .536764741, g: .146031588, b: .146031588, a: 0}
     textureParameters:
     - name: Superheat_Emissive
       alphaSource: 0

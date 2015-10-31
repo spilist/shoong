@@ -11,10 +11,9 @@ public class AlienshipManager : ObjectsManager {
 
   public int spawnRadius = 200;
   public int headFollowingSpeed = 100;
-  public int speedIncreaseAmount = 10;
-  public float speedIncreasePer = 5;
   public int shootLaserPer = 10;
   public float chargeTime = 0.5f;
+  public float offScreenSpeedScale = 0.5f;
 
   public int laserLoseEnergy = 70;
   public int laserRadius = 20;
@@ -23,7 +22,6 @@ public class AlienshipManager : ObjectsManager {
   public float laserStayDuration = 1;
   public float laserShrinkingDuration = 0.3f;
   public int laserRotatingSpeed = 1000;
-  private int timeSpawned;
 
   override public void initRest() {
     laserPool = new List<GameObject>();
@@ -49,14 +47,10 @@ public class AlienshipManager : ObjectsManager {
   }
 
   override public float getSpeed() {
-    if (player.isUsingEMP()) {
-      return 0;
-    } else if (Vector3.Distance(player.transform.position, instance.transform.position) < 10) {
+    if (Vector3.Distance(player.transform.position, instance.transform.position) < 10) {
       return player.getSpeed();
-    }
-    else {
-      int timeUnit = (int) Mathf.Floor((TimeManager.time.now - timeSpawned) / speedIncreasePer);
-      return (speed + timeUnit * speedIncreaseAmount);
+    } else {
+      return speed + player.getSpeed() * offScreenSpeedScale;
     }
   }
 
@@ -72,7 +66,7 @@ public class AlienshipManager : ObjectsManager {
     instance.SetActive(true);
   }
 
-  override protected void afterSpawn() {
-    timeSpawned = TimeManager.time.now;
+  override protected float spawnInterval() {
+    return Random.Range(minSpawnInterval, maxSpawnInterval);
   }
 }

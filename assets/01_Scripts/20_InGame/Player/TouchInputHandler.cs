@@ -139,10 +139,9 @@ public class TouchInputHandler : MonoBehaviour
             }
 
             if (touch.phase == TouchPhase.Moved && touch.fingerId == stickFingerId) {
-              fingerIndicator.position = newStickPosition();
-              if (hitObject.tag == "StickPanel_movement") {
-                moveStick();
-              }
+              // if (hitObject.tag == "StickPanel_movement") {
+              //   moveStick();
+              // }
               setPlayerDirection(stick, touch);
             }
 
@@ -176,7 +175,21 @@ public class TouchInputHandler : MonoBehaviour
     Vector3 originPosition = new Vector3(origin.position.x, 0, origin.position.z);
     Vector3 heading = worldTouchPosition - originPosition;
     direction = heading / heading.magnitude;
+
+    if (heading.magnitude <= stickPanelSize) {
+      fingerIndicator.position = newStickPosition();
+    } else {
+      // fingerIndicator.position =
+    }
+
+    // fingerIndicator.position = new Vector3(origin.position.x + (heading / stickPanelSize) * , 0, origin.position.z);
+
     Player.pl.setDirection(direction, heading.magnitude / stickPanelSize);
+
+    // if (Vector3.Distance(stick.position, fingerIndicator.position) <= stickPanelSize) {
+      // Vector3 dir = fingerIndicator.position - stick.position;
+      // stick.Translate(dir * Time.deltaTime, Space.World);
+    // }
   }
 
   public Vector3 setPlayerDirection(Transform origin) {
