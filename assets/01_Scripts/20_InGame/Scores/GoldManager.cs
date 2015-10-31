@@ -65,15 +65,9 @@ public class GoldManager : MonoBehaviour {
   }
 
   public void add(Vector3 pos, int amount = 1, bool withEffect = true, bool generateCube = true) {
-    // count += amount;
-    // goldText.text = count.ToString();
 
     DataManager.dm.increment("CurrentGoldenCubes", amount);
     DataManager.dm.increment("TotalGoldenCubes", amount);
-
-    // Player.pl.showEffect("GoldenCube");
-    // effectAmountText.text = amount.ToString();
-    // if (withEffect) getEffect.Play();
 
     if (generateCube) {
       for (int i = 0; i < amount; ++i) {

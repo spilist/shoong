@@ -290,10 +290,6 @@ public class ObjectsMover : MonoBehaviour {
     return objectsManager.cubesWhenEncounter();
   }
 
-  virtual public int bonusCubes() {
-    return 0;
-  }
-
   virtual public bool dangerous() {
     return false;
   }

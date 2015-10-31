@@ -30,26 +30,13 @@ public class NormalPartsMover : ObjectsMover {
       DataManager.dm.increment("NumPartsGetOnRainbow");
     }
 
-    if (player.isNearAsteroid()) {
-      player.showEffect("Wow");
-    }
-
     if (goldenTransformed) {
       GoldManager.gm.add(transform.position);
     }
-    // npm.ptb.checkCollected(filter.sharedMesh);
   }
-
-  // override protected void afterDestroy(bool byPlayer) {
-  //   if (byPlayer) npm.ptb.checkCollected(filter.sharedMesh);
-  // }
 
   override public string getManager() {
     return "NormalPartsManager";
-  }
-
-  override public int bonusCubes() {
-    return player.isNearAsteroid()? player.nearAsteroidBonus : 0;
   }
 
   public void transformToGold(Vector3 pos) {

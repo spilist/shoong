@@ -60,7 +60,7 @@ public class ComboBar : MonoBehaviour {
       getEnergy.emissionRate += emissionRate;
 
       if (comboCount == 4) {
-        Player.pl.showEffect("Charged");
+        // Player.pl.showEffect("Charged");
       }
     }
     StopCoroutine("loseByTime");

@@ -110,7 +110,6 @@ public class SummonPartsManager : ObjectsManager {
     DataManager.dm.increment("NumSummonedPartsGet");
 
     if (getCount == numSpawnX * numSpawnZ) {
-      player.showEffect("Great");
       DataManager.dm.increment("NumCompleteSummon");
     }
   }

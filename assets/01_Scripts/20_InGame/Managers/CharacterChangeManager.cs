@@ -116,7 +116,7 @@ public class CharacterChangeManager : MonoBehaviour {
         playerEffectMat.SetColor("_Emission", metalColors[1]);
       }
       changeCharacter(originalMesh, playerEffectMat);
-    } else if (changeTo == "Dopple") {
+    } else if (changeTo == "Blink") {
       if (mRenderer.sharedMaterial.color == metalColors[0]) {
         playerEffectMat.color = doppleMetalColors[0];
         playerEffectMat.SetColor("_Emission", doppleMetalColors[1]);

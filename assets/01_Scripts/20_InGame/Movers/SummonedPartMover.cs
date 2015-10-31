@@ -55,10 +55,6 @@ public class SummonedPartMover : ObjectsMover {
     if (isGoldenCube) {
       GoldManager.gm.add(transform.position, summonManager.goldCubesGet);
     }
-
-    if (player.isNearAsteroid()) {
-      player.showEffect("Wow");
-    }
   }
 
   override public string getManager() {
@@ -92,9 +88,5 @@ public class SummonedPartMover : ObjectsMover {
 
   override public bool hasEncounterEffect() {
     return false;
-  }
-
-  override public int bonusCubes() {
-    return player.isNearAsteroid()? player.nearAsteroidBonus : 0;
   }
 }

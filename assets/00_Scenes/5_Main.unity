@@ -328,7 +328,7 @@ RectTransform:
   m_LocalScale: {x: 1.20000005, y: 1.20000005, z: 1.20000005}
   m_Children: []
   m_Father: {fileID: 2044945380}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: -2064.0752, y: 396.884735}
@@ -491,7 +491,7 @@ RectTransform:
   m_LocalScale: {x: .300000012, y: .300000012, z: .300000012}
   m_Children: []
   m_Father: {fileID: 2044945380}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_AnchorMin: {x: .5, y: 0}
   m_AnchorMax: {x: .5, y: 0}
   m_AnchoredPosition: {x: -2064.0752, y: 480.884735}
@@ -2319,13 +2319,11 @@ MonoBehaviour:
   rhythmRings: {fileID: 1665647660}
   normalRing: {fileID: 148784, guid: 1d56f2064a3a44db8b0e174bd62e7177, type: 2}
   skillRing: {fileID: 157310, guid: 4d7eaedd1710044f7841d4a7aa669ec0, type: 2}
-  feverRing: {fileID: 129692, guid: 619c220712ff34681bf576e21775a239, type: 2}
   failedRhythmPrefab: {fileID: 117830, guid: 9ff6898f90381414bbc7280ccb753536, type: 2}
   inGameUI: {fileID: 2134279969}
   ringAmount: 2
   normalRingPool: []
   skillRingPool: []
-  feverRingPool: []
   failedRhythmPool: []
   bpm: 130
   beatBase: 2
@@ -3382,7 +3380,7 @@ Transform:
   m_Children:
   - {fileID: 678200079}
   m_Father: {fileID: 1701025775}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!1 &91418582
 GameObject:
   m_ObjectHideFlags: 0
@@ -3427,7 +3425,6 @@ MonoBehaviour:
   speed: 0
   boosterSpeedDecreasePerTime: 20
   effects: {fileID: 1753770006}
-  nearAsteroidBonus: 10
   tumble: 4
   monm: {fileID: 1991538109}
   rdm: {fileID: 1991538105}
@@ -10494,7 +10491,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2044945380}
-  m_RootOrder: 13
+  m_RootOrder: 14
 --- !u!1 &188335416
 GameObject:
   m_ObjectHideFlags: 0
@@ -13362,7 +13359,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 678200079}
-  m_RootOrder: 11
+  m_RootOrder: 10
 --- !u!82 &222636913
 AudioSource:
   m_ObjectHideFlags: 0
@@ -18077,7 +18074,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 417280, guid: df73c8fb265644b57873e18c943161ee, type: 2}
       propertyPath: m_RootOrder
-      value: 13
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 417280, guid: df73c8fb265644b57873e18c943161ee, type: 2}
       propertyPath: m_LocalScale.x
@@ -20238,7 +20235,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bfd5bb8368a641ecaadea0bac64bb73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillObject: {fileID: 533108646}
+  skillObject: {fileID: 0}
   useSkillEffect: {fileID: 0}
   normalRing: 8
   skillRing: 4
@@ -20757,48 +20754,6 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!1 &533108646
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 133980, guid: 6445a758711d444458987bf84e00a78d, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 533108647}
-  - 114: {fileID: 533108648}
-  m_Layer: 10
-  m_Name: DoppleEffect
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &533108647
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 436736, guid: 6445a758711d444458987bf84e00a78d, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 533108646}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 678200079}
-  m_RootOrder: 8
---- !u!114 &533108648
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 533108646}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af0e08c3844d8484cb160fba782920b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  changeTo: Dopple
-  effectName: Blink
-  targetScale: 0
 --- !u!1 &537339453
 GameObject:
   m_ObjectHideFlags: 0
@@ -26181,7 +26136,7 @@ RectTransform:
   - {fileID: 1143204813}
   - {fileID: 803430233}
   m_Father: {fileID: 2044945380}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_AnchorMin: {x: .5, y: 1}
   m_AnchorMax: {x: .5, y: 1}
   m_AnchoredPosition: {x: -2064.0752, y: 450.884674}
@@ -28304,7 +28259,7 @@ Transform:
   m_LocalScale: {x: 160, y: 160, z: 160}
   m_Children: []
   m_Father: {fileID: 1701025775}
-  m_RootOrder: 5
+  m_RootOrder: 6
 --- !u!114 &632297517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28950,7 +28905,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2044945380}
-  m_RootOrder: 4
+  m_RootOrder: 5
 --- !u!1 &675113416
 GameObject:
   m_ObjectHideFlags: 0
@@ -30257,7 +30212,6 @@ Transform:
   - {fileID: 1552135348}
   - {fileID: 1830827563}
   - {fileID: 1426521850}
-  - {fileID: 533108647}
   - {fileID: 1384869937}
   - {fileID: 1917855185}
   - {fileID: 222636912}
@@ -30955,7 +30909,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2044945380}
-  m_RootOrder: 5
+  m_RootOrder: 6
 --- !u!65 &713807494
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -35029,81 +34983,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 91418581}
---- !u!1 &747492151
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 747492152}
-  - 33: {fileID: 747492156}
-  - 135: {fileID: 747492155}
-  - 114: {fileID: 747492154}
-  - 114: {fileID: 747492153}
-  m_Layer: 25
-  m_Name: QuestCollider
-  m_TagString: ContactCollider
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &747492152
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 747492151}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 15, y: 15, z: 15}
-  m_Children: []
-  m_Father: {fileID: 1701025775}
-  m_RootOrder: 6
---- !u!114 &747492153
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 747492151}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8eaf17df6df8f4450b6402c46e76a39a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  collideRadius: 3
---- !u!114 &747492154
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 747492151}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85bd37e8eaf3c4f02a3d2a0f1a640b6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 91418582}
-  copyRotation: 0
---- !u!135 &747492155
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 747492151}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 3
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!33 &747492156
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 747492151}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &749815780
 GameObject:
   m_ObjectHideFlags: 0
@@ -38229,7 +38108,6 @@ GameObject:
   - 198: {fileID: 851953052}
   - 199: {fileID: 851953051}
   - 82: {fileID: 851953050}
-  - 114: {fileID: 851953049}
   m_Layer: 11
   m_Name: MagnetSphere
   m_TagString: UnstoppableSphere
@@ -38249,7 +38127,7 @@ Transform:
   m_Children:
   - {fileID: 1525181129}
   m_Father: {fileID: 1701025775}
-  m_RootOrder: 3
+  m_RootOrder: 4
 --- !u!23 &851953044
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -38318,20 +38196,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mm: {fileID: 307617794}
---- !u!114 &851953049
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 851953042}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af0e08c3844d8484cb160fba782920b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  changeTo: 
-  effectName: Magnet
-  targetScale: 0
 --- !u!82 &851953050
 AudioSource:
   m_ObjectHideFlags: 0
@@ -40304,7 +40168,7 @@ Transform:
   m_LocalScale: {x: 950, y: 250.000031, z: 950}
   m_Children: []
   m_Father: {fileID: 1701025775}
-  m_RootOrder: 10
+  m_RootOrder: 8
 --- !u!114 &892369443
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40473,31 +40337,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textPerLevel:
   - IceDebris
-  - Minimon 1
+  - Minimon
   - Blackhole
   - Meteroid
   - Bomb
-  - BigBomb
   - UFO
-  cuberNeedsPerLevel: c8000000fa0000002c0100005e01000090010000c2010000f401000026020000
-  debrisDistancesPerLevel: e8030000e8030000e8030000e8030000e8030000e8030000e8030000e8030000
-  timeLimitPerLevel: 0f0000000f0000000f0000000f0000000f0000000f0000000f0000000f000000
+  - BigBomb
+  reqProgressPerLevel: c8000000fa0000002c0100005e01000090010000c2010000f401000026020000
   icm: {fileID: 1991538122}
   pmm: {fileID: 1991538127}
-  npm: {fileID: 1991538117}
-  atm: {fileID: 1991538112}
-  ssm: {fileID: 1991538121}
-  EMFilter: {fileID: 1767020066}
-  EMFilterTargetAlpha: .109999999
-  ntm: {fileID: 1991538107}
-  meteroidFilter: {fileID: 211912680}
-  meteroidFilterAlpha1: .0799999982
-  meteroidFilterAlpha2: .119999997
-  meteroidFilterChangeDuration1: 3
-  meteroidFilterChangeDuration2: 2
-  dem: {fileID: 1991538123}
   blm: {fileID: 1991538108}
+  ntm: {fileID: 1991538107}
+  dem: {fileID: 1991538123}
   asm: {fileID: 1991538124}
+  cpm: {fileID: 0}
+  cdm: {fileID: 0}
+  rdm: {fileID: 0}
+  spm: {fileID: 0}
+  em: {fileID: 0}
   phaseIndicator: {fileID: 1406922903}
   phaseText: {fileID: 1367745761}
   originalPosX: -220
@@ -40669,7 +40526,7 @@ RectTransform:
   m_LocalScale: {x: 1.20000005, y: 1.20000005, z: 1.20000005}
   m_Children: []
   m_Father: {fileID: 2044945380}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: -2064.0752, y: 480.884735}
@@ -40980,7 +40837,6 @@ MonoBehaviour:
   increaseSpeed: 5
   cubesCount: {fileID: 589887826}
   cubesHighscoreText: {fileID: 57075064}
-  cubeAmount: 20
   pointsPerSeconds: 10
 --- !u!4 &913682496
 Transform:
@@ -42884,7 +42740,7 @@ RectTransform:
   m_LocalScale: {x: .266707331, y: .266707331, z: .266707331}
   m_Children: []
   m_Father: {fileID: 2044945380}
-  m_RootOrder: 20
+  m_RootOrder: 21
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: -2064.0752, y: 450.884674}
@@ -43092,7 +42948,7 @@ RectTransform:
   m_Children:
   - {fileID: 893396114}
   m_Father: {fileID: 2044945380}
-  m_RootOrder: 16
+  m_RootOrder: 17
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: -2165.93066, y: 450.884674}
@@ -43311,7 +43167,7 @@ MonoBehaviour:
   goldenCubePrefab: {fileID: 178344, guid: b185d52f68bf5499e81f948bbbf1bd8c, type: 2}
   cubePool: []
   cubeAmount: 10
-  goldenCubeStartSpeed: 80
+  goldenCubeStartSpeed: 220
   goldenCubeFollowSpeed: 1000
 --- !u!82 &973816558
 AudioSource:
@@ -49387,7 +49243,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 678200079}
-  m_RootOrder: 12
+  m_RootOrder: 11
 --- !u!82 &1056094480
 AudioSource:
   m_ObjectHideFlags: 0
@@ -55901,7 +55757,7 @@ RectTransform:
   m_LocalScale: {x: .300000012, y: .300000012, z: .300000012}
   m_Children: []
   m_Father: {fileID: 2044945380}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_AnchorMin: {x: .5, y: 0}
   m_AnchorMax: {x: .5, y: 0}
   m_AnchoredPosition: {x: -2064.0752, y: 480.884735}
@@ -56078,7 +55934,7 @@ RectTransform:
   m_Children:
   - {fileID: 1092268070}
   m_Father: {fileID: 2044945380}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: -2064.0752, y: 396.884735}
@@ -56188,13 +56044,13 @@ MonoBehaviour:
   ccm: {fileID: 91418591}
   pricesPerRarity: 64000000f4010000dc050000
   baseSpeedStandard: 80
-  baseSpeeds: 280000001400000000000000f6ffffffecffffff
+  baseSpeeds: 1e0000000f00000000000000f6ffffffecffffff
   boosterPlusSpeedStandard: 80
-  boosterPlusSpeeds: 280000001400000000000000f6ffffffecffffff
+  boosterPlusSpeeds: 140000000a00000000000000f6ffffffecffffff
   boosterMaxSpeedStandard: 120
   boosterMaxSpeeds: 280000001e000000140000000a00000000000000
   boosterSpeedDecreaseStandard: 60
-  boosterSpeedDecreases: c80000006400000000000000ecffffffd8ffffff
+  boosterSpeedDecreases: 960000004b00000000000000f6ffffffecffffff
   energyReduceOnTimeStandard: 15
   energyReduceOnTimes: 280000001400000000000000f1ffffffe2ffffff
   maxEnergyStandard: 100
@@ -56540,7 +56396,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 678200079}
-  m_RootOrder: 15
+  m_RootOrder: 14
 --- !u!96 &1248557237
 TrailRenderer:
   m_ObjectHideFlags: 0
@@ -58204,7 +58060,7 @@ Transform:
   m_Children:
   - {fileID: 764226114}
   m_Father: {fileID: 1701025775}
-  m_RootOrder: 11
+  m_RootOrder: 9
 --- !u!114 &1276123139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58287,7 +58143,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 486752, guid: 699a7667b2cee4564b40cfa293c9d3ad, type: 2}
       propertyPath: m_RootOrder
-      value: 14
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 19880024, guid: 699a7667b2cee4564b40cfa293c9d3ad, type: 2}
       propertyPath: EmissionModule.rate.scalar
@@ -58437,7 +58293,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1289803596
 RectTransform:
   m_ObjectHideFlags: 0
@@ -58446,15 +58302,15 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1289803595}
   m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106709}
-  m_LocalPosition: {x: 0, y: 0, z: -2.38418579e-06}
+  m_LocalPosition: {x: 0, y: 0, z: -111.742599}
   m_LocalScale: {x: .300000012, y: .300000012, z: .300000012}
   m_Children:
   - {fileID: 1753770006}
-  m_Father: {fileID: 1701025775}
-  m_RootOrder: 7
+  m_Father: {fileID: 2044945380}
+  m_RootOrder: 4
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 480}
+  m_AnchoredPosition: {x: -2064.0752, y: 480.884735}
   m_SizeDelta: {x: 1065.84766, y: 600}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1289803597
@@ -58647,7 +58503,7 @@ Transform:
   m_LocalScale: {x: 18, y: 18, z: 18}
   m_Children: []
   m_Father: {fileID: 1701025775}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!135 &1298175624
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -58656,7 +58512,7 @@ SphereCollider:
   m_GameObject: {fileID: 1298175622}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Radius: .5
   m_Center: {x: 0, y: 0, z: 0}
@@ -60099,7 +59955,7 @@ RectTransform:
   - {fileID: 224404661}
   - {fileID: 824233300}
   m_Father: {fileID: 2044945380}
-  m_RootOrder: 19
+  m_RootOrder: 20
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: -2064.0752, y: .884735107}
@@ -62128,7 +61984,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 678200079}
-  m_RootOrder: 9
+  m_RootOrder: 8
 --- !u!198 &1384869938
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -64094,7 +63950,6 @@ GameObject:
   - 199: {fileID: 1426521852}
   - 82: {fileID: 1426521851}
   - 114: {fileID: 1426521854}
-  - 114: {fileID: 1426521855}
   m_Layer: 0
   m_Name: MonsterEffect
   m_TagString: Untagged
@@ -65266,20 +65121,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6e43e5ec2dda449dbd8b0fa4847f785, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1426521855
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1426521849}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af0e08c3844d8484cb160fba782920b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  changeTo: Monster
-  effectName: Monster
-  targetScale: 0
 --- !u!1 &1431479370
 GameObject:
   m_ObjectHideFlags: 0
@@ -65406,7 +65247,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 678200079}
-  m_RootOrder: 16
+  m_RootOrder: 15
 --- !u!82 &1435706021
 AudioSource:
   m_ObjectHideFlags: 0
@@ -72306,7 +72147,6 @@ GameObject:
   - 199: {fileID: 1540096018}
   - 82: {fileID: 1540096019}
   - 114: {fileID: 1540096020}
-  - 114: {fileID: 1540096021}
   m_Layer: 10
   m_Name: MetalEffect
   m_TagString: Untagged
@@ -72431,20 +72271,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6e43e5ec2dda449dbd8b0fa4847f785, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1540096021
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1540096017}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af0e08c3844d8484cb160fba782920b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  changeTo: Metal
-  effectName: Metal
-  targetScale: 0
 --- !u!1 &1550390193
 GameObject:
   m_ObjectHideFlags: 0
@@ -77533,7 +77359,7 @@ Transform:
   - {fileID: 565427583}
   - {fileID: 503152187}
   m_Father: {fileID: 1701025775}
-  m_RootOrder: 2
+  m_RootOrder: 3
 --- !u!114 &1665647661
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79454,15 +79280,13 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1991538104}
   - {fileID: 91418581}
   - {fileID: 1298175623}
   - {fileID: 1665647660}
   - {fileID: 851953043}
   - {fileID: 1973202188}
   - {fileID: 632297516}
-  - {fileID: 747492152}
-  - {fileID: 1289803596}
-  - {fileID: 1991538104}
   - {fileID: 2086294868}
   - {fileID: 892369442}
   - {fileID: 1276123138}
@@ -90076,7 +89900,7 @@ RectTransform:
   m_LocalScale: {x: .266707331, y: .266707331, z: .266707331}
   m_Children: []
   m_Father: {fileID: 2044945380}
-  m_RootOrder: 18
+  m_RootOrder: 19
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: -2064.0752, y: 450.884674}
@@ -92796,7 +92620,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 678200079}
-  m_RootOrder: 10
+  m_RootOrder: 9
 --- !u!1 &1918549623
 GameObject:
   m_ObjectHideFlags: 0
@@ -93420,7 +93244,7 @@ RectTransform:
   m_LocalScale: {x: .266707331, y: .266707331, z: .266707331}
   m_Children: []
   m_Father: {fileID: 2044945380}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_AnchorMin: {x: .5, y: 1}
   m_AnchorMax: {x: .5, y: 1}
   m_AnchoredPosition: {x: -2064.0752, y: 450.884674}
@@ -93546,7 +93370,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2044945380}
-  m_RootOrder: 6
+  m_RootOrder: 7
 --- !u!1 &1951847018
 GameObject:
   m_ObjectHideFlags: 0
@@ -95067,7 +94891,6 @@ GameObject:
   - 135: {fileID: 1973202190}
   - 114: {fileID: 1973202189}
   - 114: {fileID: 1973202192}
-  - 114: {fileID: 1973202193}
   m_Layer: 25
   m_Name: TransformerSphere
   m_TagString: TransformerCollider
@@ -95087,7 +94910,7 @@ Transform:
   m_Children:
   - {fileID: 1485115681}
   m_Father: {fileID: 1701025775}
-  m_RootOrder: 4
+  m_RootOrder: 5
 --- !u!114 &1973202189
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -95132,20 +94955,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tfm: {fileID: 1818839439}
---- !u!114 &1973202193
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1973202187}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af0e08c3844d8484cb160fba782920b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  changeTo: 
-  effectName: Polymorph
-  targetScale: 0
 --- !u!1 &1975792272
 GameObject:
   m_ObjectHideFlags: 0
@@ -95512,7 +95321,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1701025775}
-  m_RootOrder: 8
+  m_RootOrder: 0
 --- !u!114 &1991538105
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -95667,11 +95476,6 @@ MonoBehaviour:
   level: 0
   player: {fileID: 0}
   meshes: {fileID: 420790, guid: 8853a505e8ec74ae8b1980f30e507d5c, type: 2}
-  biggerMeteroid: {fileID: 131752, guid: de76bd63e3eae4154a9433ec3ca2a12d, type: 2}
-  biggerPool: []
-  biggerMeteroidStrength: 2.5
-  biggerMeteroidSpeed: 320
-  biggerMeteroidTumble: 20
   warnPlayerDuring: .5
   spawnRadius: 200
   scatterAmount: 0
@@ -95679,9 +95483,6 @@ MonoBehaviour:
   fallingStarWarningLinePrefab: {fileID: 125686, guid: d2657da8f1ab74d79b03574cca181388,
     type: 2}
   warningPool: []
-  biggerFallingStarWarningLinePrefab: {fileID: 153324, guid: c5a05dc8b0d8f476d8e01dbb22c7fc26,
-    type: 2}
-  biggerWarningPool: []
   fallingStarSoundWarningPrefab: {fileID: 122456, guid: 32ffe4a364250467bba5659a4276cfd9,
     type: 2}
   soundWarningPool: []
@@ -95724,8 +95525,8 @@ MonoBehaviour:
   nameForLevel: 
   level: 0
   player: {fileID: 0}
-  gravity: 100
-  gravityToUser: 100
+  gravity: 90
+  gravityToUser: 90
   gravityScale: 10
   reboundDuring: 2
   shakeAmount: 3
@@ -96241,7 +96042,7 @@ MonoBehaviour:
   objDestroyEffect: {fileID: 158326, guid: 7a4903aebeaf1440d95d69b1daac37af, type: 2}
   objEncounterEffect: {fileID: 0}
   objEncounterEffectForPlayer: {fileID: 0}
-  strengthenPlayerEffect: {fileID: 533108646}
+  strengthenPlayerEffect: {fileID: 0}
   strength: 0
   speed: 0
   tumble: 4
@@ -97217,7 +97018,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 678200079}
-  m_RootOrder: 17
+  m_RootOrder: 16
 --- !u!82 &2042006117
 AudioSource:
   m_ObjectHideFlags: 0
@@ -98395,6 +98196,7 @@ Transform:
   - {fileID: 1270861826}
   - {fileID: 98551105}
   - {fileID: 393081737}
+  - {fileID: 1289803596}
   - {fileID: 673289982}
   - {fileID: 713807493}
   - {fileID: 1945358479}
@@ -98446,7 +98248,7 @@ RectTransform:
   - {fileID: 1774752849}
   - {fileID: 1137204534}
   m_Father: {fileID: 2044945380}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: -2064.0752, y: 480.884735}
@@ -99861,7 +99663,6 @@ GameObject:
   - 82: {fileID: 2086294869}
   - 114: {fileID: 2086294875}
   - 114: {fileID: 2086294876}
-  - 114: {fileID: 2086294870}
   m_Layer: 26
   m_Name: EMP Field
   m_TagString: ForceField
@@ -99881,7 +99682,7 @@ Transform:
   m_Children:
   - {fileID: 1503393549}
   m_Father: {fileID: 1701025775}
-  m_RootOrder: 9
+  m_RootOrder: 7
 --- !u!82 &2086294869
 AudioSource:
   m_ObjectHideFlags: 0
@@ -99952,20 +99753,6 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
---- !u!114 &2086294870
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2086294867}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af0e08c3844d8484cb160fba782920b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  changeTo: 
-  effectName: 
-  targetScale: 0
 --- !u!135 &2086294872
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -101723,7 +101510,7 @@ RectTransform:
   m_LocalScale: {x: .266707331, y: .266707331, z: .266707331}
   m_Children: []
   m_Father: {fileID: 2044945380}
-  m_RootOrder: 17
+  m_RootOrder: 18
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: -2053.22021, y: 450.884674}

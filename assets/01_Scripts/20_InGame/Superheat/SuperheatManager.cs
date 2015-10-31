@@ -224,7 +224,7 @@ public class SuperheatManager : MonoBehaviour {
 
     addGuage(val);
     if (val >= showHeatWhenLargerThan) {
-      Player.pl.showEffect("Heat");
+      // Player.pl.showEffect("Heat");
     }
   }
 

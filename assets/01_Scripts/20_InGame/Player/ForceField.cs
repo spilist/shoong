@@ -31,7 +31,7 @@ public class ForceField : MonoBehaviour {
     if (isGolden) {
       GoldManager.gm.add(mover.transform.position, empManager.goldCubesGet);
     }
-    Player.pl.goodPartsEncounter(mover, mover.cubesWhenDestroy(), 0, false);
+    Player.pl.goodPartsEncounter(mover, mover.cubesWhenDestroy(), false);
   }
 
   void OnDisable() {

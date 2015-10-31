@@ -64,7 +64,7 @@ public class TimeManager : MonoBehaviour {
 		addGuageAmount = 0;
     currentProgressCount = 0;
 
-		requiredProgress = PhaseManager.pm.cuberNeedsPerLevel[PhaseManager.pm.phase()];
+		requiredProgress = PhaseManager.pm.reqProgressPerLevel[PhaseManager.pm.phase()];
 
 		GameObject obj = (GameObject) Instantiate(phaseStarPrefab);
 		obj.transform.SetParent(phaseStars, false);

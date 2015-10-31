@@ -85,7 +85,7 @@ public class SuperheatMover : MonoBehaviour {
   void OnTriggerEnter(Collider other) {
     ObjectsMover mover = other.GetComponent<ObjectsMover>();
     if (mover == null) return;
-    Player.pl.goodPartsEncounter(mover, mover.cubesWhenDestroy(), 0, false);
+    Player.pl.goodPartsEncounter(mover, mover.cubesWhenDestroy(), false);
   }
 
 

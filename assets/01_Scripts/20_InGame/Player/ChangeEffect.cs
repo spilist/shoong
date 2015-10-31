@@ -15,7 +15,7 @@ public class ChangeEffect : MonoBehaviour {
     cm = Player.pl.GetComponent<CharacterChangeManager>();
 
     if (effectName != "") {
-      Player.pl.showEffect(effectName);
+      // Player.pl.showEffect(effectName);
     }
 
     if (changeTo != "") {

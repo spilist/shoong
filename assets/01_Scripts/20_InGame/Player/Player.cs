@@ -29,8 +29,6 @@ public class Player : MonoBehaviour {
 
   public Transform effects;
 
-  public int nearAsteroidBonus = 10;
-
   public float tumble = 4;
   private Vector3 direction;
 
@@ -64,8 +62,6 @@ public class Player : MonoBehaviour {
   private bool isRidingRainbowRoad = false;
   private Vector3 rainbowPosition;
   private Rigidbody rb;
-
-  private int nearAsteroidCounter = 0;
 
   public float afterStrengthenDuration = 1;
   private bool afterStrengthen = false;
@@ -185,7 +181,7 @@ public class Player : MonoBehaviour {
       if (!unstoppable && !isUsingRainbow()) return;
     }
 
-    goodPartsEncounter(mover, mover.cubesWhenEncounter(), mover.bonusCubes());
+    goodPartsEncounter(mover, mover.cubesWhenEncounter());
 	}
 
   public bool absorbMinimon(ObjectsMover mover) {
@@ -205,20 +201,20 @@ public class Player : MonoBehaviour {
     DataManager.dm.increment("NumSpawnMinimonster", monm.numMinimonSpawn);
   }
 
-  public void goodPartsEncounter(ObjectsMover mover, int howMany, int bonus = 0, bool encounterPlayer = true) {
+  public void goodPartsEncounter(ObjectsMover mover, int howMany, bool encounterPlayer = true) {
 
-    if (mover.tag != "GoldenCube" && (howMany > 0 || bonus > 0)) addCubeCount(howMany, bonus);
+    if (mover.tag != "GoldenCube" && howMany > 0) addCubeCount(howMany);
 
     if (encounterPlayer) mover.encounterPlayer();
     else mover.destroyObject(true, true);
   }
 
-  public void addCubeCount(int howMany = 1, int bonus = 0) {
-    CubeManager.cm.addCount(howMany, bonus);
+  public void addCubeCount(int howMany = 1) {
+    CubeManager.cm.addCount(howMany);
   }
 
   public void contactCubeDispenser(Transform tr, int howMany, Collision collision, float reboundDuring) {
-    addCubeCount(howMany, 0);
+    addCubeCount(howMany);
     processCollision(collision);
     bouncingByDispenser = true;
     this.bounceDuration = reboundDuring;
@@ -363,37 +359,6 @@ public class Player : MonoBehaviour {
       stopping = false;
     }
     dirIndicator.setDirection(dir);
-  }
-
-  public void nearAsteroid(bool enter = true, int amount = 1) {
-    if (enter) nearAsteroidCounter += amount;
-    else nearAsteroidCounter -= amount;
-  }
-
-  public bool isNearAsteroid() {
-    return nearAsteroidCounter > 0;
-  }
-
-  public void showEffect(string effectName, int scale = 1) {
-    if (usingPowerBoost || ScoreManager.sm.isGameOver()) return;
-
-    if (effectName == "Whew") {
-      boosterspeed += 140;
-      changeManager.booster.Play();
-      afterStrengthenStart();
-      DataManager.dm.increment("TotalWhew");
-      // audio needed
-    } else if (effectName == "Wow") {
-      DataManager.dm.increment("TotalWow");
-    } else if (effectName == "Great") {
-      DataManager.dm.increment("TotalGreat");
-    }
-
-    UIEffect effect = effects.Find(effectName).GetComponent<UIEffect>();
-    if (effect.gameObject.activeSelf) effect.gameObject.SetActive(false);
-    effect.gameObject.SetActive(true);
-
-    // 그레이트시 스케일로 체력 채워준다?
   }
 
   public void effectedBy(string objTag, bool effectOn = true) {

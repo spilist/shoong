@@ -3,8 +3,6 @@ using System.Collections;
 
 public class AsteroidMover : ObjectsMover {
   AsteroidManager asm;
-  private bool isNearPlayer = false;
-  private bool collideChecked = false;
   private int minBrokenSpawn;
   private int maxBrokenSpawn;
   private float minBrokenSize;
@@ -21,28 +19,6 @@ public class AsteroidMover : ObjectsMover {
     maxBrokenSpawn = asm.maxBrokenSpawn;
     minBrokenSize = asm.minBrokenSize;
     maxBrokenSize = asm.maxBrokenSize;
-  }
-
-  override protected void afterEnable() {
-    isNearPlayer = false;
-    collideChecked = false;
-  }
-
-  override protected void afterDestroy(bool byPlayer) {
-    if (isNearPlayer) player.nearAsteroid(false);
-  }
-
-  override protected void afterEncounter() {
-    if (isNearPlayer) player.nearAsteroid(false);
-  }
-
-  public void nearPlayer(bool enter = true) {
-    if (collideChecked == enter) return;
-    else collideChecked = enter;
-
-    isNearPlayer = enter;
-
-    player.nearAsteroid(enter);
   }
 
   override public bool dangerous() {

@@ -6,35 +6,20 @@ public class PhaseManager : MonoBehaviour {
   public static PhaseManager pm;
 
   public string[] textPerLevel;
-  public int[] cuberNeedsPerLevel;
-  public int[] debrisDistancesPerLevel;
-  public int[] timeLimitPerLevel;
+  public int[] reqProgressPerLevel;
 
   public IceDebrisManager icm;
   public PhaseMonsterManager pmm;
-  public NormalPartsManager npm;
-  public AsteroidManager atm;
-  public SmallAsteroidManager ssm;
-  public Renderer EMFilter;
-  public float EMFilterTargetAlpha = 0.11f;
-  private Color EMFilterColor;
-  private float EMFilterAlpha;
-
-  public MeteroidManager ntm;
-  public Renderer meteroidFilter;
-  public float meteroidFilterAlpha1 = 0.08f;
-  public float meteroidFilterAlpha2 = 0.12f;
-  public float meteroidFilterChangeDuration1 = 3;
-  public float meteroidFilterChangeDuration2 = 2;
-  private bool meteroidFilterAlphaGoingUp = true;
-  private float meteroidFilterTargetAlpha;
-  private float meteroidFilterChangeDuration;
-  private float meteroidFilterAlpha = 0;
-  private Color meteroidFilterColor;
-
-  public DangerousEMPManager dem;
   public BlackholeManager blm;
+  public MeteroidManager ntm;
+  public DangerousEMPManager dem;
   public AlienshipManager asm;
+
+  public ComboPartsManager cpm;
+  public CubeDispenserManager cdm;
+  public RainbowDonutsManager rdm;
+  public SummonPartsManager spm;
+  public EMPManager em;
 
   public RectTransform phaseIndicator;
   public Text phaseText;
@@ -80,7 +65,7 @@ public class PhaseManager : MonoBehaviour {
 
     if (levelName == "IceDebris") {
       icm.enabled = true;
-    } else if (levelName == "Minimon 1") {
+    } else if (levelName == "Minimon") {
       pmm.enabled = true;
     } else if (levelName == "Blackhole") {
       blm.enabled = true;
@@ -92,24 +77,6 @@ public class PhaseManager : MonoBehaviour {
       asm.enabled = true;
     } else if (levelName == "BigBomb") {
       dem.startLarger();
-    } else if (levelName == "자기장 불안정화") {
-      npm.startPhase();
-      atm.startPhase();
-      ssm.startPhase();
-      EMFilter.gameObject.SetActive(true);
-      EMFilterColor = EMFilter.material.GetColor("_TintColor");
-    } else if (levelName == "유성 거대화") {
-      ntm.startPhase();
-      meteroidFilter.gameObject.SetActive(true);
-      meteroidFilterColor = meteroidFilter.material.GetColor("_TintColor");
-      meteroidFilterTargetAlpha = meteroidFilterAlpha1;
-      meteroidFilterChangeDuration = meteroidFilterChangeDuration1;
-    } else if (levelName == "폭발 위험 지역") {
-      dem.enabled = true;
-    } else if (levelName == "유성우") {
-      ntm.startSecond();
-      meteroidFilterTargetAlpha = meteroidFilterAlpha2;
-      meteroidFilterChangeDuration = meteroidFilterChangeDuration2;
     }
   }
 
@@ -138,41 +105,6 @@ public class PhaseManager : MonoBehaviour {
       if (posX == originalPosX) {
         status = 0;
       }
-    }
-
-    if (EMFilter.gameObject.activeSelf) {
-      EMFilterAlpha = Mathf.MoveTowards(EMFilterAlpha, EMFilterTargetAlpha, Time.deltaTime * EMFilterTargetAlpha);
-      EMFilterColor.a = EMFilterAlpha;
-      EMFilter.sharedMaterial.SetColor("_TintColor", EMFilterColor);
-    }
-
-    if (meteroidFilter.gameObject.activeSelf) {
-      if (meteroidFilterAlphaGoingUp) {
-        meteroidFilterAlpha = Mathf.MoveTowards(meteroidFilterAlpha, meteroidFilterTargetAlpha, Time.deltaTime * meteroidFilterTargetAlpha / meteroidFilterChangeDuration);
-        meteroidFilterColor.a = meteroidFilterAlpha;
-
-        meteroidFilter.sharedMaterial.SetColor("_TintColor", meteroidFilterColor);
-
-        if (meteroidFilterAlpha == meteroidFilterTargetAlpha) meteroidFilterAlphaGoingUp = false;
-      } else {
-        meteroidFilterAlpha = Mathf.MoveTowards(meteroidFilterAlpha, 0, Time.deltaTime * meteroidFilterTargetAlpha / meteroidFilterChangeDuration);
-        meteroidFilterColor.a = meteroidFilterAlpha;
-
-        meteroidFilter.sharedMaterial.SetColor("_TintColor", meteroidFilterColor);
-        if (meteroidFilterAlpha == 0) meteroidFilterAlphaGoingUp = true;
-      }
-    }
-  }
-
-  void OnDisable() {
-    if (meteroidFilter != null && EMFilter.gameObject.activeSelf) {
-      EMFilterColor.a = 0;
-      EMFilter.sharedMaterial.SetColor("_TintColor", EMFilterColor);
-    }
-
-    if (meteroidFilter != null && meteroidFilter.gameObject.activeSelf) {
-      meteroidFilterColor.a = 0;
-      meteroidFilter.sharedMaterial.SetColor("_TintColor", meteroidFilterColor);
     }
   }
 }
