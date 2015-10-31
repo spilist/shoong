@@ -171,6 +171,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 404406}
   - 114: {fileID: 11400178}
+  - 114: {fileID: 11458942}
   m_Layer: 26
   m_Name: TinyForceField
   m_TagString: Untagged
@@ -392,6 +393,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   byPlayer: 1
+--- !u!114 &11458942
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 175312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6e43e5ec2dda449dbd8b0fa4847f785, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11492676
 MonoBehaviour:
   m_ObjectHideFlags: 1

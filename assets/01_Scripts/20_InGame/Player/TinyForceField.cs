@@ -39,6 +39,7 @@ public class TinyForceField : MonoBehaviour {
   void OnEnable() {
     transform.localScale = Vector3.one * dpm.getTargetSize(byPlayer);
     mainScale = originalMainScale;
+    main.localScale = mainScale * Vector3.one;
     StartCoroutine("turnOnInConsquence");
   }
 

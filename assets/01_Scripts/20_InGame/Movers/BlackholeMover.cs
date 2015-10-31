@@ -22,8 +22,7 @@ public class BlackholeMover : ObjectsMover {
   }
 
   override public bool dangerous() {
-    if (player.isUsingDopple()) return true;
-    else if (player.isAfterStrengthen() || player.isUnstoppable() || player.isUsingRainbow() || player.isRebounding()) return false;
+    if (player.isAfterStrengthen() || player.isUnstoppable() || player.isUsingRainbow() || player.isRebounding()) return false;
     else return true;
   }
 

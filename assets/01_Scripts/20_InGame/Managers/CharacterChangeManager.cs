@@ -27,6 +27,7 @@ public class CharacterChangeManager : MonoBehaviour {
   public Transform playerParticlesParent;
   public ParticleSystem booster;
   public ParticleSystem afterStrengthenEffect;
+  public Collider contactCollider;
 
   public float teleportingDuration;
   private int teleportingStatus = 0;
@@ -48,6 +49,8 @@ public class CharacterChangeManager : MonoBehaviour {
     alpha = color.a;
     alphaOrigin = alpha;
     teleportingStatus = 1;
+
+    Camera.main.GetComponent<CameraMover>().setSlowly(true);
   }
 
   void Update() {
@@ -76,14 +79,19 @@ public class CharacterChangeManager : MonoBehaviour {
         alpha = 0;
         color.a = alpha;
         mRenderer.sharedMaterial.color = color;
-        dpm.goodFieldAt(teleportTo);
+        dpm.goodFieldAt();
+        // dpm.goodFieldAt(teleportTo);
+        Camera.main.GetComponent<CameraMover>().setSlowly(false);
         teleportingStatus++;
       }
     } else if (teleportingStatus == 3) {
       alpha = Mathf.MoveTowards(alpha, alphaOrigin, Time.deltaTime * alphaOrigin / teleportingDuration);
       color.a = alpha;
       mRenderer.sharedMaterial.color = color;
-      if (alpha == alphaOrigin) teleportingStatus = 0;
+      if (alpha == alphaOrigin) {
+        teleportingStatus = 0;
+        Player.pl.afterStrengthenStart();
+      }
     }
   }
 

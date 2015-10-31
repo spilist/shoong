@@ -51,6 +51,12 @@ public class ObjectsMover : MonoBehaviour {
     rb.angularVelocity = Random.onUnitSphere * tumble;
     rb.velocity = direction * speed;
 
+    destroyed = false;
+    isTransforming = false;
+    isMagnetized = false;
+    isInsideBlackhole = false;
+    transformResult = "";
+
     afterEnable();
   }
 

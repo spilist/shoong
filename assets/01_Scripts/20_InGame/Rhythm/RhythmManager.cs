@@ -9,6 +9,7 @@ public class RhythmManager : MonoBehaviour {
   public GameObject normalRing;
   public GameObject skillRing;
   public GameObject feverRing;
+  public Color normalColor;
   public int ringAmount = 2;
   public List<GameObject> normalRingPool;
   public List<GameObject> skillRingPool;
@@ -16,7 +17,9 @@ public class RhythmManager : MonoBehaviour {
 
   public float bpm;
   public float beatBase;
-  public float boosterOkScale = 1;
+  public float maxBoosterOkScale = 4;
+  public float rightBeatScale = 3;
+  public float minBoosterOkScale = 2;
 
   private int numNormalInLoop;
   private int numSkillInLoop;
@@ -25,8 +28,13 @@ public class RhythmManager : MonoBehaviour {
   public bool isBoosterOK = false;
   public bool isSkillOK = false;
   public GameObject currentRing;
+  private GameObject lastRing;
   private int ringCount = 0;
+  private int rem;
   private bool feverTime = false;
+  private bool skillActivated = false;
+  private bool isAfterRing = false;
+  private bool ringSuccess = false;
 
   private BeatObserver beatObserver;
   private bool beating = false;
@@ -35,6 +43,7 @@ public class RhythmManager : MonoBehaviour {
 	void Awake() {
     rm = this;
     beatObserver = GetComponent<BeatObserver>();
+    normalColor = normalRing.GetComponent<SpriteRenderer>().color;
   }
 
   void Start() {
@@ -95,6 +104,7 @@ public class RhythmManager : MonoBehaviour {
     }
 
     ring.transform.localPosition = Vector3.zero;
+    lastRing = currentRing;
     currentRing = ring;
     ring.SetActive(true);
     return ring;
@@ -104,7 +114,14 @@ public class RhythmManager : MonoBehaviour {
     if (!gameStarted || numSkillInLoop == 0) {
       getRing(normalRingPool, normalRing);
     } else if (!feverTime) {
-      int rem = ringCount % (numNormalInLoop + numSkillInLoop);
+      rem = ringCount % (numNormalInLoop + numSkillInLoop);
+
+      if (rem == 1 && skillActivated) {
+        Debug.Log("stopped");
+        skillActivated = false;
+        SkillManager.sm.stopSkills();
+      }
+
       if (rem < numNormalInLoop) {
         getRing(normalRingPool, normalRing);
       } else {
@@ -127,12 +144,52 @@ public class RhythmManager : MonoBehaviour {
     }
   }
 
+  public void afterRing(bool val) {
+    isAfterRing = val;
+  }
+
   public bool canBoost() {
     return feverTime || isBoosterOK;
   }
 
+  void resetSkillRings() {
+    if (skillActivated) {
+      ringCount = 0;
+      SkillManager.sm.stopSkills();
+      skillActivated = false;
+
+      if (isAfterRing) {
+        lastRing.SetActive(false);
+        currentRing.GetComponent<RhythmRing>().skillRing = false;
+        currentRing.GetComponent<SpriteRenderer>().color = normalColor;
+      }
+    }
+  }
+
+  public void ringSuccessed() {
+    ringSuccess = true;
+  }
+
   public void ringMissed() {
-    currentRing.SetActive(false);
+    ringSuccess = false;
+    if (skillActivated) Debug.Log("Failed");
+    resetSkillRings();
+
+    if (!isAfterRing) {
+      currentRing.SetActive(false);
+    }
+  }
+
+  public void ringSkipped(bool skillRing) {
+    if (ringSuccess) {
+      ringSuccess = false;
+      return;
+    }
+
+    if (skillRing) {
+      if (skillActivated) Debug.Log("skipped");
+      resetSkillRings();
+    }
   }
 
   public void setLoop(int normal, int skill) {
@@ -143,5 +200,9 @@ public class RhythmManager : MonoBehaviour {
   public void setFever(bool val) {
     feverTime = val;
     if (val) getRing(feverRingPool, feverRing);
+  }
+
+  public void loopSkillActivated(bool val) {
+    skillActivated = val;
   }
 }

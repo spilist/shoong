@@ -23,6 +23,17 @@ public class SkillManager : MonoBehaviour {
   }
 
   public void activate() {
-    equiped.activate(true);
+    if (!equiped.isActivated()) {
+      equiped.activate(true);
+      RhythmManager.rm.loopSkillActivated(true);
+    }
+  }
+
+  public bool skillRunning() {
+    return equiped.isActivated();
+  }
+
+  public bool isBlink() {
+    return equiped.name == "Blink";
   }
 }

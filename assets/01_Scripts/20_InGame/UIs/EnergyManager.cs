@@ -57,9 +57,7 @@ public class EnergyManager : MonoBehaviour {
 
       if (gauge.fillAmount == 0) {
         turnEnergy(false);
-        if (Player.pl.isTrapped()) {
-          ScoreManager.sm.gameOver("Trap");
-        } else if (isChangingRest && lastReason != "") {
+        if (isChangingRest && lastReason != "") {
           ScoreManager.sm.gameOver(lastReason);
         } else {
           ScoreManager.sm.gameOver("NoEnergy");

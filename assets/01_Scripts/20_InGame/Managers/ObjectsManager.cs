@@ -51,9 +51,9 @@ public class ObjectsManager : MonoBehaviour {
     }
 
     if (hasLevel) {
-      level = DataManager.dm.getInt(nameForLevel + "Level") - 1;
-      if (level < 0) level = 0;
-      adjustForLevel(level);
+      // level = DataManager.dm.getInt(nameForLevel + "Level") - 1;
+      // if (level < 0) level = 0;
+      adjustForLevel(2);
     }
 
     objPool = new List<GameObject>();

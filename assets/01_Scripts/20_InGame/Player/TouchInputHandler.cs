@@ -93,12 +93,8 @@ public class TouchInputHandler : MonoBehaviour
         if (result == "Ground") {
           Vector3 worldTouchPosition = setPlayerDirection(Player.pl.transform);
 
-          if (Player.pl.isUsingDopple()) {
-            Player.pl.teleport(worldTouchPosition);
-          } else {
-            Player.pl.shootBooster();
-            spawnTouchEffect(worldTouchPosition);
-          }
+          Player.pl.shootBooster();
+          spawnTouchEffect(worldTouchPosition);
         } else if (result == "SkillButton") {
           Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
           RaycastHit hit;

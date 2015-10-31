@@ -2320,13 +2320,16 @@ MonoBehaviour:
   normalRing: {fileID: 148784, guid: 1d56f2064a3a44db8b0e174bd62e7177, type: 2}
   skillRing: {fileID: 157310, guid: 4d7eaedd1710044f7841d4a7aa669ec0, type: 2}
   feverRing: {fileID: 129692, guid: 619c220712ff34681bf576e21775a239, type: 2}
+  normalColor: {r: 0, g: .666666687, b: 1, a: 1}
   ringAmount: 2
   normalRingPool: []
   skillRingPool: []
   feverRingPool: []
   bpm: 130
   beatBase: 2
-  boosterOkScale: 4
+  maxBoosterOkScale: 4
+  rightBeatScale: 3
+  minBoosterOkScale: 2
   samplePeriod: 0
   isBoosterOK: 0
   isSkillOK: 0
@@ -3378,8 +3381,6 @@ MonoBehaviour:
   reboundSpeed: 320
   originalScale: 0
   afterStrengthenDuration: 1
-  contactCollider: {fileID: 1298175624}
-  playerDopple: {fileID: 146242, guid: c2d782534ed3b4197aa101a7d17d90b9, type: 2}
   dirIndicator: {fileID: 1322196947}
 --- !u!96 &91418584
 TrailRenderer:
@@ -3543,6 +3544,7 @@ MonoBehaviour:
   playerParticlesParent: {fileID: 678200079}
   booster: {fileID: 131396333}
   afterStrengthenEffect: {fileID: 1282841668}
+  contactCollider: {fileID: 1298175624}
   teleportingDuration: .0299999993
 --- !u!1 &96157825
 GameObject:
@@ -16805,9 +16807,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillObject: {fileID: 851953042}
   useSkillEffect: {fileID: 1552135346}
-  normalRing: 14
+  normalRing: 11
   skillRing: 6
-  duration: 1
+  duration: 0
 --- !u!1 &311986688
 GameObject:
   m_ObjectHideFlags: 0
@@ -19697,7 +19699,7 @@ MonoBehaviour:
   useSkillEffect: {fileID: 1830827562}
   normalRing: 11
   skillRing: 6
-  duration: 1
+  duration: 0
   monsterFilter: {fileID: 1997391145}
   mm: {fileID: 1991538109}
 --- !u!1 &494883763
@@ -20211,7 +20213,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillObject: {fileID: 533108646}
   useSkillEffect: {fileID: 171122210}
-  normalRing: 16
+  normalRing: 3
   skillRing: 4
   duration: 0
   dpm: {fileID: 1991538120}
@@ -57924,6 +57926,47 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!1 &1276123137
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1276123138}
+  - 114: {fileID: 1276123139}
+  m_Layer: 0
+  m_Name: BlinkForces
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1276123138
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1276123137}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1701025775}
+  m_RootOrder: 10
+--- !u!114 &1276123139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1276123137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85bd37e8eaf3c4f02a3d2a0f1a640b6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 91418582}
+  copyRotation: 0
 --- !u!1 &1276675652
 GameObject:
   m_ObjectHideFlags: 0
@@ -77981,6 +78024,7 @@ Transform:
   - {fileID: 1991538104}
   - {fileID: 2086294868}
   - {fileID: 892369442}
+  - {fileID: 1276123138}
   m_Father: {fileID: 0}
   m_RootOrder: 16
 --- !u!1 &1708456654
@@ -94772,6 +94816,7 @@ MonoBehaviour:
   nameForLevel: Dopple
   level: 0
   player: {fileID: 0}
+  blinkForces: {fileID: 1276123138}
   blinkDistance: 100
   getEnergy: {fileID: 317572741}
   energyCube: {fileID: 178344, guid: b185d52f68bf5499e81f948bbbf1bd8c, type: 2}
@@ -94780,11 +94825,11 @@ MonoBehaviour:
   forceFieldByDopplePrefab: {fileID: 139776, guid: 5ebc0722331894005b24bbd0c1b32848,
     type: 2}
   badFieldPool: []
-  fieldAmount: 30
+  fieldAmount: 3
   forceFieldSizePerLevel:
   - .75
   - 1
-  - 1.25
+  - 3
   targetSize: 0
   teleportSound: {fileID: 8300000, guid: 06f4fb62da1cc475ba87a41b6952dc8b, type: 3}
   teleportSoundVolume: .5

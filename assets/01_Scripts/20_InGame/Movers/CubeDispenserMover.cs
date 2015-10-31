@@ -43,7 +43,6 @@ public class CubeDispenserMover : ObjectsMover {
     if (brokenCount == 2) {
       destroyObject(true, true);
       player.goodPartsEncounter(this, cdm.cubesByEncounter * cdm.fullComboCount);
-      player.setTrapped(false);
       return;
     }
 
@@ -55,8 +54,6 @@ public class CubeDispenserMover : ObjectsMover {
   }
 
   override protected void afterDestroy(bool byPlayer) {
-    player.setTrapped(false);
-
     if (byPlayer) {
       if (comboCount != cdm.fullComboCount) {
         DataManager.dm.increment("NumDestroyCubeDispenser");

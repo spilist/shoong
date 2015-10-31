@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class DoppleManager : ObjectsManager {
+  public Transform blinkForces;
   public int blinkDistance = 100;
   public ParticleSystem getEnergy;
   public GameObject energyCube;
@@ -48,6 +49,12 @@ public class DoppleManager : ObjectsManager {
 
   public void goodFieldAt(Vector3 pos) {
     GameObject obj = getPooledObj(goodFieldPool, forceFieldPrefab, pos);
+    obj.SetActive(true);
+  }
+
+  public void goodFieldAt() {
+    GameObject obj = getPooledObj(goodFieldPool, forceFieldPrefab);
+    obj.transform.SetParent(blinkForces, false);
     obj.SetActive(true);
   }
 

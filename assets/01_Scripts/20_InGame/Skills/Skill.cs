@@ -8,6 +8,7 @@ public class Skill : MonoBehaviour {
   public int normalRing;
   public int skillRing;
   public float duration;
+  private bool activated;
 
   void Start() {
     afterStart();
@@ -36,15 +37,27 @@ public class Skill : MonoBehaviour {
   virtual public void afterStart() {}
 
   public void activate(bool val) {
+    activated = val;
+
     if (skillObject != null) skillObject.SetActive(val);
     if (useSkillEffect != null) useSkillEffect.SetActive(val);
 
     if (val && duration > 0) Invoke("inactivate", duration);
     Player.pl.effectedBy(name, val);
+
     afterActivate(val);
   }
 
   virtual public void afterActivate(bool val) {}
+
+  public bool isActivated() {
+    return activated;
+  }
+
+  public void extendDuration() {
+    CancelInvoke();
+    Invoke("inactivate", duration);
+  }
 
   void inactivate() {
     activate(false);

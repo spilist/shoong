@@ -44,12 +44,12 @@ public class PartsCollector : MonoBehaviour {
 
   void Update() {
     if (followingUser) {
-      if (Player.pl.isUsingDopple()) {
-        if (pastPlayerPos != Player.pl.transform.position) {
-          followUserOnDopple();
-          pastPlayerPos = Player.pl.transform.position;
-        }
-      } else {
+      // if (Player.pl.isUsingDopple()) {
+        // if (pastPlayerPos != Player.pl.transform.position) {
+          // followUserOnDopple();
+          // pastPlayerPos = Player.pl.transform.position;
+        // }
+      // } else {
         Vector3 heading = new Vector3 (Player.pl.transform.position.x - Player.pl.getDirection().x * offset - transform.position.x, 0, Player.pl.transform.position.z - Player.pl.getDirection().z * offset - transform.position.z);
 
         if (heading.magnitude < 5.0f) {
@@ -59,7 +59,7 @@ public class PartsCollector : MonoBehaviour {
           heading /= heading.magnitude;
           rb.velocity = heading * Player.pl.getSpeed() * 1.3f;
         }
-      }
+      // }
 
       float angle = getAngle();
       angleY = Mathf.MoveTowards(angleY, angle, Time.deltaTime * headFollowingSpeed);

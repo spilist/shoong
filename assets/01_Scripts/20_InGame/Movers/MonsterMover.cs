@@ -76,7 +76,7 @@ public class MonsterMover : ObjectsMover {
       rb.velocity = direction * player.getSpeed() * 1.5f;
     } else if (weak) {
       rb.velocity = -direction * speed_weaken;
-    } else if (player.isUnstoppable() || player.isUsingMagnet() || player.isUsingDopple()) {
+    } else if (player.isUnstoppable() || player.isUsingMagnet()) {
       rb.velocity = -direction * speed_runaway;
     } else {
       rb.velocity = direction * speed;

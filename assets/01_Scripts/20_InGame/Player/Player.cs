@@ -54,7 +54,6 @@ public class Player : MonoBehaviour {
   private bool unstoppable = false;
   private bool usingEMP = false;
   private bool ridingMonster = false;
-  private bool usingDopple = false;
   private bool usingMagnet = false;
   private bool usingTransformer = false;
   private bool iced = false;
@@ -73,9 +72,6 @@ public class Player : MonoBehaviour {
   private float afterStrengthenCount = 0;
 
   private CharacterChangeManager changeManager;
-  public Collider contactCollider;
-  public GameObject playerDopple;
-  private bool trapped = false;
 
   private bool usingPowerBoost = false;
 
@@ -146,16 +142,12 @@ public class Player : MonoBehaviour {
     if (boosterspeed > 0) {
       timeSpaned += Time.fixedDeltaTime;
       boosterspeed -= 80 / boosterSpeedDecreaseBase + boosterSpeedDecreasePerTime * Time.fixedDeltaTime;
-      Debug.Log("End: " + timeSpaned);
+      // Debug.Log("End: " + timeSpaned);
     } else if (boosterspeed <= 0){
       boosterspeed = 0;
     }
 
-    if (!isRidingRainbowRoad && (usingDopple || trapped)) {
-      rb.velocity = Vector3.zero;
-    } else {
-      rb.velocity = direction * speed * stickSpeedScale;
-    }
+    rb.velocity = direction * speed * stickSpeedScale;
 	}
 
   public float getSpeed() {
@@ -271,42 +263,10 @@ public class Player : MonoBehaviour {
     return direction;
   }
 
-  public void setTrapped(bool val) {
-    if (trapped && !val) {
-      DataManager.dm.increment("NumExitCubeDispenser");
-    }
-    trapped = val;
-  }
-
   public void teleport(Vector3 pos) {
     if (changeManager.isTeleporting() || ScoreManager.sm.isGameOver()) return;
 
     AudioSource.PlayClipAtPoint(dpm.teleportSound, transform.position, dpm.teleportSoundVolume);
-
-    GameObject[] cubeDispensers = GameObject.FindGameObjectsWithTag("CubeDispenser");
-    GameObject cubeDispenser = null;
-    float distance1 = 0;
-    float distance2 = Mathf.Infinity;
-
-    if (cubeDispensers.Length > 0) {
-      cubeDispenser = cubeDispensers[0];
-      distance1 = (GetComponent<SphereCollider>().radius * transform.localScale.x) + (cubeDispenser.GetComponent<SphereCollider>().radius * cubeDispenser.transform.localScale.x);
-      distance2 = Vector3.Distance(cubeDispenser.transform.position, pos);
-    }
-
-    if (trapped) {
-      if (distance2 > distance1) {
-        GameObject instance = (GameObject) Instantiate(playerDopple, pos, transform.rotation);
-        instance.GetComponent<PlayerDopple>().run(GetComponent<MeshFilter>().sharedMesh, GetComponent<Renderer>().sharedMaterial);
-        return;
-      }
-    }
-
-    if (cubeDispenser != null && !unstoppable && distance2 <= distance1) {
-      pos = cubeDispenser.transform.position;
-      trapped = true;
-      DataManager.dm.increment("NumTrappedInCubeDispenser");
-    }
 
     changeManager.teleport(pos);
     DataManager.dm.increment("TotalBlinks");
@@ -320,24 +280,24 @@ public class Player : MonoBehaviour {
   public void shootBooster(){
     if (stopping || uncontrollable()) return;
 
-    if (!RhythmManager.rm.canBoost()) {
+    if (RhythmManager.rm.canBoost()) {
+      RhythmManager.rm.ringSuccessed();
+      if (RhythmManager.rm.isSkillOK) {
+        SkillManager.sm.activate();
+        if (SkillManager.sm.isBlink()) {
+          teleport(transform.position + direction * dpm.blinkDistance);
+          return;
+        }
+      }
+    } else {
       RhythmManager.rm.ringMissed();
       return;
     }
 
-    Debug.Log("Start");
+    // Debug.Log("Start");
     timeSpaned = 0;
 
-    if (RhythmManager.rm.isSkillOK) {
-      SkillManager.sm.activate();
-    }
-
     startBeat();
-
-    if (usingDopple) {
-      teleport(transform.position + direction * dpm.blinkDistance);
-      return;
-    }
 
     if (!usingPowerBoost) {
       changeManager.booster.Play();
@@ -452,9 +412,6 @@ public class Player : MonoBehaviour {
     } else if (objTag == "EMP") {
       usingEMP = effectOn;
       rb.isKinematic = effectOn;
-    } else if (objTag == "Dopple") {
-      usingDopple = effectOn;
-      contactCollider.enabled = !effectOn;
     } else if (objTag == "Transformer") {
       usingTransformer = effectOn;
     } else if (objTag == "IceDebris") {
@@ -541,16 +498,8 @@ public class Player : MonoBehaviour {
     return usingEMP;
   }
 
-  public bool isUsingDopple() {
-    return usingDopple;
-  }
-
   public bool isUsingTransformer() {
     return usingTransformer;
-  }
-
-  public bool isTrapped() {
-    return trapped;
   }
 
   public void stopEMP() {

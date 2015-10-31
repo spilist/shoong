@@ -9,8 +9,5 @@ public class Skill_Blink : Skill {
   }
 
 	override public void afterActivate(bool val) {
-    Camera.main.GetComponent<CameraMover>().setSlowly(val);
-
-    if (!val) Player.pl.afterStrengthenStart();
   }
 }
