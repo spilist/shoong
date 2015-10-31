@@ -12,8 +12,12 @@ public class RhythmRing : MonoBehaviour {
   float minBoosterOkScale;
   float maxBoosterOkScale;
   float rightBeatScale;
+  float disappearDuration;
   bool maxMsgSended = false;
   bool minMsgSended = false;
+  bool disappearing = false;
+  float alpha;
+  Color color;
   private SpriteRenderer sRenderer;
 
   void Awake() {
@@ -21,43 +25,67 @@ public class RhythmRing : MonoBehaviour {
     originalSkillRing = skillRing;
     sRenderer = GetComponent<SpriteRenderer>();
     originalColor = sRenderer.color;
-  }
 
-  void OnEnable() {
-    transform.localScale = startScale * Vector3.one;
-    sRenderer.color = originalColor;
-    scale = startScale;
-    maxMsgSended = false;
-    minMsgSended = false;
-    skillRing = originalSkillRing;
     minBoosterOkScale = RhythmManager.rm.minBoosterOkScale;
     maxBoosterOkScale = RhythmManager.rm.maxBoosterOkScale;
     rightBeatScale = RhythmManager.rm.rightBeatScale;
+    disappearDuration = RhythmManager.rm.ringDisppearDuration;
+  }
+
+  void OnEnable() {
+    sRenderer.enabled = true;
+    transform.localScale = startScale * Vector3.one;
+    sRenderer.color = originalColor;
+    scale = startScale;
+    color = originalColor;
+    alpha = 1;
+    maxMsgSended = false;
+    minMsgSended = false;
+    disappearing = false;
+    skillRing = originalSkillRing;
 
     beat = RhythmManager.rm.samplePeriod;
   }
 
   void Update() {
-    scale = Mathf.MoveTowards(scale, 0, Time.deltaTime * (startScale - rightBeatScale) / beat);
-    transform.localScale = scale * Vector3.one;
+    if (disappearing) {
+      alpha = Mathf.MoveTowards(alpha, 0, Time.deltaTime / disappearDuration);
+      color.a = alpha;
+      sRenderer.color = color;
+      if (alpha == 0) {
+        disappearing = false;
+        gameObject.SetActive(false);
+      }
+    } else {
+      scale = Mathf.MoveTowards(scale, 0, Time.deltaTime * (startScale - rightBeatScale) / beat);
+      transform.localScale = scale * Vector3.one;
 
-    if (!feverRing) {
-      if (!maxMsgSended && scale <= maxBoosterOkScale) {
-        maxMsgSended = true;
-        RhythmManager.rm.boosterOk(true, skillRing);
+      if (!feverRing) {
+        if (!maxMsgSended && scale <= maxBoosterOkScale) {
+          maxMsgSended = true;
+          RhythmManager.rm.boosterOk(true, skillRing);
+        }
+
+        if (sRenderer.enabled && scale <= rightBeatScale) {
+          sRenderer.enabled = false;
+        }
+
+        if (!minMsgSended && scale <= minBoosterOkScale) {
+          minMsgSended = true;
+          RhythmManager.rm.boosterOk(false, false);
+          RhythmManager.rm.afterRing(true);
+        }
       }
 
-      if (!minMsgSended && scale <= minBoosterOkScale) {
-        minMsgSended = true;
-        RhythmManager.rm.boosterOk(false, false);
-        RhythmManager.rm.afterRing(true);
+      if (scale == 0) {
+        RhythmManager.rm.ringSkipped(skillRing);
+        gameObject.SetActive(false);
       }
     }
+  }
 
-    if (scale == 0) {
-      RhythmManager.rm.ringSkipped(skillRing);
-      gameObject.SetActive(false);
-    }
+  public void disappear() {
+    disappearing = true;
   }
 
   void OnDisable() {

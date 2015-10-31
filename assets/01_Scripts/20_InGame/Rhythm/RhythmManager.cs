@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 using SynchronizerData;
@@ -9,21 +10,26 @@ public class RhythmManager : MonoBehaviour {
   public GameObject normalRing;
   public GameObject skillRing;
   public GameObject feverRing;
-  public Color normalColor;
+  public GameObject failedRhythmPrefab;
+  public Transform inGameUI;
   public int ringAmount = 2;
   public List<GameObject> normalRingPool;
   public List<GameObject> skillRingPool;
   public List<GameObject> feverRingPool;
+  public List<GameObject> failedRhythmPool;
 
   public float bpm;
   public float beatBase;
   public float maxBoosterOkScale = 4;
   public float rightBeatScale = 3;
   public float minBoosterOkScale = 2;
+  public float ringDisppearDuration = 0.5f;
+  public float playerScaleUpAmount = 1.2f;
 
   private int numNormalInLoop;
   private int numSkillInLoop;
 
+  public Color normalColor;
   public float samplePeriod;
   public bool isBoosterOK = false;
   public bool isSkillOK = false;
@@ -50,6 +56,8 @@ public class RhythmManager : MonoBehaviour {
     normalRingPool = new List<GameObject>();
     skillRingPool = new List<GameObject>();
     feverRingPool = new List<GameObject>();
+    failedRhythmPool = new List<GameObject>();
+
     for (int i = 0; i < ringAmount; ++i) {
       GameObject obj = (GameObject) Instantiate(normalRing);
       obj.SetActive(false);
@@ -65,6 +73,11 @@ public class RhythmManager : MonoBehaviour {
       obj.SetActive(false);
       obj.transform.parent = rhythmRings;
       feverRingPool.Add(obj);
+
+      obj = (GameObject) Instantiate(failedRhythmPrefab);
+      obj.SetActive(false);
+      obj.transform.SetParent(inGameUI, false);
+      failedRhythmPool.Add(obj);
     }
 
     beating = true;
@@ -88,7 +101,7 @@ public class RhythmManager : MonoBehaviour {
     beating = false;
   }
 
-  GameObject getRing(List<GameObject> list, GameObject prefab) {
+  void getRing(List<GameObject> list, GameObject prefab) {
     GameObject ring = null;
     for (int i = 0; i < list.Count; i++) {
       if (!list[i].activeInHierarchy) {
@@ -107,7 +120,25 @@ public class RhythmManager : MonoBehaviour {
     lastRing = currentRing;
     currentRing = ring;
     ring.SetActive(true);
-    return ring;
+  }
+
+  void rhythmFailed(string text) {
+    GameObject failed = null;
+    for (int i = 0; i < failedRhythmPool.Count; i++) {
+      if (!failedRhythmPool[i].activeInHierarchy) {
+        failed = failedRhythmPool[i];
+        break;
+      }
+    }
+
+    if (failed == null) {
+      failed = (GameObject) Instantiate(failedRhythmPrefab);
+      failed.transform.SetParent(inGameUI, false);
+      failedRhythmPool.Add(failed);
+    }
+
+    failed.GetComponent<Text>().text = text;
+    failed.SetActive(true);
   }
 
 	void invokeRing() {
@@ -141,6 +172,7 @@ public class RhythmManager : MonoBehaviour {
     } else {
       isBoosterOK = boosterRing;
       isSkillOK = skillRing;
+      Player.pl.scaleChange(boosterRing, playerScaleUpAmount);
     }
   }
 
@@ -159,7 +191,7 @@ public class RhythmManager : MonoBehaviour {
       skillActivated = false;
 
       if (isAfterRing) {
-        lastRing.SetActive(false);
+        lastRing.GetComponent<RhythmRing>().disappear();
         currentRing.GetComponent<RhythmRing>().skillRing = false;
         currentRing.GetComponent<SpriteRenderer>().color = normalColor;
       }
@@ -172,19 +204,24 @@ public class RhythmManager : MonoBehaviour {
 
   public void ringMissed() {
     ringSuccess = false;
+    rhythmFailed("Missed");
     if (skillActivated) Debug.Log("Failed");
     resetSkillRings();
 
     if (!isAfterRing) {
-      currentRing.SetActive(false);
+      currentRing.GetComponent<RhythmRing>().disappear();
     }
   }
 
   public void ringSkipped(bool skillRing) {
+    if (!gameStarted) return;
+
     if (ringSuccess) {
       ringSuccess = false;
       return;
     }
+
+    rhythmFailed("Skipped");
 
     if (skillRing) {
       if (skillActivated) Debug.Log("skipped");
@@ -199,7 +236,10 @@ public class RhythmManager : MonoBehaviour {
 
   public void setFever(bool val) {
     feverTime = val;
-    if (val) getRing(feverRingPool, feverRing);
+    Player.pl.scaleChange(val, playerScaleUpAmount);
+    if (val) {
+      getRing(feverRingPool, feverRing);
+    }
   }
 
   public void loopSkillActivated(bool val) {

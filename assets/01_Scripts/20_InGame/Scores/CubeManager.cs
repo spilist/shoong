@@ -12,11 +12,11 @@ public class CubeManager : MonoBehaviour {
   private float currentCount = 0;
   private int cubesHighscore = 0;
   public Text cubesHighscoreText;
-  public GameObject howManyCubesGet;
-  public GameObject howManyBonusCubesGet;
+  // public GameObject howManyCubesGet;
+  // public GameObject howManyBonusCubesGet;
   // public GameObject cubesGetOnSuperheat;
-  public List<GameObject> cubePool;
-  public List<GameObject> bonusCubePool;
+  // public List<GameObject> cubePool;
+  // public List<GameObject> bonusCubePool;
   // public List<GameObject> cubeOnSuperheatPool;
   public int cubeAmount = 20;
   public int pointsPerSeconds = 10;
@@ -34,39 +34,39 @@ public class CubeManager : MonoBehaviour {
     cubesHighscore = DataManager.dm.getInt("BestCubes");
     cubesHighscoreText.text = cubesHighscore.ToString();
 
-    cubePool = new List<GameObject>();
-    bonusCubePool = new List<GameObject>();
+    // cubePool = new List<GameObject>();
+    // bonusCubePool = new List<GameObject>();
     // cubeOnSuperheatPool = new List<GameObject>();
-    for (int i = 0; i < cubeAmount; ++i) {
-      GameObject obj = (GameObject) Instantiate(howManyCubesGet);
-      obj.SetActive(false);
-      obj.transform.SetParent(inGameUI, false);
-      cubePool.Add(obj);
+    // for (int i = 0; i < cubeAmount; ++i) {
+    //   GameObject obj = (GameObject) Instantiate(howManyCubesGet);
+    //   obj.SetActive(false);
+    //   obj.transform.SetParent(inGameUI, false);
+    //   cubePool.Add(obj);
 
-      obj = (GameObject) Instantiate(howManyBonusCubesGet);
-      obj.SetActive(false);
-      obj.transform.SetParent(inGameUI, false);
-      bonusCubePool.Add(obj);
+    //   obj = (GameObject) Instantiate(howManyBonusCubesGet);
+    //   obj.SetActive(false);
+    //   obj.transform.SetParent(inGameUI, false);
+    //   bonusCubePool.Add(obj);
 
       // obj = (GameObject) Instantiate(cubesGetOnSuperheat);
       // obj.SetActive(false);
       // obj.transform.SetParent(inGameUI, false);
       // cubeOnSuperheatPool.Add(obj);
-    }
+    // }
   }
 
-  GameObject getPooledObj(List<GameObject> list, GameObject prefab) {
-    for (int i = 0; i < list.Count; i++) {
-      if (!list[i].activeInHierarchy) {
-        return list[i];
-      }
-    }
+  // GameObject getPooledObj(List<GameObject> list, GameObject prefab) {
+  //   for (int i = 0; i < list.Count; i++) {
+  //     if (!list[i].activeInHierarchy) {
+  //       return list[i];
+  //     }
+  //   }
 
-    GameObject obj = (GameObject) Instantiate(prefab);
-    obj.transform.SetParent(transform.parent, false);
-    list.Add(obj);
-    return obj;
-  }
+  //   GameObject obj = (GameObject) Instantiate(prefab);
+  //   obj.transform.SetParent(transform.parent, false);
+  //   list.Add(obj);
+  //   return obj;
+  // }
 
   public void addCount(int cubesGet, int bonus = 0) {
     EnergyManager.em.getHealthByCubes(cubesGet + bonus);
@@ -79,15 +79,16 @@ public class CubeManager : MonoBehaviour {
     //   instance.SetActive(true);
     //   instance.GetComponent<ShowChangeText>().run(cubesGet);
     // } else {
-      GameObject instance = getPooledObj(cubePool, howManyCubesGet);
-      instance.SetActive(true);
-      instance.GetComponent<ShowChangeText>().run(cubesGet);
 
-      if (bonus > 0) {
-        GameObject bonusInstance = getPooledObj(bonusCubePool, howManyBonusCubesGet);
-        bonusInstance.SetActive(true);
-        bonusInstance.GetComponent<ShowChangeText>().run(bonus);
-      }
+      // GameObject instance = getPooledObj(cubePool, howManyCubesGet);
+      // instance.SetActive(true);
+      // instance.GetComponent<ShowChangeText>().run(cubesGet);
+
+      // if (bonus > 0) {
+      //   GameObject bonusInstance = getPooledObj(bonusCubePool, howManyBonusCubesGet);
+      //   bonusInstance.SetActive(true);
+      //   bonusInstance.GetComponent<ShowChangeText>().run(bonus);
+      // }
     // }
 
     // SuperheatManager.sm.addGuage((cubesGet + bonus) * SuperheatManager.sm.guagePerCube);

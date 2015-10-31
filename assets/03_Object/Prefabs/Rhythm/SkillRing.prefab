@@ -53,6 +53,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillRing: 1
+  feverRing: 0
 --- !u!212 &21276794
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -78,7 +79,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: bc5863fc7b4154ca8859f030cf823ad8, type: 3}
-  m_Color: {r: .324137926, g: 1, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -88,7 +89,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: m_Color.r
-      value: .324137926
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Color.g
@@ -96,7 +97,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Color.b
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: skillRing

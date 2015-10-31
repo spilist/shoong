@@ -80,6 +80,7 @@ public class Player : MonoBehaviour {
   private int numUseObjects = 0;
   public PlayerDirectionIndicator dirIndicator;
   private float timeSpaned;
+  private bool scaleChanged = false;
 
 	void Awake() {
     pl = this;
@@ -297,8 +298,6 @@ public class Player : MonoBehaviour {
     // Debug.Log("Start");
     timeSpaned = 0;
 
-    startBeat();
-
     if (!usingPowerBoost) {
       changeManager.booster.Play();
       changeManager.booster.GetComponent<AudioSource>().Play();
@@ -408,7 +407,7 @@ public class Player : MonoBehaviour {
       usingMagnet = effectOn;
     } else if (objTag == "Monster") {
       ridingMonster = effectOn;
-      minimonCounter = 0;
+      if (effectOn) minimonCounter = 0;
     } else if (objTag == "EMP") {
       usingEMP = effectOn;
       rb.isKinematic = effectOn;
@@ -617,12 +616,18 @@ public class Player : MonoBehaviour {
     reboundScale = CharacterManager.cm.reboundTimeScaleStandard;
   }
 
-  public void startBeat() {
-    GetComponent<Animation>().Play();
-  }
+  // public void startBeat() {
+  //   GetComponent<Animation>().Play();
+  // }
 
-  void scaleBack() {
-    transform.localScale = originalScale * Vector3.one;
+  public void scaleChange(bool val, float amount) {
+    if (!scaleChanged && val) {
+      scaleChanged = true;
+      transform.localScale *= amount;
+    } else if (scaleChanged && !val) {
+      scaleChanged = false;
+      transform.localScale /= amount;
+    }
   }
 
   public void setSpeedBoost(float speedUp, float duration) {
@@ -631,5 +636,9 @@ public class Player : MonoBehaviour {
     speedBoostScale = speedUp;
     speedBoostDuration = duration;
     speedBoostCount = 0;
+  }
+
+  public void scaleBackByMonster() {
+    transform.localScale -= (monm.enlargeScalePerMinimon * minimonCounter) * Vector3.one;
   }
 }

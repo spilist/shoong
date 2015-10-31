@@ -16,7 +16,7 @@ public class Skill_Monster : Skill {
     monsterFilter.SetActive(val);
 
     if (!val) {
-      Player.pl.transform.localScale = Player.pl.originalScale * Vector3.one;
+      Player.pl.scaleBackByMonster();
       Player.pl.afterStrengthenStart();
       foreach (GameObject mm in GameObject.FindGameObjectsWithTag("MiniMonster")) {
         mm.GetComponent<MiniMonsterMover>().destroyObject();
