@@ -11,6 +11,6 @@ public class MagnetManager : ObjectsManager {
   }
 
   override public void adjustForLevel(int level) {
-    objEncounterEffectForPlayer.transform.localScale = Vector3.one * radiusPerLevel[level] / radiusPerLevel[0];
+    objEncounterEffectForPlayer.transform.localScale = Vector3.one * radiusPerLevel[level - 1] / radiusPerLevel[0];
   }
 }

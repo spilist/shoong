@@ -60,7 +60,7 @@ public class DangerousEMPField : MonoBehaviour {
   void OnTriggerEnter(Collider other) {
     if (other.tag == "Player") {
       if (!Player.pl.isInvincible()) {
-        ScoreManager.sm.gameOver("EMP");
+        Player.pl.loseEnergy(dem.loseEnergy(), "DangerousEMPField");
         return;
       }
     }

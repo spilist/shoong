@@ -42,10 +42,13 @@ public class RainbowDonutsManager : ObjectsManager {
       obj.SetActive(false);
       roadPool.Add(obj);
     }
+
+    adjustForLevel(1);
+    run();
   }
 
   override public void adjustForLevel(int level) {
-    numRoadRides = numRoadRidesPerLevel[level];
+    numRoadRides = numRoadRidesPerLevel[level - 1];
   }
 
   override protected void afterSpawn() {

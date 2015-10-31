@@ -82,7 +82,7 @@ public class MonsterManager : ObjectsManager {
   }
 
   override public void adjustForLevel(int level) {
-    numMinimonSpawn = numsMinimonSpawn[level];
+    numMinimonSpawn = numsMinimonSpawn[level - 1];
   }
 
   override public void runImmediately() {

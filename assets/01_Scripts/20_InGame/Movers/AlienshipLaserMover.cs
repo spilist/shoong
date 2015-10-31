@@ -8,6 +8,7 @@ public class AlienshipLaserMover : MonoBehaviour {
   int targetLength;
   float length = 0;
   int rotatingSpeed;
+  int loseEnergy;
   Transform outer;
 
   float shootingDuration;
@@ -25,6 +26,7 @@ public class AlienshipLaserMover : MonoBehaviour {
     stayDuration = asm.laserStayDuration;
     shrinkingDuration = asm.laserShrinkingDuration;
     rotatingSpeed = asm.laserRotatingSpeed;
+    loseEnergy = asm.laserLoseEnergy;
     outer = transform.Find("Outer");
     this.father = father;
 
@@ -54,7 +56,7 @@ public class AlienshipLaserMover : MonoBehaviour {
 
   void OnTriggerEnter(Collider other) {
     if (other.tag == "Player") {
-      ScoreManager.sm.gameOver("Alienship");
+      Player.pl.loseEnergy(loseEnergy, "Alienship");
       return;
     }
 

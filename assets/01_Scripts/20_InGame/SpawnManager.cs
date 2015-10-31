@@ -15,20 +15,13 @@ public class SpawnManager : MonoBehaviour {
   public void run() {
     GetComponent<FollowTarget>().enabled = false;
 
-    // start spawn obstacles
     GetComponent<AsteroidManager>().enabled = true;
     GetComponent<SmallAsteroidManager>().enabled = true;
 
-    // spawn GoldenCube
     GetComponent<GoldenCubeManager>().enabled = true;
 
-    string subObjectsString = PlayerPrefs.GetString("SubObjects").Trim();
-    if (subObjectsString != "") {
-      string[] subObjects = subObjectsString.Split(' ');
-      foreach (string subObject in subObjects) {
-        runManager(subObject);
-      }
-    }
+    GetComponent<ComboPartsManager>().enabled = true;
+    GetComponent<ComboPartsManager>().adjustForLevel(1);
   }
 
   public void runManager(string objName) {

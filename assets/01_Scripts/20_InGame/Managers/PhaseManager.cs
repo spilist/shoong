@@ -65,18 +65,33 @@ public class PhaseManager : MonoBehaviour {
 
     if (levelName == "IceDebris") {
       icm.enabled = true;
+      cdm.enabled = true;
+      cpm.adjustForLevel(2);
     } else if (levelName == "Minimon") {
       pmm.enabled = true;
+      rdm.enabled = true;
+      cpm.adjustForLevel(3);
+      cdm.adjustForLevel(2);
     } else if (levelName == "Blackhole") {
       blm.enabled = true;
+      spm.enabled = true;
+      cpm.enabled = false;
+      cdm.adjustForLevel(3);
+      rdm.adjustForLevel(2);
     } else if (levelName == "Meteroid") {
       ntm.enabled = true;
+      spm.adjustForLevel(2);
+      rdm.adjustForLevel(3);
     } else if (levelName == "Bomb") {
       dem.enabled = true;
+      em.enabled = true;
+      spm.adjustForLevel(3);
     } else if (levelName == "UFO") {
       asm.enabled = true;
+      em.adjustForLevel(2);
     } else if (levelName == "BigBomb") {
       dem.startLarger();
+      em.adjustForLevel(3);
     }
   }
 

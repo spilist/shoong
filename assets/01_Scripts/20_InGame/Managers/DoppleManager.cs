@@ -39,7 +39,7 @@ public class DoppleManager : ObjectsManager {
   }
 
   override public void adjustForLevel(int level) {
-    targetSize = forceFieldSizePerLevel[level];
+    targetSize = forceFieldSizePerLevel[level - 1];
   }
 
   public float getTargetSize(bool byPlayer) {

@@ -32,12 +32,14 @@ public class EMPManager : ObjectsManager {
 	override public void initRest() {
     skipInterval = true;
     forceField = strengthenPlayerEffect;
+    adjustForLevel(1);
+    run();
   }
 
   override public void adjustForLevel(int level) {
-    targetRadius = forceFieldRadiusPerLevel[level];
-    enlargeSize = cameraEnlargeSizePerLevel[level];
-    shakeAmount = cameraShakeAmountPerLevel[level];
+    targetRadius = forceFieldRadiusPerLevel[level - 1];
+    enlargeSize = cameraEnlargeSizePerLevel[level - 1];
+    shakeAmount = cameraShakeAmountPerLevel[level - 1];
   }
 
   override protected void afterSpawn() {

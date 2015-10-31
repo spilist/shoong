@@ -49,10 +49,12 @@ public class ComboPartsManager : ObjectsManager {
       obj.transform.parent = transform;
       objNextPool.Add(obj);
     }
+
+    run();
   }
 
   override public void adjustForLevel(int level) {
-    fullComboCount = fullComboCountPerLevel[level];
+    fullComboCount = fullComboCountPerLevel[level - 1];
   }
 
   override protected void afterSpawn() {

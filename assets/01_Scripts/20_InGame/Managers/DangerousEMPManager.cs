@@ -50,4 +50,9 @@ public class DangerousEMPManager : ObjectsManager {
     larger = true;
     empScale *= enlargeScale;
   }
+
+  public int loseEnergy() {
+    if (larger) return loseEnergyBigger;
+    else return loseEnergyWhenEncounter;
+  }
 }

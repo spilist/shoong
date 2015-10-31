@@ -33,11 +33,13 @@ public class CubeDispenserManager : ObjectsManager {
 
   override public void initRest() {
     skipInterval = true;
+    adjustForLevel(1);
+    run();
   }
 
   override public void adjustForLevel(int level) {
-    fullComboCount = fullComboCountPerLevel[level];
-    destroyAfterSeconds = destroyAfterPerLevel[level];
+    fullComboCount = fullComboCountPerLevel[level - 1];
+    destroyAfterSeconds = destroyAfterPerLevel[level - 1];
   }
 
   override protected void afterSpawn() {

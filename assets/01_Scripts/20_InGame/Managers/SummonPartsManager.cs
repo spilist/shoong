@@ -60,11 +60,14 @@ public class SummonPartsManager : ObjectsManager {
 
     parentObj = new GameObject();
     parentObj.transform.SetParent(transform);
+
+    adjustForLevel(1);
+    run();
   }
 
   override public void adjustForLevel(int level) {
-    numSpawnZ = numSpawnZPerLevel[level];
-    summonedPartLifetime = summonedPartLifetimePerLevel[level];
+    numSpawnZ = numSpawnZPerLevel[level - 1];
+    summonedPartLifetime = summonedPartLifetimePerLevel[level - 1];
   }
 
   Mesh randomMesh() {

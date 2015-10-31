@@ -9,6 +9,6 @@ public class MetalManager : ObjectsManager {
   }
 
   override public void adjustForLevel(int level) {
-    bonus = destroyBonusPerLevel[level];
+    bonus = destroyBonusPerLevel[level - 1];
   }
 }
