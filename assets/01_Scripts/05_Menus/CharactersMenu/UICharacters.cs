@@ -73,7 +73,11 @@ public class UICharacters : MonoBehaviour {
       charactersMenu.characterName.text = stat.characterName;
       setRarity(charactersMenu.rarity);
 
-      charactersMenu.description.text = stat.skillName();
+      string skillName = stat.skillName();
+      charactersMenu.description.text = skillName;
+      if (skillName != "") {
+        charactersMenu.description.text += ": " + SkillManager.sm.getSkill(skillName).description;
+      }
 
       checkBought();
     }

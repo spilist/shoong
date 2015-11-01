@@ -27,6 +27,11 @@ public class RhythmManager : MonoBehaviour {
   private int numNormalInLoop;
   private int numSkillInLoop;
 
+  public GameObject canBoostText;
+  public Image boostImage;
+  public Color inactiveBoostImageColor;
+  public Color activeBoostImageColor;
+
   public Color normalColor;
   public float samplePeriod;
   public bool isBoosterOK = false;
@@ -233,5 +238,14 @@ public class RhythmManager : MonoBehaviour {
 
   public void loopSkillActivated(bool val) {
     skillActivated = val;
+  }
+
+  public void turnBoostOK(bool val) {
+    canBoostText.SetActive(val);
+    if (val) {
+      boostImage.color = activeBoostImageColor;
+    } else {
+      boostImage.color = inactiveBoostImageColor;
+    }
   }
 }

@@ -5,7 +5,6 @@ using System.Collections;
 public class CharactersMenu : Draggable {
   public Material activeCharactersMaterial;
   public float selectedCharacterRotationSpeed = 30;
-  public GameObject cubeYouHave;
   public GameObject goldenCubeYouHave;
   public CharacterSelectButton selectButton;
   public CharacterBuyButton buyButton;
@@ -25,7 +24,6 @@ public class CharactersMenu : Draggable {
   private bool justOpened = true;
 
   void OnEnable() {
-    cubeYouHave.SetActive(true);
     goldenCubeYouHave.SetActive(true);
 
     int charactersCount = 0;
@@ -66,7 +64,6 @@ public class CharactersMenu : Draggable {
   }
 
   void OnDisable() {
-    cubeYouHave.SetActive(false);
     goldenCubeYouHave.SetActive(false);
   }
 }

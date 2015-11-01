@@ -587,9 +587,11 @@ public class Player : MonoBehaviour {
     if (!scaleChanged && val) {
       scaleChanged = true;
       transform.localScale *= amount;
+      RhythmManager.rm.turnBoostOK(true);
     } else if (scaleChanged && !val) {
       scaleChanged = false;
       transform.localScale /= amount;
+      RhythmManager.rm.turnBoostOK(false);
     }
   }
 

@@ -10,8 +10,6 @@ public class CubeManager : MonoBehaviour {
   public int increaseSpeed = 5;
   public Text cubesCount;
   private float currentCount = 0;
-  private int cubesHighscore = 0;
-  public Text cubesHighscoreText;
 
   public int pointsPerSeconds = 10;
   private float bonusRate;
@@ -22,11 +20,6 @@ public class CubeManager : MonoBehaviour {
     cm = this;
     cubesCount.text = "0";
     bonusRate = 1;
-  }
-
-  void Start() {
-    cubesHighscore = DataManager.dm.getInt("BestCubes");
-    cubesHighscoreText.text = cubesHighscore.ToString();
   }
 
   public void addCount(int cubesGet) {
@@ -57,10 +50,6 @@ public class CubeManager : MonoBehaviour {
       }
 
       cubesCount.text = (currentCount + pointsByTime).ToString("0");
-
-      if (currentCount > cubesHighscore) {
-        cubesHighscoreText.text = (currentCount + pointsByTime).ToString("0");
-      }
     }
   }
 

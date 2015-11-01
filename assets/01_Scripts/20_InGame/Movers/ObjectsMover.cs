@@ -32,7 +32,7 @@ public class ObjectsMover : MonoBehaviour {
     objectsManager = (ObjectsManager) GameObject.Find("Field Objects").GetComponent(getManager());
 
     if (isNegativeObject()) {
-      transSkill = (Skill_Transform)SkillManager.sm.getSkill("Transform");
+      transSkill = (Skill_Transform)SkillManager.sm.getSkill("Polymorph");
     }
 
     shrinkedScale = transform.localScale.x;

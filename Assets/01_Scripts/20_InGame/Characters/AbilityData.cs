@@ -46,7 +46,7 @@ namespace AbilityData {
     Heal = 1,
     Fever = 2,
     Boost = 4,
-    Transform = 8,
+    Polymorph = 8,
     Magnet = 16,
     Monster = 32,
     Metal = 64,

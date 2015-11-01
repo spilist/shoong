@@ -7,6 +7,7 @@ public class Skill : MonoBehaviour {
   public GameObject useSkillEffect;
   public int normalRing;
   public int skillRing;
+  public string description;
   public float duration;
   private bool activated;
 
