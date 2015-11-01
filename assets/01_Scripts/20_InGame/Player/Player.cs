@@ -77,6 +77,7 @@ public class Player : MonoBehaviour {
   public PlayerDirectionIndicator dirIndicator;
   private float timeSpaned;
   private bool scaleChanged = false;
+  private bool feverTime = false;
 
 	void Awake() {
     pl = this;
@@ -583,12 +584,18 @@ public class Player : MonoBehaviour {
   //   GetComponent<Animation>().Play();
   // }
 
+  public void setFever(bool val) {
+    feverTime = val;
+  }
+
   public void scaleChange(bool val, float amount) {
+    if (feverTime) return;
+
     if (!scaleChanged && val) {
       scaleChanged = true;
       transform.localScale *= amount;
       RhythmManager.rm.turnBoostOK(true);
-    } else if (scaleChanged && !val) {
+    } else if (scaleChanged && !val && !feverTime) {
       scaleChanged = false;
       transform.localScale /= amount;
       RhythmManager.rm.turnBoostOK(false);

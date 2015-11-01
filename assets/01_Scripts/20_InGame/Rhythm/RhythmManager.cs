@@ -231,7 +231,7 @@ public class RhythmManager : MonoBehaviour {
 
   public void setFever(bool val) {
     feverTime = val;
-    Player.pl.scaleChange(val, playerScaleUpAmount);
+    Player.pl.setFever(val);
     if (val) {
       isSkillOK = false;
     }
