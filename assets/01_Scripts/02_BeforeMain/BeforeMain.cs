@@ -4,11 +4,10 @@ using System.Collections;
 
 public class BeforeMain : MonoBehaviour {
   public Text copyright;
-  public Text tips;
-  public float tipShowAfter = 0.3f;
-  public float tipAlphaChangeDuration = 0.2f;
-  private float tipHideCount = 0;
-  private Color tipColor;
+  private Color copyrightColor;
+  public float copyrightShowAfter = 0.3f;
+  public float copyrightAlphaChangeDuration = 0.2f;
+  private float copyrightHideCount = 0;
 
   public GameObject title;
   public float movingDuration = 0.6f;
@@ -39,20 +38,7 @@ public class BeforeMain : MonoBehaviour {
     characterPosX = titlePosX;
     characterMoveDistance = distance;
 
-    tipColor = new Color(1, 1, 1, 0);
-
-    Tip[] availableTips = new Tip[tips.transform.childCount];
-    int availableTipsCount = 0;
-    foreach (Transform tr in tips.transform) {
-      Tip tip = tr.GetComponent<Tip>();
-      if (tip.isAvailable()) {
-        availableTips[availableTipsCount++] = tip;
-      }
-    }
-
-    Tip selected = availableTips[Random.Range(0, availableTipsCount)];
-    tips.text = selected.description;
-    DataManager.dm.setInt("LastTipIndex", int.Parse(selected.name));
+    copyrightColor = new Color(1, 1, 1, 0);
 	}
 
 	void Update () {
@@ -97,12 +83,11 @@ public class BeforeMain : MonoBehaviour {
         }
       }
 
-      if (tipHideCount < tipShowAfter) {
-        tipHideCount += Time.deltaTime;
+      if (copyrightHideCount < copyrightShowAfter) {
+        copyrightHideCount += Time.deltaTime;
       } else {
-        tipColor.a = Mathf.MoveTowards(tipColor.a, 1, Time.deltaTime / tipAlphaChangeDuration);
-        tips.color = tipColor;
-        copyright.color = tipColor;
+        copyrightColor.a = Mathf.MoveTowards(copyrightColor.a, 1, Time.deltaTime / copyrightAlphaChangeDuration);
+        copyright.color = copyrightColor;
       }
     }
 	}

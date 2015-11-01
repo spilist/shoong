@@ -7,13 +7,12 @@ public class BeforeIdle : MonoBehaviour {
   public SpawnManager spawnManager;
   public MeshRenderer titleFilter;
   public GameObject title;
-  public GameObject powerBoostUI;
+  // public GameObject powerBoostUI;
   public Text copyright;
   private Color copyrightColor;
   private float copyrightChangeTo;
 
   public GameObject character;
-  public Text totalCubes;
   private Color characterColor;
   public float characterMovingDuration = 0.6f;
   private float characterPosX;
@@ -24,13 +23,6 @@ public class BeforeIdle : MonoBehaviour {
   private float characterStayCount = 0;
   private bool boosterPlayed = false;
   private float boosterStayCount = 0;
-
-  public Text tips;
-  public float tipShowAfter = 0.3f;
-  public float tipAlphaChangeDuration = 0.2f;
-  private float tipHideCount = 0;
-  private Color tipColor;
-  private bool showTip = false;
 
   public float stayDuration = 0.5f;
   private float stayCount = 0;
@@ -54,21 +46,15 @@ public class BeforeIdle : MonoBehaviour {
     filterChangeTo = 0;
     stayCount = 0;
 
-    showTip = true;
-    tipColor = tips.color;
     characterColor = character.GetComponent<Renderer>().material.color;
 
     changeCharacter(PlayerPrefs.GetString("SelectedCharacter"));
-
-    tips.text = tips.transform.GetChild(DataManager.dm.getInt("LastTipIndex")).GetComponent<Tip>().description;
 
     string[] rots = PlayerPrefs.GetString("CharacterRotation").Split(',');
     character.transform.rotation = Quaternion.Euler(float.Parse(rots[0]), float.Parse(rots[1]), float.Parse(rots[2]));
 
     string[] angVals = PlayerPrefs.GetString("CharacterAngVal").Split(',');
     character.GetComponent<Rigidbody>().angularVelocity = new Vector3(float.Parse(angVals[0]), float.Parse(angVals[1]), float.Parse(angVals[2]));
-
-    totalCubes.text = DataManager.dm.getInt("TotalCubes").ToString();
   }
 
   void Update() {
@@ -79,11 +65,6 @@ public class BeforeIdle : MonoBehaviour {
         filterColor.a = Mathf.MoveTowards(filterColor.a, filterChangeTo, Time.deltaTime / filterChangingDuration);
         titleFilter.material.color = filterColor;
 
-        if (showTip) {
-          tipColor.a = Mathf.MoveTowards(tipColor.a, 0, Time.deltaTime / filterChangingDuration);
-          tips.color = tipColor;
-        }
-
         if (filterChangeTo == 0) {
           characterColor.a = Mathf.MoveTowards(characterColor.a, filterChangeTo, Time.deltaTime / filterChangingDuration);
           character.GetComponent<Renderer>().material.color = characterColor;
@@ -91,7 +72,6 @@ public class BeforeIdle : MonoBehaviour {
 
         if (filterColor.a == filterChangeTo) {
           filterChanging = false;
-          showTip = false;
           if (filterChangeTo == 0) {
             titleFilter.gameObject.SetActive(false);
             character.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
@@ -114,7 +94,7 @@ public class BeforeIdle : MonoBehaviour {
       if (titlePosX == titleMoveTo) {
         titleMoving = false;
 
-        if (copyright.color.a == 0) powerBoostUI.SetActive(true);
+        // if (copyright.color.a == 0) powerBoostUI.SetActive(true);
       }
     }
 
@@ -145,18 +125,9 @@ public class BeforeIdle : MonoBehaviour {
             PlayerPrefs.SetString("CharacterRotation", rot.ToString().TrimStart('(').TrimEnd(')'));
             PlayerPrefs.SetString("CharacterAngVal", angVal.ToString().TrimStart('(').TrimEnd(')'));
 
-            // AudioManager.am.setPitch(0);
             Application.LoadLevelAsync(Application.loadedLevel);
           }
         }
-      }
-
-      if (tipHideCount < tipShowAfter) {
-        tipHideCount += Time.deltaTime;
-      } else {
-        tipColor.a = Mathf.MoveTowards(tipColor.a, 1, Time.deltaTime / tipAlphaChangeDuration);
-        tips.color = tipColor;
-        copyright.color = tipColor;
       }
     }
   }
@@ -194,19 +165,6 @@ public class BeforeIdle : MonoBehaviour {
     characterMoveDistance = Mathf.Abs(characterMoveStart);
     character.GetComponent<Renderer>().material.color = new Color(1, 1, 1, 1);
     character.GetComponent<RectTransform>().anchoredPosition = new Vector2(characterPosX, character.GetComponent<RectTransform>().anchoredPosition.y);
-
-    Tip[] availableTips = new Tip[tips.transform.childCount];
-    int availableTipsCount = 0;
-    foreach (Transform tr in tips.transform) {
-      Tip tip = tr.GetComponent<Tip>();
-      if (tip.isAvailable()) {
-        availableTips[availableTipsCount++] = tip;
-      }
-    }
-
-    Tip selected = availableTips[Random.Range(0, availableTipsCount)];
-    tips.text = selected.description;
-    DataManager.dm.setInt("LastTipIndex", int.Parse(selected.name));
   }
 
   void changeCharacter(string characterName) {
