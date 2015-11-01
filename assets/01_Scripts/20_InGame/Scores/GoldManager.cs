@@ -64,22 +64,20 @@ public class GoldManager : MonoBehaviour {
     goldText.text = count.ToString();
   }
 
-  public void add(Vector3 pos, int amount = 1, bool withEffect = true, bool generateCube = true) {
+  public void add(Vector3 pos, int amount = 1, bool withEffect = true) {
 
     DataManager.dm.increment("CurrentGoldenCubes", amount);
     DataManager.dm.increment("TotalGoldenCubes", amount);
 
-    if (generateCube) {
-      for (int i = 0; i < amount; ++i) {
-        generateGoldCube(pos);
-      }
+    for (int i = 0; i < amount; ++i) {
+      generateGoldCube(pos);
+      GetComponent<AudioSource>().Play();
     }
   }
 
   public void addCountIngame() {
     count++;
     goldText.text = count.ToString();
-    GetComponent<AudioSource>().Play();
   }
 
   public int getCount() {

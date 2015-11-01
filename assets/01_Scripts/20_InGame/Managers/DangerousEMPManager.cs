@@ -48,7 +48,7 @@ public class DangerousEMPManager : ObjectsManager {
 
   public void startLarger() {
     larger = true;
-    empScale *= enlargeScale;
+    empScale = enlargeScale;
   }
 
   public int loseEnergy() {

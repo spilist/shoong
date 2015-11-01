@@ -52,10 +52,11 @@ public class CharacterCreateButton : MenusBehavior {
     foreach (Transform tr in characters) {
       UICharacters uic = tr.GetComponent<UICharacters>();
       if (uic.name == "robotcogi") continue;
+      CharacterStat stat = CharacterManager.cm.character(uic.name);
 
-      if (uic.stat.rarity == Rarity.Common) commons.Add(uic);
-      else if (uic.stat.rarity == Rarity.Rare) rares.Add(uic);
-      else if (uic.stat.rarity == Rarity.Epic) epics.Add(uic);
+      if (stat.rarity == Rarity.Common) commons.Add(uic);
+      else if (stat.rarity == Rarity.Rare) rares.Add(uic);
+      else if (stat.rarity == Rarity.Epic) epics.Add(uic);
     }
   }
 
@@ -88,6 +89,7 @@ public class CharacterCreateButton : MenusBehavior {
     nextChance.SetActive(false);
     shareButton.gameObject.SetActive(false);
     selectButton.gameObject.SetActive(false);
+    rarity.text = "";
     GetComponent<RectTransform>().anchoredPosition = new Vector2(0, GetComponent<RectTransform>().anchoredPosition.y);
   }
 
@@ -176,7 +178,7 @@ public class CharacterCreateButton : MenusBehavior {
     createdCharacter.GetComponent<MeshFilter>().sharedMesh = randomCharacter.GetComponent<MeshFilter>().sharedMesh;
     createdCharacter.SetActive(true);
 
-    characterName.text = randomCharacter.stat.characterName;
+    characterName.text = CharacterManager.cm.character(randomCharacter.name).characterName;
     characterName.enabled = true;
     randomCharacter.setRarity(rarity);
     selectButton.setCharacter(randomCharacter.name);

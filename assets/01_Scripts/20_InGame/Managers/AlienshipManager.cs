@@ -10,6 +10,7 @@ public class AlienshipManager : ObjectsManager {
   public int laserPoolAmount = 30;
 
   public int spawnRadius = 200;
+  public int detectDistance = 200;
   public int headFollowingSpeed = 100;
   public int shootLaserPer = 10;
   public float chargeTime = 0.5f;
@@ -47,10 +48,13 @@ public class AlienshipManager : ObjectsManager {
   }
 
   override public float getSpeed() {
-    if (Vector3.Distance(player.transform.position, instance.transform.position) < 10) {
+    float distance = Vector3.Distance(player.transform.position, instance.transform.position);
+    if (distance > detectDistance) {
+      return speed + player.getSpeed() * offScreenSpeedScale;
+    } else if (distance < 10) {
       return player.getSpeed();
     } else {
-      return speed + player.getSpeed() * offScreenSpeedScale;
+      return speed;
     }
   }
 

@@ -47,7 +47,6 @@ public class EMPManager : ObjectsManager {
     radius = 1;
     stayCount = 0;
     cameraSize = Camera.main.orthographicSize;
-    targetSize = cameraSize + enlargeSize;
 
     int random = Random.Range(0, chanceBase);
     if (random < goldenChance) {
@@ -78,8 +77,10 @@ public class EMPManager : ObjectsManager {
 
   public void generateForceField() {
     Camera.main.GetComponent<CameraMover>().shakeUntilStop(shakeAmount);
-    status = 1;
     forceField.GetComponent<ForceField>().setProperty(shellMat, isGolden);
+    targetSize = cameraSize + enlargeSize;
+
+    status = 1;
   }
 
   void Update() {

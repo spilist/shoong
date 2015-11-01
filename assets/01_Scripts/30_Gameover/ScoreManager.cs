@@ -40,6 +40,7 @@ public class ScoreManager : MonoBehaviour {
   private int gameOverStatus = 0;
   public GameObject inGameUI;
   public GameObject gameOverUI;
+  public GameObject energyDangerFilter;
   public GameObject gameOverBannerPrefab;
   public Transform bannerButtonsList;
   public Transform randomBannerButtonsList;
@@ -157,6 +158,9 @@ public class ScoreManager : MonoBehaviour {
     contactCollider.SetActive(false);
 
     yield return new WaitForSeconds(showPlayerExplosionDuring);
+
+    energyDangerFilter.SetActive(false);
+
     if (!isScoring) scoreUpdate();
   }
 

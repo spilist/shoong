@@ -21,7 +21,7 @@ public class UICharacters : MonoBehaviour {
   }
 
   void Start () {
-    charactersMenu = GameObject.Find("CharactersMenu").GetComponent<CharactersMenu>();
+    charactersMenu = transform.parent.parent.GetComponent<CharactersMenu>();
     originalPosition = transform.localPosition;
     originalRotation = transform.localRotation;
     originalScale = transform.localScale;
@@ -38,7 +38,10 @@ public class UICharacters : MonoBehaviour {
 	}
 
   public void setRarity(Text text) {
-    Rarity rarity = stat.rarity;
+    Rarity rarity = CharacterManager.cm.character(name).rarity;
+    if (charactersMenu == null) {
+      charactersMenu = transform.parent.parent.GetComponent<CharactersMenu>();
+    }
 
     if (rarity == Rarity.Common) {
       text.text = "Common";

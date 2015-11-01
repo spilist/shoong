@@ -25,6 +25,7 @@ public class RainbowDonutsManager : ObjectsManager {
   public float pitchStart = 0.9f;
   public float pitchIncrease = 0.1f;
 
+  private int currentRoadRide;
   private int rideCount = 0;
   private bool drawingRainbowRoad = false;
   private bool erasingRainbowRoad = false;
@@ -72,11 +73,12 @@ public class RainbowDonutsManager : ObjectsManager {
 
     if (rideCount == 0) {
       player.encounterObject("RainbowDonut");
+      currentRoadRide = numRoadRides;
     }
 
     player.setRidingRainbowRoad(false);
 
-    if (rideCount < numRoadRides) {
+    if (rideCount < currentRoadRide) {
       ridingSpeed = speedPerRide[rideCount];
 
       objEncounterEffectForPlayer.Play();
@@ -155,7 +157,7 @@ public class RainbowDonutsManager : ObjectsManager {
   }
 
   public bool moreRide() {
-    return rideCount < numRoadRides;
+    return rideCount < currentRoadRide;
   }
 
   public void destroyInstances() {

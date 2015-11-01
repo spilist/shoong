@@ -21,6 +21,8 @@ public class DangerousEMPMover : ObjectsMover {
   bool unstable = false;
   bool scaleUp = true;
 
+  Transform dangerousArea;
+
   override public string getManager() {
     return "DangerousEMPManager";
   }
@@ -45,6 +47,8 @@ public class DangerousEMPMover : ObjectsMover {
       colorChangeDuration += duration;
       duration -= decreaseDurationPerPulse;
     }
+
+    dangerousArea = transform.Find("DangerousArea");
   }
 
   protected override void afterEnable() {
@@ -52,6 +56,7 @@ public class DangerousEMPMover : ObjectsMover {
     color = originalColor;
     startDuration = dem.startDuration;
     unstable = true;
+    dangerousArea.transform.eulerAngles = new Vector3(90, 0, 0);
   }
 
   override public void destroyObject(bool destroyEffect = true, bool byPlayer = false) {
