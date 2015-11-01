@@ -4,34 +4,34 @@ using System;
 using System.Collections;
 
 public class FreeRewardBannerButton : BannerButton {
-  public Text goldenCubeText;
+  public FreeGift freeGift;
   public int minReward = 70;
   public int maxReward = 140;
+  private int reward;
 
   public float[] nextRewardMinutes;
 
-  private bool active = true;
-
   override public void activateSelf() {
-    if (!active) return;
+    gameOverUI.SetActive(false);
+    reward = UnityEngine.Random.Range(minReward, maxReward + 1);
 
-    // 골드큐브 연출
-    int reward = UnityEngine.Random.Range(minReward, maxReward + 1);
+    freeGift.run(this, reward);
 
-    goldenCubeText.text = (int.Parse(goldenCubeText.text) + reward).ToString();
+    stopBlink();
 
-    DataManager.dm.increment("CurrentGoldenCubes", reward);
-    DataManager.dm.increment("TotalGoldenCubes", reward);
-    DataManager.dm.increment("FreeRewardCount");
-    DataManager.dm.setDateTime("LastFreeRewardTime");
-
-    // stopBlink();
-    // filter.sharedMesh = inactiveMesh;
-    active = false;
-    playTouchSound = false;
+    GetComponent<MeshRenderer>().enabled = false;
+    GetComponent<Collider>().enabled = false;
   }
 
-  override public bool available(int spaceLeft) {
+  public void endFreeGift() {
+    gameOverUI.SetActive(true);
+    gold.change(reward);
+    DataManager.dm.increment("FreeRewardCount");
+    DataManager.dm.setDateTime("LastFreeRewardTime");
+    transform.parent.GetComponent<Text>().text = "            " + reward + " GOLDS EARNED";
+  }
+
+  override public bool available() {
     float minPassed = (float) (DateTime.Now - DataManager.dm.getDateTime("LastFreeRewardTime")).TotalMinutes;
 
     int rewardCount = DataManager.dm.getInt("FreeRewardCount") >= nextRewardMinutes.Length ? (nextRewardMinutes.Length - 1) : DataManager.dm.getInt("FreeRewardCount");

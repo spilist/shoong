@@ -31,6 +31,7 @@ public class CharacterCreateButton : MenusBehavior {
   public CharacterSelectButton selectButton;
   public GameObject backButton;
   public GameObject goldenCubesYouHave;
+  public GameOverGoldCubes gameOverGoldCubes;
   public Color notAffordableTextColor;
 
   public int originalSize = 200;
@@ -101,6 +102,7 @@ public class CharacterCreateButton : MenusBehavior {
     nextChance.SetActive(false);
     shareButton.gameObject.SetActive(false);
     selectButton.gameObject.SetActive(false);
+    goldenCubesYouHave.SetActive(true);
     rarity.text = "";
     GetComponent<RectTransform>().anchoredPosition = new Vector2(0, GetComponent<RectTransform>().anchoredPosition.y);
   }
@@ -186,6 +188,7 @@ public class CharacterCreateButton : MenusBehavior {
 
     GoldManager.gm.buy(createPrice);
     goldenCubesYouHave.GetComponent<CubesYouHave>().buy(createPrice);
+    gameOverGoldCubes.change(-createPrice, false);
 
     createdCharacter.GetComponent<MeshFilter>().sharedMesh = randomCharacter.GetComponent<MeshFilter>().sharedMesh;
     createdCharacter.SetActive(true);

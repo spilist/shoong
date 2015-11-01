@@ -102,7 +102,7 @@ public class DataManager : MonoBehaviour {
     strings.Clear();
     dateTimes.Clear();
 
-    ints["BatterySavingSetting"] = 60;
+    ints["BatterySavingSetting"] = normalFrameRate;
     ints["CurrentCubes"] = resetCube;
     ints["TotalCubes"] = resetCube;
     ints["CurrentGoldenCubes"] = resetGoldenCube;

@@ -61,7 +61,10 @@ public class GoldManager : MonoBehaviour {
 
   public void addOutsideGame(int amount) {
     count += amount;
+
     goldText.text = count.ToString();
+
+    DataManager.dm.increment("CurrentGoldenCubes", amount);
   }
 
   public void add(Vector3 pos, int amount = 1, bool withEffect = true) {

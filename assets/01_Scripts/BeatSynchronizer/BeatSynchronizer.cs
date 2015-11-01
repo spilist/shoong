@@ -10,6 +10,8 @@ public class BeatSynchronizer : MonoBehaviour {
 
 	public float bpm = 120f;		// Tempo in beats per minute of the audio clip.
 	public float startDelay = 1f;	// Number of seconds to delay the start of audio playback.
+	public float volumeSmall = 0.1f;
+	public float volumeBig = 0.35f;
 	public delegate void AudioStartAction(double syncTime);
 	public static event AudioStartAction OnAudioStart;
 

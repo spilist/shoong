@@ -4,16 +4,14 @@ using System.Collections;
 public class AudioManager : MonoBehaviour {
   public static AudioManager am;
 
-  public float mainIngameVolume = 0.3f;
-  public float mainSmallVolume = 0.05f;
-  public float mainOriginalPitch = 1;
-  public float mainPitchIncrease = 0.05f;
   // public float powerBoostVolumeOn = 0.5f;
   public float volumeChangeDuration = 0.5f;
   // public float powerBoostStartOn = 5;
 
   private AudioSource main;
   private float mainVolume;
+  private float volumeBig;
+  private float volumeSmall;
   private float targetMainVolume;
   private float mainVolumeDiff;
   private bool changeMainVolume = false;
@@ -36,11 +34,13 @@ public class AudioManager : MonoBehaviour {
     if (main != null) main.gameObject.SetActive(false);
 
     main = transform.Find(name).GetComponent<AudioSource>();
+    volumeBig = main.GetComponent<BeatSynchronizer>().volumeBig;
+    volumeSmall = main.GetComponent<BeatSynchronizer>().volumeSmall;
 
     if (DataManager.dm.getBool("BGMOffSetting")) {
       main.volume = 0;
     } else {
-      main.volume = mainSmallVolume;
+      main.volume = volumeSmall;
     }
 
     main.gameObject.SetActive(true);
@@ -86,11 +86,7 @@ public class AudioManager : MonoBehaviour {
 
   public void muteBGM(bool mute) {
     if (mute) main.volume = 0;
-    else main.volume = mainSmallVolume;
-  }
-
-  public void setPitch(int level) {
-    main.pitch = mainOriginalPitch + mainPitchIncrease * level;
+    else main.volume = volumeSmall;
   }
 
   public void changeVolume(string what, string level) {
@@ -101,9 +97,9 @@ public class AudioManager : MonoBehaviour {
       mainVolume = main.volume;
 
       if (level == "Max") {
-        targetMainVolume = mainIngameVolume;
+        targetMainVolume = volumeBig;
       } else if (level == "Small") {
-        targetMainVolume = mainSmallVolume;
+        targetMainVolume = volumeSmall;
       } else if (level == "Min") {
         targetMainVolume = 0;
       }

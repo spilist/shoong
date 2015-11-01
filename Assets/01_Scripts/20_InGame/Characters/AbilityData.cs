@@ -3,6 +3,15 @@ using System.Collections;
 
 namespace AbilityData {
 
+  public enum BGM {
+    PixelDance,
+    JourneyAwaits,
+    TrialOfSpikes,
+    FullOfStars,
+    DeepInTheCaves,
+    Level_1,
+  }
+
   public enum Rarity {
     Common,
     Rare,

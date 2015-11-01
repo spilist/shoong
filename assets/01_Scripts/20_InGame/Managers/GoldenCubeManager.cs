@@ -3,12 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class GoldenCubeManager : ObjectsManager {
-  public int respawnAfter = 120;
-
   public float spawnRadius = 200;
   public float detectDistance = 200;
-
-  private bool firstSpawn = true;
 
   override public void initRest() {
     run();
@@ -25,11 +21,7 @@ public class GoldenCubeManager : ObjectsManager {
   }
 
   override protected float spawnInterval() {
-    if (firstSpawn) {
-      firstSpawn = false;
-      return Random.Range(minSpawnInterval, maxSpawnInterval);
-    }
-    else return respawnAfter;
+    return Random.Range(minSpawnInterval, maxSpawnInterval);
   }
 
   public void goldenDestroyEffect(Vector3 pos) {

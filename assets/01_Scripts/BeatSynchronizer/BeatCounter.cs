@@ -31,7 +31,7 @@ public class BeatCounter : MonoBehaviour {
 		float audioBpm = audioSource.GetComponent<BeatSynchronizer>().bpm;
 		samplePeriod = (60f / (audioBpm * BeatDecimalValues.values[(int)beatValue])) * audioSource.clip.frequency;
 
-		RhythmManager.rm.setPeriod(samplePeriod / audioSource.clip.frequency);
+		transform.parent.GetComponent<RhythmManager>().setPeriod(samplePeriod / audioSource.clip.frequency);
 
 		if (beatOffset != BeatValue.None) {
 			sampleOffset = (60f / (audioBpm * BeatDecimalValues.values[(int)beatOffset])) * audioSource.clip.frequency;

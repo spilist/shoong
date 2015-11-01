@@ -46,21 +46,19 @@ public class GameOverBanner : MonoBehaviour {
 
   }
 
-  public void show(BannerButton bannerButton, GameObject another = null) {
-
+  public void show(BannerButton bannerButton, GameOverBanner another = null) {
     overlay = transform.Find("Overlay");
     contents = transform.Find("Contents").gameObject;
-    contents.GetComponent<Text>().text = bannerButton.description;
     positionX = contents.GetComponent<RectTransform>().anchoredPosition.x;
     distance = Mathf.Abs(positionX - positionXEnd);
 
     if (another == null) {
       status++;
-      // isLast = false;
-      isLast = true;
+      isLast = false;
     } else {
       waiting = true;
-      waitingTarget = another.GetComponent<GameOverBanner>();
+      waitingTarget = another;
+      contents.GetComponent<Text>().text = bannerButton.description;
     }
 
     bannerButton.transform.SetParent(contents.transform, false);

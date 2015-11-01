@@ -34,19 +34,21 @@ public class AdsAndRewardBannerButton : BannerButton {
     playTouchSound = false;
   }
 
-  override public bool available(int spaceLeft) {
-    if (DataManager.dm.isAnotherDay("LastDateTimeAdsSeen")) {
-      DataManager.dm.setInt("DailyAdsCount", 0);
-    }
+  override public bool available() {
+    return true;
 
-    if (DataManager.dm.getInt("DailyAdsCount") > dailyLimit) return false;
+    // if (DataManager.dm.isAnotherDay("LastDateTimeAdsSeen")) {
+    //   DataManager.dm.setInt("DailyAdsCount", 0);
+    // }
 
-    int gamesPassed = DataManager.dm.getInt("TotalNumPlays") - DataManager.dm.getInt("LastNumPlayAdsSeen");
-    int minutesPassed = DateTime.Now.Minute - DataManager.dm.getDateTime("LastDateTimeAdsSeen").Minute;
+    // if (DataManager.dm.getInt("DailyAdsCount") > dailyLimit) return false;
 
-    if (gamesPassed >= showAdsPerGame || minutesPassed >= showAdsPerMinutes) {
-      return true;
-    }
-    return false;
+    // int gamesPassed = DataManager.dm.getInt("TotalNumPlays") - DataManager.dm.getInt("LastNumPlayAdsSeen");
+    // int minutesPassed = DateTime.Now.Minute - DataManager.dm.getDateTime("LastDateTimeAdsSeen").Minute;
+
+    // if (gamesPassed >= showAdsPerGame || minutesPassed >= showAdsPerMinutes) {
+    //   return true;
+    // }
+    // return false;
   }
 }

@@ -4,7 +4,7 @@ using AbilityData;
 
 public class CharacterStat : MonoBehaviour {
   public string characterName;
-  public string BGM;
+  public BGM bgm;
   public Rarity rarity;
   public BaseSpeed baseSpeed;
   public BoosterPlusSpeed boosterPlusSpeed;

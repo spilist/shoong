@@ -5,7 +5,6 @@ using System.Collections;
 public class CharactersMenu : Draggable {
   public Material activeCharactersMaterial;
   public float selectedCharacterRotationSpeed = 30;
-  public GameObject goldenCubeYouHave;
   public CharacterSelectButton selectButton;
   public CharacterBuyButton buyButton;
   public Text characterName;
@@ -24,8 +23,6 @@ public class CharactersMenu : Draggable {
   private bool justOpened = true;
 
   void OnEnable() {
-    goldenCubeYouHave.SetActive(true);
-
     int charactersCount = 0;
     int yourCharactersCount = 0;
     foreach (Transform character in transform.Find("Characters").transform) {
@@ -61,9 +58,5 @@ public class CharactersMenu : Draggable {
   override public float rightDragEnd() {
     Transform lastChild = transform.Find("Characters").transform.GetChild(transform.Find("Characters").transform.childCount - 1);
     return lastChild.localPosition.x;
-  }
-
-  void OnDisable() {
-    goldenCubeYouHave.SetActive(false);
   }
 }

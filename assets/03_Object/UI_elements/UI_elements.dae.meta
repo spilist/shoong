@@ -58,6 +58,8 @@ ModelImporter:
     100100: button_grey_ad_bonus
     100102: button_gift
     100104: button_red_gift_1
+    100106: button_grey_gift
+    100108: button_grey_randomCharacterGet
     400000: active_object
     400002: button_back
     400004: button_blank_leftright
@@ -111,6 +113,8 @@ ModelImporter:
     400100: button_grey_ad_bonus
     400102: button_gift
     400104: button_red_gift_1
+    400106: button_grey_gift
+    400108: button_grey_randomCharacterGet
     2300000: active_object
     2300002: button_back
     2300004: button_blank_leftright
@@ -163,6 +167,8 @@ ModelImporter:
     2300098: button_grey_ad_bonus
     2300100: button_gift
     2300102: button_red_gift_1
+    2300104: button_grey_gift
+    2300106: button_grey_randomCharacterGet
     3300000: active_object
     3300002: button_back
     3300004: button_blank_leftright
@@ -215,6 +221,8 @@ ModelImporter:
     3300098: button_grey_ad_bonus
     3300100: button_gift
     3300102: button_red_gift_1
+    3300104: button_grey_gift
+    3300106: button_grey_randomCharacterGet
     4300000: button_back
     4300002: button_select
     4300004: button_character
@@ -267,6 +275,8 @@ ModelImporter:
     4300098: button_grey_ad_bonus
     4300100: button_gift
     4300102: button_red_gift_1
+    4300104: button_grey_gift
+    4300106: button_grey_randomCharacterGet
     9500000: //RootNode
   materials:
     importMaterials: 1

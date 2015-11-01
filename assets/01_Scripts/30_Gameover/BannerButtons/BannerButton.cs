@@ -4,8 +4,8 @@ using System.Collections;
 public class BannerButton : MenusBehavior {
   protected GameObject gameOverUI;
   protected BackButton back;
+  protected GameOverGoldCubes gold;
   public string description;
-  public int requiredSpace = 1;
   public bool picked = false;
   public bool popping = true;
   public float startScale = 4;
@@ -17,6 +17,7 @@ public class BannerButton : MenusBehavior {
   void Start() {
     gameOverUI = GameObject.Find("GameOver").gameObject;
     back = gameOverUI.GetComponent<ScoreUpdate>().back;
+    gold = GameObject.Find("GameOverGoldCubes").GetComponent<GameOverGoldCubes>();
     initRest();
   }
 
@@ -30,7 +31,7 @@ public class BannerButton : MenusBehavior {
   virtual protected void initRest() {
   }
 
-  virtual public bool available(int spaceLeft) {
+  virtual public bool available() {
     return false;
   }
 

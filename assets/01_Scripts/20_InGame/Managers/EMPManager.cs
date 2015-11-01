@@ -19,7 +19,7 @@ public class EMPManager : ObjectsManager {
 
   private float radius;
   private float cameraSize;
-  private float targetSize;
+  private float targetCameraSize;
   private int status;
   private float stayCount;
 
@@ -29,6 +29,8 @@ public class EMPManager : ObjectsManager {
   public bool isGolden = false;
   private Material shellMat;
 
+  private int levelChangeNeeded = 0;
+
 	override public void initRest() {
     skipInterval = true;
     forceField = strengthenPlayerEffect;
@@ -37,6 +39,13 @@ public class EMPManager : ObjectsManager {
   }
 
   override public void adjustForLevel(int level) {
+    if (status > 0) {
+      levelChangeNeeded = level;
+      return;
+    }
+
+    levelChangeNeeded = 0;
+
     targetRadius = forceFieldRadiusPerLevel[level - 1];
     enlargeSize = cameraEnlargeSizePerLevel[level - 1];
     shakeAmount = cameraShakeAmountPerLevel[level - 1];
@@ -78,7 +87,7 @@ public class EMPManager : ObjectsManager {
   public void generateForceField() {
     Camera.main.GetComponent<CameraMover>().shakeUntilStop(shakeAmount);
     forceField.GetComponent<ForceField>().setProperty(shellMat, isGolden);
-    targetSize = cameraSize + enlargeSize;
+    targetCameraSize = cameraSize + enlargeSize;
 
     status = 1;
   }
@@ -90,7 +99,7 @@ public class EMPManager : ObjectsManager {
       forceField.transform.localScale = radius * Vector3.one;
       forceField.transform.Find("Halo").GetComponent<Light>().range = radius;
 
-      cameraSize = Mathf.MoveTowards(cameraSize, targetSize, Time.deltaTime * enlargeSize / enlargeDuration);
+      cameraSize = Mathf.MoveTowards(cameraSize, targetCameraSize, Time.deltaTime * enlargeSize / enlargeDuration);
       Camera.main.orthographicSize = cameraSize;
 
       if (radius == targetRadius) status = 2;
@@ -98,7 +107,7 @@ public class EMPManager : ObjectsManager {
       if (stayCount < stayDuration) {
         stayCount += Time.deltaTime;
       } else {
-        targetSize = cameraSize - enlargeSize;
+        targetCameraSize = cameraSize - enlargeSize;
         status = 3;
       }
     } else if (status == 3) {
@@ -107,14 +116,17 @@ public class EMPManager : ObjectsManager {
       forceField.transform.localScale = radius * Vector3.one;
       forceField.transform.Find("Halo").GetComponent<Light>().range = radius;
 
-      cameraSize = Mathf.MoveTowards(cameraSize, targetSize, Time.deltaTime * enlargeSize / shrinkDuration);
+      cameraSize = Mathf.MoveTowards(cameraSize, targetCameraSize, Time.deltaTime * enlargeSize / shrinkDuration);
       Camera.main.orthographicSize = cameraSize;
 
-      if (cameraSize == targetSize) {
+      if (cameraSize == targetCameraSize) {
         run();
         player.stopEMP();
         Camera.main.GetComponent<CameraMover>().stopShake();
         status = 0;
+        if (levelChangeNeeded != 0) {
+          adjustForLevel(levelChangeNeeded);
+        }
       }
     }
   }

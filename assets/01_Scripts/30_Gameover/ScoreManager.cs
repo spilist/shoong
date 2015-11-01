@@ -37,15 +37,16 @@ public class ScoreManager : MonoBehaviour {
   private bool isScoring = false;
 
   // after gameover
+  public GameObject energyDangerFilter;
   private int gameOverStatus = 0;
   public GameObject inGameUI;
   public GameObject gameOverUI;
-  public GameObject energyDangerFilter;
-  public GameObject gameOverBannerPrefab;
   public Transform bannerButtonsList;
-  public Transform randomBannerButtonsList;
-  public float[] bannerPos;
   public GameObject gameOverButtons;
+
+  public GameOverBanner createBanner;
+  public CharacterCreateBannerButton createBannerButton;
+  public GameOverBanner bottomBanner;
 
   public float gameOverShakeDuration = 1;
   public float gameOverShakeAmount = 8;
@@ -174,57 +175,23 @@ public class ScoreManager : MonoBehaviour {
   public void showBanner() {
     save();
 
-    BannerButton[] availableBanners = new BannerButton[bannerButtonsList.childCount];
-    int availableBannerCount = 0;
+    BannerButton availableBanner = null;
     foreach (Transform tr in bannerButtonsList) {
       BannerButton bannerButton = tr.GetComponent<BannerButton>();
-      if (bannerButton.available(1)) {
-        availableBanners[availableBannerCount++] = bannerButton;
-      }
-      if (availableBannerCount >= 2) break;
-    }
-
-    if (availableBannerCount < 2) {
-      int spaceLeft = 2 - availableBannerCount;
-
-      BannerButton[] randomBanners = new BannerButton[randomBannerButtonsList.childCount];
-      int count = 0;
-      foreach (Transform tr in randomBannerButtonsList) {
-        BannerButton bannerButton = tr.GetComponent<BannerButton>();
-        if (bannerButton.available(spaceLeft)) {
-          randomBanners[count++] = bannerButton;
-        }
-      }
-
-      while (count > 0 && spaceLeft > 0) {
-        BannerButton picked = randomBanners[UnityEngine.Random.Range(0, count)];
-        if (!picked.picked && picked.requiredSpace <= spaceLeft) {
-          availableBanners[availableBannerCount++] = picked;
-          picked.picked = true;
-          spaceLeft--;
-        }
+      if (bannerButton.available()) {
+        availableBanner = bannerButton;
+        break;
       }
     }
 
-    int bannerCount = 0;
-    GameObject[] banners = new GameObject[2];
-    foreach (BannerButton bannerButton in availableBanners){
-      if (bannerCount >= 2 || bannerCount >= availableBannerCount) break;
+    createBannerButton.checkAffordable();
+    createBanner.show(createBannerButton);
 
-      banners[bannerCount] = (GameObject)Instantiate(gameOverBannerPrefab);
-      banners[bannerCount].transform.SetParent(gameOverUI.transform, false);
-      banners[bannerCount].GetComponent<RectTransform>().anchoredPosition = new Vector2(0, bannerPos[bannerCount]);
-
-      if (bannerCount == 0) {
-        banners[bannerCount].GetComponent<GameOverBanner>().show(bannerButton);
-      } else {
-        banners[bannerCount].GetComponent<GameOverBanner>().show(bannerButton, banners[0]);
-      }
-      bannerCount++;
+    if (availableBanner != null) {
+      bottomBanner.show(availableBanner, createBanner);
     }
 
     gameOverStatus++;
-    if (availableBannerCount == 0) bannerEnd();
   }
 
   public void bannerEnd() {

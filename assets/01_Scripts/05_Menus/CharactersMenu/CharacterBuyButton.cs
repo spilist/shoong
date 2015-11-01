@@ -3,7 +3,6 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class CharacterBuyButton : MenusBehavior {
-  public CubesYouHave goldenCubes;
   public Color notAffordableTextColor;
   public Text priceText;
   public BuyButtonsCubeIconPosition icon;
@@ -22,19 +21,13 @@ public class CharacterBuyButton : MenusBehavior {
     priceText.text = price.ToString("N");
     icon.adjust(priceText);
 
-    if (goldenCubes.youHave() < price) {
-      affordable = false;
-      priceText.color = notAffordableTextColor;
-    } else {
-      affordable = true;
-      priceText.color = new Color(255, 255, 255);
-    }
+    affordable = true;
+    priceText.color = new Color(255, 255, 255);
   }
 
   override public void activateSelf() {
     if (!affordable) return;
 
-    goldenCubes.buy(price);
     DataManager.dm.setBool(characterName, true);
     DataManager.dm.increment("NumCharactersHave");
     transform.parent.Find("Characters/" + characterName).GetComponent<UICharacters>().buy();

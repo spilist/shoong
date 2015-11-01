@@ -6,7 +6,6 @@ public class ScoreUpdate : MonoBehaviour {
   public BackButton back;
 
   public Text currentScoreIngame;
-  public Text goldCubesIngame;
 
   public GameObject cubesRecords;
   public Text cubesHighscoreDescription;
@@ -40,7 +39,6 @@ public class ScoreUpdate : MonoBehaviour {
     cubeDifference = CubeManager.cm.getCount();
 
     currentScoreIngame.text = cubeDifference.ToString();
-    goldCubesIngame.text = GoldManager.gm.getCount().ToString();
 
     if (cubeDifference >= scoreUpdateMaxStandard) {
       duration = scoreUpdateMaxDuration;
