@@ -6764,7 +6764,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: af93f26d2506b4f5eb0a44cebbc6dc74, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 63245a8b315924c2b95f89948bab3c72, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0
   m_Pitch: 1
@@ -6835,7 +6835,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91b7313f19d4448c194f6d6daebf9a5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bpm: 130
+  bpm: 138
   startDelay: .300000012
 --- !u!1 &151261179
 GameObject:
@@ -63865,6 +63865,7 @@ MonoBehaviour:
   inputHandler: {fileID: 1801634119}
   inGameUI: {fileID: 2134279968}
   gameOverUI: {fileID: 868146740}
+  energyDangerFilter: {fileID: 1455364852}
   gameOverBannerPrefab: {fileID: 189736, guid: 8e7e4a602cfdf4c4db0fd73a1c8f11ab, type: 2}
   bannerButtonsList: {fileID: 459535541}
   randomBannerButtonsList: {fileID: 1015476139}
@@ -72016,8 +72017,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: af93f26d2506b4f5eb0a44cebbc6dc74, type: 3}
-  m_PlayOnAwake: 0
+  m_audioClip: {fileID: 8300000, guid: 63245a8b315924c2b95f89948bab3c72, type: 3}
+  m_PlayOnAwake: 1
   m_Volume: 0
   m_Pitch: 1
   Loop: 1
@@ -72308,7 +72309,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: .300000012
   m_Pitch: 2
-  Loop: 1
+  Loop: 0
   Mute: 0
   Priority: 125
   DopplerLevel: 1
