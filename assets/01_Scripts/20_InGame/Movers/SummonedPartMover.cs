@@ -5,14 +5,21 @@ public class SummonedPartMover : ObjectsMover {
   SummonPartsManager summonManager;
   Renderer mRenderer;
   bool isGoldenCube = false;
+  private Skill_Gold goldSkill;
+  private bool goldenTransformed;
+  private Material originalMaterial;
 
   override protected void initializeRest() {
     summonManager = (SummonPartsManager) objectsManager;
     mRenderer = GetComponent<Renderer>();
+    goldSkill = (Skill_Gold)SkillManager.sm.getSkill("Gold");
+    originalMaterial = mRenderer.sharedMaterial;
   }
 
   override protected void afterEnable() {
     mRenderer.enabled = true;
+    goldenTransformed = false;
+    mRenderer.sharedMaterial = originalMaterial;
     StartCoroutine("destroyAfter");
   }
 
@@ -46,6 +53,8 @@ public class SummonedPartMover : ObjectsMover {
       summonManager.increaseSummonedPartGetcount();
       if (isGoldenCube) {
         GoldManager.gm.add(transform.position, summonManager.goldCubesGet);
+      } else if (goldenTransformed) {
+        GoldManager.gm.add(transform.position);
       }
     }
   }
@@ -54,6 +63,8 @@ public class SummonedPartMover : ObjectsMover {
     summonManager.increaseSummonedPartGetcount();
     if (isGoldenCube) {
       GoldManager.gm.add(transform.position, summonManager.goldCubesGet);
+    } else if (goldenTransformed) {
+      GoldManager.gm.add(transform.position);
     }
   }
 
@@ -88,5 +99,21 @@ public class SummonedPartMover : ObjectsMover {
 
   override public bool hasEncounterEffect() {
     return false;
+  }
+
+  public void transformToGold(Vector3 pos) {
+    if (goldenTransformed || isGoldenCube) return;
+
+    GameObject laser = goldSkill.getLaser(pos);
+    laser.SetActive(true);
+    laser.GetComponent<TransformLaser>().shoot(transform.position, goldSkill.laserShootDuration);
+
+    Invoke("changeToGold", goldSkill.laserShootDuration);
+  }
+
+  void changeToGold() {
+    GetComponent<Renderer>().sharedMaterial = goldSkill.goldenPartMaterial;
+    goldSkill.getParticle(transform.position);
+    goldenTransformed = true;
   }
 }

@@ -145,7 +145,7 @@ public class RhythmManager : MonoBehaviour {
       rem = ringCount % (numNormalInLoop + numSkillInLoop);
 
       if (rem == 1 && skillActivated) {
-        Debug.Log("stopped");
+        // Debug.Log("stopped");
         skillActivated = false;
         SkillManager.sm.stopSkills();
       }
@@ -199,7 +199,7 @@ public class RhythmManager : MonoBehaviour {
   public void ringMissed() {
     ringSuccess = false;
     rhythmFailed("Missed");
-    if (skillActivated) Debug.Log("Failed");
+    // if (skillActivated) Debug.Log("Failed");
     resetSkillRings();
 
     if (!isAfterRing) {
@@ -218,7 +218,7 @@ public class RhythmManager : MonoBehaviour {
     rhythmFailed("Skipped");
 
     if (skillRing) {
-      if (skillActivated) Debug.Log("skipped");
+      // if (skillActivated) Debug.Log("skipped");
       resetSkillRings();
     }
   }
