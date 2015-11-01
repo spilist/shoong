@@ -14,7 +14,7 @@ public class BeatSynchronizer : MonoBehaviour {
 	public static event AudioStartAction OnAudioStart;
 
 
-	void Start ()
+	void OnEnable ()
 	{
 		double initTime = AudioSettings.dspTime;
 		GetComponent<AudioSource>().PlayScheduled(initTime + startDelay);

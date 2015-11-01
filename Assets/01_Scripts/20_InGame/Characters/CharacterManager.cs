@@ -70,7 +70,7 @@ public class CharacterManager : MonoBehaviour {
   public void changeCharacter(string name) {
     CharacterStat stat = character(name);
     ccm.setMesh(stat.GetComponent<MeshFilter>().sharedMesh);
-
+    AudioManager.am.setAudio(stat.BGM);
     resetToOrginal();
 
     float scale_baseSpeeds = baseSpeeds[(int)stat.baseSpeed] / 100.0f;
