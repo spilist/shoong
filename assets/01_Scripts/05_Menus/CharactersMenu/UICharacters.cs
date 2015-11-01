@@ -5,7 +5,7 @@ using AbilityData;
 
 public class UICharacters : MonoBehaviour {
   public CharacterStat stat;
-  private int price;
+  private float price;
 
   private CharactersMenu charactersMenu;
   private Vector3 originalPosition;
@@ -52,6 +52,9 @@ public class UICharacters : MonoBehaviour {
     } else if (rarity == Rarity.Epic) {
       text.text = "Epic";
       text.color = charactersMenu.colorsPerRarity[2];
+    } else if (rarity == Rarity.Legendary) {
+      text.text = "Legendary";
+      text.color = charactersMenu.colorsPerRarity[3];
     }
   }
 

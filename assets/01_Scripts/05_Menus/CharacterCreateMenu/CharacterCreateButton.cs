@@ -5,11 +5,15 @@ using System.Collections.Generic;
 using AbilityData;
 
 public class CharacterCreateButton : MenusBehavior {
-  public int rareChance = 12;
-  public int epicChance = 3;
+  public int rareChance = 40;
+  public int epicChance = 10;
+  public int legendChance = 1;
+  public int chanceBase = 200;
+
   private List<UICharacters> commons;
   private List<UICharacters> rares;
   private List<UICharacters> epics;
+  private List<UICharacters> legends;
 
   public Transform characters;
   public GameObject characterCube;
@@ -49,6 +53,7 @@ public class CharacterCreateButton : MenusBehavior {
     commons = new List<UICharacters>();
     rares = new List<UICharacters>();
     epics = new List<UICharacters>();
+    legends = new List<UICharacters>();
     foreach (Transform tr in characters) {
       UICharacters uic = tr.GetComponent<UICharacters>();
       if (uic.name == "robotcogi") continue;
@@ -57,18 +62,25 @@ public class CharacterCreateButton : MenusBehavior {
       if (stat.rarity == Rarity.Common) commons.Add(uic);
       else if (stat.rarity == Rarity.Rare) rares.Add(uic);
       else if (stat.rarity == Rarity.Epic) epics.Add(uic);
+      else if (stat.rarity == Rarity.Legendary) legends.Add(uic);
     }
   }
 
   UICharacters getRandom() {
     List<UICharacters> list;
-    int random = Random.Range(0, 100);
-    if (random < epicChance) {
+    int random = Random.Range(0, chanceBase);
+    if (random < legendChance) {
+      list = legends;
+      Debug.Log(random + "Legend");
+    } else if (random < legendChance + epicChance) {
       list = epics;
-    } else if (random < epicChance + rareChance) {
+      Debug.Log(random + "Epic");
+    } else if (random < legendChance + epicChance + rareChance) {
       list = rares;
+      Debug.Log(random + "Rare");
     } else {
       list = commons;
+      Debug.Log(random + "Common");
     }
 
     return list[Random.Range(0, list.Count)];

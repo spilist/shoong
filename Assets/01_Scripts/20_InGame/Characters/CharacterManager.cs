@@ -5,7 +5,7 @@ public class CharacterManager : MonoBehaviour {
   public static CharacterManager cm;
   public CharacterChangeManager ccm;
 
-  public int[] pricesPerRarity;
+  public float[] dolorsPerRarity;
 
   public float baseSpeedStandard;
   private float original_baseSpeedStandard;

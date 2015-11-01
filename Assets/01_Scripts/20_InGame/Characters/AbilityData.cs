@@ -42,7 +42,6 @@ namespace AbilityData {
     S, A, B, C, D
   }
 
-  [System.Flags]
   public enum SkillFlag {
     Heal = 1,
     Fever = 2,

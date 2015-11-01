@@ -15,11 +15,11 @@ public class CharacterStat : MonoBehaviour {
   public ReboundDistance reboundDistance;
   public DamageGet damageGet;
 
-  [BitMask(typeof(SkillFlag))]
+  // [BitMask(typeof(SkillFlag))]
   public SkillFlag skillFlags;
 
-  public int price() {
-    return CharacterManager.cm.pricesPerRarity[(int)rarity];
+  public float price() {
+    return CharacterManager.cm.dolorsPerRarity[(int)rarity];
   }
 
   public string skillName() {

@@ -254,7 +254,7 @@ Transform:
   m_LocalScale: {x: 6, y: 6, z: 6}
   m_Children: []
   m_Father: {fileID: 552014891}
-  m_RootOrder: 15
+  m_RootOrder: 14
 --- !u!114 &3647330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3018,6 +3018,7 @@ MonoBehaviour:
   - {r: 1, g: 1, b: 1, a: 1}
   - {r: 0, g: 1, b: .337254912, a: 1}
   - {r: .682758629, g: .323529422, b: 1, a: 1}
+  - {r: 1, g: .71784997, b: .213235319, a: 1}
   selectWidth: 60
   selectedOffset_y: 30
   selectedOffset_z: 100
@@ -4122,8 +4123,10 @@ MonoBehaviour:
   blinkingSeconds: .400000006
   playTouchSound: 1
   blinkOnStart: 0
-  rareChance: 3
-  epicChance: 3
+  rareChance: 40
+  epicChance: 10
+  legendChance: 1
+  chanceBase: 200
   characters: {fileID: 552014891}
   characterCube: {fileID: 714900423}
   gathering: {fileID: 1512218220}
@@ -8198,7 +8201,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 616999376}
-  m_RootOrder: 15
+  m_RootOrder: 14
 --- !u!33 &160097019
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -23366,9 +23369,9 @@ RectTransform:
   - {fileID: 975181076}
   - {fileID: 465752961}
   - {fileID: 1068398460}
-  - {fileID: 588841858}
   - {fileID: 3647329}
   - {fileID: 1596742148}
+  - {fileID: 588841858}
   - {fileID: 151261180}
   - {fileID: 858162615}
   - {fileID: 501650841}
@@ -26292,7 +26295,7 @@ Transform:
   m_LocalScale: {x: 6, y: 6, z: 6}
   m_Children: []
   m_Father: {fileID: 552014891}
-  m_RootOrder: 14
+  m_RootOrder: 16
 --- !u!114 &588841859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26895,9 +26898,9 @@ Transform:
   - {fileID: 1741257579}
   - {fileID: 898068753}
   - {fileID: 1983045717}
-  - {fileID: 1905034257}
   - {fileID: 160097018}
   - {fileID: 1505154359}
+  - {fileID: 1905034257}
   - {fileID: 1981889230}
   - {fileID: 432182466}
   - {fileID: 283684578}
@@ -36085,7 +36088,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: Space Dolphin
   BGM: FightForYourLives
-  rarity: 2
+  rarity: 3
   baseSpeed: 1
   boosterPlusSpeed: 2
   boosterMaxSpeed: 0
@@ -40622,7 +40625,7 @@ MonoBehaviour:
   boosterPlusSpeed: 3
   boosterMaxSpeed: 2
   boosterSpeedDecrease: 0
-  energyReduceOnTime: 2
+  energyReduceOnTime: 3
   maxEnergy: 2
   reboundDistance: 1
   damageGet: 1
@@ -51775,7 +51778,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: Gold Piggy
   BGM: PixelDance
-  rarity: 2
+  rarity: 3
   baseSpeed: 2
   boosterPlusSpeed: 2
   boosterMaxSpeed: 2
@@ -52181,7 +52184,7 @@ MonoBehaviour:
   BGM: PixelDance
   rarity: 1
   baseSpeed: 1
-  boosterPlusSpeed: 1
+  boosterPlusSpeed: 2
   boosterMaxSpeed: 1
   boosterSpeedDecrease: 1
   energyReduceOnTime: 3
@@ -56137,7 +56140,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ccm: {fileID: 91418591}
-  pricesPerRarity: 64000000f4010000dc050000
+  dolorsPerRarity:
+  - 1.09000003
+  - 2.19000006
+  - 3.28999996
+  - 4.38999987
   baseSpeedStandard: 80
   baseSpeeds: 1e0000000f00000000000000f6ffffffecffffff
   boosterPlusSpeedStandard: 80
@@ -70698,7 +70705,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 616999376}
-  m_RootOrder: 16
+  m_RootOrder: 15
 --- !u!33 &1505154360
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -75406,7 +75413,7 @@ Transform:
   m_LocalScale: {x: 6, y: 6, z: 6}
   m_Children: []
   m_Father: {fileID: 552014891}
-  m_RootOrder: 16
+  m_RootOrder: 15
 --- !u!114 &1596742149
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -92046,7 +92053,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 616999376}
-  m_RootOrder: 14
+  m_RootOrder: 16
 --- !u!33 &1905034258
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -92068,12 +92075,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: Alien with Gun
   BGM: DeepInTheCaves
-  rarity: 1
+  rarity: 2
   baseSpeed: 0
   boosterPlusSpeed: 1
   boosterMaxSpeed: 1
-  boosterSpeedDecrease: 3
-  energyReduceOnTime: 2
+  boosterSpeedDecrease: 2
+  energyReduceOnTime: 1
   maxEnergy: 3
   reboundDistance: 3
   damageGet: 2
@@ -95868,7 +95875,7 @@ MonoBehaviour:
   boosterSpeedDecrease: 1
   energyReduceOnTime: 2
   maxEnergy: 2
-  reboundDistance: 2
+  reboundDistance: 3
   damageGet: 2
   skillFlags: 4
 --- !u!1 &1983272583

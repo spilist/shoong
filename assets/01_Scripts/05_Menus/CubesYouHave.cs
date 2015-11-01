@@ -16,9 +16,9 @@ public class CubesYouHave : MonoBehaviour {
     return int.Parse(cubes.text);
   }
 
-  public void buy(int price) {
-    cubes.text = (int.Parse(cubes.text) - price).ToString();
-    DataManager.dm.increment("Current" + which, -price);
+  public void buy(float price) {
+    cubes.text = (int.Parse(cubes.text) - (int)price).ToString();
+    DataManager.dm.increment("Current" + which, -(int)price);
   }
 
   public void add(int amount) {

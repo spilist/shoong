@@ -9,17 +9,17 @@ public class CharacterBuyButton : MenusBehavior {
   public BuyButtonsCubeIconPosition icon;
 
   private string characterName;
-  private int price;
+  private float price;
   private bool affordable = true;
 
   void Start() {
     playTouchSound = false;
   }
 
-  public void setCharacter(string nameVal, int priceVal) {
+  public void setCharacter(string nameVal, float priceVal) {
     characterName = nameVal;
     price = priceVal;
-    priceText.text = price.ToString("N0");
+    priceText.text = price.ToString("N");
     icon.adjust(priceText);
 
     if (goldenCubes.youHave() < price) {
