@@ -27,7 +27,8 @@ public class RhythmManager : MonoBehaviour {
   private int numNormalInLoop;
   private int numSkillInLoop;
 
-  public GameObject canBoostText;
+  public Text touchText;
+  public Text onthebeatText;
   public Image boostImage;
   public Color inactiveBoostImageColor;
   public Color activeBoostImageColor;
@@ -198,7 +199,7 @@ public class RhythmManager : MonoBehaviour {
 
   public void ringMissed() {
     ringSuccess = false;
-    rhythmFailed("Missed");
+    rhythmFailed("MISSED");
     // if (skillActivated) Debug.Log("Failed");
     resetSkillRings();
 
@@ -215,7 +216,7 @@ public class RhythmManager : MonoBehaviour {
       return;
     }
 
-    rhythmFailed("Skipped");
+    rhythmFailed("SKIPPED");
 
     if (skillRing) {
       // if (skillActivated) Debug.Log("skipped");
@@ -241,11 +242,14 @@ public class RhythmManager : MonoBehaviour {
   }
 
   public void turnBoostOK(bool val) {
-    canBoostText.SetActive(val);
     if (val) {
       boostImage.color = activeBoostImageColor;
+      touchText.color = activeBoostImageColor;
+      onthebeatText.color = activeBoostImageColor;
     } else {
       boostImage.color = inactiveBoostImageColor;
+      touchText.color = inactiveBoostImageColor;
+      onthebeatText.color = inactiveBoostImageColor;
     }
   }
 }

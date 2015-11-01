@@ -56,6 +56,8 @@ ModelImporter:
     100096: button_statitics
     100098: button_tip
     100100: button_grey_ad_bonus
+    100102: button_gift
+    100104: button_red_gift_1
     400000: active_object
     400002: button_back
     400004: button_blank_leftright
@@ -107,6 +109,8 @@ ModelImporter:
     400096: button_statitics
     400098: button_tip
     400100: button_grey_ad_bonus
+    400102: button_gift
+    400104: button_red_gift_1
     2300000: active_object
     2300002: button_back
     2300004: button_blank_leftright
@@ -157,6 +161,8 @@ ModelImporter:
     2300094: button_statitics
     2300096: button_tip
     2300098: button_grey_ad_bonus
+    2300100: button_gift
+    2300102: button_red_gift_1
     3300000: active_object
     3300002: button_back
     3300004: button_blank_leftright
@@ -207,6 +213,8 @@ ModelImporter:
     3300094: button_statitics
     3300096: button_tip
     3300098: button_grey_ad_bonus
+    3300100: button_gift
+    3300102: button_red_gift_1
     4300000: button_back
     4300002: button_select
     4300004: button_character
@@ -257,6 +265,8 @@ ModelImporter:
     4300094: button_batterysaver_off
     4300096: button_alarm_off
     4300098: button_grey_ad_bonus
+    4300100: button_gift
+    4300102: button_red_gift_1
     9500000: //RootNode
   materials:
     importMaterials: 1

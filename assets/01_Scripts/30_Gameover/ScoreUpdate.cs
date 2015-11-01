@@ -5,9 +5,9 @@ using System.Collections;
 public class ScoreUpdate : MonoBehaviour {
   public BackButton back;
 
-  public Text totalCubes;
-  public Text cubes;
-  public Text goldenCubes;
+  public Text currentScoreIngame;
+  public Text goldCubesIngame;
+
   public GameObject cubesRecords;
   public Text cubesHighscoreDescription;
   public Text cubesHighscoreNumber;
@@ -25,13 +25,8 @@ public class ScoreUpdate : MonoBehaviour {
   private float stayCount = 0;
   public float moveDuration = 0.2f;
 
-  private int totalChangeTo;
-  private int cubeChangeTo;
   private int cubeDifference;
-  private float totalNum;
-  private float cubeNum;
   private float cubeCurrentNum;
-  private float goldenCubeNum;
   private float highscoreNum;
   private float duration;
   private int bonusAmount;
@@ -44,16 +39,8 @@ public class ScoreUpdate : MonoBehaviour {
   void Start() {
     cubeDifference = CubeManager.cm.getCount();
 
-    totalNum = DataManager.dm.getInt("TotalCubes");
-    totalCubes.text = totalNum.ToString();
-    totalChangeTo = (int) totalNum + cubeDifference;
-
-    cubeNum = DataManager.dm.getInt("CurrentCubes");
-    cubes.text = cubeNum.ToString();
-    cubeChangeTo = (int) cubeNum + cubeDifference;
-
-    goldenCubeNum = (int) GoldManager.gm.getCount();
-    goldenCubes.text = goldenCubeNum.ToString();
+    currentScoreIngame.text = cubeDifference.ToString();
+    goldCubesIngame.text = GoldManager.gm.getCount().ToString();
 
     if (cubeDifference >= scoreUpdateMaxStandard) {
       duration = scoreUpdateMaxDuration;
@@ -84,12 +71,6 @@ public class ScoreUpdate : MonoBehaviour {
 
   void Update() {
     if (updateStatus == 1) {
-      totalNum = Mathf.MoveTowards(totalNum, totalChangeTo, Time.deltaTime * cubeDifference / duration);
-      totalCubes.text = totalNum.ToString("0");
-
-      cubeNum = Mathf.MoveTowards(cubeNum, cubeChangeTo, Time.deltaTime * cubeDifference / duration);
-      cubes.text = cubeNum.ToString("0");
-
       cubeCurrentNum = Mathf.MoveTowards(cubeCurrentNum, cubeDifference, Time.deltaTime * cubeDifference / duration);
       cubesCurrentScore.text = cubeCurrentNum.ToString("0");
 
@@ -100,7 +81,7 @@ public class ScoreUpdate : MonoBehaviour {
         cubesHighscoreNumber.text = cubeCurrentNum.ToString("0");
       }
 
-      if (totalNum == totalChangeTo) {
+      if (cubeCurrentNum == cubeDifference) {
         updateStatus++;
         GetComponent<AudioSource>().Stop();
 
@@ -125,16 +106,6 @@ public class ScoreUpdate : MonoBehaviour {
     } else if (updateStatus == 7) {
       move(collectorBonus);
     } else if (updateStatus == 8) {
-      totalNum = Mathf.MoveTowards(totalNum, totalChangeTo, Time.deltaTime * bonusAmount / duration);
-      totalCubes.text = totalNum.ToString("0");
-
-      cubeNum = Mathf.MoveTowards(cubeNum, cubeChangeTo, Time.deltaTime * bonusAmount / duration);
-      cubes.text = cubeNum.ToString("0");
-      if (totalNum == totalChangeTo) {
-        updateStatus++;
-        GetComponent<AudioSource>().Stop();
-      }
-    } else if (updateStatus == 9) {
       ScoreManager.sm.showBanner();
       updateStatus++;
     }
@@ -148,10 +119,6 @@ public class ScoreUpdate : MonoBehaviour {
       if (nextTarget != null) {
         positionX = nextTarget.GetComponent<RectTransform>().anchoredPosition.x;
         distance = positionX;
-      } else {
-        totalChangeTo += bonusAmount;
-        cubeChangeTo += bonusAmount;
-        GetComponent<AudioSource>().Play();
       }
     }
   }

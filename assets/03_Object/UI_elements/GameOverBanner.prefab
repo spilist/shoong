@@ -107,8 +107,8 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 2cc782470beff4fb98f85e64bd300e10, type: 3}
-    m_FontSize: 35
+    m_Font: {fileID: 12800000, guid: 458b94f5997bb4e719e724b66770b07a, type: 3}
+    m_FontSize: 60
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -118,7 +118,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uCD94\uAC00 \uD669\uAE08 \uD050\uBE0C \uC5BB\uAE30"
+  m_Text: 
 --- !u!114 &11445766
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -133,7 +133,7 @@ MonoBehaviour:
   expandTo: 75
   expandDuration: .200000003
   moveDuration: .200000003
-  positionXEnd: -165
+  positionXEnd: -140
 --- !u!222 &22265442
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -206,8 +206,20 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_FontData.m_Font
       value: 
-      objectReference: {fileID: 12800000, guid: 2cc782470beff4fb98f85e64bd300e10,
+      objectReference: {fileID: 12800000, guid: 458b94f5997bb4e719e724b66770b07a,
         type: 3}
+    - target: {fileID: 0}
+      propertyPath: m_Text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_FontData.m_FontSize
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: positionXEnd
+      value: -140
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 189736}
