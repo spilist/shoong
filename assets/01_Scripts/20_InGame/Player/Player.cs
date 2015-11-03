@@ -589,8 +589,6 @@ public class Player : MonoBehaviour {
   }
 
   public void scaleChange(bool val, float amount) {
-    if (feverTime) return;
-
     if (!scaleChanged && val) {
       scaleChanged = true;
       transform.localScale *= amount;
