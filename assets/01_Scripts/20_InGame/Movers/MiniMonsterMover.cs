@@ -64,7 +64,7 @@ public class MiniMonsterMover : ObjectsMover {
     destroyObject();
   }
 
-  public override void destroyObject(bool destroyEffect = true, bool byPlayer = false) {
+  public override void destroyObject(bool destroyEffect = true, bool byPlayer = false, bool respawn = true) {
 
     if (destroyEffect) {
       monm.destroyMinimon(transform.position);

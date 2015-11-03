@@ -30,10 +30,9 @@ public class SpawnManager : MonoBehaviour {
     obm.run();
   }
 
-  public void runManagerAt(string objName, Vector3 pos, int level) {
-    (GetComponent(objName + "Manager") as MonoBehaviour).enabled = true;
+  public void runManagerAt(string objName, Vector3 pos) {
     ObjectsManager obm = (ObjectsManager)GetComponent(objName + "Manager");
-    obm.runByTransform(pos, level);
+    obm.runByTransform(pos);
   }
 
   public Vector3 getSpawnPosition(GameObject target) {

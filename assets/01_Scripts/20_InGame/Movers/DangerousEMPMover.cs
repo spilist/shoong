@@ -59,7 +59,7 @@ public class DangerousEMPMover : ObjectsMover {
     dangerousArea.transform.eulerAngles = new Vector3(90, 0, 0);
   }
 
-  override public void destroyObject(bool destroyEffect = true, bool byPlayer = false) {
+  override public void destroyObject(bool destroyEffect = true, bool byPlayer = false, bool respawn = true) {
     gameObject.SetActive(false);
 
     if (byPlayer) {

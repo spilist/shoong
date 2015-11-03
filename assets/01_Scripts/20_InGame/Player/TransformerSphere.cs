@@ -4,9 +4,11 @@ using System.Collections;
 public class TransformerSphere : MonoBehaviour {
   public Skill_Transform tfm;
   private int goldRatio;
+  private int subRatio;
 
-	void OnEnable() {
+	void Start() {
     goldRatio = tfm.goldRatio;
+    subRatio = tfm.subRatio;
   }
 
   void OnTriggerEnter(Collider other) {
@@ -20,7 +22,9 @@ public class TransformerSphere : MonoBehaviour {
   string transformResult() {
     int random = Random.Range(0, 100);
     string result = "";
-    if (random < goldRatio) {
+    if (random < subRatio) {
+      result = tfm.getRandomManagerName();
+    } else if (random < subRatio + goldRatio) {
       result = "Golden";
     }
     return result;

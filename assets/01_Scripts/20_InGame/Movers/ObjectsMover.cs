@@ -115,8 +115,12 @@ public class ObjectsMover : MonoBehaviour {
           objectsManager.GetComponent<NormalPartsManager>().spawnNormal(transform.position);
           trParticle.transform.Find("Normal").gameObject.SetActive(true);
           trParticle.transform.Find("Better").gameObject.SetActive(false);
-        } else {
+        } else if (transformResult == "Golden") {
           objectsManager.GetComponent<GoldenCubeManager>().spawnGoldenCube(transform.position);
+          trParticle.transform.Find("Normal").gameObject.SetActive(false);
+          trParticle.transform.Find("Better").gameObject.SetActive(true);
+        } else {
+          objectsManager.GetComponent<SpawnManager>().runManagerAt(transformResult, transform.position);
           trParticle.transform.Find("Normal").gameObject.SetActive(false);
           trParticle.transform.Find("Better").gameObject.SetActive(true);
         }
@@ -146,7 +150,12 @@ public class ObjectsMover : MonoBehaviour {
   virtual protected void normalMovement() {}
 
   virtual protected bool beforeCollide(Collision collision) {
-    if (collision.collider.tag == "ContactCollider" && dangerous()) {
+    if (collision.collider.tag == "PlayerShield" && dangerous()) {
+      Player.pl.bounce(objectsManager.bounceDuration / 2f, collision);
+      SkillManager.sm.stopSkills();
+      afterCollidePlayer();
+      return false;
+    } else if (collision.collider.tag == "ContactCollider" && dangerous()) {
       Player.pl.loseEnergy(objectsManager.loseEnergyWhenEncounter, tag);
       Player.pl.bounce(objectsManager.bounceDuration, collision);
 
@@ -201,7 +210,7 @@ public class ObjectsMover : MonoBehaviour {
     }
   }
 
-  virtual public void destroyObject(bool destroyEffect = true, bool byPlayer = false) {
+  virtual public void destroyObject(bool destroyEffect = true, bool byPlayer = false, bool resapwn = true) {
     if (!beforeDestroy()) return;
 
     gameObject.SetActive(false);
@@ -213,10 +222,10 @@ public class ObjectsMover : MonoBehaviour {
     afterDestroy(byPlayer);
 
     if (byPlayer) {
-      objectsManager.run();
+      if (resapwn) objectsManager.run();
       if (isNegativeObject()) Player.pl.destroyObject(tag);
     } else {
-      objectsManager.runImmediately();
+      if (resapwn) objectsManager.runImmediately();
     }
   }
 

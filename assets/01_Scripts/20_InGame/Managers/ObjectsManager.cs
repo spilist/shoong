@@ -32,7 +32,6 @@ public class ObjectsManager : MonoBehaviour {
   public bool hasLevel = false;
   public string nameForLevel;
   public int level;
-  protected bool noMoreRespawn = false;
   public Player player;
 
   virtual protected void beforeInit() {}
@@ -118,13 +117,11 @@ public class ObjectsManager : MonoBehaviour {
     StartCoroutine(respawnRoutine());
   }
 
-  public void runByTransform(Vector3 pos, int level) {
-    noMoreRespawn = true;
-    if (instance != null) {
-      instance.GetComponent<ObjectsMover>().destroyObject(false, false);
+  public void runByTransform(Vector3 pos) {
+    if (instance != null || instance.activeSelf) {
+      instance.GetComponent<ObjectsMover>().destroyObject(false, false, false);
     }
     instance = getPooledObj(objPool, objPrefab, pos);
-    adjustForLevel(level);
     instance.SetActive(true);
     afterSpawn();
   }
@@ -137,7 +134,6 @@ public class ObjectsManager : MonoBehaviour {
   virtual public void adjustForLevel(int level) {}
 
   protected IEnumerator respawnRoutine() {
-    if (noMoreRespawn) yield break;
 
     yield return new WaitForSeconds(spawnInterval());
 

@@ -82,6 +82,8 @@ TagManager:
   - SpecialPart
   - LRPanel_left
   - LRPanel_right
+  - PlayerLaser
+  - PlayerShield
   layers:
   - Default
   - TransparentFX

@@ -8,6 +8,8 @@ public class PhaseManager : MonoBehaviour {
   public string[] textPerLevel;
   public int[] reqProgressPerLevel;
 
+  public Skill_Transform skillTransform;
+
   public IceDebrisManager icm;
   public PhaseMonsterManager pmm;
   public BlackholeManager blm;
@@ -66,16 +68,18 @@ public class PhaseManager : MonoBehaviour {
     if (levelName == "IceDebris") {
       icm.enabled = true;
       cdm.enabled = true;
+      skillTransform.addManager("CubeDispenser");
       cpm.adjustForLevel(2);
     } else if (levelName == "Minimon") {
       pmm.enabled = true;
       rdm.enabled = true;
+      skillTransform.addManager("RainbowDonuts");
       cpm.adjustForLevel(3);
       cdm.adjustForLevel(2);
     } else if (levelName == "Blackhole") {
       blm.enabled = true;
       spm.enabled = true;
-      cpm.enabled = false;
+      skillTransform.addManager("SummonParts");
       cdm.adjustForLevel(3);
       rdm.adjustForLevel(2);
     } else if (levelName == "Meteroid") {
@@ -85,6 +89,7 @@ public class PhaseManager : MonoBehaviour {
     } else if (levelName == "Bomb") {
       dem.enabled = true;
       em.enabled = true;
+      skillTransform.addManager("EMP");
       spm.adjustForLevel(3);
     } else if (levelName == "UFO") {
       asm.enabled = true;

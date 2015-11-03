@@ -35,8 +35,8 @@ MonoBehaviour:
   hasBonus: 0
   stayDuring: 0
   disappearDuring: .600000024
-  disappearLengthY: 30
-  disappearLengthX: 0
+  baseDisappearLengthY: 100
+  baseDisappearLengthX: 100
   changeBase: 5
   changeScale: 4
   maxScale: 4

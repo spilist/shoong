@@ -54,7 +54,9 @@ namespace AbilityData {
   public enum SkillFlag {
     Heal = 1,
     Fever = 2,
-    Boost = 4,
+    Laser = 4,
+    Ghost = 5,
+    Shield = 6,
     Polymorph = 8,
     Magnet = 16,
     Monster = 32,

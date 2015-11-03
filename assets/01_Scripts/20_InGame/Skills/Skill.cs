@@ -15,13 +15,13 @@ public class Skill : MonoBehaviour {
     afterStart();
   }
 
-  public GameObject getPooledObj(List<GameObject> list, GameObject prefab, Vector3 pos) {
-    GameObject obj = getPooledObj(list, prefab);
+  public GameObject getPooledObj(List<GameObject> list, GameObject prefab, Transform parent, Vector3 pos) {
+    GameObject obj = getPooledObj(list, prefab, parent);
     obj.transform.position = pos;
     return obj;
   }
 
-  public GameObject getPooledObj(List<GameObject> list, GameObject prefab) {
+  public GameObject getPooledObj(List<GameObject> list, GameObject prefab, Transform parent) {
     for (int i = 0; i < list.Count; i++) {
       if (!list[i].activeInHierarchy) {
         return list[i];
@@ -29,7 +29,7 @@ public class Skill : MonoBehaviour {
     }
 
     GameObject obj = (GameObject) Instantiate(prefab);
-    obj.transform.parent = transform;
+    if (parent != null) obj.transform.SetParent(parent, false);
     list.Add(obj);
     return obj;
   }

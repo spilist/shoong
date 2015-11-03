@@ -26,11 +26,11 @@ public class Skill_Gold : Skill {
   }
 
   public GameObject getLaser(Vector3 pos) {
-    return getPooledObj(goldenLaserPool, goldenLaser, pos);
+    return getPooledObj(goldenLaserPool, goldenLaser, null, pos);
   }
 
   public void getParticle(Vector3 pos) {
-    GameObject obj = getPooledObj(goldenParticlePool, goldenParticle, pos);
+    GameObject obj = getPooledObj(goldenParticlePool, goldenParticle, null, pos);
     obj.SetActive(true);
   }
 }

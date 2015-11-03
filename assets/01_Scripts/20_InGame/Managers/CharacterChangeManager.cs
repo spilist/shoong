@@ -4,19 +4,16 @@ using System.Collections;
 public class CharacterChangeManager : MonoBehaviour {
   public Transform characters;
   public DoppleManager dpm;
+  public Material redMaterial;
 
   public Mesh monsterMesh;
   public Material monsterMaterial;
-  public Material metalMat;
-  public Material redMaterial;
+  public Material metalMaterial;
+  public Material blinkMaterial;
+  public Material ghostMaterial;
   public float redDuration = 1;
   private float redCount = 0;
   private bool beingRed = false;
-
-  public Material playerEffectMat;
-  public Color[] metalColors;
-  public Color[] doppleColors;
-  public Color[] doppleMetalColors;
 
   public Material originalMaterial;
   private Mesh originalMesh;
@@ -101,31 +98,13 @@ public class CharacterChangeManager : MonoBehaviour {
 
   public void changeCharacterTo(string changeTo) {
     if (changeTo == "Monster") {
-      if (mRenderer.sharedMaterial == playerEffectMat) {
-        changeCharacter(monsterMesh, playerEffectMat);
-      } else {
-        changeCharacter(monsterMesh, monsterMaterial);
-      }
+      changeCharacter(monsterMesh, monsterMaterial);
     } else if (changeTo == "Metal") {
-      if (mRenderer.sharedMaterial.color == doppleColors[0]) {
-        playerEffectMat.color = doppleMetalColors[0];
-        playerEffectMat.SetColor("_Emission", doppleMetalColors[1]);
-      }
-      else {
-        playerEffectMat.color = metalColors[0];
-        playerEffectMat.SetColor("_Emission", metalColors[1]);
-      }
-      changeCharacter(originalMesh, playerEffectMat);
+      changeCharacter(originalMesh, metalMaterial);
     } else if (changeTo == "Blink") {
-      if (mRenderer.sharedMaterial.color == metalColors[0]) {
-        playerEffectMat.color = doppleMetalColors[0];
-        playerEffectMat.SetColor("_Emission", doppleMetalColors[1]);
-      }
-      else {
-        playerEffectMat.color = doppleColors[0];
-        playerEffectMat.SetColor("_Emission", doppleColors[1]);
-      }
-      changeCharacter(originalMesh, playerEffectMat);
+      changeCharacter(originalMesh, blinkMaterial);
+    } else if (changeTo == "Ghost") {
+      changeCharacter(originalMesh, ghostMaterial);
     }
   }
 

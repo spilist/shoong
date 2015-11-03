@@ -37,7 +37,7 @@ public class SummonedPartMover : ObjectsMover {
     transform.Find("BasicEffect").gameObject.SetActive(true);
   }
 
-  override public void destroyObject (bool destroyEffect = true, bool byPlayer = false) {
+  override public void destroyObject (bool destroyEffect = true, bool byPlayer = false, bool resapwn = true) {
 
     gameObject.SetActive(false);
 

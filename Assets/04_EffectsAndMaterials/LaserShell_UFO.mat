@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: LaserShell
+  m_Name: LaserShell_UFO
   m_Shader: {fileID: 200, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
@@ -19,7 +19,7 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: -2080785917, guid: 9d8c79f1a342edf4dadfcaae44e1c75c,
+          m_Texture: {fileID: 1901758715, guid: 9d8c79f1a342edf4dadfcaae44e1c75c,
             type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
@@ -94,6 +94,10 @@ Material:
         second: .5
       data:
         first:
+          name: _Shininess
+        second: .699999988
+      data:
+        first:
           name: _Parallax
         second: .0199999996
       data:
@@ -140,8 +144,16 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: 1, g: 1, b: 1, a: 1}
+        second: {r: 1, g: 1, b: 1, a: .272000015}
+      data:
+        first:
+          name: _SpecColor
+        second: {r: 1, g: 1, b: 1, a: 0}
+      data:
+        first:
+          name: _Emission
+        second: {r: 1, g: 1, b: 1, a: 0}
       data:
         first:
           name: _TintColor
-        second: {r: .198691592, g: .360294104, b: .346920103, a: .147}
+        second: {r: 1, g: .566176474, b: .566176474, a: .184}

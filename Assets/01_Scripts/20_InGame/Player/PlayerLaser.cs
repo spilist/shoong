@@ -1,34 +1,37 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class AlienshipLaserMover : MonoBehaviour {
-  AlienshipMover father;
+public class PlayerLaser : MonoBehaviour {
   int targetRadius;
   float radius = 0;
   int targetLength;
   float length = 0;
   int rotatingSpeed;
-  int loseEnergy;
   Transform outer;
 
   float shootingDuration;
   float stayDuration;
   float shrinkingDuration;
+  float pointsLaserGetScale;
 
   float stayCount = 0;
   int status = 0;
 
-  public void set(float angle, AlienshipManager asm, AlienshipMover father) {
-    transform.eulerAngles = new Vector3(0, angle, 0);
-    targetRadius = asm.laserRadius;
-    targetLength = asm.laserLength;
-    shootingDuration = asm.laserShootingDuration;
-    stayDuration = asm.laserStayDuration;
-    shrinkingDuration = asm.laserShrinkingDuration;
-    rotatingSpeed = asm.laserRotatingSpeed;
-    loseEnergy = asm.laserLoseEnergy;
+	void Start() {
+    Skill_laser skill = SkillManager.sm.current().GetComponent<Skill_laser>();
+
+    targetRadius = skill.laserRadius;
+    targetLength = skill.laserLength;
+    shootingDuration = skill.laserShootingDuration;
+    stayDuration = skill.laserStayDuration;
+    shrinkingDuration = skill.laserShrinkingDuration;
+    rotatingSpeed = skill.laserRotatingSpeed;
+    pointsLaserGetScale = skill.pointsLaserGetScale;
     outer = transform.Find("Outer");
-    this.father = father;
+  }
+
+  public void set(float angle) {
+    transform.eulerAngles = new Vector3(0, angle, 0);
 
     stayCount = 0;
     radius = 0;
@@ -37,7 +40,7 @@ public class AlienshipLaserMover : MonoBehaviour {
     status = 1;
   }
 
-	void Update () {
+  void Update () {
     if (status == 1) {
       radius = Mathf.MoveTowards(radius, targetRadius, Time.deltaTime * targetRadius / shootingDuration);
       length = Mathf.MoveTowards(length, targetLength, Time.deltaTime * targetLength / shootingDuration);
@@ -52,23 +55,18 @@ public class AlienshipLaserMover : MonoBehaviour {
       radius = Mathf.MoveTowards(radius, 0, Time.deltaTime * targetRadius / shrinkingDuration);
       transform.localScale = new Vector3(length, radius, radius);
       if (radius == 0) {
-        father.laserEnd();
         gameObject.SetActive(false);
       }
     }
-	}
+  }
 
   void OnTriggerEnter(Collider other) {
-    if (other.tag == "Player") {
-      Player.pl.loseEnergy(loseEnergy, "Alienship");
-      return;
-    }
-
-    if (other.tag == "Alienship") return;
-
+    if (other.tag == "Player" || other.tag == "Blackhole") return;
     ObjectsMover mover = other.GetComponent<ObjectsMover>();
 
-    if (mover != null) mover.destroyObject();
+    if (mover != null) {
+      CubeManager.cm.addCount((int)Mathf.Floor(mover.cubesWhenDestroy() * pointsLaserGetScale));
+      mover.destroyObject(true, true);
+    }
   }
 }
-
