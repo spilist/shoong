@@ -84,6 +84,9 @@ TagManager:
   - LRPanel_right
   - PlayerLaser
   - PlayerShield
+  - SkipButton
+  - TutorialCollider
+  - TutorialPart
   layers:
   - Default
   - TransparentFX

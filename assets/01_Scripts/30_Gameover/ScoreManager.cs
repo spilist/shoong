@@ -31,9 +31,7 @@ public class ScoreManager : MonoBehaviour {
   public float destroySmallAfter = 4;
 
   public GameObject contactCollider;
-  public GameObject barsCanvas;
-  public Renderer partsCollector;
-  public TouchInputHandler inputHandler;
+  public GameObject inputHandler;
   private bool isScoring = false;
 
   // after gameover
@@ -143,7 +141,9 @@ public class ScoreManager : MonoBehaviour {
   IEnumerator startGameOver() {
     gameOverStatus++;
 
-    inputHandler.stopReact();
+    // inputHandler.stopReact();
+    inputHandler.SetActive(false);
+
     AudioManager.am.changeVolume("Main", "Small");
 
     // playerExplosion.Play ();
@@ -151,11 +151,6 @@ public class ScoreManager : MonoBehaviour {
     Player.pl.GetComponent<MeshRenderer>().enabled = false;
     Player.pl.GetComponent<SphereCollider>().enabled = false;
     boosterCount = Player.pl.getNumBoosters();
-    partsCollector.enabled = false;
-    foreach (Transform tr in partsCollector.transform) {
-      tr.gameObject.SetActive(false);
-    }
-    barsCanvas.SetActive(false);
     contactCollider.SetActive(false);
 
     yield return new WaitForSeconds(showPlayerExplosionDuring);

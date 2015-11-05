@@ -27,8 +27,6 @@ public class Player : MonoBehaviour {
   private float boosterBonus = 1;
   private bool speedBoosting = false;
 
-  public Transform effects;
-
   public float tumble = 4;
   private Vector3 direction;
 
@@ -78,6 +76,9 @@ public class Player : MonoBehaviour {
   private float timeSpaned;
   private bool scaleChanged = false;
   private bool feverTime = false;
+  public ParticleSystem getEnergy;
+  public GetPartsText getPartsText;
+  public UseBoosterText useBoosterText;
 
 	void Awake() {
     pl = this;
@@ -159,6 +160,14 @@ public class Player : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other) {
     string tag = other.tag;
+
+    if (tag == "TutorialPart") {
+      other.gameObject.SetActive(false);
+      getEnergy.Play();
+      getEnergy.GetComponent<AudioSource>().Play();
+      getPartsText.increment();
+      return;
+    }
 
     ObjectsMover mover = other.gameObject.GetComponent<ObjectsMover>();
 
@@ -268,8 +277,8 @@ public class Player : MonoBehaviour {
     DataManager.dm.increment("TotalBlinks");
   }
 
-  public void stopMoving() {
-    stopping = true;
+  public void stopMoving(bool val = true) {
+    stopping = val;
     stickSpeedScale = 1;
   }
 
@@ -278,6 +287,11 @@ public class Player : MonoBehaviour {
 
     if (RhythmManager.rm.canBoost()) {
       RhythmManager.rm.ringSuccessed();
+
+      if (!DataManager.dm.getBool("TutorialDone")) {
+        useBoosterText.increment();
+      }
+
       if (RhythmManager.rm.isSkillOK) {
         SkillManager.sm.activate();
         if (SkillManager.sm.isBlink()) {

@@ -78,7 +78,11 @@ public class BeforeMain : MonoBehaviour {
             PlayerPrefs.SetString("CharacterRotation", rot.ToString().TrimStart('(').TrimEnd(')'));
             PlayerPrefs.SetString("CharacterAngVal", angVal.ToString().TrimStart('(').TrimEnd(')'));
 
-            Application.LoadLevelAsync("5_Main");
+            if (DataManager.dm.getBool("TutorialDone")) {
+              Application.LoadLevelAsync("5_Main");
+            } else {
+              Application.LoadLevelAsync("_Tutorial");
+            }
           }
         }
       }

@@ -71,19 +71,21 @@ public class TouchInputHandler : MonoBehaviour
       }
 
 			if ((result == "Ground" || result == "ChangeBehavior") && !gameStarted) {
-				TimeManager.time.startTime();
-        EnergyManager.em.turnEnergy(true);
-        // SuperheatManager.sm.startGame();
-        RhythmManager.rm.startGame();
-        beforeIdle.moveTitle();
-        menus.gameStart();
-        spawnManager.run();
-        GoldManager.gm.startGame();
-        AudioManager.am.changeVolume("Main", "Max");
 
+        menus.gameStart();
+
+        TimeManager.time.startTime();
+        EnergyManager.em.turnEnergy(true);
+        RhythmManager.rm.startGame();
+        GoldManager.gm.startGame();
+        spawnManager.run();
         DataManager.dm.increment("play_" + PlayerPrefs.GetString("SelectedCharacter"));
 
+        beforeIdle.moveTitle();
+        AudioManager.am.changeVolume("Main", "Max");
+
 				gameStarted = true;
+
         controlMethod = DataManager.dm.getString("ControlMethod");
         stickPanelSize = Vector3.Distance(stick.position, stick.transform.Find("End").position);
         stick.gameObject.SetActive(true);

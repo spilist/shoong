@@ -9,10 +9,14 @@ public class SpawnManager : MonoBehaviour {
   public float generateOffsetForAsteroid = 0.6f;
 
   public void Start() {
-    GetComponent<NormalPartsManager>().enabled = true;
+    if (DataManager.dm.getBool("TutorialDone")) {
+      GetComponent<NormalPartsManager>().enabled = true;
+    }
   }
 
   public void run() {
+    GetComponent<NormalPartsManager>().enabled = true;
+
     GetComponent<FollowTarget>().enabled = false;
 
     GetComponent<AsteroidManager>().enabled = true;

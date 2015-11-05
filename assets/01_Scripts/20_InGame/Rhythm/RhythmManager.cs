@@ -11,6 +11,7 @@ public class RhythmManager : MonoBehaviour {
   public GameObject skillRing;
   public GameObject failedRhythmPrefab;
   public Transform inGameUI;
+  public Transform tutorialUI;
   public int ringAmount = 2;
   public List<GameObject> normalRingPool;
   public List<GameObject> skillRingPool;
@@ -49,11 +50,21 @@ public class RhythmManager : MonoBehaviour {
   private BeatObserver beatObserver;
   private bool beating = false;
   private bool gameStarted = false;
+  private bool doingTutorial = false;
+
+  private Text origTouchText;
+  private Text origOnthebeatText;
+  private Image origBoostImage;
+  private GameObject fingerImage;
 
 	void Awake() {
     rm = this;
     beatObserver = GetComponent<BeatObserver>();
     normalColor = normalRing.GetComponent<SpriteRenderer>().color;
+
+    origTouchText = touchText;
+    origOnthebeatText = onthebeatText;
+    origBoostImage = boostImage;
   }
 
   void Start() {
@@ -74,15 +85,30 @@ public class RhythmManager : MonoBehaviour {
 
       obj = (GameObject) Instantiate(failedRhythmPrefab);
       obj.SetActive(false);
-      obj.transform.SetParent(inGameUI, false);
       failedRhythmPool.Add(obj);
     }
 
+    if (DataManager.dm.getBool("TutorialDone")) beating = true;
+  }
+
+  public void startBeat(Text touchText, Text ontheBeatText, Image boostImage, GameObject fingerImage) {
     beating = true;
+
+    if (tutorialUI.gameObject.activeInHierarchy) doingTutorial = true;
+
+    this.touchText = touchText;
+    this.onthebeatText = ontheBeatText;
+    this.boostImage = boostImage;
+    this.fingerImage = fingerImage;
   }
 
   public void startGame() {
+    beating = true;
     gameStarted = true;
+    doingTutorial = false;
+    touchText = origTouchText;
+    onthebeatText = origOnthebeatText;
+    boostImage = origBoostImage;
   }
 
   public void setPeriod(float val) {
@@ -131,11 +157,17 @@ public class RhythmManager : MonoBehaviour {
 
     if (failed == null) {
       failed = (GameObject) Instantiate(failedRhythmPrefab);
-      failed.transform.SetParent(inGameUI, false);
       failedRhythmPool.Add(failed);
     }
 
     failed.GetComponent<Text>().text = text;
+
+    if (doingTutorial) {
+      failed.transform.SetParent(tutorialUI, false);
+    } else {
+      failed.transform.SetParent(inGameUI, false);
+    }
+
     failed.SetActive(true);
   }
 
@@ -209,7 +241,7 @@ public class RhythmManager : MonoBehaviour {
   }
 
   public void ringSkipped(bool skillRing) {
-    if (!gameStarted) return;
+    if (!doingTutorial && !gameStarted) return;
 
     if (ringSuccess) {
       ringSuccess = false;
@@ -251,5 +283,7 @@ public class RhythmManager : MonoBehaviour {
       touchText.color = inactiveBoostImageColor;
       onthebeatText.color = inactiveBoostImageColor;
     }
+
+    if (fingerImage != null) fingerImage.SetActive(val);
   }
 }

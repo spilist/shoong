@@ -9,7 +9,6 @@ public class MenusController : MonoBehaviour {
   public GameObject idleUI;
   public GameObject inGameUI;
   public GameObject beforeIdleUI;
-  public GameObject barsCanvas;
   public BeforeIdle beforeIdle;
 
   public AudioClip UITouchSound;
@@ -67,8 +66,6 @@ public class MenusController : MonoBehaviour {
     idleUI.SetActive(false);
     menuButtonsLeft.SetActive(false);
     menuButtonsRight.SetActive(false);
-
-    barsCanvas.GetComponent<Canvas>().enabled = true;
   }
 
   public bool isMenuOn() {

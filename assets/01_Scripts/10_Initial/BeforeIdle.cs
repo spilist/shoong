@@ -76,7 +76,7 @@ public class BeforeIdle : MonoBehaviour {
             titleFilter.gameObject.SetActive(false);
             character.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
             character.transform.localRotation = Quaternion.Euler(0, 90, 0);
-            flyingCharacters.reset();
+            if (flyingCharacters != null) flyingCharacters.reset();
           }
         }
       }
@@ -125,7 +125,7 @@ public class BeforeIdle : MonoBehaviour {
             PlayerPrefs.SetString("CharacterRotation", rot.ToString().TrimStart('(').TrimEnd(')'));
             PlayerPrefs.SetString("CharacterAngVal", angVal.ToString().TrimStart('(').TrimEnd(')'));
 
-            Application.LoadLevelAsync(Application.loadedLevel);
+            Application.LoadLevelAsync("5_Main");
           }
         }
       }

@@ -2327,6 +2327,7 @@ MonoBehaviour:
   skillRing: {fileID: 157310, guid: 4d7eaedd1710044f7841d4a7aa669ec0, type: 2}
   failedRhythmPrefab: {fileID: 117830, guid: 9ff6898f90381414bbc7280ccb753536, type: 2}
   inGameUI: {fileID: 2134279969}
+  tutorialUI: {fileID: 0}
   ringAmount: 2
   normalRingPool: []
   skillRingPool: []
@@ -3432,7 +3433,6 @@ MonoBehaviour:
   baseSpeed: 150
   speed: 0
   boosterSpeedDecreasePerTime: 20
-  effects: {fileID: 1753770006}
   tumble: 4
   monm: {fileID: 1991538109}
   rdm: {fileID: 1991538105}
@@ -3445,6 +3445,9 @@ MonoBehaviour:
   originalScale: 0
   afterStrengthenDuration: 1
   dirIndicator: {fileID: 1322196947}
+  getEnergy: {fileID: 0}
+  getPartsText: {fileID: 0}
+  useBoosterText: {fileID: 0}
 --- !u!96 &91418584
 TrailRenderer:
   m_ObjectHideFlags: 0
@@ -50189,7 +50192,6 @@ MonoBehaviour:
   idleUI: {fileID: 1817731073}
   inGameUI: {fileID: 2134279968}
   beforeIdleUI: {fileID: 1366368659}
-  barsCanvas: {fileID: 1289803595}
   beforeIdle: {fileID: 1366368665}
   UITouchSound: {fileID: 8300000, guid: 3b7a828a646174088aa48ee1db9c439c, type: 3}
 --- !u!1 &1083095104
@@ -64376,9 +64378,7 @@ MonoBehaviour:
   destroyLargeAfter: 1
   destroySmallAfter: 4
   contactCollider: {fileID: 1298175622}
-  barsCanvas: {fileID: 1289803595}
-  partsCollector: {fileID: 1270861827}
-  inputHandler: {fileID: 1801634119}
+  inputHandler: {fileID: 1801634117}
   energyDangerFilter: {fileID: 1455364852}
   inGameUI: {fileID: 2134279968}
   gameOverUI: {fileID: 868146740}

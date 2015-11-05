@@ -10,4 +10,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/00_Scenes/2_BeforeMainScene.unity
   - enabled: 1
+    path: Assets/00_Scenes/_Tutorial.unity
+  - enabled: 1
+    path: Assets/00_Scenes/5_Main.unity
+  - enabled: 0
     path: Assets/00_Scenes/5_Main.unity
