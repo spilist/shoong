@@ -141,9 +141,6 @@ public class TouchInputHandler : MonoBehaviour
             }
 
             if (touch.phase == TouchPhase.Moved && touch.fingerId == stickFingerId) {
-              // if (hitObject.tag == "StickPanel_movement") {
-              //   moveStick();
-              // }
               setPlayerDirection(stick, touch);
             }
 
@@ -178,20 +175,14 @@ public class TouchInputHandler : MonoBehaviour
     Vector3 heading = worldTouchPosition - originPosition;
     direction = heading / heading.magnitude;
 
-    if (heading.magnitude <= stickPanelSize) {
+    float indicatorDistance = heading.magnitude / stickPanelSize;
+    if (indicatorDistance <= 1) {
       fingerIndicator.position = newStickPosition();
     } else {
-      // fingerIndicator.position =
+      fingerIndicator.position = new Vector3(origin.position.x + (stickPanelSize * direction).x , 0, origin.position.z + (stickPanelSize * direction).z);
     }
 
-    // fingerIndicator.position = new Vector3(origin.position.x + (heading / stickPanelSize) * , 0, origin.position.z);
-
     Player.pl.setDirection(direction, heading.magnitude / stickPanelSize);
-
-    // if (Vector3.Distance(stick.position, fingerIndicator.position) <= stickPanelSize) {
-      // Vector3 dir = fingerIndicator.position - stick.position;
-      // stick.Translate(dir * Time.deltaTime, Space.World);
-    // }
   }
 
   public Vector3 setPlayerDirection(Transform origin) {
@@ -218,13 +209,6 @@ public class TouchInputHandler : MonoBehaviour
     Vector2 touchPosition = Input.GetTouch(0).position;
 
     return Camera.main.ScreenToWorldPoint(new Vector3(touchPosition.x, touchPosition.y, stick.position.y));
-  }
-
-  void moveStick() {
-    if (Vector3.Distance(stick.position, fingerIndicator.position) > stickPanelSize) {
-      Vector3 dir = fingerIndicator.position - stick.position;
-      stick.Translate(dir * Time.deltaTime, Space.World);
-    }
   }
 
 	void OnMouseDown() {

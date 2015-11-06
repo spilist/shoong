@@ -148,9 +148,9 @@ public class TutorialHandler : MonoBehaviour
         }
       }
 
-      if (result == "StickPanel_movement") {
-        Vector3 worldTouchPosition = setPlayerDirection(Player.pl.transform);
-      }
+      // if (result == "StickPanel_movement") {
+      //   Vector3 worldTouchPosition = setPlayerDirection(Player.pl.transform);
+      // }
 
       if (!gameStarted && result == "StickPanel_booster") {
         Player.pl.shootBooster();
@@ -200,20 +200,14 @@ public class TutorialHandler : MonoBehaviour
     Vector3 heading = worldTouchPosition - originPosition;
     direction = heading / heading.magnitude;
 
-    if (heading.magnitude <= stickPanelSize) {
+    float indicatorDistance = heading.magnitude / stickPanelSize;
+    if (indicatorDistance <= 1) {
       fingerIndicator.position = newStickPosition();
     } else {
-      // fingerIndicator.position =
+      fingerIndicator.position = new Vector3(origin.position.x + (stickPanelSize * direction).x , 0, origin.position.z + (stickPanelSize * direction).z);
     }
 
-    // fingerIndicator.position = new Vector3(origin.position.x + (heading / stickPanelSize) * , 0, origin.position.z);
-
     Player.pl.setDirection(direction, heading.magnitude / stickPanelSize);
-
-    // if (Vector3.Distance(stick.position, fingerIndicator.position) <= stickPanelSize) {
-      // Vector3 dir = fingerIndicator.position - stick.position;
-      // stick.Translate(dir * Time.deltaTime, Space.World);
-    // }
 
     if (dirIndicator.gameObject.activeInHierarchy) dirIndicator.setDirection(direction);
   }
@@ -244,13 +238,6 @@ public class TutorialHandler : MonoBehaviour
     Vector2 touchPosition = Input.GetTouch(0).position;
 
     return Camera.main.ScreenToWorldPoint(new Vector3(touchPosition.x, touchPosition.y, stick.position.y));
-  }
-
-  void moveStick() {
-    if (Vector3.Distance(stick.position, fingerIndicator.position) > stickPanelSize) {
-      Vector3 dir = fingerIndicator.position - stick.position;
-      stick.Translate(dir * Time.deltaTime, Space.World);
-    }
   }
 
   public void stopReact() {
