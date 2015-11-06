@@ -41,5 +41,4 @@ public class Skill_laser : Skill {
       laser.GetComponent<PlayerLaser>().set(rot.eulerAngles.y - 90);
     }
   }
-
 }

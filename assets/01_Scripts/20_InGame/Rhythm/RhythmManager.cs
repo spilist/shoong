@@ -177,10 +177,12 @@ public class RhythmManager : MonoBehaviour {
     } else if (!feverTime) {
       rem = ringCount % (numNormalInLoop + numSkillInLoop);
 
-      if (rem == 1 && skillActivated && numSkillInLoop > 1) {
-        // Debug.Log("stopped");
-        skillActivated = false;
-        SkillManager.sm.stopSkills();
+      if (rem == 1 && skillActivated) {
+        if (SkillManager.sm.current().name != "Shield") {
+          // Debug.Log("stopped");
+          skillActivated = false;
+          SkillManager.sm.stopSkills();
+        }
       }
 
       if (rem < numNormalInLoop) {
