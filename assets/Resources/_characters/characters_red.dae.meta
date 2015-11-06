@@ -28,6 +28,8 @@ ModelImporter:
     100040: toyrobot_1
     100042: wilson_1
     100044: goldpig_1
+    100046: ghost_1
+    100048: soju_2
     400000: bender_1
     400002: butterfly_1
     400004: cat_1
@@ -51,6 +53,8 @@ ModelImporter:
     400040: toyrobot_1
     400042: wilson_1
     400044: goldpig_1
+    400046: ghost_1
+    400048: soju_2
     2300000: bender_1
     2300002: butterfly_1
     2300004: cat_1
@@ -73,6 +77,8 @@ ModelImporter:
     2300038: toyrobot_1
     2300040: wilson_1
     2300042: goldpig_1
+    2300044: ghost_1
+    2300046: soju_2
     3300000: bender_1
     3300002: butterfly_1
     3300004: cat_1
@@ -95,6 +101,8 @@ ModelImporter:
     3300038: toyrobot_1
     3300040: wilson_1
     3300042: goldpig_1
+    3300044: ghost_1
+    3300046: soju_2
     4300000: cat_1
     4300002: crab_1
     4300004: bender_1
@@ -117,6 +125,8 @@ ModelImporter:
     4300038: wilson_1
     4300040: robotcat_1
     4300042: goldpig_1
+    4300044: ghost_1
+    4300046: soju_2
     9500000: //RootNode
   materials:
     importMaterials: 1

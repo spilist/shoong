@@ -45,7 +45,6 @@ public class TutorialHandler : MonoBehaviour
   void enableTutoCollider() {
     tutoCollider.enabled = true;
     tutoLoaded = false;
-    tutoStatus++;
   }
 
   public void nextTutorial(int status) {
@@ -55,6 +54,7 @@ public class TutorialHandler : MonoBehaviour
     tutorialScenes[status].SetActive(false);
     tutorialScenes[status + 1].SetActive(true);
     tutoCollider.enabled = false;
+    tutoStatus++;
 
     if (status == 1) {
       RhythmManager.rm.startBeat(touchTexts[0], onthebeatTexts[0], boostImages[0], fingerImages[0]);
@@ -102,10 +102,12 @@ public class TutorialHandler : MonoBehaviour
           stick.gameObject.SetActive(false);
           nextTutorial(1);
         } else {
+          tutoStatus += (2 - tutoStatus);
           tutorialScenes[2].SetActive(false);
-          tutorialScenes[3].SetActive(false);
+          RhythmManager.rm.startBeat(touchTexts[1], onthebeatTexts[1], boostImages[1], fingerImages[1]);
+          spawnManager.GetComponent<FollowTarget>().enabled = true;
           Player.pl.stopMoving(false);
-          startGame();
+          nextTutorial(3);
         }
         return;
       }
@@ -118,6 +120,7 @@ public class TutorialHandler : MonoBehaviour
           tutorialScenes[0].SetActive(true);
           tutoCollider.enabled = false;
           Player.pl.stopMoving();
+          tutoStatus++;
           Invoke("enableTutoCollider", 2);
         } else if (tutoStatus == 1) {
           tutoLoaded = true;
@@ -145,9 +148,9 @@ public class TutorialHandler : MonoBehaviour
         }
       }
 
-      // if (result == "StickPanel_movement") {
-      //   Vector3 worldTouchPosition = setPlayerDirection(Player.pl.transform);
-      // }
+      if (result == "StickPanel_movement") {
+        Vector3 worldTouchPosition = setPlayerDirection(Player.pl.transform);
+      }
 
       if (!gameStarted && result == "StickPanel_booster") {
         Player.pl.shootBooster();
