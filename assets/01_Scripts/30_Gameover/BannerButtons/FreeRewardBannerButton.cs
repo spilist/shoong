@@ -9,7 +9,7 @@ public class FreeRewardBannerButton : BannerButton {
   public int maxReward = 140;
   private int reward;
 
-  public float[] nextRewardMinutes;
+  public int[] nextRewardMinutes;
 
   override public void activateSelf() {
     gameOverUI.SetActive(false);
@@ -29,6 +29,9 @@ public class FreeRewardBannerButton : BannerButton {
     DataManager.dm.increment("FreeRewardCount");
     DataManager.dm.setDateTime("LastFreeRewardTime");
     transform.parent.GetComponent<Text>().text = "            " + reward + " GOLDS EARNED";
+
+    int rewardCount = DataManager.dm.getInt("FreeRewardCount") >= nextRewardMinutes.Length ? (nextRewardMinutes.Length - 1) : DataManager.dm.getInt("FreeRewardCount");
+    NotificationManager.nm.notifyAfter(nextRewardMinutes[rewardCount]);
   }
 
   override public bool available() {

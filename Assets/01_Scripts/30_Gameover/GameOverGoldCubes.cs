@@ -48,4 +48,12 @@ public class GameOverGoldCubes : MonoBehaviour {
   public int currentAmount() {
     return target;
   }
+
+  void OnDisable() {
+    if (current < target) {
+      increasing = false;
+      current = target;
+      text.text = target.ToString();
+    }
+  }
 }

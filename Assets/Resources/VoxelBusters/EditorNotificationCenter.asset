@@ -11,5 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 328e3e4ccb92f4170af5127ef6cccdc1, type: 3}
   m_Name: EditorNotificationCenter
   m_EditorClassIdentifier: 
-  m_supportedNotificationTypes: 0
+  m_supportedNotificationTypes: -1
   m_isRegisteredForRemoteNotifications: 0
