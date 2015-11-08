@@ -15,3 +15,5 @@ EditorBuildSettings:
     path: Assets/00_Scenes/5_Main.unity
   - enabled: 0
     path: Assets/VoxelBusters/NativePlugins/Demo/Scene/DemoScene.unity
+  - enabled: 0
+    path: Assets/00_Scenes/AdMobSample.unity

@@ -80,7 +80,7 @@ PlayerSettings:
   virtualRealitySupported: 0
   productGUID: bf041498242cf754b8ce54746426781e
   AndroidBundleVersionCode: 70
-  AndroidMinSdkVersion: 9
+  AndroidMinSdkVersion: 13
   AndroidPreferredInstallLocation: 1
   aotOptions: 
   apiCompatibilityLevel: 2
