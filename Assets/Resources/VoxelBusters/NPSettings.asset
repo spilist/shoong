@@ -40,12 +40,138 @@ MonoBehaviour:
       m_dontAskButtonText: No, Thanks
   m_billingSettings:
     m_products:
+    - m_name: toy_chameleon
+      m_description: toy_chameleon
+      m_isConsumable: 0
+      m_price: 0
+      m_iosProductId: toy_chameleon
+      m_androidProductId: toy_chameleon
     - m_name: toy_soju
       m_description: toy_soju
       m_isConsumable: 0
       m_price: 0
-      m_iosProductId: 
+      m_iosProductId: toy_soju
       m_androidProductId: toy_soju
+    - m_name: toy_leonplant
+      m_description: toy_leonplant
+      m_isConsumable: 0
+      m_price: 0
+      m_iosProductId: toy_leonplant
+      m_androidProductId: toy_leonplant
+    - m_name: toy_butterfly
+      m_description: toy_butterfly
+      m_isConsumable: 0
+      m_price: 0
+      m_iosProductId: toy_butterfly
+      m_androidProductId: toy_butterfly
+    - m_name: toy_paperplane
+      m_description: toy_paperplane
+      m_isConsumable: 0
+      m_price: 0
+      m_iosProductId: toy_paperplane
+      m_androidProductId: toy_paperplane
+    - m_name: toy_beardedfrog
+      m_description: toy_beardedfrog
+      m_isConsumable: 0
+      m_price: 0
+      m_iosProductId: toy_beardedfrog
+      m_androidProductId: toy_beardedfrog
+    - m_name: toy_wilson
+      m_description: toy_wilson
+      m_isConsumable: 0
+      m_price: 0
+      m_iosProductId: toy_wilson
+      m_androidProductId: toy_wilson
+    - m_name: toy_robotcat
+      m_description: toy_robotcat
+      m_isConsumable: 0
+      m_price: 0
+      m_iosProductId: toy_robotcat
+      m_androidProductId: toy_robotcat
+    - m_name: toy_crab
+      m_description: toy_crab
+      m_isConsumable: 0
+      m_price: 0
+      m_iosProductId: toy_crab
+      m_androidProductId: toy_crab
+    - m_name: toy_hamster
+      m_description: toy_hamster
+      m_isConsumable: 0
+      m_price: 0
+      m_iosProductId: toy_hamster
+      m_androidProductId: toy_hamster
+    - m_name: toy_deathstar
+      m_description: toy_deathstar
+      m_isConsumable: 0
+      m_price: 0
+      m_iosProductId: toy_deathstar
+      m_androidProductId: toy_deathstar
+    - m_name: toy_tyranno
+      m_description: toy_tyranno
+      m_isConsumable: 0
+      m_price: 0
+      m_iosProductId: toy_tyranno
+      m_androidProductId: toy_tyranno
+    - m_name: toy_toyrobot
+      m_description: toy_toyrobot
+      m_isConsumable: 0
+      m_price: 0
+      m_iosProductId: toy_toyrobot
+      m_androidProductId: toy_toyrobot
+    - m_name: toy_fruits
+      m_description: toy_fruits
+      m_isConsumable: 0
+      m_price: 0
+      m_iosProductId: toy_fruits
+      m_androidProductId: toy_fruits
+    - m_name: toy_bender
+      m_description: toy_bender
+      m_isConsumable: 0
+      m_price: 0
+      m_iosProductId: toy_bender
+      m_androidProductId: toy_bender
+    - m_name: toy_ghost
+      m_description: toy_ghost
+      m_isConsumable: 0
+      m_price: 0
+      m_iosProductId: toy_ghost
+      m_androidProductId: toy_ghost
+    - m_name: toy_vacuumrobot
+      m_description: toy_vacuumrobot
+      m_isConsumable: 0
+      m_price: 0
+      m_iosProductId: toy_vacuumrobot
+      m_androidProductId: toy_vacuumrobot
+    - m_name: toy_minimonster
+      m_description: toy_minimonster
+      m_isConsumable: 0
+      m_price: 0
+      m_iosProductId: toy_minimonster
+      m_androidProductId: toy_minimonster
+    - m_name: toy_alienwithgun
+      m_description: toy_alienwithgun
+      m_isConsumable: 0
+      m_price: 0
+      m_iosProductId: toy_alienwithgun
+      m_androidProductId: toy_alienwithgun
+    - m_name: toy_cat
+      m_description: toy_cat
+      m_isConsumable: 0
+      m_price: 0
+      m_iosProductId: toy_cat
+      m_androidProductId: toy_cat
+    - m_name: toy_dolphin
+      m_description: toy_dolphin
+      m_isConsumable: 0
+      m_price: 0
+      m_iosProductId: toy_dolphin
+      m_androidProductId: toy_dolphin
+    - m_name: toy_goldpig
+      m_description: toy_goldpig
+      m_isConsumable: 0
+      m_price: 0
+      m_iosProductId: toy_goldpig
+      m_androidProductId: toy_goldpig
     m_iOS:
       m_supportsReceiptValidation: 0
       m_validateUsingServerURL: 

@@ -19,10 +19,6 @@ public class CharacterStat : MonoBehaviour {
   // [BitMask(typeof(SkillFlag))]
   public SkillFlag skillFlags;
 
-  public float price() {
-    return CharacterManager.cm.dolorsPerRarity[(int)rarity];
-  }
-
   public string skillName() {
     string name = skillFlags.ToString();
     return name == "0" ? "" : name;

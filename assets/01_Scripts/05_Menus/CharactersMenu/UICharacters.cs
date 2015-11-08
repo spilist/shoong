@@ -2,11 +2,13 @@
 using UnityEngine.UI;
 using System.Collections;
 using AbilityData;
+using VoxelBusters.NativePlugins;
 
 public class UICharacters : MonoBehaviour {
   public CharacterStat stat;
-  public string productId;
-  private float price;
+  private string productId;
+  private BillingProduct bProduct;
+  private string price;
 
   private CharactersMenu charactersMenu;
   private Vector3 originalPosition;
@@ -27,9 +29,11 @@ public class UICharacters : MonoBehaviour {
     originalRotation = transform.localRotation;
     originalScale = transform.localScale;
     scaleChanging = transform.localScale.x;
-    checkBought(false);
 
-    if (productId == "") productId = name;
+    productId = "toy_" + name;
+    bProduct = BillingManager.bm.getProduct(productId);
+
+    checkBought(false);
 	}
 
 	void Update () {
@@ -71,7 +75,8 @@ public class UICharacters : MonoBehaviour {
       }
 
       stat = CharacterManager.cm.character(name);
-      price = stat.price();
+
+      if (stat.buyable) price = bProduct.CurrencyCode + "\n" + bProduct.Price.ToString("0.00");
 
       charactersMenu.characterName.text = stat.characterName;
       setRarity(charactersMenu.rarity);
@@ -108,8 +113,6 @@ public class UICharacters : MonoBehaviour {
   }
 
   public void checkBought(bool buttons = true) {
-    Debug.Log(name + ": " + BillingManager.bm.IsProductPurchased(productId));
-
     if (DataManager.dm.getBool(name)) {
       if (buttons) {
         charactersMenu.selectButton.gameObject.SetActive(true);
@@ -127,8 +130,10 @@ public class UICharacters : MonoBehaviour {
   }
 
   public void buy() {
-    // BillingManager.bm.BuyProduct(productId);
+    BillingManager.bm.BuyProduct(productId);
+  }
 
+  public void buyComplete() {
     charactersMenu.selectButton.gameObject.SetActive(true);
     charactersMenu.selectButton.setCharacter(name);
     charactersMenu.buyButton.gameObject.SetActive(false);

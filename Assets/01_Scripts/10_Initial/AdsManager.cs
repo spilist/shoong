@@ -43,6 +43,5 @@ public class AdsManager : MonoBehaviour {
 
   public void HandleInterstitialClosed(object sender, EventArgs args) {
     interstitial.Destroy();
-    Debug.Log("Destroyed");
   }
 }

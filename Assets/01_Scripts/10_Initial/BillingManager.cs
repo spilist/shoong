@@ -6,7 +6,9 @@ using VoxelBusters.NativePlugins;
 
 public class BillingManager : MonoBehaviour {
   public static BillingManager bm;
+  public CharacterBuyButton characterBuyButton;
 
+  private Dictionary<string, BillingProduct> bProducts;
   private   int         m_productIter;
   private   BillingProduct[]  m_products;
   private   bool        m_productRequestFinished;
@@ -16,6 +18,8 @@ public class BillingManager : MonoBehaviour {
 
     m_products          = NPSettings.Billing.Products;
     m_productRequestFinished  = false;
+
+    bProducts = new Dictionary<string, BillingProduct>();
 
     RequestBillingProducts(m_products);
 	}
@@ -54,63 +58,32 @@ public class BillingManager : MonoBehaviour {
 
   private void DidFinishProductsRequestEvent (BillingProduct[] _regProductsList, string _error)
   {
-    // AddNewResult(string.Format("Billing products request finished. Error = {0}.", _error.GetPrintableString()));
-
     if (_regProductsList != null)
     {
       m_productRequestFinished  = true;
-    //   AppendResult (string.Format ("Totally {0} billing products information were received.", _regProductsList.Length));
 
-    //   foreach (BillingProduct _eachProduct in _regProductsList)
-    //     AppendResult (_eachProduct.ToString());
+      foreach (BillingProduct _eachProduct in _regProductsList) {
+        bProducts[_eachProduct.ProductIdentifier] = _eachProduct;
+      }
     }
+  }
+
+  public BillingProduct getProduct(string name) {
+    return bProducts.ContainsKey(name) ? bProducts[name] : null;
   }
 
   private void DidReceiveTransactionInfoEvent (BillingTransaction[] _transactionList, string _error)
   {
-    // AddNewResult(string.Format("Billing transaction finished. Error = {0}.", _error.GetPrintableString()));
-
-    // if (_transactionList != null)
-    // {
-    //   AppendResult (string.Format ("Count of transaction information received = {0}.", _transactionList.Length));
-
-    //   foreach (BillingTransaction _eachTransaction in _transactionList)
-    //   {
-    //     AppendResult ("Product Identifier = "     + _eachTransaction.ProductIdentifier);
-    //     AppendResult ("Transaction State = "    + _eachTransaction.TransactionState);
-    //     AppendResult ("Verification State = "   + _eachTransaction.VerificationState);
-    //     AppendResult ("Transaction Date[UTC] = "  + _eachTransaction.TransactionDateUTC);
-    //     AppendResult ("Transaction Date[Local] = "  + _eachTransaction.TransactionDateLocal);
-    //     AppendResult ("Transaction Identifier = " + _eachTransaction.TransactionIdentifier);
-    //     AppendResult ("Transaction Receipt = "    + _eachTransaction.TransactionReceipt);
-    //     AppendResult ("Error = "          + _eachTransaction.Error.GetPrintableString());
-    //   }
-    // }
-  }
-
-  private BillingProduct GetCurrentProduct ()
-  {
-    return m_products[m_productIter];
-  }
-
-  private void GotoNextProduct ()
-  {
-    m_productIter++;
-
-    if (m_productIter >= m_products.Length)
-      m_productIter = 0;
-  }
-
-  private void GotoPreviousProduct ()
-  {
-    m_productIter--;
-
-    if (m_productIter < 0)
-      m_productIter = m_products.Length - 1;
-  }
-
-  private int GetProductsCount ()
-  {
-    return m_products.Length;
+    if (_transactionList != null)
+    {
+      eBillingTransactionState state;
+      foreach (BillingTransaction _eachTransaction in _transactionList)
+      {
+        state = _eachTransaction.TransactionState;
+        if (state == eBillingTransactionState.PURCHASED) {
+          characterBuyButton.buyComplete();
+        }
+      }
+    }
   }
 }
