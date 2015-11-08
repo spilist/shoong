@@ -59,4 +59,17 @@ public class CharactersMenu : Draggable {
     Transform lastChild = transform.Find("Characters").transform.GetChild(transform.Find("Characters").transform.childCount - 1);
     return lastChild.localPosition.x;
   }
+
+  public void buyComplete(string name, bool bought) {
+    string characterName = name.Replace("toy_", "");
+
+    if (bought) {
+      selectButton.gameObject.SetActive(true);
+      selectButton.setCharacter(characterName);
+      buyButton.gameObject.SetActive(false);
+      numYourCharacters.text = (int.Parse(numYourCharacters.text) + 1).ToString();
+    }
+
+    transform.Find("Characters/" + characterName).GetComponent<UICharacters>().buyComplete(bought);
+  }
 }

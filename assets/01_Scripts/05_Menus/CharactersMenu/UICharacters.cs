@@ -133,13 +133,15 @@ public class UICharacters : MonoBehaviour {
     BillingManager.bm.BuyProduct(productId);
   }
 
-  public void buyComplete() {
-    charactersMenu.selectButton.gameObject.SetActive(true);
-    charactersMenu.selectButton.setCharacter(name);
-    charactersMenu.buyButton.gameObject.SetActive(false);
-    charactersMenu.numYourCharacters.text = (int.Parse(charactersMenu.numYourCharacters.text) + 1).ToString();
-    GetComponent<Renderer>().sharedMaterial = charactersMenu.activeCharactersMaterial;
+  public void buyComplete(bool bought) {
+    if (bought) {
+      GetComponent<Renderer>().sharedMaterial = charactersMenu.activeCharactersMaterial;
 
-    AudioSource.PlayClipAtPoint(charactersMenu.characterBuySound, transform.position);
+      AudioSource.PlayClipAtPoint(charactersMenu.characterBuySound, transform.position);
+    }
+
+    DataManager.dm.setBool(name, true);
+    DataManager.dm.increment("NumCharactersHave");
+    DataManager.dm.save();
   }
 }

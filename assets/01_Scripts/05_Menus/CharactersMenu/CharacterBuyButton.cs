@@ -20,14 +20,6 @@ public class CharacterBuyButton : MenusBehavior {
   }
 
   override public void activateSelf() {
-    DataManager.dm.setBool(characterName, true);
-    DataManager.dm.increment("NumCharactersHave");
     transform.parent.Find("Characters/" + characterName).GetComponent<UICharacters>().buy();
-
-    DataManager.dm.save();
-  }
-
-  public void buyComplete() {
-    transform.parent.Find("Characters/" + characterName).GetComponent<UICharacters>().buyComplete();
   }
 }

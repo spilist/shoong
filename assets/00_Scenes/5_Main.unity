@@ -16066,6 +16066,7 @@ GameObject:
   - 23: {fileID: 251897804}
   - 33: {fileID: 251897802}
   - 65: {fileID: 251897801}
+  - 114: {fileID: 251897803}
   m_Layer: 17
   m_Name: Restore
   m_TagString: SettingsMenu
@@ -16110,6 +16111,23 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 251897799}
   m_Mesh: {fileID: 4300082, guid: 7d4e33b83f6a046ab845e77e3044ffcc, type: 3}
+--- !u!114 &251897803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 251897799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f793e5bcc439740e199e65f99da597a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activeMesh: {fileID: 0}
+  inactiveMesh: {fileID: 0}
+  blinkingMesh: {fileID: 0}
+  blinkingSeconds: .400000006
+  playTouchSound: 1
+  blinkOnStart: 0
 --- !u!23 &251897804
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -29047,7 +29065,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de4201a2d0f3540beb6be72b698d11fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterBuyButton: {fileID: 1873613235}
+  charactersMenu: {fileID: 75942068}
 --- !u!1 &644697225
 GameObject:
   m_ObjectHideFlags: 0

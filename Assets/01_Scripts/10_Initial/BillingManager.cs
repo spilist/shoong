@@ -6,7 +6,7 @@ using VoxelBusters.NativePlugins;
 
 public class BillingManager : MonoBehaviour {
   public static BillingManager bm;
-  public CharacterBuyButton characterBuyButton;
+  public CharactersMenu charactersMenu;
 
   private Dictionary<string, BillingProduct> bProducts;
   private   int         m_productIter;
@@ -80,8 +80,8 @@ public class BillingManager : MonoBehaviour {
       foreach (BillingTransaction _eachTransaction in _transactionList)
       {
         state = _eachTransaction.TransactionState;
-        if (state == eBillingTransactionState.PURCHASED) {
-          characterBuyButton.buyComplete();
+        if (state == eBillingTransactionState.PURCHASED || state == eBillingTransactionState.RESTORED) {
+          charactersMenu.buyComplete(_eachTransaction.ProductIdentifier, state == eBillingTransactionState.PURCHASED);
         }
       }
     }
