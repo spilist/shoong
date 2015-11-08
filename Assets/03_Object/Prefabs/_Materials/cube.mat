@@ -6,8 +6,8 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: illusionpart
-  m_Shader: {fileID: 34, guid: 0000000000000000f000000000000000, type: 0}
+  m_Name: cube
+  m_Shader: {fileID: 6, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
   m_CustomRenderQueue: -1
@@ -131,10 +131,6 @@ Material:
         first:
           name: _Metallic
         second: 0
-      data:
-        first:
-          name: _Outline
-        second: .600000024
     m_Colors:
       data:
         first:
@@ -143,16 +139,12 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: 1, g: .308823526, b: .738366663, a: .709999979}
+        second: {r: 1, g: 1, b: 1, a: 1}
       data:
         first:
           name: _SpecColor
-        second: {r: .0220588446, g: .0220588446, b: .0220588446, a: 0}
+        second: {r: 1, g: 1, b: 1, a: 1}
       data:
         first:
           name: _Emission
-        second: {r: .257352948, g: .257352948, b: .257352948, a: 0}
-      data:
-        first:
-          name: _OutlineColor
-        second: {r: .897058845, g: .0329800844, b: .37265256, a: 1}
+        second: {r: .337370217, g: .400906801, b: .705882311, a: 0}

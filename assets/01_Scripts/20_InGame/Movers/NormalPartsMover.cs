@@ -16,7 +16,7 @@ public class NormalPartsMover : ObjectsMover {
   }
 
   protected override void afterEnable() {
-    filter.sharedMesh = npm.getRandomMesh();
+    // filter.sharedMesh = npm.getRandomMesh();
     goldenTransformed = false;
     GetComponent<Renderer>().sharedMaterial = originalMaterial;
   }

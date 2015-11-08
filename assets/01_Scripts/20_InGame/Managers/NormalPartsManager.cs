@@ -27,9 +27,9 @@ public class NormalPartsManager : ObjectsManager {
     else return speed;
   }
 
-  public Mesh getRandomMesh() {
-    return meshes.GetChild(Random.Range(0, meshes.childCount)).GetComponent<MeshFilter>().sharedMesh;
-  }
+  // public Mesh getRandomMesh() {
+  //   return meshes.GetChild(Random.Range(0, meshes.childCount)).GetComponent<MeshFilter>().sharedMesh;
+  // }
 
   public void spawnNormal(Vector3 pos) {
     GameObject obj = getPooledObj(objPool, objPrefab, pos);

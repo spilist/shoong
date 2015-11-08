@@ -36,11 +36,11 @@ public class ComboPartsManager : ObjectsManager {
   override public void initRest() {
     skipInterval = true;
 
-    partsMeshes = new Mesh[GetComponent<NormalPartsManager>().meshes.childCount];
-    int count = 0;
-    foreach (Transform tr in GetComponent<NormalPartsManager>().meshes) {
-      partsMeshes[count++] = tr.GetComponent<MeshFilter>().sharedMesh;
-    }
+    // partsMeshes = new Mesh[GetComponent<NormalPartsManager>().meshes.childCount];
+    // int count = 0;
+    // foreach (Transform tr in GetComponent<NormalPartsManager>().meshes) {
+    //   partsMeshes[count++] = tr.GetComponent<MeshFilter>().sharedMesh;
+    // }
 
     objNextPool = new List<GameObject>();
     for (int i = 0; i < objAmount; ++i) {
@@ -58,7 +58,7 @@ public class ComboPartsManager : ObjectsManager {
   }
 
   override protected void afterSpawn() {
-    instance.GetComponent<MeshFilter>().sharedMesh = getRandomMesh();
+    // instance.GetComponent<MeshFilter>().sharedMesh = getRandomMesh();
     instance.GetComponent<ComboPartMover>().setNormal();
     trying = false;
     comboCount = 0;
@@ -71,7 +71,7 @@ public class ComboPartsManager : ObjectsManager {
     nextInstance = getPooledObj(objNextPool, objPrefab_next, spawnPosition);
     nextInstance.SetActive(true);
     nextInstance.GetComponent<OffsetFixer>().setParent(instance);
-    nextInstance.GetComponent<MeshFilter>().sharedMesh = getRandomMesh();
+    // nextInstance.GetComponent<MeshFilter>().sharedMesh = getRandomMesh();
 
     int random = Random.Range(0, chanceBase);
     if (random < goldenCubeChance) {
@@ -85,9 +85,9 @@ public class ComboPartsManager : ObjectsManager {
     }
   }
 
-  Mesh getRandomMesh() {
-    return partsMeshes[Random.Range(0, partsMeshes.Length)];
-  }
+  // Mesh getRandomMesh() {
+  //   return partsMeshes[Random.Range(0, partsMeshes.Length)];
+  // }
 
   public void eatenByPlayer() {
     comboCount++;
@@ -125,7 +125,7 @@ public class ComboPartsManager : ObjectsManager {
       nextInstance.SetActive(true);
       nextInstance.transform.rotation = spawnRotation;
       nextInstance.GetComponent<OffsetFixer>().setParent(instance);
-      nextInstance.GetComponent<MeshFilter>().sharedMesh = getRandomMesh();
+      // nextInstance.GetComponent<MeshFilter>().sharedMesh = getRandomMesh();
 
       int random = Random.Range(0, 100);
       if (random < goldenCubeChance) {

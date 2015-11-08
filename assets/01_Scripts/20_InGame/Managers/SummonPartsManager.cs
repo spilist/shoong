@@ -39,11 +39,11 @@ public class SummonPartsManager : ObjectsManager {
   override public void initRest() {
     skipInterval = true;
 
-    summonMeshes = new Mesh[GetComponent<NormalPartsManager>().meshes.childCount];
-    int count = 0;
-    foreach (Transform tr in GetComponent<NormalPartsManager>().meshes) {
-      summonMeshes[count++] = tr.GetComponent<MeshFilter>().sharedMesh;
-    }
+    // summonMeshes = new Mesh[GetComponent<NormalPartsManager>().meshes.childCount];
+    // int count = 0;
+    // foreach (Transform tr in GetComponent<NormalPartsManager>().meshes) {
+    //   summonMeshes[count++] = tr.GetComponent<MeshFilter>().sharedMesh;
+    // }
 
     summonedPartPool = new List<GameObject>();
     summonedPartDestroyPool = new List<GameObject>();
@@ -70,9 +70,9 @@ public class SummonPartsManager : ObjectsManager {
     summonedPartLifetime = summonedPartLifetimePerLevel[level - 1];
   }
 
-  Mesh randomMesh() {
-    return summonMeshes[Random.Range(0, summonMeshes.Length)];
-  }
+  // Mesh randomMesh() {
+  //   return summonMeshes[Random.Range(0, summonMeshes.Length)];
+  // }
 
   public void startSummon() {
     getCount = 0;
@@ -93,7 +93,7 @@ public class SummonPartsManager : ObjectsManager {
         instance.SetActive(true);
         instance.transform.SetParent(parentObj.transform, false);
         instance.transform.localPosition = spawnPos;
-        instance.GetComponent<MeshFilter>().sharedMesh = randomMesh();
+        // instance.GetComponent<MeshFilter>().sharedMesh = randomMesh();
 
         int random = Random.Range(0, chanceBase);
         if (random < goldenCubeChance) {
