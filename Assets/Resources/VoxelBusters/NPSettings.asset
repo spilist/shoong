@@ -13,30 +13,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_applicationSettings:
     m_iOS:
-      m_storeIdentifier: 
+      m_storeIdentifier: com.morogoro.smashytoys
     m_android:
-      m_storeIdentifier: 
+      m_storeIdentifier: com.morogoro.smashytoys
     m_supportedFeatures:
       m_usesAddressBook: 0
       m_usesBilling: 1
       m_usesGameServices: 1
-      m_usesMediaLibrary: 1
-      m_usesNetworkConnectivity: 1
+      m_usesMediaLibrary: 0
+      m_usesNetworkConnectivity: 0
       m_usesNotificationService: 1
-      m_usesSharing: 1
+      m_usesSharing: 0
       m_usesTwitter: 0
       m_usesWebView: 0
-  m_networkConnectivitySettings:
-    m_ipAddress: 8.8.8.8
-    m_editor:
-      m_timeOutPeriod: 60
-      m_maxRetryCount: 2
-      m_timeGapBetweenPolling: 2
-    m_android:
-      m_port: 53
-      m_timeOutPeriod: 60
-      m_maxRetryCount: 2
-      m_timeGapBetweenPolling: 2
   m_utilitySettings:
     m_rateMyApp:
       m_isEnabled: 0
@@ -50,15 +39,18 @@ MonoBehaviour:
       m_rateItButtonText: Rate It Now
       m_dontAskButtonText: No, Thanks
   m_billingSettings:
-    m_products: []
+    m_products:
+    - m_name: TestCharacter00
+      m_description: TestCharacter00
+      m_isConsumable: 0
+      m_price: 0
+      m_iosProductId: 
+      m_androidProductId: test_character_00
     m_iOS:
-      m_supportsReceiptValidation: 1
+      m_supportsReceiptValidation: 0
       m_validateUsingServerURL: 
     m_android:
-      m_publicKey: 
-  m_mediaLibrarySettings:
-    m_android:
-      m_youtubeAPIKey: 
+      m_publicKey: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAlSsLq0N23DYpVe+9dQI6wWCl4XEij5z2AkpaF67bWSrypG5e0CR7ko3Sg2AqwJX2vghyIQmlq6LRumqElJIZogakCn9BmIvwWPpKtMOxD6bL/Z80yo7FfmmG+35coUVkPelVbi62rsfAGi49PmdKLWZy+ze6k5cm3O8FHD+sWDB59o5L9EMnkIChd/DabiZXRhaTd4fJyURDb5lGep0oWAFN4HR2dpataoE5ITHZv/fSmRhjhxKi9YLTZJ/RYWzVfpUfv5D9FBJ54ssoV/XB73sq3/w4F6k1WqcT0jbvcT73H7flJUX4btZYJzBeiodAuKi4eEZf0P+45/1gIoHEVQIDAQAB
   m_notificationSettings:
     m_iOS:
       m_userInfoKey: SmashToys_user_info

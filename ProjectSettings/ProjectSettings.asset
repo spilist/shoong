@@ -10,7 +10,7 @@ PlayerSettings:
   targetResolution: 0
   accelerometerFrequency: 60
   companyName: Morogoro
-  productName: "\uC288\uC6C5\uC288\uC6C5"
+  productName: SmashyToys
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_ShowUnitySplashScreen: 1
@@ -71,7 +71,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleIdentifier: com.morogoro.shoong
+  bundleIdentifier: com.morogoro.smashytoys
   bundleVersion: 0.70
   preloadedAssets: []
   metroEnableIndependentInputSource: 0
@@ -121,8 +121,8 @@ PlayerSettings:
   AndroidTargetDevice: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: shoong_key.keystore
-  AndroidKeyaliasName: shoong_key
+  AndroidKeystoreName: Keystore/morogoro.keystore
+  AndroidKeyaliasName: smashytoys
   AndroidTVCompatibility: 0
   AndroidIsGame: 1
   androidEnableBanner: 1
@@ -260,12 +260,12 @@ PlayerSettings:
   psmSplashimage: {fileID: 0}
   spritePackerPolicy: 
   scriptingDefineSymbols:
-    1: CROSS_PLATFORM_INPUT;USES_BILLING;USES_GAME_SERVICES;USES_MEDIA_LIBRARY;USES_NETWORK_CONNECTIVITY;USES_NOTIFICATION_SERVICE;USES_SHARING
+    1: CROSS_PLATFORM_INPUT;USES_BILLING;USES_GAME_SERVICES;USES_NOTIFICATION_SERVICE
     2: CROSS_PLATFORM_INPUT
-    4: USES_BILLING;USES_GAME_SERVICES;USES_MEDIA_LIBRARY;USES_NETWORK_CONNECTIVITY;USES_NOTIFICATION_SERVICE;USES_SHARING
-    7: USES_BILLING;USES_GAME_SERVICES;USES_MEDIA_LIBRARY;USES_NETWORK_CONNECTIVITY;USES_NOTIFICATION_SERVICE;USES_SHARING
-    14: USES_BILLING;USES_GAME_SERVICES;USES_MEDIA_LIBRARY;USES_NETWORK_CONNECTIVITY;USES_NOTIFICATION_SERVICE;USES_SHARING
-    15: CROSS_PLATFORM_INPUT;USES_BILLING;USES_GAME_SERVICES;USES_MEDIA_LIBRARY;USES_NETWORK_CONNECTIVITY;USES_NOTIFICATION_SERVICE;USES_SHARING
+    4: USES_BILLING;USES_GAME_SERVICES;USES_NOTIFICATION_SERVICE
+    7: USES_BILLING;USES_GAME_SERVICES;USES_NOTIFICATION_SERVICE
+    14: USES_BILLING;USES_GAME_SERVICES;USES_NOTIFICATION_SERVICE
+    15: CROSS_PLATFORM_INPUT;USES_BILLING;USES_GAME_SERVICES;USES_NOTIFICATION_SERVICE
     16: CROSS_PLATFORM_INPUT
     17: 
     20: 

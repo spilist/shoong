@@ -2138,81 +2138,6 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!1001 &38305013
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 409154, guid: 0360f2445c59243b48dfa5ce739e0bcb, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 20.6399994
-      objectReference: {fileID: 0}
-    - target: {fileID: 409154, guid: 0360f2445c59243b48dfa5ce739e0bcb, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 409154, guid: 0360f2445c59243b48dfa5ce739e0bcb, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 9.76000023
-      objectReference: {fileID: 0}
-    - target: {fileID: 409154, guid: 0360f2445c59243b48dfa5ce739e0bcb, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: .411934614
-      objectReference: {fileID: 0}
-    - target: {fileID: 409154, guid: 0360f2445c59243b48dfa5ce739e0bcb, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: .192088246
-      objectReference: {fileID: 0}
-    - target: {fileID: 409154, guid: 0360f2445c59243b48dfa5ce739e0bcb, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: .192088217
-      objectReference: {fileID: 0}
-    - target: {fileID: 409154, guid: 0360f2445c59243b48dfa5ce739e0bcb, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: .869778216
-      objectReference: {fileID: 0}
-    - target: {fileID: 409154, guid: 0360f2445c59243b48dfa5ce739e0bcb, type: 2}
-      propertyPath: m_RootOrder
-      value: 21
-      objectReference: {fileID: 0}
-    - target: {fileID: 128828, guid: 0360f2445c59243b48dfa5ce739e0bcb, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 409154, guid: 0360f2445c59243b48dfa5ce739e0bcb, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 409154, guid: 0360f2445c59243b48dfa5ce739e0bcb, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 409154, guid: 0360f2445c59243b48dfa5ce739e0bcb, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 6599398, guid: 0360f2445c59243b48dfa5ce739e0bcb, type: 2}
-  m_ParentPrefab: {fileID: 100100000, guid: 0360f2445c59243b48dfa5ce739e0bcb, type: 2}
-  m_IsPrefabParent: 0
---- !u!1 &38305014 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 128828, guid: 0360f2445c59243b48dfa5ce739e0bcb, type: 2}
-  m_PrefabInternal: {fileID: 38305013}
---- !u!65 &38305015
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 38305014}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 6, y: 6.00000048, z: 6}
-  m_Center: {x: 2.23517418e-08, y: -.5, z: -1.49011612e-08}
 --- !u!1 &38411117
 GameObject:
   m_ObjectHideFlags: 0
@@ -20347,7 +20272,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &507386076
 Transform:
   m_ObjectHideFlags: 0
@@ -98342,7 +98267,7 @@ MonoBehaviour:
   objPool: []
   objDestroyEffectPool: []
   objEncounterEffectPool: []
-  objPrefab: {fileID: 117384, guid: 50f32b0368e944945a1410e747cc30ce, type: 2}
+  objPrefab: {fileID: 135474, guid: dfdcfff8f781d464492f817a71d87f73, type: 2}
   objDestroyEffect: {fileID: 116864, guid: c37d1083178cd45a3ac690547aa860e0, type: 2}
   objEncounterEffect: {fileID: 0}
   objEncounterEffectForPlayer: {fileID: 0}
@@ -98442,7 +98367,7 @@ MonoBehaviour:
   objPool: []
   objDestroyEffectPool: []
   objEncounterEffectPool: []
-  objPrefab: {fileID: 128828, guid: 0360f2445c59243b48dfa5ce739e0bcb, type: 2}
+  objPrefab: {fileID: 158224, guid: 33664f05a6eed46ea8ce64cac614530e, type: 2}
   objDestroyEffect: {fileID: 158326, guid: 7a4903aebeaf1440d95d69b1daac37af, type: 2}
   objEncounterEffect: {fileID: 0}
   objEncounterEffectForPlayer: {fileID: 317572741}

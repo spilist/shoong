@@ -4,22 +4,14 @@
   <application>
     <!--Billing : Activity used for purchase view-->
     <activity android:name="com.voxelbusters.nativeplugins.features.billing.serviceprovider.google.GoogleBillingActivity" android:theme="@style/FloatingActivityTheme" />
-    <!--MediaLibrary : Generic helper activity-->
-    <activity android:name="com.voxelbusters.nativeplugins.features.medialibrary.MediaLibraryActivity" android:theme="@style/FloatingActivityTheme" android:screenOrientation="sensor" android:configChanges="keyboardHidden|orientation|screenSize" />
-    <!--MediaLibrary : Used for Launching video from gallery-->
-    <activity android:name="com.voxelbusters.nativeplugins.features.medialibrary.GalleryVideoLauncherActivity" android:theme="@style/FloatingActivityTheme" android:screenOrientation="sensor" />
-    <!--MediaLibrary : Youtube player activity-->
-    <activity android:name="com.voxelbusters.nativeplugins.features.medialibrary.YoutubePlayerActivity" />
     <!--Application Launcher - Notifications : Used as a proxy to capture triggered notification.-->
     <activity android:name="com.voxelbusters.nativeplugins.features.notification.core.ApplicationLauncherFromNotification" android:theme="@style/FloatingActivityTheme" />
     <!--Game Play Services helper activity-->
     <activity android:name="com.voxelbusters.nativeplugins.features.gameservices.serviceprovider.google.GooglePlayGameUIActivity" android:theme="@style/FloatingActivityTheme" />
-    <!--Sharing-->
-    <activity android:name="com.voxelbusters.nativeplugins.features.sharing.SharingActivity" android:theme="@style/FloatingActivityTheme" />
     <!--UI  : Generic helper activity for launching Dialogs-->
     <activity android:name="com.voxelbusters.nativeplugins.features.ui.UiActivity" android:theme="@style/FloatingActivityTheme" />
     <!--Custom File Provider. Sharing from internal folders  "com.voxelbusters.nativeplugins.extensions.FileProviderExtended"-->
-    <provider android:name="com.voxelbusters.nativeplugins.extensions.FileProviderExtended" android:authorities="com.morogoro.shoong.fileprovider" android:exported="false" android:grantUriPermissions="true">
+    <provider android:name="com.voxelbusters.nativeplugins.extensions.FileProviderExtended" android:authorities="com.morogoro.smashytoys.fileprovider" android:exported="false" android:grantUriPermissions="true">
       <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/nativeplugins_file_paths" />
     </provider>
     <!--Notifications : GCM Receiver-->
@@ -27,7 +19,7 @@
       <intent-filter>
         <action android:name="com.google.android.c2dm.intent.RECEIVE" />
         <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
-        <category android:name="com.morogoro.shoong" />
+        <category android:name="com.morogoro.smashytoys" />
       </intent-filter>
     </receiver>
     <!--Notifications : Receiver for alarm to help Local Notifications-->
@@ -37,21 +29,13 @@
     <meta-data android:name="com.google.android.gms.games.APP_ID" android:value="\ " />
   </application>
   <!--Permissions-->
-  <!--Network Connectivity-->
-  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
   <!--Billing-->
   <uses-permission android:name="com.android.vending.BILLING" />
-  <!--Media Library-->
-  <uses-permission android:name="android.permission.CAMERA" />
-  <uses-feature android:name="android.hardware.camera" android:required="false" />
-  <uses-feature android:name="android.hardware.camera.autofocus" android:required="false" />
-  <uses-permission android:name="com.google.android.apps.photos.permission.GOOGLE_PHOTOS" />
-  <uses-permission android:name="android.permission.MANAGE_DOCUMENTS" />
   <!--For enabling GCM-->
-  <permission android:name="com.morogoro.shoong.permission.C2D_MESSAGE" android:protectionLevel="signature" />
+  <permission android:name="com.morogoro.smashytoys.permission.C2D_MESSAGE" android:protectionLevel="signature" />
   <uses-permission android:name="android.permission.GET_ACCOUNTS" />
   <uses-permission android:name="android.permission.WAKE_LOCK" />
-  <uses-permission android:name="com.morogoro.shoong.permission.C2D_MESSAGE" />
+  <uses-permission android:name="com.morogoro.smashytoys.permission.C2D_MESSAGE" />
   <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
   <!--Notifications : If vibration is required for notification-->
   <uses-permission android:name="android.permission.VIBRATE" />
@@ -61,7 +45,4 @@
   <uses-permission android:name="android.permission.USE_CREDENTIALS" />
   <!--Required for internet access-->
   <uses-permission android:name="android.permission.INTERNET" />
-  <!--For Saving to external directory - Save to Gallery Feature in MediaLibrary / Used for sharing-->
-  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 </manifest>
