@@ -5,6 +5,7 @@ using AbilityData;
 
 public class UICharacters : MonoBehaviour {
   public CharacterStat stat;
+  public string productId;
   private float price;
 
   private CharactersMenu charactersMenu;
@@ -27,6 +28,8 @@ public class UICharacters : MonoBehaviour {
     originalScale = transform.localScale;
     scaleChanging = transform.localScale.x;
     checkBought(false);
+
+    if (productId == "") productId = name;
 	}
 
 	void Update () {
@@ -105,6 +108,8 @@ public class UICharacters : MonoBehaviour {
   }
 
   public void checkBought(bool buttons = true) {
+    Debug.Log(name + ": " + BillingManager.bm.IsProductPurchased(productId));
+
     if (DataManager.dm.getBool(name)) {
       if (buttons) {
         charactersMenu.selectButton.gameObject.SetActive(true);
@@ -122,6 +127,8 @@ public class UICharacters : MonoBehaviour {
   }
 
   public void buy() {
+    // BillingManager.bm.BuyProduct(productId);
+
     charactersMenu.selectButton.gameObject.SetActive(true);
     charactersMenu.selectButton.setCharacter(name);
     charactersMenu.buyButton.gameObject.SetActive(false);

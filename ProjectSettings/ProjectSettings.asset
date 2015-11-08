@@ -10,7 +10,7 @@ PlayerSettings:
   targetResolution: 0
   accelerometerFrequency: 60
   companyName: Morogoro
-  productName: SmashyToys
+  productName: Smashy Toys
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_ShowUnitySplashScreen: 1
@@ -71,15 +71,15 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleIdentifier: com.morogoro.smashytoys
-  bundleVersion: 0.70
+  bundleIdentifier: com.morogoro.smashytoysspace
+  bundleVersion: 0.72
   preloadedAssets: []
   metroEnableIndependentInputSource: 0
   metroEnableLowLatencyPresentationAPI: 0
   xboxOneDisableKinectGpuReservation: 0
   virtualRealitySupported: 0
   productGUID: bf041498242cf754b8ce54746426781e
-  AndroidBundleVersionCode: 70
+  AndroidBundleVersionCode: 72
   AndroidMinSdkVersion: 13
   AndroidPreferredInstallLocation: 1
   aotOptions: 

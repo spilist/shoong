@@ -14,6 +14,7 @@ public class CharacterStat : MonoBehaviour {
   public MaxEnergy maxEnergy;
   public ReboundDistance reboundDistance;
   public DamageGet damageGet;
+  public bool buyable = true;
 
   // [BitMask(typeof(SkillFlag))]
   public SkillFlag skillFlags;

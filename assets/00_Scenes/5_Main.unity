@@ -267,6 +267,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
+  productId: 
 --- !u!23 &3647331
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2197,6 +2198,7 @@ MonoBehaviour:
   maxEnergy: 2
   reboundDistance: 2
   damageGet: 2
+  buyable: 1
   skillFlags: 0
 --- !u!1 &47354657
 GameObject:
@@ -6850,6 +6852,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
+  productId: 
 --- !u!1 &155100440
 GameObject:
   m_ObjectHideFlags: 0
@@ -8050,6 +8053,7 @@ MonoBehaviour:
   maxEnergy: 2
   reboundDistance: 2
   damageGet: 2
+  buyable: 1
   skillFlags: 6
 --- !u!1 &161103179
 GameObject:
@@ -15956,6 +15960,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
+  productId: 
 --- !u!23 &233729130
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -16327,6 +16332,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
+  productId: 
 --- !u!23 &259634595
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -16649,6 +16655,7 @@ MonoBehaviour:
   maxEnergy: 2
   reboundDistance: 1
   damageGet: 1
+  buyable: 1
   skillFlags: 64
 --- !u!1 &288539814
 GameObject:
@@ -18647,6 +18654,7 @@ MonoBehaviour:
   maxEnergy: 3
   reboundDistance: 3
   damageGet: 2
+  buyable: 1
   skillFlags: 0
 --- !u!1 &385432967
 GameObject:
@@ -19112,6 +19120,7 @@ MonoBehaviour:
   maxEnergy: 2
   reboundDistance: 2
   damageGet: 1
+  buyable: 1
   skillFlags: 32
 --- !u!4 &434693579
 Transform:
@@ -19148,9 +19157,9 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 437253960}
-  m_LocalRotation: {x: .433012784, y: -.249999776, z: .433012724, w: .75000006}
+  m_LocalRotation: {x: .353553414, y: -.14644663, z: .353553414, w: .853553355}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 45, y: 45, z: 45}
+  m_LocalScale: {x: 7, y: 7, z: 7}
   m_Children: []
   m_Father: {fileID: 1178576846}
   m_RootOrder: 1
@@ -19166,7 +19175,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 437253960}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 4300002, guid: fc6d9a532e0ca441cada2cbf5e783531, type: 3}
 --- !u!23 &437253964
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -19668,6 +19677,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
+  productId: 
 --- !u!1 &478286097
 GameObject:
   m_ObjectHideFlags: 0
@@ -20148,6 +20158,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
+  productId: 
 --- !u!1001 &503152186
 Prefab:
   m_ObjectHideFlags: 0
@@ -20290,7 +20301,7 @@ Transform:
   - {fileID: 1082642565}
   - {fileID: 64786155}
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 18
 --- !u!1 &509610635
 GameObject:
   m_ObjectHideFlags: 0
@@ -20314,15 +20325,15 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 509610635}
-  m_LocalRotation: {x: -.129409373, y: -.224143609, z: .836516321, w: -.482963175}
+  m_LocalRotation: {x: .14644666, y: .353553414, z: -.853553355, w: .353553474}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalScale: {x: .75, y: .75, z: .75}
   m_Children: []
   m_Father: {fileID: 1674791323}
   m_RootOrder: 0
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 9.5, y: 2}
+  m_AnchoredPosition: {x: 9.5, y: 5}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: .5, y: .5}
 --- !u!33 &509610637
@@ -20332,7 +20343,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 509610635}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 4300002, guid: fc6d9a532e0ca441cada2cbf5e783531, type: 3}
 --- !u!23 &509610638
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -20566,6 +20577,7 @@ MonoBehaviour:
   maxEnergy: 2
   reboundDistance: 4
   damageGet: 2
+  buyable: 1
   skillFlags: 0
 --- !u!1 &520928161
 GameObject:
@@ -23676,6 +23688,7 @@ MonoBehaviour:
   maxEnergy: 2
   reboundDistance: 2
   damageGet: 2
+  buyable: 0
   skillFlags: 0
 --- !u!1 &562534125
 GameObject:
@@ -25122,6 +25135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
+  productId: toy_soju
 --- !u!1 &579922197
 GameObject:
   m_ObjectHideFlags: 0
@@ -26407,6 +26421,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
+  productId: 
 --- !u!23 &588841860
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -26862,6 +26877,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
+  productId: 
 --- !u!23 &606416439
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -28422,6 +28438,7 @@ MonoBehaviour:
   maxEnergy: 4
   reboundDistance: 3
   damageGet: 4
+  buyable: 1
   skillFlags: 0
 --- !u!1 &632297515
 GameObject:
@@ -28860,6 +28877,46 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
+  productId: 
+--- !u!1 &644211305
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 644211306}
+  - 114: {fileID: 644211307}
+  m_Layer: 0
+  m_Name: BillingManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &644211306
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 644211305}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 17
+--- !u!114 &644211307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 644211305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de4201a2d0f3540beb6be72b698d11fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &644697225
 GameObject:
   m_ObjectHideFlags: 0
@@ -30859,6 +30916,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
+  productId: 
 --- !u!23 &688839007
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -36101,6 +36159,7 @@ MonoBehaviour:
   maxEnergy: 2
   reboundDistance: 2
   damageGet: 2
+  buyable: 1
   skillFlags: 128
 --- !u!1 &790342090
 GameObject:
@@ -36571,6 +36630,7 @@ MonoBehaviour:
   maxEnergy: 4
   reboundDistance: 4
   damageGet: 3
+  buyable: 1
   skillFlags: 0
 --- !u!1 &834712300
 GameObject:
@@ -36848,6 +36908,7 @@ MonoBehaviour:
   maxEnergy: 3
   reboundDistance: 1
   damageGet: 4
+  buyable: 1
   skillFlags: 0
 --- !u!1 &847869595
 GameObject:
@@ -39553,6 +39614,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
+  productId: 
 --- !u!1 &860393912
 GameObject:
   m_ObjectHideFlags: 0
@@ -40697,6 +40759,7 @@ MonoBehaviour:
   maxEnergy: 2
   reboundDistance: 1
   damageGet: 1
+  buyable: 1
   skillFlags: 64
 --- !u!1 &898860502
 GameObject:
@@ -42524,6 +42587,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
+  productId: 
 --- !u!1 &924930994
 GameObject:
   m_ObjectHideFlags: 0
@@ -43549,6 +43613,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
+  productId: 
 --- !u!114 &975447812 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11445766, guid: 8e7e4a602cfdf4c4db0fd73a1c8f11ab,
@@ -46974,22 +47039,22 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1028715871}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 4300002, guid: fc6d9a532e0ca441cada2cbf5e783531, type: 3}
 --- !u!224 &1028715874
 RectTransform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1028715871}
-  m_LocalRotation: {x: .83651638, y: -.482962817, z: .129409641, w: .224143848}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalRotation: {x: .853553474, y: -.353553444, z: .146446586, w: .353553295}
+  m_LocalPosition: {x: 0, y: 0, z: 1.50680235e-05}
+  m_LocalScale: {x: .800000072, y: .799999952, z: .799999833}
   m_Children: []
   m_Father: {fileID: 103501018}
   m_RootOrder: 0
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 0, y: 23.9998398}
+  m_AnchoredPosition: {x: 0, y: 23.9996948}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1028715875
@@ -49948,6 +50013,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
+  productId: 
 --- !u!23 &1068398462
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -50096,16 +50162,16 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1074599660}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 4300002, guid: fc6d9a532e0ca441cada2cbf5e783531, type: 3}
 --- !u!224 &1074599663
 RectTransform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1074599660}
-  m_LocalRotation: {x: .433012903, y: -.250000119, z: .433012724, w: .749999881}
+  m_LocalRotation: {x: .353553414, y: -.14644663, z: .353553414, w: .853553355}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 20, y: 20, z: 20}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 1928310597}
   m_RootOrder: 0
@@ -52037,6 +52103,7 @@ MonoBehaviour:
   maxEnergy: 0
   reboundDistance: 2
   damageGet: 0
+  buyable: 1
   skillFlags: 256
 --- !u!33 &1116662719
 MeshFilter:
@@ -52374,6 +52441,7 @@ MonoBehaviour:
   maxEnergy: 3
   reboundDistance: 2
   damageGet: 2
+  buyable: 1
   skillFlags: 5
 --- !u!1 &1147100447
 GameObject:
@@ -54205,6 +54273,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
+  productId: 
 --- !u!1 &1176685720
 GameObject:
   m_ObjectHideFlags: 0
@@ -55876,6 +55945,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
+  productId: 
 --- !u!23 &1196521605
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -59239,6 +59309,7 @@ MonoBehaviour:
   maxEnergy: 3
   reboundDistance: 1
   damageGet: 2
+  buyable: 1
   skillFlags: 1
 --- !u!1 &1315669336
 GameObject:
@@ -64409,7 +64480,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: bb6901ca2cbb04e04ad4567d8ccca51e, type: 2}
       propertyPath: m_RootOrder
-      value: 19
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bb6901ca2cbb04e04ad4567d8ccca51e, type: 2}
@@ -71079,6 +71150,7 @@ MonoBehaviour:
   maxEnergy: 2
   reboundDistance: 2
   damageGet: 2
+  buyable: 1
   skillFlags: 1
 --- !u!1 &1505273303
 GameObject:
@@ -75838,6 +75910,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
+  productId: 
 --- !u!23 &1596742150
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -77581,6 +77654,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
+  productId: 
 --- !u!23 &1625834677
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -78275,6 +78349,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
+  productId: 
 --- !u!1 &1665647659
 GameObject:
   m_ObjectHideFlags: 0
@@ -79863,6 +79938,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
+  productId: 
 --- !u!1 &1683363422
 GameObject:
   m_ObjectHideFlags: 0
@@ -80286,7 +80362,7 @@ Transform:
   - {fileID: 892369442}
   - {fileID: 1276123138}
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 19
 --- !u!1 &1708456654
 GameObject:
   m_ObjectHideFlags: 0
@@ -81943,6 +82019,7 @@ MonoBehaviour:
   maxEnergy: 2
   reboundDistance: 3
   damageGet: 2
+  buyable: 1
   skillFlags: 4
 --- !u!1 &1743083059
 GameObject:
@@ -83486,9 +83563,9 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1772736532}
-  m_LocalRotation: {x: -.129409373, y: -.224143609, z: .836516321, w: -.482963175}
+  m_LocalRotation: {x: .146446586, y: .353553444, z: -.853553474, w: .353553295}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalScale: {x: .75, y: .75, z: .75}
   m_Children: []
   m_Father: {fileID: 1307704148}
   m_RootOrder: 0
@@ -83504,7 +83581,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1772736532}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 4300002, guid: fc6d9a532e0ca441cada2cbf5e783531, type: 3}
 --- !u!23 &1772736535
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -92717,6 +92794,7 @@ MonoBehaviour:
   maxEnergy: 3
   reboundDistance: 3
   damageGet: 2
+  buyable: 1
   skillFlags: 8
 --- !u!1 &1917855181
 GameObject:
@@ -94047,6 +94125,7 @@ MonoBehaviour:
   maxEnergy: 1
   reboundDistance: 4
   damageGet: 2
+  buyable: 1
   skillFlags: 0
 --- !u!1 &1925272265
 GameObject:
@@ -97628,6 +97707,7 @@ MonoBehaviour:
   maxEnergy: 2
   reboundDistance: 1
   damageGet: 1
+  buyable: 1
   skillFlags: 16
 --- !u!1 &1983045716
 GameObject:
@@ -97688,6 +97768,7 @@ MonoBehaviour:
   maxEnergy: 2
   reboundDistance: 3
   damageGet: 2
+  buyable: 1
   skillFlags: 2
 --- !u!1 &1983272583
 GameObject:
@@ -98885,6 +98966,7 @@ MonoBehaviour:
   maxEnergy: 4
   reboundDistance: 3
   damageGet: 3
+  buyable: 1
   skillFlags: 0
 --- !u!1 &1997391145
 GameObject:
@@ -99349,9 +99431,9 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2018977871}
-  m_LocalRotation: {x: .433012903, y: -.250000119, z: .433012724, w: .749999881}
+  m_LocalRotation: {x: .353553414, y: -.14644663, z: .353553414, w: .853553355}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 20, y: 20, z: 20}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 1083095105}
   m_Father: {fileID: 316586136}
@@ -99368,7 +99450,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2018977871}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 4300002, guid: fc6d9a532e0ca441cada2cbf5e783531, type: 3}
 --- !u!23 &2018977874
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -99417,9 +99499,9 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2024149886}
-  m_LocalRotation: {x: .433012903, y: -.250000119, z: .433012724, w: .749999881}
+  m_LocalRotation: {x: .353553414, y: -.14644663, z: .353553414, w: .853553355}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 20, y: 20, z: 20}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 1282545793}
   m_Father: {fileID: 966334535}
@@ -99436,7 +99518,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2024149886}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 4300002, guid: fc6d9a532e0ca441cada2cbf5e783531, type: 3}
 --- !u!23 &2024149889
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -100763,7 +100845,7 @@ Transform:
   - {fileID: 1783451456}
   - {fileID: 234606330}
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 21
 --- !u!1 &2048063063
 GameObject:
   m_ObjectHideFlags: 0
@@ -102450,6 +102532,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
+  productId: 
 --- !u!23 &2104714906
 MeshRenderer:
   m_ObjectHideFlags: 0

@@ -9,11 +9,11 @@ GameObject:
   m_Component:
   - 4: {fileID: 472308}
   - 33: {fileID: 3371192}
-  - 65: {fileID: 6521496}
   - 23: {fileID: 2323010}
   - 114: {fileID: 11405314}
   - 54: {fileID: 5449122}
   - 96: {fileID: 9695224}
+  - 65: {fileID: 6537360}
   m_Layer: 13
   m_Name: GeneratedGoldenCube
   m_TagString: Untagged
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 178344}
   m_LocalRotation: {x: .411934614, y: .192088246, z: .192088217, w: .869778216}
   m_LocalPosition: {x: 1.79999995, y: 2.359375, z: -.5}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalScale: {x: .600000024, y: .600000024, z: .600000024}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -63,7 +63,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 178344}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 4300002, guid: fc6d9a532e0ca441cada2cbf5e783531, type: 3}
 --- !u!54 &5449122
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -79,7 +79,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 4
   m_CollisionDetection: 0
---- !u!65 &6521496
+--- !u!65 &6537360
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -89,8 +89,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 8.99999905, y: 9, z: 9}
+  m_Center: {x: 0, y: 1.1920929e-07, z: 1.1920929e-07}
 --- !u!96 &9695224
 TrailRenderer:
   m_ObjectHideFlags: 1
@@ -162,15 +162,15 @@ Prefab:
       objectReference: {fileID: 2100000, guid: bebff4c88f0cd4369b19c2281be089f8, type: 2}
     - target: {fileID: 0}
       propertyPath: m_LocalScale.y
-      value: 8
+      value: .600000024
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_LocalScale.x
-      value: 8
+      value: .600000024
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_LocalScale.z
-      value: 8
+      value: .600000024
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Colors.m_Color[3].rgba
@@ -275,6 +275,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Layer
       value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300002, guid: fc6d9a532e0ca441cada2cbf5e783531, type: 3}
+    - target: {fileID: 0}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

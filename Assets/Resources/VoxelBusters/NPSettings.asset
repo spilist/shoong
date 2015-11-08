@@ -13,9 +13,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_applicationSettings:
     m_iOS:
-      m_storeIdentifier: com.morogoro.smashytoys
+      m_storeIdentifier: smashytoysspace
     m_android:
-      m_storeIdentifier: com.morogoro.smashytoys
+      m_storeIdentifier: smashytoysspace
     m_supportedFeatures:
       m_usesAddressBook: 0
       m_usesBilling: 1
@@ -40,17 +40,17 @@ MonoBehaviour:
       m_dontAskButtonText: No, Thanks
   m_billingSettings:
     m_products:
-    - m_name: TestCharacter00
-      m_description: TestCharacter00
+    - m_name: toy_soju
+      m_description: toy_soju
       m_isConsumable: 0
       m_price: 0
       m_iosProductId: 
-      m_androidProductId: test_character_00
+      m_androidProductId: toy_soju
     m_iOS:
       m_supportsReceiptValidation: 0
       m_validateUsingServerURL: 
     m_android:
-      m_publicKey: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAlSsLq0N23DYpVe+9dQI6wWCl4XEij5z2AkpaF67bWSrypG5e0CR7ko3Sg2AqwJX2vghyIQmlq6LRumqElJIZogakCn9BmIvwWPpKtMOxD6bL/Z80yo7FfmmG+35coUVkPelVbi62rsfAGi49PmdKLWZy+ze6k5cm3O8FHD+sWDB59o5L9EMnkIChd/DabiZXRhaTd4fJyURDb5lGep0oWAFN4HR2dpataoE5ITHZv/fSmRhjhxKi9YLTZJ/RYWzVfpUfv5D9FBJ54ssoV/XB73sq3/w4F6k1WqcT0jbvcT73H7flJUX4btZYJzBeiodAuKi4eEZf0P+45/1gIoHEVQIDAQAB
+      m_publicKey: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAnIDTdHSw/MUDzHIb3MEbc427iZILAYAEw/IlFLUEParK9ssrfsH+kLpZ1Kf2vyIBxwR4hTfSCoIw8Gx1zNDaauzbFf3bY//I4R15rCYS9+pdb2icIE1vCqqpyLOt9vByPoI2Snm9v9OeVABVJBAqXC02zFVMybytR9oynRSkIQAbaz5Zo4j8w3Yd30gd54xGKAK8A+nevUGQ00CfvD67PDB2FBkbRo9H7SbE0X8ri1Fjoyqdj10pYYmn2/2qAZFTJQb6C2JI/J80PrsE6VLlv07rLtgZvBRbkYTbSgKgqrlAhhBf5KIPaSZF1w8Nt7guOsClfk34xr7G0rqWeDeNewIDAQAB
   m_notificationSettings:
     m_iOS:
       m_userInfoKey: SmashToys_user_info
