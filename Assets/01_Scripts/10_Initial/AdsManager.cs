@@ -5,11 +5,13 @@ using GoogleMobileAds.Api;
 
 public class AdsManager : MonoBehaviour {
   public static AdsManager am;
+  public int showAfter = 10;
+  public int showPerMin = 2;
   private InterstitialAd interstitial;
 
   void Start () {
     am = this;
-    loadAds();
+    if (available()) loadAds();
 	}
 
   public void loadAds() {
@@ -46,9 +48,19 @@ public class AdsManager : MonoBehaviour {
   }
 
   public void showGameOverAds() {
-    if (interstitial != null && interstitial.IsLoaded()) {
+    if (available() && interstitial != null && interstitial.IsLoaded()) {
       interstitial.Show();
+      DataManager.dm.setDateTime("LastDateTimeAdsSeen");
     }
+  }
+
+  bool available() {
+    if (DataManager.dm.getInt("TotalNumPlays") < showAfter) return false;
+
+    int minutesPassed = DateTime.Now.Minute - DataManager.dm.getDateTime("LastDateTimeAdsSeen").Minute;
+    if (minutesPassed < showPerMin) return false;
+
+    return true;
   }
 
   public void HandleInterstitialClosed(object sender, EventArgs args) {

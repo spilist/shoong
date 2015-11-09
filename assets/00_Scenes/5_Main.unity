@@ -4067,10 +4067,10 @@ MonoBehaviour:
   blinkingSeconds: .400000006
   playTouchSound: 1
   blinkOnStart: 0
-  rareChance: 40
-  epicChance: 10
+  rareChance: 20
+  epicChance: 5
   legendChance: 1
-  chanceBase: 200
+  chanceBase: 100
   characters: {fileID: 552014891}
   characterCube: {fileID: 714900423}
   gathering: {fileID: 1512218220}
@@ -10479,6 +10479,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: caa5c2ab1889546ddbde32df3b569256, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  showAfter: 10
+  showPerMin: 2
 --- !u!4 &179664843
 Transform:
   m_ObjectHideFlags: 0
@@ -16790,7 +16792,7 @@ MonoBehaviour:
   skillObject: {fileID: 851953042}
   useSkillEffect: {fileID: 1552135346}
   normalRing: 11
-  skillRing: 6
+  skillRing: 8
   description: Pull parts
   duration: 0
 --- !u!1 &311332703
@@ -20035,7 +20037,7 @@ MonoBehaviour:
   skillObject: {fileID: 1426521849}
   useSkillEffect: {fileID: 1830827562}
   normalRing: 11
-  skillRing: 6
+  skillRing: 8
   description: Become real
   duration: 0
   monsterFilter: {fileID: 1997391145}
@@ -59589,7 +59591,7 @@ MonoBehaviour:
   normalRing: 3
   skillRing: 1
   description: Pass anything
-  duration: 2
+  duration: 3
   contactCollider: {fileID: 1298175624}
 --- !u!1 &1316523505
 GameObject:
@@ -77600,7 +77602,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillObject: {fileID: 0}
   useSkillEffect: {fileID: 0}
-  normalRing: 12
+  normalRing: 4
   skillRing: 1
   description: Shoot & Destroy
   duration: 0
@@ -98225,7 +98227,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceSpawnAtStart: 0
-  objAmount: 2
+  objAmount: 1
   objPool: []
   objDestroyEffectPool: []
   objEncounterEffectPool: []
@@ -98249,8 +98251,8 @@ MonoBehaviour:
   nameForLevel: 
   level: 0
   player: {fileID: 0}
-  gravity: 90
-  gravityToUser: 90
+  gravity: 80
+  gravityToUser: 80
   gravityScale: 10
   reboundDuring: 2
   shakeAmount: 3
@@ -98486,10 +98488,10 @@ MonoBehaviour:
   objEncounterEffectForPlayer: {fileID: 0}
   strengthenPlayerEffect: {fileID: 0}
   strength: .600000024
-  speed: 45
+  speed: 30
   tumble: 3
-  minSpawnInterval: 5
-  maxSpawnInterval: 5
+  minSpawnInterval: 3
+  maxSpawnInterval: 3
   cubesByEncounter: 1
   isNegative: 0
   hasEncounterEffect: 0

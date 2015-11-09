@@ -24,9 +24,8 @@ public class AdsAndRewardBannerButton : BannerButton {
 
     goldenCubeText.text = (int.Parse(goldenCubeText.text) + goldenCubePerAds).ToString();
 
-    DataManager.dm.increment("DailyAdsCount");
-    DataManager.dm.setInt("LastNumPlayAdsSeen", DataManager.dm.getInt("TotalNumPlays"));
-    DataManager.dm.setDateTime("LastDateTimeAdsSeen");
+    // DataManager.dm.increment("DailyAdsCount");
+    // DataManager.dm.setInt("LastNumPlayAdsSeen", DataManager.dm.getInt("TotalNumPlays"));
 
     stopBlink();
     filter.sharedMesh = inactiveMesh;
