@@ -5,8 +5,6 @@ using GoogleMobileAds.Api;
 
 public class AdsManager : MonoBehaviour {
   public static AdsManager am;
-
-  public string adsID = "ca-app-pub-4666969549435607/8331172170";
   private InterstitialAd interstitial;
 
   void Start () {
@@ -15,12 +13,19 @@ public class AdsManager : MonoBehaviour {
 	}
 
   public void loadAds() {
-    // Initialize an InterstitialAd.
-    interstitial = new InterstitialAd(adsID);
+    #if UNITY_ANDROID
+        string adUnitId = "ca-app-pub-4666969549435607/8331172170";
+    #elif UNITY_IPHONE
+        string adUnitId = "INSERT_IOS_INTERSTITIAL_AD_UNIT_ID_HERE";
+    #else
+        string adUnitId = "unexpected_platform";
+    #endif
+
+    interstitial = new InterstitialAd(adUnitId);
 
     // Register for ad events.
     // interstitial.AdLoaded += HandleInterstitialLoaded;
-    // interstitial.AdFailedToLoad += HandleInterstitialFailedToLoad;
+    interstitial.AdFailedToLoad += HandleInterstitialFailedToLoad;
     // interstitial.AdOpened += HandleInterstitialOpened;
     // interstitial.AdClosing += HandleInterstitialClosing;
     interstitial.AdClosed += HandleInterstitialClosed;
@@ -36,12 +41,17 @@ public class AdsManager : MonoBehaviour {
     interstitial.LoadAd(request);
   }
 
+  public void HandleInterstitialFailedToLoad(object sender, EventArgs args) {
+    if (interstitial != null) interstitial.Destroy();
+  }
+
   public void showGameOverAds() {
-    while(!interstitial.IsLoaded()) {}
-    interstitial.Show();
+    if (interstitial != null && interstitial.IsLoaded()) {
+      interstitial.Show();
+    }
   }
 
   public void HandleInterstitialClosed(object sender, EventArgs args) {
-    interstitial.Destroy();
+    if (interstitial != null) interstitial.Destroy();
   }
 }

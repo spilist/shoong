@@ -10479,7 +10479,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: caa5c2ab1889546ddbde32df3b569256, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  adsID: ca-app-pub-4666969549435607/8331172170
 --- !u!4 &179664843
 Transform:
   m_ObjectHideFlags: 0

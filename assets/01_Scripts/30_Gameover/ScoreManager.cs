@@ -155,7 +155,8 @@ public class ScoreManager : MonoBehaviour {
 
     yield return new WaitForSeconds(showPlayerExplosionDuring);
 
-    AdsManager.am.showGameOverAds();
+    if (AdsManager.am != null) AdsManager.am.showGameOverAds();
+
     energyDangerFilter.SetActive(false);
 
     if (!isScoring) scoreUpdate();

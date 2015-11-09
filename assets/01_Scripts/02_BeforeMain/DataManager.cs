@@ -112,7 +112,7 @@ public class DataManager : MonoBehaviour {
     // strings["ControlMethod"] = "Touch";
     strings["ControlMethod"] = "Stick";
     bools["robotcogi"] = true;
-    bools["TutorialDone"] = true;
+    bools["TutorialDone"] = false;
 
     PlayerPrefs.SetString("SelectedCharacter", "robotcogi");
     PlayerPrefs.SetString("ObjectTutorialsNotDone", "");

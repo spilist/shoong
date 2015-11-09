@@ -58,11 +58,9 @@ public class TutorialHandler : MonoBehaviour
 
     if (status == 1) {
       RhythmManager.rm.startBeat(touchTexts[0], onthebeatTexts[0], boostImages[0], fingerImages[0]);
-      Invoke("enableTutoCollider", 2);
-    } else {
-      Invoke("enableTutoCollider", 2);
     }
 
+    Invoke("enableTutoCollider", 2);
   }
 
   void Update() {
@@ -98,7 +96,6 @@ public class TutorialHandler : MonoBehaviour
           tutoStatus += (1 - tutoStatus);
           tutorialScenes[0].SetActive(false);
           spawnManager.GetComponent<FollowTarget>().enabled = true;
-          stickPanelSize = Vector3.Distance(stick.position, stick.transform.Find("End").position);
           stick.gameObject.SetActive(false);
           nextTutorial(1);
         } else {
@@ -267,6 +264,7 @@ public class TutorialHandler : MonoBehaviour
     stick = origStick;
     fingerIndicator = origFingerIndicator;
     stick.gameObject.SetActive(true);
+    stickPanelSize = Vector3.Distance(stick.position, stick.transform.Find("End").position);
     DataManager.dm.setBool("TutorialDone", true);
   }
 }
