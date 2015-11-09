@@ -268,4 +268,3 @@ public class TutorialHandler : MonoBehaviour
     DataManager.dm.setBool("TutorialDone", true);
   }
 }
-

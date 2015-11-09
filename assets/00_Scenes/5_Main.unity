@@ -16238,6 +16238,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controlMethod: LR
+  adjustScale: 0
 --- !u!1 &256755159
 GameObject:
   m_ObjectHideFlags: 0
@@ -18906,7 +18907,7 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 0, y: -130}
+  m_AnchoredPosition: {x: 65, y: 0}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &414635253
@@ -28334,7 +28335,7 @@ GameObject:
   - 114: {fileID: 623555563}
   - 65: {fileID: 623555562}
   m_Layer: 5
-  m_Name: StickPannel_moveBoundary
+  m_Name: StickPanel_moveBoundary
   m_TagString: StickPanel_movement
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28381,6 +28382,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controlMethod: Stick
+  adjustScale: 0
 --- !u!1 &625220741
 GameObject:
   m_ObjectHideFlags: 0
@@ -30782,7 +30784,7 @@ GameObject:
   - 114: {fileID: 680766409}
   - 135: {fileID: 680766408}
   m_Layer: 5
-  m_Name: StickPannel_booster
+  m_Name: StickPanel_booster
   m_TagString: StickPanel_booster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30858,6 +30860,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controlMethod: Stick
+  adjustScale: 0
 --- !u!1 &685215970
 GameObject:
   m_ObjectHideFlags: 0
@@ -36180,6 +36183,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controlMethod: Packman
+  adjustScale: 0
 --- !u!1 &784850296
 GameObject:
   m_ObjectHideFlags: 0
@@ -41123,6 +41127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controlMethod: Circle
+  adjustScale: 0
 --- !u!1 &905334362
 GameObject:
   m_ObjectHideFlags: 0
@@ -59539,6 +59544,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controlMethod: LR
+  adjustScale: 0
 --- !u!1 &1316254288
 GameObject:
   m_ObjectHideFlags: 0
@@ -60259,7 +60265,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 130, y: 0}
+  m_AnchoredPosition: {x: 65, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: .5, y: .5}
 --- !u!1 &1343430248
@@ -60398,14 +60404,13 @@ GameObject:
   - 114: {fileID: 1346587203}
   - 222: {fileID: 1346587202}
   - 114: {fileID: 1346587201}
-  - 135: {fileID: 1346587200}
   m_Layer: 5
-  m_Name: StickPannel_movement
+  m_Name: StickPanel_movement
   m_TagString: StickPanel_movement
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1346587199
 RectTransform:
   m_ObjectHideFlags: 0
@@ -60425,18 +60430,6 @@ RectTransform:
   m_AnchoredPosition: {x: 150, y: 150}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: .5, y: .5}
---- !u!135 &1346587200
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1346587198}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Radius: 95
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1346587201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60476,6 +60469,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controlMethod: Stick
+  adjustScale: .300000012
 --- !u!1 &1356369826
 GameObject:
   m_ObjectHideFlags: 0
@@ -75969,6 +75963,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controlMethod: Packman
+  adjustScale: 0
 --- !u!1 &1580374531
 GameObject:
   m_ObjectHideFlags: 0
@@ -91253,6 +91248,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controlMethod: Circle
+  adjustScale: 0
 --- !u!1 &1880569645
 GameObject:
   m_ObjectHideFlags: 0

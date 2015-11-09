@@ -3,12 +3,17 @@ using System.Collections;
 
 public class Panel : MonoBehaviour {
 	public string controlMethod;
+  public float adjustScale;
   private bool LRMoving = false;
   private string movingDirection;
 
   void Start() {
     if (DataManager.dm.getString("ControlMethod") != controlMethod) {
       gameObject.SetActive(false);
+    }
+
+    if (adjustScale > 0) {
+      transform.localScale *= adjustScale / transform.lossyScale.x;
     }
   }
 
