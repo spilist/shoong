@@ -6,10 +6,11 @@ using SmartLocalization;
 public class LocalText : MonoBehaviour {
   public string key;
   Text textObject;
+  private int origFontSize;
 
-  // Use this for initialization
 	void Start () {
     textObject = this.GetComponent<Text>();
+    origFontSize = textObject.fontSize;
 
     //Subscribe to the change language event
     LanguageManager languageManager = LanguageManager.Instance;
@@ -30,5 +31,8 @@ public class LocalText : MonoBehaviour {
     if (key != "") {
       textObject.text = LanguageManager.Instance.GetTextValue(key);
     }
+
+    textObject.font = LangManager.lm.getFont();
+    textObject.fontSize = (int)(origFontSize * LangManager.lm.getFontScale());
   }
 }

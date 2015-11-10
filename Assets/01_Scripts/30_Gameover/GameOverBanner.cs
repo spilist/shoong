@@ -58,7 +58,7 @@ public class GameOverBanner : MonoBehaviour {
     } else {
       waiting = true;
       waitingTarget = another;
-      contents.GetComponent<Text>().text = bannerButton.description;
+      contents.GetComponent<Text>().text = bannerButton.getDescription();
     }
 
     bannerButton.transform.SetParent(contents.transform, false);

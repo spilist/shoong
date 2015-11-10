@@ -31,6 +31,8 @@ public class AdsAndRewardBannerButton : BannerButton {
     filter.sharedMesh = inactiveMesh;
     active = false;
     playTouchSound = false;
+
+    transform.parent.GetComponent<Text>().text = secondDescription.Replace("_REWARD_", goldenCubePerAds.ToString());
   }
 
   override public bool available() {

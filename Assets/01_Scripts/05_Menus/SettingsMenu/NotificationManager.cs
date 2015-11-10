@@ -3,15 +3,20 @@ using System.Collections;
 using System.Collections.Generic;
 using VoxelBusters.Utility;
 using VoxelBusters.NativePlugins;
+using SmartLocalization;
 
 public class NotificationManager : MonoBehaviour {
   public static NotificationManager nm;
   [SerializeField, EnumMaskField(typeof(NotificationType))]
   private   NotificationType  m_notificationType;
+  private string notifyMsg;
 
   void Start() {
     nm = this;
     NPBinding.NotificationService.RegisterNotificationTypes(m_notificationType);
+    LanguageManager languageManager = LanguageManager.Instance;
+    languageManager.OnChangeLanguage += OnChangeLanguage;
+    OnChangeLanguage(languageManager);
   }
 
   void OnEnable() {
@@ -22,6 +27,13 @@ public class NotificationManager : MonoBehaviour {
   void OnDisable() {
     // NotificationService.DidLaunchWithLocalNotificationEvent     -= DidLaunchWithLocalNotificationEvent;
     // NotificationService.DidReceiveLocalNotificationEvent      -= DidReceiveLocalNotificationEvent;
+    if(LanguageManager.HasInstance) {
+      LanguageManager.Instance.OnChangeLanguage -= OnChangeLanguage;
+    }
+  }
+
+  void OnChangeLanguage(LanguageManager languageManager) {
+    notifyMsg = LanguageManager.Instance.GetTextValue("Notification_FreeGift");
   }
 
   public void notifyAfter(int minutes) {
@@ -55,11 +67,11 @@ public class NotificationManager : MonoBehaviour {
 
     CrossPlatformNotification.AndroidSpecificProperties _androidProperties  = new CrossPlatformNotification.AndroidSpecificProperties();
     _androidProperties.ContentTitle = "Smashy Toys";
-    _androidProperties.TickerText = "Receive Free Gift!";
+    _androidProperties.TickerText = notifyMsg;
     _androidProperties.LargeIcon  = "Logo.png"; //Keep the files in Assets/PluginResources/Android or Common folder.
 
     CrossPlatformNotification _notification = new CrossPlatformNotification();
-    _notification.AlertBody     = "Receive Free Gift!"; //On Android, this is considered as ContentText
+    _notification.AlertBody     = notifyMsg; //On Android, this is considered as ContentText
     _notification.FireDate      = System.DateTime.Now.AddSeconds(_fireAfterSec);
     _notification.RepeatInterval  = _repeatInterval;
     _notification.SoundName     = "Notification.mp3"; //Keep the files in Assets/PluginResources/Android or iOS or Common folder.

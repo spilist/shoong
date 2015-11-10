@@ -72,14 +72,14 @@ PlayerSettings:
     16:9: 1
     Others: 1
   bundleIdentifier: com.morogoro.smashytoysspace
-  bundleVersion: 0.78
+  bundleVersion: 0.79
   preloadedAssets: []
   metroEnableIndependentInputSource: 0
   metroEnableLowLatencyPresentationAPI: 0
   xboxOneDisableKinectGpuReservation: 0
   virtualRealitySupported: 0
   productGUID: bf041498242cf754b8ce54746426781e
-  AndroidBundleVersionCode: 78
+  AndroidBundleVersionCode: 79
   AndroidMinSdkVersion: 13
   AndroidPreferredInstallLocation: 1
   aotOptions: 

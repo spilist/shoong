@@ -28,7 +28,7 @@ public class FreeRewardBannerButton : BannerButton {
     gold.change(reward);
     DataManager.dm.increment("FreeRewardCount");
     DataManager.dm.setDateTime("LastFreeRewardTime");
-    transform.parent.GetComponent<Text>().text = "            " + reward + " GOLDS EARNED";
+    transform.parent.GetComponent<Text>().text = secondDescription.Replace("_REWARD_", reward.ToString());
 
     int rewardCount = DataManager.dm.getInt("FreeRewardCount") >= nextRewardMinutes.Length ? (nextRewardMinutes.Length - 1) : DataManager.dm.getInt("FreeRewardCount");
     NotificationManager.nm.notifyAfter(nextRewardMinutes[rewardCount]);

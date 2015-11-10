@@ -191,11 +191,20 @@
 	<data name="CreateToy_TryAgain" xml:space="preserve">
 		<value>다시 뽑아보세요</value>
 	</data>
+	<data name="GameOver_CreateToy" xml:space="preserve">
+		<value>장난감 뽑기</value>
+	</data>
+	<data name="GameOver_CreateToyToGo" xml:space="preserve">
+		<value> 골드 필요</value>
+	</data>
+	<data name="GameOver_FirstGift" xml:space="preserve">
+		<value>첫 선물</value>
+	</data>
 	<data name="GameOver_FreeGift" xml:space="preserve">
 		<value>무료 선물</value>
 	</data>
 	<data name="GameOver_GoldsEarned" xml:space="preserve">
-		<value>_REWARD_ 골드 얻음</value>
+		<value>                 _REWARD_ 골드 얻음</value>
 	</data>
 	<data name="GameOver_RateUs" xml:space="preserve">
 		<value>게임을 평가해주세요</value>
@@ -216,10 +225,13 @@
 		<value>배터리 절약</value>
 	</data>
 	<data name="Setting_BGM" xml:space="preserve">
-		<value>배경음악 끄기</value>
+		<value>배경음악</value>
 	</data>
 	<data name="Setting_Credits" xml:space="preserve">
 		<value>만든이</value>
+	</data>
+	<data name="Setting_Language" xml:space="preserve">
+		<value>언어</value>
 	</data>
 	<data name="Setting_Leaderboard" xml:space="preserve">
 		<value>랭킹</value>

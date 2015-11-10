@@ -11,7 +11,7 @@ public class RateUsBannerButton : BannerButton {
     GetComponent<MeshRenderer>().enabled = false;
     GetComponent<Collider>().enabled = false;
 
-    transform.parent.GetComponent<Text>().text = "            THANKS FOR RATING";
+    transform.parent.GetComponent<Text>().text = secondDescription;
   }
 
   override public bool available() {

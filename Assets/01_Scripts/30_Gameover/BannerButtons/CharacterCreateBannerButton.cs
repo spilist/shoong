@@ -3,7 +3,6 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class CharacterCreateBannerButton : BannerButton {
-  public string toGoString;
   public CharacterCreateMenu createMenu;
   public GameObject menusOverlay;
   public Text text;
@@ -27,7 +26,7 @@ public class CharacterCreateBannerButton : BannerButton {
   public void checkAffordable() {
     toGo = createMenu.createPrice - GoldManager.gm.getCount();
     if (toGo > 0) {
-      text.text = toGo + toGoString;
+      text.text = toGo + secondDescription;
       filter.sharedMesh = inactiveMesh;
       playTouchSound = false;
     } else {
@@ -48,7 +47,7 @@ public class CharacterCreateBannerButton : BannerButton {
   void Update() {
     if (increasing) {
       toGo = Mathf.MoveTowards(toGo, target, Time.deltaTime * increasingSpeed);
-      text.text = toGo.ToString("0") + toGoString;
+      text.text = toGo.ToString("0") + secondDescription;
 
       if (toGo == target) {
         increasing = false;

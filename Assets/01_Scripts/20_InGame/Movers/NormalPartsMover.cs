@@ -2,15 +2,15 @@
 using System.Collections;
 
 public class NormalPartsMover : ObjectsMover {
-  private NormalPartsManager npm;
-  private MeshFilter filter;
+  // private NormalPartsManager npm;
+  // private MeshFilter filter;
   private Material originalMaterial;
   private bool goldenTransformed;
   private Skill_Gold goldSkill;
 
   protected override void initializeRest() {
-    npm = (NormalPartsManager)objectsManager;
-    filter = GetComponent<MeshFilter>();
+    // npm = (NormalPartsManager)objectsManager;
+    // filter = GetComponent<MeshFilter>();
     goldSkill = (Skill_Gold)SkillManager.sm.getSkill("Gold");
     originalMaterial = GetComponent<Renderer>().sharedMaterial;
   }

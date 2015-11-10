@@ -186,10 +186,19 @@
 		<value>Volley Ball</value>
 	</data>
 	<data name="CreateToy_NewToy" xml:space="preserve">
-		<value>New Toy!!</value>
+		<value>NEW TOY!!</value>
 	</data>
 	<data name="CreateToy_TryAgain" xml:space="preserve">
-		<value>Try Again</value>
+		<value>TRY AGAIN</value>
+	</data>
+	<data name="GameOver_CreateToy" xml:space="preserve">
+		<value>WIN A TOY</value>
+	</data>
+	<data name="GameOver_CreateToyToGo" xml:space="preserve">
+		<value> GOLDS TO GO</value>
+	</data>
+	<data name="GameOver_FirstGift" xml:space="preserve">
+		<value>FIRST GIFT</value>
 	</data>
 	<data name="GameOver_FreeGift" xml:space="preserve">
 		<value>FREE GIFT</value>
@@ -221,6 +230,9 @@ BATTERY</value>
 	</data>
 	<data name="Setting_Credits" xml:space="preserve">
 		<value>CREDITS</value>
+	</data>
+	<data name="Setting_Language" xml:space="preserve">
+		<value>LANGUAGE</value>
 	</data>
 	<data name="Setting_Leaderboard" xml:space="preserve">
 		<value>LEADERBOARD</value>
