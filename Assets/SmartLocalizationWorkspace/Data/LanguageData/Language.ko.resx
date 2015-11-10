@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root><!-- 
     Microsoft ResX Schema 
     
@@ -117,191 +117,189 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
 	<data name="CharacterName_alienwithgun" xml:space="preserve">
-		<value>Alien With Gun</value>
+		<value>총든 외계인</value>
 	</data>
 	<data name="CharacterName_beardedfrog" xml:space="preserve">
-		<value>Beard Frog</value>
+		<value>수염개구리</value>
 	</data>
 	<data name="CharacterName_bender" xml:space="preserve">
-		<value>Tin Can Robot</value>
+		<value>깡통로봇</value>
 	</data>
 	<data name="CharacterName_butterfly" xml:space="preserve">
-		<value>Gloomy Butterfly</value>
+		<value>우울한 나비</value>
 	</data>
 	<data name="CharacterName_cat" xml:space="preserve">
-		<value>Super Cat</value>
+		<value>슈퍼캣</value>
 	</data>
 	<data name="CharacterName_chameleon" xml:space="preserve">
-		<value>Morogoro</value>
+		<value>모로고로</value>
 	</data>
 	<data name="CharacterName_crab" xml:space="preserve">
-		<value>Contaminated Crab</value>
+		<value>오염된 게</value>
 	</data>
 	<data name="CharacterName_deathstar" xml:space="preserve">
-		<value>Black Ball</value>
+		<value>죽음의 공</value>
 	</data>
 	<data name="CharacterName_dolphin" xml:space="preserve">
-		<value>Space Dolphin</value>
+		<value>우주 돌고래</value>
 	</data>
 	<data name="CharacterName_fruits" xml:space="preserve">
-		<value>Fruit Basket</value>
+		<value>과일바구니</value>
 	</data>
 	<data name="CharacterName_ghost" xml:space="preserve">
-		<value>Ghost Toy</value>
+		<value>장난감 유령</value>
 	</data>
 	<data name="CharacterName_goldpig" xml:space="preserve">
-		<value>Gold Piggy</value>
+		<value>황금 꿀꿀이</value>
 	</data>
 	<data name="CharacterName_hamster" xml:space="preserve">
-		<value>Space Hamster</value>
+		<value>우주비단털쥐</value>
 	</data>
 	<data name="CharacterName_leonplant" xml:space="preserve">
-		<value>Leon Pot</value>
+		<value>레옹화분</value>
 	</data>
 	<data name="CharacterName_minimonster" xml:space="preserve">
-		<value>Mini Monster</value>
+		<value>미니몬</value>
 	</data>
 	<data name="CharacterName_paperplane" xml:space="preserve">
-		<value>Paper Plane</value>
+		<value>종이비행기</value>
 	</data>
 	<data name="CharacterName_robotcat" xml:space="preserve">
-		<value>Robot Cat</value>
+		<value>로봇고양이</value>
 	</data>
 	<data name="CharacterName_robotcogi" xml:space="preserve">
-		<value>Robot Dog</value>
+		<value>로봇코기</value>
 	</data>
 	<data name="CharacterName_soju" xml:space="preserve">
-		<value>Soju</value>
+		<value>쐬주</value>
 	</data>
 	<data name="CharacterName_toyrobot" xml:space="preserve">
-		<value>Retro Robot</value>
+		<value>장난감 로봇</value>
 	</data>
 	<data name="CharacterName_tyranno" xml:space="preserve">
-		<value>Tyranno</value>
+		<value>티라노</value>
 	</data>
 	<data name="CharacterName_vacuumrobot" xml:space="preserve">
-		<value>Vacuum Robot</value>
+		<value>로봇청소기</value>
 	</data>
 	<data name="CharacterName_wilson" xml:space="preserve">
-		<value>Volley Ball</value>
+		<value>배구공</value>
 	</data>
 	<data name="CreateToy_NewToy" xml:space="preserve">
-		<value>New Toy!!</value>
+		<value>신규!!</value>
 	</data>
 	<data name="CreateToy_TryAgain" xml:space="preserve">
-		<value>Try Again</value>
+		<value>다시 뽑아보세요</value>
 	</data>
 	<data name="GameOver_FreeGift" xml:space="preserve">
-		<value>FREE GIFT</value>
+		<value>무료 선물</value>
 	</data>
 	<data name="GameOver_GoldsEarned" xml:space="preserve">
-		<value>            _REWARD_ GOLDS EARNED</value>
+		<value>_REWARD_ 골드 얻음</value>
 	</data>
 	<data name="GameOver_RateUs" xml:space="preserve">
-		<value>ENJOYED? RATE US!</value>
+		<value>게임을 평가해주세요</value>
 	</data>
 	<data name="GameOver_RewardAds" xml:space="preserve">
-		<value>EARN GOLD</value>
+		<value>골드 얻기</value>
 	</data>
 	<data name="GameOver_ThanksForRating" xml:space="preserve">
-		<value>            THANKS FOR RATING</value>
+		<value>평가해주셔서 감사합니다!</value>
 	</data>
 	<data name="Notification_FreeGift" xml:space="preserve">
-		<value>Collect Free Gift!!</value>
+		<value>무료 선물을 받으세요!!</value>
 	</data>
 	<data name="Setting_Achievements" xml:space="preserve">
-		<value>ACHIEVEMENTS</value>
+		<value>업적</value>
 	</data>
 	<data name="Setting_Battery" xml:space="preserve">
-		<value>SAVE
-BATTERY</value>
+		<value>배터리 절약</value>
 	</data>
 	<data name="Setting_BGM" xml:space="preserve">
-		<value>BGM</value>
+		<value>배경음악 끄기</value>
 	</data>
 	<data name="Setting_Credits" xml:space="preserve">
-		<value>CREDITS</value>
+		<value>만든이</value>
 	</data>
 	<data name="Setting_Leaderboard" xml:space="preserve">
-		<value>LEADERBOARD</value>
+		<value>랭킹</value>
 	</data>
 	<data name="Setting_Mute" xml:space="preserve">
-		<value>MUTE</value>
+		<value>음소거</value>
 	</data>
 	<data name="Setting_Reminders" xml:space="preserve">
-		<value>REMINDERS</value>
+		<value>알림</value>
 	</data>
 	<data name="Setting_RestorePurchases" xml:space="preserve">
-		<value>RESTORE
-PURCHASES</value>
+		<value>구입 복원</value>
 	</data>
 	<data name="SkillDescription_Blink" xml:space="preserve">
-		<value>Jump into space!</value>
+		<value>마음껏 점프!</value>
 	</data>
 	<data name="SkillDescription_Fever" xml:space="preserve">
-		<value>Boost limitlessly</value>
+		<value>무한 부스터</value>
 	</data>
 	<data name="SkillDescription_Ghost" xml:space="preserve">
-		<value>Pass anything</value>
+		<value>모든 걸 지나갑니다</value>
 	</data>
 	<data name="SkillDescription_Gold" xml:space="preserve">
-		<value>Be $rich$</value>
+		<value>$부자$ 되세요</value>
 	</data>
 	<data name="SkillDescription_Heal" xml:space="preserve">
-		<value>Restore energy</value>
+		<value>에너지 회복</value>
 	</data>
 	<data name="SkillDescription_Laser" xml:space="preserve">
-		<value>Shoot &amp; Destroy</value>
+		<value>레이저 발사</value>
 	</data>
 	<data name="SkillDescription_Magnet" xml:space="preserve">
-		<value>Pull candies</value>
+		<value>사탕을 끌어당겨요</value>
 	</data>
 	<data name="SkillDescription_Metal" xml:space="preserve">
-		<value>Smash everything</value>
+		<value>다 때려부숩니다</value>
 	</data>
 	<data name="SkillDescription_Monster" xml:space="preserve">
-		<value>Become real</value>
+		<value>진짜 몬스터가 됩니다</value>
 	</data>
 	<data name="SkillDescription_Polymorph" xml:space="preserve">
-		<value>Transform asteroids</value>
+		<value>운석을 바꿔버려요</value>
 	</data>
 	<data name="SkillDescription_Shield" xml:space="preserve">
-		<value>Protect you once</value>
+		<value>한 번 보호받습니다</value>
 	</data>
 	<data name="SkillName_Blink" xml:space="preserve">
-		<value>Blink</value>
+		<value>순간이동</value>
 	</data>
 	<data name="SkillName_Fever" xml:space="preserve">
-		<value>Fever</value>
+		<value>과열</value>
 	</data>
 	<data name="SkillName_Ghost" xml:space="preserve">
-		<value>Ghost</value>
+		<value>유령</value>
 	</data>
 	<data name="SkillName_Gold" xml:space="preserve">
-		<value>Gold</value>
+		<value>골드</value>
 	</data>
 	<data name="SkillName_Heal" xml:space="preserve">
-		<value>Heal</value>
+		<value>회복</value>
 	</data>
 	<data name="SkillName_Laser" xml:space="preserve">
-		<value>Laser</value>
+		<value>레이저</value>
 	</data>
 	<data name="SkillName_Magnet" xml:space="preserve">
-		<value>Magnet</value>
+		<value>자석</value>
 	</data>
 	<data name="SkillName_Metal" xml:space="preserve">
-		<value>Metal</value>
+		<value>강철</value>
 	</data>
 	<data name="SkillName_Monster" xml:space="preserve">
-		<value>Monster</value>
+		<value>몬스터</value>
 	</data>
 	<data name="SkillName_Polymorph" xml:space="preserve">
-		<value>Polymorph</value>
+		<value>변환</value>
 	</data>
 	<data name="SkillName_Shield" xml:space="preserve">
-		<value>Shield</value>
+		<value>실드</value>
 	</data>
 	<data name="TouchToStart" xml:space="preserve">
-		<value>Touch to Start</value>
+		<value>터치하여 게임 시작</value>
 	</data>
 </root>

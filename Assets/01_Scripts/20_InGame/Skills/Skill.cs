@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using SmartLocalization;
 
 public class Skill : MonoBehaviour {
   public GameObject skillObject;
@@ -12,6 +13,9 @@ public class Skill : MonoBehaviour {
   private bool activated;
 
   void Start() {
+    LanguageManager languageManager = LanguageManager.Instance;
+    languageManager.OnChangeLanguage += OnChangeLanguage;
+    OnChangeLanguage(languageManager);
     afterStart();
   }
 
@@ -66,5 +70,15 @@ public class Skill : MonoBehaviour {
 
   void Disable() {
     CancelInvoke();
+  }
+
+  void OnDestroy() {
+    if(LanguageManager.HasInstance) {
+      LanguageManager.Instance.OnChangeLanguage -= OnChangeLanguage;
+    }
+  }
+
+  void OnChangeLanguage(LanguageManager languageManager) {
+    description = LanguageManager.Instance.GetTextValue("SkillDescription_" + name);
   }
 }

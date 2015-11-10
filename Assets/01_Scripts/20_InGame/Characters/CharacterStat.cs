@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 using AbilityData;
+using SmartLocalization;
 
 public class CharacterStat : MonoBehaviour {
   public string characterName;
+  public string skillName;
   public BGM bgm;
   public Rarity rarity;
   public BaseSpeed baseSpeed;
@@ -19,9 +21,26 @@ public class CharacterStat : MonoBehaviour {
   // [BitMask(typeof(SkillFlag))]
   public SkillFlag skillFlags;
 
-  public string skillName() {
+  public string skillCode() {
     string name = skillFlags.ToString();
     return name == "0" ? "" : name;
+  }
+
+  void Start() {
+    LanguageManager languageManager = LanguageManager.Instance;
+    languageManager.OnChangeLanguage += OnChangeLanguage;
+    OnChangeLanguage(languageManager);
+  }
+
+  void OnDestroy() {
+    if(LanguageManager.HasInstance) {
+      LanguageManager.Instance.OnChangeLanguage -= OnChangeLanguage;
+    }
+  }
+
+  void OnChangeLanguage(LanguageManager languageManager) {
+    characterName = LanguageManager.Instance.GetTextValue("CharacterName_" + name);
+    skillName = skillCode()=="" ? "" : LanguageManager.Instance.GetTextValue("SkillName_" + skillCode());
   }
 }
 

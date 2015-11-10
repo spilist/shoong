@@ -111,6 +111,7 @@ public class DataManager : MonoBehaviour {
     ints["NormalCollectorLevel"] = 1;
     // strings["ControlMethod"] = "Touch";
     strings["ControlMethod"] = "Stick";
+    strings["Language"] = "en";
     bools["robotcogi"] = true;
     bools["TutorialDone"] = false;
 
