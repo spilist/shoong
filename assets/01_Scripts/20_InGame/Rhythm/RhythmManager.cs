@@ -121,8 +121,8 @@ public class RhythmManager : MonoBehaviour {
     }
   }
 
-  public void stopBeat() {
-    beating = false;
+  public void stopBeat(bool val = false) {
+    beating = val;
   }
 
   void getRing(List<GameObject> list, GameObject prefab) {

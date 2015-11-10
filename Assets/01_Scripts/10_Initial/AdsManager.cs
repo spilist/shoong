@@ -35,8 +35,8 @@ public class AdsManager : MonoBehaviour {
 
     // Create an empty ad request.
     AdRequest request = new AdRequest.Builder()
-                          .AddTestDevice(AdRequest.TestDeviceSimulator)
-                          .AddTestDevice("AAED8D9E90BDFE343EFB2A4EAD98E81E")
+                          // .AddTestDevice(AdRequest.TestDeviceSimulator)
+                          // .AddTestDevice("AAED8D9E90BDFE343EFB2A4EAD98E81E")
                           .Build();
 
     // Load the interstitial with the request.
@@ -57,10 +57,9 @@ public class AdsManager : MonoBehaviour {
   bool available() {
     if (DataManager.dm.getInt("TotalNumPlays") < showAfter) return false;
 
-    int minutesPassed = DateTime.Now.Minute - DataManager.dm.getDateTime("LastDateTimeAdsSeen").Minute;
-    if (minutesPassed < showPerMin) return false;
+    float minutesPassed = (float) (DateTime.Now - DataManager.dm.getDateTime("LastDateTimeAdsSeen")).TotalMinutes;
 
-    return true;
+    return minutesPassed >= showPerMin;
   }
 
   public void HandleInterstitialClosed(object sender, EventArgs args) {

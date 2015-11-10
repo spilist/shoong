@@ -27,6 +27,7 @@ public class PauseButton : MenusBehavior {
     pauseStatus.SetActive(true);
     pausedImage.SetActive(true);
     AudioListener.pause = true;
+    RhythmManager.rm.stopBeat();
   }
 
   public void resume() {
@@ -45,6 +46,7 @@ public class PauseButton : MenusBehavior {
       count--;
     }
 
+    RhythmManager.rm.stopBeat(true);
     Camera.main.GetComponent<CameraMover>().setPaused(false);
     pauseFilter.SetActive(false);
     pauseStatus.SetActive(false);

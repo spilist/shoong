@@ -110,6 +110,8 @@ public class BeforeIdle : MonoBehaviour {
 
         characterPosX = Mathf.MoveTowards(characterPosX, 0, Time.deltaTime / characterMovingDuration * characterMoveDistance);
         character.GetComponent<RectTransform>().anchoredPosition = new Vector2(characterPosX, character.GetComponent<RectTransform>().anchoredPosition.y);
+        copyrightColor.a = Mathf.MoveTowards(copyrightColor.a, copyrightChangeTo, Time.deltaTime / movingDuration);
+        copyright.color = copyrightColor;
 
         if (characterPosX == 0) {
           if (character.GetComponent<Rigidbody>().angularVelocity == Vector3.zero) {
@@ -156,6 +158,8 @@ public class BeforeIdle : MonoBehaviour {
     filterColor = titleFilter.material.color;
     filterChanging = true;
     filterChangeTo = 1;
+    copyrightColor = copyright.color;
+    copyrightChangeTo = 1;
     moveTitle(false);
 
     changeCharacter(PlayerPrefs.GetString("SelectedCharacter"));
