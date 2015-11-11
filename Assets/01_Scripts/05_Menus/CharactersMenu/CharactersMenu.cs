@@ -72,4 +72,21 @@ public class CharactersMenu : Draggable {
 
     transform.Find("Characters/" + characterName).GetComponent<UICharacters>().buyComplete(bought);
   }
+
+  public void allCharacters() {
+    Transform characters = transform.Find("Characters");
+    if (DataManager.dm.getInt("NumCharactersHave") < characters.childCount) {
+      foreach (Transform tr in characters) {
+        DataManager.dm.setBool(tr.name, true);
+        DataManager.dm.increment("NumCharactersHave");
+      }
+    } else {
+      foreach (Transform tr in characters) {
+        if (tr.name == "robotcogi") continue;
+        DataManager.dm.setBool(tr.name, false);
+      }
+      DataManager.dm.setInt("NumCharactersHave", 1);
+    }
+    DataManager.dm.save();
+  }
 }

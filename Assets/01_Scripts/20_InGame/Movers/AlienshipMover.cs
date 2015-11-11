@@ -102,4 +102,8 @@ public class AlienshipMover : ObjectsMover {
   override protected void afterEncounter() {
     asm.run();
   }
+
+  void OnDisable() {
+    if (laserWarning != null) laserWarning.SetActive(false);
+  }
 }

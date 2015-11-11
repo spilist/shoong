@@ -29,7 +29,6 @@ public class DangerousEMPManager : ObjectsManager {
       obj.SetActive(false);
       particleDestroyByPlayerPool.Add(obj);
     }
-
     respawn();
   }
 
@@ -47,8 +46,10 @@ public class DangerousEMPManager : ObjectsManager {
   }
 
   public void startLarger() {
-    larger = true;
-    empScale = enlargeScale;
+    if (!larger) {
+      larger = true;
+      empScale *= enlargeScale;
+    }
   }
 
   public int loseEnergy() {

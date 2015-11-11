@@ -20057,7 +20057,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &507386076
 Transform:
   m_ObjectHideFlags: 0
@@ -97032,7 +97032,7 @@ MonoBehaviour:
   emptyDurationDecrease: .0500000007
   chanceBase: 100
   goldCubesGet: 1
-  goldenCubeChance: 4
+  goldenCubeChance: 400
   objPrefab_next: {fileID: 192146, guid: d357428246b5f4e5fb2b54651d371984, type: 2}
   objNextPool: []
   fullComboCountPerLevel: 020000000300000005000000
@@ -97776,7 +97776,7 @@ MonoBehaviour:
   enlargeDuration: .100000001
   stayDuration: 1
   shrinkDuration: .100000001
-  enlargeScale: 140
+  enlargeScale: 2
   loseEnergyBigger: 30
   bounceDuringBigger: .5
 --- !u!114 &1991538124
@@ -97820,7 +97820,7 @@ MonoBehaviour:
     type: 2}
   laserPool: []
   laserWarningPool: []
-  laserPoolAmount: 30
+  laserPoolAmount: 1
   spawnRadius: 200
   detectDistance: 200
   headFollowingSpeed: 100

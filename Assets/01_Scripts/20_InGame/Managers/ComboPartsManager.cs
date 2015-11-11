@@ -108,11 +108,6 @@ public class ComboPartsManager : ObjectsManager {
     instance = getPooledObj(objPool, objPrefab, spawnPos);
     instance.transform.rotation = spawnRotation;
     instance.GetComponent<ComboPartMover>().setDestroyAfter();
-    instance.SetActive(true);
-    instance.GetComponent<MeshFilter>().sharedMesh = nextInstance.GetComponent<MeshFilter>().sharedMesh;
-
-    if (golden) instance.GetComponent<ComboPartMover>().setGolden();
-    else instance.GetComponent<ComboPartMover>().setNormal();
 
     nextInstance.SetActive(false);
     nextInstance = null;
@@ -138,6 +133,12 @@ public class ComboPartsManager : ObjectsManager {
         nextInstance.transform.Find("GoldenEffect").gameObject.SetActive(false);
       }
     }
+
+    instance.SetActive(true);
+    instance.GetComponent<MeshFilter>().sharedMesh = nextInstance.GetComponent<MeshFilter>().sharedMesh;
+
+    if (golden) instance.GetComponent<ComboPartMover>().setGolden();
+    else instance.GetComponent<ComboPartMover>().setNormal();
   }
 
   public int getComboCount() {
