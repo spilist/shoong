@@ -95,6 +95,7 @@ public class TouchInputHandler : MonoBehaviour
         if (result == "Ground") {
           Vector3 worldTouchPosition = setPlayerDirection(Player.pl.transform);
 
+          // Player.pl.teleport(worldTouchPosition);
           Player.pl.shootBooster();
           spawnTouchEffect(worldTouchPosition);
         } else if (result == "SkillButton") {
