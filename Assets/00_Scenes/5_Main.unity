@@ -254,11 +254,7 @@ Transform:
   m_LocalScale: {x: 6, y: 6, z: 6}
   m_Children: []
   m_Father: {fileID: 552014891}
-<<<<<<< HEAD
   m_RootOrder: 13
-=======
-  m_RootOrder: 14
->>>>>>> google-auth-and-unitads
 --- !u!114 &3647330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -271,10 +267,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
-<<<<<<< HEAD
-=======
-  productId: 
->>>>>>> google-auth-and-unitads
 --- !u!23 &3647331
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -667,75 +659,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 24498667}
-<<<<<<< HEAD
-=======
---- !u!1 &24654948
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 224: {fileID: 24654949}
-  - 23: {fileID: 24654951}
-  - 33: {fileID: 24654950}
-  m_Layer: 17
-  m_Name: CubeDispenser
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &24654949
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 24654948}
-  m_LocalRotation: {x: .707106829, y: -3.78667799e-08, z: -1.77635705e-15, w: .707106709}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 4}
-  m_Children:
-  - {fileID: 1388493585}
-  m_Father: {fileID: 603421087}
-  m_RootOrder: 4
-  m_AnchorMin: {x: .5, y: .5}
-  m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 240, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: .5, y: .5}
---- !u!33 &24654950
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 24654948}
-  m_Mesh: {fileID: 4300000, guid: 55b3c2999613d483f8350cd1b6036781, type: 3}
---- !u!23 &24654951
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 24654948}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_Materials:
-  - {fileID: 2100000, guid: d47638048ad144489a6836c5e0edcc84, type: 2}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 0
-  m_ReflectionProbeUsage: 0
-  m_ProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
->>>>>>> google-auth-and-unitads
 --- !u!1 &26918230
 GameObject:
   m_ObjectHideFlags: 0
@@ -1951,76 +1874,6 @@ ParticleSystem:
     subEmitterCollision1: {fileID: 0}
     subEmitterDeath: {fileID: 0}
     subEmitterDeath1: {fileID: 0}
-<<<<<<< HEAD
-=======
---- !u!1 &32055854
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 120344, guid: 54cea864d856c40859cc6c06841c2a80, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 224: {fileID: 32055855}
-  - 23: {fileID: 32055857}
-  - 33: {fileID: 32055856}
-  m_Layer: 0
-  m_Name: Object
-  m_TagString: SpecialPart
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &32055855
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 32055854}
-  m_LocalRotation: {x: -.65328151, y: .270598084, z: -.270598114, w: .653281391}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.20000005, y: 1.20000017, z: 1.20000005}
-  m_Children: []
-  m_Father: {fileID: 1415642087}
-  m_RootOrder: 0
-  m_AnchorMin: {x: .5, y: .5}
-  m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 0, y: -2}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: .5, y: .5}
---- !u!33 &32055856
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 3384990, guid: 54cea864d856c40859cc6c06841c2a80,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 32055854}
-  m_Mesh: {fileID: 4300000, guid: 0ecc368de93f8436caa3d781a771541c, type: 3}
---- !u!23 &32055857
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 2363104, guid: 54cea864d856c40859cc6c06841c2a80,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 32055854}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_Materials:
-  - {fileID: 2100000, guid: a92bb96032e524a76bf8fcffafdbcca8, type: 2}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 0
-  m_ReflectionProbeUsage: 0
-  m_ProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
->>>>>>> google-auth-and-unitads
 --- !u!1 &35954954
 GameObject:
   m_ObjectHideFlags: 0
@@ -2080,85 +1933,13 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-<<<<<<< HEAD
   m_Text: 
-=======
-  m_Text: "\uCEE4\uBA3C"
->>>>>>> google-auth-and-unitads
 --- !u!222 &35954957
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 35954954}
-<<<<<<< HEAD
-=======
---- !u!1 &38293879
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 224: {fileID: 38293880}
-  - 23: {fileID: 38293882}
-  - 33: {fileID: 38293881}
-  m_Layer: 17
-  m_Name: Object
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &38293880
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 38293879}
-  m_LocalRotation: {x: -.405661255, y: -.086078018, z: .656444073, w: .630167246}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: .400000036, y: .399999946, z: .400000036}
-  m_Children: []
-  m_Father: {fileID: 750638232}
-  m_RootOrder: 0
-  m_AnchorMin: {x: .5, y: .5}
-  m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 0, y: 4.57763672e-05}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: .5, y: .5}
---- !u!33 &38293881
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 38293879}
-  m_Mesh: {fileID: 4300000, guid: 3f7496f0efaad46e2abd0228d36dbbcd, type: 3}
---- !u!23 &38293882
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 38293879}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_Materials:
-  - {fileID: 2100000, guid: cce705c6eab1948f29a242d1944cf636, type: 2}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 0
-  m_ReflectionProbeUsage: 0
-  m_ProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
->>>>>>> google-auth-and-unitads
 --- !u!1 &38411117
 GameObject:
   m_ObjectHideFlags: 0
@@ -2208,10 +1989,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: Robot Cat
-<<<<<<< HEAD
   skillName: 
-=======
->>>>>>> google-auth-and-unitads
   bgm: 1
   rarity: 0
   baseSpeed: 3
@@ -2336,11 +2114,7 @@ Transform:
   - {fileID: 1958126050}
   - {fileID: 201855407}
   m_Father: {fileID: 0}
-<<<<<<< HEAD
   m_RootOrder: 13
-=======
-  m_RootOrder: 12
->>>>>>> google-auth-and-unitads
 --- !u!114 &53298670
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2379,10 +2153,7 @@ MonoBehaviour:
   isBoosterOK: 0
   isSkillOK: 0
   currentRing: {fileID: 0}
-<<<<<<< HEAD
   failedBeatCount: 0
-=======
->>>>>>> google-auth-and-unitads
 --- !u!114 &53298671
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2686,75 +2457,6 @@ MonoBehaviour:
   offset: .5
   sign: -1
   scale: 5
-<<<<<<< HEAD
-=======
---- !u!1 &61289819
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 224: {fileID: 61289820}
-  - 23: {fileID: 61289822}
-  - 33: {fileID: 61289821}
-  m_Layer: 17
-  m_Name: Blackhole
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &61289820
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 61289819}
-  m_LocalRotation: {x: .707106829, y: -3.78667799e-08, z: -1.77635705e-15, w: .707106709}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 4}
-  m_Children:
-  - {fileID: 2003075982}
-  m_Father: {fileID: 603421087}
-  m_RootOrder: 1
-  m_AnchorMin: {x: .5, y: .5}
-  m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: -45, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: .5, y: .5}
---- !u!33 &61289821
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 61289819}
-  m_Mesh: {fileID: 4300000, guid: 55b3c2999613d483f8350cd1b6036781, type: 3}
---- !u!23 &61289822
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 61289819}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_Materials:
-  - {fileID: 2100000, guid: d47638048ad144489a6836c5e0edcc84, type: 2}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 0
-  m_ReflectionProbeUsage: 0
-  m_ProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
->>>>>>> google-auth-and-unitads
 --- !u!1 &64786154
 GameObject:
   m_ObjectHideFlags: 0
@@ -3481,10 +3183,7 @@ MonoBehaviour:
   reboundSpeed: 320
   originalScale: 0
   afterStrengthenDuration: 1
-<<<<<<< HEAD
   numBoosters: 0
-=======
->>>>>>> google-auth-and-unitads
   dirIndicator: {fileID: 1322196947}
   getEnergy: {fileID: 0}
   getPartsText: {fileID: 0}
@@ -3645,44 +3344,6 @@ MonoBehaviour:
   afterStrengthenEffect: {fileID: 1282841668}
   contactCollider: {fileID: 1298175624}
   teleportingDuration: .0299999993
-<<<<<<< HEAD
-=======
---- !u!1 &96157825
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 224: {fileID: 96157826}
-  m_Layer: 5
-  m_Name: SelectedObjects
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!224 &96157826
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 96157825}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 834712301}
-  - {fileID: 603421087}
-  - {fileID: 478286098}
-  m_Father: {fileID: 868146741}
-  m_RootOrder: 5
-  m_AnchorMin: {x: .5, y: .5}
-  m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 0, y: 50}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: .5, y: .5}
->>>>>>> google-auth-and-unitads
 --- !u!1 &97495972
 GameObject:
   m_ObjectHideFlags: 0
@@ -4110,17 +3771,10 @@ MonoBehaviour:
   blinkingSeconds: .400000006
   playTouchSound: 1
   blinkOnStart: 0
-<<<<<<< HEAD
   rareChance: 20
   epicChance: 5
   legendChance: 1
   chanceBase: 100
-=======
-  rareChance: 40
-  epicChance: 10
-  legendChance: 1
-  chanceBase: 200
->>>>>>> google-auth-and-unitads
   characters: {fileID: 552014891}
   characterCube: {fileID: 714900423}
   gathering: {fileID: 1512218220}
@@ -6508,10 +6162,7 @@ GameObject:
   - 224: {fileID: 135970118}
   - 222: {fileID: 135970120}
   - 114: {fileID: 135970119}
-<<<<<<< HEAD
   - 114: {fileID: 135970121}
-=======
->>>>>>> google-auth-and-unitads
   m_Layer: 5
   m_Name: TouchToStart
   m_TagString: Untagged
@@ -6568,7 +6219,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 135970117}
-<<<<<<< HEAD
 --- !u!114 &135970121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6581,8 +6231,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: TouchToStart
-=======
->>>>>>> google-auth-and-unitads
 --- !u!1 &140987259
 GameObject:
   m_ObjectHideFlags: 0
@@ -6920,10 +6568,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
-<<<<<<< HEAD
-=======
-  productId: 
->>>>>>> google-auth-and-unitads
 --- !u!1 &155100440
 GameObject:
   m_ObjectHideFlags: 0
@@ -8114,10 +7758,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: Retro Robot
-<<<<<<< HEAD
   skillName: 
-=======
->>>>>>> google-auth-and-unitads
   bgm: 5
   rarity: 1
   baseSpeed: 3
@@ -10556,12 +10197,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: caa5c2ab1889546ddbde32df3b569256, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
   showAfter: 10
   showPerMin: 2
-=======
-  adsID: ca-app-pub-4666969549435607/8331172170
->>>>>>> google-auth-and-unitads
 --- !u!4 &179664843
 Transform:
   m_ObjectHideFlags: 0
@@ -10573,11 +10210,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-<<<<<<< HEAD
-  m_RootOrder: 17
-=======
-  m_RootOrder: 16
->>>>>>> google-auth-and-unitads
+  m_RootOrder: 18
 --- !u!1 &181167830
 GameObject:
   m_ObjectHideFlags: 0
@@ -15849,11 +15482,7 @@ Transform:
   m_Children:
   - {fileID: 1341181262}
   m_Father: {fileID: 0}
-<<<<<<< HEAD
   m_RootOrder: 10
-=======
-  m_RootOrder: 9
->>>>>>> google-auth-and-unitads
 --- !u!114 &226874242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15950,10 +15579,7 @@ GameObject:
   - 224: {fileID: 230479084}
   - 222: {fileID: 230479086}
   - 114: {fileID: 230479085}
-<<<<<<< HEAD
   - 114: {fileID: 230479087}
-=======
->>>>>>> google-auth-and-unitads
   m_Layer: 5
   m_Name: Description
   m_TagString: Untagged
@@ -16010,7 +15636,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 230479083}
-<<<<<<< HEAD
 --- !u!114 &230479087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16023,8 +15648,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: 
-=======
->>>>>>> google-auth-and-unitads
 --- !u!1 &233729127
 GameObject:
   m_ObjectHideFlags: 0
@@ -16067,10 +15690,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
-<<<<<<< HEAD
-=======
-  productId: 
->>>>>>> google-auth-and-unitads
 --- !u!23 &233729130
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -16168,7 +15787,6 @@ RectTransform:
   m_AnchoredPosition: {x: 300, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: .5, y: .5}
-<<<<<<< HEAD
 --- !u!1 &242943505 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 169984, guid: 8e7e4a602cfdf4c4db0fd73a1c8f11ab, type: 2}
@@ -16185,8 +15803,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: 
-=======
->>>>>>> google-auth-and-unitads
 --- !u!1 &251897799
 GameObject:
   m_ObjectHideFlags: 0
@@ -16198,10 +15814,7 @@ GameObject:
   - 23: {fileID: 251897804}
   - 33: {fileID: 251897802}
   - 65: {fileID: 251897801}
-<<<<<<< HEAD
   - 114: {fileID: 251897803}
-=======
->>>>>>> google-auth-and-unitads
   m_Layer: 17
   m_Name: Restore
   m_TagString: SettingsMenu
@@ -16246,7 +15859,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 251897799}
   m_Mesh: {fileID: 4300082, guid: 7d4e33b83f6a046ab845e77e3044ffcc, type: 3}
-<<<<<<< HEAD
 --- !u!114 &251897803
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16264,8 +15876,6 @@ MonoBehaviour:
   blinkingSeconds: .400000006
   playTouchSound: 1
   blinkOnStart: 0
-=======
->>>>>>> google-auth-and-unitads
 --- !u!23 &251897804
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -16377,10 +15987,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controlMethod: LR
-<<<<<<< HEAD
   adjustScale: 0
-=======
->>>>>>> google-auth-and-unitads
 --- !u!1 &256755159
 GameObject:
   m_ObjectHideFlags: 0
@@ -16476,11 +16083,7 @@ Transform:
   m_LocalScale: {x: 6, y: 6, z: 6}
   m_Children: []
   m_Father: {fileID: 552014891}
-<<<<<<< HEAD
   m_RootOrder: 22
-=======
-  m_RootOrder: 21
->>>>>>> google-auth-and-unitads
 --- !u!114 &259634594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16493,10 +16096,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
-<<<<<<< HEAD
-=======
-  productId: 
->>>>>>> google-auth-and-unitads
 --- !u!23 &259634595
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -16809,10 +16408,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: Tin Can Robot
-<<<<<<< HEAD
   skillName: 
-=======
->>>>>>> google-auth-and-unitads
   bgm: 0
   rarity: 1
   baseSpeed: 4
@@ -16944,13 +16540,8 @@ MonoBehaviour:
   skillObject: {fileID: 851953042}
   useSkillEffect: {fileID: 1552135346}
   normalRing: 11
-<<<<<<< HEAD
   skillRing: 8
   description: Pull candies
-=======
-  skillRing: 6
-  description: Pull parts
->>>>>>> google-auth-and-unitads
   duration: 0
 --- !u!1 &311332703
 GameObject:
@@ -18532,26 +18123,16 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 335624706}
   m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106709}
-<<<<<<< HEAD
   m_LocalPosition: {x: 0, y: 0, z: 0}
-=======
-  m_LocalPosition: {x: 0, y: 0, z: .200000003}
->>>>>>> google-auth-and-unitads
   m_LocalScale: {x: .200000003, y: .200000003, z: .200000003}
   m_Children: []
   m_Father: {fileID: 1873613231}
   m_RootOrder: 1
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-<<<<<<< HEAD
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 112.5, y: 75}
   m_Pivot: {x: .5, y: .5}
-=======
-  m_AnchoredPosition: {x: -7.5, y: 0}
-  m_SizeDelta: {x: 112.5, y: 75}
-  m_Pivot: {x: 0, y: .5}
->>>>>>> google-auth-and-unitads
 --- !u!114 &335624708
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18577,13 +18158,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-<<<<<<< HEAD
   m_Text: 'USD
 
     0.00'
-=======
-  m_Text: 1
->>>>>>> google-auth-and-unitads
 --- !u!222 &335624709
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -18600,10 +18177,7 @@ GameObject:
   - 224: {fileID: 337843607}
   - 222: {fileID: 337843609}
   - 114: {fileID: 337843608}
-<<<<<<< HEAD
   - 114: {fileID: 337843610}
-=======
->>>>>>> google-auth-and-unitads
   m_Layer: 17
   m_Name: Text
   m_TagString: Untagged
@@ -18660,7 +18234,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 337843606}
-<<<<<<< HEAD
 --- !u!114 &337843610
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18673,8 +18246,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: Setting_Reminders
-=======
->>>>>>> google-auth-and-unitads
 --- !u!1 &350424123
 GameObject:
   m_ObjectHideFlags: 0
@@ -18747,10 +18318,7 @@ GameObject:
   - 224: {fileID: 355752706}
   - 222: {fileID: 355752708}
   - 114: {fileID: 355752707}
-<<<<<<< HEAD
   - 114: {fileID: 355752709}
-=======
->>>>>>> google-auth-and-unitads
   m_Layer: 17
   m_Name: Text
   m_TagString: Untagged
@@ -18807,7 +18375,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 355752705}
-<<<<<<< HEAD
 --- !u!114 &355752709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18820,8 +18387,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: Setting_BGM
-=======
->>>>>>> google-auth-and-unitads
 --- !u!1 &377908140
 GameObject:
   m_ObjectHideFlags: 0
@@ -18871,10 +18436,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: Volley Ball
-<<<<<<< HEAD
   skillName: 
-=======
->>>>>>> google-auth-and-unitads
   bgm: 2
   rarity: 0
   baseSpeed: 4
@@ -19122,11 +18684,7 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-<<<<<<< HEAD
   m_AnchoredPosition: {x: 65, y: 0}
-=======
-  m_AnchoredPosition: {x: 0, y: -130}
->>>>>>> google-auth-and-unitads
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &414635253
@@ -19296,7 +18854,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 424831001}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
-<<<<<<< HEAD
 --- !u!1 &425428434
 GameObject:
   m_ObjectHideFlags: 0
@@ -19372,8 +18929,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 425428434}
   m_Mesh: {fileID: 4300050, guid: 46bd8557e7c474556ab17eda482a0d06, type: 3}
-=======
->>>>>>> google-auth-and-unitads
 --- !u!1 &432182465
 GameObject:
   m_ObjectHideFlags: 0
@@ -19402,11 +18957,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 616999376}
-<<<<<<< HEAD
   m_RootOrder: 18
-=======
-  m_RootOrder: 17
->>>>>>> google-auth-and-unitads
 --- !u!33 &432182467
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -19427,10 +18978,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: Mini Monster
-<<<<<<< HEAD
   skillName: 
-=======
->>>>>>> google-auth-and-unitads
   bgm: 4
   rarity: 2
   baseSpeed: 0
@@ -19522,76 +19070,6 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-<<<<<<< HEAD
-=======
---- !u!1 &439289183
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 120344, guid: 54cea864d856c40859cc6c06841c2a80, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 224: {fileID: 439289184}
-  - 23: {fileID: 439289187}
-  - 33: {fileID: 439289186}
-  m_Layer: 0
-  m_Name: ComboParts
-  m_TagString: SpecialPart
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &439289184
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 439289183}
-  m_LocalRotation: {x: 2.98023224e-08, y: .382683456, z: 0, w: .923879504}
-  m_LocalPosition: {x: 0, y: 0, z: 216.667282}
-  m_LocalScale: {x: 5, y: 5, z: 5}
-  m_Children: []
-  m_Father: {fileID: 478286098}
-  m_RootOrder: 3
-  m_AnchorMin: {x: .5, y: .5}
-  m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: -150, y: 93.0000229}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: .5, y: .5}
---- !u!33 &439289186
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 3384990, guid: 54cea864d856c40859cc6c06841c2a80,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 439289183}
-  m_Mesh: {fileID: 4300004, guid: 0ecc368de93f8436caa3d781a771541c, type: 3}
---- !u!23 &439289187
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 2363104, guid: 54cea864d856c40859cc6c06841c2a80,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 439289183}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_Materials:
-  - {fileID: 2100000, guid: fb5f8e9edd07e468db663f7563135561, type: 2}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 0
-  m_ReflectionProbeUsage: 0
-  m_ProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
->>>>>>> google-auth-and-unitads
 --- !u!1 &441624459
 GameObject:
   m_ObjectHideFlags: 0
@@ -19670,11 +19148,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-<<<<<<< HEAD
   m_IsActive: 1
-=======
-  m_IsActive: 0
->>>>>>> google-auth-and-unitads
 --- !u!224 &459535541
 RectTransform:
   m_ObjectHideFlags: 0
@@ -19682,28 +19156,17 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 459535540}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-<<<<<<< HEAD
   m_LocalPosition: {x: 0, y: 0, z: -0}
-=======
-  m_LocalPosition: {x: 0, y: 0, z: 0}
->>>>>>> google-auth-and-unitads
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1365653570}
   - {fileID: 1815077427}
   - {fileID: 1307704148}
   m_Father: {fileID: 868146741}
-<<<<<<< HEAD
   m_RootOrder: 5
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 833, y: 408.5}
-=======
-  m_RootOrder: 6
-  m_AnchorMin: {x: .5, y: .5}
-  m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 0, y: 0}
->>>>>>> google-auth-and-unitads
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: .5, y: .5}
 --- !u!1 &459910518
@@ -19970,11 +19433,7 @@ Transform:
   m_LocalScale: {x: 6, y: 6, z: 6}
   m_Children: []
   m_Father: {fileID: 552014891}
-<<<<<<< HEAD
   m_RootOrder: 11
-=======
-  m_RootOrder: 12
->>>>>>> google-auth-and-unitads
 --- !u!23 &465752962
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -20020,7 +19479,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
-<<<<<<< HEAD
 --- !u!1 &485458452
 GameObject:
   m_ObjectHideFlags: 0
@@ -20033,24 +19491,10 @@ GameObject:
   - 114: {fileID: 485458454}
   m_Layer: 0
   m_Name: ghost
-=======
-  productId: 
---- !u!1 &478286097
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 224: {fileID: 478286098}
-  m_Layer: 5
-  m_Name: ObjectsToShow
->>>>>>> google-auth-and-unitads
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-<<<<<<< HEAD
   m_IsActive: 1
 --- !u!4 &485458453
 Transform:
@@ -20097,32 +19541,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 485458452}
   m_Mesh: {fileID: 4300054, guid: 06ea95d279c7341edb83769ec8c7baed, type: 3}
-=======
-  m_IsActive: 0
---- !u!224 &478286098
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 478286097}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1019114913}
-  - {fileID: 1882991374}
-  - {fileID: 725059133}
-  - {fileID: 439289184}
-  - {fileID: 732889232}
-  - {fileID: 978985099}
-  m_Father: {fileID: 96157826}
-  m_RootOrder: 2
-  m_AnchorMin: {x: .5, y: .5}
-  m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: .5, y: .5}
->>>>>>> google-auth-and-unitads
 --- !u!1 &493085438
 GameObject:
   m_ObjectHideFlags: 0
@@ -20291,11 +19709,7 @@ MonoBehaviour:
   skillObject: {fileID: 1426521849}
   useSkillEffect: {fileID: 1830827562}
   normalRing: 11
-<<<<<<< HEAD
   skillRing: 8
-=======
-  skillRing: 6
->>>>>>> google-auth-and-unitads
   description: Become real
   duration: 0
   monsterFilter: {fileID: 1997391145}
@@ -20523,11 +19937,7 @@ Transform:
   m_LocalScale: {x: 6, y: 6, z: 6}
   m_Children: []
   m_Father: {fileID: 552014891}
-<<<<<<< HEAD
   m_RootOrder: 15
-=======
-  m_RootOrder: 19
->>>>>>> google-auth-and-unitads
 --- !u!23 &501650842
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -20573,60 +19983,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
-<<<<<<< HEAD
-=======
-  productId: 
---- !u!1001 &503152186
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1665647660}
-    m_Modifications:
-    - target: {fileID: 407680, guid: 4d7eaedd1710044f7841d4a7aa669ec0, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 407680, guid: 4d7eaedd1710044f7841d4a7aa669ec0, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 407680, guid: 4d7eaedd1710044f7841d4a7aa669ec0, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 407680, guid: 4d7eaedd1710044f7841d4a7aa669ec0, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: .707106829
-      objectReference: {fileID: 0}
-    - target: {fileID: 407680, guid: 4d7eaedd1710044f7841d4a7aa669ec0, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 407680, guid: 4d7eaedd1710044f7841d4a7aa669ec0, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 407680, guid: 4d7eaedd1710044f7841d4a7aa669ec0, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: .707106709
-      objectReference: {fileID: 0}
-    - target: {fileID: 407680, guid: 4d7eaedd1710044f7841d4a7aa669ec0, type: 2}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 157310, guid: 4d7eaedd1710044f7841d4a7aa669ec0, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 4d7eaedd1710044f7841d4a7aa669ec0, type: 2}
-  m_IsPrefabParent: 0
---- !u!4 &503152187 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 407680, guid: 4d7eaedd1710044f7841d4a7aa669ec0, type: 2}
-  m_PrefabInternal: {fileID: 503152186}
->>>>>>> google-auth-and-unitads
 --- !u!1 &503519268
 GameObject:
   m_ObjectHideFlags: 0
@@ -20701,7 +20057,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &507386076
 Transform:
   m_ObjectHideFlags: 0
@@ -20719,7 +20075,7 @@ Transform:
   - {fileID: 1082642565}
   - {fileID: 64786155}
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 20
 --- !u!1 &509610635
 GameObject:
   m_ObjectHideFlags: 0
@@ -20985,10 +20341,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: Morogoro
-<<<<<<< HEAD
   skillName: 
-=======
->>>>>>> google-auth-and-unitads
   bgm: 0
   rarity: 0
   baseSpeed: 2
@@ -23868,27 +23221,16 @@ RectTransform:
   - {fileID: 688839005}
   - {fileID: 1680629679}
   - {fileID: 1196521603}
-<<<<<<< HEAD
-=======
-  - {fileID: 975181076}
->>>>>>> google-auth-and-unitads
   - {fileID: 465752961}
   - {fileID: 1068398460}
   - {fileID: 3647329}
   - {fileID: 1596742148}
-<<<<<<< HEAD
   - {fileID: 501650841}
   - {fileID: 425428435}
   - {fileID: 151261180}
   - {fileID: 858162615}
   - {fileID: 588841858}
   - {fileID: 975181076}
-=======
-  - {fileID: 588841858}
-  - {fileID: 151261180}
-  - {fileID: 858162615}
-  - {fileID: 501650841}
->>>>>>> google-auth-and-unitads
   - {fileID: 606416437}
   - {fileID: 259634593}
   m_Father: {fileID: 75942067}
@@ -24112,10 +23454,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: Robot Dog
-<<<<<<< HEAD
   skillName: 
-=======
->>>>>>> google-auth-and-unitads
   bgm: 1
   rarity: 0
   baseSpeed: 3
@@ -25367,13 +24706,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 564387019}
-<<<<<<< HEAD
-=======
---- !u!4 &565427583 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 426850, guid: 1d56f2064a3a44db8b0e174bd62e7177, type: 2}
-  m_PrefabInternal: {fileID: 1171925970}
->>>>>>> google-auth-and-unitads
 --- !u!1 &565486535
 GameObject:
   m_ObjectHideFlags: 0
@@ -25576,10 +24908,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
-<<<<<<< HEAD
-=======
-  productId: toy_soju
->>>>>>> google-auth-and-unitads
 --- !u!1 &579922197
 GameObject:
   m_ObjectHideFlags: 0
@@ -26852,11 +26180,7 @@ Transform:
   m_LocalScale: {x: 6, y: 6, z: 6}
   m_Children: []
   m_Father: {fileID: 552014891}
-<<<<<<< HEAD
   m_RootOrder: 19
-=======
-  m_RootOrder: 16
->>>>>>> google-auth-and-unitads
 --- !u!114 &588841859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26869,10 +26193,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
-<<<<<<< HEAD
-=======
-  productId: 
->>>>>>> google-auth-and-unitads
 --- !u!23 &588841860
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -27248,47 +26568,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 601299997}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
-<<<<<<< HEAD
-=======
---- !u!1 &603421086
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 224: {fileID: 603421087}
-  m_Layer: 5
-  m_Name: ObjectsInGame
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &603421087
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 603421086}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1415642087}
-  - {fileID: 61289820}
-  - {fileID: 750638232}
-  - {fileID: 2075602769}
-  - {fileID: 24654949}
-  - {fileID: 1848787730}
-  m_Father: {fileID: 96157826}
-  m_RootOrder: 1
-  m_AnchorMin: {x: .5, y: .5}
-  m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: .5, y: .5}
->>>>>>> google-auth-and-unitads
 --- !u!1 &606416436
 GameObject:
   m_ObjectHideFlags: 0
@@ -27318,11 +26597,7 @@ Transform:
   m_LocalScale: {x: 6, y: 6, z: 6}
   m_Children: []
   m_Father: {fileID: 552014891}
-<<<<<<< HEAD
   m_RootOrder: 21
-=======
-  m_RootOrder: 20
->>>>>>> google-auth-and-unitads
 --- !u!114 &606416438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27335,10 +26610,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
-<<<<<<< HEAD
-=======
-  productId: 
->>>>>>> google-auth-and-unitads
 --- !u!23 &606416439
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -27464,11 +26735,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-<<<<<<< HEAD
   m_IsActive: 1
-=======
-  m_IsActive: 0
->>>>>>> google-auth-and-unitads
 --- !u!4 &616999376
 Transform:
   m_ObjectHideFlags: 0
@@ -27495,10 +26762,7 @@ Transform:
   - {fileID: 160097018}
   - {fileID: 1505154359}
   - {fileID: 283684578}
-<<<<<<< HEAD
   - {fileID: 485458453}
-=======
->>>>>>> google-auth-and-unitads
   - {fileID: 1981889230}
   - {fileID: 432182466}
   - {fileID: 1905034257}
@@ -28655,11 +27919,7 @@ GameObject:
   - 114: {fileID: 623555563}
   - 65: {fileID: 623555562}
   m_Layer: 5
-<<<<<<< HEAD
   m_Name: StickPanel_moveBoundary
-=======
-  m_Name: StickPannel_moveBoundary
->>>>>>> google-auth-and-unitads
   m_TagString: StickPanel_movement
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28706,10 +27966,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controlMethod: Stick
-<<<<<<< HEAD
   adjustScale: 0
-=======
->>>>>>> google-auth-and-unitads
 --- !u!1 &625220741
 GameObject:
   m_ObjectHideFlags: 0
@@ -28905,10 +28162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: Gloomy Butterfly
-<<<<<<< HEAD
   skillName: 
-=======
->>>>>>> google-auth-and-unitads
   bgm: 3
   rarity: 0
   baseSpeed: 1
@@ -29181,10 +28435,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 638403303}
   - 114: {fileID: 638403302}
-<<<<<<< HEAD
-=======
   - 114: {fileID: 638403304}
->>>>>>> google-auth-and-unitads
   m_Layer: 0
   m_Name: DataManager
   m_TagString: Untagged
@@ -29203,15 +28454,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c29316fd68134f6a8504287e1c8cfcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
   resetAll: 0
   resetCube: 0
   resetGoldenCube: 0
-=======
-  resetAll: 1
-  resetCube: 60000
-  resetGoldenCube: 60000
->>>>>>> google-auth-and-unitads
   normalFrameRate: 60
 --- !u!4 &638403303
 Transform:
@@ -29225,8 +28470,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
-<<<<<<< HEAD
-=======
 --- !u!114 &638403304
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29238,7 +28481,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b3d669611776724587448d336ca8280, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
->>>>>>> google-auth-and-unitads
 --- !u!1 &638923787
 GameObject:
   m_ObjectHideFlags: 0
@@ -29382,10 +28624,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
-<<<<<<< HEAD
-=======
-  productId: 
->>>>>>> google-auth-and-unitads
 --- !u!1 &644211305
 GameObject:
   m_ObjectHideFlags: 0
@@ -29413,11 +28651,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-<<<<<<< HEAD
-  m_RootOrder: 18
-=======
-  m_RootOrder: 17
->>>>>>> google-auth-and-unitads
+  m_RootOrder: 19
 --- !u!114 &644211307
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29429,10 +28663,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de4201a2d0f3540beb6be72b698d11fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
   charactersMenu: {fileID: 75942068}
-=======
->>>>>>> google-auth-and-unitads
 --- !u!1 &644697225
 GameObject:
   m_ObjectHideFlags: 0
@@ -31150,11 +30381,7 @@ GameObject:
   - 114: {fileID: 680766409}
   - 135: {fileID: 680766408}
   m_Layer: 5
-<<<<<<< HEAD
   m_Name: StickPanel_booster
-=======
-  m_Name: StickPannel_booster
->>>>>>> google-auth-and-unitads
   m_TagString: StickPanel_booster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31230,10 +30457,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controlMethod: Stick
-<<<<<<< HEAD
   adjustScale: 0
-=======
->>>>>>> google-auth-and-unitads
 --- !u!1 &685215970
 GameObject:
   m_ObjectHideFlags: 0
@@ -31440,10 +30664,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
-<<<<<<< HEAD
-=======
-  productId: 
->>>>>>> google-auth-and-unitads
 --- !u!23 &688839007
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -33207,74 +32427,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 723740914}
-<<<<<<< HEAD
-=======
---- !u!1 &725059132
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 224: {fileID: 725059133}
-  - 23: {fileID: 725059135}
-  - 33: {fileID: 725059134}
-  m_Layer: 17
-  m_Name: Monster
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &725059133
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 725059132}
-  m_LocalRotation: {x: .1587497, y: -.525042355, z: .403309703, w: .732441306}
-  m_LocalPosition: {x: 0, y: 0, z: 216.667282}
-  m_LocalScale: {x: 2, y: 2, z: 2}
-  m_Children: []
-  m_Father: {fileID: 478286098}
-  m_RootOrder: 2
-  m_AnchorMin: {x: .5, y: .5}
-  m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 150, y: 93.0000229}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: .5, y: .5}
---- !u!33 &725059134
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 725059132}
-  m_Mesh: {fileID: 4300000, guid: 3f7496f0efaad46e2abd0228d36dbbcd, type: 3}
---- !u!23 &725059135
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 725059132}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 0
-  m_Materials:
-  - {fileID: 2100000, guid: cce705c6eab1948f29a242d1944cf636, type: 2}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 0
-  m_ReflectionProbeUsage: 0
-  m_ProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
->>>>>>> google-auth-and-unitads
 --- !u!1001 &728079726
 Prefab:
   m_ObjectHideFlags: 0
@@ -34463,76 +33615,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6e43e5ec2dda449dbd8b0fa4847f785, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
-=======
---- !u!1 &732889231
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 117910, guid: bbcd82bb603674de8b6cb8bab02b2b62, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 224: {fileID: 732889232}
-  - 23: {fileID: 732889235}
-  - 33: {fileID: 732889234}
-  m_Layer: 18
-  m_Name: CubeDispenser
-  m_TagString: Blachole
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &732889232
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 732889231}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 216.667282}
-  m_LocalScale: {x: 2, y: 2, z: 2}
-  m_Children: []
-  m_Father: {fileID: 478286098}
-  m_RootOrder: 4
-  m_AnchorMin: {x: .5, y: .5}
-  m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 0, y: 93.0000229}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: .5, y: .5}
---- !u!33 &732889234
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 3333586, guid: bbcd82bb603674de8b6cb8bab02b2b62,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 732889231}
-  m_Mesh: {fileID: 4300000, guid: 977eaa52d67d74cb7a4e06604cc96f2e, type: 3}
---- !u!23 &732889235
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 2308196, guid: bbcd82bb603674de8b6cb8bab02b2b62,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 732889231}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 52560eb15b0ed41a6a6af15921bb4929, type: 2}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 0
-  m_ReflectionProbeUsage: 0
-  m_ProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
->>>>>>> google-auth-and-unitads
 --- !u!1 &741547521
 GameObject:
   m_ObjectHideFlags: 0
@@ -34563,11 +33645,7 @@ RectTransform:
   - {fileID: 1014488678}
   - {fileID: 335620517}
   m_Father: {fileID: 868146741}
-<<<<<<< HEAD
   m_RootOrder: 7
-=======
-  m_RootOrder: 8
->>>>>>> google-auth-and-unitads
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -34585,7 +33663,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveDuration: .200000003
-<<<<<<< HEAD
 --- !u!1 &743173857
 GameObject:
   m_ObjectHideFlags: 0
@@ -34624,9 +33701,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 23
-=======
->>>>>>> google-auth-and-unitads
+  m_RootOrder: 24
 --- !u!1 &743544622
 GameObject:
   m_ObjectHideFlags: 0
@@ -36003,75 +35078,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6e43e5ec2dda449dbd8b0fa4847f785, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
-=======
---- !u!1 &750638231
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 224: {fileID: 750638232}
-  - 23: {fileID: 750638234}
-  - 33: {fileID: 750638233}
-  m_Layer: 17
-  m_Name: Monster
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &750638232
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 750638231}
-  m_LocalRotation: {x: .707106829, y: -3.78667799e-08, z: -1.77635705e-15, w: .707106709}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 4}
-  m_Children:
-  - {fileID: 38293880}
-  m_Father: {fileID: 603421087}
-  m_RootOrder: 2
-  m_AnchorMin: {x: .5, y: .5}
-  m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 50, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: .5, y: .5}
---- !u!33 &750638233
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 750638231}
-  m_Mesh: {fileID: 4300000, guid: 55b3c2999613d483f8350cd1b6036781, type: 3}
---- !u!23 &750638234
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 750638231}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_Materials:
-  - {fileID: 2100000, guid: d47638048ad144489a6836c5e0edcc84, type: 2}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 0
-  m_ReflectionProbeUsage: 0
-  m_ProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
->>>>>>> google-auth-and-unitads
 --- !u!1 &751785546
 GameObject:
   m_ObjectHideFlags: 0
@@ -36615,10 +35621,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controlMethod: Packman
-<<<<<<< HEAD
   adjustScale: 0
-=======
->>>>>>> google-auth-and-unitads
 --- !u!1 &784850296
 GameObject:
   m_ObjectHideFlags: 0
@@ -36714,11 +35717,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 616999376}
-<<<<<<< HEAD
   m_RootOrder: 21
-=======
-  m_RootOrder: 20
->>>>>>> google-auth-and-unitads
 --- !u!33 &787757044
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -36739,10 +35738,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: Space Dolphin
-<<<<<<< HEAD
   skillName: 
-=======
->>>>>>> google-auth-and-unitads
   bgm: 5
   rarity: 3
   baseSpeed: 1
@@ -37214,10 +36210,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: Leon Pot
-<<<<<<< HEAD
   skillName: 
-=======
->>>>>>> google-auth-and-unitads
   bgm: 2
   rarity: 0
   baseSpeed: 2
@@ -37230,75 +36223,6 @@ MonoBehaviour:
   damageGet: 3
   buyable: 1
   skillFlags: 0
-<<<<<<< HEAD
-=======
---- !u!1 &834712300
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 224: {fileID: 834712301}
-  - 222: {fileID: 834712303}
-  - 114: {fileID: 834712302}
-  m_Layer: 5
-  m_Name: Description
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &834712301
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 834712300}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 96157826}
-  m_RootOrder: 0
-  m_AnchorMin: {x: .5, y: .5}
-  m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: -132, y: 0}
-  m_SizeDelta: {x: 500, y: 100}
-  m_Pivot: {x: .5, y: .5}
---- !u!114 &834712302
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 834712300}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 30
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
-    m_Alignment: 3
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: "\uCD9C\uD604 \uC624\uBE0C\uC81D\uD2B8"
---- !u!222 &834712303
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 834712300}
->>>>>>> google-auth-and-unitads
 --- !u!1 &839699623
 GameObject:
   m_ObjectHideFlags: 0
@@ -37499,10 +36423,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: Soju
-<<<<<<< HEAD
   skillName: 
-=======
->>>>>>> google-auth-and-unitads
   bgm: 3
   rarity: 0
   baseSpeed: 4
@@ -40219,10 +39140,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
-<<<<<<< HEAD
-=======
-  productId: 
->>>>>>> google-auth-and-unitads
 --- !u!1 &860393912
 GameObject:
   m_ObjectHideFlags: 0
@@ -40550,10 +39467,6 @@ RectTransform:
   - {fileID: 316586136}
   - {fileID: 1174556617}
   - {fileID: 850792837}
-<<<<<<< HEAD
-=======
-  - {fileID: 96157826}
->>>>>>> google-auth-and-unitads
   - {fileID: 459535541}
   - {fileID: 1015476139}
   - {fileID: 741547522}
@@ -41245,11 +40158,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-<<<<<<< HEAD
   m_RootOrder: 8
-=======
-  m_RootOrder: 7
->>>>>>> google-auth-and-unitads
 --- !u!1 &895225983
 GameObject:
   m_ObjectHideFlags: 0
@@ -41363,12 +40272,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a336f4eba39b44bc19ac17280a7817f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
   characterName: Black Ball
   skillName: 
-=======
-  characterName: Dead Ball
->>>>>>> google-auth-and-unitads
   bgm: 3
   rarity: 1
   baseSpeed: 3
@@ -41597,10 +40502,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controlMethod: Circle
-<<<<<<< HEAD
   adjustScale: 0
-=======
->>>>>>> google-auth-and-unitads
 --- !u!1 &905334362
 GameObject:
   m_ObjectHideFlags: 0
@@ -41773,7 +40675,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b2a1c6c01ea844e8a42f4c1cbd02792, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
   worldUI: {fileID: 2134279969}
   increaseSpeed: 5
   cubesCount: {fileID: 589887826}
@@ -41781,12 +40682,6 @@ MonoBehaviour:
   pointsGet: {fileID: 113922, guid: 2cf06d9c0eb214c55a0e4d028cd316cd, type: 2}
   pointPool: []
   pointsGetAmount: 20
-=======
-  inGameUI: {fileID: 2134279969}
-  increaseSpeed: 5
-  cubesCount: {fileID: 589887826}
-  pointsPerSeconds: 10
->>>>>>> google-auth-and-unitads
 --- !u!4 &913682496
 Transform:
   m_ObjectHideFlags: 0
@@ -41798,11 +40693,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-<<<<<<< HEAD
   m_RootOrder: 11
-=======
-  m_RootOrder: 10
->>>>>>> google-auth-and-unitads
 --- !u!1 &917148111
 GameObject:
   m_ObjectHideFlags: 0
@@ -43225,10 +42116,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
-<<<<<<< HEAD
-=======
-  productId: 
->>>>>>> google-auth-and-unitads
 --- !u!1 &924930994
 GameObject:
   m_ObjectHideFlags: 0
@@ -43584,10 +42471,7 @@ GameObject:
   - 224: {fileID: 940892754}
   - 222: {fileID: 940892756}
   - 114: {fileID: 940892755}
-<<<<<<< HEAD
   - 114: {fileID: 940892757}
-=======
->>>>>>> google-auth-and-unitads
   m_Layer: 5
   m_Name: Name
   m_TagString: Untagged
@@ -43644,7 +42528,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 940892753}
-<<<<<<< HEAD
 --- !u!114 &940892757
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43657,8 +42540,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: 
-=======
->>>>>>> google-auth-and-unitads
 --- !u!1 &948475058
 GameObject:
   m_ObjectHideFlags: 0
@@ -44105,11 +42986,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-<<<<<<< HEAD
   m_RootOrder: 12
-=======
-  m_RootOrder: 11
->>>>>>> google-auth-and-unitads
 --- !u!114 &973816557
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44231,11 +43108,7 @@ Transform:
   m_LocalScale: {x: 6, y: 6, z: 6}
   m_Children: []
   m_Father: {fileID: 552014891}
-<<<<<<< HEAD
   m_RootOrder: 20
-=======
-  m_RootOrder: 11
->>>>>>> google-auth-and-unitads
 --- !u!23 &975181077
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -44281,10 +43154,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
-<<<<<<< HEAD
-=======
-  productId: 
->>>>>>> google-auth-and-unitads
 --- !u!114 &975447812 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11445766, guid: 8e7e4a602cfdf4c4db0fd73a1c8f11ab,
@@ -44337,76 +43206,87 @@ CapsuleCollider:
   m_Height: 700
   m_Direction: 0
   m_Center: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD
-=======
---- !u!1 &978985098
+--- !u!1 &979858907
 GameObject:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 117910, guid: bbcd82bb603674de8b6cb8bab02b2b62, type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 4
   m_Component:
-  - 224: {fileID: 978985099}
-  - 23: {fileID: 978985102}
-  - 33: {fileID: 978985101}
-  m_Layer: 18
-  m_Name: RainbowDonuts
-  m_TagString: Blachole
+  - 224: {fileID: 979858908}
+  - 222: {fileID: 979858911}
+  - 114: {fileID: 979858910}
+  - 114: {fileID: 979858909}
+  m_Layer: 17
+  m_Name: Text
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &978985099
+--- !u!224 &979858908
 RectTransform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 978985098}
-  m_LocalRotation: {x: .461939603, y: -.331413686, z: -.191341683, w: -.800103247}
-  m_LocalPosition: {x: 0, y: 0, z: 216.667282}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_GameObject: {fileID: 979858907}
+  m_LocalRotation: {x: -1.15202326e-07, y: .707106709, z: -.707106829, w: -1.15202312e-07}
+  m_LocalPosition: {x: 0, y: 0, z: 20}
+  m_LocalScale: {x: .200000003, y: .200000003, z: .200000003}
   m_Children: []
-  m_Father: {fileID: 478286098}
-  m_RootOrder: 5
+  m_Father: {fileID: 1250718140}
+  m_RootOrder: 0
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 150, y: 93.0000229}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 250, y: 100}
   m_Pivot: {x: .5, y: .5}
---- !u!33 &978985101
-MeshFilter:
+--- !u!114 &979858909
+MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 3333586, guid: bbcd82bb603674de8b6cb8bab02b2b62,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 978985098}
-  m_Mesh: {fileID: 4300000, guid: 99c536482099e4321adbbf652b96761e, type: 3}
---- !u!23 &978985102
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 2308196, guid: bbcd82bb603674de8b6cb8bab02b2b62,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 978985098}
+  m_GameObject: {fileID: 979858907}
   m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 6ecdb2f0a1d3c465f9f1b3a9c162a5c8, type: 2}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 0
-  m_ReflectionProbeUsage: 0
-  m_ProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
->>>>>>> google-auth-and-unitads
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 125ba52528d6b480cb8893b1d62c0e8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: Setting_Mute
+--- !u!114 &979858910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 979858907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 458b94f5997bb4e719e724b66770b07a, type: 3}
+    m_FontSize: 40
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 1
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: .800000012
+  m_Text: 'GOOGLE
+
+    LOG-IN'
+--- !u!222 &979858911
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 979858907}
 --- !u!1 &980090980
 GameObject:
   m_ObjectHideFlags: 0
@@ -44516,11 +43396,7 @@ Transform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-<<<<<<< HEAD
   m_RootOrder: 9
-=======
-  m_RootOrder: 8
->>>>>>> google-auth-and-unitads
 --- !u!114 &980455324
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45696,76 +44572,6 @@ ParticleSystemRenderer:
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
-<<<<<<< HEAD
-=======
---- !u!1 &994520072
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 120344, guid: 54cea864d856c40859cc6c06841c2a80, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 224: {fileID: 994520073}
-  - 23: {fileID: 994520075}
-  - 33: {fileID: 994520074}
-  m_Layer: 0
-  m_Name: Object
-  m_TagString: SpecialPart
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &994520073
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 994520072}
-  m_LocalRotation: {x: -.65328151, y: .270598084, z: -.270598114, w: .653281391}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2075602769}
-  m_RootOrder: 0
-  m_AnchorMin: {x: .5, y: .5}
-  m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 0, y: 5.34057617e-05}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: .5, y: .5}
---- !u!33 &994520074
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 3384990, guid: 54cea864d856c40859cc6c06841c2a80,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 994520072}
-  m_Mesh: {fileID: 4300004, guid: 0ecc368de93f8436caa3d781a771541c, type: 3}
---- !u!23 &994520075
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 2363104, guid: 54cea864d856c40859cc6c06841c2a80,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 994520072}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_Materials:
-  - {fileID: 2100000, guid: fb5f8e9edd07e468db663f7563135561, type: 2}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 0
-  m_ReflectionProbeUsage: 0
-  m_ProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
->>>>>>> google-auth-and-unitads
 --- !u!1 &1000076674
 GameObject:
   m_ObjectHideFlags: 0
@@ -45874,10 +44680,7 @@ GameObject:
   - 224: {fileID: 1000307821}
   - 222: {fileID: 1000307823}
   - 114: {fileID: 1000307822}
-<<<<<<< HEAD
   - 114: {fileID: 1000307824}
-=======
->>>>>>> google-auth-and-unitads
   m_Layer: 17
   m_Name: Text
   m_TagString: Untagged
@@ -45934,7 +44737,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1000307820}
-<<<<<<< HEAD
 --- !u!114 &1000307824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45947,8 +44749,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: Setting_Mute
-=======
->>>>>>> google-auth-and-unitads
 --- !u!1 &1004086741
 GameObject:
   m_ObjectHideFlags: 0
@@ -47490,86 +46290,12 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 868146741}
-<<<<<<< HEAD
   m_RootOrder: 6
-=======
-  m_RootOrder: 7
->>>>>>> google-auth-and-unitads
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: .5, y: .5}
-<<<<<<< HEAD
-=======
---- !u!1 &1019114912
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 120344, guid: 54cea864d856c40859cc6c06841c2a80, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 224: {fileID: 1019114913}
-  - 23: {fileID: 1019114916}
-  - 33: {fileID: 1019114915}
-  m_Layer: 0
-  m_Name: SpecialParts
-  m_TagString: SpecialPart
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1019114913
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1019114912}
-  m_LocalRotation: {x: 2.98023224e-08, y: .382683456, z: 0, w: .923879504}
-  m_LocalPosition: {x: 0, y: 0, z: 216.667282}
-  m_LocalScale: {x: 6, y: 6, z: 6}
-  m_Children: []
-  m_Father: {fileID: 478286098}
-  m_RootOrder: 0
-  m_AnchorMin: {x: .5, y: .5}
-  m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: -150, y: 93.0000229}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: .5, y: .5}
---- !u!33 &1019114915
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 3384990, guid: 54cea864d856c40859cc6c06841c2a80,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1019114912}
-  m_Mesh: {fileID: 4300000, guid: 0ecc368de93f8436caa3d781a771541c, type: 3}
---- !u!23 &1019114916
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 2363104, guid: 54cea864d856c40859cc6c06841c2a80,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1019114912}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_Materials:
-  - {fileID: 2100000, guid: a92bb96032e524a76bf8fcffafdbcca8, type: 2}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 0
-  m_ReflectionProbeUsage: 0
-  m_ProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
->>>>>>> google-auth-and-unitads
 --- !u!1 &1025396002
 GameObject:
   m_ObjectHideFlags: 0
@@ -50707,11 +49433,7 @@ Transform:
   m_LocalScale: {x: 6, y: 6, z: 6}
   m_Children: []
   m_Father: {fileID: 552014891}
-<<<<<<< HEAD
   m_RootOrder: 12
-=======
-  m_RootOrder: 13
->>>>>>> google-auth-and-unitads
 --- !u!114 &1068398461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50724,10 +49446,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
-<<<<<<< HEAD
-=======
-  productId: 
->>>>>>> google-auth-and-unitads
 --- !u!23 &1068398462
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -52794,11 +51512,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 616999376}
-<<<<<<< HEAD
   m_RootOrder: 22
-=======
-  m_RootOrder: 21
->>>>>>> google-auth-and-unitads
 --- !u!114 &1116662718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -52811,10 +51525,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: Gold Piggy
-<<<<<<< HEAD
   skillName: 
-=======
->>>>>>> google-auth-and-unitads
   bgm: 0
   rarity: 3
   baseSpeed: 2
@@ -52835,7 +51546,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1116662716}
   m_Mesh: {fileID: 4300052, guid: 06ea95d279c7341edb83769ec8c7baed, type: 3}
-<<<<<<< HEAD
 --- !u!1 &1120487637 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 169984, guid: 8e7e4a602cfdf4c4db0fd73a1c8f11ab, type: 2}
@@ -52852,8 +51562,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: 
-=======
->>>>>>> google-auth-and-unitads
 --- !u!1 &1137204533
 GameObject:
   m_ObjectHideFlags: 0
@@ -53172,10 +51880,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: Space Hamster
-<<<<<<< HEAD
   skillName: 
-=======
->>>>>>> google-auth-and-unitads
   bgm: 1
   rarity: 1
   baseSpeed: 1
@@ -54472,10 +53177,7 @@ GameObject:
   - 222: {fileID: 1165747849}
   - 114: {fileID: 1165747848}
   - 82: {fileID: 1165747850}
-<<<<<<< HEAD
   - 114: {fileID: 1165747851}
-=======
->>>>>>> google-auth-and-unitads
   m_Layer: 17
   m_Name: IsNewCharacter
   m_TagString: Untagged
@@ -54601,7 +53303,6 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-<<<<<<< HEAD
 --- !u!114 &1165747851
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54614,8 +53315,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: CreateToy_NewToy
-=======
->>>>>>> google-auth-and-unitads
 --- !u!1 &1169836371
 GameObject:
   m_ObjectHideFlags: 0
@@ -54683,79 +53382,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1169836371}
   m_Mesh: {fileID: 4300000, guid: e1cbad7ded657f14c9dafa177f579cb2, type: 3}
-<<<<<<< HEAD
-=======
---- !u!1001 &1171925970
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1665647660}
-    m_Modifications:
-    - target: {fileID: 426850, guid: 1d56f2064a3a44db8b0e174bd62e7177, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 426850, guid: 1d56f2064a3a44db8b0e174bd62e7177, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 426850, guid: 1d56f2064a3a44db8b0e174bd62e7177, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 426850, guid: 1d56f2064a3a44db8b0e174bd62e7177, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: .707106829
-      objectReference: {fileID: 0}
-    - target: {fileID: 426850, guid: 1d56f2064a3a44db8b0e174bd62e7177, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 426850, guid: 1d56f2064a3a44db8b0e174bd62e7177, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 426850, guid: 1d56f2064a3a44db8b0e174bd62e7177, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: .707106709
-      objectReference: {fileID: 0}
-    - target: {fileID: 426850, guid: 1d56f2064a3a44db8b0e174bd62e7177, type: 2}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 148784, guid: 1d56f2064a3a44db8b0e174bd62e7177, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 426850, guid: 1d56f2064a3a44db8b0e174bd62e7177, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 426850, guid: 1d56f2064a3a44db8b0e174bd62e7177, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 426850, guid: 1d56f2064a3a44db8b0e174bd62e7177, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 21206236, guid: 1d56f2064a3a44db8b0e174bd62e7177, type: 2}
-      propertyPath: m_Color.g
-      value: .131034374
-      objectReference: {fileID: 0}
-    - target: {fileID: 21206236, guid: 1d56f2064a3a44db8b0e174bd62e7177, type: 2}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 21206236, guid: 1d56f2064a3a44db8b0e174bd62e7177, type: 2}
-      propertyPath: m_Color.r
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 1d56f2064a3a44db8b0e174bd62e7177, type: 2}
-  m_IsPrefabParent: 0
->>>>>>> google-auth-and-unitads
 --- !u!1 &1174462705
 GameObject:
   m_ObjectHideFlags: 0
@@ -55040,10 +53666,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
-<<<<<<< HEAD
-=======
-  productId: 
->>>>>>> google-auth-and-unitads
 --- !u!1 &1176685720
 GameObject:
   m_ObjectHideFlags: 0
@@ -55279,6 +53901,45 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1178576845}
+--- !u!1 &1181268795
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1181268797}
+  - 114: {fileID: 1181268796}
+  m_Layer: 0
+  m_Name: GoogleAuthManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1181268796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1181268795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2217c251cc82bea48ac2f37134a0661f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1181268797
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1181268795}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -8.08043671, y: 409.720703, z: 8.49850082}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 17
 --- !u!1 &1189346488
 GameObject:
   m_ObjectHideFlags: 0
@@ -56715,10 +55376,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
-<<<<<<< HEAD
-=======
-  productId: 
->>>>>>> google-auth-and-unitads
 --- !u!23 &1196521605
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -57071,11 +55728,7 @@ Transform:
   - {fileID: 511581016}
   - {fileID: 87915275}
   m_Father: {fileID: 0}
-<<<<<<< HEAD
   m_RootOrder: 14
-=======
-  m_RootOrder: 13
->>>>>>> google-auth-and-unitads
 --- !u!1 &1214422666
 GameObject:
   m_ObjectHideFlags: 0
@@ -57200,11 +55853,7 @@ Transform:
   m_Children:
   - {fileID: 616999376}
   m_Father: {fileID: 0}
-<<<<<<< HEAD
   m_RootOrder: 15
-=======
-  m_RootOrder: 14
->>>>>>> google-auth-and-unitads
 --- !u!114 &1225838312
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58781,6 +57430,104 @@ ParticleSystem:
     subEmitterCollision1: {fileID: 0}
     subEmitterDeath: {fileID: 0}
     subEmitterDeath1: {fileID: 0}
+--- !u!1 &1250718139
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 1250718140}
+  - 23: {fileID: 1250718144}
+  - 33: {fileID: 1250718143}
+  - 65: {fileID: 1250718142}
+  - 114: {fileID: 1250718141}
+  m_Layer: 17
+  m_Name: GoogleAuth
+  m_TagString: SettingsMenu
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1250718140
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1250718139}
+  m_LocalRotation: {x: -1.15202326e-07, y: .707106709, z: -.707106829, w: -1.15202312e-07}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_Children:
+  - {fileID: 979858908}
+  m_Father: {fileID: 1497703468}
+  m_RootOrder: 10
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
+  m_AnchoredPosition: {x: 100, y: -100}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: .5, y: .5}
+--- !u!114 &1250718141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1250718139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 717d0a0b8d2980e47b7b325b29db9876, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activeMesh: {fileID: 4300080, guid: 7d4e33b83f6a046ab845e77e3044ffcc, type: 3}
+  inactiveMesh: {fileID: 4300092, guid: 7d4e33b83f6a046ab845e77e3044ffcc, type: 3}
+  blinkingMesh: {fileID: 0}
+  blinkingSeconds: .400000006
+  playTouchSound: 1
+  blinkOnStart: 0
+  settingName: GoogleLoggedIn
+--- !u!65 &1250718142
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1250718139}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 30, y: 1, z: 14.9999952}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!33 &1250718143
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1250718139}
+  m_Mesh: {fileID: 4300080, guid: 7d4e33b83f6a046ab845e77e3044ffcc, type: 3}
+--- !u!23 &1250718144
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1250718139}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 0
+  m_Materials:
+  - {fileID: 2100000, guid: de0e2658897884607a20b38033acf4e0, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_ReflectionProbeUsage: 1
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_ImportantGI: 0
+  m_AutoUVMaxDistance: .5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
 --- !u!1 &1270861825
 GameObject:
   m_ObjectHideFlags: 0
@@ -59441,25 +58188,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1284365878}
   m_Enabled: 1
   m_EditorHideFlags: 0
-<<<<<<< HEAD
-  m_Script: {fileID: 11500000, guid: 686212e7a972945beb15d31c59a10dff, type: 3}
-=======
   m_Script: {fileID: 11500000, guid: d05a026fa580bc4429ce887cf167ff6a, type: 3}
->>>>>>> google-auth-and-unitads
   m_Name: 
   m_EditorClassIdentifier: 
   activeMesh: {fileID: 0}
   inactiveMesh: {fileID: 0}
   blinkingMesh: {fileID: 0}
   blinkingSeconds: .400000006
-<<<<<<< HEAD
-  playTouchSound: 0
-  blinkOnStart: 0
-  linkTo: http://google.com
-=======
   playTouchSound: 1
   blinkOnStart: 0
->>>>>>> google-auth-and-unitads
 --- !u!4 &1285032819
 Transform:
   m_ObjectHideFlags: 0
@@ -60029,12 +58766,8 @@ MonoBehaviour:
   blinkingSeconds: .400000006
   playTouchSound: 0
   blinkOnStart: 1
-<<<<<<< HEAD
   firstKey: GameOver_RewardAds
   secondKey: GameOver_GoldsEarned
-=======
-  description: EARN GOLD
->>>>>>> google-auth-and-unitads
   picked: 0
   popping: 1
   startScale: 4
@@ -60094,10 +58827,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: Contaminated Crab
-<<<<<<< HEAD
   skillName: 
-=======
->>>>>>> google-auth-and-unitads
   bgm: 4
   rarity: 1
   baseSpeed: 2
@@ -60197,10 +58927,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controlMethod: LR
-<<<<<<< HEAD
   adjustScale: 0
-=======
->>>>>>> google-auth-and-unitads
 --- !u!1 &1316254288
 GameObject:
   m_ObjectHideFlags: 0
@@ -60245,11 +58972,7 @@ MonoBehaviour:
   normalRing: 3
   skillRing: 1
   description: Pass anything
-<<<<<<< HEAD
   duration: 3
-=======
-  duration: 2
->>>>>>> google-auth-and-unitads
   contactCollider: {fileID: 1298175624}
 --- !u!1 &1316523505
 GameObject:
@@ -60925,11 +59648,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-<<<<<<< HEAD
   m_AnchoredPosition: {x: 65, y: 0}
-=======
-  m_AnchoredPosition: {x: 130, y: 0}
->>>>>>> google-auth-and-unitads
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: .5, y: .5}
 --- !u!1 &1343430248
@@ -61068,14 +59787,8 @@ GameObject:
   - 114: {fileID: 1346587203}
   - 222: {fileID: 1346587202}
   - 114: {fileID: 1346587201}
-<<<<<<< HEAD
   m_Layer: 5
   m_Name: StickPanel_movement
-=======
-  - 135: {fileID: 1346587200}
-  m_Layer: 5
-  m_Name: StickPannel_movement
->>>>>>> google-auth-and-unitads
   m_TagString: StickPanel_movement
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -61100,21 +59813,6 @@ RectTransform:
   m_AnchoredPosition: {x: 150, y: 150}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: .5, y: .5}
-<<<<<<< HEAD
-=======
---- !u!135 &1346587200
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1346587198}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Radius: 95
-  m_Center: {x: 0, y: 0, z: 0}
->>>>>>> google-auth-and-unitads
 --- !u!114 &1346587201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61154,10 +59852,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controlMethod: Stick
-<<<<<<< HEAD
   adjustScale: .300000012
-=======
->>>>>>> google-auth-and-unitads
 --- !u!1 &1356369826
 GameObject:
   m_ObjectHideFlags: 0
@@ -61230,76 +59925,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: .5, y: .5}
-<<<<<<< HEAD
-=======
---- !u!1 &1357380200
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 117910, guid: bbcd82bb603674de8b6cb8bab02b2b62, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 224: {fileID: 1357380201}
-  - 23: {fileID: 1357380203}
-  - 33: {fileID: 1357380202}
-  m_Layer: 18
-  m_Name: Object
-  m_TagString: Blachole
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1357380201
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1357380200}
-  m_LocalRotation: {x: .892399013, y: -.369644016, z: .0990458801, w: -.239117682}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: .600000024, y: .600000024, z: .599999964}
-  m_Children: []
-  m_Father: {fileID: 1848787730}
-  m_RootOrder: 0
-  m_AnchorMin: {x: .5, y: .5}
-  m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 3.05175781e-05, y: 4.57763672e-05}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: .5, y: .5}
---- !u!33 &1357380202
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 3333586, guid: bbcd82bb603674de8b6cb8bab02b2b62,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1357380200}
-  m_Mesh: {fileID: 4300000, guid: 99c536482099e4321adbbf652b96761e, type: 3}
---- !u!23 &1357380203
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 2308196, guid: bbcd82bb603674de8b6cb8bab02b2b62,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1357380200}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 6ecdb2f0a1d3c465f9f1b3a9c162a5c8, type: 2}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 0
-  m_ReflectionProbeUsage: 0
-  m_ProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
->>>>>>> google-auth-and-unitads
 --- !u!1 &1358686913
 GameObject:
   m_ObjectHideFlags: 0
@@ -61487,12 +60112,8 @@ MonoBehaviour:
   blinkingSeconds: .400000006
   playTouchSound: 0
   blinkOnStart: 0
-<<<<<<< HEAD
   firstKey: GameOver_RateUs
   secondKey: GameOver_ThanksForRating
-=======
-  description: ENJOYED? RATE US!
->>>>>>> google-auth-and-unitads
   picked: 0
   popping: 1
   startScale: 4
@@ -61727,107 +60348,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1367745759}
-<<<<<<< HEAD
-=======
---- !u!1 &1370837201
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 224: {fileID: 1370837202}
-  - 23: {fileID: 1370837206}
-  - 33: {fileID: 1370837205}
-  - 65: {fileID: 1370837204}
-  - 114: {fileID: 1370837203}
-  m_Layer: 17
-  m_Name: GoogleAuth
-  m_TagString: SettingsMenu
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1370837202
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1370837201}
-  m_LocalRotation: {x: -1.15202326e-07, y: .707106709, z: -.707106829, w: -1.15202312e-07}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 5}
-  m_Children:
-  - {fileID: 1385686047}
-  m_Father: {fileID: 1497703468}
-  m_RootOrder: 10
-  m_AnchorMin: {x: .5, y: .5}
-  m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 100, y: -100}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: .5, y: .5}
---- !u!114 &1370837203
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1370837201}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 717d0a0b8d2980e47b7b325b29db9876, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  activeMesh: {fileID: 4300080, guid: 7d4e33b83f6a046ab845e77e3044ffcc, type: 3}
-  inactiveMesh: {fileID: 4300092, guid: 7d4e33b83f6a046ab845e77e3044ffcc, type: 3}
-  blinkingMesh: {fileID: 0}
-  blinkingSeconds: .400000006
-  playTouchSound: 1
-  blinkOnStart: 0
-  settingName: GoogleLoggedIn
---- !u!65 &1370837204
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1370837201}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 30, y: 1, z: 14.9999952}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!33 &1370837205
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1370837201}
-  m_Mesh: {fileID: 4300080, guid: 7d4e33b83f6a046ab845e77e3044ffcc, type: 3}
---- !u!23 &1370837206
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1370837201}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 0
-  m_Materials:
-  - {fileID: 2100000, guid: de0e2658897884607a20b38033acf4e0, type: 2}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 0
-  m_ReflectionProbeUsage: 1
-  m_ProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 1
-  m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
->>>>>>> google-auth-and-unitads
 --- !u!1 &1371894129
 GameObject:
   m_ObjectHideFlags: 0
@@ -63080,11 +61600,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1.29999995
-<<<<<<< HEAD
   m_Text: 'smash toys by TEAM MOROGORO
-=======
-  m_Text: 'shoong by TEAM MOROGORO
->>>>>>> google-auth-and-unitads
 
     copyright 2015'
 --- !u!222 &1374463139
@@ -64475,144 +62991,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6e43e5ec2dda449dbd8b0fa4847f785, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
-=======
---- !u!1 &1385686046
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 224: {fileID: 1385686047}
-  - 222: {fileID: 1385686049}
-  - 114: {fileID: 1385686048}
-  m_Layer: 17
-  m_Name: Text
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1385686047
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1385686046}
-  m_LocalRotation: {x: -1.15202326e-07, y: .707106709, z: -.707106829, w: -1.15202312e-07}
-  m_LocalPosition: {x: 0, y: 0, z: 20}
-  m_LocalScale: {x: .200000003, y: .200000003, z: .200000003}
-  m_Children: []
-  m_Father: {fileID: 1370837202}
-  m_RootOrder: 0
-  m_AnchorMin: {x: .5, y: .5}
-  m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 250, y: 100}
-  m_Pivot: {x: .5, y: .5}
---- !u!114 &1385686048
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1385686046}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FontData:
-    m_Font: {fileID: 12800000, guid: 458b94f5997bb4e719e724b66770b07a, type: 3}
-    m_FontSize: 40
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
-    m_Alignment: 1
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: .800000012
-  m_Text: 'GOOGLE
-
-    LOG-IN'
---- !u!222 &1385686049
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1385686046}
---- !u!1 &1388493584
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 117910, guid: bbcd82bb603674de8b6cb8bab02b2b62, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 224: {fileID: 1388493585}
-  - 23: {fileID: 1388493587}
-  - 33: {fileID: 1388493586}
-  m_Layer: 18
-  m_Name: Object
-  m_TagString: Blachole
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1388493585
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1388493584}
-  m_LocalRotation: {x: -.707106829, y: 3.78667799e-08, z: 1.77635705e-15, w: .707106709}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: .400000036, y: .400000066, z: .400000066}
-  m_Children: []
-  m_Father: {fileID: 24654949}
-  m_RootOrder: 0
-  m_AnchorMin: {x: .5, y: .5}
-  m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: -3.05175781e-05, y: 6.10351562e-05}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: .5, y: .5}
---- !u!33 &1388493586
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 3333586, guid: bbcd82bb603674de8b6cb8bab02b2b62,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1388493584}
-  m_Mesh: {fileID: 4300000, guid: 977eaa52d67d74cb7a4e06604cc96f2e, type: 3}
---- !u!23 &1388493587
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 2308196, guid: bbcd82bb603674de8b6cb8bab02b2b62,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1388493584}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 52560eb15b0ed41a6a6af15921bb4929, type: 2}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 0
-  m_ReflectionProbeUsage: 0
-  m_ProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
->>>>>>> google-auth-and-unitads
 --- !u!1 &1389514228
 GameObject:
   m_ObjectHideFlags: 0
@@ -64736,10 +63114,7 @@ GameObject:
   - 224: {fileID: 1390828595}
   - 222: {fileID: 1390828597}
   - 114: {fileID: 1390828596}
-<<<<<<< HEAD
   - 114: {fileID: 1390828598}
-=======
->>>>>>> google-auth-and-unitads
   m_Layer: 17
   m_Name: Text
   m_TagString: Untagged
@@ -64796,7 +63171,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1390828594}
-<<<<<<< HEAD
 --- !u!114 &1390828598
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64809,8 +63183,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: Setting_Credits
-=======
->>>>>>> google-auth-and-unitads
 --- !u!1 &1405439384
 GameObject:
   m_ObjectHideFlags: 0
@@ -64981,11 +63353,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22423438, guid: 8e7e4a602cfdf4c4db0fd73a1c8f11ab, type: 2}
       propertyPath: m_RootOrder
-<<<<<<< HEAD
       value: 9
-=======
-      value: 10
->>>>>>> google-auth-and-unitads
       objectReference: {fileID: 0}
     - target: {fileID: 22423438, guid: 8e7e4a602cfdf4c4db0fd73a1c8f11ab, type: 2}
       propertyPath: m_AnchoredPosition.x
@@ -65222,75 +63590,6 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-<<<<<<< HEAD
-=======
---- !u!1 &1415642086
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 224: {fileID: 1415642087}
-  - 23: {fileID: 1415642089}
-  - 33: {fileID: 1415642088}
-  m_Layer: 17
-  m_Name: SpecialParts
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1415642087
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1415642086}
-  m_LocalRotation: {x: .707106829, y: -3.78667764e-08, z: -1.77635684e-15, w: .707106709}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 4}
-  m_Children:
-  - {fileID: 32055855}
-  m_Father: {fileID: 603421087}
-  m_RootOrder: 0
-  m_AnchorMin: {x: .5, y: .5}
-  m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: -140.000015, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: .5, y: .5}
---- !u!33 &1415642088
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1415642086}
-  m_Mesh: {fileID: 4300000, guid: 55b3c2999613d483f8350cd1b6036781, type: 3}
---- !u!23 &1415642089
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1415642086}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_Materials:
-  - {fileID: 2100000, guid: d47638048ad144489a6836c5e0edcc84, type: 2}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 0
-  m_ReflectionProbeUsage: 0
-  m_ProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
->>>>>>> google-auth-and-unitads
 --- !u!1 &1419738997
 GameObject:
   m_ObjectHideFlags: 0
@@ -65301,10 +63600,7 @@ GameObject:
   - 224: {fileID: 1419738998}
   - 222: {fileID: 1419739000}
   - 114: {fileID: 1419738999}
-<<<<<<< HEAD
   - 114: {fileID: 1419739001}
-=======
->>>>>>> google-auth-and-unitads
   m_Layer: 17
   m_Name: Text
   m_TagString: Untagged
@@ -65363,7 +63659,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1419738997}
-<<<<<<< HEAD
 --- !u!114 &1419739001
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65376,8 +63671,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: Setting_RestorePurchases
-=======
->>>>>>> google-auth-and-unitads
 --- !u!1 &1419976711
 GameObject:
   m_ObjectHideFlags: 0
@@ -65532,11 +63825,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: bb6901ca2cbb04e04ad4567d8ccca51e, type: 2}
       propertyPath: m_RootOrder
-<<<<<<< HEAD
-      value: 21
-=======
       value: 22
->>>>>>> google-auth-and-unitads
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bb6901ca2cbb04e04ad4567d8ccca51e, type: 2}
@@ -65609,11 +63898,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-<<<<<<< HEAD
   m_RootOrder: 6
-=======
-  m_RootOrder: 5
->>>>>>> google-auth-and-unitads
 --- !u!1 &1423476588
 GameObject:
   m_ObjectHideFlags: 0
@@ -69458,11 +67743,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-<<<<<<< HEAD
   m_IsActive: 0
-=======
-  m_IsActive: 1
->>>>>>> google-auth-and-unitads
 --- !u!23 &1467960306
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -72087,10 +70368,7 @@ RectTransform:
   - {fileID: 56190989}
   - {fileID: 1000076675}
   - {fileID: 644697226}
-<<<<<<< HEAD
-=======
-  - {fileID: 1370837202}
->>>>>>> google-auth-and-unitads
+  - {fileID: 1250718140}
   m_Father: {fileID: 1082642565}
   m_RootOrder: 5
   m_AnchorMin: {x: .5, y: .5}
@@ -72207,12 +70485,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a336f4eba39b44bc19ac17280a7817f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
   characterName: Fruit Basket
   skillName: 
-=======
-  characterName: Friut Basket
->>>>>>> google-auth-and-unitads
   bgm: 0
   rarity: 1
   baseSpeed: 2
@@ -76901,10 +75175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controlMethod: Packman
-<<<<<<< HEAD
   adjustScale: 0
-=======
->>>>>>> google-auth-and-unitads
 --- !u!1 &1580374531
 GameObject:
   m_ObjectHideFlags: 0
@@ -76944,11 +75215,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-<<<<<<< HEAD
   m_RootOrder: 16
-=======
-  m_RootOrder: 15
->>>>>>> google-auth-and-unitads
 --- !u!1 &1596742147
 GameObject:
   m_ObjectHideFlags: 0
@@ -76978,11 +75245,7 @@ Transform:
   m_LocalScale: {x: 6, y: 6, z: 6}
   m_Children: []
   m_Father: {fileID: 552014891}
-<<<<<<< HEAD
   m_RootOrder: 14
-=======
-  m_RootOrder: 15
->>>>>>> google-auth-and-unitads
 --- !u!114 &1596742149
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76995,10 +75258,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
-<<<<<<< HEAD
-=======
-  productId: 
->>>>>>> google-auth-and-unitads
 --- !u!23 &1596742150
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -77032,48 +75291,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1596742147}
   m_Mesh: {fileID: 4300044, guid: 46bd8557e7c474556ab17eda482a0d06, type: 3}
-<<<<<<< HEAD
-=======
---- !u!1 &1606684601
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1606684603}
-  - 114: {fileID: 1606684602}
-  m_Layer: 0
-  m_Name: GoogleAuthManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1606684602
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1606684601}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2217c251cc82bea48ac2f37134a0661f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &1606684603
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1606684601}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.08043671, y: 409.720703, z: 8.49850082}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 18
->>>>>>> google-auth-and-unitads
 --- !u!1 &1607078839
 GameObject:
   m_ObjectHideFlags: 0
@@ -78595,11 +76812,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillObject: {fileID: 0}
   useSkillEffect: {fileID: 0}
-<<<<<<< HEAD
   normalRing: 4
-=======
-  normalRing: 12
->>>>>>> google-auth-and-unitads
   skillRing: 1
   description: Shoot & Destroy
   duration: 0
@@ -78788,10 +77001,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
-<<<<<<< HEAD
-=======
-  productId: 
->>>>>>> google-auth-and-unitads
 --- !u!23 &1625834677
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -79486,10 +77695,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
-<<<<<<< HEAD
-=======
-  productId: 
->>>>>>> google-auth-and-unitads
 --- !u!1 &1665647659
 GameObject:
   m_ObjectHideFlags: 0
@@ -79514,15 +77719,8 @@ Transform:
   m_GameObject: {fileID: 1665647659}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -20, z: 0}
-<<<<<<< HEAD
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children: []
-=======
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 565427583}
-  - {fileID: 503152187}
->>>>>>> google-auth-and-unitads
   m_Father: {fileID: 1701025775}
   m_RootOrder: 4
 --- !u!114 &1665647661
@@ -79616,10 +77814,7 @@ GameObject:
   - 82: {fileID: 1673126736}
   - 222: {fileID: 1673126738}
   - 114: {fileID: 1673126737}
-<<<<<<< HEAD
   - 114: {fileID: 1673126739}
-=======
->>>>>>> google-auth-and-unitads
   m_Layer: 17
   m_Name: NextChance
   m_TagString: Untagged
@@ -79745,7 +77940,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1673126734}
-<<<<<<< HEAD
 --- !u!114 &1673126739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79758,8 +77952,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: CreateToy_TryAgain
-=======
->>>>>>> google-auth-and-unitads
 --- !u!1 &1674368348
 GameObject:
   m_ObjectHideFlags: 0
@@ -79861,21 +78053,13 @@ MonoBehaviour:
   blinkingSeconds: .400000006
   playTouchSound: 1
   blinkOnStart: 0
-<<<<<<< HEAD
   firstKey: GameOver_CreateToy
   secondKey: GameOver_CreateToyToGo
-=======
-  description: WIN A TOY
->>>>>>> google-auth-and-unitads
   picked: 0
   popping: 1
   startScale: 4
   popScale: 1.5
   changeTime: .150000006
-<<<<<<< HEAD
-=======
-  toGoString: ' GOLDS TO GO'
->>>>>>> google-auth-and-unitads
   createMenu: {fileID: 1025396004}
   menusOverlay: {fileID: 1839461442}
   text: {fileID: 1792419963}
@@ -81110,10 +79294,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
-<<<<<<< HEAD
-=======
-  productId: 
->>>>>>> google-auth-and-unitads
 --- !u!1 &1683363422
 GameObject:
   m_ObjectHideFlags: 0
@@ -81193,13 +79373,8 @@ RectTransform:
   m_RootOrder: 2
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-<<<<<<< HEAD
   m_AnchoredPosition: {x: 16.4799995, y: -3.5}
   m_SizeDelta: {x: 60, y: 60}
-=======
-  m_AnchoredPosition: {x: 16.4799995, y: -104.599998}
-  m_SizeDelta: {x: 300, y: 300}
->>>>>>> google-auth-and-unitads
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1683774463
 MonoBehaviour:
@@ -81214,11 +79389,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-<<<<<<< HEAD
   m_Sprite: {fileID: 21300000, guid: 9d3140286be63418cbaadc0532db4c5b, type: 3}
-=======
-  m_Sprite: {fileID: 21300000, guid: 77b7e37d8480c4080a153548f09a154c, type: 3}
->>>>>>> google-auth-and-unitads
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -81363,11 +79534,7 @@ Transform:
   - {fileID: 1389514229}
   - {fileID: 1685383925}
   m_Father: {fileID: 0}
-<<<<<<< HEAD
   m_RootOrder: 7
-=======
-  m_RootOrder: 6
->>>>>>> google-auth-and-unitads
 --- !u!114 &1685649618
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81390,10 +79557,7 @@ GameObject:
   - 224: {fileID: 1698560317}
   - 222: {fileID: 1698560319}
   - 114: {fileID: 1698560318}
-<<<<<<< HEAD
   - 114: {fileID: 1698560320}
-=======
->>>>>>> google-auth-and-unitads
   m_Layer: 17
   m_Name: Text
   m_TagString: Untagged
@@ -81452,7 +79616,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1698560316}
-<<<<<<< HEAD
 --- !u!114 &1698560320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81465,8 +79628,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: Setting_Battery
-=======
->>>>>>> google-auth-and-unitads
 --- !u!1 &1698745061
 GameObject:
   m_ObjectHideFlags: 0
@@ -81569,7 +79730,7 @@ Transform:
   - {fileID: 892369442}
   - {fileID: 1276123138}
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 21
 --- !u!1 &1708456654
 GameObject:
   m_ObjectHideFlags: 0
@@ -83195,11 +81356,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 616999376}
-<<<<<<< HEAD
   m_RootOrder: 20
-=======
-  m_RootOrder: 19
->>>>>>> google-auth-and-unitads
 --- !u!33 &1741257580
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -83220,10 +81377,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: Super Cat
-<<<<<<< HEAD
   skillName: 
-=======
->>>>>>> google-auth-and-unitads
   bgm: 5
   rarity: 2
   baseSpeed: 2
@@ -85224,11 +83378,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22423438, guid: 8e7e4a602cfdf4c4db0fd73a1c8f11ab, type: 2}
       propertyPath: m_RootOrder
-<<<<<<< HEAD
       value: 8
-=======
-      value: 9
->>>>>>> google-auth-and-unitads
       objectReference: {fileID: 0}
     - target: {fileID: 22423438, guid: 8e7e4a602cfdf4c4db0fd73a1c8f11ab, type: 2}
       propertyPath: m_AnchoredPosition.x
@@ -87830,12 +85980,8 @@ MonoBehaviour:
   blinkingSeconds: .400000006
   playTouchSound: 1
   blinkOnStart: 1
-<<<<<<< HEAD
   firstKey: GameOver_FreeGift
   secondKey: GameOver_GoldsEarned
-=======
-  description: FREE GIFT
->>>>>>> google-auth-and-unitads
   picked: 0
   popping: 1
   startScale: 4
@@ -89480,75 +87626,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1841236918}
-<<<<<<< HEAD
-=======
---- !u!1 &1848787729
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 224: {fileID: 1848787730}
-  - 23: {fileID: 1848787732}
-  - 33: {fileID: 1848787731}
-  m_Layer: 17
-  m_Name: RainbowDonuts
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1848787730
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1848787729}
-  m_LocalRotation: {x: .707106829, y: -3.78667799e-08, z: -1.77635705e-15, w: .707106709}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 4}
-  m_Children:
-  - {fileID: 1357380201}
-  m_Father: {fileID: 603421087}
-  m_RootOrder: 5
-  m_AnchorMin: {x: .5, y: .5}
-  m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 335, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: .5, y: .5}
---- !u!33 &1848787731
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1848787729}
-  m_Mesh: {fileID: 4300000, guid: 55b3c2999613d483f8350cd1b6036781, type: 3}
---- !u!23 &1848787732
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1848787729}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_Materials:
-  - {fileID: 2100000, guid: d47638048ad144489a6836c5e0edcc84, type: 2}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 0
-  m_ReflectionProbeUsage: 0
-  m_ProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
->>>>>>> google-auth-and-unitads
 --- !u!1 &1859176580
 GameObject:
   m_ObjectHideFlags: 0
@@ -92163,10 +90240,6 @@ MonoBehaviour:
   blinkOnStart: 0
   notAffordableTextColor: {r: .513725519, g: .513725519, b: .513725519, a: 1}
   priceText: {fileID: 335624708}
-<<<<<<< HEAD
-=======
-  icon: {fileID: 1467960309}
->>>>>>> google-auth-and-unitads
 --- !u!82 &1873613236
 AudioSource:
   m_ObjectHideFlags: 0
@@ -92347,10 +90420,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controlMethod: Circle
-<<<<<<< HEAD
   adjustScale: 0
-=======
->>>>>>> google-auth-and-unitads
 --- !u!1 &1880569645
 GameObject:
   m_ObjectHideFlags: 0
@@ -92658,76 +90728,6 @@ MonoBehaviour:
   offset: .5
   sign: -1
   scale: 5
-<<<<<<< HEAD
-=======
---- !u!1 &1882991373
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 117910, guid: bbcd82bb603674de8b6cb8bab02b2b62, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 224: {fileID: 1882991374}
-  - 23: {fileID: 1882991376}
-  - 33: {fileID: 1882991375}
-  m_Layer: 18
-  m_Name: Blackhole
-  m_TagString: Blachole
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1882991374
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1882991373}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 216.667282}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
-  m_Children: []
-  m_Father: {fileID: 478286098}
-  m_RootOrder: 1
-  m_AnchorMin: {x: .5, y: .5}
-  m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 0, y: 93.0000229}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: .5, y: .5}
---- !u!33 &1882991375
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 3333586, guid: bbcd82bb603674de8b6cb8bab02b2b62,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1882991373}
-  m_Mesh: {fileID: 4300000, guid: 977eaa52d67d74cb7a4e06604cc96f2e, type: 3}
---- !u!23 &1882991376
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 2308196, guid: bbcd82bb603674de8b6cb8bab02b2b62,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1882991373}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 46f45d53ca1314a638208c249adacd9b, type: 2}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 0
-  m_ReflectionProbeUsage: 0
-  m_ProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
->>>>>>> google-auth-and-unitads
 --- !u!1 &1891564013
 GameObject:
   m_ObjectHideFlags: 0
@@ -94000,11 +92000,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 616999376}
-<<<<<<< HEAD
   m_RootOrder: 19
-=======
-  m_RootOrder: 18
->>>>>>> google-auth-and-unitads
 --- !u!33 &1905034258
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -94025,10 +92021,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: Alien with Gun
-<<<<<<< HEAD
   skillName: 
-=======
->>>>>>> google-auth-and-unitads
   bgm: 4
   rarity: 2
   baseSpeed: 0
@@ -95360,10 +93353,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: Beard Frog
-<<<<<<< HEAD
   skillName: 
-=======
->>>>>>> google-auth-and-unitads
   bgm: 1
   rarity: 0
   baseSpeed: 4
@@ -98925,11 +96915,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 616999376}
-<<<<<<< HEAD
   m_RootOrder: 17
-=======
-  m_RootOrder: 16
->>>>>>> google-auth-and-unitads
 --- !u!33 &1981889231
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -98950,10 +96936,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: Vacuum Robot
-<<<<<<< HEAD
   skillName: 
-=======
->>>>>>> google-auth-and-unitads
   bgm: 1
   rarity: 2
   baseSpeed: 2
@@ -99015,10 +96998,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: Tyranno
-<<<<<<< HEAD
   skillName: 
-=======
->>>>>>> google-auth-and-unitads
   bgm: 4
   rarity: 1
   baseSpeed: 1
@@ -99282,7 +97262,7 @@ MonoBehaviour:
   emptyDurationDecrease: .0500000007
   chanceBase: 100
   goldCubesGet: 1
-  goldenCubeChance: 400
+  goldenCubeChance: 4
   objPrefab_next: {fileID: 192146, guid: d357428246b5f4e5fb2b54651d371984, type: 2}
   objNextPool: []
   fullComboCountPerLevel: 020000000300000005000000
@@ -99354,11 +97334,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceSpawnAtStart: 0
-<<<<<<< HEAD
   objAmount: 1
-=======
-  objAmount: 2
->>>>>>> google-auth-and-unitads
   objPool: []
   objDestroyEffectPool: []
   objEncounterEffectPool: []
@@ -99382,13 +97358,8 @@ MonoBehaviour:
   nameForLevel: 
   level: 0
   player: {fileID: 0}
-<<<<<<< HEAD
   gravity: 80
   gravityToUser: 80
-=======
-  gravity: 90
-  gravityToUser: 90
->>>>>>> google-auth-and-unitads
   gravityScale: 10
   reboundDuring: 2
   shakeAmount: 3
@@ -99624,17 +97595,10 @@ MonoBehaviour:
   objEncounterEffectForPlayer: {fileID: 0}
   strengthenPlayerEffect: {fileID: 0}
   strength: .600000024
-<<<<<<< HEAD
   speed: 30
   tumble: 3
   minSpawnInterval: 3
   maxSpawnInterval: 3
-=======
-  speed: 45
-  tumble: 3
-  minSpawnInterval: 5
-  maxSpawnInterval: 5
->>>>>>> google-auth-and-unitads
   cubesByEncounter: 1
   isNegative: 0
   hasEncounterEffect: 0
@@ -100042,7 +98006,7 @@ MonoBehaviour:
   enlargeDuration: .100000001
   stayDuration: 1
   shrinkDuration: .100000001
-  enlargeScale: 2
+  enlargeScale: 140
   loseEnergyBigger: 30
   bounceDuringBigger: .5
 --- !u!114 &1991538124
@@ -100086,7 +98050,7 @@ MonoBehaviour:
     type: 2}
   laserPool: []
   laserWarningPool: []
-  laserPoolAmount: 1
+  laserPoolAmount: 30
   spawnRadius: 200
   detectDistance: 200
   headFollowingSpeed: 100
@@ -100233,10 +98197,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: Paper Plane
-<<<<<<< HEAD
   skillName: 
-=======
->>>>>>> google-auth-and-unitads
   bgm: 5
   rarity: 0
   baseSpeed: 1
@@ -100416,76 +98377,6 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-<<<<<<< HEAD
-=======
---- !u!1 &2003075981
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 117910, guid: bbcd82bb603674de8b6cb8bab02b2b62, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 224: {fileID: 2003075982}
-  - 23: {fileID: 2003075984}
-  - 33: {fileID: 2003075983}
-  m_Layer: 18
-  m_Name: Object
-  m_TagString: Blachole
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &2003075982
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2003075981}
-  m_LocalRotation: {x: -.707106829, y: 3.78667799e-08, z: 1.77635705e-15, w: .707106709}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: .300000012, y: .300000012, z: .300000012}
-  m_Children: []
-  m_Father: {fileID: 61289820}
-  m_RootOrder: 0
-  m_AnchorMin: {x: .5, y: .5}
-  m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 3.81469727e-06, y: 6.10351562e-05}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: .5, y: .5}
---- !u!33 &2003075983
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 3333586, guid: bbcd82bb603674de8b6cb8bab02b2b62,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2003075981}
-  m_Mesh: {fileID: 4300000, guid: 977eaa52d67d74cb7a4e06604cc96f2e, type: 3}
---- !u!23 &2003075984
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 2308196, guid: bbcd82bb603674de8b6cb8bab02b2b62,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2003075981}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 46f45d53ca1314a638208c249adacd9b, type: 2}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 0
-  m_ReflectionProbeUsage: 0
-  m_ProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
->>>>>>> google-auth-and-unitads
 --- !u!1 &2006899117
 GameObject:
   m_ObjectHideFlags: 0
@@ -102129,7 +100020,7 @@ Transform:
   - {fileID: 1783451456}
   - {fileID: 234606330}
   m_Father: {fileID: 0}
-  m_RootOrder: 22
+  m_RootOrder: 23
 --- !u!1 &2048063063
 GameObject:
   m_ObjectHideFlags: 0
@@ -102313,25 +100204,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 2068284237}
   m_Enabled: 1
   m_EditorHideFlags: 0
-<<<<<<< HEAD
-  m_Script: {fileID: 11500000, guid: 686212e7a972945beb15d31c59a10dff, type: 3}
-=======
   m_Script: {fileID: 11500000, guid: 8b0a3f40833e13f44a5316217229a3c5, type: 3}
->>>>>>> google-auth-and-unitads
   m_Name: 
   m_EditorClassIdentifier: 
   activeMesh: {fileID: 0}
   inactiveMesh: {fileID: 0}
   blinkingMesh: {fileID: 0}
   blinkingSeconds: .400000006
-<<<<<<< HEAD
-  playTouchSound: 0
-  blinkOnStart: 0
-  linkTo: http://google.com
-=======
   playTouchSound: 1
   blinkOnStart: 0
->>>>>>> google-auth-and-unitads
 --- !u!1 &2073951468
 GameObject:
   m_ObjectHideFlags: 0
@@ -102342,10 +100223,7 @@ GameObject:
   - 224: {fileID: 2073951469}
   - 222: {fileID: 2073951471}
   - 114: {fileID: 2073951470}
-<<<<<<< HEAD
   - 114: {fileID: 2073951472}
-=======
->>>>>>> google-auth-and-unitads
   m_Layer: 17
   m_Name: CharacterName
   m_TagString: Untagged
@@ -102402,7 +100280,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2073951468}
-<<<<<<< HEAD
 --- !u!114 &2073951472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -102416,33 +100293,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   key: 
 --- !u!1 &2079887649
-=======
---- !u!1 &2075602766
->>>>>>> google-auth-and-unitads
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 4
   m_Component:
-<<<<<<< HEAD
   - 4: {fileID: 2079887650}
   - 114: {fileID: 2079887651}
   m_Layer: 0
   m_Name: LangManager
-=======
-  - 224: {fileID: 2075602769}
-  - 23: {fileID: 2075602768}
-  - 33: {fileID: 2075602767}
-  m_Layer: 17
-  m_Name: ComboParts
->>>>>>> google-auth-and-unitads
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
-<<<<<<< HEAD
 --- !u!4 &2079887650
 Transform:
   m_ObjectHideFlags: 0
@@ -102475,57 +100340,6 @@ MonoBehaviour:
   - name: en
     font: {fileID: 12800000, guid: 458b94f5997bb4e719e724b66770b07a, type: 3}
     fontScale: 1
-=======
---- !u!33 &2075602767
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2075602766}
-  m_Mesh: {fileID: 4300000, guid: 55b3c2999613d483f8350cd1b6036781, type: 3}
---- !u!23 &2075602768
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2075602766}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_Materials:
-  - {fileID: 2100000, guid: d47638048ad144489a6836c5e0edcc84, type: 2}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 0
-  m_ReflectionProbeUsage: 0
-  m_ProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
---- !u!224 &2075602769
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2075602766}
-  m_LocalRotation: {x: .707106829, y: -3.78667799e-08, z: -1.77635705e-15, w: .707106709}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 4}
-  m_Children:
-  - {fileID: 994520073}
-  m_Father: {fileID: 603421087}
-  m_RootOrder: 3
-  m_AnchorMin: {x: .5, y: .5}
-  m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 145, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: .5, y: .5}
->>>>>>> google-auth-and-unitads
 --- !u!1 &2081388190
 GameObject:
   m_ObjectHideFlags: 0
@@ -103887,10 +101701,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
-<<<<<<< HEAD
-=======
-  productId: 
->>>>>>> google-auth-and-unitads
 --- !u!23 &2104714906
 MeshRenderer:
   m_ObjectHideFlags: 0
