@@ -13,6 +13,5 @@ public class InsideMenusBehavior : MenusBehavior {
   override public void activateSelf() {
     GameObject newCurrent = menus.transform.Find(tag).gameObject;
     back.goInside(menus.currentMenu(), newCurrent);
-
   }
 }
