@@ -67,20 +67,20 @@ public class PhaseManager : MonoBehaviour {
 
     if (levelName == "IceDebris") {
       icm.enabled = true;
-      cdm.enabled = true;
-      skillTransform.addManager("CubeDispenser");
+      // cdm.enabled = true;
+      // skillTransform.addManager("CubeDispenser");
       cpm.adjustForLevel(2);
     } else if (levelName == "Minimon") {
       pmm.enabled = true;
       rdm.enabled = true;
       skillTransform.addManager("RainbowDonuts");
       cpm.adjustForLevel(3);
-      cdm.adjustForLevel(2);
+      // cdm.adjustForLevel(2);
     } else if (levelName == "Blackhole") {
       blm.enabled = true;
       spm.enabled = true;
       skillTransform.addManager("SummonParts");
-      cdm.adjustForLevel(3);
+      // cdm.adjustForLevel(3);
       rdm.adjustForLevel(2);
     } else if (levelName == "Meteroid") {
       ntm.enabled = true;

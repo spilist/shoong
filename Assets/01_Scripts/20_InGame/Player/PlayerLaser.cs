@@ -65,7 +65,9 @@ public class PlayerLaser : MonoBehaviour {
     ObjectsMover mover = other.GetComponent<ObjectsMover>();
 
     if (mover != null) {
-      CubeManager.cm.addCount((int)Mathf.Floor(mover.cubesWhenDestroy() * pointsLaserGetScale));
+      int amount = (int)Mathf.Floor(mover.cubesWhenDestroy() * pointsLaserGetScale);
+      CubeManager.cm.addCount(amount);
+      CubeManager.cm.showPoints(amount, mover.transform.position);
       mover.destroyObject(true, true);
     }
   }

@@ -269,6 +269,5 @@ public class TutorialHandler : MonoBehaviour
     stickPanelSize = Vector3.Distance(stick.position, stick.transform.Find("End").position);
     DataManager.dm.setBool("TutorialDone", true);
     FacebookManager.fb.tutorialDone(skipped);
-
   }
 }

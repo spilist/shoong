@@ -65,9 +65,9 @@ public class ShowChangeText : MonoBehaviour {
         }
       }
 
-      position.x = Mathf.MoveTowards(position.x, disappearStartPosX + disappearLengthX * directionVariable, Time.deltaTime * disappearLengthX * Random.Range(0.5f, 1.5f));
-      position.y = Mathf.MoveTowards(position.y, disappearStartPosY + disappearLengthY * sign, Time.deltaTime * disappearLengthY);
-      GetComponent<RectTransform>().anchoredPosition = position;
+      // position.x = Mathf.MoveTowards(position.x, disappearStartPosX + disappearLengthX * directionVariable, Time.deltaTime * disappearLengthX * Random.Range(0.5f, 1.5f));
+      // position.y = Mathf.MoveTowards(position.y, disappearStartPosY + disappearLengthY * sign, Time.deltaTime * disappearLengthY);
+      // GetComponent<RectTransform>().anchoredPosition = position;
       if (color.a == 0) {
         show = false;
         gameObject.SetActive(false);

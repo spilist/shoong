@@ -213,7 +213,10 @@ public class Player : MonoBehaviour {
 
   public void goodPartsEncounter(ObjectsMover mover, int howMany, bool encounterPlayer = true) {
 
-    if (mover.tag != "GoldenCube" && howMany > 0) addCubeCount(howMany);
+    if (mover.tag != "GoldenCube" && howMany > 0) {
+      addCubeCount(howMany);
+      CubeManager.cm.showPoints(howMany, mover.transform.position);
+    }
 
     if (encounterPlayer) mover.encounterPlayer();
     else mover.destroyObject(true, true);

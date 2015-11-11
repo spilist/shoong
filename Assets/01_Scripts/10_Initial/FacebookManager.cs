@@ -17,6 +17,7 @@ public class FacebookManager : MonoBehaviour {
     DontDestroyOnLoad(gameObject);
     fb = this;
 
+    #if !UNITY_EDITOR
     if (!FB.IsInitialized) {
         // Initialize the Facebook SDK
         FB.Init(InitCallback, OnHideUnity);
@@ -24,6 +25,7 @@ public class FacebookManager : MonoBehaviour {
         // Already initialized, signal an app activation App Event
         FB.ActivateApp();
     }
+    #endif
   }
 
   private void InitCallback () {
@@ -48,6 +50,8 @@ public class FacebookManager : MonoBehaviour {
   }
 
   public void gameDone() {
+    #if !UNITY_EDITOR
+
     FB.LogAppEvent(
       "Play Game",
       1,
@@ -59,6 +63,7 @@ public class FacebookManager : MonoBehaviour {
         { "Total Plays", DataManager.dm.getInt("TotalNumPlays")},
         { "Total PlayingTime", DataManager.dm.getInt("TotalTime")},
       });
+    #endif
 
         Debug.Log("Phase: " + (PhaseManager.pm.phase() + 1));
         Debug.Log("Score: " + CubeManager.cm.getCount());
@@ -69,6 +74,8 @@ public class FacebookManager : MonoBehaviour {
   }
 
   public void createToy(int numCreate, string rarity, string name, bool isNewToy) {
+    #if !UNITY_EDITOR
+
     FB.LogAppEvent(
       "Create Toy",
       1,
@@ -78,18 +85,25 @@ public class FacebookManager : MonoBehaviour {
         { AppEventParameterName.ContentType, rarity },
         { "Is a new toy?", isNewToy },
       });
+    #endif
   }
 
   public void tutorialDone(bool skipped) {
+    #if !UNITY_EDITOR
+
     FB.LogAppEvent(
       AppEventName.CompletedTutorial,
       null,
       new Dictionary<string, object>() {
         { "Skipped", skipped },
       });
+
+    #endif
   }
 
   public void initiateCheckout(BillingProduct bProduct, string rarity) {
+    #if !UNITY_EDITOR
+
     FB.LogAppEvent(
       AppEventName.InitiatedCheckout,
       bProduct.Price,
@@ -98,9 +112,11 @@ public class FacebookManager : MonoBehaviour {
         { AppEventParameterName.Currency, bProduct.CurrencyCode },
         { AppEventParameterName.ContentType, rarity },
       });
+    #endif
   }
 
   public void purchase(BillingProduct bProduct, string rarity) {
+    #if !UNITY_EDITOR
     FB.LogPurchase(
       bProduct.Price,
       bProduct.CurrencyCode,
@@ -108,5 +124,6 @@ public class FacebookManager : MonoBehaviour {
         { AppEventParameterName.ContentID, bProduct.ProductIdentifier },
         { AppEventParameterName.ContentType, rarity }
       });
+    #endif
   }
 }
