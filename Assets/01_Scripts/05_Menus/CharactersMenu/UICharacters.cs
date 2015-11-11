@@ -130,6 +130,7 @@ public class UICharacters : MonoBehaviour {
 
   public void buy() {
     BillingManager.bm.BuyProduct(productId);
+    FacebookManager.fb.initiateCheckout(bProduct, stat.rarity.ToString());
   }
 
   public void buyComplete(bool bought) {

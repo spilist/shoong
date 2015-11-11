@@ -221,15 +221,11 @@ public class ScoreManager : MonoBehaviour {
     DataManager.dm.increment("TotalCubes", count + int.Parse(bonusCount.text));
     DataManager.dm.setBestInt("BestCubes", count);
 
-    // DataManager.dm.increment("CurrentGoldenCubes", QuestManager.qm.questReward);
-    // DataManager.dm.increment("TotalGoldenCubes", QuestManager.qm.questReward);
-
     int time = TimeManager.time.now;
     DataManager.dm.increment("TotalTime", time);
     DataManager.dm.setBestInt("BestTime", time);
 
     DataManager.dm.increment("TotalNumPlays");
-    DataManager.dm.setAverage("QuestCompleteRate", "TotalQuestCompletes");
     DataManager.dm.setAverage("AverageTime", "TotalTime");
     DataManager.dm.setAverage("AverageCubes", "TotalCubes");
     DataManager.dm.setAverage("AverageGoldenCubes", "TotalGoldenCubes");
@@ -245,12 +241,15 @@ public class ScoreManager : MonoBehaviour {
       DataManager.dm.setInt("CubesGet_" + numPlay, count);
       DataManager.dm.setInt("NumBooster_" + numPlay, boosterCount);
     }
+
+    DataManager.dm.save();
+
+    FacebookManager.fb.gameDone();
   }
 
   void OnDisable() {
     if (menus.gameStarted()) {
       save();
     }
-    DataManager.dm.save();
   }
 }

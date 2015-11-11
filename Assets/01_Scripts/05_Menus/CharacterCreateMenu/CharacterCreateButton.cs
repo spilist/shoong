@@ -46,6 +46,7 @@ public class CharacterCreateButton : MenusBehavior {
   private bool running = false;
   private Text priceText;
   private CharacterCreateMenu menu;
+  private string randomResult;
 
   override public void initializeRest() {
     menu = transform.parent.GetComponent<CharacterCreateMenu>();
@@ -72,16 +73,16 @@ public class CharacterCreateButton : MenusBehavior {
     int random = Random.Range(0, chanceBase);
     if (random < legendChance) {
       list = legends;
-      Debug.Log(random + "Legend");
+      randomResult = "Legendary";
     } else if (random < legendChance + epicChance) {
       list = epics;
-      Debug.Log(random + "Epic");
+      randomResult = "Epic";
     } else if (random < legendChance + epicChance + rareChance) {
       list = rares;
-      Debug.Log(random + "Rare");
+      randomResult = "Rare";
     } else {
       list = commons;
-      Debug.Log(random + "Common");
+      randomResult = "Common";
     }
 
     return list[Random.Range(0, list.Count)];
@@ -167,6 +168,7 @@ public class CharacterCreateButton : MenusBehavior {
 
     UICharacters randomCharacter = getRandom();
     bool newCharacter = !DataManager.dm.getBool(randomCharacter.name);
+    FacebookManager.fb.createToy(DataManager.dm.getInt("NumCharacterCreate"), randomResult, randomCharacter.name, newCharacter);
 
     float duration = totalSeconds;
     float interval = startInterval;

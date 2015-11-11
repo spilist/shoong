@@ -36,6 +36,7 @@ public class TutorialHandler : MonoBehaviour
   private Transform origStick;
   private Transform origFingerIndicator;
   public PlayerDirectionIndicator dirIndicator;
+  private bool skipped = false;
 
   void Awake() {
     origStick = stick;
@@ -88,6 +89,7 @@ public class TutorialHandler : MonoBehaviour
       }
 
       if (result == "SkipButton") {
+        skipped = true;
         tutoCollider.enabled = false;
         tutoLoaded = true;
         CancelInvoke();
@@ -266,5 +268,7 @@ public class TutorialHandler : MonoBehaviour
     stick.gameObject.SetActive(true);
     stickPanelSize = Vector3.Distance(stick.position, stick.transform.Find("End").position);
     DataManager.dm.setBool("TutorialDone", true);
+    FacebookManager.fb.tutorialDone(skipped);
+
   }
 }

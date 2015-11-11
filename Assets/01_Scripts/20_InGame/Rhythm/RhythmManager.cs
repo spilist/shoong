@@ -56,6 +56,7 @@ public class RhythmManager : MonoBehaviour {
   private Text origOnthebeatText;
   private Image origBoostImage;
   private GameObject fingerImage;
+  public int failedBeatCount;
 
 	void Awake() {
     rm = this;
@@ -148,6 +149,7 @@ public class RhythmManager : MonoBehaviour {
 
   void rhythmFailed(string text) {
     GameObject failed = null;
+    failedBeatCount++;
     for (int i = 0; i < failedRhythmPool.Count; i++) {
       if (!failedRhythmPool[i].activeInHierarchy) {
         failed = failedRhythmPool[i];

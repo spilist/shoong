@@ -213,7 +213,7 @@
 		<value>골드 얻기</value>
 	</data>
 	<data name="GameOver_ThanksForRating" xml:space="preserve">
-		<value>평가해주셔서 감사합니다!</value>
+		<value>                 평가해주셔서 감사합니다!</value>
 	</data>
 	<data name="Notification_FreeGift" xml:space="preserve">
 		<value>무료 선물을 받으세요!!</value>

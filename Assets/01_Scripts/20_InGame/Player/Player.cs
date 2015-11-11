@@ -69,7 +69,7 @@ public class Player : MonoBehaviour {
 
   private bool usingPowerBoost = false;
 
-  private int numBoosters = 0;
+  public int numBoosters = 0;
   private int numDestroyObstacles = 0;
   private int numUseObjects = 0;
   public PlayerDirectionIndicator dirIndicator;
@@ -287,6 +287,8 @@ public class Player : MonoBehaviour {
 
     if (RhythmManager.rm.canBoost()) {
       RhythmManager.rm.ringSuccessed();
+      numBoosters++;
+      DataManager.dm.increment("TotalBoosters");
 
       if (!DataManager.dm.getBool("TutorialDone")) {
         useBoosterText.increment();
@@ -317,8 +319,6 @@ public class Player : MonoBehaviour {
       boosterspeed = boosterspeed > maxBooster() ? maxBooster() : boosterspeed;
     }
 
-    numBoosters++;
-    DataManager.dm.increment("TotalBoosters");
     rotatePlayerBody();
   }
 

@@ -33,6 +33,8 @@ public class AdsAndRewardBannerButton : BannerButton {
     playTouchSound = false;
 
     transform.parent.GetComponent<Text>().text = secondDescription.Replace("_REWARD_", goldenCubePerAds.ToString());
+
+    DataManager.dm.save();
   }
 
   override public bool available() {
