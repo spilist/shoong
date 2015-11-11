@@ -3,9 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
+using UnityEngine.Advertisements;
 
 public class DataManager : MonoBehaviour {
   public static DataManager dm;
+  public static NPBManager npbManager;
   private string datapath;
 
   private Dictionary<string, int> ints;
@@ -40,6 +42,10 @@ public class DataManager : MonoBehaviour {
     bools = new Dictionary<string, bool>();
     strings = new Dictionary<string, string>();
     dateTimes = new Dictionary<string, DateTime>();
+	
+  	npbManager = GetComponent<NPBManager>();
+  	npbManager.init();
+    Advertisement.Initialize("72081");
 
     if (resetAll || !load()) reset();
     initializeAtGameStart();
@@ -91,6 +97,9 @@ public class DataManager : MonoBehaviour {
     FileStream file = File.Create(datapath);
     bf.Serialize(file, data);
     file.Close();
+	
+    // Report achievements when saving data (this is for toy collections achievement)
+    DataManager.npbManager.am.reportAchievements();
   }
 
   void reset() {
@@ -114,6 +123,9 @@ public class DataManager : MonoBehaviour {
     bools["robotcogi"] = true;
     bools["TutorialDone"] = false;
 
+    // By the implementation of OnOffButton, 'true' actually means 'not logged in'
+    bools["GoogleLoggedInSetting"] = true;
+
     PlayerPrefs.SetString("SelectedCharacter", "robotcogi");
     PlayerPrefs.SetString("ObjectTutorialsNotDone", "");
     PlayerPrefs.SetString("MainObjects", "");
@@ -123,6 +135,7 @@ public class DataManager : MonoBehaviour {
   }
 
   public void setInt(string id, int value) {
+    npbManager.am.progressAchievement(id, value);
     ints[id] = value;
   }
 
@@ -139,6 +152,7 @@ public class DataManager : MonoBehaviour {
   }
 
   public void setFloat(string id, float value) {
+    npbManager.am.progressAchievement(id, value);
     floats[id] = value;
   }
 
@@ -155,6 +169,7 @@ public class DataManager : MonoBehaviour {
   }
 
   public void setBool(string id, bool value) {
+    npbManager.am.progressAchievement(id, value);
     bools[id] = value;
   }
 
@@ -163,6 +178,7 @@ public class DataManager : MonoBehaviour {
   }
 
   public void setString(string id, string value) {
+    npbManager.am.progressAchievement(id, value);
     strings[id] = value;
   }
 
@@ -171,6 +187,7 @@ public class DataManager : MonoBehaviour {
   }
 
   public void setDateTime(string id) {
+    npbManager.am.progressAchievement(id, DateTime.Now);
     setDateTime(id, DateTime.Now);
   }
 
