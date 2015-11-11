@@ -66,10 +66,18 @@ MonoBehaviour:
       m_tagKey: SmashToys_tag
   m_gameServicesSettings:
     m_android:
-      m_playServicesApplicationID: 
+      m_playServicesApplicationID: 773936192569
       m_achievedDescriptionFormats:
       - 'Awesome! Achievement # completed.'
     m_iOS:
       m_showDefaultAchievementCompletionBanner: 1
     m_achievementIDCollection: []
-    m_leaderboardIDCollection: []
+    m_leaderboardIDCollection:
+    - m_globalID: LB_SINGLE
+      m_platformIDs:
+      - m_platform: 1
+        m_value: CgkIubjEkcMWEAIQBg
+    - m_globalID: LB_OVERALL
+      m_platformIDs:
+      - m_platform: 1
+        m_value: CgkIubjEkcMWEAIQDg
