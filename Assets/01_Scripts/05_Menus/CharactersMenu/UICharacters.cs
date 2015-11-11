@@ -137,6 +137,8 @@ public class UICharacters : MonoBehaviour {
       GetComponent<Renderer>().sharedMaterial = charactersMenu.activeCharactersMaterial;
 
       AudioSource.PlayClipAtPoint(charactersMenu.characterBuySound, transform.position);
+
+      FacebookManager.fb.purchase(bProduct, stat.rarity.ToString());
     }
 
     DataManager.dm.setBool(name, true);

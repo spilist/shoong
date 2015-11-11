@@ -80,8 +80,10 @@ public class BillingManager : MonoBehaviour {
       foreach (BillingTransaction _eachTransaction in _transactionList)
       {
         state = _eachTransaction.TransactionState;
-        if (state == eBillingTransactionState.PURCHASED || state == eBillingTransactionState.RESTORED) {
-          charactersMenu.buyComplete(_eachTransaction.ProductIdentifier, state == eBillingTransactionState.PURCHASED);
+        if (state == eBillingTransactionState.PURCHASED) {
+          charactersMenu.buyComplete(_eachTransaction.ProductIdentifier, true);
+        } else if (state == eBillingTransactionState.RESTORED) {
+          charactersMenu.buyComplete(_eachTransaction.ProductIdentifier, false);
         }
       }
     }

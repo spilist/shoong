@@ -11676,7 +11676,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &616999376
 Transform:
   m_ObjectHideFlags: 0
@@ -13201,7 +13201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c29316fd68134f6a8504287e1c8cfcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resetAll: 1
+  resetAll: 0
   resetCube: 0
   resetGoldenCube: 0
   normalFrameRate: 60
