@@ -8,6 +8,8 @@ public class AlienshipMover : ObjectsMover {
   private float chargeTime;
   private int headFollowingSpeed;
   private GameObject laserCanon;
+  private float offScreenSpeedScale;
+  private int detectDistance;
 
   private GameObject laserWarning;
 
@@ -24,6 +26,9 @@ public class AlienshipMover : ObjectsMover {
     shootLaserPer = asm.shootLaserPer;
     chargeTime = asm.chargeTime;
     headFollowingSpeed = asm.headFollowingSpeed;
+    offScreenSpeedScale = asm.offScreenSpeedScale;
+    speed = asm.speed;
+    detectDistance = asm.detectDistance;
 
     laserCanon = transform.Find("LaserCanon").gameObject;
   }
@@ -50,6 +55,17 @@ public class AlienshipMover : ObjectsMover {
 
   override protected float getTumble() {
     return 0;
+  }
+
+  override protected float getSpeed() {
+    float distance = Vector3.Distance(player.transform.position, transform.position);
+    if (distance > detectDistance) {
+      return speed + player.getSpeed() * offScreenSpeedScale;
+    } else if (distance < 10) {
+      return player.getSpeed();
+    } else {
+      return speed;
+    }
   }
 
   override protected Vector3 getDirection() {

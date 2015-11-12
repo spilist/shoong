@@ -48,7 +48,7 @@ public class NotificationManager : MonoBehaviour {
     NPBinding.NotificationService.CancelLocalNotification(_notificationID);
   }
 
-  private void CancelAllLocalNotifications () {
+  public void CancelAllLocalNotifications () {
     NPBinding.NotificationService.CancelAllLocalNotification();
   }
 

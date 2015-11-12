@@ -10,9 +10,9 @@ public static class AchievementConstants {
     achievements = new Dictionary<string, List<AchievementObject>>();
     List<AchievementObject> objList;
     // Beginning of the journey
-    objList = new List<AchievementObject>();
-    objList.Add(new AchievementObject("CgkIubjEkcMWEAIQBQ", false, true));
-    achievements.Add("TutorialDone", objList);
+    // objList = new List<AchievementObject>();
+    // objList.Add(new AchievementObject("CgkIubjEkcMWEAIQBQ", false, true));
+    // achievements.Add("TutorialDone", objList);
     // Dreamwalker series
     objList = new List<AchievementObject>();
     objList.Add(new AchievementObject("CgkIubjEkcMWEAIQAw", 0, 1000));

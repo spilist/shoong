@@ -27,4 +27,8 @@ public class PhaseMonsterManager : ObjectsManager {
   override protected float spawnInterval() {
     return Random.Range(minSpawnInterval, maxSpawnInterval);
   }
+
+  public void nextPhase() {
+    spawn();
+  }
 }

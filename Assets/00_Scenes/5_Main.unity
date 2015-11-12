@@ -40127,7 +40127,9 @@ MonoBehaviour:
   - Bomb
   - UFO
   - BigBomb
-  reqProgressPerLevel: c8000000fa0000002c0100005e01000090010000c2010000f401000026020000
+  - Minimon2
+  - UFO2
+  reqProgressPerLevel: c8000000fa0000002c0100005e01000090010000c2010000f401000026020000580200008a020000
   skillTransform: {fileID: 1818839439}
   icm: {fileID: 1991538122}
   pmm: {fileID: 1991538127}
@@ -59388,7 +59390,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1339036435}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2bb3aba27cb714482bb8d5c9314be404, type: 3}
+  m_Script: {fileID: 11500000, guid: 49e1ae38207014c038f3c71b76691eeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   activeMesh: {fileID: 4300086, guid: 7d4e33b83f6a046ab845e77e3044ffcc, type: 3}
@@ -59397,7 +59399,7 @@ MonoBehaviour:
   blinkingSeconds: .400000006
   playTouchSound: 1
   blinkOnStart: 0
-  settingName: 
+  settingName: Notification
 --- !u!23 &1339036439
 MeshRenderer:
   m_ObjectHideFlags: 0

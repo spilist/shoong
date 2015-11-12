@@ -47,17 +47,6 @@ public class AlienshipManager : ObjectsManager {
     return getPooledObj(laserWarningPool, laserWarningLinePrefab, pos);
   }
 
-  override public float getSpeed() {
-    float distance = Vector3.Distance(player.transform.position, instance.transform.position);
-    if (distance > detectDistance) {
-      return speed + player.getSpeed() * offScreenSpeedScale;
-    } else if (distance < 10) {
-      return player.getSpeed();
-    } else {
-      return speed;
-    }
-  }
-
   override protected void spawn() {
     if (player == null) return;
 
@@ -72,5 +61,9 @@ public class AlienshipManager : ObjectsManager {
 
   override protected float spawnInterval() {
     return Random.Range(minSpawnInterval, maxSpawnInterval);
+  }
+
+  public void nextPhase() {
+    run();
   }
 }

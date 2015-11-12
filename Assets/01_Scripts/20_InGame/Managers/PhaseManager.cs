@@ -57,6 +57,7 @@ public class PhaseManager : MonoBehaviour {
     status++;
     if (level > textPerLevel.Length) {
       level = textPerLevel.Length;
+      return;
     }
 
     string levelName = textPerLevel[level - 1];
@@ -97,6 +98,10 @@ public class PhaseManager : MonoBehaviour {
     } else if (levelName == "BigBomb") {
       dem.startLarger();
       em.adjustForLevel(3);
+    } else if (levelName == "Minimon2") {
+      pmm.nextPhase();
+    } else if (levelName == "UFO2") {
+      asm.nextPhase();
     }
   }
 
