@@ -6,7 +6,7 @@ public class RateUsBannerButton : BannerButton {
   public int showAfterGames = 5;
 
   override public void activateSelf() {
-    Application.OpenURL("http://unity3d.com/");
+    Application.OpenURL("market://details?id=com.morogoro.smashytoysspace/");
 
     GetComponent<MeshRenderer>().enabled = false;
     GetComponent<Collider>().enabled = false;

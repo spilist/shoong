@@ -10497,7 +10497,7 @@ Transform:
   - {fileID: 897405142}
   - {fileID: 1507171663}
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 19
 --- !u!1 &510864196
 GameObject:
   m_ObjectHideFlags: 0
@@ -48791,7 +48791,7 @@ MonoBehaviour:
   enlargeDuration: .100000001
   stayDuration: 1
   shrinkDuration: .100000001
-  enlargeScale: 140
+  enlargeScale: 2
   loseEnergyBigger: 30
   bounceDuringBigger: .5
 --- !u!114 &1991538124

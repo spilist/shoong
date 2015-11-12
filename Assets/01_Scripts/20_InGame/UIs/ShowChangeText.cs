@@ -6,9 +6,9 @@ public class ShowChangeText : MonoBehaviour {
   private Text text;
   private Color color;
   private Color iconColor;
-  private Vector2 position;
-  private float disappearStartPosX;
-  private float disappearStartPosY;
+  // private Vector2 position;
+  // private float disappearStartPosX;
+  // private float disappearStartPosY;
   private bool show = false;
   private Renderer icon;
   private Text plus;
@@ -23,16 +23,16 @@ public class ShowChangeText : MonoBehaviour {
   public float disappearDuring = 1;
   public float baseDisappearLengthY = 100;
   public float baseDisappearLengthX = 100;
-  private float disappearLengthY;
-  private float disappearLengthX;
+  // private float disappearLengthY;
+  // private float disappearLengthX;
 
-  private float directionVariable = 1;
+  // private float directionVariable = 1;
   public float changeBase;
   public float changeScale;
   public float maxScale;
 
-  private float originalX;
-  private float originalY;
+  // private float originalX;
+  // private float originalY;
   private Color originalColor;
   private Color originalIconColor;
   private int originalFontSize;
@@ -40,8 +40,8 @@ public class ShowChangeText : MonoBehaviour {
 
   void Awake() {
     text = GetComponent<Text>();
-    originalX = GetComponent<RectTransform>().anchoredPosition.x;
-    originalY = GetComponent<RectTransform>().anchoredPosition.y;
+    // originalX = GetComponent<RectTransform>().anchoredPosition.x;
+    // originalY = GetComponent<RectTransform>().anchoredPosition.y;
     originalColor = text.color;
     originalFontSize = text.fontSize;
 
@@ -76,8 +76,8 @@ public class ShowChangeText : MonoBehaviour {
   }
 
   void OnDisable() {
-    GetComponent<RectTransform>().anchoredPosition = new Vector2(originalX, originalY);
-    position = new Vector2(originalX, originalY);
+    // GetComponent<RectTransform>().anchoredPosition = new Vector2(originalX, originalY);
+    // position = new Vector2(originalX, originalY);
     stayCount = 0;
     text.color = originalColor;
     if (hasIcon) {
@@ -89,17 +89,17 @@ public class ShowChangeText : MonoBehaviour {
     int amount = Mathf.Abs(val);
 
     color = originalColor;
-    disappearStartPosX = originalX;
-    disappearStartPosY = originalY;
+    // disappearStartPosX = originalX;
+    // disappearStartPosY = originalY;
     show = true;
     text.text = changeDirection + amount.ToString();
 
-    disappearLengthX = Random.Range(0, baseDisappearLengthX);
-    disappearLengthY = Random.Range(baseDisappearLengthY * 0.8f, baseDisappearLengthY * 1.2f);
+    // disappearLengthX = Random.Range(0, baseDisappearLengthX);
+    // disappearLengthY = Random.Range(baseDisappearLengthY * 0.8f, baseDisappearLengthY * 1.2f);
 
-    if (Random.Range(0, 100) < 50) {
-      directionVariable = -1;
-    }
+    // if (Random.Range(0, 100) < 50) {
+    //   directionVariable = -1;
+    // }
 
     float changeAmount = ((amount / changeBase) - 1) * changeScale;
     changeAmount = Mathf.Min(changeAmount, changeScale * maxScale);

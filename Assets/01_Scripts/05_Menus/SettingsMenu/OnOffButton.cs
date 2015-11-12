@@ -17,7 +17,7 @@ public class OnOffButton : MenusBehavior {
     applyStatus();
   }
 
-  void applyStatus() {
+  virtual public void applyStatus() {
     if (clicked) {
       filter.sharedMesh = inactiveMesh;
     } else {

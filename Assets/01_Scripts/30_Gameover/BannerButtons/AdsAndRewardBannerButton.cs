@@ -16,9 +16,7 @@ public class AdsAndRewardBannerButton : BannerButton {
 	override public void activateSelf() {
     if (!active) return;
 
-    Debug.Log("Show ADs");
-
-    if(Advertisement.isReady("rewardedVideoZone")){ Advertisement.Show("rewardedVideoZone", new ShowOptions {
+    if(Advertisement.IsReady("rewardedVideoZone")){ Advertisement.Show("rewardedVideoZone", new ShowOptions {
         resultCallback = result => {
           Debug.Log(result.ToString());
           if (result == ShowResult.Finished) {
@@ -27,18 +25,18 @@ public class AdsAndRewardBannerButton : BannerButton {
 
             DataManager.dm.increment("CurrentGoldenCubes", goldenCubePerAds);
             DataManager.dm.increment("TotalGoldenCubes", goldenCubePerAds);
-            
-            //goldenCubeText.text = (int.Parse(goldenCubeText.text) + goldenCubePerAds).ToString();
-            
-            DataManager.dm.increment("DailyAdsCount");
-            DataManager.dm.setInt("LastNumPlayAdsSeen", DataManager.dm.getInt("TotalNumPlays"));
-            DataManager.dm.setDateTime("LastDateTimeAdsSeen");
-            
-			DataManager.dm.save();
+
+      			DataManager.dm.save();
+
             stopBlink();
-            filter.sharedMesh = inactiveMesh;
+
+            GetComponent<MeshRenderer>().enabled = false;
+            GetComponent<Collider>().enabled = false;
+            transform.Find("CubeIcon").gameObject.SetActive(false);
+
             active = false;
             playTouchSound = false;
+
             transform.parent.GetComponent<Text>().text = secondDescription.Replace("_REWARD_", goldenCubePerAds.ToString());
           }
         }
@@ -48,19 +46,5 @@ public class AdsAndRewardBannerButton : BannerButton {
 
   override public bool available() {
     return true;
-
-    // if (DataManager.dm.isAnotherDay("LastDateTimeAdsSeen")) {
-    //   DataManager.dm.setInt("DailyAdsCount", 0);
-    // }
-
-    // if (DataManager.dm.getInt("DailyAdsCount") > dailyLimit) return false;
-
-    // int gamesPassed = DataManager.dm.getInt("TotalNumPlays") - DataManager.dm.getInt("LastNumPlayAdsSeen");
-    // int minutesPassed = DateTime.Now.Minute - DataManager.dm.getDateTime("LastDateTimeAdsSeen").Minute;
-
-    // if (gamesPassed >= showAdsPerGame || minutesPassed >= showAdsPerMinutes) {
-    //   return true;
-    // }
-    // return false;
   }
 }

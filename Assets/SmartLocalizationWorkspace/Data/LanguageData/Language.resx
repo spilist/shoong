@@ -197,6 +197,9 @@
 	<data name="GameOver_CreateToyToGo" xml:space="preserve">
 		<value> GOLDS TO GO</value>
 	</data>
+	<data name="GameOver_FirstGift" xml:space="preserve">
+		<value>FIRST GIFT</value>
+	</data>
 	<data name="GameOver_FreeGift" xml:space="preserve">
 		<value>FREE GIFT</value>
 	</data>
@@ -227,6 +230,12 @@ BATTERY</value>
 	</data>
 	<data name="Setting_Credits" xml:space="preserve">
 		<value>CREDITS</value>
+	</data>
+	<data name="Setting_Google_SignIn" xml:space="preserve">
+		<value>SIGN IN WITH GOOGLE PLAY</value>
+	</data>
+	<data name="Setting_Google_SignOut" xml:space="preserve">
+		<value>SIGN OUT FROM GOOGLE PLAY</value>
 	</data>
 	<data name="Setting_Language" xml:space="preserve">
 		<value>LANGUAGE</value>
@@ -312,8 +321,5 @@ PURCHASES</value>
 	</data>
 	<data name="TouchToStart" xml:space="preserve">
 		<value>Touch to Start</value>
-	</data>
-	<data name="GameOver_FirstGift" xml:space="preserve">
-		<value>FIRST GIFT</value>
 	</data>
 </root>

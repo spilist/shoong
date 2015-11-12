@@ -20,10 +20,10 @@ public class NPBManager : MonoBehaviour {
   public bool isAuthenticated() {
     return NPBinding.GameServices.LocalUser.IsAuthenticated;
   }
-  
+
   public void authenticate(System.Action<bool, string> onCompletion) {
     if (NPBinding.GameServices.LocalUser.IsAuthenticated == false) {
-      NPBinding.GameServices.LocalUser.Authenticate((bool _success, string _error)=>{        
+      NPBinding.GameServices.LocalUser.Authenticate((bool _success, string _error)=>{
         if (_success) {
           Debug.Log("Sign-In Successfully");
           Debug.Log("Local User Details : " + NPBinding.GameServices.LocalUser.ToString());
@@ -41,8 +41,8 @@ public class NPBManager : MonoBehaviour {
   }
 
   public void signout(System.Action<bool, string> onCompletion) {
-    if (NPBinding.GameServices.LocalUser.IsAuthenticated == true) {      
-      NPBinding.GameServices.LocalUser.SignOut((bool _success, string _error)=>{        
+    if (NPBinding.GameServices.LocalUser.IsAuthenticated == true) {
+      NPBinding.GameServices.LocalUser.SignOut((bool _success, string _error)=>{
         if (_success)
         {
           Debug.Log("Local user is signed out successfully!");
@@ -72,21 +72,21 @@ public class NPBManager : MonoBehaviour {
       }
     });
   }
-  
+
   public void showRankingUI(System.Action<string> onCompletion) {
-    NPBinding.GameServices.ShowLeaderboardUIWithGlobalID(AchievementManager.LB_SINGLE,
-                                                         eLeaderboardTimeScope.ALL_TIME,
-                                                         (string _error)=>{
-      if(_error != null) {
-        Debug.Log("Closed leaderboard UI.");
-        if (onCompletion != null)
-          onCompletion(null);
-      }
-      else {
-        Debug.Log("Error = " + _error);
-        if (onCompletion != null)
-          onCompletion(_error);
-      }
+    NPBinding.GameServices.ShowLeaderboardUIWithGlobalID
+      ( AchievementManager.LB_SINGLE,
+        eLeaderboardTimeScope.ALL_TIME,
+        (string _error)=>{
+          if(_error != null) {
+            Debug.Log("Closed leaderboard UI.");
+            if (onCompletion != null)
+              onCompletion(null);
+          } else {
+            Debug.Log("Error = " + _error);
+            if (onCompletion != null)
+              onCompletion(_error);
+          }
     });
   }
 }
