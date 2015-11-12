@@ -2,23 +2,18 @@
 using System.Collections;
 
 public class NormalPartsMover : ObjectsMover {
-  // private NormalPartsManager npm;
-  // private MeshFilter filter;
-  private Material originalMaterial;
-  private bool goldenTransformed;
+  private NormalPartsManager npm;
+  private MeshFilter filter;
   private Skill_Gold goldSkill;
 
   protected override void initializeRest() {
-    // npm = (NormalPartsManager)objectsManager;
-    // filter = GetComponent<MeshFilter>();
+    npm = (NormalPartsManager)objectsManager;
+    filter = GetComponent<MeshFilter>();
     goldSkill = (Skill_Gold)SkillManager.sm.getSkill("Gold");
-    originalMaterial = GetComponent<Renderer>().sharedMaterial;
   }
 
   protected override void afterEnable() {
-    // filter.sharedMesh = npm.getRandomMesh();
-    goldenTransformed = false;
-    GetComponent<Renderer>().sharedMaterial = originalMaterial;
+    filter.sharedMesh = npm.getRandomMesh();
   }
 
   override protected void afterEncounter() {
@@ -29,10 +24,6 @@ public class NormalPartsMover : ObjectsMover {
     if (player.isUsingRainbow()) {
       DataManager.dm.increment("NumPartsGetOnRainbow");
     }
-
-    if (goldenTransformed) {
-      GoldManager.gm.add(transform.position);
-    }
   }
 
   override public string getManager() {
@@ -40,8 +31,6 @@ public class NormalPartsMover : ObjectsMover {
   }
 
   public void transformToGold(Vector3 pos) {
-    if (goldenTransformed) return;
-
     GameObject laser = goldSkill.getLaser(pos);
     laser.SetActive(true);
     laser.GetComponent<TransformLaser>().shoot(transform.position, goldSkill.laserShootDuration);
@@ -50,8 +39,8 @@ public class NormalPartsMover : ObjectsMover {
   }
 
   void changeToGold() {
-    GetComponent<Renderer>().sharedMaterial = goldSkill.goldenPartMaterial;
+    destroyObject(false);
     goldSkill.getParticle(transform.position);
-    goldenTransformed = true;
+    npm.gcm.spawnGoldenCube(transform.position);
   }
 }

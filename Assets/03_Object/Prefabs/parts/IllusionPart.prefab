@@ -45,8 +45,8 @@ GameObject:
   - 33: {fileID: 3364626}
   - 23: {fileID: 2308884}
   - 54: {fileID: 5403486}
-  - 135: {fileID: 13536856}
   - 114: {fileID: 11465974}
+  - 65: {fileID: 6578524}
   m_Layer: 20
   m_Name: IllusionPart
   m_TagString: ComboPart
@@ -122,7 +122,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 164108}
-  m_Mesh: {fileID: 4300008, guid: fc6d9a532e0ca441cada2cbf5e783531, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 71fa0d8bf10bf47d487a92c56f22c483, type: 3}
 --- !u!54 &5403486
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -138,6 +138,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 4
   m_CollisionDetection: 0
+--- !u!65 &6578524
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 164108}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 9, y: 9, z: 9}
+  m_Center: {x: -1.90734863e-06, y: -9.53674316e-07, z: 1.90734863e-06}
 --- !u!114 &11465974
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -151,18 +163,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boundingSize: 50
   player: {fileID: 0}
---- !u!135 &13536856
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 164108}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 4
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!198 &19807610
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -2379,7 +2379,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 4300008, guid: fc6d9a532e0ca441cada2cbf5e783531, type: 3}
+      objectReference: {fileID: 4300000, guid: 71fa0d8bf10bf47d487a92c56f22c483, type: 3}
     - target: {fileID: 0}
       propertyPath: m_Radius
       value: 4
@@ -2387,6 +2387,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Size.y
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Size.z
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

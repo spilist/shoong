@@ -43223,7 +43223,7 @@ MonoBehaviour:
   ingameUI: {fileID: 2134279969}
   goldText: {fileID: 966334537}
   getEffect: {fileID: 298288788}
-  goldenMat: {fileID: 2100000, guid: bebff4c88f0cd4369b19c2281be089f8, type: 2}
+  goldenMat: {fileID: 2100000, guid: 6bce50dcec6e84434a70575235d9b5e8, type: 2}
   effectAmountText: {fileID: 256755161}
   goldenCubePrefab: {fileID: 178344, guid: b185d52f68bf5499e81f948bbbf1bd8c, type: 2}
   cubePool: []
@@ -97637,8 +97637,8 @@ MonoBehaviour:
   emptyDurationStart: .150000006
   emptyDurationDecrease: .0500000007
   chanceBase: 100
-  goldCubesGet: 1
   goldenCubeChance: 1
+  gcm: {fileID: 1991538115}
 --- !u!114 &1991538117
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97655,7 +97655,7 @@ MonoBehaviour:
   objPool: []
   objDestroyEffectPool: []
   objEncounterEffectPool: []
-  objPrefab: {fileID: 158224, guid: 33664f05a6eed46ea8ce64cac614530e, type: 2}
+  objPrefab: {fileID: 176654, guid: d4612eb06613149ae94042e9f7001318, type: 2}
   objDestroyEffect: {fileID: 158326, guid: 7a4903aebeaf1440d95d69b1daac37af, type: 2}
   objEncounterEffect: {fileID: 0}
   objEncounterEffectForPlayer: {fileID: 317572741}
@@ -97675,11 +97675,8 @@ MonoBehaviour:
   nameForLevel: 
   level: 0
   player: {fileID: 0}
-  meshes: {fileID: 469330, guid: ce95c585031f840b0b5cffa6a71612d0, type: 2}
-  ptb: {fileID: 2048063065}
-  minUnstableSpeed: 10
-  maxUnstableSpeed: 20
-  partsPrefab: []
+  gcm: {fileID: 1991538115}
+  meshes: {fileID: 400000, guid: 71fa0d8bf10bf47d487a92c56f22c483, type: 3}
 --- !u!114 &1991538118
 MonoBehaviour:
   m_ObjectHideFlags: 0

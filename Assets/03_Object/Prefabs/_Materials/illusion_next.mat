@@ -20,7 +20,7 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: beb027913b4044128a46ddf78de40942, type: 3}
+          m_Texture: {fileID: 2800000, guid: 84d11db7140b64e8d86c88b422f77c27, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -191,12 +191,12 @@ Material:
         second: 1
       data:
         first:
-          name: _Outline
-        second: .000500000024
-      data:
-        first:
           name: _Emissive
         second: .5
+      data:
+        first:
+          name: _Outline
+        second: .000500000024
       data:
         first:
           name: _Specular_Power
@@ -256,12 +256,12 @@ Material:
         second: {r: .200000003, g: .200000003, b: .200000003, a: 1}
       data:
         first:
-          name: _OutlineColor
-        second: {r: .382352948, g: .37180528, b: 0, a: 0}
-      data:
-        first:
           name: _TintColor
         second: {r: .254974067, g: .963235319, b: .787391245, a: .0470588244}
+      data:
+        first:
+          name: _OutlineColor
+        second: {r: .382352948, g: .37180528, b: 0, a: 0}
       data:
         first:
           name: _Fresnel_Color

@@ -3,20 +3,53 @@ using System.Collections;
 
 public class GoldenCubeMover : ObjectsMover {
   private GoldenCubeManager gcm;
+  private SummonPartsManager summonManager;
   private bool detected = false;
   private bool noRespawn = false;
+  private Renderer mRenderer;
 
   protected override void initializeRest() {
     gcm = (GoldenCubeManager)objectsManager;
+    mRenderer = GetComponent<Renderer>();
   }
 
   override protected void afterEnable() {
     detected = false;
     noRespawn = false;
+    mRenderer.enabled = true;
   }
 
-  public void setNoRespawn() {
+  public void setNoRespawn(bool autoDestroy) {
     noRespawn = true;
+    if (autoDestroy) {
+      summonManager = gcm.GetComponent<SummonPartsManager>();
+      StartCoroutine("destroyAfter");
+    }
+  }
+
+  IEnumerator destroyAfter() {
+    yield return new WaitForSeconds(summonManager.summonedPartLifetime - summonManager.blinkBeforeDestroy);
+    float duration = summonManager.blinkBeforeDestroy;
+    float showDuring = summonManager.showDurationStart;
+    float emptyDuring = summonManager.emptyDurationStart;
+    float showDurationDecrease = summonManager.showDurationDecrease;
+    float emptyDurationDecrease = summonManager.emptyDurationDecrease;
+
+    while (duration > 0) {
+      mRenderer.enabled = true;
+
+      yield return new WaitForSeconds (showDuring);
+
+      mRenderer.enabled = false;
+      yield return new WaitForSeconds (emptyDuring);
+
+      duration -= showDuring + emptyDuring;
+
+      if(showDuring > 1f) showDuring -= showDurationDecrease;
+      if(emptyDuring > 0.5f) emptyDuring -= emptyDurationDecrease;
+    }
+
+    destroyObject();
   }
 
   protected override bool beforeCollide(Collision collision) {
@@ -43,6 +76,7 @@ public class GoldenCubeMover : ObjectsMover {
   override public void destroyObject(bool destroyEffect = true, bool byPlayer = false, bool respawn = true) {
 
     gameObject.SetActive(false);
+    transform.parent = gcm.transform;
 
     if (destroyEffect) {
       showDestroyEffect(byPlayer);
@@ -55,9 +89,11 @@ public class GoldenCubeMover : ObjectsMover {
     } else {
       objectsManager.runImmediately();
     }
+
   }
 
   override protected void afterEncounter() {
+    transform.parent = gcm.transform;
     GoldManager.gm.add(transform.position, gcm.cubesWhenEncounter());
 
     if (noRespawn) return;

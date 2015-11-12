@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class SummonPartsManager : ObjectsManager {
-  public PartsToBeCollected ptb;
   public GameObject summonedPartPrefab;
   public List<GameObject> summonedPartPool;
   public GameObject summonedPartsDestroyEffect;
@@ -28,22 +27,21 @@ public class SummonPartsManager : ObjectsManager {
   public float emptyDurationDecrease = 0.05f;
 
   public int chanceBase = 200;
-  public int goldCubesGet = 10;
   public int goldenCubeChance = 1;
 
+  public GoldenCubeManager gcm;
   private Mesh[] summonMeshes;
   private Mesh summonMesh;
-  private int getCount = 0;
   private GameObject parentObj;
 
   override public void initRest() {
     skipInterval = true;
 
-    // summonMeshes = new Mesh[GetComponent<NormalPartsManager>().meshes.childCount];
-    // int count = 0;
-    // foreach (Transform tr in GetComponent<NormalPartsManager>().meshes) {
-    //   summonMeshes[count++] = tr.GetComponent<MeshFilter>().sharedMesh;
-    // }
+    summonMeshes = new Mesh[GetComponent<NormalPartsManager>().meshes.childCount];
+    int count = 0;
+    foreach (Transform tr in GetComponent<NormalPartsManager>().meshes) {
+      summonMeshes[count++] = tr.GetComponent<MeshFilter>().sharedMesh;
+    }
 
     summonedPartPool = new List<GameObject>();
     summonedPartDestroyPool = new List<GameObject>();
@@ -70,13 +68,11 @@ public class SummonPartsManager : ObjectsManager {
     summonedPartLifetime = summonedPartLifetimePerLevel[level - 1];
   }
 
-  // Mesh randomMesh() {
-  //   return summonMeshes[Random.Range(0, summonMeshes.Length)];
-  // }
+  Mesh randomMesh() {
+    return summonMeshes[Random.Range(0, summonMeshes.Length)];
+  }
 
   public void startSummon() {
-    getCount = 0;
-
     int angle = Random.Range(0, 360);
     Vector3 dir = new Vector3(Mathf.Sin(Mathf.Deg2Rad * angle), 0, Mathf.Cos(Mathf.Deg2Rad * angle));
     Vector3 playerPos = player.transform.position;
@@ -89,31 +85,19 @@ public class SummonPartsManager : ObjectsManager {
       for (int j = 0; j < numSpawnZ; j++) {
         Vector3 spawnPos = new Vector3(distanceBtwX * i - distanceBtwX * (numSpawnX - 1) / 2, 0, distanceBtwZ * j);
 
-        GameObject instance = getPooledObj(summonedPartPool, summonedPartPrefab);
-        instance.SetActive(true);
-        instance.transform.SetParent(parentObj.transform, false);
-        instance.transform.localPosition = spawnPos;
-        // instance.GetComponent<MeshFilter>().sharedMesh = randomMesh();
-
         int random = Random.Range(0, chanceBase);
         if (random < goldenCubeChance) {
-          instance.GetComponent<SummonedPartMover>().setGolden();
+          gcm.spawnGoldenCube(spawnPos, true, parentObj.transform);
         } else {
-          instance.GetComponent<SummonedPartMover>().setNormal();
+          GameObject instance = getPooledObj(summonedPartPool, summonedPartPrefab);
+          instance.SetActive(true);
+          instance.transform.SetParent(parentObj.transform, false);
+          instance.transform.localPosition = spawnPos;
+          instance.GetComponent<MeshFilter>().sharedMesh = randomMesh();
         }
       }
     }
 
     run();
-  }
-
-  public void increaseSummonedPartGetcount() {
-    getCount++;
-
-    DataManager.dm.increment("NumSummonedPartsGet");
-
-    if (getCount == numSpawnX * numSpawnZ) {
-      DataManager.dm.increment("NumCompleteSummon");
-    }
   }
 }

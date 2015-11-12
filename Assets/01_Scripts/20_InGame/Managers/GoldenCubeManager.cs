@@ -29,9 +29,13 @@ public class GoldenCubeManager : ObjectsManager {
     obj.SetActive(true);
   }
 
-  public void spawnGoldenCube(Vector3 pos) {
+  public void spawnGoldenCube(Vector3 pos, bool autoDestroy = false, Transform parent = null) {
     GameObject obj = getPooledObj(objPool, objPrefab, pos);
+    if (parent != null) {
+      obj.transform.SetParent(parent, false);
+      obj.transform.localPosition = pos;
+    }
     obj.SetActive(true);
-    obj.GetComponent<GoldenCubeMover>().setNoRespawn();
+    obj.GetComponent<GoldenCubeMover>().setNoRespawn(autoDestroy);
   }
 }
