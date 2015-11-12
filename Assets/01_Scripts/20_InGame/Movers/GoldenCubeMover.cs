@@ -28,17 +28,17 @@ public class GoldenCubeMover : ObjectsMover {
     }
   }
 
-  protected override void normalMovement() {
-    direction = player.transform.position - transform.position;
-    float distance = direction.magnitude;
-    direction /= distance;
-    if (distance < gcm.detectDistance) {
-      rb.velocity = -direction * gcm.speed;
-      if (!detected) {
-        detected = true;
-      }
-    }
-  }
+  // protected override void normalMovement() {
+  //   direction = player.transform.position - transform.position;
+  //   float distance = direction.magnitude;
+  //   direction /= distance;
+  //   if (distance < gcm.detectDistance) {
+  //     rb.velocity = -direction * gcm.speed;
+  //     if (!detected) {
+  //       detected = true;
+  //     }
+  //   }
+  // }
 
   override public void destroyObject(bool destroyEffect = true, bool byPlayer = false, bool respawn = true) {
 

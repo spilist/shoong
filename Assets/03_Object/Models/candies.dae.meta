@@ -1,42 +1,72 @@
 fileFormatVersion: 2
-guid: fc6d9a532e0ca441cada2cbf5e783531
-timeCreated: 1446960955
+guid: 71fa0d8bf10bf47d487a92c56f22c483
+timeCreated: 1447327531
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
     100000: //RootNode
-    100002: starcandy_blue
-    100004: starcandy_green
-    100006: starcandy_purple
-    100008: starcandy_red
-    100010: starcandy_white
-    100012: starcandy_yellow
+    100002: candry7
+    100004: candy1
+    100006: candy10
+    100008: candy11
+    100010: candy12
+    100012: candy2
+    100014: candy3
+    100016: candy4
+    100018: candy5
+    100020: candy6
+    100022: candy8
+    100024: candy9
     400000: //RootNode
-    400002: starcandy_blue
-    400004: starcandy_green
-    400006: starcandy_purple
-    400008: starcandy_red
-    400010: starcandy_white
-    400012: starcandy_yellow
-    2300000: starcandy_blue
-    2300002: starcandy_green
-    2300004: starcandy_purple
-    2300006: starcandy_red
-    2300008: starcandy_white
-    2300010: starcandy_yellow
-    3300000: starcandy_blue
-    3300002: starcandy_green
-    3300004: starcandy_purple
-    3300006: starcandy_red
-    3300008: starcandy_white
-    3300010: starcandy_yellow
-    4300000: starcandy_blue
-    4300002: starcandy_yellow
-    4300004: starcandy_red
-    4300006: starcandy_purple
-    4300008: starcandy_white
-    4300010: starcandy_green
+    400002: candry7
+    400004: candy1
+    400006: candy10
+    400008: candy11
+    400010: candy12
+    400012: candy2
+    400014: candy3
+    400016: candy4
+    400018: candy5
+    400020: candy6
+    400022: candy8
+    400024: candy9
+    2300000: candry7
+    2300002: candy1
+    2300004: candy10
+    2300006: candy11
+    2300008: candy12
+    2300010: candy2
+    2300012: candy3
+    2300014: candy4
+    2300016: candy5
+    2300018: candy6
+    2300020: candy8
+    2300022: candy9
+    3300000: candry7
+    3300002: candy1
+    3300004: candy10
+    3300006: candy11
+    3300008: candy12
+    3300010: candy2
+    3300012: candy3
+    3300014: candy4
+    3300016: candy5
+    3300018: candy6
+    3300020: candy8
+    3300022: candy9
+    4300000: candy1
+    4300002: candy8
+    4300004: candy3
+    4300006: candy6
+    4300008: candy5
+    4300010: candy4
+    4300012: candy12
+    4300014: candry7
+    4300016: candy11
+    4300018: candy2
+    4300020: candy9
+    4300022: candy10
     9500000: //RootNode
   materials:
     importMaterials: 1

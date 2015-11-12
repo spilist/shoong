@@ -6,6 +6,7 @@ using UnityEngine.Advertisements;
 
 public class AdsAndRewardBannerButton : BannerButton {
   public Text goldenCubeText;
+  public GameObject icon;
 
   public int goldenCubePerAds = 30;
   public int showAdsPerGame = 10;
@@ -23,16 +24,11 @@ public class AdsAndRewardBannerButton : BannerButton {
             // after ads end, show goldencube get effect
             gold.change(goldenCubePerAds);
 
-            DataManager.dm.increment("CurrentGoldenCubes", goldenCubePerAds);
-            DataManager.dm.increment("TotalGoldenCubes", goldenCubePerAds);
-
-      			DataManager.dm.save();
-
             stopBlink();
 
             GetComponent<MeshRenderer>().enabled = false;
             GetComponent<Collider>().enabled = false;
-            transform.Find("CubeIcon").gameObject.SetActive(false);
+            icon.SetActive(false);
 
             active = false;
             playTouchSound = false;

@@ -111,7 +111,7 @@ public class CharacterCreateButton : MenusBehavior {
   void checkAffordable() {
     createPrice = menu.createPrice;
     priceText.text = createPrice.ToString("N0");
-    transform.Find("CubeIcon").GetComponent<BuyButtonsCubeIconPosition>().adjust(priceText);
+    transform.Find("Icon").GetComponent<BuyButtonsCubeIconPosition>().adjust(priceText);
 
     if (GoldManager.gm.getCount() < createPrice) {
       affordable = false;
@@ -152,7 +152,7 @@ public class CharacterCreateButton : MenusBehavior {
     goldenCubesYouHave.SetActive(val);
     GetComponent<Renderer>().enabled = val;
     GetComponent<Collider>().enabled = val;
-    transform.Find("CubeIcon").GetComponent<Renderer>().enabled = val;
+    transform.Find("Icon").GetComponent<Renderer>().enabled = val;
     transform.Find("PriceText").GetComponent<Text>().enabled = val;
   }
 

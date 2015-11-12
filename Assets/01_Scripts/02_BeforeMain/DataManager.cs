@@ -42,9 +42,9 @@ public class DataManager : MonoBehaviour {
     bools = new Dictionary<string, bool>();
     strings = new Dictionary<string, string>();
     dateTimes = new Dictionary<string, DateTime>();
-	
+
   	npbManager = GetComponent<NPBManager>();
-  	npbManager.init();
+    npbManager.init();
     Advertisement.Initialize("72081");
 
     if (resetAll || !load()) reset();
@@ -97,7 +97,7 @@ public class DataManager : MonoBehaviour {
     FileStream file = File.Create(datapath);
     bf.Serialize(file, data);
     file.Close();
-	
+
     // Report achievements when saving data (this is for toy collections achievement)
     DataManager.npbManager.am.reportAchievements();
   }
@@ -121,7 +121,7 @@ public class DataManager : MonoBehaviour {
     // strings["ControlMethod"] = "Touch";
     strings["ControlMethod"] = "Stick";
     bools["robotcogi"] = true;
-    bools["TutorialDone"] = false;
+    bools["TutorialDone"] = true;
 
     // By the implementation of OnOffButton, 'true' actually means 'not logged in'
     bools["GoogleLoggedInSetting"] = true;
