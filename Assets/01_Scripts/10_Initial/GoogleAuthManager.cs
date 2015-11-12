@@ -2,17 +2,18 @@
 using System.Collections;
 
 public class GoogleAuthManager : MonoBehaviour {
+  private GoogleAuthManager manager;
 
-	// Use this for initialization
   void Start () {
+    if (manager != null && manager != this) {
+      Destroy(gameObject);
+      return;
+    }
+    manager = this;
+    DontDestroyOnLoad(gameObject);
     // By the implementation of OnOffButton, 'false' actually means 'is logged in'
     if (DataManager.dm.getBool("GoogleLoggedInSetting") == false) {
       DataManager.npbManager.authenticate(null);
     }
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
 	}
 }

@@ -12,6 +12,12 @@ public class NotificationManager : MonoBehaviour {
   private string notifyMsg;
 
   void Start() {
+    if (nm != null && nm != this) {
+      Destroy(gameObject);
+      return;
+    }
+
+    DontDestroyOnLoad(gameObject);
     nm = this;
     NPBinding.NotificationService.RegisterNotificationTypes(m_notificationType);
     LanguageManager languageManager = LanguageManager.Instance;
