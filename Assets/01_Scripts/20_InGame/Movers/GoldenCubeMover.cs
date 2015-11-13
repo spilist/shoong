@@ -4,7 +4,7 @@ using System.Collections;
 public class GoldenCubeMover : ObjectsMover {
   private GoldenCubeManager gcm;
   private SummonPartsManager summonManager;
-  private bool detected = false;
+  // private bool detected = false;
   private bool noRespawn = false;
   private Renderer mRenderer;
 
@@ -14,7 +14,7 @@ public class GoldenCubeMover : ObjectsMover {
   }
 
   override protected void afterEnable() {
-    detected = false;
+    // detected = false;
     noRespawn = false;
     mRenderer.enabled = true;
   }
@@ -111,5 +111,13 @@ public class GoldenCubeMover : ObjectsMover {
 
   override protected float getSpeed() {
     return 0;
+  }
+
+  override public int energyGets() {
+    if (CharacterManager.cm.getCurrentCharacter() == "goldpig") {
+      return objectsManager.energyGets;
+    } else {
+      return 0;
+    }
   }
 }

@@ -6145,7 +6145,6 @@ MonoBehaviour:
   gaugeShell: {fileID: 1480176267}
   gaugeIcon: {fileID: 1683774461}
   dangerousAt: .349999994
-  getAmountbyCubes: 2
   getRate: 2
   loseRate: 1
 --- !u!1 &244769793
@@ -36683,7 +36682,6 @@ MonoBehaviour:
   laserStayDuration: .349999994
   laserShrinkingDuration: .0500000007
   laserRotatingSpeed: 500
-  pointsLaserGetScale: .5
 --- !u!1 &1623667518
 GameObject:
   m_ObjectHideFlags: 0
@@ -46978,6 +46976,7 @@ MonoBehaviour:
   minSpawnInterval: 8
   maxSpawnInterval: 12
   cubesByEncounter: 7
+  energyGets: 0
   isNegative: 0
   hasEncounterEffect: 0
   instance: {fileID: 0}
@@ -47041,6 +47040,7 @@ MonoBehaviour:
   minSpawnInterval: 8
   maxSpawnInterval: 12
   cubesByEncounter: 5
+  energyGets: 10
   isNegative: 0
   hasEncounterEffect: 0
   instance: {fileID: 0}
@@ -47095,6 +47095,7 @@ MonoBehaviour:
   minSpawnInterval: 1
   maxSpawnInterval: 4
   cubesByEncounter: 20
+  energyGets: 0
   isNegative: 1
   hasEncounterEffect: 0
   instance: {fileID: 0}
@@ -47145,6 +47146,7 @@ MonoBehaviour:
   minSpawnInterval: 20
   maxSpawnInterval: 40
   cubesByEncounter: 0
+  energyGets: 0
   isNegative: 1
   hasEncounterEffect: 0
   instance: {fileID: 0}
@@ -47187,6 +47189,7 @@ MonoBehaviour:
   minSpawnInterval: 20
   maxSpawnInterval: 60
   cubesByEncounter: 50
+  energyGets: 0
   isNegative: 1
   hasEncounterEffect: 1
   instance: {fileID: 0}
@@ -47257,6 +47260,7 @@ MonoBehaviour:
   minSpawnInterval: 8
   maxSpawnInterval: 12
   cubesByEncounter: 10
+  energyGets: 0
   isNegative: 0
   hasEncounterEffect: 0
   instance: {fileID: 0}
@@ -47335,6 +47339,7 @@ MonoBehaviour:
   minSpawnInterval: 0
   maxSpawnInterval: 0
   cubesByEncounter: 15
+  energyGets: 0
   isNegative: 1
   hasEncounterEffect: 0
   instance: {fileID: 0}
@@ -47396,6 +47401,7 @@ MonoBehaviour:
   minSpawnInterval: 3
   maxSpawnInterval: 3
   cubesByEncounter: 1
+  energyGets: 10
   isNegative: 0
   hasEncounterEffect: 0
   instance: {fileID: 0}
@@ -47434,6 +47440,7 @@ MonoBehaviour:
   minSpawnInterval: 8
   maxSpawnInterval: 12
   cubesByEncounter: 5
+  energyGets: 10
   isNegative: 0
   hasEncounterEffect: 1
   instance: {fileID: 0}
@@ -47495,6 +47502,7 @@ MonoBehaviour:
   minSpawnInterval: 0
   maxSpawnInterval: 0
   cubesByEncounter: 5
+  energyGets: 10
   isNegative: 0
   hasEncounterEffect: 0
   instance: {fileID: 0}
@@ -47533,6 +47541,7 @@ MonoBehaviour:
   minSpawnInterval: 8
   maxSpawnInterval: 12
   cubesByEncounter: 0
+  energyGets: 0
   isNegative: 0
   hasEncounterEffect: 1
   instance: {fileID: 0}
@@ -47586,6 +47595,7 @@ MonoBehaviour:
   minSpawnInterval: 8
   maxSpawnInterval: 12
   cubesByEncounter: 0
+  energyGets: 0
   isNegative: 0
   hasEncounterEffect: 1
   instance: {fileID: 0}
@@ -47632,6 +47642,7 @@ MonoBehaviour:
   minSpawnInterval: 25
   maxSpawnInterval: 35
   cubesByEncounter: 0
+  energyGets: 0
   isNegative: 0
   hasEncounterEffect: 1
   instance: {fileID: 0}
@@ -47690,6 +47701,7 @@ MonoBehaviour:
   minSpawnInterval: 0
   maxSpawnInterval: 0
   cubesByEncounter: 10
+  energyGets: 0
   isNegative: 1
   hasEncounterEffect: 0
   instance: {fileID: 0}
@@ -47738,6 +47750,7 @@ MonoBehaviour:
   minSpawnInterval: 1
   maxSpawnInterval: 4
   cubesByEncounter: 0
+  energyGets: 0
   isNegative: 1
   hasEncounterEffect: 0
   instance: {fileID: 0}
@@ -47777,6 +47790,7 @@ MonoBehaviour:
   minSpawnInterval: 8
   maxSpawnInterval: 12
   cubesByEncounter: 0
+  energyGets: 0
   isNegative: 1
   hasEncounterEffect: 0
   instance: {fileID: 0}
@@ -47828,6 +47842,7 @@ MonoBehaviour:
   minSpawnInterval: 12
   maxSpawnInterval: 16
   cubesByEncounter: 100
+  energyGets: 0
   isNegative: 1
   hasEncounterEffect: 0
   instance: {fileID: 0}
@@ -47883,6 +47898,7 @@ MonoBehaviour:
   minSpawnInterval: 20
   maxSpawnInterval: 40
   cubesByEncounter: 0
+  energyGets: 0
   isNegative: 0
   hasEncounterEffect: 1
   instance: {fileID: 0}
@@ -47925,6 +47941,7 @@ MonoBehaviour:
   minSpawnInterval: 12
   maxSpawnInterval: 16
   cubesByEncounter: 50
+  energyGets: 0
   isNegative: 1
   hasEncounterEffect: 0
   instance: {fileID: 0}

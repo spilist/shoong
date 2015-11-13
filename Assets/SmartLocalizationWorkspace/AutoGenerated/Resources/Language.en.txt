@@ -150,7 +150,7 @@
 		<value>Ghost Toy</value>
 	</data>
 	<data name="CharacterName_goldpig" xml:space="preserve">
-		<value>Gold Piggy</value>
+		<value>Piggy Bank</value>
 	</data>
 	<data name="CharacterName_hamster" xml:space="preserve">
 		<value>Space Hamster</value>

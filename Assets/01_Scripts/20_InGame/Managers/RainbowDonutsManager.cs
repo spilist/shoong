@@ -13,6 +13,7 @@ public class RainbowDonutsManager : ObjectsManager {
 
   public GameObject rainbowRoadPrefab;
   public List<GameObject> roadPool;
+  public int cookiesPerRoad = 6;
 
   public int[] numRoadRidesPerLevel;
   public int[] speedPerRide;
@@ -34,6 +35,10 @@ public class RainbowDonutsManager : ObjectsManager {
   private Vector3 destination;
   private float drawingDistance;
 
+  private NormalPartsManager npm;
+  private Mesh[] cookieMeshes;
+  private float cookieDistance;
+
   override public void initRest() {
     skipInterval = true;
 
@@ -42,6 +47,13 @@ public class RainbowDonutsManager : ObjectsManager {
       GameObject obj = (GameObject) Instantiate(rainbowRoadPrefab);
       obj.SetActive(false);
       roadPool.Add(obj);
+    }
+
+    npm = GetComponent<NormalPartsManager>();
+    cookieMeshes = new Mesh[npm.meshes.childCount];
+    int count = 0;
+    foreach (Transform tr in npm.meshes) {
+      cookieMeshes[count++] = tr.GetComponent<MeshFilter>().sharedMesh;
     }
 
     adjustForLevel(1);
@@ -87,6 +99,7 @@ public class RainbowDonutsManager : ObjectsManager {
 
       rideCount++;
 
+      cookieDistance = 0;
       StartCoroutine("rideRainbow");
     } else {
       objEncounterEffectForPlayer.Stop();
@@ -133,9 +146,16 @@ public class RainbowDonutsManager : ObjectsManager {
 
   void Update() {
     if (drawingRainbowRoad) {
+
       drawingDistance = Mathf.MoveTowards(drawingDistance, nextDonutRadius, Time.deltaTime * ridingSpeed);
       Vector3 nextPos = drawingDistance * Vector3.Normalize(destination - origin) + origin;
       rainbowRoad.SetPosition(1, nextPos);
+
+      cookieDistance = Mathf.MoveTowards(cookieDistance, (float)nextDonutRadius / (cookiesPerRoad + 1), Time.deltaTime * ridingSpeed);
+      if (cookieDistance >= (float)nextDonutRadius / (cookiesPerRoad + 1)) {
+        cookieDistance = 0;
+        npm.spawnNormal(nextPos);
+      }
 
       if (drawingDistance == nextDonutRadius) {
         drawingRainbowRoad = false;

@@ -25,7 +25,6 @@ public class EnergyManager : MonoBehaviour {
   private float maxEnergy;
   private float energy;
 
-  public int getAmountbyCubes = 10;
   public float getRate = 2f;
   public float loseRate = 1;
 
@@ -138,12 +137,10 @@ public class EnergyManager : MonoBehaviour {
     }
   }
 
-  public void getHealthByCubes(int amount) {
-    changeHealth(getAmountbyCubes * amount, getRate * amount);
-  }
-
   public void getEnergy(int amount) {
     changeHealth(amount, getRate * amount);
+    Player.pl.getEnergy.Play();
+    Player.pl.getEnergy.GetComponent<AudioSource>().Play();
   }
 
   public void loseEnergy(int amount, string tag) {

@@ -314,4 +314,8 @@ public class ObjectsMover : MonoBehaviour {
   virtual public bool noCubesByDestroy() {
     return false;
   }
+
+  virtual public int energyGets() {
+    return objectsManager.energyGets;
+  }
 }

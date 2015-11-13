@@ -20,6 +20,7 @@ public class ObjectsManager : MonoBehaviour {
   public float minSpawnInterval = 8;
   public float maxSpawnInterval = 12;
   public int cubesByEncounter;
+  public int energyGets;
   public bool isNegative = false;
   public bool hasEncounterEffect = true;
 

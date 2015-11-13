@@ -14,7 +14,6 @@ public class Skill_laser : Skill {
   public float laserStayDuration = 1;
   public float laserShrinkingDuration = 0.3f;
   public int laserRotatingSpeed = 1000;
-  public float pointsLaserGetScale = 0.5f;
 
   Quaternion rot;
 

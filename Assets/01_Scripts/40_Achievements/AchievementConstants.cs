@@ -6,6 +6,7 @@ using System;
 
 public static class AchievementConstants {
   private static Dictionary<string, List<AchievementObject>> achievements;
+
   public static void init() {
     achievements = new Dictionary<string, List<AchievementObject>>();
     List<AchievementObject> objList;

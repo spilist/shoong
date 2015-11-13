@@ -14,12 +14,12 @@ public class BillingManager : MonoBehaviour {
   private   bool        m_productRequestFinished;
 
   void Start () {
-    if (bm != null && bm != this) {
-      Destroy(gameObject);
-      return;
-    }
+    // if (bm != null && bm != this) {
+    //   Destroy(gameObject);
+    //   return;
+    // }
 
-    DontDestroyOnLoad(gameObject);
+    // DontDestroyOnLoad(gameObject);
     bm = this;
 
     m_products          = NPSettings.Billing.Products;

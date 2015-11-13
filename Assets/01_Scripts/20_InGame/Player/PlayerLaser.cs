@@ -12,7 +12,6 @@ public class PlayerLaser : MonoBehaviour {
   float shootingDuration;
   float stayDuration;
   float shrinkingDuration;
-  float pointsLaserGetScale;
 
   float stayCount = 0;
   int status = 0;
@@ -26,7 +25,6 @@ public class PlayerLaser : MonoBehaviour {
     stayDuration = skill.laserStayDuration;
     shrinkingDuration = skill.laserShrinkingDuration;
     rotatingSpeed = skill.laserRotatingSpeed;
-    pointsLaserGetScale = skill.pointsLaserGetScale;
     outer = transform.Find("Outer");
   }
 
@@ -50,7 +48,10 @@ public class PlayerLaser : MonoBehaviour {
       outer.transform.localEulerAngles += new Vector3(Time.deltaTime * rotatingSpeed, 0, 0);
 
       if (stayCount < stayDuration) stayCount += Time.deltaTime;
-      else status++;
+      else {
+        outer.transform.localEulerAngles = new Vector3(0, 0, 90);
+        status++;
+      }
     } else if (status == 3) {
       radius = Mathf.MoveTowards(radius, 0, Time.deltaTime * targetRadius / shrinkingDuration);
       transform.localScale = new Vector3(length, radius, radius);
@@ -65,10 +66,7 @@ public class PlayerLaser : MonoBehaviour {
     ObjectsMover mover = other.GetComponent<ObjectsMover>();
 
     if (mover != null) {
-      int amount = (int)Mathf.Floor(mover.cubesWhenDestroy() * pointsLaserGetScale);
-      CubeManager.cm.addCount(amount);
-      CubeManager.cm.showPoints(amount, mover.transform.position);
-      mover.destroyObject(true, true);
+      Player.pl.goodPartsEncounter(mover, mover.cubesWhenDestroy(), false);
     }
   }
 }

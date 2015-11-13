@@ -304,7 +304,7 @@ public class PowerBoost : MonoBehaviour {
     for (int e = 0; e < mover.cubesWhenEncounter(); e++) {
       Instantiate(energyCube, other.transform.position, other.transform.rotation);
       if (e == 0) {
-        Player.pl.addCubeCount(mover.cubesWhenEncounter());
+        // Player.pl.addCubeCount(mover.cubesWhenEncounter());
       }
     }
 

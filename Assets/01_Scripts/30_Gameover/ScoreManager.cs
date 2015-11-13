@@ -155,7 +155,9 @@ public class ScoreManager : MonoBehaviour {
 
     yield return new WaitForSeconds(showPlayerExplosionDuring);
 
-    if (AdsManager.am != null) AdsManager.am.showGameOverAds();
+    if (AdsManager.am != null) {
+      AdsManager.am.showGameOverAds();
+    }
 
     energyDangerFilter.SetActive(false);
 
@@ -249,9 +251,9 @@ public class ScoreManager : MonoBehaviour {
     DataManager.npbManager.am.reportAchievements();
 
     // Report leaderboard after saving data
-    DataManager.npbManager.am.reportLeaderboard(AchievementManager.LB_SINGLE, count);    
+    DataManager.npbManager.am.reportLeaderboard(AchievementManager.LB_SINGLE, count);
     DataManager.npbManager.am.reportLeaderboard(AchievementManager.LB_OVERALL, DataManager.dm.getInt("TotalCubes"));
-	
+
     DataManager.dm.save();
 
     FacebookManager.fb.gameDone();

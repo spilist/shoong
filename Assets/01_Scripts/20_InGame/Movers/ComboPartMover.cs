@@ -89,6 +89,10 @@ public class ComboPartMover : ObjectsMover {
     return count * cpm.cubesByEncounter;
   }
 
+  override public int energyGets() {
+    return (cpm.comboCount + 1) * cpm.energyGets;
+  }
+
   public IEnumerator destroyAfter() {
     yield return new WaitForSeconds(cpm.illusionLifeTime - cpm.blinkBeforeDestroy);
     float duration = cpm.blinkBeforeDestroy;

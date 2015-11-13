@@ -19,4 +19,8 @@ public class SummonPartMover : ObjectsMover {
   override public int cubesWhenDestroy() {
     return summonManager.numSpawnX * summonManager.numSpawnZ * 5;
   }
+
+  override public int energyGets() {
+    return 0;
+  }
 }

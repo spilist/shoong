@@ -49,22 +49,18 @@ public class CubeManager : MonoBehaviour {
     return obj;
   }
 
-  public void showPoints(int amount, Vector3 position) {
+  public void addPoints(int amount, Vector3 position) {
     if (amount == 0) return;
-
-    GameObject instance = getPooledObj(pointPool, pointsGet);
-    instance.transform.position = position;
-    instance.SetActive(true);
-    instance.GetComponent<ShowChangeText>().run(amount);
-  }
-
-  public void addCount(int amount) {
-    EnergyManager.em.getHealthByCubes(amount);
 
     amount = (int)Mathf.Round(amount * bonusRate);
     totalCount += amount;
 
     TimeManager.time.addProgressByCube(amount);
+
+    GameObject instance = getPooledObj(pointPool, pointsGet);
+    instance.transform.position = position;
+    instance.SetActive(true);
+    instance.GetComponent<ShowChangeText>().run(amount);
   }
 
   public int getCount() {

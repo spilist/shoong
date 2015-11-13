@@ -214,20 +214,19 @@ public class Player : MonoBehaviour {
   public void goodPartsEncounter(ObjectsMover mover, int howMany, bool encounterPlayer = true) {
 
     if (mover.tag != "GoldenCube" && howMany > 0) {
-      addCubeCount(howMany);
-      CubeManager.cm.showPoints(howMany, mover.transform.position);
+      CubeManager.cm.addPoints(howMany, mover.transform.position);
+    }
+
+    if (mover.energyGets() > 0) {
+      EnergyManager.em.getEnergy(mover.energyGets());
     }
 
     if (encounterPlayer) mover.encounterPlayer();
     else mover.destroyObject(true, true);
   }
 
-  public void addCubeCount(int howMany = 1) {
-    CubeManager.cm.addCount(howMany);
-  }
-
   public void contactCubeDispenser(Transform tr, int howMany, Collision collision, float reboundDuring) {
-    addCubeCount(howMany);
+    CubeManager.cm.addPoints(howMany, tr.position);
     processCollision(collision);
     bouncingByDispenser = true;
     this.bounceDuration = reboundDuring;

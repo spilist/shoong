@@ -39,6 +39,8 @@ public class CharacterManager : MonoBehaviour {
   private float original_damageGetScaleStandard;
   public int[] damageGets;
 
+  private string currentCharacter;
+
   void Awake() {
     cm = this;
 
@@ -68,6 +70,7 @@ public class CharacterManager : MonoBehaviour {
   }
 
   public void changeCharacter(string name) {
+    currentCharacter = name;
     CharacterStat stat = character(name);
     ccm.setMesh(stat.GetComponent<MeshFilter>().sharedMesh);
     AudioManager.am.setAudio(stat.bgm.ToString());
@@ -103,5 +106,9 @@ public class CharacterManager : MonoBehaviour {
     } else {
       SkillManager.sm.equip(skillName);
     }
+  }
+
+  public string getCurrentCharacter() {
+    return currentCharacter;
   }
 }
