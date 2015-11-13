@@ -5,6 +5,9 @@ public class CameraMover : MonoBehaviour {
   public bool fixAspect = false;
   public float aspectWidth = 1920;
   public float aspectHeight = 1080;
+  public Transform target;
+  public float followSpeed;
+  public bool ahead = false;
 
   public int playerAheadSpeedBase = 100;
   public float playerAheadScale = 0.5f;
@@ -79,7 +82,8 @@ public class CameraMover : MonoBehaviour {
 
       if (!shakeContinuously && shakeCount < 0) stopShake();
     } else if (slowly) {
-      transform.position = Vector3.SmoothDamp(transform.position, playerPos(), ref velocity, smoothTime, Mathf.Infinity, Time.smoothDeltaTime);
+      // transform.position = Vector3.SmoothDamp(transform.position, playerPos(), ref velocity, smoothTime, Mathf.Infinity, Time.smoothDeltaTime);
+      transform.position = Vector3.Lerp(transform.position, playerPos(), Time.deltaTime * followSpeed);
     } else {
       transform.position = playerPos();
     }
@@ -87,11 +91,11 @@ public class CameraMover : MonoBehaviour {
 
   Vector3 playerPos() {
     Vector3 pos;
-    // if (Player.pl.getSpeed() > playerAheadSpeedBase) {
-      // pos = Player.pl.transform.position + Player.pl.getDirection() * (Player.pl.getSpeed() - playerAheadSpeedBase) * playerAheadScale;
-    // } else {
-      pos = Player.pl.transform.position;
-    // }
+    if (ahead && Player.pl.getSpeed() > playerAheadSpeedBase) {
+      pos = Player.pl.transform.position + Player.pl.getDirection() * (Player.pl.getSpeed() - playerAheadSpeedBase) * playerAheadScale;
+    } else {
+      pos = target.position;
+    }
 
     return new Vector3(pos.x, transform.position.y, pos.z);
   }
@@ -128,7 +132,4 @@ public class CameraMover : MonoBehaviour {
     shakeContinuously = false;
     transform.position = originalPos;
   }
-
-
 }
-

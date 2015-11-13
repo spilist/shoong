@@ -85,23 +85,23 @@ namespace UnityStandardAssets.Cameras
             }
 
             // camera position moves towards target position:
-            transform.position = Vector3.Lerp(transform.position, m_Target.position, deltaTime*m_MoveSpeed);
+            transform.position = Vector3.Lerp(transform.position, new Vector3(m_Target.position.x, transform.position.y, m_Target.position.z), deltaTime*m_MoveSpeed);
 
             // camera's rotation is split into two parts, which can have independend speed settings:
             // rotating towards the target's forward direction (which encompasses its 'yaw' and 'pitch')
-            if (!m_FollowTilt)
-            {
-                targetForward.y = 0;
-                if (targetForward.sqrMagnitude < float.Epsilon)
-                {
-                    targetForward = transform.forward;
-                }
-            }
-            var rollRotation = Quaternion.LookRotation(targetForward, m_RollUp);
+            // if (!m_FollowTilt)
+            // {
+            //     targetForward.y = 0;
+            //     if (targetForward.sqrMagnitude < float.Epsilon)
+            //     {
+            //         targetForward = transform.forward;
+            //     }
+            // }
+            // var rollRotation = Quaternion.LookRotation(targetForward, m_RollUp);
 
-            // and aligning with the target object's up direction (i.e. its 'roll')
-            m_RollUp = m_RollSpeed > 0 ? Vector3.Slerp(m_RollUp, targetUp, m_RollSpeed*deltaTime) : Vector3.up;
-            transform.rotation = Quaternion.Lerp(transform.rotation, rollRotation, m_TurnSpeed*m_CurrentTurnAmount*deltaTime);
+            // // and aligning with the target object's up direction (i.e. its 'roll')
+            // m_RollUp = m_RollSpeed > 0 ? Vector3.Slerp(m_RollUp, targetUp, m_RollSpeed*deltaTime) : Vector3.up;
+            // transform.rotation = Quaternion.Lerp(transform.rotation, rollRotation, m_TurnSpeed*m_CurrentTurnAmount*deltaTime);
         }
     }
 }

@@ -10383,6 +10383,7 @@ GameObject:
   - 124: {fileID: 192454347}
   - 114: {fileID: 192454352}
   - 114: {fileID: 192454346}
+  - 114: {fileID: 192454357}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -10404,8 +10405,11 @@ MonoBehaviour:
   fixAspect: 0
   aspectWidth: 1920
   aspectHeight: 1080
-  playerAheadSpeedBase: 150
-  playerAheadScale: .0500000007
+  target: {fileID: 91418581}
+  followSpeed: 15
+  ahead: 0
+  playerAheadSpeedBase: 100
+  playerAheadScale: .300000012
   slowly: 0
   smoothTime: .100000001
   speed: 20
@@ -10486,6 +10490,28 @@ MonoBehaviour:
   m_EventMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &192454357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 192454345}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8d3968294210ba4a9d2bb96dfa74a16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Target: {fileID: 91418581}
+  m_AutoTargetPlayer: 1
+  m_UpdateType: 0
+  m_MoveSpeed: 3
+  m_TurnSpeed: 1
+  m_RollSpeed: .200000003
+  m_FollowVelocity: 0
+  m_FollowTilt: 0
+  m_SpinTurnLimit: 90
+  m_TargetVelocityLowerLimit: 4
+  m_SmoothTurnTime: .200000003
 --- !u!1 &199067582
 GameObject:
   m_ObjectHideFlags: 0
@@ -58292,7 +58318,7 @@ SphereCollider:
   m_GameObject: {fileID: 1298175622}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: .5
   m_Center: {x: 0, y: 0, z: 0}
@@ -101750,7 +101776,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2111377099}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04d1e4ff83e344c2ab093563cdcc4568, type: 3}
+  m_Script: {fileID: 11500000, guid: 4bfaffa4110864f8ebba439072e1c92e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   activeMesh: {fileID: 0}
@@ -101759,6 +101785,7 @@ MonoBehaviour:
   blinkingSeconds: .400000006
   playTouchSound: 1
   blinkOnStart: 0
+  cm: {fileID: 75942068}
 --- !u!23 &2111377104
 MeshRenderer:
   m_ObjectHideFlags: 0
