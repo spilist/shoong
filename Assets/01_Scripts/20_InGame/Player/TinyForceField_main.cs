@@ -10,33 +10,8 @@ public class TinyForceField_main : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other) {
     ObjectsMover mover = other.GetComponent<ObjectsMover>();
-    if (mover == null) return;
+    if (mover == null || other.tag == "Blackhole") return;
 
-    if (mover.tag == "Blackhole") return;
-
-    if (dpm.player.isRidingMonster()) {
-      if (mover.tag == "MiniMonster") {
-        if (!dpm.player.absorbMinimon(mover)) return;
-        instantiateCube(mover);
-      } else {
-        dpm.player.generateMinimon(mover);
-      }
-    } else {
-      instantiateCube(mover);
-      mover.destroyObject(true, true);
-    }
-  }
-
-  void instantiateCube(ObjectsMover mover) {
-    if (mover.noCubesByDestroy()) return;
-
-    dpm.player.goodPartsEncounter(mover, mover.cubesWhenDestroy(), false);
-
-    if (!mover.isNegativeObject()) {
-      dpm.getEnergy.Play();
-      dpm.getEnergy.GetComponent<AudioSource>().Play();
-    } else {
-      DataManager.dm.increment("NumDestroyObstaclesWithBlink");
-    }
+    dpm.player.goodPartsEncounter(mover, mover.cubesWhenDestroy(), other.tag == "GoldenCube");
   }
 }

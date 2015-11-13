@@ -36,6 +36,8 @@ public class MeteroidManager : ObjectsManager {
       soundWarningPool.Add(obj);
     }
 
+    destroyWhenCollideSelf = true;
+
     StartCoroutine("spawnObstacle");
   }
 

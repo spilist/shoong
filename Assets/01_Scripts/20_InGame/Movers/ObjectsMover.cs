@@ -166,6 +166,9 @@ public class ObjectsMover : MonoBehaviour {
 
       afterCollidePlayer();
       return false;
+    } else if (objectsManager.destroyWhenCollideSelf && tag == collision.collider.tag) {
+      destroyObject();
+      return false;
     }
 
     return true;
@@ -309,10 +312,6 @@ public class ObjectsMover : MonoBehaviour {
 
   virtual public bool hasEncounterEffect() {
     return objectsManager.hasEncounterEffect;
-  }
-
-  virtual public bool noCubesByDestroy() {
-    return false;
   }
 
   virtual public int energyGets() {

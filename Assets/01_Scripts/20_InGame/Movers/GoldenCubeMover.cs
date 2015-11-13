@@ -89,7 +89,6 @@ public class GoldenCubeMover : ObjectsMover {
     } else {
       objectsManager.runImmediately();
     }
-
   }
 
   override protected void afterEncounter() {
@@ -103,10 +102,6 @@ public class GoldenCubeMover : ObjectsMover {
 
   override public string getManager() {
     return "GoldenCubeManager";
-  }
-
-  override public bool noCubesByDestroy() {
-    return true;
   }
 
   override protected float getSpeed() {

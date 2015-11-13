@@ -8,6 +8,8 @@ public class IceDebrisManager : ObjectsManager {
   public float speedRestoreDuring = 3;
 
   override public void initRest() {
+    destroyWhenCollideSelf = true;
+
     StartCoroutine("spawnIce");
   }
 

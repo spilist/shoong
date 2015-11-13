@@ -46979,6 +46979,7 @@ MonoBehaviour:
   energyGets: 0
   isNegative: 0
   hasEncounterEffect: 0
+  destroyWhenCollideSelf: 0
   instance: {fileID: 0}
   loseEnergyWhenEncounter: 0
   bounceDuration: 0
@@ -46996,6 +46997,7 @@ MonoBehaviour:
     m_Bits: 8912896
   rainbowRoadPrefab: {fileID: 173076, guid: af846d2fda9ca46229d31f23fc80dd18, type: 2}
   roadPool: []
+  cookiesPerRoad: 6
   numRoadRidesPerLevel: 020000000300000005000000
   speedPerRide: 84030000b6030000e80300001a0400004c0400007e040000
   numRoadRides: 0
@@ -47043,6 +47045,7 @@ MonoBehaviour:
   energyGets: 10
   isNegative: 0
   hasEncounterEffect: 0
+  destroyWhenCollideSelf: 0
   instance: {fileID: 0}
   loseEnergyWhenEncounter: 0
   bounceDuration: 0
@@ -47050,7 +47053,7 @@ MonoBehaviour:
   nameForLevel: ComboParts
   level: 0
   player: {fileID: 0}
-  illusionLifeTime: 3
+  illusionLifeTime: 2
   blinkBeforeDestroy: 1.20000005
   showDurationStart: .349999994
   showDurationDecrease: .100000001
@@ -47098,6 +47101,7 @@ MonoBehaviour:
   energyGets: 0
   isNegative: 1
   hasEncounterEffect: 0
+  destroyWhenCollideSelf: 0
   instance: {fileID: 0}
   loseEnergyWhenEncounter: 20
   bounceDuration: .300000012
@@ -47149,6 +47153,7 @@ MonoBehaviour:
   energyGets: 0
   isNegative: 1
   hasEncounterEffect: 0
+  destroyWhenCollideSelf: 0
   instance: {fileID: 0}
   loseEnergyWhenEncounter: 100
   bounceDuration: 0
@@ -47192,6 +47197,7 @@ MonoBehaviour:
   energyGets: 0
   isNegative: 1
   hasEncounterEffect: 1
+  destroyWhenCollideSelf: 0
   instance: {fileID: 0}
   loseEnergyWhenEncounter: 30
   bounceDuration: .150000006
@@ -47263,6 +47269,7 @@ MonoBehaviour:
   energyGets: 0
   isNegative: 0
   hasEncounterEffect: 0
+  destroyWhenCollideSelf: 0
   instance: {fileID: 0}
   loseEnergyWhenEncounter: 0
   bounceDuration: 0
@@ -47342,6 +47349,7 @@ MonoBehaviour:
   energyGets: 0
   isNegative: 1
   hasEncounterEffect: 0
+  destroyWhenCollideSelf: 0
   instance: {fileID: 0}
   loseEnergyWhenEncounter: 20
   bounceDuration: .200000003
@@ -47404,6 +47412,7 @@ MonoBehaviour:
   energyGets: 10
   isNegative: 0
   hasEncounterEffect: 0
+  destroyWhenCollideSelf: 0
   instance: {fileID: 0}
   loseEnergyWhenEncounter: 0
   bounceDuration: 0
@@ -47443,6 +47452,7 @@ MonoBehaviour:
   energyGets: 10
   isNegative: 0
   hasEncounterEffect: 1
+  destroyWhenCollideSelf: 0
   instance: {fileID: 0}
   loseEnergyWhenEncounter: 0
   bounceDuration: 0
@@ -47505,6 +47515,7 @@ MonoBehaviour:
   energyGets: 10
   isNegative: 0
   hasEncounterEffect: 0
+  destroyWhenCollideSelf: 0
   instance: {fileID: 0}
   loseEnergyWhenEncounter: 0
   bounceDuration: 0
@@ -47544,6 +47555,7 @@ MonoBehaviour:
   energyGets: 0
   isNegative: 0
   hasEncounterEffect: 1
+  destroyWhenCollideSelf: 0
   instance: {fileID: 0}
   loseEnergyWhenEncounter: 0
   bounceDuration: 0
@@ -47598,6 +47610,7 @@ MonoBehaviour:
   energyGets: 0
   isNegative: 0
   hasEncounterEffect: 1
+  destroyWhenCollideSelf: 0
   instance: {fileID: 0}
   loseEnergyWhenEncounter: 0
   bounceDuration: 0
@@ -47645,6 +47658,7 @@ MonoBehaviour:
   energyGets: 0
   isNegative: 0
   hasEncounterEffect: 1
+  destroyWhenCollideSelf: 0
   instance: {fileID: 0}
   loseEnergyWhenEncounter: 30
   bounceDuration: 0
@@ -47704,6 +47718,7 @@ MonoBehaviour:
   energyGets: 0
   isNegative: 1
   hasEncounterEffect: 0
+  destroyWhenCollideSelf: 0
   instance: {fileID: 0}
   loseEnergyWhenEncounter: 15
   bounceDuration: .150000006
@@ -47753,6 +47768,7 @@ MonoBehaviour:
   energyGets: 0
   isNegative: 1
   hasEncounterEffect: 0
+  destroyWhenCollideSelf: 0
   instance: {fileID: 0}
   loseEnergyWhenEncounter: 5
   bounceDuration: 0
@@ -47793,6 +47809,7 @@ MonoBehaviour:
   energyGets: 0
   isNegative: 1
   hasEncounterEffect: 0
+  destroyWhenCollideSelf: 0
   instance: {fileID: 0}
   loseEnergyWhenEncounter: 30
   bounceDuration: .300000012
@@ -47845,6 +47862,7 @@ MonoBehaviour:
   energyGets: 0
   isNegative: 1
   hasEncounterEffect: 0
+  destroyWhenCollideSelf: 0
   instance: {fileID: 0}
   loseEnergyWhenEncounter: 30
   bounceDuration: .150000006
@@ -47901,6 +47919,7 @@ MonoBehaviour:
   energyGets: 0
   isNegative: 0
   hasEncounterEffect: 1
+  destroyWhenCollideSelf: 0
   instance: {fileID: 0}
   loseEnergyWhenEncounter: 0
   bounceDuration: 0
@@ -47944,6 +47963,7 @@ MonoBehaviour:
   energyGets: 0
   isNegative: 1
   hasEncounterEffect: 0
+  destroyWhenCollideSelf: 0
   instance: {fileID: 0}
   loseEnergyWhenEncounter: 30
   bounceDuration: .150000006

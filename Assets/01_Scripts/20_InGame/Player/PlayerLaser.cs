@@ -62,11 +62,10 @@ public class PlayerLaser : MonoBehaviour {
   }
 
   void OnTriggerEnter(Collider other) {
-    if (other.tag == "Player" || other.tag == "Blackhole") return;
     ObjectsMover mover = other.GetComponent<ObjectsMover>();
 
-    if (mover != null) {
-      Player.pl.goodPartsEncounter(mover, mover.cubesWhenDestroy(), false);
-    }
+    if (mover == null || other.tag == "Player" || other.tag == "Blackhole") return;
+
+    Player.pl.goodPartsEncounter(mover, mover.cubesWhenDestroy(), other.tag == "GoldenCube");
   }
 }
