@@ -37,14 +37,14 @@ public class CharacterChangeManager : MonoBehaviour {
   void OnEnable() {
     mFilter = GetComponent<MeshFilter>();
     mRenderer = GetComponent<Renderer>();
+    color = mRenderer.sharedMaterial.color;
+    alphaOrigin = color.a;
   }
 
   public void teleport(Vector3 pos) {
     stayCount = 0;
     teleportTo = pos;
-    color = mRenderer.sharedMaterial.color;
-    alpha = color.a;
-    alphaOrigin = alpha;
+    alpha = alphaOrigin;
     teleportingStatus = 1;
 
     Camera.main.GetComponent<CameraMover>().setSlowly(true);

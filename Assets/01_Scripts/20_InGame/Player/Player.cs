@@ -79,6 +79,7 @@ public class Player : MonoBehaviour {
   public ParticleSystem getEnergy;
   public GetPartsText getPartsText;
   public UseBoosterText useBoosterText;
+  public Transform contactCollider;
 
 	void Awake() {
     pl = this;
@@ -494,6 +495,10 @@ public class Player : MonoBehaviour {
     return isRebounding() || isUsingRainbow() || usingEMP || bouncing || bouncingByDispenser;
   }
 
+  public bool noRhythmRing() {
+    return isRebounding() || isUsingRainbow() || usingEMP;
+  }
+
   void Update() {
     if (isRotatingByRainbow) {
       Vector3 dir = (rainbowPosition - transform.position).normalized;
@@ -608,10 +613,12 @@ public class Player : MonoBehaviour {
     if (!scaleChanged && val) {
       scaleChanged = true;
       transform.localScale *= amount;
+      contactCollider.localScale *= amount;
       RhythmManager.rm.turnBoostOK(true);
     } else if (scaleChanged && !val && !feverTime) {
       scaleChanged = false;
       transform.localScale /= amount;
+      contactCollider.localScale /= amount;
       RhythmManager.rm.turnBoostOK(false);
     }
   }

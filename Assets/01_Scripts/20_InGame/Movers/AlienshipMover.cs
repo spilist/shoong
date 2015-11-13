@@ -37,6 +37,7 @@ public class AlienshipMover : ObjectsMover {
     angleY = transform.eulerAngles.y;
     shootingStatus = 1;
     stayCount = 0;
+    speed = asm.speed;
   }
 
   protected override void normalMovement() {
@@ -61,8 +62,6 @@ public class AlienshipMover : ObjectsMover {
     float distance = Vector3.Distance(player.transform.position, transform.position);
     if (distance > detectDistance) {
       return speed + player.getSpeed() * offScreenSpeedScale;
-    } else if (distance < 10) {
-      return player.getSpeed();
     } else {
       return speed;
     }

@@ -3188,6 +3188,7 @@ MonoBehaviour:
   getEnergy: {fileID: 317572741}
   getPartsText: {fileID: 0}
   useBoosterText: {fileID: 0}
+  contactCollider: {fileID: 1298175623}
 --- !u!96 &91418584
 TrailRenderer:
   m_ObjectHideFlags: 0
@@ -10403,7 +10404,8 @@ MonoBehaviour:
   fixAspect: 0
   aspectWidth: 1920
   aspectHeight: 1080
-  player: {fileID: 91418581}
+  playerAheadSpeedBase: 150
+  playerAheadScale: .0500000007
   slowly: 0
   smoothTime: .100000001
   speed: 20
@@ -10439,7 +10441,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: .300000012
+  near clip plane: -10
   far clip plane: 600
   field of view: 6
   orthographic: 1
@@ -13087,7 +13089,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 678200079}
-  m_RootOrder: 10
+  m_RootOrder: 9
 --- !u!82 &222636913
 AudioSource:
   m_ObjectHideFlags: 0
@@ -16537,7 +16539,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillObject: {fileID: 851953042}
-  useSkillEffect: {fileID: 1552135346}
+  useSkillEffect: {fileID: 0}
   normalRing: 11
   skillRing: 8
   description: Pull candies
@@ -17971,7 +17973,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 417280, guid: df73c8fb265644b57873e18c943161ee, type: 2}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 417280, guid: df73c8fb265644b57873e18c943161ee, type: 2}
       propertyPath: m_LocalScale.x
@@ -30313,7 +30315,6 @@ Transform:
   - {fileID: 621705454}
   - {fileID: 728079727}
   - {fileID: 1967867618}
-  - {fileID: 1552135348}
   - {fileID: 1830827563}
   - {fileID: 1426521850}
   - {fileID: 1384869937}
@@ -37910,6 +37911,7 @@ Transform:
   m_LocalScale: {x: 180, y: 180, z: 180}
   m_Children:
   - {fileID: 1525181129}
+  - {fileID: 1552135348}
   m_Father: {fileID: 1701025775}
   m_RootOrder: 5
 --- !u!23 &851953044
@@ -49188,7 +49190,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 678200079}
-  m_RootOrder: 11
+  m_RootOrder: 10
 --- !u!82 &1056094480
 AudioSource:
   m_ObjectHideFlags: 0
@@ -55442,7 +55444,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1199078785}
   m_LocalRotation: {x: 0, y: .707106829, z: 0, w: .707106709}
-  m_LocalPosition: {x: 0, y: 0, z: -45}
+  m_LocalPosition: {x: 0, y: 0, z: -55}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children:
   - {fileID: 1865924011}
@@ -56232,7 +56234,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 678200079}
-  m_RootOrder: 14
+  m_RootOrder: 13
 --- !u!96 &1248557237
 TrailRenderer:
   m_ObjectHideFlags: 0
@@ -57922,7 +57924,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 486752, guid: 699a7667b2cee4564b40cfa293c9d3ad, type: 2}
       propertyPath: m_RootOrder
-      value: 13
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 19880024, guid: 699a7667b2cee4564b40cfa293c9d3ad, type: 2}
       propertyPath: EmissionModule.rate.scalar
@@ -61864,7 +61866,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 678200079}
-  m_RootOrder: 8
+  m_RootOrder: 7
 --- !u!198 &1384869938
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -64002,7 +64004,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 678200079}
-  m_RootOrder: 7
+  m_RootOrder: 6
 --- !u!82 &1426521851
 AudioSource:
   m_ObjectHideFlags: 0
@@ -65281,7 +65283,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 678200079}
-  m_RootOrder: 15
+  m_RootOrder: 14
 --- !u!82 &1435706021
 AudioSource:
   m_ObjectHideFlags: 0
@@ -72397,7 +72399,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!198 &1552135347
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -73448,12 +73450,12 @@ Transform:
   m_PrefabParentObject: {fileID: 451376, guid: 4c9406b8460314547bf9b2aaf13e8547, type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1552135346}
-  m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106709}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.89999998, y: 1.89999998, z: 1.89999998}
+  m_LocalScale: {x: .0116111105, y: .0116111105, z: .0116111105}
   m_Children: []
-  m_Father: {fileID: 678200079}
-  m_RootOrder: 5
+  m_Father: {fileID: 851953043}
+  m_RootOrder: 1
 --- !u!199 &1552135349
 ParticleSystemRenderer:
   m_ObjectHideFlags: 0
@@ -86316,7 +86318,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 678200079}
-  m_RootOrder: 6
+  m_RootOrder: 5
 --- !u!199 &1830827564
 ParticleSystemRenderer:
   m_ObjectHideFlags: 0
@@ -93183,7 +93185,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 678200079}
-  m_RootOrder: 9
+  m_RootOrder: 8
 --- !u!1 &1918549623
 GameObject:
   m_ObjectHideFlags: 0
@@ -98676,7 +98678,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 678200079}
-  m_RootOrder: 16
+  m_RootOrder: 15
 --- !u!82 &2042006117
 AudioSource:
   m_ObjectHideFlags: 0

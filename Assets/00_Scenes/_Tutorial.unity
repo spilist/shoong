@@ -1902,6 +1902,7 @@ MonoBehaviour:
   getEnergy: {fileID: 317572741}
   getPartsText: {fileID: 1140371563}
   useBoosterText: {fileID: 1558675233}
+  contactCollider: {fileID: 1298175623}
 --- !u!96 &91418584
 TrailRenderer:
   m_ObjectHideFlags: 0
@@ -4430,7 +4431,8 @@ MonoBehaviour:
   fixAspect: 0
   aspectWidth: 1920
   aspectHeight: 1080
-  player: {fileID: 91418581}
+  playerAheadSpeedBase: 100
+  playerAheadScale: .5
   slowly: 0
   smoothTime: .100000001
   speed: 20
@@ -4466,7 +4468,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: .300000012
+  near clip plane: -10
   far clip plane: 600
   field of view: 6
   orthographic: 1
@@ -21566,7 +21568,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1199078785}
   m_LocalRotation: {x: 0, y: .707106829, z: 0, w: .707106709}
-  m_LocalPosition: {x: 0, y: 0, z: -45}
+  m_LocalPosition: {x: 0, y: 0, z: -55}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children:
   - {fileID: 1865924011}

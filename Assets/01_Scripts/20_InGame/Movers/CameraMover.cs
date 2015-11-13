@@ -6,7 +6,8 @@ public class CameraMover : MonoBehaviour {
   public float aspectWidth = 1920;
   public float aspectHeight = 1080;
 
-  public Transform player;
+  public int playerAheadSpeedBase = 100;
+  public float playerAheadScale = 0.5f;
   public bool slowly = false;
 
   private Vector3 velocity = Vector3.zero;
@@ -68,9 +69,9 @@ public class CameraMover : MonoBehaviour {
   void Update() {
     if (shaking && !paused) {
       if (slowly) {
-        originalPos = Vector3.SmoothDamp(originalPos, new Vector3 (player.position.x, transform.position.y, player.position.z), ref velocity, smoothTime, Mathf.Infinity, Time.smoothDeltaTime);
+        originalPos = Vector3.SmoothDamp(originalPos, playerPos(), ref velocity, smoothTime, Mathf.Infinity, Time.smoothDeltaTime);
       } else {
-        originalPos = new Vector3(player.position.x, transform.position.y, player.position.z);
+        originalPos = playerPos();
       }
 
       transform.position = new Vector3(originalPos.x + Random.insideUnitSphere.x * shakeAmount, originalPos.y, originalPos.z + Random.insideUnitSphere.z * shakeAmount);
@@ -78,10 +79,21 @@ public class CameraMover : MonoBehaviour {
 
       if (!shakeContinuously && shakeCount < 0) stopShake();
     } else if (slowly) {
-      transform.position = Vector3.SmoothDamp(transform.position, new Vector3 (player.position.x, transform.position.y, player.position.z), ref velocity, smoothTime, Mathf.Infinity, Time.smoothDeltaTime);
+      transform.position = Vector3.SmoothDamp(transform.position, playerPos(), ref velocity, smoothTime, Mathf.Infinity, Time.smoothDeltaTime);
     } else {
-      transform.position = new Vector3 (player.position.x, transform.position.y, player.position.z);
+      transform.position = playerPos();
     }
+  }
+
+  Vector3 playerPos() {
+    Vector3 pos;
+    // if (Player.pl.getSpeed() > playerAheadSpeedBase) {
+      // pos = Player.pl.transform.position + Player.pl.getDirection() * (Player.pl.getSpeed() - playerAheadSpeedBase) * playerAheadScale;
+    // } else {
+      pos = Player.pl.transform.position;
+    // }
+
+    return new Vector3(pos.x, transform.position.y, pos.z);
   }
 
   public void setPaused(bool val) {

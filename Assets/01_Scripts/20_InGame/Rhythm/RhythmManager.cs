@@ -117,7 +117,7 @@ public class RhythmManager : MonoBehaviour {
   }
 
   void Update () {
-    if (beating && !Player.pl.uncontrollable() && (beatObserver.beatMask & BeatType.DownBeat) == BeatType.DownBeat) {
+    if (beating && !Player.pl.noRhythmRing() && (beatObserver.beatMask & BeatType.DownBeat) == BeatType.DownBeat) {
       invokeRing();
     }
   }
