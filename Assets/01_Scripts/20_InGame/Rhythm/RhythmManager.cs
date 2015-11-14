@@ -13,10 +13,11 @@ public class RhythmManager : MonoBehaviour {
   public Transform inGameUI;
   public Transform tutorialUI;
   public int ringAmount = 2;
-  public List<GameObject> normalRingPool;
-  public List<GameObject> skillRingPool;
-  public List<GameObject> failedRhythmPool;
+  private List<GameObject> normalRingPool;
+  private List<GameObject> skillRingPool;
+  private List<GameObject> failedRhythmPool;
 
+  public float scaleBase;
   public float maxBoosterOkScale = 4;
   public float maxPopScale;
   public float rightBeatScale = 3;
@@ -24,6 +25,9 @@ public class RhythmManager : MonoBehaviour {
   public float minBoosterOkScale = 2;
   public float ringDisppearDuration = 0.5f;
   public float playerScaleUpAmount = 1.2f;
+  public float minBoosterOkPosX = 0.9f;
+  public float rightBeatPosX;
+  public float maxBoosterOkPosX = 1.1f;
 
   private int numNormalInLoop;
   private int numSkillInLoop;
@@ -44,7 +48,6 @@ public class RhythmManager : MonoBehaviour {
   private int rem;
   private bool feverTime = false;
   private bool skillActivated = false;
-  private bool isAfterRing = false;
   private bool ringSuccess = false;
 
   private BeatObserver beatObserver;
@@ -57,6 +60,8 @@ public class RhythmManager : MonoBehaviour {
   private Image origBoostImage;
   private GameObject fingerImage;
   public int failedBeatCount;
+  public RhythmStar currentStar;
+  public GameObject justSpawned;
 
 	void Awake() {
     rm = this;
@@ -76,12 +81,12 @@ public class RhythmManager : MonoBehaviour {
     for (int i = 0; i < ringAmount; ++i) {
       GameObject obj = (GameObject) Instantiate(normalRing);
       obj.SetActive(false);
-      obj.transform.parent = rhythmRings;
+      obj.transform.SetParent(rhythmRings, false);
       normalRingPool.Add(obj);
 
       obj = (GameObject) Instantiate(skillRing);
       obj.SetActive(false);
-      obj.transform.parent = rhythmRings;
+      obj.transform.SetParent(rhythmRings, false);
       skillRingPool.Add(obj);
 
       obj = (GameObject) Instantiate(failedRhythmPrefab);
@@ -137,13 +142,11 @@ public class RhythmManager : MonoBehaviour {
 
     if (ring == null) {
       ring = (GameObject) Instantiate(prefab);
-      ring.transform.parent = rhythmRings;
+      ring.transform.SetParent(rhythmRings, false);
       list.Add(ring);
     }
 
-    ring.transform.localPosition = Vector3.zero;
-    lastRing = currentRing;
-    currentRing = ring;
+    justSpawned = ring;
     ring.SetActive(true);
   }
 
@@ -181,7 +184,6 @@ public class RhythmManager : MonoBehaviour {
 
       if (rem == 1 && skillActivated) {
         if (SkillManager.sm.current().name != "Shield") {
-          // Debug.Log("stopped");
           skillActivated = false;
           SkillManager.sm.stopSkills();
         }
@@ -204,11 +206,8 @@ public class RhythmManager : MonoBehaviour {
     if (!feverTime) {
       isBoosterOK = boosterRing;
       isSkillOK = skillRing;
+      turnBoostOK(isBoosterOK);
     }
-  }
-
-  public void afterRing(bool val) {
-    isAfterRing = val;
   }
 
   public bool canBoost() {
@@ -221,27 +220,30 @@ public class RhythmManager : MonoBehaviour {
       SkillManager.sm.stopSkills();
       skillActivated = false;
 
-      if (isAfterRing) {
-        lastRing.GetComponent<RhythmRing>().disappear();
-        currentRing.GetComponent<RhythmRing>().skillRing = false;
-        currentRing.GetComponent<SpriteRenderer>().color = normalColor;
-      }
+      justSpawned.GetComponent<RhythmStar>().skillRing = false;
+      justSpawned.GetComponent<SpriteRenderer>().color = normalColor;
     }
+  }
+
+  public void setCurrent(RhythmStar star) {
+    currentStar = star;
   }
 
   public void ringSuccessed() {
     ringSuccess = true;
+
+    isBoosterOK = false;
+    isSkillOK = false;
+
+    currentStar.success();
   }
 
   public void ringMissed() {
     ringSuccess = false;
     rhythmFailed("MISSED");
-    // if (skillActivated) Debug.Log("Failed");
     resetSkillRings();
 
-    if (!isAfterRing) {
-      currentRing.GetComponent<RhythmRing>().disappear();
-    }
+    justSpawned.GetComponent<RhythmStar>().disappear();
   }
 
   public void ringSkipped(bool skillRing) {
@@ -255,7 +257,6 @@ public class RhythmManager : MonoBehaviour {
     rhythmFailed("SKIPPED");
 
     if (skillRing) {
-      // if (skillActivated) Debug.Log("skipped");
       resetSkillRings();
     }
   }

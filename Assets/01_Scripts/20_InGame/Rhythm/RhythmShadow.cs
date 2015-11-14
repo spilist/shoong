@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class RhythmRing : MonoBehaviour {
+public class RhythmShadow : MonoBehaviour {
   public bool skillRing = false;
   private bool originalSkillRing;
   Color originalColor;
@@ -16,36 +16,40 @@ public class RhythmRing : MonoBehaviour {
   float disappearDuration;
   float playerScaleUpAmount;
   bool maxMsgSended = false;
+  bool rightMsgSended = false;
   bool minMsgSended = false;
   bool disappearing = false;
   bool afterMin = false;
   float alpha;
   Color color;
-  private SpriteRenderer sRenderer;
+  private MeshRenderer sRenderer;
 
   void Awake() {
     startScale = transform.localScale.x;
     originalSkillRing = skillRing;
-    sRenderer = GetComponent<SpriteRenderer>();
-    originalColor = sRenderer.color;
+    sRenderer = GetComponent<MeshRenderer>();
+    originalColor = sRenderer.sharedMaterial.color;
 
-    minBoosterOkScale = startScale * RhythmManager.rm.minBoosterOkScale / 10.0f;
-    maxBoosterOkScale = startScale * RhythmManager.rm.maxBoosterOkScale / 10.0f;
-    minPopScale = startScale * RhythmManager.rm.minPopScale / 10.0f;
-    maxPopScale = startScale * RhythmManager.rm.maxPopScale / 10.0f;
-    rightBeatScale = startScale * RhythmManager.rm.rightBeatScale / 10.0f;
+    minBoosterOkScale = startScale * RhythmManager.rm.minBoosterOkScale / RhythmManager.rm.scaleBase;
+    maxBoosterOkScale = startScale * RhythmManager.rm.maxBoosterOkScale / RhythmManager.rm.scaleBase;
+    minPopScale = startScale * RhythmManager.rm.minPopScale / RhythmManager.rm.scaleBase;
+    maxPopScale = startScale * RhythmManager.rm.maxPopScale / RhythmManager.rm.scaleBase;
+    rightBeatScale = startScale * RhythmManager.rm.rightBeatScale / RhythmManager.rm.scaleBase;
     disappearDuration = RhythmManager.rm.ringDisppearDuration;
     playerScaleUpAmount = RhythmManager.rm.playerScaleUpAmount;
   }
 
   void OnEnable() {
-    sRenderer.enabled = true;
+    GetComponent<MeshFilter>().sharedMesh = Player.pl.GetComponent<MeshFilter>().sharedMesh;
+    transform.rotation = Player.pl.transform.rotation;
+    // sRenderer.enabled = true;
     transform.localScale = startScale * Vector3.one;
-    sRenderer.color = originalColor;
+    sRenderer.sharedMaterial.color = originalColor;
     scale = startScale;
     color = originalColor;
     alpha = 1;
     maxMsgSended = false;
+    rightMsgSended = false;
     minMsgSended = false;
     disappearing = false;
     afterMin = false;
@@ -55,10 +59,12 @@ public class RhythmRing : MonoBehaviour {
   }
 
   void Update() {
+    transform.rotation = Player.pl.transform.rotation;
+
     if (disappearing) {
       alpha = Mathf.MoveTowards(alpha, 0, Time.deltaTime / disappearDuration);
       color.a = alpha;
-      sRenderer.color = color;
+      sRenderer.material.color = color;
       if (alpha == 0) {
         disappearing = false;
         gameObject.SetActive(false);
@@ -66,27 +72,30 @@ public class RhythmRing : MonoBehaviour {
     } else {
       scale = Mathf.MoveTowards(scale, 0, Time.deltaTime * (startScale - rightBeatScale) / beat);
       transform.localScale = scale * Vector3.one;
-
       if (!maxMsgSended && scale <= maxBoosterOkScale) {
         maxMsgSended = true;
         RhythmManager.rm.boosterOk(true, skillRing);
+      }
+
+      if (!rightMsgSended && scale <= rightBeatScale) {
+        rightMsgSended = true;
       }
 
       if (!minMsgSended && scale <= minBoosterOkScale) {
         minMsgSended = true;
         RhythmManager.rm.boosterOk(false, false);
         // RhythmManager.rm.afterRing(true);
-      }
-
-      if (sRenderer.enabled && scale <= maxPopScale) {
         sRenderer.enabled = false;
-        Player.pl.scaleChange(true, playerScaleUpAmount);
+        afterMin = true;
       }
 
-      if (!afterMin && scale <= minPopScale) {
-        afterMin = true;
-        Player.pl.scaleChange(false, playerScaleUpAmount);
-      }
+      // if (sRenderer.enabled && scale <= maxPopScale) {
+      //   Player.pl.scaleChange(true, playerScaleUpAmount);
+      // }
+
+      // if (!afterMin && scale <= minPopScale) {
+      //   Player.pl.scaleChange(false, playerScaleUpAmount);
+      // }
 
       if (scale == 0) {
         RhythmManager.rm.ringSkipped(skillRing);

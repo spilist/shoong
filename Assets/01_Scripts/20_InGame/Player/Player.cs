@@ -289,7 +289,6 @@ public class Player : MonoBehaviour {
     if (stopping || uncontrollable()) return;
 
     if (RhythmManager.rm.canBoost()) {
-      RhythmManager.rm.ringSuccessed();
       numBoosters++;
       DataManager.dm.increment("TotalBoosters");
 
@@ -301,9 +300,12 @@ public class Player : MonoBehaviour {
         SkillManager.sm.activate();
         if (SkillManager.sm.isBlink()) {
           teleport(transform.position + direction * dpm.blinkDistance);
+          RhythmManager.rm.ringSuccessed();
           return;
         }
       }
+
+      RhythmManager.rm.ringSuccessed();
     } else {
       RhythmManager.rm.ringMissed();
       return;
@@ -612,13 +614,13 @@ public class Player : MonoBehaviour {
   public void scaleChange(bool val, float amount) {
     if (!scaleChanged && val) {
       scaleChanged = true;
-      transform.localScale *= amount;
-      contactCollider.localScale *= amount;
+      // transform.localScale *= amount;
+      // contactCollider.localScale *= amount;
       RhythmManager.rm.turnBoostOK(true);
     } else if (scaleChanged && !val && !feverTime) {
       scaleChanged = false;
-      transform.localScale /= amount;
-      contactCollider.localScale /= amount;
+      // transform.localScale /= amount;
+      // contactCollider.localScale /= amount;
       RhythmManager.rm.turnBoostOK(false);
     }
   }
