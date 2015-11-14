@@ -94,16 +94,16 @@ public class ScoreUpdate : MonoBehaviour {
         updateStatus++;
       }
     } else if (updateStatus == 3) {
-      move(cubesRecords, elapsedTime);
-    } else if (updateStatus == 4) {
-      move(elapsedTime, CPS);
-    } else if (updateStatus == 5) {
-      move(CPS, phaseBonus);
-    } else if (updateStatus == 6) {
-      move(phaseBonus, collectorBonus);
-    } else if (updateStatus == 7) {
-      move(collectorBonus);
-    } else if (updateStatus == 8) {
+    //   move(cubesRecords, elapsedTime);
+    // } else if (updateStatus == 4) {
+    //   move(elapsedTime, CPS);
+    // } else if (updateStatus == 5) {
+    //   move(CPS, phaseBonus);
+    // } else if (updateStatus == 6) {
+    //   move(phaseBonus, collectorBonus);
+    // } else if (updateStatus == 7) {
+    //   move(collectorBonus);
+    // } else if (updateStatus == 8) {
       ScoreManager.sm.showBanner();
       updateStatus++;
     }

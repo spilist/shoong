@@ -72,6 +72,13 @@ public class SummonPartsManager : ObjectsManager {
     return summonMeshes[Random.Range(0, summonMeshes.Length)];
   }
 
+  override protected void afterSpawn() {
+    Mesh mesh = randomMesh();
+    foreach (Transform tr in instance.transform) {
+      tr.GetComponent<MeshFilter>().sharedMesh = mesh;
+    }
+  }
+
   public void startSummon() {
     int angle = Random.Range(0, 360);
     Vector3 dir = new Vector3(Mathf.Sin(Mathf.Deg2Rad * angle), 0, Mathf.Cos(Mathf.Deg2Rad * angle));

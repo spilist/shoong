@@ -25,6 +25,7 @@ public class RhythmManager : MonoBehaviour {
   public float minBoosterOkScale = 2;
   public float ringDisppearDuration = 0.5f;
   public float playerScaleUpAmount = 1.2f;
+  public float canBeMissedPosX = 0.3f;
   public float minBoosterOkPosX = 0.9f;
   public float rightBeatPosX;
   public float maxBoosterOkPosX = 1.1f;
@@ -48,7 +49,6 @@ public class RhythmManager : MonoBehaviour {
   private int rem;
   private bool feverTime = false;
   private bool skillActivated = false;
-  private bool ringSuccess = false;
 
   private BeatObserver beatObserver;
   private bool beating = false;
@@ -62,6 +62,8 @@ public class RhythmManager : MonoBehaviour {
   public int failedBeatCount;
   public RhythmStar currentStar;
   public GameObject justSpawned;
+  public GameObject feverParticle;
+  private bool canBeMissed;
 
 	void Awake() {
     rm = this;
@@ -120,7 +122,7 @@ public class RhythmManager : MonoBehaviour {
   }
 
   void Update () {
-    if (beating && !Player.pl.noRhythmRing() && (beatObserver.beatMask & BeatType.DownBeat) == BeatType.DownBeat) {
+    if (beating && (beatObserver.beatMask & BeatType.DownBeat) == BeatType.DownBeat) {
       invokeRing();
     }
   }
@@ -225,33 +227,31 @@ public class RhythmManager : MonoBehaviour {
 
   public void setCurrent(RhythmStar star) {
     currentStar = star;
+    setCanBeMissed(true);
   }
 
   public void ringSuccessed() {
-    ringSuccess = true;
-
     isBoosterOK = false;
     isSkillOK = false;
-    turnBoostOK(false);
+
+    if (!feverTime) turnBoostOK(false);
 
     currentStar.success();
   }
 
   public void ringMissed() {
-    ringSuccess = false;
+    if (!canBeMissed) return;
+
+    canBeMissed = false;
     rhythmFailed("MISSED");
     resetSkillRings();
 
-    justSpawned.GetComponent<RhythmStar>().disappear();
+    currentStar.disappear();
+    // justSpawned.GetComponent<RhythmStar>().disappear();
   }
 
   public void ringSkipped(bool skillRing) {
     if (!doingTutorial && !gameStarted) return;
-
-    if (ringSuccess) {
-      ringSuccess = false;
-      return;
-    }
 
     rhythmFailed("SKIPPED");
 
@@ -268,8 +268,10 @@ public class RhythmManager : MonoBehaviour {
   public void setFever(bool val) {
     feverTime = val;
     Player.pl.setFever(val);
+    feverParticle.SetActive(val);
     if (val) {
       isSkillOK = false;
+      turnBoostOK(true);
     }
   }
 
@@ -289,5 +291,9 @@ public class RhythmManager : MonoBehaviour {
     }
 
     if (fingerImage != null) fingerImage.SetActive(val);
+  }
+
+  public void setCanBeMissed(bool val) {
+    canBeMissed = val;
   }
 }

@@ -9,6 +9,7 @@ public class RhythmStar : MonoBehaviour {
   float startPosX;
   float posX;
   float beat;
+  float canBeMissedPosX;
   float minBoosterOkPosX;
   float maxBoosterOkPosX;
   float rightBeatPosX;
@@ -17,6 +18,7 @@ public class RhythmStar : MonoBehaviour {
   bool rightMsgSended = false;
   bool maxMsgSended = false;
   bool minMsgSended = false;
+  bool missMsgSended = false;
   float alpha;
   Color color;
   private SpriteRenderer sRenderer;
@@ -32,9 +34,11 @@ public class RhythmStar : MonoBehaviour {
     particle = GetComponent<ParticleSystem>();
 
     rightBeatPosX = RhythmManager.rm.rightBeatPosX;
+    canBeMissedPosX = rightBeatPosX * RhythmManager.rm.canBeMissedPosX;
     minBoosterOkPosX = rightBeatPosX * RhythmManager.rm.minBoosterOkPosX;
     maxBoosterOkPosX = rightBeatPosX * RhythmManager.rm.maxBoosterOkPosX;
     disappearDuration = RhythmManager.rm.ringDisppearDuration;
+    beat = RhythmManager.rm.samplePeriod;
   }
 
   void OnEnable() {
@@ -48,9 +52,9 @@ public class RhythmStar : MonoBehaviour {
     minMsgSended = false;
     disappearing = false;
     rightMsgSended = false;
+    missMsgSended = false;
 
     skillRing = originalSkillRing;
-    beat = RhythmManager.rm.samplePeriod;
   }
 
   void Update() {
@@ -69,9 +73,14 @@ public class RhythmStar : MonoBehaviour {
       posX = Mathf.MoveTowards(posX, minBoosterOkPosX, timePeriod);
       transform.localPosition = new Vector3(posX, originalPos.y, originalPos.z);
 
+      if (!missMsgSended && posX >= canBeMissedPosX) {
+        missMsgSended = true;
+        RhythmManager.rm.setCurrent(this);
+      }
+
       if (!maxMsgSended && posX >= maxBoosterOkPosX) {
         maxMsgSended = true;
-        RhythmManager.rm.setCurrent(this);
+        RhythmManager.rm.setCanBeMissed(false);
         RhythmManager.rm.boosterOk(true, skillRing);
       }
 

@@ -688,8 +688,8 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: ec71e0a0c0f71104b9d05146deb78dc9, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: .170000002
-  m_Pitch: 1.20000005
+  m_Volume: .100000001
+  m_Pitch: 1.39999998
   Loop: 0
   Mute: 0
   Priority: 128
@@ -757,7 +757,7 @@ ParticleSystemRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 0
   m_Materials:
-  - {fileID: 2100000, guid: e9bf18843575d4c95ae631c75a3e0254, type: 2}
+  - {fileID: 2100000, guid: fc9f9acfaa3f54f31aa1b8faedbeac43, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1

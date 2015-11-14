@@ -120,7 +120,7 @@ public class ObjectsManager : MonoBehaviour {
   }
 
   public void runByTransform(Vector3 pos) {
-    if (instance != null || instance.activeSelf) {
+    if (instance != null && instance.activeSelf) {
       instance.GetComponent<ObjectsMover>().destroyObject(false, false, false);
     }
     instance = getPooledObj(objPool, objPrefab, pos);
@@ -136,6 +136,7 @@ public class ObjectsManager : MonoBehaviour {
   virtual public void adjustForLevel(int level) {}
 
   protected IEnumerator respawnRoutine() {
+    if (ScoreManager.sm.isGameOver()) yield break;
 
     yield return new WaitForSeconds(spawnInterval());
 
@@ -146,6 +147,8 @@ public class ObjectsManager : MonoBehaviour {
   }
 
   virtual public void respawn() {
+    if (ScoreManager.sm.isGameOver()) return;
+
     int count = objAmount - GameObject.FindGameObjectsWithTag(objPrefab.tag).Length;
     if (count > 0) {
       spawnPooledObjs(objPool, objPrefab, count);
@@ -158,6 +161,8 @@ public class ObjectsManager : MonoBehaviour {
   }
 
   virtual protected void spawn() {
+    if (ScoreManager.sm.isGameOver()) return;
+
     instance = getPooledObj(objPool, objPrefab, spawnManager.getSpawnPosition(objPrefab));
     instance.SetActive(true);
   }

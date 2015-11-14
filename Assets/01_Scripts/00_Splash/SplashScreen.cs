@@ -12,6 +12,7 @@ public class SplashScreen : MonoBehaviour {
 		else {
 			if (!loaded) {
 				loaded = true;
+				transform.parent.gameObject.SetActive(false);
 				if (DataManager.dm.getBool("TutorialDone")) {
 				  Application.LoadLevelAsync("2_BeforeMainScene");
 				} else {

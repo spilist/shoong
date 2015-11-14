@@ -126,10 +126,7 @@ public class ScoreManager : MonoBehaviour {
       DataManager.dm.increment("DeathByTimeMonster");
     }
 
-    if (reason == "NoEnergy") {
-      playerExplosion.Play ();
-      playerExplosion.GetComponent<AudioSource>().Play();
-    } else if (reason == "Blackhole") {
+    if (reason == "Blackhole") {
       playerExplosion.GetComponent<AudioSource>().Play();
     } else {
       showCharacterDebris();
