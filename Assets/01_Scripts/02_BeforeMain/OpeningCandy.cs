@@ -3,6 +3,7 @@ using System.Collections;
 
 public class OpeningCandy : MonoBehaviour {
   public OpeningHandler handler;
+  public float stayBeforeStart = 0.5f;
   public float startScale = 0.1f;
   public float stayScale = 1;
   public float smallScale = 0.6f;
@@ -13,6 +14,7 @@ public class OpeningCandy : MonoBehaviour {
 
   private float scale;
   private int status = 0;
+  private float stayCount;
 
   void OnEnable() {
     transform.localScale = startScale * Vector3.one;
@@ -23,12 +25,14 @@ public class OpeningCandy : MonoBehaviour {
   void Update() {
     if (status > 0) {
       if (status == 1) {
-        changeScale(largeScale, largeScale - startScale);
+        if (stayCount < stayBeforeStart) stayCount += Time.deltaTime;
+        else changeScale(largeScale, largeScale - startScale);
       } else if (status == 2) {
         changeScale(smallScale, smallScale - largeScale);
       } else if (status == 3) {
         changeScale(stayScale, stayScale - smallScale);
       } else if (status == 4) {
+        GetComponent<AudioSource>().Play();
         if (next != null) next.SetActive(true);
         else handler.moveDown();
         status++;

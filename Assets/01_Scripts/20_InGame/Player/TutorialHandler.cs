@@ -11,6 +11,7 @@ public class TutorialHandler : MonoBehaviour
   public Collider tutoCollider;
   public GameObject tutoParts;
   private bool tutoLoaded = false;
+  public GameObject opening;
 
   public Transform stickOnTuto;
   public Transform fingerIndicatorOnTuto;
@@ -37,6 +38,8 @@ public class TutorialHandler : MonoBehaviour
   private Transform origFingerIndicator;
   public PlayerDirectionIndicator dirIndicator;
   private bool skipped = false;
+
+  public Transform energyUI_1;
 
   void Awake() {
     origStick = stick;
@@ -100,13 +103,15 @@ public class TutorialHandler : MonoBehaviour
           spawnManager.GetComponent<FollowTarget>().enabled = true;
           stick.gameObject.SetActive(false);
           nextTutorial(1);
-        } else {
+        } else if (tutoStatus == 2) {
           tutoStatus += (2 - tutoStatus);
           tutorialScenes[2].SetActive(false);
           RhythmManager.rm.startBeat(touchTexts[1], onthebeatTexts[1], boostImages[1], fingerImages[1]);
           spawnManager.GetComponent<FollowTarget>().enabled = true;
           Player.pl.stopMoving(false);
           nextTutorial(3);
+        } else {
+          Application.LoadLevel(Application.loadedLevel);
         }
         return;
       }
@@ -114,11 +119,15 @@ public class TutorialHandler : MonoBehaviour
       if (result == "TutorialCollider" && !tutoLoaded) {
         if (tutoStatus == 0) {
           tutoLoaded = true;
-          beforeIdle.moveTitle();
+          // beforeIdle.moveTitle();
+          opening.SetActive(false);
           idleUI.SetActive(false);
           tutorialScenes[0].SetActive(true);
           tutoCollider.enabled = false;
           Player.pl.stopMoving();
+          Player.pl.GetComponent<MeshRenderer>().enabled = true;
+          Player.pl.GetComponent<Rigidbody>().isKinematic = false;
+          Player.pl.rotatePlayerBody();
           tutoStatus++;
           Invoke("enableTutoCollider", 2);
         } else if (tutoStatus == 1) {
@@ -134,6 +143,8 @@ public class TutorialHandler : MonoBehaviour
 
           stickPanelSize = Vector3.Distance(stick.position, stick.transform.Find("End").position);
           stick.gameObject.SetActive(true);
+
+          EnergyManager.em.setEnergyUI(energyUI_1);
         } else if (tutoStatus == 2) {
           tutoLoaded = true;
           tutorialScenes[2].SetActive(false);
@@ -147,9 +158,9 @@ public class TutorialHandler : MonoBehaviour
         }
       }
 
-      // if (result == "StickPanel_movement") {
-      //   Vector3 worldTouchPosition = setPlayerDirection(Player.pl.transform);
-      // }
+      if (result == "StickPanel_movement") {
+        Vector3 worldTouchPosition = setPlayerDirection(Player.pl.transform);
+      }
 
       if (!gameStarted && result == "StickPanel_booster") {
         Player.pl.shootBooster();

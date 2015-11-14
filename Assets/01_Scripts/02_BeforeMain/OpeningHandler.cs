@@ -3,7 +3,9 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class OpeningHandler : MonoBehaviour {
-  public GameObject firstCandy;
+  public GameObject idleUI;
+  public GameObject dreamingText;
+  public GameObject tutorialHandler;
   public float cameraMoveTo = 200;
   public float movingIn = 0.4f;
   public float stayBeforeMove = 1;
@@ -25,7 +27,6 @@ public class OpeningHandler : MonoBehaviour {
 
 	void Start () {
     cameraZ = 0;
-    firstCandy.SetActive(true);
 
     titlePosX = title.GetComponent<RectTransform>().anchoredPosition.x;
     copyrightColor = new Color(1, 1, 1, 0);
@@ -40,8 +41,9 @@ public class OpeningHandler : MonoBehaviour {
     if (movingDown) {
       if (stayCount < stayBeforeMove) stayCount += Time.deltaTime;
       else {
+        dreamingText.SetActive(false);
         cameraZ = Mathf.MoveTowards(cameraZ, cameraMoveTo, Time.deltaTime * cameraMoveTo / movingIn);
-        Camera.main.transform.position = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y, cameraZ);
+        Player.pl.transform.position = new Vector3(Player.pl.transform.position.x, Player.pl.transform.position.y, cameraZ);
         if (cameraZ == cameraMoveTo) {
           movingDown = false;
           titleMoving = true;
@@ -62,7 +64,9 @@ public class OpeningHandler : MonoBehaviour {
 
       if (titlePosX == 0) {
         titleMoving = false;
-        Application.LoadLevelAsync("_Tutorial");
+        idleUI.SetActive(true);
+        tutorialHandler.SetActive(true);
+        gameObject.SetActive(false);
       }
     }
   }

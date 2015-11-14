@@ -31,6 +31,15 @@ public class EnergyManager : MonoBehaviour {
   private Color color_healthy;
   private Color color_danger;
   private string lastReason;
+  private bool noDeath = false;
+
+  public void setEnergyUI(Transform tr) {
+    gauge = tr.Find("EnergyBarGuage").GetComponent<Image>();
+    gaugeShell = tr.Find("EnergyBarShell").gameObject;
+    gaugeIcon = tr.Find("EnergyBarIcon").gameObject;
+    noDeath = true;
+    energySystemOn = true;
+  }
 
   void Awake() {
     em = this;
@@ -40,7 +49,7 @@ public class EnergyManager : MonoBehaviour {
   }
 
   void Update () {
-    if (energySystemOn) {
+    if (energySystemOn && gauge.gameObject.activeInHierarchy) {
       if (gauge.fillAmount > dangerousAt) {
         gauge.color = color_healthy;
         dangerousFilter.SetActive(false);
@@ -58,11 +67,14 @@ public class EnergyManager : MonoBehaviour {
       }
 
       if (gauge.fillAmount == 0) {
-        turnEnergy(false);
-        if (isChangingRest && lastReason != "") {
-          ScoreManager.sm.gameOver(lastReason);
-        } else {
-          ScoreManager.sm.gameOver("NoEnergy");
+        if (noDeath) getFullHealth();
+        else {
+          turnEnergy(false);
+          if (isChangingRest && lastReason != "") {
+            ScoreManager.sm.gameOver(lastReason);
+          } else {
+            ScoreManager.sm.gameOver("NoEnergy");
+          }
         }
       }
     }
@@ -74,7 +86,10 @@ public class EnergyManager : MonoBehaviour {
     gaugeIcon.SetActive(val);
     energySystemOn = val;
 
-    if (val) getFullHealth();
+    if (val) {
+      getFullHealth();
+      noDeath = false;
+    }
   }
 
   public void getFullHealth() {

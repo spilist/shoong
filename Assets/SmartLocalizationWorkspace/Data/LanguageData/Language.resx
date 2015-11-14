@@ -322,4 +322,40 @@ PURCHASES</value>
 	<data name="TouchToStart" xml:space="preserve">
 		<value>Touch to Start</value>
 	</data>
+	<data name="Tutorial_BoostWithBeat" xml:space="preserve">
+		<value>Boost with
+'beat star' button</value>
+	</data>
+	<data name="Tutorial_CandyRestoreEnergy" xml:space="preserve">
+		<value>Candies restore energy.</value>
+	</data>
+	<data name="Tutorial_GetCandies" xml:space="preserve">
+		<value>GET CANDIES</value>
+	</data>
+	<data name="Tutorial_MoveYourToy" xml:space="preserve">
+		<value>Move your toy and get candies
+by touching &amp; sliding the screen.</value>
+	</data>
+	<data name="Tutorial_NowYouReady" xml:space="preserve">
+		<value>Great! Now you're ready.
+Let's start your journey.</value>
+	</data>
+	<data name="Tutorial_SteerWithStick" xml:space="preserve">
+		<value>Steer with
+the stick</value>
+	</data>
+	<data name="Tutorial_TapWhenStarComes" xml:space="preserve">
+		<value>Tap when star comes in</value>
+	</data>
+	<data name="Tutorial_TryToBoost" xml:space="preserve">
+		<value>Good!
+Now try to boost 
+on the beat of music.</value>
+	</data>
+	<data name="Tutorial_UseBooster" xml:space="preserve">
+		<value>USE BOOSTER</value>
+	</data>
+	<data name="Tutorial_ChildDreaming" xml:space="preserve">
+		<value>A CHILD IS DREAMING OF SWEETS...</value>
+	</data>
 </root>

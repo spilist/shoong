@@ -7,9 +7,10 @@ public class SpawnManager : MonoBehaviour {
   public float generateSpaceRadius = 0.9f;
   public float generateOffset = 0.2f;
   public float generateOffsetForAsteroid = 0.6f;
+  public bool isTutorial;
 
   public void Start() {
-    if (DataManager.dm.getBool("TutorialDone")) {
+    if (!isTutorial) {
       GetComponent<NormalPartsManager>().enabled = true;
     }
   }

@@ -3,15 +3,13 @@ using UnityEngine.UI;
 using System.Collections;
 using SmartLocalization;
 
-public class UseBoosterText : MonoBehaviour {
-  public int limit;
-  public TutorialHandler tutoHandler;
+public class DreamingText : MonoBehaviour {
+  public float speed = 0.05f;
   private Text text;
-  private int count = 0;
   private string description;
   private int origFontSize;
 
-  void Start() {
+  void Start () {
     text = GetComponent<Text>();
     origFontSize = text.fontSize;
 
@@ -21,14 +19,17 @@ public class UseBoosterText : MonoBehaviour {
 
     //Run the method one first time
     OnChangeLanguage(languageManager);
+
+    StartCoroutine(AnimateText());
   }
 
-  public void increment() {
-    count++;
-    text.text = description + " " + count + "/" + limit;
-    if (count == limit) {
-      tutoHandler.nextTutorial(3);
+  IEnumerator AnimateText(){
+    // GetComponent<AudioSource>().Play();
+    for (int i = 0; i < description.Length+1; i++) {
+      text.text = description.Substring(0, i);
+      yield return new WaitForSeconds(speed);
     }
+    // GetComponent<AudioSource>().Stop();
   }
 
   void OnDestroy() {
@@ -39,8 +40,7 @@ public class UseBoosterText : MonoBehaviour {
 
   void OnChangeLanguage(LanguageManager languageManager)
   {
-    description = LanguageManager.Instance.GetTextValue("Tutorial_UseBooster");
-    text.text = description + " 0/" + limit;
+    description = LanguageManager.Instance.GetTextValue("Tutorial_ChildDreaming");
     text.font = LangManager.lm.getFont();
     text.fontSize = (int)(origFontSize * LangManager.lm.getFontScale());
   }

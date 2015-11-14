@@ -164,8 +164,7 @@ public class Player : MonoBehaviour {
 
     if (tag == "TutorialPart") {
       other.gameObject.SetActive(false);
-      getEnergy.Play();
-      getEnergy.GetComponent<AudioSource>().Play();
+      EnergyManager.em.getEnergy(10);
       getPartsText.increment();
       return;
     }
@@ -292,7 +291,7 @@ public class Player : MonoBehaviour {
       numBoosters++;
       DataManager.dm.increment("TotalBoosters");
 
-      if (!DataManager.dm.getBool("TutorialDone")) {
+      if (useBoosterText != null) {
         useBoosterText.increment();
       }
 

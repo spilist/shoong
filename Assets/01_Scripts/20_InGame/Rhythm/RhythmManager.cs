@@ -93,8 +93,6 @@ public class RhythmManager : MonoBehaviour {
       obj.SetActive(false);
       failedRhythmPool.Add(obj);
     }
-
-    if (DataManager.dm.getBool("TutorialDone")) beating = true;
   }
 
   public void startBeat(Text touchText, Text ontheBeatText, Image boostImage, GameObject fingerImage) {
@@ -234,6 +232,7 @@ public class RhythmManager : MonoBehaviour {
 
     isBoosterOK = false;
     isSkillOK = false;
+    turnBoostOK(false);
 
     currentStar.success();
   }
