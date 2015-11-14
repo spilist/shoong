@@ -1,72 +1,15 @@
 fileFormatVersion: 2
-guid: 71fa0d8bf10bf47d487a92c56f22c483
-timeCreated: 1447327531
+guid: 776c0d98f62594c009dd7a51b3fef5da
+timeCreated: 1447471606
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
     100000: //RootNode
-    100002: candry7
-    100004: candy1
-    100006: candy10
-    100008: candy11
-    100010: candy12
-    100012: candy2
-    100014: candy3
-    100016: candy4
-    100018: candy5
-    100020: candy6
-    100022: candy8
-    100024: candy9
     400000: //RootNode
-    400002: candry7
-    400004: candy1
-    400006: candy10
-    400008: candy11
-    400010: candy12
-    400012: candy2
-    400014: candy3
-    400016: candy4
-    400018: candy5
-    400020: candy6
-    400022: candy8
-    400024: candy9
-    2300000: candry7
-    2300002: candy1
-    2300004: candy10
-    2300006: candy11
-    2300008: candy12
-    2300010: candy2
-    2300012: candy3
-    2300014: candy4
-    2300016: candy5
-    2300018: candy6
-    2300020: candy8
-    2300022: candy9
-    3300000: candry7
-    3300002: candy1
-    3300004: candy10
-    3300006: candy11
-    3300008: candy12
-    3300010: candy2
-    3300012: candy3
-    3300014: candy4
-    3300016: candy5
-    3300018: candy6
-    3300020: candy8
-    3300022: candy9
-    4300000: candy1
-    4300002: candy8
-    4300004: candy3
-    4300006: candy6
-    4300008: candy5
-    4300010: candy4
-    4300012: candy12
-    4300014: candry7
-    4300016: candy11
-    4300018: candy2
-    4300020: candy9
-    4300022: candy10
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: Matrix
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -91,7 +34,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 2
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
