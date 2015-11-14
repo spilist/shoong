@@ -48,10 +48,15 @@ public class AchievementManager {
   }
 
   public void reportAchievements() {
+    if (NPBinding.GameServices == null) return;
+    // Because LoadAchievements() does not work, just report current progress
+    foreach(AchievementObject ach in achievementsToReport) {
+      ach.report(0);
+    }
+    achievementsToReport.Clear();
+    /*
     // Load achievements from server, to compare with current progress
     // This is for avoiding report negative progress to the server
-    if (NPBinding.GameServices == null) return;
-
     NPBinding.GameServices.LoadAchievements((Achievement[] _achievements, string _error)=>{
       if (_achievements == null)
       {
@@ -72,6 +77,7 @@ public class AchievementManager {
       }
       achievementsToReport.Clear();
     });
+    */
 
   }
 
