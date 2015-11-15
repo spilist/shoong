@@ -54,17 +54,17 @@ public class PhaseManager : MonoBehaviour {
 
 	public void nextPhase() {
     level++;
-    status++;
+    // status++;
     if (level > textPerLevel.Length) {
       level = textPerLevel.Length;
       return;
     }
 
     string levelName = textPerLevel[level - 1];
-    phaseText.text = levelName;
-    pos = phaseIndicator.anchoredPosition;
-    posX = originalPosX;
-    stayCount = 0;
+    // phaseText.text = levelName;
+    // pos = phaseIndicator.anchoredPosition;
+    // posX = originalPosX;
+    // stayCount = 0;
 
     if (levelName == "IceDebris") {
       icm.enabled = true;

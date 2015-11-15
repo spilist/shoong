@@ -32,7 +32,7 @@ public class FreeRewardBannerButton : BannerButton {
 
     int rewardCount = DataManager.dm.getInt("FreeRewardCount") >= nextRewardMinutes.Length ? (nextRewardMinutes.Length - 1) : DataManager.dm.getInt("FreeRewardCount");
 
-    if (DataManager.dm.getBool("NotificationSetting")) {
+    if (!DataManager.dm.getBool("NotificationSetting")) {
       NotificationManager.nm.notifyAfter(nextRewardMinutes[rewardCount]);
     }
 

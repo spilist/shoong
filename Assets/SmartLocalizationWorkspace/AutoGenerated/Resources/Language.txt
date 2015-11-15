@@ -329,6 +329,10 @@ PURCHASES</value>
 	<data name="Tutorial_CandyRestoreEnergy" xml:space="preserve">
 		<value>Candies restore energy.</value>
 	</data>
+	<data name="Tutorial_ChildDreaming" xml:space="preserve">
+		<value>A child is dreaming of sweets...
+Shall we enter the dream?</value>
+	</data>
 	<data name="Tutorial_GetCandies" xml:space="preserve">
 		<value>GET CANDIES</value>
 	</data>
@@ -354,8 +358,5 @@ on the beat of music.</value>
 	</data>
 	<data name="Tutorial_UseBooster" xml:space="preserve">
 		<value>USE BOOSTER</value>
-	</data>
-	<data name="Tutorial_ChildDreaming" xml:space="preserve">
-		<value>A CHILD IS DREAMING OF SWEETS...</value>
 	</data>
 </root>

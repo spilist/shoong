@@ -8,6 +8,9 @@ public class EnergyManager : MonoBehaviour {
   public Image gauge;
   public GameObject gaugeShell;
   public GameObject gaugeIcon;
+  private Image origGauge;
+  private GameObject origGaugeShell;
+  private GameObject origGaugeIcon;
   public float dangerousAt = 0.3f;
   private AudioSource takeDamageSound;
   private float changeTo = 0;
@@ -46,6 +49,10 @@ public class EnergyManager : MonoBehaviour {
     color_healthy = gauge.color;
     color_danger = new Color(1, 0, 0, color_healthy.a);
     takeDamageSound = transform.Find("TakeDamageSound").GetComponent<AudioSource>();
+
+    origGauge = gauge;
+    origGaugeShell = gaugeShell;
+    origGaugeIcon = gaugeIcon;
   }
 
   void Update () {
@@ -81,15 +88,18 @@ public class EnergyManager : MonoBehaviour {
 	}
 
   public void turnEnergy(bool val) {
+    if (val) {
+      getFullHealth();
+      noDeath = false;
+      gauge = origGauge;
+      gaugeShell = origGaugeShell;
+      gaugeIcon = origGaugeIcon;
+    }
+
     gauge.gameObject.SetActive(val);
     gaugeShell.SetActive(val);
     gaugeIcon.SetActive(val);
     energySystemOn = val;
-
-    if (val) {
-      getFullHealth();
-      noDeath = false;
-    }
   }
 
   public void getFullHealth() {

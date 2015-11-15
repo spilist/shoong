@@ -6125,12 +6125,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   handler: {fileID: 593287846}
-  stayBeforeStart: .5
+  stayBeforeStart: .600000024
   startScale: .100000001
   stayScale: 1
   smallScale: .600000024
   largeScale: 1.20000005
-  changeTime: .100000001
+  changeTime: .150000006
   next: {fileID: 0}
 --- !u!23 &256078137
 MeshRenderer:
@@ -6143,7 +6143,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 2d48f7aa5070141e88dc9c5a2b7136b8, type: 2}
+  - {fileID: 2100000, guid: 2e3a8033611e14fbf9a04d42ba5dbe27, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -8631,12 +8631,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   handler: {fileID: 0}
-  stayBeforeStart: .5
+  stayBeforeStart: .600000024
   startScale: .100000001
   stayScale: 1
   smallScale: .600000024
   largeScale: 1.20000005
-  changeTime: .100000001
+  changeTime: .150000006
   next: {fileID: 1559908837}
 --- !u!23 &398927970
 MeshRenderer:
@@ -8649,7 +8649,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 2d48f7aa5070141e88dc9c5a2b7136b8, type: 2}
+  - {fileID: 2100000, guid: 2e3a8033611e14fbf9a04d42ba5dbe27, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -12117,7 +12117,7 @@ MeshRenderer:
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
-  m_ReflectionProbeUsage: 0
+  m_ReflectionProbeUsage: 1
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
@@ -14614,12 +14614,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   handler: {fileID: 0}
-  stayBeforeStart: .5
+  stayBeforeStart: .600000024
   startScale: .100000001
   stayScale: 1
   smallScale: .600000024
   largeScale: 1.20000005
-  changeTime: .100000001
+  changeTime: .150000006
   next: {fileID: 398927967}
 --- !u!23 &716341991
 MeshRenderer:
@@ -14632,7 +14632,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 2d48f7aa5070141e88dc9c5a2b7136b8, type: 2}
+  - {fileID: 2100000, guid: 2e3a8033611e14fbf9a04d42ba5dbe27, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -19138,7 +19138,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 995117313}
-  m_LocalRotation: {x: -.190690368, y: .774532259, z: .539343297, w: -.269899815}
+  m_LocalRotation: {x: -.190690339, y: .774532139, z: .539343238, w: -.269899786}
   m_LocalPosition: {x: -148.834641, y: -491.899872, z: -62.4409447}
   m_LocalScale: {x: 1.6000005, y: 1.599998, z: 1.6000011}
   m_Children: []
@@ -26748,8 +26748,6 @@ GameObject:
   - 224: {fileID: 1374287091}
   - 222: {fileID: 1374287094}
   - 114: {fileID: 1374287093}
-  - 114: {fileID: 1374287092}
-  - 82: {fileID: 1374287095}
   - 114: {fileID: 1374287096}
   m_Layer: 5
   m_Name: Dreaming
@@ -26775,18 +26773,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -236}
   m_SizeDelta: {x: 1000, y: 200}
   m_Pivot: {x: .5, y: .5}
---- !u!114 &1374287092
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1374287090}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8899490e59014c40be4b50d0b95567e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: .100000001
 --- !u!114 &1374287093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26811,83 +26797,16 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: 
+    m_LineSpacing: .899999976
+  m_Text: 'A child is dreaming of sweets...
+
+    Shall we enter the dream?'
 --- !u!222 &1374287094
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1374287090}
---- !u!82 &1374287095
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1374287090}
-  m_Enabled: 0
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 6519473ab214743278e05c6cd99fe1f5, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 1
-  Mute: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
 --- !u!114 &1374287096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36066,12 +35985,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   handler: {fileID: 0}
-  stayBeforeStart: .5
+  stayBeforeStart: .600000024
   startScale: .100000001
   stayScale: 1
   smallScale: .600000024
   largeScale: 1.20000005
-  changeTime: .100000001
+  changeTime: .150000006
   next: {fileID: 256078134}
 --- !u!23 &1559908840
 MeshRenderer:
@@ -36084,7 +36003,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 2d48f7aa5070141e88dc9c5a2b7136b8, type: 2}
+  - {fileID: 2100000, guid: 2e3a8033611e14fbf9a04d42ba5dbe27, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -43012,7 +42931,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1878833774}
-  m_LocalRotation: {x: -.190690309, y: .774532139, z: .539343238, w: -.269899756}
+  m_LocalRotation: {x: -.190690339, y: .774532259, z: .539343297, w: -.269899786}
   m_LocalPosition: {x: -137.134644, y: -449.999878, z: -71.4410858}
   m_LocalScale: {x: 2.50000119, y: 2.4999969, z: 2.50000167}
   m_Children: []
@@ -43041,7 +42960,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1878977605}
-  m_LocalRotation: {x: -.190690309, y: .774532139, z: .539343238, w: -.269899756}
+  m_LocalRotation: {x: -.190690339, y: .774532259, z: .539343297, w: -.269899786}
   m_LocalPosition: {x: -151.034637, y: -430.999878, z: -92.541153}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -49489,6 +49408,7 @@ MonoBehaviour:
   minBoosterOkScale: 1
   ringDisppearDuration: .5
   playerScaleUpAmount: 1.39999998
+  canBeMissedPosX: .300000012
   minBoosterOkPosX: 1.5
   rightBeatPosX: 90.6999969
   maxBoosterOkPosX: .5
@@ -49505,6 +49425,7 @@ MonoBehaviour:
   failedBeatCount: 0
   currentStar: {fileID: 0}
   justSpawned: {fileID: 0}
+  feverParticle: {fileID: 0}
 --- !u!1 &1993354414
 GameObject:
   m_ObjectHideFlags: 0

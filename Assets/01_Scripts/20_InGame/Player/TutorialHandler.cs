@@ -158,9 +158,9 @@ public class TutorialHandler : MonoBehaviour
         }
       }
 
-      if (result == "StickPanel_movement") {
-        Vector3 worldTouchPosition = setPlayerDirection(Player.pl.transform);
-      }
+      // if (result == "StickPanel_movement") {
+      //   Vector3 worldTouchPosition = setPlayerDirection(Player.pl.transform);
+      // }
 
       if (!gameStarted && result == "StickPanel_booster") {
         Player.pl.shootBooster();

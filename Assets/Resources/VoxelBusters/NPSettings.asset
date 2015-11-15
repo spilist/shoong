@@ -183,8 +183,10 @@ MonoBehaviour:
     m_android:
       m_senderIDs: []
       m_allowVibration: 1
-      m_whiteSmallIcon: {fileID: 0}
-      m_colouredSmallIcon: {fileID: 0}
+      m_whiteSmallIcon: {fileID: 2800000, guid: 1e33973007f8e4fa594bf357ee8710f2,
+        type: 3}
+      m_colouredSmallIcon: {fileID: 2800000, guid: c84bd61ebb3954837a16f4ee2a4e1919,
+        type: 3}
       m_tickerTextKey: SmashToys_ticker_text
       m_contentTextKey: SmashToys_content_text
       m_contentTitleKey: SmashToys_content_title

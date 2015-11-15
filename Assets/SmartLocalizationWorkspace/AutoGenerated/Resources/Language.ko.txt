@@ -328,7 +328,8 @@
 		<value>사탕은 에너지를 회복시킵니다</value>
 	</data>
 	<data name="Tutorial_ChildDreaming" xml:space="preserve">
-		<value>어린아이가 과자 꿈을 꾸고 있어요...</value>
+		<value>어린아이가 과자 꿈을 꾸고 있어요...
+꿈 속으로 들어가 볼까요?</value>
 	</data>
 	<data name="Tutorial_GetCandies" xml:space="preserve">
 		<value>사탕 획득</value>

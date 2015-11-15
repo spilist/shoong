@@ -19,7 +19,6 @@ public class RhythmShadow : MonoBehaviour {
   bool rightMsgSended = false;
   bool minMsgSended = false;
   bool disappearing = false;
-  bool afterMin = false;
   float alpha;
   Color color;
   private MeshRenderer sRenderer;
@@ -32,11 +31,11 @@ public class RhythmShadow : MonoBehaviour {
 
     minBoosterOkScale = startScale * RhythmManager.rm.minBoosterOkScale / RhythmManager.rm.scaleBase;
     maxBoosterOkScale = startScale * RhythmManager.rm.maxBoosterOkScale / RhythmManager.rm.scaleBase;
-    minPopScale = startScale * RhythmManager.rm.minPopScale / RhythmManager.rm.scaleBase;
-    maxPopScale = startScale * RhythmManager.rm.maxPopScale / RhythmManager.rm.scaleBase;
+    // minPopScale = startScale * RhythmManager.rm.minPopScale / RhythmManager.rm.scaleBase;
+    // maxPopScale = startScale * RhythmManager.rm.maxPopScale / RhythmManager.rm.scaleBase;
     rightBeatScale = startScale * RhythmManager.rm.rightBeatScale / RhythmManager.rm.scaleBase;
     disappearDuration = RhythmManager.rm.ringDisppearDuration;
-    playerScaleUpAmount = RhythmManager.rm.playerScaleUpAmount;
+    // playerScaleUpAmount = RhythmManager.rm.playerScaleUpAmount;
   }
 
   void OnEnable() {
@@ -52,7 +51,6 @@ public class RhythmShadow : MonoBehaviour {
     rightMsgSended = false;
     minMsgSended = false;
     disappearing = false;
-    afterMin = false;
     skillRing = originalSkillRing;
 
     beat = RhythmManager.rm.samplePeriod;
@@ -86,7 +84,6 @@ public class RhythmShadow : MonoBehaviour {
         RhythmManager.rm.boosterOk(false, false);
         // RhythmManager.rm.afterRing(true);
         sRenderer.enabled = false;
-        afterMin = true;
       }
 
       // if (sRenderer.enabled && scale <= maxPopScale) {
