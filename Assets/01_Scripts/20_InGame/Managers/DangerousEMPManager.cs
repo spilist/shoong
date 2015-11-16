@@ -41,7 +41,12 @@ public class DangerousEMPManager : ObjectsManager {
     if (count > 0) {
       GameObject obj = getPooledObj(objPool, objPrefab, spawnManager.getSpawnPosition(objPrefab));
       obj.SetActive(true);
-      if (larger) obj.transform.localScale = enlargeScale * Vector3.one;
+      if (larger) {
+        obj.transform.localScale = enlargeScale * Vector3.one;
+        obj.transform.Find("DangerousArea").localScale = (empScale / enlargeScale) * Vector3.one;
+      } else {
+        obj.transform.Find("DangerousArea").localScale = empScale * Vector3.one;
+      }
     }
   }
 

@@ -80,12 +80,12 @@ public class RhythmRing : MonoBehaviour {
 
       if (sRenderer.enabled && scale <= maxPopScale) {
         sRenderer.enabled = false;
-        Player.pl.scaleChange(true, playerScaleUpAmount);
+        // Player.pl.scaleChange(true, playerScaleUpAmount);
       }
 
       if (!afterMin && scale <= minPopScale) {
         afterMin = true;
-        Player.pl.scaleChange(false, playerScaleUpAmount);
+        // Player.pl.scaleChange(false, playerScaleUpAmount);
       }
 
       if (scale == 0) {

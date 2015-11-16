@@ -74,8 +74,6 @@ public class Player : MonoBehaviour {
   private int numUseObjects = 0;
   public PlayerDirectionIndicator dirIndicator;
   private float timeSpaned;
-  private bool scaleChanged = false;
-  private bool feverTime = false;
   public ParticleSystem getEnergy;
   public GetPartsText getPartsText;
   public UseBoosterText useBoosterText;
@@ -179,7 +177,7 @@ public class Player : MonoBehaviour {
     }
 
     if (tag == "IceDebris" || tag == "PhaseMonster") {
-      mover.destroyObject();
+      goodPartsEncounter(mover, mover.cubesWhenEncounter(), false);
       return;
     }
 
@@ -587,7 +585,7 @@ public class Player : MonoBehaviour {
   }
 
   public bool isInvincible() {
-    return afterStrengthen || ridingMonster || unstoppable || isRebounding() || isUsingRainbow() || changeManager.isTeleporting();
+    return afterStrengthen || ridingMonster || unstoppable || isRebounding() || isUsingRainbow() || changeManager.isTeleporting() || usingEMP;
   }
 
   public bool canBeMagnetized() {
@@ -602,26 +600,7 @@ public class Player : MonoBehaviour {
     reboundScale = CharacterManager.cm.reboundTimeScaleStandard;
   }
 
-  // public void startBeat() {
-  //   GetComponent<Animation>().Play();
-  // }
-
   public void setFever(bool val) {
-    feverTime = val;
-  }
-
-  public void scaleChange(bool val, float amount) {
-    if (!scaleChanged && val) {
-      scaleChanged = true;
-      // transform.localScale *= amount;
-      // contactCollider.localScale *= amount;
-      RhythmManager.rm.turnBoostOK(true);
-    } else if (scaleChanged && !val && !feverTime) {
-      scaleChanged = false;
-      // transform.localScale /= amount;
-      // contactCollider.localScale /= amount;
-      RhythmManager.rm.turnBoostOK(false);
-    }
   }
 
   public void setSpeedBoost(float speedUp, float duration) {
@@ -632,7 +611,11 @@ public class Player : MonoBehaviour {
     speedBoostCount = 0;
   }
 
-  public void scaleBackByMonster() {
-    transform.localScale -= (monm.enlargeScalePerMinimon * minimonCounter) * Vector3.one;
+  public void scaleUp(float amount) {
+    transform.localScale = originalScale * amount * Vector3.one;
+  }
+
+  public void scaleBack() {
+    transform.localScale = originalScale * Vector3.one;
   }
 }

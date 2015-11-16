@@ -122,6 +122,8 @@ public class CharacterChangeManager : MonoBehaviour {
   public void changeCharacterToOriginal() {
     teleportingStatus = 0;
     changeCharacter(originalMesh, originalMaterial);
+    Player.pl.scaleBack();
+
     StopCoroutine("characterBlinking");
   }
 

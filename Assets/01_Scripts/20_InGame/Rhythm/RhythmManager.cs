@@ -62,7 +62,7 @@ public class RhythmManager : MonoBehaviour {
   public int failedBeatCount;
   public RhythmStar currentStar;
   public GameObject justSpawned;
-  public GameObject feverParticle;
+  public GameObject feverPanel;
   private bool canBeMissed;
 
 	void Awake() {
@@ -182,7 +182,7 @@ public class RhythmManager : MonoBehaviour {
     } else if (!feverTime) {
       rem = ringCount % (numNormalInLoop + numSkillInLoop);
 
-      if (rem == 1 && skillActivated) {
+      if (rem == 1 && skillActivated && numSkillInLoop > 1) {
         if (SkillManager.sm.current().name != "Shield") {
           skillActivated = false;
           SkillManager.sm.stopSkills();
@@ -269,11 +269,14 @@ public class RhythmManager : MonoBehaviour {
   public void setFever(bool val) {
     feverTime = val;
     Player.pl.setFever(val);
-    feverParticle.SetActive(val);
+    feverPanel.SetActive(val);
+
     if (val) {
       isSkillOK = false;
-      turnBoostOK(true);
+      turnBoostOK(false);
     }
+
+    boostImage.gameObject.SetActive(!val);
   }
 
   public void loopSkillActivated(bool val) {

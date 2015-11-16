@@ -128,16 +128,6 @@ public class EnergyManager : MonoBehaviour {
     gaugeShell.GetComponent<RectTransform>().sizeDelta = new Vector2(changedWidth, height);
   }
 
-  void change() {
-    energy = Mathf.MoveTowards(energy, maxEnergy * changeTo, changeRate * maxEnergy);
-    gauge.fillAmount = energy / maxEnergy;
-
-    if (gauge.fillAmount == changeTo) {
-      isChanging = false;
-      isChangingRest = true;
-    }
-  }
-
   void changeHealth (float amount, float rate) {
     if (!energySystemOn) return;
 
@@ -152,10 +142,24 @@ public class EnergyManager : MonoBehaviour {
     changeRate = Time.deltaTime * rate;
   }
 
+  void change() {
+    energy = Mathf.MoveTowards(energy, maxEnergy * changeTo, changeRate * maxEnergy);
+    gauge.fillAmount = energy / maxEnergy;
+
+    float comparison = energy - maxEnergy * changeTo;
+    if (Mathf.Round(comparison * 100f) / 100f == 0) {
+      isChanging = false;
+      if (restAmount != 0) {
+        isChangingRest = true;
+      }
+    }
+  }
+
   void changeRest() {
     if (restAmount != 0 && gauge.fillAmount != 1) {
       energy = Mathf.MoveTowards(energy, energy + restAmount * maxEnergy, restRate * maxEnergy);
       restAmount = Mathf.MoveTowards(restAmount, 0, restRate);
+      gauge.fillAmount = energy / maxEnergy;
     } else {
       restAmount = 0;
       isChangingRest = false;

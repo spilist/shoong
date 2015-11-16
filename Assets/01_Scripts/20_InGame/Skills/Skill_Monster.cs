@@ -19,7 +19,6 @@ public class Skill_Monster : Skill {
       cm.changeCharacterTo("Monster");
     } else {
       cm.changeCharacterToOriginal();
-      Player.pl.scaleBackByMonster();
       Player.pl.afterStrengthenStart();
       foreach (GameObject mm in GameObject.FindGameObjectsWithTag("MiniMonster")) {
         mm.GetComponent<MiniMonsterMover>().destroyObject(true, true);

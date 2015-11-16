@@ -49,6 +49,8 @@ public class FallingstarWarningLine : MonoBehaviour {
     isDrawing = true;
 
     outer.enabled = true;
+    drawingDistance = 0;
+    erasingDistance = 0;
   }
 
   public void erase() {

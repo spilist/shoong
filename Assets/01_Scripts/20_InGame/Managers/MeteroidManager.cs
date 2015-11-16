@@ -71,8 +71,8 @@ public class MeteroidManager : ObjectsManager {
       destination = spawnPos + obstacleDirection * lineDistance;
 
       GameObject warningLine = getWarningLine();
-      warningLine.SetActive(true);
       warningLine.GetComponent<FallingstarWarningLine>().run(spawnPos - 100 * obstacleDirection, destination, lineDistance + 100, warnPlayerDuring);
+      warningLine.SetActive(true);
 
       getPooledObj(soundWarningPool, fallingStarSoundWarningPrefab).SetActive(true);
 

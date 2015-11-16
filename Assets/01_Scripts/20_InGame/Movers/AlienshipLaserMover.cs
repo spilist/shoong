@@ -62,16 +62,16 @@ public class AlienshipLaserMover : MonoBehaviour {
 	}
 
   void OnTriggerEnter(Collider other) {
-    if (other.tag == "Player") {
+    if (other.tag == "Player" && !Player.pl.isInvincible()) {
       Player.pl.loseEnergy(loseEnergy, "Alienship");
       return;
     }
 
-    if (other.tag == "Alienship") return;
-
     ObjectsMover mover = other.GetComponent<ObjectsMover>();
 
-    if (mover != null) mover.destroyObject();
+    if (other.tag == "Alienship" || mover == null) return;
+
+    mover.destroyObject();
   }
 }
 
