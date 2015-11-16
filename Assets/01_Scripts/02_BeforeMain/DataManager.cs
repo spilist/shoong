@@ -121,7 +121,7 @@ public class DataManager : MonoBehaviour {
     // strings["ControlMethod"] = "Touch";
     strings["ControlMethod"] = "Stick";
     bools["robotcogi"] = true;
-    bools["TutorialDone"] = false;
+    bools["TutorialDone"] = true;
 
     // By the implementation of OnOffButton, 'true' actually means 'not logged in'
     bools["GoogleLoggedInSetting"] = true;

@@ -14324,6 +14324,7 @@ MonoBehaviour:
   skillRing: 1
   description: Smash everything
   duration: 1
+  scaleUpAmount: .200000003
 --- !u!1001 &709640147
 Prefab:
   m_ObjectHideFlags: 0
@@ -19138,7 +19139,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 995117313}
-  m_LocalRotation: {x: -.190690339, y: .774532139, z: .539343238, w: -.269899786}
+  m_LocalRotation: {x: -.190690368, y: .774532259, z: .539343297, w: -.269899815}
   m_LocalPosition: {x: -148.834641, y: -491.899872, z: -62.4409447}
   m_LocalScale: {x: 1.6000005, y: 1.599998, z: 1.6000011}
   m_Children: []
@@ -42931,7 +42932,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1878833774}
-  m_LocalRotation: {x: -.190690339, y: .774532259, z: .539343297, w: -.269899786}
+  m_LocalRotation: {x: -.190690309, y: .774532139, z: .539343238, w: -.269899756}
   m_LocalPosition: {x: -137.134644, y: -449.999878, z: -71.4410858}
   m_LocalScale: {x: 2.50000119, y: 2.4999969, z: 2.50000167}
   m_Children: []
@@ -42960,7 +42961,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1878977605}
-  m_LocalRotation: {x: -.190690339, y: .774532259, z: .539343297, w: -.269899786}
+  m_LocalRotation: {x: -.190690309, y: .774532139, z: .539343238, w: -.269899756}
   m_LocalPosition: {x: -151.034637, y: -430.999878, z: -92.541153}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -47698,9 +47699,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 224: {fileID: 1970358420}
-  - 223: {fileID: 1970358425}
-  - 114: {fileID: 1970358424}
-  - 114: {fileID: 1970358423}
   m_Layer: 5
   m_Name: Opening
   m_TagString: Untagged
@@ -47729,60 +47727,6 @@ RectTransform:
   m_AnchoredPosition: {x: 600, y: 337.759338}
   m_SizeDelta: {x: 1200, y: 675.518677}
   m_Pivot: {x: .5, y: .5}
---- !u!114 &1970358423
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1970358419}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1301386320, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 0
-  m_BlockingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
---- !u!114 &1970358424
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1970358419}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1980459831, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_UiScaleMode: 1
-  m_ReferencePixelsPerUnit: 100
-  m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 1200, y: 675}
-  m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
-  m_PhysicalUnit: 3
-  m_FallbackScreenDPI: 96
-  m_DefaultSpriteDPI: 96
-  m_DynamicPixelsPerUnit: 1
---- !u!223 &1970358425
-Canvas:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1970358419}
-  m_Enabled: 1
-  serializedVersion: 2
-  m_RenderMode: 1
-  m_Camera: {fileID: 192454349}
-  m_PlaneDistance: 25
-  m_PixelPerfect: 1
-  m_ReceivesEvents: 1
-  m_OverrideSorting: 0
-  m_OverridePixelPerfect: 0
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
 --- !u!1 &1973202187
 GameObject:
   m_ObjectHideFlags: 0
@@ -48350,7 +48294,6 @@ MonoBehaviour:
   chanceBase: 100
   goldenRainbowMat: {fileID: 2100000, guid: bebff4c88f0cd4369b19c2281be089f8, type: 2}
   goldenChance: 8
-  goldCubesGet: 1
   isGolden: 0
   blackholeGravityMask:
     serializedVersion: 2
@@ -48420,7 +48363,6 @@ MonoBehaviour:
   emptyDurationStart: .150000006
   emptyDurationDecrease: .0500000007
   chanceBase: 100
-  goldCubesGet: 1
   goldenCubeChance: 4
   objPrefab_next: {fileID: 192146, guid: d357428246b5f4e5fb2b54651d371984, type: 2}
   objNextPool: []
@@ -49425,7 +49367,7 @@ MonoBehaviour:
   failedBeatCount: 0
   currentStar: {fileID: 0}
   justSpawned: {fileID: 0}
-  feverParticle: {fileID: 0}
+  feverPanel: {fileID: 0}
 --- !u!1 &1993354414
 GameObject:
   m_ObjectHideFlags: 0

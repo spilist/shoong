@@ -6,10 +6,10 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: candies
-  m_Shader: {fileID: 4800000, guid: 7bf83126e592a4f57aa361c91b298c2b, type: 3}
+  m_Name: coins_ingame
+  m_Shader: {fileID: 6, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
-  m_LightmapFlags: 1
+  m_LightmapFlags: 5
   m_CustomRenderQueue: -1
   stringTagMap: {}
   m_SavedProperties:
@@ -19,7 +19,7 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: 84d11db7140b64e8d86c88b422f77c27, type: 3}
+          m_Texture: {fileID: 2800000, guid: 343f4990d928043c398a8aec5be891a2, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -78,13 +78,6 @@ Material:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _Illum
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
     m_Floats:
       data:
         first:
@@ -98,6 +91,10 @@ Material:
         first:
           name: _Cutoff
         second: .5
+      data:
+        first:
+          name: _Shininess
+        second: .699999988
       data:
         first:
           name: _Parallax
@@ -134,10 +131,6 @@ Material:
         first:
           name: _Metallic
         second: 0
-      data:
-        first:
-          name: _Outline
-        second: .850000024
     m_Colors:
       data:
         first:
@@ -149,5 +142,9 @@ Material:
         second: {r: 1, g: 1, b: 1, a: 1}
       data:
         first:
-          name: _OutlineColor
-        second: {r: 0, g: 1, b: .819607854, a: 1}
+          name: _SpecColor
+        second: {r: .602941155, g: .602941155, b: .602941155, a: 1}
+      data:
+        first:
+          name: _Emission
+        second: {r: .147058845, g: .147058845, b: .147058845, a: 0}

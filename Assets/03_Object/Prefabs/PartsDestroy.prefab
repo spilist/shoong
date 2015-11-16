@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &428390
 Transform:
   m_ObjectHideFlags: 1
@@ -208,10 +208,10 @@ ParticleSystem:
         m_NumAlphaKeys: 2
       minColor:
         serializedVersion: 2
-        rgba: 4287552828
+        rgba: 4282179035
       maxColor:
         serializedVersion: 2
-        rgba: 4293092023
+        rgba: 4284644067
       minMaxState: 2
     startSize:
       scalar: 4
@@ -1090,7 +1090,7 @@ ParticleSystemRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_Materials:
-  - {fileID: 2100000, guid: a1e35e6e2619f434ca83ebf449e9cb04, type: 2}
+  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -1182,7 +1182,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: a1e35e6e2619f434ca83ebf449e9cb04, type: 2}
+      objectReference: {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
     - target: {fileID: 0}
       propertyPath: InitialModule.startColor.minMaxState
       value: 2
