@@ -72,7 +72,8 @@ public class AchievementObject {
   }
 
   public bool progress (int val) {
-    AchievementManager.achievementsToReport.Add(this);
+    if (this.currValInt != val)
+      AchievementManager.achievementsToReport.Add(this);
     this.currValInt = val;
     if (this.goalValInt <= val)
       return true;
@@ -80,31 +81,35 @@ public class AchievementObject {
       return false;
   }
   public bool progress (float val) {
-    AchievementManager.achievementsToReport.Add(this);
+    if (this.currValFloat != val)
+      AchievementManager.achievementsToReport.Add(this);
     this.currValFloat = val;
     if (this.goalValFloat <= val)
       return true;
     else
       return false;
   }
-  public bool progress (bool val) {    
-    AchievementManager.achievementsToReport.Add(this);
+  public bool progress (bool val) {  
+    if (this.currValBool != val)  
+      AchievementManager.achievementsToReport.Add(this);
     this.currValBool = val; // not necessary
     if (this.goalValBool == val)
       return true;
     else
       return false;
   }
-  public bool progress (string val) {   
-    AchievementManager.achievementsToReport.Add(this);
+  public bool progress (string val) { 
+    if (this.currValString != val)     
+      AchievementManager.achievementsToReport.Add(this);
     this.currValString = val; // not necessary
     if (this.goalValString == val)
       return true;
     else
       return false;
   }
-  public bool progress (DateTime val) {   
-    AchievementManager.achievementsToReport.Add(this);
+  public bool progress (DateTime val) { 
+    if (this.currValDateTime != val)   
+      AchievementManager.achievementsToReport.Add(this);
     this.currValDateTime = val;
     if (DateTime.Compare(this.goalValDateTime, val) <= 0)
       return true;

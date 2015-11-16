@@ -28,6 +28,7 @@ public class NPBManager : MonoBehaviour {
           Debug.Log("Sign-In Successfully");
           Debug.Log("Local User Details : " + NPBinding.GameServices.LocalUser.ToString());
           DataManager.dm.setBool("GoogleLoggedInSetting", false);
+          am.reportAllAchievements();
         } else {
           Debug.Log("Sign-In Failed: " + _error.GetPrintableString());
           DataManager.dm.setBool("GoogleLoggedInSetting", true);
