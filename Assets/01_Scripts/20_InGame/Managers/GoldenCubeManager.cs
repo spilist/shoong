@@ -7,7 +7,7 @@ public class GoldenCubeManager : ObjectsManager {
   public float detectDistance = 200;
 
   override public void initRest() {
-    run();
+    respawn();
   }
 
   override protected void spawn() {

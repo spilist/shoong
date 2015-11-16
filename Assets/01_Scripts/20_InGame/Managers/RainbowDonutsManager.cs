@@ -6,7 +6,6 @@ public class RainbowDonutsManager : ObjectsManager {
   public int chanceBase = 200;
   public Material goldenRainbowMat;
   public int goldenChance = 1;
-  public int goldCubesGet = 1;
   public bool isGolden = false;
 
   public LayerMask blackholeGravityMask;
@@ -36,6 +35,7 @@ public class RainbowDonutsManager : ObjectsManager {
   private float drawingDistance;
 
   private NormalPartsManager npm;
+  private GoldenCubeManager gcm;
   private Mesh[] cookieMeshes;
   private float cookieDistance;
 
@@ -50,6 +50,7 @@ public class RainbowDonutsManager : ObjectsManager {
     }
 
     npm = GetComponent<NormalPartsManager>();
+    gcm = GetComponent<GoldenCubeManager>();
     cookieMeshes = new Mesh[npm.meshes.childCount];
     int count = 0;
     foreach (Transform tr in npm.meshes) {
@@ -126,10 +127,6 @@ public class RainbowDonutsManager : ObjectsManager {
 
     drawingRainbowRoad = true;
 
-    if (isGolden) {
-      GoldManager.gm.add(origin, goldCubesGet, false);
-    }
-
     yield return new WaitForSeconds(rotateDuring);
 
     player.setRotateByRainbow(false);
@@ -154,7 +151,11 @@ public class RainbowDonutsManager : ObjectsManager {
       cookieDistance = Mathf.MoveTowards(cookieDistance, (float)nextDonutRadius / (cookiesPerRoad + 1), Time.deltaTime * ridingSpeed);
       if (cookieDistance >= (float)nextDonutRadius / (cookiesPerRoad + 1)) {
         cookieDistance = 0;
-        npm.spawnNormal(nextPos);
+        if (isGolden) {
+          gcm.spawnGoldenCube(nextPos);
+        } else {
+          npm.spawnNormal(nextPos);
+        }
       }
 
       if (drawingDistance == nextDonutRadius) {

@@ -22,7 +22,7 @@ public class Skill_Monster : Skill {
       Player.pl.scaleBackByMonster();
       Player.pl.afterStrengthenStart();
       foreach (GameObject mm in GameObject.FindGameObjectsWithTag("MiniMonster")) {
-        mm.GetComponent<MiniMonsterMover>().destroyObject();
+        mm.GetComponent<MiniMonsterMover>().destroyObject(true, true);
       }
     }
   }

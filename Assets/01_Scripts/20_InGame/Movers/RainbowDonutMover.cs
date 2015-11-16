@@ -26,7 +26,7 @@ public class RainbowDonutMover : ObjectsMover {
   override protected void afterDestroy(bool byPlayer) {
     if (byPlayer) {
       if (rdm.isGolden) {
-        GoldManager.gm.add(transform.position, rdm.goldCubesGet * rdm.numRoadRides, false);
+        GoldManager.gm.add(transform.position, rdm.cookiesPerRoad * rdm.numRoadRides, false);
       }
     }
   }

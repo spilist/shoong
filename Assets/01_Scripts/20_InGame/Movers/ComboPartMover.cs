@@ -2,7 +2,6 @@
 using System.Collections;
 
 public class ComboPartMover : ObjectsMover {
-  bool isGoldenCube = false;
   bool willBeDestroyed = false;
   ComboPartsManager cpm;
   Renderer mRenderer;
@@ -23,22 +22,6 @@ public class ComboPartMover : ObjectsMover {
     if (willBeDestroyed) StartCoroutine("destroyAfter");
   }
 
-  public void setGolden() {
-    isGoldenCube = true;
-
-    mRenderer.sharedMaterial = GoldManager.gm.goldenMat;
-    transform.Find("BasicEffect").gameObject.SetActive(false);
-    transform.Find("GoldenEffect").gameObject.SetActive(true);
-  }
-
-  public void setNormal() {
-    isGoldenCube = false;
-
-    mRenderer.sharedMaterial = cpm.objPrefab.GetComponent<Renderer>().sharedMaterial;
-    transform.Find("BasicEffect").gameObject.SetActive(true);
-    transform.Find("GoldenEffect").gameObject.SetActive(false);
-  }
-
   public void setDestroyAfter() {
     willBeDestroyed = true;
   }
@@ -50,23 +33,6 @@ public class ComboPartMover : ObjectsMover {
   override protected void afterDestroy(bool byPlayer) {
     willBeDestroyed = false;
     if (cpm.nextInstance != null) cpm.nextInstance.SetActive(false);
-  }
-
-  override public void showDestroyEffect(bool byPlayer) {
-    if (isGoldenCube) {
-      GoldManager.gm.gcm.goldenDestroyEffect(transform.position);
-      if (byPlayer) GoldManager.gm.add(transform.position, cpm.goldCubesGet);
-    } else {
-      base.showDestroyEffect(byPlayer);
-    }
-  }
-
-  override public void showEncounterEffect() {
-    if (isGoldenCube) {
-      GoldManager.gm.add(transform.position, cpm.goldCubesGet);
-    } else {
-      base.showEncounterEffect();
-    }
   }
 
   override protected bool beforeEncounter() {

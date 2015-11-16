@@ -247,6 +247,7 @@ public class RhythmManager : MonoBehaviour {
     resetSkillRings();
 
     currentStar.disappear();
+
     // justSpawned.GetComponent<RhythmStar>().disappear();
   }
 

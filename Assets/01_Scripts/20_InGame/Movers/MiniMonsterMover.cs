@@ -70,6 +70,10 @@ public class MiniMonsterMover : ObjectsMover {
       monm.destroyMinimon(transform.position);
     }
 
+    if (byPlayer) {
+      CubeManager.cm.addPoints(cubesWhenEncounter(), transform.position);
+    }
+
     gameObject.SetActive(false);
   }
 

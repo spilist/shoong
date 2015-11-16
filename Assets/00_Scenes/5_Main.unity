@@ -101830,8 +101830,8 @@ MonoBehaviour:
     m_Bits: 8912896
   rainbowRoadPrefab: {fileID: 173076, guid: af846d2fda9ca46229d31f23fc80dd18, type: 2}
   roadPool: []
-  cookiesPerRoad: 6
-  numRoadRidesPerLevel: 020000000300000005000000
+  cookiesPerRoad: 4
+  numRoadRidesPerLevel: 020000000300000004000000
   speedPerRide: 84030000b6030000e80300001a0400004c0400007e040000
   numRoadRides: 0
   nextDonutRadius: 300
@@ -101875,7 +101875,7 @@ MonoBehaviour:
   minSpawnInterval: 8
   maxSpawnInterval: 12
   cubesByEncounter: 5
-  energyGets: 10
+  energyGets: 8
   isNegative: 0
   hasEncounterEffect: 0
   destroyWhenCollideSelf: 0
@@ -101894,10 +101894,10 @@ MonoBehaviour:
   emptyDurationDecrease: .0500000007
   chanceBase: 100
   goldCubesGet: 1
-  goldenCubeChance: 4
+  goldenCubeChance: 30
   objPrefab_next: {fileID: 192146, guid: d357428246b5f4e5fb2b54651d371984, type: 2}
   objNextPool: []
-  fullComboCountPerLevel: 020000000300000005000000
+  fullComboCountPerLevel: 030000000400000005000000
   radius: 50
   pitchStart: .400000006
   pitchIncrease: .0500000007
@@ -102027,7 +102027,7 @@ MonoBehaviour:
   minSpawnInterval: 20
   maxSpawnInterval: 60
   cubesByEncounter: 50
-  energyGets: 0
+  energyGets: 5
   isNegative: 1
   hasEncounterEffect: 1
   destroyWhenCollideSelf: 0
@@ -102228,7 +102228,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceSpawnAtStart: 0
-  objAmount: 1
+  objAmount: 2
   objPool: []
   objDestroyEffectPool: []
   objEncounterEffectPool: []
@@ -102283,7 +102283,7 @@ MonoBehaviour:
   minSpawnInterval: 8
   maxSpawnInterval: 12
   cubesByEncounter: 5
-  energyGets: 10
+  energyGets: 8
   isNegative: 0
   hasEncounterEffect: 1
   destroyWhenCollideSelf: 0
@@ -102317,7 +102317,7 @@ MonoBehaviour:
   emptyDurationStart: .150000006
   emptyDurationDecrease: .0500000007
   chanceBase: 100
-  goldenCubeChance: 1
+  goldenCubeChance: 8
   gcm: {fileID: 1991538115}
 --- !u!114 &1991538117
 MonoBehaviour:
@@ -102346,7 +102346,7 @@ MonoBehaviour:
   minSpawnInterval: 0
   maxSpawnInterval: 0
   cubesByEncounter: 5
-  energyGets: 10
+  energyGets: 8
   isNegative: 0
   hasEncounterEffect: 0
   destroyWhenCollideSelf: 0
@@ -102411,7 +102411,7 @@ MonoBehaviour:
   stayDuration: 1
   shrinkDuration: .5
   chanceBase: 100
-  goldenChance: 5
+  goldenChance: 8
   goldCubesGet: 1
   isGolden: 0
 --- !u!114 &1991538119
