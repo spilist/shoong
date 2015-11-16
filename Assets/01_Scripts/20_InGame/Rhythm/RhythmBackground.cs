@@ -13,7 +13,7 @@ public class RhythmBackground : MonoBehaviour {
   private bool alphaUp = false;
   private bool alphaDown = false;
   private BeatObserver beatObserver;
-  private Animation anim;
+  // private Animation anim;
 
 	void Awake() {
     rb = this;
@@ -22,7 +22,7 @@ public class RhythmBackground : MonoBehaviour {
     mRenderer = GetComponent<MeshRenderer>();
     color = mRenderer.sharedMaterial.GetColor("_TintColor");
     alpha = color.a;
-    anim = GetComponent<Animation>();
+    // anim = GetComponent<Animation>();
   }
 
   void Update () {

@@ -7,6 +7,12 @@ public class SplashScreen : MonoBehaviour {
 	private float count;
 	private bool loaded = false;
 
+	void Start() {
+		if (!DataManager.dm.getBool("TutorialDone")) {
+			FacebookManager.fb.firstPlayLog("0_SplashScreen");
+		}
+	}
+
 	void Update () {
 		if (count < splashDuring) count += Time.deltaTime;
 		else {

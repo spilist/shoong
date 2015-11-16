@@ -13,6 +13,7 @@ public class OpeningFilter : MonoBehaviour {
     mRenderer = GetComponent<MeshRenderer>();
     color = mRenderer.sharedMaterial.color;
     alpha = 1;
+    FacebookManager.fb.firstPlayLog("1_OpeningScene");
   }
 
 	void Update () {

@@ -31,6 +31,11 @@ public class GetPartsText : MonoBehaviour {
     }
   }
 
+  public void reset() {
+    count = 0;
+    if (text != null) text.text = description + " " + count + "/" + limit;
+  }
+
   void OnDestroy() {
     if(LanguageManager.HasInstance) {
       LanguageManager.Instance.OnChangeLanguage -= OnChangeLanguage;

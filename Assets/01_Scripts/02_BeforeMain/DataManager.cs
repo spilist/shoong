@@ -127,9 +127,6 @@ public class DataManager : MonoBehaviour {
     bools["GoogleLoggedInSetting"] = true;
 
     PlayerPrefs.SetString("SelectedCharacter", "robotcogi");
-    PlayerPrefs.SetString("ObjectTutorialsNotDone", "");
-    PlayerPrefs.SetString("MainObjects", "");
-    PlayerPrefs.SetString("SubObjects", "");
 
     data = new SaveData();
   }

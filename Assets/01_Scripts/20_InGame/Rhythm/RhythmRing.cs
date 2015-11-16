@@ -14,7 +14,7 @@ public class RhythmRing : MonoBehaviour {
   float maxPopScale;
   float rightBeatScale;
   float disappearDuration;
-  float playerScaleUpAmount;
+  // float playerScaleUpAmount;
   bool maxMsgSended = false;
   bool minMsgSended = false;
   bool disappearing = false;
@@ -35,7 +35,7 @@ public class RhythmRing : MonoBehaviour {
     maxPopScale = startScale * RhythmManager.rm.maxPopScale / 10.0f;
     rightBeatScale = startScale * RhythmManager.rm.rightBeatScale / 10.0f;
     disappearDuration = RhythmManager.rm.ringDisppearDuration;
-    playerScaleUpAmount = RhythmManager.rm.playerScaleUpAmount;
+    // playerScaleUpAmount = RhythmManager.rm.playerScaleUpAmount;
   }
 
   void OnEnable() {

@@ -11,10 +11,6 @@ public class ScoreUpdate : MonoBehaviour {
   public Text cubesHighscoreDescription;
   public Text cubesHighscoreNumber;
   public Text cubesCurrentScore;
-  public GameObject elapsedTime;
-  public GameObject CPS;
-  public GameObject phaseBonus;
-  public GameObject collectorBonus;
 
   public Color newHighscoreColor;
   public int scoreUpdateMaxStandard = 1000;
@@ -52,17 +48,6 @@ public class ScoreUpdate : MonoBehaviour {
     cubeCurrentNum = 0;
     cubesCurrentScore.text = "0";
 
-    elapsedTime.transform.Find("Number").GetComponent<Text>().text = TimeManager.time.now.ToString();
-    float cps_ = ((float) cubeDifference / TimeManager.time.now);
-    CPS.transform.Find("Number").GetComponent<Text>().text = cps_.ToString("0.00");
-    DataManager.dm.setBestFloat("BestCPS", cps_);
-
-    phaseBonus.transform.Find("Number").GetComponent<Text>().text = "0";
-
-    float bonusScale = ((DataManager.dm.getInt("NormalCollectorLevel") - 1) * 5 + DataManager.dm.getInt("GoldenCollectorLevel") * 50) / 100f;
-    bonusAmount = (int) Mathf.Floor(cubeDifference * bonusScale);
-
-    collectorBonus.transform.Find("Number").GetComponent<Text>().text = bonusAmount.ToString();
     updateStatus++;
     GetComponent<AudioSource>().Play();
   }

@@ -47,6 +47,7 @@ public class CharacterCreateButton : MenusBehavior {
   private Text priceText;
   private CharacterCreateMenu menu;
   private string randomResult;
+  public bool first;
 
   override public void initializeRest() {
     menu = transform.parent.GetComponent<CharacterCreateMenu>();
@@ -99,8 +100,8 @@ public class CharacterCreateButton : MenusBehavior {
     characterCube.SetActive(true);
     congraturation.GetComponent<ParticleSystem>().Stop();
     congraturation.gameObject.SetActive(false);
-    isNewCharacter.SetActive(false);
-    nextChance.SetActive(false);
+    isNewCharacter.GetComponent<Text>().enabled = false;
+    nextChance.GetComponent<Text>().enabled = false;
     shareButton.gameObject.SetActive(false);
     selectButton.gameObject.SetActive(false);
     goldenCubesYouHave.SetActive(true);
@@ -130,6 +131,8 @@ public class CharacterCreateButton : MenusBehavior {
     if (!affordable || running) return;
 
     DataManager.dm.increment("NumCharacterCreate");
+
+    if (first) FacebookManager.fb.firstPlayLog("7_FirstToyWin");
 
     running = true;
     resetAll();
@@ -170,6 +173,16 @@ public class CharacterCreateButton : MenusBehavior {
     bool newCharacter = !DataManager.dm.getBool(randomCharacter.name);
     FacebookManager.fb.createToy(DataManager.dm.getInt("NumCharacterCreate"), randomResult, randomCharacter.name, newCharacter);
 
+    if (newCharacter) {
+      DataManager.dm.setBool(randomCharacter.name, true);
+      DataManager.dm.increment("NumCharactersHave");
+      DataManager.dm.save();
+    }
+
+    GoldManager.gm.buy(createPrice);
+    goldenCubesYouHave.GetComponent<CubesYouHave>().buy(createPrice);
+    gameOverGoldCubes.change(-createPrice, false);
+
     float duration = totalSeconds;
     float interval = startInterval;
     while (duration > 0) {
@@ -188,10 +201,6 @@ public class CharacterCreateButton : MenusBehavior {
     }
     characterCube.SetActive(false);
 
-    GoldManager.gm.buy(createPrice);
-    goldenCubesYouHave.GetComponent<CubesYouHave>().buy(createPrice);
-    gameOverGoldCubes.change(-createPrice, false);
-
     createdCharacter.GetComponent<MeshFilter>().sharedMesh = randomCharacter.GetComponent<MeshFilter>().sharedMesh;
     createdCharacter.SetActive(true);
 
@@ -201,12 +210,13 @@ public class CharacterCreateButton : MenusBehavior {
     selectButton.setCharacter(randomCharacter.name);
 
     if (newCharacter) {
-      isNewCharacter.SetActive(true);
-      DataManager.dm.setBool(randomCharacter.name, true);
-      DataManager.dm.increment("NumCharactersHave");
-      DataManager.dm.save();
+      isNewCharacter.GetComponent<Text>().enabled = true;
+      nextChance.GetComponent<Text>().enabled = false;
+      isNewCharacter.GetComponent<AudioSource>().Play();
     } else {
-      nextChance.SetActive(true);
+      isNewCharacter.GetComponent<Text>().enabled = false;
+      nextChance.GetComponent<Text>().enabled = true;
+      nextChance.GetComponent<AudioSource>().Play();
     }
 
     yield return new WaitForSeconds(showUIsAfter);

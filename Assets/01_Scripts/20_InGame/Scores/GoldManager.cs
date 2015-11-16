@@ -20,6 +20,7 @@ public class GoldManager : MonoBehaviour {
   public int goldenCubeFollowSpeed = 1000;
 
   private int count;
+  private int earnThisGame = 0;
 
   void Awake() {
     gm = this;
@@ -76,6 +77,12 @@ public class GoldManager : MonoBehaviour {
       generateGoldCube(pos);
       GetComponent<AudioSource>().Play();
     }
+
+    earnThisGame += amount;
+  }
+
+  public int earned() {
+    return earnThisGame;
   }
 
   public void addCountIngame() {

@@ -207,17 +207,17 @@ public class ScoreManager : MonoBehaviour {
   void save() {
     if (isSaved) return;
 
-    int daysPassed = (int)(DateTime.Now.Date - DataManager.dm.getDateTime("FirstPlayDate").Date).TotalDays;
-    if (0 < daysPassed && daysPassed <= 7) {
-      if (DataManager.dm.getInt("NumPlay_" + daysPassed) == 0) {
-        DataManager.dm.setInt("NumPlay_" + daysPassed, DataManager.dm.getInt("TotalNumPlays") - DataManager.dm.getInt("NumPlay_" + (daysPassed - 1)));
-      }
-    }
+    // int daysPassed = (int)(DateTime.Now.Date - DataManager.dm.getDateTime("FirstPlayDate").Date).TotalDays;
+    // if (0 < daysPassed && daysPassed <= 7) {
+    //   if (DataManager.dm.getInt("NumPlay_" + daysPassed) == 0) {
+    //     DataManager.dm.setInt("NumPlay_" + daysPassed, DataManager.dm.getInt("TotalNumPlays") - DataManager.dm.getInt("NumPlay_" + (daysPassed - 1)));
+    //   }
+    // }
 
     isSaved = true;
     int count = CubeManager.cm.getCount();
-    DataManager.dm.increment("CurrentCubes", count + int.Parse(bonusCount.text));
-    DataManager.dm.increment("TotalCubes", count + int.Parse(bonusCount.text));
+    // DataManager.dm.increment("CurrentCubes", count + int.Parse(bonusCount.text));
+    DataManager.dm.increment("TotalCubes", count);
     DataManager.dm.setBestInt("BestCubes", count);
 
     int time = TimeManager.time.now;
@@ -227,19 +227,19 @@ public class ScoreManager : MonoBehaviour {
     DataManager.dm.increment("TotalNumPlays");
     DataManager.dm.setAverage("AverageTime", "TotalTime");
     DataManager.dm.setAverage("AverageCubes", "TotalCubes");
-    DataManager.dm.setAverage("AverageGoldenCubes", "TotalGoldenCubes");
+    // DataManager.dm.setAverage("AverageGoldenCubes", "TotalGoldenCubes");
     DataManager.dm.setAverage("AverageBoosters", "TotalBoosters");
-    DataManager.dm.setAverage("AverageSuperheats", "TotalSuperheats");
+    // DataManager.dm.setAverage("AverageSuperheats", "TotalSuperheats");
     DataManager.dm.setAverage("AverageNumDestroyObstacles", "TotalNumDestroyObstacles");
     DataManager.dm.setAverage("AverageNumUseObjects", "TotalNumUseObjects");
-    DataManager.dm.setFloat("AverageCPS", 100 * DataManager.dm.getInt("TotalCubes") / (float) DataManager.dm.getInt("TotalTime"));
+    // DataManager.dm.setFloat("AverageCPS", 100 * DataManager.dm.getInt("TotalCubes") / (float) DataManager.dm.getInt("TotalTime"));
 
-    int numPlay = DataManager.dm.getInt("TotalNumPlays");
-    if (numPlay <= 10) {
-      DataManager.dm.setInt("PlayTime_" + numPlay, time);
-      DataManager.dm.setInt("CubesGet_" + numPlay, count);
-      DataManager.dm.setInt("NumBooster_" + numPlay, boosterCount);
-    }
+    // int numPlay = DataManager.dm.getInt("TotalNumPlays");
+    // if (numPlay <= 10) {
+    //   DataManager.dm.setInt("PlayTime_" + numPlay, time);
+    //   DataManager.dm.setInt("CubesGet_" + numPlay, count);
+    //   DataManager.dm.setInt("NumBooster_" + numPlay, boosterCount);
+    // }
 
 	// Save record of previous game to check achievement
     DataManager.dm.setInt("LastTotalCubes", count);

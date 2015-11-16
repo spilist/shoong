@@ -6,10 +6,6 @@ using System.Collections.Generic;
 
 public class TouchInputHandler : MonoBehaviour
 {
-  public Transform controlPanel_circle_left;
-  public Transform controlPanel_circle_right;
-  public Transform controlPanel_packman_left;
-  public Transform controlPanel_packman_right;
   public Transform stick;
   public Transform fingerIndicator;
   private float stickPanelSize;
@@ -18,10 +14,6 @@ public class TouchInputHandler : MonoBehaviour
   public SpawnManager spawnManager;
   public MenusController menus;
   public PauseButton pause;
-
-	public GameObject touchEffect;
-  public int touchEffectAmount = 30;
-  public List<GameObject> touchEffectPool;
 
 	private bool gameStarted = false;
 	private bool react = true;
@@ -34,15 +26,6 @@ public class TouchInputHandler : MonoBehaviour
   private Vector3 lastDraggablePosition;
   private string controlMethod;
   private int stickFingerId = -1;
-
-  void Awake() {
-    touchEffectPool = new List<GameObject>();
-    for (int i = 0; i < touchEffectAmount; ++i) {
-      GameObject obj = (GameObject) Instantiate(touchEffect);
-      obj.SetActive(false);
-      touchEffectPool.Add(obj);
-    }
-  }
 
   void Update() {
 		if (Application.platform == RuntimePlatform.Android) {
@@ -93,11 +76,8 @@ public class TouchInputHandler : MonoBehaviour
 
       if (controlMethod == "Touch") {
         if (result == "Ground") {
-          Vector3 worldTouchPosition = setPlayerDirection(Player.pl.transform);
-
-          // Player.pl.teleport(worldTouchPosition);
+          setPlayerDirection(Player.pl.transform);
           Player.pl.shootBooster();
-          spawnTouchEffect(worldTouchPosition);
         } else if (result == "SkillButton") {
           Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
           RaycastHit hit;
@@ -106,61 +86,37 @@ public class TouchInputHandler : MonoBehaviour
             hitObject.SendMessage("OnPointerDown");
           }
         }
-      } else if (controlMethod == "Circle" || controlMethod == "Packman") {
-        if (result == "ControlPanel_circle_left") {
-          setPlayerDirection(controlPanel_circle_left);
-          Player.pl.shootBooster();
-        } else if (result == "ControlPanel_circle_right") {
-          setPlayerDirection(controlPanel_circle_right);
-          Player.pl.shootBooster();
-        } else if (result == "ControlPanel_packman_left") {
-          setPlayerDirection(controlPanel_packman_left);
-          Player.pl.shootBooster();
-        } else if (result == "ControlPanel_packman_right") {
-          setPlayerDirection(controlPanel_packman_right);
-          Player.pl.shootBooster();
-        }
       }
 		}
 
-    if (controlMethod == "Stick" || controlMethod == "LR") {
+    if (controlMethod == "Stick") {
       for (var i = 0; i < Input.touchCount; ++i) {
         Touch touch = Input.GetTouch(i);
         Ray ray = Camera.main.ScreenPointToRay(touch.position);
         RaycastHit hit;
         if ( Physics.Raycast(ray, out hit) ) {
           GameObject hitObject = hit.transform.gameObject;
-          if (controlMethod == "Stick") {
-            if (touch.phase == TouchPhase.Began) {
-              if (hitObject.tag == "StickPanel_movement" && Input.touchCount == 1) {
-                stick.position = newStickPosition();
-                stick.gameObject.SetActive(true);
-                stickFingerId = touch.fingerId;
-              } else {
-                hitObject.SendMessage("OnPointerDown");
-              }
-            }
-
-            if (touch.phase == TouchPhase.Moved && touch.fingerId == stickFingerId) {
-              setPlayerDirection(stick, touch);
-            }
-
-            if (touch.phase == TouchPhase.Ended) {
-              if (touch.fingerId == stickFingerId) {
-                Player.pl.stopMoving();
-                stick.gameObject.SetActive(false);
-                stickFingerId = -1;
-                fingerIndicator.position = stick.position;
-              } else hitObject.SendMessage("OnPointerUp");
-            }
-          } else if (controlMethod == "LR") {
-            if (touch.phase == TouchPhase.Began) {
+          if (touch.phase == TouchPhase.Began) {
+            if (hitObject.tag == "StickPanel_movement" && Input.touchCount == 1) {
+              stick.position = newStickPosition();
+              stick.gameObject.SetActive(true);
+              stickFingerId = touch.fingerId;
+            } else {
               hitObject.SendMessage("OnPointerDown");
             }
+          }
 
-            if (touch.phase == TouchPhase.Ended) {
-              hitObject.SendMessage("OnPointerUp");
-            }
+          if (touch.phase == TouchPhase.Moved && touch.fingerId == stickFingerId) {
+            setPlayerDirection(stick, touch);
+          }
+
+          if (touch.phase == TouchPhase.Ended) {
+            if (touch.fingerId == stickFingerId) {
+              Player.pl.stopMoving();
+              stick.gameObject.SetActive(false);
+              stickFingerId = -1;
+              fingerIndicator.position = stick.position;
+            } else hitObject.SendMessage("OnPointerUp");
           }
         }
       }
@@ -280,23 +236,4 @@ public class TouchInputHandler : MonoBehaviour
   bool reactAble() {
     return !beforeIdle.isLoading() && react;
   }
-
-  void spawnTouchEffect(Vector3 pos) {
-    GameObject effect = null;
-    for (int i = 0; i < touchEffectPool.Count; i++) {
-      if (!touchEffectPool[i].activeInHierarchy) {
-        effect = touchEffectPool[i];
-        break;
-      }
-    }
-
-    if (effect == null) {
-      effect = (GameObject) Instantiate(touchEffect);
-      touchEffectPool.Add(effect);
-    }
-
-    effect.transform.position = pos;
-    effect.SetActive(true);
-  }
 }
-

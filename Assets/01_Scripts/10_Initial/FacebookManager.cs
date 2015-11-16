@@ -25,28 +25,31 @@ public class FacebookManager : MonoBehaviour {
         // Already initialized, signal an app activation App Event
         FB.ActivateApp();
     }
+
     #endif
   }
 
   private void InitCallback () {
-      if (FB.IsInitialized) {
-          // Signal an app activation App Event
-          FB.ActivateApp();
-          // Continue with Facebook SDK
-          // ...
-      } else {
-          Debug.Log("Failed to Initialize the Facebook SDK");
-      }
+    if (FB.IsInitialized) {
+        // Signal an app activation App Event
+        FB.ActivateApp();
+        // Continue with Facebook SDK
+        // ...
+    } else {
+        Debug.Log("Failed to Initialize the Facebook SDK");
+    }
   }
 
   private void OnHideUnity (bool isGameShown) {
-      // if (!isGameShown) {
-      //     // Pause the game - we will need to hide
-      //     Time.timeScale = 0;
-      // } else {
-      //     // Resume the game - we're getting focus again
-      //     Time.timeScale = 1;
-      // }
+    if (!isGameShown) {
+        // Pause the game - we will need to hide
+        Debug.Log("??");
+        Time.timeScale = 0;
+    } else {
+        // Resume the game - we're getting focus again
+        Debug.Log("??2");
+        Time.timeScale = 1;
+    }
   }
 
   public void gameDone() {
@@ -62,15 +65,21 @@ public class FacebookManager : MonoBehaviour {
         { "BoosterSuccessRate", ((float)(Player.pl.numBoosters)) / (Player.pl.numBoosters + RhythmManager.rm.failedBeatCount) },
         { "Total Plays", DataManager.dm.getInt("TotalNumPlays")},
         { "Total PlayingTime", DataManager.dm.getInt("TotalTime")},
+        { "Gold Earned", GoldManager.gm.earned()}
       });
     #endif
 
-        Debug.Log("Phase: " + (PhaseManager.pm.phase() + 1));
-        Debug.Log("Score: " + CubeManager.cm.getCount());
-        Debug.Log("Time: " + TimeManager.time.now);
-        Debug.Log("BoosterSuccessRate: " + 100 * ((float)(Player.pl.numBoosters)) / (Player.pl.numBoosters + RhythmManager.rm.failedBeatCount));
-        Debug.Log("Total Plays: " + DataManager.dm.getInt("TotalNumPlays"));
-        Debug.Log("Total PlayingTime: " + DataManager.dm.getInt("TotalTime"));
+    #if UNITY_EDITOR
+
+    Debug.Log("Phase: " + (PhaseManager.pm.phase() + 1));
+    Debug.Log("Score: " + CubeManager.cm.getCount());
+    Debug.Log("Time: " + TimeManager.time.now);
+    Debug.Log("BoosterSuccessRate: " + 100 * ((float)(Player.pl.numBoosters)) / (Player.pl.numBoosters + RhythmManager.rm.failedBeatCount));
+    Debug.Log("Total Plays: " + DataManager.dm.getInt("TotalNumPlays"));
+    Debug.Log("Total PlayingTime: " + DataManager.dm.getInt("TotalTime"));
+    Debug.Log("Gold Earned: " + GoldManager.gm.earned());
+
+    #endif
   }
 
   public void createToy(int numCreate, string rarity, string name, bool isNewToy) {
@@ -85,6 +94,18 @@ public class FacebookManager : MonoBehaviour {
         { AppEventParameterName.ContentType, rarity },
         { "Is a new toy?", isNewToy },
       });
+    #endif
+  }
+
+  public void firstPlayLog(string description) {
+    #if !UNITY_EDITOR
+
+    if (DataManager.dm.getBool("TutorialDone")) return;
+
+    FB.LogAppEvent(
+      "FirstPlay_" + description,
+      null,
+      null);
     #endif
   }
 

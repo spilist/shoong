@@ -61,7 +61,11 @@ public class TutorialHandler : MonoBehaviour
     tutoStatus++;
 
     if (status == 1) {
+      FacebookManager.fb.firstPlayLog("4_UseBoosterStart");
       RhythmManager.rm.startBeat(touchTexts[0], onthebeatTexts[0], boostImages[0], fingerImages[0]);
+    } else {
+      DataManager.dm.setBool("TutorialDone", true);
+      FacebookManager.fb.tutorialDone(skipped);
     }
 
     Invoke("enableTutoCollider", 2);
@@ -111,15 +115,16 @@ public class TutorialHandler : MonoBehaviour
           Player.pl.stopMoving(false);
           nextTutorial(3);
         } else {
-          Application.LoadLevel(Application.loadedLevel);
+          replay();
+          // Application.LoadLevel(Application.loadedLevel);
         }
         return;
       }
 
       if (result == "TutorialCollider" && !tutoLoaded) {
         if (tutoStatus == 0) {
+          FacebookManager.fb.firstPlayLog("2_TutorialStart");
           tutoLoaded = true;
-          // beforeIdle.moveTitle();
           opening.SetActive(false);
           idleUI.SetActive(false);
           tutorialScenes[0].SetActive(true);
@@ -131,6 +136,7 @@ public class TutorialHandler : MonoBehaviour
           tutoStatus++;
           Invoke("enableTutoCollider", 2);
         } else if (tutoStatus == 1) {
+          FacebookManager.fb.firstPlayLog("3_GetCandiesStart");
           tutoLoaded = true;
           tutorialScenes[0].SetActive(false);
           tutorialScenes[1].SetActive(true);
@@ -278,7 +284,25 @@ public class TutorialHandler : MonoBehaviour
     fingerIndicator = origFingerIndicator;
     stick.gameObject.SetActive(true);
     stickPanelSize = Vector3.Distance(stick.position, stick.transform.Find("End").position);
-    DataManager.dm.setBool("TutorialDone", true);
-    FacebookManager.fb.tutorialDone(skipped);
+
+    FacebookManager.fb.firstPlayLog("5_GameStart");
+  }
+
+  void replay() {
+    tutoStatus = 1;
+    tutorialScenes[tutorialScenes.Length - 1].SetActive(false);
+    tutorialScenes[0].SetActive(true);
+    tutoLoaded = true;
+    tutoCollider.enabled = false;
+
+    foreach (Transform tr in tutoParts.transform) {
+      tr.gameObject.SetActive(true);
+    }
+
+    Player.pl.getPartsText.reset();
+    Player.pl.useBoosterText.reset();
+    RhythmManager.rm.stopBeat();
+
+    Invoke("enableTutoCollider", 2);
   }
 }
