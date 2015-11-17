@@ -51,11 +51,13 @@ public class BeforeIdle : MonoBehaviour {
 
     changeCharacter(PlayerPrefs.GetString("SelectedCharacter"));
 
-    string[] rots = PlayerPrefs.GetString("CharacterRotation").Split(',');
-    character.transform.rotation = Quaternion.Euler(float.Parse(rots[0]), float.Parse(rots[1]), float.Parse(rots[2]));
+    if (DataManager.dm.getBool("TutorialDone")) {
+      string[] rots = PlayerPrefs.GetString("CharacterRotation").Split(',');
+      character.transform.rotation = Quaternion.Euler(float.Parse(rots[0]), float.Parse(rots[1]), float.Parse(rots[2]));
 
-    string[] angVals = PlayerPrefs.GetString("CharacterAngVal").Split(',');
-    character.GetComponent<Rigidbody>().angularVelocity = new Vector3(float.Parse(angVals[0]), float.Parse(angVals[1]), float.Parse(angVals[2]));
+      string[] angVals = PlayerPrefs.GetString("CharacterAngVal").Split(',');
+      character.GetComponent<Rigidbody>().angularVelocity = new Vector3(float.Parse(angVals[0]), float.Parse(angVals[1]), float.Parse(angVals[2]));
+    }
   }
 
   void Update() {

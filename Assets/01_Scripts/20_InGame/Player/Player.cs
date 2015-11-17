@@ -96,7 +96,8 @@ public class Player : MonoBehaviour {
 
     rb = GetComponent<Rigidbody>();
     rb.velocity = direction * speed;
-    rotatePlayerBody(true);
+
+    if (DataManager.dm.getBool("TutorialDone")) rotatePlayerBody(true);
 	}
 
 	void FixedUpdate () {
@@ -289,7 +290,7 @@ public class Player : MonoBehaviour {
       numBoosters++;
       DataManager.dm.increment("TotalBoosters");
 
-      if (useBoosterText != null) {
+      if (useBoosterText != null && useBoosterText.gameObject.activeInHierarchy) {
         useBoosterText.increment();
       }
 
@@ -308,7 +309,6 @@ public class Player : MonoBehaviour {
       return;
     }
 
-    // Debug.Log("Start");
     timeSpaned = 0;
 
     if (!usingPowerBoost) {

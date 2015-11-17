@@ -41,6 +41,7 @@ public class TutorialHandler : MonoBehaviour {
 
   public Transform energyUI_1;
   public GameObject helper;
+  public GameObject moveBoundary;
 
   void Awake() {
     origStick = stick;
@@ -187,7 +188,7 @@ public class TutorialHandler : MonoBehaviour {
               stick.gameObject.SetActive(true);
               stickFingerId = touch.fingerId;
 
-              if (helper.activeSelf) helper.SetActive(false);
+              if (helper.activeInHierarchy) helper.SetActive(false);
             } else {
               hitObject.SendMessage("OnPointerDown");
             }
@@ -289,6 +290,11 @@ public class TutorialHandler : MonoBehaviour {
     stickPanelSize = Vector3.Distance(stick.position, stick.transform.Find("End").position);
 
     FacebookManager.fb.firstPlayLog("5_GameStart");
+    Invoke("enableMoveBoundary", 0.5f);
+  }
+
+  void enableMoveBoundary() {
+    moveBoundary.SetActive(true);
   }
 
   void replay() {

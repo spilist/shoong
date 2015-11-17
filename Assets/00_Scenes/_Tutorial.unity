@@ -13048,7 +13048,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &623555561
 RectTransform:
   m_ObjectHideFlags: 0
@@ -39008,6 +39008,7 @@ MonoBehaviour:
   dirIndicator: {fileID: 1283306053}
   energyUI_1: {fileID: 1197888275}
   helper: {fileID: 26349796}
+  moveBoundary: {fileID: 623555560}
 --- !u!114 &1801634120
 MonoBehaviour:
   m_ObjectHideFlags: 0
