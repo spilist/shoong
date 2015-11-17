@@ -173,7 +173,6 @@ public class BeforeIdle : MonoBehaviour {
     changeCharacter(PlayerPrefs.GetString("SelectedCharacter"));
     characterMoving = true;
     characterPosX = characterMoveStart;
-    characterPosX = characterMoveStart;
     characterMoveDistance = Mathf.Abs(characterMoveStart);
     character.GetComponent<Renderer>().material.color = new Color(1, 1, 1, 1);
     character.GetComponent<RectTransform>().anchoredPosition = new Vector2(characterPosX, character.GetComponent<RectTransform>().anchoredPosition.y);

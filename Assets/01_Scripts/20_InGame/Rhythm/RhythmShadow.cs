@@ -29,11 +29,11 @@ public class RhythmShadow : MonoBehaviour {
     sRenderer = GetComponent<MeshRenderer>();
     originalColor = sRenderer.sharedMaterial.color;
 
-    minBoosterOkScale = startScale * RhythmManager.rm.minBoosterOkScale / RhythmManager.rm.scaleBase;
-    maxBoosterOkScale = startScale * RhythmManager.rm.maxBoosterOkScale / RhythmManager.rm.scaleBase;
+    // minBoosterOkScale = startScale * RhythmManager.rm.minBoosterOkScale / RhythmManager.rm.scaleBase;
+    // maxBoosterOkScale = startScale * RhythmManager.rm.maxBoosterOkScale / RhythmManager.rm.scaleBase;
     // minPopScale = startScale * RhythmManager.rm.minPopScale / RhythmManager.rm.scaleBase;
     // maxPopScale = startScale * RhythmManager.rm.maxPopScale / RhythmManager.rm.scaleBase;
-    rightBeatScale = startScale * RhythmManager.rm.rightBeatScale / RhythmManager.rm.scaleBase;
+    // rightBeatScale = startScale * RhythmManager.rm.rightBeatScale / RhythmManager.rm.scaleBase;
     disappearDuration = RhythmManager.rm.ringDisppearDuration;
     // playerScaleUpAmount = RhythmManager.rm.playerScaleUpAmount;
   }

@@ -100,7 +100,7 @@ public class CubeManager : MonoBehaviour {
   }
 
   void checkAboveHighscore() {
-    if (highscore > 0 && !highscoreReached && countDifference() >= 0) {
+    if (highscore > 0 && !highscoreReached && (currentCount + pointsByTime >= highscore)) {
       highscoreReached = true;
       untilTopSign = "+";
       untilTop.color = aboveHighscoreColor;
@@ -110,12 +110,8 @@ public class CubeManager : MonoBehaviour {
   void showUntilTop() {
     if (highscore > 0 && (getCount() + untilTopShowDiff) > highscore) {
       untilTop.gameObject.SetActive(true);
-      untilTop.text = "TOP " + untilTopSign + Mathf.Abs(countDifference()).ToString("0");
+      untilTop.text = "TOP " + untilTopSign + Mathf.Abs(currentCount + pointsByTime - highscore).ToString("0");
     }
-  }
-
-  int countDifference() {
-    return (int)(currentCount + pointsByTime - highscore);
   }
 
   public void addPointsByTime() {

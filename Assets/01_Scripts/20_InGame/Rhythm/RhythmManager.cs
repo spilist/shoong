@@ -17,14 +17,14 @@ public class RhythmManager : MonoBehaviour {
   private List<GameObject> skillRingPool;
   private List<GameObject> failedRhythmPool;
 
-  public float scaleBase;
-  public float maxBoosterOkScale = 4;
-  public float maxPopScale;
-  public float rightBeatScale = 3;
-  public float minPopScale;
-  public float minBoosterOkScale = 2;
+  // public float scaleBase;
+  // public float maxBoosterOkScale = 4;
+  // public float maxPopScale;
+  // public float rightBeatScale = 3;
+  // public float minPopScale;
+  // public float minBoosterOkScale = 2;
   public float ringDisppearDuration = 0.5f;
-  public float playerScaleUpAmount = 1.2f;
+  // public float playerScaleUpAmount = 1.2f;
   public float canBeMissedPosX = 0.3f;
   public float minBoosterOkPosX = 0.9f;
   public float rightBeatPosX;
@@ -68,7 +68,7 @@ public class RhythmManager : MonoBehaviour {
 	void Awake() {
     rm = this;
     beatObserver = GetComponent<BeatObserver>();
-    normalColor = normalRing.GetComponent<SpriteRenderer>().color;
+    normalColor = normalRing.GetComponent<Image>().color;
 
     origTouchText = touchText;
     origOnthebeatText = onthebeatText;
@@ -221,7 +221,7 @@ public class RhythmManager : MonoBehaviour {
       skillActivated = false;
 
       justSpawned.GetComponent<RhythmStar>().skillRing = false;
-      justSpawned.GetComponent<SpriteRenderer>().color = normalColor;
+      justSpawned.GetComponent<Image>().color = normalColor;
     }
   }
 

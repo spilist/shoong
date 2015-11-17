@@ -244,7 +244,7 @@ BATTERY</value>
 		<value>LEADERBOARD</value>
 	</data>
 	<data name="Setting_Mute" xml:space="preserve">
-		<value>MUTE</value>
+		<value>SOUND</value>
 	</data>
 	<data name="Setting_Reminders" xml:space="preserve">
 		<value>REMINDERS</value>
@@ -272,7 +272,7 @@ PURCHASES</value>
 		<value>Shoot &amp; Destroy</value>
 	</data>
 	<data name="SkillDescription_Magnet" xml:space="preserve">
-		<value>Pull candies</value>
+		<value>Pull sweets</value>
 	</data>
 	<data name="SkillDescription_Metal" xml:space="preserve">
 		<value>Smash everything</value>
@@ -327,17 +327,17 @@ PURCHASES</value>
 'beat star' button</value>
 	</data>
 	<data name="Tutorial_CandyRestoreEnergy" xml:space="preserve">
-		<value>Candies restore energy.</value>
+		<value>Sweets restore energy.</value>
 	</data>
 	<data name="Tutorial_ChildDreaming" xml:space="preserve">
 		<value>A child is dreaming of sweets...
 Shall we enter the dream?</value>
 	</data>
 	<data name="Tutorial_GetCandies" xml:space="preserve">
-		<value>GET CANDIES</value>
+		<value>GET SWEETS</value>
 	</data>
 	<data name="Tutorial_MoveYourToy" xml:space="preserve">
-		<value>Move your toy and get candies
+		<value>Move your toy and get sweets
 by touching &amp; sliding the screen.</value>
 	</data>
 	<data name="Tutorial_NowYouReady" xml:space="preserve">
@@ -354,7 +354,7 @@ the stick</value>
 	<data name="Tutorial_TryToBoost" xml:space="preserve">
 		<value>Good!
 Now try to boost 
-on the beat of music.</value>
+on the beat of music ♫</value>
 	</data>
 	<data name="Tutorial_UseBooster" xml:space="preserve">
 		<value>USE BOOSTER</value>

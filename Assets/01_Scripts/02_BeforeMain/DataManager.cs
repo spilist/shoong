@@ -24,6 +24,7 @@ public class DataManager : MonoBehaviour {
   public int resetGoldenCube = 0;
 
   public int normalFrameRate = 60;
+  public bool isFirstPlay;
 
   void Awake() {
     if (dm != null && dm != this) {
@@ -61,6 +62,8 @@ public class DataManager : MonoBehaviour {
     }
 
     DataManager.dm.setInt("ShowCharacterCreateCount", 0);
+
+    isFirstPlay = !DataManager.dm.getBool("TutorialDone");
   }
 
   bool load() {
@@ -118,10 +121,10 @@ public class DataManager : MonoBehaviour {
     ints["TotalGoldenCubes"] = resetGoldenCube;
     ints["NumCharactersHave"] = 1;
     ints["NormalCollectorLevel"] = 1;
-    // strings["ControlMethod"] = "Touch";
-    strings["ControlMethod"] = "Stick";
+    strings["ControlMethod"] = "Touch";
+    // strings["ControlMethod"] = "Stick";
     bools["robotcogi"] = true;
-    bools["TutorialDone"] = false;
+    bools["TutorialDone"] = true;
 
     // By the implementation of OnOffButton, 'true' actually means 'not logged in'
     bools["GoogleLoggedInSetting"] = true;

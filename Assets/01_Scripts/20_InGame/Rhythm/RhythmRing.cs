@@ -29,11 +29,11 @@ public class RhythmRing : MonoBehaviour {
     sRenderer = GetComponent<SpriteRenderer>();
     originalColor = sRenderer.color;
 
-    minBoosterOkScale = startScale * RhythmManager.rm.minBoosterOkScale / 10.0f;
-    maxBoosterOkScale = startScale * RhythmManager.rm.maxBoosterOkScale / 10.0f;
-    minPopScale = startScale * RhythmManager.rm.minPopScale / 10.0f;
-    maxPopScale = startScale * RhythmManager.rm.maxPopScale / 10.0f;
-    rightBeatScale = startScale * RhythmManager.rm.rightBeatScale / 10.0f;
+    // minBoosterOkScale = startScale * RhythmManager.rm.minBoosterOkScale / 10.0f;
+    // maxBoosterOkScale = startScale * RhythmManager.rm.maxBoosterOkScale / 10.0f;
+    // minPopScale = startScale * RhythmManager.rm.minPopScale / 10.0f;
+    // maxPopScale = startScale * RhythmManager.rm.maxPopScale / 10.0f;
+    // rightBeatScale = startScale * RhythmManager.rm.rightBeatScale / 10.0f;
     disappearDuration = RhythmManager.rm.ringDisppearDuration;
     // playerScaleUpAmount = RhythmManager.rm.playerScaleUpAmount;
   }

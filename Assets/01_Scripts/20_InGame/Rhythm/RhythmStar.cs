@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class RhythmStar : MonoBehaviour {
   public bool skillRing = false;
   private bool originalSkillRing;
   Color originalColor;
-  Vector3 originalPos;
+  Vector2 originalPos;
   float startPosX;
   float posX;
   float beat;
@@ -21,30 +22,33 @@ public class RhythmStar : MonoBehaviour {
   bool missMsgSended = false;
   float alpha;
   Color color;
-  private SpriteRenderer sRenderer;
+  private Image image;
   float timePeriod;
   ParticleSystem particle;
+  RectTransform rect;
 
   void Awake() {
-    originalPos = transform.localPosition;
+    rect = GetComponent<RectTransform>();
+    originalPos = rect.anchoredPosition;
     startPosX = originalPos.x;
+
     originalSkillRing = skillRing;
-    sRenderer = GetComponent<SpriteRenderer>();
-    originalColor = sRenderer.color;
+    image = GetComponent<Image>();
+    originalColor = image.color;
     particle = GetComponent<ParticleSystem>();
 
     rightBeatPosX = RhythmManager.rm.rightBeatPosX;
-    canBeMissedPosX = rightBeatPosX * RhythmManager.rm.canBeMissedPosX;
-    minBoosterOkPosX = rightBeatPosX * RhythmManager.rm.minBoosterOkPosX;
-    maxBoosterOkPosX = rightBeatPosX * RhythmManager.rm.maxBoosterOkPosX;
+    canBeMissedPosX = RhythmManager.rm.canBeMissedPosX;
+    minBoosterOkPosX = RhythmManager.rm.minBoosterOkPosX;
+    maxBoosterOkPosX = RhythmManager.rm.maxBoosterOkPosX;
     disappearDuration = RhythmManager.rm.ringDisppearDuration;
     beat = RhythmManager.rm.samplePeriod;
   }
 
   void OnEnable() {
-    sRenderer.enabled = true;
-    transform.localPosition = originalPos;
-    sRenderer.color = originalColor;
+    image.enabled = true;
+    rect.anchoredPosition = originalPos;
+    image.color = originalColor;
     posX = startPosX;
     color = originalColor;
     alpha = 1;
@@ -61,7 +65,7 @@ public class RhythmStar : MonoBehaviour {
     if (disappearing) {
       alpha = Mathf.MoveTowards(alpha, 0, Time.deltaTime / disappearDuration);
       color.a = alpha;
-      sRenderer.color = color;
+      image.color = color;
       if (alpha == 0) {
         disappearing = false;
         gameObject.SetActive(false);
@@ -70,28 +74,28 @@ public class RhythmStar : MonoBehaviour {
       timePeriod = 100000 * Time.deltaTime * Mathf.Abs(startPosX - rightBeatPosX);
       timePeriod /= beat;
       timePeriod /= 100000;
-      posX = Mathf.MoveTowards(posX, minBoosterOkPosX, timePeriod);
-      transform.localPosition = new Vector3(posX, originalPos.y, originalPos.z);
+      posX = Mathf.MoveTowards(posX, maxBoosterOkPosX, timePeriod);
+      rect.anchoredPosition = new Vector2(posX, originalPos.y);
 
       if (!missMsgSended && posX >= canBeMissedPosX) {
         missMsgSended = true;
         RhythmManager.rm.setCurrent(this);
       }
 
-      if (!maxMsgSended && posX >= maxBoosterOkPosX) {
-        maxMsgSended = true;
+      if (!minMsgSended && posX >= minBoosterOkPosX) {
+        minMsgSended = true;
         RhythmManager.rm.setCanBeMissed(false);
         RhythmManager.rm.boosterOk(true, skillRing);
       }
 
       if (!rightMsgSended && posX >= rightBeatPosX) {
         rightMsgSended = true;
-        // sRenderer.enabled = false;
+        // image.enabled = false;
         // RhythmManager.rm.afterRing(true);
       }
 
-      if (!minMsgSended && posX >= minBoosterOkPosX) {
-        minMsgSended = true;
+      if (!maxMsgSended && posX >= maxBoosterOkPosX) {
+        maxMsgSended = true;
         gameObject.SetActive(false);
         RhythmManager.rm.boosterOk(false, false);
         RhythmManager.rm.ringSkipped(skillRing);

@@ -243,7 +243,7 @@
 		<value>랭킹</value>
 	</data>
 	<data name="Setting_Mute" xml:space="preserve">
-		<value>음소거</value>
+		<value>소리</value>
 	</data>
 	<data name="Setting_Reminders" xml:space="preserve">
 		<value>알림</value>
@@ -270,7 +270,7 @@
 		<value>레이저 발사</value>
 	</data>
 	<data name="SkillDescription_Magnet" xml:space="preserve">
-		<value>사탕을 끌어당겨요</value>
+		<value>과자를 끌어당겨요</value>
 	</data>
 	<data name="SkillDescription_Metal" xml:space="preserve">
 		<value>다 때려부숩니다</value>
@@ -325,18 +325,18 @@
 부스터를 사용</value>
 	</data>
 	<data name="Tutorial_CandyRestoreEnergy" xml:space="preserve">
-		<value>사탕은 에너지를 회복시킵니다</value>
+		<value>과자는 에너지를 회복시킵니다</value>
 	</data>
 	<data name="Tutorial_ChildDreaming" xml:space="preserve">
 		<value>어린아이가 과자 꿈을 꾸고 있어요...
 꿈 속으로 들어가 볼까요?</value>
 	</data>
 	<data name="Tutorial_GetCandies" xml:space="preserve">
-		<value>사탕 획득</value>
+		<value>과자 획득</value>
 	</data>
 	<data name="Tutorial_MoveYourToy" xml:space="preserve">
 		<value>화면을 터치한 후 슬라이드해서
-장난감을 움직여 사탕을 모아보세요.</value>
+장난감을 움직여 과자를 모아보세요.</value>
 	</data>
 	<data name="Tutorial_NowYouReady" xml:space="preserve">
 		<value>훌륭해요! 준비가 끝났어요.
@@ -352,7 +352,7 @@
 	<data name="Tutorial_TryToBoost" xml:space="preserve">
 		<value>잘했어요!
 이제 음악에 맞춰
-부스터를 사용해 보세요.</value>
+부스터를 사용해 보세요 ♫</value>
 	</data>
 	<data name="Tutorial_UseBooster" xml:space="preserve">
 		<value>부스터 사용</value>
