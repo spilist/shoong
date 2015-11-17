@@ -34,6 +34,10 @@ public class IceDebrisManager : ObjectsManager {
     }
   }
 
+  public void stopSpawn() {
+    StopCoroutine("spawnIce");
+  }
+
   Vector3 playerPos() {
     return player.transform.position + player.getDirection() * player.getSpeed();
   }

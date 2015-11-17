@@ -169,6 +169,8 @@ public class ObjectsMover : MonoBehaviour {
     } else if (objectsManager.destroyWhenCollideSelf && tag == collision.collider.tag) {
       destroyObject();
       return false;
+    } else if (collision.collider.tag == "ContactCollider" && isNegativeObject() && Player.pl.isInvincible()) {
+      return false;
     }
 
     return true;

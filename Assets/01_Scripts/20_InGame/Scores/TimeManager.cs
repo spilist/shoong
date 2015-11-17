@@ -3,15 +3,6 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class TimeManager : MonoBehaviour {
-	// public TimeMonsterManager tmm;
-	// public Text timeLimitText;
-	// private int timeLimit;
-	// public Transform cuberNeedsMore;
-	// public PartsCollector cuber;
-	// private Text currentProgessText;
- //  private Text requiredProgressText;
- //  public OffscreenObjectIndicator spaceShipIndicator;
- //  public GameObject spaceShipDebris;
   private float addGuageAmount = 0;
   private float currentProgressCount = 0;
   private int requiredProgress;
@@ -37,6 +28,8 @@ public class TimeManager : MonoBehaviour {
 	public SmallAsteroidManager sam;
 	public DangerousEMPManager dem;
 	public BlackholeManager blm;
+  public MeteroidManager mtm;
+  public IceDebrisManager idm;
 
 	public static TimeManager time;
 
@@ -131,6 +124,8 @@ public class TimeManager : MonoBehaviour {
 
 	public void stopTime() {
 		StopCoroutine("startElapse");
+    mtm.stopSpawn();
+    idm.stopSpawn();
 	}
 
 	public void startSpawnDangerousEMP() {

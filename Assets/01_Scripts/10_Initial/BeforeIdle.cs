@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class BeforeIdle : MonoBehaviour {
+  public bool tutorial;
   public FlyingCharacters flyingCharacters;
   public SpawnManager spawnManager;
   public MeshRenderer titleFilter;
@@ -154,6 +155,13 @@ public class BeforeIdle : MonoBehaviour {
   }
 
   public void playAgain() {
+    if (tutorial) {
+      titleFilter.enabled = true;
+      title.GetComponent<Image>().enabled = true;
+      character.GetComponent<MeshRenderer>().enabled = true;
+      copyright.enabled = true;
+    }
+
     titleFilter.gameObject.SetActive(true);
     filterColor = titleFilter.material.color;
     filterChanging = true;

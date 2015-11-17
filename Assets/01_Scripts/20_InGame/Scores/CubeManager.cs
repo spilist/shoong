@@ -19,6 +19,12 @@ public class CubeManager : MonoBehaviour {
   public GameObject pointsGet;
   public List<GameObject> pointPool;
   public int pointsGetAmount = 20;
+  public Text untilTop;
+  public int untilTopShowDiff = 500;
+  public Color aboveHighscoreColor;
+  private string untilTopSign = "-";
+  private int highscore;
+  private bool highscoreReached = false;
 
   void Awake() {
     cm = this;
@@ -34,6 +40,8 @@ public class CubeManager : MonoBehaviour {
       obj.transform.SetParent(worldUI, false);
       pointPool.Add(obj);
     }
+
+    highscore = DataManager.dm.getInt("BestCubes");
   }
 
   GameObject getPooledObj(List<GameObject> list, GameObject prefab) {
@@ -77,12 +85,37 @@ public class CubeManager : MonoBehaviour {
 
   void Update() {
     if (gameStarted) {
-      if (currentCount < totalCount) {
-        currentCount = Mathf.MoveTowards(currentCount, totalCount, Time.deltaTime * (totalCount - currentCount) * increaseSpeed);
-      }
-
-      cubesCount.text = (currentCount + pointsByTime).ToString("0");
+      updateCount();
+      checkAboveHighscore();
+      showUntilTop();
     }
+  }
+
+  void updateCount() {
+    if (currentCount <= totalCount) {
+      currentCount = Mathf.MoveTowards(currentCount, totalCount, Time.deltaTime * (totalCount - currentCount) * increaseSpeed);
+    }
+
+    cubesCount.text = (currentCount + pointsByTime).ToString("0");
+  }
+
+  void checkAboveHighscore() {
+    if (highscore > 0 && !highscoreReached && countDifference() >= 0) {
+      highscoreReached = true;
+      untilTopSign = "+";
+      untilTop.color = aboveHighscoreColor;
+    }
+  }
+
+  void showUntilTop() {
+    if (highscore > 0 && (getCount() + untilTopShowDiff) > highscore) {
+      untilTop.gameObject.SetActive(true);
+      untilTop.text = "TOP " + untilTopSign + Mathf.Abs(countDifference()).ToString("0");
+    }
+  }
+
+  int countDifference() {
+    return (int)(currentCount + pointsByTime - highscore);
   }
 
   public void addPointsByTime() {

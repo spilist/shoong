@@ -57,6 +57,10 @@ public class MeteroidManager : ObjectsManager {
     return getPooledObj(objPool, objPrefab, pos);
   }
 
+  public void stopSpawn() {
+    StopCoroutine("spawnObstacle");
+  }
+
   IEnumerator spawnObstacle() {
     while(true) {
       yield return new WaitForSeconds(spawnInterval());

@@ -14,7 +14,7 @@ public class PhaseMonsterManager : ObjectsManager {
   }
 
   override protected void spawn() {
-    if (player == null) return;
+    if (player == null || ScoreManager.sm.isGameOver()) return;
 
     Vector2 screenPos = Random.insideUnitCircle;
     screenPos.Normalize();
