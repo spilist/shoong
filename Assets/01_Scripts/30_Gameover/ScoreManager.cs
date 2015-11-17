@@ -241,15 +241,12 @@ public class ScoreManager : MonoBehaviour {
     //   DataManager.dm.setInt("NumBooster_" + numPlay, boosterCount);
     // }
 
-	// Save record of previous game to check achievement
-    DataManager.dm.setInt("LastTotalCubes", count);
-
-    // Report achievements after saving data
-    DataManager.npbManager.am.reportAchievements();
-
-    // Report leaderboard after saving data
-    DataManager.npbManager.am.reportLeaderboard(AchievementManager.LB_SINGLE, count);
-    DataManager.npbManager.am.reportLeaderboard(AchievementManager.LB_OVERALL, DataManager.dm.getInt("TotalCubes"));
+    if (NPBinding.GameServices.LocalUser.IsAuthenticated == true) {
+      // Report achievements after saving data
+      DataManager.npbManager.am.reportAchievements();
+      // Report leaderboard after saving data
+      DataManager.npbManager.am.reportAllLeaderboard();
+    }
 
     DataManager.dm.save();
 

@@ -100,4 +100,9 @@ public class AchievementManager {
     });
   }
 
+  public void reportAllLeaderboard() {
+    reportLeaderboard(AchievementManager.LB_SINGLE, DataManager.dm.getInt("BestCubes"));
+    reportLeaderboard(AchievementManager.LB_OVERALL, DataManager.dm.getInt("TotalCubes"));
+  }
+
 }

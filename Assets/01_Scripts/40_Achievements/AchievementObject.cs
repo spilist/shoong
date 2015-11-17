@@ -153,6 +153,8 @@ public class AchievementObject {
   }
 
   public void report(int currProgress = 0) {
+    if (NPBinding.GameServices.LocalUser.IsAuthenticated == false)
+      return;
     int progress = (int) getProgress();
     if (progress > currProgress) {
       // We should use PlayGamesPlatform.IncrementAchievement, for incremental one,
