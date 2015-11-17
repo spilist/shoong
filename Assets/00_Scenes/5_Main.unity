@@ -35626,7 +35626,7 @@ MonoBehaviour:
   blinkingMesh: {fileID: 4300038, guid: 7d4e33b83f6a046ab845e77e3044ffcc, type: 3}
   blinkingSeconds: .400000006
   playTouchSound: 1
-  blinkOnStart: 1
+  blinkOnStart: 0
   firstKey: GameOver_CreateToy
   secondKey: GameOver_CreateToyToGo
   picked: 0

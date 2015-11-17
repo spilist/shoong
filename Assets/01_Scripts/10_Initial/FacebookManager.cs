@@ -100,8 +100,6 @@ public class FacebookManager : MonoBehaviour {
   public void firstPlayLog(string description) {
     #if !UNITY_EDITOR
 
-    if (DataManager.dm.getBool("TutorialDone")) return;
-
     FB.LogAppEvent(
       "FirstPlay_" + description,
       null,

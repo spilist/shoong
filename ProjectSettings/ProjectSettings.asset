@@ -79,7 +79,7 @@ PlayerSettings:
   xboxOneDisableKinectGpuReservation: 0
   virtualRealitySupported: 0
   productGUID: bf041498242cf754b8ce54746426781e
-  AndroidBundleVersionCode: 100
+  AndroidBundleVersionCode: 102
   AndroidMinSdkVersion: 15
   AndroidPreferredInstallLocation: 1
   aotOptions: 

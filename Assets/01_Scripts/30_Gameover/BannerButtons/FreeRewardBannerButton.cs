@@ -28,7 +28,9 @@ public class FreeRewardBannerButton : BannerButton {
     gameOverUI.SetActive(true);
     gold.change(reward);
 
-    if (first) FacebookManager.fb.firstPlayLog("6_FirstGift");
+    if (first) {
+      FacebookManager.fb.firstPlayLog("6_FirstGift");
+    }
 
     DataManager.dm.increment("FreeRewardCount");
 

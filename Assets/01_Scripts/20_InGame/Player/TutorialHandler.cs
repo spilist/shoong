@@ -138,7 +138,6 @@ public class TutorialHandler : MonoBehaviour {
           tutoStatus++;
           Invoke("enableTutoCollider", 2);
         } else if (tutoStatus == 1) {
-          FacebookManager.fb.firstPlayLog("3_GetCandiesStart");
           tutoLoaded = true;
           tutorialScenes[0].SetActive(false);
           tutorialScenes[1].SetActive(true);
