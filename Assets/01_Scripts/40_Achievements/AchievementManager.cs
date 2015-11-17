@@ -81,6 +81,12 @@ public class AchievementManager {
 
   }
 
+  public void reportAllAchievements() {
+    if (NPBinding.GameServices == null) return;
+    // Because LoadAchievements() does not work, just report current progress
+    AchievementConstants.init();
+  }
+
   // Maybe need to move this leaderboard thing to new manager (e.g. leaderboard manager)
   public static string LB_SINGLE = "LB_SINGLE";
   public static string LB_OVERALL = "LB_OVERALL";
