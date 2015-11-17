@@ -102,13 +102,13 @@ public class RhythmManager : MonoBehaviour {
   public void startBeat(Text touchText, Text ontheBeatText, Image boostImage, GameObject fingerImage, Transform rhythmRings) {
     beating = true;
 
-    if (tutorialUI.gameObject.activeInHierarchy) doingTutorial = true;
-
+    doingTutorial = true;
     this.touchText = touchText;
     this.onthebeatText = ontheBeatText;
     this.boostImage = boostImage;
     this.fingerImage = fingerImage;
     this.rhythmRings = rhythmRings;
+    tutorialUI = rhythmRings.parent;
   }
 
   public void startGame() {

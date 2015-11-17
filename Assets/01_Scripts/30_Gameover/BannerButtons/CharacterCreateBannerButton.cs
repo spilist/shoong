@@ -26,10 +26,12 @@ public class CharacterCreateBannerButton : BannerButton {
   public void checkAffordable() {
     toGo = createMenu.createPrice - GoldManager.gm.getCount();
     if (toGo > 0) {
+      stopBlink();
       text.text = toGo + secondDescription;
       filter.sharedMesh = inactiveMesh;
       playTouchSound = false;
     } else {
+      startBlink();
       text.text = description;
       filter.sharedMesh = activeMesh;
       playTouchSound = true;
@@ -44,7 +46,9 @@ public class CharacterCreateBannerButton : BannerButton {
     }
   }
 
-  void Update() {
+  override protected void Update() {
+    base.Update();
+
     if (increasing) {
       toGo = Mathf.MoveTowards(toGo, target, Time.deltaTime * increasingSpeed);
       text.text = toGo.ToString("0") + secondDescription;

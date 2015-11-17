@@ -4,8 +4,7 @@ using UnityEngine.EventSystems;
 using System;
 using System.Collections.Generic;
 
-public class TutorialHandler : MonoBehaviour
-{
+public class TutorialHandler : MonoBehaviour {
   private int tutoStatus = 0;
   public GameObject[] tutorialScenes;
   public Collider tutoCollider;
@@ -41,6 +40,7 @@ public class TutorialHandler : MonoBehaviour
   private bool skipped = false;
 
   public Transform energyUI_1;
+  public GameObject helper;
 
   void Awake() {
     origStick = stick;
@@ -186,6 +186,8 @@ public class TutorialHandler : MonoBehaviour
               stick.position = newStickPosition();
               stick.gameObject.SetActive(true);
               stickFingerId = touch.fingerId;
+
+              if (helper.activeSelf) helper.SetActive(false);
             } else {
               hitObject.SendMessage("OnPointerDown");
             }
@@ -283,7 +285,7 @@ public class TutorialHandler : MonoBehaviour
 
     stick = origStick;
     fingerIndicator = origFingerIndicator;
-    stick.gameObject.SetActive(true);
+    // stick.gameObject.SetActive(true);
     stickPanelSize = Vector3.Distance(stick.position, stick.transform.Find("End").position);
 
     FacebookManager.fb.firstPlayLog("5_GameStart");

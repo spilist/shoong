@@ -50,7 +50,7 @@ public class BannerButton : MenusBehavior {
     return description;
   }
 
-  void Update() {
+  virtual protected void Update() {
     if (popStatus > 0) {
       if (popStatus == 1) {
         changeScale(popScale * startScale, popScale * startScale - startScale);

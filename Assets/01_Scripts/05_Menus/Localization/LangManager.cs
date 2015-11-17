@@ -45,7 +45,7 @@ public class LangManager : MonoBehaviour {
       case SystemLanguage.English:
       return "en";
       default:
-      return "none";
+      return "en";
     }
   }
 }
