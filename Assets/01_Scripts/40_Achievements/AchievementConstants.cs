@@ -23,7 +23,8 @@ public static class AchievementConstants {
     objList.Add(new AchievementObject("CgkIubjEkcMWEAIQCA", 0, 5000));
     foreach (AchievementObject obj in objList) {
       obj.progress(DataManager.dm.getInt("BestCubes"));
-      obj.report(0);
+      if (NPBinding.GameServices.LocalUser.IsAuthenticated == true)
+        obj.report(0);
     }
     achievementDict.Add("BestCubes", objList);
     // Toy collector series
@@ -33,7 +34,8 @@ public static class AchievementConstants {
     objList.Add(new AchievementObject("CgkIubjEkcMWEAIQCg", 0, 20));
     foreach (AchievementObject obj in objList) {
       obj.progress(DataManager.dm.getInt("NumCharactersHave"));
-      obj.report(0);
+      if (NPBinding.GameServices.LocalUser.IsAuthenticated == true)
+        obj.report(0);
     }
     achievementDict.Add("NumCharactersHave", objList);
     // Traveler series
@@ -43,9 +45,14 @@ public static class AchievementConstants {
     objList.Add(new AchievementObject("CgkIubjEkcMWEAIQDQ", 0, 1000000));
     foreach (AchievementObject obj in objList) {
       obj.progress(DataManager.dm.getInt("TotalCubes"));
-      obj.report(0);
+      if (NPBinding.GameServices.LocalUser.IsAuthenticated == true)
+        obj.report(0);
     }
     achievementDict.Add("TotalCubes", objList);
+  
+    if (NPBinding.GameServices.LocalUser.IsAuthenticated == true) {
+      DataManager.npbManager.am.reportAllLeaderboard();
+    }
   }
 
   public static bool containsKey(string key) {
