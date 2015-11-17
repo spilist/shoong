@@ -55,6 +55,7 @@ public class RhythmManager : MonoBehaviour {
   private bool gameStarted = false;
   private bool doingTutorial = false;
 
+  private Transform origRhythmRings;
   private Text origTouchText;
   private Text origOnthebeatText;
   private Image origBoostImage;
@@ -73,6 +74,7 @@ public class RhythmManager : MonoBehaviour {
     origTouchText = touchText;
     origOnthebeatText = onthebeatText;
     origBoostImage = boostImage;
+    origRhythmRings = rhythmRings;
   }
 
   void Start() {
@@ -97,7 +99,7 @@ public class RhythmManager : MonoBehaviour {
     }
   }
 
-  public void startBeat(Text touchText, Text ontheBeatText, Image boostImage, GameObject fingerImage) {
+  public void startBeat(Text touchText, Text ontheBeatText, Image boostImage, GameObject fingerImage, Transform rhythmRings) {
     beating = true;
 
     if (tutorialUI.gameObject.activeInHierarchy) doingTutorial = true;
@@ -106,6 +108,7 @@ public class RhythmManager : MonoBehaviour {
     this.onthebeatText = ontheBeatText;
     this.boostImage = boostImage;
     this.fingerImage = fingerImage;
+    this.rhythmRings = rhythmRings;
   }
 
   public void startGame() {
@@ -115,6 +118,7 @@ public class RhythmManager : MonoBehaviour {
     touchText = origTouchText;
     onthebeatText = origOnthebeatText;
     boostImage = origBoostImage;
+    rhythmRings = origRhythmRings;
   }
 
   public void setPeriod(float val) {
@@ -142,11 +146,11 @@ public class RhythmManager : MonoBehaviour {
 
     if (ring == null) {
       ring = (GameObject) Instantiate(prefab);
-      ring.transform.SetParent(rhythmRings, false);
       list.Add(ring);
     }
 
     justSpawned = ring;
+    ring.transform.SetParent(rhythmRings, false);
     ring.SetActive(true);
   }
 

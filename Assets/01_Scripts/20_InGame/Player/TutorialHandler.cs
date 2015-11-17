@@ -30,6 +30,7 @@ public class TutorialHandler : MonoBehaviour
   private bool react = true;
   private Vector3 direction;
   private int stickFingerId = -1;
+  public Transform[] rhythmRings;
   public Text[] touchTexts;
   public Text[] onthebeatTexts;
   public Image[] boostImages;
@@ -62,7 +63,7 @@ public class TutorialHandler : MonoBehaviour
 
     if (status == 1) {
       FacebookManager.fb.firstPlayLog("4_UseBoosterStart");
-      RhythmManager.rm.startBeat(touchTexts[0], onthebeatTexts[0], boostImages[0], fingerImages[0]);
+      RhythmManager.rm.startBeat(touchTexts[0], onthebeatTexts[0], boostImages[0], fingerImages[0], rhythmRings[0]);
     } else {
       DataManager.dm.setBool("TutorialDone", true);
       FacebookManager.fb.tutorialDone(skipped);
@@ -110,7 +111,7 @@ public class TutorialHandler : MonoBehaviour
         } else if (tutoStatus == 2) {
           tutoStatus += (2 - tutoStatus);
           tutorialScenes[2].SetActive(false);
-          RhythmManager.rm.startBeat(touchTexts[1], onthebeatTexts[1], boostImages[1], fingerImages[1]);
+          RhythmManager.rm.startBeat(touchTexts[1], onthebeatTexts[1], boostImages[1], fingerImages[1], rhythmRings[1]);
           spawnManager.GetComponent<FollowTarget>().enabled = true;
           Player.pl.stopMoving(false);
           nextTutorial(3);
@@ -156,7 +157,7 @@ public class TutorialHandler : MonoBehaviour
           tutorialScenes[2].SetActive(false);
           tutorialScenes[3].SetActive(true);
           tutoCollider.enabled = false;
-          RhythmManager.rm.startBeat(touchTexts[1], onthebeatTexts[1], boostImages[1], fingerImages[1]);
+          RhythmManager.rm.startBeat(touchTexts[1], onthebeatTexts[1], boostImages[1], fingerImages[1], rhythmRings[1]);
           spawnManager.GetComponent<FollowTarget>().enabled = true;
           Player.pl.stopMoving(false);
         } else if (tutoStatus == 3) {

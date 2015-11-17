@@ -14684,8 +14684,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 147c4692c7dc94abb87636570cbe9393, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minAlpha: .170000002
-  maxAlpha: .550000012
+  minAlpha: .0799999982
+  maxAlpha: .699999988
 --- !u!114 &812955786
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20120,7 +20120,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1082642565
 RectTransform:
   m_ObjectHideFlags: 0

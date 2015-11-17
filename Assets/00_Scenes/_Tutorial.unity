@@ -8751,6 +8751,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6e43e5ec2dda449dbd8b0fa4847f785, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &407042992
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 407042993}
+  m_Layer: 0
+  m_Name: RhythmRings
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &407042993
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 407042992}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1231457338}
+  m_RootOrder: 5
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -220, y: 150}
+  m_SizeDelta: {x: 450, y: 450}
+  m_Pivot: {x: .5, y: .5}
 --- !u!1 &414635251
 GameObject:
   m_ObjectHideFlags: 0
@@ -12998,7 +13030,7 @@ Transform:
   m_LocalScale: {x: 160, y: 160, z: 160}
   m_Children: []
   m_Father: {fileID: 1701025775}
-  m_RootOrder: 7
+  m_RootOrder: 6
 --- !u!114 &632297517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13112,7 +13144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c29316fd68134f6a8504287e1c8cfcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resetAll: 0
+  resetAll: 1
   resetCube: 0
   resetGoldenCube: 0
   normalFrameRate: 60
@@ -15568,7 +15600,7 @@ Transform:
   m_Children:
   - {fileID: 1525181129}
   m_Father: {fileID: 1701025775}
-  m_RootOrder: 5
+  m_RootOrder: 4
 --- !u!23 &851953044
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -17144,7 +17176,7 @@ Transform:
   m_LocalScale: {x: 950, y: 250.000031, z: 950}
   m_Children: []
   m_Father: {fileID: 1701025775}
-  m_RootOrder: 9
+  m_RootOrder: 8
 --- !u!114 &892369443
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18192,7 +18224,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 995117313}
-  m_LocalRotation: {x: -.190690339, y: .774532139, z: .539343238, w: -.269899786}
+  m_LocalRotation: {x: -.190690368, y: .774532259, z: .539343297, w: -.269899815}
   m_LocalPosition: {x: -148.834641, y: -491.899872, z: -62.4409447}
   m_LocalScale: {x: 1.6000005, y: 1.599998, z: 1.6000011}
   m_Children: []
@@ -21724,6 +21756,7 @@ RectTransform:
   - {fileID: 1508759716}
   - {fileID: 1558675230}
   - {fileID: 1585908938}
+  - {fileID: 407042993}
   m_Father: {fileID: 507386076}
   m_RootOrder: 5
   m_AnchorMin: {x: 0, y: 0}
@@ -23294,7 +23327,7 @@ Transform:
   m_Children:
   - {fileID: 764226114}
   m_Father: {fileID: 1701025775}
-  m_RootOrder: 10
+  m_RootOrder: 9
 --- !u!114 &1276123139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37056,8 +37089,7 @@ GameObject:
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 1665647660}
-  - 114: {fileID: 1665647661}
+  - 224: {fileID: 1665647660}
   m_Layer: 0
   m_Name: RhythmRings
   m_TagString: Untagged
@@ -37065,31 +37097,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1665647660
-Transform:
+--- !u!224 &1665647660
+RectTransform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1665647659}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -47.7999992, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1701025775}
-  m_RootOrder: 4
---- !u!114 &1665647661
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1665647659}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85bd37e8eaf3c4f02a3d2a0f1a640b6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 91418582}
-  copyRotation: 0
+  m_Father: {fileID: 1712236142}
+  m_RootOrder: 7
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -220, y: 150}
+  m_SizeDelta: {x: 450, y: 450}
+  m_Pivot: {x: .5, y: .5}
 --- !u!1 &1683774461
 GameObject:
   m_ObjectHideFlags: 0
@@ -37226,7 +37250,6 @@ Transform:
   - {fileID: 91418581}
   - {fileID: 1734906062}
   - {fileID: 1298175623}
-  - {fileID: 1665647660}
   - {fileID: 851953043}
   - {fileID: 1973202188}
   - {fileID: 632297516}
@@ -37310,6 +37333,7 @@ RectTransform:
   - {fileID: 767121095}
   - {fileID: 1490234663}
   - {fileID: 1477129078}
+  - {fileID: 1665647660}
   m_Father: {fileID: 507386076}
   m_RootOrder: 4
   m_AnchorMin: {x: 0, y: 0}
@@ -38812,6 +38836,9 @@ MonoBehaviour:
   menus: {fileID: 1507171664}
   pause: {fileID: 1567307131}
   idleUI: {fileID: 1817731073}
+  rhythmRings:
+  - {fileID: 1665647660}
+  - {fileID: 407042993}
   touchTexts:
   - {fileID: 1509421807}
   - {fileID: 835303190}
@@ -41613,7 +41640,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1878833774}
-  m_LocalRotation: {x: -.190690339, y: .774532259, z: .539343297, w: -.269899786}
+  m_LocalRotation: {x: -.190690309, y: .774532139, z: .539343238, w: -.269899756}
   m_LocalPosition: {x: -137.134644, y: -449.999878, z: -71.4410858}
   m_LocalScale: {x: 2.50000119, y: 2.4999969, z: 2.50000167}
   m_Children: []
@@ -41642,7 +41669,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1878977605}
-  m_LocalRotation: {x: -.190690339, y: .774532259, z: .539343297, w: -.269899786}
+  m_LocalRotation: {x: -.190690309, y: .774532139, z: .539343238, w: -.269899756}
   m_LocalPosition: {x: -151.034637, y: -430.999878, z: -92.541153}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -42220,8 +42247,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 147c4692c7dc94abb87636570cbe9393, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minAlpha: .170000002
-  maxAlpha: .550000012
+  minAlpha: .0799999982
+  maxAlpha: .699999988
 --- !u!114 &1912621601
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44971,6 +44998,38 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1961856712}
+--- !u!1 &1962597818
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 1962597819}
+  m_Layer: 0
+  m_Name: RhythmRings
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1962597819
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1962597818}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2134279969}
+  m_RootOrder: 11
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -220, y: 150}
+  m_SizeDelta: {x: 450, y: 450}
+  m_Pivot: {x: .5, y: .5}
 --- !u!1 &1967867617
 GameObject:
   m_ObjectHideFlags: 0
@@ -46227,7 +46286,7 @@ Transform:
   m_Children:
   - {fileID: 1485115681}
   m_Father: {fileID: 1701025775}
-  m_RootOrder: 6
+  m_RootOrder: 5
 --- !u!114 &1973202189
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47804,25 +47863,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: faf842ab2d53d4d85adc14ee2381079a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rhythmRings: {fileID: 1665647660}
+  rhythmRings: {fileID: 1962597819}
   normalRing: {fileID: 193336, guid: 7db5da22177ba40888edf0cf3136c3b5, type: 2}
   skillRing: {fileID: 178226, guid: f68ad687d295246beaa24e9089f2d872, type: 2}
   failedRhythmPrefab: {fileID: 117830, guid: 9ff6898f90381414bbc7280ccb753536, type: 2}
   inGameUI: {fileID: 2134279969}
   tutorialUI: {fileID: 1712236142}
   ringAmount: 2
-  scaleBase: 6
-  maxBoosterOkScale: 3
-  maxPopScale: 3
-  rightBeatScale: 2
-  minPopScale: 1
-  minBoosterOkScale: 1
   ringDisppearDuration: .5
-  playerScaleUpAmount: 1.39999998
-  canBeMissedPosX: 0
-  minBoosterOkPosX: 1.5
-  rightBeatPosX: 90.6999969
-  maxBoosterOkPosX: .5
+  canBeMissedPosX: -486
+  minBoosterOkPosX: -213
+  rightBeatPosX: 0
+  maxBoosterOkPosX: 213
   touchText: {fileID: 1648840796}
   onthebeatText: {fileID: 531526507}
   boostImage: {fileID: 680766409}
@@ -51019,7 +51071,7 @@ Transform:
   m_Children:
   - {fileID: 1503393549}
   m_Father: {fileID: 1701025775}
-  m_RootOrder: 8
+  m_RootOrder: 7
 --- !u!82 &2086294869
 AudioSource:
   m_ObjectHideFlags: 0
@@ -51328,6 +51380,7 @@ RectTransform:
   - {fileID: 1406922903}
   - {fileID: 2048411583}
   - {fileID: 1322196946}
+  - {fileID: 1962597819}
   m_Father: {fileID: 507386076}
   m_RootOrder: 7
   m_AnchorMin: {x: 0, y: 0}
