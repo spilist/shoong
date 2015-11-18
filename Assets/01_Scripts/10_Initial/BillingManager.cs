@@ -7,6 +7,7 @@ using VoxelBusters.NativePlugins;
 public class BillingManager : MonoBehaviour {
   public static BillingManager bm;
   public CharactersMenu charactersMenu;
+  public UnlockAutoMode unlockAutoMode;
 
   private Dictionary<string, BillingProduct> bProducts;
   private   int         m_productIter;
@@ -86,10 +87,20 @@ public class BillingManager : MonoBehaviour {
       foreach (BillingTransaction _eachTransaction in _transactionList)
       {
         state = _eachTransaction.TransactionState;
+        bool unlockAuto = _eachTransaction.ProductIdentifier == "unlock_automode";
+
         if (state == eBillingTransactionState.PURCHASED) {
-          charactersMenu.buyComplete(_eachTransaction.ProductIdentifier, true);
+          if (unlockAuto) {
+            unlockAutoMode.buyComplete();
+          } else {
+            charactersMenu.buyComplete(_eachTransaction.ProductIdentifier, true);
+          }
         } else if (state == eBillingTransactionState.RESTORED) {
-          charactersMenu.buyComplete(_eachTransaction.ProductIdentifier, false);
+          if (unlockAuto) {
+            unlockAutoMode.buyComplete();
+          } else {
+            charactersMenu.buyComplete(_eachTransaction.ProductIdentifier, false);
+          }
         }
       }
     }

@@ -116,6 +116,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+	<data name="Button_AutoBoosterMode" xml:space="preserve">
+		<value>자동 부스터 모드</value>
+	</data>
 	<data name="CharacterName_alienwithgun" xml:space="preserve">
 		<value>총든 외계인</value>
 	</data>
@@ -214,6 +217,9 @@
 	</data>
 	<data name="GameOver_ThanksForRating" xml:space="preserve">
 		<value>                 평가해주셔서 감사합니다!</value>
+	</data>
+	<data name="Help_AutoBoosterUsage" xml:space="preserve">
+		<value>자동 부스터를 써보세요!</value>
 	</data>
 	<data name="Notification_FreeGift" xml:space="preserve">
 		<value>무료 선물을 받으세요!!</value>

@@ -81,4 +81,8 @@ public class Skill : MonoBehaviour {
   void OnChangeLanguage(LanguageManager languageManager) {
     description = LanguageManager.Instance.GetTextValue("SkillDescription_" + name);
   }
+
+  public bool hasDuration() {
+    return duration > 0;
+  }
 }

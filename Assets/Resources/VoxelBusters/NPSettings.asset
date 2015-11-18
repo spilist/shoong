@@ -172,6 +172,12 @@ MonoBehaviour:
       m_price: 0
       m_iosProductId: toy_goldpig
       m_androidProductId: toy_goldpig
+    - m_name: unlock_automode
+      m_description: unlock_automode
+      m_isConsumable: 0
+      m_price: 0
+      m_iosProductId: unlock_automode
+      m_androidProductId: unlock_automode
     m_iOS:
       m_supportsReceiptValidation: 0
       m_validateUsingServerURL: 

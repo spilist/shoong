@@ -24,6 +24,7 @@ public class MenusController : MonoBehaviour {
       string hitTag = hit.transform.tag;
       string layer = LayerMask.LayerToName(hit.transform.gameObject.layer);
       string menuButtons = hit.transform.parent.name;
+
       if (menuButtons == "MenuButtonsLeft" || menuButtons == "MenuButtonsRight") {
         if (hitTag == "LinkButton") {
           hit.transform.GetComponent<MenusBehavior>().activateSelf();
@@ -32,7 +33,7 @@ public class MenusController : MonoBehaviour {
           toggleMenuAndUI();
           AudioSource.PlayClipAtPoint(UITouchSound, hit.transform.position);
         }
-      } else if (hitTag == "PauseButton" || (isMenuOn() && layer == "MenusBehavior") || (ScoreManager.sm.isGameOver() && layer == "MenusBehavior")) {
+      } else if (hitTag == "AutoBooster" || hitTag == "PauseButton" || (isMenuOn() && layer == "MenusBehavior") || (ScoreManager.sm.isGameOver() && layer == "MenusBehavior")) {
         if (beforeIdle.isLoading()) return "";
 
         MenusBehavior mb = hit.transform.GetComponent<MenusBehavior>();

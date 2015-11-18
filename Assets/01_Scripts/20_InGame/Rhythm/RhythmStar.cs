@@ -90,6 +90,8 @@ public class RhythmStar : MonoBehaviour {
 
       if (!rightMsgSended && posX >= rightBeatPosX) {
         rightMsgSended = true;
+
+        if (RhythmManager.rm.abb != null && RhythmManager.rm.abb.isOn()) Player.pl.shootBooster();
         // image.enabled = false;
         // RhythmManager.rm.afterRing(true);
       }

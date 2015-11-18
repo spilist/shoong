@@ -6,6 +6,7 @@ using SynchronizerData;
 
 public class RhythmManager : MonoBehaviour {
   public static RhythmManager rm;
+  public AutoBoosterButton abb;
   public Transform rhythmRings;
   public GameObject normalRing;
   public GameObject skillRing;
@@ -186,8 +187,8 @@ public class RhythmManager : MonoBehaviour {
     } else if (!feverTime) {
       rem = ringCount % (numNormalInLoop + numSkillInLoop);
 
-      if (rem == 1 && skillActivated && numSkillInLoop > 1) {
-        if (SkillManager.sm.current().name != "Shield") {
+      if (rem == 1 && skillActivated && numSkillInLoop > 0) {
+        if (!SkillManager.sm.current().hasDuration()) {
           skillActivated = false;
           SkillManager.sm.stopSkills();
         }

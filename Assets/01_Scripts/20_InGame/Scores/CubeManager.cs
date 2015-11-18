@@ -5,6 +5,8 @@ using System.Collections.Generic;
 
 public class CubeManager : MonoBehaviour {
   public static CubeManager cm;
+  public AutoBoosterButton abb;
+  public float noAutoBonus = 0.1f;
   public Transform worldUI;
   private int totalCount = 0;
   public int increaseSpeed = 5;
@@ -73,6 +75,11 @@ public class CubeManager : MonoBehaviour {
 
   public int getCount() {
     return totalCount + pointsByTime;
+  }
+
+  public int getBonus() {
+    if (abb == null || !abb.isOn()) return (int)Mathf.Floor(getCount() * noAutoBonus);
+    else return 0;
   }
 
   public void moreCubes(int val) {

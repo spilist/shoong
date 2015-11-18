@@ -10850,6 +10850,72 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 537339453}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &544112431
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 544112432}
+  - 222: {fileID: 544112434}
+  - 114: {fileID: 544112433}
+  m_Layer: 5
+  m_Name: NoAutoBonus
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &544112432
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 544112431}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 811945731}
+  m_RootOrder: 3
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
+  m_AnchoredPosition: {x: 284, y: 126}
+  m_SizeDelta: {x: 500, y: 100}
+  m_Pivot: {x: .5, y: 0}
+--- !u!114 &544112433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 544112431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: b578b0881daafcb47826d6bac8783197, type: 3}
+    m_FontSize: 25
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 7
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: "+MANUAL \nBONUS"
+--- !u!222 &544112434
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 544112431}
 --- !u!1 &545981489 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 101786, guid: ba524a7769bc34372970ec9cf89920d8, type: 2}
@@ -13089,6 +13155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 193d0a3969d7846999410bfeb4e7f70a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  abb: {fileID: 0}
   controlMethod: Stick
   adjustScale: 0
 --- !u!1 &631363990
@@ -13839,6 +13906,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 193d0a3969d7846999410bfeb4e7f70a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  abb: {fileID: 0}
   controlMethod: Stick
   adjustScale: 0
 --- !u!1 &702136343
@@ -14199,6 +14267,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 193d0a3969d7846999410bfeb4e7f70a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  abb: {fileID: 0}
   controlMethod: Stick
   adjustScale: 0
 --- !u!1 &715384509
@@ -15423,6 +15492,7 @@ RectTransform:
   - {fileID: 383286667}
   - {fileID: 118514172}
   - {fileID: 1662909152}
+  - {fileID: 544112432}
   m_Father: {fileID: 897405142}
   m_RootOrder: 3
   m_AnchorMin: {x: .5, y: .5}
@@ -17598,6 +17668,7 @@ MonoBehaviour:
   cubesHighscoreDescription: {fileID: 383286668}
   cubesHighscoreNumber: {fileID: 118514173}
   cubesCurrentScore: {fileID: 1662909153}
+  noAutoBonus: {fileID: 544112431}
   newHighscoreColor: {r: .925721943, g: .963235319, b: .283304483, a: 1}
   scoreUpdateMaxStandard: 2000
   scoreUpdateMaxDuration: 2
@@ -17807,6 +17878,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b2a1c6c01ea844e8a42f4c1cbd02792, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  abb: {fileID: 0}
+  noAutoBonus: .100000001
   worldUI: {fileID: 2134279969}
   increaseSpeed: 5
   cubesCount: {fileID: 589887826}
@@ -18153,10 +18226,13 @@ MonoBehaviour:
   gcm: {fileID: 1991538115}
   ingameCollider: {fileID: 320500166}
   ingameUI: {fileID: 2134279969}
+  abb: {fileID: 0}
+  goldIdle: {fileID: 0}
   goldText: {fileID: 966334537}
   getEffect: {fileID: 298288788}
   goldenMat: {fileID: 2100000, guid: bebff4c88f0cd4369b19c2281be089f8, type: 2}
   effectAmountText: {fileID: 0}
+  goldDecreasingSound: {fileID: 0}
   goldenCubePrefab: {fileID: 178344, guid: b185d52f68bf5499e81f948bbbf1bd8c, type: 2}
   cubePool: []
   cubeAmount: 10
@@ -21482,6 +21558,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 193d0a3969d7846999410bfeb4e7f70a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  abb: {fileID: 0}
   controlMethod: Stick
   adjustScale: 0
 --- !u!1 &1194203664
@@ -25042,6 +25119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 193d0a3969d7846999410bfeb4e7f70a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  abb: {fileID: 0}
   controlMethod: Stick
   adjustScale: 0
 --- !u!1 &1349931276
@@ -48081,6 +48159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: faf842ab2d53d4d85adc14ee2381079a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  abb: {fileID: 0}
   rhythmRings: {fileID: 1962597819}
   normalRing: {fileID: 193336, guid: 7db5da22177ba40888edf0cf3136c3b5, type: 2}
   skillRing: {fileID: 178226, guid: f68ad687d295246beaa24e9089f2d872, type: 2}
@@ -51179,6 +51258,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 193d0a3969d7846999410bfeb4e7f70a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  abb: {fileID: 0}
   controlMethod: Stick
   adjustScale: 0
 --- !u!1 &2081599295

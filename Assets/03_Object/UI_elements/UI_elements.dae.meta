@@ -60,6 +60,8 @@ ModelImporter:
     100104: button_red_gift_1
     100106: button_grey_gift
     100108: button_grey_randomCharacterGet
+    100110: button_automode_unlock
+    100112: button_blank_grey_leftright_longer
     400000: active_object
     400002: button_back
     400004: button_blank_leftright
@@ -115,6 +117,8 @@ ModelImporter:
     400104: button_red_gift_1
     400106: button_grey_gift
     400108: button_grey_randomCharacterGet
+    400110: button_automode_unlock
+    400112: button_blank_grey_leftright_longer
     2300000: active_object
     2300002: button_back
     2300004: button_blank_leftright
@@ -169,6 +173,8 @@ ModelImporter:
     2300102: button_red_gift_1
     2300104: button_grey_gift
     2300106: button_grey_randomCharacterGet
+    2300108: button_automode_unlock
+    2300110: button_blank_grey_leftright_longer
     3300000: active_object
     3300002: button_back
     3300004: button_blank_leftright
@@ -223,6 +229,8 @@ ModelImporter:
     3300102: button_red_gift_1
     3300104: button_grey_gift
     3300106: button_grey_randomCharacterGet
+    3300108: button_automode_unlock
+    3300110: button_blank_grey_leftright_longer
     4300000: button_back
     4300002: button_select
     4300004: button_character
@@ -277,6 +285,8 @@ ModelImporter:
     4300102: button_red_gift_1
     4300104: button_grey_gift
     4300106: button_grey_randomCharacterGet
+    4300108: button_automode_unlock
+    4300110: button_blank_grey_leftright_longer
     9500000: //RootNode
   materials:
     importMaterials: 1

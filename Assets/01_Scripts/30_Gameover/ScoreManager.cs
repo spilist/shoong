@@ -215,7 +215,7 @@ public class ScoreManager : MonoBehaviour {
     // }
 
     isSaved = true;
-    int count = CubeManager.cm.getCount();
+    int count = CubeManager.cm.getCount() + CubeManager.cm.getBonus();
     // DataManager.dm.increment("CurrentCubes", count + int.Parse(bonusCount.text));
     DataManager.dm.increment("TotalCubes", count);
     DataManager.dm.setBestInt("BestCubes", count);

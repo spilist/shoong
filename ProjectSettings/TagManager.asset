@@ -87,6 +87,7 @@ TagManager:
   - SkipButton
   - TutorialCollider
   - TutorialPart
+  - AutoBooster
   layers:
   - Default
   - TransparentFX

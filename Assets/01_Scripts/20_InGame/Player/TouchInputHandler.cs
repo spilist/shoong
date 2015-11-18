@@ -45,7 +45,6 @@ public class TouchInputHandler : MonoBehaviour
       if (pause.isResuming()) return;
 
       string result = menus.touched();
-
       if (menus.isMenuOn()) return;
 
 			if (result != "PauseButton" && pause.isPaused()) {
@@ -77,14 +76,7 @@ public class TouchInputHandler : MonoBehaviour
       if (controlMethod == "Touch") {
         if (result == "Ground") {
           setPlayerDirection(Player.pl.transform);
-          Player.pl.shootBooster();
-        } else if (result == "SkillButton") {
-          Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-          RaycastHit hit;
-          if ( Physics.Raycast(ray, out hit) ) {
-            GameObject hitObject = hit.transform.gameObject;
-            hitObject.SendMessage("OnPointerDown");
-          }
+          // Player.pl.shootBooster();
         }
       }
 		}
@@ -116,7 +108,9 @@ public class TouchInputHandler : MonoBehaviour
               stick.gameObject.SetActive(false);
               stickFingerId = -1;
               fingerIndicator.position = stick.position;
-            } else hitObject.SendMessage("OnPointerUp");
+            } else {
+              hitObject.SendMessage("OnPointerUp");
+            }
           }
         }
       }

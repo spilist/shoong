@@ -11,6 +11,7 @@ public class ScoreUpdate : MonoBehaviour {
   public Text cubesHighscoreDescription;
   public Text cubesHighscoreNumber;
   public Text cubesCurrentScore;
+  public GameObject noAutoBonus;
 
   public Color newHighscoreColor;
   public int scoreUpdateMaxStandard = 1000;
@@ -25,14 +26,17 @@ public class ScoreUpdate : MonoBehaviour {
   private float highscoreNum;
   private float duration;
   private int bonusAmount;
+  private float bonusDuration;
 
   private int updateStatus = 0;
   private bool newHighscore = false;
+  private bool newHighscoreByBonus = false;
   private float positionX;
   private float distance;
 
   void Start() {
     cubeDifference = CubeManager.cm.getCount();
+    bonusAmount = CubeManager.cm.getBonus();
 
     currentScoreIngame.text = cubeDifference.ToString();
 
@@ -41,6 +45,8 @@ public class ScoreUpdate : MonoBehaviour {
     } else {
       duration = Mathf.Max(scoreUpdateMaxDuration * (float) cubeDifference / scoreUpdateMaxStandard, scoreUpdateMinDuration);
     }
+
+    bonusDuration = Mathf.Max(scoreUpdateMaxDuration * (float) bonusAmount / scoreUpdateMaxStandard, scoreUpdateMinDuration);
 
     highscoreNum = DataManager.dm.getInt("BestCubes");
     cubesHighscoreNumber.text = highscoreNum.ToString();
@@ -66,19 +72,46 @@ public class ScoreUpdate : MonoBehaviour {
 
       if (cubeCurrentNum == cubeDifference) {
         updateStatus++;
-        GetComponent<AudioSource>().Stop();
 
-        if (newHighscore) cubesHighscoreDescription.GetComponent<AudioSource>().Play();
+        if (bonusAmount > 0) noAutoBonus.SetActive(true);
+        else GetComponent<AudioSource>().Stop();
+
+        if (newHighscore) {
+          cubesHighscoreDescription.GetComponent<AudioSource>().Play();
+          highscoreNum = cubeCurrentNum;
+        }
         positionX = cubesRecords.GetComponent<RectTransform>().anchoredPosition.x;
         distance = positionX;
       }
     } else if (updateStatus == 2) {
+      if (bonusAmount > 0) {
+        cubeCurrentNum = Mathf.MoveTowards(cubeCurrentNum, cubeDifference + bonusAmount, Time.deltaTime * bonusAmount / bonusDuration);
+        cubesCurrentScore.text = cubeCurrentNum.ToString("0");
+
+        if (highscoreNum < cubeCurrentNum) {
+          if (newHighscore) newHighscoreByBonus = true;
+          else newHighscore = true;
+          cubesHighscoreDescription.color = newHighscoreColor;
+          cubesHighscoreNumber.color = newHighscoreColor;
+          cubesHighscoreNumber.text = cubeCurrentNum.ToString("0");
+        }
+
+        if (cubeCurrentNum == cubeDifference + bonusAmount) {
+          updateStatus++;
+          GetComponent<AudioSource>().Stop();
+
+          if (newHighscore && !newHighscoreByBonus) cubesHighscoreDescription.GetComponent<AudioSource>().Play();
+          positionX = cubesRecords.GetComponent<RectTransform>().anchoredPosition.x;
+          distance = positionX;
+        }
+      } else updateStatus++;
+    } else if (updateStatus == 3) {
       if (stayCount < stayDuration) {
         stayCount += Time.deltaTime;
       } else {
         updateStatus++;
       }
-    } else if (updateStatus == 3) {
+    } else if (updateStatus == 4) {
     //   move(cubesRecords, elapsedTime);
     // } else if (updateStatus == 4) {
     //   move(elapsedTime, CPS);

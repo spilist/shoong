@@ -116,6 +116,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+	<data name="Button_AutoBoosterMode" xml:space="preserve">
+		<value>Auto Booster Mode</value>
+	</data>
 	<data name="CharacterName_alienwithgun" xml:space="preserve">
 		<value>Alien With Gun</value>
 	</data>
@@ -214,6 +217,9 @@
 	</data>
 	<data name="GameOver_ThanksForRating" xml:space="preserve">
 		<value>            THANKS FOR RATING</value>
+	</data>
+	<data name="Help_AutoBoosterUsage" xml:space="preserve">
+		<value>Use Auto Booster!</value>
 	</data>
 	<data name="Notification_FreeGift" xml:space="preserve">
 		<value>Collect Free Gift!!</value>
