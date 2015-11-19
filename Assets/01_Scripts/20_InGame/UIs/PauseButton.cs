@@ -69,6 +69,10 @@ public class PauseButton : MenusBehavior {
   void OnApplicationPause() {
     activateSelf();
   }
+
+  void OnPointerDown() {
+    activateSelf();
+  }
 }
 
 public static class CoroutineUtilities {

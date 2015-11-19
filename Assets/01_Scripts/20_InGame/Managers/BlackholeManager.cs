@@ -6,7 +6,7 @@ public class BlackholeManager : ObjectsManager {
   public int gravityToUser = 130;
   public int gravityScale = 10;
 
-  public int reboundDuring = 2;
+  public float reboundDuring = 1.5f;
   public float shakeAmount = 3;
   public int reboundingSpeed = 1000;
 

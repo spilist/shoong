@@ -42,17 +42,14 @@ public class TouchInputHandler : MonoBehaviour
     }
 
     if (reactAble() && Input.GetMouseButtonDown(0)) {
-      if (pause.isResuming()) return;
-
       string result = menus.touched();
       if (menus.isMenuOn()) return;
 
-			if (result != "PauseButton" && pause.isPaused()) {
+			if (!pause.isResuming() && result != "PauseButton" && pause.isPaused()) {
         pause.resume();
-        return;
       }
 
-			if ((result == "Ground" || result == "ChangeBehavior") && !gameStarted) {
+			if (!pause.isResuming() && (result == "Ground" || result == "ChangeBehavior") && !gameStarted) {
 
         menus.gameStart();
 

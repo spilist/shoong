@@ -38,6 +38,7 @@ public class AlienshipMover : ObjectsMover {
     shootingStatus = 1;
     stayCount = 0;
     speed = asm.speed;
+    rb.isKinematic = false;
   }
 
   protected override void normalMovement() {

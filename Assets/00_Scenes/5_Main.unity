@@ -4615,6 +4615,7 @@ MonoBehaviour:
   skillRing: 1
   description: Restore energy
   duration: 0
+  amount: 20
 --- !u!1 &222636911
 GameObject:
   m_ObjectHideFlags: 0
@@ -28132,7 +28133,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: bb6901ca2cbb04e04ad4567d8ccca51e, type: 2}
       propertyPath: m_RootOrder
-      value: 23
+      value: 22
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bb6901ca2cbb04e04ad4567d8ccca51e, type: 2}
@@ -45432,7 +45433,7 @@ MonoBehaviour:
   gravity: 80
   gravityToUser: 80
   gravityScale: 10
-  reboundDuring: 2
+  reboundDuring: 1.5
   shakeAmount: 3
   reboundingSpeed: 1000
 --- !u!114 &1991538109
@@ -46144,7 +46145,7 @@ MonoBehaviour:
     type: 2}
   laserPool: []
   laserWarningPool: []
-  laserPoolAmount: 30
+  laserPoolAmount: 3
   spawnRadius: 200
   detectDistance: 200
   headFollowingSpeed: 100
