@@ -49,6 +49,7 @@ public class RhythmManager : MonoBehaviour {
   private int ringCount = 0;
   private int rem;
   private bool feverTime = false;
+  public float autoFeverBoostPer = 0.2f;
   private bool skillActivated = false;
 
   private BeatObserver beatObserver;
@@ -279,9 +280,20 @@ public class RhythmManager : MonoBehaviour {
     if (val) {
       isSkillOK = false;
       turnBoostOK(false);
+
+      if (abb != null && abb.isOn()) StartCoroutine("autoFeverBooster");
+    } else {
+      StopCoroutine("autoFeverBooster");
     }
 
     boostImage.gameObject.SetActive(!val);
+  }
+
+  IEnumerator autoFeverBooster() {
+    while(true) {
+      Player.pl.shootBooster();
+      yield return new WaitForSeconds(autoFeverBoostPer);
+    }
   }
 
   public void loopSkillActivated(bool val) {

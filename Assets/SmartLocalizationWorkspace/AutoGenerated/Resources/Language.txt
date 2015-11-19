@@ -117,7 +117,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
 	<data name="Button_AutoBoosterMode" xml:space="preserve">
-		<value>Auto Booster Mode</value>
+		<value>Auto Beat Mode</value>
 	</data>
 	<data name="CharacterName_alienwithgun" xml:space="preserve">
 		<value>Alien With Gun</value>
@@ -198,7 +198,7 @@
 		<value>WIN A TOY</value>
 	</data>
 	<data name="GameOver_CreateToyToGo" xml:space="preserve">
-		<value> GOLDS TO GO</value>
+		<value> COINS TO GO</value>
 	</data>
 	<data name="GameOver_FirstGift" xml:space="preserve">
 		<value>FIRST GIFT</value>
@@ -207,19 +207,19 @@
 		<value>FREE GIFT</value>
 	</data>
 	<data name="GameOver_GoldsEarned" xml:space="preserve">
-		<value>            _REWARD_ GOLDS EARNED</value>
+		<value>            _REWARD_ COINS EARNED</value>
 	</data>
 	<data name="GameOver_RateUs" xml:space="preserve">
 		<value>ENJOYED? RATE US!</value>
 	</data>
 	<data name="GameOver_RewardAds" xml:space="preserve">
-		<value>EARN GOLD</value>
+		<value>EARN COINS</value>
 	</data>
 	<data name="GameOver_ThanksForRating" xml:space="preserve">
 		<value>            THANKS FOR RATING</value>
 	</data>
 	<data name="Help_AutoBoosterUsage" xml:space="preserve">
-		<value>Use Auto Booster!</value>
+		<value>Use Auto Beat!</value>
 	</data>
 	<data name="Notification_FreeGift" xml:space="preserve">
 		<value>Collect Free Gift!!</value>
@@ -302,7 +302,7 @@ PURCHASES</value>
 		<value>Ghost</value>
 	</data>
 	<data name="SkillName_Gold" xml:space="preserve">
-		<value>Gold</value>
+		<value>Rich</value>
 	</data>
 	<data name="SkillName_Heal" xml:space="preserve">
 		<value>Heal</value>

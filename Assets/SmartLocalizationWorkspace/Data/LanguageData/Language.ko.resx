@@ -117,7 +117,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
 	<data name="Button_AutoBoosterMode" xml:space="preserve">
-		<value>자동 부스터 모드</value>
+		<value>자동 리듬 모드</value>
 	</data>
 	<data name="CharacterName_alienwithgun" xml:space="preserve">
 		<value>총든 외계인</value>
@@ -198,7 +198,7 @@
 		<value>장난감 뽑기</value>
 	</data>
 	<data name="GameOver_CreateToyToGo" xml:space="preserve">
-		<value> 골드 필요</value>
+		<value> 코인 필요</value>
 	</data>
 	<data name="GameOver_FirstGift" xml:space="preserve">
 		<value>첫 선물</value>
@@ -207,19 +207,19 @@
 		<value>무료 선물</value>
 	</data>
 	<data name="GameOver_GoldsEarned" xml:space="preserve">
-		<value>                 _REWARD_ 골드 얻음</value>
+		<value>                 _REWARD_ 코인 얻음</value>
 	</data>
 	<data name="GameOver_RateUs" xml:space="preserve">
 		<value>게임을 평가해주세요</value>
 	</data>
 	<data name="GameOver_RewardAds" xml:space="preserve">
-		<value>골드 얻기</value>
+		<value>코인 얻기</value>
 	</data>
 	<data name="GameOver_ThanksForRating" xml:space="preserve">
 		<value>                 평가해주셔서 감사합니다!</value>
 	</data>
 	<data name="Help_AutoBoosterUsage" xml:space="preserve">
-		<value>자동 부스터를 써보세요!</value>
+		<value>자동 리듬 모드를 써보세요!</value>
 	</data>
 	<data name="Notification_FreeGift" xml:space="preserve">
 		<value>무료 선물을 받으세요!!</value>
@@ -300,7 +300,7 @@
 		<value>유령</value>
 	</data>
 	<data name="SkillName_Gold" xml:space="preserve">
-		<value>골드</value>
+		<value>부자</value>
 	</data>
 	<data name="SkillName_Heal" xml:space="preserve">
 		<value>회복</value>

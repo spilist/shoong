@@ -43,11 +43,9 @@ public class FacebookManager : MonoBehaviour {
   private void OnHideUnity (bool isGameShown) {
     if (!isGameShown) {
         // Pause the game - we will need to hide
-        Debug.Log("??");
         Time.timeScale = 0;
     } else {
         // Resume the game - we're getting focus again
-        Debug.Log("??2");
         Time.timeScale = 1;
     }
   }

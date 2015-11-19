@@ -24,7 +24,6 @@ public class SkillManager : MonoBehaviour {
 
   public void activate() {
     if (!equiped.isActivated()) {
-      Debug.Log("??");
       equiped.activate(true);
       RhythmManager.rm.loopSkillActivated(true);
     }

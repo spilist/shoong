@@ -16,7 +16,6 @@ public class AutoBoosterButton : OnOffButton {
   override public void initializeRest() {
     checkAutoBought();
 
-    // if (true) {
     if (DataManager.dm.getInt("TotalNumPlays") <= showHelpFor && !DataManager.dm.getBool(settingName + "Setting")) {
       autoBoosterHelp.SetActive(true);
     }
@@ -26,7 +25,7 @@ public class AutoBoosterButton : OnOffButton {
 
   override public void applyStatus() {
     if (clicked) {
-      if (DataManager.dm.getBool("AutoBoosterPurchased") || GoldManager.gm.getCount() > price) {
+      if (DataManager.dm.getBool("AutoBoosterPurchased") || GoldManager.gm.getCount() >= price) {
         filter.sharedMesh = activeMesh;
         available = true;
         autoBoosterHelp.SetActive(false);
@@ -45,14 +44,13 @@ public class AutoBoosterButton : OnOffButton {
   }
 
   public bool decrementGold() {
-    // return true;
     return available && !DataManager.dm.getBool("AutoBoosterPurchased");
   }
 
   public void checkAutoBought() {
     if (!DataManager.dm.getBool("AutoBoosterPurchased")) return;
 
-    innerText.localPosition = new Vector3(innerText.localPosition.x, innerText.localPosition.y, 0);
+    innerText.localPosition = new Vector3(0, innerText.localPosition.y, innerText.localPosition.z);
     goldIcon.SetActive(false);
     GetComponent<RectTransform>().anchoredPosition = new Vector2(0, GetComponent<RectTransform>().anchoredPosition.y);
     purchaseAuto.SetActive(false);
