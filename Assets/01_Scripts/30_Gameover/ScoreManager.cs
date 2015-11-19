@@ -50,7 +50,6 @@ public class ScoreManager : MonoBehaviour {
   public float gameOverShakeAmount = 8;
 
   private bool isSaved = false;
-  private int boosterCount;
 
   void Awake() {
     sm = this;
@@ -147,7 +146,6 @@ public class ScoreManager : MonoBehaviour {
     Player.pl.GetComponent<Rigidbody>().isKinematic = true;
     Player.pl.GetComponent<MeshRenderer>().enabled = false;
     Player.pl.GetComponent<SphereCollider>().enabled = false;
-    boosterCount = Player.pl.getNumBoosters();
     contactCollider.SetActive(false);
 
     yield return new WaitForSeconds(showPlayerExplosionDuring);

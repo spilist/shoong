@@ -58,6 +58,7 @@ public class FacebookManager : MonoBehaviour {
       1,
       new Dictionary<string, object>() {
         { "Phase", PhaseManager.pm.phase() + 1},
+        { "AutoRhythm", CubeManager.cm.getBonus() > 0},
         { "Score", CubeManager.cm.getCount() + CubeManager.cm.getBonus()},
         { "Time", TimeManager.time.now},
         { "BoosterSuccessRate", ((float)(Player.pl.numBoosters)) / (Player.pl.numBoosters + RhythmManager.rm.failedBeatCount) },
