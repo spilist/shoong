@@ -224,9 +224,6 @@
 	<data name="Notification_FreeGift" xml:space="preserve">
 		<value>Collect Free Gift!!</value>
 	</data>
-	<data name="Setting_Achievements" xml:space="preserve">
-		<value>ACHIEVEMENTS</value>
-	</data>
 	<data name="Setting_Battery" xml:space="preserve">
 		<value>SAVE
 BATTERY</value>
@@ -242,12 +239,6 @@ BATTERY</value>
 	</data>
 	<data name="Setting_Google_SignOut" xml:space="preserve">
 		<value>SIGN OUT FROM GOOGLE PLAY</value>
-	</data>
-	<data name="Setting_Language" xml:space="preserve">
-		<value>LANGUAGE</value>
-	</data>
-	<data name="Setting_Leaderboard" xml:space="preserve">
-		<value>LEADERBOARD</value>
 	</data>
 	<data name="Setting_Mute" xml:space="preserve">
 		<value>SOUND</value>
@@ -266,7 +257,7 @@ PURCHASES</value>
 		<value>Boost limitlessly</value>
 	</data>
 	<data name="SkillDescription_Ghost" xml:space="preserve">
-		<value>Pass anything</value>
+		<value>Pass obstacles</value>
 	</data>
 	<data name="SkillDescription_Gold" xml:space="preserve">
 		<value>Be $rich$</value>

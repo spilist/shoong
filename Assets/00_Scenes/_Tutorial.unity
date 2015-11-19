@@ -3891,7 +3891,7 @@ RectTransform:
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: -95.5999985}
-  m_SizeDelta: {x: 500, y: 100}
+  m_SizeDelta: {x: 1000, y: 100}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &135970119
 MonoBehaviour:
@@ -21028,10 +21028,13 @@ MonoBehaviour:
   localFonts:
   - name: ko
     font: {fileID: 12800000, guid: 2cc782470beff4fb98f85e64bd300e10, type: 3}
-    fontScale: .75
+    fontScale: .699999988
   - name: en
     font: {fileID: 12800000, guid: 458b94f5997bb4e719e724b66770b07a, type: 3}
     fontScale: 1
+  - name: ja
+    font: {fileID: 12800000, guid: 52bfb4b2eaa7448b7b7b0f066d16881a, type: 3}
+    fontScale: .699999988
 --- !u!4 &1148311824
 Transform:
   m_ObjectHideFlags: 0
@@ -48182,6 +48185,7 @@ MonoBehaviour:
   isBoosterOK: 0
   isSkillOK: 0
   currentRing: {fileID: 0}
+  autoFeverBoostPer: .200000003
   failedBeatCount: 0
   currentStar: {fileID: 0}
   justSpawned: {fileID: 0}

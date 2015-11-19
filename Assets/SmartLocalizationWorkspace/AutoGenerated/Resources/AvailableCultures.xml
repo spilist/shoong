@@ -9,6 +9,12 @@
       <isRightToLeft>false</isRightToLeft>
     </CultureInfo>
     <CultureInfo>
+      <languageCode>ja</languageCode>
+      <englishName>Japanese</englishName>
+      <nativeName>日本語</nativeName>
+      <isRightToLeft>false</isRightToLeft>
+    </CultureInfo>
+    <CultureInfo>
       <languageCode>ko</languageCode>
       <englishName>Korean</englishName>
       <nativeName>한국어</nativeName>

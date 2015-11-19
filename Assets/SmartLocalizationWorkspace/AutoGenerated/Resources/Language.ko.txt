@@ -141,7 +141,7 @@
 		<value>오염된 게</value>
 	</data>
 	<data name="CharacterName_deathstar" xml:space="preserve">
-		<value>죽음의 공</value>
+		<value>검은 공</value>
 	</data>
 	<data name="CharacterName_dolphin" xml:space="preserve">
 		<value>우주 돌고래</value>
@@ -224,9 +224,6 @@
 	<data name="Notification_FreeGift" xml:space="preserve">
 		<value>무료 선물을 받으세요!!</value>
 	</data>
-	<data name="Setting_Achievements" xml:space="preserve">
-		<value>업적</value>
-	</data>
 	<data name="Setting_Battery" xml:space="preserve">
 		<value>배터리 절약</value>
 	</data>
@@ -241,12 +238,6 @@
 	</data>
 	<data name="Setting_Google_SignOut" xml:space="preserve">
 		<value>구글 플레이에서 로그아웃</value>
-	</data>
-	<data name="Setting_Language" xml:space="preserve">
-		<value>언어</value>
-	</data>
-	<data name="Setting_Leaderboard" xml:space="preserve">
-		<value>랭킹</value>
 	</data>
 	<data name="Setting_Mute" xml:space="preserve">
 		<value>소리</value>
@@ -264,7 +255,7 @@
 		<value>무한 부스터</value>
 	</data>
 	<data name="SkillDescription_Ghost" xml:space="preserve">
-		<value>모든 걸 지나갑니다</value>
+		<value>장애물을 지나갑니다</value>
 	</data>
 	<data name="SkillDescription_Gold" xml:space="preserve">
 		<value>$부자$ 되세요</value>

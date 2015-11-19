@@ -117,243 +117,241 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
 	<data name="Button_AutoBoosterMode" xml:space="preserve">
-		<value>Auto Beat Mode</value>
+		<value>自動リズムモード</value>
 	</data>
 	<data name="CharacterName_alienwithgun" xml:space="preserve">
-		<value>Alien With Gun</value>
+		<value>銃を持った宇宙人</value>
 	</data>
 	<data name="CharacterName_beardedfrog" xml:space="preserve">
-		<value>Beard Frog</value>
+		<value>ひげのカエル</value>
 	</data>
 	<data name="CharacterName_bender" xml:space="preserve">
-		<value>Tin Can Robot</value>
+		<value>カン・ロボット</value>
 	</data>
 	<data name="CharacterName_butterfly" xml:space="preserve">
-		<value>Gloomy Butterfly</value>
+		<value>グルーミー・ちょうちょう</value>
 	</data>
 	<data name="CharacterName_cat" xml:space="preserve">
-		<value>Super Cat</value>
+		<value>スーパーネコちゃん</value>
 	</data>
 	<data name="CharacterName_chameleon" xml:space="preserve">
-		<value>Morogoro</value>
+		<value>モロゴロ</value>
 	</data>
 	<data name="CharacterName_crab" xml:space="preserve">
-		<value>Contaminated Crab</value>
+		<value>汚されたカニ</value>
 	</data>
 	<data name="CharacterName_deathstar" xml:space="preserve">
-		<value>Black Ball</value>
+		<value>ブラック・ボール</value>
 	</data>
 	<data name="CharacterName_dolphin" xml:space="preserve">
-		<value>Space Dolphin</value>
+		<value>宇宙イルカ</value>
 	</data>
 	<data name="CharacterName_fruits" xml:space="preserve">
-		<value>Fruit Basket</value>
+		<value>果物バスケット</value>
 	</data>
 	<data name="CharacterName_ghost" xml:space="preserve">
-		<value>Ghost Toy</value>
+		<value>オモチャ幽霊</value>
 	</data>
 	<data name="CharacterName_goldpig" xml:space="preserve">
-		<value>Piggy Bank</value>
+		<value>ブタの貯金箱</value>
 	</data>
 	<data name="CharacterName_hamster" xml:space="preserve">
-		<value>Space Hamster</value>
+		<value>宇宙ハムスター</value>
 	</data>
 	<data name="CharacterName_leonplant" xml:space="preserve">
-		<value>Leon Pot</value>
+		<value>レオン・植木鉢</value>
 	</data>
 	<data name="CharacterName_minimonster" xml:space="preserve">
-		<value>Mini Monster</value>
+		<value>ミニモンスター</value>
 	</data>
 	<data name="CharacterName_paperplane" xml:space="preserve">
-		<value>Paper Plane</value>
+		<value>ペーパー・プレーン</value>
 	</data>
 	<data name="CharacterName_robotcat" xml:space="preserve">
-		<value>Robot Cat</value>
+		<value>ロボット・ネコ</value>
 	</data>
 	<data name="CharacterName_robotcogi" xml:space="preserve">
-		<value>Robot Dog</value>
+		<value>ロボット・ドッグ</value>
 	</data>
 	<data name="CharacterName_soju" xml:space="preserve">
-		<value>Soju</value>
+		<value>焼酎</value>
 	</data>
 	<data name="CharacterName_toyrobot" xml:space="preserve">
-		<value>Retro Robot</value>
+		<value>トイ・ロボット</value>
 	</data>
 	<data name="CharacterName_tyranno" xml:space="preserve">
-		<value>Tyranno</value>
+		<value>サウルス</value>
 	</data>
 	<data name="CharacterName_vacuumrobot" xml:space="preserve">
-		<value>Vacuum Robot</value>
+		<value>ロボット掃除機</value>
 	</data>
 	<data name="CharacterName_wilson" xml:space="preserve">
-		<value>Volley Ball</value>
+		<value>バレーボールのボール</value>
 	</data>
 	<data name="CreateToy_NewToy" xml:space="preserve">
-		<value>NEW TOY!!</value>
+		<value>新たなトイ！！</value>
 	</data>
 	<data name="CreateToy_TryAgain" xml:space="preserve">
-		<value>TRY AGAIN</value>
+		<value>リトライ</value>
 	</data>
 	<data name="GameOver_CreateToy" xml:space="preserve">
-		<value>WIN A TOY</value>
+		<value>オモチャの引き取り</value>
 	</data>
 	<data name="GameOver_CreateToyToGo" xml:space="preserve">
-		<value> COINS TO GO</value>
+		<value> コインが要る</value>
 	</data>
 	<data name="GameOver_FirstGift" xml:space="preserve">
-		<value>FIRST GIFT</value>
+		<value>初のギフト</value>
 	</data>
 	<data name="GameOver_FreeGift" xml:space="preserve">
-		<value>FREE GIFT</value>
+		<value>無料ギフト</value>
 	</data>
 	<data name="GameOver_GoldsEarned" xml:space="preserve">
-		<value>            _REWARD_ COINS EARNED</value>
+		<value>                 _REWARD_ コイン獲得</value>
 	</data>
 	<data name="GameOver_RateUs" xml:space="preserve">
-		<value>ENJOYED? RATE US!</value>
+		<value>ゲームを評価してください</value>
 	</data>
 	<data name="GameOver_RewardAds" xml:space="preserve">
-		<value>EARN COINS</value>
+		<value>コイン儲け</value>
 	</data>
 	<data name="GameOver_ThanksForRating" xml:space="preserve">
-		<value>            THANKS FOR RATING</value>
+		<value>                 評価していただいてありがとうございます！</value>
 	</data>
 	<data name="Help_AutoBoosterUsage" xml:space="preserve">
-		<value>Use Auto Beat!</value>
+		<value>自動モードを使ってください</value>
 	</data>
 	<data name="Notification_FreeGift" xml:space="preserve">
-		<value>Collect Free Gift!!</value>
+		<value>無料ギフトをどうぞ！！</value>
 	</data>
 	<data name="Setting_Battery" xml:space="preserve">
-		<value>SAVE
-BATTERY</value>
+		<value>バッテリー節約</value>
 	</data>
 	<data name="Setting_BGM" xml:space="preserve">
 		<value>BGM</value>
 	</data>
 	<data name="Setting_Credits" xml:space="preserve">
-		<value>CREDITS</value>
+		<value>クレジット</value>
 	</data>
 	<data name="Setting_Google_SignIn" xml:space="preserve">
-		<value>SIGN IN WITH GOOGLE PLAY</value>
+		<value>GooglePlayにログイン</value>
 	</data>
 	<data name="Setting_Google_SignOut" xml:space="preserve">
-		<value>SIGN OUT FROM GOOGLE PLAY</value>
+		<value>GooglePlayにログアウト</value>
 	</data>
 	<data name="Setting_Mute" xml:space="preserve">
-		<value>SOUND</value>
+		<value>サウンド</value>
 	</data>
 	<data name="Setting_Reminders" xml:space="preserve">
-		<value>REMINDERS</value>
+		<value>後で知らせる</value>
 	</data>
 	<data name="Setting_RestorePurchases" xml:space="preserve">
-		<value>RESTORE
-PURCHASES</value>
+		<value>購入の復元</value>
 	</data>
 	<data name="SkillDescription_Blink" xml:space="preserve">
-		<value>Jump into space!</value>
+		<value>どんとジャンプ！</value>
 	</data>
 	<data name="SkillDescription_Fever" xml:space="preserve">
-		<value>Boost limitlessly</value>
+		<value>無限ブースター</value>
 	</data>
 	<data name="SkillDescription_Ghost" xml:space="preserve">
-		<value>Pass obstacles</value>
+		<value>ジャマモノを通り過ぎます</value>
 	</data>
 	<data name="SkillDescription_Gold" xml:space="preserve">
-		<value>Be $rich$</value>
+		<value>$金持ち$になるように！</value>
 	</data>
 	<data name="SkillDescription_Heal" xml:space="preserve">
-		<value>Restore energy</value>
+		<value>元気回復</value>
 	</data>
 	<data name="SkillDescription_Laser" xml:space="preserve">
-		<value>Shoot &amp; Destroy</value>
+		<value>レーザー発射</value>
 	</data>
 	<data name="SkillDescription_Magnet" xml:space="preserve">
-		<value>Pull sweets</value>
+		<value>お菓子を引っ張ってくれます</value>
 	</data>
 	<data name="SkillDescription_Metal" xml:space="preserve">
-		<value>Smash everything</value>
+		<value>全部壊してしまいます</value>
 	</data>
 	<data name="SkillDescription_Monster" xml:space="preserve">
-		<value>Become real</value>
+		<value>大人モンスターになります</value>
 	</data>
 	<data name="SkillDescription_Polymorph" xml:space="preserve">
-		<value>Transform asteroids</value>
+		<value>小惑星を変換させます</value>
 	</data>
 	<data name="SkillDescription_Shield" xml:space="preserve">
-		<value>Protect you once</value>
+		<value />
 	</data>
 	<data name="SkillName_Blink" xml:space="preserve">
-		<value>Blink</value>
+		<value>テレポート</value>
 	</data>
 	<data name="SkillName_Fever" xml:space="preserve">
-		<value>Fever</value>
+		<value>過熱</value>
 	</data>
 	<data name="SkillName_Ghost" xml:space="preserve">
-		<value>Ghost</value>
+		<value>幽霊</value>
 	</data>
 	<data name="SkillName_Gold" xml:space="preserve">
-		<value>Rich</value>
+		<value>金持ち</value>
 	</data>
 	<data name="SkillName_Heal" xml:space="preserve">
-		<value>Heal</value>
+		<value>回復</value>
 	</data>
 	<data name="SkillName_Laser" xml:space="preserve">
-		<value>Laser</value>
+		<value>レーザー</value>
 	</data>
 	<data name="SkillName_Magnet" xml:space="preserve">
-		<value>Magnet</value>
+		<value>マグネット</value>
 	</data>
 	<data name="SkillName_Metal" xml:space="preserve">
-		<value>Metal</value>
+		<value>スチール</value>
 	</data>
 	<data name="SkillName_Monster" xml:space="preserve">
-		<value>Monster</value>
+		<value>モンスター</value>
 	</data>
 	<data name="SkillName_Polymorph" xml:space="preserve">
-		<value>Polymorph</value>
+		<value>変換</value>
 	</data>
 	<data name="SkillName_Shield" xml:space="preserve">
-		<value>Shield</value>
+		<value />
 	</data>
 	<data name="TouchToStart" xml:space="preserve">
-		<value>Touch to Start</value>
+		<value>タッチしてゲーム・スタート</value>
 	</data>
 	<data name="Tutorial_BoostWithBeat" xml:space="preserve">
-		<value>Boost with
-'beat star' button</value>
+		<value>音楽に合わせて
+ブースターを使う</value>
 	</data>
 	<data name="Tutorial_CandyRestoreEnergy" xml:space="preserve">
-		<value>Sweets restore energy.</value>
+		<value>お菓子は元気を戻してくれます</value>
 	</data>
 	<data name="Tutorial_ChildDreaming" xml:space="preserve">
-		<value>A child is dreaming of sweets...
-Shall we enter the dream?</value>
+		<value>子供がお菓子の夢を見てます・・・
+夢の中に入って見ましょうか</value>
 	</data>
 	<data name="Tutorial_GetCandies" xml:space="preserve">
-		<value>GET SWEETS</value>
+		<value>お菓子獲得</value>
 	</data>
 	<data name="Tutorial_MoveYourToy" xml:space="preserve">
-		<value>Move your toy and get sweets
-by touching &amp; sliding the screen.</value>
+		<value>スクリーンをタッチしてからスライドして
+トイを動かしてお菓子を集めてください</value>
 	</data>
 	<data name="Tutorial_NowYouReady" xml:space="preserve">
-		<value>Great! Now you're ready.
-Let's start your journey.</value>
+		<value>すばらしい！もう準備は終わり！
+そろそろ旅をスタートしましょうか</value>
 	</data>
 	<data name="Tutorial_SteerWithStick" xml:space="preserve">
-		<value>Steer with
-the stick</value>
+		<value>バーチャルスティックで
+動かす</value>
 	</data>
 	<data name="Tutorial_TapWhenStarComes" xml:space="preserve">
-		<value>Tap when star comes in</value>
+		<value>スターが入る瞬間タッチ！</value>
 	</data>
 	<data name="Tutorial_TryToBoost" xml:space="preserve">
-		<value>Good!
-Now try to boost 
-on the beat of music ♫</value>
+		<value>よくやりました！
+もう音楽に合わせて
+ブースターを使ってください♫</value>
 	</data>
 	<data name="Tutorial_UseBooster" xml:space="preserve">
-		<value>USE BOOSTER</value>
+		<value>ブースター使用</value>
 	</data>
 </root>
