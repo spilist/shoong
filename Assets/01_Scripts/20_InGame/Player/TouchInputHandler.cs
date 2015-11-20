@@ -73,7 +73,7 @@ public class TouchInputHandler : MonoBehaviour
       if (controlMethod == "Touch") {
         if (result == "Ground") {
           setPlayerDirection(Player.pl.transform);
-          // Player.pl.shootBooster();
+          Player.pl.shootBooster();
         }
       }
 		}

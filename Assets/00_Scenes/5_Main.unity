@@ -1160,7 +1160,7 @@ Transform:
   m_PrefabParentObject: {fileID: 461702, guid: 6445a758711d444458987bf84e00a78d, type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 91418582}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106709}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.39999998, y: 1.39999998, z: 1.39999998}
   m_Children:
@@ -1333,7 +1333,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 91418582}
-  m_Mesh: {fileID: 4300046, guid: 06ea95d279c7341edb83769ec8c7baed, type: 3}
+  m_Mesh: {fileID: 4300004, guid: 06ea95d279c7341edb83769ec8c7baed, type: 3}
 --- !u!81 &91418590
 AudioListener:
   m_ObjectHideFlags: 0
@@ -22862,15 +22862,15 @@ MonoBehaviour:
   - 2.19000006
   - 3.28999996
   - 4.38999987
-  baseSpeedStandard: 80
+  baseSpeedStandard: 90
   baseSpeeds: 0a0000000500000000000000fbfffffff6ffffff
-  boosterPlusSpeedStandard: 80
+  boosterPlusSpeedStandard: 75
   boosterPlusSpeeds: 0a0000000500000000000000fbfffffff6ffffff
-  boosterMaxSpeedStandard: 120
+  boosterMaxSpeedStandard: 115
   boosterMaxSpeeds: 0a0000000500000000000000fbfffffff6ffffff
   boosterSpeedDecreaseStandard: 60
   boosterSpeedDecreases: 280000001400000000000000f6ffffffecffffff
-  energyReduceOnTimeStandard: 20
+  energyReduceOnTimeStandard: 25
   energyReduceOnTimes: 280000001400000000000000f1ffffffe2ffffff
   maxEnergyStandard: 100
   maxEnergys: 280000001400000000000000f6ffffffecffffff
@@ -24966,7 +24966,7 @@ RectTransform:
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 175, y: 175}
+  m_SizeDelta: {x: 200, y: 225}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1322196947
 MonoBehaviour:
@@ -45672,8 +45672,8 @@ MonoBehaviour:
   hasEncounterEffect: 0
   destroyWhenCollideSelf: 0
   instance: {fileID: 0}
-  loseEnergyWhenEncounter: 25
-  bounceDuration: .25
+  loseEnergyWhenEncounter: 20
+  bounceDuration: .200000003
   hasLevel: 0
   nameForLevel: 
   level: 0
@@ -46041,8 +46041,8 @@ MonoBehaviour:
   hasEncounterEffect: 0
   destroyWhenCollideSelf: 0
   instance: {fileID: 0}
-  loseEnergyWhenEncounter: 20
-  bounceDuration: .200000003
+  loseEnergyWhenEncounter: 15
+  bounceDuration: .150000006
   hasLevel: 0
   nameForLevel: 
   level: 0
@@ -46286,7 +46286,7 @@ MonoBehaviour:
   hasEncounterEffect: 0
   destroyWhenCollideSelf: 0
   instance: {fileID: 0}
-  loseEnergyWhenEncounter: 30
+  loseEnergyWhenEncounter: 25
   bounceDuration: .150000006
   hasLevel: 0
   nameForLevel: 

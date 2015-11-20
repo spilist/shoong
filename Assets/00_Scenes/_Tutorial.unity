@@ -8469,7 +8469,7 @@ RectTransform:
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 175, y: 175}
+  m_SizeDelta: {x: 200, y: 225}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &385394494
 MonoBehaviour:
@@ -13403,7 +13403,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c29316fd68134f6a8504287e1c8cfcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resetAll: 1
+  resetAll: 0
   resetCube: 0
   resetGoldenCube: 0
   normalFrameRate: 60
@@ -18496,7 +18496,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 995117313}
-  m_LocalRotation: {x: -.190690339, y: .774532139, z: .539343238, w: -.269899786}
+  m_LocalRotation: {x: -.190690368, y: .774532259, z: .539343297, w: -.269899815}
   m_LocalPosition: {x: -148.834641, y: -491.899872, z: -62.4409447}
   m_LocalScale: {x: 1.6000005, y: 1.599998, z: 1.6000011}
   m_Children: []
@@ -21985,15 +21985,15 @@ MonoBehaviour:
   - 2.19000006
   - 3.28999996
   - 4.38999987
-  baseSpeedStandard: 80
+  baseSpeedStandard: 90
   baseSpeeds: 0a0000000500000000000000fbfffffff6ffffff
-  boosterPlusSpeedStandard: 80
+  boosterPlusSpeedStandard: 75
   boosterPlusSpeeds: 0a0000000500000000000000fbfffffff6ffffff
-  boosterMaxSpeedStandard: 120
+  boosterMaxSpeedStandard: 115
   boosterMaxSpeeds: 0a0000000500000000000000fbfffffff6ffffff
   boosterSpeedDecreaseStandard: 60
   boosterSpeedDecreases: 280000001400000000000000f6ffffffecffffff
-  energyReduceOnTimeStandard: 20
+  energyReduceOnTimeStandard: 25
   energyReduceOnTimes: 280000001400000000000000f1ffffffe2ffffff
   maxEnergyStandard: 100
   maxEnergys: 280000001400000000000000f6ffffffecffffff
@@ -23872,7 +23872,7 @@ RectTransform:
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 175, y: 175}
+  m_SizeDelta: {x: 200, y: 225}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1283306053
 MonoBehaviour:
@@ -24460,7 +24460,7 @@ RectTransform:
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 175, y: 175}
+  m_SizeDelta: {x: 200, y: 225}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1322196947
 MonoBehaviour:
@@ -41925,7 +41925,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1878833774}
-  m_LocalRotation: {x: -.190690339, y: .774532259, z: .539343297, w: -.269899786}
+  m_LocalRotation: {x: -.190690309, y: .774532139, z: .539343238, w: -.269899756}
   m_LocalPosition: {x: -137.134644, y: -449.999878, z: -71.4410858}
   m_LocalScale: {x: 2.50000119, y: 2.4999969, z: 2.50000167}
   m_Children: []
@@ -41954,7 +41954,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1878977605}
-  m_LocalRotation: {x: -.190690339, y: .774532259, z: .539343297, w: -.269899786}
+  m_LocalRotation: {x: -.190690309, y: .774532139, z: .539343238, w: -.269899756}
   m_LocalPosition: {x: -151.034637, y: -430.999878, z: -92.541153}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -47533,8 +47533,8 @@ MonoBehaviour:
   hasEncounterEffect: 0
   destroyWhenCollideSelf: 0
   instance: {fileID: 0}
-  loseEnergyWhenEncounter: 25
-  bounceDuration: .25
+  loseEnergyWhenEncounter: 20
+  bounceDuration: .200000003
   hasLevel: 0
   nameForLevel: 
   level: 0
@@ -47902,8 +47902,8 @@ MonoBehaviour:
   hasEncounterEffect: 0
   destroyWhenCollideSelf: 0
   instance: {fileID: 0}
-  loseEnergyWhenEncounter: 20
-  bounceDuration: .200000003
+  loseEnergyWhenEncounter: 15
+  bounceDuration: .150000006
   hasLevel: 0
   nameForLevel: 
   level: 0
@@ -48147,7 +48147,7 @@ MonoBehaviour:
   hasEncounterEffect: 0
   destroyWhenCollideSelf: 0
   instance: {fileID: 0}
-  loseEnergyWhenEncounter: 30
+  loseEnergyWhenEncounter: 25
   bounceDuration: .150000006
   hasLevel: 0
   nameForLevel: 

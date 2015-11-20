@@ -64,7 +64,7 @@ public class CharacterChangeManager : MonoBehaviour {
       color.a = alpha;
       mRenderer.sharedMaterial.color = color;
       if (alpha == 0) {
-        transform.position = teleportTo;
+        transform.parent.position = teleportTo;
         alpha = alphaOrigin / 2;
         color.a = alpha;
         mRenderer.sharedMaterial.color = color;
