@@ -105,7 +105,7 @@ public class RainbowDonutsManager : ObjectsManager {
     } else {
       objEncounterEffectForPlayer.Stop();
       player.afterStrengthenStart();
-      player.rotatePlayerBody();
+      // player.rotatePlayerBody();
       run();
     }
   }

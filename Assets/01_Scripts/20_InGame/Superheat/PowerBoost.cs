@@ -158,7 +158,7 @@ public class PowerBoost : MonoBehaviour {
     yield return new WaitForSeconds(sizeChangeInterval);
     transform.localScale = Vector3.one * bigSize;
 
-    Player.pl.GetComponent<Rigidbody>().isKinematic = false;
+    Player.pl.rb.isKinematic = false;
     setDir(Player.pl.getDirection());
     // Player.pl.rotatePlayerBody();
 

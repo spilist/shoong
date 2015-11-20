@@ -20,7 +20,7 @@ public class SuperheatMover : MonoBehaviour {
   }
 
   void OnEnable() {
-    Player.pl.GetComponent<Rigidbody>().isKinematic = true;
+    Player.pl.rb.isKinematic = true;
     Player.pl.startPowerBoost();
     StartCoroutine("superHeat");
   }
@@ -53,7 +53,7 @@ public class SuperheatMover : MonoBehaviour {
     yield return new WaitForSeconds(sizeChangeInterval);
     transform.localScale = Vector3.one * bigSize;
 
-    Player.pl.GetComponent<Rigidbody>().isKinematic = false;
+    Player.pl.rb.isKinematic = false;
     AudioManager.am.startPowerBoost();
     superheatParticle.SetActive(true);
     rotating = true;

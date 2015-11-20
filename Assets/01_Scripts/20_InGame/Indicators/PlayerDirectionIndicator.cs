@@ -17,6 +17,7 @@ public class PlayerDirectionIndicator : MonoBehaviour {
     if (dirChanging) {
       currentAngle = Mathf.MoveTowards(currentAngle, targetAngle, Time.deltaTime * followingSpeed);
       transform.localEulerAngles = new Vector3(0, 0, currentAngle);
+      Player.pl.transform.parent.localEulerAngles = new Vector3(0, -currentAngle, Player.pl.transform.parent.localEulerAngles.z);
       if (Mathf.Abs(currentAngle - targetAngle) < 0.1f) dirChanging = false;
     }
   }

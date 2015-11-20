@@ -43,7 +43,7 @@ public class OpeningHandler : MonoBehaviour {
       else {
         dreamingText.SetActive(false);
         cameraZ = Mathf.MoveTowards(cameraZ, cameraMoveTo, Time.deltaTime * cameraMoveTo / movingIn);
-        Player.pl.transform.position = new Vector3(Player.pl.transform.position.x, Player.pl.transform.position.y, cameraZ);
+        Player.pl.transform.parent.position = new Vector3(Player.pl.transform.parent.position.x, Player.pl.transform.parent.position.y, cameraZ);
         if (cameraZ == cameraMoveTo) {
           movingDown = false;
           titleMoving = true;

@@ -91,14 +91,13 @@ public class CharacterManager : MonoBehaviour {
     boosterSpeedDecreaseStandard *= 1 + scale_boosterSpeedDecreases;
     reboundTimeScaleStandard *= 1 + scale_reboundDistances;
 
-    Player.pl.resetAbility();
+    Player.pl.resetAbility(stat.bestX);
 
     energyReduceOnTimeStandard *= 1 + scale_energyReduceOnTimes;
     maxEnergyStandard *= 1 + scale_maxEnergys;
     damageGetScaleStandard *= 1 + scale_damageGets;
 
     EnergyManager.em.resetAbility();
-
 
     string skillName = stat.skillFlags.ToString();
     if (skillName == "0") {

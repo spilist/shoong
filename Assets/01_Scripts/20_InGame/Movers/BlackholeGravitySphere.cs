@@ -29,7 +29,7 @@ public class BlackholeGravitySphere : MonoBehaviour {
     heading /= heading.magnitude;
 
     counter += Time.deltaTime;
-    other.GetComponent<Rigidbody>().AddForce(heading * (gravityToUser + counter * gravityScale), ForceMode.VelocityChange);
+    Player.pl.rb.AddForce(heading * (gravityToUser + counter * gravityScale), ForceMode.VelocityChange);
   }
 
   void OnTriggerExit(Collider other) {

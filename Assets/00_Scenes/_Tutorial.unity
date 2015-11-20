@@ -1767,6 +1767,7 @@ MonoBehaviour:
   maxEnergy: 2
   reboundDistance: 2
   damageGet: 2
+  bestX: 0
   buyable: 1
   skillFlags: 0
 --- !u!1 &69330972
@@ -1935,12 +1936,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 91418582}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.39999998, y: 1.39999998, z: 1.39999998}
   m_Children:
   - {fileID: 678200079}
-  m_Father: {fileID: 1701025775}
-  m_RootOrder: 1
+  m_Father: {fileID: 462102129}
+  m_RootOrder: 0
 --- !u!1 &91418582
 GameObject:
   m_ObjectHideFlags: 0
@@ -1951,7 +1952,6 @@ GameObject:
   - 4: {fileID: 91418581}
   - 33: {fileID: 91418589}
   - 23: {fileID: 91418588}
-  - 54: {fileID: 91418587}
   - 135: {fileID: 91418585}
   - 81: {fileID: 91418590}
   - 114: {fileID: 91418583}
@@ -1982,7 +1982,7 @@ MonoBehaviour:
   baseSpeed: 150
   speed: 0
   boosterSpeedDecreasePerTime: 20
-  tumble: 4
+  tumble: 300
   monm: {fileID: 1991538109}
   rdm: {fileID: 1991538105}
   dpm: {fileID: 1991538120}
@@ -1992,6 +1992,7 @@ MonoBehaviour:
   shakeDuring: .5
   reboundSpeed: 320
   originalScale: 0
+  rb: {fileID: 0}
   afterStrengthenDuration: 1
   numBoosters: 0
   dirIndicator: {fileID: 1322196947}
@@ -1999,6 +2000,7 @@ MonoBehaviour:
   getPartsText: {fileID: 1140371563}
   useBoosterText: {fileID: 1558675233}
   contactCollider: {fileID: 1298175623}
+  bestX: 0
 --- !u!135 &91418585
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2012,22 +2014,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 7.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &91418587
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 5490318, guid: 6445a758711d444458987bf84e00a78d,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 91418582}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 4
-  m_CollisionDetection: 0
 --- !u!23 &91418588
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4209,6 +4195,7 @@ MonoBehaviour:
   maxEnergy: 2
   reboundDistance: 2
   damageGet: 2
+  bestX: 0
   buyable: 1
   skillFlags: 6
 --- !u!1 &160444281
@@ -4908,6 +4895,7 @@ MonoBehaviour:
   maxEnergy: 3
   reboundDistance: 3
   damageGet: 3
+  bestX: 0
   buyable: 1
   skillFlags: 5
 --- !u!33 &219915463
@@ -6565,6 +6553,7 @@ MonoBehaviour:
   maxEnergy: 2
   reboundDistance: 1
   damageGet: 1
+  bestX: 0
   buyable: 1
   skillFlags: 64
 --- !u!1 &290017853
@@ -8308,6 +8297,7 @@ MonoBehaviour:
   maxEnergy: 3
   reboundDistance: 3
   damageGet: 2
+  bestX: 0
   buyable: 1
   skillFlags: 0
 --- !u!1 &383286666
@@ -9131,6 +9121,7 @@ MonoBehaviour:
   maxEnergy: 2
   reboundDistance: 2
   damageGet: 1
+  bestX: 0
   buyable: 1
   skillFlags: 32
 --- !u!4 &434693579
@@ -9827,6 +9818,50 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 455209117}
+--- !u!1 &462102128
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 462102129}
+  - 54: {fileID: 462102130}
+  m_Layer: 10
+  m_Name: DirectionHelper
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &462102129
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 462102128}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 91418581}
+  m_Father: {fileID: 1701025775}
+  m_RootOrder: 1
+--- !u!54 &462102130
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 462102128}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &474026044
 GameObject:
   m_ObjectHideFlags: 0
@@ -10576,6 +10611,7 @@ MonoBehaviour:
   maxEnergy: 2
   reboundDistance: 4
   damageGet: 2
+  bestX: 0
   buyable: 1
   skillFlags: 0
 --- !u!1 &520147906
@@ -11065,6 +11101,7 @@ MonoBehaviour:
   maxEnergy: 2
   reboundDistance: 2
   damageGet: 2
+  bestX: 0
   buyable: 1
   skillFlags: 0
 --- !u!1001 &563480425
@@ -13219,6 +13256,7 @@ MonoBehaviour:
   maxEnergy: 4
   reboundDistance: 3
   damageGet: 4
+  bestX: 0
   buyable: 1
   skillFlags: 0
 --- !u!1 &632297515
@@ -13365,7 +13403,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c29316fd68134f6a8504287e1c8cfcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resetAll: 0
+  resetAll: 1
   resetCube: 0
   resetGoldenCube: 0
   normalFrameRate: 60
@@ -15402,6 +15440,7 @@ MonoBehaviour:
   maxEnergy: 2
   reboundDistance: 2
   damageGet: 2
+  bestX: 0
   buyable: 1
   skillFlags: 128
 --- !u!1 &788024391
@@ -15659,6 +15698,7 @@ MonoBehaviour:
   maxEnergy: 4
   reboundDistance: 4
   damageGet: 3
+  bestX: 0
   buyable: 1
   skillFlags: 0
 --- !u!1 &835303188
@@ -15787,6 +15827,7 @@ MonoBehaviour:
   maxEnergy: 3
   reboundDistance: 1
   damageGet: 4
+  bestX: 0
   buyable: 1
   skillFlags: 0
 --- !u!1 &851953042
@@ -17790,6 +17831,7 @@ MonoBehaviour:
   maxEnergy: 2
   reboundDistance: 1
   damageGet: 1
+  bestX: 0
   buyable: 1
   skillFlags: 64
 --- !u!1 &907047559
@@ -20567,6 +20609,7 @@ MonoBehaviour:
   maxEnergy: 0
   reboundDistance: 2
   damageGet: 0
+  bestX: 0
   buyable: 1
   skillFlags: 256
 --- !u!33 &1116662719
@@ -20934,6 +20977,7 @@ MonoBehaviour:
   maxEnergy: 3
   reboundDistance: 2
   damageGet: 2
+  bestX: 0
   buyable: 1
   skillFlags: 5
 --- !u!1 &1147100447
@@ -24255,6 +24299,7 @@ MonoBehaviour:
   maxEnergy: 3
   reboundDistance: 1
   damageGet: 2
+  bestX: 0
   buyable: 1
   skillFlags: 1
 --- !u!1 &1316182822
@@ -33031,6 +33076,7 @@ MonoBehaviour:
   maxEnergy: 2
   reboundDistance: 2
   damageGet: 2
+  bestX: 0
   buyable: 1
   skillFlags: 1
 --- !u!1 &1507171662
@@ -37483,7 +37529,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1991538104}
-  - {fileID: 91418581}
+  - {fileID: 462102129}
   - {fileID: 1734906062}
   - {fileID: 1298175623}
   - {fileID: 851953043}
@@ -37978,6 +38024,7 @@ MonoBehaviour:
   maxEnergy: 2
   reboundDistance: 3
   damageGet: 2
+  bestX: 0
   buyable: 1
   skillFlags: 4
 --- !u!1 &1743315005
@@ -42379,6 +42426,7 @@ MonoBehaviour:
   maxEnergy: 3
   reboundDistance: 3
   damageGet: 2
+  bestX: 0
   buyable: 1
   skillFlags: 8
 --- !u!1 &1908856353
@@ -43838,6 +43886,7 @@ MonoBehaviour:
   maxEnergy: 1
   reboundDistance: 4
   damageGet: 2
+  bestX: 0
   buyable: 1
   skillFlags: 0
 --- !u!1 &1927798532
@@ -46792,6 +46841,7 @@ MonoBehaviour:
   maxEnergy: 2
   reboundDistance: 1
   damageGet: 1
+  bestX: 0
   buyable: 1
   skillFlags: 16
 --- !u!1 &1983045716
@@ -46854,6 +46904,7 @@ MonoBehaviour:
   maxEnergy: 2
   reboundDistance: 3
   damageGet: 2
+  bestX: 0
   buyable: 1
   skillFlags: 2
 --- !u!1 &1983049893
@@ -47961,7 +48012,7 @@ MonoBehaviour:
   stayDuration: .600000024
   shrinkDuration: .100000001
   enlargeScale: 1.60000002
-  loseEnergyBigger: 30
+  loseEnergyBigger: 60
   bounceDuringBigger: .5
 --- !u!114 &1991538124
 MonoBehaviour:
@@ -48010,10 +48061,10 @@ MonoBehaviour:
   spawnRadius: 200
   detectDistance: 200
   headFollowingSpeed: 100
-  shootLaserPer: 6
-  chargeTime: .600000024
+  shootLaserPer: 4
+  chargeTime: .400000006
   offScreenSpeedScale: .5
-  laserLoseEnergy: 50
+  laserLoseEnergy: 70
   laserRadius: 20
   laserLength: 500
   laserShootingDuration: .100000001
@@ -48251,6 +48302,7 @@ MonoBehaviour:
   maxEnergy: 4
   reboundDistance: 3
   damageGet: 3
+  bestX: 0
   buyable: 1
   skillFlags: 0
 --- !u!1 &1997017260

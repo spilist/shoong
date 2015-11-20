@@ -59,7 +59,7 @@ public class Player : MonoBehaviour {
   private bool isRotatingByRainbow = false;
   private bool isRidingRainbowRoad = false;
   private Vector3 rainbowPosition;
-  private Rigidbody rb;
+  public Rigidbody rb;
 
   public float afterStrengthenDuration = 1;
   private bool afterStrengthen = false;
@@ -78,6 +78,7 @@ public class Player : MonoBehaviour {
   public GetPartsText getPartsText;
   public UseBoosterText useBoosterText;
   public Transform contactCollider;
+  public int bestX;
 
 	void Awake() {
     pl = this;
@@ -94,10 +95,12 @@ public class Player : MonoBehaviour {
     setDirection(direction);
     speed = baseSpeed;
 
-    rb = GetComponent<Rigidbody>();
+    rb = transform.parent.GetComponent<Rigidbody>();
     rb.velocity = direction * speed;
 
-    if (DataManager.dm.getBool("TutorialDone")) rotatePlayerBody(true);
+    // if (DataManager.dm.getBool("TutorialDone")) rotatePlayerBody(true);
+
+    transform.parent.localEulerAngles = new Vector3(0, -ContAngle(Vector3.forward, direction), 0);
 	}
 
 	void FixedUpdate () {
@@ -253,17 +256,17 @@ public class Player : MonoBehaviour {
   }
 
   public void rotatePlayerBody(bool continuous = false) {
-    // return;
+    return;
 
-    if (continuous) {
-      string[] rots = PlayerPrefs.GetString("CharacterRotation").Split(',');
-      transform.rotation = Quaternion.Euler(float.Parse(rots[0]), float.Parse(rots[1]), float.Parse(rots[2]));
+    // if (continuous) {
+    //   string[] rots = PlayerPrefs.GetString("CharacterRotation").Split(',');
+    //   transform.rotation = Quaternion.Euler(float.Parse(rots[0]), float.Parse(rots[1]), float.Parse(rots[2]));
 
-      string[] angVals = PlayerPrefs.GetString("CharacterAngVal").Split(',');
-      rb.angularVelocity = new Vector3(float.Parse(angVals[0]), float.Parse(angVals[1]), float.Parse(angVals[2]));
-    } else {
-      rb.angularVelocity = Random.onUnitSphere * tumble;
-    }
+    //   string[] angVals = PlayerPrefs.GetString("CharacterAngVal").Split(',');
+    //   rb.angularVelocity = new Vector3(float.Parse(angVals[0]), float.Parse(angVals[1]), float.Parse(angVals[2]));
+    // } else {
+    //   rb.angularVelocity = Random.onUnitSphere * tumble;
+    // }
   }
 
   public Vector3 getDirection() {
@@ -322,7 +325,7 @@ public class Player : MonoBehaviour {
       boosterspeed = boosterspeed > maxBooster() ? maxBooster() : boosterspeed;
     }
 
-    rotatePlayerBody();
+    // rotatePlayerBody();
   }
 
   public int getNumBoosters() {
@@ -425,7 +428,7 @@ public class Player : MonoBehaviour {
       isRotatingByRainbow = false;
       isRidingRainbowRoad = false;
       rb.isKinematic = false;
-      rotatePlayerBody();
+      // rotatePlayerBody();
       DataManager.dm.increment("NumReboundByBlackholeOnRainbow");
     }
     Camera.main.GetComponent<CameraMover>().shakeUntilStop(blm.shakeAmount);
@@ -485,7 +488,7 @@ public class Player : MonoBehaviour {
   public void stopEMP() {
     if (!usingPowerBoost) {
       rb.isKinematic = false;
-      rotatePlayerBody();
+      // rotatePlayerBody();
     }
     usingEMP = false;
     afterStrengthenStart();
@@ -502,8 +505,11 @@ public class Player : MonoBehaviour {
   void Update() {
     if (isRotatingByRainbow) {
       Vector3 dir = (rainbowPosition - transform.position).normalized;
-      transform.Translate(dir * Time.deltaTime * 30, Space.World);
-      transform.Rotate(-Vector3.forward * Time.deltaTime * rdm.rotateAngularSpeed, Space.World);
+      transform.parent.Translate(dir * Time.deltaTime * 30, Space.World);
+      transform.parent.Rotate(0, 0, Time.deltaTime * rdm.rotateAngularSpeed);
+      // transform.Rotate(-Vector3.forward * Time.deltaTime * rdm.rotateAngularSpeed, Space.World);
+    } else {
+      transform.parent.Rotate(0, 0, Time.deltaTime * tumble);
     }
 
     if (afterStrengthen) {
@@ -593,15 +599,15 @@ public class Player : MonoBehaviour {
     return !(isRebounding() || isUsingRainbow() || changeManager.isTeleporting());
   }
 
-  public void resetAbility() {
+  public void resetAbility(int bestX) {
     baseSpeed = CharacterManager.cm.baseSpeedStandard;
     boosterSpeedUpAmount = CharacterManager.cm.boosterPlusSpeedStandard;
     maxBoosterSpeed = CharacterManager.cm.boosterMaxSpeedStandard;
     boosterSpeedDecreaseBase = CharacterManager.cm.boosterSpeedDecreaseStandard;
     reboundScale = CharacterManager.cm.reboundTimeScaleStandard;
-  }
 
-  public void setFever(bool val) {
+    this.bestX = bestX;
+    transform.localEulerAngles = new Vector3(bestX, 0, 0);
   }
 
   public void setSpeedBoost(float speedUp, float duration) {
@@ -618,5 +624,30 @@ public class Player : MonoBehaviour {
 
   public void scaleBack() {
     transform.localScale = originalScale * Vector3.one;
+  }
+
+  float ContAngle(Vector3 fwd, Vector3 targetDir) {
+    float angle = Vector3.Angle(fwd, targetDir);
+
+    if (AngleDir(fwd, targetDir, Vector3.up) == -1) {
+        angle = 360.0f - angle;
+        if( angle > 359.9999f ) angle -= 360.0f;
+    }
+
+    if (angle > 180) angle -= 360.0f;
+    else if (angle < -180) angle += 360.0f;
+
+    angle = -angle;
+
+    return angle;
+  }
+
+  int AngleDir( Vector3 fwd, Vector3 targetDir, Vector3 up) {
+    Vector3 perp = Vector3.Cross(fwd, targetDir);
+    float dir = Vector3.Dot(perp, up);
+
+    if (dir > 0.0) return 1;
+    else if (dir < 0.0) return -1;
+    else return 0;
   }
 }

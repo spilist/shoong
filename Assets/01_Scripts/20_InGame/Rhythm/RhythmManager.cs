@@ -274,7 +274,6 @@ public class RhythmManager : MonoBehaviour {
 
   public void setFever(bool val) {
     feverTime = val;
-    Player.pl.setFever(val);
     feverPanel.SetActive(val);
 
     if (val) {
