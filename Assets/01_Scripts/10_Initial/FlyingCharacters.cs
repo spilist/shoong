@@ -61,6 +61,8 @@ public class FlyingCharacters : MonoBehaviour {
   public void reset() {
     first = false;
     charactersCount = 0;
+    activeCount = 0;
+    characterMeshes.Clear();
 
     foreach (Transform character in allCharacters) {
       if (DataManager.dm.getBool(character.name) && character.name != PlayerPrefs.GetString("SelectedCharacter")) {
@@ -124,5 +126,8 @@ public class FlyingCharacters : MonoBehaviour {
 
   void OnDisable() {
     StopCoroutine("showNewCharacter");
+    foreach (Transform tr in transform) {
+      if (tr.tag == "FlyingCharacter") tr.gameObject.SetActive(false);
+    }
   }
 }

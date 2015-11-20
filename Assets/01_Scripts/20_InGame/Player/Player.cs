@@ -139,7 +139,6 @@ public class Player : MonoBehaviour {
     if (boosterspeed > 0) {
       timeSpaned += Time.fixedDeltaTime;
       boosterspeed -= 80 / boosterSpeedDecreaseBase + boosterSpeedDecreasePerTime * Time.fixedDeltaTime;
-      // Debug.Log("End: " + timeSpaned);
     } else if (boosterspeed <= 0){
       boosterspeed = 0;
     }
@@ -254,6 +253,8 @@ public class Player : MonoBehaviour {
   }
 
   public void rotatePlayerBody(bool continuous = false) {
+    // return;
+
     if (continuous) {
       string[] rots = PlayerPrefs.GetString("CharacterRotation").Split(',');
       transform.rotation = Quaternion.Euler(float.Parse(rots[0]), float.Parse(rots[1]), float.Parse(rots[2]));

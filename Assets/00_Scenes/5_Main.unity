@@ -25499,7 +25499,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 150, y: 150}
+  m_AnchoredPosition: {x: 200, y: 200}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1346587201
@@ -45312,7 +45312,7 @@ MonoBehaviour:
   minSpawnInterval: 8
   maxSpawnInterval: 12
   cubesByEncounter: 5
-  energyGets: 8
+  energyGets: 10
   isNegative: 0
   hasEncounterEffect: 0
   destroyWhenCollideSelf: 0
@@ -45719,7 +45719,7 @@ MonoBehaviour:
   minSpawnInterval: 8
   maxSpawnInterval: 12
   cubesByEncounter: 5
-  energyGets: 8
+  energyGets: 10
   isNegative: 0
   hasEncounterEffect: 1
   destroyWhenCollideSelf: 0
@@ -45782,7 +45782,7 @@ MonoBehaviour:
   minSpawnInterval: 0
   maxSpawnInterval: 0
   cubesByEncounter: 5
-  energyGets: 8
+  energyGets: 10
   isNegative: 0
   hasEncounterEffect: 0
   destroyWhenCollideSelf: 0

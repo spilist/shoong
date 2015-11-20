@@ -87,6 +87,8 @@ public class TouchInputHandler : MonoBehaviour
           GameObject hitObject = hit.transform.gameObject;
           if (touch.phase == TouchPhase.Began) {
             if (hitObject.tag == "StickPanel_movement" && Input.touchCount == 1) {
+
+              // 고정스틱
               stick.position = newStickPosition();
               stick.gameObject.SetActive(true);
               stickFingerId = touch.fingerId;
@@ -101,6 +103,8 @@ public class TouchInputHandler : MonoBehaviour
 
           if (touch.phase == TouchPhase.Ended) {
             if (touch.fingerId == stickFingerId) {
+              // 고정스틱
+
               Player.pl.stopMoving();
               stick.gameObject.SetActive(false);
               stickFingerId = -1;
