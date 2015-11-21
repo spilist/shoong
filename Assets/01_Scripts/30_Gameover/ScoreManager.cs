@@ -239,16 +239,16 @@ public class ScoreManager : MonoBehaviour {
     //   DataManager.dm.setInt("NumBooster_" + numPlay, boosterCount);
     // }
 
+    DataManager.dm.save();
+
+    FacebookManager.fb.gameDone();
+
     if (NPBinding.GameServices.LocalUser.IsAuthenticated == true) {
       // Report achievements after saving data
       DataManager.npbManager.am.reportAchievements();
       // Report leaderboard after saving data
       DataManager.npbManager.am.reportAllLeaderboard();
     }
-
-    DataManager.dm.save();
-
-    FacebookManager.fb.gameDone();
   }
 
   void OnDisable() {

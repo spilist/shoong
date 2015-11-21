@@ -173,15 +173,16 @@ public class CharacterCreateButton : MenusBehavior {
     bool newCharacter = !DataManager.dm.getBool(randomCharacter.name);
     FacebookManager.fb.createToy(DataManager.dm.getInt("NumCharacterCreate"), randomResult, randomCharacter.name, newCharacter);
 
-    if (newCharacter) {
-      DataManager.dm.setBool(randomCharacter.name, true);
-      DataManager.dm.increment("NumCharactersHave");
-      DataManager.dm.save();
-    }
-
     GoldManager.gm.buy(createPrice);
     goldenCubesYouHave.GetComponent<CubesYouHave>().buy(createPrice);
     gameOverGoldCubes.change(-createPrice, false);
+
+    if (newCharacter) {
+      DataManager.dm.setBool(randomCharacter.name, true);
+      DataManager.dm.increment("NumCharactersHave");
+    }
+
+    DataManager.dm.save();
 
     float duration = totalSeconds;
     float interval = startInterval;

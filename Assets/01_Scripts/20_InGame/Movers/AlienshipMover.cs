@@ -39,6 +39,7 @@ public class AlienshipMover : ObjectsMover {
     stayCount = 0;
     speed = asm.speed;
     rb.isKinematic = false;
+    laserCanon.SetActive(false);
   }
 
   protected override void normalMovement() {
