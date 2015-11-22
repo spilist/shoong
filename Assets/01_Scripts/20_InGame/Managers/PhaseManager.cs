@@ -22,6 +22,8 @@ public class PhaseManager : MonoBehaviour {
   public RainbowDonutsManager rdm;
   public SummonPartsManager spm;
   public EMPManager em;
+  public AsteroidManager asteroidM;
+  public SmallAsteroidManager smallAsteroidM;
 
   private int level;
 
@@ -67,6 +69,8 @@ public class PhaseManager : MonoBehaviour {
       ntm.enabled = true;
       spm.adjustForLevel(2);
       rdm.adjustForLevel(3);
+      asteroidM.startPhase();
+      smallAsteroidM.startPhase();
     } else if (levelName == "Bomb") {
       dem.enabled = true;
       em.enabled = true;

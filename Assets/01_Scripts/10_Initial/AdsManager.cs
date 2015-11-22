@@ -51,7 +51,6 @@ public class AdsManager : MonoBehaviour {
     if (available() && interstitial != null && interstitial.IsLoaded()) {
       interstitial.Show();
       DataManager.dm.setDateTime("LastDateTimeAdsSeen");
-      DataManager.dm.save();
     }
   }
 

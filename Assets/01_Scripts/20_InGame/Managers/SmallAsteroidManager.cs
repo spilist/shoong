@@ -30,7 +30,7 @@ public class SmallAsteroidManager : ObjectsManager {
   override public void runImmediately() {}
 
   public void startPhase() {
-    unstable = true;
+    objAmount++;
   }
 
   override public float getSpeed() {

@@ -209,6 +209,9 @@
 	<data name="GameOver_GoldsEarned" xml:space="preserve">
 		<value>                 _REWARD_ 코인 얻음</value>
 	</data>
+	<data name="GameOver_ManualBonus" xml:space="preserve">
+		<value>수동 리듬 모드 보너스</value>
+	</data>
 	<data name="GameOver_RateUs" xml:space="preserve">
 		<value>게임을 평가해주세요</value>
 	</data>

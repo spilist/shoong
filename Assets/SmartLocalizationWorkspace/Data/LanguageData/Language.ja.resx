@@ -209,6 +209,9 @@
 	<data name="GameOver_GoldsEarned" xml:space="preserve">
 		<value>                 _REWARD_ コイン獲得</value>
 	</data>
+	<data name="GameOver_ManualBonus" xml:space="preserve">
+		<value>マニュアルリズムのボーナス</value>
+	</data>
 	<data name="GameOver_RateUs" xml:space="preserve">
 		<value>ゲームを評価してください</value>
 	</data>

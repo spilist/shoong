@@ -26,17 +26,24 @@ public class ScoreUpdate : MonoBehaviour {
   private float highscoreNum;
   private float duration;
   private int bonusAmount;
+  public Text bonusScoreText;
+  public Text bonusCoinText;
   private float bonusDuration;
+  public GameOverGoldCubes ggc;
 
   private int updateStatus = 0;
   private bool newHighscore = false;
   private bool newHighscoreByBonus = false;
   private float positionX;
   private float distance;
+  private int bonusCoin;
 
   void Start() {
     cubeDifference = CubeManager.cm.getCount();
     bonusAmount = CubeManager.cm.getBonus();
+    bonusScoreText.text = "+" + bonusAmount;
+    bonusCoin = PhaseManager.pm.phase() + 1;
+    bonusCoinText.text = "+" + bonusCoin;
 
     currentScoreIngame.text = cubeDifference.ToString();
 
@@ -46,7 +53,7 @@ public class ScoreUpdate : MonoBehaviour {
       duration = Mathf.Max(scoreUpdateMaxDuration * (float) cubeDifference / scoreUpdateMaxStandard, scoreUpdateMinDuration);
     }
 
-    bonusDuration = Mathf.Max(scoreUpdateMaxDuration * (float) bonusAmount / scoreUpdateMaxStandard, scoreUpdateMinDuration);
+    bonusDuration = Mathf.Max(scoreUpdateMaxDuration * (float) bonusAmount / (scoreUpdateMaxStandard * 10), scoreUpdateMinDuration);
 
     highscoreNum = DataManager.dm.getInt("BestCubes");
     cubesHighscoreNumber.text = highscoreNum.ToString();
@@ -73,7 +80,10 @@ public class ScoreUpdate : MonoBehaviour {
       if (cubeCurrentNum == cubeDifference) {
         updateStatus++;
 
-        if (bonusAmount > 0) noAutoBonus.SetActive(true);
+        if (bonusAmount > 0) {
+          noAutoBonus.SetActive(true);
+          ggc.change(bonusCoin);
+        }
         else GetComponent<AudioSource>().Stop();
 
         if (newHighscore) {

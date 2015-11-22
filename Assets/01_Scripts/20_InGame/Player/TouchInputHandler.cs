@@ -30,7 +30,7 @@ public class TouchInputHandler : MonoBehaviour
   void Update() {
 		if (Application.platform == RuntimePlatform.Android) {
       if (Input.GetKeyDown(KeyCode.Escape)) {
-        if (gameStarted) {
+        if (gameStarted && !pause.isPaused() && pause.gameObject.activeInHierarchy) {
           pause.activateSelf();
         } else if (menus.isMenuOn()) {
           menus.toggleMenuAndUI();
@@ -87,10 +87,10 @@ public class TouchInputHandler : MonoBehaviour
           GameObject hitObject = hit.transform.gameObject;
           if (touch.phase == TouchPhase.Began) {
             if (hitObject.tag == "StickPanel_movement" && Input.touchCount == 1) {
-
               // 고정스틱
               stick.position = newStickPosition();
               stick.gameObject.SetActive(true);
+
               stickFingerId = touch.fingerId;
             } else {
               hitObject.SendMessage("OnPointerDown");
@@ -103,11 +103,11 @@ public class TouchInputHandler : MonoBehaviour
 
           if (touch.phase == TouchPhase.Ended) {
             if (touch.fingerId == stickFingerId) {
-              // 고정스틱
+              stickFingerId = -1;
 
+              // 고정스틱
               Player.pl.stopMoving();
               stick.gameObject.SetActive(false);
-              stickFingerId = -1;
               fingerIndicator.position = stick.position;
             } else {
               hitObject.SendMessage("OnPointerUp");

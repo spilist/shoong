@@ -74,6 +74,7 @@ public class GoldManager : MonoBehaviour {
     goldText.text = count.ToString();
 
     DataManager.dm.increment("CurrentGoldenCubes", amount);
+    DataManager.dm.save();
   }
 
   void decrement(int price) {

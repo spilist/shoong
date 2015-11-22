@@ -79,6 +79,13 @@ public class Player : MonoBehaviour {
   public UseBoosterText useBoosterText;
   public Transform contactCollider;
   public int bestX;
+  private bool poppingByBooster = false;
+  private float poppingScale = 1;
+  private float poppingTarget;
+  public float poppingSmallScale = 0.6f;
+  public float poppingDurationDown = 0.2f;
+  public float poppingDurationUp = 0.1f;
+  private float poppingDuration;
 
 	void Awake() {
     pl = this;
@@ -250,9 +257,10 @@ public class Player : MonoBehaviour {
   public void processCollision(Collision collision) {
     ContactPoint contact = collision.contacts[0];
     Vector3 normal = contact.normal;
-    direction = Vector3.Reflect(direction, -normal).normalized;
-    direction.y = 0;
-    direction.Normalize();
+    Vector3 dir = Vector3.Reflect(direction, -normal).normalized;
+    dir.y = 0;
+    dir.Normalize();
+    setDirection(dir);
   }
 
   public void rotatePlayerBody(bool continuous = false) {
@@ -318,6 +326,9 @@ public class Player : MonoBehaviour {
     if (!usingPowerBoost) {
       changeManager.booster.Play();
       changeManager.booster.GetComponent<AudioSource>().Play();
+      poppingByBooster = true;
+      poppingTarget = poppingSmallScale;
+      poppingDuration = poppingDurationDown;
     }
 
     if (boosterspeed < maxBooster()) {
@@ -510,6 +521,20 @@ public class Player : MonoBehaviour {
       // transform.Rotate(-Vector3.forward * Time.deltaTime * rdm.rotateAngularSpeed, Space.World);
     } else {
       transform.parent.Rotate(0, 0, Time.deltaTime * tumble);
+    }
+
+    if (poppingByBooster) {
+      poppingScale = Mathf.MoveTowards(poppingScale, poppingTarget, Time.deltaTime * (1 - poppingSmallScale) / poppingDuration);
+      transform.parent.localScale = new Vector3(1, 1, poppingScale);
+
+      if (poppingScale == poppingSmallScale) {
+        poppingTarget = 1;
+        poppingDuration = poppingDurationUp;
+      }
+
+      if (poppingScale == 1) {
+        poppingByBooster = false;
+      }
     }
 
     if (afterStrengthen) {

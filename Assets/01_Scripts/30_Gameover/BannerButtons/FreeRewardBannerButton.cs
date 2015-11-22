@@ -26,8 +26,6 @@ public class FreeRewardBannerButton : BannerButton {
 
   public void endFreeGift() {
     gameOverUI.SetActive(true);
-    gold.change(reward);
-
     if (first) {
       FacebookManager.fb.firstPlayLog("6_FirstGift");
     }
@@ -39,13 +37,13 @@ public class FreeRewardBannerButton : BannerButton {
     DataManager.dm.setDateTime("LastFreeRewardTime");
     transform.parent.GetComponent<Text>().text = secondDescription.Replace("_REWARD_", reward.ToString());
 
+    gold.change(reward);
+
     int rewardCount = frCount >= nextRewardMinutes.Length ? (nextRewardMinutes.Length - 1) : frCount;
 
     if (!DataManager.dm.getBool("NotificationSetting")) {
       NotificationManager.nm.notifyAfter(nextRewardMinutes[rewardCount]);
     }
-
-    DataManager.dm.save();
   }
 
   override public bool available() {

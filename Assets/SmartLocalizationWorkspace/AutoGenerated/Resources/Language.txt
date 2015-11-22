@@ -356,4 +356,7 @@ on the beat of music ♫</value>
 	<data name="Tutorial_UseBooster" xml:space="preserve">
 		<value>USE BOOSTER</value>
 	</data>
+	<data name="GameOver_ManualBonus" xml:space="preserve">
+		<value>MANUAL BONUS</value>
+	</data>
 </root>

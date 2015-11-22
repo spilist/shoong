@@ -44,11 +44,10 @@ public class AlienshipLaserMover : MonoBehaviour {
       transform.localScale = new Vector3(length, radius, radius);
       if (radius == targetRadius) status++;
     } else if (status == 2) {
-      outer.transform.localEulerAngles += new Vector3(Time.deltaTime * rotatingSpeed, 0, 90);
+      transform.localEulerAngles += new Vector3(Time.deltaTime * rotatingSpeed, 0, 0);
 
       if (stayCount < stayDuration) stayCount += Time.deltaTime;
       else {
-        outer.transform.localEulerAngles = new Vector3(0, 0, 90);
         status++;
       }
     } else if (status == 3) {
