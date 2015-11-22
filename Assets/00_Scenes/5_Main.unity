@@ -28496,6 +28496,7 @@ MonoBehaviour:
   bottomBanner: {fileID: 975447812}
   gameOverShakeDuration: 1
   gameOverShakeAmount: 8
+  first: 0
 --- !u!4 &1422286123
 Transform:
   m_ObjectHideFlags: 0
@@ -36147,9 +36148,9 @@ MonoBehaviour:
   laserAmount: 1
   chargeTime: .300000012
   laserRadius: 12
-  laserLength: 120
+  laserLength: 100
   laserShootingDuration: .0500000007
-  laserStayDuration: .349999994
+  laserStayDuration: .25
   laserShrinkingDuration: .0500000007
   laserRotatingSpeed: 500
 --- !u!1 &1624960735

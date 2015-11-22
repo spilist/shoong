@@ -38,7 +38,13 @@ public class PlayerLaser : MonoBehaviour {
     status = 1;
   }
 
+  float playerAngle() {
+    return Quaternion.LookRotation(Player.pl.getDirection()).eulerAngles.y - 90;
+  }
+
   void Update () {
+    transform.eulerAngles = new Vector3(0, playerAngle(), 0);
+
     if (status == 1) {
       radius = Mathf.MoveTowards(radius, targetRadius, Time.deltaTime * targetRadius / shootingDuration);
       length = Mathf.MoveTowards(length, targetLength, Time.deltaTime * targetLength / shootingDuration);

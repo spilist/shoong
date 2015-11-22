@@ -102,6 +102,7 @@ public class CharacterManager : MonoBehaviour {
     string skillName = stat.skillFlags.ToString();
     if (skillName == "0") {
       RhythmManager.rm.setLoop(0, 0);
+      SkillManager.sm.equip("None");
     } else {
       SkillManager.sm.equip(skillName);
     }

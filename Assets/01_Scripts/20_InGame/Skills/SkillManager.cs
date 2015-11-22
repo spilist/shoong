@@ -18,8 +18,12 @@ public class SkillManager : MonoBehaviour {
   }
 
   public void equip(string skillName) {
-    equiped = getSkill(skillName);
-    RhythmManager.rm.setLoop(equiped.normalRing, equiped.skillRing);
+    if (skillName == "None") {
+      equiped = null;
+    } else {
+      equiped = getSkill(skillName);
+      RhythmManager.rm.setLoop(equiped.normalRing, equiped.skillRing);
+    }
   }
 
   public void activate() {

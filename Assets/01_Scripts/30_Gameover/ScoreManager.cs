@@ -50,6 +50,7 @@ public class ScoreManager : MonoBehaviour {
   public float gameOverShakeAmount = 8;
 
   private bool isSaved = false;
+  public bool first;
 
   void Awake() {
     sm = this;
@@ -167,6 +168,10 @@ public class ScoreManager : MonoBehaviour {
   }
 
   public void showBanner() {
+    if (first) {
+      FacebookManager.fb.firstPlayLog("5-1_FirstShowBanner");
+    }
+
     save();
 
     BannerButton availableBanner = null;
