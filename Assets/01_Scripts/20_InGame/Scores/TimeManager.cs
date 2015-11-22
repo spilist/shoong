@@ -19,7 +19,7 @@ public class TimeManager : MonoBehaviour {
 	private float starScale;
 	private bool progressChanging = false;
 
-	public int progressPerSecond = 10;
+	public float progressPerSecond = 10;
 	public float progressPerCube = 0.5f;
 	public float progressChangeSpeed = 5f;
 

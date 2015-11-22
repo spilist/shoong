@@ -12,8 +12,10 @@ public class AutoBoosterButton : OnOffButton {
   public int price = 20;
   public Text priceCount;
   private bool available;
+  private Vector3 origInnerPos;
 
   override public void initializeRest() {
+    origInnerPos = innerText.localPosition;
     checkAutoBought();
 
     if (DataManager.dm.getInt("TotalNumPlays") <= showHelpFor && !DataManager.dm.getBool(settingName + "Setting")) {
@@ -29,14 +31,25 @@ public class AutoBoosterButton : OnOffButton {
         filter.sharedMesh = activeMesh;
         available = true;
         autoBoosterHelp.SetActive(false);
+        innerText.GetComponent<Text>().text = description() + " ON";
+
+        if (!DataManager.dm.getBool("AutoBoosterPurchased")) showGold();
       } else {
         filter.sharedMesh = notEnoughMesh;
         available = false;
+        innerText.GetComponent<Text>().text = description() + " ON";
+        showGold();
       }
     } else {
       filter.sharedMesh = inactiveMesh;
       available = false;
+      innerText.GetComponent<Text>().text = description() + " OFF";
+      hideGold();
     }
+  }
+
+  string description() {
+    return innerText.GetComponent<LocalText>().origString;
   }
 
   public bool isOn() {
@@ -50,10 +63,19 @@ public class AutoBoosterButton : OnOffButton {
   public void checkAutoBought() {
     if (!DataManager.dm.getBool("AutoBoosterPurchased")) return;
 
-    innerText.localPosition = new Vector3(0, innerText.localPosition.y, innerText.localPosition.z);
-    goldIcon.SetActive(false);
+    hideGold();
     GetComponent<RectTransform>().anchoredPosition = new Vector2(0, GetComponent<RectTransform>().anchoredPosition.y);
     purchaseAuto.SetActive(false);
     autoBoosterHelp.SetActive(false);
+  }
+
+  void hideGold() {
+    innerText.localPosition = new Vector3(0, innerText.localPosition.y, innerText.localPosition.z);
+    goldIcon.SetActive(false);
+  }
+
+  void showGold() {
+    innerText.localPosition = origInnerPos;
+    goldIcon.SetActive(true);
   }
 }

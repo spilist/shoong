@@ -53,7 +53,7 @@ public class ScoreUpdate : MonoBehaviour {
       duration = Mathf.Max(scoreUpdateMaxDuration * (float) cubeDifference / scoreUpdateMaxStandard, scoreUpdateMinDuration);
     }
 
-    bonusDuration = Mathf.Max(scoreUpdateMaxDuration * (float) bonusAmount / (scoreUpdateMaxStandard * 10), scoreUpdateMinDuration);
+    bonusDuration = Mathf.Max(2 * scoreUpdateMaxDuration * (float) bonusAmount / scoreUpdateMaxStandard, 2 * scoreUpdateMinDuration);
 
     highscoreNum = DataManager.dm.getInt("BestCubes");
     cubesHighscoreNumber.text = highscoreNum.ToString();
@@ -83,8 +83,11 @@ public class ScoreUpdate : MonoBehaviour {
         if (bonusAmount > 0) {
           noAutoBonus.SetActive(true);
           ggc.change(bonusCoin);
+          GetComponent<AudioSource>().Play();
         }
-        else GetComponent<AudioSource>().Stop();
+        else {
+          GetComponent<AudioSource>().Stop();
+        }
 
         if (newHighscore) {
           cubesHighscoreDescription.GetComponent<AudioSource>().Play();

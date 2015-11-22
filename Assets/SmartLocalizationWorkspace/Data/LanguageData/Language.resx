@@ -117,7 +117,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
 	<data name="Button_AutoBoosterMode" xml:space="preserve">
-		<value>Auto Beat Mode</value>
+		<value>Auto Beat</value>
 	</data>
 	<data name="CharacterName_alienwithgun" xml:space="preserve">
 		<value>Alien With Gun</value>
@@ -208,6 +208,9 @@
 	</data>
 	<data name="GameOver_GoldsEarned" xml:space="preserve">
 		<value>            _REWARD_ COINS EARNED</value>
+	</data>
+	<data name="GameOver_ManualBonus" xml:space="preserve">
+		<value>MANUAL BONUS</value>
 	</data>
 	<data name="GameOver_RateUs" xml:space="preserve">
 		<value>ENJOYED? RATE US!</value>
@@ -355,8 +358,5 @@ on the beat of music ♫</value>
 	</data>
 	<data name="Tutorial_UseBooster" xml:space="preserve">
 		<value>USE BOOSTER</value>
-	</data>
-	<data name="GameOver_ManualBonus" xml:space="preserve">
-		<value>MANUAL BONUS</value>
 	</data>
 </root>

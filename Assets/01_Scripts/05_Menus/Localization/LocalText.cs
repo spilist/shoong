@@ -7,6 +7,7 @@ public class LocalText : MonoBehaviour {
   public string key;
   Text textObject;
   private int origFontSize;
+  public string origString;
 
 	void Start () {
     textObject = this.GetComponent<Text>();
@@ -29,7 +30,8 @@ public class LocalText : MonoBehaviour {
   void OnChangeLanguage(LanguageManager languageManager)
   {
     if (key != "") {
-      textObject.text = LanguageManager.Instance.GetTextValue(key);
+      origString = LanguageManager.Instance.GetTextValue(key);
+      textObject.text = origString;
     }
 
     textObject.font = LangManager.lm.getFont();

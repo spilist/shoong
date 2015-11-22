@@ -3926,6 +3926,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: TouchToStart
+  origString: 
 --- !u!1 &146770642
 GameObject:
   m_ObjectHideFlags: 0
@@ -6928,6 +6929,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: Tutorial_BoostWithBeat
+  origString: 
 --- !u!198 &317572741
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -7988,6 +7990,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: 
+  origString: 
 --- !u!1 &320500165
 GameObject:
   m_ObjectHideFlags: 0
@@ -8814,6 +8817,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: CreateToy_NewToy
+  origString: 
 --- !u!1 &401425661
 GameObject:
   m_ObjectHideFlags: 0
@@ -9686,6 +9690,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: CreateToy_TryAgain
+  origString: 
 --- !u!1 &449186223
 GameObject:
   m_ObjectHideFlags: 0
@@ -9833,6 +9838,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: Tutorial_NowYouReady
+  origString: 
 --- !u!1 &455209117
 GameObject:
   m_ObjectHideFlags: 0
@@ -9880,6 +9886,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: Tutorial_TapWhenStarComes
+  origString: 
 --- !u!114 &455209120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11301,6 +11308,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: 
+  origString: 
 --- !u!1 &569729697
 GameObject:
   m_ObjectHideFlags: 0
@@ -13497,7 +13505,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c29316fd68134f6a8504287e1c8cfcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resetAll: 1
+  resetAll: 0
   resetCube: 0
   resetGoldenCube: 0
   normalFrameRate: 60
@@ -14123,6 +14131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: Tutorial_MoveYourToy
+  origString: 
 --- !u!1 &702295521
 GameObject:
   m_ObjectHideFlags: 0
@@ -18561,8 +18570,8 @@ MonoBehaviour:
   largeScale: 1.20000005
   smallScale: .600000024
   changeTime: .100000001
-  progressPerSecond: 5
-  progressPerCube: .699999988
+  progressPerSecond: 6.5
+  progressPerCube: .649999976
   progressChangeSpeed: 5
   npm: {fileID: 1991538117}
   asm: {fileID: 1991538112}
@@ -18595,7 +18604,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 995117313}
-  m_LocalRotation: {x: -.190690339, y: .774532139, z: .539343238, w: -.269899786}
+  m_LocalRotation: {x: -.190690368, y: .774532259, z: .539343297, w: -.269899815}
   m_LocalPosition: {x: -148.834641, y: -491.899872, z: -62.4409447}
   m_LocalScale: {x: 1.6000005, y: 1.599998, z: 1.6000011}
   m_Children: []
@@ -20766,6 +20775,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: Tutorial_CandyRestoreEnergy
+  origString: 
 --- !u!114 &1131946721
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23879,6 +23889,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: 
+  origString: 
 --- !u!1001 &1282841666
 Prefab:
   m_ObjectHideFlags: 0
@@ -24480,6 +24491,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: Tutorial_TryToBoost
+  origString: 
 --- !u!1 &1316254288
 GameObject:
   m_ObjectHideFlags: 0
@@ -25999,6 +26011,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: Tutorial_ChildDreaming
+  origString: 
 --- !u!1 &1374463136
 GameObject:
   m_ObjectHideFlags: 0
@@ -36868,6 +36881,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: Tutorial_SteerWithStick
+  origString: 
 --- !u!1 &1604613755 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 101786, guid: ba524a7769bc34372970ec9cf89920d8, type: 2}
@@ -37433,6 +37447,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: GameOver_ManualBonus
+  origString: 
 --- !u!114 &1656023774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42172,7 +42187,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1878833774}
-  m_LocalRotation: {x: -.190690339, y: .774532259, z: .539343297, w: -.269899786}
+  m_LocalRotation: {x: -.190690309, y: .774532139, z: .539343238, w: -.269899756}
   m_LocalPosition: {x: -137.134644, y: -449.999878, z: -71.4410858}
   m_LocalScale: {x: 2.50000119, y: 2.4999969, z: 2.50000167}
   m_Children: []
@@ -42201,7 +42216,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1878977605}
-  m_LocalRotation: {x: -.190690339, y: .774532259, z: .539343297, w: -.269899786}
+  m_LocalRotation: {x: -.190690309, y: .774532139, z: .539343238, w: -.269899756}
   m_LocalPosition: {x: -151.034637, y: -430.999878, z: -92.541153}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -52008,6 +52023,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: TouchToStart
+  origString: 
 --- !u!114 &2114221536
 MonoBehaviour:
   m_ObjectHideFlags: 0

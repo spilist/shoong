@@ -137,7 +137,7 @@ public class ScoreManager : MonoBehaviour {
   IEnumerator startGameOver() {
     gameOverStatus++;
 
-    // inputHandler.stopReact();
+    // inputHandler.GetComponent<TouchInputHandler>().stopReact();
     inputHandler.SetActive(false);
 
     AudioManager.am.changeVolume("Main", "Small");

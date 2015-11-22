@@ -117,7 +117,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
 	<data name="Button_AutoBoosterMode" xml:space="preserve">
-		<value>自動リズムモード</value>
+		<value>自動リズム</value>
 	</data>
 	<data name="CharacterName_alienwithgun" xml:space="preserve">
 		<value>銃を持った宇宙人</value>
@@ -210,7 +210,7 @@
 		<value>                 _REWARD_ コイン獲得</value>
 	</data>
 	<data name="GameOver_ManualBonus" xml:space="preserve">
-		<value>マニュアルリズムのボーナス</value>
+		<value>マニュアルボーナス</value>
 	</data>
 	<data name="GameOver_RateUs" xml:space="preserve">
 		<value>ゲームを評価してください</value>

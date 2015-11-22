@@ -34,7 +34,7 @@ public class TouchInputHandler : MonoBehaviour
           pause.activateSelf();
         } else if (menus.isMenuOn()) {
           menus.toggleMenuAndUI();
-        } else {
+        } else if (!gameStarted) {
           Application.Quit();
         }
         return;
@@ -78,7 +78,7 @@ public class TouchInputHandler : MonoBehaviour
       }
 		}
 
-    if (controlMethod == "Stick") {
+    if (reactAble() && controlMethod == "Stick") {
       for (var i = 0; i < Input.touchCount; ++i) {
         Touch touch = Input.GetTouch(i);
         Ray ray = Camera.main.ScreenPointToRay(touch.position);

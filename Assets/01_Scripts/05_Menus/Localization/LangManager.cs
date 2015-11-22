@@ -44,6 +44,8 @@ public class LangManager : MonoBehaviour {
       return "ko";
       case SystemLanguage.English:
       return "en";
+      case SystemLanguage.Japanese:
+      return "ja";
       default:
       return "en";
     }
