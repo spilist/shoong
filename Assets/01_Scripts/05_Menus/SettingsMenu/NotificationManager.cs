@@ -42,8 +42,11 @@ public class NotificationManager : MonoBehaviour {
     notifyMsg = LanguageManager.Instance.GetTextValue("Notification_FreeGift");
   }
 
-  public void notifyAfter(int minutes) {
-    ScheduleLocalNotification(CreateNotification(minutes * 60, eNotificationRepeatInterval.NONE));
+  public void notifyAfter() {
+  // public void notifyAfter(int minutes) {
+    // ScheduleLocalNotification(CreateNotification(minutes * 60, eNotificationRepeatInterval.NONE));
+    CancelAllLocalNotifications();
+    ScheduleLocalNotification(CreateNotification(360 * 60, eNotificationRepeatInterval.NONE));
   }
 
   private string ScheduleLocalNotification (CrossPlatformNotification _notification) {

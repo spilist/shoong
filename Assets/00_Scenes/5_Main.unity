@@ -1425,8 +1425,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 99751551}
   - 54: {fileID: 99751552}
-  - 95: {fileID: 99751553}
-  - 111: {fileID: 99751554}
   m_Layer: 10
   m_Name: DirectionHelper
   m_TagString: Untagged
@@ -1462,38 +1460,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!95 &99751553
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 99751550}
-  m_Enabled: 0
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: afb37278f27ad457797714e17ddc014b, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
---- !u!111 &99751554
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 99751550}
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: b6c4836c158a44430abd9b656290cead, type: 2}
-  m_Animations:
-  - {fileID: 7400000, guid: b6c4836c158a44430abd9b656290cead, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!1 &102137591
 GameObject:
   m_ObjectHideFlags: 0
@@ -36146,7 +36112,6 @@ MonoBehaviour:
   followPlayer: {fileID: 1276123138}
   laserPrefab: {fileID: 134676, guid: 8caaf1ed93486415bb895ac373e87b16, type: 2}
   laserAmount: 1
-  chargeTime: .300000012
   laserRadius: 12
   laserLength: 100
   laserShootingDuration: .0500000007
@@ -38219,7 +38184,7 @@ MonoBehaviour:
   freeGift: {fileID: 311332705}
   minReward: 70
   maxReward: 140
-  nextRewardMinutes: 0100000003000000050000001e0000003c000000b400000068010000
+  nextRewardMinutes: 01000000050000000f0000003c000000b400000068010000
   first: 0
 --- !u!65 &1815077429
 BoxCollider:

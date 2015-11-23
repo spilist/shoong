@@ -7,7 +7,6 @@ public class Skill_laser : Skill {
   public GameObject laserPrefab;
   private List<GameObject> laserPool;
   public int laserAmount = 2;
-  public float chargeTime = 0.5f;
   public int laserRadius = 20;
   public int laserLength = 500;
   public float laserShootingDuration = 0.5f;

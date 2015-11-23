@@ -44,4 +44,9 @@ public class SkillManager : MonoBehaviour {
   public Skill current() {
     return equiped;
   }
+
+  public string skillName() {
+    if (equiped == null) return "None";
+    else return equiped.name;
+  }
 }

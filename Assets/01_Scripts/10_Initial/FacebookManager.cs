@@ -58,7 +58,7 @@ public class FacebookManager : MonoBehaviour {
       1,
       new Dictionary<string, object>() {
         { "PlayCharacter", CharacterManager.cm.getCurrentCharacter() },
-        { "Skill", SkillManager.sm.current() },
+        { "Skill", SkillManager.sm.skillName()},
         { "Phase", PhaseManager.pm.phase() + 1},
         { "AutoRhythm", CubeManager.cm.getBonus() > 0},
         { "Score", CubeManager.cm.getCount() + CubeManager.cm.getBonus()},
@@ -74,7 +74,7 @@ public class FacebookManager : MonoBehaviour {
 
     Debug.Log("Phase: " + (PhaseManager.pm.phase() + 1));
     Debug.Log("PlayCharacter: " + CharacterManager.cm.getCurrentCharacter());
-    Debug.Log("Skill: " + SkillManager.sm.current());
+    Debug.Log("Skill: " + SkillManager.sm.skillName());
     Debug.Log("Score: " + CubeManager.cm.getCount());
     Debug.Log("Time: " + TimeManager.time.now);
     Debug.Log("BoosterSuccessRate: " + 100 * ((float)(Player.pl.numBoosters)) / (Player.pl.numBoosters + RhythmManager.rm.failedBeatCount));

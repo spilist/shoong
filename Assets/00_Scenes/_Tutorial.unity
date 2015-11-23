@@ -18604,7 +18604,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 995117313}
-  m_LocalRotation: {x: -.190690339, y: .774532139, z: .539343238, w: -.269899786}
+  m_LocalRotation: {x: -.190690368, y: .774532259, z: .539343297, w: -.269899815}
   m_LocalPosition: {x: -148.834641, y: -491.899872, z: -62.4409447}
   m_LocalScale: {x: 1.6000005, y: 1.599998, z: 1.6000011}
   m_Children: []
@@ -21500,7 +21500,7 @@ MonoBehaviour:
   freeGift: {fileID: 1778336215}
   minReward: 150
   maxReward: 150
-  nextRewardMinutes: 0100000003000000050000001e0000003c000000b400000068010000
+  nextRewardMinutes: 01000000050000000f0000003c000000b400000068010000
   first: 1
 --- !u!65 &1167683114
 BoxCollider:
@@ -37094,7 +37094,6 @@ MonoBehaviour:
   followPlayer: {fileID: 1276123138}
   laserPrefab: {fileID: 134676, guid: 8caaf1ed93486415bb895ac373e87b16, type: 2}
   laserAmount: 1
-  chargeTime: .300000012
   laserRadius: 10
   laserLength: 120
   laserShootingDuration: .0500000007
@@ -39121,7 +39120,7 @@ MonoBehaviour:
   blinkingSeconds: .400000006
   playTouchSound: 1
   blinkOnStart: 0
-  rareChance: 20
+  rareChance: 94
   epicChance: 5
   legendChance: 1
   chanceBase: 100
@@ -42188,7 +42187,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1878833774}
-  m_LocalRotation: {x: -.190690339, y: .774532259, z: .539343297, w: -.269899786}
+  m_LocalRotation: {x: -.190690309, y: .774532139, z: .539343238, w: -.269899756}
   m_LocalPosition: {x: -137.134644, y: -449.999878, z: -71.4410858}
   m_LocalScale: {x: 2.50000119, y: 2.4999969, z: 2.50000167}
   m_Children: []
@@ -42217,7 +42216,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1878977605}
-  m_LocalRotation: {x: -.190690339, y: .774532259, z: .539343297, w: -.269899786}
+  m_LocalRotation: {x: -.190690309, y: .774532139, z: .539343238, w: -.269899756}
   m_LocalPosition: {x: -151.034637, y: -430.999878, z: -92.541153}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
