@@ -37,9 +37,9 @@ public class Panel : MonoBehaviour {
     if (Player.pl.uncontrollable()) return;
 
     // 고정스틱
-    // if (tag == "StickPanel_booster") {
+    if (tag == "StickPanel_booster") {
 
-    if (Input.touchCount > 1 && tag == "StickPanel_booster") {
+    // if (Input.touchCount > 1 && tag == "StickPanel_booster") {
       Player.pl.shootBooster();
     }
 

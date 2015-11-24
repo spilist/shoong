@@ -182,12 +182,13 @@ public class TutorialHandler : MonoBehaviour {
         if ( Physics.Raycast(ray, out hit) ) {
           GameObject hitObject = hit.transform.gameObject;
           if (touch.phase == TouchPhase.Began) {
-            if (hitObject.tag == "StickPanel_movement" && Input.touchCount == 1) {
-              stick.position = newStickPosition();
-              stick.gameObject.SetActive(true);
+            if (hitObject.tag == "StickPanel_movement") {
+            // if (hitObject.tag == "StickPanel_movement" && Input.touchCount == 1) {
+              // stick.position = newStickPosition();
+              // stick.gameObject.SetActive(true);
               stickFingerId = touch.fingerId;
 
-              if (helper.activeInHierarchy) helper.SetActive(false);
+              // if (helper.activeInHierarchy) helper.SetActive(false);
             } else {
               hitObject.SendMessage("OnPointerDown");
             }
@@ -199,10 +200,10 @@ public class TutorialHandler : MonoBehaviour {
 
           if (touch.phase == TouchPhase.Ended) {
             if (touch.fingerId == stickFingerId) {
-              Player.pl.stopMoving();
-              stick.gameObject.SetActive(false);
+              // Player.pl.stopMoving();
+              // stick.gameObject.SetActive(false);
               stickFingerId = -1;
-              fingerIndicator.position = stick.position;
+              // fingerIndicator.position = stick.position;
             } else hitObject.SendMessage("OnPointerUp");
           }
         }
