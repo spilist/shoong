@@ -51,26 +51,28 @@ public class FacebookManager : MonoBehaviour {
   }
 
   public void gameDone() {
+    return;
+
     #if !UNITY_EDITOR
 
-    FB.LogAppEvent(
-      "Play Game",
-      1,
-      new Dictionary<string, object>() {
-        { "PlayCharacter", CharacterManager.cm.getCurrentCharacter() },
-        { "Skill", SkillManager.sm.skillName()},
-        { "Phase", PhaseManager.pm.phase() + 1},
-        { "AutoRhythm", CubeManager.cm.getBonus() > 0},
-        { "Score", CubeManager.cm.getCount() + CubeManager.cm.getBonus()},
-        { "Time", TimeManager.time.now},
-        { "BoosterSuccessRate", ((float)(Player.pl.numBoosters)) / (Player.pl.numBoosters + RhythmManager.rm.failedBeatCount) },
-        { "Total Plays", DataManager.dm.getInt("TotalNumPlays")},
-        { "Total PlayingTime", DataManager.dm.getInt("TotalTime")},
-        { "Gold Earned", GoldManager.gm.earned()}
-      });
-    #endif
+    // FB.LogAppEvent(
+    //   "Play Game",
+    //   1,
+    //   new Dictionary<string, object>() {
+    //     { "PlayCharacter", CharacterManager.cm.getCurrentCharacter() },
+    //     { "Skill", SkillManager.sm.skillName()},
+    //     { "Phase", PhaseManager.pm.phase() + 1},
+    //     { "AutoRhythm", CubeManager.cm.getBonus() > 0},
+    //     { "Score", CubeManager.cm.getCount() + CubeManager.cm.getBonus()},
+    //     { "Time", TimeManager.time.now},
+    //     { "BoosterSuccessRate", ((float)(Player.pl.numBoosters)) / (Player.pl.numBoosters + RhythmManager.rm.failedBeatCount) },
+    //     { "Total Plays", DataManager.dm.getInt("TotalNumPlays")},
+    //     { "Total PlayingTime", DataManager.dm.getInt("TotalTime")},
+    //     { "Gold Earned", GoldManager.gm.earned()}
+    //   });
+    // #endif
 
-    #if UNITY_EDITOR
+    // #if UNITY_EDITOR
 
     Debug.Log("Phase: " + (PhaseManager.pm.phase() + 1));
     Debug.Log("PlayCharacter: " + CharacterManager.cm.getCurrentCharacter());

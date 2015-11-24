@@ -52,6 +52,7 @@ namespace AbilityData {
   }
 
   public enum SkillFlag {
+    None = 0,
     Heal = 1,
     Fever = 2,
     Laser = 4,

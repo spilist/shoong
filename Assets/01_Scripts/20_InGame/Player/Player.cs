@@ -10,7 +10,13 @@ public class Player : MonoBehaviour {
   public float stickPushMaxSpeedAt = 0.8f;
   private float stickSpeedScale = 1;
   private bool stopping = false;
+  public float stoppingUntilScale = 0.2f;
   public int stoppingSpeed = 10;
+  public float skillChargeNeeded = 0.5f;
+  private float skillChargingDuration;
+  public int skillCoolReq = 4;
+  private int skillCoolCount;
+  public GameObject tempParticle;
 
   public float baseSpeed;
   public float speed;
@@ -86,6 +92,7 @@ public class Player : MonoBehaviour {
   public float poppingDurationDown = 0.2f;
   public float poppingDurationUp = 0.1f;
   private float poppingDuration;
+  public bool crouching;
 
 	void Awake() {
     pl = this;
@@ -125,7 +132,7 @@ public class Player : MonoBehaviour {
       speed = reboundSpeed / 2f;
     } else {
       if (stopping) {
-        speed = Mathf.MoveTowards(speed, 0, Time.fixedDeltaTime * stoppingSpeed);
+        speed = Mathf.MoveTowards(speed, baseSpeed * stoppingUntilScale, Time.fixedDeltaTime * stoppingSpeed);
       } else if (ridingMonster) {
         speed = baseSpeed + minimonCounter * monm.enlargeSpeedPerMinimon + boosterspeed;
       } else {
@@ -296,47 +303,75 @@ public class Player : MonoBehaviour {
   }
 
   public void shootBooster(){
-    if (stopping || uncontrollable()) return;
+    stopping = false;
+    // if (stopping || uncontrollable()) return;
 
-    if (RhythmManager.rm.canBoost()) {
-      numBoosters++;
-      DataManager.dm.increment("TotalBoosters");
+    // if (RhythmManager.rm.canBoost()) {
+    //   numBoosters++;
+    //   DataManager.dm.increment("TotalBoosters");
 
-      if (useBoosterText != null && useBoosterText.gameObject.activeInHierarchy) {
-        useBoosterText.increment();
-      }
+    //   if (useBoosterText != null && useBoosterText.gameObject.activeInHierarchy) {
+    //     useBoosterText.increment();
+    //   }
 
-      if (RhythmManager.rm.isSkillOK) {
-        SkillManager.sm.activate();
-        if (SkillManager.sm.isBlink()) {
-          teleport(transform.position + direction * dpm.blinkDistance);
-          RhythmManager.rm.ringSuccessed();
-          return;
-        }
-      }
+    //   if (RhythmManager.rm.isSkillOK) {
+    //     SkillManager.sm.activate();
+    //     if (SkillManager.sm.isBlink()) {
+    //       teleport(transform.position + direction * dpm.blinkDistance);
+    //       RhythmManager.rm.ringSuccessed();
+    //       return;
+    //     }
+    //   }
 
-      RhythmManager.rm.ringSuccessed();
-    } else {
-      RhythmManager.rm.ringMissed();
-      return;
-    }
+    //   RhythmManager.rm.ringSuccessed();
+    // } else {
+    //   RhythmManager.rm.ringMissed();
+    //   return;
+    // }
 
     timeSpaned = 0;
 
     if (!usingPowerBoost) {
       changeManager.booster.Play();
       changeManager.booster.GetComponent<AudioSource>().Play();
-      poppingByBooster = true;
-      poppingTarget = poppingSmallScale;
-      poppingDuration = poppingDurationDown;
+      // poppingByBooster = true;
+      // poppingTarget = poppingSmallScale;
+      // poppingDuration = poppingDurationDown;
     }
 
     if (boosterspeed < maxBooster()) {
       boosterspeed += boosterSpeedUp() * boosterBonus;
       boosterspeed = boosterspeed > maxBooster() ? maxBooster() : boosterspeed;
     }
+  }
 
-    // rotatePlayerBody();
+  public void crouch(bool val, string controlMethod) {
+    if (val) {
+      poppingByBooster = true;
+      poppingTarget = poppingSmallScale;
+      poppingDuration = poppingDurationDown;
+      skillChargingDuration = 0;
+    } else {
+      if (controlMethod == "Touch" || controlMethod == "Circle") shootBooster();
+
+      if (skillChargingDuration >= skillChargeNeeded) {
+        if (controlMethod == "Slide" || controlMethod == "Stick") shootBooster();
+        // skillCoolCount++;
+
+        // if (skillCoolCount == skillCoolReq - 1) {
+        //   tempParticle.SetActive(true);
+        // }
+
+        // if (skillCoolCount >= skillCoolReq) {
+        //   SkillManager.sm.activate();
+        //   skillCoolCount = 0;
+        //   tempParticle.SetActive(false);
+        // }
+      }
+
+      poppingTarget = 1;
+      poppingDuration = poppingDurationUp;
+    }
   }
 
   public int getNumBoosters() {
@@ -382,15 +417,15 @@ public class Player : MonoBehaviour {
 
   public void setDirection(Vector3 dir, float magnitude = 1) {
     if (magnitude < stopSphereRadius) {
-      stopping = true;
-      stickSpeedScale = 1;
+      // stopping = true;
+      // stickSpeedScale = 1;
     } else {
       direction = dir;
-      magnitude /= stickPushMaxSpeedAt;
-      stickSpeedScale = magnitude > 1 ? 1 : magnitude;
-      stopping = false;
+      // magnitude /= stickPushMaxSpeedAt;
+      // stickSpeedScale = magnitude > 1 ? 1 : magnitude;
+      // stopping = false;
+      dirIndicator.setDirection(dir);
     }
-    dirIndicator.setDirection(dir);
   }
 
   public void effectedBy(string objTag, bool effectOn = true) {
@@ -527,9 +562,8 @@ public class Player : MonoBehaviour {
       poppingScale = Mathf.MoveTowards(poppingScale, poppingTarget, Time.deltaTime * (1 - poppingSmallScale) / poppingDuration);
       transform.parent.localScale = new Vector3(1, 1, poppingScale);
 
-      if (poppingScale == poppingSmallScale) {
-        poppingTarget = 1;
-        poppingDuration = poppingDurationUp;
+      if (poppingTarget == poppingSmallScale) {
+        skillChargingDuration += Time.deltaTime;
       }
 
       if (poppingScale == 1) {

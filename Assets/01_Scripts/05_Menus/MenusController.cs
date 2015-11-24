@@ -42,6 +42,9 @@ public class MenusController : MonoBehaviour {
         }
         mb.activateSelf();
       }
+      // else if (hitTag == "DirArrow") {
+      //   hit.transform.gameObject.SendMessage("OnPointerDown");
+      // }
       return hitTag;
     } else {
       return "nothing";

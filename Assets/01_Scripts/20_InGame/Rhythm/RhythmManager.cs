@@ -114,7 +114,8 @@ public class RhythmManager : MonoBehaviour {
   }
 
   public void startGame() {
-    beating = true;
+
+    // beating = true;
     gameStarted = true;
     doingTutorial = false;
     touchText = origTouchText;

@@ -10,19 +10,25 @@ public class Panel : MonoBehaviour {
   private string movingDirection;
 
   void Start() {
-    if (DataManager.dm.getString("ControlMethod") != controlMethod) {
-      gameObject.SetActive(false);
+    if (DataManager.dm.getString("ControlMethod") == controlMethod) {
+      if (GetComponent<Image>() != null) GetComponent<Image>().enabled = true;
+      if (GetComponent<Collider>() != null) GetComponent<Collider>().enabled = true;
+
+      if (name == "StickPanel_movement") transform.Find("FingerIndicator").GetComponent<Image>().enabled = true;
+
+    } else {
+      if (controlMethod == "8Dir") gameObject.SetActive(false);
     }
 
     if (adjustScale > 0) {
       transform.localScale *= adjustScale / transform.lossyScale.x;
     }
 
-    if (tag == "StickPanel_booster" && abb != null && abb.isOn()) {
-      GetComponent<Collider>().enabled = false;
-      transform.Find("Touch").GetComponent<Text>().text = "AUTO";
-      transform.Find("OnTheBeat").GetComponent<Text>().text = "MODE";
-    }
+    // if (tag == "StickPanel_booster" && abb != null && abb.isOn()) {
+    //   GetComponent<Collider>().enabled = false;
+    //   transform.Find("Touch").GetComponent<Text>().text = "AUTO";
+    //   transform.Find("OnTheBeat").GetComponent<Text>().text = "MODE";
+    // }
   }
 
   void Update() {
@@ -36,11 +42,9 @@ public class Panel : MonoBehaviour {
   void OnPointerDown() {
     if (Player.pl.uncontrollable()) return;
 
-    // 고정스틱
-    // if (tag == "StickPanel_booster") {
-
-    if (Input.touchCount > 1 && tag == "StickPanel_booster") {
-      Player.pl.shootBooster();
+    if (tag == "StickPanel_booster") {
+      Player.pl.crouch(true, "Stick");
+      // Player.pl.shootBooster();
     }
 
     if (tag == "LRPanel_left" || tag == "LRPanel_right") {
@@ -56,6 +60,10 @@ public class Panel : MonoBehaviour {
   void OnPointerUp() {
     if (tag == "LRPanel_left" || tag == "LRPanel_right") {
       LRMoving = false;
+    }
+
+    if (tag == "StickPanel_booster") {
+      Player.pl.crouch(false, "Stick");
     }
   }
 }

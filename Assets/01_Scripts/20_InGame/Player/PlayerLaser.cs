@@ -62,6 +62,8 @@ public class PlayerLaser : MonoBehaviour {
       radius = Mathf.MoveTowards(radius, 0, Time.deltaTime * targetRadius / shrinkingDuration);
       transform.localScale = new Vector3(length, radius, radius);
       if (radius == 0) {
+        SkillManager.sm.stopSkills();
+
         gameObject.SetActive(false);
       }
     }

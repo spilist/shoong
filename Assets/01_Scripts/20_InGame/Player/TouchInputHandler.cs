@@ -7,6 +7,7 @@ using System.Collections.Generic;
 public class TouchInputHandler : MonoBehaviour
 {
   public Transform stick;
+  public Transform stick_circle;
   public Transform fingerIndicator;
   private float stickPanelSize;
 
@@ -70,15 +71,16 @@ public class TouchInputHandler : MonoBehaviour
         stick.gameObject.SetActive(true);
 			}
 
-      if (controlMethod == "Touch") {
-        if (result == "Ground") {
-          setPlayerDirection(Player.pl.transform);
-          Player.pl.shootBooster();
-        }
-      }
+      // if (controlMethod == "Touch") {
+      //   if (result == "Ground") {
+      //     setPlayerDirection(Player.pl.transform);
+      //     Player.pl.shootBooster();
+      //   }
+      // }
 		}
 
-    if (reactAble() && controlMethod == "Stick") {
+    if (reactAble()) {
+    // if (reactAble() && controlMethod == "Stick") {
       for (var i = 0; i < Input.touchCount; ++i) {
         Touch touch = Input.GetTouch(i);
         Ray ray = Camera.main.ScreenPointToRay(touch.position);
@@ -86,29 +88,49 @@ public class TouchInputHandler : MonoBehaviour
         if ( Physics.Raycast(ray, out hit) ) {
           GameObject hitObject = hit.transform.gameObject;
           if (touch.phase == TouchPhase.Began) {
-            if (hitObject.tag == "StickPanel_movement" && Input.touchCount == 1) {
-              // 고정스틱
-              stick.position = newStickPosition();
-              stick.gameObject.SetActive(true);
+            if (hitObject.tag == "StickPanel_movement") {
+            // if (hitObject.tag == "StickPanel_movement" && Input.touchCount == 1) {
 
               stickFingerId = touch.fingerId;
+
+              if (controlMethod == "Slide") {
+                stick.position = newStickPosition();
+              }
+
+              // stick.gameObject.SetActive(true);
+
+              if (controlMethod == "Slide" || controlMethod == "Touch" || controlMethod == "Circle") {
+                Player.pl.stopMoving();
+                Player.pl.crouch(true, controlMethod);
+              }
             } else {
               hitObject.SendMessage("OnPointerDown");
             }
           }
 
           if (touch.phase == TouchPhase.Moved && touch.fingerId == stickFingerId) {
-            setPlayerDirection(stick, touch);
+            if (controlMethod == "Touch") setPlayerDirection(Player.pl.transform);
+            else if (controlMethod == "Stick" || controlMethod == "Slide") setPlayerDirection(stick, touch);
+            else if (controlMethod == "Circle") setPlayerDirection(stick_circle, touch);
           }
 
           if (touch.phase == TouchPhase.Ended) {
             if (touch.fingerId == stickFingerId) {
               stickFingerId = -1;
 
+              if (controlMethod == "Slide" || controlMethod == "Touch" || controlMethod == "Circle") {
+                Player.pl.stopMoving(false);
+                Player.pl.crouch(false, controlMethod);
+
+                if (controlMethod == "Touch") setPlayerDirection(Player.pl.transform);
+
+                if (controlMethod == "Circle") setPlayerDirection(stick_circle, touch);
+              }
+
               // 고정스틱
-              Player.pl.stopMoving();
-              stick.gameObject.SetActive(false);
-              fingerIndicator.position = stick.position;
+              // Player.pl.stopMoving();
+              // stick.gameObject.SetActive(false);
+              // fingerIndicator.position = stick.position;
             } else {
               hitObject.SendMessage("OnPointerUp");
             }

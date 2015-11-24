@@ -100,7 +100,7 @@ public class CharacterManager : MonoBehaviour {
     EnergyManager.em.resetAbility();
 
     string skillName = stat.skillFlags.ToString();
-    if (skillName == "0") {
+    if (skillName == "None") {
       RhythmManager.rm.setLoop(0, 0);
       SkillManager.sm.equip("None");
     } else {

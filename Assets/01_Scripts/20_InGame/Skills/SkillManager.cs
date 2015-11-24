@@ -29,7 +29,7 @@ public class SkillManager : MonoBehaviour {
   public void activate() {
     if (!equiped.isActivated()) {
       equiped.activate(true);
-      RhythmManager.rm.loopSkillActivated(true);
+      // RhythmManager.rm.loopSkillActivated(true);
     }
   }
 
