@@ -25,6 +25,7 @@ public class RhythmStar : MonoBehaviour {
   private Image image;
   float timePeriod;
   ParticleSystem particle;
+  AudioSource audioSource;
   RectTransform rect;
 
   void Awake() {
@@ -36,6 +37,7 @@ public class RhythmStar : MonoBehaviour {
     image = GetComponent<Image>();
     originalColor = image.color;
     particle = GetComponent<ParticleSystem>();
+    audioSource = GetComponent<AudioSource>();
 
     rightBeatPosX = RhythmManager.rm.rightBeatPosX;
     canBeMissedPosX = RhythmManager.rm.canBeMissedPosX;
@@ -112,5 +114,6 @@ public class RhythmStar : MonoBehaviour {
   public void success() {
     disappearing = true;
     particle.Play();
+    if (audioSource != null && audioSource.enabled) audioSource.Play();
   }
 }

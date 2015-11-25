@@ -24,8 +24,10 @@ public class GoldenCubeMover : ObjectsMover {
     if (popping) {
       transform.localScale = gcm.npm.popStartScale * Vector3.one;
       shrinkedScale = gcm.npm.popStartScale;
+      GetComponent<TrailRenderer>().enabled = true;
     } else {
       GetComponent<Collider>().enabled = true;
+      GetComponent<TrailRenderer>().enabled = false;
     }
   }
 
@@ -38,7 +40,6 @@ public class GoldenCubeMover : ObjectsMover {
   }
 
   public void pop(int popDistance) {
-    noRespawn = true;
     curDistance = 0;
     this.popDistance = popDistance;
     Vector2 randomV = Random.insideUnitCircle.normalized;
@@ -46,6 +47,7 @@ public class GoldenCubeMover : ObjectsMover {
     origin = transform.position;
     popping = true;
     gameObject.SetActive(true);
+    noRespawn = true;
   }
 
   void Update() {
@@ -59,6 +61,8 @@ public class GoldenCubeMover : ObjectsMover {
       if (curDistance >= popDistance && shrinkedScale >= originalScale) {
         popping = false;
         GetComponent<Collider>().enabled = true;
+        transform.Find("PopAudio").GetComponent<AudioSource>().Play();
+        GetComponent<TrailRenderer>().enabled = false;
       }
     }
   }

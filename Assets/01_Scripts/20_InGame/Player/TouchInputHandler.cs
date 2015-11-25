@@ -90,7 +90,7 @@ public class TouchInputHandler : MonoBehaviour
             // if (hitObject.tag == "StickPanel_movement" && Input.touchCount == 1) {
               // 고정스틱
               // stick.position = newStickPosition();
-              // stick.gameObject.SetActive(true);
+              stick.gameObject.SetActive(true);
 
               stickFingerId = touch.fingerId;
             } else {
@@ -98,7 +98,7 @@ public class TouchInputHandler : MonoBehaviour
             }
           }
 
-          if (touch.phase == TouchPhase.Moved && touch.fingerId == stickFingerId) {
+          if (touch.phase == TouchPhase.Moved && touch.fingerId == stickFingerId && hitObject.tag == "StickPanel_movement") {
             setPlayerDirection(stick, touch);
           }
 

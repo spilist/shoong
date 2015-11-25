@@ -103,6 +103,7 @@ public class EnergyManager : MonoBehaviour {
   }
 
   public void getFullHealth() {
+    dangerousFilter.SetActive(false);
     gauge.fillAmount = 1;
     energy = maxEnergy;
     isChanging = false;

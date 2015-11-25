@@ -9,7 +9,7 @@ public class AlienshipLaserMover : MonoBehaviour {
   float length = 0;
   int rotatingSpeed;
   int loseEnergy;
-  Transform outer;
+  // Transform outer;
 
   float shootingDuration;
   float stayDuration;
@@ -27,7 +27,7 @@ public class AlienshipLaserMover : MonoBehaviour {
     shrinkingDuration = asm.laserShrinkingDuration;
     rotatingSpeed = asm.laserRotatingSpeed;
     loseEnergy = asm.laserLoseEnergy;
-    outer = transform.Find("Outer");
+    // outer = transform.Find("Outer");
     this.father = father;
 
     stayCount = 0;

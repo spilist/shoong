@@ -22,8 +22,10 @@ public class NormalPartsMover : ObjectsMover {
     if (popping) {
       transform.localScale = npm.popStartScale * Vector3.one;
       shrinkedScale = npm.popStartScale;
+      GetComponent<TrailRenderer>().enabled = true;
     } else {
       GetComponent<Collider>().enabled = true;
+      GetComponent<TrailRenderer>().enabled = false;
     }
   }
 
@@ -76,6 +78,8 @@ public class NormalPartsMover : ObjectsMover {
       if (curDistance >= popDistance && shrinkedScale >= originalScale) {
         popping = false;
         GetComponent<Collider>().enabled = true;
+        transform.Find("PopAudio").GetComponent<AudioSource>().Play();
+        GetComponent<TrailRenderer>().enabled = false;
       }
     }
   }

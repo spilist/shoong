@@ -53,6 +53,7 @@ public class MenusBehavior : MonoBehaviour {
   protected void stopBlink() {
     if (!blinking) return;
     blinking = false;
+    blinkOnStart = false;
     StopCoroutine("blinkButton");
     filter.sharedMesh = activeMesh;
   }

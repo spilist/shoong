@@ -24,6 +24,8 @@ public class ComboPartsManager : ObjectsManager {
 
   public float pitchStart = 0.4f;
   public float pitchIncrease = 0.05f;
+  public float scaleIncrease = 0.4f;
+  public int spawnDistanceIncrease = 5;
 
   private bool trying = false;
 
@@ -72,6 +74,7 @@ public class ComboPartsManager : ObjectsManager {
     nextInstance = getPooledObj(objNextPool, objPrefab_next, spawnPosition);
     nextInstance.SetActive(true);
     nextInstance.GetComponent<OffsetFixer>().setParent(instance);
+    nextInstance.transform.localScale = increasedScale() * (1 + scaleIncrease) * Vector3.one;
 
     int random = Random.Range(0, chanceBase);
     if (random < goldenCubeChance) {
@@ -123,7 +126,7 @@ public class ComboPartsManager : ObjectsManager {
       if (comboCount + 1 < fullComboCount) {
         Vector2 randomV = Random.insideUnitCircle;
         randomV.Normalize();
-        Vector3 nextSpawnPos = new Vector3(spawnPos.x + randomV.x * radius, 0, spawnPos.z + randomV.y * radius);
+        Vector3 nextSpawnPos = new Vector3(spawnPos.x + randomV.x * radius, 0, spawnPos.z + randomV.y * (radius + spawnDistanceIncrease * comboCount));
         nextInstance = getPooledObj(objNextPool, objPrefab_next, nextSpawnPos);
         nextInstance.SetActive(true);
         nextInstance.transform.rotation = spawnRotation;
@@ -140,11 +143,20 @@ public class ComboPartsManager : ObjectsManager {
           nextInstance.GetComponent<MeshFilter>().sharedMesh = getRandomMesh();
           nextInstance.transform.Find("BasicEffect").gameObject.SetActive(true);
           nextInstance.transform.Find("GoldenEffect").gameObject.SetActive(false);
+          nextInstance.transform.localScale = increasedScale() * (1 + scaleIncrease) * Vector3.one;
         }
       }
 
       instance.SetActive(true);
     }
+  }
+
+  public float increasedScale() {
+    float val = 1;
+    for (int i = 0; i < comboCount; i++) {
+      val *= (1 + scaleIncrease);
+    }
+    return val;
   }
 
   public int getComboCount() {

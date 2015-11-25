@@ -65,6 +65,7 @@ public class TutorialHandler : MonoBehaviour {
     if (status == 1) {
       FacebookManager.fb.firstPlayLog("4_UseBoosterStart");
       RhythmManager.rm.startBeat(touchTexts[0], onthebeatTexts[0], boostImages[0], fingerImages[0], rhythmRings[0]);
+      EnergyManager.em.getFullHealth();
     } else {
       DataManager.dm.setBool("TutorialDone", true);
       FacebookManager.fb.tutorialDone(skipped);
@@ -107,7 +108,7 @@ public class TutorialHandler : MonoBehaviour {
           tutoStatus += (1 - tutoStatus);
           tutorialScenes[0].SetActive(false);
           spawnManager.GetComponent<FollowTarget>().enabled = true;
-          stick.gameObject.SetActive(false);
+          // stick.gameObject.SetActive(false);
           nextTutorial(1);
         } else if (tutoStatus == 2) {
           tutoStatus += (2 - tutoStatus);
@@ -185,7 +186,7 @@ public class TutorialHandler : MonoBehaviour {
             if (hitObject.tag == "StickPanel_movement") {
             // if (hitObject.tag == "StickPanel_movement" && Input.touchCount == 1) {
               // stick.position = newStickPosition();
-              // stick.gameObject.SetActive(true);
+              stick.gameObject.SetActive(true);
               stickFingerId = touch.fingerId;
 
               // if (helper.activeInHierarchy) helper.SetActive(false);
@@ -194,7 +195,7 @@ public class TutorialHandler : MonoBehaviour {
             }
           }
 
-          if (touch.phase == TouchPhase.Moved && touch.fingerId == stickFingerId) {
+          if (touch.phase == TouchPhase.Moved && touch.fingerId == stickFingerId && hitObject.tag == "StickPanel_movement") {
             setPlayerDirection(stick, touch);
           }
 
@@ -286,7 +287,7 @@ public class TutorialHandler : MonoBehaviour {
 
     stick = origStick;
     fingerIndicator = origFingerIndicator;
-    // stick.gameObject.SetActive(true);
+    stick.gameObject.SetActive(true);
     stickPanelSize = Vector3.Distance(stick.position, stick.transform.Find("End").position);
 
     FacebookManager.fb.firstPlayLog("5_GameStart");

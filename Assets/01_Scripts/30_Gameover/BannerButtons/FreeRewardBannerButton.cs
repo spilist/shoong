@@ -7,6 +7,7 @@ public class FreeRewardBannerButton : BannerButton {
   public FreeGift freeGift;
   public int minReward = 70;
   public int maxReward = 140;
+  public GameObject timeIcon;
   private int reward;
 
   public int[] nextRewardMinutes;
@@ -17,11 +18,13 @@ public class FreeRewardBannerButton : BannerButton {
     reward = UnityEngine.Random.Range(minReward, maxReward + 1);
 
     freeGift.run(this, reward);
-
     stopBlink();
 
-    GetComponent<MeshRenderer>().enabled = false;
+    // GetComponent<MeshRenderer>().enabled = false;
+    filter.sharedMesh = inactiveMesh;
     GetComponent<Collider>().enabled = false;
+
+    timeIcon.SetActive(true);
   }
 
   public void endFreeGift() {
@@ -32,18 +35,22 @@ public class FreeRewardBannerButton : BannerButton {
       DataManager.dm.increment("FreeRewardCount");
     }
 
-    // int frCount = DataManager.dm.getInt("FreeRewardCount");
+    int frCount = DataManager.dm.getInt("FreeRewardCount");
+    int rewardCount = frCount >= nextRewardMinutes.Length ? (nextRewardMinutes.Length - 1) : frCount;
+    int nextRewardMinute = nextRewardMinutes[rewardCount];
+    int nextRewardHour = nextRewardMinute / 60;
+    nextRewardMinute %= 60;
+    string nextReward = nextRewardHour.ToString("0") + ":" + nextRewardMinute.ToString("00");
 
     DataManager.dm.setDateTime("LastFreeRewardTime");
-    transform.parent.GetComponent<Text>().text = secondDescription.Replace("_REWARD_", reward.ToString());
+    transform.parent.GetComponent<Text>().text = nextReward;
+    // transform.parent.GetComponent<Text>().text = secondDescription.Replace("_REWARD_", reward.ToString());
 
     gold.change(reward);
 
-    // int rewardCount = frCount >= nextRewardMinutes.Length ? (nextRewardMinutes.Length - 1) : frCount;
 
     if (!DataManager.dm.getBool("NotificationSetting")) {
       NotificationManager.nm.notifyAfter();
-      // NotificationManager.nm.notifyAfter(nextRewardMinutes[rewardCount]);
     }
   }
 

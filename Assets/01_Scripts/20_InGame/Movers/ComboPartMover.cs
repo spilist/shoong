@@ -14,6 +14,9 @@ public class ComboPartMover : ObjectsMover {
 
   override protected void afterEnable() {
     mRenderer.enabled = true;
+    shrinkedScale = cpm.increasedScale();
+    transform.localScale = shrinkedScale * Vector3.one;
+
     if (cpm.nextInstance != null) {
       mRenderer_next = cpm.nextInstance.GetComponent<Renderer>();
       mRenderer_next.enabled = true;
