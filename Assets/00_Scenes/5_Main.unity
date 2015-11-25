@@ -1090,7 +1090,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillObject: {fileID: 632297515}
   useSkillEffect: {fileID: 0}
-  normalRing: 4
+  normalRing: 2
   skillRing: 1
   description: Be $rich$
   duration: .5
@@ -1273,7 +1273,7 @@ MonoBehaviour:
   useBoosterText: {fileID: 0}
   contactCollider: {fileID: 1298175623}
   bestX: 0
-  poppingSmallScale: .600000024
+  poppingSmallScale: .400000006
   poppingDurationDown: .200000003
   poppingDurationUp: .100000001
 --- !u!96 &91418584
@@ -2054,7 +2054,7 @@ ParticleSystem:
     serializedVersion: 2
     enabled: 1
     type: 0
-    radius: 4.11999989
+    radius: 6.30000019
     angle: 70
     length: 10
     boxX: 1
@@ -2068,7 +2068,7 @@ ParticleSystem:
     enabled: 1
     m_Type: 0
     rate:
-      scalar: 80
+      scalar: 120
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -4691,7 +4691,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillObject: {fileID: 0}
   useSkillEffect: {fileID: 1435706019}
-  normalRing: 9
+  normalRing: 6
   skillRing: 1
   description: Restore energy
   duration: 0
@@ -13864,7 +13864,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 140
+  m_Radius: 170
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &680766409
 MonoBehaviour:
@@ -23082,16 +23082,16 @@ MonoBehaviour:
   - 2.19000006
   - 3.28999996
   - 4.38999987
-  baseSpeedStandard: 90
+  baseSpeedStandard: 50
   baseSpeeds: 0a0000000500000000000000fbfffffff6ffffff
-  boosterPlusSpeedStandard: 75
+  boosterPlusSpeedStandard: 130
   boosterPlusSpeeds: 0a0000000500000000000000fbfffffff6ffffff
-  boosterMaxSpeedStandard: 115
+  boosterMaxSpeedStandard: 160
   boosterMaxSpeeds: 0a0000000500000000000000fbfffffff6ffffff
-  boosterSpeedDecreaseStandard: 60
+  boosterSpeedDecreaseStandard: 50
   boosterSpeedDecreases: 280000001400000000000000f6ffffffecffffff
-  energyReduceOnTimeStandard: 25
-  energyReduceOnTimes: 280000001400000000000000f1ffffffe2ffffff
+  energyReduceOnTimeStandard: 11
+  energyReduceOnTimes: 140000000a00000000000000f6ffffffecffffff
   maxEnergyStandard: 100
   maxEnergys: 280000001400000000000000f6ffffffecffffff
   reboundTimeScaleStandard: 1
@@ -25148,7 +25148,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillObject: {fileID: 0}
   useSkillEffect: {fileID: 1205113092}
-  normalRing: 9
+  normalRing: 6
   skillRing: 1
   description: Pass anything
   duration: 3
@@ -30068,7 +30068,7 @@ ParticleSystem:
         rgba: 4286065373
       minMaxState: 2
     startSize:
-      scalar: 6
+      scalar: 10
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -30083,7 +30083,7 @@ ParticleSystem:
         serializedVersion: 2
         m_Curve:
         - time: 0
-          value: .666666687
+          value: .800000012
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -36105,7 +36105,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillObject: {fileID: 0}
   useSkillEffect: {fileID: 0}
-  normalRing: 4
+  normalRing: 3
   skillRing: 1
   description: Shoot & Destroy
   duration: 0
@@ -38383,7 +38383,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillObject: {fileID: 1973202187}
   useSkillEffect: {fileID: 1967867617}
-  normalRing: 4
+  normalRing: 3
   skillRing: 1
   description: Transform asteroids
   duration: .5
@@ -45653,7 +45653,7 @@ MonoBehaviour:
   minSpawnInterval: 8
   maxSpawnInterval: 12
   cubesByEncounter: 5
-  energyGets: 10
+  energyGets: 8
   isNegative: 0
   hasEncounterEffect: 0
   destroyWhenCollideSelf: 0
@@ -45713,7 +45713,7 @@ MonoBehaviour:
   hasEncounterEffect: 0
   destroyWhenCollideSelf: 0
   instance: {fileID: 0}
-  loseEnergyWhenEncounter: 30
+  loseEnergyWhenEncounter: 25
   bounceDuration: .300000012
   hasLevel: 0
   nameForLevel: 
@@ -45962,7 +45962,7 @@ MonoBehaviour:
   hasEncounterEffect: 0
   destroyWhenCollideSelf: 0
   instance: {fileID: 0}
-  loseEnergyWhenEncounter: 20
+  loseEnergyWhenEncounter: 15
   bounceDuration: .200000003
   hasLevel: 0
   nameForLevel: 
@@ -46060,7 +46060,7 @@ MonoBehaviour:
   minSpawnInterval: 8
   maxSpawnInterval: 12
   cubesByEncounter: 5
-  energyGets: 10
+  energyGets: 8
   isNegative: 0
   hasEncounterEffect: 1
   destroyWhenCollideSelf: 0
@@ -46108,7 +46108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceSpawnAtStart: 0
-  objAmount: 30
+  objAmount: 42
   objPool: []
   objDestroyEffectPool: []
   objEncounterEffectPool: []
@@ -46123,7 +46123,7 @@ MonoBehaviour:
   minSpawnInterval: 0
   maxSpawnInterval: 0
   cubesByEncounter: 5
-  energyGets: 10
+  energyGets: 8
   isNegative: 0
   hasEncounterEffect: 0
   destroyWhenCollideSelf: 0
@@ -46331,7 +46331,7 @@ MonoBehaviour:
   hasEncounterEffect: 0
   destroyWhenCollideSelf: 0
   instance: {fileID: 0}
-  loseEnergyWhenEncounter: 15
+  loseEnergyWhenEncounter: 10
   bounceDuration: .150000006
   hasLevel: 0
   nameForLevel: 
@@ -46422,7 +46422,7 @@ MonoBehaviour:
   hasEncounterEffect: 0
   destroyWhenCollideSelf: 0
   instance: {fileID: 0}
-  loseEnergyWhenEncounter: 40
+  loseEnergyWhenEncounter: 35
   bounceDuration: .300000012
   hasLevel: 0
   nameForLevel: 
@@ -46475,7 +46475,7 @@ MonoBehaviour:
   hasEncounterEffect: 0
   destroyWhenCollideSelf: 0
   instance: {fileID: 0}
-  loseEnergyWhenEncounter: 30
+  loseEnergyWhenEncounter: 25
   bounceDuration: .400000006
   hasLevel: 0
   nameForLevel: 
@@ -46493,7 +46493,7 @@ MonoBehaviour:
   shootLaserPer: 4
   chargeTime: .400000006
   offScreenSpeedScale: .5
-  laserLoseEnergy: 70
+  laserLoseEnergy: 65
   laserRadius: 20
   laserLength: 500
   laserShootingDuration: .100000001
@@ -46576,7 +46576,7 @@ MonoBehaviour:
   hasEncounterEffect: 0
   destroyWhenCollideSelf: 0
   instance: {fileID: 0}
-  loseEnergyWhenEncounter: 25
+  loseEnergyWhenEncounter: 20
   bounceDuration: .150000006
   hasLevel: 0
   nameForLevel: 

@@ -97,10 +97,6 @@ Material:
         second: .699999988
       data:
         first:
-          name: _Parallax
-        second: .0199999996
-      data:
-        first:
           name: _ZWrite
         second: 1
       data:
@@ -111,6 +107,10 @@ Material:
         first:
           name: _BumpScale
         second: 1
+      data:
+        first:
+          name: _Parallax
+        second: .0199999996
       data:
         first:
           name: _OcclusionStrength
@@ -143,7 +143,7 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: .134000003, g: .892496586, b: 1, a: .709999979}
+        second: {r: .334937304, g: .717795491, b: .772058845, a: .777999997}
       data:
         first:
           name: _SpecColor
