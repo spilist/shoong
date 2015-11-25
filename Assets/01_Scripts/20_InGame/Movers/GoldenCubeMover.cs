@@ -4,9 +4,13 @@ using System.Collections;
 public class GoldenCubeMover : ObjectsMover {
   private GoldenCubeManager gcm;
   private SummonPartsManager summonManager;
-  // private bool detected = false;
   private bool noRespawn = false;
   private Renderer mRenderer;
+  private bool popping;
+  private Vector3 popDir;
+  private int popDistance;
+  private float curDistance;
+  private Vector3 origin;
 
   protected override void initializeRest() {
     gcm = (GoldenCubeManager)objectsManager;
@@ -14,9 +18,15 @@ public class GoldenCubeMover : ObjectsMover {
   }
 
   override protected void afterEnable() {
-    // detected = false;
     noRespawn = false;
     mRenderer.enabled = true;
+
+    if (popping) {
+      transform.localScale = gcm.npm.popStartScale * Vector3.one;
+      shrinkedScale = gcm.npm.popStartScale;
+    } else {
+      GetComponent<Collider>().enabled = true;
+    }
   }
 
   public void setNoRespawn(bool autoDestroy) {
@@ -24,6 +34,32 @@ public class GoldenCubeMover : ObjectsMover {
     if (autoDestroy) {
       summonManager = gcm.GetComponent<SummonPartsManager>();
       StartCoroutine("destroyAfter");
+    }
+  }
+
+  public void pop(int popDistance) {
+    noRespawn = true;
+    curDistance = 0;
+    this.popDistance = popDistance;
+    Vector2 randomV = Random.insideUnitCircle.normalized;
+    popDir = new Vector3(randomV.x, 0, randomV.y);
+    origin = transform.position;
+    popping = true;
+    gameObject.SetActive(true);
+  }
+
+  void Update() {
+    if (popping) {
+      curDistance = Mathf.MoveTowards(curDistance, popDistance, Time.deltaTime * gcm.npm.poppingSpeed);
+      transform.position = curDistance * popDir + origin;
+
+      shrinkedScale = Mathf.MoveTowards(shrinkedScale, originalScale, Time.deltaTime * 10);
+      transform.localScale = shrinkedScale * Vector3.one;
+
+      if (curDistance >= popDistance && shrinkedScale >= originalScale) {
+        popping = false;
+        GetComponent<Collider>().enabled = true;
+      }
     }
   }
 
@@ -60,18 +96,6 @@ public class GoldenCubeMover : ObjectsMover {
       return true;
     }
   }
-
-  // protected override void normalMovement() {
-  //   direction = player.transform.position - transform.position;
-  //   float distance = direction.magnitude;
-  //   direction /= distance;
-  //   if (distance < gcm.detectDistance) {
-  //     rb.velocity = -direction * gcm.speed;
-  //     if (!detected) {
-  //       detected = true;
-  //     }
-  //   }
-  // }
 
   override public void destroyObject(bool destroyEffect = true, bool byPlayer = false, bool respawn = true) {
 

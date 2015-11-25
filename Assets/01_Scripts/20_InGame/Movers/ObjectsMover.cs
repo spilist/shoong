@@ -234,7 +234,11 @@ public class ObjectsMover : MonoBehaviour {
     }
   }
 
-  virtual protected void afterDestroy(bool byPlayer) {}
+  virtual protected void afterDestroy(bool byPlayer) {
+    if (isNegativeObject() && byPlayer) {
+      objectsManager.GetComponent<NormalPartsManager>().popSweets(objectsManager.numSweetsPop, transform.position);
+    }
+  }
 
   virtual protected bool beforeEncounter() {
     return true;
@@ -284,7 +288,11 @@ public class ObjectsMover : MonoBehaviour {
     obj.SetActive(true);
   }
 
-  virtual protected void afterEncounter() {}
+  virtual protected void afterEncounter() {
+    if (isNegativeObject()) {
+      objectsManager.GetComponent<NormalPartsManager>().popSweets(objectsManager.numSweetsPop, transform.position);
+    }
+  }
 
   virtual public void setMagnetized() {
     if (canBeMagnetized) isMagnetized = true;

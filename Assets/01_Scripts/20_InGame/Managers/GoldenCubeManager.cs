@@ -3,10 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class GoldenCubeManager : ObjectsManager {
+  public NormalPartsManager npm;
   public float spawnRadius = 200;
-  public float detectDistance = 200;
 
   override public void initRest() {
+    npm = GetComponent<NormalPartsManager>();
     respawn();
   }
 
@@ -39,5 +40,11 @@ public class GoldenCubeManager : ObjectsManager {
     }
     obj.SetActive(true);
     obj.GetComponent<GoldenCubeMover>().setNoRespawn(autoDestroy);
+  }
+
+  public void popCoin(Vector3 pos) {
+    GameObject obj = getPooledObj(objPool, objPrefab, pos);
+    obj.GetComponent<Collider>().enabled = false;
+    obj.GetComponent<GoldenCubeMover>().pop(Random.Range(npm.popMinDistance, npm.popMaxDistance));
   }
 }

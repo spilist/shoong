@@ -21,6 +21,7 @@ public class ObjectsManager : MonoBehaviour {
   public float maxSpawnInterval = 12;
   public int cubesByEncounter;
   public int energyGets;
+  public int numSweetsPop;
   public bool isNegative = false;
   public bool hasEncounterEffect = true;
   public bool destroyWhenCollideSelf;

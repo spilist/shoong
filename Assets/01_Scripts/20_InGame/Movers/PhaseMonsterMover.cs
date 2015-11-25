@@ -66,6 +66,7 @@ public class PhaseMonsterMover : ObjectsMover {
   }
 
   override protected void afterEncounter() {
+    base.afterEncounter();
     pmm.run();
   }
 }

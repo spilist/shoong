@@ -5,6 +5,11 @@ public class NormalPartsMover : ObjectsMover {
   private NormalPartsManager npm;
   private MeshFilter filter;
   private Skill_Gold goldSkill;
+  private bool popping;
+  private Vector3 popDir;
+  private int popDistance;
+  private float curDistance;
+  private Vector3 origin;
 
   protected override void initializeRest() {
     npm = (NormalPartsManager)objectsManager;
@@ -14,6 +19,12 @@ public class NormalPartsMover : ObjectsMover {
 
   protected override void afterEnable() {
     filter.sharedMesh = npm.getRandomMesh();
+    if (popping) {
+      transform.localScale = npm.popStartScale * Vector3.one;
+      shrinkedScale = npm.popStartScale;
+    } else {
+      GetComponent<Collider>().enabled = true;
+    }
   }
 
   override protected void afterEncounter() {
@@ -42,5 +53,30 @@ public class NormalPartsMover : ObjectsMover {
     destroyObject(false);
     goldSkill.getParticle(transform.position);
     npm.gcm.spawnGoldenCube(transform.position);
+  }
+
+  public void pop(int popDistance) {
+    curDistance = 0;
+    this.popDistance = popDistance;
+    Vector2 randomV = Random.insideUnitCircle.normalized;
+    popDir = new Vector3(randomV.x, 0, randomV.y);
+    origin = transform.position;
+    popping = true;
+    gameObject.SetActive(true);
+  }
+
+  void Update() {
+    if (popping) {
+      curDistance = Mathf.MoveTowards(curDistance, popDistance, Time.deltaTime * npm.poppingSpeed);
+      transform.position = curDistance * popDir + origin;
+
+      shrinkedScale = Mathf.MoveTowards(shrinkedScale, originalScale, Time.deltaTime * 10);
+      transform.localScale = shrinkedScale * Vector3.one;
+
+      if (curDistance >= popDistance && shrinkedScale >= originalScale) {
+        popping = false;
+        GetComponent<Collider>().enabled = true;
+      }
+    }
   }
 }

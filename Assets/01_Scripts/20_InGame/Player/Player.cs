@@ -310,8 +310,6 @@ public class Player : MonoBehaviour {
         SkillManager.sm.activate();
         if (SkillManager.sm.isBlink()) {
           teleport(transform.position + direction * dpm.blinkDistance);
-          RhythmManager.rm.ringSuccessed();
-          return;
         }
       }
 

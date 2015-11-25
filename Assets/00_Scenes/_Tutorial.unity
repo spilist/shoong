@@ -18604,7 +18604,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 995117313}
-  m_LocalRotation: {x: -.190690339, y: .774532139, z: .539343238, w: -.269899786}
+  m_LocalRotation: {x: -.190690368, y: .774532259, z: .539343297, w: -.269899815}
   m_LocalPosition: {x: -148.834641, y: -491.899872, z: -62.4409447}
   m_LocalScale: {x: 1.6000005, y: 1.599998, z: 1.6000011}
   m_Children: []
@@ -42187,7 +42187,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1878833774}
-  m_LocalRotation: {x: -.190690339, y: .774532259, z: .539343297, w: -.269899786}
+  m_LocalRotation: {x: -.190690309, y: .774532139, z: .539343238, w: -.269899756}
   m_LocalPosition: {x: -137.134644, y: -449.999878, z: -71.4410858}
   m_LocalScale: {x: 2.50000119, y: 2.4999969, z: 2.50000167}
   m_Children: []
@@ -42216,7 +42216,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1878977605}
-  m_LocalRotation: {x: -.190690339, y: .774532259, z: .539343297, w: -.269899786}
+  m_LocalRotation: {x: -.190690309, y: .774532139, z: .539343238, w: -.269899756}
   m_LocalPosition: {x: -151.034637, y: -430.999878, z: -92.541153}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -47422,6 +47422,7 @@ MonoBehaviour:
   maxSpawnInterval: 12
   cubesByEncounter: 0
   energyGets: 0
+  numSweetsPop: 0
   isNegative: 0
   hasEncounterEffect: 0
   destroyWhenCollideSelf: 0
@@ -47487,6 +47488,7 @@ MonoBehaviour:
   maxSpawnInterval: 12
   cubesByEncounter: 5
   energyGets: 10
+  numSweetsPop: 0
   isNegative: 0
   hasEncounterEffect: 0
   destroyWhenCollideSelf: 0
@@ -47542,6 +47544,7 @@ MonoBehaviour:
   maxSpawnInterval: 4
   cubesByEncounter: 60
   energyGets: 0
+  numSweetsPop: 5
   isNegative: 1
   hasEncounterEffect: 0
   destroyWhenCollideSelf: 0
@@ -47594,6 +47597,7 @@ MonoBehaviour:
   maxSpawnInterval: 40
   cubesByEncounter: 0
   energyGets: 0
+  numSweetsPop: 0
   isNegative: 1
   hasEncounterEffect: 0
   destroyWhenCollideSelf: 0
@@ -47638,6 +47642,7 @@ MonoBehaviour:
   maxSpawnInterval: 60
   cubesByEncounter: 50
   energyGets: 5
+  numSweetsPop: 0
   isNegative: 1
   hasEncounterEffect: 1
   destroyWhenCollideSelf: 0
@@ -47710,6 +47715,7 @@ MonoBehaviour:
   maxSpawnInterval: 12
   cubesByEncounter: 10
   energyGets: 0
+  numSweetsPop: 0
   isNegative: 0
   hasEncounterEffect: 0
   destroyWhenCollideSelf: 0
@@ -47791,6 +47797,7 @@ MonoBehaviour:
   maxSpawnInterval: 0
   cubesByEncounter: 40
   energyGets: 0
+  numSweetsPop: 3
   isNegative: 1
   hasEncounterEffect: 0
   destroyWhenCollideSelf: 0
@@ -47854,6 +47861,7 @@ MonoBehaviour:
   maxSpawnInterval: 3
   cubesByEncounter: 1
   energyGets: 10
+  numSweetsPop: 0
   isNegative: 0
   hasEncounterEffect: 0
   destroyWhenCollideSelf: 0
@@ -47864,8 +47872,8 @@ MonoBehaviour:
   nameForLevel: 
   level: 0
   player: {fileID: 0}
+  npm: {fileID: 0}
   spawnRadius: 200
-  detectDistance: 100
 --- !u!114 &1991538116
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47894,6 +47902,7 @@ MonoBehaviour:
   maxSpawnInterval: 12
   cubesByEncounter: 5
   energyGets: 10
+  numSweetsPop: 0
   isNegative: 0
   hasEncounterEffect: 1
   destroyWhenCollideSelf: 0
@@ -47957,6 +47966,7 @@ MonoBehaviour:
   maxSpawnInterval: 0
   cubesByEncounter: 5
   energyGets: 10
+  numSweetsPop: 0
   isNegative: 0
   hasEncounterEffect: 0
   destroyWhenCollideSelf: 0
@@ -47969,6 +47979,11 @@ MonoBehaviour:
   player: {fileID: 0}
   gcm: {fileID: 1991538115}
   meshes: {fileID: 400000, guid: 71fa0d8bf10bf47d487a92c56f22c483, type: 3}
+  popStartScale: .200000003
+  popMinDistance: 50
+  popMaxDistance: 120
+  poppingSpeed: 200
+  popCoinRate: 10
 --- !u!114 &1991538118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47997,6 +48012,7 @@ MonoBehaviour:
   maxSpawnInterval: 12
   cubesByEncounter: 0
   energyGets: 0
+  numSweetsPop: 0
   isNegative: 0
   hasEncounterEffect: 1
   destroyWhenCollideSelf: 0
@@ -48052,6 +48068,7 @@ MonoBehaviour:
   maxSpawnInterval: 12
   cubesByEncounter: 0
   energyGets: 0
+  numSweetsPop: 0
   isNegative: 0
   hasEncounterEffect: 1
   destroyWhenCollideSelf: 0
@@ -48100,6 +48117,7 @@ MonoBehaviour:
   maxSpawnInterval: 35
   cubesByEncounter: 0
   energyGets: 0
+  numSweetsPop: 0
   isNegative: 0
   hasEncounterEffect: 1
   destroyWhenCollideSelf: 0
@@ -48160,6 +48178,7 @@ MonoBehaviour:
   maxSpawnInterval: 0
   cubesByEncounter: 20
   energyGets: 0
+  numSweetsPop: 2
   isNegative: 1
   hasEncounterEffect: 0
   destroyWhenCollideSelf: 0
@@ -48210,6 +48229,7 @@ MonoBehaviour:
   maxSpawnInterval: 4
   cubesByEncounter: 10
   energyGets: 0
+  numSweetsPop: 0
   isNegative: 1
   hasEncounterEffect: 0
   destroyWhenCollideSelf: 0
@@ -48251,6 +48271,7 @@ MonoBehaviour:
   maxSpawnInterval: 12
   cubesByEncounter: 50
   energyGets: 0
+  numSweetsPop: 0
   isNegative: 1
   hasEncounterEffect: 0
   destroyWhenCollideSelf: 0
@@ -48304,6 +48325,7 @@ MonoBehaviour:
   maxSpawnInterval: 16
   cubesByEncounter: 150
   energyGets: 0
+  numSweetsPop: 5
   isNegative: 1
   hasEncounterEffect: 0
   destroyWhenCollideSelf: 0
@@ -48361,6 +48383,7 @@ MonoBehaviour:
   maxSpawnInterval: 40
   cubesByEncounter: 0
   energyGets: 0
+  numSweetsPop: 0
   isNegative: 0
   hasEncounterEffect: 1
   destroyWhenCollideSelf: 0
@@ -48405,6 +48428,7 @@ MonoBehaviour:
   maxSpawnInterval: 16
   cubesByEncounter: 60
   energyGets: 0
+  numSweetsPop: 3
   isNegative: 1
   hasEncounterEffect: 0
   destroyWhenCollideSelf: 0

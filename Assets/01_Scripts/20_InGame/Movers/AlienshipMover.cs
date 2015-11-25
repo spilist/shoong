@@ -117,6 +117,7 @@ public class AlienshipMover : ObjectsMover {
   }
 
   override protected void afterEncounter() {
+    base.afterEncounter();
     asm.run();
   }
 
