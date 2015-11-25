@@ -1090,7 +1090,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillObject: {fileID: 632297515}
   useSkillEffect: {fileID: 0}
-  normalRing: 2
+  normalRing: 3
   skillRing: 1
   description: Be $rich$
   duration: .5
@@ -9368,7 +9368,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillObject: {fileID: 0}
   useSkillEffect: {fileID: 0}
-  normalRing: 8
+  normalRing: 7
   skillRing: 4
   description: Jump into space!
   duration: 0
@@ -21110,8 +21110,8 @@ MonoBehaviour:
   boosterPlusSpeed: 2
   boosterMaxSpeed: 2
   boosterSpeedDecrease: 2
-  energyReduceOnTime: 2
-  maxEnergy: 0
+  energyReduceOnTime: 1
+  maxEnergy: 1
   reboundDistance: 2
   damageGet: 0
   bestX: -10
@@ -46222,7 +46222,7 @@ MonoBehaviour:
   popStartScale: .200000003
   popMinDistance: 50
   popMaxDistance: 100
-  poppingSpeed: 250
+  poppingSpeed: 200
   popCoinRate: 10
 --- !u!114 &1991538118
 MonoBehaviour:
