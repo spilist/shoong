@@ -46223,7 +46223,7 @@ MonoBehaviour:
   popMinDistance: 50
   popMaxDistance: 100
   poppingSpeed: 250
-  popCoinRate: 100
+  popCoinRate: 10
 --- !u!114 &1991538118
 MonoBehaviour:
   m_ObjectHideFlags: 0

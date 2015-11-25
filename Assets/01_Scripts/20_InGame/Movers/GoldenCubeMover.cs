@@ -24,10 +24,8 @@ public class GoldenCubeMover : ObjectsMover {
     if (popping) {
       transform.localScale = gcm.npm.popStartScale * Vector3.one;
       shrinkedScale = gcm.npm.popStartScale;
-      GetComponent<TrailRenderer>().enabled = true;
     } else {
       GetComponent<Collider>().enabled = true;
-      GetComponent<TrailRenderer>().enabled = false;
     }
   }
 
@@ -62,7 +60,6 @@ public class GoldenCubeMover : ObjectsMover {
         popping = false;
         GetComponent<Collider>().enabled = true;
         transform.Find("PopAudio").GetComponent<AudioSource>().Play();
-        GetComponent<TrailRenderer>().enabled = false;
       }
     }
   }
