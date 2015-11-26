@@ -23155,8 +23155,8 @@ MonoBehaviour:
   boosterMaxSpeeds: 0a0000000500000000000000fbfffffff6ffffff
   boosterSpeedDecreaseStandard: 50
   boosterSpeedDecreases: 280000001400000000000000f6ffffffecffffff
-  energyReduceOnTimeStandard: 11
-  energyReduceOnTimes: 140000000a00000000000000f6ffffffecffffff
+  energyReduceOnTimeStandard: 9
+  energyReduceOnTimes: ecfffffff6ffffff000000000a00000014000000
   maxEnergyStandard: 100
   maxEnergys: 280000001400000000000000f6ffffffecffffff
   reboundTimeScaleStandard: 1
@@ -45725,7 +45725,7 @@ MonoBehaviour:
   minSpawnInterval: 8
   maxSpawnInterval: 12
   cubesByEncounter: 5
-  energyGets: 8
+  energyGets: 10
   numSweetsPop: 0
   isNegative: 0
   hasEncounterEffect: 0
@@ -46141,7 +46141,7 @@ MonoBehaviour:
   minSpawnInterval: 8
   maxSpawnInterval: 12
   cubesByEncounter: 5
-  energyGets: 8
+  energyGets: 10
   numSweetsPop: 0
   isNegative: 0
   hasEncounterEffect: 1
@@ -46205,7 +46205,7 @@ MonoBehaviour:
   minSpawnInterval: 0
   maxSpawnInterval: 0
   cubesByEncounter: 5
-  energyGets: 8
+  energyGets: 10
   numSweetsPop: 0
   isNegative: 0
   hasEncounterEffect: 0

@@ -23,7 +23,7 @@ public class EnergyManager : MonoBehaviour {
   private bool isChanging = false;
   private bool isChangingRest = false;
 
-  private float mustDieIn;
+  private float losePerSec;
   private float lessDamageRate;
   private float maxEnergy;
   private float energy;
@@ -114,12 +114,12 @@ public class EnergyManager : MonoBehaviour {
   void autoDecrease() {
     if (Player.pl.isUsingRainbow() || Player.pl.isUsingEMP() || Player.pl.isOnSuperheat()) return;
 
-    energy = Mathf.MoveTowards(energy, 0, Time.deltaTime * maxEnergy / mustDieIn);
+    energy = Mathf.MoveTowards(energy, 0, Time.deltaTime * losePerSec);
     gauge.fillAmount = energy / maxEnergy;
   }
 
   public void resetAbility() {
-    mustDieIn = CharacterManager.cm.energyReduceOnTimeStandard;
+    losePerSec = CharacterManager.cm.energyReduceOnTimeStandard;
     lessDamageRate = CharacterManager.cm.damageGetScaleStandard;
 
     maxEnergy = CharacterManager.cm.maxEnergyStandard;
