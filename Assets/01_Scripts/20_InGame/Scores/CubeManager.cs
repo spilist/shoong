@@ -8,14 +8,14 @@ public class CubeManager : MonoBehaviour {
   public AutoBoosterButton abb;
   public float noAutoBonus = 0.1f;
   public Transform worldUI;
-  private int totalCount = 0;
+  public int totalCount = 0;
   public int increaseSpeed = 5;
   public Text cubesCount;
   private float currentCount = 0;
 
   public int pointsPerSeconds = 10;
   private float bonusRate;
-  private int pointsByTime;
+  public int pointsByTime;
   private bool gameStarted = false;
 
   public GameObject pointsGet;

@@ -17364,9 +17364,11 @@ MonoBehaviour:
   abb: {fileID: 2114071828}
   noAutoBonus: .100000001
   worldUI: {fileID: 2134279969}
+  totalCount: 0
   increaseSpeed: 5
   cubesCount: {fileID: 589887826}
   pointsPerSeconds: 10
+  pointsByTime: 0
   pointsGet: {fileID: 113922, guid: 2cf06d9c0eb214c55a0e4d028cd316cd, type: 2}
   pointPool: []
   pointsGetAmount: 20

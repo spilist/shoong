@@ -90,6 +90,25 @@ public class DataManager : MonoBehaviour {
     }
   }
 
+  public int loadInt(string id) {    
+    if (File.Exists(datapath)) {
+      SaveData tempData;
+      FileStream file = File.Open(datapath, FileMode.Open);
+      try {
+        tempData = (SaveData)bf.Deserialize(file);
+      } catch {
+        Debug.LogWarning("Couldn't deserialize dataFile. Returning -1.");
+        return -1;
+      }
+      file.Close();
+      if (tempData == null) return -1;
+
+      Dictionary<string, int> intDict = stringToIntDict(data.ints);
+      return intDict[id];
+    }
+    return -1;
+  }
+
   public void save() {
     data.ints = intDictToString(ints);
     data.floats = floatDictToString(floats);
@@ -140,8 +159,18 @@ public class DataManager : MonoBehaviour {
     ints[id] = value;
   }
 
-  public int getInt(string id) {
-    return ints.ContainsKey(id) ? ints[id] : 0;
+  public int getInt(string id, Boolean validate = false) {
+    int toReturn = ints.ContainsKey(id) ? ints[id] : 0;
+
+    if (validate == true) {
+      DataValidator.storeIntData("getIntValidate_" + id, loadInt(id));
+      if (DataValidator.validateIntData("getIntValidate_" + id, toReturn) == false) {
+        // TODO: handle invalid (memory-hacked) data
+        return DataValidator.getStoredIntData("getIntValidate_" + id);
+      }
+    }
+
+    return toReturn;
   }
 
   public void increment(string id, int value = 1) {
@@ -343,6 +372,7 @@ public class DataManager : MonoBehaviour {
     return result;
   }
 }
+
 
 [Serializable]
 class SaveData {

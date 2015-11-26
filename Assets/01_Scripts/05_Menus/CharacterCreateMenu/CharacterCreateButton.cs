@@ -114,7 +114,8 @@ public class CharacterCreateButton : MenusBehavior {
     priceText.text = createPrice.ToString("N0");
     transform.Find("Icon").GetComponent<BuyButtonsCubeIconPosition>().adjust(priceText);
 
-    if (GoldManager.gm.getCount() < createPrice) {
+    //if (GoldManager.gm.getCount() < createPrice) {
+    if (DataManager.dm.getInt("CurrentGoldenCubes", true) < createPrice) {
       affordable = false;
       priceText.color = notAffordableTextColor;
       GetComponent<Collider>().enabled = false;

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System;
 
 public class PauseButton : MenusBehavior {
   public GameObject pauseFilter;
@@ -28,6 +29,10 @@ public class PauseButton : MenusBehavior {
     pausedImage.SetActive(true);
     AudioListener.pause = true;
     RhythmManager.rm.stopBeat();
+    // For score hack check
+    DataValidator.storeIntData("Cubes_totalCount", CubeManager.cm.totalCount);    
+    DataValidator.storeIntData("Cubes_pointsByTime", CubeManager.cm.pointsByTime);
+    DataValidator.storeIntData("Cubes_goldenCube", DataManager.dm.getInt("CurrentGoldenCubes"));
   }
 
   public void resume() {
@@ -35,6 +40,15 @@ public class PauseButton : MenusBehavior {
     resuming = true;
     pausedImage.SetActive(false);
     resumingText.gameObject.SetActive(true);
+    // For score hack check
+    if (DataValidator.validateIntData("Cubes_totalCount", CubeManager.cm.totalCount) == false ||
+        DataValidator.validateIntData("Cubes_pointsByTime", CubeManager.cm.pointsByTime) == false) {
+      CubeManager.cm.totalCount = DataValidator.getStoredIntData("Cubes_totalCount");
+      CubeManager.cm.pointsByTime = DataValidator.getStoredIntData("Cubes_pointsByTime");
+    }
+    if (DataValidator.validateIntData("Cubes_goldenCube", DataManager.dm.getInt("CurrentGoldenCubes")) == false) {
+      DataManager.dm.setInt("CurrentGoldenCubes", DataValidator.getStoredIntData("Cubes_goldenCube"));
+    }
     StartCoroutine("resumeGame");
   }
 
