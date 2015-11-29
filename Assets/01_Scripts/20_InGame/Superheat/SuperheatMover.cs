@@ -69,7 +69,8 @@ public class SuperheatMover : MonoBehaviour {
 
       if (index >= afterImageMainColors.Length) index = 0;
 
-      afterImage.GetComponent<PowerBoostAfterImageMover>().run(afterImageDuration, afterImageMainColors[index], afterImageEmissiveColors[index], transform.localScale.x);
+      // afterImage.GetComponent<PowerBoostAfterImageMover>().run(afterImageDuration, transform.localScale.x);
+      // afterImage.GetComponent<PowerBoostAfterImageMover>().run(afterImageDuration, afterImageMainColors[index], afterImageEmissiveColors[index], transform.localScale.x);
       index++;
 
       yield return new WaitForSeconds(generatePer);

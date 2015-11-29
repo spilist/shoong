@@ -305,6 +305,9 @@
 	<data name="SkillDescription_Shield" xml:space="preserve">
 		<value>한 번 보호받습니다</value>
 	</data>
+	<data name="SkillDescription_Solar" xml:space="preserve">
+		<value>날아오르라</value>
+	</data>
 	<data name="SkillName_Blink" xml:space="preserve">
 		<value>순간이동</value>
 	</data>
@@ -337,6 +340,9 @@
 	</data>
 	<data name="SkillName_Shield" xml:space="preserve">
 		<value>실드</value>
+	</data>
+	<data name="SkillName_Solar" xml:space="preserve">
+		<value>태양불꽃</value>
 	</data>
 	<data name="TouchToStart" xml:space="preserve">
 		<value>터치하여 게임 시작</value>

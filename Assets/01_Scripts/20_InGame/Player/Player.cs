@@ -53,6 +53,7 @@ public class Player : MonoBehaviour {
   private bool usingMagnet = false;
   private bool usingTransformer = false;
   private bool iced = false;
+  private bool usingSolar = false;
   public float originalScale;
   private int minimonCounter = 0;
 
@@ -130,6 +131,7 @@ public class Player : MonoBehaviour {
         speed = baseSpeed + minimonCounter * monm.enlargeSpeedPerMinimon + boosterspeed;
       } else {
         speed = baseSpeed + boosterspeed;
+        if (usingSolar) speed *= 1.6f;
       }
     }
 
@@ -410,6 +412,8 @@ public class Player : MonoBehaviour {
       iced = effectOn;
       icedDuration = icm.speedRestoreDuring;
       icedSpeedFactor = icm.playerSpeedReduceTo;
+    } else if (objTag == "Solar") {
+      usingSolar = effectOn;
     }
   }
 
@@ -615,7 +619,7 @@ public class Player : MonoBehaviour {
   }
 
   public bool isInvincible() {
-    return afterStrengthen || ridingMonster || unstoppable || isRebounding() || isUsingRainbow() || changeManager.isTeleporting() || usingEMP;
+    return afterStrengthen || ridingMonster || unstoppable || isRebounding() || isUsingRainbow() || changeManager.isTeleporting() || usingEMP || usingSolar;
   }
 
   public bool canBeMagnetized() {

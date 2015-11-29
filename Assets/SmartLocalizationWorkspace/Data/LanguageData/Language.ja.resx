@@ -146,6 +146,12 @@
 	<data name="CharacterName_dolphin" xml:space="preserve">
 		<value>宇宙イルカ</value>
 	</data>
+	<data name="CharacterName_elephant" xml:space="preserve">
+		<value />
+	</data>
+	<data name="CharacterName_f16" xml:space="preserve">
+		<value />
+	</data>
 	<data name="CharacterName_fruits" xml:space="preserve">
 		<value>果物バスケット</value>
 	</data>
@@ -167,14 +173,29 @@
 	<data name="CharacterName_paperplane" xml:space="preserve">
 		<value>ペーパー・プレーン</value>
 	</data>
+	<data name="CharacterName_pheonix" xml:space="preserve">
+		<value />
+	</data>
+	<data name="CharacterName_policecar" xml:space="preserve">
+		<value />
+	</data>
 	<data name="CharacterName_robotcat" xml:space="preserve">
 		<value>ロボット・ネコ</value>
 	</data>
 	<data name="CharacterName_robotcogi" xml:space="preserve">
 		<value>ロボット・ドッグ</value>
 	</data>
+	<data name="CharacterName_rubberduck" xml:space="preserve">
+		<value />
+	</data>
+	<data name="CharacterName_schoolbus" xml:space="preserve">
+		<value />
+	</data>
 	<data name="CharacterName_soju" xml:space="preserve">
 		<value>焼酎</value>
+	</data>
+	<data name="CharacterName_toybear" xml:space="preserve">
+		<value />
 	</data>
 	<data name="CharacterName_toyrobot" xml:space="preserve">
 		<value>トイ・ロボット</value>
@@ -357,25 +378,10 @@
 	<data name="Tutorial_UseBooster" xml:space="preserve">
 		<value>ブースター使用</value>
 	</data>
-	<data name="CharacterName_schoolbus" xml:space="preserve">
+	<data name="SkillName_Solar" xml:space="preserve">
 		<value />
 	</data>
-	<data name="CharacterName_policecar" xml:space="preserve">
-		<value />
-	</data>
-	<data name="CharacterName_rubberduck" xml:space="preserve">
-		<value />
-	</data>
-	<data name="CharacterName_elephant" xml:space="preserve">
-		<value />
-	</data>
-	<data name="CharacterName_f16" xml:space="preserve">
-		<value />
-	</data>
-	<data name="CharacterName_toybear" xml:space="preserve">
-		<value />
-	</data>
-	<data name="CharacterName_pheonix" xml:space="preserve">
+	<data name="SkillDescription_Solar" xml:space="preserve">
 		<value />
 	</data>
 </root>

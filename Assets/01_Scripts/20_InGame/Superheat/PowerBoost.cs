@@ -204,7 +204,8 @@ public class PowerBoost : MonoBehaviour {
 
       if (index >= afterImageMainColors.Length) index = 0;
 
-      afterImage.run(afterImageDuration, afterImageMainColors[index], afterImageEmissiveColors[index], transform.localScale.x);
+      // afterImage.run(afterImageDuration, transform.localScale.x);
+      // afterImage.run(afterImageDuration, afterImageMainColors[index], afterImageEmissiveColors[index], transform.localScale.x);
       index++;
 
       yield return new WaitForSeconds(generatePer);

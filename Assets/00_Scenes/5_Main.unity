@@ -1571,7 +1571,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 91418582}
-  m_Mesh: {fileID: 4300016, guid: 06ea95d279c7341edb83769ec8c7baed, type: 3}
+  m_Mesh: {fileID: 4300064, guid: 06ea95d279c7341edb83769ec8c7baed, type: 3}
 --- !u!81 &91418590
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1599,6 +1599,7 @@ MonoBehaviour:
   metalMaterial: {fileID: 2100000, guid: d19ae5f122c6344ad809f0cb588d6db9, type: 2}
   blinkMaterial: {fileID: 2100000, guid: 85281042dc9ad418687a6118b992e8b1, type: 2}
   ghostMaterial: {fileID: 2100000, guid: d0d53a636608b4604a0818663e19467d, type: 2}
+  solarMaterial: {fileID: 2100000, guid: 8c31a01fe23df4eb3bd51e955305a4b6, type: 2}
   redDuration: 1
   originalMaterial: {fileID: 2100000, guid: 9b422acddcdd24ad994ef6f9b89c8c5d, type: 2}
   playerParticlesParent: {fileID: 678200079}
@@ -22749,6 +22750,7 @@ Transform:
   - {fileID: 706357632}
   - {fileID: 511581016}
   - {fileID: 87915275}
+  - {fileID: 1469275917}
   m_Father: {fileID: 0}
   m_RootOrder: 13
 --- !u!1 &1220036618
@@ -32001,6 +32003,57 @@ MonoBehaviour:
   offset: 1
   sign: -1
   scale: 5
+--- !u!1 &1469275916
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 150102, guid: 81e2d55c10afa40c2b9dc30f45edf1e4, type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1469275917}
+  - 114: {fileID: 1469275918}
+  m_Layer: 9
+  m_Name: Solar
+  m_TagString: Dopple
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1469275917
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 437282, guid: 81e2d55c10afa40c2b9dc30f45edf1e4, type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1469275916}
+  m_LocalRotation: {x: .564862907, y: .0996003598, z: -.142243922, w: .806707084}
+  m_LocalPosition: {x: 19.3170738, y: 436.829102, z: -34.9024353}
+  m_LocalScale: {x: 14.0487804, y: 14.0487823, z: 14.0487814}
+  m_Children: []
+  m_Father: {fileID: 1212915753}
+  m_RootOrder: 11
+--- !u!114 &1469275918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1469275916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 106e1eab879094c6fb866c71aad8e202, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillObject: {fileID: 0}
+  useSkillEffect: {fileID: 0}
+  normalRing: 4
+  skillRing: 1
+  description: 
+  duration: 4
+  biggerScale: 4
+  afterImagePrefab: {fileID: 197148, guid: 548fc754942dd4391ad89bb54cc0e9c4, type: 2}
+  afterImageCount: 10
+  generatePer: .100000001
+  afterImageDuration: 1
+  originalColor: {r: 1, g: .121568628, b: .121568628, a: .615686297}
 --- !u!1 &1474189756
 GameObject:
   m_ObjectHideFlags: 0
@@ -36726,7 +36779,7 @@ MonoBehaviour:
   damageGet: 2
   bestX: 0
   buyable: 1
-  skillFlags: 0
+  skillFlags: 512
 --- !u!33 &1576117863
 MeshFilter:
   m_ObjectHideFlags: 0

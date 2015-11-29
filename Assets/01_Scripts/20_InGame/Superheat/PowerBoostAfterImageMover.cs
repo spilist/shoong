@@ -9,14 +9,15 @@ public class PowerBoostAfterImageMover : MonoBehaviour {
   float alpha;
   bool startFade = false;
 
-  public void run(float duration, Color mainColor, Color emissiveColor, float scale) {
+  public void run(float duration, Color color, float scale) {
+  // public void run(float duration, Color mainColor, Color emissiveColor, float scale) {
     this.duration = duration;
 
     mRenderer = GetComponent<Renderer>();
-    mRenderer.material.color = mainColor;
-    mRenderer.material.SetColor("_Emission", emissiveColor);
+    // mRenderer.material.color = mainColor;
+    // mRenderer.material.SetColor("_Emission", emissiveColor);
 
-    color = mainColor;
+    this.color = color;
     alpha = color.a;
     originalAlpha = alpha;
     transform.localScale = scale * Vector3.one;
@@ -26,7 +27,6 @@ public class PowerBoostAfterImageMover : MonoBehaviour {
 
 	void Update () {
     if (startFade) {
-
       alpha = Mathf.MoveTowards(alpha, 0, Time.deltaTime * originalAlpha / duration);
       color.a = alpha;
       mRenderer.material.color = color;

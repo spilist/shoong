@@ -11,6 +11,7 @@ public class CharacterChangeManager : MonoBehaviour {
   public Material metalMaterial;
   public Material blinkMaterial;
   public Material ghostMaterial;
+  public Material solarMaterial;
   public float redDuration = 1;
   private float redCount = 0;
   private bool beingRed = false;
@@ -105,12 +106,16 @@ public class CharacterChangeManager : MonoBehaviour {
       changeCharacter(originalMesh, blinkMaterial);
     } else if (changeTo == "Ghost") {
       changeCharacter(originalMesh, ghostMaterial);
+    } else if (changeTo == "Solar") {
+      changeCharacter(originalMesh, solarMaterial);
     }
   }
 
   public void changeCharacter(Mesh mesh, Material material) {
     mFilter.sharedMesh = mesh;
     mRenderer.sharedMaterial = material;
+    beingRed = false;
+    redCount = 0;
   }
 
   public void changeRed() {

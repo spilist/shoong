@@ -63,6 +63,7 @@ namespace AbilityData {
     Monster = 32,
     Metal = 64,
     Blink = 128,
-    Gold = 256
+    Gold = 256,
+    Solar = 512,
   }
 }

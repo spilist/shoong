@@ -39,6 +39,7 @@ ModelImporter:
     100062: ui_rubberduck
     100064: ui_schoolbus
     100066: ui_toybear
+    100068: pheonix_2
     400000: ui_bender
     400002: ui_butterfly
     400004: ui_cat
@@ -73,6 +74,7 @@ ModelImporter:
     400062: ui_rubberduck
     400064: ui_schoolbus
     400066: ui_toybear
+    400068: pheonix_2
     2300000: ui_bender
     2300002: ui_butterfly
     2300004: ui_cat
@@ -106,6 +108,7 @@ ModelImporter:
     2300060: ui_rubberduck
     2300062: ui_schoolbus
     2300064: ui_toybear
+    2300066: pheonix_2
     3300000: ui_bender
     3300002: ui_butterfly
     3300004: ui_cat
@@ -139,6 +142,7 @@ ModelImporter:
     3300060: ui_rubberduck
     3300062: ui_schoolbus
     3300064: ui_toybear
+    3300066: pheonix_2
     4300000: ui_cat
     4300002: ui_crab
     4300004: ui_bender
@@ -172,6 +176,7 @@ ModelImporter:
     4300060: ui_pheonix
     4300062: ui_f16
     4300064: ui_elephant
+    4300066: pheonix_2
     9500000: //RootNode
   materials:
     importMaterials: 1

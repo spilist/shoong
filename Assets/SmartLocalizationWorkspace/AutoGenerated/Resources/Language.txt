@@ -146,6 +146,12 @@
 	<data name="CharacterName_dolphin" xml:space="preserve">
 		<value>Space Dolphin</value>
 	</data>
+	<data name="CharacterName_elephant" xml:space="preserve">
+		<value>Elephant</value>
+	</data>
+	<data name="CharacterName_f16" xml:space="preserve">
+		<value>F16</value>
+	</data>
 	<data name="CharacterName_fruits" xml:space="preserve">
 		<value>Fruit Basket</value>
 	</data>
@@ -167,14 +173,29 @@
 	<data name="CharacterName_paperplane" xml:space="preserve">
 		<value>Paper Plane</value>
 	</data>
+	<data name="CharacterName_pheonix" xml:space="preserve">
+		<value>Pheonix</value>
+	</data>
+	<data name="CharacterName_policecar" xml:space="preserve">
+		<value>Police Car</value>
+	</data>
 	<data name="CharacterName_robotcat" xml:space="preserve">
 		<value>Robot Cat</value>
 	</data>
 	<data name="CharacterName_robotcogi" xml:space="preserve">
 		<value>Robot Dog</value>
 	</data>
+	<data name="CharacterName_rubberduck" xml:space="preserve">
+		<value>Rubber Duck</value>
+	</data>
+	<data name="CharacterName_schoolbus" xml:space="preserve">
+		<value>School Bus</value>
+	</data>
 	<data name="CharacterName_soju" xml:space="preserve">
 		<value>Soju</value>
+	</data>
+	<data name="CharacterName_toybear" xml:space="preserve">
+		<value>Toy Bear</value>
 	</data>
 	<data name="CharacterName_toyrobot" xml:space="preserve">
 		<value>Retro Robot</value>
@@ -359,25 +380,10 @@ on the beat of music ♫</value>
 	<data name="Tutorial_UseBooster" xml:space="preserve">
 		<value>USE BOOSTER</value>
 	</data>
-	<data name="CharacterName_schoolbus" xml:space="preserve">
-		<value>School Bus</value>
+	<data name="SkillName_Solar" xml:space="preserve">
+		<value>Solar Fire</value>
 	</data>
-	<data name="CharacterName_policecar" xml:space="preserve">
-		<value>Police Car</value>
-	</data>
-	<data name="CharacterName_rubberduck" xml:space="preserve">
-		<value>Rubber Duck</value>
-	</data>
-	<data name="CharacterName_elephant" xml:space="preserve">
-		<value>Elephant</value>
-	</data>
-	<data name="CharacterName_f16" xml:space="preserve">
-		<value>F16</value>
-	</data>
-	<data name="CharacterName_toybear" xml:space="preserve">
-		<value>Toy Bear</value>
-	</data>
-	<data name="CharacterName_pheonix" xml:space="preserve">
-		<value>Pheonix</value>
+	<data name="SkillDescription_Solar" xml:space="preserve">
+		<value>Bigger &amp; Stronger</value>
 	</data>
 </root>
