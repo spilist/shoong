@@ -13,7 +13,7 @@ GameObject:
   - 33: {fileID: 3377384}
   - 114: {fileID: 11471200}
   m_Layer: 27
-  m_Name: PowerBoostAfterImage
+  m_Name: SolarAfterImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

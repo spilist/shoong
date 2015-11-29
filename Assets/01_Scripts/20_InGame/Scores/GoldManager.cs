@@ -40,8 +40,6 @@ public class GoldManager : MonoBehaviour {
   public void startGame() {
     float posX = ingameCollider.localPosition.x;
     ingameCollider.localPosition = new Vector3(posX, 0, - ingameUI.localPosition.z / ingameUI.localScale.x);
-
-    if (abb != null && abb.decrementGold()) decrement(abb.price);
   }
 
   void generateGoldCube(Vector3 pos) {
@@ -77,26 +75,26 @@ public class GoldManager : MonoBehaviour {
     DataManager.dm.save();
   }
 
-  void decrement(int price) {
-    currentCount = count;
-    count -= price;
-    DataManager.dm.increment("CurrentGoldenCubes", -price);
+  // void decrement(int price) {
+  //   currentCount = count;
+  //   count -= price;
+  //   DataManager.dm.increment("CurrentGoldenCubes", -price);
 
-    goldDecreasingSound.Play();
-    decreasing = true;
-  }
+  //   goldDecreasingSound.Play();
+  //   decreasing = true;
+  // }
 
-  void Update() {
-    if (decreasing) {
-      currentCount = Mathf.MoveTowards(currentCount, count, Time.deltaTime * abb.price);
-      goldText.text = currentCount.ToString("0");
+  // void Update() {
+  //   if (decreasing) {
+  //     currentCount = Mathf.MoveTowards(currentCount, count, Time.deltaTime * abb.price);
+  //     goldText.text = currentCount.ToString("0");
 
-      if (int.Parse(currentCount.ToString("0")) == count) {
-        decreasing = false;
-        goldDecreasingSound.Stop();
-      }
-    }
-  }
+  //     if (int.Parse(currentCount.ToString("0")) == count) {
+  //       decreasing = false;
+  //       goldDecreasingSound.Stop();
+  //     }
+  //   }
+  // }
 
   public void add(Vector3 pos, int amount = 1, bool withEffect = true) {
 

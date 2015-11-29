@@ -19,9 +19,9 @@ public class AutoModeIndicator : MonoBehaviour {
   private float stayCount = 0;
 
   void OnEnable() {
-    icon.transform.Find("Count").GetComponent<Text>().text = "-" + abb.price;
+    // icon.transform.Find("Count").GetComponent<Text>().text = "-" + abb.price;
     if (abb.isOn()) {
-      if (!abb.decrementGold()) icon.SetActive(false);
+      // if (!abb.decrementGold()) icon.SetActive(false);
       scale = startScale;
       status++;
     }

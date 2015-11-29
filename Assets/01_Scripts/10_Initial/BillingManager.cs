@@ -7,7 +7,7 @@ using VoxelBusters.NativePlugins;
 public class BillingManager : MonoBehaviour {
   public static BillingManager bm;
   public CharactersMenu charactersMenu;
-  public UnlockAutoMode unlockAutoMode;
+  public AutoBoosterButton abb;
 
   private Dictionary<string, BillingProduct> bProducts;
   private   int         m_productIter;
@@ -91,13 +91,13 @@ public class BillingManager : MonoBehaviour {
 
         if (state == eBillingTransactionState.PURCHASED) {
           if (unlockAuto) {
-            unlockAutoMode.buyComplete();
+            abb.buyComplete();
           } else {
             charactersMenu.buyComplete(_eachTransaction.ProductIdentifier, true);
           }
         } else if (state == eBillingTransactionState.RESTORED) {
           if (unlockAuto) {
-            unlockAutoMode.buyComplete();
+            abb.buyComplete();
           } else {
             charactersMenu.buyComplete(_eachTransaction.ProductIdentifier, false);
           }

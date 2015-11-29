@@ -15,6 +15,6 @@ public class UnlockAutoMode : MenusBehavior {
 
     DataManager.dm.setBool("AutoBoosterPurchased", true);
     DataManager.dm.save();
-    abb.checkAutoBought();
+    // abb.checkAutoBought();
   }
 }
