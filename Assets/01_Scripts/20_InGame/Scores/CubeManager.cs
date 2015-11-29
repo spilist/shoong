@@ -5,7 +5,6 @@ using System.Collections.Generic;
 
 public class CubeManager : MonoBehaviour {
   public static CubeManager cm;
-  public AutoBoosterButton abb;
   public float noAutoBonus = 0.1f;
   public Transform worldUI;
   private int totalCount = 0;
@@ -27,6 +26,7 @@ public class CubeManager : MonoBehaviour {
   private string untilTopSign = "-";
   private int highscore;
   private bool highscoreReached = false;
+  private bool difficult;
 
   void Awake() {
     cm = this;
@@ -78,8 +78,12 @@ public class CubeManager : MonoBehaviour {
   }
 
   public int getBonus() {
-    if (abb == null || !abb.isOn()) return (int)Mathf.Floor(getCount() * noAutoBonus);
+    if (difficult) return (int)Mathf.Floor(getCount() * noAutoBonus);
     else return 0;
+  }
+
+  public void setDifficulty(bool val) {
+    difficult = val;
   }
 
   public void moreCubes(int val) {

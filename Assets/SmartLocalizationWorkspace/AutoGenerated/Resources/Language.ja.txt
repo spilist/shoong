@@ -305,6 +305,9 @@
 	<data name="SkillDescription_Shield" xml:space="preserve">
 		<value />
 	</data>
+	<data name="SkillDescription_Solar" xml:space="preserve">
+		<value />
+	</data>
 	<data name="SkillName_Blink" xml:space="preserve">
 		<value>テレポート</value>
 	</data>
@@ -336,6 +339,9 @@
 		<value>変換</value>
 	</data>
 	<data name="SkillName_Shield" xml:space="preserve">
+		<value />
+	</data>
+	<data name="SkillName_Solar" xml:space="preserve">
 		<value />
 	</data>
 	<data name="TouchToStart" xml:space="preserve">
@@ -377,11 +383,5 @@
 	</data>
 	<data name="Tutorial_UseBooster" xml:space="preserve">
 		<value>ブースター使用</value>
-	</data>
-	<data name="SkillName_Solar" xml:space="preserve">
-		<value />
-	</data>
-	<data name="SkillDescription_Solar" xml:space="preserve">
-		<value />
 	</data>
 </root>

@@ -33,7 +33,7 @@ public class MenusController : MonoBehaviour {
           toggleMenuAndUI();
           AudioSource.PlayClipAtPoint(UITouchSound, hit.transform.position);
         }
-      } else if (hitTag == "AutoBooster" || hitTag == "PauseButton" || (isMenuOn() && layer == "MenusBehavior") || (ScoreManager.sm.isGameOver() && layer == "MenusBehavior")) {
+      } else if (hitTag == "IdleSettings" || hitTag == "PauseButton" || (isMenuOn() && layer == "MenusBehavior") || (ScoreManager.sm.isGameOver() && layer == "MenusBehavior")) {
         if (beforeIdle.isLoading()) return "";
 
         MenusBehavior mb = hit.transform.GetComponent<MenusBehavior>();

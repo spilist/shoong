@@ -41,8 +41,6 @@ public class RhythmStar : MonoBehaviour {
 
     rightBeatPosX = RhythmManager.rm.rightBeatPosX;
     canBeMissedPosX = RhythmManager.rm.canBeMissedPosX;
-    minBoosterOkPosX = RhythmManager.rm.minBoosterOkPosX;
-    maxBoosterOkPosX = RhythmManager.rm.maxBoosterOkPosX;
     disappearDuration = RhythmManager.rm.ringDisppearDuration;
     beat = RhythmManager.rm.samplePeriod;
   }
@@ -59,6 +57,9 @@ public class RhythmStar : MonoBehaviour {
     disappearing = false;
     rightMsgSended = false;
     missMsgSended = false;
+
+    minBoosterOkPosX = RhythmManager.rm.minOK();
+    maxBoosterOkPosX = RhythmManager.rm.maxOK();
 
     skillRing = originalSkillRing;
   }

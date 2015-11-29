@@ -24,7 +24,9 @@ public class CharacterManager : MonoBehaviour {
   public int[] boosterSpeedDecreases;
 
   public float energyReduceOnTimeStandard;
+  public float energyReduceOnTimeStandard_hard;
   private float original_energyReduceOnTimeStandard;
+  private float original_energyReduceOnTimeStandard_hard;
   public int[] energyReduceOnTimes;
 
   public float maxEnergyStandard;
@@ -49,6 +51,7 @@ public class CharacterManager : MonoBehaviour {
     original_boosterMaxSpeedStandard = boosterMaxSpeedStandard;
     original_boosterSpeedDecreaseStandard = boosterSpeedDecreaseStandard;
     original_energyReduceOnTimeStandard = energyReduceOnTimeStandard;
+    original_energyReduceOnTimeStandard_hard = energyReduceOnTimeStandard_hard;
     original_maxEnergyStandard = maxEnergyStandard;
     original_reboundTimeScaleStandard = reboundTimeScaleStandard;
     original_damageGetScaleStandard = damageGetScaleStandard;
@@ -60,6 +63,7 @@ public class CharacterManager : MonoBehaviour {
     boosterMaxSpeedStandard = original_boosterMaxSpeedStandard;
     boosterSpeedDecreaseStandard = original_boosterSpeedDecreaseStandard;
     energyReduceOnTimeStandard = original_energyReduceOnTimeStandard;
+    energyReduceOnTimeStandard_hard = original_energyReduceOnTimeStandard_hard;
     maxEnergyStandard = original_maxEnergyStandard;
     reboundTimeScaleStandard = original_reboundTimeScaleStandard;
     damageGetScaleStandard = original_damageGetScaleStandard;
@@ -94,6 +98,7 @@ public class CharacterManager : MonoBehaviour {
     Player.pl.resetAbility(stat.bestX);
 
     energyReduceOnTimeStandard *= 1 + scale_energyReduceOnTimes;
+    energyReduceOnTimeStandard_hard *= 1 + scale_energyReduceOnTimes;
     maxEnergyStandard *= 1 + scale_maxEnergys;
     damageGetScaleStandard *= 1 + scale_damageGets;
 

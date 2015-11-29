@@ -15,6 +15,7 @@ public class OnOffButton : MenusBehavior {
     clicked = !clicked;
     DataManager.dm.setBool(settingName + "Setting", clicked);
     applyStatus();
+    DataManager.dm.save();
   }
 
   virtual public void applyStatus() {

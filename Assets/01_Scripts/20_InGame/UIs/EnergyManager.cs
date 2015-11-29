@@ -121,7 +121,6 @@ public class EnergyManager : MonoBehaviour {
   }
 
   public void resetAbility() {
-    losePerSec = CharacterManager.cm.energyReduceOnTimeStandard;
     lessDamageRate = CharacterManager.cm.damageGetScaleStandard;
 
     maxEnergy = CharacterManager.cm.maxEnergyStandard;
@@ -129,6 +128,14 @@ public class EnergyManager : MonoBehaviour {
     float height = gauge.GetComponent<RectTransform>().sizeDelta.y;
     gauge.GetComponent<RectTransform>().sizeDelta = new Vector2(changedWidth, height);
     gaugeShell.GetComponent<RectTransform>().sizeDelta = new Vector2(changedWidth, height);
+  }
+
+  public void setDifficulty(bool difficult) {
+    if (difficult) {
+      losePerSec = CharacterManager.cm.energyReduceOnTimeStandard_hard;
+    } else {
+      losePerSec = CharacterManager.cm.energyReduceOnTimeStandard;
+    }
   }
 
   void changeHealth (float amount, float rate) {

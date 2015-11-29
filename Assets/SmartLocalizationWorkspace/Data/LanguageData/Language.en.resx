@@ -231,7 +231,7 @@
 		<value>            _REWARD_ COINS EARNED</value>
 	</data>
 	<data name="GameOver_ManualBonus" xml:space="preserve">
-		<value>MANUAL BONUS</value>
+		<value>DIFFICULTY BONUS</value>
 	</data>
 	<data name="GameOver_RateUs" xml:space="preserve">
 		<value>ENJOYED? RATE US!</value>

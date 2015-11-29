@@ -19,6 +19,7 @@ public class AutoBoosterButton : OnOffButton {
       clicked = !clicked;
       DataManager.dm.setBool(settingName + "Setting", clicked);
       applyStatus();
+      DataManager.dm.save();
     } else {
       BillingManager.bm.BuyProduct(id);
       FacebookManager.fb.initiateCheckout(BillingManager.bm.getProduct(id), "Unlock Auto Booster");

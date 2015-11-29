@@ -231,7 +231,7 @@
 		<value>            _REWARD_ COINS EARNED</value>
 	</data>
 	<data name="GameOver_ManualBonus" xml:space="preserve">
-		<value>MANUAL BONUS</value>
+		<value>DIFFICULTY BONUS</value>
 	</data>
 	<data name="GameOver_RateUs" xml:space="preserve">
 		<value>ENJOYED? RATE US!</value>
@@ -307,6 +307,9 @@ PURCHASES</value>
 	<data name="SkillDescription_Shield" xml:space="preserve">
 		<value>Protect you once</value>
 	</data>
+	<data name="SkillDescription_Solar" xml:space="preserve">
+		<value>Bigger &amp; Stronger</value>
+	</data>
 	<data name="SkillName_Blink" xml:space="preserve">
 		<value>Blink</value>
 	</data>
@@ -339,6 +342,9 @@ PURCHASES</value>
 	</data>
 	<data name="SkillName_Shield" xml:space="preserve">
 		<value>Shield</value>
+	</data>
+	<data name="SkillName_Solar" xml:space="preserve">
+		<value>Solar Fire</value>
 	</data>
 	<data name="TouchToStart" xml:space="preserve">
 		<value>Touch to Start</value>
@@ -379,11 +385,5 @@ on the beat of music ♫</value>
 	</data>
 	<data name="Tutorial_UseBooster" xml:space="preserve">
 		<value>USE BOOSTER</value>
-	</data>
-	<data name="SkillName_Solar" xml:space="preserve">
-		<value>Solar Fire</value>
-	</data>
-	<data name="SkillDescription_Solar" xml:space="preserve">
-		<value>Bigger &amp; Stronger</value>
 	</data>
 </root>

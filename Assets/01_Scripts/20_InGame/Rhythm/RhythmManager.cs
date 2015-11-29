@@ -26,9 +26,12 @@ public class RhythmManager : MonoBehaviour {
   // public float minBoosterOkScale = 2;
   public float ringDisppearDuration = 0.5f;
   // public float playerScaleUpAmount = 1.2f;
+  public bool difficult;
   public float canBeMissedPosX = 0.3f;
   public float minBoosterOkPosX = 0.9f;
+  public float minBoosterOkPosX_hard = -160;
   public float rightBeatPosX;
+  public float maxBoosterOkPosX_hard = 160;
   public float maxBoosterOkPosX = 1.1f;
 
   private int numNormalInLoop;
@@ -315,5 +318,19 @@ public class RhythmManager : MonoBehaviour {
 
   public void setCanBeMissed(bool val) {
     canBeMissed = val;
+  }
+
+  public void setDifficulty(bool difficult) {
+    this.difficult = difficult;
+  }
+
+  public float minOK() {
+    if (difficult) return minBoosterOkPosX_hard;
+    else return minBoosterOkPosX;
+  }
+
+  public float maxOK() {
+    if (difficult) return maxBoosterOkPosX_hard;
+    else return maxBoosterOkPosX;
   }
 }

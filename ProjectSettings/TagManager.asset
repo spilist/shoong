@@ -89,6 +89,7 @@ TagManager:
   - TutorialPart
   - AutoBooster
   - RandomPlay
+  - IdleSettings
   layers:
   - Default
   - TransparentFX
