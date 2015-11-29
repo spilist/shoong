@@ -1,0 +1,360 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root><!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+	<data name="Button_AutoBoosterMode" xml:space="preserve">
+		<value>自動リズム</value>
+	</data>
+	<data name="CharacterName_alienwithgun" xml:space="preserve">
+		<value>銃を持った宇宙人</value>
+	</data>
+	<data name="CharacterName_beardedfrog" xml:space="preserve">
+		<value>ひげのカエル</value>
+	</data>
+	<data name="CharacterName_bender" xml:space="preserve">
+		<value>カン・ロボット</value>
+	</data>
+	<data name="CharacterName_butterfly" xml:space="preserve">
+		<value>グルーミー・ちょうちょう</value>
+	</data>
+	<data name="CharacterName_cat" xml:space="preserve">
+		<value>スーパーネコちゃん</value>
+	</data>
+	<data name="CharacterName_chameleon" xml:space="preserve">
+		<value>モロゴロ</value>
+	</data>
+	<data name="CharacterName_crab" xml:space="preserve">
+		<value>汚されたカニ</value>
+	</data>
+	<data name="CharacterName_deathstar" xml:space="preserve">
+		<value>ブラック・ボール</value>
+	</data>
+	<data name="CharacterName_dolphin" xml:space="preserve">
+		<value>宇宙イルカ</value>
+	</data>
+	<data name="CharacterName_fruits" xml:space="preserve">
+		<value>果物バスケット</value>
+	</data>
+	<data name="CharacterName_ghost" xml:space="preserve">
+		<value>オモチャ幽霊</value>
+	</data>
+	<data name="CharacterName_goldpig" xml:space="preserve">
+		<value>ブタの貯金箱</value>
+	</data>
+	<data name="CharacterName_hamster" xml:space="preserve">
+		<value>宇宙ハムスター</value>
+	</data>
+	<data name="CharacterName_leonplant" xml:space="preserve">
+		<value>レオン・植木鉢</value>
+	</data>
+	<data name="CharacterName_minimonster" xml:space="preserve">
+		<value>ミニモンスター</value>
+	</data>
+	<data name="CharacterName_paperplane" xml:space="preserve">
+		<value>ペーパー・プレーン</value>
+	</data>
+	<data name="CharacterName_robotcat" xml:space="preserve">
+		<value>ロボット・ネコ</value>
+	</data>
+	<data name="CharacterName_robotcogi" xml:space="preserve">
+		<value>ロボット・ドッグ</value>
+	</data>
+	<data name="CharacterName_soju" xml:space="preserve">
+		<value>焼酎</value>
+	</data>
+	<data name="CharacterName_toyrobot" xml:space="preserve">
+		<value>トイ・ロボット</value>
+	</data>
+	<data name="CharacterName_tyranno" xml:space="preserve">
+		<value>サウルス</value>
+	</data>
+	<data name="CharacterName_vacuumrobot" xml:space="preserve">
+		<value>ロボット掃除機</value>
+	</data>
+	<data name="CharacterName_wilson" xml:space="preserve">
+		<value>バレーボールのボール</value>
+	</data>
+	<data name="CreateToy_NewToy" xml:space="preserve">
+		<value>新たなトイ！！</value>
+	</data>
+	<data name="CreateToy_TryAgain" xml:space="preserve">
+		<value>リトライ</value>
+	</data>
+	<data name="GameOver_CreateToy" xml:space="preserve">
+		<value>オモチャの引き取り</value>
+	</data>
+	<data name="GameOver_CreateToyToGo" xml:space="preserve">
+		<value> コインが要る</value>
+	</data>
+	<data name="GameOver_FirstGift" xml:space="preserve">
+		<value>初のギフト</value>
+	</data>
+	<data name="GameOver_FreeGift" xml:space="preserve">
+		<value>無料ギフト</value>
+	</data>
+	<data name="GameOver_GoldsEarned" xml:space="preserve">
+		<value>                 _REWARD_ コイン獲得</value>
+	</data>
+	<data name="GameOver_ManualBonus" xml:space="preserve">
+		<value>マニュアルボーナス</value>
+	</data>
+	<data name="GameOver_RateUs" xml:space="preserve">
+		<value>ゲームを評価してください</value>
+	</data>
+	<data name="GameOver_RewardAds" xml:space="preserve">
+		<value>コイン儲け</value>
+	</data>
+	<data name="GameOver_ThanksForRating" xml:space="preserve">
+		<value>                 評価していただいてありがとうございます！</value>
+	</data>
+	<data name="Help_AutoBoosterUsage" xml:space="preserve">
+		<value>自動モードを使ってください</value>
+	</data>
+	<data name="Notification_FreeGift" xml:space="preserve">
+		<value>無料ギフトをどうぞ！！</value>
+	</data>
+	<data name="Setting_Battery" xml:space="preserve">
+		<value>バッテリー節約</value>
+	</data>
+	<data name="Setting_BGM" xml:space="preserve">
+		<value>BGM</value>
+	</data>
+	<data name="Setting_Credits" xml:space="preserve">
+		<value>クレジット</value>
+	</data>
+	<data name="Setting_Google_SignIn" xml:space="preserve">
+		<value>GooglePlayにログイン</value>
+	</data>
+	<data name="Setting_Google_SignOut" xml:space="preserve">
+		<value>GooglePlayにログアウト</value>
+	</data>
+	<data name="Setting_Mute" xml:space="preserve">
+		<value>サウンド</value>
+	</data>
+	<data name="Setting_Reminders" xml:space="preserve">
+		<value>後で知らせる</value>
+	</data>
+	<data name="Setting_RestorePurchases" xml:space="preserve">
+		<value>購入の復元</value>
+	</data>
+	<data name="SkillDescription_Blink" xml:space="preserve">
+		<value>どんとジャンプ！</value>
+	</data>
+	<data name="SkillDescription_Fever" xml:space="preserve">
+		<value>無限ブースター</value>
+	</data>
+	<data name="SkillDescription_Ghost" xml:space="preserve">
+		<value>ジャマモノを通り過ぎます</value>
+	</data>
+	<data name="SkillDescription_Gold" xml:space="preserve">
+		<value>$金持ち$になるように！</value>
+	</data>
+	<data name="SkillDescription_Heal" xml:space="preserve">
+		<value>元気回復</value>
+	</data>
+	<data name="SkillDescription_Laser" xml:space="preserve">
+		<value>レーザー発射</value>
+	</data>
+	<data name="SkillDescription_Magnet" xml:space="preserve">
+		<value>お菓子を引っ張ってくれます</value>
+	</data>
+	<data name="SkillDescription_Metal" xml:space="preserve">
+		<value>全部壊してしまいます</value>
+	</data>
+	<data name="SkillDescription_Monster" xml:space="preserve">
+		<value>大人モンスターになります</value>
+	</data>
+	<data name="SkillDescription_Polymorph" xml:space="preserve">
+		<value>小惑星を変換させます</value>
+	</data>
+	<data name="SkillDescription_Shield" xml:space="preserve">
+		<value />
+	</data>
+	<data name="SkillName_Blink" xml:space="preserve">
+		<value>テレポート</value>
+	</data>
+	<data name="SkillName_Fever" xml:space="preserve">
+		<value>過熱</value>
+	</data>
+	<data name="SkillName_Ghost" xml:space="preserve">
+		<value>幽霊</value>
+	</data>
+	<data name="SkillName_Gold" xml:space="preserve">
+		<value>金持ち</value>
+	</data>
+	<data name="SkillName_Heal" xml:space="preserve">
+		<value>回復</value>
+	</data>
+	<data name="SkillName_Laser" xml:space="preserve">
+		<value>レーザー</value>
+	</data>
+	<data name="SkillName_Magnet" xml:space="preserve">
+		<value>マグネット</value>
+	</data>
+	<data name="SkillName_Metal" xml:space="preserve">
+		<value>スチール</value>
+	</data>
+	<data name="SkillName_Monster" xml:space="preserve">
+		<value>モンスター</value>
+	</data>
+	<data name="SkillName_Polymorph" xml:space="preserve">
+		<value>変換</value>
+	</data>
+	<data name="SkillName_Shield" xml:space="preserve">
+		<value />
+	</data>
+	<data name="TouchToStart" xml:space="preserve">
+		<value>タッチしてゲーム・スタート</value>
+	</data>
+	<data name="Tutorial_BoostWithBeat" xml:space="preserve">
+		<value>音楽に合わせて
+ブースターを使う</value>
+	</data>
+	<data name="Tutorial_CandyRestoreEnergy" xml:space="preserve">
+		<value>お菓子は元気を戻してくれます</value>
+	</data>
+	<data name="Tutorial_ChildDreaming" xml:space="preserve">
+		<value>子供がお菓子の夢を見てます・・・
+夢の中に入ってみましょうか</value>
+	</data>
+	<data name="Tutorial_GetCandies" xml:space="preserve">
+		<value>お菓子獲得</value>
+	</data>
+	<data name="Tutorial_MoveYourToy" xml:space="preserve">
+		<value>スクリーンをタッチしてからスライドして
+トイを動かしてお菓子を集めてください</value>
+	</data>
+	<data name="Tutorial_NowYouReady" xml:space="preserve">
+		<value>すばらしい！もう準備は終わり！
+そろそろ旅をスタートしましょうか</value>
+	</data>
+	<data name="Tutorial_SteerWithStick" xml:space="preserve">
+		<value>バーチャルスティックで
+動かす</value>
+	</data>
+	<data name="Tutorial_TapWhenStarComes" xml:space="preserve">
+		<value>スターが入る瞬間タッチ！</value>
+	</data>
+	<data name="Tutorial_TryToBoost" xml:space="preserve">
+		<value>よくやりました！
+もう音楽に合わせて
+ブースターを使ってください♫</value>
+	</data>
+	<data name="Tutorial_UseBooster" xml:space="preserve">
+		<value>ブースター使用</value>
+	</data>
+</root>

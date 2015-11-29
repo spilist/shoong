@@ -1,0 +1,202 @@
+fileFormatVersion: 2
+guid: 46bd8557e7c474556ab17eda482a0d06
+timeCreated: 1439624866
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: ui_bender
+    100002: ui_butterfly
+    100004: ui_cat
+    100006: ui_chameleon
+    100008: //RootNode
+    100010: ui_crab
+    100012: ui_deathstar
+    100014: ui_leonplant
+    100016: ui_minimonster
+    100018: ui_robotcogi
+    100020: ui_soju
+    100022: ui_vacuumrobot
+    100024: ui_beardedfrog
+    100026: ui_cottoncandy
+    100028: ui_paperplane
+    100030: ui_tyranno
+    100032: ui_hamster
+    100034: fruits_2
+    100036: toyrobot_2
+    100038: ui_alienwithgun
+    100040: ui_dolphin
+    100042: ui_robotcat
+    100044: ui_wilson
+    100046: ui_fruits
+    100048: ui_goldpig
+    100050: ui_toyrobot
+    100052: ui_ghost
+    400000: ui_bender
+    400002: ui_butterfly
+    400004: ui_cat
+    400006: ui_chameleon
+    400008: //RootNode
+    400010: ui_crab
+    400012: ui_deathstar
+    400014: ui_leonplant
+    400016: ui_minimonster
+    400018: ui_robotcogi
+    400020: ui_soju
+    400022: ui_vacuumrobot
+    400024: ui_beardedfrog
+    400026: ui_cottoncandy
+    400028: ui_paperplane
+    400030: ui_tyranno
+    400032: ui_hamster
+    400034: fruits_2
+    400036: toyrobot_2
+    400038: ui_alienwithgun
+    400040: ui_dolphin
+    400042: ui_robotcat
+    400044: ui_wilson
+    400046: ui_fruits
+    400048: ui_goldpig
+    400050: ui_toyrobot
+    400052: ui_ghost
+    2300000: ui_bender
+    2300002: ui_butterfly
+    2300004: ui_cat
+    2300006: ui_chameleon
+    2300008: ui_crab
+    2300010: ui_deathstar
+    2300012: ui_leonplant
+    2300014: ui_minimonster
+    2300016: ui_robotcogi
+    2300018: ui_soju
+    2300020: ui_vacuumrobot
+    2300022: ui_beardedfrog
+    2300024: ui_cottoncandy
+    2300026: ui_paperplane
+    2300028: ui_tyranno
+    2300030: ui_hamster
+    2300032: fruits_2
+    2300034: toyrobot_2
+    2300036: ui_alienwithgun
+    2300038: ui_dolphin
+    2300040: ui_robotcat
+    2300042: ui_wilson
+    2300044: ui_fruits
+    2300046: ui_goldpig
+    2300048: ui_toyrobot
+    2300050: ui_ghost
+    3300000: ui_bender
+    3300002: ui_butterfly
+    3300004: ui_cat
+    3300006: ui_chameleon
+    3300008: ui_crab
+    3300010: ui_deathstar
+    3300012: ui_leonplant
+    3300014: ui_minimonster
+    3300016: ui_robotcogi
+    3300018: ui_soju
+    3300020: ui_vacuumrobot
+    3300022: ui_beardedfrog
+    3300024: ui_cottoncandy
+    3300026: ui_paperplane
+    3300028: ui_tyranno
+    3300030: ui_hamster
+    3300032: fruits_2
+    3300034: toyrobot_2
+    3300036: ui_alienwithgun
+    3300038: ui_dolphin
+    3300040: ui_robotcat
+    3300042: ui_wilson
+    3300044: ui_fruits
+    3300046: ui_goldpig
+    3300048: ui_toyrobot
+    3300050: ui_ghost
+    4300000: ui_cat
+    4300002: ui_crab
+    4300004: ui_bender
+    4300006: ui_vacuumrobot
+    4300008: ui_deathstar
+    4300010: ui_soju
+    4300012: ui_leonplant
+    4300014: ui_minimonster
+    4300016: ui_robotcogi
+    4300018: ui_chameleon
+    4300020: ui_butterfly
+    4300022: ui_beardedfrog
+    4300024: ui_cottoncandy
+    4300026: ui_tyranno
+    4300028: ui_paperplane
+    4300030: ui_hamster
+    4300032: fruits_2
+    4300034: toyrobot_2
+    4300036: ui_dolphin
+    4300038: ui_alienwithgun
+    4300040: ui_wilson
+    4300042: ui_robotcat
+    4300044: ui_fruits
+    4300046: ui_goldpig
+    4300048: ui_toyrobot
+    4300050: ui_ghost
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 0
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

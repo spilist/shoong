@@ -1,0 +1,52 @@
+int,TotalNumPlays,총 유영 횟수
+int,TotalQuestCompletes,임무 완료 횟수
+int,TotalTime,총 유영 시간
+int,TotalCubes,총 큐브 획득
+int,TotalGoldenCubes,총 황금큐브 획득
+int,TotalBoosters,총 부스터 사용
+int,TotalSuperheats,총 수퍼히트
+int,TotalGreat,오브젝트 완료
+int,TotalWhew,유성 회피
+int,TotalWow,운석 근접 부품 획득
+int,TotalNumDestroyObstacles,총 장애물 파괴
+int,NumDestroySmallAsteroids,소형운석 파괴
+int,NumDestroyAsteroids,대형운석 파괴
+int,NumDestroyMeteroids,유성 파괴
+int,NumDestroyBlackholes,블랙홀 파괴
+int,NumDestroyMonsters,몬스터 파괴
+int,TotalNumUseObjects,총 오브젝트 이용
+int,NumUseJetpack,제트팩 착용
+int,NumBoostersWithJetpack,제트팩 착용 후 부스터 사용
+int,NumUseMetal,강철화
+int,NumDestroyObstaclesWithMetal,강철화로 파괴한 장애물
+int,TotalBonusesWithMetal,강철화로 얻은 보너스 큐브
+int,NumExitBlackhole,블랙홀 탈출
+int,NumPartsAbsorbedWithBlackhole,블랙홀 효과로 흡수한 부품
+int,NumRideMonster,몬스터 탑승
+int,NumSpawnMinimonster,미니몬스터 생성
+int,NumMeetDopple,도플갱어 만남
+int,TotalBlinks,총 순간이동
+int,NumDestroyObstaclesWithBlink,순간이동으로 파괴한 장애물
+int,NumTrappedInCubeDispenser,큐브저장고에 갇힘
+int,NumExitCubeDispenser,큐브저장고 탈출
+int,NumGenerateIllusion,환영 생성
+int,NumCompleteIllusion,환영부품 완료
+int,NumBumpCubeDispenser,큐브저장고에 부딪힘
+int,NumCompleteCubeDispenser,저장고 완료
+int,NumDestroyCubeDispenser,저장고 파괴
+int,NumSummon,불안정한 차원부품 소환
+int,NumCompleteSummon,소환부품 완료
+int,NumSummonedPartsGet,소환된 부품 획득
+int,NumRideRainbow,무지개길 탑승
+int,NumPartsGetOnRainbow,무지개 위에서 얻은 부품
+int,NumDestroyObstaclesOnRainbow,무지개 위에서 파괴한 장애물
+int,NumReboundByBlackholeOnRainbow,무지개 위에서 블랙홀에 튕겨나옴
+int,NumGenerateForcefield,자기장 출력
+int,NumCubesGetByForcefield,자기장 출력으로 얻은 큐브
+int,NumDestroyObstaclesByForcefield,자기장 출력으로 파괴한 장애물
+int,DeathBySmallAsteroid,소형운석에 죽음
+int,DeathByAsteroid,대형운석에 죽음
+int,DeathByMeteroid,유성에 죽음
+int,DeathByBlackhole,블랙홀에 죽음
+int,DeathByMonster,몬스터에 죽음
+int,DeathByDopple,순간이동장치에게 죽음

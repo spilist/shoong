@@ -1,0 +1,142 @@
+fileFormatVersion: 2
+guid: 024abba1006f2417bb858a4d6fb882d5
+timeCreated: 1440481298
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: Blackhole
+    100002: Cube_Dispenser
+    100004: monster
+    100006: parts_battery_2
+    100008: parts_combo
+    100010: //RootNode
+    100012: Rainbow
+    100014: parts_brokenhandle_1
+    100016: parts_brokenhandle_2
+    100018: parts_cylinder_1
+    100020: parts_cylinder_2
+    100022: parts_toilet
+    100024: illusionpart
+    100026: jetpack
+    100028: metalbattery
+    400000: Blackhole
+    400002: Cube_Dispenser
+    400004: monster
+    400006: parts_battery_2
+    400008: parts_combo
+    400010: //RootNode
+    400012: Rainbow
+    400014: parts_brokenhandle_1
+    400016: parts_brokenhandle_2
+    400018: parts_cylinder_1
+    400020: parts_cylinder_2
+    400022: parts_toilet
+    400024: illusionpart
+    400026: jetpack
+    400028: metalbattery
+    2300000: Blackhole
+    2300002: Cube_Dispenser
+    2300004: monster
+    2300006: parts_battery_2
+    2300008: parts_combo
+    2300010: Rainbow
+    2300012: parts_brokenhandle_1
+    2300014: parts_brokenhandle_2
+    2300016: parts_cylinder_1
+    2300018: parts_cylinder_2
+    2300020: parts_toilet
+    2300022: illusionpart
+    2300024: jetpack
+    2300026: metalbattery
+    3300000: Blackhole
+    3300002: Cube_Dispenser
+    3300004: monster
+    3300006: parts_battery_2
+    3300008: parts_combo
+    3300010: Rainbow
+    3300012: parts_brokenhandle_1
+    3300014: parts_brokenhandle_2
+    3300016: parts_cylinder_1
+    3300018: parts_cylinder_2
+    3300020: parts_toilet
+    3300022: illusionpart
+    3300024: jetpack
+    3300026: metalbattery
+    4300000: parts_battery_2
+    4300002: parts_combo
+    4300004: Cube_Dispenser
+    4300006: monster
+    4300008: Blackhole
+    4300010: Rainbow
+    4300012: parts_cylinder_1
+    4300014: parts_brokenhandle_1
+    4300016: parts_toilet
+    4300018: parts_brokenhandle_2
+    4300020: parts_cylinder_2
+    4300022: metalbattery
+    4300024: jetpack
+    4300026: illusionpart
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 0
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

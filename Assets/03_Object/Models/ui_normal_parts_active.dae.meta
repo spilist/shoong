@@ -1,0 +1,172 @@
+fileFormatVersion: 2
+guid: f83ad800431954bab91324e470aa69af
+timeCreated: 1444541704
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: parts_brokenhandle_7
+    100002: parts_brokenhandle_8
+    100004: parts_brokenlasergun_3
+    100006: parts_cdrom_3
+    100008: parts_cylinder3_3
+    100010: parts_cylinder_7
+    100012: parts_cylinder_8
+    100014: parts_digitalclock_2
+    100016: parts_lasersword_3
+    100018: parts_macbook_3
+    100020: parts_microoven_3
+    100022: parts_mouse_2
+    100024: parts_nucacoke_3
+    100026: parts_oxygentank_3
+    100028: parts_portalgun_3
+    100030: parts_robotarm_3
+    100032: parts_robothead_3
+    100034: parts_seat_3
+    100036: parts_toilet_3
+    100038: parts_usb_3
+    100040: //RootNode
+    400000: parts_brokenhandle_7
+    400002: parts_brokenhandle_8
+    400004: parts_brokenlasergun_3
+    400006: parts_cdrom_3
+    400008: parts_cylinder3_3
+    400010: parts_cylinder_7
+    400012: parts_cylinder_8
+    400014: parts_digitalclock_2
+    400016: parts_lasersword_3
+    400018: parts_macbook_3
+    400020: parts_microoven_3
+    400022: parts_mouse_2
+    400024: parts_nucacoke_3
+    400026: parts_oxygentank_3
+    400028: parts_portalgun_3
+    400030: parts_robotarm_3
+    400032: parts_robothead_3
+    400034: parts_seat_3
+    400036: parts_toilet_3
+    400038: parts_usb_3
+    400040: //RootNode
+    2300000: parts_brokenhandle_7
+    2300002: parts_brokenhandle_8
+    2300004: parts_brokenlasergun_3
+    2300006: parts_cdrom_3
+    2300008: parts_cylinder3_3
+    2300010: parts_cylinder_7
+    2300012: parts_cylinder_8
+    2300014: parts_digitalclock_2
+    2300016: parts_lasersword_3
+    2300018: parts_macbook_3
+    2300020: parts_microoven_3
+    2300022: parts_mouse_2
+    2300024: parts_nucacoke_3
+    2300026: parts_oxygentank_3
+    2300028: parts_portalgun_3
+    2300030: parts_robotarm_3
+    2300032: parts_robothead_3
+    2300034: parts_seat_3
+    2300036: parts_toilet_3
+    2300038: parts_usb_3
+    3300000: parts_brokenhandle_7
+    3300002: parts_brokenhandle_8
+    3300004: parts_brokenlasergun_3
+    3300006: parts_cdrom_3
+    3300008: parts_cylinder3_3
+    3300010: parts_cylinder_7
+    3300012: parts_cylinder_8
+    3300014: parts_digitalclock_2
+    3300016: parts_lasersword_3
+    3300018: parts_macbook_3
+    3300020: parts_microoven_3
+    3300022: parts_mouse_2
+    3300024: parts_nucacoke_3
+    3300026: parts_oxygentank_3
+    3300028: parts_portalgun_3
+    3300030: parts_robotarm_3
+    3300032: parts_robothead_3
+    3300034: parts_seat_3
+    3300036: parts_toilet_3
+    3300038: parts_usb_3
+    4300000: parts_cylinder3_3
+    4300002: parts_cylinder_7
+    4300004: parts_seat_3
+    4300006: parts_brokenhandle_7
+    4300008: parts_toilet_3
+    4300010: parts_brokenhandle_8
+    4300012: parts_cdrom_3
+    4300014: parts_usb_3
+    4300016: parts_cylinder_8
+    4300018: parts_oxygentank_3
+    4300020: parts_brokenlasergun_3
+    4300022: parts_microoven_3
+    4300024: parts_robotarm_3
+    4300026: parts_macbook_3
+    4300028: parts_robothead_3
+    4300030: parts_nucacoke_3
+    4300032: parts_lasersword_3
+    4300034: parts_portalgun_3
+    4300036: parts_mouse_2
+    4300038: parts_digitalclock_2
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

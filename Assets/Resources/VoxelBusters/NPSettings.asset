@@ -1,0 +1,217 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89aa10cdd49e949efad7c366f36fa247, type: 3}
+  m_Name: NPSettings
+  m_EditorClassIdentifier: 
+  m_applicationSettings:
+    m_iOS:
+      m_storeIdentifier: smashytoysspace
+    m_android:
+      m_storeIdentifier: smashytoysspace
+    m_supportedFeatures:
+      m_usesAddressBook: 0
+      m_usesBilling: 1
+      m_usesGameServices: 1
+      m_usesMediaLibrary: 0
+      m_usesNetworkConnectivity: 0
+      m_usesNotificationService: 1
+      m_usesSharing: 0
+      m_usesTwitter: 0
+      m_usesWebView: 0
+  m_utilitySettings:
+    m_rateMyApp:
+      m_isEnabled: 0
+      m_title: Rate My App
+      m_message: If you enjoy using Native Plugin would you mind taking a moment to
+        rate it? It wont take more than a minute. Thanks for your support
+      m_showFirstPromptAfterHours: 2
+      m_successivePromptAfterHours: 6
+      m_successivePromptAfterLaunches: 5
+      m_remindMeLaterButtonText: Remind Me Later
+      m_rateItButtonText: Rate It Now
+      m_dontAskButtonText: No, Thanks
+  m_billingSettings:
+    m_products:
+    - m_name: toy_chameleon
+      m_description: toy_chameleon
+      m_isConsumable: 0
+      m_price: 0
+      m_iosProductId: toy_chameleon
+      m_androidProductId: toy_chameleon
+    - m_name: toy_soju
+      m_description: toy_soju
+      m_isConsumable: 0
+      m_price: 0
+      m_iosProductId: toy_soju
+      m_androidProductId: toy_soju
+    - m_name: toy_leonplant
+      m_description: toy_leonplant
+      m_isConsumable: 0
+      m_price: 0
+      m_iosProductId: toy_leonplant
+      m_androidProductId: toy_leonplant
+    - m_name: toy_butterfly
+      m_description: toy_butterfly
+      m_isConsumable: 0
+      m_price: 0
+      m_iosProductId: toy_butterfly
+      m_androidProductId: toy_butterfly
+    - m_name: toy_paperplane
+      m_description: toy_paperplane
+      m_isConsumable: 0
+      m_price: 0
+      m_iosProductId: toy_paperplane
+      m_androidProductId: toy_paperplane
+    - m_name: toy_beardedfrog
+      m_description: toy_beardedfrog
+      m_isConsumable: 0
+      m_price: 0
+      m_iosProductId: toy_beardedfrog
+      m_androidProductId: toy_beardedfrog
+    - m_name: toy_wilson
+      m_description: toy_wilson
+      m_isConsumable: 0
+      m_price: 0
+      m_iosProductId: toy_wilson
+      m_androidProductId: toy_wilson
+    - m_name: toy_robotcat
+      m_description: toy_robotcat
+      m_isConsumable: 0
+      m_price: 0
+      m_iosProductId: toy_robotcat
+      m_androidProductId: toy_robotcat
+    - m_name: toy_crab
+      m_description: toy_crab
+      m_isConsumable: 0
+      m_price: 0
+      m_iosProductId: toy_crab
+      m_androidProductId: toy_crab
+    - m_name: toy_hamster
+      m_description: toy_hamster
+      m_isConsumable: 0
+      m_price: 0
+      m_iosProductId: toy_hamster
+      m_androidProductId: toy_hamster
+    - m_name: toy_deathstar
+      m_description: toy_deathstar
+      m_isConsumable: 0
+      m_price: 0
+      m_iosProductId: toy_deathstar
+      m_androidProductId: toy_deathstar
+    - m_name: toy_tyranno
+      m_description: toy_tyranno
+      m_isConsumable: 0
+      m_price: 0
+      m_iosProductId: toy_tyranno
+      m_androidProductId: toy_tyranno
+    - m_name: toy_toyrobot
+      m_description: toy_toyrobot
+      m_isConsumable: 0
+      m_price: 0
+      m_iosProductId: toy_toyrobot
+      m_androidProductId: toy_toyrobot
+    - m_name: toy_fruits
+      m_description: toy_fruits
+      m_isConsumable: 0
+      m_price: 0
+      m_iosProductId: toy_fruits
+      m_androidProductId: toy_fruits
+    - m_name: toy_bender
+      m_description: toy_bender
+      m_isConsumable: 0
+      m_price: 0
+      m_iosProductId: toy_bender
+      m_androidProductId: toy_bender
+    - m_name: toy_ghost
+      m_description: toy_ghost
+      m_isConsumable: 0
+      m_price: 0
+      m_iosProductId: toy_ghost
+      m_androidProductId: toy_ghost
+    - m_name: toy_vacuumrobot
+      m_description: toy_vacuumrobot
+      m_isConsumable: 0
+      m_price: 0
+      m_iosProductId: toy_vacuumrobot
+      m_androidProductId: toy_vacuumrobot
+    - m_name: toy_minimonster
+      m_description: toy_minimonster
+      m_isConsumable: 0
+      m_price: 0
+      m_iosProductId: toy_minimonster
+      m_androidProductId: toy_minimonster
+    - m_name: toy_alienwithgun
+      m_description: toy_alienwithgun
+      m_isConsumable: 0
+      m_price: 0
+      m_iosProductId: toy_alienwithgun
+      m_androidProductId: toy_alienwithgun
+    - m_name: toy_cat
+      m_description: toy_cat
+      m_isConsumable: 0
+      m_price: 0
+      m_iosProductId: toy_cat
+      m_androidProductId: toy_cat
+    - m_name: toy_dolphin
+      m_description: toy_dolphin
+      m_isConsumable: 0
+      m_price: 0
+      m_iosProductId: toy_dolphin
+      m_androidProductId: toy_dolphin
+    - m_name: toy_goldpig
+      m_description: toy_goldpig
+      m_isConsumable: 0
+      m_price: 0
+      m_iosProductId: toy_goldpig
+      m_androidProductId: toy_goldpig
+    - m_name: unlock_automode
+      m_description: unlock_automode
+      m_isConsumable: 0
+      m_price: 0
+      m_iosProductId: unlock_automode
+      m_androidProductId: unlock_automode
+    m_iOS:
+      m_supportsReceiptValidation: 0
+      m_validateUsingServerURL: 
+    m_android:
+      m_publicKey: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAnIDTdHSw/MUDzHIb3MEbc427iZILAYAEw/IlFLUEParK9ssrfsH+kLpZ1Kf2vyIBxwR4hTfSCoIw8Gx1zNDaauzbFf3bY//I4R15rCYS9+pdb2icIE1vCqqpyLOt9vByPoI2Snm9v9OeVABVJBAqXC02zFVMybytR9oynRSkIQAbaz5Zo4j8w3Yd30gd54xGKAK8A+nevUGQ00CfvD67PDB2FBkbRo9H7SbE0X8ri1Fjoyqdj10pYYmn2/2qAZFTJQb6C2JI/J80PrsE6VLlv07rLtgZvBRbkYTbSgKgqrlAhhBf5KIPaSZF1w8Nt7guOsClfk34xr7G0rqWeDeNewIDAQAB
+  m_notificationSettings:
+    m_iOS:
+      m_userInfoKey: SmashToys_user_info
+    m_android:
+      m_senderIDs: []
+      m_allowVibration: 1
+      m_whiteSmallIcon: {fileID: 2800000, guid: 1e33973007f8e4fa594bf357ee8710f2,
+        type: 3}
+      m_colouredSmallIcon: {fileID: 2800000, guid: c84bd61ebb3954837a16f4ee2a4e1919,
+        type: 3}
+      m_tickerTextKey: SmashToys_ticker_text
+      m_contentTextKey: SmashToys_content_text
+      m_contentTitleKey: SmashToys_content_title
+      m_userInfoKey: SmashToys_user_info
+      m_tagKey: SmashToys_tag
+  m_gameServicesSettings:
+    m_android:
+      m_playServicesApplicationID: 773936192569
+      m_achievedDescriptionFormats:
+      - 'Awesome! Achievement # completed.'
+    m_iOS:
+      m_showDefaultAchievementCompletionBanner: 1
+    m_achievementIDCollection: []
+    m_leaderboardIDCollection:
+    - m_globalID: LB_SINGLE
+      m_platformIDs:
+      - m_platform: 1
+        m_value: CgkIubjEkcMWEAIQBg
+    - m_globalID: LB_OVERALL
+      m_platformIDs:
+      - m_platform: 1
+        m_value: CgkIubjEkcMWEAIQDg

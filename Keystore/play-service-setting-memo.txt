@@ -1,0 +1,48 @@
+keytool -exportcert -alias smashytoys -keystore C:\Users\Sehyeon\Documents\shoong\Keystore\morogoro.keystore -list -v
+
+SHA1: 54:09:BB:10:0A:C0:FD:DC:C7:60:D1:94:5D:56:54:7D:6E:6B:4D:15
+
+keytool -exportcert -alias shoong_key -keystore C:\Users\Sehyeon\Documents\shoong\shoong_key.keystore -list -v
+
+SHA1: 8D:4A:80:88:B1:68:DD:CC:1B:FD:5A:B6:67:8E:B3:81:90:4C:05:7D
+
+Client ID: 
+
+keytool -exportcert -alias androiddebugkey -keystore C:\Users\Sehyeon\.android\debug.keystore -list -v
+
+SHA1: EB:5E:3A:0E:A9:2F:C0:13:DC:87:35:08:72:4C:C1:55:4D:AD:48:42
+
+Client ID: 400626748531-4s8035712jbfgunc47rkosocdrrd8r9h.apps.googleusercontent.com
+
+-----------
+Res-And
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Google Play game services IDs.
+Save this file as res/values/games-ids.xml in your project.
+-->
+<resources>
+  <string name="app_id">400626748531</string>
+  <string name="achievement__">CgkI85jcudQLEAIQAg</string>
+  <string name="achievement__">CgkI85jcudQLEAIQAw</string>
+  <string name="achievement__">CgkI85jcudQLEAIQBA</string>
+  <string name="achievement__">CgkI85jcudQLEAIQBQ</string>
+  <string name="achievement__">CgkI85jcudQLEAIQBg</string>
+  <string name="achievement__">CgkI85jcudQLEAIQBw</string>
+  <string name="leaderboard__">CgkI85jcudQLEAIQCA</string>
+  <string name="event___">CgkI85jcudQLEAIQCQ</string>
+  <string name="quest___2_">CgkI85jcudQLEAIQCg</string>
+</resources>
+
+------------
+Res-IOS
+#define CLIENT_ID @"400626748531-535hh8ge8vs7k9nm3gm68mlga1690fh2.apps.googleusercontent.com"
+#define ACH__ @"CgkI85jcudQLEAIQAg"
+#define ACH__ @"CgkI85jcudQLEAIQAw"
+#define ACH__ @"CgkI85jcudQLEAIQBA"
+#define ACH__ @"CgkI85jcudQLEAIQBQ"
+#define ACH__ @"CgkI85jcudQLEAIQBg"
+#define ACH__ @"CgkI85jcudQLEAIQBw"
+#define LEAD__ @"CgkI85jcudQLEAIQCA"
+#define EVENT___ @"CgkI85jcudQLEAIQCQ"
+#define QUEST___2_ @"CgkI85jcudQLEAIQCg"
