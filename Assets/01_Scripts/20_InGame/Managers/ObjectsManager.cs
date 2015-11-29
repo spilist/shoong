@@ -143,6 +143,7 @@ public class ObjectsManager : MonoBehaviour {
 
     skipInterval = false;
 
+    beforeSpawn();
     spawn();
     afterSpawn();
   }
@@ -169,6 +170,7 @@ public class ObjectsManager : MonoBehaviour {
   }
 
   virtual protected void afterSpawn() {}
+  virtual protected void beforeSpawn() {}
 
   virtual public float getSpeed() {
     return speed;

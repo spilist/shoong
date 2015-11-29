@@ -61,10 +61,13 @@ public class ComboPartsManager : ObjectsManager {
     fullComboCount = fullComboCountPerLevel[level - 1];
   }
 
-  override protected void afterSpawn() {
-    instance.GetComponent<MeshFilter>().sharedMesh = getRandomMesh();
+  override protected void beforeSpawn() {
     trying = false;
     comboCount = 0;
+  }
+
+  override protected void afterSpawn() {
+    instance.GetComponent<MeshFilter>().sharedMesh = getRandomMesh();
 
     Vector2 randomV = Random.insideUnitCircle;
     randomV.Normalize();
