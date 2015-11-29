@@ -76,8 +76,6 @@ public class UICharacters : MonoBehaviour {
 
       stat = CharacterManager.cm.character(name);
 
-      if (stat.buyable) price = bProduct.CurrencyCode + "\n" + bProduct.Price.ToString("0.00");
-
       charactersMenu.characterName.text = stat.characterName;
       setRarity(charactersMenu.rarity);
 
@@ -120,10 +118,18 @@ public class UICharacters : MonoBehaviour {
       }
       GetComponent<Renderer>().sharedMaterial = charactersMenu.activeCharactersMaterial;
     } else {
+
       if (buttons) {
         charactersMenu.buyButton.gameObject.SetActive(true);
-        charactersMenu.buyButton.setCharacter(name, price);
         charactersMenu.selectButton.gameObject.SetActive(false);
+
+        if (bProduct == null) {
+          price = "NOT LOADED";
+        } else {
+          price = bProduct.CurrencyCode + "\n" + bProduct.Price.ToString("0.00");
+        }
+
+        charactersMenu.buyButton.setCharacter(name, price);
       }
     }
   }

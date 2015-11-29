@@ -18607,7 +18607,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 995117313}
-  m_LocalRotation: {x: -.190690368, y: .774532259, z: .539343297, w: -.269899815}
+  m_LocalRotation: {x: -.190690339, y: .774532139, z: .539343238, w: -.269899786}
   m_LocalPosition: {x: -148.834641, y: -491.899872, z: -62.4409447}
   m_LocalScale: {x: 1.6000005, y: 1.599998, z: 1.6000011}
   m_Children: []
@@ -22100,14 +22100,14 @@ MonoBehaviour:
   - 3.28999996
   - 4.38999987
   baseSpeedStandard: 50
-  baseSpeeds: 0a0000000500000000000000fbfffffff6ffffff
+  baseSpeeds: 280000001400000000000000ecffffffd8ffffff
   boosterPlusSpeedStandard: 130
-  boosterPlusSpeeds: 0a0000000500000000000000fbfffffff6ffffff
+  boosterPlusSpeeds: 140000000a00000000000000f6ffffffecffffff
   boosterMaxSpeedStandard: 160
-  boosterMaxSpeeds: 0a0000000500000000000000fbfffffff6ffffff
+  boosterMaxSpeeds: 0f0000000700000000000000f9fffffff1ffffff
   boosterSpeedDecreaseStandard: 50
   boosterSpeedDecreases: 280000001400000000000000f6ffffffecffffff
-  energyReduceOnTimeStandard: 6
+  energyReduceOnTimeStandard: 5
   energyReduceOnTimeStandard_hard: 0
   energyReduceOnTimes: f6fffffffbffffff00000000050000000a000000
   maxEnergyStandard: 100
@@ -42260,7 +42260,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1878833774}
-  m_LocalRotation: {x: -.190690309, y: .774532139, z: .539343238, w: -.269899756}
+  m_LocalRotation: {x: -.190690339, y: .774532259, z: .539343297, w: -.269899786}
   m_LocalPosition: {x: -137.134644, y: -449.999878, z: -71.4410858}
   m_LocalScale: {x: 2.50000119, y: 2.4999969, z: 2.50000167}
   m_Children: []
@@ -42289,7 +42289,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1878977605}
-  m_LocalRotation: {x: -.190690309, y: .774532139, z: .539343238, w: -.269899756}
+  m_LocalRotation: {x: -.190690339, y: .774532259, z: .539343297, w: -.269899786}
   m_LocalPosition: {x: -151.034637, y: -430.999878, z: -92.541153}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -47670,9 +47670,9 @@ MonoBehaviour:
   tumble: 5
   minSpawnInterval: 20
   maxSpawnInterval: 40
-  cubesByEncounter: 0
+  cubesByEncounter: 100
   energyGets: 0
-  numSweetsPop: 0
+  numSweetsPop: 10
   isNegative: 1
   hasEncounterEffect: 0
   destroyWhenCollideSelf: 0

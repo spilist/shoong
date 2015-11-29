@@ -12,7 +12,7 @@ public class BlackholeMover : ObjectsMover {
       if (dangerous()) {
         ScoreManager.sm.gameOver("Blackhole");
       } else {
-        player.contactBlackhole(collision);
+        if (!player.isUsingSolar()) player.contactBlackhole(collision);
         encounterPlayer();
       }
     } else {
@@ -22,7 +22,7 @@ public class BlackholeMover : ObjectsMover {
   }
 
   override public bool dangerous() {
-    if (player.isAfterStrengthen() || player.isUnstoppable() || player.isUsingRainbow() || player.isRebounding()) return false;
+    if (player.isAfterStrengthen() || player.isUnstoppable() || player.isUsingRainbow() || player.isRebounding() || player.isUsingSolar()) return false;
     else return true;
   }
 

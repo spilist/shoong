@@ -17,7 +17,5 @@ public class Skill_Ghost : Skill {
     }
 
     contactCollider.enabled = !val;
-
-    // 속도 증가
   }
 }

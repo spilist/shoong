@@ -309,7 +309,7 @@
 		<value>한 번 보호받습니다</value>
 	</data>
 	<data name="SkillDescription_Solar" xml:space="preserve">
-		<value>날아오르라</value>
+		<value>날아오르라!!</value>
 	</data>
 	<data name="SkillName_Blink" xml:space="preserve">
 		<value>순간이동</value>

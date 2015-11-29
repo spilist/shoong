@@ -101,6 +101,7 @@ public class CharacterManager : MonoBehaviour {
       changeCharacter(Player.pl.GetComponent<MeshFilter>().sharedMesh.name);
       DataManager.dm.increment("RandomPlayAvailable", -1);
       DataManager.dm.setDateTime("LastRandomPlayTime");
+      DataManager.dm.save();
     }
   }
 

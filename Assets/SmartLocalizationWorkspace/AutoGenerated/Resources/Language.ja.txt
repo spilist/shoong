@@ -147,10 +147,10 @@
 		<value>宇宙イルカ</value>
 	</data>
 	<data name="CharacterName_elephant" xml:space="preserve">
-		<value />
+		<value>ガネーシャ</value>
 	</data>
 	<data name="CharacterName_f16" xml:space="preserve">
-		<value />
+		<value>F16</value>
 	</data>
 	<data name="CharacterName_fruits" xml:space="preserve">
 		<value>果物バスケット</value>
@@ -174,10 +174,10 @@
 		<value>ペーパー・プレーン</value>
 	</data>
 	<data name="CharacterName_pheonix" xml:space="preserve">
-		<value />
+		<value>フェニックス</value>
 	</data>
 	<data name="CharacterName_policecar" xml:space="preserve">
-		<value />
+		<value>パトカー</value>
 	</data>
 	<data name="CharacterName_robotcat" xml:space="preserve">
 		<value>ロボット・ネコ</value>
@@ -186,16 +186,16 @@
 		<value>ロボット・ドッグ</value>
 	</data>
 	<data name="CharacterName_rubberduck" xml:space="preserve">
-		<value />
+		<value>ゴム製のアヒル</value>
 	</data>
 	<data name="CharacterName_schoolbus" xml:space="preserve">
-		<value />
+		<value>スクールバス</value>
 	</data>
 	<data name="CharacterName_soju" xml:space="preserve">
 		<value>焼酎</value>
 	</data>
 	<data name="CharacterName_toybear" xml:space="preserve">
-		<value />
+		<value>子供クマ</value>
 	</data>
 	<data name="CharacterName_toyrobot" xml:space="preserve">
 		<value>トイ・ロボット</value>
@@ -232,6 +232,9 @@
 	</data>
 	<data name="GameOver_ManualBonus" xml:space="preserve">
 		<value>マニュアルボーナス</value>
+	</data>
+	<data name="GameOver_RandomBonus" xml:space="preserve">
+		<value>ランダムボーナス</value>
 	</data>
 	<data name="GameOver_RateUs" xml:space="preserve">
 		<value>ゲームを評価してください</value>
@@ -303,10 +306,10 @@
 		<value>小惑星を変換させます</value>
 	</data>
 	<data name="SkillDescription_Shield" xml:space="preserve">
-		<value />
+		<value>保護</value>
 	</data>
 	<data name="SkillDescription_Solar" xml:space="preserve">
-		<value />
+		<value>高飛べ!!</value>
 	</data>
 	<data name="SkillName_Blink" xml:space="preserve">
 		<value>テレポート</value>
@@ -339,10 +342,10 @@
 		<value>変換</value>
 	</data>
 	<data name="SkillName_Shield" xml:space="preserve">
-		<value />
+		<value>シールド</value>
 	</data>
 	<data name="SkillName_Solar" xml:space="preserve">
-		<value />
+		<value>太陽火災</value>
 	</data>
 	<data name="TouchToStart" xml:space="preserve">
 		<value>タッチしてゲーム・スタート</value>
@@ -383,8 +386,5 @@
 	</data>
 	<data name="Tutorial_UseBooster" xml:space="preserve">
 		<value>ブースター使用</value>
-	</data>
-	<data name="GameOver_RandomBonus" xml:space="preserve">
-		<value />
 	</data>
 </root>

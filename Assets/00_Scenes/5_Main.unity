@@ -475,7 +475,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 211bd29c23b1841e0b3b935b0dd5227b, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 4bb0e60e6ae504a92bed827b2a5906bf, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0
   m_Pitch: 1
@@ -13967,7 +13967,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c29316fd68134f6a8504287e1c8cfcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resetAll: 1
+  resetAll: 0
   resetCube: 0
   resetGoldenCube: 0
   normalFrameRate: 60
@@ -23995,11 +23995,11 @@ MonoBehaviour:
   - 3.28999996
   - 4.38999987
   baseSpeedStandard: 50
-  baseSpeeds: 0a0000000500000000000000fbfffffff6ffffff
+  baseSpeeds: 280000001400000000000000ecffffffd8ffffff
   boosterPlusSpeedStandard: 130
-  boosterPlusSpeeds: 0a0000000500000000000000fbfffffff6ffffff
+  boosterPlusSpeeds: 140000000a00000000000000f6ffffffecffffff
   boosterMaxSpeedStandard: 160
-  boosterMaxSpeeds: 0a0000000500000000000000fbfffffff6ffffff
+  boosterMaxSpeeds: 0f0000000700000000000000f9fffffff1ffffff
   boosterSpeedDecreaseStandard: 50
   boosterSpeedDecreases: 280000001400000000000000f6ffffffecffffff
   energyReduceOnTimeStandard: 5
@@ -32244,11 +32244,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillObject: {fileID: 0}
   useSkillEffect: {fileID: 1511200748}
-  normalRing: 9
+  normalRing: 7
   skillRing: 1
   description: 
   duration: 4
-  biggerScale: 4
+  biggerScale: 5
   afterImagePrefab: {fileID: 197148, guid: 548fc754942dd4391ad89bb54cc0e9c4, type: 2}
   afterImageCount: 10
   generatePer: .100000001
@@ -38704,7 +38704,7 @@ MeshFilter:
     type: 3}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1618573292}
-  m_Mesh: {fileID: 4300060, guid: 46bd8557e7c474556ab17eda482a0d06, type: 3}
+  m_Mesh: {fileID: 4300066, guid: 46bd8557e7c474556ab17eda482a0d06, type: 3}
 --- !u!1 &1622151148
 GameObject:
   m_ObjectHideFlags: 0
@@ -48966,9 +48966,9 @@ MonoBehaviour:
   tumble: 5
   minSpawnInterval: 20
   maxSpawnInterval: 40
-  cubesByEncounter: 0
+  cubesByEncounter: 100
   energyGets: 0
-  numSweetsPop: 0
+  numSweetsPop: 10
   isNegative: 1
   hasEncounterEffect: 0
   destroyWhenCollideSelf: 0

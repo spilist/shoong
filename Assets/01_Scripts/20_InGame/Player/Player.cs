@@ -54,6 +54,7 @@ public class Player : MonoBehaviour {
   private bool usingTransformer = false;
   private bool iced = false;
   private bool usingSolar = false;
+  private bool usingGhost = false;
   public float originalScale;
   private int minimonCounter = 0;
 
@@ -129,9 +130,12 @@ public class Player : MonoBehaviour {
         speed = Mathf.MoveTowards(speed, 0, Time.fixedDeltaTime * stoppingSpeed);
       } else if (ridingMonster) {
         speed = baseSpeed + minimonCounter * monm.enlargeSpeedPerMinimon + boosterspeed;
+      } else if (usingGhost) {
+        speed = baseSpeed * 2 + boosterspeed;
+      } else if (usingSolar) {
+        speed = (baseSpeed + boosterspeed) * 1.6f;
       } else {
         speed = baseSpeed + boosterspeed;
-        if (usingSolar) speed *= 1.6f;
       }
     }
 
@@ -414,6 +418,8 @@ public class Player : MonoBehaviour {
       icedSpeedFactor = icm.playerSpeedReduceTo;
     } else if (objTag == "Solar") {
       usingSolar = effectOn;
+    } else if (objTag == "Ghost") {
+      usingGhost = effectOn;
     }
   }
 
@@ -496,6 +502,10 @@ public class Player : MonoBehaviour {
 
   public bool isUsingTransformer() {
     return usingTransformer;
+  }
+
+  public bool isUsingSolar() {
+    return usingSolar;
   }
 
   public void stopEMP() {
