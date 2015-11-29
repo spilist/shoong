@@ -2077,6 +2077,7 @@ MonoBehaviour:
   metalMaterial: {fileID: 2100000, guid: d19ae5f122c6344ad809f0cb588d6db9, type: 2}
   blinkMaterial: {fileID: 2100000, guid: 85281042dc9ad418687a6118b992e8b1, type: 2}
   ghostMaterial: {fileID: 2100000, guid: d0d53a636608b4604a0818663e19467d, type: 2}
+  solarMaterial: {fileID: 0}
   redDuration: 1
   originalMaterial: {fileID: 2100000, guid: 9b422acddcdd24ad994ef6f9b89c8c5d, type: 2}
   playerParticlesParent: {fileID: 678200079}
@@ -2685,6 +2686,7 @@ MonoBehaviour:
   skillRing: 1
   description: Protect you once
   duration: 0
+  loseShieldEffect: {fileID: 0}
 --- !u!1 &128184468
 GameObject:
   m_ObjectHideFlags: 0
@@ -15036,7 +15038,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 5ab91a2740f8b4476a8946f20def321f, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: .5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -17816,6 +17818,7 @@ MonoBehaviour:
   cubesHighscoreNumber: {fileID: 118514173}
   cubesCurrentScore: {fileID: 1662909153}
   noAutoBonus: {fileID: 1656023771}
+  randomBonus: {fileID: 0}
   newHighscoreColor: {r: .925721943, g: .963235319, b: .283304483, a: 1}
   scoreUpdateMaxStandard: 2000
   scoreUpdateMaxDuration: 2
@@ -17825,6 +17828,7 @@ MonoBehaviour:
   bonusScoreText: {fileID: 502008867}
   bonusCoinText: {fileID: 1468113640}
   ggc: {fileID: 1281182326}
+  bonusCoin_random: 20
 --- !u!114 &897405145
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18029,8 +18033,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b2a1c6c01ea844e8a42f4c1cbd02792, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abb: {fileID: 0}
-  noAutoBonus: .100000001
+  noAutoBonus: .5
   worldUI: {fileID: 2134279969}
   increaseSpeed: 5
   cubesCount: {fileID: 589887826}
@@ -22105,6 +22108,7 @@ MonoBehaviour:
   boosterSpeedDecreaseStandard: 50
   boosterSpeedDecreases: 280000001400000000000000f6ffffffecffffff
   energyReduceOnTimeStandard: 6
+  energyReduceOnTimeStandard_hard: 0
   energyReduceOnTimes: f6fffffffbffffff00000000050000000a000000
   maxEnergyStandard: 100
   maxEnergys: 280000001400000000000000f6ffffffecffffff
@@ -22112,6 +22116,7 @@ MonoBehaviour:
   reboundDistances: d8ffffffe2ffffffecfffffff6ffffff00000000
   damageGetScaleStandard: 1
   damageGets: e2fffffff1ffffff000000000f0000001e000000
+  isRandom: 0
 --- !u!1 &1231457337
 GameObject:
   m_ObjectHideFlags: 0
@@ -25853,6 +25858,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorial: 1
+  randomPlayButton: {fileID: 0}
   flyingCharacters: {fileID: 0}
   spawnManager: {fileID: 1991538111}
   titleFilter: {fileID: 1330183105}
@@ -48578,9 +48584,12 @@ MonoBehaviour:
   tutorialUI: {fileID: 1712236142}
   ringAmount: 2
   ringDisppearDuration: .5
+  difficult: 0
   canBeMissedPosX: -480
   minBoosterOkPosX: -240
+  minBoosterOkPosX_hard: -160
   rightBeatPosX: 0
+  maxBoosterOkPosX_hard: 160
   maxBoosterOkPosX: 240
   touchText: {fileID: 1648840796}
   onthebeatText: {fileID: 531526507}

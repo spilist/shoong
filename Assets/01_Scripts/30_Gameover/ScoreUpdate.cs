@@ -12,6 +12,7 @@ public class ScoreUpdate : MonoBehaviour {
   public Text cubesHighscoreNumber;
   public Text cubesCurrentScore;
   public GameObject noAutoBonus;
+  public GameObject randomBonus;
 
   public Color newHighscoreColor;
   public int scoreUpdateMaxStandard = 1000;
@@ -36,14 +37,24 @@ public class ScoreUpdate : MonoBehaviour {
   private bool newHighscoreByBonus = false;
   private float positionX;
   private float distance;
-  private int bonusCoin;
+  private int bonusCoin_difficulty;
+  public int bonusCoin_random = 20;
+  private int bonusCoinTotal = 0;
 
   void Start() {
     cubeDifference = CubeManager.cm.getCount();
     bonusAmount = CubeManager.cm.getBonus();
     bonusScoreText.text = "+" + bonusAmount;
-    bonusCoin = PhaseManager.pm.phase() + 1;
-    bonusCoinText.text = "+" + bonusCoin;
+    bonusCoin_difficulty = PhaseManager.pm.phase() + 1;
+    bonusCoinText.text = "+" + bonusCoin_difficulty;
+
+    if (CharacterManager.cm.isRandom) {
+      bonusCoinTotal = bonusCoin_random;
+    }
+
+    if (bonusAmount > 0) {
+      bonusCoinTotal += bonusCoin_difficulty;
+    }
 
     currentScoreIngame.text = cubeDifference.ToString();
 
@@ -80,12 +91,18 @@ public class ScoreUpdate : MonoBehaviour {
       if (cubeCurrentNum == cubeDifference) {
         updateStatus++;
 
+        if (CharacterManager.cm.isRandom) {
+          randomBonus.SetActive(true);
+        }
+
         if (bonusAmount > 0) {
           noAutoBonus.SetActive(true);
-          ggc.change(bonusCoin);
-          GetComponent<AudioSource>().Play();
         }
-        else {
+
+        if (CharacterManager.cm.isRandom || bonusAmount > 0) {
+          ggc.change(bonusCoinTotal);
+          GetComponent<AudioSource>().Play();
+        } else {
           GetComponent<AudioSource>().Stop();
         }
 

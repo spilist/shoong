@@ -42,6 +42,7 @@ public class CharacterManager : MonoBehaviour {
   public int[] damageGets;
 
   private string currentCharacter;
+  public bool isRandom;
 
   void Awake() {
     cm = this;
@@ -71,6 +72,36 @@ public class CharacterManager : MonoBehaviour {
 
   public CharacterStat character(string name) {
     return transform.Find("Characters/" + name).GetComponent<CharacterStat>();
+  }
+
+  public void startRandom(bool val = true) {
+    isRandom = val;
+    if (val) StartCoroutine("randomCharacter");
+    else StopCoroutine("randomCharacter");
+  }
+
+  IEnumerator randomCharacter() {
+    int index = 0;
+    Transform characters = transform.Find("Characters");
+    while(true) {
+      setMesh(characters.GetChild(index).name);
+      yield return new WaitForSeconds(0.15f);
+      index++;
+      if (index >= characters.childCount) index = 0;
+    }
+  }
+
+  public void setMesh(string name) {
+    ccm.setMesh(character(name).GetComponent<MeshFilter>().sharedMesh);
+  }
+
+  public void startGame() {
+    if (isRandom) {
+      StopCoroutine("randomCharacter");
+      changeCharacter(Player.pl.GetComponent<MeshFilter>().sharedMesh.name);
+      DataManager.dm.increment("RandomPlayAvailable", -1);
+      DataManager.dm.setDateTime("LastRandomPlayTime");
+    }
   }
 
   public void changeCharacter(string name) {

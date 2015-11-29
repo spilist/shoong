@@ -384,4 +384,7 @@
 	<data name="Tutorial_UseBooster" xml:space="preserve">
 		<value>ブースター使用</value>
 	</data>
+	<data name="GameOver_RandomBonus" xml:space="preserve">
+		<value />
+	</data>
 </root>

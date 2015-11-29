@@ -4,6 +4,7 @@ using System.Collections;
 
 public class BeforeIdle : MonoBehaviour {
   public bool tutorial;
+  public RandomPlayButton randomPlayButton;
   public FlyingCharacters flyingCharacters;
   public SpawnManager spawnManager;
   public MeshRenderer titleFilter;
@@ -79,6 +80,7 @@ public class BeforeIdle : MonoBehaviour {
             titleFilter.gameObject.SetActive(false);
             character.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
             character.transform.localRotation = Quaternion.Euler(0, 90, 0);
+            randomPlayButton.enableAudio();
             if (flyingCharacters != null) flyingCharacters.reset();
           }
         }

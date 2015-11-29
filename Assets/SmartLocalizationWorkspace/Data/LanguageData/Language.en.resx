@@ -233,6 +233,9 @@
 	<data name="GameOver_ManualBonus" xml:space="preserve">
 		<value>DIFFICULTY BONUS</value>
 	</data>
+	<data name="GameOver_RandomBonus" xml:space="preserve">
+		<value>RANDOM BONUS</value>
+	</data>
 	<data name="GameOver_RateUs" xml:space="preserve">
 		<value>ENJOYED? RATE US!</value>
 	</data>

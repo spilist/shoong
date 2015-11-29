@@ -51,6 +51,7 @@ public class TouchInputHandler : MonoBehaviour
 
 			if (!pause.isResuming() && (result == "Ground" || result == "ChangeBehavior") && !gameStarted) {
 
+        CharacterManager.cm.startGame();
         menus.gameStart();
 
         TimeManager.time.startTime();

@@ -66,9 +66,9 @@ public class ScoreManager : MonoBehaviour {
   }
 
   void Update() {
-    if (gameOverStatus == 1) {
+    if (gameOverStatus == 2) {
       if (Input.GetMouseButtonDown(0)) scoreUpdate();
-    } else if (gameOverStatus > 1) {
+    } else if (gameOverStatus > 2) {
       if (Input.GetMouseButtonDown(0)) {
         if (!beforeIdle.isLoading() && menus.touched() != "GameOverActions") return;
       }
@@ -101,6 +101,8 @@ public class ScoreManager : MonoBehaviour {
   }
 
   public void gameOver(string reason) {
+    gameOverStatus++;
+
     TimeManager.time.stopTime();
     SkillManager.sm.stopSkills();
     Player.pl.stopOtherEffects();

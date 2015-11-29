@@ -233,6 +233,9 @@
 	<data name="GameOver_ManualBonus" xml:space="preserve">
 		<value>난이도 보너스</value>
 	</data>
+	<data name="GameOver_RandomBonus" xml:space="preserve">
+		<value>랜덤 보너스</value>
+	</data>
 	<data name="GameOver_RateUs" xml:space="preserve">
 		<value>게임을 평가해주세요</value>
 	</data>

@@ -6,7 +6,7 @@ public class Skill_Shield : Skill {
 
   override public void afterActivate(bool val) {
     if (!val) {
-      Debug.Log("??");
+      if (ScoreManager.sm.isGameOver()) return;
       loseShieldEffect.Play();
       loseShieldEffect.GetComponent<AudioSource>().Play();
     }

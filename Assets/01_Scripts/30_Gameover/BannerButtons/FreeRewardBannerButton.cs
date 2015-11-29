@@ -12,6 +12,9 @@ public class FreeRewardBannerButton : BannerButton {
 
   public int[] nextRewardMinutes;
   public bool first;
+  private DateTime nextRewardTime;
+  private DateTime lastRewardTime;
+  private bool indicatingNextTime;
 
   override public void activateSelf() {
     gameOverUI.SetActive(false);
@@ -38,13 +41,10 @@ public class FreeRewardBannerButton : BannerButton {
     int frCount = DataManager.dm.getInt("FreeRewardCount");
     int rewardCount = frCount >= nextRewardMinutes.Length ? (nextRewardMinutes.Length - 1) : frCount;
     int nextRewardMinute = nextRewardMinutes[rewardCount];
-    int nextRewardHour = nextRewardMinute / 60;
-    nextRewardMinute %= 60;
-    string nextReward = nextRewardHour.ToString("0") + ":" + nextRewardMinute.ToString("00");
+    nextRewardTime = DateTime.Now.AddMinutes(nextRewardMinute);
 
     DataManager.dm.setDateTime("LastFreeRewardTime");
-    transform.parent.GetComponent<Text>().text = nextReward;
-    // transform.parent.GetComponent<Text>().text = secondDescription.Replace("_REWARD_", reward.ToString());
+    indicatingNextTime = true;
 
     gold.change(reward);
 
@@ -52,6 +52,18 @@ public class FreeRewardBannerButton : BannerButton {
     if (!DataManager.dm.getBool("NotificationSetting")) {
       NotificationManager.nm.notifyAfter();
     }
+  }
+
+  override protected void Update() {
+    base.Update();
+    if (indicatingNextTime) {
+      transform.parent.GetComponent<Text>().text = "   " + timeUntilAvailable();
+    }
+  }
+
+  string timeUntilAvailable() {
+    TimeSpan interval = nextRewardTime - DateTime.Now;
+    return interval.Hours.ToString("00") + ":" + interval.Minutes.ToString("00") + ":" + interval.Seconds.ToString("00");
   }
 
   override public bool available() {
