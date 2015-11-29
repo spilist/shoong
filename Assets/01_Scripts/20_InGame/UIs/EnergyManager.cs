@@ -36,6 +36,7 @@ public class EnergyManager : MonoBehaviour {
   private string lastReason;
   private bool noDeath = false;
   private float origEnergyWidth;
+  private bool difficult;
 
   public void setEnergyUI(Transform tr) {
     gauge = tr.Find("EnergyBarGuage").GetComponent<Image>();
@@ -43,6 +44,8 @@ public class EnergyManager : MonoBehaviour {
     gaugeIcon = tr.Find("EnergyBarIcon").gameObject;
     noDeath = true;
     energySystemOn = true;
+    losePerSec = CharacterManager.cm.energyReduceOnTimeStandard;
+    lessDamageRate = CharacterManager.cm.damageGetScaleStandard;
   }
 
   void Awake() {
@@ -96,6 +99,14 @@ public class EnergyManager : MonoBehaviour {
       gauge = origGauge;
       gaugeShell = origGaugeShell;
       gaugeIcon = origGaugeIcon;
+
+      if (difficult) {
+        losePerSec = CharacterManager.cm.energyReduceOnTimeStandard_hard;
+        lessDamageRate = CharacterManager.cm.damageGetScaleStandard * 1.5f;
+      } else {
+        losePerSec = CharacterManager.cm.energyReduceOnTimeStandard;
+        lessDamageRate = CharacterManager.cm.damageGetScaleStandard;
+      }
     }
 
     gauge.gameObject.SetActive(val);
@@ -129,13 +140,7 @@ public class EnergyManager : MonoBehaviour {
   }
 
   public void setDifficulty(bool difficult) {
-    if (difficult) {
-      losePerSec = CharacterManager.cm.energyReduceOnTimeStandard_hard;
-      lessDamageRate = CharacterManager.cm.damageGetScaleStandard * 1.5f;
-    } else {
-      losePerSec = CharacterManager.cm.energyReduceOnTimeStandard;
-      lessDamageRate = CharacterManager.cm.damageGetScaleStandard;
-    }
+    this.difficult = difficult;
   }
 
   void changeHealth (float amount, float rate) {
