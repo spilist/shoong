@@ -35,6 +35,7 @@ public class EnergyManager : MonoBehaviour {
   private Color color_danger;
   private string lastReason;
   private bool noDeath = false;
+  private float origEnergyWidth;
 
   public void setEnergyUI(Transform tr) {
     gauge = tr.Find("EnergyBarGuage").GetComponent<Image>();
@@ -53,6 +54,7 @@ public class EnergyManager : MonoBehaviour {
     origGauge = gauge;
     origGaugeShell = gaugeShell;
     origGaugeIcon = gaugeIcon;
+    origEnergyWidth = gauge.GetComponent<RectTransform>().sizeDelta.x;
   }
 
   void Update () {
@@ -123,7 +125,7 @@ public class EnergyManager : MonoBehaviour {
     lessDamageRate = CharacterManager.cm.damageGetScaleStandard;
 
     maxEnergy = CharacterManager.cm.maxEnergyStandard;
-    float changedWidth = gauge.GetComponent<RectTransform>().sizeDelta.x * maxEnergy / 100.0f;
+    float changedWidth = origEnergyWidth * maxEnergy / 100.0f;
     float height = gauge.GetComponent<RectTransform>().sizeDelta.y;
     gauge.GetComponent<RectTransform>().sizeDelta = new Vector2(changedWidth, height);
     gaugeShell.GetComponent<RectTransform>().sizeDelta = new Vector2(changedWidth, height);

@@ -359,4 +359,25 @@ on the beat of music ♫</value>
 	<data name="Tutorial_UseBooster" xml:space="preserve">
 		<value>USE BOOSTER</value>
 	</data>
+	<data name="CharacterName_schoolbus" xml:space="preserve">
+		<value>School Bus</value>
+	</data>
+	<data name="CharacterName_policecar" xml:space="preserve">
+		<value>Police Car</value>
+	</data>
+	<data name="CharacterName_rubberduck" xml:space="preserve">
+		<value>Rubber Duck</value>
+	</data>
+	<data name="CharacterName_elephant" xml:space="preserve">
+		<value>Elephant</value>
+	</data>
+	<data name="CharacterName_f16" xml:space="preserve">
+		<value>F16</value>
+	</data>
+	<data name="CharacterName_toybear" xml:space="preserve">
+		<value>Toy Bear</value>
+	</data>
+	<data name="CharacterName_pheonix" xml:space="preserve">
+		<value>Pheonix</value>
+	</data>
 </root>

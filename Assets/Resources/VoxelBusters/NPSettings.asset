@@ -178,6 +178,48 @@ MonoBehaviour:
       m_price: 0
       m_iosProductId: unlock_automode
       m_androidProductId: unlock_automode
+    - m_name: toy_schoolbus
+      m_description: toy_schoolbus
+      m_isConsumable: 0
+      m_price: 0
+      m_iosProductId: toy_schoolbus
+      m_androidProductId: toy_schoolbus
+    - m_name: toy_policecar
+      m_description: toy_policecar
+      m_isConsumable: 0
+      m_price: 0
+      m_iosProductId: toy_policecar
+      m_androidProductId: toy_policecar
+    - m_name: toy_rubberduck
+      m_description: toy_rubberduck
+      m_isConsumable: 0
+      m_price: 0
+      m_iosProductId: toy_rubberduck
+      m_androidProductId: toy_rubberduck
+    - m_name: toy_elephant
+      m_description: toy_elephant
+      m_isConsumable: 0
+      m_price: 0
+      m_iosProductId: toy_elephant
+      m_androidProductId: toy_elephant
+    - m_name: toy_f16
+      m_description: toy_f16
+      m_isConsumable: 0
+      m_price: 0
+      m_iosProductId: toy_f16
+      m_androidProductId: toy_f16
+    - m_name: toy_toybear
+      m_description: toy_toybear
+      m_isConsumable: 0
+      m_price: 0
+      m_iosProductId: toy_toybear
+      m_androidProductId: toy_toybear
+    - m_name: toy_pheonix
+      m_description: toy_pheonix
+      m_isConsumable: 0
+      m_price: 0
+      m_iosProductId: toy_pheonix
+      m_androidProductId: toy_pheonix
     m_iOS:
       m_supportsReceiptValidation: 0
       m_validateUsingServerURL: 

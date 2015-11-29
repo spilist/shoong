@@ -357,4 +357,25 @@
 	<data name="Tutorial_UseBooster" xml:space="preserve">
 		<value>ブースター使用</value>
 	</data>
+	<data name="CharacterName_schoolbus" xml:space="preserve">
+		<value />
+	</data>
+	<data name="CharacterName_policecar" xml:space="preserve">
+		<value />
+	</data>
+	<data name="CharacterName_rubberduck" xml:space="preserve">
+		<value />
+	</data>
+	<data name="CharacterName_elephant" xml:space="preserve">
+		<value />
+	</data>
+	<data name="CharacterName_f16" xml:space="preserve">
+		<value />
+	</data>
+	<data name="CharacterName_toybear" xml:space="preserve">
+		<value />
+	</data>
+	<data name="CharacterName_pheonix" xml:space="preserve">
+		<value />
+	</data>
 </root>

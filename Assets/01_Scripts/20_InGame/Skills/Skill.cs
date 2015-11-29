@@ -82,7 +82,7 @@ public class Skill : MonoBehaviour {
     description = LanguageManager.Instance.GetTextValue("SkillDescription_" + name);
   }
 
-  public bool hasDuration() {
+  virtual public bool hasDuration() {
     return duration > 0;
   }
 }

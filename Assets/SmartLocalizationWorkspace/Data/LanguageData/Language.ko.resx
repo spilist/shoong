@@ -146,6 +146,12 @@
 	<data name="CharacterName_dolphin" xml:space="preserve">
 		<value>우주 돌고래</value>
 	</data>
+	<data name="CharacterName_elephant" xml:space="preserve">
+		<value>코끼리</value>
+	</data>
+	<data name="CharacterName_f16" xml:space="preserve">
+		<value>F16</value>
+	</data>
 	<data name="CharacterName_fruits" xml:space="preserve">
 		<value>과일바구니</value>
 	</data>
@@ -167,14 +173,29 @@
 	<data name="CharacterName_paperplane" xml:space="preserve">
 		<value>종이비행기</value>
 	</data>
+	<data name="CharacterName_pheonix" xml:space="preserve">
+		<value>불사조</value>
+	</data>
+	<data name="CharacterName_policecar" xml:space="preserve">
+		<value>경찰차</value>
+	</data>
 	<data name="CharacterName_robotcat" xml:space="preserve">
 		<value>로봇고양이</value>
 	</data>
 	<data name="CharacterName_robotcogi" xml:space="preserve">
 		<value>로봇코기</value>
 	</data>
+	<data name="CharacterName_rubberduck" xml:space="preserve">
+		<value>고무오리</value>
+	</data>
+	<data name="CharacterName_schoolbus" xml:space="preserve">
+		<value>스쿨버스</value>
+	</data>
 	<data name="CharacterName_soju" xml:space="preserve">
 		<value>쐬주</value>
+	</data>
+	<data name="CharacterName_toybear" xml:space="preserve">
+		<value>곰돌이</value>
 	</data>
 	<data name="CharacterName_toyrobot" xml:space="preserve">
 		<value>장난감 로봇</value>
