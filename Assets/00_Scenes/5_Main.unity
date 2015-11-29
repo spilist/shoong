@@ -21110,8 +21110,8 @@ MonoBehaviour:
   boosterPlusSpeed: 2
   boosterMaxSpeed: 2
   boosterSpeedDecrease: 2
-  energyReduceOnTime: 1
-  maxEnergy: 1
+  energyReduceOnTime: 2
+  maxEnergy: 0
   reboundDistance: 2
   damageGet: 0
   bestX: -10
@@ -23155,8 +23155,8 @@ MonoBehaviour:
   boosterMaxSpeeds: 0a0000000500000000000000fbfffffff6ffffff
   boosterSpeedDecreaseStandard: 50
   boosterSpeedDecreases: 280000001400000000000000f6ffffffecffffff
-  energyReduceOnTimeStandard: 9
-  energyReduceOnTimes: ecfffffff6ffffff000000000a00000014000000
+  energyReduceOnTimeStandard: 6
+  energyReduceOnTimes: f6fffffffbffffff00000000050000000a000000
   maxEnergyStandard: 100
   maxEnergys: 280000001400000000000000f6ffffffecffffff
   reboundTimeScaleStandard: 1
@@ -42768,7 +42768,7 @@ MonoBehaviour:
   boosterMaxSpeed: 2
   boosterSpeedDecrease: 4
   energyReduceOnTime: 2
-  maxEnergy: 1
+  maxEnergy: 0
   reboundDistance: 4
   damageGet: 2
   bestX: 0
@@ -45725,7 +45725,7 @@ MonoBehaviour:
   minSpawnInterval: 8
   maxSpawnInterval: 12
   cubesByEncounter: 5
-  energyGets: 10
+  energyGets: 11
   numSweetsPop: 0
   isNegative: 0
   hasEncounterEffect: 0
@@ -45789,7 +45789,7 @@ MonoBehaviour:
   hasEncounterEffect: 0
   destroyWhenCollideSelf: 0
   instance: {fileID: 0}
-  loseEnergyWhenEncounter: 25
+  loseEnergyWhenEncounter: 40
   bounceDuration: .300000012
   hasLevel: 0
   nameForLevel: 
@@ -46141,7 +46141,7 @@ MonoBehaviour:
   minSpawnInterval: 8
   maxSpawnInterval: 12
   cubesByEncounter: 5
-  energyGets: 10
+  energyGets: 11
   numSweetsPop: 0
   isNegative: 0
   hasEncounterEffect: 1
@@ -46205,7 +46205,7 @@ MonoBehaviour:
   minSpawnInterval: 0
   maxSpawnInterval: 0
   cubesByEncounter: 5
-  energyGets: 10
+  energyGets: 11
   numSweetsPop: 0
   isNegative: 0
   hasEncounterEffect: 0
@@ -46588,7 +46588,7 @@ MonoBehaviour:
   shootLaserPer: 4
   chargeTime: .400000006
   offScreenSpeedScale: .5
-  laserLoseEnergy: 65
+  laserLoseEnergy: 75
   laserRadius: 20
   laserLength: 500
   laserShootingDuration: .100000001
@@ -46673,7 +46673,7 @@ MonoBehaviour:
   hasEncounterEffect: 0
   destroyWhenCollideSelf: 0
   instance: {fileID: 0}
-  loseEnergyWhenEncounter: 20
+  loseEnergyWhenEncounter: 25
   bounceDuration: .150000006
   hasLevel: 0
   nameForLevel: 

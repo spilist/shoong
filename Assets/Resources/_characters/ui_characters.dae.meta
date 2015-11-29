@@ -32,6 +32,13 @@ ModelImporter:
     100048: ui_goldpig
     100050: ui_toyrobot
     100052: ui_ghost
+    100054: ui_elephant
+    100056: ui_f16
+    100058: ui_pheonix
+    100060: ui_policecar
+    100062: ui_rubberduck
+    100064: ui_schoolbus
+    100066: ui_toybear
     400000: ui_bender
     400002: ui_butterfly
     400004: ui_cat
@@ -59,6 +66,13 @@ ModelImporter:
     400048: ui_goldpig
     400050: ui_toyrobot
     400052: ui_ghost
+    400054: ui_elephant
+    400056: ui_f16
+    400058: ui_pheonix
+    400060: ui_policecar
+    400062: ui_rubberduck
+    400064: ui_schoolbus
+    400066: ui_toybear
     2300000: ui_bender
     2300002: ui_butterfly
     2300004: ui_cat
@@ -85,6 +99,13 @@ ModelImporter:
     2300046: ui_goldpig
     2300048: ui_toyrobot
     2300050: ui_ghost
+    2300052: ui_elephant
+    2300054: ui_f16
+    2300056: ui_pheonix
+    2300058: ui_policecar
+    2300060: ui_rubberduck
+    2300062: ui_schoolbus
+    2300064: ui_toybear
     3300000: ui_bender
     3300002: ui_butterfly
     3300004: ui_cat
@@ -111,6 +132,13 @@ ModelImporter:
     3300046: ui_goldpig
     3300048: ui_toyrobot
     3300050: ui_ghost
+    3300052: ui_elephant
+    3300054: ui_f16
+    3300056: ui_pheonix
+    3300058: ui_policecar
+    3300060: ui_rubberduck
+    3300062: ui_schoolbus
+    3300064: ui_toybear
     4300000: ui_cat
     4300002: ui_crab
     4300004: ui_bender
@@ -137,6 +165,13 @@ ModelImporter:
     4300046: ui_goldpig
     4300048: ui_toyrobot
     4300050: ui_ghost
+    4300052: ui_rubberduck
+    4300054: ui_toybear
+    4300056: ui_policecar
+    4300058: ui_schoolbus
+    4300060: ui_pheonix
+    4300062: ui_f16
+    4300064: ui_elephant
     9500000: //RootNode
   materials:
     importMaterials: 1

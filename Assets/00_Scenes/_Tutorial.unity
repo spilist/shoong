@@ -18604,7 +18604,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 995117313}
-  m_LocalRotation: {x: -.190690339, y: .774532139, z: .539343238, w: -.269899786}
+  m_LocalRotation: {x: -.190690368, y: .774532259, z: .539343297, w: -.269899815}
   m_LocalPosition: {x: -148.834641, y: -491.899872, z: -62.4409447}
   m_LocalScale: {x: 1.6000005, y: 1.599998, z: 1.6000011}
   m_Children: []
@@ -22104,8 +22104,8 @@ MonoBehaviour:
   boosterMaxSpeeds: 0a0000000500000000000000fbfffffff6ffffff
   boosterSpeedDecreaseStandard: 50
   boosterSpeedDecreases: 280000001400000000000000f6ffffffecffffff
-  energyReduceOnTimeStandard: 9
-  energyReduceOnTimes: ecfffffff6ffffff000000000a00000014000000
+  energyReduceOnTimeStandard: 6
+  energyReduceOnTimes: f6fffffffbffffff00000000050000000a000000
   maxEnergyStandard: 100
   maxEnergys: 280000001400000000000000f6ffffffecffffff
   reboundTimeScaleStandard: 1
@@ -42254,7 +42254,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1878833774}
-  m_LocalRotation: {x: -.190690339, y: .774532259, z: .539343297, w: -.269899786}
+  m_LocalRotation: {x: -.190690309, y: .774532139, z: .539343238, w: -.269899756}
   m_LocalPosition: {x: -137.134644, y: -449.999878, z: -71.4410858}
   m_LocalScale: {x: 2.50000119, y: 2.4999969, z: 2.50000167}
   m_Children: []
@@ -42283,7 +42283,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1878977605}
-  m_LocalRotation: {x: -.190690339, y: .774532259, z: .539343297, w: -.269899786}
+  m_LocalRotation: {x: -.190690309, y: .774532139, z: .539343238, w: -.269899756}
   m_LocalPosition: {x: -151.034637, y: -430.999878, z: -92.541153}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -47554,7 +47554,7 @@ MonoBehaviour:
   minSpawnInterval: 8
   maxSpawnInterval: 12
   cubesByEncounter: 5
-  energyGets: 10
+  energyGets: 11
   numSweetsPop: 0
   isNegative: 0
   hasEncounterEffect: 0
@@ -47618,7 +47618,7 @@ MonoBehaviour:
   hasEncounterEffect: 0
   destroyWhenCollideSelf: 0
   instance: {fileID: 0}
-  loseEnergyWhenEncounter: 25
+  loseEnergyWhenEncounter: 40
   bounceDuration: .300000012
   hasLevel: 0
   nameForLevel: 
@@ -47970,7 +47970,7 @@ MonoBehaviour:
   minSpawnInterval: 8
   maxSpawnInterval: 12
   cubesByEncounter: 5
-  energyGets: 10
+  energyGets: 11
   numSweetsPop: 0
   isNegative: 0
   hasEncounterEffect: 1
@@ -48034,7 +48034,7 @@ MonoBehaviour:
   minSpawnInterval: 0
   maxSpawnInterval: 0
   cubesByEncounter: 5
-  energyGets: 10
+  energyGets: 11
   numSweetsPop: 0
   isNegative: 0
   hasEncounterEffect: 0
@@ -48417,7 +48417,7 @@ MonoBehaviour:
   shootLaserPer: 4
   chargeTime: .400000006
   offScreenSpeedScale: .5
-  laserLoseEnergy: 65
+  laserLoseEnergy: 75
   laserRadius: 20
   laserLength: 500
   laserShootingDuration: .100000001
@@ -48502,7 +48502,7 @@ MonoBehaviour:
   hasEncounterEffect: 0
   destroyWhenCollideSelf: 0
   instance: {fileID: 0}
-  loseEnergyWhenEncounter: 20
+  loseEnergyWhenEncounter: 25
   bounceDuration: .150000006
   hasLevel: 0
   nameForLevel: 

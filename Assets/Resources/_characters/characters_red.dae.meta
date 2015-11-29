@@ -30,6 +30,13 @@ ModelImporter:
     100044: goldpig_1
     100046: ghost_1
     100048: soju_2
+    100050: elephant_1
+    100052: f16_1
+    100054: pheonix_1
+    100056: policecar_1
+    100058: rubberduck_1
+    100060: schoolbus_1
+    100062: toybear_1
     400000: bender_1
     400002: butterfly_1
     400004: cat_1
@@ -55,6 +62,13 @@ ModelImporter:
     400044: goldpig_1
     400046: ghost_1
     400048: soju_2
+    400050: elephant_1
+    400052: f16_1
+    400054: pheonix_1
+    400056: policecar_1
+    400058: rubberduck_1
+    400060: schoolbus_1
+    400062: toybear_1
     2300000: bender_1
     2300002: butterfly_1
     2300004: cat_1
@@ -79,6 +93,13 @@ ModelImporter:
     2300042: goldpig_1
     2300044: ghost_1
     2300046: soju_2
+    2300048: elephant_1
+    2300050: f16_1
+    2300052: pheonix_1
+    2300054: policecar_1
+    2300056: rubberduck_1
+    2300058: schoolbus_1
+    2300060: toybear_1
     3300000: bender_1
     3300002: butterfly_1
     3300004: cat_1
@@ -103,6 +124,13 @@ ModelImporter:
     3300042: goldpig_1
     3300044: ghost_1
     3300046: soju_2
+    3300048: elephant_1
+    3300050: f16_1
+    3300052: pheonix_1
+    3300054: policecar_1
+    3300056: rubberduck_1
+    3300058: schoolbus_1
+    3300060: toybear_1
     4300000: cat_1
     4300002: crab_1
     4300004: bender_1
@@ -127,6 +155,13 @@ ModelImporter:
     4300042: goldpig_1
     4300044: ghost_1
     4300046: soju_2
+    4300048: rubberduck_1
+    4300050: toybear_1
+    4300052: policecar_1
+    4300054: schoolbus_1
+    4300056: pheonix_1
+    4300058: f16_1
+    4300060: elephant_1
     9500000: //RootNode
   materials:
     importMaterials: 1

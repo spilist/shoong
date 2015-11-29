@@ -34,6 +34,13 @@ ModelImporter:
     100052: wilson
     100054: goldpig
     100056: ghost
+    100058: elephant
+    100060: f16
+    100062: pheonix
+    100064: policecar
+    100066: rubberduck
+    100068: schoolbus
+    100070: toybear
     400000: bender
     400002: butterfly
     400004: cat
@@ -63,6 +70,13 @@ ModelImporter:
     400052: wilson
     400054: goldpig
     400056: ghost
+    400058: elephant
+    400060: f16
+    400062: pheonix
+    400064: policecar
+    400066: rubberduck
+    400068: schoolbus
+    400070: toybear
     2300000: bender
     2300002: butterfly
     2300004: cat
@@ -91,6 +105,13 @@ ModelImporter:
     2300050: wilson
     2300052: goldpig
     2300054: ghost
+    2300056: elephant
+    2300058: f16
+    2300060: pheonix
+    2300062: policecar
+    2300064: rubberduck
+    2300066: schoolbus
+    2300068: toybear
     3300000: bender
     3300002: butterfly
     3300004: cat
@@ -119,6 +140,13 @@ ModelImporter:
     3300050: wilson
     3300052: goldpig
     3300054: ghost
+    3300056: elephant
+    3300058: f16
+    3300060: pheonix
+    3300062: policecar
+    3300064: rubberduck
+    3300066: schoolbus
+    3300068: toybear
     4300000: cat
     4300002: crab
     4300004: bender
@@ -147,6 +175,13 @@ ModelImporter:
     4300050: robotcat
     4300052: goldpig
     4300054: ghost
+    4300056: rubberduck
+    4300058: toybear
+    4300060: policecar
+    4300062: schoolbus
+    4300064: pheonix
+    4300066: f16
+    4300068: elephant
     9500000: //RootNode
   materials:
     importMaterials: 1
