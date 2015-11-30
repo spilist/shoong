@@ -81,8 +81,8 @@ public class CharacterManager : MonoBehaviour {
   }
 
   IEnumerator randomCharacter() {
-    int index = 0;
     Transform characters = transform.Find("Characters");
+    int index = Random.Range(0, characters.childCount);
     while(true) {
       setMesh(characters.GetChild(index).name);
       yield return new WaitForSeconds(0.15f);

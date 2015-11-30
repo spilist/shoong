@@ -245,8 +245,9 @@
 	<data name="GameOver_ThanksForRating" xml:space="preserve">
 		<value>                 평가해주셔서 감사합니다!</value>
 	</data>
-	<data name="Help_AutoBoosterUsage" xml:space="preserve">
-		<value>자동 리듬 모드를 써보세요!</value>
+	<data name="Help_TryRandom" xml:space="preserve">
+		<value>랜덤 캐릭터로 플레이하고
+코인을 얻으세요!</value>
 	</data>
 	<data name="Notification_FreeGift" xml:space="preserve">
 		<value>무료 선물을 받으세요!!</value>

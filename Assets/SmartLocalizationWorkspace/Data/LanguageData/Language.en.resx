@@ -245,8 +245,9 @@
 	<data name="GameOver_ThanksForRating" xml:space="preserve">
 		<value>            THANKS FOR RATING</value>
 	</data>
-	<data name="Help_AutoBoosterUsage" xml:space="preserve">
-		<value>Use Auto Beat!</value>
+	<data name="Help_TryRandom" xml:space="preserve">
+		<value>Try random toys 
+and get free coins!</value>
 	</data>
 	<data name="Notification_FreeGift" xml:space="preserve">
 		<value>Collect Free Gift!!</value>

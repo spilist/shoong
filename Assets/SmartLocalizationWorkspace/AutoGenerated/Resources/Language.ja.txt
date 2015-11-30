@@ -245,8 +245,9 @@
 	<data name="GameOver_ThanksForRating" xml:space="preserve">
 		<value>                 評価していただいてありがとうございます！</value>
 	</data>
-	<data name="Help_AutoBoosterUsage" xml:space="preserve">
-		<value>自動モードを使ってください</value>
+	<data name="Help_TryRandom" xml:space="preserve">
+		<value>ランダムキャラクターと
+無料のコインを取得!</value>
 	</data>
 	<data name="Notification_FreeGift" xml:space="preserve">
 		<value>無料ギフトをどうぞ！！</value>

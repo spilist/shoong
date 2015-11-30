@@ -10,6 +10,7 @@ public class RandomPlayButton : OnOffButton {
   private int dailyRandomAvailable;
   public Text randomCountText;
   public Text timeText;
+  public GameObject helpText;
 
   public GameObject activeObjects;
   public GameObject inactiveObjects;
@@ -19,10 +20,16 @@ public class RandomPlayButton : OnOffButton {
 
     if (DataManager.dm.isAnotherDay("LastRandomPlayTime")) {
       DataManager.dm.setInt(settingName + "Available", 3);
+      dailyRandomAvailable = 3;
+    } else {
+      dailyRandomAvailable = DataManager.dm.getInt(settingName + "Available");
     }
 
-    dailyRandomAvailable = DataManager.dm.getInt(settingName + "Available");
     randomCountText.text = dailyRandomAvailable + "/3";
+
+    if (dailyRandomAvailable == 3) {
+      helpText.SetActive(true);
+    }
   }
 
   void OnEnable() {
