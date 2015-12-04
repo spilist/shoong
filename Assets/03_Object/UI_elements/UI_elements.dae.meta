@@ -63,6 +63,14 @@ ModelImporter:
     100110: button_automode_unlock
     100112: button_blank_grey_leftright_longer
     100114: time_icon
+    100116: button_auto
+    100118: button_grey_auto
+    100120: button_grey_blank_narrow_short
+    100122: button_grey_narrow_long
+    100124: random_character_icon
+    100126: button_ranking_1
+    100128: button_ranking_a
+    100130: button_ranking_r
     400000: active_object
     400002: button_back
     400004: button_blank_leftright
@@ -121,6 +129,14 @@ ModelImporter:
     400110: button_automode_unlock
     400112: button_blank_grey_leftright_longer
     400114: time_icon
+    400116: button_auto
+    400118: button_grey_auto
+    400120: button_grey_blank_narrow_short
+    400122: button_grey_narrow_long
+    400124: random_character_icon
+    400126: button_ranking_1
+    400128: button_ranking_a
+    400130: button_ranking_r
     2300000: active_object
     2300002: button_back
     2300004: button_blank_leftright
@@ -178,6 +194,14 @@ ModelImporter:
     2300108: button_automode_unlock
     2300110: button_blank_grey_leftright_longer
     2300112: time_icon
+    2300114: button_auto
+    2300116: button_grey_auto
+    2300118: button_grey_blank_narrow_short
+    2300120: button_grey_narrow_long
+    2300122: random_character_icon
+    2300124: button_ranking_1
+    2300126: button_ranking_a
+    2300128: button_ranking_r
     3300000: active_object
     3300002: button_back
     3300004: button_blank_leftright
@@ -235,6 +259,14 @@ ModelImporter:
     3300108: button_automode_unlock
     3300110: button_blank_grey_leftright_longer
     3300112: time_icon
+    3300114: button_auto
+    3300116: button_grey_auto
+    3300118: button_grey_blank_narrow_short
+    3300120: button_grey_narrow_long
+    3300122: random_character_icon
+    3300124: button_ranking_1
+    3300126: button_ranking_a
+    3300128: button_ranking_r
     4300000: button_back
     4300002: button_select
     4300004: button_character
@@ -292,6 +324,14 @@ ModelImporter:
     4300108: button_automode_unlock
     4300110: button_blank_grey_leftright_longer
     4300112: time_icon
+    4300114: random_character_icon
+    4300116: button_grey_narrow_long
+    4300118: button_grey_blank_narrow_short
+    4300120: button_auto
+    4300122: button_grey_auto
+    4300124: button_ranking_1
+    4300126: button_ranking_r
+    4300128: button_ranking_a
     9500000: //RootNode
   materials:
     importMaterials: 1

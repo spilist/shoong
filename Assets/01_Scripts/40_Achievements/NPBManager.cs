@@ -74,10 +74,9 @@ public class NPBManager : MonoBehaviour {
     });
   }
 
-  public void showRankingUI(System.Action<string> onCompletion) {
+  public void showRankingUI(string rankingId, System.Action<string> onCompletion) {
     NPBinding.GameServices.ShowLeaderboardUIWithGlobalID
-      ( AchievementManager.LB_SINGLE,
-        eLeaderboardTimeScope.ALL_TIME,
+      ( rankingId, eLeaderboardTimeScope.ALL_TIME,
         (string _error)=>{
           if(_error != null) {
             Debug.Log("Closed leaderboard UI.");
