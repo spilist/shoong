@@ -6,7 +6,7 @@ using SynchronizerData;
 
 public class RhythmManager : MonoBehaviour {
   public static RhythmManager rm;
-  public AutoBoosterButton abb;
+  // public AutoBoosterButton abb;
   public Transform rhythmRings;
   public GameObject normalRing;
   public GameObject skillRing;
@@ -187,7 +187,8 @@ public class RhythmManager : MonoBehaviour {
 
 	void invokeRing() {
     if (!gameStarted || numSkillInLoop == 0) {
-      getRing(normalRingPool, normalRing);
+      Player.pl.shootBooster();
+      // getRing(normalRingPool, normalRing);
     } else if (!feverTime) {
       rem = ringCount % (numNormalInLoop + numSkillInLoop);
 
@@ -198,10 +199,13 @@ public class RhythmManager : MonoBehaviour {
         }
       }
 
+      Player.pl.shootBooster();
       if (rem < numNormalInLoop) {
-        getRing(normalRingPool, normalRing);
+        isSkillOK = false;
+        // getRing(normalRingPool, normalRing);
       } else {
-        getRing(skillRingPool, skillRing);
+        isSkillOK = true;
+        // getRing(skillRingPool, skillRing);
       }
       ringCount++;
     }
@@ -283,7 +287,8 @@ public class RhythmManager : MonoBehaviour {
       isSkillOK = false;
       turnBoostOK(false);
 
-      if (abb != null && abb.isOn()) StartCoroutine("autoFeverBooster");
+      StartCoroutine("autoFeverBooster");
+      // if (abb != null && abb.isOn()) StartCoroutine("autoFeverBooster");
     } else {
       StopCoroutine("autoFeverBooster");
     }

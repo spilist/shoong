@@ -78,8 +78,9 @@ public class CubeManager : MonoBehaviour {
   }
 
   public int getBonus() {
-    if (difficult) return (int)Mathf.Floor(getCount() * noAutoBonus);
-    else return 0;
+    return 0;
+    // if (difficult) return (int)Mathf.Floor(getCount() * noAutoBonus);
+    // else return 0;
   }
 
   public void setDifficulty(bool val) {

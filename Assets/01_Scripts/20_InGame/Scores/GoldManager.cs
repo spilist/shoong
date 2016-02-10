@@ -8,7 +8,7 @@ public class GoldManager : MonoBehaviour {
   public GoldenCubeManager gcm;
   public Transform ingameCollider;
   public Transform ingameUI;
-  public AutoBoosterButton abb;
+  // public AutoBoosterButton abb;
   public Text goldIdle;
   public Text goldText;
   public ParticleSystem getEffect;
