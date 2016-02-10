@@ -202,6 +202,8 @@ MonoBehaviour:
       m_type: 4
     - m_name: _Illum
       m_type: 4
+    - m_name: _Emission
+      m_type: 3
   - m_name: Legacy Shaders/Self-Illumin/Diffuse
     m_propertyList:
     - m_name: _Color
@@ -210,6 +212,8 @@ MonoBehaviour:
       m_type: 4
     - m_name: _Illum
       m_type: 4
+    - m_name: _Emission
+      m_type: 3
   - m_name: Legacy Shaders/Self-Illumin/Bumped Diffuse
     m_propertyList:
     - m_name: _Color
@@ -220,6 +224,8 @@ MonoBehaviour:
       m_type: 4
     - m_name: _BumpMap
       m_type: 4
+    - m_name: _Emission
+      m_type: 3
   - m_name: Legacy Shaders/Self-Illumin/Specular
     m_propertyList:
     - m_name: _Color
@@ -232,6 +238,8 @@ MonoBehaviour:
       m_type: 4
     - m_name: _Illum
       m_type: 4
+    - m_name: _Emission
+      m_type: 3
   - m_name: Legacy Shaders/Self-Illumin/Bumped Specular
     m_propertyList:
     - m_name: _Color
@@ -246,6 +254,8 @@ MonoBehaviour:
       m_type: 4
     - m_name: _BumpMap
       m_type: 4
+    - m_name: _Emission
+      m_type: 3
   - m_name: Legacy Shaders/Reflective/VertexLit
     m_propertyList:
     - m_name: _Color
@@ -484,6 +494,8 @@ MonoBehaviour:
       m_type: 4
     - m_name: _ParallaxMap
       m_type: 4
+    - m_name: _Emission
+      m_type: 3
   - m_name: Legacy Shaders/Self-Illumin/Parallax Specular
     m_propertyList:
     - m_name: _Color
@@ -502,6 +514,8 @@ MonoBehaviour:
       m_type: 4
     - m_name: _ParallaxMap
       m_type: 4
+    - m_name: _Emission
+      m_type: 3
   - m_name: Legacy Shaders/Reflective/Parallax Diffuse
     m_propertyList:
     - m_name: _Color
@@ -618,6 +632,8 @@ MonoBehaviour:
       m_type: 4
   - m_name: Skybox/Procedural
     m_propertyList:
+    - m_name: _SunDisk
+      m_type: 2
     - m_name: _SunSize
       m_type: 3
     - m_name: _AtmosphereThickness
@@ -1288,6 +1304,8 @@ MonoBehaviour:
     m_propertyList:
     - m_name: _MainTex
       m_type: 4
+    - m_name: _Color
+      m_type: 0
     - m_name: _StencilComp
       m_type: 2
     - m_name: _Stencil
@@ -1302,10 +1320,10 @@ MonoBehaviour:
       m_type: 2
   - m_name: UI/Unlit/Detail
     m_propertyList:
-    - m_name: _Color
-      m_type: 0
     - m_name: _MainTex
       m_type: 4
+    - m_name: _Color
+      m_type: 0
     - m_name: _DetailTex
       m_type: 4
     - m_name: _Strength
@@ -1324,10 +1342,10 @@ MonoBehaviour:
       m_type: 2
   - m_name: UI/Unlit/Text
     m_propertyList:
-    - m_name: _Color
-      m_type: 0
     - m_name: _MainTex
       m_type: 4
+    - m_name: _Color
+      m_type: 0
     - m_name: _StencilComp
       m_type: 2
     - m_name: _Stencil
@@ -1342,10 +1360,10 @@ MonoBehaviour:
       m_type: 2
   - m_name: UI/Unlit/Text Detail
     m_propertyList:
-    - m_name: _Color
-      m_type: 0
     - m_name: _MainTex
       m_type: 4
+    - m_name: _Color
+      m_type: 0
     - m_name: _DetailTex
       m_type: 4
     - m_name: _Strength
@@ -1364,12 +1382,12 @@ MonoBehaviour:
       m_type: 2
   - m_name: UI/Lit/Transparent
     m_propertyList:
+    - m_name: _MainTex
+      m_type: 4
     - m_name: _Color
       m_type: 0
     - m_name: _Specular
       m_type: 0
-    - m_name: _MainTex
-      m_type: 4
     - m_name: _StencilComp
       m_type: 2
     - m_name: _Stencil
@@ -1436,7 +1454,7 @@ MonoBehaviour:
       m_type: 2
     - m_name: _ColorMask
       m_type: 2
-  - m_name: UI/Lit/Refraction (Pro Only)
+  - m_name: UI/Lit/Refraction
     m_propertyList:
     - m_name: _Color
       m_type: 0
@@ -1464,7 +1482,7 @@ MonoBehaviour:
       m_type: 2
     - m_name: _ColorMask
       m_type: 2
-  - m_name: UI/Lit/Refraction Detail (Pro Only)
+  - m_name: UI/Lit/Refraction Detail
     m_propertyList:
     - m_name: _Color
       m_type: 0
@@ -1654,8 +1672,6 @@ MonoBehaviour:
       m_type: 1
     - m_name: _ImageTexCoords31
       m_type: 1
-    - m_name: _InstanceData
-      m_type: 1
   - m_name: Hidden/GIDebug/TextureUV
     m_propertyList:
     - m_name: _MainTex
@@ -1692,6 +1708,12 @@ MonoBehaviour:
       m_type: 4
     - m_name: _value
       m_type: 3
+  - m_name: Hidden/Internal-DeferredReflections
+    m_propertyList:
+    - m_name: _SrcBlend
+      m_type: 2
+    - m_name: _DstBlend
+      m_type: 2
   - m_name: Hidden/InternalErrorShader
     m_propertyList: []
   - m_name: Hidden/Camera-DepthNormalTexture
@@ -1772,6 +1794,10 @@ MonoBehaviour:
       m_type: 0
     - m_name: PixelSnap
       m_type: 2
+  - m_name: Hidden/BlitScaleCopy
+    m_propertyList:
+    - m_name: _MainTex
+      m_type: 4
   - m_name: FX/Glass/Stained BumpDistort
     m_propertyList:
     - m_name: _BumpAmt

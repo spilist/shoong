@@ -71,6 +71,8 @@ public class RhythmManager : MonoBehaviour {
   public GameObject feverPanel;
   private bool canBeMissed;
 
+  public GameObject useSkillParticle;
+
 	void Awake() {
     rm = this;
     beatObserver = GetComponent<BeatObserver>();
@@ -192,6 +194,13 @@ public class RhythmManager : MonoBehaviour {
     } else if (!feverTime) {
       rem = ringCount % (numNormalInLoop + numSkillInLoop);
 
+      // skill 나오기 전 파티클
+      if (rem + 1 == numNormalInLoop) {
+        useSkillParticle.SetActive(true);
+      } else {
+        useSkillParticle.SetActive(false);
+      }
+
       if (rem == 1 && skillActivated && numSkillInLoop > 0) {
         if (!SkillManager.sm.current().hasDuration()) {
           skillActivated = false;
@@ -199,7 +208,6 @@ public class RhythmManager : MonoBehaviour {
         }
       }
 
-      Player.pl.shootBooster();
       if (rem < numNormalInLoop) {
         isSkillOK = false;
         // getRing(normalRingPool, normalRing);
@@ -207,6 +215,7 @@ public class RhythmManager : MonoBehaviour {
         isSkillOK = true;
         // getRing(skillRingPool, skillRing);
       }
+      Player.pl.shootBooster();
       ringCount++;
     }
   }
@@ -281,7 +290,7 @@ public class RhythmManager : MonoBehaviour {
 
   public void setFever(bool val) {
     feverTime = val;
-    feverPanel.SetActive(val);
+    // feverPanel.SetActive(val);
 
     if (val) {
       isSkillOK = false;
@@ -293,7 +302,7 @@ public class RhythmManager : MonoBehaviour {
       StopCoroutine("autoFeverBooster");
     }
 
-    boostImage.gameObject.SetActive(!val);
+    // boostImage.gameObject.SetActive(!val);
   }
 
   IEnumerator autoFeverBooster() {
