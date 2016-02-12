@@ -6,7 +6,7 @@ using SynchronizerData;
 
 public class RhythmManager : MonoBehaviour {
   public static RhythmManager rm;
-  public AutoBoosterButton abb;
+  // public AutoBoosterButton abb;
   public Transform rhythmRings;
   public GameObject normalRing;
   public GameObject skillRing;
@@ -70,6 +70,8 @@ public class RhythmManager : MonoBehaviour {
   public GameObject justSpawned;
   public GameObject feverPanel;
   private bool canBeMissed;
+
+  public GameObject useSkillParticle;
 
 	void Awake() {
     rm = this;
@@ -187,9 +189,17 @@ public class RhythmManager : MonoBehaviour {
 
 	void invokeRing() {
     if (!gameStarted || numSkillInLoop == 0) {
-      getRing(normalRingPool, normalRing);
+      Player.pl.shootBooster();
+      // getRing(normalRingPool, normalRing);
     } else if (!feverTime) {
       rem = ringCount % (numNormalInLoop + numSkillInLoop);
+
+      // skill 나오기 전 파티클
+      if (rem + 1 == numNormalInLoop) {
+        useSkillParticle.SetActive(true);
+      } else {
+        useSkillParticle.SetActive(false);
+      }
 
       if (rem == 1 && skillActivated && numSkillInLoop > 0) {
         if (!SkillManager.sm.current().hasDuration()) {
@@ -199,10 +209,13 @@ public class RhythmManager : MonoBehaviour {
       }
 
       if (rem < numNormalInLoop) {
-        getRing(normalRingPool, normalRing);
+        isSkillOK = false;
+        // getRing(normalRingPool, normalRing);
       } else {
-        getRing(skillRingPool, skillRing);
+        isSkillOK = true;
+        // getRing(skillRingPool, skillRing);
       }
+      Player.pl.shootBooster();
       ringCount++;
     }
   }
@@ -277,18 +290,19 @@ public class RhythmManager : MonoBehaviour {
 
   public void setFever(bool val) {
     feverTime = val;
-    feverPanel.SetActive(val);
+    // feverPanel.SetActive(val);
 
     if (val) {
       isSkillOK = false;
       turnBoostOK(false);
 
-      if (abb != null && abb.isOn()) StartCoroutine("autoFeverBooster");
+      StartCoroutine("autoFeverBooster");
+      // if (abb != null && abb.isOn()) StartCoroutine("autoFeverBooster");
     } else {
       StopCoroutine("autoFeverBooster");
     }
 
-    boostImage.gameObject.SetActive(!val);
+    // boostImage.gameObject.SetActive(!val);
   }
 
   IEnumerator autoFeverBooster() {

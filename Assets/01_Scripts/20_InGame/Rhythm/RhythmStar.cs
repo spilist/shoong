@@ -51,7 +51,7 @@ public class RhythmStar : MonoBehaviour {
     image.color = originalColor;
     posX = startPosX;
     color = originalColor;
-    alpha = 1;
+    alpha = 0;
     maxMsgSended = false;
     minMsgSended = false;
     disappearing = false;
@@ -94,7 +94,7 @@ public class RhythmStar : MonoBehaviour {
       if (!rightMsgSended && posX >= rightBeatPosX) {
         rightMsgSended = true;
 
-        if (RhythmManager.rm.abb != null && RhythmManager.rm.abb.isOn()) Player.pl.shootBooster();
+        Player.pl.shootBooster();
         // image.enabled = false;
         // RhythmManager.rm.afterRing(true);
       }
@@ -114,7 +114,7 @@ public class RhythmStar : MonoBehaviour {
 
   public void success() {
     disappearing = true;
-    particle.Play();
-    if (audioSource != null && audioSource.enabled) audioSource.Play();
+    // particle.Play();
+    // if (audioSource != null && audioSource.enabled) audioSource.Play();
   }
 }

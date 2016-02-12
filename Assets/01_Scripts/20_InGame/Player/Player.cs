@@ -304,13 +304,13 @@ public class Player : MonoBehaviour {
   public void shootBooster(){
     if (stopping || uncontrollable()) return;
 
-    if (RhythmManager.rm.canBoost()) {
+    // if (RhythmManager.rm.canBoost()) {
       numBoosters++;
       DataManager.dm.increment("TotalBoosters");
 
-      if (useBoosterText != null && useBoosterText.gameObject.activeInHierarchy) {
-        useBoosterText.increment();
-      }
+      // if (useBoosterText != null && useBoosterText.gameObject.activeInHierarchy) {
+        // useBoosterText.increment();
+      // }
 
       if (RhythmManager.rm.isSkillOK) {
         SkillManager.sm.activate();
@@ -319,11 +319,11 @@ public class Player : MonoBehaviour {
         }
       }
 
-      RhythmManager.rm.ringSuccessed();
-    } else {
-      RhythmManager.rm.ringMissed();
-      return;
-    }
+      // RhythmManager.rm.ringSuccessed();
+    // } else {
+      // RhythmManager.rm.ringMissed();
+      // return;
+    // }
 
     timeSpaned = 0;
 

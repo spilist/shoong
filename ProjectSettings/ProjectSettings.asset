@@ -7,6 +7,10 @@ PlayerSettings:
   AndroidProfiler: 0
   defaultScreenOrientation: 4
   targetDevice: 2
+<<<<<<< HEAD
+=======
+  targetResolution: 0
+>>>>>>> a6ce5fdde6ab4e0a62b30898ba1212ac5aea6177
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: Morogoro
@@ -63,12 +67,18 @@ PlayerSettings:
   xboxSpeechDB: 0
   xboxEnableHeadOrientation: 0
   xboxEnableGuest: 0
+<<<<<<< HEAD
   xboxEnablePIXSampling: 0
   n3dsDisableStereoscopicView: 0
   n3dsEnableSharedListOpt: 1
   n3dsEnableVSync: 0
   uiUse16BitDepthBuffer: 0
   ignoreAlphaClear: 0
+=======
+  n3dsDisableStereoscopicView: 0
+  n3dsEnableSharedListOpt: 1
+  n3dsEnableVSync: 0
+>>>>>>> a6ce5fdde6ab4e0a62b30898ba1212ac5aea6177
   xboxOneResolution: 0
   ps3SplashScreen: {fileID: 0}
   videoMemoryForVertexBuffers: 0
@@ -273,12 +283,18 @@ PlayerSettings:
   playerPrefsSupport: 0
   ps4ReprojectionSupport: 0
   ps4UseAudio3dBackend: 0
+<<<<<<< HEAD
   ps4SocialScreenEnabled: 0
   ps4Audio3dVirtualSpeakerCount: 14
   ps4attribCpuUsage: 0
   ps4PatchPkgPath: 
   ps4PatchLatestPkgPath: 
   ps4PatchChangeinfoPath: 
+=======
+  ps4Audio3dVirtualSpeakerCount: 14
+  ps4attribCpuUsage: 0
+  ps4SocialScreenEnabled: 0
+>>>>>>> a6ce5fdde6ab4e0a62b30898ba1212ac5aea6177
   ps4attribUserManagement: 0
   ps4attribMoveSupport: 0
   ps4attrib3DSupport: 0
@@ -465,6 +481,10 @@ PlayerSettings:
   WebGL::emscriptenArgs: 
   WebGL::template: APPLICATION:Default
   additionalIl2CppArgs::additionalIl2CppArgs: 
+<<<<<<< HEAD
+=======
+  firstStreamedSceneWithResources: 0
+>>>>>>> a6ce5fdde6ab4e0a62b30898ba1212ac5aea6177
   cloudProjectId: 
   projectName: 
   organizationId: 

@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class Panel : MonoBehaviour {
-	public AutoBoosterButton abb;
+	// public AutoBoosterButton abb;
   public string controlMethod;
   public float adjustScale;
   private bool LRMoving = false;
@@ -18,11 +18,11 @@ public class Panel : MonoBehaviour {
       transform.localScale *= adjustScale / transform.lossyScale.x;
     }
 
-    if (tag == "StickPanel_booster" && abb != null && abb.isOn()) {
-      GetComponent<Collider>().enabled = false;
-      transform.Find("Touch").GetComponent<Text>().text = "AUTO";
-      transform.Find("OnTheBeat").GetComponent<Text>().text = "MODE";
-    }
+    // if (tag == "StickPanel_booster" && abb != null && abb.isOn()) {
+    //   GetComponent<Collider>().enabled = false;
+    //   transform.Find("Touch").GetComponent<Text>().text = "AUTO";
+    //   transform.Find("OnTheBeat").GetComponent<Text>().text = "MODE";
+    // }
   }
 
   void Update() {
