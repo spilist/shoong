@@ -4,6 +4,7 @@ using System.Collections;
 public class CharacterManager : MonoBehaviour {
   public static CharacterManager cm;
   public CharacterChangeManager ccm;
+  public MeshFilter progressCharacter;
 
   public float[] dolorsPerRarity;
 
@@ -109,6 +110,7 @@ public class CharacterManager : MonoBehaviour {
     currentCharacter = name;
     CharacterStat stat = character(name);
     ccm.setMesh(stat.GetComponent<MeshFilter>().sharedMesh);
+    progressCharacter.sharedMesh = stat.GetComponent<MeshFilter>().sharedMesh;
     AudioManager.am.setAudio(stat.bgm.ToString());
     resetToOrginal();
 

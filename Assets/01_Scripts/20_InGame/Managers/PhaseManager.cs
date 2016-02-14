@@ -25,6 +25,29 @@ public class PhaseManager : MonoBehaviour {
   public AsteroidManager asteroidM;
   public SmallAsteroidManager smallAsteroidM;
 
+  public RectTransform stageIndicatorTop;
+  public RectTransform stageIndicatorBottom;
+
+  public int startTopPos = -895;
+  public int slowTopPos = 5;
+  public int fastTopPos = 45;
+  public int endTopPos = 945;
+
+  public int startBottomPos = 945;
+  public int slowBottomPos = 45;
+  public int fastBottomPos = 5;
+  public int endBottomPos = -895;
+
+  public int phaseChangingStatus = 0;
+  public float indicatorPauseDuration = 0.5f;
+  public float indicatorFastDuration = 0.1f;
+  public float indicatorSlowDuration = 0.8f;
+  private float indicatorTopXPos;
+  private float indicatorBottomXPos;
+
+  public GameObject levelClearEffect;
+  public Text currentLevelText;
+  public Text nextLevelText;
   private int level;
 
   void Awake() {
@@ -32,7 +55,7 @@ public class PhaseManager : MonoBehaviour {
   }
 
   void Start() {
-    level = 0;
+    level = -1;
   }
 
   public int phase() {
@@ -45,6 +68,9 @@ public class PhaseManager : MonoBehaviour {
       level = textPerLevel.Length;
       return;
     }
+
+    StartCoroutine("showNextLevel");
+    if (level == 0) return;
 
     string levelName = textPerLevel[level - 1];
 
@@ -86,6 +112,59 @@ public class PhaseManager : MonoBehaviour {
       pmm.nextPhase();
     } else if (levelName == "UFO2") {
       asm.nextPhase();
+    }
+  }
+
+  private IEnumerator showNextLevel() {
+    if (level > 0) {
+      EnergyManager.em.getFullHealth();
+      levelClearEffect.SetActive(true);
+    }
+
+    yield return new WaitForSeconds(indicatorPauseDuration);
+
+    phaseChangingStatus = 1;
+    indicatorTopXPos = startTopPos;
+    indicatorBottomXPos = startBottomPos;
+
+    if (level > 0) {
+      currentLevelText.text = (level + 1).ToString();
+      nextLevelText.text = (level + 2).ToString();
+      TimeManager.time.resetProgressCharacter();
+    }
+
+    if (level == textPerLevel.Length) {
+      stageIndicatorTop.GetComponent<Text>().text = "final";
+      stageIndicatorBottom.GetComponent<Text>().text = "level";
+      // nextLevelText.text = "final";
+    } else {
+      stageIndicatorBottom.GetComponent<Text>().text = (level + 1).ToString();
+    }
+  }
+
+  void Update() {
+    if (phaseChangingStatus > 0) {
+
+      if (phaseChangingStatus == 1) {
+        indicatorTopXPos = Mathf.MoveTowards(indicatorTopXPos, slowTopPos, Time.deltaTime * Mathf.Abs(startTopPos - slowTopPos) / indicatorFastDuration);
+        indicatorBottomXPos = Mathf.MoveTowards(indicatorBottomXPos, slowBottomPos, Time.deltaTime * Mathf.Abs(startBottomPos - slowBottomPos) / indicatorFastDuration);
+        if (indicatorTopXPos == slowTopPos) {
+          phaseChangingStatus++;
+        }
+      } else if (phaseChangingStatus == 2) {
+        indicatorTopXPos = Mathf.MoveTowards(indicatorTopXPos, fastTopPos, Time.deltaTime * Mathf.Abs(fastTopPos - slowTopPos) / indicatorSlowDuration);
+        indicatorBottomXPos = Mathf.MoveTowards(indicatorBottomXPos, fastBottomPos, Time.deltaTime * Mathf.Abs(fastBottomPos - slowBottomPos) / indicatorSlowDuration);
+
+        if (indicatorTopXPos == fastTopPos) {
+          phaseChangingStatus++;
+        }
+      } else if (phaseChangingStatus == 3) {
+        indicatorTopXPos = Mathf.MoveTowards(indicatorTopXPos, endTopPos, Time.deltaTime * Mathf.Abs(fastTopPos - endTopPos) / indicatorFastDuration);
+        indicatorBottomXPos = Mathf.MoveTowards(indicatorBottomXPos, endBottomPos, Time.deltaTime * Mathf.Abs(fastBottomPos - endBottomPos) / indicatorFastDuration);
+        if (indicatorTopXPos == endTopPos) phaseChangingStatus = 0;
+      }
+      stageIndicatorTop.anchoredPosition = new Vector2(indicatorTopXPos, stageIndicatorTop.anchoredPosition.y);
+      stageIndicatorBottom.anchoredPosition = new Vector2(indicatorBottomXPos, stageIndicatorBottom.anchoredPosition.y);
     }
   }
 }

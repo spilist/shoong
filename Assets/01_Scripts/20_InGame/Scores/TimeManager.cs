@@ -19,6 +19,11 @@ public class TimeManager : MonoBehaviour {
 	private float starScale;
 	private bool progressChanging = false;
 
+  public RectTransform progressCharacter;
+  private float progressCharacterPos;
+  public float progressCharacterPosStart = -95;
+  public float progressCharacterPosEnd = 95;
+
 	public float progressPerSecond = 10;
 	public float progressPerCube = 0.5f;
 	public float progressChangeSpeed = 5f;
@@ -43,15 +48,18 @@ public class TimeManager : MonoBehaviour {
 	}
 
 	public void startTime() {
-		resetProgress(false);
+		resetProgress();
     CubeManager.cm.startCount();
 		StartCoroutine("startElapse");
 	}
 
-	public void resetProgress(bool nextPhase = true) {
-		if (nextPhase) {
-      PhaseManager.pm.nextPhase();
-		}
+  public void resetProgressCharacter() {
+    progressCharacterPos = progressCharacterPosStart;
+    progressCharacter.anchoredPosition = new Vector2(progressCharacterPosStart, progressCharacter.anchoredPosition.y);
+  }
+
+	public void resetProgress() {
+    PhaseManager.pm.nextPhase();
 		progressChanging = true;
 
 		addGuageAmount = 0;
@@ -59,12 +67,12 @@ public class TimeManager : MonoBehaviour {
 
 		requiredProgress = PhaseManager.pm.reqProgressPerLevel[PhaseManager.pm.phase()];
 
-		GameObject obj = (GameObject) Instantiate(phaseStarPrefab);
-		obj.transform.SetParent(phaseStars, false);
-		obj.GetComponent<RectTransform>().anchoredPosition += new Vector2(PhaseManager.pm.phase() * distanceBetweenStars, 0);
-		phaseStar = obj.GetComponent<Image>();
-		popStatus = 1;
-		starScale = startScale;
+		// GameObject obj = (GameObject) Instantiate(phaseStarPrefab);
+		// obj.transform.SetParent(phaseStars, false);
+		// obj.GetComponent<RectTransform>().anchoredPosition += new Vector2(PhaseManager.pm.phase() * distanceBetweenStars, 0);
+		// phaseStar = obj.GetComponent<Image>();
+		// popStatus = 1;
+		// starScale = startScale;
 	}
 
   Vector3 screenToWorld(Vector3 screenPos) {
@@ -85,6 +93,9 @@ public class TimeManager : MonoBehaviour {
 				currentProgressCount = Mathf.MoveTowards(currentProgressCount, requiredProgress, Time.deltaTime * progressPerSecond);
 				currentProgressCount = Mathf.MoveTowards(currentProgressCount, currentProgressCount + addGuageAmount, Time.deltaTime * requiredProgress / progressChangeSpeed);
 				addGuageAmount = Mathf.MoveTowards(addGuageAmount, 0, Time.deltaTime * requiredProgress / progressChangeSpeed);
+
+        progressCharacterPos = (currentProgressCount / requiredProgress) * (progressCharacterPosEnd - progressCharacterPosStart) + progressCharacterPosStart;
+        progressCharacter.anchoredPosition = new Vector2(progressCharacterPos, progressCharacter.anchoredPosition.y);
 			}
 
 			if (currentProgressCount >= requiredProgress) {
@@ -92,19 +103,19 @@ public class TimeManager : MonoBehaviour {
 			}
 		}
 
-		if (popStatus > 0) {
-      if (popStatus == 1) {
-        changeScale(largeScale, largeScale - startScale);
-      } else if (popStatus == 2) {
-        changeScale(smallScale, smallScale - largeScale);
-      } else if (popStatus == 3) {
-        changeScale(1, 1 - smallScale);
-      } else if (popStatus == 4) {
-      	popStatus = 0;
-      }
+		// if (popStatus > 0) {
+  //     if (popStatus == 1) {
+  //       changeScale(largeScale, largeScale - startScale);
+  //     } else if (popStatus == 2) {
+  //       changeScale(smallScale, smallScale - largeScale);
+  //     } else if (popStatus == 3) {
+  //       changeScale(1, 1 - smallScale);
+  //     } else if (popStatus == 4) {
+  //     	popStatus = 0;
+  //     }
 
-      phaseStar.transform.localScale = starScale * Vector3.one;
-    }
+  //     phaseStar.transform.localScale = starScale * Vector3.one;
+  //   }
 	}
 
 	IEnumerator startElapse() {
@@ -123,6 +134,7 @@ public class TimeManager : MonoBehaviour {
 	}
 
 	public void stopTime() {
+    progressChanging = false;
 		StopCoroutine("startElapse");
     mtm.stopSpawn();
     idm.stopSpawn();
@@ -136,8 +148,8 @@ public class TimeManager : MonoBehaviour {
 		spawnBlackhole = true;
 	}
 
-	void changeScale(float targetScale, float difference) {
-    starScale = Mathf.MoveTowards(starScale, targetScale, Time.deltaTime * Mathf.Abs(difference) / changeTime);
-    if (starScale == targetScale) popStatus++;
-  }
+	// void changeScale(float targetScale, float difference) {
+ //    starScale = Mathf.MoveTowards(starScale, targetScale, Time.deltaTime * Mathf.Abs(difference) / changeTime);
+ //    if (starScale == targetScale) popStatus++;
+ //  }
 }

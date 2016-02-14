@@ -11,7 +11,7 @@ public class MenusController : MonoBehaviour {
   public GameObject beforeIdleUI;
   public BeforeIdle beforeIdle;
 
-  public AudioClip UITouchSound;
+  public AudioSource UITouchSound;
 
   private bool menuOn = false;
   private bool notYetStarted = true;
@@ -31,14 +31,14 @@ public class MenusController : MonoBehaviour {
         } else {
           currentlyOn = transform.Find(hitTag).gameObject;
           toggleMenuAndUI();
-          AudioSource.PlayClipAtPoint(UITouchSound, hit.transform.position);
+          UITouchSound.Play();
         }
       } else if (hitTag == "IdleSettings" || hitTag == "PauseButton" || (isMenuOn() && layer == "MenusBehavior") || (ScoreManager.sm.isGameOver() && layer == "MenusBehavior")) {
         if (beforeIdle.isLoading()) return "";
 
         MenusBehavior mb = hit.transform.GetComponent<MenusBehavior>();
         if (mb.playTouchSound) {
-          AudioSource.PlayClipAtPoint(UITouchSound, hit.transform.position);
+          UITouchSound.Play();
         }
         mb.activateSelf();
       }

@@ -193,6 +193,9 @@ public class RhythmManager : MonoBehaviour {
       // getRing(normalRingPool, normalRing);
     } else if (!feverTime) {
       rem = ringCount % (numNormalInLoop + numSkillInLoop);
+      ringCount++;
+
+      // if (Player.pl.uncontrollable()) return;
 
       // skill 나오기 전 파티클
       if (rem + 1 == numNormalInLoop) {
@@ -216,7 +219,6 @@ public class RhythmManager : MonoBehaviour {
         // getRing(skillRingPool, skillRing);
       }
       Player.pl.shootBooster();
-      ringCount++;
     }
   }
 
