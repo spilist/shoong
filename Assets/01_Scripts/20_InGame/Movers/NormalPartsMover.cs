@@ -10,11 +10,17 @@ public class NormalPartsMover : ObjectsMover {
   private int popDistance;
   private float curDistance;
   private Vector3 origin;
+  private Animation beatAnimation;
 
   protected override void initializeRest() {
     npm = (NormalPartsManager)objectsManager;
     filter = GetComponent<MeshFilter>();
     goldSkill = (Skill_Gold)SkillManager.sm.getSkill("Gold");
+    beatAnimation = GetComponent<Animation>();
+    beatAnimation.wrapMode = WrapMode.Once;
+    RhythmManager.rm.registerCallback(GetInstanceID(), () => {
+      beatAnimation.Play();
+    });
   }
 
   protected override void afterEnable() {

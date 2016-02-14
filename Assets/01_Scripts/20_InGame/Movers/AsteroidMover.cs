@@ -7,6 +7,7 @@ public class AsteroidMover : ObjectsMover {
   private int maxBrokenSpawn;
   private float minBrokenSize;
   private float maxBrokenSize;
+  private Animation beatAnimation;
 
   override public string getManager() {
     return "AsteroidManager";
@@ -19,7 +20,14 @@ public class AsteroidMover : ObjectsMover {
     maxBrokenSpawn = asm.maxBrokenSpawn;
     minBrokenSize = asm.minBrokenSize;
     maxBrokenSize = asm.maxBrokenSize;
+    beatAnimation = GetComponent<Animation>();
+    beatAnimation.wrapMode = WrapMode.Once;
+    
+    RhythmManager.rm.registerCallback(GetInstanceID(), () => {
+      beatAnimation.Play();
+    });
   }
+  
 
   override public bool dangerous() {
     if (player.isInvincible()) return false;

@@ -55,8 +55,9 @@ public class BeatObserver : MonoBehaviour {
 	/// <param name="beatType">The beat type to clear.</param>
 	IEnumerator WaitOnBeat (BeatType beatType)
 	{
-		yield return new WaitForSeconds(beatWindow / 1000f);
+		yield return new WaitForSeconds(beatWindow / 1000f - 0.1f);
 		beatMask ^= beatType;
-	}
+    yield return new WaitForSeconds(0.1f);
+  }
 
 }

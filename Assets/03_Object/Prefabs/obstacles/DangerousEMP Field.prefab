@@ -79,8 +79,10 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
@@ -103,10 +105,11 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 9fd72a3a356a84d409fc05286cd2a57a, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: .699999988
+  m_Volume: 0.7
   m_Pitch: 1.5
   Loop: 0
   Mute: 0
+  Spatialize: 0
   Priority: 128
   DopplerLevel: 0
   MinDistance: 1
@@ -122,15 +125,16 @@ AudioSource:
     - time: 0
       value: 1
       inSlope: 0
-      outSlope: -1.00671136
+      outSlope: -1.0067114
       tangentMode: 0
     - time: 1
       value: 0
-      inSlope: -3.70833254
-      outSlope: -3.70833254
+      inSlope: -3.7083325
+      outSlope: -3.7083325
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+    m_RotationOrder: 4
   panLevelCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -141,6 +145,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -151,6 +156,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+    m_RotationOrder: 4
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -161,6 +167,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!108 &10863948
 Light:
   m_ObjectHideFlags: 1
@@ -170,7 +177,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 6
   m_Type: 2
-  m_Color: {r: .0745098069, g: .0745098069, b: .0745098069, a: 0}
+  m_Color: {r: 0.07450981, g: 0.07450981, b: 0.07450981, a: 0}
   m_Intensity: 1
   m_Range: 0
   m_SpotAngle: 30
@@ -179,8 +186,9 @@ Light:
     m_Type: 0
     m_Resolution: -1
     m_Strength: 1
-    m_Bias: .0500000007
-    m_NormalBias: .400000006
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
   m_Cookie: {fileID: 0}
   m_DrawHalo: 1
   m_Flare: {fileID: 0}
@@ -214,7 +222,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: .5
+  m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &100100000
 Prefab:
@@ -306,6 +314,14 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: panLevelCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: reverbZoneMixCustomCurve.m_RotationOrder
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

@@ -7,6 +7,7 @@ public class SmallAsteroidMover : ObjectsMover {
   private int maxBrokenSpawn;
   private float minBrokenSize;
   private float maxBrokenSize;
+  private Animation beatAnimation;
 
   override public string getManager() {
     return "SmallAsteroidManager";
@@ -19,6 +20,11 @@ public class SmallAsteroidMover : ObjectsMover {
     maxBrokenSpawn = sam.maxBrokenSpawn;
     minBrokenSize = sam.minBrokenSize;
     maxBrokenSize = sam.maxBrokenSize;
+    beatAnimation = GetComponent<Animation>();
+    beatAnimation.wrapMode = WrapMode.Once;
+    RhythmManager.rm.registerCallback(GetInstanceID(), () => {
+      beatAnimation.Play();
+    });
   }
 
   override public bool dangerous() {

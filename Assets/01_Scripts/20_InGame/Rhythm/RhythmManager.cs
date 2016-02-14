@@ -73,11 +73,14 @@ public class RhythmManager : MonoBehaviour {
 
   public GameObject useSkillParticle;
 
+  public delegate void RhythmCallback();
+  private Dictionary<int, RhythmCallback> rhythmCallbackList;
+
 	void Awake() {
     rm = this;
     beatObserver = GetComponent<BeatObserver>();
     normalColor = normalRing.GetComponent<Image>().color;
-
+    rhythmCallbackList = new Dictionary<int, RhythmCallback>();
     origTouchText = touchText;
     origOnthebeatText = onthebeatText;
     origBoostImage = boostImage;
@@ -187,9 +190,12 @@ public class RhythmManager : MonoBehaviour {
     failed.SetActive(true);
   }
 
-	void invokeRing() {
+	void invokeRing()
+  {
+    runRhythmCallbacks();
     if (!gameStarted || numSkillInLoop == 0) {
       Player.pl.shootBooster();
+
       // getRing(normalRingPool, normalRing);
     } else if (!feverTime) {
       rem = ringCount % (numNormalInLoop + numSkillInLoop);
@@ -348,5 +354,27 @@ public class RhythmManager : MonoBehaviour {
   public float maxOK() {
     if (difficult) return maxBoosterOkPosX_hard;
     else return maxBoosterOkPosX;
+  }
+
+  public void registerCallback(int instanceId, RhythmCallback callback)
+  {
+    if (rhythmCallbackList.ContainsKey(instanceId))
+    {
+      Debug.LogError("Dulicate intanceId is detected!!");
+    }
+    rhythmCallbackList.Add(instanceId, callback);
+  }
+
+  public void unregisterCallback(int instanceId)
+  {
+    rhythmCallbackList.Remove(instanceId);
+  }
+
+  private void runRhythmCallbacks()
+  {    
+    foreach(RhythmCallback callback in rhythmCallbackList.Values)
+    {
+      callback();
+    }
   }
 }
