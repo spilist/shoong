@@ -41,7 +41,7 @@
                    android:value="@integer/google_play_services_version" />
     -->
 
-    <meta-data android:name="AppsFlyerDevKey" android:value="YOUR_APPSFLYER_DEV_KEY_HERE"/>
+    <meta-data android:name="AppsFlyerDevKey" android:value="PTuYBhA2CFm48vxR6SGRf7"/>
 
   </application>
   <uses-feature android:glEsVersion="0x00020000" />

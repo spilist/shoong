@@ -202,6 +202,8 @@ MonoBehaviour:
       m_type: 4
     - m_name: _Illum
       m_type: 4
+    - m_name: _Emission
+      m_type: 2
   - m_name: Legacy Shaders/Self-Illumin/Diffuse
     m_propertyList:
     - m_name: _Color
@@ -210,6 +212,8 @@ MonoBehaviour:
       m_type: 4
     - m_name: _Illum
       m_type: 4
+    - m_name: _Emission
+      m_type: 2
   - m_name: Legacy Shaders/Self-Illumin/Bumped Diffuse
     m_propertyList:
     - m_name: _Color
@@ -220,6 +224,8 @@ MonoBehaviour:
       m_type: 4
     - m_name: _BumpMap
       m_type: 4
+    - m_name: _Emission
+      m_type: 2
   - m_name: Legacy Shaders/Self-Illumin/Specular
     m_propertyList:
     - m_name: _Color
@@ -232,6 +238,8 @@ MonoBehaviour:
       m_type: 4
     - m_name: _Illum
       m_type: 4
+    - m_name: _Emission
+      m_type: 2
   - m_name: Legacy Shaders/Self-Illumin/Bumped Specular
     m_propertyList:
     - m_name: _Color
@@ -246,6 +254,8 @@ MonoBehaviour:
       m_type: 4
     - m_name: _BumpMap
       m_type: 4
+    - m_name: _Emission
+      m_type: 2
   - m_name: Legacy Shaders/Reflective/VertexLit
     m_propertyList:
     - m_name: _Color
@@ -484,6 +494,8 @@ MonoBehaviour:
       m_type: 4
     - m_name: _ParallaxMap
       m_type: 4
+    - m_name: _Emission
+      m_type: 2
   - m_name: Legacy Shaders/Self-Illumin/Parallax Specular
     m_propertyList:
     - m_name: _Color
@@ -502,6 +514,8 @@ MonoBehaviour:
       m_type: 4
     - m_name: _ParallaxMap
       m_type: 4
+    - m_name: _Emission
+      m_type: 2
   - m_name: Legacy Shaders/Reflective/Parallax Diffuse
     m_propertyList:
     - m_name: _Color
@@ -618,6 +632,8 @@ MonoBehaviour:
       m_type: 4
   - m_name: Skybox/Procedural
     m_propertyList:
+    - m_name: _SunDisk
+      m_type: 2
     - m_name: _SunSize
       m_type: 3
     - m_name: _AtmosphereThickness
@@ -1288,6 +1304,8 @@ MonoBehaviour:
     m_propertyList:
     - m_name: _MainTex
       m_type: 4
+    - m_name: _Color
+      m_type: 0
     - m_name: _StencilComp
       m_type: 2
     - m_name: _Stencil
@@ -1299,13 +1317,15 @@ MonoBehaviour:
     - m_name: _StencilReadMask
       m_type: 2
     - m_name: _ColorMask
+      m_type: 2
+    - m_name: _UseUIAlphaClip
       m_type: 2
   - m_name: UI/Unlit/Detail
     m_propertyList:
-    - m_name: _Color
-      m_type: 0
     - m_name: _MainTex
       m_type: 4
+    - m_name: _Color
+      m_type: 0
     - m_name: _DetailTex
       m_type: 4
     - m_name: _Strength
@@ -1321,13 +1341,15 @@ MonoBehaviour:
     - m_name: _StencilReadMask
       m_type: 2
     - m_name: _ColorMask
+      m_type: 2
+    - m_name: _UseUIAlphaClip
       m_type: 2
   - m_name: UI/Unlit/Text
     m_propertyList:
-    - m_name: _Color
-      m_type: 0
     - m_name: _MainTex
       m_type: 4
+    - m_name: _Color
+      m_type: 0
     - m_name: _StencilComp
       m_type: 2
     - m_name: _Stencil
@@ -1340,12 +1362,14 @@ MonoBehaviour:
       m_type: 2
     - m_name: _ColorMask
       m_type: 2
+    - m_name: _UseUIAlphaClip
+      m_type: 2
   - m_name: UI/Unlit/Text Detail
     m_propertyList:
-    - m_name: _Color
-      m_type: 0
     - m_name: _MainTex
       m_type: 4
+    - m_name: _Color
+      m_type: 0
     - m_name: _DetailTex
       m_type: 4
     - m_name: _Strength
@@ -1362,14 +1386,16 @@ MonoBehaviour:
       m_type: 2
     - m_name: _ColorMask
       m_type: 2
+    - m_name: _UseUIAlphaClip
+      m_type: 2
   - m_name: UI/Lit/Transparent
     m_propertyList:
+    - m_name: _MainTex
+      m_type: 4
     - m_name: _Color
       m_type: 0
     - m_name: _Specular
       m_type: 0
-    - m_name: _MainTex
-      m_type: 4
     - m_name: _StencilComp
       m_type: 2
     - m_name: _Stencil
@@ -1381,6 +1407,8 @@ MonoBehaviour:
     - m_name: _StencilReadMask
       m_type: 2
     - m_name: _ColorMask
+      m_type: 2
+    - m_name: _UseUIAlphaClip
       m_type: 2
   - m_name: UI/Lit/Bumped
     m_propertyList:
@@ -1405,6 +1433,8 @@ MonoBehaviour:
     - m_name: _StencilReadMask
       m_type: 2
     - m_name: _ColorMask
+      m_type: 2
+    - m_name: _UseUIAlphaClip
       m_type: 2
   - m_name: UI/Lit/Detail
     m_propertyList:
@@ -1436,7 +1466,9 @@ MonoBehaviour:
       m_type: 2
     - m_name: _ColorMask
       m_type: 2
-  - m_name: UI/Lit/Refraction (Pro Only)
+    - m_name: _UseUIAlphaClip
+      m_type: 2
+  - m_name: UI/Lit/Refraction
     m_propertyList:
     - m_name: _Color
       m_type: 0
@@ -1464,7 +1496,9 @@ MonoBehaviour:
       m_type: 2
     - m_name: _ColorMask
       m_type: 2
-  - m_name: UI/Lit/Refraction Detail (Pro Only)
+    - m_name: _UseUIAlphaClip
+      m_type: 2
+  - m_name: UI/Lit/Refraction Detail
     m_propertyList:
     - m_name: _Color
       m_type: 0
@@ -1498,6 +1532,8 @@ MonoBehaviour:
       m_type: 2
     - m_name: _ColorMask
       m_type: 2
+    - m_name: _UseUIAlphaClip
+      m_type: 2
   - m_name: UI/Default
     m_propertyList:
     - m_name: _MainTex
@@ -1516,6 +1552,8 @@ MonoBehaviour:
       m_type: 2
     - m_name: _ColorMask
       m_type: 2
+    - m_name: _UseUIAlphaClip
+      m_type: 2
   - m_name: UI/Default Font
     m_propertyList:
     - m_name: _MainTex
@@ -1533,6 +1571,8 @@ MonoBehaviour:
     - m_name: _StencilReadMask
       m_type: 2
     - m_name: _ColorMask
+      m_type: 2
+    - m_name: _UseUIAlphaClip
       m_type: 2
   - m_name: Nature/SpeedTree
     m_propertyList:
@@ -1574,88 +1614,6 @@ MonoBehaviour:
       m_type: 3
     - m_name: _WindQuality
       m_type: 3
-    - m_name: _TreeInfo0
-      m_type: 1
-    - m_name: _TreeInfo1
-      m_type: 1
-    - m_name: _TreeInfo2
-      m_type: 1
-    - m_name: _TreeInfo3
-      m_type: 1
-    - m_name: _TreeSize0
-      m_type: 1
-    - m_name: _TreeSize1
-      m_type: 1
-    - m_name: _TreeSize2
-      m_type: 1
-    - m_name: _TreeSize3
-      m_type: 1
-    - m_name: _ImageTexCoords0
-      m_type: 1
-    - m_name: _ImageTexCoords1
-      m_type: 1
-    - m_name: _ImageTexCoords2
-      m_type: 1
-    - m_name: _ImageTexCoords3
-      m_type: 1
-    - m_name: _ImageTexCoords4
-      m_type: 1
-    - m_name: _ImageTexCoords5
-      m_type: 1
-    - m_name: _ImageTexCoords6
-      m_type: 1
-    - m_name: _ImageTexCoords7
-      m_type: 1
-    - m_name: _ImageTexCoords8
-      m_type: 1
-    - m_name: _ImageTexCoords9
-      m_type: 1
-    - m_name: _ImageTexCoords10
-      m_type: 1
-    - m_name: _ImageTexCoords11
-      m_type: 1
-    - m_name: _ImageTexCoords12
-      m_type: 1
-    - m_name: _ImageTexCoords13
-      m_type: 1
-    - m_name: _ImageTexCoords14
-      m_type: 1
-    - m_name: _ImageTexCoords15
-      m_type: 1
-    - m_name: _ImageTexCoords16
-      m_type: 1
-    - m_name: _ImageTexCoords17
-      m_type: 1
-    - m_name: _ImageTexCoords18
-      m_type: 1
-    - m_name: _ImageTexCoords19
-      m_type: 1
-    - m_name: _ImageTexCoords20
-      m_type: 1
-    - m_name: _ImageTexCoords21
-      m_type: 1
-    - m_name: _ImageTexCoords22
-      m_type: 1
-    - m_name: _ImageTexCoords23
-      m_type: 1
-    - m_name: _ImageTexCoords24
-      m_type: 1
-    - m_name: _ImageTexCoords25
-      m_type: 1
-    - m_name: _ImageTexCoords26
-      m_type: 1
-    - m_name: _ImageTexCoords27
-      m_type: 1
-    - m_name: _ImageTexCoords28
-      m_type: 1
-    - m_name: _ImageTexCoords29
-      m_type: 1
-    - m_name: _ImageTexCoords30
-      m_type: 1
-    - m_name: _ImageTexCoords31
-      m_type: 1
-    - m_name: _InstanceData
-      m_type: 1
   - m_name: Hidden/GIDebug/TextureUV
     m_propertyList:
     - m_name: _MainTex
@@ -1692,6 +1650,12 @@ MonoBehaviour:
       m_type: 4
     - m_name: _value
       m_type: 3
+  - m_name: Hidden/Internal-DeferredReflections
+    m_propertyList:
+    - m_name: _SrcBlend
+      m_type: 2
+    - m_name: _DstBlend
+      m_type: 2
   - m_name: Hidden/InternalErrorShader
     m_propertyList: []
   - m_name: Hidden/Camera-DepthNormalTexture
@@ -1772,6 +1736,10 @@ MonoBehaviour:
       m_type: 0
     - m_name: PixelSnap
       m_type: 2
+  - m_name: Hidden/FrameDebuggerRenderTargetDisplay
+    m_propertyList:
+    - m_name: _MainTex
+      m_type: 4
   - m_name: FX/Glass/Stained BumpDistort
     m_propertyList:
     - m_name: _BumpAmt

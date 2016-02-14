@@ -47,6 +47,8 @@ public class DataManager : MonoBehaviour {
   	npbManager = GetComponent<NPBManager>();
     npbManager.init();
     Advertisement.Initialize("72081");
+    initAppsFlyer();
+
 
     if (resetAll || !load()) reset();
     initializeAtGameStart();
@@ -64,6 +66,41 @@ public class DataManager : MonoBehaviour {
     DataManager.dm.setInt("ShowCharacterCreateCount", 0);
 
     isFirstPlay = !DataManager.dm.getBool("TutorialDone");
+  }
+
+  void initAppsFlyer()
+  {
+    //AppsFlyer.setAppsFlyerKey("PTuYBhA2CFm48vxR6SGRf7");
+
+#if UNITY_IOS
+    
+    AppsFlyer.setAppID ("PTuYBhA2CFm48vxR6SGRf7");
+        
+    // For detailed logging
+    //AppsFlyer.setIsDebug (true); 
+        
+    // For getting the conversion data will be triggered on AppsFlyerTrackerCallbacks.cs file
+    AppsFlyer.getConversionData (); 
+        
+    // For testing validate in app purchase (test against Apple's sandbox environment
+    //AppsFlyer.setIsSandbox(true);         
+    
+    AppsFlyer.trackAppLaunch ();
+
+#elif UNITY_ANDROID
+
+    // All Initialization occur in the override activity defined in the mainfest.xml, 
+    // including the track app launch
+    // For your convinence (if your manifest is occupied) you can define AppsFlyer library
+    // here, use this commented out code.
+
+    //AppsFlyer.setAppID ("YOUR_ANDROID_PACKAGE_NAME_HERE"); 
+    //AppsFlyer.setIsDebug (true);
+    //AppsFlyer.createValidateInAppListener ("AppsFlyerTrackerCallbacks", "onInAppBillingSuccess", "onInAppBillingFailure");
+    //AppsFlyer.loadConversionData("AppsFlyerTrackerCallbacks","didReceiveConversionData", "didReceiveConversionDataWithError");
+    //AppsFlyer.trackAppLaunch ();
+
+#endif
   }
 
   bool load() {

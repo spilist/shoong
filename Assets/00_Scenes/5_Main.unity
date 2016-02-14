@@ -909,7 +909,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: faf842ab2d53d4d85adc14ee2381079a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abb: {fileID: 2114071828}
   rhythmRings: {fileID: 1514947169}
   normalRing: {fileID: 193336, guid: 7db5da22177ba40888edf0cf3136c3b5, type: 2}
   skillRing: {fileID: 178226, guid: f68ad687d295246beaa24e9089f2d872, type: 2}
@@ -940,6 +939,7 @@ MonoBehaviour:
   currentStar: {fileID: 0}
   justSpawned: {fileID: 0}
   feverPanel: {fileID: 436576618}
+  useSkillParticle: {fileID: 139500, guid: 09f2c8fd298564fe598290a7fc1917aa, type: 2}
 --- !u!114 &53298671
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11155,7 +11155,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 193d0a3969d7846999410bfeb4e7f70a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abb: {fileID: 0}
   controlMethod: Stick
   adjustScale: 0
 --- !u!114 &436576621
@@ -16505,7 +16504,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 193d0a3969d7846999410bfeb4e7f70a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abb: {fileID: 0}
   controlMethod: Stick
   adjustScale: 0
 --- !u!1 &631363990
@@ -17422,7 +17420,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 193d0a3969d7846999410bfeb4e7f70a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abb: {fileID: 2114071828}
   controlMethod: Stick
   adjustScale: 0
 --- !u!1 &688839004
@@ -22630,7 +22627,6 @@ MonoBehaviour:
   gcm: {fileID: 1991538115}
   ingameCollider: {fileID: 320500166}
   ingameUI: {fileID: 2134279969}
-  abb: {fileID: 2114071828}
   goldIdle: {fileID: 983867799}
   goldText: {fileID: 966334537}
   getEffect: {fileID: 298288788}
@@ -31908,7 +31904,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 193d0a3969d7846999410bfeb4e7f70a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abb: {fileID: 0}
   controlMethod: Stick
   adjustScale: 0
 --- !u!1 &1362294780
@@ -65129,7 +65124,7 @@ MonoBehaviour:
   playTouchSound: 1
   blinkOnStart: 0
   cm: {fileID: 75942068}
-  cheat: 0
+  cheat: 1
 --- !u!23 &2111377104
 MeshRenderer:
   m_ObjectHideFlags: 0

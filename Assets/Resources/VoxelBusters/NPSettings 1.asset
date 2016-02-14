@@ -26,6 +26,17 @@ MonoBehaviour:
       m_usesSharing: 1
       m_usesTwitter: 1
       m_usesWebView: 1
+  m_networkConnectivitySettings:
+    m_ipAddress: 8.8.8.8
+    m_editor:
+      m_timeOutPeriod: 60
+      m_maxRetryCount: 2
+      m_timeGapBetweenPolling: 2
+    m_android:
+      m_port: 53
+      m_timeOutPeriod: 60
+      m_maxRetryCount: 2
+      m_timeGapBetweenPolling: 2
   m_utilitySettings:
     m_rateMyApp:
       m_isEnabled: 0
@@ -45,6 +56,9 @@ MonoBehaviour:
       m_validateUsingServerURL: 
     m_android:
       m_publicKey: 
+  m_mediaLibrarySettings:
+    m_android:
+      m_youtubeAPIKey: 
   m_notificationSettings:
     m_iOS:
       m_userInfoKey: user_info
@@ -58,9 +72,13 @@ MonoBehaviour:
       m_contentTitleKey: content_title
       m_userInfoKey: user_info
       m_tagKey: tag
+  m_socialNetworkSettings:
+    m_twitterSettings:
+      m_consumerKey: 
+      m_consumerSecret: 
   m_gameServicesSettings:
     m_android:
-      m_playServicesApplicationID: 
+      m_playServicesApplicationID: 773936192569
       m_achievedDescriptionFormats:
       - 'Awesome! Achievement # completed.'
     m_iOS:
