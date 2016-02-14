@@ -100,7 +100,7 @@ public class EMPManager : ObjectsManager {
       forceField.transform.Find("Halo").GetComponent<Light>().range = radius;
 
       cameraSize = Mathf.MoveTowards(cameraSize, targetCameraSize, Time.deltaTime * enlargeSize / enlargeDuration);
-      Camera.main.orthographicSize = cameraSize;
+      // Camera.main.orthographicSize = cameraSize;
 
       if (radius == targetRadius) status = 2;
     } else if (status == 2) {
@@ -117,7 +117,7 @@ public class EMPManager : ObjectsManager {
       forceField.transform.Find("Halo").GetComponent<Light>().range = radius;
 
       cameraSize = Mathf.MoveTowards(cameraSize, targetCameraSize, Time.deltaTime * enlargeSize / shrinkDuration);
-      Camera.main.orthographicSize = cameraSize;
+      // Camera.main.orthographicSize = cameraSize;
 
       if (cameraSize == targetCameraSize) {
         run();

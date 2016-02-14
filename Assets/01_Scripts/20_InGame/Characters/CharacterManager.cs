@@ -110,7 +110,9 @@ public class CharacterManager : MonoBehaviour {
     currentCharacter = name;
     CharacterStat stat = character(name);
     ccm.setMesh(stat.GetComponent<MeshFilter>().sharedMesh);
-    progressCharacter.sharedMesh = stat.GetComponent<MeshFilter>().sharedMesh;
+    if (progressCharacter != null) {
+      progressCharacter.sharedMesh = stat.GetComponent<MeshFilter>().sharedMesh;
+    }
     AudioManager.am.setAudio(stat.bgm.ToString());
     resetToOrginal();
 

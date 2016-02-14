@@ -41,7 +41,7 @@ RenderSettings:
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 6
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_LightmapsMode: 1
   m_GISettings:
     serializedVersion: 2
@@ -66,7 +66,8 @@ LightmapSettings:
     m_FinalGather: 0
     m_FinalGatherRayCount: 1024
     m_ReflectionCompression: 2
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000001, guid: 0058a2012231949ca9df1d8798cce2ae,
+    type: 2}
   m_RuntimeCPUUsage: 25
 --- !u!196 &5
 NavMeshSettings:
@@ -16686,9 +16687,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 2134279969}
   m_RootOrder: 1
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 200, y: 200}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!65 &623555562
@@ -16701,7 +16702,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 500, y: 500, z: 1}
+  m_Size: {x: 1500, y: 1000, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &623555563
 MonoBehaviour:
@@ -21822,7 +21823,7 @@ Transform:
   m_GameObject: {fileID: 892369437}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 950, y: 250.00003, z: 950}
+  m_LocalScale: {x: 1200, y: 250.00003, z: 950}
   m_Children: []
   m_Father: {fileID: 1701025775}
   m_RootOrder: 8
@@ -26553,7 +26554,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1143126207}
-  m_LocalRotation: {x: 0.20280579, y: -0.80643797, z: 0.043040983, w: 0.5537825}
+  m_LocalRotation: {x: 0.23059976, y: -0.794212, z: 0.08810701, w: 0.5552371}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -27033,7 +27034,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1194304518}
-  m_LocalRotation: {x: -0.39905676, y: 0.5926928, z: -0.5546321, w: -0.42644134}
+  m_LocalRotation: {x: -0.57148504, y: 0.16738153, z: -0.7942825, w: -0.12043076}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -28888,8 +28889,8 @@ MonoBehaviour:
   boosterMaxSpeeds: 0f0000000700000000000000f9fffffff1ffffff
   boosterSpeedDecreaseStandard: 50
   boosterSpeedDecreases: 280000001400000000000000f6ffffffecffffff
-  energyReduceOnTimeStandard: 5
-  energyReduceOnTimeStandard_hard: 10
+  energyReduceOnTimeStandard: 6
+  energyReduceOnTimeStandard_hard: 12
   energyReduceOnTimes: f6fffffffbffffff00000000050000000a000000
   maxEnergyStandard: 100
   maxEnergys: 280000001400000000000000f6ffffffecffffff
@@ -47790,7 +47791,7 @@ MonoBehaviour:
   laserPrefab: {fileID: 134676, guid: 8caaf1ed93486415bb895ac373e87b16, type: 2}
   laserAmount: 1
   laserRadius: 12
-  laserLength: 100
+  laserLength: 150
   laserShootingDuration: 0.05
   laserStayDuration: 0.25
   laserShrinkingDuration: 0.05
@@ -60353,7 +60354,7 @@ MonoBehaviour:
   objPrefab_next: {fileID: 192146, guid: d357428246b5f4e5fb2b54651d371984, type: 2}
   objNextPool: []
   fullComboCountPerLevel: 030000000400000005000000
-  radius: 50
+  radius: 80
   pitchStart: 0.4
   pitchIncrease: 0.05
   scaleIncrease: 0.4
@@ -60402,7 +60403,7 @@ MonoBehaviour:
   player: {fileID: 0}
   meshes: {fileID: 420790, guid: 8853a505e8ec74ae8b1980f30e507d5c, type: 2}
   warnPlayerDuring: 0.5
-  spawnRadius: 200
+  spawnRadius: 250
   scatterAmount: 0
   lineDistance: 600
   fallingStarWarningLinePrefab: {fileID: 125686, guid: d2657da8f1ab74d79b03574cca181388,
@@ -60718,7 +60719,7 @@ MonoBehaviour:
   level: 0
   player: {fileID: 0}
   npm: {fileID: 0}
-  spawnRadius: 200
+  spawnRadius: 250
 --- !u!114 &1991538116
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60810,7 +60811,7 @@ MonoBehaviour:
   minSpawnInterval: 0
   maxSpawnInterval: 0
   cubesByEncounter: 5
-  energyGets: 11
+  energyGets: 9
   numSweetsPop: 0
   isNegative: 0
   hasEncounterEffect: 0
@@ -61085,7 +61086,7 @@ MonoBehaviour:
   nameForLevel: 
   level: 0
   player: {fileID: 0}
-  spawnRadius: 200
+  spawnRadius: 250
   playerSpeedReduceTo: 0.3
   speedRestoreDuring: 2
 --- !u!114 &1991538123
@@ -61187,7 +61188,7 @@ MonoBehaviour:
   laserPool: []
   laserWarningPool: []
   laserPoolAmount: 3
-  spawnRadius: 200
+  spawnRadius: 250
   detectDistance: 200
   headFollowingSpeed: 100
   shootLaserPer: 4
@@ -61288,7 +61289,7 @@ MonoBehaviour:
   increaseSpeedDuration: 2
   increaseSpeedUntil: 140
   detectDistance: 200
-  spawnRadius: 200
+  spawnRadius: 250
   offScreenSpeedScale: 0.5
 --- !u!1 &1993354414
 GameObject:
