@@ -55,6 +55,7 @@ public class Player : MonoBehaviour {
   private bool iced = false;
   private bool usingSolar = false;
   private bool usingGhost = false;
+  private bool confused = false;
   public float originalScale;
   private int minimonCounter = 0;
 
@@ -506,6 +507,18 @@ public class Player : MonoBehaviour {
 
   public bool isUsingSolar() {
     return usingSolar;
+  }
+
+  public bool isConfused() {
+    return confused;
+  }
+
+  public void setConfused(bool val) {
+    confused = val;
+  }
+
+  void offConfused() {
+    confused = false;
   }
 
   public void stopEMP() {

@@ -73,28 +73,28 @@ public class DataManager : MonoBehaviour {
     //AppsFlyer.setAppsFlyerKey("PTuYBhA2CFm48vxR6SGRf7");
 
 #if UNITY_IOS
-    
+
     AppsFlyer.setAppID ("PTuYBhA2CFm48vxR6SGRf7");
-        
+
     // For detailed logging
-    //AppsFlyer.setIsDebug (true); 
-        
+    //AppsFlyer.setIsDebug (true);
+
     // For getting the conversion data will be triggered on AppsFlyerTrackerCallbacks.cs file
-    AppsFlyer.getConversionData (); 
-        
+    AppsFlyer.getConversionData ();
+
     // For testing validate in app purchase (test against Apple's sandbox environment
-    //AppsFlyer.setIsSandbox(true);         
-    
+    //AppsFlyer.setIsSandbox(true);
+
     AppsFlyer.trackAppLaunch ();
 
 #elif UNITY_ANDROID
 
-    // All Initialization occur in the override activity defined in the mainfest.xml, 
+    // All Initialization occur in the override activity defined in the mainfest.xml,
     // including the track app launch
     // For your convinence (if your manifest is occupied) you can define AppsFlyer library
     // here, use this commented out code.
 
-    //AppsFlyer.setAppID ("YOUR_ANDROID_PACKAGE_NAME_HERE"); 
+    //AppsFlyer.setAppID ("YOUR_ANDROID_PACKAGE_NAME_HERE");
     //AppsFlyer.setIsDebug (true);
     //AppsFlyer.createValidateInAppListener ("AppsFlyerTrackerCallbacks", "onInAppBillingSuccess", "onInAppBillingFailure");
     //AppsFlyer.loadConversionData("AppsFlyerTrackerCallbacks","didReceiveConversionData", "didReceiveConversionDataWithError");
@@ -158,8 +158,8 @@ public class DataManager : MonoBehaviour {
     ints["TotalGoldenCubes"] = resetGoldenCube;
     ints["NumCharactersHave"] = 1;
     ints["NormalCollectorLevel"] = 1;
-    // strings["ControlMethod"] = "Touch";
-    strings["ControlMethod"] = "Stick";
+    strings["ControlMethod"] = "Touch";
+    // strings["ControlMethod"] = "Stick";
     bools["robotcogi"] = true;
     // bools["TutorialDone"] = true;
     bools["TutorialDone"] = false;

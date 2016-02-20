@@ -1,13 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PhaseMonsterManager : ObjectsManager {
-  public float slowStayDuration = 1;
-  public float increaseSpeedDuration = 2;
-  public int increaseSpeedUntil = 140;
+public class ConfusedMonsterManager : ObjectsManager {
+	public float slowStayDuration = 1;
+  public float increaseSpeedDuration = 1.2f;
+  public int increaseSpeedUntil = 240;
   public int detectDistance = 200;
   public int spawnRadius = 250;
   public float offScreenSpeedScale = 0.5f;
+  public GameObject confusedEffect;
+  public float confusedDuration = 3f;
 
   override public void initRest() {
     spawn();
@@ -15,6 +17,7 @@ public class PhaseMonsterManager : ObjectsManager {
 
   override protected void spawn() {
     if (player == null || ScoreManager.sm.isGameOver()) return;
+    Debug.Log("confused??2");
 
     Vector2 screenPos = Random.insideUnitCircle;
     screenPos.Normalize();
@@ -28,7 +31,14 @@ public class PhaseMonsterManager : ObjectsManager {
     return Random.Range(minSpawnInterval, maxSpawnInterval);
   }
 
-  public void nextPhase() {
-    spawn();
+  public void confusePlayer() {
+    Player.pl.setConfused(true);
+    confusedEffect.SetActive(true);
+    Invoke("unconfusePlayer", confusedDuration);
+  }
+
+  void unconfusePlayer() {
+    confusedEffect.SetActive(false);
+    Player.pl.setConfused(false);
   }
 }

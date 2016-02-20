@@ -125,8 +125,11 @@ public class TouchInputHandler : MonoBehaviour
 
     Vector2 touchPosition = touch.position;
     Vector3 worldTouchPosition = Camera.main.ScreenToWorldPoint(new Vector3(touchPosition.x, touchPosition.y, Camera.main.transform.position.y));
+
     Vector3 originPosition = new Vector3(origin.position.x, 0, origin.position.z);
     Vector3 heading = worldTouchPosition - originPosition;
+    if (Player.pl.isConfused()) heading = -heading;
+
     direction = heading / heading.magnitude;
 
     float indicatorDistance = heading.magnitude / stickPanelSize;
@@ -153,6 +156,8 @@ public class TouchInputHandler : MonoBehaviour
     Vector3 worldTouchPosition = Camera.main.ScreenToWorldPoint(new Vector3(touchPosition.x, touchPosition.y, Camera.main.transform.position.y));
     Vector3 originPosition = new Vector3(origin.position.x, 0, origin.position.z);
     Vector3 heading = worldTouchPosition - originPosition;
+    if (Player.pl.isConfused()) heading = -heading;
+
     direction = heading / heading.magnitude;
     Player.pl.setDirection(direction);
 

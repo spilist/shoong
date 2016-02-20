@@ -476,7 +476,7 @@ RectTransform:
   - {fileID: 1496726093}
   - {fileID: 248982190}
   m_Father: {fileID: 2134279969}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 160, y: -110}
@@ -14742,6 +14742,10 @@ MonoBehaviour:
   boosterSpeedDecreasePerTime: 20
   delayAfterMove: 1.5
   activeCount: 0
+--- !u!1 &576304749 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 141974, guid: 11ca7557e4a1a4c0ca18f9d16e92d63c, type: 2}
+  m_PrefabInternal: {fileID: 696738592}
 --- !u!1 &578682937
 GameObject:
   m_ObjectHideFlags: 0
@@ -17632,6 +17636,7 @@ Transform:
   - {fileID: 1672126408}
   - {fileID: 1575386967}
   - {fileID: 1511200749}
+  - {fileID: 696738593}
   m_Father: {fileID: 91418581}
   m_RootOrder: 0
 --- !u!114 &678200080
@@ -17818,6 +17823,56 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 688839004}
   m_Mesh: {fileID: 4300042, guid: 46bd8557e7c474556ab17eda482a0d06, type: 3}
+--- !u!1001 &696738592
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 678200079}
+    m_Modifications:
+    - target: {fileID: 409710, guid: 11ca7557e4a1a4c0ca18f9d16e92d63c, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 409710, guid: 11ca7557e4a1a4c0ca18f9d16e92d63c, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 409710, guid: 11ca7557e4a1a4c0ca18f9d16e92d63c, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 409710, guid: 11ca7557e4a1a4c0ca18f9d16e92d63c, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 409710, guid: 11ca7557e4a1a4c0ca18f9d16e92d63c, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 409710, guid: 11ca7557e4a1a4c0ca18f9d16e92d63c, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 409710, guid: 11ca7557e4a1a4c0ca18f9d16e92d63c, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 409710, guid: 11ca7557e4a1a4c0ca18f9d16e92d63c, type: 2}
+      propertyPath: m_RootOrder
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 141974, guid: 11ca7557e4a1a4c0ca18f9d16e92d63c, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 11ca7557e4a1a4c0ca18f9d16e92d63c, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &696738593 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 409710, guid: 11ca7557e4a1a4c0ca18f9d16e92d63c, type: 2}
+  m_PrefabInternal: {fileID: 696738592}
 --- !u!1 &706357631
 GameObject:
   m_ObjectHideFlags: 0
@@ -23299,7 +23354,7 @@ MonoBehaviour:
   progressCharacter: {fileID: 248982190}
   progressCharacterPosStart: -95
   progressCharacterPosEnd: 115
-  progressPerSecond: 65
+  progressPerSecond: 6.5
   progressPerCube: 0.65
   progressChangeSpeed: 5
   npm: {fileID: 1991538117}
@@ -32424,7 +32479,7 @@ RectTransform:
   m_Children:
   - {fileID: 934046152}
   m_Father: {fileID: 2134279969}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 154}
@@ -32744,7 +32799,7 @@ RectTransform:
   - {fileID: 840594908}
   - {fileID: 419958711}
   m_Father: {fileID: 2134279969}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -38987,7 +39042,7 @@ Transform:
   m_LocalScale: {x: 90, y: 90, z: 1.0853333}
   m_Children: []
   m_Father: {fileID: 2134279969}
-  m_RootOrder: 12
+  m_RootOrder: 13
 --- !u!95 &1455364854
 Animator:
   serializedVersion: 3
@@ -52497,6 +52552,64 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79ea5feff89b54104be3efda3d362e51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1841385041
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1841385042}
+  - 212: {fileID: 1841385043}
+  m_Layer: 0
+  m_Name: BlindFilter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1841385042
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1841385041}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 610.4999}
+  m_LocalScale: {x: 90, y: 90, z: 1.0853333}
+  m_Children: []
+  m_Father: {fileID: 2134279969}
+  m_RootOrder: 12
+--- !u!212 &1841385043
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1841385041}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 1
+  m_ReflectionProbeUsage: 1
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: b156dca8871394168a8d9b0cbea04ada, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
 --- !u!1 &1859176580
 GameObject:
   m_ObjectHideFlags: 0
@@ -60219,6 +60332,8 @@ GameObject:
   - 114: {fileID: 1991538108}
   - 114: {fileID: 1991538124}
   - 114: {fileID: 1991538127}
+  - 114: {fileID: 1991538113}
+  - 114: {fileID: 1991538125}
   m_Layer: 9
   m_Name: Field Objects
   m_TagString: Untagged
@@ -60666,6 +60781,53 @@ MonoBehaviour:
   destroyLargeAfter: 0.5
   destroySmallAfter: 4
   brokenMeshes: {fileID: 484650, guid: afcfdbb6ab4984dbdb7caea16971a310, type: 2}
+--- !u!114 &1991538113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1991538103}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a669f4ab51f0448c4b984704714b2733, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  forceSpawnAtStart: 0
+  objAmount: 1
+  objPool: []
+  objDestroyEffectPool: []
+  objEncounterEffectPool: []
+  objPrefab: {fileID: 195908, guid: c548b6125743e4731aae9b0ced5c00b7, type: 2}
+  objDestroyEffect: {fileID: 153498, guid: 882b2b6130dc7473497ae1382e0c7b10, type: 2}
+  objEncounterEffect: {fileID: 153498, guid: 882b2b6130dc7473497ae1382e0c7b10, type: 2}
+  objEncounterEffectForPlayer: {fileID: 0}
+  strengthenPlayerEffect: {fileID: 0}
+  strength: 3
+  speed: 60
+  tumble: 10
+  minSpawnInterval: 12
+  maxSpawnInterval: 16
+  cubesByEncounter: 60
+  energyGets: 0
+  numSweetsPop: 3
+  isNegative: 1
+  hasEncounterEffect: 0
+  destroyWhenCollideSelf: 0
+  instance: {fileID: 0}
+  loseEnergyWhenEncounter: 25
+  bounceDuration: 0.15
+  hasLevel: 0
+  nameForLevel: 
+  level: 0
+  player: {fileID: 0}
+  slowStayDuration: 1
+  increaseSpeedDuration: 2
+  increaseSpeedUntil: 180
+  detectDistance: 200
+  spawnRadius: 250
+  offScreenSpeedScale: 0.5
+  blindDuration: 3
+  blindFilter: {fileID: 1841385041}
 --- !u!114 &1991538114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61201,6 +61363,53 @@ MonoBehaviour:
   laserStayDuration: 0.5
   laserShrinkingDuration: 0.1
   laserRotatingSpeed: 1000
+--- !u!114 &1991538125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1991538103}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 300be0d34e17c4b15817bc0de6be1797, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  forceSpawnAtStart: 0
+  objAmount: 1
+  objPool: []
+  objDestroyEffectPool: []
+  objEncounterEffectPool: []
+  objPrefab: {fileID: 161074, guid: ef55d90e8c3cb4ca49effeeae135fa38, type: 2}
+  objDestroyEffect: {fileID: 104368, guid: 01de02096f1fa43ff9e90b0ac488a64d, type: 2}
+  objEncounterEffect: {fileID: 104368, guid: 01de02096f1fa43ff9e90b0ac488a64d, type: 2}
+  objEncounterEffectForPlayer: {fileID: 0}
+  strengthenPlayerEffect: {fileID: 0}
+  strength: 3
+  speed: 60
+  tumble: 10
+  minSpawnInterval: 12
+  maxSpawnInterval: 16
+  cubesByEncounter: 60
+  energyGets: 0
+  numSweetsPop: 3
+  isNegative: 1
+  hasEncounterEffect: 0
+  destroyWhenCollideSelf: 0
+  instance: {fileID: 0}
+  loseEnergyWhenEncounter: 25
+  bounceDuration: 0.15
+  hasLevel: 0
+  nameForLevel: 
+  level: 0
+  player: {fileID: 0}
+  slowStayDuration: 1
+  increaseSpeedDuration: 2
+  increaseSpeedUntil: 240
+  detectDistance: 200
+  spawnRadius: 250
+  offScreenSpeedScale: 0.5
+  confusedEffect: {fileID: 576304749}
+  confusedDuration: 3
 --- !u!114 &1991538126
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66285,6 +66494,7 @@ RectTransform:
   - {fileID: 1322196946}
   - {fileID: 2100233778}
   - {fileID: 1514947169}
+  - {fileID: 1841385042}
   - {fileID: 1455364853}
   - {fileID: 1365113167}
   - {fileID: 1366821598}

@@ -1,13 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PhaseMonsterManager : ObjectsManager {
+public class BlackMonsterManager : ObjectsManager {
   public float slowStayDuration = 1;
   public float increaseSpeedDuration = 2;
-  public int increaseSpeedUntil = 140;
+  public int increaseSpeedUntil = 180;
   public int detectDistance = 200;
   public int spawnRadius = 250;
   public float offScreenSpeedScale = 0.5f;
+  public float blindDuration = 3f;
+  public GameObject blindFilter;
 
   override public void initRest() {
     spawn();
@@ -15,6 +17,7 @@ public class PhaseMonsterManager : ObjectsManager {
 
   override protected void spawn() {
     if (player == null || ScoreManager.sm.isGameOver()) return;
+    Debug.Log("??Black2");
 
     Vector2 screenPos = Random.insideUnitCircle;
     screenPos.Normalize();
@@ -28,7 +31,12 @@ public class PhaseMonsterManager : ObjectsManager {
     return Random.Range(minSpawnInterval, maxSpawnInterval);
   }
 
-  public void nextPhase() {
-    spawn();
+  public void blindPlayer() {
+    blindFilter.SetActive(true);
+    Invoke("unblindPlayer", blindDuration);
+  }
+
+  void unblindPlayer() {
+    blindFilter.SetActive(false);
   }
 }

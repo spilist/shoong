@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PhaseMonsterMover : ObjectsMover {
-  private PhaseMonsterManager pmm;
+public class ConfusedMonsterMover : ObjectsMover {
+	private ConfusedMonsterManager cmm;
   private float slowStayDuration;
   private float increaseSpeedDuration;
   private int increaseSpeedUntil;
@@ -14,18 +14,18 @@ public class PhaseMonsterMover : ObjectsMover {
 
   private float stayCount = 0;
 
-	override public string getManager() {
-    return "PhaseMonsterManager";
+  override public string getManager() {
+    return "ConfusedMonsterManager";
   }
 
   protected override void initializeRest() {
     canBeMagnetized = false;
-    pmm = (PhaseMonsterManager)objectsManager;
-    slowStayDuration = pmm.slowStayDuration;
-    increaseSpeedDuration = pmm.increaseSpeedDuration;
-    increaseSpeedUntil = pmm.increaseSpeedUntil;
-    detectDistance = pmm.detectDistance;
-    offScreenSpeedScale = pmm.offScreenSpeedScale;
+    cmm = (ConfusedMonsterManager)objectsManager;
+    slowStayDuration = cmm.slowStayDuration;
+    increaseSpeedDuration = cmm.increaseSpeedDuration;
+    increaseSpeedUntil = cmm.increaseSpeedUntil;
+    detectDistance = cmm.detectDistance;
+    offScreenSpeedScale = cmm.offScreenSpeedScale;
   }
 
   protected override void afterEnable() {
@@ -37,17 +37,17 @@ public class PhaseMonsterMover : ObjectsMover {
     direction = dir / dir.magnitude;
     if (dir.magnitude > detectDistance) {
       stayCount = 0;
-      speed = pmm.speed + player.getSpeed() * offScreenSpeedScale;
+      speed = cmm.speed + player.getSpeed() * offScreenSpeedScale;
     } else {
       if (stayCount < slowStayDuration) {
         stayCount += Time.fixedDeltaTime;
-        speed = pmm.speed;
+        speed = cmm.speed;
       } else if (stayCount < slowStayDuration + increaseSpeedDuration) {
         stayCount += Time.fixedDeltaTime;
-        speed = Mathf.MoveTowards(speed, increaseSpeedUntil, Time.fixedDeltaTime * (increaseSpeedUntil - pmm.speed) / increaseSpeedDuration);
+        speed = Mathf.MoveTowards(speed, increaseSpeedUntil, Time.fixedDeltaTime * (increaseSpeedUntil - cmm.speed) / increaseSpeedDuration);
       } else {
         stayCount = 0;
-        speed = pmm.speed;
+        speed = cmm.speed;
       }
     }
     rb.velocity = direction * speed;
@@ -59,11 +59,12 @@ public class PhaseMonsterMover : ObjectsMover {
   }
 
   override protected void afterCollidePlayer() {
+    cmm.confusePlayer();
     destroyObject();
   }
 
   override protected void afterEncounter() {
     base.afterEncounter();
-    pmm.run();
+    cmm.run();
   }
 }
