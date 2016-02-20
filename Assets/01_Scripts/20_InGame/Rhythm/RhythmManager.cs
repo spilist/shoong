@@ -204,10 +204,9 @@ public class RhythmManager : MonoBehaviour {
       // if (Player.pl.uncontrollable()) return;
 
       // skill 나오기 전 파티클
-      if (rem + 1 == numNormalInLoop) {
-        useSkillParticle.SetActive(true);
-      } else {
+      if (rem + 1 >= numNormalInLoop) {
         useSkillParticle.SetActive(false);
+        useSkillParticle.SetActive(true);
       }
 
       if (rem == 1 && skillActivated && numSkillInLoop > 0) {
@@ -371,7 +370,7 @@ public class RhythmManager : MonoBehaviour {
   }
 
   private void runRhythmCallbacks()
-  {    
+  {
     foreach(RhythmCallback callback in rhythmCallbackList.Values)
     {
       callback();

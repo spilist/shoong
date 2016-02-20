@@ -62,15 +62,15 @@ public class PhaseManager : MonoBehaviour {
     return level;
   }
 
-	public void nextPhase() {
+	public bool nextPhase() {
     level++;
     if (level > textPerLevel.Length) {
       level = textPerLevel.Length;
-      return;
+      return false;
     }
 
     StartCoroutine("showNextLevel");
-    if (level == 0) return;
+    if (level == 0) return true;
 
     string levelName = textPerLevel[level - 1];
 
@@ -113,6 +113,8 @@ public class PhaseManager : MonoBehaviour {
     } else if (levelName == "UFO2") {
       asm.nextPhase();
     }
+
+    return true;
   }
 
   private IEnumerator showNextLevel() {
@@ -128,18 +130,23 @@ public class PhaseManager : MonoBehaviour {
     indicatorBottomXPos = startBottomPos;
 
     if (level > 0) {
-      currentLevelText.text = (level + 1).ToString();
-      nextLevelText.text = (level + 2).ToString();
+      currentLevelText.text = levelText(level);
+      nextLevelText.text = levelText(level + 1);
       TimeManager.time.resetProgressCharacter();
     }
 
     if (level == textPerLevel.Length) {
       stageIndicatorTop.GetComponent<Text>().text = "final";
       stageIndicatorBottom.GetComponent<Text>().text = "level";
-      // nextLevelText.text = "final";
+      nextLevelText.text = "final";
     } else {
-      stageIndicatorBottom.GetComponent<Text>().text = (level + 1).ToString();
+      // stageIndicatorTop.GetComponent<Text>().text = "level " + (level + 1).ToString();
+      stageIndicatorBottom.GetComponent<Text>().text = levelText(level);
     }
+  }
+
+  private string levelText(int level) {
+    return (level/3 + 1).ToString() + "-" + (level%3 + 1).ToString();
   }
 
   void Update() {

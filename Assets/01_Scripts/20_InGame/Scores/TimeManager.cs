@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
@@ -59,7 +59,7 @@ public class TimeManager : MonoBehaviour {
   }
 
 	public void resetProgress() {
-    PhaseManager.pm.nextPhase();
+    if (!PhaseManager.pm.nextPhase()) return;
 		progressChanging = true;
 
 		addGuageAmount = 0;
