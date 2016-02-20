@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
@@ -35,6 +35,7 @@ public class TimeManager : MonoBehaviour {
 	public BlackholeManager blm;
   public MeteroidManager mtm;
   public IceDebrisManager idm;
+  public RubberBallManager rbm;
 
 	public static TimeManager time;
 
@@ -42,6 +43,7 @@ public class TimeManager : MonoBehaviour {
 
 	private bool spawnDangerousEMP = false;
 	private bool spawnBlackhole = false;
+  private bool spawnRubberBall = false;
 
 	void Awake() {
 		time = this;
@@ -50,6 +52,7 @@ public class TimeManager : MonoBehaviour {
 	public void startTime() {
 		resetProgress();
     CubeManager.cm.startCount();
+
 		StartCoroutine("startElapse");
 	}
 
@@ -128,8 +131,10 @@ public class TimeManager : MonoBehaviour {
       asm.respawn();
 			sam.respawn();
 			npm.respawn();
-			if (spawnDangerousEMP) dem.respawn();
+
+      if (spawnDangerousEMP) dem.respawn();
 			if (spawnBlackhole) blm.respawn();
+      if (spawnRubberBall) rbm.respawn();
 		}
 	}
 
@@ -147,6 +152,10 @@ public class TimeManager : MonoBehaviour {
 	public void startBlackhole() {
 		spawnBlackhole = true;
 	}
+
+  public void startRubberBall() {
+    spawnRubberBall = true;
+  }
 
 	// void changeScale(float targetScale, float difference) {
  //    starScale = Mathf.MoveTowards(starScale, targetScale, Time.deltaTime * Mathf.Abs(difference) / changeTime);

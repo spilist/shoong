@@ -6079,7 +6079,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -6101,7 +6101,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
 --- !u!199 &222636914
 ParticleSystemRenderer:
   m_ObjectHideFlags: 0
@@ -18259,6 +18259,14 @@ Prefab:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8230038, guid: 247f56b855b0645959846fad0b6e23f3, type: 2}
+      propertyPath: panLevelCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8230038, guid: 247f56b855b0645959846fad0b6e23f3, type: 2}
+      propertyPath: reverbZoneMixCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11425270, guid: 247f56b855b0645959846fad0b6e23f3, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 247f56b855b0645959846fad0b6e23f3, type: 2}
@@ -18648,7 +18656,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -18670,7 +18678,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
 --- !u!199 &749815782
 ParticleSystemRenderer:
   m_ObjectHideFlags: 0
@@ -23364,6 +23372,7 @@ MonoBehaviour:
   blm: {fileID: 1991538108}
   mtm: {fileID: 1991538107}
   idm: {fileID: 1991538122}
+  rbm: {fileID: 1991538128}
   now: 0
 --- !u!1 &983867797
 GameObject:
@@ -23598,7 +23607,15 @@ Prefab:
     - target: {fileID: 8267248, guid: de26a526d1aba48408c4c51771cf8eb0, type: 2}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 714ddcf1295683b4aa13203f6f203848, type: 3}
+      objectReference: {fileID: 8300000, guid: b31f864e83b9c2b45b15cc4582bc148e, type: 3}
+    - target: {fileID: 8267248, guid: de26a526d1aba48408c4c51771cf8eb0, type: 2}
+      propertyPath: panLevelCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8267248, guid: de26a526d1aba48408c4c51771cf8eb0, type: 2}
+      propertyPath: reverbZoneMixCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: de26a526d1aba48408c4c51771cf8eb0, type: 2}
   m_IsPrefabParent: 0
@@ -26059,7 +26076,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -26081,7 +26098,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
 --- !u!199 &1056094481
 ParticleSystemRenderer:
   m_ObjectHideFlags: 0
@@ -29236,7 +29253,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -29258,7 +29275,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
 --- !u!199 &1248557240
 ParticleSystemRenderer:
   m_ObjectHideFlags: 0
@@ -31120,6 +31137,14 @@ Prefab:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8262716, guid: 699a7667b2cee4564b40cfa293c9d3ad, type: 2}
+      propertyPath: panLevelCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8262716, guid: 699a7667b2cee4564b40cfa293c9d3ad, type: 2}
+      propertyPath: reverbZoneMixCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 699a7667b2cee4564b40cfa293c9d3ad, type: 2}
   m_IsPrefabParent: 0
@@ -32103,7 +32128,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -32125,7 +32150,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
 --- !u!1 &1341369492
 GameObject:
   m_ObjectHideFlags: 0
@@ -34779,7 +34804,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -34801,7 +34826,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
 --- !u!114 &1384869941
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35682,7 +35707,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -35704,7 +35729,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
 --- !u!199 &1426521852
 ParticleSystemRenderer:
   m_ObjectHideFlags: 0
@@ -37419,7 +37444,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -37441,7 +37466,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
 --- !u!199 &1435706022
 ParticleSystemRenderer:
   m_ObjectHideFlags: 0
@@ -41495,7 +41520,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -41517,7 +41542,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
 --- !u!199 &1511200751
 ParticleSystemRenderer:
   m_ObjectHideFlags: 0
@@ -45084,7 +45109,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -45106,7 +45131,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
 --- !u!114 &1540096020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50279,7 +50304,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 8267248, guid: de26a526d1aba48408c4c51771cf8eb0, type: 2}
       propertyPath: m_Volume
-      value: .200000003
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8267248, guid: de26a526d1aba48408c4c51771cf8eb0, type: 2}
+      propertyPath: panLevelCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8267248, guid: de26a526d1aba48408c4c51771cf8eb0, type: 2}
+      propertyPath: reverbZoneMixCustomCurve.m_RotationOrder
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: de26a526d1aba48408c4c51771cf8eb0, type: 2}
@@ -52481,7 +52514,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -52503,7 +52536,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
 --- !u!1 &1839461442
 GameObject:
   m_ObjectHideFlags: 0
@@ -54874,7 +54907,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -54896,7 +54929,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
 --- !u!199 &1917855183
 ParticleSystemRenderer:
   m_ObjectHideFlags: 0
@@ -58485,7 +58518,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -58507,7 +58540,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
 --- !u!199 &1967867621
 ParticleSystemRenderer:
   m_ObjectHideFlags: 0
@@ -60334,6 +60367,7 @@ GameObject:
   - 114: {fileID: 1991538127}
   - 114: {fileID: 1991538113}
   - 114: {fileID: 1991538125}
+  - 114: {fileID: 1991538128}
   m_Layer: 9
   m_Name: Field Objects
   m_TagString: Untagged
@@ -61500,6 +61534,49 @@ MonoBehaviour:
   detectDistance: 200
   spawnRadius: 250
   offScreenSpeedScale: 0.5
+--- !u!114 &1991538128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1991538103}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec7d4eddd3f5547729f4514b693ced57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  forceSpawnAtStart: 0
+  objAmount: 6
+  objPool: []
+  objDestroyEffectPool: []
+  objEncounterEffectPool: []
+  objPrefab: {fileID: 109286, guid: 6cdf7d339169f403c826ba8d8a191420, type: 2}
+  objDestroyEffect: {fileID: 199174, guid: 1b61dba06e24f466ebe4d6e5aa3a18cb, type: 2}
+  objEncounterEffect: {fileID: 0}
+  objEncounterEffectForPlayer: {fileID: 0}
+  strengthenPlayerEffect: {fileID: 0}
+  strength: 0.95
+  speed: 0
+  tumble: 0.5
+  minSpawnInterval: 0
+  maxSpawnInterval: 0
+  cubesByEncounter: 10
+  energyGets: 0
+  numSweetsPop: 3
+  isNegative: 1
+  hasEncounterEffect: 0
+  destroyWhenCollideSelf: 0
+  instance: {fileID: 0}
+  loseEnergyWhenEncounter: 0
+  bounceDuration: 0.5
+  hasLevel: 0
+  nameForLevel: 
+  level: 0
+  player: {fileID: 0}
+  objAmountBigger: 12
+  smallScale: 1.5
+  bigScale: 2.5
+  objScale: 0
 --- !u!1 &1993354414
 GameObject:
   m_ObjectHideFlags: 0
@@ -62003,7 +62080,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -62025,7 +62102,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
 --- !u!199 &2042006118
 ParticleSystemRenderer:
   m_ObjectHideFlags: 0
@@ -66103,7 +66180,7 @@ RectTransform:
   m_RootOrder: 3
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 92.9, y: -60.3}
+  m_AnchoredPosition: {x: 92.8999, y: -60.30005}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!65 &2114071825

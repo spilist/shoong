@@ -90,6 +90,7 @@ TagManager:
   - AutoBooster
   - RandomPlay
   - IdleSettings
+  - RubberBall
   layers:
   - Default
   - TransparentFX

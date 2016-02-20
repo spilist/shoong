@@ -188,6 +188,8 @@ public class EnergyManager : MonoBehaviour {
   }
 
   public void loseEnergy(int amount, string tag) {
+    if (amount <= 0) return;
+
     changeHealth(-amount * lessDamageRate, loseRate * amount * lessDamageRate);
     lastReason = tag;
     takeDamageSound.Play();
