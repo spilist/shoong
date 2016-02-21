@@ -13,6 +13,7 @@ GameObject:
   - 135: {fileID: 13574078}
   - 23: {fileID: 2380194}
   - 114: {fileID: 11421294}
+  - 111: {fileID: 11144866}
   m_Layer: 15
   m_Name: RubberBall
   m_TagString: RubberBall
@@ -46,7 +47,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 109286}
   m_LocalRotation: {x: -0.22826809, y: -0.4228021, z: 0.08618458, w: 0.8727568}
-  m_LocalPosition: {x: -126, y: 0, z: -27}
+  m_LocalPosition: {x: 2522.6873, y: 7054.625, z: 260.65884}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 491606}
@@ -186,6 +187,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!111 &11144866
+Animation:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 109286}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 862e1b83900756447bd2fe603ab961f4, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 862e1b83900756447bd2fe603ab961f4, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 1
 --- !u!114 &11400822
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -15,6 +15,7 @@ public class MonsterMover : ObjectsMover {
 
   private Renderer m_renderer;
   private Color originalColor;
+  private Animation beatAnimation;
 
   protected override void initializeRest() {
     monm = (MonsterManager)objectsManager;
@@ -27,6 +28,11 @@ public class MonsterMover : ObjectsMover {
 
     m_renderer = GetComponent<Renderer>();
     originalColor = m_renderer.material.GetColor("_OutlineColor");
+    beatAnimation = GetComponent<Animation>();
+    beatAnimation.wrapMode = WrapMode.Once;
+    RhythmManager.rm.registerCallback(GetInstanceID(), () => {
+      beatAnimation.Play();
+    });
   }
 
   override protected void afterEnable() {

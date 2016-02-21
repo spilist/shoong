@@ -5,11 +5,17 @@ public class SummonedPartMover : ObjectsMover {
   SummonPartsManager summonManager;
   Renderer mRenderer;
   private Skill_Gold goldSkill;
+  private Animation beatAnimation;
 
   override protected void initializeRest() {
     summonManager = (SummonPartsManager) objectsManager;
     mRenderer = GetComponent<Renderer>();
     goldSkill = (Skill_Gold)SkillManager.sm.getSkill("Gold");
+    beatAnimation = GetComponent<Animation>();
+    beatAnimation.wrapMode = WrapMode.Once;
+    RhythmManager.rm.registerCallback(GetInstanceID(), () => {
+      beatAnimation.Play();
+    });
   }
 
   override protected void afterEnable() {

@@ -34,6 +34,7 @@ GameObject:
   - 198: {fileID: 19805780}
   - 199: {fileID: 19901464}
   - 114: {fileID: 11461598}
+  - 111: {fileID: 11173422}
   m_Layer: 16
   m_Name: BlackMonster
   m_TagString: PhaseMonster
@@ -48,7 +49,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 195908}
   m_LocalRotation: {x: 0.61257374, y: -0.005445838, z: 0.13140583, w: 0.7793948}
-  m_LocalPosition: {x: 41.9, y: 38.11898, z: 2.6}
+  m_LocalPosition: {x: 2474.5908, y: 7054.625, z: 331.80136}
   m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_Children:
   - {fileID: 482900}
@@ -188,6 +189,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!111 &11173422
+Animation:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 195908}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 8bf519723cd269d4b907dd960fadf0f0, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 8bf519723cd269d4b907dd960fadf0f0, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 1
 --- !u!114 &11461598
 MonoBehaviour:
   m_ObjectHideFlags: 1

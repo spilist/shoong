@@ -34,6 +34,7 @@ GameObject:
   - 198: {fileID: 19887922}
   - 199: {fileID: 19984988}
   - 114: {fileID: 11433292}
+  - 111: {fileID: 11119680}
   m_Layer: 16
   m_Name: ConfusedMonster
   m_TagString: PhaseMonster
@@ -48,7 +49,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 161074}
   m_LocalRotation: {x: 0.61257374, y: -0.005445838, z: 0.13140583, w: 0.7793948}
-  m_LocalPosition: {x: 69.8, y: 38.11898, z: 1}
+  m_LocalPosition: {x: 2475.593, y: 7054.625, z: 265.66885}
   m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_Children:
   - {fileID: 469176}
@@ -188,6 +189,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!111 &11119680
+Animation:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 161074}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 8bf519723cd269d4b907dd960fadf0f0, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 8bf519723cd269d4b907dd960fadf0f0, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 1
 --- !u!114 &11433292
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -11,6 +11,7 @@ public class ConfusedMonsterMover : ObjectsMover {
   private float rushSpeed;
   private int detectDistance;
   private float offScreenSpeedScale;
+  private Animation beatAnimation;
 
   private float stayCount = 0;
 
@@ -26,6 +27,11 @@ public class ConfusedMonsterMover : ObjectsMover {
     increaseSpeedUntil = cmm.increaseSpeedUntil;
     detectDistance = cmm.detectDistance;
     offScreenSpeedScale = cmm.offScreenSpeedScale;
+    beatAnimation = GetComponent<Animation>();
+    beatAnimation.wrapMode = WrapMode.Once;
+    RhythmManager.rm.registerCallback(GetInstanceID(), () => {
+      beatAnimation.Play();
+    });
   }
 
   protected override void afterEnable() {

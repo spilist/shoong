@@ -11,6 +11,7 @@ public class PhaseMonsterMover : ObjectsMover {
   private float rushSpeed;
   private int detectDistance;
   private float offScreenSpeedScale;
+  private Animation beatAnimation;
 
   private float stayCount = 0;
 
@@ -26,6 +27,11 @@ public class PhaseMonsterMover : ObjectsMover {
     increaseSpeedUntil = pmm.increaseSpeedUntil;
     detectDistance = pmm.detectDistance;
     offScreenSpeedScale = pmm.offScreenSpeedScale;
+    beatAnimation = GetComponent<Animation>();
+    beatAnimation.wrapMode = WrapMode.Once;
+    RhythmManager.rm.registerCallback(GetInstanceID(), () => {
+      beatAnimation.Play();
+    });
   }
 
   protected override void afterEnable() {
