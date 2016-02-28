@@ -3,7 +3,8 @@ using System.Collections;
 
 public class RubberBallMover : ObjectsMover {
   private RubberBallManager rbm;
-  private ParticleSystem reaction;
+  private GameObject reaction;
+  private Animation beatAnimation;
 
   override public string getManager() {
     return "RubberBallManager";
@@ -11,8 +12,13 @@ public class RubberBallMover : ObjectsMover {
 
   protected override void initializeRest() {
     rbm = (RubberBallManager)objectsManager;
-    reaction = transform.Find("Reaction").GetComponent<ParticleSystem>();
+    reaction = transform.Find("Reaction").gameObject;
     canBeMagnetized = false;
+    beatAnimation = GetComponent<Animation>();
+    beatAnimation.wrapMode = WrapMode.Once;
+    RhythmManager.rm.registerCallback(GetInstanceID(), () => {
+      beatAnimation.Play();
+    });
   }
 
   protected override void afterEnable() {
@@ -25,7 +31,7 @@ public class RubberBallMover : ObjectsMover {
   }
 
   override protected void afterCollidePlayer() {
-    reaction.Play();
-    reaction.GetComponent<AudioSource>().Play();
+    reaction.SetActive(false);
+    reaction.SetActive(true);
   }
 }
