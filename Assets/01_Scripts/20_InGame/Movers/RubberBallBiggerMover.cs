@@ -1,17 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class RubberBallMover : ObjectsMover {
-  private RubberBallManager rbm;
+public class RubberBallBiggerMover : ObjectsMover {
+  private RubberBallBiggerManager rbm;
   private AudioSource reaction;
   private Animation beatAnimation;
 
   override public string getManager() {
-    return "RubberBallManager";
+    return "RubberBallBiggerManager";
   }
 
   protected override void initializeRest() {
-    rbm = (RubberBallManager)objectsManager;
+    rbm = (RubberBallBiggerManager)objectsManager;
     reaction = transform.Find("Reaction").GetComponent<AudioSource>();
     canBeMagnetized = false;
     beatAnimation = GetComponent<Animation>();

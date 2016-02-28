@@ -71,6 +71,6 @@ public class BlackMonsterMover : ObjectsMover {
 
   override protected void afterEncounter() {
     base.afterEncounter();
-    bmm.run();
+    if (bmm.enabled) bmm.run();
   }
 }

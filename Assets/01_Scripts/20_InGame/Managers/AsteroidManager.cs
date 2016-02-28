@@ -26,6 +26,7 @@ public class AsteroidManager : ObjectsManager {
 
   override public void initRest() {
     spawnPooledObjs(objPool, objPrefab, objAmount);
+    TimeManager.time.startSpawnAsteroid();
   }
 
   override public void run() {}

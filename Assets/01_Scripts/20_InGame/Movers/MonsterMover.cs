@@ -118,7 +118,6 @@ public class MonsterMover : ObjectsMover {
       player.effectedBy(tag);
 
       monm.monsterFilter.SetActive(true);
-      player.encounterObject(tag);
     }
     else {
       showEncounterEffect();

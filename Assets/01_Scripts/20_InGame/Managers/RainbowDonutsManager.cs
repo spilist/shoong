@@ -85,7 +85,6 @@ public class RainbowDonutsManager : ObjectsManager {
     if (rainbowRoad != null && rainbowRoad.gameObject.activeSelf) rainbowRoad.gameObject.SetActive(false);
 
     if (rideCount == 0) {
-      player.encounterObject("RainbowDonut");
       currentRoadRide = numRoadRides;
     }
 

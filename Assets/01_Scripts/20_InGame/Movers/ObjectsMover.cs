@@ -215,7 +215,7 @@ public class ObjectsMover : MonoBehaviour {
     }
   }
 
-  virtual public void destroyObject(bool destroyEffect = true, bool byPlayer = false, bool resapwn = true) {
+  virtual public void destroyObject(bool destroyEffect = true, bool byPlayer = false, bool respawn = true) {
     if (!beforeDestroy()) return;
 
     gameObject.SetActive(false);
@@ -227,10 +227,10 @@ public class ObjectsMover : MonoBehaviour {
     afterDestroy(byPlayer);
 
     if (byPlayer) {
-      if (resapwn) objectsManager.run();
+      if (respawn && objectsManager.enabled) objectsManager.run();
       if (isNegativeObject()) Player.pl.destroyObject(tag);
     } else {
-      if (resapwn) objectsManager.runImmediately();
+      if (respawn && objectsManager.enabled) objectsManager.runImmediately();
     }
   }
 
@@ -272,9 +272,7 @@ public class ObjectsMover : MonoBehaviour {
       Player.pl.effectedBy(tag);
     }
 
-    if (hasEncounterEffect()) {
-      Player.pl.encounterObject(tag);
-    } else if (isNegativeObject() && !dangerous()) {
+    if (isNegativeObject() && !dangerous()) {
       Player.pl.destroyObject(tag);
     }
 
@@ -318,10 +316,6 @@ public class ObjectsMover : MonoBehaviour {
 
   virtual public bool isNegativeObject() {
     return objectsManager.isNegative;
-  }
-
-  virtual public bool hasEncounterEffect() {
-    return objectsManager.hasEncounterEffect;
   }
 
   virtual public int energyGets() {

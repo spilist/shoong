@@ -70,7 +70,6 @@ public class CubeDispenserManager : ObjectsManager {
       } else {
         instance.GetComponent<Renderer>().sharedMaterial = activeMat;
       }
-      player.encounterObject("CubeDispenser");
       StartCoroutine("destroyAfterTry");
     }
   }

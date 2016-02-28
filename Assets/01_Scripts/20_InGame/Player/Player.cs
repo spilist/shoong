@@ -74,7 +74,6 @@ public class Player : MonoBehaviour {
 
   public int numBoosters = 0;
   private int numDestroyObstacles = 0;
-  private int numUseObjects = 0;
   public PlayerDirectionIndicator dirIndicator;
   private float timeSpaned;
   public ParticleSystem getEnergy;
@@ -617,28 +616,9 @@ public class Player : MonoBehaviour {
     if (!usingEMP) Camera.main.GetComponent<CameraMover>().shake();
   }
 
-  public void encounterObject(string tag) {
-    numUseObjects++;
-    DataManager.dm.increment("TotalNumUseObjects");
-
-    if (tag == "Jetpack") DataManager.dm.increment("NumUseJetpack");
-    else if (tag == "Metal") DataManager.dm.increment("NumUseMetal");
-    else if (tag == "Monster") DataManager.dm.increment("NumRideMonster");
-    else if (tag == "Dopple") DataManager.dm.increment("NumMeetDopple");
-    else if (tag == "ComboPart") DataManager.dm.increment("NumGenerateIllusion");
-    else if (tag == "CubeDispenser") DataManager.dm.increment("NumBumpCubeDispenser");
-    else if (tag == "SummonPart") DataManager.dm.increment("NumSummon");
-    else if (tag == "RainbowDonut") DataManager.dm.increment("NumRideRainbow");
-    else if (tag == "EMP") DataManager.dm.increment("NumGenerateForcefield");
-    else if (tag == "Magnet") DataManager.dm.increment("Magnet");
-    else if (tag == "Transformer") DataManager.dm.increment("Transformer");
-    else Debug.Log("Encounter Exception? " + tag);
-  }
-
   void OnDisable() {
     DataManager.dm.setBestInt("BestBoosters", numBoosters);
     DataManager.dm.setBestInt("BestNumDestroyObstacles", numDestroyObstacles);
-    DataManager.dm.setBestInt("BestNumUseObjects", numUseObjects);
   }
 
   public bool isInvincible() {

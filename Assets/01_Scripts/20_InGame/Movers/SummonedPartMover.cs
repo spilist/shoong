@@ -61,10 +61,6 @@ public class SummonedPartMover : ObjectsMover {
     destroyObject();
   }
 
-  override public bool hasEncounterEffect() {
-    return false;
-  }
-
   public void transformToGold(Vector3 pos) {
     GameObject laser = goldSkill.getLaser(pos);
     laser.SetActive(true);

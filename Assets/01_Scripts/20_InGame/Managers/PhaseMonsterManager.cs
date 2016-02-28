@@ -8,9 +8,10 @@ public class PhaseMonsterManager : ObjectsManager {
   public int detectDistance = 200;
   public int spawnRadius = 250;
   public float offScreenSpeedScale = 0.5f;
+  public float firstSpawnDelay = 2;
 
   override public void initRest() {
-    spawn();
+    Invoke("spawn", firstSpawnDelay);
   }
 
   override protected void spawn() {

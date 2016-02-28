@@ -20,7 +20,6 @@ public class SpawnManager : MonoBehaviour {
 
     GetComponent<FollowTarget>().enabled = false;
 
-    GetComponent<AsteroidManager>().enabled = true;
     GetComponent<SmallAsteroidManager>().enabled = true;
 
     GetComponent<GoldenCubeManager>().enabled = true;

@@ -8,22 +8,29 @@ public class PhaseManager : MonoBehaviour {
   public string[] textPerLevel;
   public int[] reqProgressPerLevel;
 
-  public Skill_Transform skillTransform;
-
-  public IceDebrisManager icm;
-  public PhaseMonsterManager pmm;
-  public BlackholeManager blm;
-  public MeteroidManager ntm;
-  public DangerousEMPManager dem;
-  public AlienshipManager asm;
-
-  public ComboPartsManager cpm;
-  public CubeDispenserManager cdm;
-  public RainbowDonutsManager rdm;
-  public SummonPartsManager spm;
-  public EMPManager em;
-  public AsteroidManager asteroidM;
   public SmallAsteroidManager smallAsteroidM;
+  public AsteroidManager asteroidM;
+  public IceDebrisManager icm;
+  public ComboPartsManager cpm;
+
+  public RubberBallManager rbm;
+  public RubberBallBiggerManager rbbm;
+  public RainbowDonutsManager rdm;
+
+  public PhaseMonsterManager pmm;
+  public BlackMonsterManager bmm;
+  public ConfusedMonsterManager cmm;
+
+  public MeteroidManager mtm;
+  // public BiggerMeteroidManager bmtm;
+  // public BiggerMeteroidManager2 bmtm2;
+  public SummonPartsManager spm;
+
+  public DangerousEMPManager dem;
+  public BlackholeManager blm;
+  public EMPManager em;
+
+  public AlienshipManager asm;
 
   public RectTransform stageIndicatorTop;
   public RectTransform stageIndicatorBottom;
@@ -74,44 +81,79 @@ public class PhaseManager : MonoBehaviour {
 
     string levelName = textPerLevel[level - 1];
 
-    if (levelName == "IceDebris") {
-      icm.enabled = true;
-      // cdm.enabled = true;
-      // skillTransform.addManager("CubeDispenser");
+    switch(levelName) {
+      case "1-2":
+      asteroidM.enabled = true;
       cpm.adjustForLevel(2);
-    } else if (levelName == "Minimon") {
-      pmm.enabled = true;
-      rdm.enabled = true;
-      skillTransform.addManager("RainbowDonuts");
+      break;
+      case "1-3":
+      icm.enabled = true;
       cpm.adjustForLevel(3);
-      // cdm.adjustForLevel(2);
-    } else if (levelName == "Blackhole") {
-      blm.enabled = true;
-      spm.enabled = true;
-      skillTransform.addManager("SummonParts");
-      // cdm.adjustForLevel(3);
+      break;
+      case "2-1":
+      rbm.enabled = true;
+      rdm.enabled = true;
+      rdm.adjustForLevel(1);
+      break;
+      case "2-2":
+      rbm.enabled = false;
+      TimeManager.time.startRubberBall(false);
+      rbbm.enabled = true;
       rdm.adjustForLevel(2);
-    } else if (levelName == "Meteroid") {
-      ntm.enabled = true;
-      spm.adjustForLevel(2);
+      break;
+      case "2-3":
+      rbbm.setMany(true);
       rdm.adjustForLevel(3);
-      asteroidM.startPhase();
-      smallAsteroidM.startPhase();
-    } else if (levelName == "Bomb") {
-      dem.enabled = true;
-      em.enabled = true;
-      skillTransform.addManager("EMP");
+      break;
+      case "3-1":
+      rbm.enabled = true;
+      TimeManager.time.startRubberBall();
+      rbbm.enabled = false;
+      TimeManager.time.startRubberBallBigger(false);
+      pmm.enabled = true;
+      break;
+      case "3-2":
+      bmm.enabled = true;
+      break;
+      case "3-3":
+      cmm.enabled = true;
+      break;
+      case "4-1":
+      mtm.enabled = true;
+      cpm.enabled = false;
+      bmm.enabled = false;
+      cmm.enabled = false;
+      spm.enabled = true;
+      spm.adjustForLevel(1);
+      break;
+      case "4-2":
+      mtm.enabled = false;
+      // bmtm.enabled = true;
+      spm.adjustForLevel(2);
+      break;
+      case "4-3":
+      // bmtm.enabled = true;
+      // bmtm2.enabled = true;
       spm.adjustForLevel(3);
-    } else if (levelName == "UFO") {
-      asm.enabled = true;
+      break;
+      case "5-1":
+      // bmtm2.enabled = false;
+      spm.enabled = false;
+      em.enabled = true;
+      em.adjustForLevel(1);
+      dem.enabled = true;
+      break;
+      case "5-2":
+      blm.enabled = true;
       em.adjustForLevel(2);
-    } else if (levelName == "BigBomb") {
+      break;
+      case "5-3":
       dem.startLarger();
       em.adjustForLevel(3);
-    } else if (levelName == "Minimon2") {
-      pmm.nextPhase();
-    } else if (levelName == "UFO2") {
-      asm.nextPhase();
+      break;
+      case "6":
+      asm.enabled = true;
+      break;
     }
 
     return true;

@@ -36,14 +36,17 @@ public class TimeManager : MonoBehaviour {
   public MeteroidManager mtm;
   public IceDebrisManager idm;
   public RubberBallManager rbm;
+  public RubberBallBiggerManager rbbm;
 
 	public static TimeManager time;
 
 	public int now = 0;
 
-	private bool spawnDangerousEMP = false;
+	private bool spawnAsteroid = false;
+  private bool spawnDangerousEMP = false;
 	private bool spawnBlackhole = false;
   private bool spawnRubberBall = false;
+  private bool spawnRubberBallBigger = false;
 
 	void Awake() {
 		time = this;
@@ -128,13 +131,14 @@ public class TimeManager : MonoBehaviour {
 
       CubeManager.cm.addPointsByTime();
 
-      asm.respawn();
-			sam.respawn();
-			npm.respawn();
+      sam.respawn();
+      npm.respawn();
 
+      if (spawnAsteroid) asm.respawn();
       if (spawnDangerousEMP) dem.respawn();
 			if (spawnBlackhole) blm.respawn();
       if (spawnRubberBall) rbm.respawn();
+      if (spawnRubberBallBigger) rbbm.respawn();
 		}
 	}
 
@@ -145,6 +149,10 @@ public class TimeManager : MonoBehaviour {
     idm.stopSpawn();
 	}
 
+  public void startSpawnAsteroid() {
+    spawnAsteroid = true;
+  }
+
 	public void startSpawnDangerousEMP() {
 		spawnDangerousEMP = true;
 	}
@@ -153,8 +161,12 @@ public class TimeManager : MonoBehaviour {
 		spawnBlackhole = true;
 	}
 
-  public void startRubberBall() {
-    spawnRubberBall = true;
+  public void startRubberBall(bool val = true) {
+    spawnRubberBall = val;
+  }
+
+  public void startRubberBallBigger(bool val = true) {
+    spawnRubberBallBigger = val;
   }
 
 	// void changeScale(float targetScale, float difference) {

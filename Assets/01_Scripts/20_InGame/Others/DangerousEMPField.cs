@@ -64,7 +64,6 @@ public class DangerousEMPField : MonoBehaviour {
         return;
       }
     }
-    if (other.GetComponent<ObjectsMover>() == null) Debug.LogWarning("Null mover: " + other.tag);
-    else other.GetComponent<ObjectsMover>().destroyObject();
+    if (other.GetComponent<ObjectsMover>() != null) other.GetComponent<ObjectsMover>().destroyObject();
   }
 }

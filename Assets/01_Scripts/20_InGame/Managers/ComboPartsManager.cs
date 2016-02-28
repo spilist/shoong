@@ -101,10 +101,6 @@ public class ComboPartsManager : ObjectsManager {
     comboCount++;
     trying = true;
 
-    if (comboCount == 1) {
-      player.encounterObject("ComboPart");
-    }
-
     if (comboCount == fullComboCount) {
       DataManager.dm.increment("NumCompleteIllusion");
       run();

@@ -23,7 +23,6 @@ public class ObjectsManager : MonoBehaviour {
   public int energyGets;
   public int numSweetsPop;
   public bool isNegative = false;
-  public bool hasEncounterEffect = true;
   public bool destroyWhenCollideSelf;
 
   protected SpawnManager spawnManager;

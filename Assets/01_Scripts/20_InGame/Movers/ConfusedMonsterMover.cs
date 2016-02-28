@@ -71,6 +71,6 @@ public class ConfusedMonsterMover : ObjectsMover {
 
   override protected void afterEncounter() {
     base.afterEncounter();
-    cmm.run();
+    if (cmm.enabled) cmm.run();
   }
 }

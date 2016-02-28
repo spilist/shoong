@@ -10,14 +10,14 @@ public class BlackMonsterManager : ObjectsManager {
   public float offScreenSpeedScale = 0.5f;
   public float blindDuration = 3f;
   public GameObject blindFilter;
+  public float firstSpawnDelay = 2;
 
   override public void initRest() {
-    spawn();
+    Invoke("spawn", firstSpawnDelay);
   }
 
   override protected void spawn() {
     if (player == null || ScoreManager.sm.isGameOver()) return;
-    Debug.Log("??Black2");
 
     Vector2 screenPos = Random.insideUnitCircle;
     screenPos.Normalize();

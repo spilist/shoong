@@ -100,10 +100,6 @@ public class MiniMonsterMover : ObjectsMover {
     return timeElapsed;
   }
 
-  override public bool hasEncounterEffect() {
-    return false;
-  }
-
   override public void setMagnetized() {
     if (timeElapsed) isMagnetized = true;
   }

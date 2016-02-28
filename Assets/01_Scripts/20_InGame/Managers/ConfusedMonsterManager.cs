@@ -10,14 +10,14 @@ public class ConfusedMonsterManager : ObjectsManager {
   public float offScreenSpeedScale = 0.5f;
   public GameObject confusedEffect;
   public float confusedDuration = 3f;
+  public float firstSpawnDelay = 2;
 
   override public void initRest() {
-    spawn();
+    Invoke("spawn", firstSpawnDelay);
   }
 
   override protected void spawn() {
     if (player == null || ScoreManager.sm.isGameOver()) return;
-    Debug.Log("confused??2");
 
     Vector2 screenPos = Random.insideUnitCircle;
     screenPos.Normalize();
