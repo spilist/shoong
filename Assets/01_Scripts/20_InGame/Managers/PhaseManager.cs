@@ -122,7 +122,9 @@ public class PhaseManager : MonoBehaviour {
       mtm.enabled = true;
       cpm.enabled = false;
       bmm.enabled = false;
+      bmm.stopRespawn();
       cmm.enabled = false;
+      cmm.stopRespawn();
       spm.enabled = true;
       spm.adjustForLevel(1);
       break;
@@ -161,7 +163,7 @@ public class PhaseManager : MonoBehaviour {
 
   private IEnumerator showNextLevel() {
     if (level > 0) {
-      EnergyManager.em.getFullHealth();
+      // EnergyManager.em.getFullHealth();
       levelClearEffect.SetActive(true);
     }
 

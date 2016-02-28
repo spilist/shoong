@@ -115,6 +115,8 @@ public class CameraMover : MonoBehaviour {
       shakeCount = duration;
     }
 
+    if (amount == 0) amount = 4;
+
     shakeAmount = amount;
     shaking = true;
     originalPos = transform.position;

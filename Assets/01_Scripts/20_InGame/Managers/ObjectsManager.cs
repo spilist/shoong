@@ -192,4 +192,8 @@ public class ObjectsManager : MonoBehaviour {
     return cubesByEncounter;
   }
 
+  public void stopRespawn() {
+    StopCoroutine("respawnRoutine");
+  }
+
 }

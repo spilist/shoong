@@ -256,8 +256,11 @@ public class Player : MonoBehaviour {
 
   public void loseEnergy(int amount, string tag) {
     Camera.main.GetComponent<CameraMover>().shake(shakeDuring * reboundScale, shakeBase * reboundScale * amount / 100);
-    changeManager.changeRed();
-    EnergyManager.em.loseEnergy(amount, tag);
+
+    if (amount > 0) {
+      changeManager.changeRed();
+      EnergyManager.em.loseEnergy(amount, tag);
+    }
   }
 
   public void processCollision(Collision collision) {
@@ -301,29 +304,13 @@ public class Player : MonoBehaviour {
     stickSpeedScale = 1;
   }
 
-  public void shootBooster(){
+  public void shootBooster() {
+    useSkill();
+
     if (stopping || uncontrollable()) return;
 
-    // if (RhythmManager.rm.canBoost()) {
-      numBoosters++;
-      DataManager.dm.increment("TotalBoosters");
-
-      // if (useBoosterText != null && useBoosterText.gameObject.activeInHierarchy) {
-        // useBoosterText.increment();
-      // }
-
-      if (RhythmManager.rm.isSkillOK) {
-        SkillManager.sm.activate();
-        if (SkillManager.sm.isBlink()) {
-          teleport(transform.position + direction * dpm.blinkDistance);
-        }
-      }
-
-      // RhythmManager.rm.ringSuccessed();
-    // } else {
-      // RhythmManager.rm.ringMissed();
-      // return;
-    // }
+    numBoosters++;
+    DataManager.dm.increment("TotalBoosters");
 
     timeSpaned = 0;
 
@@ -339,8 +326,6 @@ public class Player : MonoBehaviour {
       boosterspeed += boosterSpeedUp() * boosterBonus;
       boosterspeed = boosterspeed > maxBooster() ? maxBooster() : boosterspeed;
     }
-
-    // rotatePlayerBody();
   }
 
   public int getNumBoosters() {
@@ -531,6 +516,15 @@ public class Player : MonoBehaviour {
 
   public bool uncontrollable() {
     return isRebounding() || isUsingRainbow() || usingEMP || bouncing || bouncingByDispenser;
+  }
+
+  void useSkill() {
+    if (!RhythmManager.rm.isSkillOK || isRebounding() || isUsingRainbow() || usingEMP) return;
+
+    SkillManager.sm.activate();
+    if (SkillManager.sm.isBlink()) {
+      teleport(transform.position + direction * dpm.blinkDistance);
+    }
   }
 
   public bool noRhythmRing() {

@@ -237,6 +237,7 @@ Transform:
   - {fileID: 1053395827}
   - {fileID: 812955783}
   - {fileID: 424831002}
+  - {fileID: 1841385042}
   - {fileID: 1997391146}
   - {fileID: 537339454}
   m_Father: {fileID: 192454350}
@@ -476,7 +477,7 @@ RectTransform:
   - {fileID: 1496726093}
   - {fileID: 248982190}
   m_Father: {fileID: 2134279969}
-  m_RootOrder: 16
+  m_RootOrder: 15
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 160, y: -110}
@@ -8295,9 +8296,9 @@ MonoBehaviour:
   skillObject: {fileID: 851953042}
   useSkillEffect: {fileID: 0}
   normalRing: 11
-  skillRing: 8
+  skillRing: 1
   description: Pull candies
-  duration: 0
+  duration: 6
 --- !u!1 &311332703
 GameObject:
   m_ObjectHideFlags: 0
@@ -11826,9 +11827,9 @@ MonoBehaviour:
   skillObject: {fileID: 1426521849}
   useSkillEffect: {fileID: 1830827562}
   normalRing: 11
-  skillRing: 8
+  skillRing: 1
   description: Become real
-  duration: 0
+  duration: 6
   monsterFilter: {fileID: 1997391145}
   mm: {fileID: 1991538109}
 --- !u!224 &496868770 stripped
@@ -12549,7 +12550,7 @@ Transform:
   m_LocalScale: {x: 18, y: 18, z: 1}
   m_Children: []
   m_Father: {fileID: 14073673}
-  m_RootOrder: 5
+  m_RootOrder: 6
 --- !u!23 &537339455
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -23370,8 +23371,8 @@ MonoBehaviour:
   progressCharacter: {fileID: 248982190}
   progressCharacterPosStart: -95
   progressCharacterPosEnd: 115
-  progressPerSecond: 65
-  progressPerCube: 0.65
+  progressPerSecond: 7.5
+  progressPerCube: 0.45
   progressChangeSpeed: 5
   npm: {fileID: 1991538117}
   asm: {fileID: 1991538112}
@@ -28963,13 +28964,13 @@ MonoBehaviour:
   - 3.29
   - 4.39
   baseSpeedStandard: 50
-  baseSpeeds: 280000001400000000000000ecffffffd8ffffff
+  baseSpeeds: 1e0000000f00000000000000f1ffffffe2ffffff
   boosterPlusSpeedStandard: 130
-  boosterPlusSpeeds: 140000000a00000000000000f6ffffffecffffff
+  boosterPlusSpeeds: 0f0000000700000000000000f9fffffff1ffffff
   boosterMaxSpeedStandard: 160
-  boosterMaxSpeeds: 0f0000000700000000000000f9fffffff1ffffff
+  boosterMaxSpeeds: 0a0000000500000000000000fbfffffff6ffffff
   boosterSpeedDecreaseStandard: 50
-  boosterSpeedDecreases: 280000001400000000000000f6ffffffecffffff
+  boosterSpeedDecreases: 140000000a00000000000000f6ffffffecffffff
   energyReduceOnTimeStandard: 6
   energyReduceOnTimeStandard_hard: 12
   energyReduceOnTimes: f6fffffffbffffff00000000050000000a000000
@@ -32513,7 +32514,7 @@ RectTransform:
   m_Children:
   - {fileID: 934046152}
   m_Father: {fileID: 2134279969}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 154}
@@ -32833,7 +32834,7 @@ RectTransform:
   - {fileID: 840594908}
   - {fileID: 419958711}
   m_Father: {fileID: 2134279969}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -39076,7 +39077,7 @@ Transform:
   m_LocalScale: {x: 90, y: 90, z: 1.0853333}
   m_Children: []
   m_Father: {fileID: 2134279969}
-  m_RootOrder: 13
+  m_RootOrder: 12
 --- !u!95 &1455364854
 Animator:
   serializedVersion: 3
@@ -49294,7 +49295,7 @@ Transform:
   - {fileID: 892369442}
   - {fileID: 1276123138}
   m_Father: {fileID: 0}
-  m_RootOrder: 22
+  m_RootOrder: 21
 --- !u!1 &1727465178
 GameObject:
   m_ObjectHideFlags: 0
@@ -52633,11 +52634,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1841385041}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 610.4999}
-  m_LocalScale: {x: 90, y: 90, z: 1.0853333}
+  m_LocalPosition: {x: 0, y: 0, z: -220.00009}
+  m_LocalScale: {x: 1.6216216, y: 1.6216214, z: 0.58666664}
   m_Children: []
-  m_Father: {fileID: 2134279969}
-  m_RootOrder: 12
+  m_Father: {fileID: 14073673}
+  m_RootOrder: 4
 --- !u!212 &1841385043
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -60443,7 +60444,6 @@ MonoBehaviour:
   energyGets: 0
   numSweetsPop: 0
   isNegative: 0
-  hasEncounterEffect: 0
   destroyWhenCollideSelf: 0
   instance: {fileID: 0}
   loseEnergyWhenEncounter: 0
@@ -60463,12 +60463,12 @@ MonoBehaviour:
   roadPool: []
   cookiesPerRoad: 4
   numRoadRidesPerLevel: 020000000300000004000000
-  speedPerRide: 84030000b6030000e80300001a0400004c0400007e040000
+  speedPerRide: 58020000bc0200002003000084030000e80300004c040000
   numRoadRides: 0
   nextDonutRadius: 300
   rotateDuring: 0.4
   rotateAngularSpeed: 1000
-  ridingSpeed: 400
+  ridingSpeed: 300
   rainbowColors:
   - {r: 1, g: 0, b: 0, a: 0.7372549}
   - {r: 0.2784314, g: 0.13725491, b: 0, a: 0.7372549}
@@ -60509,7 +60509,6 @@ MonoBehaviour:
   energyGets: 11
   numSweetsPop: 0
   isNegative: 0
-  hasEncounterEffect: 0
   destroyWhenCollideSelf: 0
   instance: {fileID: 0}
   loseEnergyWhenEncounter: 0
@@ -60567,7 +60566,6 @@ MonoBehaviour:
   energyGets: 0
   numSweetsPop: 5
   isNegative: 1
-  hasEncounterEffect: 0
   destroyWhenCollideSelf: 0
   instance: {fileID: 0}
   loseEnergyWhenEncounter: 40
@@ -60620,7 +60618,6 @@ MonoBehaviour:
   energyGets: 0
   numSweetsPop: 10
   isNegative: 1
-  hasEncounterEffect: 0
   destroyWhenCollideSelf: 0
   instance: {fileID: 0}
   loseEnergyWhenEncounter: 100
@@ -60665,7 +60662,6 @@ MonoBehaviour:
   energyGets: 5
   numSweetsPop: 0
   isNegative: 1
-  hasEncounterEffect: 1
   destroyWhenCollideSelf: 0
   instance: {fileID: 0}
   loseEnergyWhenEncounter: 30
@@ -60738,7 +60734,6 @@ MonoBehaviour:
   energyGets: 0
   numSweetsPop: 0
   isNegative: 0
-  hasEncounterEffect: 0
   destroyWhenCollideSelf: 0
   instance: {fileID: 0}
   loseEnergyWhenEncounter: 0
@@ -60820,7 +60815,6 @@ MonoBehaviour:
   energyGets: 0
   numSweetsPop: 3
   isNegative: 1
-  hasEncounterEffect: 0
   destroyWhenCollideSelf: 0
   instance: {fileID: 0}
   loseEnergyWhenEncounter: 15
@@ -60863,7 +60857,7 @@ MonoBehaviour:
   objEncounterEffectForPlayer: {fileID: 0}
   strengthenPlayerEffect: {fileID: 0}
   strength: 3
-  speed: 60
+  speed: 70
   tumble: 10
   minSpawnInterval: 6
   maxSpawnInterval: 8
@@ -60871,7 +60865,6 @@ MonoBehaviour:
   energyGets: 0
   numSweetsPop: 3
   isNegative: 1
-  hasEncounterEffect: 0
   destroyWhenCollideSelf: 0
   instance: {fileID: 0}
   loseEnergyWhenEncounter: 25
@@ -60883,11 +60876,12 @@ MonoBehaviour:
   slowStayDuration: 1
   increaseSpeedDuration: 2
   increaseSpeedUntil: 180
-  detectDistance: 200
+  detectDistance: 245
   spawnRadius: 250
   offScreenSpeedScale: 0.5
   blindDuration: 3
   blindFilter: {fileID: 1841385041}
+  firstSpawnDelay: 2
 --- !u!114 &1991538114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60931,7 +60925,6 @@ MonoBehaviour:
   energyGets: 10
   numSweetsPop: 0
   isNegative: 0
-  hasEncounterEffect: 0
   destroyWhenCollideSelf: 0
   instance: {fileID: 0}
   loseEnergyWhenEncounter: 0
@@ -60972,7 +60965,6 @@ MonoBehaviour:
   energyGets: 11
   numSweetsPop: 0
   isNegative: 0
-  hasEncounterEffect: 1
   destroyWhenCollideSelf: 0
   instance: {fileID: 0}
   loseEnergyWhenEncounter: 0
@@ -61036,7 +61028,6 @@ MonoBehaviour:
   energyGets: 9
   numSweetsPop: 0
   isNegative: 0
-  hasEncounterEffect: 0
   destroyWhenCollideSelf: 0
   instance: {fileID: 0}
   loseEnergyWhenEncounter: 0
@@ -61082,7 +61073,6 @@ MonoBehaviour:
   energyGets: 0
   numSweetsPop: 0
   isNegative: 0
-  hasEncounterEffect: 1
   destroyWhenCollideSelf: 0
   instance: {fileID: 0}
   loseEnergyWhenEncounter: 0
@@ -61138,7 +61128,6 @@ MonoBehaviour:
   energyGets: 0
   numSweetsPop: 0
   isNegative: 0
-  hasEncounterEffect: 1
   destroyWhenCollideSelf: 0
   instance: {fileID: 0}
   loseEnergyWhenEncounter: 0
@@ -61187,7 +61176,6 @@ MonoBehaviour:
   energyGets: 0
   numSweetsPop: 0
   isNegative: 0
-  hasEncounterEffect: 1
   destroyWhenCollideSelf: 0
   instance: {fileID: 0}
   loseEnergyWhenEncounter: 30
@@ -61248,7 +61236,6 @@ MonoBehaviour:
   energyGets: 0
   numSweetsPop: 2
   isNegative: 1
-  hasEncounterEffect: 0
   destroyWhenCollideSelf: 0
   instance: {fileID: 0}
   loseEnergyWhenEncounter: 10
@@ -61299,7 +61286,6 @@ MonoBehaviour:
   energyGets: 0
   numSweetsPop: 0
   isNegative: 1
-  hasEncounterEffect: 0
   destroyWhenCollideSelf: 0
   instance: {fileID: 0}
   loseEnergyWhenEncounter: 5
@@ -61341,7 +61327,6 @@ MonoBehaviour:
   energyGets: 0
   numSweetsPop: 0
   isNegative: 1
-  hasEncounterEffect: 0
   destroyWhenCollideSelf: 0
   instance: {fileID: 0}
   loseEnergyWhenEncounter: 35
@@ -61395,7 +61380,6 @@ MonoBehaviour:
   energyGets: 0
   numSweetsPop: 5
   isNegative: 1
-  hasEncounterEffect: 0
   destroyWhenCollideSelf: 0
   instance: {fileID: 0}
   loseEnergyWhenEncounter: 25
@@ -61445,7 +61429,7 @@ MonoBehaviour:
   objEncounterEffectForPlayer: {fileID: 0}
   strengthenPlayerEffect: {fileID: 0}
   strength: 3
-  speed: 60
+  speed: 85
   tumble: 10
   minSpawnInterval: 6
   maxSpawnInterval: 8
@@ -61453,7 +61437,6 @@ MonoBehaviour:
   energyGets: 0
   numSweetsPop: 3
   isNegative: 1
-  hasEncounterEffect: 0
   destroyWhenCollideSelf: 0
   instance: {fileID: 0}
   loseEnergyWhenEncounter: 25
@@ -61462,14 +61445,15 @@ MonoBehaviour:
   nameForLevel: 
   level: 0
   player: {fileID: 0}
-  slowStayDuration: 1
-  increaseSpeedDuration: 2
+  slowStayDuration: 2
+  increaseSpeedDuration: 1
   increaseSpeedUntil: 240
-  detectDistance: 200
+  detectDistance: 245
   spawnRadius: 250
   offScreenSpeedScale: 0.5
   confusedEffect: {fileID: 576304749}
   confusedDuration: 3
+  firstSpawnDelay: 2
 --- !u!114 &1991538126
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61500,7 +61484,6 @@ MonoBehaviour:
   energyGets: 0
   numSweetsPop: 0
   isNegative: 0
-  hasEncounterEffect: 1
   destroyWhenCollideSelf: 0
   instance: {fileID: 0}
   loseEnergyWhenEncounter: 0
@@ -61537,7 +61520,7 @@ MonoBehaviour:
   objEncounterEffectForPlayer: {fileID: 0}
   strengthenPlayerEffect: {fileID: 0}
   strength: 3
-  speed: 60
+  speed: 55
   tumble: 10
   minSpawnInterval: 6
   maxSpawnInterval: 8
@@ -61545,7 +61528,6 @@ MonoBehaviour:
   energyGets: 0
   numSweetsPop: 3
   isNegative: 1
-  hasEncounterEffect: 0
   destroyWhenCollideSelf: 0
   instance: {fileID: 0}
   loseEnergyWhenEncounter: 25
@@ -61554,12 +61536,13 @@ MonoBehaviour:
   nameForLevel: 
   level: 0
   player: {fileID: 0}
-  slowStayDuration: 1
-  increaseSpeedDuration: 2
-  increaseSpeedUntil: 140
-  detectDistance: 200
+  slowStayDuration: 1.5
+  increaseSpeedDuration: 1.5
+  increaseSpeedUntil: 120
+  detectDistance: 245
   spawnRadius: 250
   offScreenSpeedScale: 0.5
+  firstSpawnDelay: 2
 --- !u!114 &1991538128
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61590,7 +61573,6 @@ MonoBehaviour:
   energyGets: 0
   numSweetsPop: 3
   isNegative: 1
-  hasEncounterEffect: 0
   destroyWhenCollideSelf: 0
   instance: {fileID: 0}
   loseEnergyWhenEncounter: 0
@@ -61629,7 +61611,6 @@ MonoBehaviour:
   energyGets: 0
   numSweetsPop: 3
   isNegative: 1
-  hasEncounterEffect: 1
   destroyWhenCollideSelf: 0
   instance: {fileID: 0}
   loseEnergyWhenEncounter: 0
@@ -61730,7 +61711,7 @@ Transform:
   m_LocalScale: {x: 18, y: 18, z: 1}
   m_Children: []
   m_Father: {fileID: 14073673}
-  m_RootOrder: 4
+  m_RootOrder: 5
 --- !u!23 &1997391148
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -66633,7 +66614,6 @@ RectTransform:
   - {fileID: 1322196946}
   - {fileID: 2100233778}
   - {fileID: 1514947169}
-  - {fileID: 1841385042}
   - {fileID: 1455364853}
   - {fileID: 1365113167}
   - {fileID: 1366821598}

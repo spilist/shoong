@@ -204,10 +204,7 @@ public class RhythmManager : MonoBehaviour {
       // if (Player.pl.uncontrollable()) return;
 
       // skill 나오기 전 파티클
-      if (rem + 1 >= numNormalInLoop) {
-        useSkillParticle.SetActive(false);
-        useSkillParticle.SetActive(true);
-      }
+      showPreSkillParticle(rem + 1);
 
       if (rem == 1 && skillActivated && numSkillInLoop > 0) {
         if (!SkillManager.sm.current().hasDuration()) {
@@ -218,12 +215,20 @@ public class RhythmManager : MonoBehaviour {
 
       if (rem < numNormalInLoop) {
         isSkillOK = false;
-        // getRing(normalRingPool, normalRing);
       } else {
         isSkillOK = true;
-        // getRing(skillRingPool, skillRing);
       }
+
       Player.pl.shootBooster();
+    }
+  }
+
+  void showPreSkillParticle(int val) {
+    if (numSkillInLoop == 0) return;
+
+    if ( (numSkillInLoop == 1 && val == numNormalInLoop) || (numSkillInLoop > 1 && val >= numNormalInLoop) ){
+      useSkillParticle.SetActive(false);
+      useSkillParticle.SetActive(true);
     }
   }
 
