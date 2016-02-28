@@ -7,7 +7,7 @@ labels:
 - effect
 - glow
 - gaz
-timeCreated: 1446300794
+timeCreated: 1456657135
 licenseType: Free
 SubstanceImporter:
   serializedVersion: 5
@@ -43,7 +43,7 @@ SubstanceImporter:
         texture: {instanceID: 0}
     - name: Glow_Intensity
       value:
-        scalar[0]: .5
+        scalar[0]: 0.5
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
@@ -71,14 +71,14 @@ SubstanceImporter:
         texture: {instanceID: 0}
     - name: Saturation
       value:
-        scalar[0]: .529999971
+        scalar[0]: 0.53
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
         texture: {instanceID: 0}
     - name: Luminosity
       value:
-        scalar[0]: .230000004
+        scalar[0]: 0.23
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
@@ -119,15 +119,11 @@ SubstanceImporter:
         data:
           first:
             name: _Cutoff
-          second: .5
+          second: 0.5
         data:
           first:
             name: _Shininess
           second: 1
-        data:
-          first:
-            name: _Parallax
-          second: .0199999996
         data:
           first:
             name: _ZWrite
@@ -135,11 +131,15 @@ SubstanceImporter:
         data:
           first:
             name: _Glossiness
-          second: .5
+          second: 0.5
         data:
           first:
             name: _BumpScale
           second: 1
+        data:
+          first:
+            name: _Parallax
+          second: 0.02
         data:
           first:
             name: _OcclusionStrength
@@ -172,19 +172,19 @@ SubstanceImporter:
         data:
           first:
             name: _Color
-          second: {r: 0, g: .71034503, b: 1, a: .591000021}
+          second: {r: 0, g: 0.71034503, b: 1, a: 0.591}
         data:
           first:
             name: _SpecColor
-          second: {r: 1, g: 1, b: 1, a: .927999973}
+          second: {r: 1, g: 1, b: 1, a: 0.928}
+        data:
+          first:
+            name: _Emission
+          second: {r: 0, g: 0.6689658, b: 1, a: 0.403}
         data:
           first:
             name: _TintColor
           second: {r: 1, g: 0, b: 0, a: 1}
-        data:
-          first:
-            name: _Emission
-          second: {r: 0, g: .668965816, b: 1, a: .402999997}
     textureParameters:
     - name: DangerousEMP_Emissive
       alphaSource: 0
@@ -220,37 +220,37 @@ SubstanceImporter:
         texture: {instanceID: 0}
     - name: $randomseed
       value:
-        scalar[0]: 979
+        scalar[0]: 4768
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
         texture: {instanceID: 0}
     - name: Flow
       value:
-        scalar[0]: 3667
+        scalar[0]: 4400
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
         texture: {instanceID: 0}
     - name: Glow_Intensity
       value:
-        scalar[0]: .670000017
+        scalar[0]: 0.65
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
         texture: {instanceID: 0}
     - name: Glow_Size
       value:
-        scalar[0]: 1.08000004
+        scalar[0]: 2.08
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
         texture: {instanceID: 0}
     - name: Liquid_Color
       value:
-        scalar[0]: .0272491351
-        scalar[1]: .316178888
-        scalar[2]: .411764681
+        scalar[0]: 0
+        scalar[1]: 0.7931032
+        scalar[2]: 1
         scalar[3]: 0
         texture: {instanceID: 0}
     - name: Hue_Shift
@@ -262,21 +262,21 @@ SubstanceImporter:
         texture: {instanceID: 0}
     - name: Saturation
       value:
-        scalar[0]: .5
+        scalar[0]: 0.5
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
         texture: {instanceID: 0}
     - name: Luminosity
       value:
-        scalar[0]: .550000012
+        scalar[0]: 0.5
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
         texture: {instanceID: 0}
     - name: Contrast
       value:
-        scalar[0]: 0
+        scalar[0]: 0.01
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
@@ -310,11 +310,7 @@ SubstanceImporter:
         data:
           first:
             name: _Cutoff
-          second: .5
-        data:
-          first:
-            name: _Parallax
-          second: .0199999996
+          second: 0.5
         data:
           first:
             name: _ZWrite
@@ -322,11 +318,15 @@ SubstanceImporter:
         data:
           first:
             name: _Glossiness
-          second: .5
+          second: 0.5
         data:
           first:
             name: _BumpScale
           second: 1
+        data:
+          first:
+            name: _Parallax
+          second: 0.02
         data:
           first:
             name: _OcclusionStrength
@@ -363,7 +363,7 @@ SubstanceImporter:
         data:
           first:
             name: _TintColor
-          second: {r: .0295198914, g: .393691391, b: .573529422, a: 0}
+          second: {r: 0.2205882, g: 0.2205882, b: 0.2205882, a: 0}
     textureParameters:
     - name: EMFieldFilter_Emissive
       alphaSource: 0
@@ -413,7 +413,7 @@ SubstanceImporter:
         texture: {instanceID: 0}
     - name: Glow_Intensity
       value:
-        scalar[0]: .5
+        scalar[0]: 0.5
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
@@ -427,8 +427,8 @@ SubstanceImporter:
         texture: {instanceID: 0}
     - name: Liquid_Color
       value:
-        scalar[0]: .536764741
-        scalar[1]: .980831563
+        scalar[0]: 0.53676474
+        scalar[1]: 0.98083156
         scalar[2]: 1
         scalar[3]: 0
         texture: {instanceID: 0}
@@ -441,14 +441,14 @@ SubstanceImporter:
         texture: {instanceID: 0}
     - name: Saturation
       value:
-        scalar[0]: .529999971
+        scalar[0]: 0.53
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
         texture: {instanceID: 0}
     - name: Luminosity
       value:
-        scalar[0]: .230000004
+        scalar[0]: 0.23
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
@@ -489,15 +489,11 @@ SubstanceImporter:
         data:
           first:
             name: _Cutoff
-          second: .5
+          second: 0.5
         data:
           first:
             name: _Shininess
           second: 1
-        data:
-          first:
-            name: _Parallax
-          second: .0199999996
         data:
           first:
             name: _ZWrite
@@ -505,11 +501,15 @@ SubstanceImporter:
         data:
           first:
             name: _Glossiness
-          second: .5
+          second: 0.5
         data:
           first:
             name: _BumpScale
           second: 1
+        data:
+          first:
+            name: _Parallax
+          second: 0.02
         data:
           first:
             name: _OcclusionStrength
@@ -542,19 +542,19 @@ SubstanceImporter:
         data:
           first:
             name: _Color
-          second: {r: 0, g: .71034503, b: 1, a: .591000021}
+          second: {r: 0, g: 0.71034503, b: 1, a: 0.591}
         data:
           first:
             name: _SpecColor
-          second: {r: 1, g: 1, b: 1, a: .927999973}
-        data:
-          first:
-            name: _TintColor
-          second: {r: 1, g: 1, b: 1, a: .125490203}
+          second: {r: 1, g: 1, b: 1, a: 0.928}
         data:
           first:
             name: _Emission
-          second: {r: 0, g: .668965816, b: 1, a: .402999997}
+          second: {r: 0, g: 0.6689658, b: 1, a: 0.403}
+        data:
+          first:
+            name: _TintColor
+          second: {r: 1, g: 1, b: 1, a: 0.1254902}
     textureParameters:
     - name: EMP_ForceField_Emissive
       alphaSource: 0
@@ -604,7 +604,7 @@ SubstanceImporter:
         texture: {instanceID: 0}
     - name: Glow_Intensity
       value:
-        scalar[0]: .5
+        scalar[0]: 0.5
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
@@ -619,8 +619,8 @@ SubstanceImporter:
     - name: Liquid_Color
       value:
         scalar[0]: 1
-        scalar[1]: .835699797
-        scalar[2]: .404411793
+        scalar[1]: 0.8356998
+        scalar[2]: 0.4044118
         scalar[3]: 0
         texture: {instanceID: 0}
     - name: Hue_Shift
@@ -632,14 +632,14 @@ SubstanceImporter:
         texture: {instanceID: 0}
     - name: Saturation
       value:
-        scalar[0]: .529999971
+        scalar[0]: 0.53
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
         texture: {instanceID: 0}
     - name: Luminosity
       value:
-        scalar[0]: .230000004
+        scalar[0]: 0.23
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
@@ -680,15 +680,11 @@ SubstanceImporter:
         data:
           first:
             name: _Cutoff
-          second: .5
+          second: 0.5
         data:
           first:
             name: _Shininess
           second: 1
-        data:
-          first:
-            name: _Parallax
-          second: .0199999996
         data:
           first:
             name: _ZWrite
@@ -696,11 +692,15 @@ SubstanceImporter:
         data:
           first:
             name: _Glossiness
-          second: .5
+          second: 0.5
         data:
           first:
             name: _BumpScale
           second: 1
+        data:
+          first:
+            name: _Parallax
+          second: 0.02
         data:
           first:
             name: _OcclusionStrength
@@ -733,19 +733,19 @@ SubstanceImporter:
         data:
           first:
             name: _Color
-          second: {r: 0, g: .71034503, b: 1, a: .591000021}
+          second: {r: 0, g: 0.71034503, b: 1, a: 0.591}
         data:
           first:
             name: _SpecColor
-          second: {r: 1, g: 1, b: 1, a: .927999973}
-        data:
-          first:
-            name: _TintColor
-          second: {r: 1, g: .724137962, b: 0, a: .172000006}
+          second: {r: 1, g: 1, b: 1, a: 0.928}
         data:
           first:
             name: _Emission
-          second: {r: 0, g: .668965816, b: 1, a: .402999997}
+          second: {r: 0, g: 0.6689658, b: 1, a: 0.403}
+        data:
+          first:
+            name: _TintColor
+          second: {r: 1, g: 0.72413796, b: 0, a: 0.172}
     textureParameters:
     - name: EMP_ForceField_Golden_Emissive
       alphaSource: 0
@@ -795,7 +795,7 @@ SubstanceImporter:
         texture: {instanceID: 0}
     - name: Glow_Intensity
       value:
-        scalar[0]: .5
+        scalar[0]: 0.5
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
@@ -810,8 +810,8 @@ SubstanceImporter:
     - name: Liquid_Color
       value:
         scalar[0]: 1
-        scalar[1]: .51531446
-        scalar[2]: .404411793
+        scalar[1]: 0.51531446
+        scalar[2]: 0.4044118
         scalar[3]: 0
         texture: {instanceID: 0}
     - name: Hue_Shift
@@ -823,14 +823,14 @@ SubstanceImporter:
         texture: {instanceID: 0}
     - name: Saturation
       value:
-        scalar[0]: .529999971
+        scalar[0]: 0.53
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
         texture: {instanceID: 0}
     - name: Luminosity
       value:
-        scalar[0]: .230000004
+        scalar[0]: 0.23
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
@@ -871,15 +871,11 @@ SubstanceImporter:
         data:
           first:
             name: _Cutoff
-          second: .5
+          second: 0.5
         data:
           first:
             name: _Shininess
           second: 1
-        data:
-          first:
-            name: _Parallax
-          second: .0199999996
         data:
           first:
             name: _ZWrite
@@ -887,11 +883,15 @@ SubstanceImporter:
         data:
           first:
             name: _Glossiness
-          second: .5
+          second: 0.5
         data:
           first:
             name: _BumpScale
           second: 1
+        data:
+          first:
+            name: _Parallax
+          second: 0.02
         data:
           first:
             name: _OcclusionStrength
@@ -924,19 +924,19 @@ SubstanceImporter:
         data:
           first:
             name: _Color
-          second: {r: 0, g: .71034503, b: 1, a: .591000021}
+          second: {r: 0, g: 0.71034503, b: 1, a: 0.591}
         data:
           first:
             name: _SpecColor
-          second: {r: 1, g: 1, b: 1, a: .927999973}
-        data:
-          first:
-            name: _TintColor
-          second: {r: 1, g: .458999991, b: 0, a: .172000006}
+          second: {r: 1, g: 1, b: 1, a: 0.928}
         data:
           first:
             name: _Emission
-          second: {r: 0, g: .668965816, b: 1, a: .402999997}
+          second: {r: 0, g: 0.6689658, b: 1, a: 0.403}
+        data:
+          first:
+            name: _TintColor
+          second: {r: 1, g: 0.459, b: 0, a: 0.172}
     textureParameters:
     - name: EMP_ForceField_Heat_Emissive
       alphaSource: 0
@@ -986,7 +986,7 @@ SubstanceImporter:
         texture: {instanceID: 0}
     - name: Glow_Intensity
       value:
-        scalar[0]: .300000012
+        scalar[0]: 0.3
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
@@ -1000,9 +1000,9 @@ SubstanceImporter:
         texture: {instanceID: 0}
     - name: Liquid_Color
       value:
-        scalar[0]: .867647052
-        scalar[1]: .479757786
-        scalar[2]: .127595171
+        scalar[0]: 0.86764705
+        scalar[1]: 0.4797578
+        scalar[2]: 0.12759517
         scalar[3]: 0
         texture: {instanceID: 0}
     - name: Hue_Shift
@@ -1014,14 +1014,14 @@ SubstanceImporter:
         texture: {instanceID: 0}
     - name: Saturation
       value:
-        scalar[0]: .430000007
+        scalar[0]: 0.43
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
         texture: {instanceID: 0}
     - name: Luminosity
       value:
-        scalar[0]: .5
+        scalar[0]: 0.5
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
@@ -1062,15 +1062,11 @@ SubstanceImporter:
         data:
           first:
             name: _Cutoff
-          second: .5
+          second: 0.5
         data:
           first:
             name: _Shininess
           second: 1
-        data:
-          first:
-            name: _Parallax
-          second: .0199999996
         data:
           first:
             name: _ZWrite
@@ -1078,11 +1074,15 @@ SubstanceImporter:
         data:
           first:
             name: _Glossiness
-          second: .5
+          second: 0.5
         data:
           first:
             name: _BumpScale
           second: 1
+        data:
+          first:
+            name: _Parallax
+          second: 0.02
         data:
           first:
             name: _OcclusionStrength
@@ -1115,19 +1115,19 @@ SubstanceImporter:
         data:
           first:
             name: _Color
-          second: {r: 0, g: .71034503, b: 1, a: .591000021}
+          second: {r: 0, g: 0.71034503, b: 1, a: 0.591}
         data:
           first:
             name: _SpecColor
-          second: {r: 1, g: 1, b: 1, a: .927999973}
-        data:
-          first:
-            name: _TintColor
-          second: {r: 1, g: 0, b: 0, a: .266000003}
+          second: {r: 1, g: 1, b: 1, a: 0.928}
         data:
           first:
             name: _Emission
-          second: {r: 0, g: .668965816, b: 1, a: .402999997}
+          second: {r: 0, g: 0.6689658, b: 1, a: 0.403}
+        data:
+          first:
+            name: _TintColor
+          second: {r: 1, g: 0, b: 0, a: 0.266}
     textureParameters:
     - name: LaserCapsule_Emissive
       alphaSource: 0
@@ -1177,7 +1177,7 @@ SubstanceImporter:
         texture: {instanceID: 0}
     - name: Glow_Intensity
       value:
-        scalar[0]: .25999999
+        scalar[0]: 0.26
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
@@ -1191,9 +1191,9 @@ SubstanceImporter:
         texture: {instanceID: 0}
     - name: Liquid_Color
       value:
-        scalar[0]: .5
-        scalar[1]: .311764687
-        scalar[2]: .029411763
+        scalar[0]: 0.5
+        scalar[1]: 0.3117647
+        scalar[2]: 0.029411763
         scalar[3]: 0
         texture: {instanceID: 0}
     - name: Hue_Shift
@@ -1205,14 +1205,14 @@ SubstanceImporter:
         texture: {instanceID: 0}
     - name: Saturation
       value:
-        scalar[0]: .5
+        scalar[0]: 0.5
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
         texture: {instanceID: 0}
     - name: Luminosity
       value:
-        scalar[0]: .550000012
+        scalar[0]: 0.55
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
@@ -1253,15 +1253,11 @@ SubstanceImporter:
         data:
           first:
             name: _Cutoff
-          second: .5
+          second: 0.5
         data:
           first:
             name: _Shininess
           second: 1
-        data:
-          first:
-            name: _Parallax
-          second: .0199999996
         data:
           first:
             name: _ZWrite
@@ -1269,11 +1265,15 @@ SubstanceImporter:
         data:
           first:
             name: _Glossiness
-          second: .5
+          second: 0.5
         data:
           first:
             name: _BumpScale
           second: 1
+        data:
+          first:
+            name: _Parallax
+          second: 0.02
         data:
           first:
             name: _OcclusionStrength
@@ -1306,19 +1306,19 @@ SubstanceImporter:
         data:
           first:
             name: _Color
-          second: {r: 0, g: .71034503, b: 1, a: .591000021}
+          second: {r: 0, g: 0.71034503, b: 1, a: 0.591}
         data:
           first:
             name: _SpecColor
-          second: {r: 1, g: 1, b: 1, a: .927999973}
-        data:
-          first:
-            name: _TintColor
-          second: {r: .655172348, g: 0, b: 1, a: .266000003}
+          second: {r: 1, g: 1, b: 1, a: 0.928}
         data:
           first:
             name: _Emission
-          second: {r: 0, g: .668965816, b: 1, a: .402999997}
+          second: {r: 0, g: 0.6689658, b: 1, a: 0.403}
+        data:
+          first:
+            name: _TintColor
+          second: {r: 0.65517235, g: 0, b: 1, a: 0.266}
     textureParameters:
     - name: LaserCapsuleShell_Emissive
       alphaSource: 0
@@ -1368,7 +1368,7 @@ SubstanceImporter:
         texture: {instanceID: 0}
     - name: Glow_Intensity
       value:
-        scalar[0]: .569999993
+        scalar[0]: 0.57
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
@@ -1382,9 +1382,9 @@ SubstanceImporter:
         texture: {instanceID: 0}
     - name: Liquid_Color
       value:
-        scalar[0]: .113321796
-        scalar[1]: .453287274
-        scalar[2]: .963235319
+        scalar[0]: 0.113321796
+        scalar[1]: 0.45328727
+        scalar[2]: 0.9632353
         scalar[3]: 0
         texture: {instanceID: 0}
     - name: Hue_Shift
@@ -1396,14 +1396,14 @@ SubstanceImporter:
         texture: {instanceID: 0}
     - name: Saturation
       value:
-        scalar[0]: .5
+        scalar[0]: 0.5
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
         texture: {instanceID: 0}
     - name: Luminosity
       value:
-        scalar[0]: .629999995
+        scalar[0]: 0.63
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
@@ -1500,11 +1500,7 @@ SubstanceImporter:
         data:
           first:
             name: _Cutoff
-          second: .5
-        data:
-          first:
-            name: _Parallax
-          second: .0199999996
+          second: 0.5
         data:
           first:
             name: _ZWrite
@@ -1512,11 +1508,15 @@ SubstanceImporter:
         data:
           first:
             name: _Glossiness
-          second: .5
+          second: 0.5
         data:
           first:
             name: _BumpScale
           second: 1
+        data:
+          first:
+            name: _Parallax
+          second: 0.02
         data:
           first:
             name: _OcclusionStrength
@@ -1541,7 +1541,7 @@ SubstanceImporter:
         data:
           first:
             name: _EmissionColor
-          second: {r: 0, g: 0, b: 0, a: 1}
+          second: {r: 1, g: 1, b: 1, a: 1}
         data:
           first:
             name: _Color
@@ -1599,7 +1599,7 @@ SubstanceImporter:
         texture: {instanceID: 0}
     - name: Glow_Intensity
       value:
-        scalar[0]: .649999976
+        scalar[0]: 0.65
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
@@ -1613,9 +1613,9 @@ SubstanceImporter:
         texture: {instanceID: 0}
     - name: Liquid_Color
       value:
-        scalar[0]: .867647052
-        scalar[1]: .432063609
-        scalar[2]: .236051053
+        scalar[0]: 0.86764705
+        scalar[1]: 0.4320636
+        scalar[2]: 0.23605105
         scalar[3]: 0
         texture: {instanceID: 0}
     - name: Hue_Shift
@@ -1627,21 +1627,21 @@ SubstanceImporter:
         texture: {instanceID: 0}
     - name: Saturation
       value:
-        scalar[0]: .5
+        scalar[0]: 0.5
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
         texture: {instanceID: 0}
     - name: Luminosity
       value:
-        scalar[0]: .5
+        scalar[0]: 0.5
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
         texture: {instanceID: 0}
     - name: Contrast
       value:
-        scalar[0]: .00999999978
+        scalar[0]: 0.01
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
@@ -1675,15 +1675,11 @@ SubstanceImporter:
         data:
           first:
             name: _Cutoff
-          second: .5
+          second: 0.5
         data:
           first:
             name: _Shininess
-          second: .100000001
-        data:
-          first:
-            name: _Parallax
-          second: .0199999996
+          second: 0.1
         data:
           first:
             name: _ZWrite
@@ -1691,11 +1687,15 @@ SubstanceImporter:
         data:
           first:
             name: _Glossiness
-          second: .5
+          second: 0.5
         data:
           first:
             name: _BumpScale
           second: 1
+        data:
+          first:
+            name: _Parallax
+          second: 0.02
         data:
           first:
             name: _OcclusionStrength
@@ -1728,19 +1728,19 @@ SubstanceImporter:
         data:
           first:
             name: _Color
-          second: {r: 1, g: 1, b: 1, a: .453000009}
+          second: {r: 1, g: 1, b: 1, a: 0.453}
         data:
           first:
             name: _SpecColor
           second: {r: 0, g: 0, b: 0, a: 0}
         data:
           first:
-            name: _TintColor
-          second: {r: .727941155, g: .390105635, b: .171280265, a: 0}
+            name: _Emission
+          second: {r: 0.53676474, g: 0.14603159, b: 0.14603159, a: 0}
         data:
           first:
-            name: _Emission
-          second: {r: .536764741, g: .146031588, b: .146031588, a: 0}
+            name: _TintColor
+          second: {r: 0.72794116, g: 0.39010563, b: 0.17128026, a: 0}
     textureParameters:
     - name: Superheat_Emissive
       alphaSource: 0

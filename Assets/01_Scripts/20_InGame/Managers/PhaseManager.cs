@@ -57,6 +57,8 @@ public class PhaseManager : MonoBehaviour {
   public Text nextLevelText;
   private int level;
 
+  public PhaseFilter phaseFilter;
+
   void Awake() {
     pm = this;
   }
@@ -104,6 +106,7 @@ public class PhaseManager : MonoBehaviour {
       case "2-3":
       rbbm.setMany(true);
       rdm.adjustForLevel(3);
+      phaseFilter.gameObject.SetActive(true);
       break;
       case "3-1":
       rbm.enabled = true;
@@ -111,6 +114,7 @@ public class PhaseManager : MonoBehaviour {
       rbbm.enabled = false;
       TimeManager.time.startRubberBallBigger(false);
       pmm.enabled = true;
+      phaseFilter.nextPhase(3);
       break;
       case "3-2":
       bmm.enabled = true;
@@ -127,6 +131,7 @@ public class PhaseManager : MonoBehaviour {
       cmm.stopRespawn();
       spm.enabled = true;
       spm.adjustForLevel(1);
+      phaseFilter.nextPhase(4);
       break;
       case "4-2":
       mtm.enabled = false;
@@ -144,6 +149,7 @@ public class PhaseManager : MonoBehaviour {
       em.enabled = true;
       em.adjustForLevel(1);
       dem.enabled = true;
+      phaseFilter.nextPhase(5);
       break;
       case "5-2":
       blm.enabled = true;
