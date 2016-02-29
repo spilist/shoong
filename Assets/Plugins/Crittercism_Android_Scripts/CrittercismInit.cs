@@ -15,6 +15,7 @@ public class CrittercismInit : MonoBehaviour
 
 	void Awake ()
 	{
+    Debug.Log("Crittercism initiating...");
 		CrittercismAndroid.Init (CrittercismAppID);
     Destroy (this);
 	}

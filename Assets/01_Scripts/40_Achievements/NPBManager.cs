@@ -76,7 +76,7 @@ public class NPBManager : MonoBehaviour {
 
   public void showRankingUI(System.Action<string> onCompletion) {
     NPBinding.GameServices.ShowLeaderboardUIWithGlobalID
-      ( AchievementManager.LB_SINGLE,
+      ( "",
         eLeaderboardTimeScope.ALL_TIME,
         (string _error)=>{
           if(_error != null) {
