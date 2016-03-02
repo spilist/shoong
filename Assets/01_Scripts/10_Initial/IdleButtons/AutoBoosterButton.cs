@@ -22,7 +22,7 @@ public class AutoBoosterButton : OnOffButton {
       DataManager.dm.save();
     } else {
       BillingManager.bm.BuyProduct(id);
-      FacebookManager.fb.initiateCheckout(BillingManager.bm.getProduct(id), "Unlock Auto Booster");
+      TrackingManager.tm.initiateCheckout(BillingManager.bm.getProduct(id), "Unlock Auto Booster");
     }
   }
 
@@ -41,8 +41,8 @@ public class AutoBoosterButton : OnOffButton {
     return available;
   }
 
-  public void buyComplete() {
-    FacebookManager.fb.purchase(BillingManager.bm.getProduct(id), "Unlock Auto Booster");
+  public void buyComplete(string transactionId, bool bought) {
+    if (bought) TrackingManager.tm.purchase(transactionId, BillingManager.bm.getProduct(id), "Unlock Auto Booster");
     DataManager.dm.setBool("AutoBoosterPurchased", true);
     DataManager.dm.save();
   }

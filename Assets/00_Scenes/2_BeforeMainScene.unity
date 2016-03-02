@@ -169,6 +169,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 151853296}
   - 114: {fileID: 151853295}
+  - 114: {fileID: 151853297}
   m_Layer: 0
   m_Name: FacebookManager
   m_TagString: Untagged
@@ -199,6 +200,31 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &151853297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 151853294}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d19fcca4c3864274a625305eece3f48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  androidTrackingCode: 
+  IOSTrackingCode: 
+  otherTrackingCode: 
+  productName: 
+  bundleIdentifier: 
+  bundleVersion: 
+  dispatchPeriod: 5
+  sampleFrequency: 100
+  logLevel: 1
+  anonymizeIP: 0
+  UncaughtExceptionReporting: 0
+  sendLaunchEvent: 0
+  dryRun: 0
+  sessionTimeout: 1800
 --- !u!1 &443138057
 GameObject:
   m_ObjectHideFlags: 0

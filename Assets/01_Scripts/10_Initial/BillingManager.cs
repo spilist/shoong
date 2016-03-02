@@ -91,15 +91,15 @@ public class BillingManager : MonoBehaviour {
 
         if (state == eBillingTransactionState.PURCHASED) {
           if (unlockAuto) {
-            abb.buyComplete();
+            abb.buyComplete(_eachTransaction.TransactionIdentifier, true);
           } else {
-            charactersMenu.buyComplete(_eachTransaction.ProductIdentifier, true);
+            charactersMenu.buyComplete(_eachTransaction.TransactionIdentifier, _eachTransaction.ProductIdentifier, true);
           }
         } else if (state == eBillingTransactionState.RESTORED) {
           if (unlockAuto) {
-            abb.buyComplete();
+            abb.buyComplete(null, false);
           } else {
-            charactersMenu.buyComplete(_eachTransaction.ProductIdentifier, false);
+            charactersMenu.buyComplete(null, _eachTransaction.ProductIdentifier, false);
           }
         }
       }

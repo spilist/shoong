@@ -7,11 +7,11 @@ public class UnlockAutoMode : MenusBehavior {
 
   override public void activateSelf() {
     BillingManager.bm.BuyProduct(id);
-    FacebookManager.fb.initiateCheckout(BillingManager.bm.getProduct(id), "Unlock Auto Booster");
+    TrackingManager.tm.initiateCheckout(BillingManager.bm.getProduct(id), "Unlock Auto Booster");
   }
 
-  public void buyComplete() {
-    FacebookManager.fb.purchase(BillingManager.bm.getProduct(id), "Unlock Auto Booster");
+  public void buyComplete(string transactionId, bool bought) {
+    if (bought) TrackingManager.tm.purchase(transactionId, BillingManager.bm.getProduct(id), "Unlock Auto Booster");
 
     DataManager.dm.setBool("AutoBoosterPurchased", true);
     DataManager.dm.save();

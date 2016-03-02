@@ -110,7 +110,7 @@ public class GoogleAnalyticsV3 : MonoBehaviour {
   private GoogleAnalyticsMPV3 mpTracker = new GoogleAnalyticsMPV3();
 #endif
 
-  void Awake() {
+  void Start() {
     InitializeTracker ();
 
     if (sendLaunchEvent) {

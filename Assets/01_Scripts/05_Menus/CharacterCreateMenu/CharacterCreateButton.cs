@@ -132,7 +132,7 @@ public class CharacterCreateButton : MenusBehavior {
 
     DataManager.dm.increment("NumCharacterCreate");
 
-    if (first) FacebookManager.fb.firstPlayLog("7_FirstToyWin");
+    if (first) TrackingManager.tm.firstPlayLog("7_FirstToyWin");
 
     running = true;
     resetAll();
@@ -171,7 +171,7 @@ public class CharacterCreateButton : MenusBehavior {
 
     UICharacters randomCharacter = getRandom();
     bool newCharacter = !DataManager.dm.getBool(randomCharacter.name);
-    FacebookManager.fb.createToy(DataManager.dm.getInt("NumCharacterCreate"), randomResult, randomCharacter.name, newCharacter);
+    TrackingManager.tm.createToy(DataManager.dm.getInt("NumCharacterCreate"), randomResult, randomCharacter.name, newCharacter);
 
     GoldManager.gm.buy(createPrice);
     goldenCubesYouHave.GetComponent<CubesYouHave>().buy(createPrice);

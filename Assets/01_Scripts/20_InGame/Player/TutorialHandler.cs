@@ -63,12 +63,12 @@ public class TutorialHandler : MonoBehaviour {
     tutoStatus++;
 
     if (status == 1) {
-      FacebookManager.fb.firstPlayLog("4_UseBoosterStart");
+      TrackingManager.tm.firstPlayLog("4_UseBoosterStart");
       RhythmManager.rm.startBeat(touchTexts[0], onthebeatTexts[0], boostImages[0], fingerImages[0], rhythmRings[0]);
       EnergyManager.em.getFullHealth();
     } else {
       DataManager.dm.setBool("TutorialDone", true);
-      FacebookManager.fb.tutorialDone(skipped);
+      TrackingManager.tm.tutorialDone(skipped);
     }
 
     Invoke("enableTutoCollider", 2);
@@ -126,7 +126,7 @@ public class TutorialHandler : MonoBehaviour {
 
       if (result == "TutorialCollider" && !tutoLoaded) {
         if (tutoStatus == 0) {
-          FacebookManager.fb.firstPlayLog("2_TutorialStart");
+          TrackingManager.tm.firstPlayLog("2_TutorialStart");
           tutoLoaded = true;
           opening.SetActive(false);
           idleUI.SetActive(false);
@@ -290,7 +290,7 @@ public class TutorialHandler : MonoBehaviour {
     stick.gameObject.SetActive(true);
     stickPanelSize = Vector3.Distance(stick.position, stick.transform.Find("End").position);
 
-    FacebookManager.fb.firstPlayLog("5_GameStart");
+    TrackingManager.tm.firstPlayLog("5_GameStart");
     Invoke("enableMoveBoundary", 0.5f);
   }
 

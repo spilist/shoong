@@ -60,7 +60,7 @@ public class CharactersMenu : Draggable {
     return lastChild.localPosition.x;
   }
 
-  public void buyComplete(string name, bool bought) {
+  public void buyComplete(string transactionId, string name, bool bought) {
     string characterName = name.Replace("toy_", "");
 
     if (bought) {
@@ -70,7 +70,7 @@ public class CharactersMenu : Draggable {
       numYourCharacters.text = (int.Parse(numYourCharacters.text) + 1).ToString();
     }
 
-    transform.Find("Characters/" + characterName).GetComponent<UICharacters>().buyComplete(bought);
+    transform.Find("Characters/" + characterName).GetComponent<UICharacters>().buyComplete(transactionId, bought);
   }
 
   public void allCharacters() {

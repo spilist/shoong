@@ -136,16 +136,16 @@ public class UICharacters : MonoBehaviour {
 
   public void buy() {
     BillingManager.bm.BuyProduct(productId);
-    FacebookManager.fb.initiateCheckout(bProduct, stat.rarity.ToString());
+    TrackingManager.tm.initiateCheckout(bProduct, stat.rarity.ToString());
   }
 
-  public void buyComplete(bool bought) {
+  public void buyComplete(string transactionId, bool bought) {
     if (bought) {
       GetComponent<Renderer>().sharedMaterial = charactersMenu.activeCharactersMaterial;
 
       AudioSource.PlayClipAtPoint(charactersMenu.characterBuySound, transform.position);
 
-      FacebookManager.fb.purchase(bProduct, stat.rarity.ToString());
+      TrackingManager.tm.purchase(transactionId, bProduct, stat.rarity.ToString());
     }
 
     DataManager.dm.setBool(name, true);

@@ -158,11 +158,11 @@ public class DataManager : MonoBehaviour {
     ints["TotalGoldenCubes"] = resetGoldenCube;
     ints["NumCharactersHave"] = 1;
     ints["NormalCollectorLevel"] = 1;
-    strings["ControlMethod"] = "Touch";
-    // strings["ControlMethod"] = "Stick";
+    // strings["ControlMethod"] = "Touch";
+    strings["ControlMethod"] = "Stick";
     bools["robotcogi"] = true;
-    // bools["TutorialDone"] = true;
-    bools["TutorialDone"] = false;
+    bools["TutorialDone"] = true;
+    // bools["TutorialDone"] = false;
 
     // By the implementation of OnOffButton, 'true' actually means 'not logged in'
     bools["GoogleLoggedInSetting"] = true;

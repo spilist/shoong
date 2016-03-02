@@ -35,6 +35,14 @@
               <action android:name="com.android.vending.INSTALL_REFERRER" />
           </intent-filter>
        </receiver>
+
+    <service android:name="com.google.analytics.tracking.android.CampaignTrackingService" />
+    <receiver android:name="com.google.analytics.tracking.android.CampaignTrackingReceiver"
+              android:exported="true" >
+      <intent-filter>
+        <action android:name="com.android.vending.INSTALL_REFERRER" />
+      </intent-filter>
+    </receiver>
     
    <!-- Unomment the following line to track Google advertising ID. Make sure you have Google Play services installed on your Android SDK manager.
     <meta-data android:name="com.google.android.gms.version"

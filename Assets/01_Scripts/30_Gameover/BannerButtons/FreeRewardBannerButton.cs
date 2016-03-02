@@ -33,7 +33,7 @@ public class FreeRewardBannerButton : BannerButton {
   public void endFreeGift() {
     gameOverUI.SetActive(true);
     if (first) {
-      FacebookManager.fb.firstPlayLog("6_FirstGift");
+      TrackingManager.tm.firstPlayLog("6_FirstGift");
     } else {
       DataManager.dm.increment("FreeRewardCount");
     }

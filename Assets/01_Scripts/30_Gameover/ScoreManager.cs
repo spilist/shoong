@@ -171,7 +171,7 @@ public class ScoreManager : MonoBehaviour {
 
   public void showBanner() {
     if (first) {
-      FacebookManager.fb.firstPlayLog("5-1_FirstShowBanner");
+      TrackingManager.tm.firstPlayLog("5-1_FirstShowBanner");
     }
 
     save();
@@ -248,7 +248,7 @@ public class ScoreManager : MonoBehaviour {
 
     DataManager.dm.save();
 
-    FacebookManager.fb.gameDone();
+    TrackingManager.tm.gameDone();
 
     if (NPBinding.GameServices.LocalUser.IsAuthenticated == true) {
       // Report achievements after saving data
