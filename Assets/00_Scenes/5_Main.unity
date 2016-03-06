@@ -22056,7 +22056,7 @@ MonoBehaviour:
   - 5-1
   - 5-2
   - 5-3
-  reqProgressPerLevel: c8000000c80000002c0100005e0100005e010000c201000026020000580200008a020000bc020000ee020000200300005203000084030000b6030000
+  reqProgressPerLevel: c8000000c80000002c0100002c0100002c010000900100009001000090010000f4010000f4010000f4010000580200005802000058020000bc020000
   smallAsteroidM: {fileID: 1991538121}
   asteroidM: {fileID: 1991538112}
   icm: {fileID: 1991538122}
@@ -29118,7 +29118,7 @@ MonoBehaviour:
   boosterMaxSpeeds: 0a0000000500000000000000fbfffffff6ffffff
   boosterSpeedDecreaseStandard: 50
   boosterSpeedDecreases: 140000000a00000000000000f6ffffffecffffff
-  energyReduceOnTimeStandard: 7
+  energyReduceOnTimeStandard: 6
   energyReduceOnTimeStandard_hard: 12
   energyReduceOnTimes: f6fffffffbffffff00000000050000000a000000
   maxEnergyStandard: 100

@@ -147,8 +147,8 @@ public class TimeManager : MonoBehaviour {
     spawnAsteroid = true;
   }
 
-	public void startSpawnDangerousEMP() {
-		spawnDangerousEMP = true;
+	public void startSpawnDangerousEMP(bool val = true) {
+		spawnDangerousEMP = val;
 	}
 
 	public void startBlackhole() {

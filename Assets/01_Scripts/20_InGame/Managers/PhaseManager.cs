@@ -91,40 +91,43 @@ public class PhaseManager : MonoBehaviour {
       case "1-3":
       icm.enabled = true;
       cpm.adjustForLevel(3);
-      phaseFilter.gameObject.SetActive(true);
       break;
+
       case "2-1":
+      mtm.enabled = true;
       rdm.enabled = true;
       rdm.adjustForLevel(1);
-      pmm.enabled = true;
-      phaseFilter.nextPhase(2);
       break;
       case "2-2":
+      // mtm.enabled = false;
+      // bmtm.enabled = true;
       rdm.adjustForLevel(2);
-      bmm.enabled = true;
       break;
       case "2-3":
+      // bmtm2.enabled = true;
       rdm.adjustForLevel(3);
-      cmm.enabled = true;
+      phaseFilter.gameObject.SetActive(true);
       break;
+
       case "3-1":
       mtm.enabled = true;
+      // bmtm.enabled = false;
+      // bmtm2.enabled = false;
+      pmm.enabled = true;
       phaseFilter.nextPhase(3);
+      break;
+      case "3-2":
+      bmm.enabled = true;
+      break;
+      case "3-3":
+      cmm.enabled = true;
+      break;
+
+      case "4-1":
       bmm.enabled = false;
       bmm.stopRespawn();
       cmm.enabled = false;
       cmm.stopRespawn();
-      break;
-      case "3-2":
-      mtm.enabled = false;
-      // bmtm.enabled = true;
-      break;
-      case "3-3":
-      // bmtm.enabled = true;
-      // bmtm2.enabled = true;
-      break;
-      case "4-1":
-      // bmtm2.enabled = false;
       cpm.enabled = false;
       spm.enabled = true;
       spm.adjustForLevel(1);
@@ -139,11 +142,15 @@ public class PhaseManager : MonoBehaviour {
       spm.adjustForLevel(3);
       dem.startLarger();
       break;
+
       case "5-1":
+      dem.enabled = false;
+      TimeManager.time.startSpawnDangerousEMP(false);
       spm.enabled = false;
       em.enabled = true;
       em.adjustForLevel(1);
       sam.enabled = true;
+      phaseFilter.nextPhase(5);
       break;
       case "5-2":
       em.adjustForLevel(2);
