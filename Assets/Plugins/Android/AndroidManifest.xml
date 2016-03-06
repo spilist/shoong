@@ -44,10 +44,10 @@
       </intent-filter>
     </receiver>
     
-   <!-- Unomment the following line to track Google advertising ID. Make sure you have Google Play services installed on your Android SDK manager.
+   <!-- Unomment the following line to track Google advertising ID. Make sure you have Google Play services installed on your Android SDK manager. -->
     <meta-data android:name="com.google.android.gms.version"
                    android:value="@integer/google_play_services_version" />
-    -->
+    
 
     <meta-data android:name="AppsFlyerDevKey" android:value="PTuYBhA2CFm48vxR6SGRf7"/>
 

@@ -247,7 +247,61 @@ MonoBehaviour:
       - 'Awesome! Achievement # completed.'
     m_iOS:
       m_showDefaultAchievementCompletionBanner: 1
-    m_achievementIDCollection: []
+    m_achievementIDCollection:
+    - m_globalID: DREAMWALKER_1
+      m_platformIDs:
+      - m_platform: 1
+        m_value: CgkIubjEkcMWEAIQAw
+      - m_platform: 0
+        m_value: 
+    - m_globalID: DREAMWALKER_2
+      m_platformIDs:
+      - m_platform: 1
+        m_value: CgkIubjEkcMWEAIQBw
+      - m_platform: 0
+        m_value: 
+    - m_globalID: DREAMWALKER_3
+      m_platformIDs:
+      - m_platform: 1
+        m_value: CgkIubjEkcMWEAIQCA
+      - m_platform: 0
+        m_value: 
+    - m_globalID: TRAVELER_1
+      m_platformIDs:
+      - m_platform: 1
+        m_value: CgkIubjEkcMWEAIQCw
+      - m_platform: 0
+        m_value: 
+    - m_globalID: TRAVELER_2
+      m_platformIDs:
+      - m_platform: 1
+        m_value: CgkIubjEkcMWEAIQDA
+      - m_platform: 0
+        m_value: 
+    - m_globalID: TRAVELER_3
+      m_platformIDs:
+      - m_platform: 1
+        m_value: CgkIubjEkcMWEAIQDQ
+      - m_platform: 0
+        m_value: 
+    - m_globalID: COLLECTOR_1
+      m_platformIDs:
+      - m_platform: 1
+        m_value: CgkIubjEkcMWEAIQCw
+      - m_platform: 0
+        m_value: 
+    - m_globalID: COLLECTOR_2
+      m_platformIDs:
+      - m_platform: 1
+        m_value: CgkIubjEkcMWEAIQDA
+      - m_platform: 0
+        m_value: 
+    - m_globalID: COLLECTOR_3
+      m_platformIDs:
+      - m_platform: 1
+        m_value: CgkIubjEkcMWEAIQDQ
+      - m_platform: 0
+        m_value: 
     m_leaderboardIDCollection:
     - m_globalID: LB_SINGLE
       m_platformIDs:

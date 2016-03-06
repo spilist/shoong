@@ -19,6 +19,7 @@ public class TrackingManager : MonoBehaviour {
     }
 
     DontDestroyOnLoad(gameObject);
+    DontDestroyOnLoad(GetComponentInChildren<AppsFlyerTrackerCallbacks>());
     tm = this;
 
 #if !UNITY_EDITOR
@@ -32,6 +33,9 @@ public class TrackingManager : MonoBehaviour {
     googleAnalyticsV3 = GetComponent<GoogleAnalyticsV3>();
     if (!googleAnalyticsV3.isActiveAndEnabled)
       initGoogleAnalytics();
+
+    initAppsFlyer();
+    
 #endif
   }
 
@@ -47,13 +51,43 @@ public class TrackingManager : MonoBehaviour {
     googleAnalyticsV3.bundleVersion = Application.version;
     googleAnalyticsV3.sendLaunchEvent = true;
     googleAnalyticsV3.dispatchPeriod = 5;
-    googleAnalyticsV3.logLevel = GoogleAnalyticsV3.DebugMode.VERBOSE;
+    //googleAnalyticsV3.logLevel = GoogleAnalyticsV3.DebugMode.VERBOSE;
     // dryRun is for test; If it is true, the logs are not sent to server
     googleAnalyticsV3.dryRun = false;
     // Need to be enabled here, to set the variables above then run the Start() of GoogleAnalyticsV3.
     // If the GoogleAnalyticsV3 is updated, we should change its Awake() to Start(), so it would run on enable.
     googleAnalyticsV3.enabled = true;
     googleAnalyticsV3.StartSession();
+  }
+
+  private void initAppsFlyer()
+  {
+#if UNITY_IOS
+
+    AppsFlyer.setAppsFlyerKey ("PTuYBhA2CFm48vxR6SGRf7");
+    AppsFlyer.setAppID ("YOUR_APPLE_APP_ID_HERE");
+    AppsFlyer.getConversionData ();
+    AppsFlyer.trackAppLaunch ();
+
+#elif UNITY_ANDROID
+
+    // if you are wotking without the manfest, you can initialize the SDK programattically.
+    //AppsFlyer.init ("PTuYBhA2CFm48vxR6SGRf7");
+    // All Initialization occur in the override activity defined in the mainfest.xml, including track app launch
+    // You can define AppsFlyer library here use this commented out code.
+
+    // un-comment this in case you are not working with the android manifest file
+    //AppsFlyer.setAppID (Application.bundleIdentifier);
+    
+    // for getting the conversion data
+    AppsFlyer.loadConversionData("AppsFlyerTrackerCallbacks","didReceiveConversionData", "didReceiveConversionDataWithError");
+
+    // for in app billing validation
+    AppsFlyer.createValidateInAppListener ("AppsFlyerTrackerCallbacks", "onInAppBillingSuccess", "onInAppBillingFailure"); 
+    
+#endif
+
+    print ("AppsFlyerId = " + AppsFlyer.getAppsFlyerId());
   }
 
   private void InitCallback () {
@@ -97,7 +131,7 @@ public class TrackingManager : MonoBehaviour {
 
 #endif
 
-    #if UNITY_EDITOR
+#if UNITY_EDITOR
 
     Debug.Log("Phase: " + (PhaseManager.pm.phase() + 1));
     Debug.Log("PlayCharacter: " + CharacterManager.cm.getCurrentCharacter());
@@ -177,7 +211,16 @@ public class TrackingManager : MonoBehaviour {
         { AppEventParameterName.ContentID, bProduct.ProductIdentifier },
         { AppEventParameterName.ContentType, rarity }
       });
-    #endif
+    
+    /* Purchase tracking would be done in Google and Facebook
+    Dictionary<string, string> purchaseEvent = new System.Collections.Generic.Dictionary<string, string>();
+    purchaseEvent.Add("af_currency", bProduct.CurrencyCode);
+    purchaseEvent.Add("af_revenue", bProduct.Price + "");
+    purchaseEvent.Add("af_quantity", "1");
+    AppsFlyer.trackRichEvent("af_purchase", purchaseEvent);
+    */
+
+#endif
   }
 
   // Because of the difference of Facebook AppEvent and Google Analytics,

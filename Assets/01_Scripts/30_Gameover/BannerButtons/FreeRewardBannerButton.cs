@@ -50,7 +50,7 @@ public class FreeRewardBannerButton : BannerButton {
 
 
     if (!DataManager.dm.getBool("NotificationSetting")) {
-      NotificationManager.nm.notifyAfter();
+      NotificationManager.nm.notifyAfter(nextRewardMinute);
     }
   }
 

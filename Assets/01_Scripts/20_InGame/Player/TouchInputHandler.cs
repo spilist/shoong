@@ -14,10 +14,13 @@ public class TouchInputHandler : MonoBehaviour
   public SpawnManager spawnManager;
   public MenusController menus;
   public PauseButton pause;
+  public GameObject gameOver;
+  public PlayAgainButton playAgain;
 
 	private bool gameStarted = false;
 	private bool react = true;
 	private bool dragging = false;
+  private bool playAgainTouched = false;
 	private Vector3 direction;
   private float lastMousePosition_y;
   private float endMousePosition_y;
@@ -30,8 +33,13 @@ public class TouchInputHandler : MonoBehaviour
   void Update() {
 		if (Application.platform == RuntimePlatform.Android) {
       if (Input.GetKeyDown(KeyCode.Escape)) {
-        if (gameStarted && !pause.isPaused() && pause.gameObject.activeInHierarchy) {
+        if (gameStarted && !pause.isPaused() && pause.gameObject.activeInHierarchy && !gameOver.activeInHierarchy) {
           pause.activateSelf();
+        } else if (gameStarted && pause.isPaused() && pause.gameObject.activeInHierarchy && !gameOver.activeInHierarchy) {
+          pause.resume();
+        } else if (gameOver.activeInHierarchy && !playAgainTouched) {
+          playAgainTouched = true;
+          playAgain.activateSelf();
         } else if (menus.isMenuOn()) {
           menus.toggleMenuAndUI();
         } else if (!gameStarted) {

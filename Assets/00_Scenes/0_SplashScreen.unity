@@ -177,6 +177,45 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1 &279798916
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 279798917}
+  - 114: {fileID: 279798918}
+  m_Layer: 0
+  m_Name: AppsFlyerTrackerCallbacks
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &279798917
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 279798916}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -449.99994, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1826699649}
+  m_RootOrder: 0
+--- !u!114 &279798918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 279798916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0c9a9124ba614943840736f53c9bacd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &453584805
 GameObject:
   m_ObjectHideFlags: 0
@@ -402,8 +441,9 @@ GameObject:
   - 4: {fileID: 1826699649}
   - 114: {fileID: 1826699648}
   - 114: {fileID: 1826699650}
+  - 114: {fileID: 1826699651}
   m_Layer: 0
-  m_Name: FacebookManager
+  m_Name: TrackingManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -429,7 +469,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 449.99994, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 279798917}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!114 &1826699650
@@ -457,3 +498,14 @@ MonoBehaviour:
   sendLaunchEvent: 0
   dryRun: 0
   sessionTimeout: 1800
+--- !u!114 &1826699651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1826699647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0c9a9124ba614943840736f53c9bacd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
