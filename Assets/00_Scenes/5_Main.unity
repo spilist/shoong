@@ -23299,7 +23299,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -23310,7 +23310,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -23321,7 +23321,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
 --- !u!1 &975181075
 GameObject:
   m_ObjectHideFlags: 0
@@ -60519,11 +60519,13 @@ GameObject:
   - 114: {fileID: 1991538123}
   - 114: {fileID: 1991538108}
   - 114: {fileID: 1991538124}
+  - 114: {fileID: 1991538130}
   - 114: {fileID: 1991538127}
   - 114: {fileID: 1991538113}
   - 114: {fileID: 1991538125}
   - 114: {fileID: 1991538128}
   - 114: {fileID: 1991538129}
+  - 114: {fileID: 1991538131}
   m_Layer: 9
   m_Name: Field Objects
   m_TagString: Untagged
@@ -61496,8 +61498,8 @@ MonoBehaviour:
   objDestroyEffectPool: []
   objEncounterEffectPool: []
   objPrefab: {fileID: 175286, guid: c686fe84f109345a68ca524483736f13, type: 2}
-  objDestroyEffect: {fileID: 0}
-  objEncounterEffect: {fileID: 0}
+  objDestroyEffect: {fileID: 101070, guid: 4e650527b707b40af961ca5e61789066, type: 2}
+  objEncounterEffect: {fileID: 101070, guid: 4e650527b707b40af961ca5e61789066, type: 2}
   objEncounterEffectForPlayer: {fileID: 0}
   strengthenPlayerEffect: {fileID: 0}
   strength: 10
@@ -61536,6 +61538,7 @@ MonoBehaviour:
   laserStayDuration: 0.5
   laserShrinkingDuration: 0.1
   laserRotatingSpeed: 1000
+  firstSpawnDelay: 2
 --- !u!114 &1991538125
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61749,6 +61752,104 @@ MonoBehaviour:
   level: 0
   player: {fileID: 0}
   objAmountBigger: 14
+--- !u!114 &1991538130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1991538103}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3c85a104db4145caaafe058b35344de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  forceSpawnAtStart: 0
+  objAmount: 1
+  objPool: []
+  objDestroyEffectPool: []
+  objEncounterEffectPool: []
+  objPrefab: {fileID: 195722, guid: b7b024bdf8f7d410485962d1f5fad990, type: 2}
+  objDestroyEffect: {fileID: 142776, guid: 1563af6ab13b8431886e413259d2d441, type: 2}
+  objEncounterEffect: {fileID: 142776, guid: 1563af6ab13b8431886e413259d2d441, type: 2}
+  objEncounterEffectForPlayer: {fileID: 0}
+  strengthenPlayerEffect: {fileID: 0}
+  strength: 10
+  speed: 80
+  tumble: 20
+  minSpawnInterval: 10
+  maxSpawnInterval: 16
+  cubesByEncounter: 150
+  energyGets: 0
+  numSweetsPop: 5
+  isNegative: 1
+  destroyWhenCollideSelf: 0
+  instance: {fileID: 0}
+  loseEnergyWhenEncounter: 100
+  bounceDuration: 0
+  hasLevel: 0
+  nameForLevel: 
+  level: 0
+  player: {fileID: 0}
+  spawnRadius: 250
+  detectDistance: 200
+  headFollowingSpeed: 300
+  offScreenSpeedScale: 0.5
+  gravity: 40
+  gravityToCandies: 150
+  gravityScale: 2
+  firstSpawnDelay: 2
+--- !u!114 &1991538131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1991538103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07742c75734a14791939dc51e5437c8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  forceSpawnAtStart: 0
+  objAmount: 1
+  objPool: []
+  objDestroyEffectPool: []
+  objEncounterEffectPool: []
+  objPrefab: {fileID: 109618, guid: aa2e091040c5648fd843b6d07f3a5f7b, type: 2}
+  objDestroyEffect: {fileID: 152916, guid: 3ab45596dfd2744d489850b94a5c1719, type: 2}
+  objEncounterEffect: {fileID: 152916, guid: 3ab45596dfd2744d489850b94a5c1719, type: 2}
+  objEncounterEffectForPlayer: {fileID: 0}
+  strengthenPlayerEffect: {fileID: 0}
+  strength: 10
+  speed: 80
+  tumble: 50
+  minSpawnInterval: 10
+  maxSpawnInterval: 16
+  cubesByEncounter: 150
+  energyGets: 0
+  numSweetsPop: 5
+  isNegative: 1
+  destroyWhenCollideSelf: 0
+  instance: {fileID: 0}
+  loseEnergyWhenEncounter: 25
+  bounceDuration: 0.4
+  hasLevel: 0
+  nameForLevel: 
+  level: 0
+  player: {fileID: 0}
+  bulletPrefab: {fileID: 117674, guid: e1e3ec35464924a819f2cc87b2018cd5, type: 2}
+  bulletPool: []
+  bulletPoolAmount: 15
+  spawnRadius: 250
+  detectDistance: 200
+  headFollowingSpeed: 300
+  offScreenSpeedScale: 0.5
+  bulletDamage: 25
+  numBullets: 3
+  shootInterval: 0.6
+  nonShootDuration: 3
+  bulletSpeed: 280
+  bulletTumble: 50
+  firstSpawnDelay: 2
 --- !u!1 &1993354414
 GameObject:
   m_ObjectHideFlags: 0

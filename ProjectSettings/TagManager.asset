@@ -91,6 +91,8 @@ TagManager:
   - RandomPlay
   - IdleSettings
   - RubberBall
+  - VacuumAlienship
+  - ShootAlienship
   layers:
   - Default
   - TransparentFX
@@ -105,7 +107,7 @@ TagManager:
   - Character
   - UnstoppableSphere
   - ContactCollider
-  - CollectedParts
+  - VacuumField
   - CollectingSphere
   - CubeDispenser
   - Monster

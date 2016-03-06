@@ -619,8 +619,8 @@ public class Player : MonoBehaviour {
     return afterStrengthen || ridingMonster || unstoppable || isRebounding() || isUsingRainbow() || changeManager.isTeleporting() || usingEMP || usingSolar;
   }
 
-  public bool canBeMagnetized() {
-    return !(isRebounding() || isUsingRainbow() || changeManager.isTeleporting());
+  public bool cannotBeMagnetized() {
+    return isRebounding() || isUsingRainbow() || changeManager.isTeleporting();
   }
 
   public void resetAbility(int bestX) {

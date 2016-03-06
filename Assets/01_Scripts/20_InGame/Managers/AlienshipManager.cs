@@ -23,6 +23,7 @@ public class AlienshipManager : ObjectsManager {
   public float laserStayDuration = 1;
   public float laserShrinkingDuration = 0.3f;
   public int laserRotatingSpeed = 1000;
+  public float firstSpawnDelay = 2;
 
   override public void initRest() {
     laserPool = new List<GameObject>();
@@ -36,7 +37,7 @@ public class AlienshipManager : ObjectsManager {
       laserWarning.SetActive(false);
       laserWarningPool.Add(laserWarning);
     }
-    run();
+    Invoke("spawn", firstSpawnDelay);
   }
 
   public GameObject getLaser(Vector3 pos) {

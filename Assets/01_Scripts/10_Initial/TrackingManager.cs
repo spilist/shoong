@@ -1,4 +1,4 @@
-﻿#undef UNITY_EDITOR
+﻿// #undef UNITY_EDITOR
 
 using UnityEngine;
 using System.Collections;
@@ -53,7 +53,7 @@ public class TrackingManager : MonoBehaviour {
     // Need to be enabled here, to set the variables above then run the Start() of GoogleAnalyticsV3.
     // If the GoogleAnalyticsV3 is updated, we should change its Awake() to Start(), so it would run on enable.
     googleAnalyticsV3.enabled = true;
-    googleAnalyticsV3.StartSession();    
+    googleAnalyticsV3.StartSession();
   }
 
   private void InitCallback () {
@@ -79,7 +79,7 @@ public class TrackingManager : MonoBehaviour {
 
   public void gameDone() {
 #if !UNITY_EDITOR
-    
+
     new TrackingFacade("Play Game", 1)
       .addEvent("PlayCharacter", CharacterManager.cm.getCurrentCharacter())
       .addEvent("isRandom", CharacterManager.cm.isRandom)
@@ -94,7 +94,7 @@ public class TrackingManager : MonoBehaviour {
       .addEvent("Total PlayingTime", DataManager.dm.getInt("TotalTime"))
       .addEvent("Gold Earned", GoldManager.gm.earned())
       .logEvent();
-    
+
 #endif
 
     #if UNITY_EDITOR
@@ -117,7 +117,7 @@ public class TrackingManager : MonoBehaviour {
 
   public void createToy(int numCreate, string rarity, string name, bool isNewToy) {
 #if !UNITY_EDITOR
-    
+
     new TrackingFacade("Create Toy", 1).addEvent("Total Creations", numCreate)
       .addEvent(AppEventParameterName.ContentID, name)
       .addEvent(AppEventParameterName.ContentType, rarity)
@@ -131,7 +131,7 @@ public class TrackingManager : MonoBehaviour {
 
     new TrackingFacade("FirstPlay", description, "", 0)
       .logEvent();
-    
+
     #endif
   }
 
@@ -168,7 +168,7 @@ public class TrackingManager : MonoBehaviour {
       .SetPrice(bProduct.Price)
       .SetQuantity(1)
       .SetCurrencyCode(bProduct.CurrencyCode));
-      
+
     FB.LogPurchase(
       bProduct.Price,
       bProduct.CurrencyCode,
@@ -179,7 +179,7 @@ public class TrackingManager : MonoBehaviour {
       });
     #endif
   }
-  
+
   // Because of the difference of Facebook AppEvent and Google Analytics,
   // the eventValue is reported in different manner.
   // 1. Facebook AppEvent: Value parameter is reported of that used for instantiation
@@ -281,7 +281,7 @@ public class TrackingManager : MonoBehaviour {
       FB.LogAppEvent(eventCategory, events[0].GetEventValue(), FBParams);
       sendEvent();
       return true;
-    }    
+    }
 
     // This may not be required, because it is periodically sended on iOS and Android
     public void sendEvent()

@@ -23,7 +23,7 @@ public class BlackholeGravitySphere : MonoBehaviour {
   void OnTriggerStay(Collider other) {
     string tag = other.tag;
     if (tag != "Player") return;
-    if (!Player.pl.canBeMagnetized()) return;
+    if (Player.pl.cannotBeMagnetized()) return;
 
     Vector3 heading = transform.parent.position - other.transform.position;
     heading /= heading.magnitude;
