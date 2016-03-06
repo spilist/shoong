@@ -35,8 +35,6 @@ public class TimeManager : MonoBehaviour {
 	public BlackholeManager blm;
   public MeteroidManager mtm;
   public IceDebrisManager idm;
-  public RubberBallManager rbm;
-  public RubberBallBiggerManager rbbm;
 
 	public static TimeManager time;
 
@@ -45,8 +43,6 @@ public class TimeManager : MonoBehaviour {
 	private bool spawnAsteroid = false;
   private bool spawnDangerousEMP = false;
 	private bool spawnBlackhole = false;
-  private bool spawnRubberBall = false;
-  private bool spawnRubberBallBigger = false;
 
 	void Awake() {
 		time = this;
@@ -137,8 +133,6 @@ public class TimeManager : MonoBehaviour {
       if (spawnAsteroid) asm.respawn();
       if (spawnDangerousEMP) dem.respawn();
 			if (spawnBlackhole) blm.respawn();
-      if (spawnRubberBall) rbm.respawn();
-      if (spawnRubberBallBigger) rbbm.respawn();
 		}
 	}
 
@@ -160,14 +154,6 @@ public class TimeManager : MonoBehaviour {
 	public void startBlackhole() {
 		spawnBlackhole = true;
 	}
-
-  public void startRubberBall(bool val = true) {
-    spawnRubberBall = val;
-  }
-
-  public void startRubberBallBigger(bool val = true) {
-    spawnRubberBallBigger = val;
-  }
 
 	// void changeScale(float targetScale, float difference) {
  //    starScale = Mathf.MoveTowards(starScale, targetScale, Time.deltaTime * Mathf.Abs(difference) / changeTime);

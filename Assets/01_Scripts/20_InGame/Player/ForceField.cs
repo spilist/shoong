@@ -26,7 +26,12 @@ public class ForceField : MonoBehaviour {
     count++;
 
     ObjectsMover mover = other.GetComponent<ObjectsMover>();
-    if (mover.tag == "Blackhole" || mover == null) return;
+    if (mover == null) {
+      other.gameObject.SetActive(false);
+      return;
+    }
+
+    if (mover.tag == "Blackhole") return;
 
     if (isGolden) {
       GoldManager.gm.add(mover.transform.position, empManager.goldCubesGet);

@@ -16,12 +16,12 @@ public class PhaseFilter : MonoBehaviour {
   }
 
   public void nextPhase(int num) {
-    if (num == 3) {
+    if (num == 2) {
       mat.SetColor("_TintColor", color);
-    } else if (num == 4) {
+    } else if (num == 3) {
       color.a = startAlpha * 2;
       mat.SetColor("_TintColor", color);
-    } else if (num == 5) {
+    } else if (num == 4) {
       mat.SetProceduralColor("Liquid_Color", dangerousColor);
       mat.RebuildTextures();
     }

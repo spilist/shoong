@@ -39,6 +39,6 @@ public class AlienshipBullet : MonoBehaviour {
 
     if (mover == null) return;
 
-    mover.destroyObject();
+    if (mover.tag != "Blackhole") mover.destroyObject();
   }
 }

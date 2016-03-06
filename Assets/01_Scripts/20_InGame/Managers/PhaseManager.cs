@@ -13,8 +13,6 @@ public class PhaseManager : MonoBehaviour {
   public IceDebrisManager icm;
   public ComboPartsManager cpm;
 
-  public RubberBallManager rbm;
-  public RubberBallBiggerManager rbbm;
   public RainbowDonutsManager rdm;
 
   public PhaseMonsterManager pmm;
@@ -31,6 +29,8 @@ public class PhaseManager : MonoBehaviour {
   public EMPManager em;
 
   public AlienshipManager asm;
+  public ShootAlienshipManager sam;
+  public VacuumAlienshipManager vam;
 
   public RectTransform stageIndicatorTop;
   public RectTransform stageIndicatorBottom;
@@ -91,75 +91,66 @@ public class PhaseManager : MonoBehaviour {
       case "1-3":
       icm.enabled = true;
       cpm.adjustForLevel(3);
-      break;
-      case "2-1":
-      rbm.enabled = true;
-      rdm.enabled = true;
-      rdm.adjustForLevel(1);
-      break;
-      case "2-2":
-      rbm.enabled = false;
-      TimeManager.time.startRubberBall(false);
-      rbbm.enabled = true;
-      rdm.adjustForLevel(2);
-      break;
-      case "2-3":
-      rbbm.setMany(true);
-      rdm.adjustForLevel(3);
       phaseFilter.gameObject.SetActive(true);
       break;
-      case "3-1":
-      rbm.enabled = true;
-      TimeManager.time.startRubberBall();
-      rbbm.enabled = false;
-      TimeManager.time.startRubberBallBigger(false);
+      case "2-1":
+      rdm.enabled = true;
+      rdm.adjustForLevel(1);
       pmm.enabled = true;
-      phaseFilter.nextPhase(3);
+      phaseFilter.nextPhase(2);
       break;
-      case "3-2":
+      case "2-2":
+      rdm.adjustForLevel(2);
       bmm.enabled = true;
       break;
-      case "3-3":
+      case "2-3":
+      rdm.adjustForLevel(3);
       cmm.enabled = true;
       break;
-      case "4-1":
+      case "3-1":
       mtm.enabled = true;
-      cpm.enabled = false;
+      phaseFilter.nextPhase(3);
       bmm.enabled = false;
       bmm.stopRespawn();
       cmm.enabled = false;
       cmm.stopRespawn();
+      break;
+      case "3-2":
+      mtm.enabled = false;
+      // bmtm.enabled = true;
+      break;
+      case "3-3":
+      // bmtm.enabled = true;
+      // bmtm2.enabled = true;
+      break;
+      case "4-1":
+      // bmtm2.enabled = false;
+      cpm.enabled = false;
       spm.enabled = true;
       spm.adjustForLevel(1);
+      dem.enabled = true;
       phaseFilter.nextPhase(4);
       break;
       case "4-2":
-      mtm.enabled = false;
-      // bmtm.enabled = true;
       spm.adjustForLevel(2);
+      blm.enabled = true;
       break;
       case "4-3":
-      // bmtm.enabled = true;
-      // bmtm2.enabled = true;
       spm.adjustForLevel(3);
+      dem.startLarger();
       break;
       case "5-1":
-      // bmtm2.enabled = false;
       spm.enabled = false;
       em.enabled = true;
       em.adjustForLevel(1);
-      dem.enabled = true;
-      phaseFilter.nextPhase(5);
+      sam.enabled = true;
       break;
       case "5-2":
-      blm.enabled = true;
       em.adjustForLevel(2);
+      vam.enabled = true;
       break;
       case "5-3":
-      dem.startLarger();
       em.adjustForLevel(3);
-      break;
-      case "6":
       asm.enabled = true;
       break;
     }

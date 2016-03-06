@@ -8,7 +8,7 @@ public class RubberBallBiggerManager : ObjectsManager {
   override public void initRest() {
     origObjAmount = objAmount;
     spawnPooledObjs(objPool, objPrefab, objAmount);
-    TimeManager.time.startRubberBallBigger();
+    // TimeManager.time.startRubberBallBigger();
   }
 
   override public void run() {}

@@ -17,7 +17,8 @@ public class BlackholeGravitySphere : MonoBehaviour {
 
   void OnTriggerEnter(Collider other) {
     if (other.tag == "Player") return;
-    other.GetComponent<ObjectsMover>().insideBlackhole(gravity, transform.parent.position - other.transform.position);
+    ObjectsMover mover = other.GetComponent<ObjectsMover>();
+    if (mover != null) other.GetComponent<ObjectsMover>().insideBlackhole(gravity, transform.parent.position - other.transform.position);
   }
 
   void OnTriggerStay(Collider other) {

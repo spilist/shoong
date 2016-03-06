@@ -17,7 +17,6 @@ public class BlackholeMover : ObjectsMover {
       }
     } else {
       ObjectsMover mover = other.GetComponent<ObjectsMover>();
-      mover.destroyObject(false);
     }
   }
 

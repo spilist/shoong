@@ -17,11 +17,7 @@ public class ConfusedMonsterManager : ObjectsManager {
   }
 
   override protected void spawn() {
-    Debug.Log("????????????confused1" + player);
-
     if (player == null || ScoreManager.sm.isGameOver()) return;
-    Debug.Log("????????????confused2");
-
     Vector2 screenPos = Random.insideUnitCircle;
     screenPos.Normalize();
     screenPos *= spawnRadius;
