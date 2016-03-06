@@ -24,7 +24,7 @@ public class EventHitBuilder : HitBuilder<EventHitBuilder> {
   private string eventCategory = "";
   private string eventAction = "";
   private string eventLabel = "";
-  private long eventValue;
+  private long eventValue = 0;
 
   public string GetEventCategory() {
     return eventCategory;
