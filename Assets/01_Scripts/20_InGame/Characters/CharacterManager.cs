@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-// using System;
+using System;
 
 public class CharacterManager : MonoBehaviour {
   public static CharacterManager cm;
@@ -48,6 +48,7 @@ public class CharacterManager : MonoBehaviour {
   public bool isRandom;
 
   private List<string> characterNames;
+  private List<string> randomList;
 
   void Awake() {
     cm = this;
@@ -67,6 +68,7 @@ public class CharacterManager : MonoBehaviour {
     for (int i = 0; i < characters.childCount; i++) {
       characterNames.Add(characters.GetChild(i).name);
     }
+    randomList = new List<string>();
   }
 
   void resetToOrginal() {
@@ -92,32 +94,30 @@ public class CharacterManager : MonoBehaviour {
   }
 
   IEnumerator randomCharacter() {
-    // shuffle(characterNames);
+    randomList = shuffle(characterNames);
 
-    Transform characters = transform.Find("Characters");
-    int index = Random.Range(0, characters.childCount);
-    // int index = 0;
+    int index = 0;
     while(true) {
-      setMesh(characters.GetChild(index).name);
-      // setMesh(characterNames[index]);
+      setMesh(randomList[index]);
       yield return new WaitForSeconds(0.15f);
       index++;
-      // if (index >= characterNames.Count) index = 0;
-      if (index >= characters.childCount) index = 0;
+      if (index >= randomList.Count) index = 0;
     }
   }
 
-  // void shuffle<T>(this IList<T> list) {
-  //     int n = list.Count;
-  //     Random rnd = new System.Random();
-  //     while (n > 1) {
-  //         int k = (rnd.Next(0, n) % n);
-  //         n--;
-  //         T value = list[k];
-  //         list[k] = list[n];
-  //         list[n] = value;
-  //     }
-  // }
+  List<string> shuffle(List<string> list) {
+    int n = list.Count;
+    System.Random rnd = new System.Random();
+    while (n > 1) {
+        int k = (rnd.Next(0, n) % n);
+        n--;
+        string value = list[k];
+        list[k] = list[n];
+        list[n] = value;
+    }
+
+    return list;
+  }
 
   public void setMesh(string name) {
     ccm.setMesh(character(name).GetComponent<MeshFilter>().sharedMesh);
