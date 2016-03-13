@@ -10891,7 +10891,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &401903130
 Transform:
   m_ObjectHideFlags: 0
@@ -10914,7 +10914,7 @@ MeshRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_Materials:
-  - {fileID: -1300753661, guid: 9d8c79f1a342edf4dadfcaae44e1c75c, type: 3}
+  - {fileID: 2100000, guid: 376c74bb3295b6a4ca812ce42ce80e81, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -23481,7 +23481,7 @@ MonoBehaviour:
   progressCharacter: {fileID: 248982190}
   progressCharacterPosStart: -95
   progressCharacterPosEnd: 115
-  progressPerSecond: 7.5
+  progressPerSecond: 30
   progressPerCube: 0.45
   progressChangeSpeed: 5
   npm: {fileID: 1991538117}
@@ -65970,7 +65970,7 @@ MeshRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_Materials:
-  - {fileID: 142123590, guid: 9d8c79f1a342edf4dadfcaae44e1c75c, type: 3}
+  - {fileID: 2100000, guid: cb4a1ea4504de8c479b7a2096ce30bd6, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
