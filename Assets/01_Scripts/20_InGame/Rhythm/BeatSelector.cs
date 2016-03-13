@@ -46,20 +46,22 @@ public class BeatSelector : MonoBehaviour {
   }
 
   public void setPitchModifier(float value) {
-    currentAudioSource.pitch = 1f + value;
-    beatSynchronizer.bpm = beatConstants.clips[beatSynchronizer.currentIndex].bpm * currentAudioSource.pitch;
+    float nextPitch = 1f + value;
+    beatSynchronizer.bpm = beatConstants.clips[beatSynchronizer.currentIndex].bpm * (nextPitch);
+    // Reserve pitch change to the beat counter, so the pitch can be changed on the beat
+    StartCoroutine(movePitch(nextPitch, 3.0f));
     foreach (BeatCounter counter in counters) {
       counter.modifyBPM(beatSynchronizer.bpm);
     }
   }
 
-  IEnumerator wait_and_go() {
-    while (true) {
-      foreach (BeatConstants.BeatElement e in beatConstants.clips) {
-        
-        yield return new WaitForSeconds(3f);
-
-      }
+  IEnumerator movePitch(float to, float interval) {
+    float time = 0.0f;
+    float from = currentAudioSource.pitch;
+    while (time < interval) {
+      time += Time.deltaTime;
+      currentAudioSource.pitch += (to - from) * (Time.deltaTime) / interval;
+      yield return null;
     }
   }
 }

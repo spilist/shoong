@@ -21,9 +21,11 @@ public class BeatCounter : MonoBehaviour {
 
 	private float nextBeatSample;
   private float beatPeriod;
-	private float samplePeriod;
+  private float lastSamplePeriod;
+  private float samplePeriod;
 	private float sampleOffset;
 	private float currentSample;
+  private bool beatCallbackRegistered = true;
 
 
 	void Awake ()
@@ -52,9 +54,10 @@ public class BeatCounter : MonoBehaviour {
     samplePeriod *= beatScalar;
     sampleOffset *= beatScalar;
     nextBeatSample = 0f;
+    lastSamplePeriod = samplePeriod;
     OnEnable();
   }
-
+  
   public void modifyBPM(float targetBPM) {
     beatPeriod = (60f / (targetBPM * BeatDecimalValues.values[(int)beatValue]));
     samplePeriod = beatPeriod * audioSource.clip.frequency;
@@ -109,14 +112,17 @@ public class BeatCounter : MonoBehaviour {
 	{
 		while (audioSource.isPlaying) {
 			currentSample = (float)AudioSettings.dspTime * audioSource.clip.frequency;
-
+      if (lastSamplePeriod != samplePeriod) {
+        float beatRemaining = nextBeatSample + sampleOffset - currentSample;
+        nextBeatSample += (samplePeriod - lastSamplePeriod) * (beatRemaining / samplePeriod);
+      }
 			if (currentSample >= (nextBeatSample + sampleOffset)) {
 				foreach (GameObject obj in observers) {
 					obj.GetComponent<BeatObserver>().BeatNotify(beatType);
 				}
 				nextBeatSample += samplePeriod;
 			}
-
+      lastSamplePeriod = samplePeriod;
 			yield return new WaitForSeconds(loopTime / 1000f);
 		}
 	}
