@@ -26,9 +26,10 @@ public class BeatSelector : MonoBehaviour {
     beatConstants = GetComponent<BeatConstants>();
     currentAudioSource = GetComponent<AudioSource>();
     beatSynchronizer = GetComponent<BeatSynchronizer>();
-    Debug.Log("Index: " + beatConstants);
     BeatConstants.BeatElement e = beatConstants.clips[index];
+    Debug.Log("Music index: " + index + ", name: " + e.clip.name);
     currentAudioSource.clip = e.clip;
+    beatSynchronizer.currentIndex = index;
     beatSynchronizer.bpm = e.bpm;
     beatSynchronizer.startDelay = e.startDelay;
     beatSynchronizer.volumeSmall = e.volumeSmall;
@@ -37,6 +38,18 @@ public class BeatSelector : MonoBehaviour {
     beatSynchronizer.enabled = true;
     foreach (BeatCounter counter in counters) {
       counter.init();
+    }
+  }
+  
+  public int getLastMusicIndex() {
+    return beatConstants.clips.Length - 1;
+  }
+
+  public void setPitchModifier(float value) {
+    currentAudioSource.pitch = 1f + value;
+    beatSynchronizer.bpm = beatConstants.clips[beatSynchronizer.currentIndex].bpm * currentAudioSource.pitch;
+    foreach (BeatCounter counter in counters) {
+      counter.modifyBPM(beatSynchronizer.bpm);
     }
   }
 

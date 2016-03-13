@@ -204,7 +204,6 @@ public class RhythmManager : MonoBehaviour {
       ringCount++;
 
       // if (Player.pl.uncontrollable()) return;
-      Debug.Log("Normal: " + numNormalInLoop + ", Skill: " + numSkillInLoop + ", rem: " + rem);
       // skill 나오기 전 파티클
       showPreSkillParticle(rem + 1);
 

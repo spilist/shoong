@@ -19027,6 +19027,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91b7313f19d4448c194f6d6daebf9a5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentIndex: 0
   bpm: 138
   startDelay: 0.3
   volumeSmall: 0.1
@@ -38563,6 +38564,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1.4
       objectReference: {fileID: 0}
+    - target: {fileID: 8264224, guid: 01172ec1939394f0293c89527ec3b64c, type: 2}
+      propertyPath: m_Volume
+      value: 0.372
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 01172ec1939394f0293c89527ec3b64c, type: 2}
   m_IsPrefabParent: 0
@@ -49993,6 +49998,14 @@ Prefab:
       propertyPath: m_Name
       value: RhythmStar_Skill (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8251132, guid: f68ad687d295246beaa24e9089f2d872, type: 2}
+      propertyPath: panLevelCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8251132, guid: f68ad687d295246beaa24e9089f2d872, type: 2}
+      propertyPath: reverbZoneMixCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f68ad687d295246beaa24e9089f2d872, type: 2}
   m_IsPrefabParent: 0
@@ -60544,7 +60557,8 @@ MonoBehaviour:
   player: {fileID: 0}
   bulletPrefab: {fileID: 117674, guid: e1e3ec35464924a819f2cc87b2018cd5, type: 2}
   bulletPool: []
-  bulletExplosionPrefab: {fileID: 0}
+  bulletExplosionPrefab: {fileID: 151220, guid: ac0eef41ea47f41b69d27baa5097540b,
+    type: 2}
   bulletExplosionPool: []
   bulletPoolAmount: 15
   spawnRadius: 250
@@ -60975,6 +60989,14 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 178226, guid: f68ad687d295246beaa24e9089f2d872, type: 2}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8251132, guid: f68ad687d295246beaa24e9089f2d872, type: 2}
+      propertyPath: panLevelCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8251132, guid: f68ad687d295246beaa24e9089f2d872, type: 2}
+      propertyPath: reverbZoneMixCustomCurve.m_RotationOrder
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

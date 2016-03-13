@@ -36,7 +36,7 @@ public class BeatCounter : MonoBehaviour {
     OnDisable();
     audioSource = GetComponent<AudioSource>();
     float audioBpm = audioSource.GetComponent<BeatSynchronizer>().bpm;
-    Debug.Log("BPM: " + audioBpm);
+    //Debug.Log("BPM: " + audioBpm);
     beatPeriod = (60f / (audioBpm * BeatDecimalValues.values[(int)beatValue]));
     samplePeriod = beatPeriod * audioSource.clip.frequency;
 
@@ -55,19 +55,25 @@ public class BeatCounter : MonoBehaviour {
     OnEnable();
   }
 
-	/// <summary>
-	/// Initializes and starts the coroutine that checks for beat occurrences. The nextBeatSample field is initialized to
-	/// exactly match up with the sample that corresponds to the time the audioSource clip started playing (via PlayScheduled).
-	/// </summary>
-	/// <param name="syncTime">Equal to the audio system's dsp time plus the specified delay time.</param>
-	void StartBeatCheck (double syncTime)
+  public void modifyBPM(float targetBPM) {
+    beatPeriod = (60f / (targetBPM * BeatDecimalValues.values[(int)beatValue]));
+    samplePeriod = beatPeriod * audioSource.clip.frequency;
+  }
+
+  /// <summary>
+  /// Initializes and starts the coroutine that checks for beat occurrences. The nextBeatSample field is initialized to
+  /// exactly match up with the sample that corresponds to the time the audioSource clip started playing (via PlayScheduled).
+  /// </summary>
+  /// <param name="syncTime">Equal to the audio system's dsp time plus the specified delay time.</param>
+  void StartBeatCheck (double syncTime)
 	{
-		nextBeatSample = (float)syncTime * audioSource.clip.frequency;
+    nextBeatSample = (float)syncTime * audioSource.clip.frequency;
     foreach (GameObject obj in observers) {
       obj.GetComponent<BeatObserver>().beatPeriod = beatPeriod;
     }
     StartCoroutine(BeatCheck());
 	}
+
 
 	/// <summary>
 	/// Subscribe the BeatCheck() coroutine to the beat synchronizer's event.
@@ -86,7 +92,7 @@ public class BeatCounter : MonoBehaviour {
 	/// </remarks>
 	void OnDisable ()
 	{
-		BeatSynchronizer.OnAudioStart -= StartBeatCheck;
+    BeatSynchronizer.OnAudioStart -= StartBeatCheck;
 	}
 
 	/// <summary>

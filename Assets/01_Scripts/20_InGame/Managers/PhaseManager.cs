@@ -166,6 +166,7 @@ public class PhaseManager : MonoBehaviour {
   }
 
   private IEnumerator showNextLevel() {
+    AudioManager.am.setAudio(level, true);
     if (level > 0) {
       // EnergyManager.em.getFullHealth();
       levelClearEffect.SetActive(true);

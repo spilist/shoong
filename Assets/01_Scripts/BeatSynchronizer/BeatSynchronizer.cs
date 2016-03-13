@@ -7,7 +7,7 @@ using System.Collections;
 /// </summary>
 [RequireComponent(typeof(AudioSource))]
 public class BeatSynchronizer : MonoBehaviour {
-
+  public int currentIndex = 0;
 	public float bpm = 120f;		// Tempo in beats per minute of the audio clip.
 	public float startDelay = 1f;	// Number of seconds to delay the start of audio playback.
 	public float volumeSmall = 0.1f;

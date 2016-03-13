@@ -140,7 +140,7 @@ public class CharacterManager : MonoBehaviour {
     if (progressCharacter != null) {
       progressCharacter.sharedMesh = stat.GetComponent<MeshFilter>().sharedMesh;
     }
-    AudioManager.am.setAudio((int) stat.bgm);
+    AudioManager.am.setAudio((int)stat.bgm, false);
     resetToOrginal();
 
     float scale_baseSpeeds = baseSpeeds[(int)stat.baseSpeed] / 100.0f;

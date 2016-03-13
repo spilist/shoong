@@ -30,25 +30,31 @@ public class AudioManager : MonoBehaviour {
     am = this;
   }
 
-  public void setAudio(int audioIndex) {
-    if (main != null) main.gameObject.SetActive(false);
-
-    //main = transform.Find("VariousBeats").GetComponent<AudioSource>();
-    main.selectSource(audioIndex);
-    
-    volumeBig = main.GetComponent<BeatSynchronizer>().volumeBig;
-    volumeSmall = main.GetComponent<BeatSynchronizer>().volumeSmall;
-
-    if (DataManager.dm.getBool("BGMOffSetting")) {
-      main.currentAudioSource.volume = 0;
+  public void setAudio(int level, bool setBigVolume) {
+    if (level > main.getLastMusicIndex()) {
+      main.setPitchModifier((level - main.getLastMusicIndex()) * 0.07f);
     } else {
-      main.currentAudioSource.volume = volumeSmall;
+      if (main != null) main.gameObject.SetActive(false);
+
+      main.selectSource(level);
+
+      volumeBig = main.GetComponent<BeatSynchronizer>().volumeBig;
+      volumeSmall = main.GetComponent<BeatSynchronizer>().volumeSmall;
+
+      if (DataManager.dm.getBool("BGMOffSetting")) {
+        main.currentAudioSource.volume = 0;
+      } else {
+        if (setBigVolume)
+          main.currentAudioSource.volume = volumeBig;
+        else
+          main.currentAudioSource.volume = volumeSmall;
+      }
+
+      main.gameObject.SetActive(true);
+      // RhythmManager.rm.transform.Find(name).gameObject.SetActive(true);
     }
-
-    main.gameObject.SetActive(true);
-    // RhythmManager.rm.transform.Find(name).gameObject.SetActive(true);
   }
-
+  
   void Update() {
     if (changeMainVolume) {
       mainVolume = Mathf.MoveTowards(mainVolume, targetMainVolume, Time.deltaTime * mainVolumeDiff / volumeChangeDuration);
