@@ -14,8 +14,8 @@ GameObject:
   - 135: {fileID: 13565526}
   - 198: {fileID: 19812276}
   - 199: {fileID: 19974960}
-  - 114: {fileID: 11479658}
   - 82: {fileID: 8203000}
+  - 114: {fileID: 11405724}
   m_Layer: 23
   m_Name: Meteroid_bigger
   m_TagString: Obstacle
@@ -157,7 +157,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!114 &11479658
+--- !u!114 &11405724
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -165,7 +165,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 131752}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2968ff343918b42168230ef658afc639, type: 3}
+  m_Script: {fileID: 11500000, guid: 8032c6c77738a4803bbdde2ccca6ab46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   boundingSize: 50

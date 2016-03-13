@@ -20,8 +20,7 @@ public class PhaseManager : MonoBehaviour {
   public ConfusedMonsterManager cmm;
 
   public MeteroidManager mtm;
-  // public BiggerMeteroidManager bmtm;
-  // public BiggerMeteroidManager2 bmtm2;
+  public BiggerMeteroidManager bmtm;
   public SummonPartsManager spm;
 
   public DangerousEMPManager dem;
@@ -91,28 +90,30 @@ public class PhaseManager : MonoBehaviour {
       case "1-3":
       icm.enabled = true;
       cpm.adjustForLevel(3);
+      // phaseFilter.gameObject.SetActive(true);
       break;
 
       case "2-1":
       mtm.enabled = true;
       rdm.enabled = true;
       rdm.adjustForLevel(1);
+      phaseFilter.nextPhase(2);
       break;
       case "2-2":
-      // mtm.enabled = false;
-      // bmtm.enabled = true;
+      mtm.stopSpawn();
+      mtm.enabled = false;
+      bmtm.enabled = true;
       rdm.adjustForLevel(2);
       break;
       case "2-3":
-      // bmtm2.enabled = true;
+      bmtm.startSecond();
       rdm.adjustForLevel(3);
-      phaseFilter.gameObject.SetActive(true);
       break;
 
       case "3-1":
       mtm.enabled = true;
-      // bmtm.enabled = false;
-      // bmtm2.enabled = false;
+      bmtm.stopSpawn();
+      bmtm.enabled = false;
       pmm.enabled = true;
       phaseFilter.nextPhase(3);
       break;

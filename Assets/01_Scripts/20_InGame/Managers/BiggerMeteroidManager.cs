@@ -3,12 +3,12 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
-public class MeteroidManager : ObjectsManager {
+public class BiggerMeteroidManager : ObjectsManager {
   public Transform meshes;
 
-  public float warnPlayerDuring = 1;
-  public float spawnRadius = 400;
-  public int lineDistance = 1000;
+  public float warnPlayerDuring = 0.5f;
+  public float spawnRadius = 250;
+  public int lineDistance = 600;
   public GameObject fallingStarWarningLinePrefab;
   public List<GameObject> warningPool;
   public GameObject fallingStarSoundWarningPrefab;
@@ -37,7 +37,7 @@ public class MeteroidManager : ObjectsManager {
   }
 
   public void startSecond() {
-    StartCoroutine("spawnObstacle");
+    StartCoroutine("spawnObstacle2");
   }
 
   override public void run() {}
@@ -54,9 +54,39 @@ public class MeteroidManager : ObjectsManager {
 
   public void stopSpawn() {
     StopCoroutine("spawnObstacle");
+    StopCoroutine("spawnObstacle2");
   }
 
   IEnumerator spawnObstacle() {
+    while(true) {
+      yield return new WaitForSeconds(spawnInterval());
+
+      Vector2 screenPos = Random.insideUnitCircle;
+      screenPos.Normalize();
+      screenPos *= spawnRadius;
+
+      Vector3 spawnPos = screenToWorld(screenPos);
+      obstacleDirection = playerPosScattered() - spawnPos;
+      obstacleDirection.Normalize();
+      destination = spawnPos + obstacleDirection * lineDistance;
+
+      GameObject warningLine = getWarningLine();
+      warningLine.GetComponent<FallingstarWarningLine>().run(spawnPos - 100 * obstacleDirection, destination, lineDistance + 100, warnPlayerDuring);
+      warningLine.SetActive(true);
+
+      getPooledObj(soundWarningPool, fallingStarSoundWarningPrefab).SetActive(true);
+
+      yield return new WaitForSeconds(warnPlayerDuring);
+
+      warningLine.GetComponent<FallingstarWarningLine>().erase();
+
+      GameObject obstacle = getObstacle(spawnPos);
+      obstacle.SetActive(true);
+      obstacle.GetComponent<MeshFilter>().sharedMesh = getRandomMesh();
+    }
+  }
+
+  IEnumerator spawnObstacle2() {
     while(true) {
       yield return new WaitForSeconds(spawnInterval());
 

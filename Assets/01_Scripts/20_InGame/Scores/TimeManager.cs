@@ -34,6 +34,7 @@ public class TimeManager : MonoBehaviour {
 	public DangerousEMPManager dem;
 	public BlackholeManager blm;
   public MeteroidManager mtm;
+  public BiggerMeteroidManager bmtm;
   public IceDebrisManager idm;
 
 	public static TimeManager time;
@@ -140,6 +141,7 @@ public class TimeManager : MonoBehaviour {
     progressChanging = false;
 		StopCoroutine("startElapse");
     mtm.stopSpawn();
+    bmtm.stopSpawn();
     idm.stopSpawn();
 	}
 

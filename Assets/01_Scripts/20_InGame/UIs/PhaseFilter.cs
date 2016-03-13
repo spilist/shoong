@@ -4,7 +4,9 @@ using System.Collections;
 public class PhaseFilter : MonoBehaviour {
 	private ProceduralMaterial mat;
   public float startAlpha = 0.08f;
-  public Color dangerousColor;
+  public Color blue;
+  public Color purple;
+  public Color red;
   Color color;
 
   void OnEnable() {
@@ -16,14 +18,18 @@ public class PhaseFilter : MonoBehaviour {
   }
 
   public void nextPhase(int num) {
-    if (num == 3) {
-      mat.SetColor("_TintColor", color);
-    } else if (num == 4) {
-      color.a = startAlpha * 2;
-      mat.SetColor("_TintColor", color);
-    } else if (num == 5) {
-      mat.SetProceduralColor("Liquid_Color", dangerousColor);
-      mat.RebuildTextures();
-    }
+    return;
+    // if (num == 2) {
+    //   mat.SetColor("_TintColor", color);
+    // } else if (num == 3) {
+    //   color.a = startAlpha * 2;
+    //   mat.SetColor("_TintColor", color);
+    // } else if (num == 4) {
+    //   mat.SetProceduralColor("Liquid_Color", purple);
+    //   mat.RebuildTextures();
+    // } else if (num == 5) {
+    //   mat.SetProceduralColor("Liquid_Color", red);
+    //   mat.RebuildTextures();
+    // }
   }
 }

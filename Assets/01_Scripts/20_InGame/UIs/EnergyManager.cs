@@ -34,7 +34,7 @@ public class EnergyManager : MonoBehaviour {
   private Color color_healthy;
   private Color color_danger;
   private string lastReason;
-  private bool noDeath = false;
+  public bool noDeath = true;
   private float origEnergyWidth;
   private bool difficult;
 
@@ -95,7 +95,7 @@ public class EnergyManager : MonoBehaviour {
   public void turnEnergy(bool val) {
     if (val) {
       getFullHealth();
-      noDeath = false;
+      // noDeath = false;
       gauge = origGauge;
       gaugeShell = origGaugeShell;
       gaugeIcon = origGaugeIcon;
