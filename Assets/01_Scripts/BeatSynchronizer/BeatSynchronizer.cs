@@ -15,6 +15,9 @@ public class BeatSynchronizer : MonoBehaviour {
 	public delegate void AudioStartAction(double syncTime);
 	public static event AudioStartAction OnAudioStart;
 
+  void Awake() {
+    OnAudioStart = null;
+  }
 
 	void OnEnable ()
 	{

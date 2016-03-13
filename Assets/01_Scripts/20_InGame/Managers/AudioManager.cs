@@ -8,7 +8,7 @@ public class AudioManager : MonoBehaviour {
   public float volumeChangeDuration = 0.5f;
   // public float powerBoostStartOn = 5;
 
-  private AudioSource main;
+  public BeatSelector main;
   private float mainVolume;
   private float volumeBig;
   private float volumeSmall;
@@ -28,19 +28,21 @@ public class AudioManager : MonoBehaviour {
       return;
     }
     am = this;
-	}
+  }
 
-  public void setAudio(string name) {
+  public void setAudio(int audioIndex) {
     if (main != null) main.gameObject.SetActive(false);
 
-    main = transform.Find(name).GetComponent<AudioSource>();
+    //main = transform.Find("VariousBeats").GetComponent<AudioSource>();
+    main.selectSource(audioIndex);
+    
     volumeBig = main.GetComponent<BeatSynchronizer>().volumeBig;
     volumeSmall = main.GetComponent<BeatSynchronizer>().volumeSmall;
 
     if (DataManager.dm.getBool("BGMOffSetting")) {
-      main.volume = 0;
+      main.currentAudioSource.volume = 0;
     } else {
-      main.volume = volumeSmall;
+      main.currentAudioSource.volume = volumeSmall;
     }
 
     main.gameObject.SetActive(true);
@@ -50,7 +52,7 @@ public class AudioManager : MonoBehaviour {
   void Update() {
     if (changeMainVolume) {
       mainVolume = Mathf.MoveTowards(mainVolume, targetMainVolume, Time.deltaTime * mainVolumeDiff / volumeChangeDuration);
-      main.volume = mainVolume;
+      main.currentAudioSource.volume = mainVolume;
       if (mainVolume == targetMainVolume) {
         changeMainVolume = false;
         if (targetMainVolume == 0) main.gameObject.SetActive(false);
@@ -85,8 +87,8 @@ public class AudioManager : MonoBehaviour {
   }
 
   public void muteBGM(bool mute) {
-    if (mute) main.volume = 0;
-    else main.volume = volumeSmall;
+    if (mute) main.currentAudioSource.volume = 0;
+    else main.currentAudioSource.volume = volumeSmall;
   }
 
   public void changeVolume(string what, string level) {
@@ -94,7 +96,7 @@ public class AudioManager : MonoBehaviour {
 
     if (what == "Main") {
       changeMainVolume = true;
-      mainVolume = main.volume;
+      mainVolume = main.currentAudioSource.volume;
 
       if (level == "Max") {
         targetMainVolume = volumeBig;

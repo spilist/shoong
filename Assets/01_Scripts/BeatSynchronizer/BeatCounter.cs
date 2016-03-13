@@ -20,6 +20,7 @@ public class BeatCounter : MonoBehaviour {
 	public GameObject[] observers;
 
 	private float nextBeatSample;
+  private float beatPeriod;
 	private float samplePeriod;
 	private float sampleOffset;
 	private float currentSample;
@@ -27,23 +28,32 @@ public class BeatCounter : MonoBehaviour {
 
 	void Awake ()
 	{
-		// Calculate number of samples between each beat.
-		float audioBpm = audioSource.GetComponent<BeatSynchronizer>().bpm;
-		samplePeriod = (60f / (audioBpm * BeatDecimalValues.values[(int)beatValue])) * audioSource.clip.frequency;
-
-		transform.parent.GetComponent<RhythmManager>().setPeriod((60f / (audioBpm * BeatDecimalValues.values[(int)beatValue])));
-
-		if (beatOffset != BeatValue.None) {
-			sampleOffset = (60f / (audioBpm * BeatDecimalValues.values[(int)beatOffset])) * audioSource.clip.frequency;
-			if (negativeBeatOffset) {
-				sampleOffset = samplePeriod - sampleOffset;
-			}
-		}
-
-		samplePeriod *= beatScalar;
-		sampleOffset *= beatScalar;
-		nextBeatSample = 0f;
+    init();
 	}
+
+  public void init() {
+    // Calculate number of samples between each beat.
+    OnDisable();
+    audioSource = GetComponent<AudioSource>();
+    float audioBpm = audioSource.GetComponent<BeatSynchronizer>().bpm;
+    Debug.Log("BPM: " + audioBpm);
+    beatPeriod = (60f / (audioBpm * BeatDecimalValues.values[(int)beatValue]));
+    samplePeriod = beatPeriod * audioSource.clip.frequency;
+
+    //RhythmManager.rm.setPeriod((60f / (audioBpm * BeatDecimalValues.values[(int)beatValue])));
+
+    if (beatOffset != BeatValue.None) {
+      sampleOffset = (60f / (audioBpm * BeatDecimalValues.values[(int)beatOffset])) * audioSource.clip.frequency;
+      if (negativeBeatOffset) {
+        sampleOffset = samplePeriod - sampleOffset;
+      }
+    }
+
+    samplePeriod *= beatScalar;
+    sampleOffset *= beatScalar;
+    nextBeatSample = 0f;
+    OnEnable();
+  }
 
 	/// <summary>
 	/// Initializes and starts the coroutine that checks for beat occurrences. The nextBeatSample field is initialized to
@@ -53,7 +63,10 @@ public class BeatCounter : MonoBehaviour {
 	void StartBeatCheck (double syncTime)
 	{
 		nextBeatSample = (float)syncTime * audioSource.clip.frequency;
-		StartCoroutine(BeatCheck());
+    foreach (GameObject obj in observers) {
+      obj.GetComponent<BeatObserver>().beatPeriod = beatPeriod;
+    }
+    StartCoroutine(BeatCheck());
 	}
 
 	/// <summary>

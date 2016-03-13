@@ -51,6 +51,7 @@ public class RhythmManager : MonoBehaviour {
   private GameObject lastRing;
   private int ringCount = 0;
   private int rem;
+  private int remMax;
   private bool feverTime = false;
   public float autoFeverBoostPer = 0.2f;
   private bool skillActivated = false;
@@ -199,10 +200,11 @@ public class RhythmManager : MonoBehaviour {
       // getRing(normalRingPool, normalRing);
     } else if (!feverTime) {
       rem = ringCount % (numNormalInLoop + numSkillInLoop);
+      remMax = numNormalInLoop + numSkillInLoop - 1;
       ringCount++;
 
       // if (Player.pl.uncontrollable()) return;
-
+      Debug.Log("Normal: " + numNormalInLoop + ", Skill: " + numSkillInLoop + ", rem: " + rem);
       // skill 나오기 전 파티클
       showPreSkillParticle(rem + 1);
 
@@ -226,9 +228,15 @@ public class RhythmManager : MonoBehaviour {
   void showPreSkillParticle(int val) {
     if (numSkillInLoop == 0) return;
 
-    if ( (numSkillInLoop == 1 && val == numNormalInLoop) || (numSkillInLoop > 1 && val >= numNormalInLoop) ){
-      useSkillParticle.SetActive(false);
-      useSkillParticle.SetActive(true);
+    if ( (numSkillInLoop == 1 && val == numNormalInLoop) || (numSkillInLoop > 1 && val >= numNormalInLoop && val < remMax + 1 ) ){
+      float beatPeriod = beatObserver.beatPeriod;
+      ParticleSystem particle = useSkillParticle.GetComponent<ParticleSystem>();
+      particle.startLifetime = beatPeriod - particle.duration;
+      particle.startSpeed = -21.6f / particle.startLifetime;
+      float pitchCoeff = 0.437f;
+      useSkillParticle.GetComponent<AudioSource>().pitch = beatPeriod * pitchCoeff * 2f;
+      useSkillParticle.gameObject.SetActive(false);
+      useSkillParticle.gameObject.SetActive(true);
     }
   }
 

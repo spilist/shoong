@@ -10,7 +10,7 @@ namespace AbilityData {
     FullOfStars,
     DeepInTheCaves,
     Level_1,
-    Level_2,
+    Level_2
   }
 
   public enum Rarity {

@@ -22,12 +22,13 @@ public class BeatObserver : MonoBehaviour {
 	[HideInInspector]
 	public BeatType beatMask;
 
-
+  public float beatPeriod = 1.0f;
+  
 	void Start ()
 	{
 		beatMask = BeatType.None;
 	}
-
+  
 	/// <summary>
 	/// This method is called by each BeatCounter this object is observing.
 	/// </summary>
