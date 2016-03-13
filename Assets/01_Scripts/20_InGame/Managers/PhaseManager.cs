@@ -90,14 +90,13 @@ public class PhaseManager : MonoBehaviour {
       case "1-3":
       icm.enabled = true;
       cpm.adjustForLevel(3);
-      // phaseFilter.gameObject.SetActive(true);
       break;
 
       case "2-1":
       mtm.enabled = true;
       rdm.enabled = true;
       rdm.adjustForLevel(1);
-      phaseFilter.nextPhase(2);
+      phaseFilter.gameObject.SetActive(true);
       break;
       case "2-2":
       mtm.stopSpawn();

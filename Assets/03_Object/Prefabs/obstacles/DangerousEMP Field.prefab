@@ -71,7 +71,7 @@ MeshRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0f40374a4b6abcd4596f345e76598e85, type: 2}
+  - {fileID: 2100000, guid: 664b4ee7f9d678840a38f0de2eea3ec8, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -156,7 +156,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -234,8 +234,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 654518129, guid: 9d8c79f1a342edf4dadfcaae44e1c75c,
-        type: 3}
+      objectReference: {fileID: 2100000, guid: 664b4ee7f9d678840a38f0de2eea3ec8, type: 2}
     - target: {fileID: 0}
       propertyPath: m_LocalScale.x
       value: 0
@@ -322,6 +321,10 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: reverbZoneMixCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: spreadCustomCurve.m_RotationOrder
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
