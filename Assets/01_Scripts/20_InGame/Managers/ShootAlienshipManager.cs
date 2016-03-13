@@ -5,6 +5,8 @@ using System.Collections.Generic;
 public class ShootAlienshipManager : ObjectsManager {
   public GameObject bulletPrefab;
   public List<GameObject> bulletPool;
+  public GameObject bulletExplosionPrefab;
+  public List<GameObject> bulletExplosionPool;
   public int bulletPoolAmount = 15;
   public int spawnRadius = 250;
   public int detectDistance = 200;
@@ -25,12 +27,20 @@ public class ShootAlienshipManager : ObjectsManager {
       GameObject bullet = (GameObject) Instantiate(bulletPrefab);
       bullet.SetActive(false);
       bulletPool.Add(bullet);
+
+      GameObject bulletExplosion = (GameObject) Instantiate(bulletExplosionPrefab);
+      bulletExplosion.SetActive(false);
+      bulletExplosionPool.Add(bulletExplosion);
     }
     Invoke("spawn", firstSpawnDelay);
   }
 
   public GameObject getBullet(Vector3 pos) {
     return getPooledObj(bulletPool, bulletPrefab, pos);
+  }
+
+  public GameObject getBulletExplosion(Vector3 pos) {
+    return getPooledObj(bulletExplosionPool, bulletExplosionPrefab, pos);
   }
 
   override protected void spawn() {
