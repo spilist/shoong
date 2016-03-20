@@ -31,6 +31,7 @@ public class ScoreUpdate : MonoBehaviour {
   public Text bonusCoinText;
   private float bonusDuration;
   public GameOverGoldCubes ggc;
+  public Transform stageGiftList;
 
   private int updateStatus = 0;
   private bool newHighscore = false;
@@ -142,6 +143,8 @@ public class ScoreUpdate : MonoBehaviour {
         updateStatus++;
       }
     } else if (updateStatus == 4) {
+      showStageGifts();
+    } else if (updateStatus == 5) {
     //   move(cubesRecords, elapsedTime);
     // } else if (updateStatus == 4) {
     //   move(elapsedTime, CPS);
@@ -169,4 +172,11 @@ public class ScoreUpdate : MonoBehaviour {
     }
   }
 
+  void showStageGifts() {
+    stageGiftList.GetChild(PhaseManager.pm.phase() / 3).gameObject.SetActive(true);
+  }
+
+  public void increaseStatus() {
+    updateStatus++;
+  }
 }
