@@ -61028,8 +61028,8 @@ MonoBehaviour:
   strength: 0
   speed: 0
   tumble: 5
-  minSpawnInterval: 8
-  maxSpawnInterval: 12
+  minSpawnInterval: 12
+  maxSpawnInterval: 18
   cubesByEncounter: 0
   energyGets: 0
   numSweetsPop: 0
@@ -61653,8 +61653,8 @@ MonoBehaviour:
   strength: 0
   speed: 0
   tumble: 5
-  minSpawnInterval: 8
-  maxSpawnInterval: 12
+  minSpawnInterval: 12
+  maxSpawnInterval: 24
   cubesByEncounter: 0
   energyGets: 0
   numSweetsPop: 0
@@ -62272,11 +62272,11 @@ MonoBehaviour:
   detectDistance: 200
   headFollowingSpeed: 300
   offScreenSpeedScale: 0.5
-  bulletDamage: 25
+  bulletDamage: 35
   numBullets: 3
   shootInterval: 0.6
-  nonShootDuration: 3
-  bulletSpeed: 280
+  nonShootDuration: 2
+  bulletSpeed: 300
   bulletTumble: 50
   firstSpawnDelay: 2
 --- !u!1 &1993354414

@@ -11,6 +11,7 @@ public class StageGiftBox : MenusBehavior {
   }
 
   override public void activateSelf() {
+    transform.parent.GetComponent<StageGift>().isOpened = true;
     gameObject.SetActive(false);
     bg.SetActive(false);
     gold.show();

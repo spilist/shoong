@@ -105,10 +105,10 @@ public class RainbowDonutsManager : ObjectsManager {
 
       cookieDistance = 0;
       
-      AudioManager.am.main.movePitch(pitchIncrease, nextDonutRadius / ridingSpeed);
+      //AudioManager.am.main.movePitch(pitchIncrease, nextDonutRadius / ridingSpeed);
       StartCoroutine("rideRainbow");
     } else {
-      AudioManager.am.main.movePitch(-pitchIncrease * rideCount, 0.5f);
+      //AudioManager.am.main.movePitch(-pitchIncrease * rideCount, 0.5f);
       objEncounterEffectForPlayer.Stop();
       player.afterStrengthenStart();
       // player.rotatePlayerBody();

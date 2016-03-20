@@ -13,6 +13,7 @@ public class StageGift : MonoBehaviour {
   private int status = 0;
   private float stayCount;
   bool shown = false;
+  public bool isOpened = false;
 
   void OnEnable() {
     if (shown) return;

@@ -22,14 +22,14 @@ public class StageGiftGold : MonoBehaviour {
   public void show() {
     int prob = Random.Range(0, 100);
     if (prob < highProb) {
-      numGoldsGet = lowGolds;
-      openingParticle = transform.parent.Find("OpeningParticles_low").gameObject;
+      numGoldsGet = highGolds;
+      openingParticle = transform.parent.Find("OpeningParticles_high").gameObject;
     } else if (prob < highProb + middleProb) {
       numGoldsGet = middleGolds;
       openingParticle = transform.parent.Find("OpeningParticles_mid").gameObject;
     } else {
-      numGoldsGet = highGolds;
-      openingParticle = transform.parent.Find("OpeningParticles_high").gameObject;
+      numGoldsGet = lowGolds;
+      openingParticle = transform.parent.Find("OpeningParticles_low").gameObject;
     }
 
     transform.Find("AmountText").GetComponent<Text>().text = "x" + numGoldsGet;

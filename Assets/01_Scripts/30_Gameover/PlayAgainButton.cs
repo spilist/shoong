@@ -18,7 +18,6 @@ public class PlayAgainButton : MenusBehavior {
         DataManager.dm.increment("FirstPlayAgainCount");
       }
     }
-
     if (!this.gameObject.activeInHierarchy) {
       backButton.activateSelf();
     }
@@ -34,11 +33,10 @@ public class PlayAgainButton : MenusBehavior {
     bool openedBox = false;
     StageGift[] stageGifts = stageGiftList.GetChild(PhaseManager.pm.phase() / 3).GetComponentsInChildren<StageGift>();
     foreach (StageGift gift in stageGifts) {
-      StageGiftBox giftBox = gift.GetComponentInChildren<StageGiftBox>();
-      if (!giftBox.isActiveAndEnabled) {
+      if (gift.isOpened) {
         continue;
       } else {
-        giftBox.activateSelf();
+        gift.GetComponentInChildren<StageGiftBox>().activateSelf();
         openedBox = true;
         yield return new WaitForSeconds(0.5f);
       }
