@@ -398,6 +398,8 @@ public class Player : MonoBehaviour {
     } else if (objTag == "Transformer") {
       usingTransformer = effectOn;
     } else if (objTag == "IceDebris") {
+      if (!iced)
+        StartCoroutine(iceDebrisSoundEffect());
       iced = effectOn;
       icedDuration = icm.speedRestoreDuring;
       icedSpeedFactor = icm.playerSpeedReduceTo;
@@ -406,6 +408,15 @@ public class Player : MonoBehaviour {
     } else if (objTag == "Ghost") {
       usingGhost = effectOn;
     }
+  }
+  IEnumerator iceDebrisSoundEffect() {
+    yield return null;
+    float moveAmount = AudioManager.am.main.movePitchToPercent(0.8f, 0f);
+    Debug.Log("MoveAmount: " + moveAmount);
+    while (iced == true) {
+        yield return null;
+    }
+    AudioManager.am.main.movePitch(-moveAmount, 0.5f);
   }
 
   public void stopOtherEffects() {

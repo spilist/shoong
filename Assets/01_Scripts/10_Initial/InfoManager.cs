@@ -8,5 +8,6 @@ public class InfoManager : MonoBehaviour {
 
 	void Update () {
     FPS.text = (1.0f / Time.smoothDeltaTime).ToString("0.00");
+    //FPS.text = AudioManager.am.main.currentAudioSource.pitch + "";
 	}
 }

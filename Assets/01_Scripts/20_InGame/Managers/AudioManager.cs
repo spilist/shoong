@@ -28,11 +28,13 @@ public class AudioManager : MonoBehaviour {
       return;
     }
     am = this;
+
+    setAudio(0, false);
   }
 
   public void setAudio(int level, bool setBigVolume) {
     if (level > main.getLastMusicIndex()) {
-      main.setPitchModifier((level - main.getLastMusicIndex()) * 0.07f);
+      main.movePitch(0.07f, 3f);
     } else {
       if (main != null) main.gameObject.SetActive(false);
 
@@ -51,6 +53,7 @@ public class AudioManager : MonoBehaviour {
       }
 
       main.gameObject.SetActive(true);
+      main.recoverPitch();
       // RhythmManager.rm.transform.Find(name).gameObject.SetActive(true);
     }
   }

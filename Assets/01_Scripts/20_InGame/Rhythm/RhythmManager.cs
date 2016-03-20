@@ -53,7 +53,7 @@ public class RhythmManager : MonoBehaviour {
   private int rem;
   private int remMax;
   private bool feverTime = false;
-  public float autoFeverBoostPer = 0.2f;
+  float feverTimePitchMoveAmount;
   private bool skillActivated = false;
 
   private BeatObserver beatObserver;
@@ -198,6 +198,7 @@ public class RhythmManager : MonoBehaviour {
       Player.pl.shootBooster();
 
       // getRing(normalRingPool, normalRing);
+      //} else if (true) {
     } else if (!feverTime) {
       rem = ringCount % (numNormalInLoop + numSkillInLoop);
       remMax = numNormalInLoop + numSkillInLoop - 1;
@@ -220,6 +221,8 @@ public class RhythmManager : MonoBehaviour {
         isSkillOK = true;
       }
 
+      Player.pl.shootBooster();
+    } else {
       Player.pl.shootBooster();
     }
   }
@@ -244,10 +247,9 @@ public class RhythmManager : MonoBehaviour {
   }
 
   public void boosterOk(bool boosterRing, bool skillRing) {
-    if (!feverTime) {
+    if (true) {
       isBoosterOK = boosterRing;
       isSkillOK = skillRing;
-      turnBoostOK(isBoosterOK);
     }
   }
 
@@ -274,8 +276,7 @@ public class RhythmManager : MonoBehaviour {
   public void ringSuccessed() {
     isBoosterOK = false;
     isSkillOK = false;
-
-    if (!feverTime) turnBoostOK(false);
+    
 
     currentStar.success();
   }
@@ -313,42 +314,19 @@ public class RhythmManager : MonoBehaviour {
 
     if (val) {
       isSkillOK = false;
-      turnBoostOK(false);
 
-      StartCoroutine("autoFeverBooster");
-      // if (abb != null && abb.isOn()) StartCoroutine("autoFeverBooster");
+      feverTimePitchMoveAmount = AudioManager.am.main.movePitchToPercent(1.5f, 0.5f);
     } else {
-      StopCoroutine("autoFeverBooster");
+      AudioManager.am.main.movePitch(-feverTimePitchMoveAmount, 0.5f);
     }
 
     // boostImage.gameObject.SetActive(!val);
   }
-
-  IEnumerator autoFeverBooster() {
-    while(true) {
-      Player.pl.shootBooster();
-      yield return new WaitForSeconds(autoFeverBoostPer);
-    }
-  }
-
+  
   public void loopSkillActivated(bool val) {
     skillActivated = val;
   }
-
-  public void turnBoostOK(bool val) {
-    if (val) {
-      boostImage.color = activeBoostImageColor;
-      touchText.color = activeBoostImageColor;
-      onthebeatText.color = activeBoostImageColor;
-    } else {
-      boostImage.color = inactiveBoostImageColor;
-      touchText.color = inactiveBoostImageColor;
-      onthebeatText.color = inactiveBoostImageColor;
-    }
-
-    if (fingerImage != null) fingerImage.SetActive(val);
-  }
-
+  
   public void setCanBeMissed(bool val) {
     canBeMissed = val;
   }

@@ -34,11 +34,23 @@ public class SkillManager : MonoBehaviour {
   }
 
   public bool skillRunning() {
+    if (equiped == null) return false;
     return equiped.isActivated();
   }
 
   public bool isBlink() {
+    if (equiped == null) return false;
     return equiped.name == "Blink";
+  }
+  
+  public bool isFever() {
+    if (equiped == null) return false;
+    return equiped.name == "Fever";
+  }
+
+  public bool isInfiniteBooster() {
+    if (equiped == null) return false;
+    return (equiped.name == "Fever" || equiped.name == "Solar");
   }
 
   public Skill current() {

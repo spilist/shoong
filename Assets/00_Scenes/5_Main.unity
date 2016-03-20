@@ -994,7 +994,6 @@ MonoBehaviour:
   isBoosterOK: 0
   isSkillOK: 0
   currentRing: {fileID: 0}
-  autoFeverBoostPer: 0.3
   failedBeatCount: 0
   currentStar: {fileID: 0}
   justSpawned: {fileID: 0}
@@ -18073,7 +18072,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillObject: {fileID: 0}
   useSkillEffect: {fileID: 2042006115}
-  normalRing: 9
+  normalRing: 12
   skillRing: 1
   description: Boost limitlessly
   duration: 4
@@ -19399,8 +19398,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 63245a8b315924c2b95f89948bab3c72, type: 3}
-  m_PlayOnAwake: 0
+  m_audioClip: {fileID: 8300000, guid: 05c48a2eda98044dcb4422f18dde0558, type: 3}
+  m_PlayOnAwake: 1
   m_Volume: 0
   m_Pitch: 1
   Loop: 1
@@ -32489,7 +32488,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -32511,7 +32510,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
 --- !u!199 &1343430250
 ParticleSystemRenderer:
   m_ObjectHideFlags: 0
@@ -37622,6 +37621,8 @@ MonoBehaviour:
   playTouchSound: 0
   blinkOnStart: 0
   beforeIdle: {fileID: 1366368665}
+  backButton: {fileID: 1410312525}
+  stageGiftList: {fileID: 1501269692}
   first: 0
 --- !u!1001 &1432010604
 Prefab:
@@ -39620,7 +39621,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillObject: {fileID: 0}
   useSkillEffect: {fileID: 1511200748}
-  normalRing: 7
+  normalRing: 9
   skillRing: 1
   description: 
   duration: 4
@@ -61052,7 +61053,7 @@ MonoBehaviour:
   roadPool: []
   cookiesPerRoad: 4
   numRoadRidesPerLevel: 020000000300000004000000
-  speedPerRide: 58020000bc0200002003000084030000e80300004c040000
+  speedPerRide: f4010000bc020000840300004c040000140500004c040000b0040000
   numRoadRides: 0
   nextDonutRadius: 300
   rotateDuring: 0.4
@@ -61067,7 +61068,7 @@ MonoBehaviour:
   - {r: 0, g: 0.015686275, b: 0.1882353, a: 0.7372549}
   - {r: 0.11372549, g: 0, b: 1, a: 0.7372549}
   pitchStart: 0.9
-  pitchIncrease: 0.05
+  pitchIncrease: 0.03
 --- !u!114 &1991538106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61881,7 +61882,7 @@ MonoBehaviour:
   player: {fileID: 0}
   spawnRadius: 250
   playerSpeedReduceTo: 0.3
-  speedRestoreDuring: 2
+  speedRestoreDuring: 3
 --- !u!114 &1991538123
 MonoBehaviour:
   m_ObjectHideFlags: 0

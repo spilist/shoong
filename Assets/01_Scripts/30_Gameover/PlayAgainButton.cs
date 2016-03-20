@@ -3,9 +3,14 @@ using System.Collections;
 
 public class PlayAgainButton : MenusBehavior {
   public BeforeIdle beforeIdle;
+  public BackButton backButton;
+  public Transform stageGiftList;
   public bool first;
+  bool isOpeningBox = false;
 
 	override public void activateSelf() {
+    if (isOpeningBox)
+      return;
     if (DataManager.dm.isFirstPlay) {
       int firstPlayAgainCount = DataManager.dm.getInt("FirstPlayAgainCount") + 1;
       if (firstPlayAgainCount < 10) {
@@ -14,6 +19,33 @@ public class PlayAgainButton : MenusBehavior {
       }
     }
 
+    if (!this.gameObject.activeInHierarchy) {
+      backButton.activateSelf();
+    }
+    StartCoroutine(openGiftAndPlayAgain());
+    /*
+    beforeIdle.playAgain();
+    AudioManager.am.changeVolume("Main", "Min");
+    */
+  }
+
+  IEnumerator openGiftAndPlayAgain() {
+    isOpeningBox = true;
+    bool openedBox = false;
+    StageGift[] stageGifts = stageGiftList.GetChild(PhaseManager.pm.phase() / 3).GetComponentsInChildren<StageGift>();
+    foreach (StageGift gift in stageGifts) {
+      StageGiftBox giftBox = gift.GetComponentInChildren<StageGiftBox>();
+      if (!giftBox.isActiveAndEnabled) {
+        continue;
+      } else {
+        giftBox.activateSelf();
+        openedBox = true;
+        yield return new WaitForSeconds(0.5f);
+      }
+    }
+    if (openedBox) {
+      yield return new WaitForSeconds(1.0f);
+    }
     beforeIdle.playAgain();
     AudioManager.am.changeVolume("Main", "Min");
   }

@@ -91,7 +91,11 @@ public class RainbowDonutsManager : ObjectsManager {
     player.setRidingRainbowRoad(false);
 
     if (rideCount < currentRoadRide) {
+
       ridingSpeed = speedPerRide[rideCount];
+
+      if (SkillManager.sm.skillRunning() && SkillManager.sm.isFever())
+        ridingSpeed = (int) (ridingSpeed * 1.5f);
 
       objEncounterEffectForPlayer.Play();
       objEncounterEffectForPlayer.GetComponent<AudioSource>().pitch = pitchStart + rideCount * pitchIncrease;
@@ -100,8 +104,11 @@ public class RainbowDonutsManager : ObjectsManager {
       rideCount++;
 
       cookieDistance = 0;
+      
+      AudioManager.am.main.movePitch(pitchIncrease, nextDonutRadius / ridingSpeed);
       StartCoroutine("rideRainbow");
     } else {
+      AudioManager.am.main.movePitch(-pitchIncrease * rideCount, 0.5f);
       objEncounterEffectForPlayer.Stop();
       player.afterStrengthenStart();
       // player.rotatePlayerBody();
