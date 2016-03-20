@@ -7223,7 +7223,7 @@ MonoBehaviour:
   dangerousAt: 0.35
   getRate: 2
   loseRate: 1
-  noDeath: 0
+  noDeath: 1
 --- !u!1 &230479083
 GameObject:
   m_ObjectHideFlags: 0
@@ -60188,7 +60188,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceSpawnAtStart: 0
-  objAmount: 5
+  objAmount: 10
   objPool: []
   objDestroyEffectPool: []
   objEncounterEffectPool: []
@@ -60219,9 +60219,9 @@ MonoBehaviour:
   particleDestroyByPlayerPool: []
   minScale: 15
   maxScale: 25
-  startDuration: 0.8
+  startDuration: 0.3
   decreaseDurationPerPulse: 0.1
-  empScale: 90
+  empScale: 110
   empRotatingSpeed: 500
   enlargeDuration: 0.1
   stayDuration: 0.6

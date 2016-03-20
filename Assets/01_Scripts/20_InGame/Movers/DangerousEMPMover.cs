@@ -55,7 +55,8 @@ public class DangerousEMPMover : ObjectsMover {
     scale = minScale;
     color = originalColor;
     startDuration = dem.startDuration;
-    unstable = true;
+    shellRenderer.material.SetColor("_TintColor", color);
+    unstable = false;
     dangerousArea.transform.eulerAngles = new Vector3(90, 0, 0);
   }
 
@@ -97,5 +98,9 @@ public class DangerousEMPMover : ObjectsMover {
         startDuration -= decreaseDurationPerPulse;
       }
     }
+  }
+
+  public void unstabilize() {
+    unstable = true;
   }
 }

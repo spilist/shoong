@@ -151,6 +151,7 @@ public class ObjectsManager : MonoBehaviour {
     if (ScoreManager.sm.isGameOver()) return;
 
     int count = objAmount - GameObject.FindGameObjectsWithTag(objPrefab.tag).Length;
+
     if (count > 0) {
       spawnPooledObjs(objPool, objPrefab, count);
     }

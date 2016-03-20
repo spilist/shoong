@@ -78,7 +78,9 @@ public class PhaseManager : MonoBehaviour {
     }
 
     StartCoroutine("showNextLevel");
-    if (level == 0) return true;
+    if (level == 0) {
+      return true;
+    }
 
     string levelName = textPerLevel[level - 1];
 
@@ -86,6 +88,7 @@ public class PhaseManager : MonoBehaviour {
       case "1-2":
       asteroidM.enabled = true;
       cpm.adjustForLevel(2);
+
       break;
       case "1-3":
       icm.enabled = true;
