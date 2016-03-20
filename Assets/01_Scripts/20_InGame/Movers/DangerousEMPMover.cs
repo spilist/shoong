@@ -60,7 +60,7 @@ public class DangerousEMPMover : ObjectsMover {
     dangerousArea.transform.eulerAngles = new Vector3(90, 0, 0);
   }
 
-  override public void destroyObject(bool destroyEffect = true, bool byPlayer = false, bool respawn = true) {
+  override public void destroyObject(bool destroyEffect = false, bool byPlayer = false, bool respawn = true) {
     gameObject.SetActive(false);
 
     if (byPlayer) {
@@ -78,7 +78,7 @@ public class DangerousEMPMover : ObjectsMover {
 
     if (startDuration <= 0) {
       unstable = false;
-      destroyObject();
+      destroyObject(true);
     }
 
     colorCode = Mathf.MoveTowards(colorCode, 1, Time.deltaTime / colorChangeDuration);

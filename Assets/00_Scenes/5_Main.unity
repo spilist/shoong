@@ -21450,7 +21450,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &868146741
 RectTransform:
   m_ObjectHideFlags: 0
@@ -32979,7 +32979,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1366368660
 RectTransform:
   m_ObjectHideFlags: 0
@@ -49035,30 +49035,6 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 11485684, guid: 1634c7e9cf4ba4b45a38b658be1deaf1, type: 2}
-      propertyPath: m_FontData.m_FontSize
-      value: 18
-      objectReference: {fileID: 0}
-    - target: {fileID: 11485684, guid: 1634c7e9cf4ba4b45a38b658be1deaf1, type: 2}
-      propertyPath: m_FontData.m_MinSize
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22440688, guid: 1634c7e9cf4ba4b45a38b658be1deaf1, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 4.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 22440688, guid: 1634c7e9cf4ba4b45a38b658be1deaf1, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 4.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 22440688, guid: 1634c7e9cf4ba4b45a38b658be1deaf1, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 4.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 22401106, guid: 1634c7e9cf4ba4b45a38b658be1deaf1, type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: 27
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1634c7e9cf4ba4b45a38b658be1deaf1, type: 2}
   m_IsPrefabParent: 0
@@ -53135,7 +53111,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1831567000
 RectTransform:
   m_ObjectHideFlags: 0
@@ -62174,7 +62150,7 @@ MonoBehaviour:
   objEncounterEffect: {fileID: 190966, guid: 06a9d910a6ef7477eb37b2d7cddcfa88, type: 2}
   objEncounterEffectForPlayer: {fileID: 0}
   strengthenPlayerEffect: {fileID: 0}
-  strength: 1
+  strength: 2.1
   speed: 280
   tumble: 10
   minSpawnInterval: 1

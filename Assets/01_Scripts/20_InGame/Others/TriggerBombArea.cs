@@ -25,7 +25,7 @@ public class TriggerBombArea : MonoBehaviour {
     if (!isTriggered && other.tag == "Player") {
       transform.parent.GetComponent<DangerousEMPMover>().unstabilize();
       areaColor.a = originalAlpha * 2;
-      areaRenderer.sharedMaterial.SetColor("_TintColor", areaColor);
+      areaRenderer.material.SetColor("_TintColor", areaColor);
       audio.Play();
     }
   }
