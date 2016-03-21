@@ -309,6 +309,8 @@ public class RhythmManager : MonoBehaviour {
   }
 
   public void setFever(bool val) {
+    if (feverTime == val)
+      return;
     feverTime = val;
     // feverPanel.SetActive(val);
 

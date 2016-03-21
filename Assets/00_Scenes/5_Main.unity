@@ -1843,7 +1843,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -1865,7 +1865,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
 --- !u!114 &103501021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3483,7 +3483,7 @@ ParticleSystem:
     collidesWithDynamic: 1
     interiorCollisions: 1
   SubModule:
-    enabled: 0
+    enabled: 1
     subEmitterBirth: {fileID: 0}
     subEmitterBirth1: {fileID: 0}
     subEmitterCollision: {fileID: 0}
@@ -7287,7 +7287,7 @@ ParticleSystem:
     collidesWithDynamic: 1
     interiorCollisions: 1
   SubModule:
-    enabled: 0
+    enabled: 1
     subEmitterBirth: {fileID: 0}
     subEmitterBirth1: {fileID: 0}
     subEmitterCollision: {fileID: 0}
@@ -9824,7 +9824,7 @@ ParticleSystem:
     collidesWithDynamic: 1
     interiorCollisions: 1
   SubModule:
-    enabled: 0
+    enabled: 1
     subEmitterBirth: {fileID: 0}
     subEmitterBirth1: {fileID: 0}
     subEmitterCollision: {fileID: 0}
@@ -9934,6 +9934,10 @@ Prefab:
     - target: {fileID: 11411370, guid: df73c8fb265644b57873e18c943161ee, type: 2}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19807214, guid: df73c8fb265644b57873e18c943161ee, type: 2}
+      propertyPath: SubModule.enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11461888, guid: df73c8fb265644b57873e18c943161ee, type: 2}
@@ -13960,7 +13964,7 @@ ParticleSystem:
     collidesWithDynamic: 1
     interiorCollisions: 1
   SubModule:
-    enabled: 0
+    enabled: 1
     subEmitterBirth: {fileID: 0}
     subEmitterBirth1: {fileID: 0}
     subEmitterCollision: {fileID: 0}
@@ -16532,7 +16536,7 @@ ParticleSystem:
     collidesWithDynamic: 1
     interiorCollisions: 1
   SubModule:
-    enabled: 0
+    enabled: 1
     subEmitterBirth: {fileID: 0}
     subEmitterBirth1: {fileID: 0}
     subEmitterCollision: {fileID: 0}
@@ -17073,7 +17077,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resetAll: 0
   resetCube: 0
-  resetGoldenCube: 0
+  resetGoldenCube: 5000
   normalFrameRate: 60
   isFirstPlay: 0
 --- !u!4 &638403303
@@ -17805,6 +17809,10 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 19889014, guid: 11ca7557e4a1a4c0ca18f9d16e92d63c, type: 2}
+      propertyPath: SubModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 11ca7557e4a1a4c0ca18f9d16e92d63c, type: 2}
   m_IsPrefabParent: 0
@@ -17960,7 +17968,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -17982,7 +17990,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
 --- !u!54 &714900427
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -18205,6 +18213,10 @@ Prefab:
     - target: {fileID: 8230038, guid: 247f56b855b0645959846fad0b6e23f3, type: 2}
       propertyPath: reverbZoneMixCustomCurve.m_RotationOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19838846, guid: 247f56b855b0645959846fad0b6e23f3, type: 2}
+      propertyPath: SubModule.enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11425270, guid: 247f56b855b0645959846fad0b6e23f3, type: 2}
@@ -19800,7 +19812,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -19822,7 +19834,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
 --- !u!199 &851953051
 ParticleSystemRenderer:
   m_ObjectHideFlags: 0
@@ -23718,7 +23730,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 19880002, guid: de26a526d1aba48408c4c51771cf8eb0, type: 2}
       propertyPath: ShapeModule.radius
-      value: 12.4799995
+      value: 12.48
       objectReference: {fileID: 0}
     - target: {fileID: 19880002, guid: de26a526d1aba48408c4c51771cf8eb0, type: 2}
       propertyPath: ShapeModule.type
@@ -23726,7 +23738,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 19880002, guid: de26a526d1aba48408c4c51771cf8eb0, type: 2}
       propertyPath: InitialModule.startSize.minCurve.m_Curve.Array.data[0].value
-      value: .333333343
+      value: 0.33333334
       objectReference: {fileID: 0}
     - target: {fileID: 19880002, guid: de26a526d1aba48408c4c51771cf8eb0, type: 2}
       propertyPath: InitialModule.startSize.scalar
@@ -23766,11 +23778,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 19880002, guid: de26a526d1aba48408c4c51771cf8eb0, type: 2}
       propertyPath: InitialModule.startLifetime.minCurve.m_Curve.Array.data[0].value
-      value: .333333313
+      value: 0.3333333
       objectReference: {fileID: 0}
     - target: {fileID: 19880002, guid: de26a526d1aba48408c4c51771cf8eb0, type: 2}
       propertyPath: InitialModule.startLifetime.scalar
-      value: .600000024
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 19880002, guid: de26a526d1aba48408c4c51771cf8eb0, type: 2}
       propertyPath: InitialModule.startSpeed.scalar
@@ -23811,6 +23823,14 @@ Prefab:
     - target: {fileID: 8267248, guid: de26a526d1aba48408c4c51771cf8eb0, type: 2}
       propertyPath: reverbZoneMixCustomCurve.m_RotationOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19880002, guid: de26a526d1aba48408c4c51771cf8eb0, type: 2}
+      propertyPath: EmissionModule.cntmax0
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 19880002, guid: de26a526d1aba48408c4c51771cf8eb0, type: 2}
+      propertyPath: SubModule.enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: de26a526d1aba48408c4c51771cf8eb0, type: 2}
@@ -26201,7 +26221,7 @@ ParticleSystem:
     collidesWithDynamic: 1
     interiorCollisions: 1
   SubModule:
-    enabled: 0
+    enabled: 1
     subEmitterBirth: {fileID: 0}
     subEmitterBirth1: {fileID: 0}
     subEmitterCollision: {fileID: 0}
@@ -27017,7 +27037,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -27039,7 +27059,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
 --- !u!114 &1165747851
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31034,7 +31054,7 @@ ParticleSystem:
     collidesWithDynamic: 1
     interiorCollisions: 1
   SubModule:
-    enabled: 0
+    enabled: 1
     subEmitterBirth: {fileID: 0}
     subEmitterBirth1: {fileID: 0}
     subEmitterCollision: {fileID: 0}
@@ -31379,6 +31399,10 @@ Prefab:
     - target: {fileID: 8262716, guid: 699a7667b2cee4564b40cfa293c9d3ad, type: 2}
       propertyPath: reverbZoneMixCustomCurve.m_RotationOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19880024, guid: 699a7667b2cee4564b40cfa293c9d3ad, type: 2}
+      propertyPath: SubModule.enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 699a7667b2cee4564b40cfa293c9d3ad, type: 2}
@@ -34991,7 +35015,7 @@ ParticleSystem:
     collidesWithDynamic: 1
     interiorCollisions: 1
   SubModule:
-    enabled: 0
+    enabled: 1
     subEmitterBirth: {fileID: 0}
     subEmitterBirth1: {fileID: 0}
     subEmitterCollision: {fileID: 0}
@@ -37504,7 +37528,7 @@ ParticleSystem:
     collidesWithDynamic: 1
     interiorCollisions: 1
   SubModule:
-    enabled: 0
+    enabled: 1
     subEmitterBirth: {fileID: 0}
     subEmitterBirth1: {fileID: 0}
     subEmitterCollision: {fileID: 0}
@@ -39354,7 +39378,7 @@ ParticleSystem:
     collidesWithDynamic: 1
     interiorCollisions: 1
   SubModule:
-    enabled: 0
+    enabled: 1
     subEmitterBirth: {fileID: 0}
     subEmitterBirth1: {fileID: 0}
     subEmitterCollision: {fileID: 0}
@@ -39415,6 +39439,10 @@ Prefab:
     - target: {fileID: 8264224, guid: 01172ec1939394f0293c89527ec3b64c, type: 2}
       propertyPath: m_Volume
       value: 0.372
+      objectReference: {fileID: 0}
+    - target: {fileID: 19863284, guid: 01172ec1939394f0293c89527ec3b64c, type: 2}
+      propertyPath: SubModule.enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 01172ec1939394f0293c89527ec3b64c, type: 2}
@@ -41359,7 +41387,7 @@ ParticleSystem:
     collidesWithDynamic: 1
     interiorCollisions: 1
   SubModule:
-    enabled: 0
+    enabled: 1
     subEmitterBirth: {fileID: 0}
     subEmitterBirth1: {fileID: 0}
     subEmitterCollision: {fileID: 0}
@@ -43565,7 +43593,7 @@ ParticleSystem:
     collidesWithDynamic: 1
     interiorCollisions: 1
   SubModule:
-    enabled: 0
+    enabled: 1
     subEmitterBirth: {fileID: 0}
     subEmitterBirth1: {fileID: 0}
     subEmitterCollision: {fileID: 0}
@@ -45084,7 +45112,7 @@ ParticleSystem:
     collidesWithDynamic: 1
     interiorCollisions: 1
   SubModule:
-    enabled: 0
+    enabled: 1
     subEmitterBirth: {fileID: 0}
     subEmitterBirth1: {fileID: 0}
     subEmitterCollision: {fileID: 0}
@@ -45183,7 +45211,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -45205,7 +45233,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
 --- !u!1 &1514947168
 GameObject:
   m_ObjectHideFlags: 0
@@ -47207,7 +47235,7 @@ ParticleSystem:
     collidesWithDynamic: 1
     interiorCollisions: 1
   SubModule:
-    enabled: 0
+    enabled: 1
     subEmitterBirth: {fileID: 0}
     subEmitterBirth1: {fileID: 0}
     subEmitterCollision: {fileID: 0}
@@ -47330,7 +47358,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -47352,7 +47380,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
 --- !u!1 &1553955414
 GameObject:
   m_ObjectHideFlags: 0
@@ -48882,7 +48910,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -48904,7 +48932,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
 --- !u!114 &1673126737
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49768,7 +49796,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -49790,7 +49818,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
 --- !u!1 &1741257578
 GameObject:
   m_ObjectHideFlags: 0
@@ -50865,6 +50893,10 @@ Prefab:
     - target: {fileID: 8267248, guid: de26a526d1aba48408c4c51771cf8eb0, type: 2}
       propertyPath: reverbZoneMixCustomCurve.m_RotationOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19880002, guid: de26a526d1aba48408c4c51771cf8eb0, type: 2}
+      propertyPath: SubModule.enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: de26a526d1aba48408c4c51771cf8eb0, type: 2}
@@ -53005,7 +53037,7 @@ ParticleSystem:
     collidesWithDynamic: 1
     interiorCollisions: 1
   SubModule:
-    enabled: 0
+    enabled: 1
     subEmitterBirth: {fileID: 0}
     subEmitterBirth1: {fileID: 0}
     subEmitterCollision: {fileID: 0}
@@ -57005,7 +57037,7 @@ ParticleSystem:
     collidesWithDynamic: 1
     interiorCollisions: 1
   SubModule:
-    enabled: 0
+    enabled: 1
     subEmitterBirth: {fileID: 0}
     subEmitterBirth1: {fileID: 0}
     subEmitterCollision: {fileID: 0}
@@ -60560,7 +60592,7 @@ ParticleSystem:
     collidesWithDynamic: 1
     interiorCollisions: 1
   SubModule:
-    enabled: 0
+    enabled: 1
     subEmitterBirth: {fileID: 0}
     subEmitterBirth1: {fileID: 0}
     subEmitterCollision: {fileID: 0}
@@ -64336,7 +64368,7 @@ ParticleSystem:
     collidesWithDynamic: 1
     interiorCollisions: 1
   SubModule:
-    enabled: 0
+    enabled: 1
     subEmitterBirth: {fileID: 0}
     subEmitterBirth1: {fileID: 0}
     subEmitterCollision: {fileID: 0}

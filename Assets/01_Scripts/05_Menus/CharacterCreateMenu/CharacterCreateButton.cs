@@ -137,6 +137,7 @@ public class CharacterCreateButton : MenusBehavior {
     running = true;
     resetAll();
     turnOnOff(false);
+    gathering.Clear();
     gathering.Play();
     gathering.GetComponent<AudioSource>().Play();
     explosion.Clear();

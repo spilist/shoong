@@ -187,7 +187,7 @@ public class Player : MonoBehaviour {
 
     if (mover == null || mover.dangerous()) return;
 
-    if (ridingMonster && tag != "MiniMonster" && tag != "RainbowDonut") {
+    if (ridingMonster && tag != "MiniMonster" && tag != "RainbowDonut" && tag != "GoldenCube") {
       generateMinimon(mover);
       return;
     }
@@ -230,12 +230,12 @@ public class Player : MonoBehaviour {
     if (mover.tag != "GoldenCube" && howMany > 0) {
       CubeManager.cm.addPoints(howMany, mover.transform.position);
     }
-
+    
     if (mover.energyGets() > 0) {
       EnergyManager.em.getEnergy(mover.energyGets());
     }
 
-    if (encounterPlayer) mover.encounterPlayer();
+    if (encounterPlayer || (!encounterPlayer && mover.tag == "GoldenCube")) mover.encounterPlayer();
     else mover.destroyObject(true, true);
   }
 
