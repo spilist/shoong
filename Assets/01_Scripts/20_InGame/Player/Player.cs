@@ -131,7 +131,7 @@ public class Player : MonoBehaviour {
       } else if (ridingMonster) {
         speed = baseSpeed + minimonCounter * monm.enlargeSpeedPerMinimon + boosterspeed;
       } else if (usingGhost) {
-        speed = baseSpeed * 2 + boosterspeed;
+        speed = baseSpeed * 1.6f + boosterspeed;
       } else if (usingSolar) {
         speed = (baseSpeed + boosterspeed) * 1.6f;
       } else {

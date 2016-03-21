@@ -18075,7 +18075,7 @@ MonoBehaviour:
   normalRing: 12
   skillRing: 1
   description: Boost limitlessly
-  duration: 4
+  duration: 6
 --- !u!1 &723740914
 GameObject:
   m_ObjectHideFlags: 0
@@ -53248,7 +53248,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b156dca8871394168a8d9b0cbea04ada, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.24264705, g: 0.24264705, b: 0.24264705, a: 1}
   m_FlipX: 0
   m_FlipY: 0
 --- !u!1001 &1853562959
