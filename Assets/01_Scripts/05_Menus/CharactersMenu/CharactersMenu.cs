@@ -18,8 +18,8 @@ public class CharactersMenu : Draggable {
   public Text numYourCharacters;
   public Text numAllCharacters;
 
-  public AudioClip characterSelectionSound;
-  public AudioClip characterBuySound;
+  public AudioSource characterSelectSound;
+  public AudioSource characterBuySound;
   private bool justOpened = true;
 
   void OnEnable() {

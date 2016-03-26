@@ -71,7 +71,7 @@ public class UICharacters : MonoBehaviour {
       if (charactersMenu.isJustOpened()) {
         charactersMenu.setOpened();
       } else {
-        AudioSource.PlayClipAtPoint(charactersMenu.characterSelectionSound, transform.position);
+        charactersMenu.characterSelectSound.Play();
       }
 
       stat = CharacterManager.cm.character(name);
@@ -142,8 +142,7 @@ public class UICharacters : MonoBehaviour {
   public void buyComplete(string transactionId, bool bought) {
     if (bought) {
       GetComponent<Renderer>().sharedMaterial = charactersMenu.activeCharactersMaterial;
-
-      AudioSource.PlayClipAtPoint(charactersMenu.characterBuySound, transform.position);
+      charactersMenu.characterBuySound.Play();
 
       TrackingManager.tm.purchase(transactionId, bProduct, stat.rarity.ToString());
     }

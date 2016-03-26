@@ -230,7 +230,7 @@ public class Player : MonoBehaviour {
     if (mover.tag != "GoldenCube" && howMany > 0) {
       CubeManager.cm.addPoints(howMany, mover.transform.position);
     }
-    
+
     if (mover.energyGets() > 0) {
       EnergyManager.em.getEnergy(mover.energyGets());
     }
@@ -292,8 +292,6 @@ public class Player : MonoBehaviour {
 
   public void teleport(Vector3 pos) {
     if (changeManager.isTeleporting() || ScoreManager.sm.isGameOver()) return;
-
-    AudioSource.PlayClipAtPoint(dpm.teleportSound, transform.position, dpm.teleportSoundVolume);
 
     changeManager.teleport(pos);
     DataManager.dm.increment("TotalBlinks");

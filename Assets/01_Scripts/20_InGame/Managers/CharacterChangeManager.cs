@@ -78,7 +78,6 @@ public class CharacterChangeManager : MonoBehaviour {
         color.a = alpha;
         mRenderer.sharedMaterial.color = color;
         dpm.goodFieldAt();
-        // dpm.goodFieldAt(teleportTo);
         Camera.main.GetComponent<CameraMover>().setSlowly(false);
         teleportingStatus++;
       }
@@ -135,11 +134,5 @@ public class CharacterChangeManager : MonoBehaviour {
   public void setMesh(Mesh mesh) {
     mFilter.sharedMesh = mesh;
     originalMesh = mesh;
-
-    // booster = Instantiate(Resources.Load(characterName + "/Booster", typeof(ParticleSystem))) as ParticleSystem;
-    // booster.transform.parent = playerParticlesParent;
-    // booster.transform.localScale = Vector3.one;
-    // booster.transform.localPosition = Vector3.zero;
-    // booster.transform.localRotation = Quaternion.identity;
   }
 }

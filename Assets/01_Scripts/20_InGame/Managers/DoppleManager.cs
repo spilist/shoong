@@ -15,9 +15,6 @@ public class DoppleManager : ObjectsManager {
 
   public float[] forceFieldSizePerLevel;
   public float targetSize;
-  public AudioClip teleportSound;
-  public float teleportSoundVolume = 0.5f;
-  public AudioClip cannotTeleportWarningSound;
   public float waveAwakeDuration = 0.3f;
 
   public float blinkInterval = 3;

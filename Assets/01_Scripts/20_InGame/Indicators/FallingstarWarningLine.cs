@@ -12,7 +12,6 @@ public class FallingstarWarningLine : MonoBehaviour {
 
   private Vector3 origin;
   private Vector3 destination;
-  private GameObject target;
 
   void Update () {
     if (isDrawing) {
@@ -47,6 +46,7 @@ public class FallingstarWarningLine : MonoBehaviour {
     distanceToDest = distance;
     drawingSpeed = distance / duration;
     isDrawing = true;
+    isErasing = false;
 
     outer.enabled = true;
     drawingDistance = 0;

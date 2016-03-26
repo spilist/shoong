@@ -97,6 +97,11 @@ public class AlienshipMover : ObjectsMover {
         laserWarning.transform.eulerAngles = new Vector3(0, angleY - 90, 0);
       }
     } else if (shootingStatus == 2) {
+      if (ScoreManager.sm.isGameOver()) {
+        shootingStatus = 0;
+        return;
+      }
+
       if (stayCount < chargeTime) {
         stayCount += Time.deltaTime;
       } else {
@@ -111,6 +116,8 @@ public class AlienshipMover : ObjectsMover {
   }
 
   public void laserEnd() {
+    if (ScoreManager.sm.isGameOver()) return;
+
     shootingStatus = 1;
     if (rb != null) rb.isKinematic = false;
     laserCanon.SetActive(false);
