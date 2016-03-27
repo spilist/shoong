@@ -22184,6 +22184,7 @@ MonoBehaviour:
   currentLevelText: {fileID: 1489089927}
   nextLevelText: {fileID: 1496726094}
   phaseFilter: {fileID: 401903133}
+  stransform: {fileID: 1818839439}
 --- !u!4 &894246144
 Transform:
   m_ObjectHideFlags: 0
