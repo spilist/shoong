@@ -57,6 +57,7 @@ public class PhaseManager : MonoBehaviour {
   private int level;
 
   public PhaseFilter phaseFilter;
+  public Skill_Transform stransform;
 
   void Awake() {
     pm = this;
@@ -99,6 +100,7 @@ public class PhaseManager : MonoBehaviour {
       mtm.enabled = true;
       rdm.enabled = true;
       rdm.adjustForLevel(1);
+      stransform.addManager("RainbowDonuts");
       phaseFilter.gameObject.SetActive(true);
       break;
       case "2-2":
@@ -134,6 +136,7 @@ public class PhaseManager : MonoBehaviour {
       cpm.enabled = false;
       spm.enabled = true;
       spm.adjustForLevel(1);
+      stransform.addManager("SummonParts");
       dem.enabled = true;
       phaseFilter.nextPhase(4);
       break;
@@ -152,6 +155,7 @@ public class PhaseManager : MonoBehaviour {
       spm.enabled = false;
       em.enabled = true;
       em.adjustForLevel(1);
+      stransform.addManager("EMP");
       sam.enabled = true;
       phaseFilter.nextPhase(5);
       break;

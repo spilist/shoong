@@ -30,9 +30,6 @@ public class Skill_Transform : Skill {
 
     subManagers = new List<string>();
     addManager("ComboParts");
-    addManager("RainbowDonuts");
-    addManager("SummonParts");
-    addManager("EMP");
   }
 
   public GameObject getLaser(Vector3 pos) {

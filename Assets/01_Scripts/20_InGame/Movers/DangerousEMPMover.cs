@@ -63,13 +63,14 @@ public class DangerousEMPMover : ObjectsMover {
   override public void destroyObject(bool destroyEffect = false, bool byPlayer = false, bool respawn = true) {
     gameObject.SetActive(false);
 
-    if (byPlayer) {
+    if (destroyEffect) {
       GameObject effect = dem.getPooledObj(dem.particleDestroyByPlayerPool, dem.particleDestroyByPlayer, transform.position);
       effect.SetActive(true);
+    }
+
+    if (byPlayer) {
+      showDestroyEffect(true);
       player.destroyObject(tag);
-    } else if (destroyEffect) {
-      GameObject effect = dem.getPooledObj(dem.objDestroyEffectPool, dem.objDestroyEffect, transform.position);
-      effect.SetActive(true);
     }
   }
 
@@ -78,7 +79,7 @@ public class DangerousEMPMover : ObjectsMover {
 
     if (startDuration <= 0) {
       unstable = false;
-      destroyObject(true);
+      destroyObject(false, true);
     }
 
     colorCode = Mathf.MoveTowards(colorCode, 1, Time.deltaTime / colorChangeDuration);

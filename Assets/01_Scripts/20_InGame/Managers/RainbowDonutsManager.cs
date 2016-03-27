@@ -65,6 +65,15 @@ public class RainbowDonutsManager : ObjectsManager {
     numRoadRides = numRoadRidesPerLevel[level - 1];
   }
 
+  override protected void beforeSpawn() {
+    StopCoroutine("rideRainbow");
+    erasingRainbowRoad = false;
+    drawingRainbowRoad = false;
+    if (rainbowRoad != null) rainbowRoad.gameObject.SetActive(false);
+    if (instance != null) instance.SetActive(false);
+    objEncounterEffectForPlayer.Stop();
+  }
+
   override protected void afterSpawn() {
     rideCount = 0;
 
@@ -112,6 +121,8 @@ public class RainbowDonutsManager : ObjectsManager {
       objEncounterEffectForPlayer.Stop();
       player.afterStrengthenStart();
       // player.rotatePlayerBody();
+
+      spawnedByTransform = false;
       run();
     }
   }

@@ -105,6 +105,7 @@ public class SummonPartsManager : ObjectsManager {
       }
     }
 
+    spawnedByTransform = false;
     run();
   }
 }

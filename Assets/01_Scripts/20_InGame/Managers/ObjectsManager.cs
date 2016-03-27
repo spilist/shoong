@@ -36,6 +36,8 @@ public class ObjectsManager : MonoBehaviour {
   public int level;
   public Player player;
 
+  protected bool spawnedByTransform = false;
+
   virtual protected void beforeInit() {}
 
   void Awake() {
@@ -124,8 +126,10 @@ public class ObjectsManager : MonoBehaviour {
     if (instance != null && instance.activeSelf) {
       instance.GetComponent<ObjectsMover>().destroyObject(false, false, false);
     }
+    beforeSpawn();
     instance = getPooledObj(objPool, objPrefab, pos);
     instance.SetActive(true);
+    spawnedByTransform = true;
     afterSpawn();
   }
 
@@ -142,6 +146,11 @@ public class ObjectsManager : MonoBehaviour {
     yield return new WaitForSeconds(spawnInterval());
 
     skipInterval = false;
+
+    if (spawnedByTransform) {
+      spawnedByTransform = false;
+      yield break;
+    }
 
     beforeSpawn();
     spawn();

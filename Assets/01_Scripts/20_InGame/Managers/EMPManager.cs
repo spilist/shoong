@@ -120,6 +120,7 @@ public class EMPManager : ObjectsManager {
       // Camera.main.orthographicSize = cameraSize;
 
       if (cameraSize == targetCameraSize) {
+        spawnedByTransform = false;
         run();
         player.stopEMP();
         Camera.main.GetComponent<CameraMover>().stopShake();
