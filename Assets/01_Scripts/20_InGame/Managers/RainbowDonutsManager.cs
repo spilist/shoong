@@ -104,7 +104,7 @@ public class RainbowDonutsManager : ObjectsManager {
       rideCount++;
 
       cookieDistance = 0;
-      
+
       //AudioManager.am.main.movePitch(pitchIncrease, nextDonutRadius / ridingSpeed);
       StartCoroutine("rideRainbow");
     } else {

@@ -62032,10 +62032,6 @@ MonoBehaviour:
   - 1
   - 2
   targetSize: 0
-  teleportSound: {fileID: 8300000, guid: 06f4fb62da1cc475ba87a41b6952dc8b, type: 3}
-  teleportSoundVolume: 0.5
-  cannotTeleportWarningSound: {fileID: 8300000, guid: 6175d64a3d350574aa82124734e3a684,
-    type: 3}
   waveAwakeDuration: 0.02
   blinkInterval: 2
   blinkRadius: 30
@@ -62521,7 +62517,7 @@ MonoBehaviour:
   offScreenSpeedScale: 0.5
   bulletDamage: 35
   numBullets: 3
-  shootInterval: 0.6
+  shootInterval: 0.4
   nonShootDuration: 2
   bulletSpeed: 300
   bulletTumble: 50

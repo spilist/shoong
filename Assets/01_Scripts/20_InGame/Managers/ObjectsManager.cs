@@ -93,6 +93,7 @@ public class ObjectsManager : MonoBehaviour {
 
   public GameObject getPooledObj(List<GameObject> list, GameObject prefab, Vector3 pos) {
     GameObject obj = getPooledObj(list, prefab);
+    obj.transform.parent = transform;
     obj.transform.position = pos;
     return obj;
   }

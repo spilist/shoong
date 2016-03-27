@@ -542,8 +542,8 @@ public class Player : MonoBehaviour {
 
   void Update() {
     if (isRotatingByRainbow) {
-      Vector3 dir = (rainbowPosition - transform.position).normalized;
-      transform.parent.Translate(dir * Time.deltaTime * 30, Space.World);
+      Vector3 dir = rainbowPosition - transform.position;
+      transform.parent.Translate(dir * Time.deltaTime / rdm.rotateDuring, Space.World);
       transform.parent.Rotate(0, 0, Time.deltaTime * rdm.rotateAngularSpeed);
       // transform.Rotate(-Vector3.forward * Time.deltaTime * rdm.rotateAngularSpeed, Space.World);
     } else {
