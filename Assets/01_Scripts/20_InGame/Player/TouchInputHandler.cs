@@ -14,6 +14,8 @@ public class TouchInputHandler : MonoBehaviour
   public SpawnManager spawnManager;
   public MenusController menus;
   public PauseButton pause;
+  public GameObject goToMain;
+  public GameObject goToMainActivated;
   public GameObject gameOver;
   public PlayAgainButton playAgain;
 
@@ -52,12 +54,26 @@ public class TouchInputHandler : MonoBehaviour
     if (reactAble() && Input.GetMouseButtonDown(0)) {
       string result = menus.touched();
       if (menus.isMenuOn()) return;
-
-			if (!pause.isResuming() && result != "PauseButton" && pause.isPaused()) {
-        pause.resume();
+      
+      if (!pause.isResuming() && pause.isPaused()) {
+        if (result == "GoToMainButton") {
+          if (goToMain.activeInHierarchy) {
+            goToMain.gameObject.SetActive(false);
+            goToMainActivated.gameObject.SetActive(true);
+          } else {
+            goToMain.gameObject.SetActive(true);
+            goToMainActivated.gameObject.SetActive(false);
+            pause.resumeNow();
+            ScoreManager.sm.gameOver("AbondonedGame");
+          }
+        } else if (result != "PauseButton") {
+          goToMain.gameObject.SetActive(true);
+          goToMainActivated.gameObject.SetActive(false);
+          pause.resume();
+        }
       }
 
-			if (!pause.isResuming() && (result == "Ground" || result == "ChangeBehavior") && !gameStarted) {
+        if (!pause.isResuming() && (result == "Ground" || result == "ChangeBehavior") && !gameStarted) {
 
         CharacterManager.cm.startGame();
         menus.gameStart();

@@ -93,6 +93,8 @@ TagManager:
   - RubberBall
   - VacuumAlienship
   - ShootAlienship
+  - GoToMainButton
+  - ResumeButton
   layers:
   - Default
   - TransparentFX

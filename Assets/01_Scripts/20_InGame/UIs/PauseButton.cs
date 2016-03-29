@@ -12,7 +12,8 @@ public class PauseButton : MenusBehavior {
   private Text resumingText;
 
   void Start() {
-    pausedImage = pauseStatus.transform.Find("PausedImage").gameObject;
+    //pausedImage = pauseStatus.transform.Find("PausedImage").gameObject;
+    pausedImage = pauseStatus.transform.Find("ResumeButton").gameObject;
     resumingText = pauseStatus.transform.Find("ResumingText").GetComponent<Text>();
     playTouchSound = false;
   }
@@ -45,7 +46,10 @@ public class PauseButton : MenusBehavior {
       yield return StartCoroutine(CoroutineUtilities.WaitForRealTime(1));
       count--;
     }
+    resumeNow();
+  }
 
+  public void resumeNow() {
     RhythmManager.rm.stopBeat(true);
     Camera.main.GetComponent<CameraMover>().setPaused(false);
     pauseFilter.SetActive(false);
