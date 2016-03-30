@@ -27,6 +27,10 @@ public class Player : MonoBehaviour {
   private float boosterBonus = 1;
   private bool speedBoosting = false;
 
+  public float playerSpeedModifierMin = 0.7f;
+  public float playerSpeedModifierMax = 1.0f;
+  public float lrSpeedModifier = 1.0f;
+
   public float tumble = 4;
   private Vector3 direction;
 
@@ -158,6 +162,8 @@ public class Player : MonoBehaviour {
     } else if (boosterspeed <= 0){
       boosterspeed = 0;
     }
+
+    speed *= lrSpeedModifier;
 
     rb.velocity = direction * speed * stickSpeedScale;
 	}

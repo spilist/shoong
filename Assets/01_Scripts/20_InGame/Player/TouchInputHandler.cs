@@ -18,8 +18,9 @@ public class TouchInputHandler : MonoBehaviour
   public GameObject goToMainActivated;
   public GameObject gameOver;
   public PlayAgainButton playAgain;
+  public float LRSpeed;
 
-	private bool gameStarted = false;
+  private bool gameStarted = false;
 	private bool react = true;
 	private bool dragging = false;
   private bool playAgainTouched = false;
@@ -33,7 +34,7 @@ public class TouchInputHandler : MonoBehaviour
   private int stickFingerId = -1;
 
   void Update() {
-		if (Application.platform == RuntimePlatform.Android) {
+    if (Application.platform == RuntimePlatform.Android) {
       if (Input.GetKeyDown(KeyCode.Escape)) {
         if (gameStarted && !pause.isPaused() && pause.gameObject.activeInHierarchy && !gameOver.activeInHierarchy) {
           pause.activateSelf();
@@ -54,7 +55,7 @@ public class TouchInputHandler : MonoBehaviour
     if (reactAble() && Input.GetMouseButtonDown(0)) {
       string result = menus.touched();
       if (menus.isMenuOn()) return;
-      
+
       if (!pause.isResuming() && pause.isPaused()) {
         if (result == "GoToMainButton") {
           if (goToMain.activeInHierarchy) {
@@ -73,7 +74,7 @@ public class TouchInputHandler : MonoBehaviour
         }
       }
 
-        if (!pause.isResuming() && (result == "Ground" || result == "ChangeBehavior") && !gameStarted) {
+      if (!pause.isResuming() && (result == "Ground" || result == "ChangeBehavior") && !gameStarted) {
 
         CharacterManager.cm.startGame();
         menus.gameStart();
@@ -88,12 +89,12 @@ public class TouchInputHandler : MonoBehaviour
         beforeIdle.moveTitle();
         AudioManager.am.changeVolume("Main", "Max");
 
-				gameStarted = true;
+        gameStarted = true;
 
         controlMethod = DataManager.dm.getString("ControlMethod");
         stickPanelSize = Vector3.Distance(stick.position, stick.transform.Find("End").position);
         stick.gameObject.SetActive(true);
-			}
+      }
 
       if (controlMethod == "Touch") {
         if (result == "Ground") {
@@ -101,18 +102,18 @@ public class TouchInputHandler : MonoBehaviour
           Player.pl.shootBooster();
         }
       }
-		}
+    }
 
     if (reactAble() && controlMethod == "Stick") {
       for (var i = 0; i < Input.touchCount; ++i) {
         Touch touch = Input.GetTouch(i);
         Ray ray = Camera.main.ScreenPointToRay(touch.position);
         RaycastHit hit;
-        if ( Physics.Raycast(ray, out hit) ) {
+        if (Physics.Raycast(ray, out hit)) {
           GameObject hitObject = hit.transform.gameObject;
           if (touch.phase == TouchPhase.Began) {
             if (hitObject.tag == "StickPanel_movement") {
-            // if (hitObject.tag == "StickPanel_movement" && Input.touchCount == 1) {
+              // if (hitObject.tag == "StickPanel_movement" && Input.touchCount == 1) {
               // 고정스틱
               stick.position = newStickPosition();
               stick.gameObject.SetActive(true);
@@ -142,7 +143,60 @@ public class TouchInputHandler : MonoBehaviour
         }
       }
     }
-	}
+
+    if (reactAble() && controlMethod == "CenterBigStick") {
+      if (!Input.touchSupported) {
+        string result = menus.touched();
+        if (Input.GetMouseButtonDown(0) || Input.GetMouseButton(0)) {
+          if (result == "Ground") {
+            setPlayerDirection(Player.pl.transform);
+          }
+        }
+      } else {
+        for (var i = 0; i < Input.touchCount; ++i) {
+          Touch touch = Input.GetTouch(i);
+          setPlayerDirection(Player.pl.transform, touch);
+        }
+      }
+    }
+
+    if (reactAble() && controlMethod == "LR") {
+      if (!Input.touchSupported) {
+        if ((Input.GetMouseButtonDown(0) || Input.GetMouseButton(0)) && menus.touched() == "Ground") {
+          if (Input.mousePosition.x < Screen.width / 2) {
+            Player.pl.setDirection(Quaternion.AngleAxis(-LRSpeed, Vector3.up) * Player.pl.getDirection());
+          } else {
+            Player.pl.setDirection(Quaternion.AngleAxis(LRSpeed, Vector3.up) * Player.pl.getDirection());
+          }
+          Player.pl.lrSpeedModifier -= Time.deltaTime;
+          if (Player.pl.lrSpeedModifier < Player.pl.playerSpeedModifierMin) Player.pl.lrSpeedModifier = Player.pl.playerSpeedModifierMin;
+        } else {
+          Player.pl.lrSpeedModifier += Time.deltaTime;
+          if (Player.pl.lrSpeedModifier > Player.pl.playerSpeedModifierMax) Player.pl.lrSpeedModifier = Player.pl.playerSpeedModifierMax;
+        }
+      } else {
+        for (var i = 0; i < Input.touchCount; ++i) {
+          Touch touch = Input.GetTouch(i);
+          if (touch.position.x < Screen.width / 2) {
+            Player.pl.setDirection(Quaternion.AngleAxis(-LRSpeed, Vector3.up) * Player.pl.getDirection());
+          } else {
+            Player.pl.setDirection(Quaternion.AngleAxis(LRSpeed, Vector3.up) * Player.pl.getDirection());
+          }
+          // FIXME: if more than too touch is input, then speed goes down twice faster
+          Player.pl.lrSpeedModifier -= Time.deltaTime;
+          if (Player.pl.lrSpeedModifier < Player.pl.playerSpeedModifierMin) Player.pl.lrSpeedModifier = Player.pl.playerSpeedModifierMin;
+        }
+        if (Input.touchCount == 0) {
+          Player.pl.lrSpeedModifier += Time.deltaTime;
+          if (Player.pl.lrSpeedModifier > Player.pl.playerSpeedModifierMax) Player.pl.lrSpeedModifier = Player.pl.playerSpeedModifierMax;
+        }
+      }
+    }
+  }
+
+  public void setLRSpeed(Slider speed) {
+    this.LRSpeed = speed.value;
+  }
 
   public void setPlayerDirection(Transform origin, Touch touch) {
     if (Player.pl.uncontrollable()) return;
