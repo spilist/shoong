@@ -5,6 +5,7 @@ public class PlayAgainButton : MenusBehavior {
   public BeforeIdle beforeIdle;
   public BackButton backButton;
   public Transform stageGiftList;
+  public GameObject touchBlocker;
   public bool first;
   bool isOpeningBox = false;
 
@@ -30,6 +31,7 @@ public class PlayAgainButton : MenusBehavior {
 
   IEnumerator openGiftAndPlayAgain() {
     isOpeningBox = true;
+    touchBlocker.SetActive(true);
     bool openedBox = false;
     StageGift[] stageGifts = stageGiftList.GetChild(PhaseManager.pm.phase() / 3).GetComponentsInChildren<StageGift>();
     foreach (StageGift gift in stageGifts) {
@@ -44,6 +46,7 @@ public class PlayAgainButton : MenusBehavior {
     if (openedBox) {
       yield return new WaitForSeconds(1.0f);
     }
+    touchBlocker.SetActive(false);
     beforeIdle.playAgain();
     AudioManager.am.changeVolume("Main", "Min");
   }

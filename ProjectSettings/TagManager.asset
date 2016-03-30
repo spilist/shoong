@@ -95,6 +95,7 @@ TagManager:
   - ShootAlienship
   - GoToMainButton
   - ResumeButton
+  - TouchBlocker
   layers:
   - Default
   - TransparentFX
