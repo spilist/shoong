@@ -1536,6 +1536,8 @@ MonoBehaviour:
   baseSpeed: 150
   speed: 0
   boosterSpeedDecreasePerTime: 20
+  playerSpeedModifierMin: 0.5
+  playerSpeedModifierMax: 1
   lrSpeedModifier: 1
   tumble: 300
   monm: {fileID: 1991538109}
@@ -51891,7 +51893,6 @@ MonoBehaviour:
   gameOver: {fileID: 868146740}
   playAgain: {fileID: 1431479375}
   LRSpeed: 4
-  playerSpeedModifier: 1
 --- !u!114 &1801634120
 MonoBehaviour:
   m_ObjectHideFlags: 0

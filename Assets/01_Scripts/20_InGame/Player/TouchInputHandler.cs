@@ -168,10 +168,10 @@ public class TouchInputHandler : MonoBehaviour
           } else {
             Player.pl.setDirection(Quaternion.AngleAxis(LRSpeed, Vector3.up) * Player.pl.getDirection());
           }
-          Player.pl.lrSpeedModifier -= Time.deltaTime;
+          Player.pl.lrSpeedModifier -= Time.deltaTime/4;
           if (Player.pl.lrSpeedModifier < Player.pl.playerSpeedModifierMin) Player.pl.lrSpeedModifier = Player.pl.playerSpeedModifierMin;
         } else {
-          Player.pl.lrSpeedModifier += Time.deltaTime;
+          Player.pl.lrSpeedModifier += Time.deltaTime/2;
           if (Player.pl.lrSpeedModifier > Player.pl.playerSpeedModifierMax) Player.pl.lrSpeedModifier = Player.pl.playerSpeedModifierMax;
         }
       } else {
@@ -183,11 +183,11 @@ public class TouchInputHandler : MonoBehaviour
             Player.pl.setDirection(Quaternion.AngleAxis(LRSpeed, Vector3.up) * Player.pl.getDirection());
           }
           // FIXME: if more than too touch is input, then speed goes down twice faster
-          Player.pl.lrSpeedModifier -= Time.deltaTime;
+          Player.pl.lrSpeedModifier -= Time.deltaTime/4;
           if (Player.pl.lrSpeedModifier < Player.pl.playerSpeedModifierMin) Player.pl.lrSpeedModifier = Player.pl.playerSpeedModifierMin;
         }
         if (Input.touchCount == 0) {
-          Player.pl.lrSpeedModifier += Time.deltaTime;
+          Player.pl.lrSpeedModifier += Time.deltaTime/2;
           if (Player.pl.lrSpeedModifier > Player.pl.playerSpeedModifierMax) Player.pl.lrSpeedModifier = Player.pl.playerSpeedModifierMax;
         }
       }
