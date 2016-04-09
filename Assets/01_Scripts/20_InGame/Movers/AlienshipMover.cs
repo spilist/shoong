@@ -38,7 +38,7 @@ public class AlienshipMover : ObjectsMover {
     shootingStatus = 1;
     stayCount = 0;
     speed = asm.speed;
-    rb.isKinematic = false;
+    freezePosition(false);
     laserCanon.SetActive(false);
   }
 
@@ -90,7 +90,7 @@ public class AlienshipMover : ObjectsMover {
       } else {
         stayCount = 0;
         shootingStatus++;
-        rb.isKinematic = true;
+        freezePosition(true);
         laserCanon.SetActive(true);
         laserWarning = asm.getLaserWarning(laserCanon.transform.position);
         laserWarning.SetActive(true);
@@ -119,7 +119,7 @@ public class AlienshipMover : ObjectsMover {
     if (ScoreManager.sm.isGameOver()) return;
 
     shootingStatus = 1;
-    if (rb != null) rb.isKinematic = false;
+    if (rb != null) freezePosition(false);
     laserCanon.SetActive(false);
   }
 
@@ -130,5 +130,13 @@ public class AlienshipMover : ObjectsMover {
 
   void OnDisable() {
     if (laserWarning != null) laserWarning.SetActive(false);
+  }
+
+  void freezePosition(bool freeze) {
+    if (freeze) {
+      rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezePositionY;
+    } else {
+      rb.constraints = RigidbodyConstraints.FreezePositionY;
+    }
   }
 }

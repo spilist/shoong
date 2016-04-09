@@ -80,6 +80,8 @@ public class PhaseManager : MonoBehaviour {
 
     StartCoroutine("showNextLevel");
     if (level == 0) {
+      asm.enabled = true;
+      // mtm.enabled = true;
       return true;
     }
 
