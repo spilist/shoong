@@ -70,8 +70,15 @@ public class DangerousEMPMover : ObjectsMover {
 
     if (byPlayer) {
       showDestroyEffect(true);
+      GameObject explosion = dem.getPooledObj(dem.explosionPool, dem.explosion, transform.position);
+      explosion.SetActive(true);
       player.destroyObject(tag);
     }
+  }
+
+  override protected void afterEncounter() {
+    GameObject explosion = dem.getPooledObj(dem.explosionPool, dem.explosion, transform.position);
+    explosion.SetActive(true);
   }
 
   void Update() {

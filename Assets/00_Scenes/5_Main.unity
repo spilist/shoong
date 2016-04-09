@@ -49999,52 +49999,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1648840794}
---- !u!1001 &1648926391
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 490786, guid: 786eb1e8a927e4b45a7bb9188bc672b1, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 34
-      objectReference: {fileID: 0}
-    - target: {fileID: 490786, guid: 786eb1e8a927e4b45a7bb9188bc672b1, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 38.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 490786, guid: 786eb1e8a927e4b45a7bb9188bc672b1, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: -28
-      objectReference: {fileID: 0}
-    - target: {fileID: 490786, guid: 786eb1e8a927e4b45a7bb9188bc672b1, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 490786, guid: 786eb1e8a927e4b45a7bb9188bc672b1, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 490786, guid: 786eb1e8a927e4b45a7bb9188bc672b1, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 490786, guid: 786eb1e8a927e4b45a7bb9188bc672b1, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 490786, guid: 786eb1e8a927e4b45a7bb9188bc672b1, type: 2}
-      propertyPath: m_RootOrder
-      value: 23
-      objectReference: {fileID: 0}
-    - target: {fileID: 134258, guid: 786eb1e8a927e4b45a7bb9188bc672b1, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 786eb1e8a927e4b45a7bb9188bc672b1, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &1649789488
 GameObject:
   m_ObjectHideFlags: 0
@@ -63765,6 +63719,8 @@ MonoBehaviour:
   particleDestroyByPlayer: {fileID: 190966, guid: 06a9d910a6ef7477eb37b2d7cddcfa88,
     type: 2}
   particleDestroyByPlayerPool: []
+  explosion: {fileID: 178930, guid: 84b9cb90fd22a4cf888714c07306b662, type: 2}
+  explosionPool: []
   minScale: 15
   maxScale: 25
   startDuration: 0.3

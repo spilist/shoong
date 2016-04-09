@@ -5,6 +5,8 @@ using System.Collections.Generic;
 public class DangerousEMPManager : ObjectsManager {
   public GameObject particleDestroyByPlayer;
   public List<GameObject> particleDestroyByPlayerPool;
+  public GameObject explosion;
+  public List<GameObject> explosionPool;
 
   public float minScale = 15;
   public float maxScale = 25;
@@ -24,10 +26,15 @@ public class DangerousEMPManager : ObjectsManager {
     TimeManager.time.startSpawnDangerousEMP();
 
     particleDestroyByPlayerPool = new List<GameObject>();
+    explosionPool = new List<GameObject>();
     for (int i = 0; i < objAmount; ++i) {
       GameObject obj = (GameObject) Instantiate(particleDestroyByPlayer);
       obj.SetActive(false);
       particleDestroyByPlayerPool.Add(obj);
+
+      obj = (GameObject) Instantiate(explosion);
+      obj.SetActive(false);
+      explosionPool.Add(obj);
     }
     respawn();
   }
