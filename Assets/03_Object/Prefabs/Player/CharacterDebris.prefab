@@ -337,10 +337,10 @@ ParticleSystem:
       minGradient:
         key0:
           serializedVersion: 2
-          rgba: 3361364570
+          rgba: 3370115039
         key1:
           serializedVersion: 2
-          rgba: 3355619327
+          rgba: 3361956707
         key2:
           serializedVersion: 2
           rgba: 255
@@ -360,7 +360,7 @@ ParticleSystem:
           serializedVersion: 2
           rgba: 0
         ctime0: 0
-        ctime1: 53585
+        ctime1: 65535
         ctime2: 65535
         ctime3: 0
         ctime4: 0
@@ -375,7 +375,7 @@ ParticleSystem:
         atime5: 0
         atime6: 0
         atime7: 0
-        m_NumColorKeys: 3
+        m_NumColorKeys: 2
         m_NumAlphaKeys: 2
       minColor:
         serializedVersion: 2
@@ -385,7 +385,7 @@ ParticleSystem:
         rgba: 4286677377
       minMaxState: 3
     startSize:
-      scalar: 3
+      scalar: 10
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -401,7 +401,7 @@ ParticleSystem:
         serializedVersion: 2
         m_Curve:
         - time: 0
-          value: 0.33333334
+          value: 0.5
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -543,7 +543,7 @@ ParticleSystem:
     serializedVersion: 2
     m_Type: 0
     rate:
-      scalar: 20
+      scalar: 40
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1732,11 +1732,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: InitialModule.startColor.minGradient.key0.rgba
-      value: 3361364570
+      value: 3370115039
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: InitialModule.startColor.minGradient.key1.rgba
-      value: 3355619327
+      value: 3361956707
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: InitialModule.startColor.minGradient.key2.rgba
@@ -1744,7 +1744,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: InitialModule.startColor.minGradient.ctime1
-      value: 53585
+      value: 65535
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: InitialModule.startColor.minGradient.ctime2
@@ -1752,7 +1752,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: InitialModule.startColor.minGradient.m_NumColorKeys
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: panLevelCustomCurve.m_RotationOrder
@@ -1773,6 +1773,18 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Volume
       value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: InitialModule.startSize.scalar
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: InitialModule.startSize.minCurve.m_Curve.Array.data[0].value
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: EmissionModule.rate.scalar
+      value: 40
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
