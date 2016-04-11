@@ -132,6 +132,7 @@ public class ScoreManager : MonoBehaviour {
       playerExplosion.GetComponent<AudioSource>().Play();
     } else {
       showCharacterDebris();
+			playerExplosion.Play ();
     }
 
     StartCoroutine("startGameOver");
@@ -145,7 +146,7 @@ public class ScoreManager : MonoBehaviour {
 
     AudioManager.am.changeVolume("Main", "Small");
 
-    // playerExplosion.Play ();
+    
     Player.pl.rb.isKinematic = true;
     Player.pl.GetComponent<MeshRenderer>().enabled = false;
     Player.pl.GetComponent<SphereCollider>().enabled = false;
