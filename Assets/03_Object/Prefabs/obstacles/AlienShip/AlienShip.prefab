@@ -59,7 +59,7 @@ Transform:
   m_GameObject: {fileID: 175286}
   m_LocalRotation: {x: 0, y: 0, z: 0.0023557246, w: -0.99999726}
   m_LocalPosition: {x: 86.2, y: 15, z: 7.7}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_Children:
   - {fileID: 401496}
   m_Father: {fileID: 0}
@@ -175,7 +175,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -197,7 +197,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
 --- !u!82 &8218404
 AudioSource:
   m_ObjectHideFlags: 1
