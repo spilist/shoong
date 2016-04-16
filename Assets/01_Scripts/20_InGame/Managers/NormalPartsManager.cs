@@ -7,6 +7,7 @@ public class NormalPartsManager : ObjectsManager {
   public float popStartScale = 0.2f;
   public int popMinDistance = 50;
   public int popMaxDistance = 120;
+  public int popMaxDistanceForBox = 160;
   public int poppingSpeed = 200;
   public int popCoinRate = 10;
 
@@ -38,6 +39,25 @@ public class NormalPartsManager : ObjectsManager {
         obj.GetComponent<Collider>().enabled = false;
         obj.GetComponent<NormalPartsMover>().pop(Random.Range(popMinDistance, popMaxDistance));
       }
+    }
+  }
+
+  public void popSweetsByBox(int num, float after, float interval, Vector3 pos) {
+    StartCoroutine(generateSweets(num, after, interval, pos));
+  }
+
+  IEnumerator generateSweets(int num, float after, float interval, Vector3 pos) {
+    yield return new WaitForSeconds(after);
+
+    for (int i = 0; i < num; i++) {
+      if (Random.Range(0, 100) < popCoinRate) {
+        gcm.popCoin(pos);
+      } else {
+        GameObject obj = getPooledObj(objPool, objPrefab, pos);
+        obj.GetComponent<Collider>().enabled = false;
+        obj.GetComponent<NormalPartsMover>().pop(Random.Range(popMinDistance, popMaxDistanceForBox));
+      }
+      yield return new WaitForSeconds(interval);
     }
   }
 }

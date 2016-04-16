@@ -95,6 +95,9 @@ public class UICharacters : MonoBehaviour {
       scaleChanging = Mathf.MoveTowards(scaleChanging, originalScale.x * 2, Time.deltaTime * charactersMenu.scaleChangingSpeed);
       transform.localScale = new Vector3(scaleChanging, scaleChanging, scaleChanging);
     }
+
+    Transform aura = transform.Find("aura");
+    if (aura != null) aura.gameObject.SetActive(true);
   }
 
   public void unselect() {
@@ -107,6 +110,9 @@ public class UICharacters : MonoBehaviour {
       scaleChanging = Mathf.MoveTowards(scaleChanging, originalScale.x, Time.deltaTime * charactersMenu.scaleChangingSpeed);
       transform.localScale = new Vector3(scaleChanging, scaleChanging, scaleChanging);
     }
+
+    Transform aura = transform.Find("aura");
+    if (aura != null) aura.gameObject.SetActive(false);
   }
 
   public void checkBought(bool buttons = true) {

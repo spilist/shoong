@@ -17,6 +17,7 @@ public class SpawnManager : MonoBehaviour {
 
   public void run() {
     GetComponent<NormalPartsManager>().enabled = true;
+    GetComponent<SweetBoxManager>().enabled = true;
 
     GetComponent<FollowTarget>().enabled = false;
 

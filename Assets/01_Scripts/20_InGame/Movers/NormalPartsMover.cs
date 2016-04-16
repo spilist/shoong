@@ -69,6 +69,7 @@ public class NormalPartsMover : ObjectsMover {
     origin = transform.position;
     popping = true;
     gameObject.SetActive(true);
+    transform.Find("PopAudio").GetComponent<AudioSource>().Play();
   }
 
   void Update() {
@@ -82,7 +83,6 @@ public class NormalPartsMover : ObjectsMover {
       if (curDistance >= popDistance && shrinkedScale >= originalScale) {
         popping = false;
         GetComponent<Collider>().enabled = true;
-        transform.Find("PopAudio").GetComponent<AudioSource>().Play();
       }
     }
   }

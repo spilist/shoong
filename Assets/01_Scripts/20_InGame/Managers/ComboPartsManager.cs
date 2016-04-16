@@ -68,6 +68,7 @@ public class ComboPartsManager : ObjectsManager {
 
   override protected void afterSpawn() {
     instance.GetComponent<MeshFilter>().sharedMesh = getRandomMesh();
+    instance.transform.Find("BackgroundEffect").GetComponent<MeshFilter>().sharedMesh = instance.GetComponent<MeshFilter>().sharedMesh;
 
     Vector2 randomV = Random.insideUnitCircle;
     randomV.Normalize();
@@ -119,6 +120,7 @@ public class ComboPartsManager : ObjectsManager {
       instance.transform.rotation = spawnRotation;
       instance.GetComponent<ComboPartMover>().setDestroyAfter();
       instance.GetComponent<MeshFilter>().sharedMesh = nextInstance.GetComponent<MeshFilter>().sharedMesh;
+      instance.transform.Find("BackgroundEffect").GetComponent<MeshFilter>().sharedMesh = instance.GetComponent<MeshFilter>().sharedMesh;
 
       nextInstance.SetActive(false);
       nextInstance = null;

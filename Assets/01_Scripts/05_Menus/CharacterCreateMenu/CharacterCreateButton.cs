@@ -158,6 +158,13 @@ public class CharacterCreateButton : MenusBehavior {
     GetComponent<Collider>().enabled = val;
     transform.Find("Icon").GetComponent<Renderer>().enabled = val;
     transform.Find("PriceText").GetComponent<Text>().enabled = val;
+
+    if (!val) {
+      Transform auras = createdCharacter.transform.Find("Auras");
+      foreach (Transform tr in auras) {
+        tr.gameObject.SetActive(false);
+      }
+    }
   }
 
   void Update() {
@@ -210,6 +217,10 @@ public class CharacterCreateButton : MenusBehavior {
     characterName.enabled = true;
     randomCharacter.setRarity(rarity);
     selectButton.setCharacter(randomCharacter.name);
+
+    if (randomResult == "Legendary") {
+      createdCharacter.transform.Find("Auras/" + randomCharacter.name).gameObject.SetActive(true);
+    }
 
     if (newCharacter) {
       isNewCharacter.GetComponent<Text>().enabled = true;

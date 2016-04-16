@@ -7,6 +7,8 @@ public class DangerousEMPManager : ObjectsManager {
   public List<GameObject> particleDestroyByPlayerPool;
   public GameObject explosion;
   public List<GameObject> explosionPool;
+  public GameObject biggerExplosion;
+  public List<GameObject> biggerExplosionPool;
 
   public float minScale = 15;
   public float maxScale = 25;
@@ -27,6 +29,7 @@ public class DangerousEMPManager : ObjectsManager {
 
     particleDestroyByPlayerPool = new List<GameObject>();
     explosionPool = new List<GameObject>();
+    biggerExplosionPool = new List<GameObject>();
     for (int i = 0; i < objAmount; ++i) {
       GameObject obj = (GameObject) Instantiate(particleDestroyByPlayer);
       obj.SetActive(false);
@@ -35,6 +38,10 @@ public class DangerousEMPManager : ObjectsManager {
       obj = (GameObject) Instantiate(explosion);
       obj.SetActive(false);
       explosionPool.Add(obj);
+
+      obj = (GameObject) Instantiate(biggerExplosion);
+      obj.SetActive(false);
+      biggerExplosionPool.Add(obj);
     }
     respawn();
   }
@@ -63,11 +70,20 @@ public class DangerousEMPManager : ObjectsManager {
     if (!larger) {
       larger = true;
       empScale *= enlargeScale;
+      foreach (GameObject obj in GameObject.FindGameObjectsWithTag("DangerousEMP")) {
+        obj.transform.localScale = enlargeScale * Vector3.one;
+        obj.transform.Find("DangerousArea").localScale = (empScale / enlargeScale) * Vector3.one;
+      }
     }
   }
 
   public int loseEnergy() {
     if (larger) return loseEnergyBigger;
     else return loseEnergyWhenEncounter;
+  }
+
+  public GameObject getExplosion(Vector3 position) {
+    if (larger) return getPooledObj(biggerExplosionPool, biggerExplosion, position);
+    else return getPooledObj(explosionPool, explosion, position);
   }
 }

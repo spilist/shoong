@@ -175,10 +175,11 @@ public class ScoreManager : MonoBehaviour {
 
     AudioManager.am.changeVolume("Main", "Small");
 
-    
+
     Player.pl.rb.isKinematic = true;
     Player.pl.GetComponent<MeshRenderer>().enabled = false;
     Player.pl.GetComponent<SphereCollider>().enabled = false;
+    Player.pl.transform.Find("Auras").gameObject.SetActive(false);
     contactCollider.SetActive(false);
 
     yield return new WaitForSeconds(showPlayerExplosionDuring);

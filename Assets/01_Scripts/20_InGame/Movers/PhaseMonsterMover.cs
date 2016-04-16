@@ -14,6 +14,7 @@ public class PhaseMonsterMover : ObjectsMover {
   private Animation beatAnimation;
 
   private float stayCount = 0;
+  private float destroyCount = 0;
 
 	override public string getManager() {
     return "PhaseMonsterManager";
@@ -36,6 +37,7 @@ public class PhaseMonsterMover : ObjectsMover {
 
   protected override void afterEnable() {
     stayCount = 0;
+    destroyCount = 0;
   }
 
   protected override void normalMovement() {
@@ -44,6 +46,8 @@ public class PhaseMonsterMover : ObjectsMover {
     if (dir.magnitude > detectDistance) {
       stayCount = 0;
       speed = pmm.speed + player.getSpeed() * offScreenSpeedScale;
+      if (destroyCount < player.monsterDestroyAfter) destroyCount += Time.fixedDeltaTime;
+      else destroyObject(false);
     } else {
       if (stayCount < slowStayDuration) {
         stayCount += Time.fixedDeltaTime;
