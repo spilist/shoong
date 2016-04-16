@@ -41,6 +41,10 @@ public class Player : MonoBehaviour {
   public IceDebrisManager icm;
   private float icedDuration;
   private float icedSpeedFactor;
+  public EnergizerManager egm;
+  private float energizedDuration;
+  private float energizedReduceDuration;
+  private float energizedSpeedFactor;
 
   private bool reboundingByBlackhole = false;
   private bool bouncing = false;
@@ -57,6 +61,7 @@ public class Player : MonoBehaviour {
   private bool usingMagnet = false;
   private bool usingTransformer = false;
   private bool iced = false;
+  private bool energized = false;
   private bool usingSolar = false;
   private bool usingGhost = false;
   private bool confused = false;
@@ -155,6 +160,9 @@ public class Player : MonoBehaviour {
 
     if (iced && !uncontrollable() && !bouncing) {
       speed *= icedSpeedFactor;
+    }
+    if (energized && !uncontrollable() && !bouncing) {
+      speed *= energizedSpeedFactor;
     }
     if (boosterspeed > 0) {
       timeSpaned += Time.fixedDeltaTime;
@@ -407,6 +415,13 @@ public class Player : MonoBehaviour {
       iced = effectOn;
       icedDuration = icm.speedRestoreDuring;
       icedSpeedFactor = icm.playerSpeedReduceTo;
+    } else if (objTag == "Energizer") {
+      if (!energized)
+        StartCoroutine(energizedSoundEffect());
+      energized = effectOn;
+      energizedDuration = egm.speedRestoreStartAfter + egm.speedRestoreDuration;
+      energizedReduceDuration = egm.speedRestoreDuration;
+      energizedSpeedFactor = egm.playerSpeedIncreaseTo;
     } else if (objTag == "Solar") {
       usingSolar = effectOn;
     } else if (objTag == "Ghost") {
@@ -423,11 +438,26 @@ public class Player : MonoBehaviour {
     AudioManager.am.main.movePitch(-moveAmount, 0.5f);
   }
 
+  IEnumerator energizedSoundEffect() {
+    yield return null;
+    float moveAmount = AudioManager.am.main.movePitchToPercent(1.5f, 0f);
+    Debug.Log("MoveAmount: " + moveAmount);
+    while (energized == true) {
+      yield return null;
+    }
+    AudioManager.am.main.movePitch(-moveAmount, 0.5f);
+  }
+
   public void stopOtherEffects() {
     iced = false;
     icedDuration = 0;
     icedSpeedFactor = 1;
     icm.strengthenPlayerEffect.SetActive(false);
+
+    energized = false;
+    energizedDuration = 0;
+    energizedSpeedFactor = 1;
+    egm.strengthenPlayerEffect.SetActive(false);
 
     bounceDuration = 0;
     reboundingByBlackhole = false;
@@ -601,6 +631,17 @@ public class Player : MonoBehaviour {
       } else {
         iced = false;
         icm.strengthenPlayerEffect.SetActive(false);
+      }
+    }
+    if (energized) {
+      if (energizedDuration > 0) {
+        energizedDuration -= Time.deltaTime;
+        if (energizedDuration < energizedReduceDuration) {
+          energizedSpeedFactor = Mathf.MoveTowards(energizedSpeedFactor, 1, Time.deltaTime * (1 - egm.playerSpeedIncreaseTo) / egm.speedRestoreDuration);
+        }
+      } else {
+        energized = false;
+        egm.strengthenPlayerEffect.SetActive(false);
       }
     }
   }

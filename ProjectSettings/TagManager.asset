@@ -96,6 +96,7 @@ TagManager:
   - GoToMainButton
   - ResumeButton
   - TouchBlocker
+  - Energizer
   layers:
   - Default
   - TransparentFX

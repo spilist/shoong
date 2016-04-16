@@ -11,6 +11,7 @@ public class PhaseManager : MonoBehaviour {
   public SmallAsteroidManager smallAsteroidM;
   public AsteroidManager asteroidM;
   public IceDebrisManager icm;
+  public EnergizerManager egm;
   public ComboPartsManager cpm;
 
   public RainbowDonutsManager rdm;
@@ -96,6 +97,7 @@ public class PhaseManager : MonoBehaviour {
       break;
       case "1-3":
       icm.enabled = true;
+      egm.enabled = true;
       cpm.adjustForLevel(3);
       break;
 
