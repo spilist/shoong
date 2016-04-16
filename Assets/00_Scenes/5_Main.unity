@@ -7181,7 +7181,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: -10
+  near clip plane: 0.01
   far clip plane: 600
   field of view: 6
   orthographic: 1
@@ -40443,6 +40443,7 @@ MonoBehaviour:
   gameOverShakeDuration: 1
   gameOverShakeAmount: 8
   first: 0
+  mainCam: {fileID: 192454349}
 --- !u!4 &1422286123
 Transform:
   m_ObjectHideFlags: 0
@@ -57219,6 +57220,9 @@ MonoBehaviour:
   goToMainActivated: {fileID: 1437270399}
   gameOver: {fileID: 868146740}
   playAgain: {fileID: 1431479375}
+  characterCreateButton: {fileID: 103501021}
+  characterCreateBannerButton: {fileID: 1674791325}
+  backButton: {fileID: 1410312525}
   LRSpeed: 4
 --- !u!114 &1801634120
 MonoBehaviour:

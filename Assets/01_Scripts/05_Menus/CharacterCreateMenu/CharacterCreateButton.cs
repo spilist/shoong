@@ -43,7 +43,7 @@ public class CharacterCreateButton : MenusBehavior {
   private int createPrice;
 
   private bool affordable = false;
-  private bool running = false;
+  public bool running = false;
   private Text priceText;
   private CharacterCreateMenu menu;
   private string randomResult;

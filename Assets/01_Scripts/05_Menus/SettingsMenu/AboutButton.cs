@@ -7,5 +7,6 @@ public class AboutButton : InsideMenusBehavior {
 
   override public void afterActivate() {
     if (cheat) cm.allCharacters();
+    if (cheat) DataManager.dm.setInt("TotalGoldenCubes", 5000);
   }
 }

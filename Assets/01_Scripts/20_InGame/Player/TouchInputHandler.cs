@@ -18,6 +18,9 @@ public class TouchInputHandler : MonoBehaviour
   public GameObject goToMainActivated;
   public GameObject gameOver;
   public PlayAgainButton playAgain;
+  public CharacterCreateButton characterCreateButton;
+  public CharacterCreateBannerButton characterCreateBannerButton;
+  public BackButton backButton;
   public float LRSpeed;
 
   private bool gameStarted = false;
@@ -40,11 +43,14 @@ public class TouchInputHandler : MonoBehaviour
           pause.activateSelf();
         } else if (gameStarted && pause.isPaused() && pause.gameObject.activeInHierarchy && !gameOver.activeInHierarchy) {
           pause.resume();
-        } else if (gameOver.activeInHierarchy && !playAgainTouched) {
+        } else if (gameOver.activeInHierarchy && playAgain.gameObject.activeInHierarchy && !playAgainTouched) {
           playAgainTouched = true;
           playAgain.activateSelf();
         } else if (menus.isMenuOn()) {
           menus.toggleMenuAndUI();
+        } else if (characterCreateButton.gameObject.activeInHierarchy && !characterCreateButton.running) {
+          characterCreateBannerButton.goBack();
+          backButton.activateSelf();
         } else if (!gameStarted) {
           Application.Quit();
         }

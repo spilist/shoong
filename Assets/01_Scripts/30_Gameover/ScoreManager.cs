@@ -86,6 +86,7 @@ public class ScoreManager : MonoBehaviour {
     characterDebrisPool.Add(obj);
     return obj;
   }
+  public Camera mainCam;
 
   void showCharacterDebris() {
     Camera.main.GetComponent<CameraMover>().shake(gameOverShakeDuration, gameOverShakeAmount);
@@ -97,6 +98,26 @@ public class ScoreManager : MonoBehaviour {
       debris.GetComponent<MeshFilter>().sharedMesh = debrisTransform.GetChild(UnityEngine.Random.Range(0, debrisTransform.childCount)).GetComponent<MeshFilter>().sharedMesh;
       debris.SetActive(true);
       if (howMany == numDebrisSpawn) debris.GetComponent<AudioSource>().Play();
+    }
+  }
+  
+  IEnumerator rotateCamTest() {
+    float time = 0.6f;
+    /*
+    while (time > 0) {
+      //mainCam.transform.LookAt(Player.pl.transform);
+      //mainCam.transform.Translate(Vector3.right * Time.deltaTime);
+      mainCam.transform.RotateAround(Player.pl.transform.position, new Vector3(1.0f, 0.0f, 0.0f), -10 * Time.deltaTime);
+      time -= Time.deltaTime;
+      yield return null;
+    }
+    yield return new WaitForSeconds(1f);
+    */
+    time = 10f;
+    while (time > 0) {
+      Player.pl.transform.parent.parent.Translate(new Vector3(0.0f, 1.0f, 0.0f) * Time.deltaTime * 100);
+      time -= Time.deltaTime;
+      yield return null;
     }
   }
 
@@ -127,7 +148,6 @@ public class ScoreManager : MonoBehaviour {
     } else if (reason == "TimeMonster") {
       DataManager.dm.increment("DeathByTimeMonster");
     }
-
     if (reason == "Blackhole") {
       playerExplosion.GetComponent<AudioSource>().Play();
     } else {
@@ -139,6 +159,15 @@ public class ScoreManager : MonoBehaviour {
   }
 
   IEnumerator startGameOver() {
+    /* Just for test
+    mainCam.orthographic = false;
+    mainCam.fieldOfView = 25;
+    yield return rotateCamTest();
+    mainCam.orthographic = true;
+    mainCam.ResetProjectionMatrix();
+    mainCam.orthographicSize = 110;
+    */
+
     gameOverStatus++;
 
     inputHandler.GetComponent<TouchInputHandler>().stopReact();
