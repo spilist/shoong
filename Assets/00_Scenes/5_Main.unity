@@ -20985,7 +20985,7 @@ MonoBehaviour:
   skillName: 
   bgm: 4
   rarity: 2
-  baseSpeed: 0
+  baseSpeed: 1
   boosterPlusSpeed: 0
   boosterMaxSpeed: 2
   boosterSpeedDecrease: 3
@@ -23148,7 +23148,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillObject: {fileID: 1426521849}
   useSkillEffect: {fileID: 1830827562}
-  normalRing: 11
+  normalRing: 13
   skillRing: 1
   description: Become real
   duration: 6
@@ -105627,7 +105627,7 @@ MonoBehaviour:
   pitchStart: 0.4
   pitchIncrease: 0.05
   scaleIncrease: 0.6
-  spawnDistanceIncrease: 5
+  spawnDistanceIncrease: 10
   nextInstance: {fileID: 0}
   comboCount: 0
   fullComboCount: 0
@@ -105784,7 +105784,7 @@ MonoBehaviour:
   minimonLoseEnergy: 10
   minimonBounceDuration: 0.05
   cubesWhenDestroyMinimon: 10
-  numsMinimonSpawn: 020000000300000004000000
+  numsMinimonSpawn: 020000000300000003000000
   numMinimonSpawn: 0
   maxEnlargeCount: 50
   enlargeScalePerMinimon: 0.01

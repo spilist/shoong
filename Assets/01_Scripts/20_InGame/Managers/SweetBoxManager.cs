@@ -9,7 +9,7 @@ public class SweetBoxManager : ObjectsManager {
   public float spawnRadius = 200;
 
 	override public void initRest() {
-    runImmediately();
+    run();
   }
 
   override protected void spawn() {
