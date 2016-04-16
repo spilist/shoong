@@ -42,9 +42,9 @@ public class GoldenCubeManager : ObjectsManager {
     obj.GetComponent<GoldenCubeMover>().setNoRespawn(autoDestroy);
   }
 
-  public void popCoin(Vector3 pos) {
+  public void popCoin(Vector3 pos, bool autoEatAfterPopping = false) {
     GameObject obj = getPooledObj(objPool, objPrefab, pos);
     obj.GetComponent<Collider>().enabled = false;
-    obj.GetComponent<GoldenCubeMover>().pop(Random.Range(npm.popMinDistance, npm.popMaxDistance));
+    StartCoroutine(obj.GetComponent<GoldenCubeMover>().pop(Random.Range(npm.popMinDistance, npm.popMaxDistance), autoEatAfterPopping));
   }
 }

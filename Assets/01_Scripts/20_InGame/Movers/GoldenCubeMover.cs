@@ -7,6 +7,7 @@ public class GoldenCubeMover : ObjectsMover {
   private bool noRespawn = false;
   private Renderer mRenderer;
   private bool popping;
+  private bool runningToPlayer;
   private Vector3 popDir;
   private int popDistance;
   private float curDistance;
@@ -18,6 +19,7 @@ public class GoldenCubeMover : ObjectsMover {
   }
 
   override protected void afterEnable() {
+    runningToPlayer = false;
     noRespawn = false;
     mRenderer.enabled = true;
 
@@ -37,7 +39,7 @@ public class GoldenCubeMover : ObjectsMover {
     }
   }
 
-  public void pop(int popDistance) {
+  public IEnumerator pop(int popDistance, bool autoEatAfterPopping = false) {
     curDistance = 0;
     this.popDistance = popDistance;
     Vector2 randomV = Random.insideUnitCircle.normalized;
@@ -46,10 +48,13 @@ public class GoldenCubeMover : ObjectsMover {
     popping = true;
     gameObject.SetActive(true);
     noRespawn = true;
+    yield return popUpdate();
+    if (autoEatAfterPopping)
+      yield return eatAfterPopping();
   }
 
-  void Update() {
-    if (popping) {
+  IEnumerator popUpdate() {
+    while (popping) {
       curDistance = Mathf.MoveTowards(curDistance, popDistance, Time.deltaTime * gcm.npm.poppingSpeed);
       transform.position = curDistance * popDir + origin;
 
@@ -61,7 +66,20 @@ public class GoldenCubeMover : ObjectsMover {
         GetComponent<Collider>().enabled = true;
         transform.Find("PopAudio").GetComponent<AudioSource>().Play();
       }
+      yield return null;
     }
+  }
+
+  IEnumerator eatAfterPopping() {
+    runningToPlayer = true;
+    while (runningToPlayer) {
+      transform.position = Vector3.MoveTowards(transform.position, Player.pl.transform.position, Player.pl.speed * Time.deltaTime * 2);
+      yield return null;
+    }
+  }
+
+  void Update() {
+    
   }
 
   IEnumerator destroyAfter() {

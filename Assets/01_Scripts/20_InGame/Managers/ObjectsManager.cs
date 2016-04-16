@@ -38,6 +38,9 @@ public class ObjectsManager : MonoBehaviour {
 
   protected bool spawnedByTransform = false;
 
+  // This action method would applied to return value of getPooledObj()
+  protected System.Action<GameObject> applyWhenGettingObj = null;
+
   virtual protected void beforeInit() {}
 
   void Awake() {
@@ -97,6 +100,8 @@ public class ObjectsManager : MonoBehaviour {
     GameObject obj = getPooledObj(list, prefab);
     obj.transform.parent = transform;
     obj.transform.position = pos;
+    if (applyWhenGettingObj != null)
+      applyWhenGettingObj(obj);
     return obj;
   }
 
@@ -110,6 +115,8 @@ public class ObjectsManager : MonoBehaviour {
     GameObject obj = (GameObject) Instantiate(prefab);
     obj.transform.parent = transform;
     list.Add(obj);
+    if (applyWhenGettingObj != null)
+      applyWhenGettingObj(obj);
     return obj;
   }
 

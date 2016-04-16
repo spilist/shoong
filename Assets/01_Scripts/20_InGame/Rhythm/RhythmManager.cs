@@ -233,8 +233,9 @@ public class RhythmManager : MonoBehaviour {
     if ( (numSkillInLoop == 1 && val == numNormalInLoop) || (numSkillInLoop > 1 && val >= numNormalInLoop && val < remMax + 1 ) ){
       float beatPeriod = beatObserver.beatPeriod;
       ParticleSystem particle = useSkillParticle.GetComponent<ParticleSystem>();
+      float defaultStartLifetime = particle.startLifetime;
       particle.startLifetime = beatPeriod - particle.duration;
-      particle.startSpeed = -21.6f / particle.startLifetime;
+      particle.startSpeed = particle.startSpeed * defaultStartLifetime / particle.startLifetime;
       float pitchCoeff = 0.437f;
       useSkillParticle.GetComponent<AudioSource>().pitch = beatPeriod * pitchCoeff * 2f;
       useSkillParticle.gameObject.SetActive(false);

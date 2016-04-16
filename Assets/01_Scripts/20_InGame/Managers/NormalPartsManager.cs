@@ -10,6 +10,21 @@ public class NormalPartsManager : ObjectsManager {
   public int popMaxDistanceForBox = 160;
   public int poppingSpeed = 200;
   public int popCoinRate = 10;
+  public float bigPartsProbability = 0.1f;
+
+  void Awake() {
+    applyWhenGettingObj = (GameObject obj) => {
+      NormalPartsMover mover = obj.GetComponent<NormalPartsMover>();
+      if (mover == null)
+        return;
+      
+      if (UnityEngine.Random.Range(0f, 1f) > bigPartsProbability) {
+        mover.setSize(1, 1);
+      } else {
+        mover.setSize(5, 5);
+      }
+    };
+  }
 
   override public void initRest() {
     spawnPooledObjs(objPool, objPrefab, objAmount);
@@ -28,16 +43,16 @@ public class NormalPartsManager : ObjectsManager {
     obj.SetActive(true);
   }
 
-  public void popSweets(int num, Vector3 pos) {
+  public void popSweets(int num, Vector3 pos, bool autoEatAfterPopping = false) {
     if (num == 0) return;
 
     for (int i = 0; i < num; i++) {
       if (Random.Range(0, 100) < popCoinRate) {
-        gcm.popCoin(pos);
+        gcm.popCoin(pos, autoEatAfterPopping);
       } else {
         GameObject obj = getPooledObj(objPool, objPrefab, pos);
         obj.GetComponent<Collider>().enabled = false;
-        obj.GetComponent<NormalPartsMover>().pop(Random.Range(popMinDistance, popMaxDistance));
+        StartCoroutine(obj.GetComponent<NormalPartsMover>().pop(Random.Range(popMinDistance, popMaxDistance), autoEatAfterPopping));
       }
     }
   }
@@ -55,7 +70,7 @@ public class NormalPartsManager : ObjectsManager {
       } else {
         GameObject obj = getPooledObj(objPool, objPrefab, pos);
         obj.GetComponent<Collider>().enabled = false;
-        obj.GetComponent<NormalPartsMover>().pop(Random.Range(popMinDistance, popMaxDistanceForBox));
+        StartCoroutine(obj.GetComponent<NormalPartsMover>().pop(Random.Range(popMinDistance, popMaxDistanceForBox)));
       }
       yield return new WaitForSeconds(interval);
     }

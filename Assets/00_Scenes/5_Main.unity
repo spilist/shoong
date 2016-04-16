@@ -85848,7 +85848,7 @@ Transform:
   - {fileID: 892369442}
   - {fileID: 1276123138}
   m_Father: {fileID: 0}
-  m_RootOrder: 21
+  m_RootOrder: 22
 --- !u!1 &1707069936
 GameObject:
   m_ObjectHideFlags: 0
@@ -102340,10 +102340,10 @@ GameObject:
   - 4: {fileID: 1991538104}
   - 114: {fileID: 1991538111}
   - 114: {fileID: 1991538117}
+  - 114: {fileID: 1991538132}
   - 114: {fileID: 1991538112}
   - 114: {fileID: 1991538121}
   - 114: {fileID: 1991538107}
-  - 114: {fileID: 1991538129}
   - 114: {fileID: 1991538122}
   - 114: {fileID: 1991538115}
   - 114: {fileID: 1991538119}
@@ -102365,7 +102365,7 @@ GameObject:
   - 114: {fileID: 1991538113}
   - 114: {fileID: 1991538125}
   - 114: {fileID: 1991538128}
-  - 114: {fileID: 1991538132}
+  - 114: {fileID: 1991538129}
   m_Layer: 9
   m_Name: Field Objects
   m_TagString: Untagged
@@ -103011,6 +103011,7 @@ MonoBehaviour:
   popMaxDistanceForBox: 160
   poppingSpeed: 200
   popCoinRate: 10
+  bigPartsProbability: 0.1
 --- !u!114 &1991538118
 MonoBehaviour:
   m_ObjectHideFlags: 0
