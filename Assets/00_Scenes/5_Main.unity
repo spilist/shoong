@@ -105717,9 +105717,9 @@ MonoBehaviour:
   nameForLevel: 
   level: 0
   player: {fileID: 0}
-  gravity: 80
-  gravityToUser: 80
-  gravityScale: 10
+  gravity: 90
+  gravityToUser: 90
+  gravityScale: 15
   reboundDuring: 1.5
   shakeAmount: 3
   reboundingSpeed: 1000
