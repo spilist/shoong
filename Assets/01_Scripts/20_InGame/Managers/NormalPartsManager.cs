@@ -51,6 +51,7 @@ public class NormalPartsManager : ObjectsManager {
         gcm.popCoin(pos, autoEatAfterPopping);
       } else {
         GameObject obj = getPooledObj(objPool, objPrefab, pos);
+        obj.GetComponent<NormalPartsMover> ().setSize (1, 1);
         obj.GetComponent<Collider>().enabled = false;
         StartCoroutine(obj.GetComponent<NormalPartsMover>().pop(Random.Range(popMinDistance, popMaxDistance), autoEatAfterPopping));
       }
