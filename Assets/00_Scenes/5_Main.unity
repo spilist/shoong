@@ -3077,6 +3077,7 @@ MonoBehaviour:
   stopSphereRadius: 0.1
   stickPushMaxSpeedAt: 0.8
   stoppingSpeed: 150
+  monsterDestroyAfter: 4
   baseSpeed: 150
   speed: 0
   boosterSpeedDecreasePerTime: 20
@@ -69725,9 +69726,9 @@ MonoBehaviour:
   slowStayDuration: 1
   increaseSpeedDuration: 2
   increaseSpeedUntil: 170
-  detectDistance: 245
+  detectDistance: 240
   spawnRadius: 250
-  offScreenSpeedScale: 0.65
+  offScreenSpeedScale: 0.7
   blindDuration: 3
   blindFilter: {fileID: 1841385041}
   firstSpawnDelay: 2
@@ -70298,11 +70299,11 @@ MonoBehaviour:
   slowStayDuration: 2
   increaseSpeedDuration: 1
   increaseSpeedUntil: 230
-  detectDistance: 245
+  detectDistance: 240
   spawnRadius: 250
-  offScreenSpeedScale: 0.65
+  offScreenSpeedScale: 1.2
   confusedEffect: {fileID: 576304749}
-  confusedDuration: 1.5
+  confusedDuration: 0.7
   firstSpawnDelay: 2
 --- !u!114 &1991538126
 MonoBehaviour:
@@ -70389,9 +70390,9 @@ MonoBehaviour:
   slowStayDuration: 1.5
   increaseSpeedDuration: 1.5
   increaseSpeedUntil: 110
-  detectDistance: 245
+  detectDistance: 240
   spawnRadius: 250
-  offScreenSpeedScale: 0.8
+  offScreenSpeedScale: 0.7
   firstSpawnDelay: 2
 --- !u!114 &1991538128
 MonoBehaviour:

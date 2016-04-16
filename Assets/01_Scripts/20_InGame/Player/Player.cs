@@ -12,6 +12,8 @@ public class Player : MonoBehaviour {
   private bool stopping = false;
   public int stoppingSpeed = 10;
 
+  public float monsterDestroyAfter;
+
   public float baseSpeed;
   public float speed;
 	private float boosterspeed;
