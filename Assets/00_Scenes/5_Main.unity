@@ -22250,7 +22250,6 @@ GameObject:
   - 4: {fileID: 1285032819}
   - 198: {fileID: 317572741}
   - 199: {fileID: 749815782}
-  - 82: {fileID: 749815781}
   - 114: {fileID: 749815783}
   m_Layer: 10
   m_Name: GetSweets
@@ -22259,81 +22258,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!82 &749815781
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 8292492, guid: 6445a758711d444458987bf84e00a78d,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 749815780}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 5ab91a2740f8b4476a8946f20def321f, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 0.8
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  Priority: 128
-  DopplerLevel: 0
-  MinDistance: 1
-  MaxDistance: 1.01
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
 --- !u!199 &749815782
 ParticleSystemRenderer:
   m_ObjectHideFlags: 0
@@ -37663,7 +37587,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1707069937}
   m_Father: {fileID: 678200079}
   m_RootOrder: 1
 --- !u!1 &1298175622
@@ -43894,7 +43819,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1435706020
 Transform:
   m_ObjectHideFlags: 0
@@ -56072,6 +55997,108 @@ Transform:
   - {fileID: 1276123138}
   m_Father: {fileID: 0}
   m_RootOrder: 21
+--- !u!1 &1707069936
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1707069937}
+  - 82: {fileID: 1707069938}
+  m_Layer: 10
+  m_Name: Audio1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1707069937
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1707069936}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1285032819}
+  m_RootOrder: 0
+--- !u!82 &1707069938
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1707069936}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 5ab91a2740f8b4476a8946f20def321f, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  Priority: 128
+  DopplerLevel: 0
+  MinDistance: 1
+  MaxDistance: 1.01
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!1 &1708371974
 GameObject:
   m_ObjectHideFlags: 0
@@ -70826,8 +70853,9 @@ GameObject:
   - 114: {fileID: 1991538112}
   - 114: {fileID: 1991538121}
   - 114: {fileID: 1991538107}
-  - 114: {fileID: 1991538122}
+  - 114: {fileID: 1991538129}
   - 114: {fileID: 1991538115}
+  - 114: {fileID: 1991538122}
   - 114: {fileID: 1991538119}
   - 114: {fileID: 1991538126}
   - 114: {fileID: 1991538109}
@@ -71489,6 +71517,7 @@ MonoBehaviour:
   popStartScale: 0.2
   popMinDistance: 50
   popMaxDistance: 100
+  popMaxDistanceForBox: 160
   poppingSpeed: 200
   popCoinRate: 10
 --- !u!114 &1991538118
@@ -72040,6 +72069,48 @@ MonoBehaviour:
   fallingStarSoundWarningPrefab: {fileID: 122456, guid: 32ffe4a364250467bba5659a4276cfd9,
     type: 2}
   soundWarningPool: []
+--- !u!114 &1991538129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1991538103}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5460113dc6aaf41fe9100954a042e792, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  forceSpawnAtStart: 0
+  objAmount: 1
+  objPool: []
+  objDestroyEffectPool: []
+  objEncounterEffectPool: []
+  objPrefab: {fileID: 138650, guid: 98106a6ea8dc1434f84389464fcfabb6, type: 2}
+  objDestroyEffect: {fileID: 138132, guid: 01c2b0f38c5584c8d9e9e3d995c92d18, type: 2}
+  objEncounterEffect: {fileID: 187228, guid: c7204798936ec427983521d92aedb3a8, type: 2}
+  objEncounterEffectForPlayer: {fileID: 0}
+  strengthenPlayerEffect: {fileID: 0}
+  strength: 0.7
+  speed: 0
+  tumble: 3
+  minSpawnInterval: 30
+  maxSpawnInterval: 50
+  cubesByEncounter: 0
+  energyGets: 0
+  numSweetsPop: 0
+  isNegative: 0
+  destroyWhenCollideSelf: 0
+  instance: {fileID: 0}
+  loseEnergyWhenEncounter: 0
+  bounceDuration: 0
+  hasLevel: 0
+  nameForLevel: 
+  level: 0
+  player: {fileID: 0}
+  generateAfter: 0.4
+  generatingDuration: 1.1
+  numGeneration: 40
+  spawnRadius: 250
 --- !u!114 &1991538130
 MonoBehaviour:
   m_ObjectHideFlags: 0
