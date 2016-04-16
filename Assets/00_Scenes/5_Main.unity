@@ -8964,7 +8964,7 @@ MonoBehaviour:
   dangerousAt: 0.35
   getRate: 2
   loseRate: 1
-  noDeath: 0
+  noDeath: 1
 --- !u!1 &230479083
 GameObject:
   m_ObjectHideFlags: 0
