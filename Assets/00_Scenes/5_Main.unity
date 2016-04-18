@@ -21507,7 +21507,7 @@ ParticleSystem:
   serializedVersion: 2
   lengthInSec: 0.5
   startDelay:
-    scalar: 0.4
+    scalar: 0
     maxCurve:
       serializedVersion: 2
       m_Curve:
@@ -21706,12 +21706,12 @@ ParticleSystem:
         rgba: 4292993505
       minMaxState: 0
     startSize:
-      scalar: 10
+      scalar: 13
       maxCurve:
         serializedVersion: 2
         m_Curve:
         - time: 0
-          value: 1
+          value: 0.61538464
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -21722,7 +21722,7 @@ ParticleSystem:
         serializedVersion: 2
         m_Curve:
         - time: 0
-          value: 0.5
+          value: 1
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -21731,7 +21731,7 @@ ParticleSystem:
         m_RotationOrder: 0
       minMaxState: 3
     startRotationX:
-      scalar: 0.98262036
+      scalar: 2.258456
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -21766,7 +21766,7 @@ ParticleSystem:
         m_RotationOrder: 4
       minMaxState: 0
     startRotationY:
-      scalar: 0.60266215
+      scalar: 3.6808991
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -21801,7 +21801,7 @@ ParticleSystem:
         m_RotationOrder: 4
       minMaxState: 0
     startRotation:
-      scalar: 0.5235988
+      scalar: 2.1031218
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -21838,7 +21838,7 @@ ParticleSystem:
     randomizeRotationDirection: 0
     gravityModifier: 0
     maxNumParticles: 1000
-    rotation3D: 0
+    rotation3D: 1
   ShapeModule:
     serializedVersion: 2
     enabled: 1
@@ -21864,7 +21864,7 @@ ParticleSystem:
     serializedVersion: 2
     m_Type: 0
     rate:
-      scalar: 60
+      scalar: 100
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -40530,7 +40530,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -40582,18 +40582,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clips:
-  - clip: {fileID: 8300000, guid: a1652b8033f94c14f88400cb6c24a90d, type: 3}
-    bpm: 140
+  - clip: {fileID: 8300000, guid: 05c48a2eda98044dcb4422f18dde0558, type: 3}
+    bpm: 120
     startDelay: 0.3
     volumeSmall: 0.1
     volumeBig: 0.25
-  - clip: {fileID: 8300000, guid: d8029be73ac82644d847eb456a729e54, type: 3}
-    bpm: 142
+  - clip: {fileID: 8300000, guid: af93f26d2506b4f5eb0a44cebbc6dc74, type: 3}
+    bpm: 130
     startDelay: 0.3
     volumeSmall: 0.1
     volumeBig: 0.25
-  - clip: {fileID: 8300000, guid: 044d6fa76eea6cc4297404f5afd3b937, type: 3}
-    bpm: 125
+  - clip: {fileID: 8300000, guid: efffa710716ae47fea46155cc411ad1a, type: 3}
+    bpm: 130
     startDelay: 0.3
     volumeSmall: 0.1
     volumeBig: 0.25
@@ -65618,7 +65618,7 @@ ParticleSystemRenderer:
   m_NormalDirection: 1
   m_RenderAlignment: 0
   m_Pivot: {x: 0, y: 0, z: 0}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 4300000, guid: 640d9651c561e5d46bd2a1383b0a64d4, type: 3}
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
@@ -73882,7 +73882,7 @@ ParticleSystemRenderer:
   m_NormalDirection: 1
   m_RenderAlignment: 0
   m_Pivot: {x: 0, y: 0, z: 0}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 4300000, guid: 640d9651c561e5d46bd2a1383b0a64d4, type: 3}
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
@@ -74306,7 +74306,7 @@ ParticleSystem:
     cntmax2: 30
     cntmax3: 30
     time0: 0.2
-    time1: 0.4
+    time1: 0.6
     time2: 1
     time3: 1.4
     m_BurstCount: 2
@@ -103839,7 +103839,7 @@ ParticleSystem:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1986284304}
   serializedVersion: 2
-  lengthInSec: 3.5
+  lengthInSec: 4.5
   startDelay:
     scalar: 0
     maxCurve:
@@ -105627,7 +105627,7 @@ MonoBehaviour:
   pitchStart: 0.4
   pitchIncrease: 0.05
   scaleIncrease: 0.6
-  spawnDistanceIncrease: 10
+  spawnDistanceIncrease: 7
   nextInstance: {fileID: 0}
   comboCount: 0
   fullComboCount: 0
@@ -106115,7 +106115,7 @@ MonoBehaviour:
   tumble: 1
   minSpawnInterval: 0
   maxSpawnInterval: 0
-  cubesByEncounter: 6
+  cubesByEncounter: 5
   energyGets: 6
   numSweetsPop: 0
   isNegative: 0
@@ -106709,8 +106709,8 @@ MonoBehaviour:
   strength: 0
   speed: 0
   tumble: 1
-  minSpawnInterval: 10
-  maxSpawnInterval: 16
+  minSpawnInterval: 12
+  maxSpawnInterval: 24
   cubesByEncounter: 0
   energyGets: 0
   numSweetsPop: 0
@@ -106725,7 +106725,7 @@ MonoBehaviour:
   player: {fileID: 0}
   spawnRadius: 200
   playerSpeedIncreaseTo: 1.5
-  speedRestoreStartAfter: 3
+  speedRestoreStartAfter: 4
   speedRestoreDuration: 1
 --- !u!114 &1991538130
 MonoBehaviour:
@@ -106868,7 +106868,7 @@ MonoBehaviour:
   player: {fileID: 0}
   generateAfter: 0.4
   generatingDuration: 1.1
-  numGeneration: 20
+  numGeneration: 30
   spawnRadius: 250
 --- !u!1 &1993354414
 GameObject:
@@ -114571,7 +114571,7 @@ MonoBehaviour:
   playTouchSound: 1
   blinkOnStart: 0
   cm: {fileID: 75942068}
-  cheat: 1
+  cheat: 0
 --- !u!23 &2111377104
 MeshRenderer:
   m_ObjectHideFlags: 0
