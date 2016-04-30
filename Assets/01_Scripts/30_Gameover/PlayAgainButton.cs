@@ -7,7 +7,9 @@ public class PlayAgainButton : MenusBehavior {
   public Transform stageGiftList;
   public GameObject touchBlocker;
   public bool first;
+
   bool isOpeningBox = false;
+  bool resetBonus = true;
 
 	override public void activateSelf() {
     if (isOpeningBox)
@@ -22,11 +24,18 @@ public class PlayAgainButton : MenusBehavior {
     if (!this.gameObject.activeInHierarchy) {
       backButton.activateSelf();
     }
+
+    if (resetBonus) DataManager.dm.isBonusStage = false;
+
     StartCoroutine(openGiftAndPlayAgain());
     /*
     beforeIdle.playAgain();
     AudioManager.am.changeVolume("Main", "Min");
     */
+  }
+
+  public void stopResetBonus() {
+    resetBonus = false;
   }
 
   IEnumerator openGiftAndPlayAgain() {

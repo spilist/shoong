@@ -21,6 +21,7 @@ public class CharacterSelectButton : MenusBehavior {
       menus.toggleMenuAndUI();
     } else {
       DataManager.dm.isBonusStage = isBonusStage;
+      playAgain.stopResetBonus();
       playAgain.activateSelf();
     }
   }

@@ -8,6 +8,7 @@ public class ScoreUpdate : MonoBehaviour {
   public Text currentScoreIngame;
 
   public GameObject cubesRecords;
+  public GameObject coinRecords;
   public Text cubesHighscoreDescription;
   public Text cubesHighscoreNumber;
   public Text cubesCurrentScore;
@@ -42,36 +43,54 @@ public class ScoreUpdate : MonoBehaviour {
   public int bonusCoin_random = 20;
   private int bonusCoinTotal = 0;
 
+  float currentCoin = 0;
+  int coinGetThisGame = 0;
+  Text coinText;
+
   void Start() {
-    cubeDifference = CubeManager.cm.getCount();
-    bonusAmount = CubeManager.cm.getBonus();
-    bonusScoreText.text = "+" + bonusAmount;
-    bonusCoin_difficulty = PhaseManager.pm.phase() + 1;
-    bonusCoinText.text = "+" + bonusCoin_difficulty;
+    if (DataManager.dm.isBonusStage) {
+      coinRecords.SetActive(true);
 
-    if (CharacterManager.cm.isRandom) {
-      bonusCoinTotal = bonusCoin_random;
-    }
+      coinGetThisGame = GoldManager.gm.earned();
+      coinText = coinRecords.transform.Find("Text").GetComponent<Text>();
 
-    if (bonusAmount > 0) {
-      bonusCoinTotal += bonusCoin_difficulty;
-    }
-
-    currentScoreIngame.text = cubeDifference.ToString();
-
-    if (cubeDifference >= scoreUpdateMaxStandard) {
-      duration = scoreUpdateMaxDuration;
+      if (coinGetThisGame >= scoreUpdateMaxStandard) {
+        duration = scoreUpdateMaxDuration;
+      } else {
+        duration = Mathf.Max(scoreUpdateMaxDuration * (float) coinGetThisGame / scoreUpdateMaxStandard, scoreUpdateMinDuration);
+      }
     } else {
-      duration = Mathf.Max(scoreUpdateMaxDuration * (float) cubeDifference / scoreUpdateMaxStandard, scoreUpdateMinDuration);
+      cubesRecords.SetActive(true);
+      cubeDifference = CubeManager.cm.getCount();
+      bonusAmount = CubeManager.cm.getBonus();
+      bonusScoreText.text = "+" + bonusAmount;
+      bonusCoin_difficulty = PhaseManager.pm.phase() + 1;
+      bonusCoinText.text = "+" + bonusCoin_difficulty;
+
+      if (CharacterManager.cm.isRandom) {
+        bonusCoinTotal = bonusCoin_random;
+      }
+
+      if (bonusAmount > 0) {
+        bonusCoinTotal += bonusCoin_difficulty;
+      }
+
+      currentScoreIngame.text = cubeDifference.ToString();
+
+      if (cubeDifference >= scoreUpdateMaxStandard) {
+        duration = scoreUpdateMaxDuration;
+      } else {
+        duration = Mathf.Max(scoreUpdateMaxDuration * (float) cubeDifference / scoreUpdateMaxStandard, scoreUpdateMinDuration);
+      }
+
+      bonusDuration = Mathf.Max(2 * scoreUpdateMaxDuration * (float) bonusAmount / scoreUpdateMaxStandard, 2 * scoreUpdateMinDuration);
+
+      highscoreNum = DataManager.dm.getInt("BestCubes");
+      cubesHighscoreNumber.text = highscoreNum.ToString();
+
+      cubeCurrentNum = 0;
+      cubesCurrentScore.text = "0";
     }
-
-    bonusDuration = Mathf.Max(2 * scoreUpdateMaxDuration * (float) bonusAmount / scoreUpdateMaxStandard, 2 * scoreUpdateMinDuration);
-
-    highscoreNum = DataManager.dm.getInt("BestCubes");
-    cubesHighscoreNumber.text = highscoreNum.ToString();
-
-    cubeCurrentNum = 0;
-    cubesCurrentScore.text = "0";
 
     updateStatus++;
     GetComponent<AudioSource>().Play();
@@ -79,40 +98,50 @@ public class ScoreUpdate : MonoBehaviour {
 
   void Update() {
     if (updateStatus == 1) {
-      cubeCurrentNum = Mathf.MoveTowards(cubeCurrentNum, cubeDifference, Time.deltaTime * cubeDifference / duration);
-      cubesCurrentScore.text = cubeCurrentNum.ToString("0");
+      if (DataManager.dm.isBonusStage) {
+        currentCoin = Mathf.MoveTowards(currentCoin, coinGetThisGame, Time.deltaTime * coinGetThisGame / duration);
+        coinText.text = currentCoin.ToString("000");
 
-      if (highscoreNum < cubeCurrentNum) {
-        newHighscore = true;
-        cubesHighscoreDescription.color = newHighscoreColor;
-        cubesHighscoreNumber.color = newHighscoreColor;
-        cubesHighscoreNumber.text = cubeCurrentNum.ToString("0");
-      }
-
-      if (cubeCurrentNum == cubeDifference) {
-        updateStatus++;
-
-        if (CharacterManager.cm.isRandom) {
-          randomBonus.SetActive(true);
-        }
-
-        if (bonusAmount > 0) {
-          noAutoBonus.SetActive(true);
-        }
-
-        if (CharacterManager.cm.isRandom || bonusAmount > 0) {
-          ggc.change(bonusCoinTotal);
-          GetComponent<AudioSource>().Play();
-        } else {
+        if (currentCoin == coinGetThisGame) {
           GetComponent<AudioSource>().Stop();
+          updateStatus++;
+        }
+      } else {
+        cubeCurrentNum = Mathf.MoveTowards(cubeCurrentNum, cubeDifference, Time.deltaTime * cubeDifference / duration);
+        cubesCurrentScore.text = cubeCurrentNum.ToString("0");
+
+        if (highscoreNum < cubeCurrentNum) {
+          newHighscore = true;
+          cubesHighscoreDescription.color = newHighscoreColor;
+          cubesHighscoreNumber.color = newHighscoreColor;
+          cubesHighscoreNumber.text = cubeCurrentNum.ToString("0");
         }
 
-        if (newHighscore) {
-          cubesHighscoreDescription.GetComponent<AudioSource>().Play();
-          highscoreNum = cubeCurrentNum;
+        if (cubeCurrentNum == cubeDifference) {
+          updateStatus++;
+
+          if (CharacterManager.cm.isRandom) {
+            randomBonus.SetActive(true);
+          }
+
+          if (bonusAmount > 0) {
+            noAutoBonus.SetActive(true);
+          }
+
+          if (CharacterManager.cm.isRandom || bonusAmount > 0) {
+            ggc.change(bonusCoinTotal);
+            GetComponent<AudioSource>().Play();
+          } else {
+            GetComponent<AudioSource>().Stop();
+          }
+
+          if (newHighscore) {
+            cubesHighscoreDescription.GetComponent<AudioSource>().Play();
+            highscoreNum = cubeCurrentNum;
+          }
+          positionX = cubesRecords.GetComponent<RectTransform>().anchoredPosition.x;
+          distance = positionX;
         }
-        positionX = cubesRecords.GetComponent<RectTransform>().anchoredPosition.x;
-        distance = positionX;
       }
     } else if (updateStatus == 2) {
       if (bonusAmount > 0) {
@@ -143,7 +172,10 @@ public class ScoreUpdate : MonoBehaviour {
         updateStatus++;
       }
     } else if (updateStatus == 4) {
-      showStageGifts();
+      if (DataManager.dm.isBonusStage)
+        updateStatus++;
+      else
+        showStageGifts();
     } else if (updateStatus == 5) {
     //   move(cubesRecords, elapsedTime);
     // } else if (updateStatus == 4) {

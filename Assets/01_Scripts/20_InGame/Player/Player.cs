@@ -99,6 +99,7 @@ public class Player : MonoBehaviour {
   public float poppingDurationDown = 0.2f;
   public float poppingDurationUp = 0.1f;
   private float poppingDuration;
+  public GameObject bonusFilter;
 
 	void Awake() {
     pl = this;
@@ -121,6 +122,8 @@ public class Player : MonoBehaviour {
     // if (DataManager.dm.getBool("TutorialDone")) rotatePlayerBody(true);
 
     transform.parent.localEulerAngles = new Vector3(0, -ContAngle(Vector3.forward, direction), 0);
+
+    if (DataManager.dm.isBonusStage) bonusFilter.SetActive(true);
 	}
 
 	void FixedUpdate () {
