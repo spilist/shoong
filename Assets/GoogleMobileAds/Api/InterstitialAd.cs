@@ -1,29 +1,66 @@
+// Copyright (C) 2015 Google, Inc.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
 using System;
 using GoogleMobileAds.Common;
 
 namespace GoogleMobileAds.Api
 {
-    public class InterstitialAd : IAdListener, IInAppPurchaseListener
+    public class InterstitialAd
     {
-        private IGoogleMobileAdsInterstitialClient client;
-        private IInAppPurchaseHandler handler;
+        private IInterstitialClient client;
 
         // These are the ad callback events that can be hooked into.
-        public event EventHandler<EventArgs> AdLoaded = delegate {};
-        public event EventHandler<AdFailedToLoadEventArgs> AdFailedToLoad = delegate {};
-        public event EventHandler<EventArgs> AdOpened = delegate {};
-        public event EventHandler<EventArgs> AdClosing = delegate {};
-        public event EventHandler<EventArgs> AdClosed = delegate {};
-        public event EventHandler<EventArgs> AdLeftApplication = delegate {};
+        public event EventHandler<EventArgs> OnAdLoaded = delegate {};
+        public event EventHandler<AdFailedToLoadEventArgs> OnAdFailedToLoad = delegate {};
+        public event EventHandler<EventArgs> OnAdOpening = delegate {};
+        public event EventHandler<EventArgs> OnAdClosed = delegate {};
+        public event EventHandler<EventArgs> OnAdLeavingApplication = delegate {};
 
-        // Creates an InsterstitialAd.
+        // Creates an InterstitialAd.
         public InterstitialAd(string adUnitId)
         {
-            client = GoogleMobileAdsClientFactory.GetGoogleMobileAdsInterstitialClient(this);
+            client = GoogleMobileAdsClientFactory.BuildInterstitialClient();
             client.CreateInterstitialAd(adUnitId);
+
+            client.OnAdLoaded += delegate(object sender, EventArgs args)
+            {
+                OnAdLoaded(this, args);
+            };
+
+            client.OnAdFailedToLoad += delegate(object sender, AdFailedToLoadEventArgs args)
+            {
+                OnAdFailedToLoad(this, args);
+            };
+
+            client.OnAdOpening += delegate(object sender, EventArgs args)
+            {
+                OnAdOpening(this, args);
+            };
+
+            client.OnAdClosed += delegate(object sender, EventArgs args)
+            {
+                OnAdClosed(this, args);
+            };
+
+            client.OnAdLeavingApplication += delegate(object sender, EventArgs args)
+            {
+                OnAdLeavingApplication(this, args);
+            };
         }
 
-        // Loads a new interstitial request
+        // Loads an InterstitialAd.
         public void LoadAd(AdRequest request)
         {
             client.LoadAd(request);
@@ -35,80 +72,28 @@ namespace GoogleMobileAds.Api
             return client.IsLoaded();
         }
 
-        // Show the InterstitialAd.
+        // Displays the InterstitialAd.
         public void Show()
         {
             client.ShowInterstitial();
         }
 
-        // Destroy the InterstitialAd.
+        // Destroys the InterstitialAd.
         public void Destroy()
         {
             client.DestroyInterstitial();
         }
 
-        #region IAdListener implementation
-
-        // The following methods are invoked from an IGoogleMobileAdsInterstitialClient. Forward
-        // these calls to the developer.
-        void IAdListener.FireAdLoaded()
+        // Set IDefaultInAppPurchaseProcessor for InterstitialAd.
+        public void SetInAppPurchaseProcessor(IDefaultInAppPurchaseProcessor processor)
         {
-            AdLoaded(this, EventArgs.Empty);
+            client.SetDefaultInAppPurchaseProcessor(processor);
         }
 
-        void IAdListener.FireAdFailedToLoad(string message)
+        // Set ICustomInAppPurchaseProcessor for InterstitialAd.
+        public void SetInAppPurchaseProcessor(ICustomInAppPurchaseProcessor processor)
         {
-            AdFailedToLoadEventArgs args = new AdFailedToLoadEventArgs() {
-                Message = message
-            };
-            AdFailedToLoad(this, args);
+            client.SetCustomInAppPurchaseProcessor(processor);
         }
-
-        void IAdListener.FireAdOpened()
-        {
-            AdOpened(this, EventArgs.Empty);
-        }
-
-        void IAdListener.FireAdClosing()
-        {
-            AdClosing(this, EventArgs.Empty);
-        }
-
-        void IAdListener.FireAdClosed()
-        {
-            AdClosed(this, EventArgs.Empty);
-        }
-
-        void IAdListener.FireAdLeftApplication()
-        {
-            AdLeftApplication(this, EventArgs.Empty);
-        }
-
-        #endregion
-
-        #region IInAppPurchaseListener implementation
-
-        bool IInAppPurchaseListener.FireIsValidPurchase(string sku)
-        {
-            if (handler != null) {
-                return handler.IsValidPurchase(sku);
-            }
-            return false;
-        }
-
-        void IInAppPurchaseListener.FireOnInAppPurchaseFinished(IInAppPurchaseResult result)
-        {
-            if (handler != null) {
-                handler.OnInAppPurchaseFinished(result);
-            }
-        }
-
-        public void SetInAppPurchaseHandler(IInAppPurchaseHandler handler)
-        {
-            this.handler = handler;
-            client.SetInAppPurchaseParams(this, handler.AndroidPublicKey);
-        }
-
-        #endregion
     }
 }

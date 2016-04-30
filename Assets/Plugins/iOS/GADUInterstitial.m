@@ -72,9 +72,7 @@
 }
 
 - (void)interstitialWillDismissScreen:(GADInterstitial *)ad {
-  if (self.willDismissCallback) {
-    self.willDismissCallback(self.interstitialClient);
-  }
+  // Callback is not forwarded to Unity.
 }
 
 - (void)interstitialDidDismissScreen:(GADInterstitial *)ad {

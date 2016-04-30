@@ -1,8 +1,23 @@
+// Copyright (C) 2015 Google, Inc.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
 #if UNITY_ANDROID
 
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+
 using GoogleMobileAds.Api;
 
 namespace GoogleMobileAds.Android
@@ -22,6 +37,8 @@ namespace GoogleMobileAds.Android
                 "com.google.android.gms.ads.mediation.admob.AdMobExtras";
         public const string PlayStorePurchaseListenerClassName =
             "com.google.android.gms.ads.purchase.PlayStorePurchaseListener";
+        public const string InAppPurchaseListenerClassName =
+            "com.google.android.gms.ads.purchase.InAppPurchaseListener";
 
         #endregion
 
@@ -29,7 +46,13 @@ namespace GoogleMobileAds.Android
 
         public const string BannerViewClassName = "com.google.unity.ads.Banner";
         public const string InterstitialClassName = "com.google.unity.ads.Interstitial";
-        public const string UnityAdListenerClassName = "com.google.unity.ads.UnityAdListener";
+        public const string RewardBasedVideoClassName = "com.google.unity.ads.RewardBasedVideo";
+        public const string UnityBannerAdListenerClassName =
+            "com.google.unity.ads.UnityBannerAdListener";
+        public const string UnityInterstitialAdListenerClassName =
+            "com.google.unity.ads.UnityInterstitialAdListener";
+        public const string UnityRewardBasedVideoAdListenerClassName =
+            "com.google.unity.ads.UnityRewardBasedVideoAdListener";
         public const string PluginUtilsClassName = "com.google.unity.ads.PluginUtils";
 
         #endregion
@@ -118,13 +141,14 @@ namespace GoogleMobileAds.Android
                         "tagForChildDirectedTreatment",
                         request.TagForChildDirectedTreatment.GetValueOrDefault());
             }
+            // Denote that the request is coming from this Unity plugin.
+            adRequestBuilder.Call<AndroidJavaObject>("setRequestAgent",
+                    "unity-" + AdRequest.Version);
             AndroidJavaObject bundle = new AndroidJavaObject(BundleClassName);
             foreach (KeyValuePair<string, string> entry in request.Extras)
             {
                 bundle.Call("putString", entry.Key, entry.Value);
             }
-            // Denote that the request is coming from this Unity plugin.
-            bundle.Call("putInt", "unity", 1);
             AndroidJavaObject extras = new AndroidJavaObject(AdMobExtrasClassName, bundle);
             adRequestBuilder.Call<AndroidJavaObject>("addNetworkExtras", extras);
             return adRequestBuilder.Call<AndroidJavaObject>("build");
@@ -133,5 +157,4 @@ namespace GoogleMobileAds.Android
         #endregion
     }
 }
-
 #endif

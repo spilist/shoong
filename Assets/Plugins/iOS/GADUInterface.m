@@ -4,6 +4,7 @@
 #import "GADUInterstitial.h"
 #import "GADUObjectCache.h"
 #import "GADURequest.h"
+#import "GADURewardBasedVideoAd.h"
 #import "GADUTypes.h"
 
 /// Returns an NSString copying the characters from |bytes|, a C array of UTF8-encoded bytes.
@@ -56,19 +57,27 @@ GADUTypeBannerRef GADUCreateInterstitial(GADUTypeInterstitialClientRef *intersti
   return (__bridge GADUTypeBannerRef)interstitial;
 }
 
+/// Creates a GADURewardBasedVideo and returns its reference.
+GADUTypeRewardBasedVideoAdRef GADUCreateRewardBasedVideoAd(
+    GADUTypeRewardBasedVideoAdClientRef *rewardBasedVideoAdClient) {
+  GADURewardBasedVideoAd *rewardBasedVideoAd = [[GADURewardBasedVideoAd alloc]
+      initWithRewardBasedVideoClientReference:rewardBasedVideoAdClient];
+  GADUObjectCache *cache = [GADUObjectCache sharedInstance];
+  [cache.references setObject:rewardBasedVideoAd forKey:[rewardBasedVideoAd gadu_referenceKey]];
+  return (__bridge GADUTypeRewardBasedVideoAdRef)rewardBasedVideoAd;
+}
+
 /// Sets the banner callback methods to be invoked during banner ad events.
 void GADUSetBannerCallbacks(GADUTypeBannerRef banner,
                             GADUAdViewDidReceiveAdCallback adReceivedCallback,
                             GADUAdViewDidFailToReceiveAdWithErrorCallback adFailedCallback,
                             GADUAdViewWillPresentScreenCallback willPresentCallback,
-                            GADUAdViewWillDismissScreenCallback willDismissCallback,
                             GADUAdViewDidDismissScreenCallback didDismissCallback,
                             GADUAdViewWillLeaveApplicationCallback willLeaveCallback) {
   GADUBanner *internalBanner = (__bridge GADUBanner *)banner;
   internalBanner.adReceivedCallback = adReceivedCallback;
   internalBanner.adFailedCallback = adFailedCallback;
   internalBanner.willPresentCallback = willPresentCallback;
-  internalBanner.willDismissCallback = willDismissCallback;
   internalBanner.didDismissCallback = didDismissCallback;
   internalBanner.willLeaveCallback = willLeaveCallback;
 }
@@ -78,16 +87,35 @@ void GADUSetInterstitialCallbacks(
     GADUTypeInterstitialRef interstitial, GADUInterstitialDidReceiveAdCallback adReceivedCallback,
     GADUInterstitialDidFailToReceiveAdWithErrorCallback adFailedCallback,
     GADUInterstitialWillPresentScreenCallback willPresentCallback,
-    GADUInterstitialWillDismissScreenCallback willDismissCallback,
     GADUInterstitialDidDismissScreenCallback didDismissCallback,
     GADUInterstitialWillLeaveApplicationCallback willLeaveCallback) {
   GADUInterstitial *internalInterstitial = (__bridge GADUInterstitial *)interstitial;
   internalInterstitial.adReceivedCallback = adReceivedCallback;
   internalInterstitial.adFailedCallback = adFailedCallback;
   internalInterstitial.willPresentCallback = willPresentCallback;
-  internalInterstitial.willDismissCallback = willDismissCallback;
   internalInterstitial.didDismissCallback = didDismissCallback;
   internalInterstitial.willLeaveCallback = willLeaveCallback;
+}
+
+/// Sets the reward based video callback methods to be invoked during reward based video ad events.
+void GADUSetRewardBasedVideoAdCallbacks(
+    GADUTypeRewardBasedVideoAdRef rewardBasedVideoAd,
+    GADURewardBasedVideoAdDidReceiveAdCallback adReceivedCallback,
+    GADURewardBasedVideoAdDidFailToReceiveAdWithErrorCallback adFailedCallback,
+    GADURewardBasedVideoAdDidOpenCallback didOpenCallback,
+    GADURewardBasedVideoAdDidStartPlayingCallback didStartCallback,
+    GADURewardBasedVideoAdDidCloseCallback didCloseCallback,
+    GADURewardBasedVideoAdDidRewardCallback didRewardCallback,
+    GADURewardBasedVideoAdWillLeaveApplicationCallback willLeaveCallback) {
+  GADURewardBasedVideoAd *internalRewardBasedVideoAd =
+      (__bridge GADURewardBasedVideoAd *)rewardBasedVideoAd;
+  internalRewardBasedVideoAd.adReceivedCallback = adReceivedCallback;
+  internalRewardBasedVideoAd.adFailedCallback = adFailedCallback;
+  internalRewardBasedVideoAd.didOpenCallback = didOpenCallback;
+  internalRewardBasedVideoAd.didStartPlayingCallback = didStartCallback;
+  internalRewardBasedVideoAd.didCloseCallback = didCloseCallback;
+  internalRewardBasedVideoAd.didRewardCallback = didRewardCallback;
+  internalRewardBasedVideoAd.willLeaveCallback = willLeaveCallback;
 }
 
 /// Sets the GADBannerView's hidden property to YES.
@@ -120,6 +148,20 @@ void GADUShowInterstitial(GADUTypeInterstitialRef interstitial) {
   [internalInterstitial show];
 }
 
+/// Returns YES if the GADRewardBasedVideo is ready to be shown.
+BOOL GADURewardBasedVideoAdReady(GADUTypeRewardBasedVideoAdRef rewardBasedVideo) {
+  GADURewardBasedVideoAd *internalRewardBasedVideoAd =
+      (__bridge GADURewardBasedVideoAd *)rewardBasedVideo;
+  return [internalRewardBasedVideoAd isReady];
+}
+
+/// Shows the GADRewardBasedVideo.
+void GADUShowRewardBasedVideoAd(GADUTypeRewardBasedVideoAdRef rewardBasedVideoAd) {
+  GADURewardBasedVideoAd *internalRewardBasedVideoAd =
+      (__bridge GADURewardBasedVideoAd *)rewardBasedVideoAd;
+  [internalRewardBasedVideoAd show];
+}
+
 /// Creates an empty GADRequest and returns its reference.
 GADUTypeRequestRef GADUCreateRequest() {
   GADURequest *request = [[GADURequest alloc] init];
@@ -138,6 +180,12 @@ void GADUAddTestDevice(GADUTypeRequestRef request, const char *deviceID) {
 void GADUAddKeyword(GADUTypeRequestRef request, const char *keyword) {
   GADURequest *internalRequest = (__bridge GADURequest *)request;
   [internalRequest addKeyword:GADUStringFromUTF8String(keyword)];
+}
+
+/// Sets the request agent for the GADRequest.
+void GADUSetRequestAgent(GADUTypeRequestRef request, const char *requestAgent) {
+  GADURequest *internalRequest = (__bridge GADURequest *)request;
+  [internalRequest setRequestAgent:GADUStringFromUTF8String(requestAgent)];
 }
 
 /// Sets the user's birthday on the GADRequest.
@@ -179,6 +227,16 @@ void GADURequestInterstitial(GADUTypeInterstitialRef interstitial, GADUTypeReque
   GADUInterstitial *internalInterstitial = (__bridge GADUInterstitial *)interstitial;
   GADURequest *internalRequest = (__bridge GADURequest *)request;
   [internalInterstitial loadRequest:[internalRequest request]];
+}
+
+/// Makes a rewarded video ad request.
+void GADURequestRewardBasedVideoAd(GADUTypeRewardBasedVideoAdRef rewardBasedVideoAd,
+                                   GADUTypeRequestRef request, const char *adUnitID) {
+  GADURewardBasedVideoAd *internalRewardBasedVideoAd =
+      (__bridge GADURewardBasedVideoAd *)rewardBasedVideoAd;
+  GADURequest *internalRequest = (__bridge GADURequest *)request;
+  [internalRewardBasedVideoAd loadRequest:[internalRequest request]
+                             withAdUnitID:GADUStringFromUTF8String(adUnitID)];
 }
 
 /// Removes an object from the cache.

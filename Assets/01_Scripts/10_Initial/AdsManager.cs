@@ -19,6 +19,7 @@ public class AdsManager : MonoBehaviour {
         string adUnitId = "ca-app-pub-4666969549435607/8331172170";
     #elif UNITY_IPHONE
         string adUnitId = "INSERT_IOS_INTERSTITIAL_AD_UNIT_ID_HERE";
+        return;
     #else
         string adUnitId = "unexpected_platform";
     #endif

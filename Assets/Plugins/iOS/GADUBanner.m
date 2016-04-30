@@ -163,9 +163,7 @@
 }
 
 - (void)adViewWillDismissScreen:(GADBannerView *)adView {
-  if (self.willDismissCallback) {
-    self.willDismissCallback(self.bannerClient);
-  }
+  // Callback is not forwarded to Unity.
 }
 
 - (void)adViewDidDismissScreen:(GADBannerView *)adView {

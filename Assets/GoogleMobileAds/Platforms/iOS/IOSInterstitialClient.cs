@@ -56,7 +56,6 @@ namespace GoogleMobileAds.iOS
                     InterstitialDidReceiveAdCallback,
                     InterstitialDidFailToReceiveAdWithErrorCallback,
                     InterstitialWillPresentScreenCallback,
-                    InterstitialWillDismissScreenCallback,
                     InterstitialDidDismissScreenCallback,
                     InterstitialWillLeaveApplicationCallback);
         }

@@ -50,9 +50,6 @@ typedef NS_ENUM(NSUInteger, GADAdPosition) {
 /// The will present screen callback into Unity.
 @property(nonatomic, assign) GADUAdViewWillPresentScreenCallback willPresentCallback;
 
-/// The will dismiss screen callback into Unity.
-@property(nonatomic, assign) GADUAdViewWillDismissScreenCallback willDismissCallback;
-
 /// The did dismiss screen callback into Unity.
 @property(nonatomic, assign) GADUAdViewDidDismissScreenCallback didDismissCallback;
 

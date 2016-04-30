@@ -30,9 +30,6 @@
 /// The will present screen callback into Unity.
 @property(nonatomic, assign) GADUInterstitialWillPresentScreenCallback willPresentCallback;
 
-/// The will dismiss screen callback into Unity.
-@property(nonatomic, assign) GADUInterstitialWillDismissScreenCallback willDismissCallback;
-
 /// The did dismiss screen callback into Unity.
 @property(nonatomic, assign) GADUInterstitialDidDismissScreenCallback didDismissCallback;
 
