@@ -60247,7 +60247,7 @@ MonoBehaviour:
   boosterMaxSpeeds: 0a0000000500000000000000fbfffffff6ffffff
   boosterSpeedDecreaseStandard: 50
   boosterSpeedDecreases: 140000000a00000000000000f6ffffffecffffff
-  energyReduceOnTimeStandard: 6
+  energyReduceOnTimeStandard: 4
   energyReduceOnTimeStandard_hard: 12
   energyReduceOnTimes: f6fffffffbffffff00000000050000000a000000
   maxEnergyStandard: 100
@@ -63007,7 +63007,7 @@ MonoBehaviour:
   changeTime: 0.15
   goldenCubeText: {fileID: 1928310599}
   icon: {fileID: 1813428831}
-  goldenCubePerAds: 30
+  goldenCubePerAds: 50
   showAdsPerGame: 10
   showAdsPerMinutes: 10
   dailyLimit: 10
@@ -75674,6 +75674,14 @@ Prefab:
     - target: {fileID: 19863284, guid: 01172ec1939394f0293c89527ec3b64c, type: 2}
       propertyPath: InitialModule.startLifetime.scalar
       value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8264224, guid: 01172ec1939394f0293c89527ec3b64c, type: 2}
+      propertyPath: spreadCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8264224, guid: 01172ec1939394f0293c89527ec3b64c, type: 2}
+      propertyPath: Priority
+      value: 130
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 01172ec1939394f0293c89527ec3b64c, type: 2}
@@ -105663,7 +105671,7 @@ MonoBehaviour:
   isNegative: 1
   destroyWhenCollideSelf: 0
   instance: {fileID: 0}
-  loseEnergyWhenEncounter: 30
+  loseEnergyWhenEncounter: 24
   bounceDuration: 0.3
   hasLevel: 0
   nameForLevel: 
@@ -105719,7 +105727,7 @@ MonoBehaviour:
   player: {fileID: 0}
   gravity: 90
   gravityToUser: 90
-  gravityScale: 15
+  gravityScale: 12
   reboundDuring: 1.5
   shakeAmount: 3
   reboundingSpeed: 1000
@@ -105888,7 +105896,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceSpawnAtStart: 0
-  objAmount: 4
+  objAmount: 5
   objPool: []
   objDestroyEffectPool: []
   objEncounterEffectPool: []
@@ -105948,7 +105956,7 @@ MonoBehaviour:
   objEncounterEffectForPlayer: {fileID: 0}
   strengthenPlayerEffect: {fileID: 0}
   strength: 3
-  speed: 55
+  speed: 46
   tumble: 10
   minSpawnInterval: 6
   maxSpawnInterval: 8
@@ -105958,7 +105966,7 @@ MonoBehaviour:
   isNegative: 1
   destroyWhenCollideSelf: 0
   instance: {fileID: 0}
-  loseEnergyWhenEncounter: 15
+  loseEnergyWhenEncounter: 17
   bounceDuration: 0.15
   hasLevel: 0
   nameForLevel: 
@@ -105966,7 +105974,7 @@ MonoBehaviour:
   player: {fileID: 0}
   slowStayDuration: 1
   increaseSpeedDuration: 2
-  increaseSpeedUntil: 170
+  increaseSpeedUntil: 165
   detectDistance: 240
   spawnRadius: 250
   offScreenSpeedScale: 0.7
@@ -106101,7 +106109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceSpawnAtStart: 0
-  objAmount: 42
+  objAmount: 38
   objPool: []
   objDestroyEffectPool: []
   objEncounterEffectPool: []
@@ -106116,7 +106124,7 @@ MonoBehaviour:
   minSpawnInterval: 0
   maxSpawnInterval: 0
   cubesByEncounter: 5
-  energyGets: 6
+  energyGets: 11
   numSweetsPop: 0
   isNegative: 0
   destroyWhenCollideSelf: 0
@@ -106135,7 +106143,7 @@ MonoBehaviour:
   popMaxDistanceForBox: 160
   poppingSpeed: 200
   popCoinRate: 10
-  bigPartsProbability: 0.03
+  bigPartsProbability: 0.06
 --- !u!114 &1991538118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106307,7 +106315,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceSpawnAtStart: 0
-  objAmount: 6
+  objAmount: 7
   objPool: []
   objDestroyEffectPool: []
   objEncounterEffectPool: []
@@ -106384,7 +106392,7 @@ MonoBehaviour:
   level: 0
   player: {fileID: 0}
   spawnRadius: 250
-  playerSpeedReduceTo: 0.3
+  playerSpeedReduceTo: 0.5
   speedRestoreDuring: 3
 --- !u!114 &1991538123
 MonoBehaviour:
@@ -106398,7 +106406,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceSpawnAtStart: 0
-  objAmount: 10
+  objAmount: 14
   objPool: []
   objDestroyEffectPool: []
   objEncounterEffectPool: []
@@ -106418,7 +106426,7 @@ MonoBehaviour:
   isNegative: 1
   destroyWhenCollideSelf: 0
   instance: {fileID: 0}
-  loseEnergyWhenEncounter: 35
+  loseEnergyWhenEncounter: 32
   bounceDuration: 0.3
   hasLevel: 0
   nameForLevel: 
@@ -106465,7 +106473,7 @@ MonoBehaviour:
   objEncounterEffectForPlayer: {fileID: 0}
   strengthenPlayerEffect: {fileID: 0}
   strength: 10
-  speed: 85
+  speed: 87
   tumble: 50
   minSpawnInterval: 18
   maxSpawnInterval: 20
@@ -106491,7 +106499,7 @@ MonoBehaviour:
   detectDistance: 200
   headFollowingSpeed: 300
   shootLaserPer: 4
-  chargeTime: 0.4
+  chargeTime: 0.35
   offScreenSpeedScale: 0.5
   laserLoseEnergy: 75
   laserRadius: 20
@@ -106523,7 +106531,7 @@ MonoBehaviour:
   objEncounterEffectForPlayer: {fileID: 0}
   strengthenPlayerEffect: {fileID: 0}
   strength: 3
-  speed: 65
+  speed: 56
   tumble: 10
   minSpawnInterval: 6
   maxSpawnInterval: 8
@@ -106533,7 +106541,7 @@ MonoBehaviour:
   isNegative: 1
   destroyWhenCollideSelf: 0
   instance: {fileID: 0}
-  loseEnergyWhenEncounter: 15
+  loseEnergyWhenEncounter: 17
   bounceDuration: 0.15
   hasLevel: 0
   nameForLevel: 
@@ -106546,7 +106554,7 @@ MonoBehaviour:
   spawnRadius: 250
   offScreenSpeedScale: 1.2
   confusedEffect: {fileID: 576304749}
-  confusedDuration: 0.7
+  confusedDuration: 1
   firstSpawnDelay: 2
 --- !u!114 &1991538126
 MonoBehaviour:
@@ -106614,7 +106622,7 @@ MonoBehaviour:
   objEncounterEffectForPlayer: {fileID: 0}
   strengthenPlayerEffect: {fileID: 0}
   strength: 3
-  speed: 40
+  speed: 46
   tumble: 10
   minSpawnInterval: 6
   maxSpawnInterval: 8
@@ -106624,7 +106632,7 @@ MonoBehaviour:
   isNegative: 1
   destroyWhenCollideSelf: 0
   instance: {fileID: 0}
-  loseEnergyWhenEncounter: 15
+  loseEnergyWhenEncounter: 17
   bounceDuration: 0.15
   hasLevel: 0
   nameForLevel: 
@@ -106669,7 +106677,7 @@ MonoBehaviour:
   isNegative: 1
   destroyWhenCollideSelf: 0
   instance: {fileID: 0}
-  loseEnergyWhenEncounter: 40
+  loseEnergyWhenEncounter: 32
   bounceDuration: 0.4
   hasLevel: 0
   nameForLevel: 
@@ -106749,7 +106757,7 @@ MonoBehaviour:
   objEncounterEffectForPlayer: {fileID: 0}
   strengthenPlayerEffect: {fileID: 0}
   strength: 10
-  speed: 70
+  speed: 73
   tumble: 20
   minSpawnInterval: 15
   maxSpawnInterval: 17
@@ -106769,9 +106777,9 @@ MonoBehaviour:
   detectDistance: 200
   headFollowingSpeed: 300
   offScreenSpeedScale: 0.5
-  gravity: 40
+  gravity: 35
   gravityToCandies: 150
-  gravityScale: 2
+  gravityScale: 2.15
   firstSpawnDelay: 2
 --- !u!114 &1991538131
 MonoBehaviour:
@@ -106795,7 +106803,7 @@ MonoBehaviour:
   objEncounterEffectForPlayer: {fileID: 0}
   strengthenPlayerEffect: {fileID: 0}
   strength: 10
-  speed: 60
+  speed: 67
   tumble: 50
   minSpawnInterval: 12
   maxSpawnInterval: 14
@@ -106821,7 +106829,7 @@ MonoBehaviour:
   detectDistance: 200
   headFollowingSpeed: 300
   offScreenSpeedScale: 0.5
-  bulletDamage: 35
+  bulletDamage: 37
   numBullets: 3
   shootInterval: 0.4
   nonShootDuration: 2
