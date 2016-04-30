@@ -28,10 +28,14 @@ public class AdsManager : MonoBehaviour {
 
     // Register for ad events.
     // interstitial.AdLoaded += HandleInterstitialLoaded;
-    interstitial.AdFailedToLoad += HandleInterstitialFailedToLoad;
+
+    // interstitial.AdFailedToLoad += HandleInterstitialFailedToLoad;
+
     // interstitial.AdOpened += HandleInterstitialOpened;
     // interstitial.AdClosing += HandleInterstitialClosing;
-    interstitial.AdClosed += HandleInterstitialClosed;
+
+    // interstitial.AdClosed += HandleInterstitialClosed;
+
     // interstitial.AdLeftApplication += HandleInterstitialLeftApplication;
 
     // Create an empty ad request.
