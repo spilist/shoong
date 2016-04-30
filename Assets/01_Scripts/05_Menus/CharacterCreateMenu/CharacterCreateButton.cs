@@ -31,6 +31,7 @@ public class CharacterCreateButton : MenusBehavior {
   public CharacterSelectButton selectButton;
   public GameObject backButton;
   public GameObject goldenCubesYouHave;
+  public GameObject bonusStageButton;
   public GameOverGoldCubes gameOverGoldCubes;
   public Color notAffordableTextColor;
 
@@ -104,6 +105,7 @@ public class CharacterCreateButton : MenusBehavior {
     nextChance.GetComponent<Text>().enabled = false;
     shareButton.gameObject.SetActive(false);
     selectButton.gameObject.SetActive(false);
+    bonusStageButton.SetActive(false);
     goldenCubesYouHave.SetActive(true);
     rarity.text = "";
     GetComponent<RectTransform>().anchoredPosition = new Vector2(0, GetComponent<RectTransform>().anchoredPosition.y);
@@ -227,6 +229,7 @@ public class CharacterCreateButton : MenusBehavior {
       nextChance.GetComponent<Text>().enabled = false;
       isNewCharacter.GetComponent<AudioSource>().Play();
     } else {
+      bonusStageButton.GetComponent<CharacterSelectButton>().setCharacter(randomCharacter.name);
       isNewCharacter.GetComponent<Text>().enabled = false;
       nextChance.GetComponent<Text>().enabled = true;
       nextChance.GetComponent<AudioSource>().Play();
@@ -235,6 +238,9 @@ public class CharacterCreateButton : MenusBehavior {
     yield return new WaitForSeconds(showUIsAfter);
 
     turnOnOff(true);
+
+    bonusStageButton.SetActive(!newCharacter);
+
     GetComponent<RectTransform>().anchoredPosition = new Vector2(240, GetComponent<RectTransform>().anchoredPosition.y);
 
     checkAffordable();

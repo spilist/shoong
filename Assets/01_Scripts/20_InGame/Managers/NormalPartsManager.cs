@@ -17,7 +17,7 @@ public class NormalPartsManager : ObjectsManager {
       NormalPartsMover mover = obj.GetComponent<NormalPartsMover>();
       if (mover == null)
         return;
-      
+
       if (UnityEngine.Random.Range(0f, 1f) > bigPartsProbability) {
         mover.setSize(1, 1);
       } else {
@@ -47,7 +47,7 @@ public class NormalPartsManager : ObjectsManager {
     if (num == 0) return;
 
     for (int i = 0; i < num; i++) {
-      if (Random.Range(0, 100) < popCoinRate) {
+      if (DataManager.dm.isBonusStage || Random.Range(0, 100) < popCoinRate) {
         gcm.popCoin(pos, autoEatAfterPopping);
       } else {
         GameObject obj = getPooledObj(objPool, objPrefab, pos);

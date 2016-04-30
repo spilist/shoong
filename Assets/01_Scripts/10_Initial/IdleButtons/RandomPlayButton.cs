@@ -16,6 +16,11 @@ public class RandomPlayButton : OnOffButton {
   public GameObject inactiveObjects;
 
   override public void initializeRest() {
+    if (DataManager.dm.isBonusStage) {
+      gameObject.SetActive(false);
+      return;
+    }
+
     audioSource = GetComponent<AudioSource>();
 
     if (DataManager.dm.isAnotherDay("LastRandomPlayTime")) {

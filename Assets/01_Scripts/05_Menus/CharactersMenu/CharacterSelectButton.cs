@@ -5,6 +5,7 @@ public class CharacterSelectButton : MenusBehavior {
   public MenusController menus;
   public CharacterChangeManager changeManager;
   public PlayAgainButton playAgain;
+  public bool isBonusStage;
   private string characterName;
 
   public void setCharacter(string val) {
@@ -19,6 +20,7 @@ public class CharacterSelectButton : MenusBehavior {
     if (menus.isMenuOn()) {
       menus.toggleMenuAndUI();
     } else {
+      DataManager.dm.isBonusStage = isBonusStage;
       playAgain.activateSelf();
     }
   }

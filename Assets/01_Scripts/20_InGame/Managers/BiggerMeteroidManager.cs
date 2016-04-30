@@ -13,9 +13,16 @@ public class BiggerMeteroidManager : ObjectsManager {
   public List<GameObject> warningPool;
   public GameObject fallingStarSoundWarningPrefab;
   public List<GameObject> soundWarningPool;
+  public Material goldenMaterial;
 
   private Vector3 obstacleDirection;
   private Vector3 destination;
+
+  override protected void beforeInit() {
+    if (DataManager.dm.isBonusStage) {
+      objPrefab.GetComponent<Renderer>().sharedMaterial = goldenMaterial;
+    }
+  }
 
   override public void initRest() {
     warningPool = new List<GameObject>();
@@ -34,6 +41,10 @@ public class BiggerMeteroidManager : ObjectsManager {
     destroyWhenCollideSelf = true;
 
     StartCoroutine("spawnObstacle");
+
+    if (DataManager.dm.isBonusStage) {
+      Invoke("startSecond", 1);
+    }
   }
 
   public void startSecond() {

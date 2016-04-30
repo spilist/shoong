@@ -50,10 +50,15 @@ public class TimeManager : MonoBehaviour {
 	}
 
 	public void startTime() {
-		resetProgress();
     CubeManager.cm.startCount();
 
-		StartCoroutine("startElapse");
+    if (DataManager.dm.isBonusStage) {
+      progressCharacter.transform.parent.gameObject.SetActive(false);
+      return;
+    }
+
+		resetProgress();
+    StartCoroutine("startElapse");
 	}
 
   public void resetProgressCharacter() {

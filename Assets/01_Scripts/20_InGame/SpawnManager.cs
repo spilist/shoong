@@ -10,20 +10,28 @@ public class SpawnManager : MonoBehaviour {
   public bool isTutorial;
 
   public void Start() {
+    if (DataManager.dm.isBonusStage) return;
+
     if (!isTutorial) {
       GetComponent<NormalPartsManager>().enabled = true;
     }
   }
 
   public void run() {
+    GetComponent<GoldenCubeManager>().enabled = true;
+    GetComponent<FollowTarget>().enabled = false;
+
+    if (DataManager.dm.isBonusStage) {
+      GetComponent<BiggerMeteroidManager>().enabled = true;
+      GetComponent<RainbowDonutsManager>().enabled = true;
+      GetComponent<EMPManager>().enabled = true;
+      return;
+    }
+
     GetComponent<NormalPartsManager>().enabled = true;
     GetComponent<SweetBoxManager>().enabled = true;
 
-    GetComponent<FollowTarget>().enabled = false;
-
     GetComponent<SmallAsteroidManager>().enabled = true;
-
-    GetComponent<GoldenCubeManager>().enabled = true;
 
     GetComponent<ComboPartsManager>().enabled = true;
     GetComponent<ComboPartsManager>().adjustForLevel(1);

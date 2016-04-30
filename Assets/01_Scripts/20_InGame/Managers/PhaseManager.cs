@@ -197,7 +197,10 @@ public class PhaseManager : MonoBehaviour {
       TimeManager.time.resetProgressCharacter();
     }
 
-    if (level == textPerLevel.Length) {
+    if (DataManager.dm.isBonusStage) {
+      stageIndicatorTop.GetComponent<Text>().text = "bonus";
+      stageIndicatorBottom.GetComponent<Text>().text = "stage";
+    } else if (level == textPerLevel.Length) {
       stageIndicatorTop.GetComponent<Text>().text = "final";
       stageIndicatorBottom.GetComponent<Text>().text = "level";
       nextLevelText.text = "final";

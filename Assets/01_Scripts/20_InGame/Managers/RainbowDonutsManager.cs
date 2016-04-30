@@ -78,7 +78,7 @@ public class RainbowDonutsManager : ObjectsManager {
     rideCount = 0;
 
     int random = Random.Range(0, chanceBase);
-    if (random < goldenChance) {
+    if (DataManager.dm.isBonusStage || random < goldenChance) {
       isGolden = true;
       instance.GetComponent<Renderer>().sharedMaterial = goldenRainbowMat;
       instance.transform.Find("GoldenEffect").gameObject.SetActive(true);

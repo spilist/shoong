@@ -4,9 +4,13 @@ using System.Collections;
 
 public class IdleHandler : MonoBehaviour {
   public GameObject touchToStart;
+  public GameObject bonusStage;
   public float blinkingSeconds = 0.6f;
 
   void Start () {
+    if (DataManager.dm.isBonusStage) {
+      bonusStage.SetActive(true);
+    }
     StartCoroutine(BlinkText());
 	}
 

@@ -58,7 +58,7 @@ public class EMPManager : ObjectsManager {
     cameraSize = Camera.main.orthographicSize;
 
     int random = Random.Range(0, chanceBase);
-    if (random < goldenChance) {
+    if (DataManager.dm.isBonusStage || random < goldenChance) {
       isGolden = true;
 
       instance.transform.Find("GoldenShell").gameObject.SetActive(true);

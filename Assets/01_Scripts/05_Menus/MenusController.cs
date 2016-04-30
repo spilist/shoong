@@ -17,6 +17,13 @@ public class MenusController : MonoBehaviour {
   private bool notYetStarted = true;
   private GameObject currentlyOn;
 
+  void Start() {
+    if (DataManager.dm.isBonusStage) {
+      menuButtonsLeft.SetActive(false);
+      menuButtonsRight.SetActive(false);
+    }
+  }
+
   public string touched() {
     Ray ray = Camera.main.ScreenPointToRay( Input.mousePosition );
     RaycastHit hit;

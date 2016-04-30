@@ -25,6 +25,7 @@ public class DataManager : MonoBehaviour {
 
   public int normalFrameRate = 60;
   public bool isFirstPlay;
+  public bool isBonusStage;
 
   void Awake() {
     if (dm != null && dm != this) {

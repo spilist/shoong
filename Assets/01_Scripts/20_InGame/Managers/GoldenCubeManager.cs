@@ -5,9 +5,16 @@ using System.Collections.Generic;
 public class GoldenCubeManager : ObjectsManager {
   public NormalPartsManager npm;
   public float spawnRadius = 200;
+  public int numSpawnInBonusStage = 50;
 
   override public void initRest() {
     npm = GetComponent<NormalPartsManager>();
+
+    if (DataManager.dm.isBonusStage) {
+      objAmount = numSpawnInBonusStage;
+      energyGets = 0;
+    }
+
     respawn();
   }
 
