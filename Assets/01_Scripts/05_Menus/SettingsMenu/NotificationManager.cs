@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using VoxelBusters.Utility;
-using VoxelBusters.NativePlugins;
 using SmartLocalization;
 
 public class NotificationManager : MonoBehaviour {
   public static NotificationManager nm;
+  public void CancelAllLocalNotifications() { }
+  public void notifyAfter(int a) { }
+  /*
   [SerializeField, EnumMaskField(typeof(NotificationType))]
   private   NotificationType  m_notificationType;
   private string notifyMsg;
@@ -88,4 +89,5 @@ public class NotificationManager : MonoBehaviour {
 
     return _notification;
   }
+  */
 }

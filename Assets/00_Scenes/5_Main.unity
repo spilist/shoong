@@ -33576,9 +33576,44 @@ MonoBehaviour:
   m_GameObject: {fileID: 638403301}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b3d669611776724587448d336ca8280, type: 3}
+  m_Script: {fileID: 11500000, guid: dee027824e7bcec418cd73e2cd4f6fd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  achievementInfos:
+  - GlobalId: DREAMWALKER_1
+    AndroidId: CgkIubjEkcMWEAIQAw
+    AppleId: 
+  - GlobalId: DREAMWALKER_2
+    AndroidId: CgkIubjEkcMWEAIQBw
+    AppleId: 
+  - GlobalId: DREAMWALKER_3
+    AndroidId: CgkIubjEkcMWEAIQCA
+    AppleId: 
+  - GlobalId: COLLECTOR_1
+    AndroidId: CgkIubjEkcMWEAIQBA
+    AppleId: 
+  - GlobalId: COLLECTOR_2
+    AndroidId: CgkIubjEkcMWEAIQCQ
+    AppleId: 
+  - GlobalId: COLLECTOR_3
+    AndroidId: CgkIubjEkcMWEAIQCg
+    AppleId: 
+  - GlobalId: TRAVELER_1
+    AndroidId: CgkIubjEkcMWEAIQCw
+    AppleId: 
+  - GlobalId: TRAVELER_2
+    AndroidId: CgkIubjEkcMWEAIQDA
+    AppleId: 
+  - GlobalId: TRAVELER_3
+    AndroidId: CgkIubjEkcMWEAIQDQ
+    AppleId: 
+  leaderboardInfos:
+  - GlobalId: LB_SINGLE
+    AndroidId: CgkIubjEkcMWEAIQBg
+    AppleId: 
+  - GlobalId: LB_OVERALL
+    AndroidId: CgkIubjEkcMWEAIQDg
+    AppleId: 
 --- !u!114 &638403305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33707,7 +33742,127 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   charactersMenu: {fileID: 75942068}
-  abb: {fileID: 2114071828}
+  productInfos:
+  - GlobalId: toy_chameleon
+    type: 1
+    AndroidId: toy_chameleon
+    AppleId: toy_chameleon
+  - GlobalId: toy_soju
+    type: 1
+    AndroidId: toy_soju
+    AppleId: toy_soju
+  - GlobalId: toy_leonplant
+    type: 1
+    AndroidId: toy_leonplant
+    AppleId: toy_leonplant
+  - GlobalId: toy_butterfly
+    type: 1
+    AndroidId: toy_butterfly
+    AppleId: toy_butterfly
+  - GlobalId: toy_paperplane
+    type: 1
+    AndroidId: toy_paperplane
+    AppleId: toy_paperplane
+  - GlobalId: toy_beardedfrog
+    type: 1
+    AndroidId: toy_beardedfrog
+    AppleId: toy_beardedfrog
+  - GlobalId: toy_wilson
+    type: 1
+    AndroidId: toy_wilson
+    AppleId: toy_wilson
+  - GlobalId: toy_robotcat
+    type: 1
+    AndroidId: toy_robotcat
+    AppleId: toy_robotcat
+  - GlobalId: toy_crab
+    type: 1
+    AndroidId: toy_crab
+    AppleId: toy_crab
+  - GlobalId: toy_hamster
+    type: 1
+    AndroidId: toy_hamster
+    AppleId: toy_hamster
+  - GlobalId: toy_deathstar
+    type: 1
+    AndroidId: toy_deathstar
+    AppleId: toy_deathstar
+  - GlobalId: toy_tyranno
+    type: 1
+    AndroidId: toy_tyranno
+    AppleId: toy_tyranno
+  - GlobalId: toy_toyrobot
+    type: 1
+    AndroidId: toy_toyrobot
+    AppleId: toy_toyrobot
+  - GlobalId: toy_fruits
+    type: 1
+    AndroidId: toy_fruits
+    AppleId: toy_fruits
+  - GlobalId: toy_bender
+    type: 1
+    AndroidId: toy_bender
+    AppleId: toy_bender
+  - GlobalId: toy_ghost
+    type: 1
+    AndroidId: toy_ghost
+    AppleId: toy_ghost
+  - GlobalId: toy_vacuumrobot
+    type: 1
+    AndroidId: toy_vacuumrobot
+    AppleId: toy_vacuumrobot
+  - GlobalId: toy_minimonster
+    type: 1
+    AndroidId: toy_minimonster
+    AppleId: toy_minimonster
+  - GlobalId: toy_alienwithgun
+    type: 1
+    AndroidId: toy_alienwithgun
+    AppleId: toy_alienwithgun
+  - GlobalId: toy_cat
+    type: 1
+    AndroidId: toy_cat
+    AppleId: toy_cat
+  - GlobalId: toy_dolphin
+    type: 1
+    AndroidId: toy_dolphin
+    AppleId: toy_dolphin
+  - GlobalId: toy_goldpig
+    type: 1
+    AndroidId: toy_goldpig
+    AppleId: toy_goldpig
+  - GlobalId: unlock_automode
+    type: 1
+    AndroidId: unlock_automode
+    AppleId: unlock_automode
+  - GlobalId: toy_schoolbus
+    type: 1
+    AndroidId: toy_schoolbus
+    AppleId: toy_schoolbus
+  - GlobalId: toy_policecar
+    type: 1
+    AndroidId: toy_policecar
+    AppleId: toy_policecar
+  - GlobalId: toy_rubberduck
+    type: 1
+    AndroidId: toy_rubberduck
+    AppleId: toy_rubberduck
+  - GlobalId: toy_elephant
+    type: 1
+    AndroidId: toy_elephant
+    AppleId: toy_elephant
+  - GlobalId: toy_f16
+    type: 1
+    AndroidId: toy_f16
+    AppleId: toy_f16
+  - GlobalId: toy_toybear
+    type: 1
+    AndroidId: toy_toybear
+    AppleId: toy_toybear
+  - GlobalId: toy_pheonix
+    type: 1
+    AndroidId: toy_pheonix
+    AppleId: toy_pheonix
 --- !u!1 &644697225
 GameObject:
   m_ObjectHideFlags: 0
@@ -70526,48 +70681,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   key: Setting_RestorePurchases
   origString: 
---- !u!1001 &1422142773
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 400000, guid: bb6901ca2cbb04e04ad4567d8ccca51e, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: bb6901ca2cbb04e04ad4567d8ccca51e, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: bb6901ca2cbb04e04ad4567d8ccca51e, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: bb6901ca2cbb04e04ad4567d8ccca51e, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: bb6901ca2cbb04e04ad4567d8ccca51e, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: bb6901ca2cbb04e04ad4567d8ccca51e, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: bb6901ca2cbb04e04ad4567d8ccca51e, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: bb6901ca2cbb04e04ad4567d8ccca51e, type: 2}
-      propertyPath: m_RootOrder
-      value: 21
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: bb6901ca2cbb04e04ad4567d8ccca51e, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &1422286121
 GameObject:
   m_ObjectHideFlags: 0
@@ -84427,7 +84540,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d10db967457b42bb9e5c0c88dea348a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_notificationType: -1
 --- !u!4 &1580374533
 Transform:
   m_ObjectHideFlags: 0
@@ -89393,7 +89505,7 @@ Transform:
   - {fileID: 892369442}
   - {fileID: 1276123138}
   m_Father: {fileID: 0}
-  m_RootOrder: 22
+  m_RootOrder: 21
 --- !u!1 &1707069936
 GameObject:
   m_ObjectHideFlags: 0

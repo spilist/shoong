@@ -1,16 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using VoxelBusters.NativePlugins;
 using System;
+using UnityEngine.SocialPlatforms;
 
 public static class AchievementConstants {
   private static Dictionary<string, List<AchievementObject>> achievementDict;
   private static List<AchievementObject> allAchievements;
 
-  public static void init() {
+  public static void init(IAchievement[] loadedAchievements) {
     achievementDict = new Dictionary<string, List<AchievementObject>>();
     allAchievements = new List<AchievementObject>();
+
+    // I know that this code for getting current progress of achievement is very dirty. Don't do like this next time :D
+    Dictionary<string, IAchievement> loadedAchievementDict = new Dictionary<string, IAchievement>();
+    foreach (IAchievement loadedAch in loadedAchievements) {
+      loadedAchievementDict.Add(loadedAch.id, loadedAch);
+    }
     List<AchievementObject> objList;
     // Beginning of the journey
     // objList = new List<AchievementObject>();
@@ -18,45 +24,27 @@ public static class AchievementConstants {
     // achievements.Add("TutorialDone", objList);
     // Dreamwalker series
     objList = new List<AchievementObject>();
-    objList.Add(new AchievementObject("CgkIubjEkcMWEAIQAw", 0, 1000));
-    objList.Add(new AchievementObject("CgkIubjEkcMWEAIQBw", 0, 2500));
-    objList.Add(new AchievementObject("CgkIubjEkcMWEAIQCA", 0, 5000));
-    foreach (AchievementObject obj in objList) {
-      obj.progress(DataManager.dm.getInt("BestCubes"));
-      if (NPBinding.GameServices.LocalUser.IsAuthenticated == true)
-        obj.report(0);
-    }
+    objList.Add(new AchievementObject("DREAMWALKER_1", 0, 1000, loadedAchievementDict[DataManager.spm.achievementInfoMap["DREAMWALKER_1"]].percentCompleted));
+    objList.Add(new AchievementObject("DREAMWALKER_2", 0, 2500, loadedAchievementDict[DataManager.spm.achievementInfoMap["DREAMWALKER_2"]].percentCompleted));
+    objList.Add(new AchievementObject("DREAMWALKER_3", 0, 5000, loadedAchievementDict[DataManager.spm.achievementInfoMap["DREAMWALKER_3"]].percentCompleted));
     achievementDict.Add("BestCubes", objList);
     // Toy collector series
     objList = new List<AchievementObject>();
-    objList.Add(new AchievementObject("CgkIubjEkcMWEAIQBA", 0, 5));
-    objList.Add(new AchievementObject("CgkIubjEkcMWEAIQCQ", 0, 10));
-    objList.Add(new AchievementObject("CgkIubjEkcMWEAIQCg", 0, 20));
-    foreach (AchievementObject obj in objList) {
-      obj.progress(DataManager.dm.getInt("NumCharactersHave"));
-      if (NPBinding.GameServices.LocalUser.IsAuthenticated == true)
-        obj.report(0);
-    }
+    objList.Add(new AchievementObject("COLLECTOR_1", 0, 5, loadedAchievementDict[DataManager.spm.achievementInfoMap["COLLECTOR_1"]].percentCompleted));
+    objList.Add(new AchievementObject("COLLECTOR_2", 0, 10, loadedAchievementDict[DataManager.spm.achievementInfoMap["COLLECTOR_2"]].percentCompleted));
+    objList.Add(new AchievementObject("COLLECTOR_3", 0, 20, loadedAchievementDict[DataManager.spm.achievementInfoMap["COLLECTOR_3"]].percentCompleted));
     achievementDict.Add("NumCharactersHave", objList);
     // Traveler series
     objList = new List<AchievementObject>();
-    objList.Add(new AchievementObject("CgkIubjEkcMWEAIQCw", 0, 20000));
-    objList.Add(new AchievementObject("CgkIubjEkcMWEAIQDA", 0, 100000));
-    objList.Add(new AchievementObject("CgkIubjEkcMWEAIQDQ", 0, 1000000));
-    foreach (AchievementObject obj in objList) {
-      obj.progress(DataManager.dm.getInt("TotalCubes"));
-      if (NPBinding.GameServices.LocalUser.IsAuthenticated == true)
-        obj.report(0);
-    }
+    objList.Add(new AchievementObject("TRAVELER_1", 0, 20000, loadedAchievementDict[DataManager.spm.achievementInfoMap["TRAVELER_1"]].percentCompleted));
+    objList.Add(new AchievementObject("TRAVELER_2", 0, 100000, loadedAchievementDict[DataManager.spm.achievementInfoMap["TRAVELER_2"]].percentCompleted));
+    objList.Add(new AchievementObject("TRAVELER_3", 0, 1000000, loadedAchievementDict[DataManager.spm.achievementInfoMap["TRAVELER_3"]].percentCompleted));
     achievementDict.Add("TotalCubes", objList);
-  
-    if (NPBinding.GameServices.LocalUser.IsAuthenticated == true) {
-      DataManager.npbManager.am.reportAllLeaderboard();
-    }
+    DataManager.spm.am.reportAllLeaderboard();
   }
 
   public static bool containsKey(string key) {
-    return achievementDict.ContainsKey(key);
+    return (achievementDict != null && achievementDict.ContainsKey(key));
   }
   public static List<AchievementObject> getAchieveList(string key) {
     return achievementDict[key];

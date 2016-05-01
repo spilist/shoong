@@ -22,7 +22,7 @@ public class GoogleAuthButton : OnOffButton {
 
   override public void activateSelf() {
     if (clicked) {
-      DataManager.npbManager.authenticate((bool _success, string _error)=>{
+      DataManager.spm.authenticate((bool _success)=>{
         if (_success)
         {
           base.activateSelf();
@@ -32,15 +32,8 @@ public class GoogleAuthButton : OnOffButton {
         }
       });
     } else {
-      NPBinding.GameServices.LocalUser.SignOut((bool _success, string _error)=>{
-        if (_success)
-        {
-          base.activateSelf();
-        }
-        else
-        {
-        }
-      });
+      DataManager.spm.signout();
+      base.activateSelf();
     }
   }
 

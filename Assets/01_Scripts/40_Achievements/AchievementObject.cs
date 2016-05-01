@@ -9,7 +9,7 @@ using UnityEngine;
 // Used class name 'AchievementObject' to distinguish with 'Achievement' class of NPBM
 public class AchievementObject {
   public enum TYPE {INT, FLOAT, BOOL, STRING, DATETIME};
-  private static float PROGRESS_MAX = 10000f;
+  private static double PROGRESS_MAX = 100f;
 
   // Achievement ID in GPGS
   public string id;
@@ -36,39 +36,46 @@ public class AchievementObject {
   // Next achievement
   public AchievementObject nextAchievement = null;
   
-  public AchievementObject (string id, int initVal, int goalVal) {
+  public AchievementObject (string id, int initVal, int goalVal, double currProgress) {
     this.id = id;
     this.initValInt = initVal;
     this.goalValInt = goalVal;
     this.type = TYPE.INT;
+    this.currValInt = (int) ((goalVal - initVal) * (currProgress / 100) + initVal);
+    //Debug.Log("Current int progress: " + "gid(" + id + "), pid(" + DataManager.spm.achievementInfoMap[id] + "), init(" + initVal + "), goal(" + goalVal + "), curr(" + currValInt + "), currPercent(" + currProgress + ")");
   }
 
-  public AchievementObject (string id, float initVal, float goalVal) {
+  public AchievementObject (string id, float initVal, float goalVal, double currProgress) {
     this.id = id;
     this.initValFloat = initVal;
     this.goalValFloat = goalVal;
     this.type = TYPE.FLOAT;
+    this.currValFloat = (float)((goalVal - initVal) * (currProgress / 100) + initVal);
+    //Debug.Log("Current float progress: " + "gid(" + id + "), pid(" + DataManager.spm.achievementInfoMap[id] + "), init(" + initVal + "), goal(" + goalVal + "), currVal(" + currValInt + "), currPercent(" + currProgress + ")");
   }
 
-  public AchievementObject (string id, bool initVal, bool goalVal) {
+  public AchievementObject (string id, bool initVal, bool goalVal, double currProgress) {
     this.id = id;
     this.initValBool = initVal;
     this.goalValBool = goalVal;
     this.type = TYPE.BOOL;
+    //this.currValBool = currVal;
   }
 
-  public AchievementObject (string id, string initVal, string goalVal) {
+  public AchievementObject (string id, string initVal, string goalVal, double currProgress) {
     this.id = id;
     this.initValString = initVal;
     this.goalValString = goalVal;
     this.type = TYPE.STRING;
+    //this.currValString = currVal;
   }
 
-  public AchievementObject (string id, DateTime initVal, DateTime goalVal) {
+  public AchievementObject (string id, DateTime initVal, DateTime goalVal, double currProgress) {
     this.id = id;
     this.initValDateTime = initVal;
     this.goalValDateTime = goalVal;
     this.type = TYPE.DATETIME;
+    //this.currValDateTime = currVal;
   }
 
   public bool progress (int val) {
@@ -117,8 +124,8 @@ public class AchievementObject {
       return false;
   }
 
-  public float getProgress() {
-    float progress, intersect;
+  public double getProgress() {
+    double progress, intersect;
     switch(type) {
       case TYPE.INT:
         intersect = ((currValInt - initValInt) < goalValInt ? (currValInt - initValInt) : goalValInt);  
@@ -151,21 +158,20 @@ public class AchievementObject {
 
     return progress;
   }
-
+  
   public void report(int currProgress = 0) {
-    if (NPBinding.GameServices.LocalUser.IsAuthenticated == false)
+    if (SocialPlatformManager.isAuthenticated() == false)
       return;
     int progress = (int) getProgress();
     if (progress > currProgress) {
       // We should use PlayGamesPlatform.IncrementAchievement, for incremental one,
       // but ReportProgress will work similarlly.
       // The manual does not recommend it, so need to test.
-      NPBinding.GameServices.ReportProgressWithID(id, progress, (bool _status, string _error)=>{      
+      Social.ReportProgress(DataManager.spm.achievementInfoMap[id], progress, (bool _status) => {
         if (_status) {
           Debug.Log(string.Format("Successfully reported points={0} to achievement with ID={1}.", progress, id));
-        }
-        else {
-          Debug.Log(string.Format("Failed to report progress points={0} of achievement with ID={1}. Error={2}", progress, id, _error));
+        } else {
+          Debug.Log(string.Format("Failed to report progress points={0} of achievement with ID={1}.", progress, id));
         }
       });
     }

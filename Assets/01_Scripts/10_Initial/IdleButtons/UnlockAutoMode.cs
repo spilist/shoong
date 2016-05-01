@@ -6,8 +6,10 @@ public class UnlockAutoMode : MenusBehavior {
   private string id = "unlock_automode";
 
   override public void activateSelf() {
+    /*
     BillingManager.bm.BuyProduct(id);
     TrackingManager.tm.initiateCheckout(BillingManager.bm.getProduct(id), "Unlock Auto Booster");
+    */
   }
 
   public void buyComplete(string transactionId, bool bought) {

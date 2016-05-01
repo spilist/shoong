@@ -1,2 +1,10 @@
 lastUpgrade=00932
 proj.pluginVersion=0.9.32
+proj.AppId=773936192569
+and.BundleId=com.morogoro.smashytoysspace
+proj.classDir=Assets
+proj.ConstantsClassName=GPGSConstants
+and.ResourceData=%3c%3fxml+version%3d%221.0%22+encoding%3d%22utf-8%22%3f%3e%0d%0a%3c%21--%0d%0aGoogle+Play+game+services+IDs.%0d%0aSave+this+file+as+res%2fvalues%2fgames-ids.xml+in+your+project.%0d%0a--%3e%0d%0a%3cresources%3e%0d%0a++%3cstring+name%3d%22app_id%22%3e773936192569%3c%2fstring%3e%0d%0a++%3cstring+name%3d%22package_name%22%3ecom.morogoro.smashytoysspace%3c%2fstring%3e%0d%0a++%3cstring+name%3d%22achievement_fine_dreamwalker%22%3eCgkIubjEkcMWEAIQAw%3c%2fstring%3e%0d%0a++%3cstring+name%3d%22achievement_excellent_dreamwalker%22%3eCgkIubjEkcMWEAIQBw%3c%2fstring%3e%0d%0a++%3cstring+name%3d%22achievement_fantastic_dreamwalker%22%3eCgkIubjEkcMWEAIQCA%3c%2fstring%3e%0d%0a++%3cstring+name%3d%22achievement_novice_toy_collector%22%3eCgkIubjEkcMWEAIQBA%3c%2fstring%3e%0d%0a++%3cstring+name%3d%22achievement_intermediate_toy_collector%22%3eCgkIubjEkcMWEAIQCQ%3c%2fstring%3e%0d%0a++%3cstring+name%3d%22achievement_master_toy_collector%22%3eCgkIubjEkcMWEAIQCg%3c%2fstring%3e%0d%0a++%3cstring+name%3d%22achievement_steady_traveler%22%3eCgkIubjEkcMWEAIQCw%3c%2fstring%3e%0d%0a++%3cstring+name%3d%22achievement_persistent_traveler%22%3eCgkIubjEkcMWEAIQDA%3c%2fstring%3e%0d%0a++%3cstring+name%3d%22achievement_endless_traveler%22%3eCgkIubjEkcMWEAIQDQ%3c%2fstring%3e%0d%0a++%3cstring+name%3d%22leaderboard_highest_points%22%3eCgkIubjEkcMWEAIQBg%3c%2fstring%3e%0d%0a++%3cstring+name%3d%22leaderboard_highest_overall_points%22%3eCgkIubjEkcMWEAIQDg%3c%2fstring%3e%0d%0a%3c%2fresources%3e%0d%0a
+and.ClientId=
+proj.requireGPlus=false
+android.SetupDone=true

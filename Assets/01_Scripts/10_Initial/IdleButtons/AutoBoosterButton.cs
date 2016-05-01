@@ -21,7 +21,7 @@ public class AutoBoosterButton : OnOffButton {
       applyStatus();
       DataManager.dm.save();
     } else {
-      BillingManager.bm.BuyProduct(id);
+      BillingManager.bm.BuyProductID(id);
       TrackingManager.tm.initiateCheckout(BillingManager.bm.getProduct(id), "Unlock Auto Booster");
     }
   }

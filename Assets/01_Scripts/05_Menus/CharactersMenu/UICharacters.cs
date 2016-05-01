@@ -2,12 +2,12 @@
 using UnityEngine.UI;
 using System.Collections;
 using AbilityData;
-using VoxelBusters.NativePlugins;
+using UnityEngine.Purchasing;
 
 public class UICharacters : MonoBehaviour {
   public CharacterStat stat;
   private string productId;
-  private BillingProduct bProduct;
+  private Product bProduct;
   private string price;
 
   private CharactersMenu charactersMenu;
@@ -132,7 +132,9 @@ public class UICharacters : MonoBehaviour {
         if (bProduct == null) {
           price = "NOT LOADED";
         } else {
-          price = bProduct.CurrencyCode + "\n" + bProduct.Price.ToString("0.00");
+          //Debug.Log("Price localization info: code:" + bProduct.metadata.isoCurrencyCode + ", localDesc:" + bProduct.metadata.localizedDescription + ", localPrice:" + 
+          //  bProduct.metadata.localizedPrice + ", localPriceStr:" + bProduct.metadata.localizedPriceString + ", localTitle:" + bProduct.metadata.localizedTitle);
+          price = bProduct.metadata.isoCurrencyCode + "\n" + bProduct.metadata.localizedPrice;
         }
 
         charactersMenu.buyButton.setCharacter(name, price);
@@ -141,7 +143,7 @@ public class UICharacters : MonoBehaviour {
   }
 
   public void buy() {
-    BillingManager.bm.BuyProduct(productId);
+    BillingManager.bm.BuyProductID(productId);
     TrackingManager.tm.initiateCheckout(bProduct, stat.rarity.ToString());
   }
 

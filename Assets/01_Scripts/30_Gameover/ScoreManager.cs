@@ -281,11 +281,11 @@ public class ScoreManager : MonoBehaviour {
 
     TrackingManager.tm.gameDone();
 
-    if (NPBinding.GameServices.LocalUser.IsAuthenticated == true) {
+    if (SocialPlatformManager.isAuthenticated() == true) {
       // Report achievements after saving data
-      DataManager.npbManager.am.reportAchievements();
+      DataManager.spm.am.reportAchievements();
       // Report leaderboard after saving data
-      DataManager.npbManager.am.reportAllLeaderboard();
+      DataManager.spm.am.reportAllLeaderboard();
     }
   }
 

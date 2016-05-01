@@ -2,13 +2,14 @@ using UnityEngine;
 using System.Collections;
 using System;
 using System.Collections.Generic;
-using VoxelBusters.NativePlugins;
+using GooglePlayGames;
+using UnityEngine.SocialPlatforms;
 
 public class AchievementManager {
   public static List<AchievementObject> achievementsToReport = new List<AchievementObject>();
   // Initialize and start queue processing coroutine
-  public void init() {
-    AchievementConstants.init();
+  public void init(IAchievement[] loadedAchievements) {
+    AchievementConstants.init(loadedAchievements);
   }
 
   public void progressAchievement (string key, int val) {
@@ -48,7 +49,6 @@ public class AchievementManager {
   }
 
   public void reportAchievements() {
-    if (NPBinding.GameServices == null) return;
     // Because LoadAchievements() does not work, just report current progress
     foreach(AchievementObject ach in achievementsToReport) {
       ach.report(0);
@@ -81,10 +81,9 @@ public class AchievementManager {
 
   }
 
-  public void reportAllAchievements() {
-    if (NPBinding.GameServices == null) return;
+  public void reportAllAchievements(IAchievement[] achievements) {
     // Because LoadAchievements() does not work, just report current progress
-    AchievementConstants.init();
+    AchievementConstants.init(achievements);
   }
 
   // Maybe need to move this leaderboard thing to new manager (e.g. leaderboard manager)
@@ -92,17 +91,19 @@ public class AchievementManager {
   public static string LB_OVERALL = "LB_OVERALL";
 
   public void reportLeaderboard(string id, int point) {
-    if (NPBinding.GameServices == null) return;
-
-    Debug.Log("Reporting leaderboard: "+ id + ", " + point);
-
-    NPBinding.GameServices.ReportScoreWithGlobalID(id, point, (bool _success, string _error) => {
-    });
+    if (SocialPlatformManager.isAuthenticated()) {
+      Debug.Log("Reporting leaderboard: " + id + ", " + point);
+      Social.ReportScore((long)point, DataManager.spm.leaderboardtInfoMap[id], (bool _success) => {
+        if (_success)
+          Debug.Log("Successfully reported to the leaderboard: " + id + ", " + point);
+        else
+          Debug.Log("Failed to report to the leaderboared: " + id + ", " + point);
+      });
+    }
   }
 
   public void reportAllLeaderboard() {
     reportLeaderboard(AchievementManager.LB_SINGLE, DataManager.dm.getInt("BestCubes"));
     reportLeaderboard(AchievementManager.LB_OVERALL, DataManager.dm.getInt("TotalCubes"));
   }
-
 }

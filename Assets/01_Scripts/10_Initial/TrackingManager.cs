@@ -1,11 +1,11 @@
-﻿// #undef UNITY_EDITOR
+﻿//#undef UNITY_EDITOR
 
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using Facebook.Unity;
-using VoxelBusters.Utility;
-using VoxelBusters.NativePlugins;
+using UnityEngine.Purchasing;
+
 
 public class TrackingManager : MonoBehaviour {
   public static TrackingManager tm;
@@ -177,43 +177,43 @@ public class TrackingManager : MonoBehaviour {
     #endif
   }
 
-  public void initiateCheckout(BillingProduct bProduct, string rarity) {
+  public void initiateCheckout(Product bProduct, string rarity) {
 #if !UNITY_EDITOR
 
-    new TrackingFacade(AppEventName.InitiatedCheckout, bProduct.Price)
-      .addEvent(AppEventParameterName.ContentID, bProduct.ProductIdentifier)
-      .addEvent(AppEventParameterName.Currency, bProduct.CurrencyCode)
+    new TrackingFacade(AppEventName.InitiatedCheckout, (long) bProduct.metadata.localizedPrice)
+      .addEvent(AppEventParameterName.ContentID, bProduct.definition.id)
+      .addEvent(AppEventParameterName.Currency, bProduct.metadata.isoCurrencyCode)
       .addEvent(AppEventParameterName.ContentType, rarity)
       .logEvent();
 
     #endif
   }
 
-  public void purchase(string transactionId, BillingProduct bProduct, string rarity) {
+  public void purchase(string transactionId, Product bProduct, string rarity) {
 #if !UNITY_EDITOR
 
     googleAnalyticsV3.LogItem(new ItemHitBuilder()
       .SetTransactionID(transactionId)
-      .SetName(bProduct.Name)
-      .SetSKU(bProduct.ProductIdentifier)
+      .SetName(bProduct.definition.id)
+      .SetSKU(bProduct.definition.id)
       .SetCategory("Toy_" + rarity)
-      .SetPrice(bProduct.Price)
+      .SetPrice((long) bProduct.metadata.localizedPrice)
       .SetQuantity(1)
-      .SetCurrencyCode(bProduct.CurrencyCode));
+      .SetCurrencyCode(bProduct.metadata.isoCurrencyCode));
 
     FB.LogPurchase(
-      bProduct.Price,
-      bProduct.CurrencyCode,
+      (long) bProduct.metadata.localizedPrice,
+      bProduct.metadata.isoCurrencyCode,
       new Dictionary<string, object>() {
         { "TransactionId", transactionId },
-        { AppEventParameterName.ContentID, bProduct.ProductIdentifier },
+        { AppEventParameterName.ContentID, bProduct.definition.id },
         { AppEventParameterName.ContentType, rarity }
       });
     
     /* Purchase tracking would be done in Google and Facebook
     Dictionary<string, string> purchaseEvent = new System.Collections.Generic.Dictionary<string, string>();
-    purchaseEvent.Add("af_currency", bProduct.CurrencyCode);
-    purchaseEvent.Add("af_revenue", bProduct.Price + "");
+    purchaseEvent.Add("af_currency", bProduct.metadata.isoCurrencyCode);
+    purchaseEvent.Add("af_revenue", bProduct.metadata.localizedPrice + "");
     purchaseEvent.Add("af_quantity", "1");
     AppsFlyer.trackRichEvent("af_purchase", purchaseEvent);
     */

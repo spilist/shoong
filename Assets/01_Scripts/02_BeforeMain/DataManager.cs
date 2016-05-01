@@ -7,7 +7,7 @@ using UnityEngine.Advertisements;
 
 public class DataManager : MonoBehaviour {
   public static DataManager dm;
-  public static NPBManager npbManager;
+  public static SocialPlatformManager spm;
   private string datapath;
 
   private Dictionary<string, int> ints;
@@ -45,8 +45,8 @@ public class DataManager : MonoBehaviour {
     strings = new Dictionary<string, string>();
     dateTimes = new Dictionary<string, DateTime>();
 
-  	npbManager = GetComponent<NPBManager>();
-    npbManager.init();
+  	spm = GetComponent<SocialPlatformManager>();
+    spm.init();
     Advertisement.Initialize("72081");
     initAppsFlyer();
 
@@ -140,7 +140,7 @@ public class DataManager : MonoBehaviour {
     file.Close();
 
     // Report achievements when saving data (this is for toy collections achievement)
-    DataManager.npbManager.am.reportAchievements();
+    DataManager.spm.am.reportAchievements();
   }
 
   void reset() {
@@ -160,8 +160,8 @@ public class DataManager : MonoBehaviour {
     ints["NumCharactersHave"] = 1;
     ints["NormalCollectorLevel"] = 1;
     //strings["ControlMethod"] = "Touch";
-    strings["ControlMethod"] = "CenterBigStick";
-    // strings["ControlMethod"] = "Stick";
+    // strings["ControlMethod"] = "CenterBigStick";
+    strings["ControlMethod"] = "Stick";
     bools["robotcogi"] = true;
     bools["TutorialDone"] = true;
     // bools["TutorialDone"] = false;
@@ -175,7 +175,7 @@ public class DataManager : MonoBehaviour {
   }
 
   public void setInt(string id, int value) {
-    npbManager.am.progressAchievement(id, value);
+    spm.am.progressAchievement(id, value);
     ints[id] = value;
   }
 
@@ -192,7 +192,7 @@ public class DataManager : MonoBehaviour {
   }
 
   public void setFloat(string id, float value) {
-    npbManager.am.progressAchievement(id, value);
+    spm.am.progressAchievement(id, value);
     floats[id] = value;
   }
 
@@ -209,7 +209,7 @@ public class DataManager : MonoBehaviour {
   }
 
   public void setBool(string id, bool value) {
-    npbManager.am.progressAchievement(id, value);
+    spm.am.progressAchievement(id, value);
     bools[id] = value;
   }
 
@@ -218,7 +218,7 @@ public class DataManager : MonoBehaviour {
   }
 
   public void setString(string id, string value) {
-    npbManager.am.progressAchievement(id, value);
+    spm.am.progressAchievement(id, value);
     strings[id] = value;
   }
 
@@ -227,7 +227,7 @@ public class DataManager : MonoBehaviour {
   }
 
   public void setDateTime(string id) {
-    npbManager.am.progressAchievement(id, DateTime.Now);
+    spm.am.progressAchievement(id, DateTime.Now);
     setDateTime(id, DateTime.Now);
   }
 

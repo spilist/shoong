@@ -552,6 +552,7 @@ Canvas:
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -878,6 +879,7 @@ MonoBehaviour:
   resetGoldenCube: 0
   normalFrameRate: 60
   isFirstPlay: 0
+  isBonusStage: 0
 --- !u!4 &1467429886
 Transform:
   m_ObjectHideFlags: 0
@@ -898,9 +900,44 @@ MonoBehaviour:
   m_GameObject: {fileID: 1467429884}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b3d669611776724587448d336ca8280, type: 3}
+  m_Script: {fileID: 11500000, guid: dee027824e7bcec418cd73e2cd4f6fd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  achievementInfos:
+  - GlobalId: DREAMWALKER_1
+    AndroidId: CgkIubjEkcMWEAIQAw
+    AppleId: 
+  - GlobalId: DREAMWALKER_2
+    AndroidId: CgkIubjEkcMWEAIQBw
+    AppleId: 
+  - GlobalId: DREAMWALKER_3
+    AndroidId: CgkIubjEkcMWEAIQCA
+    AppleId: 
+  - GlobalId: COLLECTOR_1
+    AndroidId: CgkIubjEkcMWEAIQBA
+    AppleId: 
+  - GlobalId: COLLECTOR_2
+    AndroidId: CgkIubjEkcMWEAIQCQ
+    AppleId: 
+  - GlobalId: COLLECTOR_3
+    AndroidId: CgkIubjEkcMWEAIQCg
+    AppleId: 
+  - GlobalId: TRAVELER_1
+    AndroidId: CgkIubjEkcMWEAIQCw
+    AppleId: 
+  - GlobalId: TRAVELER_2
+    AndroidId: CgkIubjEkcMWEAIQDA
+    AppleId: 
+  - GlobalId: TRAVELER_3
+    AndroidId: CgkIubjEkcMWEAIQDQ
+    AppleId: 
+  leaderboardInfos:
+  - GlobalId: LB_SINGLE
+    AndroidId: CgkIubjEkcMWEAIQBg
+    AppleId: 
+  - GlobalId: LB_OVERALL
+    AndroidId: CgkIubjEkcMWEAIQDg
+    AppleId: 
 --- !u!114 &1467429888
 MonoBehaviour:
   m_ObjectHideFlags: 0
