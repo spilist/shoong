@@ -35,14 +35,6 @@ public class BillingManager : MonoBehaviour, IStoreListener {
     RequestBillingProducts();
   }
 
-  void OnEnable() {
-    Debug.Log("OnEnableOnEnableOnEnableOnEnable");
-  }
-
-  void OnDisable() {
-    Debug.Log("OnDisableOnDisableOnDisableOnDisable");
-  }
-
   public void InitializePurchasing() {
     // If we have already connected to Purchasing ...
     if (IsInitialized()) {

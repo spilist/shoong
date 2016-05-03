@@ -20,7 +20,7 @@ public class CubeManager : MonoBehaviour {
   public GameObject pointsGet;
   public List<GameObject> pointPool;
   public int pointsGetAmount = 20;
-  public Text untilTop;
+  public ScoreCompareViewController scoreCompareViewController;
   public int untilTopShowDiff = 500;
   public Color aboveHighscoreColor;
   private string untilTopSign = "-";
@@ -98,8 +98,9 @@ public class CubeManager : MonoBehaviour {
   void Update() {
     if (gameStarted) {
       updateCount();
-      checkAboveHighscore();
-      showUntilTop();
+      if (!scoreCompareViewController.gameObject.activeInHierarchy)
+        scoreCompareViewController.gameObject.SetActive(true);
+      scoreCompareViewController.updateScore(currentCount + pointsByTime);
     }
   }
 
@@ -111,6 +112,7 @@ public class CubeManager : MonoBehaviour {
     cubesCount.text = (currentCount + pointsByTime).ToString("0");
   }
 
+  /*
   void checkAboveHighscore() {
     if (highscore > 0 && !highscoreReached && (currentCount + pointsByTime >= highscore)) {
       highscoreReached = true;
@@ -125,6 +127,7 @@ public class CubeManager : MonoBehaviour {
       untilTop.text = "TOP " + untilTopSign + Mathf.Abs(currentCount + pointsByTime - highscore).ToString("0");
     }
   }
+  */
 
   public void addPointsByTime() {
     pointsByTime += pointsPerSeconds;

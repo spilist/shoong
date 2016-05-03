@@ -93,7 +93,7 @@ public class AchievementManager {
   public void reportLeaderboard(string id, int point) {
     if (SocialPlatformManager.isAuthenticated()) {
       Debug.Log("Reporting leaderboard: " + id + ", " + point);
-      Social.ReportScore((long)point, DataManager.spm.leaderboardtInfoMap[id], (bool _success) => {
+      Social.ReportScore((long)point, SocialPlatformManager.spm.leaderboardInfoMap[id], (bool _success) => {
         if (_success)
           Debug.Log("Successfully reported to the leaderboard: " + id + ", " + point);
         else

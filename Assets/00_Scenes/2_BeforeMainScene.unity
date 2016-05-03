@@ -299,7 +299,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
 --- !u!1 &284073672
 GameObject:
   m_ObjectHideFlags: 0
@@ -399,7 +399,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
 --- !u!1 &443138057
 GameObject:
   m_ObjectHideFlags: 0
@@ -784,6 +784,92 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
+--- !u!1 &1129340617
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1129340620}
+  - 114: {fileID: 1129340619}
+  - 114: {fileID: 1129340618}
+  m_Layer: 0
+  m_Name: SocialManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1129340618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1129340617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f85eb2d76adba640b8d34e220efa5cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1129340619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1129340617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dee027824e7bcec418cd73e2cd4f6fd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  achievementInfos:
+  - GlobalId: DREAMWALKER_1
+    AndroidId: CgkIubjEkcMWEAIQAw
+    AppleId: 
+  - GlobalId: DREAMWALKER_2
+    AndroidId: CgkIubjEkcMWEAIQBw
+    AppleId: 
+  - GlobalId: DREAMWALKER_3
+    AndroidId: CgkIubjEkcMWEAIQCA
+    AppleId: 
+  - GlobalId: COLLECTOR_1
+    AndroidId: CgkIubjEkcMWEAIQBA
+    AppleId: 
+  - GlobalId: COLLECTOR_2
+    AndroidId: CgkIubjEkcMWEAIQCQ
+    AppleId: 
+  - GlobalId: COLLECTOR_3
+    AndroidId: CgkIubjEkcMWEAIQCg
+    AppleId: 
+  - GlobalId: TRAVELER_1
+    AndroidId: CgkIubjEkcMWEAIQCw
+    AppleId: 
+  - GlobalId: TRAVELER_2
+    AndroidId: CgkIubjEkcMWEAIQDA
+    AppleId: 
+  - GlobalId: TRAVELER_3
+    AndroidId: CgkIubjEkcMWEAIQDQ
+    AppleId: 
+  leaderboardInfos:
+  - GlobalId: LB_SINGLE
+    AndroidId: CgkIubjEkcMWEAIQBg
+    AppleId: 
+  - GlobalId: LB_OVERALL
+    AndroidId: CgkIubjEkcMWEAIQDg
+    AppleId: 
+--- !u!4 &1129340620
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1129340617}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
 --- !u!1 &1224182093
 GameObject:
   m_ObjectHideFlags: 0
@@ -854,7 +940,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 1467429886}
   - 114: {fileID: 1467429885}
-  - 114: {fileID: 1467429887}
   - 114: {fileID: 1467429888}
   m_Layer: 0
   m_Name: DataManager
@@ -892,52 +977,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
---- !u!114 &1467429887
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1467429884}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dee027824e7bcec418cd73e2cd4f6fd6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  achievementInfos:
-  - GlobalId: DREAMWALKER_1
-    AndroidId: CgkIubjEkcMWEAIQAw
-    AppleId: 
-  - GlobalId: DREAMWALKER_2
-    AndroidId: CgkIubjEkcMWEAIQBw
-    AppleId: 
-  - GlobalId: DREAMWALKER_3
-    AndroidId: CgkIubjEkcMWEAIQCA
-    AppleId: 
-  - GlobalId: COLLECTOR_1
-    AndroidId: CgkIubjEkcMWEAIQBA
-    AppleId: 
-  - GlobalId: COLLECTOR_2
-    AndroidId: CgkIubjEkcMWEAIQCQ
-    AppleId: 
-  - GlobalId: COLLECTOR_3
-    AndroidId: CgkIubjEkcMWEAIQCg
-    AppleId: 
-  - GlobalId: TRAVELER_1
-    AndroidId: CgkIubjEkcMWEAIQCw
-    AppleId: 
-  - GlobalId: TRAVELER_2
-    AndroidId: CgkIubjEkcMWEAIQDA
-    AppleId: 
-  - GlobalId: TRAVELER_3
-    AndroidId: CgkIubjEkcMWEAIQDQ
-    AppleId: 
-  leaderboardInfos:
-  - GlobalId: LB_SINGLE
-    AndroidId: CgkIubjEkcMWEAIQBg
-    AppleId: 
-  - GlobalId: LB_OVERALL
-    AndroidId: CgkIubjEkcMWEAIQDg
-    AppleId: 
 --- !u!114 &1467429888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2752,7 +2791,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
 --- !u!1 &1819544268
 GameObject:
   m_ObjectHideFlags: 0
@@ -2813,7 +2852,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
 --- !u!1 &1981767522
 GameObject:
   m_ObjectHideFlags: 0

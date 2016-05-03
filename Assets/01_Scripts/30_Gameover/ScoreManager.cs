@@ -283,9 +283,9 @@ public class ScoreManager : MonoBehaviour {
 
     if (SocialPlatformManager.isAuthenticated() == true) {
       // Report achievements after saving data
-      DataManager.spm.am.reportAchievements();
+      SocialPlatformManager.spm.am.reportAchievements();
       // Report leaderboard after saving data
-      DataManager.spm.am.reportAllLeaderboard();
+      SocialPlatformManager.spm.am.reportAllLeaderboard();
     }
   }
 

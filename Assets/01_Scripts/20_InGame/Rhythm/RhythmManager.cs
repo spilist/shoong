@@ -359,7 +359,8 @@ public class RhythmManager : MonoBehaviour {
 
   public void unregisterCallback(int instanceId)
   {
-    rhythmCallbackList.Remove(instanceId);
+    if (rhythmCallbackList.ContainsKey(instanceId))
+      rhythmCallbackList.Remove(instanceId);
   }
 
   private void runRhythmCallbacks()

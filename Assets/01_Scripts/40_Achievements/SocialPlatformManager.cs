@@ -4,7 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SocialPlatforms;
 
-public class SocialPlatformManager : MonoBehaviour {  
+public class SocialPlatformManager : MonoBehaviour {
+  public static SocialPlatformManager spm = null;
+  public static SocialDataCache cache = null;
   public AchievementManager am; // If the user is not connected to GPGS or GameCenter, AchievementManager does nothing
 
   [System.Serializable]
@@ -16,9 +18,18 @@ public class SocialPlatformManager : MonoBehaviour {
   public ProductInfo[] achievementInfos;
   public ProductInfo[] leaderboardInfos;
   public Dictionary<string, string> achievementInfoMap;
-  public Dictionary<string, string> leaderboardtInfoMap;
+  public Dictionary<string, string> leaderboardInfoMap;
 
-  public void init() {
+  void Awake() {
+    if (spm != null && spm != this) {
+      Destroy(gameObject);
+      return;
+    }
+
+    DontDestroyOnLoad(gameObject);
+    spm = this;
+    cache = GetComponent<SocialDataCache>();
+
     achievementInfoMap = new Dictionary<string, string>();
     foreach (ProductInfo info in achievementInfos) {
 #if UNITY_IOS
@@ -27,12 +38,12 @@ public class SocialPlatformManager : MonoBehaviour {
       achievementInfoMap.Add(info.GlobalId, info.AndroidId);
 #endif
     }
-    leaderboardtInfoMap = new Dictionary<string, string>();
+    leaderboardInfoMap = new Dictionary<string, string>();
     foreach (ProductInfo info in leaderboardInfos) {
 #if UNITY_IOS
       leaderboardtInfoMap.Add(info.GlobalId, info.AppleId);
 #elif UNITY_ANDROID
-      leaderboardtInfoMap.Add(info.GlobalId, info.AndroidId);
+      leaderboardInfoMap.Add(info.GlobalId, info.AndroidId);
 #endif
     }
     am = new AchievementManager();
@@ -43,7 +54,7 @@ public class SocialPlatformManager : MonoBehaviour {
 #elif UNITY_ANDROID
     PlayGamesPlatform.InitializeInstance(PlayGamesClientConfiguration.DefaultConfiguration);
     // recommended for debugging:
-    //PlayGamesPlatform.DebugLogEnabled = true;
+    PlayGamesPlatform.DebugLogEnabled = true;
     // Activate the Google Play Games platform
     PlayGamesPlatform.Activate();
 #endif
@@ -62,9 +73,12 @@ public class SocialPlatformManager : MonoBehaviour {
     if (SocialPlatformManager.isAuthenticated() == false) {
       Social.localUser.Authenticate((bool _success)=>{
         if (_success) {
+          // This line is required, or cannot load profile image. This is bug. https://github.com/playgameservices/play-games-plugin-for-unity/issues/1056
+          string userName = Social.localUser.userName;
           Debug.Log("Sign-In Successfully");
           DataManager.dm.setBool("GoogleLoggedInSetting", false);
           Social.LoadAchievements(ProcessLoadedAchievements);
+          cache.init();
         } else {
           Debug.Log("Sign-In Failed");
           DataManager.dm.setBool("GoogleLoggedInSetting", true);

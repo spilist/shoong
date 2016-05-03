@@ -69,14 +69,16 @@ public class CharactersMenu : Draggable {
       buyButton.gameObject.SetActive(false);
       numYourCharacters.text = (int.Parse(numYourCharacters.text) + 1).ToString();
     }
-
-    UICharacters uiCharacters = transform.Find("Characters/" + characterName).GetComponent<UICharacters>();
-    if (uiCharacters == null) {
-      return false;
-    } else {
-      uiCharacters.buyComplete(transactionId, bought);
-      return true;
+    if (transform.Find("Characters/" + characterName) != null) {
+      UICharacters uiCharacters = transform.Find("Characters/" + characterName).GetComponent<UICharacters>();
+      if (uiCharacters == null) {
+        return false;
+      } else {
+        uiCharacters.buyComplete(transactionId, bought);
+        return true;
+      }
     }
+    return false;
   }
 
   public void allCharacters() {

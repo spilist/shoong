@@ -42,7 +42,7 @@ public class AchievementObject {
     this.goalValInt = goalVal;
     this.type = TYPE.INT;
     this.currValInt = (int) ((goalVal - initVal) * (currProgress / 100) + initVal);
-    //Debug.Log("Current int progress: " + "gid(" + id + "), pid(" + DataManager.spm.achievementInfoMap[id] + "), init(" + initVal + "), goal(" + goalVal + "), curr(" + currValInt + "), currPercent(" + currProgress + ")");
+    //Debug.Log("Current int progress: " + "gid(" + id + "), pid(" + SocialPlatformManager.spm.achievementInfoMap[id] + "), init(" + initVal + "), goal(" + goalVal + "), curr(" + currValInt + "), currPercent(" + currProgress + ")");
   }
 
   public AchievementObject (string id, float initVal, float goalVal, double currProgress) {
@@ -51,7 +51,7 @@ public class AchievementObject {
     this.goalValFloat = goalVal;
     this.type = TYPE.FLOAT;
     this.currValFloat = (float)((goalVal - initVal) * (currProgress / 100) + initVal);
-    //Debug.Log("Current float progress: " + "gid(" + id + "), pid(" + DataManager.spm.achievementInfoMap[id] + "), init(" + initVal + "), goal(" + goalVal + "), currVal(" + currValInt + "), currPercent(" + currProgress + ")");
+    //Debug.Log("Current float progress: " + "gid(" + id + "), pid(" + SocialPlatformManager.spm.achievementInfoMap[id] + "), init(" + initVal + "), goal(" + goalVal + "), currVal(" + currValInt + "), currPercent(" + currProgress + ")");
   }
 
   public AchievementObject (string id, bool initVal, bool goalVal, double currProgress) {
@@ -167,7 +167,7 @@ public class AchievementObject {
       // We should use PlayGamesPlatform.IncrementAchievement, for incremental one,
       // but ReportProgress will work similarlly.
       // The manual does not recommend it, so need to test.
-      Social.ReportProgress(DataManager.spm.achievementInfoMap[id], progress, (bool _status) => {
+      Social.ReportProgress(SocialPlatformManager.spm.achievementInfoMap[id], progress, (bool _status) => {
         if (_status) {
           Debug.Log(string.Format("Successfully reported points={0} to achievement with ID={1}.", progress, id));
         } else {

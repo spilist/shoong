@@ -22,7 +22,7 @@ public class GoogleAuthButton : OnOffButton {
 
   override public void activateSelf() {
     if (clicked) {
-      DataManager.spm.authenticate((bool _success)=>{
+      SocialPlatformManager.spm.authenticate((bool _success)=>{
         if (_success)
         {
           base.activateSelf();
@@ -32,7 +32,7 @@ public class GoogleAuthButton : OnOffButton {
         }
       });
     } else {
-      DataManager.spm.signout();
+      SocialPlatformManager.spm.signout();
       base.activateSelf();
     }
   }

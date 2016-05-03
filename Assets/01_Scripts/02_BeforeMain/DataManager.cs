@@ -7,7 +7,6 @@ using UnityEngine.Advertisements;
 
 public class DataManager : MonoBehaviour {
   public static DataManager dm;
-  public static SocialPlatformManager spm;
   private string datapath;
 
   private Dictionary<string, int> ints;
@@ -44,9 +43,7 @@ public class DataManager : MonoBehaviour {
     bools = new Dictionary<string, bool>();
     strings = new Dictionary<string, string>();
     dateTimes = new Dictionary<string, DateTime>();
-
-  	spm = GetComponent<SocialPlatformManager>();
-    spm.init();
+    
     Advertisement.Initialize("72081");
     initAppsFlyer();
 
@@ -140,7 +137,7 @@ public class DataManager : MonoBehaviour {
     file.Close();
 
     // Report achievements when saving data (this is for toy collections achievement)
-    DataManager.spm.am.reportAchievements();
+    SocialPlatformManager.spm.am.reportAchievements();
   }
 
   void reset() {
@@ -175,7 +172,8 @@ public class DataManager : MonoBehaviour {
   }
 
   public void setInt(string id, int value) {
-    spm.am.progressAchievement(id, value);
+    if (SocialPlatformManager.spm != null)
+      SocialPlatformManager.spm.am.progressAchievement(id, value);
     ints[id] = value;
   }
 
@@ -192,7 +190,8 @@ public class DataManager : MonoBehaviour {
   }
 
   public void setFloat(string id, float value) {
-    spm.am.progressAchievement(id, value);
+    if (SocialPlatformManager.spm != null)
+      SocialPlatformManager.spm.am.progressAchievement(id, value);
     floats[id] = value;
   }
 
@@ -209,7 +208,8 @@ public class DataManager : MonoBehaviour {
   }
 
   public void setBool(string id, bool value) {
-    spm.am.progressAchievement(id, value);
+    if (SocialPlatformManager.spm != null)
+      SocialPlatformManager.spm.am.progressAchievement(id, value);
     bools[id] = value;
   }
 
@@ -218,7 +218,8 @@ public class DataManager : MonoBehaviour {
   }
 
   public void setString(string id, string value) {
-    spm.am.progressAchievement(id, value);
+    if (SocialPlatformManager.spm != null)
+      SocialPlatformManager.spm.am.progressAchievement(id, value);
     strings[id] = value;
   }
 
@@ -227,7 +228,8 @@ public class DataManager : MonoBehaviour {
   }
 
   public void setDateTime(string id) {
-    spm.am.progressAchievement(id, DateTime.Now);
+    if (SocialPlatformManager.spm != null)
+      SocialPlatformManager.spm.am.progressAchievement(id, DateTime.Now);
     setDateTime(id, DateTime.Now);
   }
 

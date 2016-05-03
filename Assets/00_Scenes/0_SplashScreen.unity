@@ -373,7 +373,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 1617534613}
   - 114: {fileID: 1617534612}
-  - 114: {fileID: 1617534611}
   - 114: {fileID: 1617534614}
   m_Layer: 0
   m_Name: DataManager
@@ -382,52 +381,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1617534611
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1617534610}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dee027824e7bcec418cd73e2cd4f6fd6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  achievementInfos:
-  - GlobalId: DREAMWALKER_1
-    AndroidId: CgkIubjEkcMWEAIQAw
-    AppleId: 
-  - GlobalId: DREAMWALKER_2
-    AndroidId: CgkIubjEkcMWEAIQBw
-    AppleId: 
-  - GlobalId: DREAMWALKER_3
-    AndroidId: CgkIubjEkcMWEAIQCA
-    AppleId: 
-  - GlobalId: COLLECTOR_1
-    AndroidId: CgkIubjEkcMWEAIQBA
-    AppleId: 
-  - GlobalId: COLLECTOR_2
-    AndroidId: CgkIubjEkcMWEAIQCQ
-    AppleId: 
-  - GlobalId: COLLECTOR_3
-    AndroidId: CgkIubjEkcMWEAIQCg
-    AppleId: 
-  - GlobalId: TRAVELER_1
-    AndroidId: CgkIubjEkcMWEAIQCw
-    AppleId: 
-  - GlobalId: TRAVELER_2
-    AndroidId: CgkIubjEkcMWEAIQDA
-    AppleId: 
-  - GlobalId: TRAVELER_3
-    AndroidId: CgkIubjEkcMWEAIQDQ
-    AppleId: 
-  leaderboardInfos:
-  - GlobalId: LB_SINGLE
-    AndroidId: CgkIubjEkcMWEAIQBg
-    AppleId: 
-  - GlobalId: LB_OVERALL
-    AndroidId: CgkIubjEkcMWEAIQDg
-    AppleId: 
 --- !u!114 &1617534612
 MonoBehaviour:
   m_ObjectHideFlags: 0
