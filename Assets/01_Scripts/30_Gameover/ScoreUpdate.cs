@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class ScoreUpdate : MonoBehaviour {
+  public BiggerMeteroidManager bmm;
   public BackButton back;
 
   public Text currentScoreIngame;
@@ -59,6 +60,8 @@ public class ScoreUpdate : MonoBehaviour {
       } else {
         duration = Mathf.Max(scoreUpdateMaxDuration * (float) coinGetThisGame / scoreUpdateMaxStandard, scoreUpdateMinDuration);
       }
+
+      bmm.restoreMaterial();
     } else {
       cubesRecords.SetActive(true);
       cubeDifference = CubeManager.cm.getCount();

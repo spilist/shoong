@@ -44688,6 +44688,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7eac663a70dbe4486b1147277acafd1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bmm: {fileID: 1991538128}
   back: {fileID: 1410312525}
   currentScoreIngame: {fileID: 670284488}
   cubesRecords: {fileID: 1174556616}
@@ -45131,7 +45132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f85eb2d76adba640b8d34e220efa5cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxLoadCount: 50
+  MaxLoadCount: 0
   userScope: 0
 --- !u!1 &878464027
 GameObject:
@@ -107742,6 +107743,7 @@ MonoBehaviour:
     type: 2}
   soundWarningPool: []
   goldenMaterial: {fileID: 2100000, guid: b0c5dcb9f3d5044c898bdbdd644768ab, type: 2}
+  originalMaterial: {fileID: 2100000, guid: 19187f30f1c984dc58d34a4c7e073b6c, type: 2}
 --- !u!114 &1991538129
 MonoBehaviour:
   m_ObjectHideFlags: 0
