@@ -12959,10 +12959,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillObject: {fileID: 851953042}
   useSkillEffect: {fileID: 0}
-  normalRing: 11
+  normalRing: 12
   skillRing: 1
   description: Pull candies
-  duration: 6
+  duration: 5
 --- !u!1 &307625068
 GameObject:
   m_ObjectHideFlags: 0
@@ -45390,7 +45390,7 @@ MonoBehaviour:
   - 5-1
   - 5-2
   - 5-3
-  reqProgressPerLevel: c8000000c80000002c0100002c0100002c010000900100009001000090010000f4010000f4010000f4010000580200005802000058020000bc020000
+  reqProgressPerLevel: 96000000c8000000fa0000005e0100005e010000c2010000c2010000c20100002602000026020000260200008a0200008a0200008a020000ee020000
   smallAsteroidM: {fileID: 1991538121}
   asteroidM: {fileID: 1991538112}
   icm: {fileID: 1991538122}
@@ -50204,8 +50204,8 @@ MonoBehaviour:
   progressCharacter: {fileID: 248982190}
   progressCharacterPosStart: -95
   progressCharacterPosEnd: 115
-  progressPerSecond: 7.5
-  progressPerCube: 0.45
+  progressPerSecond: 6.5
+  progressPerCube: 0.3
   progressChangeSpeed: 5
   npm: {fileID: 1991538117}
   asm: {fileID: 1991538112}
@@ -60913,7 +60913,7 @@ MonoBehaviour:
   boosterMaxSpeeds: 0a0000000500000000000000fbfffffff6ffffff
   boosterSpeedDecreaseStandard: 50
   boosterSpeedDecreases: 140000000a00000000000000f6ffffffecffffff
-  energyReduceOnTimeStandard: 4
+  energyReduceOnTimeStandard: 3
   energyReduceOnTimeStandard_hard: 12
   energyReduceOnTimes: f6fffffffbffffff00000000050000000a000000
   maxEnergyStandard: 100
@@ -106772,8 +106772,8 @@ MonoBehaviour:
   level: 0
   player: {fileID: 0}
   gravity: 90
-  gravityToUser: 90
-  gravityScale: 12
+  gravityToUser: 85
+  gravityScale: 10
   reboundDuring: 1.5
   shakeAmount: 3
   reboundingSpeed: 1000
@@ -107171,7 +107171,7 @@ MonoBehaviour:
   minSpawnInterval: 0
   maxSpawnInterval: 0
   cubesByEncounter: 5
-  energyGets: 11
+  energyGets: 7
   numSweetsPop: 0
   isNegative: 0
   destroyWhenCollideSelf: 0
@@ -107453,7 +107453,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceSpawnAtStart: 0
-  objAmount: 14
+  objAmount: 15
   objPool: []
   objDestroyEffectPool: []
   objEncounterEffectPool: []
