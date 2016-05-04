@@ -12,6 +12,7 @@ public class SocialDataCache : MonoBehaviour {
   private DateTime lastCachedTime;
   public IUserProfile myProfile;
   public int MaxLoadCount;
+  public UserScope userScope;
   private int loadedCount;
   int approxCount;
   bool friendDataLoaded = false;
@@ -38,7 +39,7 @@ public class SocialDataCache : MonoBehaviour {
 #endif
       lb.id = SocialPlatformManager.spm.leaderboardInfoMap[AchievementManager.LB_SINGLE];
       lb.range = new Range(1, MaxLoadCount);
-      lb.userScope = UserScope.FriendsOnly;
+      lb.userScope = userScope;
       lb.timeScope = TimeScope.AllTime;
       lb.LoadScores(loadFriendScores);
     } else {

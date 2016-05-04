@@ -54,7 +54,7 @@ public class ScoreCompareViewController : MonoBehaviour {
         lb = Social.CreateLeaderboard();
         lb.id = SocialPlatformManager.spm.leaderboardInfoMap[AchievementManager.LB_SINGLE];
         lb.range = new Range(1, SocialPlatformManager.cache.MaxLoadCount);
-        lb.userScope = UserScope.FriendsOnly;
+        lb.userScope = SocialPlatformManager.cache.userScope;
         lb.timeScope = TimeScope.AllTime;
         lb.LoadScores(loadFriendScores);
       }
@@ -77,6 +77,9 @@ public class ScoreCompareViewController : MonoBehaviour {
   }
 
   public void updateScore(float currScore) {
+    // Don't show this in bonus stage
+    if (DataManager.dm.isBonusStage)
+      return;
     // If friend list is not loaded, just do nothing
     if (!friendScoreLoaded) {
       return;
@@ -107,12 +110,12 @@ public class ScoreCompareViewController : MonoBehaviour {
     if (changingToNextFriend) {
       return;
     }
-    if (currentIndex < scores.Length) { // There are friends left
+    if (currentIndex < scores.Length - 1) { // There are friends left
       if (currScore >= scores[currentIndex].value - changeOffset) {
-        StartCoroutine(changeToFriend(scores[currentIndex].rank, scores[currentIndex].userID, changeOffset));
+        StartCoroutine(changeToFriend(scores[currentIndex + 1].rank, scores[currentIndex + 1].userID, changeOffset));
       }
-    } else if (currentIndex == scores.Length) { // I'm the highest!
-      StartCoroutine(changeToFriend(1, SocialPlatformManager.cache.myProfile.id, 0));
+    } else if (currentIndex == scores.Length - 1) { // I'm the highest!
+      StartCoroutine(changeToFriend(0, SocialPlatformManager.cache.myProfile.id, 0));
     } else {
       // do nothing
     }
@@ -120,11 +123,12 @@ public class ScoreCompareViewController : MonoBehaviour {
 
   public IEnumerator changeToFriend(int rank, string userId, float offset) {
     changingToNextFriend = true;    
-    startAnimation("ScoreCompareViewPopping", true);
+    //startAnimation("ScoreCompareViewPopping", true);
     while (currScore < scores[currentIndex].value) {
       yield return null;
     }
     startAnimation("ScoreCompareViewChanging", false);
+    GetComponent<AudioSource>().Play();
     changeToFriend(rank, userId);
     currentIndex++;
     yield return new WaitForSeconds(anim.clip.length);
@@ -134,15 +138,21 @@ public class ScoreCompareViewController : MonoBehaviour {
 
   public void changeToFriend(int rank, string userId) {
     if (SocialPlatformManager.cache.userIdToProfileCache.ContainsKey(userId)) {
-      friendName.text = rank + "-" + SocialPlatformManager.cache.userIdToProfileCache[userId].userName;
+      if (rank == 0) // myself
+        friendName.text = "BEST!! " + SocialPlatformManager.cache.userIdToProfileCache[userId].userName;
+      else
+        friendName.text = SocialPlatformManager.cache.userIdToProfileCache[userId].userName;
       Texture2D avatar = SocialPlatformManager.cache.userIdToProfileCache[userId].image;
       if (avatar != null) {
         friendAvatar.sprite = SocialPlatformManager.cache.createFriendAvatarSprite(avatar);
       }
     } else if (testMode) {
-      friendName.text = rank + "-" + userId;
+      if (rank == 0) // myself
+        friendName.text = "BEST!! " + userId;
+      else
+        friendName.text = userId;
     } else { 
-      friendName.text = rank + "-" + "NOT_LOADED";
+      friendName.text = "NOT_LOADED";
     }
   }
 

@@ -45132,6 +45132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxLoadCount: 50
+  userScope: 0
 --- !u!1 &878464027
 GameObject:
   m_ObjectHideFlags: 0
@@ -76774,8 +76775,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: 9d75263984b5f9c4087761810bc67b6f, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -115343,8 +115344,8 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 186, y: -20}
-  m_SizeDelta: {x: 500, y: 100}
+  m_AnchoredPosition: {x: 137, y: 10}
+  m_SizeDelta: {x: 402, y: 38}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2100233779
 MonoBehaviour:
@@ -115378,7 +115379,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: ImYourMan
+  m_Text: IMYOURMAN
 --- !u!222 &2100233780
 CanvasRenderer:
   m_ObjectHideFlags: 0
