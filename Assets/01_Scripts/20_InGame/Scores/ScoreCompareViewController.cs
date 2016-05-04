@@ -5,6 +5,8 @@ using UnityEngine.SocialPlatforms;
 using System.Linq;
 using System.Collections.Generic;
 using System;
+using GooglePlayGames.BasicApi;
+using GooglePlayGames;
 
 public class ScoreCompareViewController : MonoBehaviour {
   public Image friendAvatar;
@@ -13,8 +15,10 @@ public class ScoreCompareViewController : MonoBehaviour {
   public float changeOffset;
   public AudioSource[] soundEffects;
   public bool testMode;
+  int loadedCount;
   Animation anim;
   ILeaderboard lb;
+  List<IScore> scoresList;
   IScore[] scores;
   int currentIndex;
   float currScore;
@@ -26,55 +30,37 @@ public class ScoreCompareViewController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-    friendScoreLoaded = false;
     anim = GetComponent<Animation>();
     setVisible(false);
+    init();
+  }
+
+  void init() {
+    friendScoreLoaded = false;
 #if UNITY_EDITOR
     testMode = true;
 #endif
     if (testMode) {
       // Test values for Unity Editor
-      IScore[] testScores = new IScore[0];
-      for (int i = 0; i < 4; i++) {
-        testScores[i] = new IScoreTestImpl(50 * i, i + 1, "TEST_USER_" + i);
+      IScore[] testScores = new IScore[4];
+      for (int i = 0; i < testScores.Length; i++) {
+        testScores[i] = new IScoreTestImpl(50 * i, testScores.Length - i, "TEST_USER_" + i);
       }
       scores = testScores;
       SocialPlatformManager.cache.myProfile = new IUserProfileTestImpl("TESTMYSELF", null, false, "TEST_MYSELF!!!");
       friendScoreLoaded = true;
     } else {
       if (SocialPlatformManager.isAuthenticated()) {
-        Social.LoadScores(SocialPlatformManager.spm.leaderboardInfoMap[AchievementManager.LB_SINGLE], loadFriendScores);
-        /*
         lb = Social.CreateLeaderboard();
         lb.id = SocialPlatformManager.spm.leaderboardInfoMap[AchievementManager.LB_SINGLE];
-        //lb.range = new Range(0, 0);
-        //lb.userScope = UserScope.Global;
+        lb.range = new Range(1, SocialPlatformManager.cache.MaxLoadCount);
+        lb.userScope = UserScope.Global;
+        lb.timeScope = TimeScope.AllTime;
         lb.LoadScores(loadFriendScores);
-        */
-        currentIndex = 0;
       }
     }
   }
-	
-	// Update is called once per frame
-	void Update () {
-  }
   
-
-  // For using Social.LoadScores
-  public void loadFriendScores(IScore[] scores) {
-    if (scores.Length == 0)
-      return;
-    // Remove duplicate and 0 scores, then order score as acending.
-    this.scores = scores.GroupBy(x => x.value)
-                   .Select(g => g.First())
-                   .Where(x => (x.value != 0))
-                   .OrderBy(x => x.value)
-                   .ToArray();
-    Debug.Log("Unique score counts: " + this.scores.Length);
-    friendScoreLoaded = true;
-  }
-
   // For using Social.Leaderboard
   public void loadFriendScores(bool success) {
     if (!success || lb.scores.Length == 0)
@@ -91,14 +77,15 @@ public class ScoreCompareViewController : MonoBehaviour {
 
   public void updateScore(float currScore) {
     // If friend list is not loaded, just do nothing
-    if (!friendScoreLoaded)
+    if (!friendScoreLoaded) {
       return;
+    }
     // Only visible when friend score is loaded
     if (!isVisible()) {
       if (scores.Length > 0)
-        changeToFriend(scores[currentIndex].userID); // Init to lowest friend!
+        changeToFriend(scores[currentIndex].rank, scores[currentIndex].userID); // Init to lowest friend!
       else
-        changeToFriend(SocialPlatformManager.cache.myProfile.id); // Init to lowest friend!
+        changeToFriend(1, SocialPlatformManager.cache.myProfile.id);
       setVisible(true);
     }
 
@@ -113,46 +100,48 @@ public class ScoreCompareViewController : MonoBehaviour {
       if (currScore < highScore)
         friendScoreComp.text = (int)(currScore - highScore) + "";
       else
-        friendScoreComp.text = "+" + (int)(highScore - currScore) + "";
+        friendScoreComp.text = "+" + (int)(currScore - highScore) + "";
     }
     // Friend index change routine should be done one by one
     if (changingToNextFriend) {
       return;
     }
-    if (currentIndex < scores.Length - 1) { // There are friends left
+    if (currentIndex < scores.Length) { // There are friends left
       if (currScore >= scores[currentIndex].value - changeOffset) {
-        StartCoroutine(changeToFriend(scores[currentIndex].userID, changeOffset));
+        StartCoroutine(changeToFriend(scores[currentIndex].rank, scores[currentIndex].userID, changeOffset));
       }
-    } else if (currentIndex == scores.Length - 1) { // I'm the highest!
-      StartCoroutine(changeToFriend(SocialPlatformManager.cache.myProfile.id, 0));
+    } else if (currentIndex == scores.Length) { // I'm the highest!
+      StartCoroutine(changeToFriend(1, SocialPlatformManager.cache.myProfile.id, 0));
     } else {
       // do nothing
     }
   }
 
-  public IEnumerator changeToFriend(string userId, float offset) {
+  public IEnumerator changeToFriend(int rank, string userId, float offset) {
     changingToNextFriend = true;    
     startAnimation("ScoreCompareViewPopping", true);
     while (currScore < scores[currentIndex].value) {
       yield return null;
     }
     startAnimation("ScoreCompareViewChanging", false);
-    changeToFriend(userId);
+    changeToFriend(rank, userId);
     currentIndex++;
     yield return new WaitForSeconds(anim.clip.length);
     changingToNextFriend = false;
     yield return null;
   }
 
-  public void changeToFriend(string userId) {
+  public void changeToFriend(int rank, string userId) {
     if (SocialPlatformManager.cache.userIdToProfileCache.ContainsKey(userId)) {
-      friendName.text = SocialPlatformManager.cache.userIdToProfileCache[userId].userName;
+      friendName.text = rank + "-" + SocialPlatformManager.cache.userIdToProfileCache[userId].userName;
       Texture2D avatar = SocialPlatformManager.cache.userIdToProfileCache[userId].image;
       if (avatar != null) {
         friendAvatar.sprite = SocialPlatformManager.cache.createFriendAvatarSprite(avatar);
       }
-    } else {
-      friendName.text = userId;
+    } else if (testMode) {
+      friendName.text = rank + "-" + userId;
+    } else { 
+      friendName.text = rank + "-" + "NOT_LOADED";
     }
   }
 

@@ -22,8 +22,17 @@ public class BillingManager : MonoBehaviour, IStoreListener {
   private ProductDefinition[] m_products;
   private Dictionary<string, Product> m_products_map;
 
-  void Start() {
+  void Awake() {
+    if (bm != null && bm != this) {
+      Destroy(gameObject);
+      return;
+    }
+
+    DontDestroyOnLoad(gameObject);
     bm = this;
+  }
+
+  void Start() {
     m_products = new ProductDefinition[productInfos.Length];
     for (int i = 0; i < productInfos.Length; i++) {
 #if UNITY_IOS

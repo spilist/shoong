@@ -5,10 +5,15 @@ using UnityEngine.SocialPlatforms;
 using System.Linq;
 using System;
 using System.Threading;
+using GooglePlayGames.BasicApi;
+using GooglePlayGames;
 
 public class SocialDataCache : MonoBehaviour {
   private DateTime lastCachedTime;
   public IUserProfile myProfile;
+  public int MaxLoadCount;
+  private int loadedCount;
+  int approxCount;
   bool friendDataLoaded = false;
   ILeaderboard lb;
   public Dictionary<string, IUserProfile> userIdToProfileCache = new Dictionary<string, IUserProfile>();
@@ -25,35 +30,24 @@ public class SocialDataCache : MonoBehaviour {
   public void init() {
     if (SocialPlatformManager.isAuthenticated()) {
       Debug.Log("SocialDataCache: Start initializing...");
-      Social.LoadScores(SocialPlatformManager.spm.leaderboardInfoMap[AchievementManager.LB_SINGLE], loadFriendScores);
-      /*
 #if UNITY_IOS
   // Write for Game Center
       lb = Social.CreateLeaderboard();
 #elif UNITY_ANDROID
-      lb = GooglePlayGames.PlayGamesPlatform.Instance.CreateLeaderboard();
+      lb = PlayGamesPlatform.Instance.CreateLeaderboard();
 #endif
       lb.id = SocialPlatformManager.spm.leaderboardInfoMap[AchievementManager.LB_SINGLE];
-      lb.range = new Range(0, 0);
+      lb.range = new Range(1, MaxLoadCount);
       lb.userScope = UserScope.Global;
-      new Thread(() => lb.LoadScores(loadFriendScores)).Start();
-      */
+      lb.timeScope = TimeScope.AllTime;
+      lb.LoadScores(loadFriendScores);
     } else {
       Debug.Log("SocialDataCache: Not authorized yet");
     }
   }
-  void loadFriendScores(IScore[] scores) {
-    // Remove duplicate and 0 scores, then order score as acending.
-    string[] userIDs = scores.Where(x => !userIdToProfileCache.ContainsKey(x.userID))
-                             .Select(x => x.userID)
-                             .Concat(new[] { Social.localUser.id }).ToArray();
-    Debug.Log("Scores loaded count: " + scores.Length);
-    Debug.Log("Asking friends count: " + userIDs.Length);
-    Social.LoadUsers(userIDs, loadFriendInfos);
-  }
 
+  // For using Social.Leaderboard
   void loadFriendScores(bool success) {
-    // Remove duplicate and 0 scores, then order score as acending.
     string[] userIDs = lb.scores.Where(x => !userIdToProfileCache.ContainsKey(x.userID))
                              .Select(x => x.userID)
                              .Concat(new[] { Social.localUser.id }).ToArray();

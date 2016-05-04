@@ -25,7 +25,7 @@ public class SocialPlatformManager : MonoBehaviour {
       Destroy(gameObject);
       return;
     }
-
+    
     DontDestroyOnLoad(gameObject);
     spm = this;
     cache = GetComponent<SocialDataCache>();
@@ -48,6 +48,7 @@ public class SocialPlatformManager : MonoBehaviour {
     }
     am = new AchievementManager();
 
+    
 
 #if UNITY_IOS
     // Initialize game center here
@@ -77,7 +78,7 @@ public class SocialPlatformManager : MonoBehaviour {
           string userName = Social.localUser.userName;
           Debug.Log("Sign-In Successfully");
           DataManager.dm.setBool("GoogleLoggedInSetting", false);
-          Social.LoadAchievements(ProcessLoadedAchievements);
+          //Social.LoadAchievements(ProcessLoadedAchievements);
           cache.init();
         } else {
           Debug.Log("Sign-In Failed");
@@ -87,7 +88,7 @@ public class SocialPlatformManager : MonoBehaviour {
           onCompletion(_success);
       });
     } else { // Already authenticated
-      onCompletion(true);
+      //onCompletion(true);
     }
   }
 

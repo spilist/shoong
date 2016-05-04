@@ -137,7 +137,8 @@ public class DataManager : MonoBehaviour {
     file.Close();
 
     // Report achievements when saving data (this is for toy collections achievement)
-    SocialPlatformManager.spm.am.reportAchievements();
+    if (SocialPlatformManager.spm != null)
+      SocialPlatformManager.spm.am.reportAchievements();
   }
 
   void reset() {
