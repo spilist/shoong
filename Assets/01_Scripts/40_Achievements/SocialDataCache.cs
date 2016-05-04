@@ -38,7 +38,7 @@ public class SocialDataCache : MonoBehaviour {
 #endif
       lb.id = SocialPlatformManager.spm.leaderboardInfoMap[AchievementManager.LB_SINGLE];
       lb.range = new Range(1, MaxLoadCount);
-      lb.userScope = UserScope.Global;
+      lb.userScope = UserScope.FriendsOnly;
       lb.timeScope = TimeScope.AllTime;
       lb.LoadScores(loadFriendScores);
     } else {
@@ -48,6 +48,7 @@ public class SocialDataCache : MonoBehaviour {
 
   // For using Social.Leaderboard
   void loadFriendScores(bool success) {
+    IScore test = lb.localUserScore;
     string[] userIDs = lb.scores.Where(x => !userIdToProfileCache.ContainsKey(x.userID))
                              .Select(x => x.userID)
                              .Concat(new[] { Social.localUser.id }).ToArray();

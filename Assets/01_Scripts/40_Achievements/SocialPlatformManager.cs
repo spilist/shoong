@@ -78,7 +78,6 @@ public class SocialPlatformManager : MonoBehaviour {
           string userName = Social.localUser.userName;
           Debug.Log("Sign-In Successfully");
           DataManager.dm.setBool("GoogleLoggedInSetting", false);
-          //Social.LoadAchievements(ProcessLoadedAchievements);
           cache.init();
         } else {
           Debug.Log("Sign-In Failed");
@@ -88,7 +87,8 @@ public class SocialPlatformManager : MonoBehaviour {
           onCompletion(_success);
       });
     } else { // Already authenticated
-      //onCompletion(true);
+      if (onCompletion != null)
+        onCompletion(true);
     }
   }
 
@@ -116,10 +116,24 @@ public class SocialPlatformManager : MonoBehaviour {
   }
 
   public void showAchievementUI() {
-    Social.ShowAchievementsUI();
+    //Social.ShowAchievementsUI();
+    if (!isAuthenticated())
+      authenticate((bool success) => {
+        if (success)
+          Social.ShowAchievementsUI();
+      });
+    else
+      Social.ShowAchievementsUI();
   }
 
   public void showLeaderboardUI() {
-    Social.ShowLeaderboardUI();
+    //Social.ShowLeaderboardUI();
+    if (!isAuthenticated())
+      authenticate((bool success) => {
+        if (success)
+          Social.ShowLeaderboardUI();
+      });
+    else
+      Social.ShowLeaderboardUI();
   }
 }

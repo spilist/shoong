@@ -45131,7 +45131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f85eb2d76adba640b8d34e220efa5cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxLoadCount: 100
+  MaxLoadCount: 50
 --- !u!1 &878464027
 GameObject:
   m_ObjectHideFlags: 0

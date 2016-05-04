@@ -54,7 +54,7 @@ public class ScoreCompareViewController : MonoBehaviour {
         lb = Social.CreateLeaderboard();
         lb.id = SocialPlatformManager.spm.leaderboardInfoMap[AchievementManager.LB_SINGLE];
         lb.range = new Range(1, SocialPlatformManager.cache.MaxLoadCount);
-        lb.userScope = UserScope.Global;
+        lb.userScope = UserScope.FriendsOnly;
         lb.timeScope = TimeScope.AllTime;
         lb.LoadScores(loadFriendScores);
       }
@@ -65,6 +65,7 @@ public class ScoreCompareViewController : MonoBehaviour {
   public void loadFriendScores(bool success) {
     if (!success || lb.scores.Length == 0)
       return;
+    IScore test = lb.localUserScore;
     // Remove duplicate and 0 scores, then order score as acending.
     scores = lb.scores.GroupBy(x => x.value)
                    .Select(g => g.First())
