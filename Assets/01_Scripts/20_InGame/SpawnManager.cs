@@ -67,7 +67,7 @@ public class SpawnManager : MonoBehaviour {
       spawnPosition = Camera.main.ViewportToWorldPoint(new Vector3(screenX, screenY, Camera.main.transform.position.y));
     } while(Physics.OverlapSphere(spawnPosition, radius, mask).Length > 0 && count++ < 100);
 
-    if (count >= 100) Debug.Log(target.name + " is overlapped");
+    //if (count >= 100) Debug.Log(target.name + " is overlapped");
 
     return spawnPosition;
   }

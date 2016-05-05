@@ -7,6 +7,9 @@ public class MagnetSphere : MonoBehaviour {
   void OnEnable() {}
 
   void OnTriggerEnter(Collider other) {
-    other.GetComponent<ObjectsMover>().setMagnetized();
+    if (other.GetComponent<ObjectsMover>() != null)
+      other.GetComponent<ObjectsMover>().setMagnetized();
+    else
+      Debug.Log("Magnet try to magentize object that does not have mover: " + other.gameObject.name);
   }
 }
