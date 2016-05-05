@@ -8910,7 +8910,7 @@ MonoBehaviour:
   skillRing: 1
   description: Restore energy
   duration: 0
-  amount: 20
+  amount: 18
 --- !u!1 &222636911
 GameObject:
   m_ObjectHideFlags: 0
@@ -23225,7 +23225,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillObject: {fileID: 1426521849}
   useSkillEffect: {fileID: 1830827562}
-  normalRing: 13
+  normalRing: 14
   skillRing: 1
   description: Become real
   duration: 6
@@ -63861,7 +63861,7 @@ MonoBehaviour:
   normalRing: 7
   skillRing: 1
   description: Pass anything
-  duration: 3
+  duration: 4
   contactCollider: {fileID: 1298175624}
 --- !u!1 &1322196945
 GameObject:
