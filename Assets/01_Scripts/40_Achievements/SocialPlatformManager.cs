@@ -25,7 +25,7 @@ public class SocialPlatformManager : MonoBehaviour {
       Destroy(gameObject);
       return;
     }
-    
+
     DontDestroyOnLoad(gameObject);
     spm = this;
     cache = GetComponent<SocialDataCache>();
@@ -41,14 +41,14 @@ public class SocialPlatformManager : MonoBehaviour {
     leaderboardInfoMap = new Dictionary<string, string>();
     foreach (ProductInfo info in leaderboardInfos) {
 #if UNITY_IOS
-      leaderboardtInfoMap.Add(info.GlobalId, info.AppleId);
+      leaderboardInfoMap.Add(info.GlobalId, info.AppleId);
 #elif UNITY_ANDROID
       leaderboardInfoMap.Add(info.GlobalId, info.AndroidId);
 #endif
     }
     am = new AchievementManager();
 
-    
+
 
 #if UNITY_IOS
     // Initialize game center here
@@ -112,7 +112,7 @@ public class SocialPlatformManager : MonoBehaviour {
       Debug.Log("Got " + achievements.Length + " achievements");
 
     am.reportAllAchievements(achievements);
-    
+
   }
 
   public void showAchievementUI() {

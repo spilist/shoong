@@ -14,6 +14,7 @@ public class BiggerMeteroidManager : ObjectsManager {
   public GameObject fallingStarSoundWarningPrefab;
   public List<GameObject> soundWarningPool;
   public Material goldenMaterial;
+  public Material originalMaterial;
 
   private Vector3 obstacleDirection;
   private Vector3 destination;
@@ -22,6 +23,10 @@ public class BiggerMeteroidManager : ObjectsManager {
     if (DataManager.dm.isBonusStage) {
       objPrefab.GetComponent<Renderer>().sharedMaterial = goldenMaterial;
     }
+  }
+
+  public void restoreMaterial() {
+    objPrefab.GetComponent<Renderer>().sharedMaterial = originalMaterial;
   }
 
   override public void initRest() {
