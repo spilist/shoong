@@ -529,14 +529,14 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
       minMaxState: 0
-    cnt0: 30
-    cnt1: 30
-    cnt2: 30
-    cnt3: 30
-    cntmax0: 30
-    cntmax1: 30
-    cntmax2: 30
-    cntmax3: 30
+    cnt0: 15
+    cnt1: 15
+    cnt2: 15
+    cnt3: 15
+    cntmax0: 15
+    cntmax1: 15
+    cntmax2: 15
+    cntmax3: 15
     time0: 0.2
     time1: 0.6
     time2: 1
@@ -1974,7 +1974,7 @@ ParticleSystem:
     serializedVersion: 2
     m_Type: 0
     rate:
-      scalar: 120
+      scalar: 90
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -3463,7 +3463,7 @@ ParticleSystem:
     serializedVersion: 2
     m_Type: 0
     rate:
-      scalar: 25
+      scalar: 20
       maxCurve:
         serializedVersion: 2
         m_Curve:

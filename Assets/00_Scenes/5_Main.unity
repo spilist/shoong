@@ -21943,7 +21943,7 @@ ParticleSystem:
     serializedVersion: 2
     m_Type: 0
     rate:
-      scalar: 100
+      scalar: 80
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -36471,7 +36471,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillObject: {fileID: 0}
   useSkillEffect: {fileID: 2042006115}
-  normalRing: 11
+  normalRing: 12
   skillRing: 1
   description: Boost limitlessly
   duration: 6
@@ -41091,13 +41091,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clips:
-  - clip: {fileID: 8300000, guid: 05c48a2eda98044dcb4422f18dde0558, type: 3}
-    bpm: 120
+  - clip: {fileID: 8300000, guid: af93f26d2506b4f5eb0a44cebbc6dc74, type: 3}
+    bpm: 130
     startDelay: 0.3
     volumeSmall: 0.15
     volumeBig: 0.25
-  - clip: {fileID: 8300000, guid: af93f26d2506b4f5eb0a44cebbc6dc74, type: 3}
-    bpm: 130
+  - clip: {fileID: 8300000, guid: 05c48a2eda98044dcb4422f18dde0558, type: 3}
+    bpm: 120
     startDelay: 0.3
     volumeSmall: 0.15
     volumeBig: 0.25
@@ -41130,8 +41130,8 @@ MonoBehaviour:
   - clip: {fileID: 8300000, guid: ed93751a726b3a043874b3ba5ee0aacd, type: 3}
     bpm: 142
     startDelay: 0.3
-    volumeSmall: 0.1
-    volumeBig: 0.15
+    volumeSmall: 0.15
+    volumeBig: 0.25
 --- !u!114 &842576884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60916,7 +60916,7 @@ MonoBehaviour:
   - 3.29
   - 4.39
   baseSpeedStandard: 45
-  baseSpeeds: 1e0000000f00000000000000f1ffffffe2ffffff
+  baseSpeeds: 120000000900000000000000f7ffffffeeffffff
   boosterPlusSpeedStandard: 110
   boosterPlusSpeeds: 0f0000000700000000000000f9fffffff1ffffff
   boosterMaxSpeedStandard: 135
@@ -63758,7 +63758,7 @@ MonoBehaviour:
   changeTime: 0.15
   goldenCubeText: {fileID: 1928310599}
   icon: {fileID: 1813428831}
-  goldenCubePerAds: 50
+  goldenCubePerAds: 70
   showAdsPerGame: 10
   showAdsPerMinutes: 10
   dailyLimit: 10
@@ -66750,7 +66750,7 @@ ParticleSystem:
     serializedVersion: 2
     m_Type: 0
     rate:
-      scalar: 30
+      scalar: 25
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -75008,12 +75008,12 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
       minMaxState: 0
-    cnt0: 30
-    cnt1: 30
+    cnt0: 20
+    cnt1: 20
     cnt2: 30
     cnt3: 30
-    cntmax0: 30
-    cntmax1: 30
+    cntmax0: 20
+    cntmax1: 20
     cntmax2: 30
     cntmax3: 30
     time0: 0.2
@@ -76784,7 +76784,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 9d75263984b5f9c4087761810bc67b6f, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 6406430571464442382ccf0226912850, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -76837,7 +76837,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -107022,7 +107022,7 @@ MonoBehaviour:
   isNegative: 1
   destroyWhenCollideSelf: 0
   instance: {fileID: 0}
-  loseEnergyWhenEncounter: 17
+  loseEnergyWhenEncounter: 19
   bounceDuration: 0.15
   hasLevel: 0
   nameForLevel: 
@@ -107483,7 +107483,7 @@ MonoBehaviour:
   isNegative: 1
   destroyWhenCollideSelf: 0
   instance: {fileID: 0}
-  loseEnergyWhenEncounter: 32
+  loseEnergyWhenEncounter: 35
   bounceDuration: 0.3
   hasLevel: 0
   nameForLevel: 
@@ -107598,7 +107598,7 @@ MonoBehaviour:
   isNegative: 1
   destroyWhenCollideSelf: 0
   instance: {fileID: 0}
-  loseEnergyWhenEncounter: 17
+  loseEnergyWhenEncounter: 19
   bounceDuration: 0.15
   hasLevel: 0
   nameForLevel: 
@@ -107689,7 +107689,7 @@ MonoBehaviour:
   isNegative: 1
   destroyWhenCollideSelf: 0
   instance: {fileID: 0}
-  loseEnergyWhenEncounter: 17
+  loseEnergyWhenEncounter: 19
   bounceDuration: 0.15
   hasLevel: 0
   nameForLevel: 
@@ -117831,7 +117831,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: cd5817e224b2b4d579cf0d0d8bfce316, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.459
+  m_Volume: 0.35
   m_Pitch: 0.4
   Loop: 0
   Mute: 0
