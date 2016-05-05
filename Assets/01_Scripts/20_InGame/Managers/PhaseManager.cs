@@ -179,7 +179,7 @@ public class PhaseManager : MonoBehaviour {
 
   private IEnumerator showNextLevel() {
     if ((level - 1) / 3 != level / 3)
-    AudioManager.am.setAudio(level / 3, true);
+      AudioManager.am.setAudio(level / 3, true);
     if (level > 0) {
       // EnergyManager.em.getFullHealth();
       levelClearEffect.SetActive(true);

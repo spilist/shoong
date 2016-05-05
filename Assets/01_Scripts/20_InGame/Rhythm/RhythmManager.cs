@@ -317,9 +317,10 @@ public class RhythmManager : MonoBehaviour {
 
     if (val) {
       isSkillOK = false;
-
+      Player.pl.skill_fevered = true;
       feverTimePitchMoveAmount = AudioManager.am.main.movePitchToPercent(1.5f, 0.5f);
     } else {
+      Player.pl.skill_fevered = false;
       AudioManager.am.main.movePitch(-feverTimePitchMoveAmount, 0.5f);
     }
 

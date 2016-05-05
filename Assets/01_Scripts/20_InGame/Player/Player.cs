@@ -47,6 +47,7 @@ public class Player : MonoBehaviour {
   private float energizedDuration;
   private float energizedReduceDuration;
   private float energizedSpeedFactor;
+  public float feveredSpeedFactor;
 
   private bool reboundingByBlackhole = false;
   private bool bouncing = false;
@@ -67,6 +68,7 @@ public class Player : MonoBehaviour {
   private bool usingSolar = false;
   private bool usingGhost = false;
   private bool confused = false;
+  [HideInInspector] public bool skill_fevered = false; // For incresing max speed
   public float originalScale;
   private int minimonCounter = 0;
 
@@ -168,6 +170,9 @@ public class Player : MonoBehaviour {
     }
     if (energized && !uncontrollable() && !bouncing) {
       speed *= energizedSpeedFactor;
+    }
+    if (skill_fevered && !uncontrollable() && !bouncing) {
+      speed *= feveredSpeedFactor;
     }
     if (boosterspeed > 0) {
       timeSpaned += Time.fixedDeltaTime;

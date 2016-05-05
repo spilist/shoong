@@ -23,13 +23,32 @@ public class BeatSelector : MonoBehaviour {
 	
 	}
 
+  public void selectBonusSource(int index) {
+    counters = GetComponents<BeatCounter>();
+    beatConstants = GetComponent<BeatConstants>();
+    currentAudioSource = GetComponent<AudioSource>();
+    beatSynchronizer = GetComponent<BeatSynchronizer>();
+    BeatConstants.BeatElement e = beatConstants.bonusClips[index];
+    currentAudioSource.clip = e.clip;
+    beatSynchronizer.currentIndex = index;
+    beatSynchronizer.bpm = e.bpm;
+    beatSynchronizer.startDelay = e.startDelay;
+    beatSynchronizer.volumeSmall = e.volumeSmall;
+    beatSynchronizer.volumeBig = e.volumeBig;
+    beatSynchronizer.enabled = false;
+    beatSynchronizer.enabled = true;
+    foreach (BeatCounter counter in counters) {
+      counter.init();
+    }
+
+  }
+
   public void selectSource(int index) {
     counters = GetComponents<BeatCounter>();
     beatConstants = GetComponent<BeatConstants>();
     currentAudioSource = GetComponent<AudioSource>();
     beatSynchronizer = GetComponent<BeatSynchronizer>();
     BeatConstants.BeatElement e = beatConstants.clips[index];
-    Debug.Log("Music index: " + index + ", name: " + e.clip.name);
     currentAudioSource.clip = e.clip;
     beatSynchronizer.currentIndex = index;
     beatSynchronizer.bpm = e.bpm;
@@ -68,7 +87,10 @@ public class BeatSelector : MonoBehaviour {
   public void moveToPitch(float to, float interval) {
     Debug.Log("Moving pitch to " + to + " taking " + interval + " seconds");
     currentPitchModifier = to - 1f;
-    beatSynchronizer.bpm = beatConstants.clips[beatSynchronizer.currentIndex].bpm * (to);
+    if (!DataManager.dm.isBonusStage)
+      beatSynchronizer.bpm = beatConstants.clips[beatSynchronizer.currentIndex].bpm * (to);
+    else
+      beatSynchronizer.bpm = beatConstants.bonusClips[beatSynchronizer.currentIndex].bpm * (to);
 
     // Reserve pitch change to the beat counter, so the pitch can be changed on the beat
     if (currentMovePitchCoroutine != null)

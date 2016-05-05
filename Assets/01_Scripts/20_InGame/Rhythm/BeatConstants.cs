@@ -3,6 +3,7 @@ using System.Collections;
 
 public class BeatConstants : MonoBehaviour {
   public BeatElement[] clips;
+  public BeatElement[] bonusClips;
 
   // Use this for initialization
   void Start () {
