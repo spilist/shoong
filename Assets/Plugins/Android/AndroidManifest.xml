@@ -43,6 +43,9 @@
         <action android:name="com.android.vending.INSTALL_REFERRER" />
       </intent-filter>
     </receiver>
+	
+	<!-- for notification on android -->
+	<receiver android:name="net.agasper.unitynotification.UnityNotificationManager"></receiver>
     
    <!-- Unomment the following line to track Google advertising ID. Make sure you have Google Play services installed on your Android SDK manager. -->
     <meta-data android:name="com.google.android.gms.version"
@@ -58,6 +61,7 @@
   <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
   <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
   <uses-permission android:name="android.permission.GET_TASKS"/>
+  <uses-permission android:name="android.permission.VIBRATE"/>
   <uses-sdk android:minSdkVersion="15" android:targetSdkVersion="23" />
   
 </manifest>

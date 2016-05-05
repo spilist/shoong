@@ -5,22 +5,18 @@ using SmartLocalization;
 
 public class NotificationManager : MonoBehaviour {
   public static NotificationManager nm;
-  public void CancelAllLocalNotifications() { }
-  public void notifyAfter(int a) { }
-  /*
-  [SerializeField, EnumMaskField(typeof(NotificationType))]
-  private   NotificationType  m_notificationType;
   private string notifyMsg;
+  private HashSet<int> notiIdSet;
 
   void Start() {
     if (nm != null && nm != this) {
       Destroy(gameObject);
       return;
     }
-
+    notiIdSet = new HashSet<int>();
+    Random.seed = System.DateTime.Now.Millisecond;
     DontDestroyOnLoad(gameObject);
     nm = this;
-    NPBinding.NotificationService.RegisterNotificationTypes(m_notificationType);
     LanguageManager languageManager = LanguageManager.Instance;
     languageManager.OnChangeLanguage += OnChangeLanguage;
     OnChangeLanguage(languageManager);
@@ -45,29 +41,29 @@ public class NotificationManager : MonoBehaviour {
 
   public void notifyAfter(int minutes) {
     CancelAllLocalNotifications();
-    ScheduleLocalNotification(CreateNotification(minutes * 60, eNotificationRepeatInterval.NONE));
+    int id = (int)Random.Range(60000, 900000);
+    notiIdSet.Add(id);
+    LocalNotification.SendNotification(id, minutes * 60, "Smashy Toys", notifyMsg, new Color32(0xff, 0x44, 0x44, 255));
   }
 
-  private string ScheduleLocalNotification (CrossPlatformNotification _notification) {
-    return NPBinding.NotificationService.ScheduleLocalNotification(_notification);
-  }
-
-  private void CancelLocalNotification (string _notificationID) {
-    NPBinding.NotificationService.CancelLocalNotification(_notificationID);
+  private void CancelLocalNotification (int _notificationID) {
+    LocalNotification.CancelNotification(_notificationID);
+    notiIdSet.Remove(_notificationID);
   }
 
   public void CancelAllLocalNotifications () {
-    NPBinding.NotificationService.CancelAllLocalNotification();
+    foreach (int id in notiIdSet) {
+      CancelLocalNotification(id);
+    }
+    notiIdSet.Clear();
   }
-
-  private void ClearNotifications () {
-    NPBinding.NotificationService.ClearNotifications();
-  }
-
-  private CrossPlatformNotification CreateNotification (long _fireAfterSec, eNotificationRepeatInterval _repeatInterval) {
+  /*
+  private NotificationDefinition CreateNotification (long _fireAfterSec, long _repeatInterval) {
     // User info
     IDictionary _userInfo     = new Dictionary<string, string>();
     _userInfo["data"]       = "custom data";
+
+    NotificationDefinition def = new NotificationDefinition(_fireAfterSec, _repeatInterval);
 
     CrossPlatformNotification.iOSSpecificProperties _iosProperties      = new CrossPlatformNotification.iOSSpecificProperties();
     _iosProperties.HasAction    = true;
@@ -90,4 +86,5 @@ public class NotificationManager : MonoBehaviour {
     return _notification;
   }
   */
+  
 }
