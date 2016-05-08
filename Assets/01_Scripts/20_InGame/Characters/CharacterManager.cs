@@ -50,6 +50,7 @@ public class CharacterManager : MonoBehaviour {
 
   private List<string> characterNames;
   private List<string> randomList;
+  private Transform aura;
 
   void Awake() {
     cm = this;
@@ -92,6 +93,8 @@ public class CharacterManager : MonoBehaviour {
     isRandom = val;
     if (val) StartCoroutine("randomCharacter");
     else StopCoroutine("randomCharacter");
+
+    if (aura != null) aura.gameObject.SetActive(!val);
   }
 
   IEnumerator randomCharacter() {
@@ -139,7 +142,7 @@ public class CharacterManager : MonoBehaviour {
       tr.gameObject.SetActive(false);
     }
 
-    Transform aura = auras.Find(name);
+    aura = auras.Find(name);
     if (aura != null) aura.gameObject.SetActive(true);
   }
 

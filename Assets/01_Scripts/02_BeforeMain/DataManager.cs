@@ -75,6 +75,7 @@ public class DataManager : MonoBehaviour {
     //AppsFlyer.setAppsFlyerKey("PTuYBhA2CFm48vxR6SGRf7");
 
 #if UNITY_IOS
+    return;
 
     AppsFlyer.setAppID ("PTuYBhA2CFm48vxR6SGRf7");
 
