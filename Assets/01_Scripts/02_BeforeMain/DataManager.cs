@@ -32,6 +32,10 @@ public class DataManager : MonoBehaviour {
       return;
     }
 
+    if (Application.platform == RuntimePlatform.IPhonePlayer) {
+      Environment.SetEnvironmentVariable ("MONO_REFLECTION_SERIALIZER", "yes");
+    }
+
     DontDestroyOnLoad(gameObject);
     dm = this;
     datapath = Application.persistentDataPath + "/GameData.dat";
@@ -43,7 +47,7 @@ public class DataManager : MonoBehaviour {
     bools = new Dictionary<string, bool>();
     strings = new Dictionary<string, string>();
     dateTimes = new Dictionary<string, DateTime>();
-    
+
     Advertisement.Initialize("72081");
     initAppsFlyer();
 
