@@ -45085,38 +45085,38 @@ MonoBehaviour:
   achievementInfos:
   - GlobalId: DREAMWALKER_1
     AndroidId: CgkIubjEkcMWEAIQAw
-    AppleId: 
+    AppleId: DREAMWALKER_1
   - GlobalId: DREAMWALKER_2
     AndroidId: CgkIubjEkcMWEAIQBw
-    AppleId: 
+    AppleId: DREAMWALKER_2
   - GlobalId: DREAMWALKER_3
     AndroidId: CgkIubjEkcMWEAIQCA
-    AppleId: 
+    AppleId: DREAMWALKER_3
   - GlobalId: COLLECTOR_1
     AndroidId: CgkIubjEkcMWEAIQBA
-    AppleId: 
+    AppleId: COLLECTOR_1
   - GlobalId: COLLECTOR_2
     AndroidId: CgkIubjEkcMWEAIQCQ
-    AppleId: 
+    AppleId: COLLECTOR_2
   - GlobalId: COLLECTOR_3
     AndroidId: CgkIubjEkcMWEAIQCg
-    AppleId: 
+    AppleId: COLLECTOR_3
   - GlobalId: TRAVELER_1
     AndroidId: CgkIubjEkcMWEAIQCw
-    AppleId: 
+    AppleId: TRAVELER_1
   - GlobalId: TRAVELER_2
     AndroidId: CgkIubjEkcMWEAIQDA
-    AppleId: 
+    AppleId: TRAVELER_2
   - GlobalId: TRAVELER_3
     AndroidId: CgkIubjEkcMWEAIQDQ
-    AppleId: 
+    AppleId: TRAVELER_3
   leaderboardInfos:
   - GlobalId: LB_SINGLE
     AndroidId: CgkIubjEkcMWEAIQBg
-    AppleId: 
+    AppleId: LB_SINGLE
   - GlobalId: LB_OVERALL
     AndroidId: CgkIubjEkcMWEAIQDg
-    AppleId: 
+    AppleId: LB_OVERALL
 --- !u!4 &877898999
 Transform:
   m_ObjectHideFlags: 0
