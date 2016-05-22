@@ -3,9 +3,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using Facebook.Unity;
 using UnityEngine.Purchasing;
-
 
 public class TrackingManager : MonoBehaviour {
   public static TrackingManager tm;
@@ -23,19 +21,12 @@ public class TrackingManager : MonoBehaviour {
     tm = this;
 
 #if !UNITY_EDITOR
-    if (!FB.IsInitialized) {
-        // Initialize the Facebook SDK
-        FB.Init(InitCallback, OnHideUnity);
-    } else {
-        // Already initialized, signal an app activation App Event
-        FB.ActivateApp();
-    }
     googleAnalyticsV3 = GetComponent<GoogleAnalyticsV3>();
     if (!googleAnalyticsV3.isActiveAndEnabled)
       initGoogleAnalytics();
 
     initAppsFlyer();
-    
+
 #endif
   }
 
@@ -78,27 +69,16 @@ public class TrackingManager : MonoBehaviour {
 
     // un-comment this in case you are not working with the android manifest file
     //AppsFlyer.setAppID (Application.bundleIdentifier);
-    
+
     // for getting the conversion data
     AppsFlyer.loadConversionData("AppsFlyerTrackerCallbacks","didReceiveConversionData", "didReceiveConversionDataWithError");
 
     // for in app billing validation
-    AppsFlyer.createValidateInAppListener ("AppsFlyerTrackerCallbacks", "onInAppBillingSuccess", "onInAppBillingFailure"); 
-    
+    AppsFlyer.createValidateInAppListener ("AppsFlyerTrackerCallbacks", "onInAppBillingSuccess", "onInAppBillingFailure");
+
 #endif
 
     print ("AppsFlyerId = " + AppsFlyer.getAppsFlyerId());
-  }
-
-  private void InitCallback () {
-    if (FB.IsInitialized) {
-        // Signal an app activation App Event
-        FB.ActivateApp();
-        // Continue with Facebook SDK
-        // ...
-    } else {
-        Debug.Log("Failed to Initialize the Facebook SDK");
-    }
   }
 
   private void OnHideUnity (bool isGameShown) {
@@ -128,32 +108,15 @@ public class TrackingManager : MonoBehaviour {
       .logEvent();
 
 #endif
-
-#if UNITY_EDITOR
-
-    Debug.Log("Phase: " + (PhaseManager.pm.phase() + 1));
-    Debug.Log("PlayCharacter: " + CharacterManager.cm.getCurrentCharacter());
-    Debug.Log("isRandom: " + CharacterManager.cm.isRandom);
-    Debug.Log("isHard: " + (CubeManager.cm.getBonus() > 0));
-    Debug.Log("isAuto: " + DataManager.dm.getBool("AutoBoosterSetting"));
-    Debug.Log("Skill: " + SkillManager.sm.skillName());
-    Debug.Log("Score: " + CubeManager.cm.getCount());
-    Debug.Log("Time: " + TimeManager.time.now);
-    Debug.Log("BoosterSuccessRate: " + 100 * ((float)(Player.pl.numBoosters)) / (Player.pl.numBoosters + RhythmManager.rm.failedBeatCount));
-    Debug.Log("Total Plays: " + DataManager.dm.getInt("TotalNumPlays"));
-    Debug.Log("Total PlayingTime: " + DataManager.dm.getInt("TotalTime"));
-    Debug.Log("Gold Earned: " + GoldManager.gm.earned());
-
-    #endif
   }
 
   public void createToy(int numCreate, string rarity, string name, bool isNewToy) {
 #if !UNITY_EDITOR
 
     new TrackingFacade("Create Toy", 1).addEvent("Total Creations", numCreate)
-      .addEvent(AppEventParameterName.ContentID, name)
-      .addEvent(AppEventParameterName.ContentType, rarity)
-      .addEvent("Is a new toy?", isNewToy)
+      // .addEvent(AppEventParameterName.ContentID, name)
+      // .addEvent(AppEventParameterName.ContentType, rarity)
+      // .addEvent("Is a new toy?", isNewToy)
       .logEvent();
     #endif
   }
@@ -170,9 +133,9 @@ public class TrackingManager : MonoBehaviour {
   public void tutorialDone(bool skipped) {
 #if !UNITY_EDITOR
 
-    new TrackingFacade(AppEventName.CompletedTutorial, 0)
-      .addEvent("Skipped", skipped)
-      .logEvent();
+    // new TrackingFacade(AppEventName.CompletedTutorial, 0)
+      // .addEvent("Skipped", skipped)
+      // .logEvent();
 
     #endif
   }
@@ -180,10 +143,10 @@ public class TrackingManager : MonoBehaviour {
   public void initiateCheckout(Product bProduct, string rarity) {
 #if !UNITY_EDITOR
 
-    new TrackingFacade(AppEventName.InitiatedCheckout, (long) bProduct.metadata.localizedPrice)
-      .addEvent(AppEventParameterName.ContentID, bProduct.definition.id)
-      .addEvent(AppEventParameterName.Currency, bProduct.metadata.isoCurrencyCode)
-      .addEvent(AppEventParameterName.ContentType, rarity)
+    new TrackingFacade("InitiatedCheckout", (long) bProduct.metadata.localizedPrice)
+      // .addEvent(AppEventParameterName.ContentID, bProduct.definition.id)
+      // .addEvent(AppEventParameterName.Currency, bProduct.metadata.isoCurrencyCode)
+      // .addEvent(AppEventParameterName.ContentType, rarity)
       .logEvent();
 
     #endif
@@ -201,15 +164,6 @@ public class TrackingManager : MonoBehaviour {
       .SetQuantity(1)
       .SetCurrencyCode(bProduct.metadata.isoCurrencyCode));
 
-    FB.LogPurchase(
-      (long) bProduct.metadata.localizedPrice,
-      bProduct.metadata.isoCurrencyCode,
-      new Dictionary<string, object>() {
-        { "TransactionId", transactionId },
-        { AppEventParameterName.ContentID, bProduct.definition.id },
-        { AppEventParameterName.ContentType, rarity }
-      });
-    
     /* Purchase tracking would be done in Google and Facebook
     Dictionary<string, string> purchaseEvent = new System.Collections.Generic.Dictionary<string, string>();
     purchaseEvent.Add("af_currency", bProduct.metadata.isoCurrencyCode);
@@ -310,16 +264,10 @@ public class TrackingManager : MonoBehaviour {
           return false;
         }
       }
-      Dictionary<string, object> FBParams = new Dictionary<string, object>();
       foreach(EventHitBuilder builder in events)
       {
-        if (builder.GetEventLabel() == "")
-          FBParams.Add(builder.GetEventAction(), builder.GetEventValue());
-        else
-          FBParams.Add(builder.GetEventAction(), builder.GetEventLabel());
         googleAnalyticsV3.LogEvent(builder);
       }
-      FB.LogAppEvent(eventCategory, events[0].GetEventValue(), FBParams);
       sendEvent();
       return true;
     }

@@ -118,6 +118,8 @@ namespace GooglePlayServices
                 return;
             }
 
+            return;
+
             Resolver.DoResolution(svcSupport,
                 "Assets/Plugins/Android",
                 HandleOverwriteConfirmation);
@@ -141,6 +143,7 @@ namespace GooglePlayServices
         [MenuItem("Assets/Google Play Services/Resolve Client Jars")]
         public static void MenuResolve()
         {
+            return;
             Resolver.DoResolution(svcSupport, "Assets/Plugins/Android", HandleOverwriteConfirmation);
 
             AssetDatabase.Refresh();

@@ -3,7 +3,7 @@ namespace UnityEngine.Advertisements {
 
   public static class Advertisement {
 
-  	public static readonly string version = "1.3.3";
+  	public static readonly string version = "1.3.6";
 
     public enum DebugLevel {
       None = 0,
@@ -57,13 +57,16 @@ namespace UnityEngine.Advertisements {
       }
     }
 
-    static public void Initialize(string appId, bool testMode = false) {
+    static public void Initialize(string appId) { Initialize(appId,false); }
+    static public void Initialize(string appId, bool testMode) {
 #if UNITY_ANDROID || UNITY_IOS
       UnityAds.SharedInstance.Init(appId, testMode);
 #endif
     }
 
-    static public void Show(string zoneId = null, ShowOptions options = null) {
+    static public void Show() { Show(null,null); }
+    static public void Show(string zoneId) { Show(zoneId,null); }
+    static public void Show(string zoneId, ShowOptions options) {
 #if UNITY_ANDROID || UNITY_IOS
       UnityAds.SharedInstance.Show(zoneId, options);
 #else
@@ -89,7 +92,8 @@ namespace UnityEngine.Advertisements {
       }
     }
 
-    static public bool IsReady(string zoneId = null) {
+    static public bool IsReady() { return IsReady(null); }
+    static public bool IsReady(string zoneId) {
 #if UNITY_ANDROID || UNITY_IOS
       return UnityAds.canShowZone(zoneId);
 #else

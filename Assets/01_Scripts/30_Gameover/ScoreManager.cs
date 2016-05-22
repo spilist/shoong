@@ -130,8 +130,10 @@ public class ScoreManager : MonoBehaviour {
     Player.pl.stopOtherEffects();
     RhythmManager.rm.stopBeat();
 
+    // Debug.Log("Ads1: " + HZIncentivizedAd.IsAvailable());
     if (!HZIncentivizedAd.IsAvailable()) {
       HZIncentivizedAd.Fetch();
+      // Debug.Log("Ads2: " + HZIncentivizedAd.IsAvailable());
     }
 
     if (reason == "NoEnergy") {

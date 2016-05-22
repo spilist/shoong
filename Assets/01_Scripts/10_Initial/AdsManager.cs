@@ -1,7 +1,6 @@
 ﻿using System;
 using UnityEngine;
 using System.Collections;
-// using GoogleMobileAds.Api;
 using Heyzap;
 
 public class AdsManager : MonoBehaviour {
@@ -12,22 +11,24 @@ public class AdsManager : MonoBehaviour {
 
   void Start () {
     am = this;
-    if (available()) loadAds2();
+    // if (available()) loadAds2();
+    loadAds2();
 	}
 
   void loadAds2() {
     HeyzapAds.Start("d772c6e33d0e63212d4350fc7811d507", HeyzapAds.FLAG_NO_OPTIONS);
+    // Debug.Log("HeyZap load try");
   }
 
   // public void loadAds() {
-  //   #if UNITY_ANDROID
+  //   // #if UNITY_ANDROID
   //       string adUnitId = "ca-app-pub-4666969549435607/8331172170";
-  //   #elif UNITY_IPHONE
-  //       string adUnitId = "INSERT_IOS_INTERSTITIAL_AD_UNIT_ID_HERE";
-  //       return;
-  //   #else
-  //       string adUnitId = "unexpected_platform";
-  //   #endif
+  //   // #elif UNITY_IPHONE
+  //       // string adUnitId = "INSERT_IOS_INTERSTITIAL_AD_UNIT_ID_HERE";
+  //       // return;
+  //   // #else
+  //       // string adUnitId = "unexpected_platform";
+  //   // #endif
 
   //   interstitial = new InterstitialAd(adUnitId);
 
@@ -59,10 +60,10 @@ public class AdsManager : MonoBehaviour {
 
   public void showGameOverAds() {
     // if (available() && interstitial != null && interstitial.IsLoaded()) {
-    if (available()) {
+    // if (available()) {
       HZInterstitialAd.Show();
-      DataManager.dm.setDateTime("LastDateTimeAdsSeen");
-    }
+      // DataManager.dm.setDateTime("LastDateTimeAdsSeen");
+    // }
   }
 
   bool available() {

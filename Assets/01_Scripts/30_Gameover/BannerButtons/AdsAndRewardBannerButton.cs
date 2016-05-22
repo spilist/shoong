@@ -20,18 +20,25 @@ public class AdsAndRewardBannerButton : BannerButton {
 
     if (HZIncentivizedAd.IsAvailable()) {
       HZIncentivizedAd.Show();
-      gold.change(goldenCubePerAds);
 
-      stopBlink();
+      HZIncentivizedAd.AdDisplayListener listener = delegate(string adState, string adTag){
+        if ( adState.Equals("incentivized_result_complete") || adState.Equals("click") ) {
+            // The user has watched the entire video and should be given a reward.
+            gold.change(goldenCubePerAds);
+            stopBlink();
 
-      GetComponent<MeshRenderer>().enabled = false;
-      GetComponent<Collider>().enabled = false;
-      icon.SetActive(false);
+            GetComponent<MeshRenderer>().enabled = false;
+            GetComponent<Collider>().enabled = false;
+            icon.SetActive(false);
 
-      active = false;
-      playTouchSound = false;
+            active = false;
+            playTouchSound = false;
 
-      transform.parent.GetComponent<Text>().text = secondDescription.Replace("_REWARD_", goldenCubePerAds.ToString());
+            transform.parent.GetComponent<Text>().text = secondDescription.Replace("_REWARD_", goldenCubePerAds.ToString());
+        }
+      };
+
+      HZIncentivizedAd.SetDisplayListener(listener);
     }
 
     // if(Advertisement.IsReady("rewardedVideoZone")){ Advertisement.Show("rewardedVideoZone", new ShowOptions {

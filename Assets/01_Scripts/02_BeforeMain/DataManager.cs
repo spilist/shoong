@@ -3,7 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
-using UnityEngine.Advertisements;
+// using UnityEngine.Advertisements;
+using Heyzap;
 
 public class DataManager : MonoBehaviour {
   public static DataManager dm;
@@ -48,7 +49,9 @@ public class DataManager : MonoBehaviour {
     strings = new Dictionary<string, string>();
     dateTimes = new Dictionary<string, DateTime>();
 
-    Advertisement.Initialize("72081");
+    // Advertisement.Initialize("72081");
+    // HeyzapAds.Start("d772c6e33d0e63212d4350fc7811d507", HeyzapAds.FLAG_NO_OPTIONS);
+
     initAppsFlyer();
 
 
