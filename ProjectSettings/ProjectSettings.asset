@@ -90,7 +90,7 @@ PlayerSettings:
     16:9: 1
     Others: 1
   bundleIdentifier: com.morogoro.smashytoysspace
-  bundleVersion: 1.0
+  bundleVersion: 1.1
   preloadedAssets: []
   metroEnableIndependentInputSource: 0
   metroEnableLowLatencyPresentationAPI: 0
@@ -105,7 +105,7 @@ PlayerSettings:
   stripEngineCode: 1
   iPhoneStrippingLevel: 0
   iPhoneScriptCallOptimization: 0
-  iPhoneBuildNumber: 1
+  iPhoneBuildNumber: 3
   ForceInternetPermission: 0
   ForceSDCardPermission: 0
   CreateWallpaper: 0
@@ -336,7 +336,7 @@ PlayerSettings:
   scriptingDefineSymbols:
     1: CROSS_PLATFORM_INPUT;USES_BILLING;USES_GAME_SERVICES;USES_NOTIFICATION_SERVICE
     2: CROSS_PLATFORM_INPUT
-    4: NO_GPGS
+    4: USES_GAME_SERVICES
     7: 
     14: USES_BILLING;USES_GAME_SERVICES;USES_NOTIFICATION_SERVICE
     15: CROSS_PLATFORM_INPUT;USES_BILLING;USES_GAME_SERVICES;USES_NOTIFICATION_SERVICE
