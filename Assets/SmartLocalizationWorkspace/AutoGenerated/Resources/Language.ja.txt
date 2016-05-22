@@ -150,7 +150,7 @@
 		<value>ガネーシャ</value>
 	</data>
 	<data name="CharacterName_f16" xml:space="preserve">
-		<value>F16</value>
+		<value>戦闘機</value>
 	</data>
 	<data name="CharacterName_fruits" xml:space="preserve">
 		<value>果物バスケット</value>

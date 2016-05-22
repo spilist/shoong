@@ -147,10 +147,10 @@
 		<value>Space Dolphin</value>
 	</data>
 	<data name="CharacterName_elephant" xml:space="preserve">
-		<value>Elephant</value>
+		<value>Ragdoll Elephant</value>
 	</data>
 	<data name="CharacterName_f16" xml:space="preserve">
-		<value>F16</value>
+		<value>Jet Fighter</value>
 	</data>
 	<data name="CharacterName_fruits" xml:space="preserve">
 		<value>Fruit Basket</value>
@@ -174,7 +174,7 @@
 		<value>Paper Plane</value>
 	</data>
 	<data name="CharacterName_pheonix" xml:space="preserve">
-		<value>Pheonix</value>
+		<value>Phoenix</value>
 	</data>
 	<data name="CharacterName_policecar" xml:space="preserve">
 		<value>Police Car</value>

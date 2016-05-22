@@ -141,16 +141,16 @@
 		<value>오염된 게</value>
 	</data>
 	<data name="CharacterName_deathstar" xml:space="preserve">
-		<value>검은 공</value>
+		<value>무섭고 까만 공</value>
 	</data>
 	<data name="CharacterName_dolphin" xml:space="preserve">
 		<value>우주 돌고래</value>
 	</data>
 	<data name="CharacterName_elephant" xml:space="preserve">
-		<value>코끼리</value>
+		<value>봉제코끼리</value>
 	</data>
 	<data name="CharacterName_f16" xml:space="preserve">
-		<value>F16</value>
+		<value>전투기</value>
 	</data>
 	<data name="CharacterName_fruits" xml:space="preserve">
 		<value>과일바구니</value>
@@ -177,7 +177,7 @@
 		<value>불사조</value>
 	</data>
 	<data name="CharacterName_policecar" xml:space="preserve">
-		<value>경찰차</value>
+		<value>우주 경찰</value>
 	</data>
 	<data name="CharacterName_robotcat" xml:space="preserve">
 		<value>로봇고양이</value>
@@ -198,7 +198,7 @@
 		<value>곰돌이</value>
 	</data>
 	<data name="CharacterName_toyrobot" xml:space="preserve">
-		<value>장난감 로봇</value>
+		<value>고물 로봇</value>
 	</data>
 	<data name="CharacterName_tyranno" xml:space="preserve">
 		<value>티라노</value>
@@ -207,7 +207,7 @@
 		<value>로봇청소기</value>
 	</data>
 	<data name="CharacterName_wilson" xml:space="preserve">
-		<value>배구공</value>
+		<value>외로운 배구공</value>
 	</data>
 	<data name="CreateToy_NewToy" xml:space="preserve">
 		<value>신규!!</value>
