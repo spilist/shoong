@@ -5,8 +5,10 @@ using UnityEngine.SocialPlatforms;
 using System.Linq;
 using System.Collections.Generic;
 using System;
+#if !NO_GPGS
 using GooglePlayGames.BasicApi;
 using GooglePlayGames;
+#endif
 
 public class ScoreCompareViewController : MonoBehaviour {
   public Image friendAvatar;
