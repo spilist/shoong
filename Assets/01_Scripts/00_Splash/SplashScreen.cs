@@ -12,12 +12,15 @@ public class SplashScreen : MonoBehaviour {
 		else {
 			if (!loaded) {
 				loaded = true;
+        /*
 				if (DataManager.dm.getBool("TutorialDone")) {
 				  Application.LoadLevel("2_BeforeMainScene");
 				} else {
 				  Application.LoadLevel("_Tutorial");
 				}
-			}
+        */
+        Application.LoadLevel("2_BeforeMainScene");
+      }
 		}
 	}
 }

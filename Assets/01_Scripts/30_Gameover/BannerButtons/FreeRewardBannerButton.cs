@@ -27,31 +27,34 @@ public class FreeRewardBannerButton : BannerButton {
     filter.sharedMesh = inactiveMesh;
     GetComponent<Collider>().enabled = false;
 
-    timeIcon.SetActive(true);
+    if (!first) {
+      timeIcon.SetActive(true);
+    }
   }
 
   public void endFreeGift() {
     gameOverUI.SetActive(true);
     if (first) {
       TrackingManager.tm.firstPlayLog("6_FirstGift");
+      gold.change(reward);
+      DataManager.dm.setBool("FirstGiftReceived", true);
     } else {
       DataManager.dm.increment("FreeRewardCount");
-    }
+      int frCount = DataManager.dm.getInt("FreeRewardCount");
+      int rewardCount = frCount >= nextRewardMinutes.Length ? (nextRewardMinutes.Length - 1) : frCount;
+      int nextRewardMinute = nextRewardMinutes[rewardCount];
+      nextRewardTime = DateTime.Now.AddMinutes(nextRewardMinute);
 
-    int frCount = DataManager.dm.getInt("FreeRewardCount");
-    int rewardCount = frCount >= nextRewardMinutes.Length ? (nextRewardMinutes.Length - 1) : frCount;
-    int nextRewardMinute = nextRewardMinutes[rewardCount];
-    nextRewardTime = DateTime.Now.AddMinutes(nextRewardMinute);
+      DataManager.dm.setDateTime("LastFreeRewardTime");
+      indicatingNextTime = true;
 
-    DataManager.dm.setDateTime("LastFreeRewardTime");
-    indicatingNextTime = true;
-
-    gold.change(reward);
+      gold.change(reward);
 
 
-    if (!DataManager.dm.getBool("NotificationSetting")) {
-      NotificationManager.nm.notifyAfter(nextRewardMinute);
-    }
+      if (!DataManager.dm.getBool("NotificationSetting")) {
+        NotificationManager.nm.notifyAfter(nextRewardMinute);
+      }
+    }    
   }
 
   override protected void Update() {
@@ -67,6 +70,12 @@ public class FreeRewardBannerButton : BannerButton {
   }
 
   override public bool available() {
+    if (!DataManager.dm.getBool("FirstGiftReceived")) {
+      if (first) return true;
+      else return false;
+    } else if (first) {
+      return false;
+    }
     float minPassed = (float) (DateTime.Now - DataManager.dm.getDateTime("LastFreeRewardTime")).TotalMinutes;
 
     int rewardCount = DataManager.dm.getInt("FreeRewardCount") >= nextRewardMinutes.Length ? (nextRewardMinutes.Length - 1) : DataManager.dm.getInt("FreeRewardCount");

@@ -14,7 +14,7 @@ public class PlayAgainButton : MenusBehavior {
 	override public void activateSelf() {
     if (isOpeningBox)
       return;
-    if (DataManager.dm.isFirstPlay) {
+    if (DataManager.dm.isFirstPlay()) {
       int firstPlayAgainCount = DataManager.dm.getInt("FirstPlayAgainCount") + 1;
       if (firstPlayAgainCount < 10) {
         TrackingManager.tm.firstPlayLog("8_PlayAgain_" + firstPlayAgainCount);
@@ -32,6 +32,11 @@ public class PlayAgainButton : MenusBehavior {
     beforeIdle.playAgain();
     AudioManager.am.changeVolume("Main", "Min");
     */
+
+
+    if (DataManager.dm.getBool("FirstPlayFinished")) {
+      DataManager.dm.setBool("FirstPlay", false);
+    }
   }
 
   public void stopResetBonus() {

@@ -51,7 +51,6 @@ public class ScoreManager : MonoBehaviour {
   public float gameOverShakeAmount = 8;
 
   private bool isSaved = false;
-  public bool first;
 
   void Awake() {
     sm = this;
@@ -123,6 +122,7 @@ public class ScoreManager : MonoBehaviour {
   }
 
   public void gameOver(string reason) {
+    DataManager.dm.setBool("FirstPlayFinished", true);
     gameOverStatus++;
 
     TimeManager.time.stopTime();
@@ -208,7 +208,7 @@ public class ScoreManager : MonoBehaviour {
   }
 
   public void showBanner() {
-    if (first) {
+    if (DataManager.dm.getBool("FistPlay")) {
       TrackingManager.tm.firstPlayLog("5-1_FirstShowBanner");
     }
 

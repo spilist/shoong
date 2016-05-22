@@ -24,7 +24,6 @@ public class DataManager : MonoBehaviour {
   public int resetGoldenCube = 0;
 
   public int normalFrameRate = 60;
-  public bool isFirstPlay;
   public bool isBonusStage;
 
   void Awake() {
@@ -58,8 +57,9 @@ public class DataManager : MonoBehaviour {
     if (resetAll || !load()) reset();
     initializeAtGameStart();
   }
-
+  
   void initializeAtGameStart() {
+
     Application.targetFrameRate = getInt("BatterySavingSetting");
 
     if (getBool("MuteAudioSetting")) AudioListener.volume = 0;
@@ -69,8 +69,11 @@ public class DataManager : MonoBehaviour {
     }
 
     DataManager.dm.setInt("ShowCharacterCreateCount", 0);
+    
+  }
 
-    isFirstPlay = !DataManager.dm.getBool("TutorialDone");
+  public bool isFirstPlay() {
+    return bools["FirstPlay"];
   }
 
   void initAppsFlyer()
@@ -125,6 +128,10 @@ public class DataManager : MonoBehaviour {
       bools = stringToBoolDict(data.bools);
       strings = stringToStringDict(data.strings);
       dateTimes = stringToDateTimeDict(data.dateTimes);
+      
+      if (bools["FirstPlayFinished"]) {
+        bools["FirstPlay"] = false;
+      }
 
       return true;
     } else {
@@ -170,7 +177,10 @@ public class DataManager : MonoBehaviour {
     strings["ControlMethod"] = "Stick";
     bools["robotcogi"] = true;
     bools["TutorialDone"] = true;
-    // bools["TutorialDone"] = false;
+
+    bools["FirstPlay"] = true;
+    bools["FirstPlayFinished"] = false;
+    bools["FirstGiftReceived"] = false;
 
     // By the implementation of OnOffButton, 'true' actually means 'not logged in'
     bools["GoogleLoggedInSetting"] = true;
