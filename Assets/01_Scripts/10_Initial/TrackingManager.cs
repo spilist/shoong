@@ -114,9 +114,9 @@ public class TrackingManager : MonoBehaviour {
 #if !UNITY_EDITOR
 
     new TrackingFacade("Create Toy", 1).addEvent("Total Creations", numCreate)
-      // .addEvent(AppEventParameterName.ContentID, name)
-      // .addEvent(AppEventParameterName.ContentType, rarity)
-      // .addEvent("Is a new toy?", isNewToy)
+      .addEvent("Content ID", name)
+      .addEvent("Content Type", rarity)
+      .addEvent("Is a new toy?", isNewToy)
       .logEvent();
     #endif
   }
@@ -133,9 +133,9 @@ public class TrackingManager : MonoBehaviour {
   public void tutorialDone(bool skipped) {
 #if !UNITY_EDITOR
 
-    // new TrackingFacade(AppEventName.CompletedTutorial, 0)
-      // .addEvent("Skipped", skipped)
-      // .logEvent();
+    new TrackingFacade("CompletedTutorial", 0)
+      .addEvent("Skipped", skipped)
+      .logEvent();
 
     #endif
   }
@@ -144,9 +144,9 @@ public class TrackingManager : MonoBehaviour {
 #if !UNITY_EDITOR
 
     new TrackingFacade("InitiatedCheckout", (long) bProduct.metadata.localizedPrice)
-      // .addEvent(AppEventParameterName.ContentID, bProduct.definition.id)
-      // .addEvent(AppEventParameterName.Currency, bProduct.metadata.isoCurrencyCode)
-      // .addEvent(AppEventParameterName.ContentType, rarity)
+      .addEvent("Content ID", bProduct.definition.id)
+      .addEvent("Currency", bProduct.metadata.isoCurrencyCode)
+      .addEvent("Content Type", rarity)
       .logEvent();
 
     #endif
