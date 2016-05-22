@@ -33323,7 +33323,6 @@ MonoBehaviour:
   resetCube: 0
   resetGoldenCube: 5000
   normalFrameRate: 60
-  isFirstPlay: 0
   isBonusStage: 0
 --- !u!4 &638403303
 Transform:
@@ -67201,9 +67200,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1.3
-  m_Text: 'smash toys by TEAM MOROGORO
+  m_Text: 'smashy toys by TEAM MOROGORO
 
-    copyright 2015'
+    copyright 2016'
 --- !u!222 &1374463139
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -130,6 +130,8 @@ public class SocialPlatformManager : MonoBehaviour {
 
   public void showLeaderboardUI() {
     //Social.ShowLeaderboardUI();
+    UnityEngine.SocialPlatforms.GameCenter.GameCenterPlatform.ShowLeaderboardUI("LB_SINGLE", TimeScope.AllTime);
+    /*
     if (!isAuthenticated())
       authenticate((bool success) => {
         if (success)
@@ -137,5 +139,6 @@ public class SocialPlatformManager : MonoBehaviour {
       });
     else
       Social.ShowLeaderboardUI();
+      */
   }
 }
