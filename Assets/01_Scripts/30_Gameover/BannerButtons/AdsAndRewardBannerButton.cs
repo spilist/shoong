@@ -2,7 +2,8 @@
 using UnityEngine.UI;
 using System.Collections;
 using System;
-using UnityEngine.Advertisements;
+// using UnityEngine.Advertisements;
+using Heyzap;
 
 public class AdsAndRewardBannerButton : BannerButton {
   public Text goldenCubeText;
@@ -17,27 +18,43 @@ public class AdsAndRewardBannerButton : BannerButton {
 	override public void activateSelf() {
     if (!active) return;
 
-    if(Advertisement.IsReady("rewardedVideoZone")){ Advertisement.Show("rewardedVideoZone", new ShowOptions {
-        resultCallback = result => {
-          Debug.Log(result.ToString());
-          if (result == ShowResult.Finished) {
-            // after ads end, show goldencube get effect
-            gold.change(goldenCubePerAds);
+    if (HZIncentivizedAd.IsAvailable()) {
+      HZIncentivizedAd.Show();
+      gold.change(goldenCubePerAds);
 
-            stopBlink();
+      stopBlink();
 
-            GetComponent<MeshRenderer>().enabled = false;
-            GetComponent<Collider>().enabled = false;
-            icon.SetActive(false);
+      GetComponent<MeshRenderer>().enabled = false;
+      GetComponent<Collider>().enabled = false;
+      icon.SetActive(false);
 
-            active = false;
-            playTouchSound = false;
+      active = false;
+      playTouchSound = false;
 
-            transform.parent.GetComponent<Text>().text = secondDescription.Replace("_REWARD_", goldenCubePerAds.ToString());
-          }
-        }
-      });
+      transform.parent.GetComponent<Text>().text = secondDescription.Replace("_REWARD_", goldenCubePerAds.ToString());
     }
+
+    // if(Advertisement.IsReady("rewardedVideoZone")){ Advertisement.Show("rewardedVideoZone", new ShowOptions {
+    //     resultCallback = result => {
+    //       Debug.Log(result.ToString());
+    //       if (result == ShowResult.Finished) {
+    //         // after ads end, show goldencube get effect
+    //         gold.change(goldenCubePerAds);
+
+    //         stopBlink();
+
+    //         GetComponent<MeshRenderer>().enabled = false;
+    //         GetComponent<Collider>().enabled = false;
+    //         icon.SetActive(false);
+
+    //         active = false;
+    //         playTouchSound = false;
+
+    //         transform.parent.GetComponent<Text>().text = secondDescription.Replace("_REWARD_", goldenCubePerAds.ToString());
+    //       }
+    //     }
+    //   });
+    // }
   }
 
   override public bool available() {

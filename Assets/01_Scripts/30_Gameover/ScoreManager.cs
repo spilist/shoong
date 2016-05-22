@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 using System;
+using Heyzap;
 
 public class ScoreManager : MonoBehaviour {
   public static ScoreManager sm;
@@ -100,7 +101,7 @@ public class ScoreManager : MonoBehaviour {
       if (howMany == numDebrisSpawn) debris.GetComponent<AudioSource>().Play();
     }
   }
-  
+
   IEnumerator rotateCamTest() {
     float time = 0.6f;
     /*
@@ -128,6 +129,10 @@ public class ScoreManager : MonoBehaviour {
     SkillManager.sm.stopSkills();
     Player.pl.stopOtherEffects();
     RhythmManager.rm.stopBeat();
+
+    if (!HZIncentivizedAd.IsAvailable()) {
+      HZIncentivizedAd.Fetch();
+    }
 
     if (reason == "NoEnergy") {
       DataManager.dm.increment("DeathByLowEnergy");
