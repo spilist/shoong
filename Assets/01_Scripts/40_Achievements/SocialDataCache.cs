@@ -5,8 +5,10 @@ using UnityEngine.SocialPlatforms;
 using System.Linq;
 using System;
 using System.Threading;
+#if !NO_GPGS
 using GooglePlayGames.BasicApi;
 using GooglePlayGames;
+#endif
 
 public class SocialDataCache : MonoBehaviour {
   private DateTime lastCachedTime;

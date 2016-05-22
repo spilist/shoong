@@ -1,5 +1,7 @@
-﻿using GooglePlayGames;
+﻿#if !NO_GPGS
+using GooglePlayGames;
 using GooglePlayGames.BasicApi;
+#endif
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SocialPlatforms;
@@ -64,7 +66,7 @@ public class SocialPlatformManager : MonoBehaviour {
   public static bool isAuthenticated() {
 #if UNITY_IOS
   // Write for Game Center
-  return Social.localUser.authenticated == false;
+  return Social.localUser.authenticated;
 #elif UNITY_ANDROID
   return PlayGamesPlatform.Instance.IsAuthenticated();
 #endif

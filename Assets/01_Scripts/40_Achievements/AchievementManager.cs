@@ -2,7 +2,9 @@ using UnityEngine;
 using System.Collections;
 using System;
 using System.Collections.Generic;
+#if !NO_GPGS
 using GooglePlayGames;
+#endif
 using UnityEngine.SocialPlatforms;
 
 public class AchievementManager {
