@@ -16,6 +16,7 @@ public class Player : MonoBehaviour {
 
   public float baseSpeed;
   public float speed;
+  private float stoppingSpeedBuffer = -1;
 	private float boosterspeed;
   private float boosterSpeedUpAmount;
   private float maxBoosterSpeed;
@@ -129,6 +130,13 @@ public class Player : MonoBehaviour {
 	}
 
 	void FixedUpdate () {
+    // Store speed to buffer when stopping is set to true. If stopping is set to false, set to -1 to indicate it is not stopping
+    if (stopping && stoppingSpeedBuffer < 0) {
+      stoppingSpeedBuffer = speed;
+    } else if (!stopping && stoppingSpeedBuffer >= 0) {
+      stoppingSpeedBuffer = -1;
+    }
+
     if (usingPowerBoost) {
       speed = SuperheatManager.sm.baseSpeed;
     } else if (usingEMP) {
@@ -143,7 +151,8 @@ public class Player : MonoBehaviour {
       speed = reboundSpeed / 2f;
     } else {
       if (stopping) {
-        speed = Mathf.MoveTowards(speed, 0, Time.fixedDeltaTime * stoppingSpeed);
+        stoppingSpeedBuffer = Mathf.MoveTowards(stoppingSpeedBuffer, 0, Time.fixedDeltaTime * stoppingSpeed);
+        speed = stoppingSpeedBuffer;
       } else if (ridingMonster) {
         speed = baseSpeed + minimonCounter * monm.enlargeSpeedPerMinimon + boosterspeed;
       } else if (usingGhost) {
