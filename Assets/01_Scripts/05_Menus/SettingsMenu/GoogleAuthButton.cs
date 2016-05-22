@@ -18,6 +18,9 @@ public class GoogleAuthButton : OnOffButton {
 
     //Run the method one first time
     OnChangeLanguage(languageManager);
+#if !UNITY_ANDROID
+    gameObject.SetActive(false);
+#endif
   }
 
   override public void activateSelf() {

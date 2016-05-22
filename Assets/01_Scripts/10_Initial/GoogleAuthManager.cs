@@ -12,8 +12,12 @@ public class GoogleAuthManager : MonoBehaviour {
     manager = this;
     DontDestroyOnLoad(gameObject);
     // By the implementation of OnOffButton, 'false' actually means 'is logged in'
+    /*
     if (DataManager.dm.getBool("GoogleLoggedInSetting") == false) {
       SocialPlatformManager.spm.authenticate((bool x)=> { });
     }
-	}
+    */
+
+    SocialPlatformManager.spm.authenticate((bool x) => { });
+  }
 }
