@@ -8468,8 +8468,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: caa5c2ab1889546ddbde32df3b569256, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  showAfter: 10
-  showPerMin: 10
+  rewardAdShowAfter: 10
+  rewardShowPerMin: 2
+  gameOverAdShowAfter: 10
+  gameOverShowPerMin: 10
 --- !u!4 &179664843
 Transform:
   m_ObjectHideFlags: 0
@@ -62672,7 +62674,7 @@ MonoBehaviour:
   changeTime: 0.15
   goldenCubeText: {fileID: 1928310599}
   icon: {fileID: 1813428831}
-  goldenCubePerAds: 70
+  goldenCubePerAds: 50
   showAdsPerGame: 10
   showAdsPerMinutes: 10
   dailyLimit: 10

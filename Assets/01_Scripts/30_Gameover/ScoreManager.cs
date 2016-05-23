@@ -192,7 +192,7 @@ public class ScoreManager : MonoBehaviour {
     yield return new WaitForSeconds(showPlayerExplosionDuring);
 
     if (AdsManager.am != null) {
-      AdsManager.am.showGameOverAds();
+      yield return AdsManager.am.showGameOverAds();
     }
 
     energyDangerFilter.SetActive(false);

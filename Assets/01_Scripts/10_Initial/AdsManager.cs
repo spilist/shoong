@@ -5,8 +5,11 @@ using Heyzap;
 
 public class AdsManager : MonoBehaviour {
   public static AdsManager am;
-  public int showAfter = 10;
-  public int showPerMin = 2;
+  public int rewardAdShowAfter = 10;
+  public int rewardShowPerMin = 2;
+  public int gameOverAdShowAfter = 10;
+  public int gameOverShowPerMin = 2;
+  private bool gameOverPause = false;
   // private InterstitialAd interstitial;
 
   void Start () {
@@ -58,20 +61,60 @@ public class AdsManager : MonoBehaviour {
   //   if (interstitial != null) interstitial.Destroy();
   // }
 
-  public void showGameOverAds() {
+  public IEnumerator showGameOverAds() {
     // if (available() && interstitial != null && interstitial.IsLoaded()) {
     // if (available()) {
+    if (gameOverAvailable()) {
+      HZShowOptions options = new HZShowOptions();
+      HZIncentivizedAd.SetDisplayListener(gameOverAdsDisaplyListener);
+      gameOverPause = true;
       HZInterstitialAd.Show();
-      // DataManager.dm.setDateTime("LastDateTimeAdsSeen");
-    // }
+      while (gameOverPause) {
+        yield return new WaitForSeconds(0.1f);
+      }
+
+      DataManager.dm.setDateTime("GameOverLastDateTimeAdsSeen");
+    }
+    yield return null;
   }
 
-  bool available() {
-    if (DataManager.dm.getInt("TotalNumPlays") < showAfter) return false;
+  private void gameOverAdsDisaplyListener(string adState, string tag) {
+    if (adState.Equals("show")) {
+      // Sent when an ad has been displayed.
+      // This is a good place to pause your app, if applicable.
 
-    float minutesPassed = (float) (DateTime.Now - DataManager.dm.getDateTime("LastDateTimeAdsSeen")).TotalMinutes;
+    } else if (adState.Equals("hide")) {
+      // Sent when an ad has been removed from view.
+      // This is a good place to unpause your app, if applicable.
+      gameOverPause = false;
+    } else {
+      // For various errors
+      gameOverPause = false;
+    }
+  }
 
-    return minutesPassed >= showPerMin;
+  void setGameOverPause(bool pause) {
+    gameOverPause = pause;
+  }
+
+  public bool rewardAvailable() {
+    if (DataManager.dm.getInt("TotalNumPlays") < rewardAdShowAfter) return false;
+
+    float minutesPassed = (float) (DateTime.Now - DataManager.dm.getDateTime("RewardLastDateTimeAdsSeen")).TotalMinutes;
+
+    return minutesPassed >= rewardShowPerMin;
+  }
+
+  public void showedRewardAd() {
+    DataManager.dm.setDateTime("RewardLastDateTimeAdsSeen");
+  }
+
+  public bool gameOverAvailable() {
+    if (DataManager.dm.getInt("TotalNumPlays") < gameOverAdShowAfter) return false;
+
+    float minutesPassed = (float) (DateTime.Now - DataManager.dm.getDateTime("GameOverLastDateTimeAdsSeen")).TotalMinutes;
+
+    return minutesPassed >= gameOverShowPerMin;
   }
 
   // public void HandleInterstitialClosed(object sender, EventArgs args) {

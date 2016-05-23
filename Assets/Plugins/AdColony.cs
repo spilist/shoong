@@ -176,7 +176,7 @@ public class AdColony : MonoBehaviour
   static public string StatusForZone( string zone_id ) { return "undefined"; }
   static public void NotifyIAPComplete( string product_id, string trans_id, string currency_code, double price, int quantity) { return; }
 
-#elif UNITY_IPHONE && !UNITY_EDITOR
+#elif UNITY_IOS && !UNITY_EDITOR
   static public void Configure( string app_version, string app_id, params string[] zone_ids ) {
     if (configured) {
       return;
