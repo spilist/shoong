@@ -208,7 +208,7 @@ public class ScoreManager : MonoBehaviour {
   }
 
   public void showBanner() {
-    if (DataManager.dm.getBool("FistPlay")) {
+    if (DataManager.dm.getBool("FirstPlay")) {
       TrackingManager.tm.firstPlayLog("5-1_FirstShowBanner");
     }
 

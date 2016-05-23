@@ -228,7 +228,7 @@
 		<value>無料ギフト</value>
 	</data>
 	<data name="GameOver_GoldsEarned" xml:space="preserve">
-		<value>                 _REWARD_ コイン獲得</value>
+		<value>_REWARD_ コイン獲得</value>
 	</data>
 	<data name="GameOver_ManualBonus" xml:space="preserve">
 		<value>マニュアルボーナス</value>

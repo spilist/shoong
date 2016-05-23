@@ -8,7 +8,7 @@ public class AdsManager : MonoBehaviour {
   public int rewardAdShowAfter = 10;
   public int rewardShowPerMin = 2;
   public int gameOverAdShowAfter = 10;
-  public int gameOverShowPerMin = 2;
+  public int gameOverShowPerMin = 10;
   private bool gameOverPause = false;
   // private InterstitialAd interstitial;
 
@@ -65,20 +65,23 @@ public class AdsManager : MonoBehaviour {
     // if (available() && interstitial != null && interstitial.IsLoaded()) {
     // if (available()) {
     if (gameOverAvailable()) {
-      HZShowOptions options = new HZShowOptions();
-      HZIncentivizedAd.SetDisplayListener(gameOverAdsDisaplyListener);
+      HZInterstitialAd.SetDisplayListener(gameOverAdsDisaplyListener);
       gameOverPause = true;
       HZInterstitialAd.Show();
+#if !UNITY_EDITOR
       while (gameOverPause) {
-        yield return new WaitForSeconds(0.1f);
+        yield return null;
       }
+#endif
+      yield return null;
+      HZInterstitialAd.SetDisplayListener(null);
 
       DataManager.dm.setDateTime("GameOverLastDateTimeAdsSeen");
     }
-    yield return null;
   }
 
   private void gameOverAdsDisaplyListener(string adState, string tag) {
+    Debug.Log("adState: " + adState);
     if (adState.Equals("show")) {
       // Sent when an ad has been displayed.
       // This is a good place to pause your app, if applicable.
@@ -103,6 +106,10 @@ public class AdsManager : MonoBehaviour {
     float minutesPassed = (float) (DateTime.Now - DataManager.dm.getDateTime("RewardLastDateTimeAdsSeen")).TotalMinutes;
 
     return minutesPassed >= rewardShowPerMin;
+  }
+
+  public TimeSpan getRewardTimeLeft() {
+    return (new TimeSpan(0, rewardShowPerMin, 0)).Subtract(DateTime.Now - DataManager.dm.getDateTime("RewardLastDateTimeAdsSeen"));
   }
 
   public void showedRewardAd() {

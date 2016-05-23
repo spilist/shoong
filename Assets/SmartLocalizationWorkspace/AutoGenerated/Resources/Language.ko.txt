@@ -228,7 +228,7 @@
 		<value>무료 선물</value>
 	</data>
 	<data name="GameOver_GoldsEarned" xml:space="preserve">
-		<value>                 _REWARD_ 코인 얻음</value>
+		<value>_REWARD_ 코인 얻음</value>
 	</data>
 	<data name="GameOver_ManualBonus" xml:space="preserve">
 		<value>난이도 보너스</value>

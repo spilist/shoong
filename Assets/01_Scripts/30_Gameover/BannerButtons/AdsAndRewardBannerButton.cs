@@ -8,16 +8,54 @@ using Heyzap;
 public class AdsAndRewardBannerButton : BannerButton {
   public Text goldenCubeText;
   public GameObject icon;
+  public GameObject timeIcon;
 
   public int goldenCubePerAds = 30;
-  public int showAdsPerGame = 10;
-  public int showAdsPerMinutes = 10;
   public int dailyLimit = 5;
   private bool active = true;
+  private bool indicatingNextTime = false;
+  bool buttonDisabled = false;
+  bool receivedReward = false;
 
-	override public void activateSelf() {
+
+  override protected void Update() {
+    base.Update();
+    if (gameObject.activeInHierarchy) {
+      if (AdsManager.am.rewardAvailable()) {
+        if (buttonDisabled && !receivedReward) {
+          activateButton(true);
+          timeIcon.SetActive(false);
+          if (transform.parent.GetComponent<Text>() != null)
+            transform.parent.GetComponent<Text>().text = description;
+        }
+      } else {
+        if (!buttonDisabled) {
+          activateButton(false);
+        }
+        if (!receivedReward) {
+          TimeSpan interval = AdsManager.am.getRewardTimeLeft();
+          string timeUntilAvailable = interval.Hours.ToString("00") + ":" + interval.Minutes.ToString("00") + ":" + interval.Seconds.ToString("00");
+          timeIcon.SetActive(true);
+          if (transform.parent.GetComponent<Text>() != null)
+            transform.parent.GetComponent<Text>().text = "   " + timeUntilAvailable;
+        }
+      }
+    }
+  }
+
+  void activateButton(bool activeVal) {
+    if (activeVal) startBlink();
+    else stopBlink();
+    active = activeVal;
+    buttonDisabled = !activeVal;
+    playTouchSound = activeVal;
+    GetComponent<Collider>().enabled = activeVal;
+    filter.sharedMesh = (activeVal) ? activeMesh : inactiveMesh;
+
+  }
+
+  override public void activateSelf() {
     if (!active) return;
-
     if (HZIncentivizedAd.IsAvailable()) {
       HZIncentivizedAd.Show();
 
@@ -25,16 +63,9 @@ public class AdsAndRewardBannerButton : BannerButton {
         if ( adState.Equals("incentivized_result_complete") || adState.Equals("click") ) {
           // The user has watched the entire video and should be given a reward.
           AdsManager.am.showedRewardAd();
+          receivedReward = true;
           gold.change(goldenCubePerAds);
-          stopBlink();
-
-          GetComponent<MeshRenderer>().enabled = false;
-          GetComponent<Collider>().enabled = false;
-          icon.SetActive(false);
-
-          active = false;
-          playTouchSound = false;
-
+          
           transform.parent.GetComponent<Text>().text = secondDescription.Replace("_REWARD_", goldenCubePerAds.ToString());
         }
       };
@@ -64,8 +95,8 @@ public class AdsAndRewardBannerButton : BannerButton {
     //   });
     // }
   }
-
+  
   override public bool available() {
-    return AdsManager.am.rewardAvailable();
+    return true;
   }
 }

@@ -228,7 +228,7 @@
 		<value>FREE GIFT</value>
 	</data>
 	<data name="GameOver_GoldsEarned" xml:space="preserve">
-		<value>            _REWARD_ COINS EARNED</value>
+		<value>_REWARD_ COINS EARNED</value>
 	</data>
 	<data name="GameOver_ManualBonus" xml:space="preserve">
 		<value>DIFFICULTY BONUS</value>
