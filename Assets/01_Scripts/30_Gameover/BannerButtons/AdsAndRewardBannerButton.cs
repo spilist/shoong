@@ -37,7 +37,7 @@ public class AdsAndRewardBannerButton : BannerButton {
           string timeUntilAvailable = interval.Hours.ToString("00") + ":" + interval.Minutes.ToString("00") + ":" + interval.Seconds.ToString("00");
           timeIcon.SetActive(true);
           if (transform.parent.GetComponent<Text>() != null)
-            transform.parent.GetComponent<Text>().text = "   " + timeUntilAvailable;
+            transform.parent.GetComponent<Text>().text = "    " + timeUntilAvailable;
         }
       }
     }
@@ -56,6 +56,12 @@ public class AdsAndRewardBannerButton : BannerButton {
 
   override public void activateSelf() {
     if (!active) return;
+#if UNITY_EDITOR
+		AdsManager.am.showedRewardAd();
+		receivedReward = true;
+		gold.change(goldenCubePerAds);
+		return;
+#endif
     if (HZIncentivizedAd.IsAvailable()) {
       HZIncentivizedAd.Show();
 

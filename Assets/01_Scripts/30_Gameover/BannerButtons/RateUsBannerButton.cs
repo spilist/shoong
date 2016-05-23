@@ -19,7 +19,12 @@ public class RateUsBannerButton : BannerButton {
   }
 
   override public bool available() {
-    if (DataManager.dm.getInt("TotalNumPlays") == showAfterGames) return true;
+		/*
+    if (DataManager.dm.getInt("TotalNumPlays") % showAfterGames == 0 && 
+			DataManager.dm.getInt("TotalNumPlays") / showAfterGames < 5) return true;
+			*/
+	if (DataManager.dm.getInt ("TotalNumPlays") == showAfterGames)
+		return true;
     else return false;
   }
 }

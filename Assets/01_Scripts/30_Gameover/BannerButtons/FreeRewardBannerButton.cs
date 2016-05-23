@@ -60,7 +60,7 @@ public class FreeRewardBannerButton : BannerButton {
   override protected void Update() {
     base.Update();
     if (indicatingNextTime) {
-      transform.parent.GetComponent<Text>().text = "   " + timeUntilAvailable();
+      transform.parent.GetComponent<Text>().text = "    " + timeUntilAvailable();
     }
   }
 

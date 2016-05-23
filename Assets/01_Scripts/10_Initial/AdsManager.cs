@@ -82,17 +82,17 @@ public class AdsManager : MonoBehaviour {
 
   private void gameOverAdsDisaplyListener(string adState, string tag) {
     Debug.Log("adState: " + adState);
-    if (adState.Equals("show")) {
+		if (adState.Equals("show")) {
       // Sent when an ad has been displayed.
       // This is a good place to pause your app, if applicable.
 
-    } else if (adState.Equals("hide")) {
+		} else if (adState.Equals("hide") || adState.Equals("fetch_failed")  || adState.Equals("failed")) {
       // Sent when an ad has been removed from view.
       // This is a good place to unpause your app, if applicable.
       gameOverPause = false;
     } else {
       // For various errors
-      gameOverPause = false;
+      // gameOverPause = false;
     }
   }
 
