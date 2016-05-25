@@ -92586,7 +92586,7 @@ RectTransform:
   m_LocalRotation: {x: -0.000000115202326, y: 0.7071067, z: -0.7071068, w: -0.00000011520231}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 4, y: 4, z: 4}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 89.980194, y: -180, z: 0}
   m_Children:
   - {fileID: 1104531915}
   m_Father: {fileID: 459535541}
@@ -92624,7 +92624,7 @@ MonoBehaviour:
   minReward: 70
   maxReward: 140
   timeIcon: {fileID: 1104531914}
-  nextRewardMinutes: 01000000050000000f0000003c000000b400000068010000
+  nextRewardMinutes: 0000000001000000050000000f0000003c000000b400000068010000
   first: 0
 --- !u!65 &1815077429
 BoxCollider:

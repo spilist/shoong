@@ -21,7 +21,7 @@ class LocalCrossNotification
 
 #if UNITY_ANDROID && !UNITY_EDITOR
     private static string fullClassName = "net.agasper.unitynotification.UnityNotificationManager";
-    private static string mainActivityClassName = "com.unity3d.player.UnityPlayerNativeActivity";
+    private static string mainActivityClassName = "com.appsflyer.AppsFlyerOverrideActivity";
 #elif UNITY_IOS && !UNITY_EDITOR
   private static Dictionary <int, UnityEngine.iOS.LocalNotification> iNotiMap = new Dictionary<int, UnityEngine.iOS.LocalNotification>();
 #endif
