@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Skill_Ghost : Skill {
   public Collider contactCollider;
+  public GameObject ghostFilter;
   private CharacterChangeManager cm;
 
   override public void afterStart() {
@@ -16,6 +17,7 @@ public class Skill_Ghost : Skill {
       cm.changeCharacterToOriginal();
     }
 
+    ghostFilter.SetActive(val);
     contactCollider.enabled = !val;
   }
 }

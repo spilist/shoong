@@ -29,6 +29,13 @@ public class AlienshipBullet : MonoBehaviour {
   }
 
   void OnTriggerEnter(Collider other) {
+    if (other.tag == "PlayerShield") {
+      sam.getBulletExplosion(transform.position).SetActive(true);
+      gameObject.SetActive(false);
+      SkillManager.sm.stopSkills();
+      return;
+    }
+
     if (other.tag == "Player" && !Player.pl.isInvincible()) {
       Player.pl.loseEnergy(damage, "Alienship");
       sam.getBulletExplosion(transform.position).SetActive(true);

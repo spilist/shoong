@@ -81,9 +81,7 @@ public class PhaseManager : MonoBehaviour {
 
     StartCoroutine("showNextLevel");
     if (level == 0) {
-      // asm.enabled = true;
-      // mtm.enabled = true;
-      // dem.enabled = true;
+      rdm.enabled = true;
       return true;
     }
 

@@ -111,6 +111,10 @@ public class ObjectsMover : MonoBehaviour {
         GameObject trParticle = transSkill.getParticle(transform.position);
         trParticle.SetActive(true);
 
+        if (Player.pl.isUsingRainbow() && transformResult == "RainbowDonuts") {
+          transformResult = "";
+        }
+
         if (transformResult == "") {
           objectsManager.GetComponent<NormalPartsManager>().spawnNormal(transform.position);
           trParticle.transform.Find("Normal").gameObject.SetActive(true);

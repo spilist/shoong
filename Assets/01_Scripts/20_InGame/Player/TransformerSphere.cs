@@ -27,6 +27,7 @@ public class TransformerSphere : MonoBehaviour {
     } else if (random < subRatio + goldRatio) {
       result = "Golden";
     }
+
     return result;
   }
 }
