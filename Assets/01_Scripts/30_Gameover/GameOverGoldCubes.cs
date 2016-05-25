@@ -41,6 +41,7 @@ public class GameOverGoldCubes : MonoBehaviour {
       if (current == target) {
         increasing = false;
         increasingSound.Stop();
+        text.text = DataManager.dm.getInt("CurrentGoldenCubes") + "";
       }
     }
   }

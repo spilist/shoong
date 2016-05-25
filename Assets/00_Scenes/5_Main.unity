@@ -33442,7 +33442,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resetAll: 0
   resetCube: 0
-  resetGoldenCube: 5000
+  resetGoldenCube: 0
   normalFrameRate: 60
   isBonusStage: 0
 --- !u!4 &638403303
@@ -73887,7 +73887,7 @@ RectTransform:
   m_LocalRotation: {x: -0.000000115202326, y: 0.7071067, z: -0.7071068, w: -0.00000011520231}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 4, y: 4, z: 4}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 89.980194, y: -180, z: 0}
   m_Children:
   - {fileID: 1699207605}
   m_Father: {fileID: 459535541}
