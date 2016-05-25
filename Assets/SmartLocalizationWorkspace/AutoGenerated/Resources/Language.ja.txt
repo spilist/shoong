@@ -273,8 +273,15 @@
 	<data name="Setting_Reminders" xml:space="preserve">
 		<value>後で知らせる</value>
 	</data>
+	<data name="Setting_RestoreFailed" xml:space="preserve">
+		<value>購入の復元に失敗しました。
+後で再試行してください。</value>
+	</data>
 	<data name="Setting_RestorePurchases" xml:space="preserve">
 		<value>購入の復元</value>
+	</data>
+	<data name="Setting_RestoreSuccess" xml:space="preserve">
+		<value>購入の復元が完了しました！</value>
 	</data>
 	<data name="SkillDescription_Blink" xml:space="preserve">
 		<value>どんとジャンプ！</value>

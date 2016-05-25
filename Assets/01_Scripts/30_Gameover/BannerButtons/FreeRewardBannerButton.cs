@@ -39,8 +39,8 @@ public class FreeRewardBannerButton : BannerButton {
       gold.change(reward);
       DataManager.dm.setBool("FirstGiftReceived", true);
     } else {
-      DataManager.dm.increment("FreeRewardCount");
       int frCount = DataManager.dm.getInt("FreeRewardCount");
+      DataManager.dm.increment("FreeRewardCount");
       int rewardCount = frCount >= nextRewardMinutes.Length ? (nextRewardMinutes.Length - 1) : frCount;
       int nextRewardMinute = nextRewardMinutes[rewardCount];
       nextRewardTime = DateTime.Now.AddMinutes(nextRewardMinute);
@@ -51,7 +51,7 @@ public class FreeRewardBannerButton : BannerButton {
       gold.change(reward);
 
 
-      if (!DataManager.dm.getBool("NotificationSetting")) {
+      if (!DataManager.dm.getBool("NotificationSetting") && !(rewardCount == 0)) {
         NotificationManager.nm.notifyAfter(nextRewardMinute);
       }
     }    

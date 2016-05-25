@@ -107,11 +107,12 @@ public class BillingManager : MonoBehaviour, IStoreListener {
   }
 
   // Restore purchases previously made by this customer. Some platforms automatically restore purchases. Apple currently requires explicit purchase restoration for IAP.
-  public void RestorePurchases() {
+  public void RestorePurchases(Action<bool> onRestoreFinished) {
     // If Purchasing has not yet been set up ...
     if (!IsInitialized()) {
       // ... report the situation and stop restoring. Consider either waiting longer, or retrying initialization.
       Debug.Log("RestorePurchases FAIL. Not initialized.");
+      onRestoreFinished(false);
       return;
     }
 
@@ -127,12 +128,14 @@ public class BillingManager : MonoBehaviour, IStoreListener {
       apple.RestoreTransactions((result) => {
         // The first phase of restoration. If no more responses are received on ProcessPurchase then no purchases are available to be restored.
         Debug.Log("RestorePurchases continuing: " + result + ". If no further messages, no purchases available to restore.");
+        onRestoreFinished(result);
       });
     }
     // Otherwise ...
     else {
       // We are not running on an Apple device. No work is necessary to restore purchases.
-      Debug.Log("RestorePurchases FAIL. Not supported on this platform. Current = " + Application.platform);
+      Debug.Log("RestorePurchases is NOT_APPLICABLE or FAIL. Not supported on this platform. Current = " + Application.platform);
+      onRestoreFinished(true);
     }
   }
 

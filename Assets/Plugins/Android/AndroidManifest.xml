@@ -24,31 +24,30 @@ android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" />
     <!-- <activity android:name="com.google.android.gms.ads.AdActivity" android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" /> -->
     <!-- <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" /> -->
     <meta-data android:name="unityplayer.ForwardNativeEventsToDalvik" android:value="true" />
+
+    <receiver android:name="com.appsflyer.MultipleInstallBroadcastReceiver" android:exported="true">
+      <intent-filter>
+        <action android:name="com.android.vending.INSTALL_REFERRER" />
+      </intent-filter>
+    </receiver>
+    <service android:name="com.google.analytics.tracking.android.CampaignTrackingService" />
+    <receiver android:name="com.google.analytics.tracking.android.CampaignTrackingReceiver"
+              android:exported="true" >
+      <intent-filter>
+        <action android:name="com.android.vending.INSTALL_REFERRER" />
+      </intent-filter>
+    </receiver>
+    <receiver android:name="net.agasper.unitynotification.UnityNotificationManager"></receiver>
+    <meta-data android:name="AppsFlyerDevKey" android:value="PTuYBhA2CFm48vxR6SGRf7"/>
+    
   </application>
-  <receiver android:name="com.appsflyer.MultipleInstallBroadcastReceiver" android:exported="true">
-    <intent-filter>
-      <action android:name="com.android.vending.INSTALL_REFERRER" />
-    </intent-filter>
-  </receiver>
-  <service android:name="com.google.analytics.tracking.android.CampaignTrackingService" />
-  <receiver android:name="com.google.analytics.tracking.android.CampaignTrackingReceiver"
-            android:exported="true" >
-    <intent-filter>
-      <action android:name="com.android.vending.INSTALL_REFERRER" />
-    </intent-filter>
-  </receiver>
-  <receiver android:name="net.agasper.unitynotification.UnityNotificationManager"></receiver>
-  <meta-data android:name="AppsFlyerDevKey" android:value="PTuYBhA2CFm48vxR6SGRf7"/>
 
   <uses-feature android:glEsVersion="0x00020000" />
-  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-  <uses-permission android:name="android.permission.INTERNET" />
-  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
   <uses-feature android:name="android.hardware.touchscreen" />
   <uses-feature android:name="android.hardware.touchscreen.multitouch" android:required="false" />
   <uses-feature android:name="android.hardware.touchscreen.multitouch.distinct" android:required="false" />
-  <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+  <uses-permission android:name="android.permission.INTERNET" />
+  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
   <uses-permission android:name="android.permission.GET_TASKS"/>
   <uses-permission android:name="android.permission.VIBRATE"/>
   <uses-sdk android:minSdkVersion="11" android:targetSdkVersion="23" />

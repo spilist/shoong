@@ -274,9 +274,16 @@ BATTERY</value>
 	<data name="Setting_Reminders" xml:space="preserve">
 		<value>REMINDERS</value>
 	</data>
+	<data name="Setting_RestoreFailed" xml:space="preserve">
+		<value>Failed to restore your purchase.
+Please try again later.</value>
+	</data>
 	<data name="Setting_RestorePurchases" xml:space="preserve">
 		<value>RESTORE
 PURCHASES</value>
+	</data>
+	<data name="Setting_RestoreSuccess" xml:space="preserve">
+		<value>Your purchase has been restored!</value>
 	</data>
 	<data name="SkillDescription_Blink" xml:space="preserve">
 		<value>Jump into space!</value>

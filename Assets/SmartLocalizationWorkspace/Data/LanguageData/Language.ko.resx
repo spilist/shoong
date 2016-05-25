@@ -273,8 +273,15 @@
 	<data name="Setting_Reminders" xml:space="preserve">
 		<value>알림</value>
 	</data>
+	<data name="Setting_RestoreFailed" xml:space="preserve">
+		<value>구매 복원에 실패했습니다.
+나중에 다시 시도 해 주세요.</value>
+	</data>
 	<data name="Setting_RestorePurchases" xml:space="preserve">
 		<value>구입 복원</value>
+	</data>
+	<data name="Setting_RestoreSuccess" xml:space="preserve">
+		<value>구매 복원이 완료되었습니다!</value>
 	</data>
 	<data name="SkillDescription_Blink" xml:space="preserve">
 		<value>마음껏 점프!</value>

@@ -43,19 +43,24 @@ public class NotificationManager : MonoBehaviour {
     CancelAllLocalNotifications();
     int id = (int)Random.Range(60000, 900000);
     notiIdSet.Add(id);
-    LocalNotification.SendNotification(id, minutes * 60, "Smashy Toys", notifyMsg, new Color32(0xff, 0x44, 0x44, 255));
+    LocalCrossNotification.SendNotification(id, minutes * 60, "Smashy Toys", notifyMsg, new Color32(0xff, 0x44, 0x44, 255));
   }
 
   private void CancelLocalNotification (int _notificationID) {
-    LocalNotification.CancelNotification(_notificationID);
+    LocalCrossNotification.CancelNotification(_notificationID);
     notiIdSet.Remove(_notificationID);
   }
 
   public void CancelAllLocalNotifications () {
-    foreach (int id in notiIdSet) {
+    LocalCrossNotification.CancelAllNotifications();
+    notiIdSet.Clear();
+    /*
+    int[] notiArray = new int[notiIdSet.Count];
+    notiIdSet.CopyTo(notiArray);
+    foreach (int id in notiArray) {
       CancelLocalNotification(id);
     }
-    notiIdSet.Clear();
+    */
   }
   /*
   private NotificationDefinition CreateNotification (long _fireAfterSec, long _repeatInterval) {

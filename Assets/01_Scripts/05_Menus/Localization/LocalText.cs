@@ -37,4 +37,8 @@ public class LocalText : MonoBehaviour {
     textObject.font = LangManager.lm.getFont();
     textObject.fontSize = (int)(origFontSize * LangManager.lm.getFontScale());
   }
+
+  public void reloadText() {
+    OnChangeLanguage(LanguageManager.Instance);
+  }
 }
