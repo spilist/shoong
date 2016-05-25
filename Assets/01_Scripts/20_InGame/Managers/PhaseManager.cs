@@ -81,7 +81,7 @@ public class PhaseManager : MonoBehaviour {
 
     StartCoroutine("showNextLevel");
     if (level == 0) {
-      rdm.enabled = true;
+//      rdm.enabled = true;
       return true;
     }
 
