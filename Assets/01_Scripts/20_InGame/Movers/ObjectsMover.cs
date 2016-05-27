@@ -111,7 +111,7 @@ public class ObjectsMover : MonoBehaviour {
         GameObject trParticle = transSkill.getParticle(transform.position);
         trParticle.SetActive(true);
 
-        if (Player.pl.isUsingRainbow() && transformResult == "RainbowDonuts") {
+        if ((Player.pl.isUsingRainbow() && transformResult == "RainbowDonuts") || (transformResult == "ComboParts" && objectsManager.GetComponent<ComboPartsManager>().getComboCount() > 0)) {
           transformResult = "";
         }
 
