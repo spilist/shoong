@@ -68,8 +68,8 @@ public class ConfusedMonsterMover : ObjectsMover {
     else return true;
   }
 
-  override protected void afterCollidePlayer() {
-    cmm.confusePlayer();
+  override protected void afterCollidePlayer(bool effect) {
+    if (effect) cmm.confusePlayer();
     destroyObject();
   }
 

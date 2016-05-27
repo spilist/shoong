@@ -68,7 +68,7 @@ public class PhaseMonsterMover : ObjectsMover {
     else return true;
   }
 
-  override protected void afterCollidePlayer() {
+  override protected void afterCollidePlayer(bool effect) {
     destroyObject();
   }
 

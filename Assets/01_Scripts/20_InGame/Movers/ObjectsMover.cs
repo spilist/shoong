@@ -157,7 +157,7 @@ public class ObjectsMover : MonoBehaviour {
     if (collision.collider.tag == "PlayerShield" && dangerous()) {
       Player.pl.bounce(objectsManager.bounceDuration / 2f, collision);
       SkillManager.sm.stopSkills();
-      afterCollidePlayer();
+      afterCollidePlayer(false);
       return false;
     } else if (collision.collider.tag == "ContactCollider" && dangerous()) {
       Player.pl.loseEnergy(objectsManager.loseEnergyWhenEncounter, tag);
@@ -180,7 +180,7 @@ public class ObjectsMover : MonoBehaviour {
     return true;
   }
 
-  virtual protected void afterCollidePlayer() {}
+  virtual protected void afterCollidePlayer(bool effect = true) {}
 
   void OnCollisionEnter(Collision collision) {
     if (beforeCollide(collision)) {

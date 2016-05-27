@@ -26,7 +26,7 @@ public class RubberBallBiggerMover : ObjectsMover {
     else return true;
   }
 
-  override protected void afterCollidePlayer() {
+  override protected void afterCollidePlayer(bool effect) {
     reaction.Play();
   }
 }

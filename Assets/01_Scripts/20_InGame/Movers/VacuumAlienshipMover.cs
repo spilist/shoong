@@ -57,7 +57,7 @@ public class VacuumAlienshipMover : ObjectsMover {
     return dir / dir.magnitude;
   }
 
-  override protected void afterCollidePlayer() {
+  override protected void afterCollidePlayer(bool effect) {
     ScoreManager.sm.gameOver("VacuumAlienship");
   }
 

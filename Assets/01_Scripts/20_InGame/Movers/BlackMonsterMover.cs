@@ -68,8 +68,8 @@ public class BlackMonsterMover : ObjectsMover {
     else return true;
   }
 
-  override protected void afterCollidePlayer() {
-    bmm.blindPlayer();
+  override protected void afterCollidePlayer(bool effect) {
+    if (effect) bmm.blindPlayer();
     destroyObject();
   }
 

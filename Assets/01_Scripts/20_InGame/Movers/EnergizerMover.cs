@@ -15,7 +15,7 @@ public class EnergizerMover : ObjectsMover {
     return false;
   }
 
-  override protected void afterCollidePlayer() {
+  override protected void afterCollidePlayer(bool effect) {
     destroyObject();
   }
 }

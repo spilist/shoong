@@ -10,7 +10,7 @@ public class BiggerMeteroidMover : ObjectsMover {
     canBeMagnetized = false;
   }
 
-  override protected void afterCollidePlayer() {
+  override protected void afterCollidePlayer(bool effect) {
     destroyObject();
   }
 
