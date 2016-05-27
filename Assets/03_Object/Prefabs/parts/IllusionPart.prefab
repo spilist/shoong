@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 443280}
   - 198: {fileID: 19841524}
   - 199: {fileID: 19919778}
-  m_Layer: 20
+  m_Layer: 22
   m_Name: GoldenEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27,7 +27,7 @@ GameObject:
   - 4: {fileID: 428242}
   - 198: {fileID: 19807610}
   - 199: {fileID: 19978198}
-  m_Layer: 20
+  m_Layer: 22
   m_Name: BasicEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47,7 +47,7 @@ GameObject:
   - 54: {fileID: 5403486}
   - 114: {fileID: 11465974}
   - 65: {fileID: 6578524}
-  m_Layer: 20
+  m_Layer: 22
   m_Name: IllusionPart
   m_TagString: ComboPart
   m_Icon: {fileID: 0}
@@ -65,7 +65,7 @@ GameObject:
   - 23: {fileID: 2386920}
   - 33: {fileID: 3364094}
   - 95: {fileID: 9564686}
-  m_Layer: 20
+  m_Layer: 22
   m_Name: BackgroundEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
