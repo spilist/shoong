@@ -5,10 +5,13 @@ using System.Collections;
 public class OpeningHandler : MonoBehaviour {
   public GameObject idleUI;
   public GameObject dreamingText;
-  public GameObject tutorialHandler;
+  public OpeningFilter openingFilter;
+  public OpeningFilter titleFilter;
+  //public GameObject tutorialHandler;
   public float cameraMoveTo = 200;
   public float movingIn = 0.4f;
   public float stayBeforeMove = 1;
+  public Transform playerDummy;
   private float stayCount;
   private bool movingDown = false;
   private float cameraZ;
@@ -22,6 +25,7 @@ public class OpeningHandler : MonoBehaviour {
   public GameObject title;
   public float movingDuration = 0.6f;
   private bool titleMoving = false;
+  private bool isTitleFilterLoading = false;
   private float titlePosX;
   private float distance;
 
@@ -31,6 +35,7 @@ public class OpeningHandler : MonoBehaviour {
     titlePosX = title.GetComponent<RectTransform>().anchoredPosition.x;
     copyrightColor = new Color(1, 1, 1, 0);
     distance = Mathf.Abs(titlePosX);
+    StartCoroutine(openingFilter.startOpening());
 	}
 
   public void moveDown() {
@@ -43,7 +48,7 @@ public class OpeningHandler : MonoBehaviour {
       else {
         dreamingText.SetActive(false);
         cameraZ = Mathf.MoveTowards(cameraZ, cameraMoveTo, Time.deltaTime * cameraMoveTo / movingIn);
-        Player.pl.transform.parent.position = new Vector3(Player.pl.transform.parent.position.x, Player.pl.transform.parent.position.y, cameraZ);
+        playerDummy.position = new Vector3(playerDummy.position.x, playerDummy.position.y, cameraZ);
         if (cameraZ == cameraMoveTo) {
           movingDown = false;
           titleMoving = true;
@@ -52,6 +57,7 @@ public class OpeningHandler : MonoBehaviour {
     }
 
     if (titleMoving) {
+      /*
       titlePosX = Mathf.MoveTowards(titlePosX, 0, Time.deltaTime / movingDuration * distance);
       title.GetComponent<RectTransform>().anchoredPosition = new Vector2(titlePosX, title.GetComponent<RectTransform>().anchoredPosition.y);
 
@@ -61,13 +67,23 @@ public class OpeningHandler : MonoBehaviour {
         copyrightColor.a = Mathf.MoveTowards(copyrightColor.a, 1, Time.deltaTime / copyrightAlphaChangeDuration);
         copyright.color = copyrightColor;
       }
-
+      */
+      if (isTitleFilterLoading == false) {
+        isTitleFilterLoading = true;
+        StartCoroutine(startLoadLevel());
+      }
+      /*
       if (titlePosX == 0) {
         titleMoving = false;
-        idleUI.SetActive(true);
-        tutorialHandler.SetActive(true);
-        gameObject.SetActive(false);
+        //Application.LoadLevel("2_BeforeMainScene");
+        Application.LoadLevel("5_Main");
       }
+      */
     }
+  }
+
+  public IEnumerator startLoadLevel() {
+    yield return titleFilter.goAlpha(1);
+    Application.LoadLevel("2_BeforeMainScene");
   }
 }

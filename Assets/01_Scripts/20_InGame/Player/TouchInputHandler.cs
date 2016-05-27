@@ -8,6 +8,7 @@ public class TouchInputHandler : MonoBehaviour
 {
   public Transform stick;
   public Transform fingerIndicator;
+  public FingerTutorialViewer fingerTutorialViewer;
   private float stickPanelSize;
 
   public BeforeIdle beforeIdle;
@@ -112,6 +113,7 @@ public class TouchInputHandler : MonoBehaviour
 
     if (reactAble() && controlMethod == "Stick") {
       for (var i = 0; i < Input.touchCount; ++i) {
+        fingerTutorialViewer.disableViewer();
         Touch touch = Input.GetTouch(i);
         Ray ray = Camera.main.ScreenPointToRay(touch.position);
         RaycastHit hit;
@@ -320,6 +322,9 @@ public class TouchInputHandler : MonoBehaviour
 	}
 
   bool reactAble() {
-    return !beforeIdle.isLoading() && react;
+    if (beforeIdle == null)
+      return react;
+    else
+      return !beforeIdle.isLoading() && react;
   }
 }
