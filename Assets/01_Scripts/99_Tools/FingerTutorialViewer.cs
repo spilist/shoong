@@ -6,7 +6,7 @@ public class FingerTutorialViewer : MonoBehaviour {
   public GameObject helper;
   bool started = false;
   DateTime startDisableTime;
-	// Use this for initialization
+
 	void Start () {
 	  if (DataManager.dm.getBool("FirstPlay")) {
       helper.SetActive(true);
@@ -23,9 +23,4 @@ public class FingerTutorialViewer : MonoBehaviour {
       }
     }
   }
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 }
