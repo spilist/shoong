@@ -90,7 +90,7 @@ PlayerSettings:
     16:9: 1
     Others: 1
   bundleIdentifier: com.morogoro.smashytoysspace
-  bundleVersion: 2.01
+  bundleVersion: 2.02
   preloadedAssets: []
   metroEnableIndependentInputSource: 0
   metroEnableLowLatencyPresentationAPI: 0
@@ -105,7 +105,7 @@ PlayerSettings:
   stripEngineCode: 1
   iPhoneStrippingLevel: 0
   iPhoneScriptCallOptimization: 0
-  iPhoneBuildNumber: 3
+  iPhoneBuildNumber: 4
   ForceInternetPermission: 0
   ForceSDCardPermission: 0
   CreateWallpaper: 0

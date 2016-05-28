@@ -17,7 +17,7 @@ public class GoogleAuthManager : MonoBehaviour {
       SocialPlatformManager.spm.authenticate((bool x)=> { });
     }
     */
-
+    Debug.Log("Require sign in, " + SocialPlatformManager.isAuthenticated());
     SocialPlatformManager.spm.authenticate((bool x) => { });
   }
 }
