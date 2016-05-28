@@ -9,6 +9,7 @@ public class BillingManager : MonoBehaviour, IStoreListener {
   private static IStoreController m_StoreController;  // Reference to the Purchasing system.
   private static IExtensionProvider m_StoreExtensionProvider;
   public CharactersMenu charactersMenu;
+  public GameObject touchBlocker;
   private bool isOnPurchasing = false; // This is for distinguising purchase restore
 
   [System.Serializable]
@@ -157,8 +158,9 @@ public class BillingManager : MonoBehaviour, IStoreListener {
     Debug.Log("OnInitialized: PASS");
     // Update m_products_map that would be used by UICharacters
     m_products_map = new Dictionary<string, Product>();
-    foreach (Product product in controller.products.all)
+    foreach (Product product in controller.products.all) {
       m_products_map.Add(product.definition.id, product);
+    }
 
     // Overall Purchasing system, configured with products for this application.
     m_StoreController = controller;
@@ -168,19 +170,36 @@ public class BillingManager : MonoBehaviour, IStoreListener {
 
 
   public void OnInitializeFailed(InitializationFailureReason error) {
-    // Purchasing set-up has not succeeded. Check error for reason. Consider sharing this reason with the user.
-    Debug.Log("OnInitializeFailed InitializationFailureReason:" + error);
+    Debug.Log("Billing failed to initialize!");
+    switch (error) {
+      case InitializationFailureReason.AppNotKnown:
+        Debug.LogError("Is your App correctly uploaded on the relevant publisher console?");
+        break;
+      case InitializationFailureReason.PurchasingUnavailable:
+        // Ask the user if billing is disabled in device settings.
+        Debug.Log("Billing disabled!");
+        break;
+      case InitializationFailureReason.NoProductsAvailable:
+        // Developer configuration error; check product metadata.
+        Debug.Log("No products available for purchase!");
+        break;
+    }
   }
 
 
   public PurchaseProcessingResult ProcessPurchase(PurchaseEventArgs args) {
     //Debug.Log("ProcessPurchase: " + "transactionID(" + args.purchasedProduct.transactionID + "), productId(" + args.purchasedProduct.definition.id + ")");
-    if (charactersMenu.buyComplete(args.purchasedProduct.transactionID, args.purchasedProduct.definition.id, isOnPurchasing)) {
-      Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));//If the consumable item has been successfully purchased, add 100 coins to the player's in-game score.
-    } else {
-      Debug.Log(string.Format("ProcessPurchase: FAIL. Unrecognized product: '{0}'", args.purchasedProduct.definition.id));
-    }// Return a flag indicating wither this product has completely been received, or if the application needs to be reminded of this purchase at next app launch. Is useful when saving purchased products to the cloud, and when that save is delayed.
-
+    try {
+      if (charactersMenu.buyComplete(args.purchasedProduct.transactionID, args.purchasedProduct.definition.id, isOnPurchasing)) {
+        Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));//If the consumable item has been successfully purchased, add 100 coins to the player's in-game score.
+      } else {
+        Debug.Log(string.Format("ProcessPurchase: FAIL. Unrecognized product: '{0}'", args.purchasedProduct.definition.id));
+      }// Return a flag indicating wither this product has completely been received, or if the application needs to be reminded of this purchase at next app launch. Is useful when saving purchased products to the cloud, and when that save is delayed.
+    } catch (NullReferenceException e) {
+      // This usually happens when the user turned charater select menu while buying character.
+      UICharacters uiCharacters = transform.Find("Characters/" + args.purchasedProduct.definition.id).GetComponent<UICharacters>();
+      uiCharacters.buyComplete(args.purchasedProduct.definition.id, isOnPurchasing);
+    }
     if (isOnPurchasing) isOnPurchasing = false;
     return PurchaseProcessingResult.Complete;
   }

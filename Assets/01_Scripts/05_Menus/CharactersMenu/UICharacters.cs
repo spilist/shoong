@@ -150,7 +150,8 @@ public class UICharacters : MonoBehaviour {
   public void buyComplete(string transactionId, bool bought) {
     if (bought) {
       GetComponent<Renderer>().sharedMaterial = charactersMenu.activeCharactersMaterial;
-      charactersMenu.characterBuySound.Play();
+      if (charactersMenu != null)
+        charactersMenu.characterBuySound.Play();
 
       TrackingManager.tm.purchase(transactionId, bProduct, stat.rarity.ToString());
     }
