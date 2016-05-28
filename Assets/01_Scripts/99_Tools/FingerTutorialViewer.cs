@@ -4,7 +4,6 @@ using System;
 
 public class FingerTutorialViewer : MonoBehaviour {
   public GameObject helper;
-  bool started = false;
   DateTime startDisableTime;
 
 	void Start () {
@@ -14,13 +13,10 @@ public class FingerTutorialViewer : MonoBehaviour {
 	}
 
   public void disableViewer() {
-    if (!started) {
-      started = true;
-      startDisableTime = DateTime.Now;
-    } else {
-      if (DateTime.Now.AddSeconds(2) > startDisableTime) {
-        helper.SetActive(false);
-      }
-    }
+    Invoke("disable", 2);
+  }
+
+  void disable() {
+    helper.SetActive(false);
   }
 }
