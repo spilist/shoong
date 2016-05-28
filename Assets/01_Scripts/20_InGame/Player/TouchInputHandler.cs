@@ -105,7 +105,6 @@ public class TouchInputHandler : MonoBehaviour
 
       if (controlMethod == "Touch") {
         if (result == "Ground") {
-          fingerTutorialViewer.disableViewer();
           setPlayerDirection(Player.pl.transform);
           Player.pl.shootBooster();
         }
