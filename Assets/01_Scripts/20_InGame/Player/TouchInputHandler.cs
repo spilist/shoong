@@ -83,7 +83,6 @@ public class TouchInputHandler : MonoBehaviour
 
       if (!pause.isResuming() && (result == "Ground" || result == "ChangeBehavior") && !gameStarted) {
 
-        fingerTutorialViewer.disableViewer();
         CharacterManager.cm.startGame();
         menus.gameStart();
 
@@ -114,6 +113,7 @@ public class TouchInputHandler : MonoBehaviour
 
     if (reactAble() && controlMethod == "Stick") {
       for (var i = 0; i < Input.touchCount; ++i) {
+        fingerTutorialViewer.disableViewer();
         Touch touch = Input.GetTouch(i);
         Ray ray = Camera.main.ScreenPointToRay(touch.position);
         RaycastHit hit;
