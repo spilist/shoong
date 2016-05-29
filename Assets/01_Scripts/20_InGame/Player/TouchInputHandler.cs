@@ -97,6 +97,7 @@ public class TouchInputHandler : MonoBehaviour
         AudioManager.am.changeVolume("Main", "Max");
 
         gameStarted = true;
+        fingerTutorialViewer.showViewer();
 
         controlMethod = DataManager.dm.getString("ControlMethod");
         stickPanelSize = Vector3.Distance(stick.position, stick.transform.Find("End").position);

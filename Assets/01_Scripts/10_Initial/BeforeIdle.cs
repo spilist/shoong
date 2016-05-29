@@ -172,6 +172,12 @@ public class BeforeIdle : MonoBehaviour {
     filterChangeTo = 1;
     copyrightColor = copyright.color;
     copyrightChangeTo = 1;
+
+    if (DataManager.dm.getBool("FirstPlayFinished")) {
+      DataManager.dm.setBool("FirstPlay", false);
+    }
+    DataManager.dm.save();
+    // moveTitle actually loads main scene, so upper line is the last line before new game loaded
     moveTitle(false);
 
     changeCharacter(PlayerPrefs.GetString("SelectedCharacter"));

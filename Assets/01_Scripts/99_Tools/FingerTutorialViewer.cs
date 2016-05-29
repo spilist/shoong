@@ -8,10 +8,14 @@ public class FingerTutorialViewer : MonoBehaviour {
   DateTime startDisableTime;
 
 	void Start () {
-	  if (DataManager.dm.getBool("FirstPlay")) {
+	}
+
+  public void showViewer() {
+    if (DataManager.dm.getBool("FirstPlay")) {
+      started = false;
       helper.SetActive(true);
     }
-	}
+  }
 
   public void disableViewer() {
     if (!started) {
