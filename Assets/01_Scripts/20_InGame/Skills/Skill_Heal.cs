@@ -4,7 +4,7 @@ using System.Collections;
 public class Skill_Heal : Skill {
   public int amount = 20;
 
-  void Start() {
+  override public void afterStart() {
     if (DataManager.dm.isBonusStage) amount /= 2;
   }
 
