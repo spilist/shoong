@@ -58,7 +58,7 @@ public class DataManager : MonoBehaviour {
     if (resetAll || !load()) reset();
     initializeAtGameStart();
   }
-  
+
   void initializeAtGameStart() {
 
     Application.targetFrameRate = getInt("BatterySavingSetting");
@@ -70,7 +70,7 @@ public class DataManager : MonoBehaviour {
     }
 
     DataManager.dm.setInt("ShowCharacterCreateCount", 0);
-    
+
   }
 
   public bool isFirstPlay() {
@@ -129,7 +129,7 @@ public class DataManager : MonoBehaviour {
       bools = stringToBoolDict(data.bools);
       strings = stringToStringDict(data.strings);
       dateTimes = stringToDateTimeDict(data.dateTimes);
-      
+
       if (bools["FirstPlayFinished"]) {
         bools["FirstPlay"] = false;
       }
@@ -176,6 +176,7 @@ public class DataManager : MonoBehaviour {
     //strings["ControlMethod"] = "Touch";
     // strings["ControlMethod"] = "CenterBigStick";
     strings["ControlMethod"] = "Stick";
+    strings["DashMode"] = "Unstoppable";
     bools["robotcogi"] = true;
     bools["TutorialDone"] = true;
 
@@ -409,15 +410,15 @@ public class DataManager : MonoBehaviour {
  try {
   IntPtr obj_context = AndroidJNI.FindClass("android/content/ContextWrapper");
   IntPtr method_getFilesDir = AndroidJNIHelper.GetMethodID(obj_context, "getFilesDir", "()Ljava/io/File;");
- 
+
   using (AndroidJavaClass cls_UnityPlayer = new AndroidJavaClass("com.unity3d.player.UnityPlayer")) {
       using (AndroidJavaObject obj_Activity = cls_UnityPlayer.GetStatic<AndroidJavaObject>("currentActivity")) {
         IntPtr file = AndroidJNI.CallObjectMethod(obj_Activity.GetRawObject(), method_getFilesDir, new jvalue[0]);
         IntPtr obj_file = AndroidJNI.FindClass("java/io/File");
-        IntPtr method_getAbsolutePath = AndroidJNIHelper.GetMethodID(obj_file, "getAbsolutePath", "()Ljava/lang/String;");   
-                                 
-        path = AndroidJNI.CallStringMethod(file, method_getAbsolutePath, new jvalue[0]);                    
- 
+        IntPtr method_getAbsolutePath = AndroidJNIHelper.GetMethodID(obj_file, "getAbsolutePath", "()Ljava/lang/String;");
+
+        path = AndroidJNI.CallStringMethod(file, method_getAbsolutePath, new jvalue[0]);
+
         if(path != null) {
             Debug.Log("Got internal path: " + path);
         }

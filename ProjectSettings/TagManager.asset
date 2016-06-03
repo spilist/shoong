@@ -97,6 +97,7 @@ TagManager:
   - ResumeButton
   - TouchBlocker
   - Energizer
+  - SkillButton
   layers:
   - Default
   - TransparentFX

@@ -104,6 +104,11 @@ public class Player : MonoBehaviour {
   private float poppingDuration;
   public GameObject bonusFilter;
 
+  private bool dashing = false;
+  private bool ghosting = false;
+  private float ghostingDuration;
+  private float dashingSpeedup = 0;
+
 	void Awake() {
     pl = this;
     originalScale = transform.localScale.x;
@@ -159,6 +164,8 @@ public class Player : MonoBehaviour {
         speed = baseSpeed * 1.6f + boosterspeed;
       } else if (usingSolar) {
         speed = (baseSpeed + boosterspeed) * 1.6f;
+      } else if (dashing) {
+        speed = baseSpeed + boosterspeed + dashingSpeedup;
       } else {
         speed = baseSpeed + boosterspeed;
       }
@@ -193,6 +200,10 @@ public class Player : MonoBehaviour {
     speed *= lrSpeedModifier;
 
     rb.velocity = direction * speed * stickSpeedScale;
+
+    if (dashing) {
+      transform.Rotate(Time.fixedDeltaTime * 360 / ghostingDuration, 0, 0);
+    }
 	}
 
   public float getSpeed() {
@@ -579,7 +590,7 @@ public class Player : MonoBehaviour {
   }
 
   public bool uncontrollable() {
-    return isRebounding() || isUsingRainbow() || usingEMP || bouncing || bouncingByDispenser;
+    return isRebounding() || isUsingRainbow() || usingEMP || bouncing || bouncingByDispenser || dashing;
   }
 
   void useSkill() {
@@ -608,6 +619,12 @@ public class Player : MonoBehaviour {
     if (poppingByBooster) {
       poppingScale = Mathf.MoveTowards(poppingScale, poppingTarget, Time.deltaTime * (1 - poppingSmallScale) / poppingDuration);
       transform.parent.localScale = new Vector3(1, 1, poppingScale);
+
+      // if (dashing && !ghosting) {
+      //   transform.parent.localScale = 2 * new Vector3(1, 1, poppingScale);
+      // } else {
+      //   transform.parent.localScale = new Vector3(1, 1, poppingScale);
+      // }
 
       if (poppingScale == poppingSmallScale) {
         poppingTarget = 1;
@@ -691,7 +708,7 @@ public class Player : MonoBehaviour {
   }
 
   public bool isInvincible() {
-    return afterStrengthen || ridingMonster || unstoppable || isRebounding() || isUsingRainbow() || changeManager.isTeleporting() || usingEMP || usingSolar;
+    return afterStrengthen || ridingMonster || unstoppable || isRebounding() || isUsingRainbow() || changeManager.isTeleporting() || usingEMP || usingSolar || (dashing && !ghosting);
   }
 
   public bool cannotBeMagnetized() {
@@ -748,5 +765,31 @@ public class Player : MonoBehaviour {
     if (dir > 0.0) return 1;
     else if (dir < 0.0) return -1;
     else return 0;
+  }
+
+  public void dash(float duration, float speedup, bool ghost) {
+    dashing = true;
+    dashingSpeedup = speedup;
+    ghostingDuration = duration;
+
+    if (ghost) {
+      ghosting = true;
+      contactCollider.GetComponent<Collider>().enabled = false;
+      changeManager.changeCharacterTo("Ghost");
+      Invoke("turnEscapeOff", duration);
+    }
+
+    Invoke("turnDashOff", duration);
+  }
+
+  void turnDashOff() {
+    dashing = false;
+    transform.parent.localScale = Vector3.one;
+  }
+
+  void turnEscapeOff() {
+    changeManager.changeCharacterToOriginal();
+    contactCollider.GetComponent<Collider>().enabled = true;
+    ghosting = false;
   }
 }

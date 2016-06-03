@@ -40,7 +40,7 @@ public class MenusController : MonoBehaviour {
           toggleMenuAndUI();
           UITouchSound.Play();
         }
-      } else if (hitTag == "IdleSettings" || hitTag == "PauseButton" || (isMenuOn() && layer == "MenusBehavior") || (ScoreManager.sm.isGameOver() && layer == "MenusBehavior")) {
+      } else if (hitTag == "IdleSettings" || hitTag == "PauseButton" || hitTag == "SkillButton" || (isMenuOn() && layer == "MenusBehavior") || (ScoreManager.sm.isGameOver() && layer == "MenusBehavior")) {
         if (beforeIdle.isLoading()) return "";
 
         MenusBehavior mb = hit.transform.GetComponent<MenusBehavior>();
