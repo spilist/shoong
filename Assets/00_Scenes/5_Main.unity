@@ -8514,7 +8514,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 18
 --- !u!1 &181167830
 GameObject:
   m_ObjectHideFlags: 0
@@ -18645,6 +18645,51 @@ MonoBehaviour:
   bestX: 90
   buyable: 1
   skillFlags: 0
+--- !u!1 &389149836
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 389149837}
+  - 114: {fileID: 389149838}
+  m_Layer: 0
+  m_Name: DashManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &389149837
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 389149836}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -900.57196, y: 0, z: 650.9651}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+--- !u!114 &389149838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 389149836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21b876d3c0b6f48fd854b81d759b0be7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dash: {fileID: 1708440545}
+  duration: 0.3
+  speedup: 300
+  maxEnlargeSize: 1.6
+  maxStep: 5
 --- !u!1001 &390817042
 Prefab:
   m_ObjectHideFlags: 0
@@ -21095,7 +21140,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controlMethod: Stick
   adjustScale: 0
-  ability: {fileID: 0}
 --- !u!114 &436576621
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24874,7 +24918,7 @@ Transform:
   - {fileID: 1082642565}
   - {fileID: 64786155}
   m_Father: {fileID: 0}
-  m_RootOrder: 21
+  m_RootOrder: 22
 --- !u!1 &510864196
 GameObject:
   m_ObjectHideFlags: 0
@@ -31481,7 +31525,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controlMethod: Stick
   adjustScale: 0
-  ability: {fileID: 1708440545}
 --- !u!1 &631363990
 GameObject:
   m_ObjectHideFlags: 0
@@ -33665,7 +33708,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 19
 --- !u!114 &644211307
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34321,7 +34364,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controlMethod: Stick
   adjustScale: 0
-  ability: {fileID: 0}
 --- !u!1 &688839004
 GameObject:
   m_ObjectHideFlags: 0
@@ -38279,7 +38321,7 @@ Transform:
   m_Children:
   - {fileID: 1192593515}
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 20
 --- !u!114 &743173860
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44898,7 +44940,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 21
 --- !u!114 &877899000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58553,7 +58595,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 17
 --- !u!1 &1192593514
 GameObject:
   m_ObjectHideFlags: 0
@@ -58883,7 +58925,7 @@ Transform:
   - {fileID: 87915275}
   - {fileID: 1469275917}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
 --- !u!1 &1220036618
 GameObject:
   m_ObjectHideFlags: 0
@@ -60464,7 +60506,7 @@ GameObject:
   - 4: {fileID: 1225838311}
   - 114: {fileID: 1225838312}
   m_Layer: 17
-  m_Name: CharacterAbilityManager
+  m_Name: CharacterManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -60483,7 +60525,7 @@ Transform:
   m_Children:
   - {fileID: 616999376}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
 --- !u!114 &1225838312
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65822,7 +65864,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controlMethod: Stick
   adjustScale: 0
-  ability: {fileID: 1708440545}
 --- !u!1 &1362294780
 GameObject:
   m_ObjectHideFlags: 0
@@ -84715,7 +84756,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 16
 --- !u!1 &1596742147
 GameObject:
   m_ObjectHideFlags: 0
@@ -89760,7 +89801,7 @@ Transform:
   - {fileID: 892369442}
   - {fileID: 1276123138}
   m_Father: {fileID: 0}
-  m_RootOrder: 22
+  m_RootOrder: 23
 --- !u!1 &1707069936
 GameObject:
   m_ObjectHideFlags: 0
@@ -89877,7 +89918,7 @@ GameObject:
   - 33: {fileID: 1708440542}
   - 114: {fileID: 1708440545}
   m_Layer: 5
-  m_Name: AbilityButton
+  m_Name: DashButton
   m_TagString: SkillButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -89957,18 +89998,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36f6b0714a0d140a19f0c65c6386448f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeMesh: {fileID: 0}
-  inactiveMesh: {fileID: 0}
+  activeMesh: {fileID: 4300040, guid: 7d4e33b83f6a046ab845e77e3044ffcc, type: 3}
+  inactiveMesh: {fileID: 4300046, guid: 7d4e33b83f6a046ab845e77e3044ffcc, type: 3}
   blinkingMesh: {fileID: 0}
   blinkingSeconds: 0.4
-  playTouchSound: 1
+  playTouchSound: 0
   blinkOnStart: 0
-  coolDown_unstoppable: 2
-  duration_unstoppable: 0.3
-  speedup_unstoppable: 300
-  coolDown_escape: 1
-  duration_escape: 0.3
-  speedup_escape: 300
 --- !u!1 &1722718157
 GameObject:
   m_ObjectHideFlags: 0

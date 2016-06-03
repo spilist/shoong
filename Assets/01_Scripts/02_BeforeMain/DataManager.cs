@@ -173,9 +173,9 @@ public class DataManager : MonoBehaviour {
     ints["TotalGoldenCubes"] = resetGoldenCube;
     ints["NumCharactersHave"] = 1;
     ints["NormalCollectorLevel"] = 1;
-    //strings["ControlMethod"] = "Touch";
+    strings["ControlMethod"] = "Touch";
     // strings["ControlMethod"] = "CenterBigStick";
-    strings["ControlMethod"] = "Stick";
+    // strings["ControlMethod"] = "Stick";
     strings["DashMode"] = "Unstoppable";
     bools["robotcogi"] = true;
     bools["TutorialDone"] = true;

@@ -96,18 +96,16 @@ public class Player : MonoBehaviour {
   public Transform contactCollider;
   public int bestX;
   private bool poppingByBooster = false;
-  private float poppingScale = 1;
-  private float poppingTarget;
   public float poppingSmallScale = 0.6f;
   public float poppingDurationDown = 0.2f;
   public float poppingDurationUp = 0.1f;
   private float poppingDuration;
+  private float poppingScale = 1;
+  private float poppingTarget;
+
   public GameObject bonusFilter;
 
   private bool dashing = false;
-  private bool ghosting = false;
-  private float ghostingDuration;
-  private float dashingSpeedup = 0;
 
 	void Awake() {
     pl = this;
@@ -165,7 +163,7 @@ public class Player : MonoBehaviour {
       } else if (usingSolar) {
         speed = (baseSpeed + boosterspeed) * 1.6f;
       } else if (dashing) {
-        speed = baseSpeed + boosterspeed + dashingSpeedup;
+        speed = baseSpeed + boosterspeed + DashManager.dm.speedup;
       } else {
         speed = baseSpeed + boosterspeed;
       }
@@ -201,8 +199,19 @@ public class Player : MonoBehaviour {
 
     rb.velocity = direction * speed * stickSpeedScale;
 
-    if (dashing) {
-      transform.Rotate(Time.fixedDeltaTime * 360 / ghostingDuration, 0, 0);
+    if (poppingByBooster) {
+      poppingScale = Mathf.MoveTowards(poppingScale, poppingTarget, Time.deltaTime * (1 - poppingSmallScale) / poppingDuration);
+
+      transform.parent.localScale = transform.parent.localScale.x * new Vector3(1, 1, poppingScale);
+
+      if (poppingScale == poppingSmallScale) {
+        poppingTarget = 1;
+        poppingDuration = poppingDurationUp;
+      }
+
+      if (poppingScale == 1) {
+        poppingByBooster = false;
+      }
     }
 	}
 
@@ -360,8 +369,10 @@ public class Player : MonoBehaviour {
       changeManager.booster.Play();
       changeManager.booster.GetComponent<AudioSource>().Play();
       poppingByBooster = true;
-      poppingTarget = poppingSmallScale;
       poppingDuration = poppingDurationDown;
+
+      poppingScale = 1;
+      poppingTarget = poppingSmallScale;
     }
 
     if (boosterspeed < maxBooster()) {
@@ -616,24 +627,9 @@ public class Player : MonoBehaviour {
       transform.parent.Rotate(0, 0, Time.deltaTime * tumble);
     }
 
-    if (poppingByBooster) {
-      poppingScale = Mathf.MoveTowards(poppingScale, poppingTarget, Time.deltaTime * (1 - poppingSmallScale) / poppingDuration);
-      transform.parent.localScale = new Vector3(1, 1, poppingScale);
-
-      // if (dashing && !ghosting) {
-      //   transform.parent.localScale = 2 * new Vector3(1, 1, poppingScale);
-      // } else {
-      //   transform.parent.localScale = new Vector3(1, 1, poppingScale);
-      // }
-
-      if (poppingScale == poppingSmallScale) {
-        poppingTarget = 1;
-        poppingDuration = poppingDurationUp;
-      }
-
-      if (poppingScale == 1) {
-        poppingByBooster = false;
-      }
+    if (dashing) {
+      poppingScale = Mathf.MoveTowards(poppingScale, 1, Time.deltaTime * DashManager.dm.maxEnlargeSize / DashManager.dm.duration);
+      transform.parent.localScale = poppingScale * Vector3.one;
     }
 
     if (afterStrengthen) {
@@ -708,7 +704,7 @@ public class Player : MonoBehaviour {
   }
 
   public bool isInvincible() {
-    return afterStrengthen || ridingMonster || unstoppable || isRebounding() || isUsingRainbow() || changeManager.isTeleporting() || usingEMP || usingSolar || (dashing && !ghosting);
+    return afterStrengthen || ridingMonster || unstoppable || isRebounding() || isUsingRainbow() || changeManager.isTeleporting() || usingEMP || usingSolar || dashing;
   }
 
   public bool cannotBeMagnetized() {
@@ -734,8 +730,8 @@ public class Player : MonoBehaviour {
     speedBoostCount = 0;
   }
 
-  public void scaleUp(float amount) {
-    transform.localScale = originalScale * amount * Vector3.one;
+  public void scaleChange(float amount) {
+    transform.parent.localScale = (1 + amount) * new Vector3(1, 1, transform.localScale.z / transform.localScale.x);
   }
 
   public void scaleBack() {
@@ -767,29 +763,14 @@ public class Player : MonoBehaviour {
     else return 0;
   }
 
-  public void dash(float duration, float speedup, bool ghost) {
+  public void dash() {
     dashing = true;
-    dashingSpeedup = speedup;
-    ghostingDuration = duration;
-
-    if (ghost) {
-      ghosting = true;
-      contactCollider.GetComponent<Collider>().enabled = false;
-      changeManager.changeCharacterTo("Ghost");
-      Invoke("turnEscapeOff", duration);
-    }
-
-    Invoke("turnDashOff", duration);
+    poppingScale = DashManager.dm.maxEnlargeSize + 1;
+    Invoke("turnDashOff", DashManager.dm.duration);
   }
 
   void turnDashOff() {
     dashing = false;
-    transform.parent.localScale = Vector3.one;
-  }
-
-  void turnEscapeOff() {
-    changeManager.changeCharacterToOriginal();
-    contactCollider.GetComponent<Collider>().enabled = true;
-    ghosting = false;
+    DashManager.dm.resetStep();
   }
 }

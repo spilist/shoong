@@ -6,7 +6,6 @@ public class Panel : MonoBehaviour {
 	// public AutoBoosterButton abb;
   public string controlMethod;
   public float adjustScale;
-  public AbilityButton ability;
   private bool LRMoving = false;
   private string movingDirection;
 

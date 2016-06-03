@@ -43,6 +43,9 @@ public class NormalPartsMover : ObjectsMover {
     if (divideCount > 1 && !popping && !runningToPlayer) {
       npm.popSweets(divideCount, transform.position, true);
     }
+
+    DashManager.dm.getLarger();
+
     base.encounterPlayer(destroy);
   }
 
