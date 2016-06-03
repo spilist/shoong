@@ -107623,7 +107623,7 @@ MonoBehaviour:
   strengthenPlayerEffect: {fileID: 1248557235}
   strength: 0.9
   speed: 100
-  tumble: 10
+  tumble: 1000
   minSpawnInterval: 1
   maxSpawnInterval: 4
   cubesByEncounter: 10

@@ -47,7 +47,7 @@ public class ObjectsMover : MonoBehaviour {
     tumble = getTumble();
     direction = getDirection();
 
-    rb.angularVelocity = Random.onUnitSphere * tumble;
+    rb.angularVelocity = tumble * Vector3.one;
     rb.velocity = direction * speed;
 
     destroyed = false;
