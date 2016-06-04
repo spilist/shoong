@@ -62287,7 +62287,7 @@ MonoBehaviour:
   boosterMaxSpeeds: 0a0000000500000000000000fbfffffff6ffffff
   boosterSpeedDecreaseStandard: 50
   boosterSpeedDecreases: 140000000a00000000000000f6ffffffecffffff
-  energyReduceOnTimeStandard: 3
+  energyReduceOnTimeStandard: 3.5
   energyReduceOnTimeStandard_hard: 12
   energyReduceOnTimes: f6fffffffbffffff00000000050000000a000000
   maxEnergyStandard: 100
@@ -90668,7 +90668,6 @@ MonoBehaviour:
   stayBeforeUse: 1
   shrinkDuration: 4
   shrinkScale: 0.5
-  originalFontSize: 80
 --- !u!82 &1669590874
 AudioSource:
   m_ObjectHideFlags: 0
@@ -109153,8 +109152,8 @@ MonoBehaviour:
   strength: 3
   speed: 46
   tumble: 10
-  minSpawnInterval: 6
-  maxSpawnInterval: 8
+  minSpawnInterval: 5
+  maxSpawnInterval: 7
   cubesByEncounter: 60
   energyGets: 0
   numSweetsPop: 3
@@ -109637,7 +109636,7 @@ MonoBehaviour:
   biggerExplosionPool: []
   minScale: 15
   maxScale: 25
-  startDuration: 0.3
+  startDuration: 0.25
   decreaseDurationPerPulse: 0.1
   empScale: 110
   empRotatingSpeed: 500
@@ -109671,8 +109670,8 @@ MonoBehaviour:
   strength: 10
   speed: 87
   tumble: 50
-  minSpawnInterval: 18
-  maxSpawnInterval: 20
+  minSpawnInterval: 15
+  maxSpawnInterval: 17
   cubesByEncounter: 150
   energyGets: 0
   numSweetsPop: 5
@@ -109729,8 +109728,8 @@ MonoBehaviour:
   strength: 3
   speed: 56
   tumble: 10
-  minSpawnInterval: 6
-  maxSpawnInterval: 8
+  minSpawnInterval: 5
+  maxSpawnInterval: 7
   cubesByEncounter: 60
   energyGets: 0
   numSweetsPop: 3
@@ -109820,8 +109819,8 @@ MonoBehaviour:
   strength: 3
   speed: 46
   tumble: 10
-  minSpawnInterval: 6
-  maxSpawnInterval: 8
+  minSpawnInterval: 5
+  maxSpawnInterval: 7
   cubesByEncounter: 60
   energyGets: 0
   numSweetsPop: 3
@@ -109930,7 +109929,7 @@ MonoBehaviour:
   level: 0
   player: {fileID: 0}
   spawnRadius: 200
-  playerSpeedIncreaseTo: 1.5
+  playerSpeedIncreaseTo: 1.4
   speedRestoreStartAfter: 4
   speedRestoreDuration: 1
 --- !u!114 &1991538130
@@ -109957,8 +109956,8 @@ MonoBehaviour:
   strength: 10
   speed: 73
   tumble: 20
-  minSpawnInterval: 15
-  maxSpawnInterval: 17
+  minSpawnInterval: 13
+  maxSpawnInterval: 15
   cubesByEncounter: 150
   energyGets: 0
   numSweetsPop: 5
@@ -110003,8 +110002,8 @@ MonoBehaviour:
   strength: 10
   speed: 67
   tumble: 50
-  minSpawnInterval: 12
-  maxSpawnInterval: 14
+  minSpawnInterval: 11
+  maxSpawnInterval: 13
   cubesByEncounter: 150
   energyGets: 0
   numSweetsPop: 5
