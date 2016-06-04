@@ -213,6 +213,10 @@ public class Player : MonoBehaviour {
         poppingByBooster = false;
       }
     }
+
+    if (dashing) {
+      transform.Rotate(0, 0, Time.fixedDeltaTime * 360 * DashManager.dm.numRotateWhenSmash / DashManager.dm.duration);
+    }
 	}
 
   public float getSpeed() {

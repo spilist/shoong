@@ -55,7 +55,6 @@ public class Skill_Solar : Skill {
       afterImage.SetActive(true);
 
       afterImage.GetComponent<PowerBoostAfterImageMover>().run(afterImageDuration, originalColor, biggerScale);
-      // afterImage.GetComponent<PowerBoostAfterImageMover>().run(afterImageDuration, afterImageMainColors[index], afterImageEmissiveColors[index], transform.localScale.x);
 
       yield return new WaitForSeconds(generatePer);
     }

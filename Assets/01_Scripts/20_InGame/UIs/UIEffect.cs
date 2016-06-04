@@ -35,7 +35,7 @@ public class UIEffect : MonoBehaviour {
         changeScale(stayScale, stayScale - smallScale);
       } else if (status == 4) {
         if (stayCount < stayTime) stayCount += Time.deltaTime;
-        else if (stayBeforeUse) status = 8;
+        else if (stayBeforeUse) status = -1;
         else status++;
       } else if (status == 5) {
         changeScale(largeScale, largeScale - stayScale);
@@ -47,6 +47,10 @@ public class UIEffect : MonoBehaviour {
 
       transform.localScale = scale * Vector3.one;
     }
+  }
+
+  public void diminish() {
+    status = 5;
   }
 
   void OnDisable() {
