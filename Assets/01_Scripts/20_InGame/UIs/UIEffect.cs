@@ -9,15 +9,16 @@ public class UIEffect : MonoBehaviour {
 
   public float changeTime = 0.1f;
   public float stayTime = 2f;
+  public bool stayBeforeUse = false;
 
   private float scale;
   private int status = 0;
   private float stayCount = 0;
 
 	void OnEnable() {
-    foreach (Transform tr in transform.parent) {
-      if (tr.gameObject != gameObject) tr.gameObject.SetActive(false);
-    }
+    // foreach (Transform tr in transform.parent) {
+    //   if (tr.gameObject != gameObject) tr.gameObject.SetActive(false);
+    // }
 
     transform.localScale = startScale * Vector3.one;
     scale = startScale;
@@ -34,6 +35,7 @@ public class UIEffect : MonoBehaviour {
         changeScale(stayScale, stayScale - smallScale);
       } else if (status == 4) {
         if (stayCount < stayTime) stayCount += Time.deltaTime;
+        else if (stayBeforeUse) status = 8;
         else status++;
       } else if (status == 5) {
         changeScale(largeScale, largeScale - stayScale);

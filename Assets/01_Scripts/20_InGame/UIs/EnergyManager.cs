@@ -184,7 +184,7 @@ public class EnergyManager : MonoBehaviour {
   public void getEnergy(int amount) {
     changeHealth(amount, getRate * amount);
     Player.pl.getEnergy.Play();
-    Player.pl.getEnergy.transform.GetChild(0).GetComponent<AudioSource>().Play();
+    // Player.pl.getEnergy.transform.GetChild(0).GetComponent<AudioSource>().Play();
   }
 
   public void loseEnergy(int amount, string tag) {

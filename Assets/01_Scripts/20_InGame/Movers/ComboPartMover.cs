@@ -40,7 +40,6 @@ public class ComboPartMover : ObjectsMover {
 
   override protected bool beforeEncounter() {
     objectsManager.objEncounterEffectForPlayer.GetComponent<AudioSource>().pitch = cpm.pitchStart + cpm.getComboCount() * cpm.pitchIncrease;
-
     return true;
   }
 

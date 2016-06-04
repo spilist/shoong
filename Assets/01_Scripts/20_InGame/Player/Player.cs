@@ -156,14 +156,14 @@ public class Player : MonoBehaviour {
       if (stopping) {
         stoppingSpeedBuffer = Mathf.MoveTowards(stoppingSpeedBuffer, 0, Time.fixedDeltaTime * stoppingSpeed);
         speed = stoppingSpeedBuffer;
+      } else if (dashing) {
+        speed = baseSpeed + boosterspeed + DashManager.dm.speedup;
       } else if (ridingMonster) {
         speed = baseSpeed + minimonCounter * monm.enlargeSpeedPerMinimon + boosterspeed;
       } else if (usingGhost) {
         speed = baseSpeed * 1.6f + boosterspeed;
       } else if (usingSolar) {
         speed = (baseSpeed + boosterspeed) * 1.6f;
-      } else if (dashing) {
-        speed = baseSpeed + boosterspeed + DashManager.dm.speedup;
       } else {
         speed = baseSpeed + boosterspeed;
       }
@@ -286,6 +286,7 @@ public class Player : MonoBehaviour {
 
     if (mover.energyGets() > 0) {
       EnergyManager.em.getEnergy(mover.energyGets());
+      DashManager.dm.getLarger();
     }
 
     if (encounterPlayer || (!encounterPlayer && mover.tag == "GoldenCube")) mover.encounterPlayer();

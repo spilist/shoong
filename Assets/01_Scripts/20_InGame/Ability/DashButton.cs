@@ -6,21 +6,7 @@ public class DashButton : MenusBehavior {
   private bool available = false;
 
   override public void activateSelf() {
-    if (available) {
-      Player.pl.dash();
-    }
-  }
-
-  public void enableAbility() {
-    available = true;
-    filter.sharedMesh = activeMesh;
-    playTouchSound = true;
-  }
-
-  void disableAbility() {
-    available = false;
-    filter.sharedMesh = inactiveMesh;
-    playTouchSound = false;
+    if (DashManager.dm.available()) DashManager.dm.smash();
   }
 
   void OnPointerDown() {
