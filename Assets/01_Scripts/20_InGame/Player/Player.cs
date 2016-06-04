@@ -380,6 +380,10 @@ public class Player : MonoBehaviour {
       poppingTarget = poppingSmallScale;
     }
 
+    addSpeedByBooster();
+  }
+
+  void addSpeedByBooster() {
     if (boosterspeed < maxBooster()) {
       boosterspeed += boosterSpeedUp() * boosterBonus;
       boosterspeed = boosterspeed > maxBooster() ? maxBooster() : boosterspeed;
@@ -776,6 +780,7 @@ public class Player : MonoBehaviour {
 
   void turnDashOff() {
     dashing = false;
+    addSpeedByBooster();
     DashManager.dm.resetStep();
   }
 }
