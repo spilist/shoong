@@ -215,7 +215,7 @@ public class Player : MonoBehaviour {
     }
 
     if (dashing) {
-      transform.Rotate(0, 0, Time.fixedDeltaTime * 360 * DashManager.dm.numRotateWhenSmash / DashManager.dm.duration);
+      transform.parent.Rotate(0, 0, Time.fixedDeltaTime * 360 * DashManager.dm.numRotateWhenSmash / DashManager.dm.duration);
     }
 	}
 

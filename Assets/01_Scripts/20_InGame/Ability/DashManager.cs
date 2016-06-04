@@ -32,13 +32,14 @@ public class DashManager : MonoBehaviour {
   public float generatePer = 0.1f;
   public float afterImageDuration = 1;
   public Color originalColor;
+  private bool dashAvailable = false;
 
   void Awake() {
     dm = this;
   }
 
   public void gameStart() {
-    afterImagePrefab.GetComponent<MeshFilter>().sharedMesh = Player.pl.GetComponent<MeshFilter>().sharedMesh;
+    afterImagePrefab.GetComponent<MeshFilter>().mesh = Player.pl.GetComponent<MeshFilter>().sharedMesh;
     afterImagePool = new List<GameObject>();
     for (int i = 0; i < afterImageCount; ++i) {
       GameObject obj = (GameObject) Instantiate(afterImagePrefab);
@@ -73,11 +74,12 @@ public class DashManager : MonoBehaviour {
   }
 
   public bool available() {
-    return currentStack == maxStack;
+    return currentStack == maxStack && dashAvailable;
   }
 
   public void smash() {
     Player.pl.dash();
+    dashAvailable = false;
     playerDashEffect.Play();
     dashSound.Play();
     dashEffect.diminish();
@@ -87,6 +89,7 @@ public class DashManager : MonoBehaviour {
   }
 
   public void enableSmash() {
+    dashAvailable = true;
     dash.GetComponent<Image>().color = enabledEffectColor;
     dash.transform.Find("Text").GetComponent<Text>().color = enabledEffectColor;
   }

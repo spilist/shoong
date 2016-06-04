@@ -90664,8 +90664,11 @@ MonoBehaviour:
   smallScale: 0.6
   largeScale: 1.2
   changeTime: 0.1
-  stayTime: 2
+  stayTime: 1
   stayBeforeUse: 1
+  shrinkDuration: 4
+  shrinkScale: 0.5
+  originalFontSize: 80
 --- !u!82 &1669590874
 AudioSource:
   m_ObjectHideFlags: 0
