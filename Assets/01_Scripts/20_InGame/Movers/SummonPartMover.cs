@@ -20,7 +20,7 @@ public class SummonPartMover : ObjectsMover {
     return summonManager.numSpawnX * summonManager.numSpawnZ * 5;
   }
 
-  override public int energyGets() {
+  override public float energyGets() {
     return 0;
   }
 }

@@ -79,7 +79,7 @@ public class GoldenCubeMover : ObjectsMover {
   }
 
   void Update() {
-    
+
   }
 
   IEnumerator destroyAfter() {
@@ -151,7 +151,7 @@ public class GoldenCubeMover : ObjectsMover {
     return 0;
   }
 
-  override public int energyGets() {
+  override public float energyGets() {
     if (CharacterManager.cm.getCurrentCharacter() == "goldpig") {
       return objectsManager.energyGets;
     } else {

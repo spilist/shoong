@@ -10,6 +10,9 @@ public class UIEffect : MonoBehaviour {
   public float changeTime = 0.1f;
   public float stayTime = 2f;
   public bool stayBeforeUse = false;
+  public float useStayTime = 1f;
+  public float shrinkDuration = 4f;
+  public float shrinkScale = 0.5f;
 
   private float scale;
   private int status = 0;

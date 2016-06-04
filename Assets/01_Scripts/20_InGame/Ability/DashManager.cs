@@ -35,6 +35,10 @@ public class DashManager : MonoBehaviour {
 
   void Awake() {
     dm = this;
+  }
+
+  public void gameStart() {
+    afterImagePrefab.GetComponent<MeshFilter>().sharedMesh = Player.pl.GetComponent<MeshFilter>().sharedMesh;
     afterImagePool = new List<GameObject>();
     for (int i = 0; i < afterImageCount; ++i) {
       GameObject obj = (GameObject) Instantiate(afterImagePrefab);

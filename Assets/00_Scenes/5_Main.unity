@@ -18701,7 +18701,7 @@ MonoBehaviour:
   numRotateWhenSmash: 2
   speedup: 300
   maxEnlargeSize: 1.6
-  maxStack: 3
+  maxStack: 5
   afterImagePrefab: {fileID: 166758, guid: 44d61cba772c543cfb5753201bfa4af3, type: 2}
   afterImageCount: 10
   generatePer: 0.05

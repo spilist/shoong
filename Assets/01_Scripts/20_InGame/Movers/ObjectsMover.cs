@@ -322,7 +322,7 @@ public class ObjectsMover : MonoBehaviour {
     return objectsManager.isNegative;
   }
 
-  virtual public int energyGets() {
+  virtual public float energyGets() {
     return objectsManager.energyGets;
   }
 }

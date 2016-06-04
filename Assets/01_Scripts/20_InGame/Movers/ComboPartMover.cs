@@ -57,7 +57,7 @@ public class ComboPartMover : ObjectsMover {
     return count * cpm.cubesByEncounter;
   }
 
-  override public int energyGets() {
+  override public float energyGets() {
     return (cpm.comboCount + 1) * cpm.energyGets;
   }
 

@@ -181,13 +181,13 @@ public class EnergyManager : MonoBehaviour {
     }
   }
 
-  public void getEnergy(int amount) {
+  public void getEnergy(float amount) {
     changeHealth(amount, getRate * amount);
     Player.pl.getEnergy.Play();
     // Player.pl.getEnergy.transform.GetChild(0).GetComponent<AudioSource>().Play();
   }
 
-  public void loseEnergy(int amount, string tag) {
+  public void loseEnergy(float amount, string tag) {
     if (amount <= 0) return;
 
     changeHealth(-amount * lessDamageRate, loseRate * amount * lessDamageRate);
