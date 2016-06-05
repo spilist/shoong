@@ -82,6 +82,10 @@ public class Player : MonoBehaviour {
   private bool afterStrengthen = false;
   private float afterStrengthenCount = 0;
 
+  public float afterDashDuration = 0.2f;
+  private bool afterDash = false;
+  private float afterDashCount = 0;
+
   private CharacterChangeManager changeManager;
 
   private bool usingPowerBoost = false;
@@ -106,6 +110,7 @@ public class Player : MonoBehaviour {
   public GameObject bonusFilter;
 
   private bool dashing = false;
+  public bool paused = false;
 
 	void Awake() {
     pl = this;
@@ -536,6 +541,16 @@ public class Player : MonoBehaviour {
     bounceDuration = blm.reboundDuring;
   }
 
+  public void afterDashStart() {
+    afterDash = true;
+    afterDashCount = 0;
+    //changeManager.afterStrengthenEffect.Play();
+  }
+
+  public bool isAfterDash() {
+    return afterDash;
+  }
+
   public void afterStrengthenStart() {
     if (usingPowerBoost) return;
 
@@ -641,6 +656,14 @@ public class Player : MonoBehaviour {
       transform.parent.localScale = poppingScale * Vector3.one;
     }
 
+    if (afterDash) {
+      if (afterDashCount < afterDashDuration) {
+        afterDashCount += Time.deltaTime;
+      } else {
+        afterDash = false;
+      }
+    }
+
     if (afterStrengthen) {
       if (afterStrengthenCount < afterStrengthenDuration) {
         afterStrengthenCount += Time.deltaTime;
@@ -713,7 +736,7 @@ public class Player : MonoBehaviour {
   }
 
   public bool isInvincible() {
-    return afterStrengthen || ridingMonster || unstoppable || isRebounding() || isUsingRainbow() || changeManager.isTeleporting() || usingEMP || usingSolar || dashing;
+    return afterDash || afterStrengthen || ridingMonster || unstoppable || isRebounding() || isUsingRainbow() || changeManager.isTeleporting() || usingEMP || usingSolar || dashing;
   }
 
   public bool cannotBeMagnetized() {
@@ -781,6 +804,7 @@ public class Player : MonoBehaviour {
   void turnDashOff() {
     dashing = false;
     addSpeedByBooster();
+    Player.pl.afterDashStart();
     DashManager.dm.resetStep();
   }
 }

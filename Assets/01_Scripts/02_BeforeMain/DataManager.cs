@@ -174,8 +174,11 @@ public class DataManager : MonoBehaviour {
     ints["NumCharactersHave"] = 1;
     ints["NormalCollectorLevel"] = 1;
     // strings["ControlMethod"] = "Touch";
-    // strings["ControlMethod"] = "CenterBigStick";
+#if UNITY_EDITOR
+    strings["ControlMethod"] = "CenterBigStick";
+#else
     strings["ControlMethod"] = "Stick";
+#endif
     bools["robotcogi"] = true;
     bools["TutorialDone"] = true;
 

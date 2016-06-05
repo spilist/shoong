@@ -23,6 +23,7 @@ public class PauseButton : MenusBehavior {
 
     paused = true;
     Camera.main.GetComponent<CameraMover>().setPaused(true);
+    Player.pl.paused = true;
     Time.timeScale = 0;
     pauseFilter.SetActive(true);
     pauseStatus.SetActive(true);
@@ -52,6 +53,7 @@ public class PauseButton : MenusBehavior {
   public void resumeNow() {
     RhythmManager.rm.stopBeat(true);
     Camera.main.GetComponent<CameraMover>().setPaused(false);
+    Player.pl.paused = false;
     pauseFilter.SetActive(false);
     pauseStatus.SetActive(false);
     resumingText.gameObject.SetActive(false);

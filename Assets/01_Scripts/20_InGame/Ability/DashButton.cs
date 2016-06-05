@@ -6,7 +6,10 @@ public class DashButton : MenusBehavior {
   private bool available = false;
 
   override public void activateSelf() {
-    if (DashManager.dm.available()) DashManager.dm.smash();
+    // Using audiolistener to check game is paused is just a hack
+    if (DashManager.dm.available() && Player.pl.paused == false) {
+      DashManager.dm.smash(true);
+    }
   }
 
   void OnPointerDown() {
