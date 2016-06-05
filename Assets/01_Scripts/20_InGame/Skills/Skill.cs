@@ -10,6 +10,7 @@ public class Skill : MonoBehaviour {
   public int skillRing;
   public string description;
   public float duration;
+  public int dashCooldown;
   private bool activated;
 
   void Start() {

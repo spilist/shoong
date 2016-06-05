@@ -2819,7 +2819,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 70.0001, y: 0, z: -20}
   m_Children: []
   m_Father: {fileID: 1212915753}
-  m_RootOrder: 10
+  m_RootOrder: 11
 --- !u!114 &87915276
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2837,6 +2837,7 @@ MonoBehaviour:
   skillRing: 1
   description: Be $rich$
   duration: 0.5
+  dashCooldown: 0
   goldenPartMaterial: {fileID: 2100000, guid: bebff4c88f0cd4369b19c2281be089f8, type: 2}
   laserShootDuration: 0.1
   goldenLaser: {fileID: 148986, guid: 307ab7cc9fb1e49fea8741c574304a21, type: 2}
@@ -4984,10 +4985,10 @@ Transform:
   m_LocalRotation: {x: 0.5648629, y: 0.09960036, z: -0.14224392, w: 0.8067071}
   m_LocalPosition: {x: 19.317074, y: 436.8291, z: -34.902435}
   m_LocalScale: {x: 14.04878, y: 14.048782, z: 14.048782}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 70.0001, y: 0, z: -20}
   m_Children: []
   m_Father: {fileID: 1212915753}
-  m_RootOrder: 2
+  m_RootOrder: 3
 --- !u!114 &127996078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5005,6 +5006,7 @@ MonoBehaviour:
   skillRing: 1
   description: Protect you once
   duration: 0
+  dashCooldown: 3
   loseShieldEffect: {fileID: 1672126411}
 --- !u!198 &131396333
 ParticleSystem:
@@ -8728,7 +8730,7 @@ Transform:
   m_LocalRotation: {x: 0.48374957, y: 0.30818242, z: 0.17729703, w: 0.7997348}
   m_LocalPosition: {x: 39.29268, y: 436.82904, z: 27.790237}
   m_LocalScale: {x: 2.9629636, y: 2.9629636, z: 2.962963}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 41.641098, y: 62.7637, z: 51.118298}
   m_Children: []
   m_Father: {fileID: 1212915753}
   m_RootOrder: 0
@@ -8749,6 +8751,7 @@ MonoBehaviour:
   skillRing: 1
   description: Restore energy
   duration: 0
+  dashCooldown: 4
   amount: 18
 --- !u!1 &222636911
 GameObject:
@@ -12796,10 +12799,10 @@ Transform:
   m_LocalRotation: {x: 0.56486255, y: 0.09960054, z: -0.14224428, w: 0.80670726}
   m_LocalPosition: {x: 19.317074, y: 436.8291, z: -34.902435}
   m_LocalScale: {x: 2.4146342, y: 2.414634, z: 2.414634}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 70, y: 0, z: -20}
   m_Children: []
   m_Father: {fileID: 1212915753}
-  m_RootOrder: 6
+  m_RootOrder: 7
 --- !u!114 &307617794
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12817,6 +12820,7 @@ MonoBehaviour:
   skillRing: 1
   description: Pull candies
   duration: 5
+  dashCooldown: 4
 --- !u!1 &307625068
 GameObject:
   m_ObjectHideFlags: 0
@@ -23065,6 +23069,80 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 485458452}
   m_Mesh: {fileID: 4300054, guid: 06ea95d279c7341edb83769ec8c7baed, type: 3}
+--- !u!1 &488461693
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 488461694}
+  - 222: {fileID: 488461696}
+  - 114: {fileID: 488461695}
+  m_Layer: 5
+  m_Name: SkillStatus
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &488461694
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 488461693}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 1708440541}
+  m_RootOrder: 1
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.000038146973, y: 150}
+  m_SizeDelta: {x: 300, y: 300}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &488461695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 488461693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: b578b0881daafcb47826d6bac8783197, type: 3}
+    m_FontSize: 40
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 121
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 
+--- !u!222 &488461696
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 488461693}
 --- !u!1 &493085438
 GameObject:
   m_ObjectHideFlags: 0
@@ -23158,10 +23236,10 @@ Transform:
   m_LocalRotation: {x: -0.63211244, y: 0.6545712, z: 0.08621946, w: -0.40563118}
   m_LocalPosition: {x: 19.317074, y: 436.8291, z: -34.902435}
   m_LocalScale: {x: 1.0097561, y: 1.009756, z: 1.0097561}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 23.574099, y: -135.7086, z: -78.2913}
   m_Children: []
   m_Father: {fileID: 1212915753}
-  m_RootOrder: 7
+  m_RootOrder: 8
 --- !u!114 &494443781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23179,6 +23257,7 @@ MonoBehaviour:
   skillRing: 1
   description: Become real
   duration: 6
+  dashCooldown: 4
   monsterFilter: {fileID: 1997391145}
   mm: {fileID: 1991538109}
 --- !u!224 &496868770 stripped
@@ -24938,6 +25017,7 @@ MonoBehaviour:
   skillRing: 4
   description: Jump into space!
   duration: 0
+  dashCooldown: 4
   dpm: {fileID: 1991538120}
 --- !u!1001 &515743860
 Prefab:
@@ -36197,10 +36277,10 @@ Transform:
   m_LocalRotation: {x: 0.48374957, y: 0.30818242, z: 0.17729703, w: 0.7997348}
   m_LocalPosition: {x: 39.29268, y: 436.82904, z: 27.790237}
   m_LocalScale: {x: 2.9629636, y: 2.9629636, z: 2.962963}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 41.641098, y: 62.7637, z: 51.118298}
   m_Children: []
   m_Father: {fileID: 1212915753}
-  m_RootOrder: 8
+  m_RootOrder: 5
 --- !u!114 &706357633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36218,6 +36298,7 @@ MonoBehaviour:
   skillRing: 1
   description: Smash everything
   duration: 1
+  dashCooldown: 1
   scaleUpAmount: 0.2
 --- !u!1 &714900423
 GameObject:
@@ -36418,10 +36499,10 @@ Transform:
   m_LocalRotation: {x: 0.48374957, y: 0.30818242, z: 0.17729703, w: 0.7997348}
   m_LocalPosition: {x: 39.29268, y: 436.82904, z: 27.790237}
   m_LocalScale: {x: 2.9629636, y: 2.9629636, z: 2.962963}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 41.641098, y: 62.7637, z: 51.118298}
   m_Children: []
   m_Father: {fileID: 1212915753}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!114 &715384511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36439,6 +36520,7 @@ MonoBehaviour:
   skillRing: 1
   description: Boost limitlessly
   duration: 6
+  dashCooldown: 3
 --- !u!1 &723740914
 GameObject:
   m_ObjectHideFlags: 0
@@ -60547,6 +60629,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cae749938a971421a8cf3f3a99094da5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skillStatus: {fileID: 488461695}
 --- !u!4 &1212915753
 Transform:
   m_ObjectHideFlags: 0
@@ -60559,17 +60642,17 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 216779043}
+  - {fileID: 1316254289}
   - {fileID: 715384510}
   - {fileID: 127996077}
-  - {fileID: 1316254289}
   - {fileID: 1622151149}
+  - {fileID: 706357632}
   - {fileID: 1818839438}
   - {fileID: 307617793}
   - {fileID: 494443780}
-  - {fileID: 706357632}
   - {fileID: 511581016}
-  - {fileID: 87915275}
   - {fileID: 1469275917}
+  - {fileID: 87915275}
   m_Father: {fileID: 0}
   m_RootOrder: 14
 --- !u!1 &1220036618
@@ -65035,7 +65118,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 41.641098, y: 62.7637, z: 51.118298}
   m_Children: []
   m_Father: {fileID: 1212915753}
-  m_RootOrder: 3
+  m_RootOrder: 1
 --- !u!114 &1316254290
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65053,6 +65136,7 @@ MonoBehaviour:
   skillRing: 1
   description: Pass anything
   duration: 4
+  dashCooldown: 3
   contactCollider: {fileID: 1298175624}
   ghostFilter: {fileID: 1472372713}
 --- !u!1 &1322196945
@@ -77983,7 +78067,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 70.0001, y: 0, z: -20}
   m_Children: []
   m_Father: {fileID: 1212915753}
-  m_RootOrder: 11
+  m_RootOrder: 10
 --- !u!114 &1469275918
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78001,6 +78085,7 @@ MonoBehaviour:
   skillRing: 1
   description: 
   duration: 3.5
+  dashCooldown: 5
   biggerScale: 4.5
   afterImagePrefab: {fileID: 197148, guid: 548fc754942dd4391ad89bb54cc0e9c4, type: 2}
   afterImageCount: 10
@@ -89683,7 +89768,7 @@ Transform:
   m_LocalRotation: {x: 0.48374957, y: 0.30818242, z: 0.17729703, w: 0.7997348}
   m_LocalPosition: {x: 39.29268, y: 436.82904, z: 27.790237}
   m_LocalScale: {x: 2.9629636, y: 2.9629636, z: 2.962963}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 41.641098, y: 62.7637, z: 51.118298}
   m_Children: []
   m_Father: {fileID: 1212915753}
   m_RootOrder: 4
@@ -89704,6 +89789,7 @@ MonoBehaviour:
   skillRing: 1
   description: Shoot & Destroy
   duration: 0
+  dashCooldown: 1
   followPlayer: {fileID: 1276123138}
   laserPrefab: {fileID: 134676, guid: 8caaf1ed93486415bb895ac373e87b16, type: 2}
   laserAmount: 1
@@ -91663,6 +91749,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1070623572}
+  - {fileID: 488461694}
   m_Father: {fileID: 2134279969}
   m_RootOrder: 1
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -95041,10 +95128,10 @@ Transform:
   m_LocalRotation: {x: 0.26484805, y: 0.5087685, z: 0.55341125, w: 0.60394216}
   m_LocalPosition: {x: 100.71219, y: 436.8291, z: 52.243893}
   m_LocalScale: {x: 2.1951222, y: 2.1951218, z: 2.1951218}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -14.0762, y: 69.353096, z: 75.2362}
   m_Children: []
   m_Father: {fileID: 1212915753}
-  m_RootOrder: 5
+  m_RootOrder: 6
 --- !u!114 &1818839439
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -95062,6 +95149,7 @@ MonoBehaviour:
   skillRing: 1
   description: Transform asteroids
   duration: 0.5
+  dashCooldown: 2
   goldRatio: 20
   subRatio: 30
   laserShootDuration: 0.1

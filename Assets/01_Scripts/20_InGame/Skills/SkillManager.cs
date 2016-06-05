@@ -1,9 +1,12 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class SkillManager : MonoBehaviour {
   public static SkillManager sm;
-  private Skill equiped;
+  public Text skillStatus;
+  private Skill equipped;
+  private int skillCooldown;
 
   void Awake() {
     sm = this;
@@ -14,51 +17,76 @@ public class SkillManager : MonoBehaviour {
   }
 
   public void stopSkills() {
-    if (equiped != null) equiped.activate(false);
+    if (equipped != null) equipped.activate(false);
   }
 
   public void equip(string skillName) {
     if (skillName == "None") {
-      equiped = null;
+      equipped = null;
+      skillStatus.text = "";
+      skillCooldown = 0;
     } else {
-      equiped = getSkill(skillName);
-      RhythmManager.rm.setLoop(equiped.normalRing, equiped.skillRing);
+      equipped = getSkill(skillName);
+      RhythmManager.rm.setLoop(equipped.normalRing, equipped.skillRing);
+      skillCooldown = equipped.dashCooldown;
+      setSkilCooldownText();
     }
   }
 
   public void activate() {
-    if (!equiped.isActivated()) {
-      equiped.activate(true);
+    if (!equipped.isActivated()) {
+      equipped.activate(true);
       RhythmManager.rm.loopSkillActivated(true);
     }
   }
 
   public bool skillRunning() {
-    if (equiped == null) return false;
-    return equiped.isActivated();
+    if (equipped == null) return false;
+    return equipped.isActivated();
   }
 
   public bool isBlink() {
-    if (equiped == null) return false;
-    return equiped.name == "Blink";
+    if (equipped == null) return false;
+    return equipped.name == "Blink";
   }
-  
+
   public bool isFever() {
-    if (equiped == null) return false;
-    return equiped.name == "Fever";
+    if (equipped == null) return false;
+    return equipped.name == "Fever";
   }
 
   public bool isInfiniteBooster() {
-    if (equiped == null) return false;
-    return (equiped.name == "Fever" || equiped.name == "Solar");
+    if (equipped == null) return false;
+    return (equipped.name == "Fever" || equipped.name == "Solar");
   }
 
   public Skill current() {
-    return equiped;
+    return equipped;
   }
 
   public string skillName() {
-    if (equiped == null) return "None";
-    else return equiped.name;
+    if (equipped == null) return "None";
+    else return equipped.name;
+  }
+
+  public void activateWithDash() {
+    if (equipped == null) return;
+
+    if (skillCooldown == 0) {
+      activate();
+      skillCooldown = equipped.dashCooldown;
+    } else {
+      skillCooldown--;
+    }
+
+    setSkilCooldownText();
+  }
+
+  void setSkilCooldownText() {
+    if (skillCooldown == 0) {
+      skillStatus.text = "Skill!!";
+    } else {
+      skillStatus.text = skillCooldown.ToString();
+    }
   }
 }

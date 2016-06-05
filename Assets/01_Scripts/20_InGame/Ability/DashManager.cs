@@ -86,6 +86,8 @@ public class DashManager : MonoBehaviour {
     StartCoroutine("afterImage");
     dash.GetComponent<Image>().color = dimmedEffectColor;
     dash.transform.Find("Text").GetComponent<Text>().color = dimmedEffectColor;
+
+    SkillManager.sm.activateWithDash();
   }
 
   public void enableSmash() {

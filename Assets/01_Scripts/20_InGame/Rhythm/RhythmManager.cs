@@ -206,7 +206,8 @@ public class RhythmManager : MonoBehaviour {
 
       // if (Player.pl.uncontrollable()) return;
       // skill 나오기 전 파티클
-      showPreSkillParticle(rem + 1);
+
+      // showPreSkillParticle(rem + 1);
 
       if (rem == 1 && skillActivated && numSkillInLoop > 0) {
         if (!SkillManager.sm.current().hasDuration()) {
@@ -277,7 +278,7 @@ public class RhythmManager : MonoBehaviour {
   public void ringSuccessed() {
     isBoosterOK = false;
     isSkillOK = false;
-    
+
 
     currentStar.success();
   }
@@ -326,11 +327,11 @@ public class RhythmManager : MonoBehaviour {
 
     // boostImage.gameObject.SetActive(!val);
   }
-  
+
   public void loopSkillActivated(bool val) {
     skillActivated = val;
   }
-  
+
   public void setCanBeMissed(bool val) {
     canBeMissed = val;
   }
