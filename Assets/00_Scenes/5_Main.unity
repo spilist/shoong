@@ -2837,7 +2837,7 @@ MonoBehaviour:
   skillRing: 1
   description: Be $rich$
   duration: 0.5
-  dashCooldown: 0
+  dashCooldown: 1
   goldenPartMaterial: {fileID: 2100000, guid: bebff4c88f0cd4369b19c2281be089f8, type: 2}
   laserShootDuration: 0.1
   goldenLaser: {fileID: 148986, guid: 307ab7cc9fb1e49fea8741c574304a21, type: 2}
@@ -2996,6 +2996,7 @@ MonoBehaviour:
   originalScale: 0
   rb: {fileID: 0}
   afterStrengthenDuration: 1
+  afterDashDuration: 0.2
   numBoosters: 0
   dirIndicator: {fileID: 1322196947}
   getEnergy: {fileID: 317572741}
@@ -3007,6 +3008,7 @@ MonoBehaviour:
   poppingDurationDown: 0.2
   poppingDurationUp: 0.1
   bonusFilter: {fileID: 1270273977}
+  paused: 0
 --- !u!96 &91418584
 TrailRenderer:
   m_ObjectHideFlags: 0
@@ -8751,7 +8753,7 @@ MonoBehaviour:
   skillRing: 1
   description: Restore energy
   duration: 0
-  dashCooldown: 4
+  dashCooldown: 2
   amount: 18
 --- !u!1 &222636911
 GameObject:
@@ -12819,8 +12821,8 @@ MonoBehaviour:
   normalRing: 12
   skillRing: 1
   description: Pull candies
-  duration: 5
-  dashCooldown: 4
+  duration: 6
+  dashCooldown: 3
 --- !u!1 &307625068
 GameObject:
   m_ObjectHideFlags: 0
@@ -25017,7 +25019,7 @@ MonoBehaviour:
   skillRing: 4
   description: Jump into space!
   duration: 0
-  dashCooldown: 4
+  dashCooldown: 3
   dpm: {fileID: 1991538120}
 --- !u!1001 &515743860
 Prefab:
@@ -31712,7 +31714,7 @@ Transform:
   m_GameObject: {fileID: 632297515}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 160, y: 160, z: 160}
+  m_LocalScale: {x: 260, y: 260, z: 260}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 1701025775}
@@ -78084,8 +78086,8 @@ MonoBehaviour:
   normalRing: 12
   skillRing: 1
   description: 
-  duration: 3.5
-  dashCooldown: 5
+  duration: 1.5
+  dashCooldown: 2
   biggerScale: 4.5
   afterImagePrefab: {fileID: 197148, guid: 548fc754942dd4391ad89bb54cc0e9c4, type: 2}
   afterImageCount: 10
@@ -89793,8 +89795,8 @@ MonoBehaviour:
   followPlayer: {fileID: 1276123138}
   laserPrefab: {fileID: 134676, guid: 8caaf1ed93486415bb895ac373e87b16, type: 2}
   laserAmount: 1
-  laserRadius: 12
-  laserLength: 150
+  laserRadius: 40
+  laserLength: 170
   laserShootingDuration: 0.05
   laserStayDuration: 0.25
   laserShrinkingDuration: 0.05
@@ -95149,7 +95151,7 @@ MonoBehaviour:
   skillRing: 1
   description: Transform asteroids
   duration: 0.5
-  dashCooldown: 2
+  dashCooldown: 1
   goldRatio: 20
   subRatio: 30
   laserShootDuration: 0.1
@@ -106306,7 +106308,7 @@ Transform:
   m_GameObject: {fileID: 1973202187}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 160, y: 160, z: 160}
+  m_LocalScale: {x: 260, y: 260, z: 260}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1485115681}
@@ -106696,7 +106698,7 @@ Transform:
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 678200079}
   m_RootOrder: 20
