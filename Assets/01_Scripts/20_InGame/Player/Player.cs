@@ -353,9 +353,12 @@ public class Player : MonoBehaviour {
     return direction;
   }
 
+  public void teleport() {
+    teleport(transform.position + direction * dpm.blinkDistance);
+  }
+
   public void teleport(Vector3 pos) {
     if (changeManager.isTeleporting() || ScoreManager.sm.isGameOver()) return;
-
     changeManager.teleport(pos);
     DataManager.dm.increment("TotalBlinks");
   }

@@ -15,7 +15,6 @@ public class CameraMover : MonoBehaviour {
 
   private Vector3 velocity = Vector3.zero;
   public float smoothTime = 0.1f;
-  public float speed = 20f;
 
   private bool shaking = false;
   public float shakeDuring = 0.5f;
@@ -82,7 +81,6 @@ public class CameraMover : MonoBehaviour {
 
       if (!shakeContinuously && shakeCount < 0) stopShake();
     } else if (slowly) {
-      // transform.position = Vector3.SmoothDamp(transform.position, playerPos(), ref velocity, smoothTime, Mathf.Infinity, Time.smoothDeltaTime);
       transform.position = Vector3.Lerp(transform.position, playerPos(), Time.deltaTime * followSpeed);
     } else {
       transform.position = playerPos();

@@ -76,9 +76,12 @@ public class DashManager : MonoBehaviour {
   public bool available() {
     return ((currentStack == maxStack && dashAvailable) && (!Player.pl.uncontrollable()));
   }
-  
+
   public void smash(bool decreseCooldown) {
-    Player.pl.dash();
+    if (!SkillManager.sm.isBlink()) {
+      Player.pl.dash();
+    }
+
     dashAvailable = false;
     playerDashEffect.Play();
     dashSound.Play();
@@ -86,8 +89,10 @@ public class DashManager : MonoBehaviour {
     StartCoroutine("afterImage");
     dash.GetComponent<Image>().color = dimmedEffectColor;
     dash.transform.Find("Text").GetComponent<Text>().color = dimmedEffectColor;
-    if (decreseCooldown)
+
+    if (decreseCooldown) {
       SkillManager.sm.activateWithDash();
+    }
   }
 
   public void enableSmash() {

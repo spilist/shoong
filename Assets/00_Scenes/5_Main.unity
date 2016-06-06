@@ -8626,7 +8626,6 @@ MonoBehaviour:
   playerAheadScale: 0.3
   slowly: 0
   smoothTime: 0.1
-  speed: 20
   shakeDuring: 0.5
   shakeAmount: 0.7
 --- !u!124 &192454347
@@ -18707,7 +18706,7 @@ MonoBehaviour:
   numRotateWhenSmash: 2
   speedup: 300
   maxEnlargeSize: 1.6
-  maxStack: 5
+  maxStack: 2
   afterImagePrefab: {fileID: 166758, guid: 44d61cba772c543cfb5753201bfa4af3, type: 2}
   afterImageCount: 10
   generatePer: 0.05
@@ -25019,8 +25018,10 @@ MonoBehaviour:
   skillRing: 4
   description: Jump into space!
   duration: 0
-  dashCooldown: 3
+  dashCooldown: 2
   dpm: {fileID: 1991538120}
+  numContinuousBlinks: 6
+  intervalBetweenBlinks: 0.2
 --- !u!1001 &515743860
 Prefab:
   m_ObjectHideFlags: 0
