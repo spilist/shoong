@@ -4,7 +4,7 @@ using System.Collections;
 
 public class SkillManager : MonoBehaviour {
   public static SkillManager sm;
-  public Text skillStatus;
+  public Text smashText;
   private Skill equipped;
   private int skillCooldown;
 
@@ -23,13 +23,12 @@ public class SkillManager : MonoBehaviour {
   public void equip(string skillName) {
     if (skillName == "None") {
       equipped = null;
-      skillStatus.text = "";
       skillCooldown = 0;
     } else {
       equipped = getSkill(skillName);
       RhythmManager.rm.setLoop(equipped.normalRing, equipped.skillRing);
       skillCooldown = equipped.dashCooldown;
-      setSkilCooldownText();
+      setSmashText();
     }
   }
 
@@ -79,14 +78,14 @@ public class SkillManager : MonoBehaviour {
       skillCooldown--;
     }
 
-    setSkilCooldownText();
+    setSmashText();
   }
 
-  void setSkilCooldownText() {
+  void setSmashText() {
     if (skillCooldown == 0) {
-      skillStatus.text = "Skill!!";
+      smashText.text = "SUPER\nSMASH!!";
     } else {
-      skillStatus.text = skillCooldown.ToString();
+      smashText.text = "SMASH!!";
     }
   }
 }

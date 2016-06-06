@@ -78,17 +78,14 @@ public class DashManager : MonoBehaviour {
   }
 
   public void smash(bool decreseCooldown) {
-    if (!SkillManager.sm.isBlink()) {
-      Player.pl.dash();
-    }
-
+    Player.pl.dash();
     dashAvailable = false;
     playerDashEffect.Play();
     dashSound.Play();
     dashEffect.diminish();
     StartCoroutine("afterImage");
     dash.GetComponent<Image>().color = dimmedEffectColor;
-    dash.transform.Find("Text").GetComponent<Text>().color = dimmedEffectColor;
+    dash.transform.Find("SmashText").GetComponent<Text>().color = dimmedEffectColor;
 
     if (decreseCooldown) {
       SkillManager.sm.activateWithDash();
@@ -98,7 +95,7 @@ public class DashManager : MonoBehaviour {
   public void enableSmash() {
     dashAvailable = true;
     dash.GetComponent<Image>().color = enabledEffectColor;
-    dash.transform.Find("Text").GetComponent<Text>().color = enabledEffectColor;
+    dash.transform.Find("SmashText").GetComponent<Text>().color = enabledEffectColor;
   }
 
   IEnumerator afterImage() {
