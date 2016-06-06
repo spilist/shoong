@@ -25020,7 +25020,7 @@ MonoBehaviour:
   duration: 0
   dashCooldown: 2
   dpm: {fileID: 1991538120}
-  numContinuousBlinks: 6
+  numContinuousBlinks: 4
   intervalBetweenBlinks: 0.2
 --- !u!1001 &515743860
 Prefab:
@@ -54477,7 +54477,7 @@ Transform:
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 678200079}
   m_RootOrder: 10
@@ -62467,7 +62467,7 @@ Transform:
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 678200079}
   m_RootOrder: 11
@@ -64623,6 +64623,10 @@ Prefab:
     - target: {fileID: 19880024, guid: 699a7667b2cee4564b40cfa293c9d3ad, type: 2}
       propertyPath: lengthInSec
       value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8262716, guid: 699a7667b2cee4564b40cfa293c9d3ad, type: 2}
+      propertyPath: spreadCustomCurve.m_RotationOrder
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 699a7667b2cee4564b40cfa293c9d3ad, type: 2}
@@ -72329,7 +72333,7 @@ Transform:
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 678200079}
   m_RootOrder: 7
@@ -109625,8 +109629,8 @@ MonoBehaviour:
   strength: 0
   speed: 0
   tumble: 1
-  minSpawnInterval: 18
-  maxSpawnInterval: 24
+  minSpawnInterval: 13
+  maxSpawnInterval: 19
   cubesByEncounter: 0
   energyGets: 0
   numSweetsPop: 0

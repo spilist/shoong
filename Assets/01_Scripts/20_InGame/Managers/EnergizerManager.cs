@@ -10,6 +10,6 @@ public class EnergizerManager : ObjectsManager {
 
   override public void initRest() {
     destroyWhenCollideSelf = true;
-    run();
+    runImmediately();
   }
 }

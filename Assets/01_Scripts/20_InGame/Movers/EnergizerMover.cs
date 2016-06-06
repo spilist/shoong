@@ -12,8 +12,4 @@ public class EnergizerMover : ObjectsMover {
     canBeMagnetized = false;
     egm = (EnergizerManager)objectsManager;
   }
-
-  override protected void afterEncounter() {
-    egm.run();
-  }
 }

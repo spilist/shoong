@@ -486,6 +486,7 @@ public class Player : MonoBehaviour {
       usingGhost = effectOn;
     }
   }
+
   IEnumerator iceDebrisSoundEffect() {
     yield return null;
     float moveAmount = AudioManager.am.main.movePitchToPercent(0.8f, 0f);
@@ -709,6 +710,7 @@ public class Player : MonoBehaviour {
       } else {
         energized = false;
         egm.strengthenPlayerEffect.SetActive(false);
+        egm.run();
       }
     }
   }
