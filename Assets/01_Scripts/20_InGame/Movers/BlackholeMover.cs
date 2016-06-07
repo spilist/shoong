@@ -21,7 +21,7 @@ public class BlackholeMover : ObjectsMover {
   }
 
   override public bool dangerous() {
-    if (player.isAfterStrengthen() || player.isUnstoppable() || player.isUsingRainbow() || player.isRebounding() || player.isUsingSolar()) return false;
+    if (player.isAfterStrengthen() || player.isUnstoppable() || player.isUsingRainbow() || player.isRebounding() || player.isUsingSolar() || player.isDashing()) return false;
     else return true;
   }
 

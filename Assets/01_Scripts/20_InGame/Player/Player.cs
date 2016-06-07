@@ -806,6 +806,10 @@ public class Player : MonoBehaviour {
     Invoke("turnDashOff", DashManager.dm.duration);
   }
 
+  public bool isDashing() {
+    return dashing || afterDash;
+  }
+
   void turnDashOff() {
     dashing = false;
     addSpeedByBooster();

@@ -138,6 +138,8 @@ public class GoldenCubeMover : ObjectsMover {
     transform.parent = gcm.transform;
     GoldManager.gm.add(transform.position, gcm.cubesWhenEncounter());
 
+    DashManager.dm.getLarger();
+
     if (noRespawn) return;
 
     objectsManager.run();
