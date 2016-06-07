@@ -88,4 +88,8 @@ public class SkillManager : MonoBehaviour {
       smashText.text = "SMASH!!";
     }
   }
+
+  public bool skillAvailable() {
+    return skillCooldown == 0;
+  }
 }

@@ -29,5 +29,7 @@ public class Skill_Blink : Skill {
       count++;
       yield return new WaitForSeconds(intervalBetweenBlinks);
     }
+
+    cm.changeCharacterToOriginal();
   }
 }

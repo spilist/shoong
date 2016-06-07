@@ -8,11 +8,15 @@ public class DashManager : MonoBehaviour {
 
   public DashButton dash;
   public AudioSource dashSound;
+  public ParticleSystem smashOnParticle;
+  public ParticleSystem supersmashOnParticle;
+
   public Color dimmedEffectColor;
   public Color enabledEffectColor;
 
   public AudioSource getStackSound;
-  public UIEffect dashEffect;
+  public UIEffect smashOnEffect;
+  public UIEffect supersmashOnEffect;
   public ParticleSystem playerDashEffect;
   public float pitchStart = 0.05f;
   public float pitchIncrease = 0.6f;
@@ -54,7 +58,6 @@ public class DashManager : MonoBehaviour {
       Player.pl.scaleChange(currentStack * (maxEnlargeSize - 1) / maxStack);
 
       if (currentStack == maxStack) {
-        dashEffect.gameObject.SetActive(true);
         enableSmash();
         withSound = false;
       }
@@ -82,7 +85,12 @@ public class DashManager : MonoBehaviour {
     dashAvailable = false;
     playerDashEffect.Play();
     dashSound.Play();
-    dashEffect.diminish();
+    if (SkillManager.sm.skillAvailable()) {
+      supersmashOnEffect.diminish();
+    } else {
+      smashOnEffect.diminish();
+    }
+
     StartCoroutine("afterImage");
     dash.GetComponent<Image>().color = dimmedEffectColor;
     dash.transform.Find("SmashText").GetComponent<Text>().color = dimmedEffectColor;
@@ -94,8 +102,17 @@ public class DashManager : MonoBehaviour {
 
   public void enableSmash() {
     dashAvailable = true;
+
     dash.GetComponent<Image>().color = enabledEffectColor;
     dash.transform.Find("SmashText").GetComponent<Text>().color = enabledEffectColor;
+
+    if (SkillManager.sm.skillAvailable()) {
+      supersmashOnEffect.gameObject.SetActive(true);
+      supersmashOnParticle.Play();
+    } else {
+      smashOnEffect.gameObject.SetActive(true);
+      smashOnParticle.Play();
+    }
   }
 
   IEnumerator afterImage() {

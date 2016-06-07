@@ -173,9 +173,9 @@ public class DataManager : MonoBehaviour {
     ints["TotalGoldenCubes"] = resetGoldenCube;
     ints["NumCharactersHave"] = 1;
     ints["NormalCollectorLevel"] = 1;
-    // strings["ControlMethod"] = "Touch";
 #if UNITY_EDITOR
-    strings["ControlMethod"] = "CenterBigStick";
+    strings["ControlMethod"] = "Touch";
+    // strings["ControlMethod"] = "CenterBigStick";
 #else
     strings["ControlMethod"] = "Stick";
 #endif
