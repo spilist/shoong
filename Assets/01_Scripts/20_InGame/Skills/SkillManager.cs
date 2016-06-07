@@ -90,6 +90,6 @@ public class SkillManager : MonoBehaviour {
   }
 
   public bool skillAvailable() {
-    return skillCooldown == 0;
+    return equipped != null && skillCooldown == 0;
   }
 }

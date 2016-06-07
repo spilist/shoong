@@ -1171,6 +1171,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 24
       objectReference: {fileID: 0}
+    - target: {fileID: 131904, guid: 8561a50f11ee74c86a4a5e8e7c7970e3, type: 2}
+      propertyPath: m_Name
+      value: SmashEffect
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11416708, guid: 8561a50f11ee74c86a4a5e8e7c7970e3, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 8561a50f11ee74c86a4a5e8e7c7970e3, type: 2}
@@ -5005,6 +5009,48 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!1001 &120147403
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 678200079}
+    m_Modifications:
+    - target: {fileID: 490808, guid: 6d22b12cc539b405d9c5f7cb36a573c2, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 490808, guid: 6d22b12cc539b405d9c5f7cb36a573c2, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 490808, guid: 6d22b12cc539b405d9c5f7cb36a573c2, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 490808, guid: 6d22b12cc539b405d9c5f7cb36a573c2, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 490808, guid: 6d22b12cc539b405d9c5f7cb36a573c2, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 490808, guid: 6d22b12cc539b405d9c5f7cb36a573c2, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 490808, guid: 6d22b12cc539b405d9c5f7cb36a573c2, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 490808, guid: 6d22b12cc539b405d9c5f7cb36a573c2, type: 2}
+      propertyPath: m_RootOrder
+      value: 26
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 6d22b12cc539b405d9c5f7cb36a573c2, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &127996076
 GameObject:
   m_ObjectHideFlags: 0
@@ -8749,6 +8795,48 @@ MonoBehaviour:
   m_EventMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!1001 &196803162
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 678200079}
+    m_Modifications:
+    - target: {fileID: 481976, guid: b3aa32c77a41445e5bb986947cdcc485, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 481976, guid: b3aa32c77a41445e5bb986947cdcc485, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 481976, guid: b3aa32c77a41445e5bb986947cdcc485, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 481976, guid: b3aa32c77a41445e5bb986947cdcc485, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 481976, guid: b3aa32c77a41445e5bb986947cdcc485, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 481976, guid: b3aa32c77a41445e5bb986947cdcc485, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 481976, guid: b3aa32c77a41445e5bb986947cdcc485, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 481976, guid: b3aa32c77a41445e5bb986947cdcc485, type: 2}
+      propertyPath: m_RootOrder
+      value: 27
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: b3aa32c77a41445e5bb986947cdcc485, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &216779042
 GameObject:
   m_ObjectHideFlags: 0
@@ -10489,6 +10577,15 @@ MonoBehaviour:
   getRate: 2
   loseRate: 1
   noDeath: 0
+--- !u!4 &227019760 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 481976, guid: b3aa32c77a41445e5bb986947cdcc485, type: 2}
+  m_PrefabInternal: {fileID: 196803162}
+--- !u!198 &227019763 stripped
+ParticleSystem:
+  m_PrefabParentObject: {fileID: 19838924, guid: b3aa32c77a41445e5bb986947cdcc485,
+    type: 2}
+  m_PrefabInternal: {fileID: 196803162}
 --- !u!1 &230479083
 GameObject:
   m_ObjectHideFlags: 0
@@ -18740,6 +18837,8 @@ MonoBehaviour:
   dashSound: {fileID: 648387231}
   smashOnParticle: {fileID: 1436811738}
   supersmashOnParticle: {fileID: 1401008861}
+  smashCharged: {fileID: 605006879}
+  supersmashCharged: {fileID: 227019763}
   dimmedEffectColor: {r: 1, g: 1, b: 1, a: 0.1764706}
   enabledEffectColor: {r: 1, g: 1, b: 1, a: 0.60784316}
   getStackSound: {fileID: 2132409391}
@@ -29834,6 +29933,15 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 601299997}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &605006876 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 490808, guid: 6d22b12cc539b405d9c5f7cb36a573c2, type: 2}
+  m_PrefabInternal: {fileID: 120147403}
+--- !u!198 &605006879 stripped
+ParticleSystem:
+  m_PrefabParentObject: {fileID: 19865630, guid: 6d22b12cc539b405d9c5f7cb36a573c2,
+    type: 2}
+  m_PrefabInternal: {fileID: 120147403}
 --- !u!1 &606416436
 GameObject:
   m_ObjectHideFlags: 0
@@ -33557,7 +33665,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c29316fd68134f6a8504287e1c8cfcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resetAll: 1
+  resetAll: 0
   resetCube: 0
   resetGoldenCube: 0
   normalFrameRate: 60
@@ -34343,6 +34451,8 @@ Transform:
   - {fileID: 472808096}
   - {fileID: 1436811736}
   - {fileID: 1401008859}
+  - {fileID: 605006876}
+  - {fileID: 227019760}
   m_Father: {fileID: 91418581}
   m_RootOrder: 0
 --- !u!114 &678200080
@@ -56735,6 +56845,10 @@ Prefab:
     - target: {fileID: 450376, guid: fb01c08cfb8c94d40a03e2726b249a7f, type: 2}
       propertyPath: m_RootOrder
       value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 124912, guid: fb01c08cfb8c94d40a03e2726b249a7f, type: 2}
+      propertyPath: m_Name
+      value: SupersmashEffect
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11408622, guid: fb01c08cfb8c94d40a03e2726b249a7f, type: 2}
@@ -91943,7 +92057,7 @@ GameObject:
   - 114: {fileID: 1708440545}
   - 222: {fileID: 1708440546}
   - 114: {fileID: 1708440544}
-  - 135: {fileID: 1708440543}
+  - 65: {fileID: 1708440543}
   m_Layer: 5
   m_Name: SmashButton
   m_TagString: SkillButton
@@ -91977,8 +92091,8 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1708440540}
   m_Mesh: {fileID: 4300046, guid: 7d4e33b83f6a046ab845e77e3044ffcc, type: 3}
---- !u!135 &1708440543
-SphereCollider:
+--- !u!65 &1708440543
+BoxCollider:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
@@ -91987,7 +92101,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 216.5
+  m_Size: {x: 430, y: 430, z: 10}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1708440544
 MonoBehaviour:

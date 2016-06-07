@@ -15,6 +15,7 @@ public class Skill_Metal : Skill {
       Invoke("smashOneMore", 0.6f);
       // Player.pl.scaleUp(1 + scaleUpAmount);
     } else {
+      CancelInvoke();
       cm.changeCharacterToOriginal();
       Player.pl.afterStrengthenStart();
     }

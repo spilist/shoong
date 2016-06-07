@@ -17,6 +17,7 @@ public class Skill_Blink : Skill {
       cm.changeCharacterTo("Blink");
       StartCoroutine("blink");
     } else {
+      StopCoroutine("blink");
       cm.changeCharacterToOriginal();
     }
   }

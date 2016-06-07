@@ -10,6 +10,8 @@ public class DashManager : MonoBehaviour {
   public AudioSource dashSound;
   public ParticleSystem smashOnParticle;
   public ParticleSystem supersmashOnParticle;
+  public ParticleSystem smashCharged;
+  public ParticleSystem supersmashCharged;
 
   public Color dimmedEffectColor;
   public Color enabledEffectColor;
@@ -82,16 +84,20 @@ public class DashManager : MonoBehaviour {
 
   public void smash(bool decreseCooldown) {
     Player.pl.dash();
-    dashAvailable = false;
     playerDashEffect.Play();
     dashSound.Play();
+    StartCoroutine("afterImage");
+
+    dashAvailable = false;
+
     if (SkillManager.sm.skillAvailable()) {
       supersmashOnEffect.diminish();
+      supersmashCharged.Stop();
     } else {
       smashOnEffect.diminish();
+      smashCharged.Stop();
     }
 
-    StartCoroutine("afterImage");
     dash.GetComponent<Image>().color = dimmedEffectColor;
     dash.transform.Find("SmashText").GetComponent<Text>().color = dimmedEffectColor;
 
@@ -109,9 +115,11 @@ public class DashManager : MonoBehaviour {
     if (SkillManager.sm.skillAvailable()) {
       supersmashOnEffect.gameObject.SetActive(true);
       supersmashOnParticle.Play();
+      supersmashCharged.Play();
     } else {
       smashOnEffect.gameObject.SetActive(true);
       smashOnParticle.Play();
+      smashCharged.Play();
     }
   }
 
