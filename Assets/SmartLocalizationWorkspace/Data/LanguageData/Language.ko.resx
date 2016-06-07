@@ -305,7 +305,7 @@
 		<value>과자를 끌어당겨요</value>
 	</data>
 	<data name="SkillDescription_Metal" xml:space="preserve">
-		<value>다 때려부숩니다</value>
+		<value>2단 스매시</value>
 	</data>
 	<data name="SkillDescription_Monster" xml:space="preserve">
 		<value>진짜 몬스터가 됩니다</value>
@@ -341,7 +341,7 @@
 		<value>자석</value>
 	</data>
 	<data name="SkillName_Metal" xml:space="preserve">
-		<value>강철</value>
+		<value>더블 스매시</value>
 	</data>
 	<data name="SkillName_Monster" xml:space="preserve">
 		<value>몬스터</value>

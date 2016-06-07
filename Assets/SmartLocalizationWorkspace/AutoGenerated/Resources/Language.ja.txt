@@ -305,7 +305,7 @@
 		<value>お菓子を引っ張ってくれます</value>
 	</data>
 	<data name="SkillDescription_Metal" xml:space="preserve">
-		<value>全部壊してしまいます</value>
+		<value>連続スマッシュ</value>
 	</data>
 	<data name="SkillDescription_Monster" xml:space="preserve">
 		<value>大人モンスターになります</value>
@@ -341,7 +341,7 @@
 		<value>マグネット</value>
 	</data>
 	<data name="SkillName_Metal" xml:space="preserve">
-		<value>スチール</value>
+		<value>ダブルスマッシュ</value>
 	</data>
 	<data name="SkillName_Monster" xml:space="preserve">
 		<value>モンスター</value>

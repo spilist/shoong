@@ -90,18 +90,18 @@ public class DashManager : MonoBehaviour {
 
     dashAvailable = false;
 
-    if (SkillManager.sm.skillAvailable()) {
-      supersmashOnEffect.diminish();
-      supersmashCharged.Stop();
-    } else {
-      smashOnEffect.diminish();
-      smashCharged.Stop();
-    }
-
     dash.GetComponent<Image>().color = dimmedEffectColor;
     dash.transform.Find("SmashText").GetComponent<Text>().color = dimmedEffectColor;
 
     if (decreseCooldown) {
+      if (SkillManager.sm.skillAvailable()) {
+        supersmashOnEffect.diminish();
+        supersmashCharged.Stop();
+      } else {
+        smashOnEffect.diminish();
+        smashCharged.Stop();
+      }
+
       SkillManager.sm.activateWithDash();
     }
   }

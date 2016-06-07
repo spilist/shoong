@@ -307,7 +307,7 @@ PURCHASES</value>
 		<value>Pull sweets</value>
 	</data>
 	<data name="SkillDescription_Metal" xml:space="preserve">
-		<value>Smash everything</value>
+		<value>Smash twice</value>
 	</data>
 	<data name="SkillDescription_Monster" xml:space="preserve">
 		<value>Become real</value>
@@ -343,7 +343,7 @@ PURCHASES</value>
 		<value>Magnet</value>
 	</data>
 	<data name="SkillName_Metal" xml:space="preserve">
-		<value>Metal</value>
+		<value>Double Smash</value>
 	</data>
 	<data name="SkillName_Monster" xml:space="preserve">
 		<value>Monster</value>
