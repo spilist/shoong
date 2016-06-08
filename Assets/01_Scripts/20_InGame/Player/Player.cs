@@ -769,6 +769,7 @@ public class Player : MonoBehaviour {
 
   public void scaleChange(float amount) {
     transform.parent.localScale = (1 + amount) * new Vector3(1, 1, transform.localScale.z / transform.localScale.x);
+    contactCollider.localScale = transform.parent.localScale * 23f;
   }
 
   public void scaleBack() {
