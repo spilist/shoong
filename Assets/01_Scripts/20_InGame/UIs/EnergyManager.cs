@@ -38,6 +38,8 @@ public class EnergyManager : MonoBehaviour {
   private float origEnergyWidth;
   private bool difficult;
 
+  public bool killNow = false;
+
   public void setEnergyUI(Transform tr) {
     gauge = tr.Find("EnergyBarGuage").GetComponent<Image>();
     gaugeShell = tr.Find("EnergyBarShell").gameObject;
@@ -88,6 +90,11 @@ public class EnergyManager : MonoBehaviour {
             ScoreManager.sm.gameOver("NoEnergy");
           }
         }
+      }
+      if (killNow == true) {
+        killNow = false;
+        turnEnergy(false);
+        ScoreManager.sm.gameOver("NoEnergy");
       }
     }
 	}

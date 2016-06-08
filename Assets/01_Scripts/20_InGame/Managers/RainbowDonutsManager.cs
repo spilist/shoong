@@ -90,7 +90,9 @@ public class RainbowDonutsManager : ObjectsManager {
   }
 
   public void startRidingRainbow() {
-    SkillManager.sm.stopSkills();
+    //SkillManager.sm.stopSkills();
+    SkillManager.sm.stopSkills("Metal");
+    SkillManager.sm.stopSkills("Blink");
     erasingRainbowRoad = false;
     if (rainbowRoad != null && rainbowRoad.gameObject.activeSelf) rainbowRoad.gameObject.SetActive(false);
 

@@ -16,6 +16,12 @@ public class SkillManager : MonoBehaviour {
     return transform.Find(name).GetComponent<Skill>();
   }
 
+  public void stopSkills(string skillName) {
+    if (equipped != null && equipped.name.Equals(skillName)) {
+      equipped.activate(false);
+    }
+  }
+
   public void stopSkills() {
     if (equipped != null) equipped.activate(false);
   }

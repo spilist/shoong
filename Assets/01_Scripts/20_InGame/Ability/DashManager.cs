@@ -123,6 +123,11 @@ public class DashManager : MonoBehaviour {
     }
   }
 
+  public void stopEffects() {
+    supersmashCharged.Stop();
+    smashCharged.Stop();
+  }
+
   IEnumerator afterImage() {
     while (true) {
       GameObject afterImage = getAfterImage();

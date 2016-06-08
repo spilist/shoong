@@ -183,7 +183,7 @@ public class PhaseManager : MonoBehaviour {
       // EnergyManager.em.getFullHealth();
       levelClearEffect.SetActive(true);
     }
-
+    Player.pl.afterDashStart();
     yield return new WaitForSeconds(indicatorPauseDuration);
 
     phaseChangingStatus = 1;

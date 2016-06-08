@@ -187,6 +187,7 @@ public class ScoreManager : MonoBehaviour {
     Player.pl.GetComponent<MeshRenderer>().enabled = false;
     Player.pl.GetComponent<SphereCollider>().enabled = false;
     Player.pl.transform.Find("Auras").gameObject.SetActive(false);
+    DashManager.dm.stopEffects();
     contactCollider.SetActive(false);
 
     yield return new WaitForSeconds(showPlayerExplosionDuring);
