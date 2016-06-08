@@ -61,6 +61,7 @@ public class SocialDataCache : MonoBehaviour {
   }
 
   void loadFriendInfos(IUserProfile[] userProfiles) {
+    avartarLoadQueue.Clear();
     foreach (IUserProfile profile in userProfiles) {
       if (!userIdToProfileCache.ContainsKey(profile.id))
         userIdToProfileCache.Add(profile.id, profile);
@@ -74,6 +75,7 @@ public class SocialDataCache : MonoBehaviour {
     Debug.Log("Friends loaded count: " + userProfiles.Length);
     friendDataLoaded = true;
   }
+  
 
   // Load one by one
   IEnumerator loadAvatarsCoroutine() {

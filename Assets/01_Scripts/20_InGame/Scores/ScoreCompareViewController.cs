@@ -11,6 +11,7 @@ using GooglePlayGames;
 #endif
 
 public class ScoreCompareViewController : MonoBehaviour {
+  private const string NOT_LOADED_STR = "Loading...";
   public Image friendAvatar;
   public Text friendName;
   public Text friendScoreComp;
@@ -144,17 +145,38 @@ public class ScoreCompareViewController : MonoBehaviour {
         friendName.text = "BEST!! " + SocialPlatformManager.cache.userIdToProfileCache[userId].userName;
       else
         friendName.text = SocialPlatformManager.cache.userIdToProfileCache[userId].userName;
-      Texture2D avatar = SocialPlatformManager.cache.userIdToProfileCache[userId].image;
-      if (avatar != null) {
-        friendAvatar.sprite = SocialPlatformManager.cache.createFriendAvatarSprite(avatar);
-      }
+      StartCoroutine(loadAvatarCoroutine(userId));
     } else if (testMode) {
       if (rank == 0) // myself
         friendName.text = "BEST!! " + userId;
       else
         friendName.text = userId;
-    } else { 
-      friendName.text = "NOT_LOADED";
+    } else {
+      SocialPlatformManager.cache.init(); // reload user profile
+      friendName.text = NOT_LOADED_STR;
+      StartCoroutine(friendNameReloadCoroutine(rank, userId));
+    }
+  }
+
+  IEnumerator friendNameReloadCoroutine(int rank, string userId) {
+    while (SocialPlatformManager.cache.userIdToProfileCache.ContainsKey(userId) == false) {
+      yield return new WaitForSeconds(0.1f);
+    }
+    if (friendName.text.Equals(NOT_LOADED_STR))
+      changeToFriend(rank, userId);
+  }
+
+  IEnumerator loadAvatarCoroutine(string userId) {
+    while (true) {
+      Texture2D avatar = SocialPlatformManager.cache.userIdToProfileCache[userId].image;
+      if (SocialPlatformManager.cache.userIdToProfileCache[userId].image == null) {
+        yield return new WaitForSeconds(0.1f);
+      } else {
+        if (friendName.text.Equals(SocialPlatformManager.cache.userIdToProfileCache[userId].userName)) { // If the friend is changed to other, don't load the avatar image
+          friendAvatar.sprite = SocialPlatformManager.cache.createFriendAvatarSprite(avatar);
+        }
+        break;
+      }
     }
   }
 
