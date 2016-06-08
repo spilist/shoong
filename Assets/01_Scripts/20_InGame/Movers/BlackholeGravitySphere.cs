@@ -31,9 +31,11 @@ public class BlackholeGravitySphere : MonoBehaviour {
 
     counter += Time.deltaTime;
     Player.pl.rb.AddForce(heading * (gravityToUser + counter * gravityScale), ForceMode.VelocityChange);
+    Camera.main.GetComponent<CameraMover>().shake(1, ((counter < 2) ? counter * 2 : 4));
   }
 
   void OnTriggerExit(Collider other) {
     if (other.tag == "Player") counter = 0;
+    Camera.main.GetComponent<CameraMover>().stopShake();
   }
 }

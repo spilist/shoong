@@ -38,9 +38,16 @@ public class ParticleMover : MonoBehaviour {
 	}
 
 	void OnTriggerEnter (Collider other) {
-		if (timeelapsed) {
+		if (timeelapsed && gameObject.activeInHierarchy) {
 			GoldManager.gm.addCountIngame();
 			gameObject.SetActive(false);
 		}
 	}
+
+  void OnTriggerStay (Collider other) {
+    if (timeelapsed && gameObject.activeInHierarchy) {
+      GoldManager.gm.addCountIngame();
+      gameObject.SetActive(false);
+    }
+  }
 }
