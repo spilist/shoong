@@ -18835,13 +18835,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dash: {fileID: 1708440545}
+  smashButtonImages:
+  - {fileID: 21300000, guid: 32dda78d632fa4a729b80b28b16551dc, type: 3}
+  - {fileID: 21300000, guid: ad0880b4266a44857b1190dc752a0db8, type: 3}
+  - {fileID: 21300000, guid: aa6f06a77485345fc87e0c862c8ec32b, type: 3}
+  - {fileID: 21300000, guid: 5fad4b872d7c94765a49b8698903d332, type: 3}
+  - {fileID: 21300000, guid: d800f4cd2adce4927985d94bcdc4b0e1, type: 3}
+  - {fileID: 21300000, guid: 2281d2e981feb4eeea400c9ca1223736, type: 3}
   dashSound: {fileID: 648387231}
   smashOnParticle: {fileID: 1436811738}
   supersmashOnParticle: {fileID: 1401008861}
   smashCharged: {fileID: 605006879}
   supersmashCharged: {fileID: 227019763}
-  dimmedEffectColor: {r: 1, g: 1, b: 1, a: 0.1764706}
-  enabledEffectColor: {r: 1, g: 1, b: 1, a: 0.60784316}
+  dimmedEffectColor: {r: 1, g: 1, b: 1, a: 0.3137255}
+  enabledEffectColor: {r: 1, g: 1, b: 1, a: 0.7058824}
+  superDimmedEffectColor: {r: 0.4705882, g: 0.9342799, b: 1, a: 0.3137255}
+  superEnabledEffectColor: {r: 0.47058824, g: 0.93333334, b: 1, a: 0.7058824}
   getStackSound: {fileID: 2132409391}
   smashOnEffect: {fileID: 1669590873}
   supersmashOnEffect: {fileID: 1546936942}
@@ -92123,7 +92132,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: b7feca516f29943f2a79ac4bc0bbbd27, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 32dda78d632fa4a729b80b28b16551dc, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1

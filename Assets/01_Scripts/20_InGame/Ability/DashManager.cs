@@ -7,6 +7,7 @@ public class DashManager : MonoBehaviour {
   public static DashManager dm;
 
   public DashButton dash;
+  public Sprite[] smashButtonImages;
   public AudioSource dashSound;
   public ParticleSystem smashOnParticle;
   public ParticleSystem supersmashOnParticle;
@@ -15,6 +16,8 @@ public class DashManager : MonoBehaviour {
 
   public Color dimmedEffectColor;
   public Color enabledEffectColor;
+  public Color superDimmedEffectColor;
+  public Color superEnabledEffectColor;
 
   public AudioSource getStackSound;
   public UIEffect smashOnEffect;
@@ -59,6 +62,8 @@ public class DashManager : MonoBehaviour {
       currentStack++;
       Player.pl.scaleChange(currentStack * (maxEnlargeSize - 1) / maxStack);
 
+      dash.GetComponent<Image>().sprite = smashButtonImages[currentStack];
+
       if (currentStack == maxStack) {
         enableSmash();
         withSound = false;
@@ -75,6 +80,7 @@ public class DashManager : MonoBehaviour {
 
   public void resetStep() {
     currentStack = 0;
+    dash.GetComponent<Image>().sprite = smashButtonImages[0];
     StopCoroutine("afterImage");
   }
 
@@ -90,9 +96,6 @@ public class DashManager : MonoBehaviour {
 
     dashAvailable = false;
 
-    dash.GetComponent<Image>().color = dimmedEffectColor;
-    dash.transform.Find("SmashText").GetComponent<Text>().color = dimmedEffectColor;
-
     if (decreseCooldown) {
       if (SkillManager.sm.skillAvailable()) {
         supersmashOnEffect.diminish();
@@ -104,19 +107,28 @@ public class DashManager : MonoBehaviour {
 
       SkillManager.sm.activateWithDash();
     }
+
+    if (SkillManager.sm.skillAvailable()) {
+      dash.GetComponent<Image>().color = superDimmedEffectColor;
+    } else {
+      dash.GetComponent<Image>().color = dimmedEffectColor;
+    }
+
+    dash.transform.Find("SmashText").GetComponent<Text>().color = dimmedEffectColor;
   }
 
   public void enableSmash() {
     dashAvailable = true;
 
-    dash.GetComponent<Image>().color = enabledEffectColor;
     dash.transform.Find("SmashText").GetComponent<Text>().color = enabledEffectColor;
 
     if (SkillManager.sm.skillAvailable()) {
+      dash.GetComponent<Image>().color = superEnabledEffectColor;
       supersmashOnEffect.gameObject.SetActive(true);
       supersmashOnParticle.Play();
       supersmashCharged.Play();
     } else {
+      dash.GetComponent<Image>().color = enabledEffectColor;
       smashOnEffect.gameObject.SetActive(true);
       smashOnParticle.Play();
       smashCharged.Play();
