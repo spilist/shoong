@@ -10577,6 +10577,7 @@ MonoBehaviour:
   getRate: 2
   loseRate: 1
   noDeath: 0
+  killNow: 0
 --- !u!4 &227019760 stripped
 Transform:
   m_PrefabParentObject: {fileID: 481976, guid: b3aa32c77a41445e5bb986947cdcc485, type: 2}
@@ -64910,7 +64911,7 @@ Transform:
   m_GameObject: {fileID: 1298175622}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 23, y: 23, z: 23}
+  m_LocalScale: {x: 25, y: 25, z: 25}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 1701025775}

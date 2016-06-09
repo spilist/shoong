@@ -267,6 +267,8 @@ public class Player : MonoBehaviour {
       if (!unstoppable && !isUsingRainbow()) return;
     }
 
+    if (tag == "Blackhole" && !usingSolar) return;
+
     goodPartsEncounter(mover, mover.cubesWhenEncounter());
 	}
 
@@ -288,7 +290,6 @@ public class Player : MonoBehaviour {
   }
 
   public void goodPartsEncounter(ObjectsMover mover, int howMany, bool encounterPlayer = true) {
-
     if (mover.tag != "GoldenCube" && howMany > 0) {
       CubeManager.cm.addPoints(howMany, mover.transform.position);
     }
@@ -658,6 +659,7 @@ public class Player : MonoBehaviour {
     if (dashing) {
       poppingScale = Mathf.MoveTowards(poppingScale, 1, Time.deltaTime * DashManager.dm.maxEnlargeSize / DashManager.dm.duration);
       transform.parent.localScale = poppingScale * Vector3.one;
+      contactCollider.localScale = poppingScale * 25f * Vector3.one;
     }
 
     if (afterDash) {
@@ -769,7 +771,7 @@ public class Player : MonoBehaviour {
 
   public void scaleChange(float amount) {
     transform.parent.localScale = (1 + amount) * new Vector3(1, 1, transform.localScale.z / transform.localScale.x);
-    contactCollider.localScale = transform.parent.localScale * 23f;
+    contactCollider.localScale = transform.parent.localScale.x * 25f * Vector3.one;
   }
 
   public void scaleBack() {

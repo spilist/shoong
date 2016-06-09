@@ -23,7 +23,7 @@ public class LevelClearEffectCollider : MonoBehaviour {
 
   void OnTriggerEnter(Collider other) {
     ObjectsMover mover = other.GetComponent<ObjectsMover>();
-    if (mover == null) return;
+    if (mover == null || mover.tag == "Blackhole") return;
 
     Player.pl.goodPartsEncounter(mover, mover.cubesWhenDestroy(), false);
   }

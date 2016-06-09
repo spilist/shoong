@@ -11,13 +11,18 @@ public class BlackholeMover : ObjectsMover {
     if (other.tag == "ContactCollider") {
       if (dangerous()) {
         ScoreManager.sm.gameOver("Blackhole");
-      } else {
-        if (!player.isUsingSolar()) player.contactBlackhole(collision);
+      } else if (player.isUsingSolar()) {
         encounterPlayer();
+      } else {
+        player.contactBlackhole(collision);
       }
     } else {
       ObjectsMover mover = other.GetComponent<ObjectsMover>();
     }
+  }
+
+  override protected bool beforeEncounter() {
+    return player.isUsingSolar();
   }
 
   override public bool dangerous() {
