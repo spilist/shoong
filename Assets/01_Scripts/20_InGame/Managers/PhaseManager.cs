@@ -81,8 +81,6 @@ public class PhaseManager : MonoBehaviour {
 
     StartCoroutine("showNextLevel");
     if (level == 0) {
-//      rdm.enabled = true;
-      // egm.enabled = true;
       return true;
     }
 
@@ -97,6 +95,7 @@ public class PhaseManager : MonoBehaviour {
       case "1-3":
       icm.enabled = true;
       egm.enabled = true;
+      stransform.addManager("Energizer");
       cpm.adjustForLevel(3);
       break;
 
