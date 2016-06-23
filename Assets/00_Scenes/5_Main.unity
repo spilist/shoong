@@ -24989,7 +24989,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &507386076
 Transform:
   m_ObjectHideFlags: 0
@@ -45352,7 +45352,7 @@ MonoBehaviour:
   - 5-1
   - 5-2
   - 5-3
-  reqProgressPerLevel: 96000000c8000000fa0000005e0100005e010000c2010000c2010000c20100002602000026020000260200008a0200008a0200008a020000ee020000
+  reqProgressPerLevel: 9600000096000000c80000005e0100005e010000c2010000c2010000c20100002602000026020000260200008a0200008a0200008a020000ee020000
   smallAsteroidM: {fileID: 1991538121}
   asteroidM: {fileID: 1991538112}
   icm: {fileID: 1991538122}
@@ -58482,7 +58482,7 @@ Transform:
   m_LocalRotation: {x: 0.23059976, y: -0.794212, z: 0.08810701, w: 0.5552371}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 23.33, y: -113.619194, z: -16.9989}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -97652,7 +97652,7 @@ SpriteRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
+  - {fileID: 2100000, guid: c64d92ad7f6494a38831204792a04a29, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -97669,7 +97669,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b156dca8871394168a8d9b0cbea04ada, type: 3}
-  m_Color: {r: 0.24264705, g: 0.24264705, b: 0.24264705, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.7254902}
   m_FlipX: 0
   m_FlipY: 0
 --- !u!1001 &1853562959
@@ -108714,6 +108714,7 @@ GameObject:
   - 114: {fileID: 1991538112}
   - 114: {fileID: 1991538121}
   - 114: {fileID: 1991538107}
+  - 114: {fileID: 1991538128}
   - 114: {fileID: 1991538122}
   - 114: {fileID: 1991538115}
   - 114: {fileID: 1991538119}
@@ -108734,7 +108735,6 @@ GameObject:
   - 114: {fileID: 1991538127}
   - 114: {fileID: 1991538113}
   - 114: {fileID: 1991538125}
-  - 114: {fileID: 1991538128}
   - 114: {fileID: 1991538129}
   m_Layer: 9
   m_Name: Field Objects
@@ -108910,8 +108910,8 @@ MonoBehaviour:
   isNegative: 1
   destroyWhenCollideSelf: 0
   instance: {fileID: 0}
-  loseEnergyWhenEncounter: 24
-  bounceDuration: 0.3
+  loseEnergyWhenEncounter: 28
+  bounceDuration: 0.5
   hasLevel: 0
   nameForLevel: 
   level: 0
@@ -109135,7 +109135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceSpawnAtStart: 0
-  objAmount: 5
+  objAmount: 6
   objPool: []
   objDestroyEffectPool: []
   objEncounterEffectPool: []
@@ -109155,7 +109155,7 @@ MonoBehaviour:
   isNegative: 1
   destroyWhenCollideSelf: 0
   instance: {fileID: 0}
-  loseEnergyWhenEncounter: 15
+  loseEnergyWhenEncounter: 20
   bounceDuration: 0.2
   hasLevel: 0
   nameForLevel: 
@@ -109205,7 +109205,7 @@ MonoBehaviour:
   isNegative: 1
   destroyWhenCollideSelf: 0
   instance: {fileID: 0}
-  loseEnergyWhenEncounter: 19
+  loseEnergyWhenEncounter: 30
   bounceDuration: 0.15
   hasLevel: 0
   nameForLevel: 
@@ -109555,7 +109555,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceSpawnAtStart: 0
-  objAmount: 7
+  objAmount: 9
   objPool: []
   objDestroyEffectPool: []
   objEncounterEffectPool: []
@@ -109575,7 +109575,7 @@ MonoBehaviour:
   isNegative: 1
   destroyWhenCollideSelf: 0
   instance: {fileID: 0}
-  loseEnergyWhenEncounter: 10
+  loseEnergyWhenEncounter: 15
   bounceDuration: 0.15
   hasLevel: 0
   nameForLevel: 
@@ -109632,7 +109632,7 @@ MonoBehaviour:
   level: 0
   player: {fileID: 0}
   spawnRadius: 250
-  playerSpeedReduceTo: 0.5
+  playerSpeedReduceTo: 0.4
   speedRestoreDuring: 3
 --- !u!114 &1991538123
 MonoBehaviour:
@@ -109666,7 +109666,7 @@ MonoBehaviour:
   isNegative: 1
   destroyWhenCollideSelf: 0
   instance: {fileID: 0}
-  loseEnergyWhenEncounter: 35
+  loseEnergyWhenEncounter: 40
   bounceDuration: 0.3
   hasLevel: 0
   nameForLevel: 
@@ -109681,7 +109681,7 @@ MonoBehaviour:
   biggerExplosionPool: []
   minScale: 15
   maxScale: 25
-  startDuration: 0.25
+  startDuration: 0.2
   decreaseDurationPerPulse: 0.1
   empScale: 110
   empRotatingSpeed: 500
@@ -109741,7 +109741,7 @@ MonoBehaviour:
   shootLaserPer: 4
   chargeTime: 0.35
   offScreenSpeedScale: 0.5
-  laserLoseEnergy: 75
+  laserLoseEnergy: 100
   laserRadius: 20
   laserLength: 500
   laserShootingDuration: 0.1
@@ -109771,7 +109771,7 @@ MonoBehaviour:
   objEncounterEffectForPlayer: {fileID: 0}
   strengthenPlayerEffect: {fileID: 0}
   strength: 3
-  speed: 56
+  speed: 46
   tumble: 10
   minSpawnInterval: 5
   maxSpawnInterval: 7
@@ -109781,18 +109781,18 @@ MonoBehaviour:
   isNegative: 1
   destroyWhenCollideSelf: 0
   instance: {fileID: 0}
-  loseEnergyWhenEncounter: 19
+  loseEnergyWhenEncounter: 30
   bounceDuration: 0.15
   hasLevel: 0
   nameForLevel: 
   level: 0
   player: {fileID: 0}
-  slowStayDuration: 2
-  increaseSpeedDuration: 1
-  increaseSpeedUntil: 230
+  slowStayDuration: 1.5
+  increaseSpeedDuration: 1.5
+  increaseSpeedUntil: 110
   detectDistance: 240
   spawnRadius: 250
-  offScreenSpeedScale: 1.2
+  offScreenSpeedScale: 0.7
   confusedEffect: {fileID: 576304749}
   confusedDuration: 1
   firstSpawnDelay: 2
@@ -109862,7 +109862,7 @@ MonoBehaviour:
   objEncounterEffectForPlayer: {fileID: 0}
   strengthenPlayerEffect: {fileID: 0}
   strength: 3
-  speed: 46
+  speed: 56
   tumble: 10
   minSpawnInterval: 5
   maxSpawnInterval: 7
@@ -109872,18 +109872,18 @@ MonoBehaviour:
   isNegative: 1
   destroyWhenCollideSelf: 0
   instance: {fileID: 0}
-  loseEnergyWhenEncounter: 19
+  loseEnergyWhenEncounter: 30
   bounceDuration: 0.15
   hasLevel: 0
   nameForLevel: 
   level: 0
   player: {fileID: 0}
-  slowStayDuration: 1.5
-  increaseSpeedDuration: 1.5
-  increaseSpeedUntil: 110
+  slowStayDuration: 2
+  increaseSpeedDuration: 1
+  increaseSpeedUntil: 230
   detectDistance: 240
   spawnRadius: 250
-  offScreenSpeedScale: 0.7
+  offScreenSpeedScale: 1.2
   firstSpawnDelay: 2
 --- !u!114 &1991538128
 MonoBehaviour:
@@ -109917,8 +109917,8 @@ MonoBehaviour:
   isNegative: 1
   destroyWhenCollideSelf: 0
   instance: {fileID: 0}
-  loseEnergyWhenEncounter: 32
-  bounceDuration: 0.4
+  loseEnergyWhenEncounter: 36
+  bounceDuration: 0.6
   hasLevel: 0
   nameForLevel: 
   level: 0
@@ -110071,7 +110071,7 @@ MonoBehaviour:
   detectDistance: 200
   headFollowingSpeed: 300
   offScreenSpeedScale: 0.5
-  bulletDamage: 37
+  bulletDamage: 40
   numBullets: 3
   shootInterval: 0.4
   nonShootDuration: 2
