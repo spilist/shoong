@@ -52,8 +52,9 @@ public class BiggerMeteroidManager : ObjectsManager {
     }
   }
 
-  public void startSecond() {
-    StartCoroutine("spawnObstacle2");
+  public void startSecond(bool on) {
+    if (on) StartCoroutine("spawnObstacle2");
+    else StopCoroutine("spawnObstacle2");
   }
 
   override public void run() {}

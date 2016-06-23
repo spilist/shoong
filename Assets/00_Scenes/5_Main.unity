@@ -18867,6 +18867,7 @@ MonoBehaviour:
   generatePer: 0.05
   afterImageDuration: 0.7
   originalColor: {r: 1, g: 0.5882353, b: 0.23137255, a: 0.528}
+  blinkingSeconds: 0.4
 --- !u!1001 &390817042
 Prefab:
   m_ObjectHideFlags: 0
@@ -24989,7 +24990,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &507386076
 Transform:
   m_ObjectHideFlags: 0
@@ -33675,7 +33676,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c29316fd68134f6a8504287e1c8cfcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resetAll: 0
+  resetAll: 1
   resetCube: 0
   resetGoldenCube: 0
   normalFrameRate: 60
@@ -41107,38 +41108,38 @@ MonoBehaviour:
   - clip: {fileID: 8300000, guid: af93f26d2506b4f5eb0a44cebbc6dc74, type: 3}
     bpm: 130
     startDelay: 0.3
-    volumeSmall: 0.25
-    volumeBig: 0.35
+    volumeSmall: 0.35
+    volumeBig: 0.45
   - clip: {fileID: 8300000, guid: 05c48a2eda98044dcb4422f18dde0558, type: 3}
     bpm: 120
     startDelay: 0.3
-    volumeSmall: 0.25
-    volumeBig: 0.35
+    volumeSmall: 0.35
+    volumeBig: 0.45
   - clip: {fileID: 8300000, guid: efffa710716ae47fea46155cc411ad1a, type: 3}
     bpm: 130
     startDelay: 0.3
-    volumeSmall: 0.25
-    volumeBig: 0.35
+    volumeSmall: 0.35
+    volumeBig: 0.45
   - clip: {fileID: 8300000, guid: 1dd865231fc544865a086c444872228e, type: 3}
     bpm: 136
     startDelay: 0.3
-    volumeSmall: 0.25
-    volumeBig: 0.35
+    volumeSmall: 0.35
+    volumeBig: 0.45
   - clip: {fileID: 8300000, guid: 63245a8b315924c2b95f89948bab3c72, type: 3}
     bpm: 138
     startDelay: 0.3
-    volumeSmall: 0.25
-    volumeBig: 0.35
+    volumeSmall: 0.35
+    volumeBig: 0.45
   - clip: {fileID: 8300000, guid: 89d65ad4d09df44b3a6dbe227a75d1ee, type: 3}
     bpm: 150
     startDelay: 0.3
-    volumeSmall: 0.15
-    volumeBig: 0.25
+    volumeSmall: 0.25
+    volumeBig: 0.35
   - clip: {fileID: 8300000, guid: 4bb0e60e6ae504a92bed827b2a5906bf, type: 3}
     bpm: 180
     startDelay: 0.3
-    volumeSmall: 0.15
-    volumeBig: 0.25
+    volumeSmall: 0.25
+    volumeBig: 0.35
   bonusClips:
   - clip: {fileID: 8300000, guid: ed93751a726b3a043874b3ba5ee0aacd, type: 3}
     bpm: 142
@@ -51171,7 +51172,7 @@ RectTransform:
   m_RootOrder: 4
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 300, y: 300}
+  m_AnchoredPosition: {x: 210, y: 200}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1027885206
@@ -62419,22 +62420,22 @@ MonoBehaviour:
   - 3.29
   - 4.39
   baseSpeedStandard: 45
-  baseSpeeds: 120000000900000000000000f7ffffffeeffffff
+  baseSpeeds: 0e0000000700000000000000f9fffffff2ffffff
   boosterPlusSpeedStandard: 110
-  boosterPlusSpeeds: 0f0000000700000000000000f9fffffff1ffffff
+  boosterPlusSpeeds: 0c0000000600000000000000fafffffff4ffffff
   boosterMaxSpeedStandard: 135
   boosterMaxSpeeds: 0a0000000500000000000000fbfffffff6ffffff
   boosterSpeedDecreaseStandard: 50
   boosterSpeedDecreases: 140000000a00000000000000f6ffffffecffffff
-  energyReduceOnTimeStandard: 3.5
+  energyReduceOnTimeStandard: 1.5
   energyReduceOnTimeStandard_hard: 12
   energyReduceOnTimes: f6fffffffbffffff00000000050000000a000000
   maxEnergyStandard: 100
-  maxEnergys: 280000001400000000000000f6ffffffecffffff
+  maxEnergys: 140000000a00000000000000f6ffffffecffffff
   reboundTimeScaleStandard: 1
   reboundDistances: d8ffffffe2ffffffecfffffff6ffffff00000000
   damageGetScaleStandard: 1
-  damageGets: e2fffffff1ffffff000000000f0000001e000000
+  damageGets: f1fffffff9ffffff00000000070000000f000000
   isRandom: 0
 --- !u!1 &1225881596
 GameObject:
@@ -108910,7 +108911,7 @@ MonoBehaviour:
   isNegative: 1
   destroyWhenCollideSelf: 0
   instance: {fileID: 0}
-  loseEnergyWhenEncounter: 28
+  loseEnergyWhenEncounter: 32
   bounceDuration: 0.5
   hasLevel: 0
   nameForLevel: 
@@ -109155,7 +109156,7 @@ MonoBehaviour:
   isNegative: 1
   destroyWhenCollideSelf: 0
   instance: {fileID: 0}
-  loseEnergyWhenEncounter: 20
+  loseEnergyWhenEncounter: 24
   bounceDuration: 0.2
   hasLevel: 0
   nameForLevel: 
@@ -109205,7 +109206,7 @@ MonoBehaviour:
   isNegative: 1
   destroyWhenCollideSelf: 0
   instance: {fileID: 0}
-  loseEnergyWhenEncounter: 30
+  loseEnergyWhenEncounter: 32
   bounceDuration: 0.15
   hasLevel: 0
   nameForLevel: 
@@ -109364,7 +109365,7 @@ MonoBehaviour:
   minSpawnInterval: 0
   maxSpawnInterval: 0
   cubesByEncounter: 5
-  energyGets: 7
+  energyGets: 4
   numSweetsPop: 0
   isNegative: 0
   destroyWhenCollideSelf: 0
@@ -109575,7 +109576,7 @@ MonoBehaviour:
   isNegative: 1
   destroyWhenCollideSelf: 0
   instance: {fileID: 0}
-  loseEnergyWhenEncounter: 15
+  loseEnergyWhenEncounter: 19
   bounceDuration: 0.15
   hasLevel: 0
   nameForLevel: 
@@ -109615,7 +109616,7 @@ MonoBehaviour:
   objEncounterEffectForPlayer: {fileID: 0}
   strengthenPlayerEffect: {fileID: 1248557235}
   strength: 0.9
-  speed: 100
+  speed: 115
   tumble: 1000
   minSpawnInterval: 1
   maxSpawnInterval: 4
@@ -109771,7 +109772,7 @@ MonoBehaviour:
   objEncounterEffectForPlayer: {fileID: 0}
   strengthenPlayerEffect: {fileID: 0}
   strength: 3
-  speed: 46
+  speed: 50
   tumble: 10
   minSpawnInterval: 5
   maxSpawnInterval: 7
@@ -109781,7 +109782,7 @@ MonoBehaviour:
   isNegative: 1
   destroyWhenCollideSelf: 0
   instance: {fileID: 0}
-  loseEnergyWhenEncounter: 30
+  loseEnergyWhenEncounter: 32
   bounceDuration: 0.15
   hasLevel: 0
   nameForLevel: 
@@ -109789,10 +109790,10 @@ MonoBehaviour:
   player: {fileID: 0}
   slowStayDuration: 1.5
   increaseSpeedDuration: 1.5
-  increaseSpeedUntil: 110
+  increaseSpeedUntil: 140
   detectDistance: 240
   spawnRadius: 250
-  offScreenSpeedScale: 0.7
+  offScreenSpeedScale: 1.1
   confusedEffect: {fileID: 576304749}
   confusedDuration: 1
   firstSpawnDelay: 2
@@ -109872,7 +109873,7 @@ MonoBehaviour:
   isNegative: 1
   destroyWhenCollideSelf: 0
   instance: {fileID: 0}
-  loseEnergyWhenEncounter: 30
+  loseEnergyWhenEncounter: 32
   bounceDuration: 0.15
   hasLevel: 0
   nameForLevel: 
@@ -109917,7 +109918,7 @@ MonoBehaviour:
   isNegative: 1
   destroyWhenCollideSelf: 0
   instance: {fileID: 0}
-  loseEnergyWhenEncounter: 36
+  loseEnergyWhenEncounter: 40
   bounceDuration: 0.6
   hasLevel: 0
   nameForLevel: 

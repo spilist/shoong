@@ -20,7 +20,7 @@ public class StageGiftGold : MonoBehaviour {
   }
 
   public void show() {
-    int prob = Random.Range(0, 100);
+    int prob = Random.Range(0, 1000);
     if (prob < highProb) {
       numGoldsGet = highGolds;
       openingParticle = transform.parent.Find("OpeningParticles_high").gameObject;

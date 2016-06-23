@@ -143,7 +143,7 @@ public class TouchInputHandler : MonoBehaviour
               stickFingerId = -1;
 
               // 고정스틱
-              Player.pl.stopMoving();
+              // Player.pl.stopMoving();
               // stick.gameObject.SetActive(false);
               // fingerIndicator.position = stick.position;
             } else {

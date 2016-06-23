@@ -113,14 +113,14 @@ public class PhaseManager : MonoBehaviour {
       rdm.adjustForLevel(2);
       break;
       case "2-3":
-      bmtm.startSecond();
+      bmtm.startSecond(true);
       rdm.adjustForLevel(3);
       break;
 
       case "3-1":
-      mtm.enabled = true;
-      bmtm.stopSpawn();
-      bmtm.enabled = false;
+      // mtm.enabled = true;
+      bmtm.startSecond(false);
+      // bmtm.enabled = false;
       pmm.enabled = true;
       phaseFilter.nextPhase(3);
       break;
@@ -132,10 +132,12 @@ public class PhaseManager : MonoBehaviour {
       break;
 
       case "4-1":
+      pmm.enabled = false;
+      pmm.stopRespawn();
       bmm.enabled = false;
       bmm.stopRespawn();
-      cmm.enabled = false;
-      cmm.stopRespawn();
+      // cmm.enabled = false;
+      // cmm.stopRespawn();
       cpm.enabled = false;
       spm.enabled = true;
       spm.adjustForLevel(1);

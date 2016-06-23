@@ -42,6 +42,9 @@ public class DashManager : MonoBehaviour {
   public float afterImageDuration = 1;
   public Color originalColor;
   private bool dashAvailable = false;
+  private Color blinkColorUp;
+  private Color blinkColorDown;
+  public float blinkingSeconds = 0.4f;
 
   void Awake() {
     dm = this;
@@ -115,6 +118,7 @@ public class DashManager : MonoBehaviour {
     }
 
     dash.transform.Find("SmashText").GetComponent<Text>().color = dimmedEffectColor;
+    StopCoroutine("blink");
   }
 
   public void enableSmash() {
@@ -127,11 +131,26 @@ public class DashManager : MonoBehaviour {
       supersmashOnEffect.gameObject.SetActive(true);
       supersmashOnParticle.Play();
       supersmashCharged.Play();
+      blinkColorUp = superEnabledEffectColor;
+      blinkColorDown = superDimmedEffectColor;
     } else {
       dash.GetComponent<Image>().color = enabledEffectColor;
       smashOnEffect.gameObject.SetActive(true);
       smashOnParticle.Play();
       smashCharged.Play();
+      blinkColorUp = enabledEffectColor;
+      blinkColorDown = dimmedEffectColor;
+    }
+
+    StartCoroutine("blink");
+  }
+
+  IEnumerator blink() {
+    while(true) {
+      dash.GetComponent<Image>().color = blinkColorUp;
+      yield return new WaitForSeconds(blinkingSeconds);
+      dash.GetComponent<Image>().color = blinkColorDown;
+      yield return new WaitForSeconds(blinkingSeconds);
     }
   }
 
