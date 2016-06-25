@@ -15,7 +15,7 @@ public class PopOnEnable : MonoBehaviour {
   private int status = 0;
   private float stayCount;
 
-	void OnEnable() {
+  void OnEnable() {
     transform.localScale = startScale * scaleStandard * Vector3.one;
     scale = startScale * scaleStandard;
     status = 1;
@@ -31,7 +31,7 @@ public class PopOnEnable : MonoBehaviour {
       } else if (status == 3) {
         changeScale(stayScale, stayScale - smallScale);
       } else if (status == 4) {
-        status++;
+        status = 0;
       }
 
       transform.localScale = scale * scaleStandard * Vector3.one;

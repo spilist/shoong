@@ -111,6 +111,7 @@ public class Player : MonoBehaviour {
 
   private bool dashing = false;
   public bool paused = false;
+  public PopOnEnable shield;
 
 	void Awake() {
     pl = this;
@@ -772,6 +773,9 @@ public class Player : MonoBehaviour {
   public void scaleChange(float amount) {
     transform.parent.localScale = (1 + amount) * new Vector3(1, 1, transform.localScale.z / transform.localScale.x);
     contactCollider.localScale = transform.parent.localScale.x * 25f * Vector3.one;
+    if (shield.gameObject.activeSelf) {
+      shield.transform.localScale = transform.parent.localScale.x * shield.scaleStandard * Vector3.one;
+    }
   }
 
   public void scaleBack() {

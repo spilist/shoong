@@ -3056,6 +3056,7 @@ MonoBehaviour:
   poppingDurationUp: 0.1
   bonusFilter: {fileID: 1270273977}
   paused: 0
+  shield: {fileID: 1734906067}
 --- !u!96 &91418584
 TrailRenderer:
   m_ObjectHideFlags: 0
@@ -33676,7 +33677,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c29316fd68134f6a8504287e1c8cfcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resetAll: 1
+  resetAll: 0
   resetCube: 0
   resetGoldenCube: 0
   normalFrameRate: 60
@@ -41283,7 +41284,7 @@ Transform:
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071067}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 180, y: 180, z: 180}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
   m_Children:
   - {fileID: 1525181129}
   - {fileID: 1552135348}
@@ -62428,6 +62429,7 @@ MonoBehaviour:
   boosterSpeedDecreaseStandard: 50
   boosterSpeedDecreases: 140000000a00000000000000f6ffffffecffffff
   energyReduceOnTimeStandard: 2.5
+  bonusEnergyReduceOnTimeStandard: 5
   energyReduceOnTimeStandard_hard: 12
   energyReduceOnTimes: f6fffffffbffffff00000000050000000a000000
   maxEnergyStandard: 100
@@ -93936,7 +93938,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1e04a1a32a4146758614dc4327aef6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scaleStandard: 35
+  scaleStandard: 30
   stayBeforeStart: 0
   startScale: 0
   stayScale: 1

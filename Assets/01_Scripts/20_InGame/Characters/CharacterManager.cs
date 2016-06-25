@@ -28,6 +28,7 @@ public class CharacterManager : MonoBehaviour {
   public int[] boosterSpeedDecreases;
 
   public float energyReduceOnTimeStandard;
+  public float bonusEnergyReduceOnTimeStandard;
   public float energyReduceOnTimeStandard_hard;
   private float original_energyReduceOnTimeStandard;
   private float original_energyReduceOnTimeStandard_hard;
@@ -78,7 +79,13 @@ public class CharacterManager : MonoBehaviour {
     boosterPlusSpeedStandard = original_boosterPlusSpeedStandard;
     boosterMaxSpeedStandard = original_boosterMaxSpeedStandard;
     boosterSpeedDecreaseStandard = original_boosterSpeedDecreaseStandard;
-    energyReduceOnTimeStandard = original_energyReduceOnTimeStandard;
+
+    if (DataManager.dm.isBonusStage) {
+      energyReduceOnTimeStandard = bonusEnergyReduceOnTimeStandard;
+    } else {
+      energyReduceOnTimeStandard = original_energyReduceOnTimeStandard;
+    }
+
     energyReduceOnTimeStandard_hard = original_energyReduceOnTimeStandard_hard;
     maxEnergyStandard = original_maxEnergyStandard;
     reboundTimeScaleStandard = original_reboundTimeScaleStandard;
