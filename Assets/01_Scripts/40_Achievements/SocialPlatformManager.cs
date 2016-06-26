@@ -81,6 +81,7 @@ public class SocialPlatformManager : MonoBehaviour {
           Debug.Log("Sign-In Successfully");
           DataManager.dm.setBool("GoogleLoggedInSetting", false);
           cache.init();
+          Social.LoadAchievements(ProcessLoadedAchievements);
         } else {
           Debug.Log("Sign-In Failed");
           DataManager.dm.setBool("GoogleLoggedInSetting", true);
@@ -113,6 +114,9 @@ public class SocialPlatformManager : MonoBehaviour {
     else
       Debug.Log("Got " + achievements.Length + " achievements");
 
+    foreach (IAchievement achieve in achievements) {
+      Debug.Log("Achievement: " + achieve.id + ", " + achieve.percentCompleted);
+    }
     am.reportAllAchievements(achievements);
 
   }
