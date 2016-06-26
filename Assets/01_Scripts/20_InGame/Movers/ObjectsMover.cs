@@ -3,6 +3,7 @@ using System.Collections;
 using System.Linq;
 
 public class ObjectsMover : MonoBehaviour {
+  public float followingBaseSpeed = 60;
   protected float speed;
   protected float tumble;
   protected Vector3 direction;
@@ -98,7 +99,7 @@ public class ObjectsMover : MonoBehaviour {
       if (ScoreManager.sm.isGameOver()) return;
       Vector3 heading =  Player.pl.transform.position - transform.position;
       heading /= heading.magnitude;
-      rb.velocity = heading * (Player.pl.baseSpeed + Player.pl.getSpeed());
+      rb.velocity = heading * (Player.pl.baseSpeed + Player.pl.getSpeed() + followingBaseSpeed);
     } else if (isInsideBlackhole) {
       rb.velocity = headingToBlackhole * gravity;
       shrinkedScale = Mathf.MoveTowards(shrinkedScale, 0f, Time.deltaTime * originalScale);
