@@ -159,9 +159,14 @@ public class ObjectsManager : MonoBehaviour {
       yield break;
     }
 
+    if (checkAlreadyRunning()) yield break;
     beforeSpawn();
     spawn();
     afterSpawn();
+  }
+
+  virtual public bool checkAlreadyRunning() {
+    return false;
   }
 
   virtual public void respawn() {

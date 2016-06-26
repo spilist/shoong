@@ -65,6 +65,16 @@ public class RainbowDonutsManager : ObjectsManager {
     numRoadRides = numRoadRidesPerLevel[level - 1];
   }
 
+  override public bool checkAlreadyRunning() {
+    if (player.isUsingRainbow()) {
+      StopCoroutine("respawnRoutine");
+      StartCoroutine("respawnRoutine");
+      return true;
+    }
+
+    return false;
+  }
+
   override protected void beforeSpawn() {
     StopCoroutine("rideRainbow");
     erasingRainbowRoad = false;
