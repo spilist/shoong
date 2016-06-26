@@ -27,19 +27,32 @@ public static class AchievementConstants {
     objList.Add(new AchievementObject("DREAMWALKER_1", 0, 1000, loadedAchievementDict[SocialPlatformManager.spm.achievementInfoMap["DREAMWALKER_1"]].percentCompleted));
     objList.Add(new AchievementObject("DREAMWALKER_2", 0, 2500, loadedAchievementDict[SocialPlatformManager.spm.achievementInfoMap["DREAMWALKER_2"]].percentCompleted));
     objList.Add(new AchievementObject("DREAMWALKER_3", 0, 5000, loadedAchievementDict[SocialPlatformManager.spm.achievementInfoMap["DREAMWALKER_3"]].percentCompleted));
+    allAchievements.AddRange(objList);
     achievementDict.Add("BestCubes", objList);
     // Toy collector series
     objList = new List<AchievementObject>();
     objList.Add(new AchievementObject("COLLECTOR_1", 0, 5, loadedAchievementDict[SocialPlatformManager.spm.achievementInfoMap["COLLECTOR_1"]].percentCompleted));
     objList.Add(new AchievementObject("COLLECTOR_2", 0, 10, loadedAchievementDict[SocialPlatformManager.spm.achievementInfoMap["COLLECTOR_2"]].percentCompleted));
     objList.Add(new AchievementObject("COLLECTOR_3", 0, 20, loadedAchievementDict[SocialPlatformManager.spm.achievementInfoMap["COLLECTOR_3"]].percentCompleted));
+    allAchievements.AddRange(objList);
     achievementDict.Add("NumCharactersHave", objList);
     // Traveler series
     objList = new List<AchievementObject>();
     objList.Add(new AchievementObject("TRAVELER_1", 0, 20000, loadedAchievementDict[SocialPlatformManager.spm.achievementInfoMap["TRAVELER_1"]].percentCompleted));
     objList.Add(new AchievementObject("TRAVELER_2", 0, 100000, loadedAchievementDict[SocialPlatformManager.spm.achievementInfoMap["TRAVELER_2"]].percentCompleted));
     objList.Add(new AchievementObject("TRAVELER_3", 0, 1000000, loadedAchievementDict[SocialPlatformManager.spm.achievementInfoMap["TRAVELER_3"]].percentCompleted));
+    allAchievements.AddRange(objList);
     achievementDict.Add("TotalCubes", objList);
+
+    // Update AchievementObjects
+    DataManager.dm.setInt("BestCubes", DataManager.dm.getInt("BestCubes"));
+    DataManager.dm.setInt("NumCharactersHave", DataManager.dm.getInt("NumCharactersHave"));
+    DataManager.dm.setInt("TotalCubes", DataManager.dm.getInt("TotalCubes"));
+    
+    foreach (AchievementObject obj in allAchievements) {
+      obj.report(0);
+    }
+
     SocialPlatformManager.spm.am.reportAllLeaderboard();
   }
 
