@@ -131,8 +131,6 @@ public class Player : MonoBehaviour {
     rb = transform.parent.GetComponent<Rigidbody>();
     rb.velocity = direction * speed;
 
-    // if (DataManager.dm.getBool("TutorialDone")) rotatePlayerBody(true);
-
     transform.parent.localEulerAngles = new Vector3(0, -ContAngle(Vector3.forward, direction), 0);
 
     if (DataManager.dm.isBonusStage) bonusFilter.SetActive(true);
@@ -239,13 +237,6 @@ public class Player : MonoBehaviour {
 	void OnTriggerEnter(Collider other) {
     string tag = other.tag;
 
-    if (tag == "TutorialPart") {
-      other.gameObject.SetActive(false);
-      EnergyManager.em.getEnergy(10);
-      getPartsText.increment();
-      return;
-    }
-
     ObjectsMover mover = other.gameObject.GetComponent<ObjectsMover>();
 
     if (mover == null || mover.dangerous()) return;
@@ -262,10 +253,6 @@ public class Player : MonoBehaviour {
 
     if (tag == "MiniMonster") {
       if (!absorbMinimon(mover)) return;
-    }
-
-    if (tag == "CubeDispenser") {
-      if (!unstoppable && !isUsingRainbow()) return;
     }
 
     if (tag == "Blackhole" && !usingSolar) return;
@@ -286,8 +273,6 @@ public class Player : MonoBehaviour {
   public void generateMinimon(ObjectsMover mover) {
     mover.destroyObject(true, true);
     monm.spawnMinimon(transform.position, monm.numMinimonSpawn);
-
-    DataManager.dm.increment("NumSpawnMinimonster", monm.numMinimonSpawn);
   }
 
   public void goodPartsEncounter(ObjectsMover mover, int howMany, bool encounterPlayer = true) {
@@ -337,20 +322,6 @@ public class Player : MonoBehaviour {
     setDirection(dir);
   }
 
-  public void rotatePlayerBody(bool continuous = false) {
-    return;
-
-    // if (continuous) {
-    //   string[] rots = PlayerPrefs.GetString("CharacterRotation").Split(',');
-    //   transform.rotation = Quaternion.Euler(float.Parse(rots[0]), float.Parse(rots[1]), float.Parse(rots[2]));
-
-    //   string[] angVals = PlayerPrefs.GetString("CharacterAngVal").Split(',');
-    //   rb.angularVelocity = new Vector3(float.Parse(angVals[0]), float.Parse(angVals[1]), float.Parse(angVals[2]));
-    // } else {
-    //   rb.angularVelocity = Random.onUnitSphere * tumble;
-    // }
-  }
-
   public Vector3 getDirection() {
     return direction;
   }
@@ -362,7 +333,6 @@ public class Player : MonoBehaviour {
   public void teleport(Vector3 pos) {
     if (changeManager.isTeleporting() || ScoreManager.sm.isGameOver()) return;
     changeManager.teleport(pos);
-    DataManager.dm.increment("TotalBlinks");
   }
 
   public void stopMoving(bool val = true) {
@@ -371,12 +341,9 @@ public class Player : MonoBehaviour {
   }
 
   public void shootBooster() {
-    // useSkill();
-
     if (stopping || uncontrollable()) return;
 
     numBoosters++;
-    DataManager.dm.increment("TotalBoosters");
 
     timeSpaned = 0;
 
@@ -421,7 +388,6 @@ public class Player : MonoBehaviour {
     usingPowerBoost = false;
     GetComponent<Renderer>().enabled = true;
     GetComponent<Collider>().enabled = true;
-    rotatePlayerBody();
     afterStrengthenStart();
   }
 
@@ -538,8 +504,6 @@ public class Player : MonoBehaviour {
       isRotatingByRainbow = false;
       isRidingRainbowRoad = false;
       rb.isKinematic = false;
-      // rotatePlayerBody();
-      DataManager.dm.increment("NumReboundByBlackholeOnRainbow");
     }
     Camera.main.GetComponent<CameraMover>().shakeUntilStop(blm.shakeAmount);
     processCollision(collision);
@@ -624,7 +588,6 @@ public class Player : MonoBehaviour {
   public void stopEMP() {
     if (!usingPowerBoost) {
       rb.isKinematic = false;
-      // rotatePlayerBody();
     }
     usingEMP = false;
     afterStrengthenStart();
@@ -719,28 +682,7 @@ public class Player : MonoBehaviour {
   }
 
   public void destroyObject(string tag) {
-    numDestroyObstacles++;
-    DataManager.dm.increment("TotalNumDestroyObstacles");
-
-    if (tag == "Obstacle_small") {
-      DataManager.dm.increment("NumDestroySmallAsteroids");
-    }
-    else if (tag == "Obstacle_big") {
-      DataManager.dm.increment("NumDestroyAsteroids");
-    }
-    else if (tag == "Obstacle") {
-      DataManager.dm.increment("NumDestroyMeteroids");
-    }
-    else if (tag == "Blackhole") DataManager.dm.increment("NumDestroyBlackholes");
-    else if (tag == "Monster") DataManager.dm.increment("NumDestroyMonsters");
-    else if (tag == "DangerousEMP") DataManager.dm.increment("NumDestroyDangerousEMP");
-
     if (!usingEMP) Camera.main.GetComponent<CameraMover>().shake();
-  }
-
-  void OnDisable() {
-    DataManager.dm.setBestInt("BestBoosters", numBoosters);
-    DataManager.dm.setBestInt("BestNumDestroyObstacles", numDestroyObstacles);
   }
 
   public bool isInvincible() {

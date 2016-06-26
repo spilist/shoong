@@ -103,7 +103,6 @@ public class ComboPartsManager : ObjectsManager {
     trying = true;
 
     if (comboCount == fullComboCount) {
-      DataManager.dm.increment("NumCompleteIllusion");
       spawnedByTransform = false;
       run();
       return;

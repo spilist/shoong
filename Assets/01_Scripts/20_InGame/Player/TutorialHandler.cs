@@ -135,7 +135,6 @@ public class TutorialHandler : MonoBehaviour {
           Player.pl.stopMoving();
           Player.pl.GetComponent<MeshRenderer>().enabled = true;
           Player.pl.rb.isKinematic = false;
-          // Player.pl.rotatePlayerBody();
           tutoStatus++;
           Invoke("enableTutoCollider", 2);
         } else if (tutoStatus == 1) {

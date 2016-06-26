@@ -12,7 +12,7 @@ public class SplashScreen : MonoBehaviour {
 		else {
 			if (!loaded) {
 				loaded = true;
-				if (DataManager.dm.getBool("FirstPlay")) {
+				if (DataManager.dm.isFirstPlay()) {
           Application.LoadLevel("1_Opening");
         } else {
           Application.LoadLevel("2_BeforeMainScene");

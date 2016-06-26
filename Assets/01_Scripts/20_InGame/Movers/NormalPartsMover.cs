@@ -47,16 +47,6 @@ public class NormalPartsMover : ObjectsMover {
     base.encounterPlayer(destroy);
   }
 
-  override protected void afterEncounter() {
-    if (isMagnetized) {
-      DataManager.dm.increment("NumPartsAbsorbedWithBlackhole");
-    }
-
-    if (player.isUsingRainbow()) {
-      DataManager.dm.increment("NumPartsGetOnRainbow");
-    }
-  }
-
   override public string getManager() {
     return "NormalPartsManager";
   }

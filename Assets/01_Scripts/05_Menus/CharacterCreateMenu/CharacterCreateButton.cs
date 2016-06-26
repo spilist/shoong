@@ -134,7 +134,7 @@ public class CharacterCreateButton : MenusBehavior {
 
     DataManager.dm.increment("NumCharacterCreate");
 
-    if (first) TrackingManager.tm.firstPlayLog("7_FirstToyWin");
+    if (DataManager.dm.isFirstPlay()) TrackingManager.tm.firstPlayLog("7_FirstToyWin");
 
     running = true;
     resetAll();

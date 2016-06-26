@@ -130,31 +130,10 @@ public class ScoreManager : MonoBehaviour {
     Player.pl.stopOtherEffects();
     RhythmManager.rm.stopBeat();
 
-    // Debug.Log("Ads1: " + HZIncentivizedAd.IsAvailable());
     if (!HZIncentivizedAd.IsAvailable()) {
       HZIncentivizedAd.Fetch();
-      // Debug.Log("Ads2: " + HZIncentivizedAd.IsAvailable());
     }
 
-    if (reason == "NoEnergy") {
-      DataManager.dm.increment("DeathByLowEnergy");
-    } else if (reason == "Obstacle_small") {
-      DataManager.dm.increment("DeathBySmallAsteroid");
-    } else if (reason == "Obstacle_big") {
-      DataManager.dm.increment("DeathByAsteroid");
-    } else if (reason == "Obstacle") {
-      DataManager.dm.increment("DeathByMeteroid");
-    } else if (reason == "Blackhole") {
-      DataManager.dm.increment("DeathByBlackhole");
-    } else if (reason == "Monster") {
-      DataManager.dm.increment("DeathByMonster");
-    } else if (reason == "Dopple") {
-      DataManager.dm.increment("DeathByDopple");
-    } else if (reason == "Trap") {
-      DataManager.dm.increment("DeathByTrap");
-    } else if (reason == "TimeMonster") {
-      DataManager.dm.increment("DeathByTimeMonster");
-    }
     if (reason == "Blackhole") {
       playerExplosion.GetComponent<AudioSource>().Play();
     } else {
@@ -251,16 +230,8 @@ public class ScoreManager : MonoBehaviour {
   void save() {
     if (isSaved) return;
 
-    // int daysPassed = (int)(DateTime.Now.Date - DataManager.dm.getDateTime("FirstPlayDate").Date).TotalDays;
-    // if (0 < daysPassed && daysPassed <= 7) {
-    //   if (DataManager.dm.getInt("NumPlay_" + daysPassed) == 0) {
-    //     DataManager.dm.setInt("NumPlay_" + daysPassed, DataManager.dm.getInt("TotalNumPlays") - DataManager.dm.getInt("NumPlay_" + (daysPassed - 1)));
-    //   }
-    // }
-
     isSaved = true;
     int count = CubeManager.cm.getCount() + CubeManager.cm.getBonus();
-    // DataManager.dm.increment("CurrentCubes", count + int.Parse(bonusCount.text));
     DataManager.dm.increment("TotalCubes", count);
     DataManager.dm.setBestInt("BestCubes", count);
 
@@ -271,19 +242,6 @@ public class ScoreManager : MonoBehaviour {
     DataManager.dm.increment("TotalNumPlays");
     DataManager.dm.setAverage("AverageTime", "TotalTime");
     DataManager.dm.setAverage("AverageCubes", "TotalCubes");
-    // DataManager.dm.setAverage("AverageGoldenCubes", "TotalGoldenCubes");
-    DataManager.dm.setAverage("AverageBoosters", "TotalBoosters");
-    // DataManager.dm.setAverage("AverageSuperheats", "TotalSuperheats");
-    DataManager.dm.setAverage("AverageNumDestroyObstacles", "TotalNumDestroyObstacles");
-    DataManager.dm.setAverage("AverageNumUseObjects", "TotalNumUseObjects");
-    // DataManager.dm.setFloat("AverageCPS", 100 * DataManager.dm.getInt("TotalCubes") / (float) DataManager.dm.getInt("TotalTime"));
-
-    // int numPlay = DataManager.dm.getInt("TotalNumPlays");
-    // if (numPlay <= 10) {
-    //   DataManager.dm.setInt("PlayTime_" + numPlay, time);
-    //   DataManager.dm.setInt("CubesGet_" + numPlay, count);
-    //   DataManager.dm.setInt("NumBooster_" + numPlay, boosterCount);
-    // }
 
     DataManager.dm.save();
 

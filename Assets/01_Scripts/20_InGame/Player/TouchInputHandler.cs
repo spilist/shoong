@@ -103,6 +103,16 @@ public class TouchInputHandler : MonoBehaviour
         controlMethod = DataManager.dm.getString("ControlMethod");
         stickPanelSize = Vector3.Distance(stick.position, stick.transform.Find("End").position);
         stick.gameObject.SetActive(true);
+
+        if (DataManager.dm.isFirstPlay()) {
+          TrackingManager.tm.firstPlayLog("3_FirstGameStart");
+        } else if (DataManager.dm.stillInFirstPlay()) {
+          int firstPlayAgainCount = DataManager.dm.getInt("FirstPlayAgainCount") + 1;
+          if (firstPlayAgainCount < 10) {
+            TrackingManager.tm.firstPlayLog("9_PlayAgain_" + firstPlayAgainCount);
+            DataManager.dm.increment("FirstPlayAgainCount");
+          }
+        }
       }
 
       if (controlMethod == "Touch") {

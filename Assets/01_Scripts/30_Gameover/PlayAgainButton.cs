@@ -15,11 +15,7 @@ public class PlayAgainButton : MenusBehavior {
     if (isOpeningBox)
       return;
     if (DataManager.dm.isFirstPlay()) {
-      int firstPlayAgainCount = DataManager.dm.getInt("FirstPlayAgainCount") + 1;
-      if (firstPlayAgainCount < 10) {
-        TrackingManager.tm.firstPlayLog("8_PlayAgain_" + firstPlayAgainCount);
-        DataManager.dm.increment("FirstPlayAgainCount");
-      }
+      TrackingManager.tm.firstPlayLog("8_FirstPlayAgainButtonClick");
     }
     if (!this.gameObject.activeInHierarchy) {
       backButton.activateSelf();

@@ -77,6 +77,10 @@ public class DataManager : MonoBehaviour {
     return bools["FirstPlay"];
   }
 
+  public bool stillInFirstPlay() {
+    return bools["StillInFirstPlay"];
+  }
+
   void initAppsFlyer()
   {
     //AppsFlyer.setAppsFlyerKey("PTuYBhA2CFm48vxR6SGRf7");
@@ -184,6 +188,7 @@ public class DataManager : MonoBehaviour {
 
     bools["FirstPlay"] = true;
     bools["FirstPlayFinished"] = false;
+    bools["StillInFirstPlay"] = true;
     bools["FirstGiftReceived"] = false;
 
     // By the implementation of OnOffButton, 'true' actually means 'not logged in'
@@ -438,6 +443,13 @@ catch(Exception e) {
     path = Application.persistentDataPath;
 #endif
     return path;
+  }
+
+  void OnDisable() {
+    if (bools == null || !bools["StillInFirstPlay"]) return;
+
+    bools["StillInFirstPlay"] = false;
+    save();
   }
 }
 

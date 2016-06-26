@@ -55,10 +55,6 @@ public class CubeDispenserMover : ObjectsMover {
 
   override protected void afterDestroy(bool byPlayer) {
     if (byPlayer) {
-      if (comboCount != cdm.fullComboCount) {
-        DataManager.dm.increment("NumDestroyCubeDispenser");
-      }
-
       if (isGolden) {
         GoldManager.gm.add(transform.position, cdm.goldenCubeAmount * cdm.fullComboCount, false);
       }
@@ -98,7 +94,6 @@ public class CubeDispenserMover : ObjectsMover {
 
     if (comboCount == cdm.fullComboCount) {
       destroyObject(true, true);
-      DataManager.dm.increment("NumCompleteCubeDispenser");
       return false;
     }
 

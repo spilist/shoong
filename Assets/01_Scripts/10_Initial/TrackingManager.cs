@@ -127,6 +127,8 @@ public class TrackingManager : MonoBehaviour {
     new TrackingFacade("FirstPlay", description, "", 0)
       .logEvent();
 
+    #else
+    Debug.Log(description);
     #endif
   }
 

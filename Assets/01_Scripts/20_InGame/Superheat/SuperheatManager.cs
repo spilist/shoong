@@ -255,8 +255,6 @@ public class SuperheatManager : MonoBehaviour {
     // guage.color = guageColor;
     // guageIcon.transform.Find("Particle").gameObject.SetActive(true);
 
-    DataManager.dm.increment("TotalSuperheats");
-
     isTransforming = true;
     transformStatus = 1;
     superXPos = superImage.anchoredPosition.x;

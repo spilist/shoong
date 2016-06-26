@@ -133,7 +133,6 @@ public class RainbowDonutsManager : ObjectsManager {
       //AudioManager.am.main.movePitch(-pitchIncrease * rideCount, 0.5f);
       objEncounterEffectForPlayer.Stop();
       player.afterStrengthenStart();
-      // player.rotatePlayerBody();
 
       spawnedByTransform = false;
       run();

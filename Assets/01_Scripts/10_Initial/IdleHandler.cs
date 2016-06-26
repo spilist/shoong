@@ -11,6 +11,11 @@ public class IdleHandler : MonoBehaviour {
     if (DataManager.dm.isBonusStage) {
       bonusStage.SetActive(true);
     }
+
+    if (DataManager.dm.isFirstPlay()) {
+      TrackingManager.tm.firstPlayLog("2_FirstMainScene");
+    }
+
     StartCoroutine(BlinkText());
 	}
 
