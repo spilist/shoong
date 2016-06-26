@@ -49,6 +49,7 @@ public class ScoreManager : MonoBehaviour {
 
   public float gameOverShakeDuration = 1;
   public float gameOverShakeAmount = 8;
+  public string lastGameOverReason = "";
 
   private bool isSaved = false;
 
@@ -123,6 +124,7 @@ public class ScoreManager : MonoBehaviour {
 
   public void gameOver(string reason) {
     DataManager.dm.setBool("FirstPlayFinished", true);
+    lastGameOverReason = reason;
     gameOverStatus++;
 
     TimeManager.time.stopTime();
@@ -207,6 +209,9 @@ public class ScoreManager : MonoBehaviour {
     createBanner.show(createBannerButton);
 
     if (availableBanner != null) {
+      if (availableBanner.firstKey.Equals("GameOver_RewardAds")) {
+        TrackingManager.tm.rewardAdButtonShowed();
+      }
       bottomBanner.show(availableBanner, createBanner);
     }
 

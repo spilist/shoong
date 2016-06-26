@@ -113,6 +113,7 @@ public class AdsManager : MonoBehaviour {
   }
 
   public void showedRewardAd() {
+    TrackingManager.tm.rewardAdShowed();
     DataManager.dm.setDateTime("RewardLastDateTimeAdsSeen");
   }
 

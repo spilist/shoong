@@ -105,6 +105,7 @@ public class TrackingManager : MonoBehaviour {
       .addEvent("Total Plays", DataManager.dm.getInt("TotalNumPlays"))
       .addEvent("Total PlayingTime", DataManager.dm.getInt("TotalTime"))
       .addEvent("Gold Earned", GoldManager.gm.earned())
+      .addEvent("GameOverReason", ScoreManager.sm.lastGameOverReason)
       .logEvent();
 
 #endif
@@ -174,6 +175,22 @@ public class TrackingManager : MonoBehaviour {
     AppsFlyer.trackRichEvent("af_purchase", purchaseEvent);
     */
 
+#endif
+  }
+
+  public void rewardAdButtonShowed() {
+#if !UNITY_EDITOR
+    new TrackingFacade("RewardAd", 1)
+      .addEvent("RewardAdShowed", 1)
+      .logEvent();
+#endif
+  }
+
+  public void rewardAdShowed() {
+#if !UNITY_EDITOR
+    new TrackingFacade("RewardAd", 1)
+      .addEvent("RewardAdClicked", 1)
+      .logEvent();
 #endif
   }
 
