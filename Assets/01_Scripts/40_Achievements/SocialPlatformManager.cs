@@ -2,6 +2,7 @@
 using GooglePlayGames;
 using GooglePlayGames.BasicApi;
 #endif
+using UnityEngine.SocialPlatforms.GameCenter;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SocialPlatforms;
@@ -54,6 +55,7 @@ public class SocialPlatformManager : MonoBehaviour {
 
 #if UNITY_IOS
     // Initialize game center here
+	GameCenterPlatform.ShowDefaultAchievementCompletionBanner(true);
 #elif UNITY_ANDROID
     PlayGamesPlatform.InitializeInstance(PlayGamesClientConfiguration.DefaultConfiguration);
     // recommended for debugging:
@@ -81,7 +83,11 @@ public class SocialPlatformManager : MonoBehaviour {
           Debug.Log("Sign-In Successfully");
           DataManager.dm.setBool("GoogleLoggedInSetting", false);
           cache.init();
+		  #if UNITY_ANDROID
           Social.LoadAchievements(ProcessLoadedAchievements);
+	  	  #elif UNITY_IOS
+		  Social.LoadAchievementDescriptions(ProcessLoadedAchievementDescriptions);
+	  	  #endif
         } else {
           Debug.Log("Sign-In Failed");
           DataManager.dm.setBool("GoogleLoggedInSetting", true);
@@ -120,6 +126,25 @@ public class SocialPlatformManager : MonoBehaviour {
     am.reportAllAchievements(achievements);
 
   }
+
+	void ProcessLoadedAchievementDescriptions(IAchievementDescription[] achDesc) {
+		if (achDesc.Length == 0)
+			Debug.Log("Error: no achievements found");
+		else
+			Debug.Log("Got " + achDesc.Length + " achievements");
+
+		foreach (IAchievementDescription desc in achDesc) {
+			Debug.Log("Achievement: " + desc.id);
+		}
+		IAchievement[] achs = new IAchievement[achDesc.Length];
+		for (int i = 0;i < achDesc.Length;i++) {
+			achs[i] = Social.CreateAchievement();
+			achs[i].id = achDesc[i].id;
+			achs[i].percentCompleted = 0;
+		}
+		am.reportAllAchievements(achs);
+		
+	}
 
   public void showAchievementUI() {
     //Social.ShowAchievementsUI();
