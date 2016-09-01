@@ -18,7 +18,7 @@ GameObject:
   - 198: {fileID: 19808242}
   m_Layer: 29
   m_Name: AlienshipBullet
-  m_TagString: Untagged
+  m_TagString: ShootAlienshipBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32,6 +32,7 @@ Transform:
   m_LocalRotation: {x: 0.88035285, y: -0.07883794, z: 0.1576075, w: 0.4403674}
   m_LocalPosition: {x: -32, y: 5, z: -43}
   m_LocalScale: {x: 7, y: 7, z: 7}
+  m_LocalEulerAnglesHint: {x: 53.149998, y: 159.7, z: -180}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0

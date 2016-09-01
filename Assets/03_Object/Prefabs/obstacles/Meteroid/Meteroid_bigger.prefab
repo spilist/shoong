@@ -18,7 +18,7 @@ GameObject:
   - 114: {fileID: 11405724}
   m_Layer: 23
   m_Name: Meteroid_bigger
-  m_TagString: Obstacle
+  m_TagString: BigMeteroid
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -169,6 +169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8032c6c77738a4803bbdde2ccca6ab46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  followingBaseSpeed: 60
   boundingSize: 50
   player: {fileID: 0}
 --- !u!135 &13565526

@@ -98,6 +98,11 @@ TagManager:
   - TouchBlocker
   - Energizer
   - SkillButton
+  - Meteroid
+  - BigMeteroid
+  - ShootAlienshipBullet
+  - BlackMonster
+  - ConfuseMonster
   layers:
   - Default
   - TransparentFX

@@ -246,7 +246,7 @@ public class Player : MonoBehaviour {
       return;
     }
 
-    if (tag == "IceDebris" || tag == "PhaseMonster") {
+    if (tag == "IceDebris" || tag == "PhaseMonster" || tag == "BlackMonster" || tag == "ConfuseMonster") {
       goodPartsEncounter(mover, mover.cubesWhenEncounter(), false);
       return;
     }
