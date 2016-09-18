@@ -71,6 +71,9 @@ public class CubeManager : MonoBehaviour {
     instance.transform.position = position;
     instance.SetActive(true);
     instance.GetComponent<ShowChangeText>().run(amount);
+
+    // Overheat guage increase
+    OverHeatManager.ohm.addGauge(amount);
   }
 
   public int getCount() {

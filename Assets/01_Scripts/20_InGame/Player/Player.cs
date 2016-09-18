@@ -183,15 +183,13 @@ public class Player : MonoBehaviour {
       }
     }
 
-    if (iced && !uncontrollable() && !bouncing) {
-      speed *= icedSpeedFactor;
+    if (!uncontrollable() && !bouncing) {
+      if (iced) speed *= icedSpeedFactor;
+      if (energized) speed *= energizedSpeedFactor;
+      if (skill_fevered) speed *= feveredSpeedFactor;
+      if (OverHeatManager.ohm.onOverHeat) speed *= OverHeatManager.ohm.characterSpeedIncrease;
     }
-    if (energized && !uncontrollable() && !bouncing) {
-      speed *= energizedSpeedFactor;
-    }
-    if (skill_fevered && !uncontrollable() && !bouncing) {
-      speed *= feveredSpeedFactor;
-    }
+
     if (boosterspeed > 0) {
       timeSpaned += Time.fixedDeltaTime;
       boosterspeed -= 80 / boosterSpeedDecreaseBase + boosterSpeedDecreasePerTime * Time.fixedDeltaTime;

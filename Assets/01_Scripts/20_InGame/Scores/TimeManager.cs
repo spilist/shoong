@@ -132,6 +132,7 @@ public class TimeManager : MonoBehaviour {
 			now++;
 
       CubeManager.cm.addPointsByTime();
+      OverHeatManager.ohm.reduceGaugeByTime();
 
       sam.respawn();
       npm.respawn();
