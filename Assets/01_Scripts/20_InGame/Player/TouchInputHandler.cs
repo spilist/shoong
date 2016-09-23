@@ -81,37 +81,40 @@ public class TouchInputHandler : MonoBehaviour
         }
       }
 
-      if (!pause.isResuming() && (result == "Ground" || result == "ChangeBehavior") && !gameStarted) {
+      if (!pause.isResuming() && (result == "Ground" || result == "ChangeBehavior")) {
+        if (!gameStarted) {
+          CharacterManager.cm.startGame();
+          DashManager.dm.gameStart();
+          menus.gameStart();
 
-        CharacterManager.cm.startGame();
-        DashManager.dm.gameStart();
-        menus.gameStart();
+          TimeManager.time.startTime();
+          EnergyManager.em.turnEnergy(true);
+          RhythmManager.rm.startGame();
+          GoldManager.gm.startGame();
+          spawnManager.run();
+          DataManager.dm.increment("play_" + PlayerPrefs.GetString("SelectedCharacter"));
 
-        TimeManager.time.startTime();
-        EnergyManager.em.turnEnergy(true);
-        RhythmManager.rm.startGame();
-        GoldManager.gm.startGame();
-        spawnManager.run();
-        DataManager.dm.increment("play_" + PlayerPrefs.GetString("SelectedCharacter"));
+          beforeIdle.moveTitle();
+          AudioManager.am.changeVolume("Main", "Max");
 
-        beforeIdle.moveTitle();
-        AudioManager.am.changeVolume("Main", "Max");
+          gameStarted = true;
+          fingerTutorialViewer.showViewer();
 
-        gameStarted = true;
-        fingerTutorialViewer.showViewer();
+          controlMethod = DataManager.dm.getString("ControlMethod");
+          stickPanelSize = Vector3.Distance(stick.position, stick.transform.Find("End").position);
+          stick.gameObject.SetActive(true);
 
-        controlMethod = DataManager.dm.getString("ControlMethod");
-        stickPanelSize = Vector3.Distance(stick.position, stick.transform.Find("End").position);
-        stick.gameObject.SetActive(true);
-
-        if (DataManager.dm.isFirstPlay()) {
-          TrackingManager.tm.firstPlayLog("3_FirstGameStart");
-        } else if (DataManager.dm.stillInFirstPlay()) {
-          int firstPlayAgainCount = DataManager.dm.getInt("FirstPlayAgainCount") + 1;
-          if (firstPlayAgainCount < 10) {
-            TrackingManager.tm.firstPlayLog("9_PlayAgain_" + firstPlayAgainCount);
-            DataManager.dm.increment("FirstPlayAgainCount");
+          if (DataManager.dm.isFirstPlay()) {
+            TrackingManager.tm.firstPlayLog("3_FirstGameStart");
+          } else if (DataManager.dm.stillInFirstPlay()) {
+            int firstPlayAgainCount = DataManager.dm.getInt("FirstPlayAgainCount") + 1;
+            if (firstPlayAgainCount < 10) {
+              TrackingManager.tm.firstPlayLog("9_PlayAgain_" + firstPlayAgainCount);
+              DataManager.dm.increment("FirstPlayAgainCount");
+            }
           }
+        } else {
+          fingerTutorialViewer.disableViewer();
         }
       }
 
@@ -125,13 +128,17 @@ public class TouchInputHandler : MonoBehaviour
 
     if (reactAble() && controlMethod == "Stick") {
       for (var i = 0; i < Input.touchCount; ++i) {
-        fingerTutorialViewer.disableViewer();
         Touch touch = Input.GetTouch(i);
         Ray ray = Camera.main.ScreenPointToRay(touch.position);
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit)) {
           GameObject hitObject = hit.transform.gameObject;
           if (touch.phase == TouchPhase.Began) {
+
+            if (!gameStarted) {
+              fingerTutorialViewer.disableViewer();
+            }
+
             if (hitObject.tag == "StickPanel_movement") {
               // if (hitObject.tag == "StickPanel_movement" && Input.touchCount == 1) {
               // 고정스틱

@@ -21,14 +21,18 @@ public class PauseButton : MenusBehavior {
   override public void activateSelf() {
     if (!gameObject.activeSelf || resuming || ScoreManager.sm.isGameOver()) return;
 
+    activatePause();
     paused = true;
-    Camera.main.GetComponent<CameraMover>().setPaused(true);
-    Player.pl.paused = true;
-    Time.timeScale = 0;
+    AudioListener.pause = true;
     pauseFilter.SetActive(true);
     pauseStatus.SetActive(true);
     pausedImage.SetActive(true);
-    AudioListener.pause = true;
+  }
+
+  public void activatePause() {
+    Camera.main.GetComponent<CameraMover>().setPaused(true);
+    Player.pl.paused = true;
+    Time.timeScale = 0;
     RhythmManager.rm.stopBeat();
   }
 
@@ -51,17 +55,21 @@ public class PauseButton : MenusBehavior {
   }
 
   public void resumeNow() {
-    RhythmManager.rm.stopBeat(true);
-    Camera.main.GetComponent<CameraMover>().setPaused(false);
-    Player.pl.paused = false;
+    activateResume();
+    paused = false;
     pauseFilter.SetActive(false);
     pauseStatus.SetActive(false);
     resumingText.gameObject.SetActive(false);
     resumingText.text = "3";
-    paused = false;
     resuming = false;
-    Time.timeScale = 1;
     AudioListener.pause = false;
+  }
+
+  public void activateResume() {
+    RhythmManager.rm.stopBeat(true);
+    Camera.main.GetComponent<CameraMover>().setPaused(false);
+    Player.pl.paused = false;
+    Time.timeScale = 1;
   }
 
   public bool isPaused() {
